@@ -1,11 +1,19 @@
 # Better Grades
 
-Draft landing page and Cloudflare Pages deployment target for
-`bettergrades.net`.
+Private-preview landing page for `bettergrades.net`.
 
-The draft is intentionally marked `noindex, nofollow` and contains no forms,
-analytics, tracking, testimonials, performance claims, or student data
-collection.
+The site is intentionally marked `noindex, nofollow` and contains no forms,
+analytics, tracking, testimonials, performance claims, accounts, or student
+data collection. It is a static site with no runtime dependencies.
+
+## Validate
+
+```bash
+npm test
+```
+
+The checks verify the private-preview guardrails, accessible page structure,
+security headers, and absence of forms, scripts, tracking, and mojibake.
 
 ## Hosting
 
@@ -13,7 +21,8 @@ collection.
 - Cloudflare Pages project: `bettergrades`
 - Build command: none
 - Output directory: `public`
+- Production branch: `main`
 
-Do not attach the production domain until its Cloudflare zone is active and
-public DNS resolves without DNSSEC errors.
-
+Production is deployed from the exact validated GitHub commit by the Pi's
+fixed-reference Cloudflare Pages wrapper. The Pages API token remains in the
+Pi's encrypted local broker.
