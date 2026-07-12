@@ -55,6 +55,14 @@ export default function RootLayout({
             __html: `(function(){try{var t=localStorage.getItem('bg-theme')||'auto';var d=t==='dark'||(t==='auto'&&matchMedia('(prefers-color-scheme:dark)').matches);document.documentElement.dataset.theme=d?'dark':'light';document.documentElement.dataset.themeChoice=t}catch(e){}})()`,
           }}
         />
+        <script
+          defer
+          src="https://analytics.bohodigitalservices.com/script.js"
+          data-website-id="7810f828-f3f0-4296-95e3-e01e8c37f234"
+          data-domains="bettergrades.net,www.bettergrades.net"
+          data-do-not-track="true"
+          data-exclude-search="true"
+        />
       </head>
       <body>{children}</body>
     </html>
