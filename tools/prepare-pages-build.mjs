@@ -19,6 +19,9 @@ async function requirePath(path, label) {
 await requirePath(client, "vinext client output");
 await requirePath(serverEntry, "vinext Worker entry");
 
+// The Cloudflare Vite plugin writes a local deploy redirect to the Worker
+// configuration. Pages must discover the root wrangler.jsonc instead.
+await rm(resolve(root, ".wrangler", "deploy"), { recursive: true, force: true });
 await rm(output, { recursive: true, force: true });
 await mkdir(output, { recursive: true });
 await cp(client, output, { recursive: true });

@@ -3,6 +3,10 @@ import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 
 test("Pages package contains the advanced Worker and static assets", async () => {
+  await assert.rejects(
+    access(new URL("../.wrangler/deploy/config.json", import.meta.url)),
+    /ENOENT/,
+  );
   await access(new URL("../dist/pages/_worker.js", import.meta.url));
   await access(new URL("../dist/pages/index.js", import.meta.url));
   await access(new URL("../dist/pages/assets", import.meta.url));
