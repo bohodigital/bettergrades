@@ -225,8 +225,14 @@ def deploy(token: str) -> dict[str, Any]:
 
     combined = scrub(f"{result.stdout}\n{result.stderr}", token)
     if result.returncode != 0:
-        tail = "\n".join(combined.strip().splitlines()[-16:])[-4000:]
-        raise DeploymentError(f"Wrangler rejected the Pages deployment: {tail}")
+        lines = combined.strip().splitlines()
+        excerpt = lines[:28]
+        if len(lines) > 40:
+            excerpt.extend(["... sanitized Wrangler output omitted ...", *lines[-12:]])
+        safe_excerpt = "\n".join(excerpt)[:8000]
+        raise DeploymentError(
+            f"Wrangler rejected the Pages deployment: {safe_excerpt}"
+        )
     urls = URL_RE.findall(combined)
     immutable_url = urls[-1] if urls else None
     if not immutable_url:
