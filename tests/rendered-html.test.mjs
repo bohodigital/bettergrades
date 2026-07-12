@@ -60,3 +60,28 @@ test("library archetype renders a full worked article", async () => {
   assert.match(html, /Common mistakes/);
   assert.match(html, /class="katex-display"/);
 });
+
+test("robots and sitemap metadata routes are indexable and complete", async () => {
+  const robots = await render("/robots.txt");
+  assert.equal(robots.status, 200);
+  assert.match(robots.headers.get("content-type") ?? "", /^text\/plain\b/i);
+  const robotsBody = await robots.text();
+  assert.match(robotsBody, /Disallow: \/search\//);
+  assert.match(robotsBody, /Sitemap: https:\/\/bettergrades\.net\/sitemap\.xml/);
+
+  const sitemap = await render("/sitemap.xml");
+  assert.equal(sitemap.status, 200);
+  assert.match(sitemap.headers.get("content-type") ?? "", /^application\/xml\b/i);
+  const sitemapBody = await sitemap.text();
+  assert.match(sitemapBody, /<urlset\b/);
+  assert.match(sitemapBody, /\/library\/limits-continuity\/limit-of-sin-x-over-x\//);
+  assert.match(sitemapBody, /\/library\/sequences-series\/taylor-series-remainder\//);
+  assert.doesNotMatch(sitemapBody, /\/search\//);
+});
+
+test("Worker responses include baseline security headers", async () => {
+  const response = await render();
+  assert.equal(response.headers.get("x-content-type-options"), "nosniff");
+  assert.equal(response.headers.get("referrer-policy"), "strict-origin-when-cross-origin");
+  assert.equal(response.headers.get("permissions-policy"), "camera=(), microphone=(), geolocation=()");
+});
