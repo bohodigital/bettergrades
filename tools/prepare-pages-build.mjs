@@ -24,8 +24,23 @@ await mkdir(output, { recursive: true });
 await cp(client, output, { recursive: true });
 await cp(server, output, { recursive: true });
 await cp(serverEntry, workerEntry);
-await rm(resolve(output, "index.js"), { force: true });
 await rm(resolve(output, "wrangler.json"), { force: true });
+
+await writeFile(
+  resolve(output, ".assetsignore"),
+  [
+    "_worker.js",
+    "index.js",
+    "ssr/**",
+    "__vite_rsc_assets_manifest.js",
+    ".vite/**",
+    "image-config.json",
+    "vinext-externals.json",
+    "vinext-server.json",
+    "",
+  ].join("\n"),
+  "utf8",
+);
 
 await writeFile(
   resolve(output, "_routes.json"),

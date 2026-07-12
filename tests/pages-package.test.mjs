@@ -4,6 +4,7 @@ import test from "node:test";
 
 test("Pages package contains the advanced Worker and static assets", async () => {
   await access(new URL("../dist/pages/_worker.js", import.meta.url));
+  await access(new URL("../dist/pages/index.js", import.meta.url));
   await access(new URL("../dist/pages/assets", import.meta.url));
 
   const routes = JSON.parse(
@@ -17,4 +18,11 @@ test("Pages package contains the advanced Worker and static assets", async () =>
     "utf8",
   );
   assert.match(worker, /ASSETS/);
+
+  const assetsIgnore = await readFile(
+    new URL("../dist/pages/.assetsignore", import.meta.url),
+    "utf8",
+  );
+  assert.match(assetsIgnore, /^index\.js$/m);
+  assert.match(assetsIgnore, /^ssr\/\*\*$/m);
 });

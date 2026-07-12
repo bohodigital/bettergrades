@@ -24,6 +24,7 @@ PAGES_HOST = "bettergrades-vhc.pages.dev"
 DOMAINS = ("bettergrades.net", "www.bettergrades.net")
 REPO_ROOT = Path("/srv/local1/repos/bettergrades")
 OUTPUT_DIR = REPO_ROOT / "dist" / "pages"
+WRANGLER_CONFIG = REPO_ROOT / "wrangler.pages.jsonc"
 SECRET_ROOT = Path("/srv/local1/secrets/broker")
 VAULT_PATH = SECRET_ROOT / "local1-agent-secrets.kdbx"
 KEY_FILE_PATH = SECRET_ROOT / "local1-agent-secrets.keyfile"
@@ -169,7 +170,13 @@ def require_deployable_tree() -> str:
     if git_value("status", "--porcelain"):
         raise DeploymentError("the durable Better Grades checkout is not clean")
     sha = git_value("rev-parse", "HEAD")
-    for required in (OUTPUT_DIR / "_worker.js", OUTPUT_DIR / "_routes.json", OUTPUT_DIR / "assets"):
+    for required in (
+        OUTPUT_DIR / "_worker.js",
+        OUTPUT_DIR / "index.js",
+        OUTPUT_DIR / "_routes.json",
+        OUTPUT_DIR / "assets",
+        WRANGLER_CONFIG,
+    ):
         if not required.exists():
             raise DeploymentError(f"the verified Pages output is missing {required.name}")
     return sha
@@ -194,7 +201,8 @@ def deploy(token: str) -> dict[str, Any]:
         WRANGLER,
         "pages",
         "deploy",
-        str(OUTPUT_DIR),
+        "--config",
+        str(WRANGLER_CONFIG),
         "--project-name",
         PROJECT,
         "--branch",
