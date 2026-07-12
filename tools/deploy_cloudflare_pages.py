@@ -24,7 +24,7 @@ PAGES_HOST = "bettergrades-vhc.pages.dev"
 DOMAINS = ("bettergrades.net", "www.bettergrades.net")
 REPO_ROOT = Path("/srv/local1/repos/bettergrades")
 OUTPUT_DIR = REPO_ROOT / "dist" / "pages"
-WRANGLER_CONFIG = REPO_ROOT / "wrangler.pages.jsonc"
+WRANGLER_CONFIG = REPO_ROOT / "wrangler.jsonc"
 SECRET_ROOT = Path("/srv/local1/secrets/broker")
 VAULT_PATH = SECRET_ROOT / "local1-agent-secrets.kdbx"
 KEY_FILE_PATH = SECRET_ROOT / "local1-agent-secrets.keyfile"
@@ -201,8 +201,6 @@ def deploy(token: str) -> dict[str, Any]:
         WRANGLER,
         "pages",
         "deploy",
-        "--config",
-        str(WRANGLER_CONFIG),
         "--project-name",
         PROJECT,
         "--branch",
