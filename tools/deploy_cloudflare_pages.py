@@ -204,7 +204,6 @@ def deploy(token: str) -> dict[str, Any]:
         "--commit-message",
         f"Better Grades production {sha[:12]}",
         "--commit-dirty=false",
-        "--no-bundle",
     ]
     try:
         result = subprocess.run(
