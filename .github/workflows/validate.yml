@@ -28,5 +28,11 @@ jobs:
         with:
           node-version: 24
 
-      - name: Validate preview
-        run: npm test
+      - name: Enable pnpm
+        run: corepack enable
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Validate approved site and Pages package
+        run: pnpm test
