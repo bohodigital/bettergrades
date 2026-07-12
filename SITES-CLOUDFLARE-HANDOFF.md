@@ -6,13 +6,27 @@ Stop before production work and read:
 /srv/local1/hub/ops/runbooks/sites-cloudflare-pages.md
 ```
 
-There is no owner-approved Better Grades design currently recorded in the Pi
-hub. Treat existing GitHub and Pages content as a placeholder.
+## Approved production source
 
-Use Sites to create a private preview, visually inspect it, show the owner the
-exact URL, and stop for explicit approval.
+The owner approved the current Better Grades private preview for connection to
+the production domain on 2026-07-11.
 
-Production mapping after approval:
+```text
+Site: Better Grades
+Approved private preview: https://better-grades.mankopoppi.chatgpt.site/
+Approved source commit: 48afa1b02a0bba058ec0083c3d523be2cc8360d5
+Approved source bundle: /srv/local1/runtime/bettergrades/handoff/bettergrades-approved-48afa1b.bundle
+Durable production checkout: /srv/local1/repos/bettergrades
+Review branch: agent/approved-sites-library-launch
+Build command: corepack pnpm install --frozen-lockfile && corepack pnpm test
+Pages output directory: dist/pages
+Approval instruction: properly connect it to bettergrades.net
+```
+
+Changes to the design or content after the approved source commit require a new
+private preview and approval before the next production deployment.
+
+Production mapping:
 
 ```text
 GitHub: bohodigital/bettergrades

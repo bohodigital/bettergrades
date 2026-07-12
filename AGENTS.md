@@ -1,7 +1,7 @@
 # Better Grades Agent Instructions
 
-This repository is the GitHub production handoff for Better Grades. It is not
-the authority for choosing an unapproved design.
+This repository is the GitHub production handoff for Better Grades. The exact
+approved source and preview are recorded in `SITES-CLOUDFLARE-HANDOFF.md`.
 
 Before Sites work, source replacement, merge, or deployment, read:
 
@@ -10,14 +10,15 @@ SITES-CLOUDFLARE-HANDOFF.md
 /srv/local1/hub/ops/runbooks/sites-cloudflare-pages.md
 ```
 
-- There is no owner-approved Better Grades design recorded in the Pi hub.
-- Treat current repository and Pages content as a placeholder.
-- Sites must create a private preview, visually inspect it, show the owner the
-  exact URL, and stop for explicit approval.
+- Deploy only the source commit tied to the approved private preview.
+- Any design or content change after that commit requires a new private preview
+  and a new owner approval before another production deployment.
 - Use the authenticated GitHub owner `bohodigital`.
-- Do not create another Cloudflare Pages project or change DNS/custom domains.
+- Reuse the existing Cloudflare Pages project and domains. Do not create a
+  replacement project or unrelated DNS records.
 - Never commit API tokens, account credentials, `.env` files, student data,
   browser profiles, caches, build output, or generated logs.
 - Normal Pages deployment uses the fixed Pi Secret Broker reference
-  `boho-digital-services.cloudflare.pages-deploy` through an approved wrapper.
+  `boho-digital-services.cloudflare.pages-deploy` through
+  `tools/deploy_cloudflare_pages.py`.
 - A successful build does not prove that the visual design is owner-approved.
