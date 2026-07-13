@@ -2,10 +2,11 @@ import { problems } from "./content";
 import { domains, resourceFormatLabel, resources, tools, topics } from "./registry/catalog";
 import { assessments } from "./registry/practice";
 import { isExpressionOnlyQuery, normalizeSearchText, rankSearchRecords } from "./site-search-core.mjs";
+import { mathGlossarySearchTerms } from "./glossary/math/search-artifact.mjs";
 
 export { isExpressionOnlyQuery, normalizeSearchText };
 
-export type SearchKind = "guide" | "topic" | "tool" | "practice" | "answer";
+export type SearchKind = "guide" | "topic" | "tool" | "practice" | "answer" | "glossary";
 
 export type SiteSearchRecord = {
   id: string;
@@ -32,6 +33,7 @@ export const searchKindLabels: Record<SearchKind, string> = {
   tool: "Interactive tool",
   practice: "Practice",
   answer: "Direct answer",
+  glossary: "Glossary term",
 };
 
 const domainFor = (domainId: string) => domains.find((domain) => domain.id === domainId);
@@ -134,12 +136,27 @@ const answerRecords: SiteSearchRecord[] = problems.map((problem) => ({
   priority: 88,
 }));
 
+const glossaryRecords: SiteSearchRecord[] = mathGlossarySearchTerms.map((term) => ({
+  id: `glossary-math-${term.id}`,
+  kind: "glossary",
+  title: term.term,
+  description: term.shortDefinition,
+  path: `/glossary/math/#${term.id}`,
+  domainSlug: "math",
+  domainName: "Mathematics",
+  topicName: term.categoryLabel,
+  label: "Visual definition",
+  keywords: [...term.aliases, ...term.keywords, ...term.visualText],
+  priority: 68,
+}));
+
 export const siteSearchRecords: SiteSearchRecord[] = [
   ...guideRecords,
   ...topicRecords,
   ...toolRecords,
   ...practiceRecords,
   ...answerRecords,
+  ...glossaryRecords,
 ];
 
 export function searchSite(query: string, options: SiteSearchOptions = {}) {
@@ -152,4 +169,4 @@ export function searchSite(query: string, options: SiteSearchOptions = {}) {
 export const searchIndexCounts = siteSearchRecords.reduce<Record<SearchKind, number>>((counts, record) => {
   counts[record.kind] += 1;
   return counts;
-}, { guide: 0, topic: 0, tool: 0, practice: 0, answer: 0 });
+}, { guide: 0, topic: 0, tool: 0, practice: 0, answer: 0, glossary: 0 });

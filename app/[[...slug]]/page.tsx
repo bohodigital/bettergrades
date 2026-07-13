@@ -27,5 +27,12 @@ export default async function CatchAllPage({
   const { slug = [] } = await params;
   const path = getPath(slug);
   if (!publicRoutes.includes(path)) notFound();
-  return <BetterGradesApp path={path} />;
+  const glossaryData = path.startsWith("/glossary/")
+    ? await import("../../lib/glossary/math/registry.mjs").then((registry) => ({
+      terms: registry.mathGlossaryTerms,
+      categories: registry.mathGlossaryCategories,
+      uppercaseConventions: registry.uppercaseVariableConventions,
+    }))
+    : undefined;
+  return <BetterGradesApp path={path} glossaryData={glossaryData} />;
 }

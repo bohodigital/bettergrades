@@ -11,6 +11,9 @@ const fixedRoutes: RegistryRoute[] = [
   { path: "/answers/", title: "Search the answer bank", description: "Find specific problems, immediate answers, complete solutions, and related practice.", indexable: true },
   { path: "/answers/calculus/integral-of-sec-cubed/", title: "What is the integral of sec³x?", description: "See the full integration-by-parts derivation, verification, and common mistakes.", indexable: true },
   { path: "/tools/", title: "Math tools with visible limits", description: "Use practical academic tools that explain what they do and where they may fail.", indexable: true },
+  { path: "/glossary/", title: "Better Grades glossaries", description: "Browse subject-specific definitions, symbols, and notation conventions.", indexable: true },
+  { path: "/glossary/math/", title: "Mathematics glossary", description: "Look up mathematics terms and symbols with visual notation and concise definitions.", indexable: true },
+  { path: "/glossary/math/conventions/", title: "Mathematics variable and notation conventions", description: "See the variable, naming, and notation rules used throughout Better Grades mathematics content.", indexable: true },
   { path: "/search/", title: "Search Better Grades", description: "Search answers, topics, and resources.", indexable: false },
   ...["about", "how-we-verify", "editorial-policy", "source-policy", "corrections", "privacy", "accessibility"].map((slug) => ({ path: `/${slug}/`, title: "Better Grades", description: "Better Grades publishing and product standards.", indexable: true })),
 ];

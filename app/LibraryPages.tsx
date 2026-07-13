@@ -121,7 +121,7 @@ export function LibraryArticleContent({ article }: { article: CourseArticle }) {
 
       <div className="latex-article-layout">
         <aside className="latex-article-rail">
-          <strong>On this page</strong>
+          <strong>Article outline</strong>
           {article.document.sections.map((section, index) => <a key={section.id} href={`#${section.id}`}><span>{String(index + 1).padStart(2, "0")}</span>{section.heading}</a>)}
           <div className="latex-article-links">
             <span>Put it to work</span>

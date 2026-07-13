@@ -1,10 +1,12 @@
 import { domains, resources, subjects, tools, topics } from "./catalog";
 import { assessments } from "./practice";
 import { allLibraryArticles } from "../course-library";
+import { validateMathGlossary, validateMathNotation } from "../glossary/math/registry.mjs";
 import { publicRoutes, redirects, registryRoutes } from "./routing";
 
 export function validateRegistry() {
   const errors: string[] = [];
+  errors.push(...validateMathGlossary().map((error) => `Math glossary: ${error}`));
   const ids = [...subjects, ...domains, ...topics, ...resources, ...assessments, ...tools].map((item) => item.id);
   const duplicateIds = ids.filter((id, index) => ids.indexOf(id) !== index);
   if (duplicateIds.length) errors.push(`Duplicate ids: ${Array.from(new Set(duplicateIds)).join(", ")}`);
@@ -31,6 +33,9 @@ export function validateRegistry() {
     if (!article.formula && !article.immediate?.tex) errors.push(`Missing lead TeX for ${article.domainSlug}/${article.slug}`);
     if (!resources.some((resource) => resource.slug === article.slug && resource.topicId === `topic-math-${article.domainSlug}-${article.topicSlug}`)) errors.push(`Missing registry resource for ${article.domainSlug}/${article.slug}`);
     article.related.forEach((slug) => { if (!allLibraryArticles.some((candidate) => candidate.domainSlug === article.domainSlug && candidate.slug === slug)) errors.push(`Missing related article ${article.domainSlug}/${slug}`); });
+    const notation = validateMathNotation(article.document.source);
+    if (notation.unknownCommands.length) errors.push(`Undocumented LaTeX commands for ${article.domainSlug}/${article.slug}: ${notation.unknownCommands.map((command) => `\\${command}`).join(", ")}`);
+    if (notation.undocumentedUppercase.length) errors.push(`Undocumented uppercase variables for ${article.domainSlug}/${article.slug}: ${notation.undocumentedUppercase.join(", ")}`);
   }
   for (const tool of tools) if (!domains.some((domain) => domain.id === tool.domainId)) errors.push(`Missing domain for ${tool.id}`);
   for (const assessment of assessments) {
