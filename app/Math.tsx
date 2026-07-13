@@ -92,6 +92,9 @@ export function Math({
       displayMode: display,
       throwOnError: false,
       strict: "ignore",
+      trust: false,
+      maxExpand: 500,
+      maxSize: 10,
       output: "htmlAndMathml",
     });
     cache.set(key, html);

@@ -8,12 +8,18 @@ importers:
 
   .:
     dependencies:
+      '@cortex-js/compute-engine':
+        specifier: ^0.75.0
+        version: 0.75.0
       drizzle-orm:
         specifier: 0.45.2
         version: 0.45.2
       katex:
         specifier: ^0.17.0
         version: 0.17.0
+      mathlive:
+        specifier: ^0.110.0
+        version: 0.110.0
       next:
         specifier: 16.2.6
         version: 16.2.6(@babel/core@7.29.7)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
@@ -78,6 +84,9 @@ packages:
   '@alloc/quick-lru@5.2.0':
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
     engines: {node: '>=10'}
+
+  '@arnog/colors@0.5.0':
+    resolution: {integrity: sha512-NB7yqrO7qvInsqJdqz6C6mDU+2oiKmbBbk3czMS0E7KkGxLRy538tEHCsB5TKqmaxxXpi6/U120TnGl8NsDePg==}
 
   '@babel/code-frame@7.29.7':
     resolution: {integrity: sha512-Aup7aUOfpbAUg2ROOJN6Iw5f9DMBlzu0mIkm/malLQFN/YQgO48wCj0Kxa3sEHJvPVFg7siR+qRInwXd2qhQKw==}
@@ -194,6 +203,14 @@ packages:
     engines: {node: '>=16'}
     cpu: [x64]
     os: [win32]
+
+  '@cortex-js/compute-engine@0.58.0':
+    resolution: {integrity: sha512-N0+vXjVZfKwJS7ZIGvq41mojI55m5TrdDXveAXzNjzjZ9iNiNrdEzXL2EmrcP+9GCWCwTonrEeZWAIG78f3INg==}
+    engines: {node: '>=21.7.3', npm: '>=10.5.0'}
+
+  '@cortex-js/compute-engine@0.75.0':
+    resolution: {integrity: sha512-Y8XRV+881Duh0sZP4LXJxerztrNLpDddyqKkDuXjKQVC4ooRqqH2ARxauQZiTbXoqmn5DEo/4BDAO2f6n1e/6Q==}
+    engines: {node: '>=21.7.3', npm: '>=10.5.0'}
 
   '@cspotcode/source-map-support@0.8.1':
     resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==}
@@ -1842,6 +1859,10 @@ packages:
     resolution: {integrity: sha512-OkTL9umf+He2DZkUq8f8J9of7yL6RJKI24dVITBmNfZBmri9zYZQrKkuXiKhyfPSu8tUhnVBB1iKXevvnlR4Ww==}
     engines: {node: '>= 12'}
 
+  complex-esm@2.1.1-esm1:
+    resolution: {integrity: sha512-IShBEWHILB9s7MnfyevqNGxV0A1cfcSnewL/4uPFiSxkcQL4Mm3FxJ0pXMtCXuWLjYz3lRRyk6OfkeDZcjD6nw==}
+    engines: {node: '>=16.14.2', npm: '>=8.5.0'}
+
   concat-map@0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
 
@@ -1907,6 +1928,9 @@ packages:
     peerDependenciesMeta:
       supports-color:
         optional: true
+
+  decimal.js@10.6.0:
+    resolution: {integrity: sha512-YpgQiITW3JXGntzdUmyUR1V812Hn8T1YVXhCu+wO3OpS4eU9l4YdD3qjyiKdV6mvV29zapkMeD390UVEf2lkUg==}
 
   deep-is@0.1.4:
     resolution: {integrity: sha512-oIPzksmTg4/MriiaYGO+okXDT7ztn/w3Eptv/+gSIdMdKsJo0u4CfYNFJPy+4SKMuCqGw2wxnA+URMg3t8a/bQ==}
@@ -2807,6 +2831,9 @@ packages:
     resolution: {integrity: sha512-/IXtbwEk5HTPyEwyKX6hGkYXxM9nbj64B+ilVJnC/R6B0pH5G4V3b0pVbL7DBj4tkhBAppbQUlf6F6Xl9LHu1g==}
     engines: {node: '>= 0.4'}
 
+  mathlive@0.110.0:
+    resolution: {integrity: sha512-UOpJsQ6h1eeN0xZULGTl1MwUB/lZLCDuzKeHvKEh7Zra8U/rtgDNrssj5PZdJtBTIV48AfEhtv6rv47AeMOxJA==}
+
   merge-stream@2.0.0:
     resolution: {integrity: sha512-abv/qOcuPfk3URPfDzmZU1LKmuw8kT+0nIHvKrKgFrwifol/doWcdA4ZqsWQ8ENrFKkd67Mfpo/LovbIUsbt3w==}
 
@@ -3562,6 +3589,8 @@ snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
 
+  '@arnog/colors@0.5.0': {}
+
   '@babel/code-frame@7.29.7':
     dependencies:
       '@babel/helper-validator-identifier': 7.29.7
@@ -3697,6 +3726,17 @@ snapshots:
 
   '@cloudflare/workerd-windows-64@1.20260515.1':
     optional: true
+
+  '@cortex-js/compute-engine@0.58.0':
+    dependencies:
+      '@arnog/colors': 0.5.0
+      complex-esm: 2.1.1-esm1
+      decimal.js: 10.6.0
+
+  '@cortex-js/compute-engine@0.75.0':
+    dependencies:
+      '@arnog/colors': 0.5.0
+      complex-esm: 2.1.1-esm1
 
   '@cspotcode/source-map-support@0.8.1':
     dependencies:
@@ -4927,6 +4967,8 @@ snapshots:
 
   commander@8.3.0: {}
 
+  complex-esm@2.1.1-esm1: {}
+
   concat-map@0.0.1: {}
 
   convert-source-map@2.0.0: {}
@@ -4982,6 +5024,8 @@ snapshots:
   debug@4.4.3:
     dependencies:
       ms: 2.1.3
+
+  decimal.js@10.6.0: {}
 
   deep-is@0.1.4: {}
 
@@ -5978,6 +6022,10 @@ snapshots:
       '@jridgewell/sourcemap-codec': 1.5.5
 
   math-intrinsics@1.1.0: {}
+
+  mathlive@0.110.0:
+    dependencies:
+      '@cortex-js/compute-engine': 0.58.0
 
   merge-stream@2.0.0: {}
 

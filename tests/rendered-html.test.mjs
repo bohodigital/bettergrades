@@ -103,6 +103,7 @@ test("robots and sitemap metadata routes are indexable and complete", async () =
   assert.match(sitemapBody, /\/subjects\/math\/algebra\/polynomials-factoring\/factoring-trinomials\//);
   assert.match(sitemapBody, /\/subjects\/math\/algebra\/radicals-exponents-functions\/inverse-functions-vs-reciprocals\//);
   assert.match(sitemapBody, /\/practice\/math\/calculus\/exams\/calculus-foundations\//);
+  assert.match(sitemapBody, /\/tools\/math\/algebra\/expression-checker\//);
   assert.doesNotMatch(sitemapBody, /\/search\//);
 });
 
@@ -130,6 +131,18 @@ test("practice is a central category with all four assessment formats", async ()
   assert.match(html, /Diagnostic/);
   assert.match(html, /Challenge/);
   assert.match(html, /Calculus foundations practice exam/);
+});
+
+test("algebra expression checker is a registered browser-side tool", async () => {
+  const response = await render("/tools/math/algebra/expression-checker/");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /Type it messy/);
+  assert.match(html, /Check a stored answer/);
+  assert.match(html, /Simplify my expression/);
+  assert.match(html, /Runs in your browser/);
+  assert.match(html, /Equivalent forms accepted/);
+  assert.match(html, /Factor completely/);
 });
 
 test("legacy content paths redirect to registry canonicals", async () => {

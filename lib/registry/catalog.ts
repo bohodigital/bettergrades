@@ -53,15 +53,26 @@ export const resources: ResourceRecord[] = [...allLibraryArticles.map((article) 
   reviewed: "July 11, 2026",
 }];
 
-export const tools: ToolRecord[] = [{
-  id: "tool-math-calculus-integration-method-finder",
-  domainId: "domain-math-calculus",
-  slug: "integration-method-finder",
-  title: "Integration Method Finder",
-  description: "Describe the structure of an integral and get a ranked first move with an honest explanation.",
-  path: "/tools/math/calculus/integration-method-finder/",
-  aliases: ["/calculators/integration-method-finder/"],
-}];
+export const tools: ToolRecord[] = [
+  {
+    id: "tool-math-algebra-expression-checker",
+    domainId: "domain-math-algebra",
+    slug: "expression-checker",
+    title: "Algebra Expression Checker",
+    description: "Enter keyboard math or raw LaTeX, simplify it, and check equivalent algebraic answers in the browser.",
+    path: "/tools/math/algebra/expression-checker/",
+    aliases: ["/calculators/algebra-expression-checker/"],
+  },
+  {
+    id: "tool-math-calculus-integration-method-finder",
+    domainId: "domain-math-calculus",
+    slug: "integration-method-finder",
+    title: "Integration Method Finder",
+    description: "Describe the structure of an integral and get a ranked first move with an honest explanation.",
+    path: "/tools/math/calculus/integration-method-finder/",
+    aliases: ["/calculators/integration-method-finder/"],
+  },
+];
 
 export const getTopicRecord = (domainSlug: string, slug: string) => topics.find((topic) => topic.domainId === `domain-math-${domainSlug}` && topic.slug === slug);
 export const getResourceRecord = (domainSlug: string, topicSlug: string, slug: string) => resources.find((resource) => resource.topicId === `topic-math-${domainSlug}-${topicSlug}` && resource.slug === slug);
