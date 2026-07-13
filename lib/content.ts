@@ -1,11 +1,10 @@
-import { libraryArticleRoutes, topicRoutes } from "./library";
-
 export type Depth = "Quick answer" | "Full solution" | "Deep dive";
 
 export type Problem = {
   problem_id: string;
   canonical_statement: string;
   canonical_expression: string;
+  canonical_expression_tex: string;
   alternate_phrasings: string[];
   subject: "Mathematics";
   course: string;
@@ -13,6 +12,7 @@ export type Problem = {
   subtopic: string;
   difficulty: "Intro" | "Intermediate" | "Advanced";
   answer: string;
+  answer_tex?: string;
   accepted_forms: string[];
   method: string;
   skills_required: string[];
@@ -34,6 +34,7 @@ export const problems: Problem[] = [
     problem_id: "cal-int-sec3",
     canonical_statement: "What is the integral of sec³x?",
     canonical_expression: "∫ sec³(x) dx",
+    canonical_expression_tex: String.raw`\int \sec^3(x)\,dx`,
     alternate_phrasings: ["integral of sec cubed", "antiderivative of sec^3 x", "integrate sec3x"],
     subject: "Mathematics",
     course: "Calculus II",
@@ -41,6 +42,7 @@ export const problems: Problem[] = [
     subtopic: "Trigonometric integrals",
     difficulty: "Intermediate",
     answer: "½ sec x tan x + ½ ln|sec x + tan x| + C",
+    answer_tex: String.raw`\frac12\sec x\tan x+\frac12\ln\left|\sec x+\tan x\right|+C`,
     accepted_forms: ["(sec(x)tan(x)+ln|sec(x)+tan(x)|)/2+C"],
     method: "Integration by parts",
     skills_required: ["Trigonometric identities", "Integration by parts"],
@@ -60,6 +62,7 @@ export const problems: Problem[] = [
     problem_id: "cal-der-xpowx",
     canonical_statement: "How do you differentiate xˣ?",
     canonical_expression: "d/dx (xˣ)",
+    canonical_expression_tex: String.raw`\frac{d}{dx}\left(x^x\right)`,
     alternate_phrasings: ["derivative of x to the x", "differentiate x^x"],
     subject: "Mathematics",
     course: "Calculus I",
@@ -67,6 +70,7 @@ export const problems: Problem[] = [
     subtopic: "Logarithmic differentiation",
     difficulty: "Intermediate",
     answer: "xˣ(ln x + 1), for x > 0",
+    answer_tex: String.raw`x^x(\ln x+1),\quad x>0`,
     accepted_forms: ["x^x(1+ln(x))"],
     method: "Logarithmic differentiation",
     skills_required: ["Chain rule", "Logarithms"],
@@ -86,6 +90,7 @@ export const problems: Problem[] = [
     problem_id: "cal-harmonic",
     canonical_statement: "Why does the harmonic series diverge?",
     canonical_expression: "Σ 1/n",
+    canonical_expression_tex: String.raw`\sum_{n=1}^{\infty}\frac1n`,
     alternate_phrasings: ["harmonic series proof", "does sum 1/n converge"],
     subject: "Mathematics",
     course: "Calculus II",
@@ -112,6 +117,7 @@ export const problems: Problem[] = [
     problem_id: "cal-parts-when",
     canonical_statement: "When should integration by parts be used?",
     canonical_expression: "∫u dv = uv − ∫v du",
+    canonical_expression_tex: String.raw`\int u\,dv=uv-\int v\,du`,
     alternate_phrasings: ["when to use integration by parts", "choosing u and dv", "LIATE"],
     subject: "Mathematics",
     course: "Calculus II",
@@ -138,6 +144,7 @@ export const problems: Problem[] = [
     problem_id: "cal-washer-shell",
     canonical_statement: "Washer method or shell method?",
     canonical_expression: "V = π∫(R²−r²)dx or 2π∫rh dx",
+    canonical_expression_tex: String.raw`V=\pi\int(R^2-r^2)\,dx\quad\text{or}\quad V=2\pi\int rh\,dx`,
     alternate_phrasings: ["shells vs washers", "which volume method"],
     subject: "Mathematics",
     course: "Calculus II",
@@ -160,18 +167,6 @@ export const problems: Problem[] = [
     href: "/answers/",
     reviewed: "July 7, 2026",
   },
-];
-
-export const routes = [
-  "/", "/answers/", "/answers/calculus/integral-of-sec-cubed/",
-  "/learn/calculus/integration-by-parts/", "/calculators/",
-  "/calculators/integration-method-finder/", "/practice/",
-  "/practice/calculus/integration-method-selection/", "/exams/",
-  "/exams/calculus-readiness/", "/bee/", "/subjects/math/calculus/",
-  "/about/", "/how-we-verify/", "/editorial-policy/", "/source-policy/",
-  "/corrections/", "/privacy/", "/accessibility/", "/search/", "/topics/", "/library/",
-  ...topicRoutes,
-  ...libraryArticleRoutes,
 ];
 
 export function normalizeQuery(value: string) {

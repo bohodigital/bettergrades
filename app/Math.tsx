@@ -47,7 +47,7 @@ const superscripts: Record<string, string> = {
 
 export function toLatex(value: string) {
   if (exact[value]) return exact[value];
-  let tex = value
+  const tex = value
     .replace(/−/g, "-")
     .replace(/∞/g, String.raw`\infty`)
     .replace(/π/g, String.raw`\pi `)
@@ -92,6 +92,9 @@ export function Math({
       displayMode: display,
       throwOnError: false,
       strict: "ignore",
+      trust: false,
+      maxExpand: 500,
+      maxSize: 10,
       output: "htmlAndMathml",
     });
     cache.set(key, html);

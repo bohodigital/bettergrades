@@ -16,7 +16,7 @@ export type LibraryArticle = {
   title: string;
   shortTitle: string;
   deck: string;
-  course: "Calculus I" | "Calculus II";
+  course: string;
   difficulty: "Foundational" | "Intermediate" | "Advanced";
   minutes: number;
   formula?: string;
