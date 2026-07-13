@@ -74,6 +74,10 @@ test("library archetype renders a full worked article", async () => {
   assert.match(html, /Worked example/);
   assert.match(html, /Common mistakes/);
   assert.match(html, /class="katex-display"/);
+  assert.match(html, /data-article-format="latex-document"/);
+  assert.match(html, /LaTeX article/);
+  assert.doesNotMatch(html, /class="(?:worked-example|library-immediate|article-action-band)/);
+  assert.doesNotMatch(html, /\\begin\{bgarticle\}/);
   assert.match(html, /Put it to work/);
   assert.match(html, /Topic map/);
   assert.match(html, /Practice/);
@@ -126,6 +130,8 @@ test("all 72 registry articles render and include KaTeX", async () => {
     const html = await response.text();
     assert.match(html, /class="katex-display"/, path);
     assert.match(html, /Worked example/, path);
+    assert.match(html, /data-article-format="latex-document"/, path);
+    assert.doesNotMatch(html, /class="(?:worked-example|library-immediate|article-action-band)/, path);
   }
 });
 

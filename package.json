@@ -11,6 +11,7 @@
     "build": "vinext build",
     "start": "vinext start",
     "build:pages": "corepack pnpm run build && node tools/prepare-pages-build.mjs",
+    "article:compile": "node tools/article-source.mjs",
     "test": "corepack pnpm run build:pages && node --test tests/*.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --ignore-pattern worker-configuration.d.ts",
     "db:generate": "drizzle-kit generate"

@@ -33,6 +33,8 @@ export type LibraryArticle = {
   related: string[];
   searchTerms?: string[];
   reviewed: string;
+  /** Canonical Better Grades LaTeX body. Legacy structured fields compile to this format when omitted. */
+  documentSource?: string;
 };
 
 export const archetypes: Record<ArticleArchetype, { label: string; promise: string }> = {
