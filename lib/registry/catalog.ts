@@ -1,4 +1,5 @@
-import { archetypes, libraryArticles, libraryTopics } from "../library";
+import { allLibraryArticles, courseLibraries } from "../course-library";
+import { archetypes } from "../library";
 import type { DomainRecord, ResourceRecord, SubjectRecord, TopicRecord, ToolRecord } from "./schema";
 
 export const subjects: SubjectRecord[] = [{
@@ -9,35 +10,35 @@ export const subjects: SubjectRecord[] = [{
   path: "/subjects/math/",
 }];
 
-export const domains: DomainRecord[] = [{
-  id: "domain-math-calculus",
+export const domains: DomainRecord[] = courseLibraries.map((course) => ({
+  id: `domain-math-${course.slug}`,
   subjectId: "subject-math",
-  slug: "calculus",
-  name: "Calculus",
-  description: "Limits, derivatives, integrals, applications, sequences, and series in one connected course map.",
-  path: "/subjects/math/calculus/",
-}];
+  slug: course.slug,
+  name: course.name,
+  description: course.description,
+  path: `/subjects/math/${course.slug}/`,
+}));
 
-export const topics: TopicRecord[] = libraryTopics.map((topic) => ({
-  id: `topic-math-calculus-${topic.slug}`,
-  domainId: "domain-math-calculus",
+export const topics: TopicRecord[] = courseLibraries.flatMap((course) => course.topics.map((topic) => ({
+  id: `topic-math-${course.slug}-${topic.slug}`,
+  domainId: `domain-math-${course.slug}`,
   slug: topic.slug,
   name: topic.name,
   description: topic.description,
   sequence: Number(topic.sequence),
-  path: `/subjects/math/calculus/${topic.slug}/`,
-}));
+  path: `/subjects/math/${course.slug}/${topic.slug}/`,
+})));
 
-export const resources: ResourceRecord[] = [...libraryArticles.map((article) => ({
-  id: `resource-math-calculus-${article.topicSlug}-${article.slug}`,
-  domainId: "domain-math-calculus",
-  topicId: `topic-math-calculus-${article.topicSlug}`,
+export const resources: ResourceRecord[] = [...allLibraryArticles.map((article) => ({
+  id: `resource-math-${article.domainSlug}-${article.topicSlug}-${article.slug}`,
+  domainId: `domain-math-${article.domainSlug}`,
+  topicId: `topic-math-${article.domainSlug}-${article.topicSlug}`,
   slug: article.slug,
   title: article.title,
   description: article.deck,
   kind: article.archetype === "decision" ? "decision-guide" as const : article.archetype,
-  path: `/subjects/math/calculus/${article.topicSlug}/${article.slug}/`,
-  aliases: [`/library/${article.topicSlug}/${article.slug}/`],
+  path: `/subjects/math/${article.domainSlug}/${article.topicSlug}/${article.slug}/`,
+  aliases: article.domainSlug === "calculus" ? [`/library/${article.topicSlug}/${article.slug}/`] : [],
   reviewed: article.reviewed,
 })), {
   id: "resource-math-calculus-integration-techniques-integration-by-parts",
@@ -62,11 +63,11 @@ export const tools: ToolRecord[] = [{
   aliases: ["/calculators/integration-method-finder/"],
 }];
 
-export const getTopicRecord = (slug: string) => topics.find((topic) => topic.slug === slug);
-export const getResourceRecord = (topicSlug: string, slug: string) => resources.find((resource) => resource.topicId === `topic-math-calculus-${topicSlug}` && resource.slug === slug);
+export const getTopicRecord = (domainSlug: string, slug: string) => topics.find((topic) => topic.domainId === `domain-math-${domainSlug}` && topic.slug === slug);
+export const getResourceRecord = (domainSlug: string, topicSlug: string, slug: string) => resources.find((resource) => resource.topicId === `topic-math-${domainSlug}-${topicSlug}` && resource.slug === slug);
 export const getResourcesForTopic = (topicId: string) => resources.filter((resource) => resource.topicId === topicId);
 
 export const resourceFormatLabel = (resource: ResourceRecord) => {
-  const article = libraryArticles.find((item) => item.slug === resource.slug && `topic-math-calculus-${item.topicSlug}` === resource.topicId);
+  const article = allLibraryArticles.find((item) => item.slug === resource.slug && `topic-math-${item.domainSlug}-${item.topicSlug}` === resource.topicId);
   return article ? archetypes[article.archetype].label : "Resource";
 };

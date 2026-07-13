@@ -8,6 +8,19 @@ const methodTex = [
   String.raw`\int \sec^3x\,dx`, String.raw`\int \frac{x}{x+1}\,dx`,
 ];
 
+const readinessTex = [
+  String.raw`x^2-5x+6`, String.raw`\frac{x^3x^2}{x}`, String.raw`f(x)=\frac1{x-4}`,
+  String.raw`\frac{3\pi}{4}\text{ radians}`, String.raw`\sin\theta=\frac35\text{ in quadrant I}`, String.raw`f(a+h)`,
+  String.raw`2^x=8`, String.raw`\ln(e^5)`, String.raw`(1,2)\text{ and }(4,11)`,
+  String.raw`\text{Choose the valid trigonometric identity.}`, String.raw`\lim_{x\to2}x^2`, String.raw`|x-3|<2`,
+];
+
+const readinessPrompts = [
+  "Factor the expression.", "Simplify the expression.", "Find the domain.", "Convert the angle to degrees.",
+  "Find the missing trigonometric ratio.", "Interpret the function notation.", "Solve the exponential equation.",
+  "Simplify the logarithm.", "Find the slope.", "Identify the correct identity.", "Evaluate the limit.", "Solve the inequality.",
+];
+
 const beeTex = [
   String.raw`\int x^2\,dx`, String.raw`\int \cos x\,dx`, String.raw`\int e^{2x}\,dx`, String.raw`\int \frac1x\,dx`,
   String.raw`\int \sec^2x\,dx`, String.raw`\int 2x(x^2+1)^4\,dx`, String.raw`\int x\sin x\,dx`, String.raw`\int \tan x\,dx`,
@@ -17,9 +30,10 @@ const beeTex = [
   String.raw`\int \frac{1}{x^2-1}\,dx`, String.raw`\int \sec^3x\,dx`,
 ];
 
-function registerQuestions(prefix: string, questions: Question[], expressionTex: string[] = []): RegistryQuestion[] {
+function registerQuestions(prefix: string, questions: Question[], expressionTex: string[] = [], prompts: string[] = []): RegistryQuestion[] {
   return questions.map((question, index) => ({
     ...question,
+    prompt: prompts[index] ?? question.prompt,
     id: `${prefix}-${String(index + 1).padStart(2, "0")}`,
     expressionTex: expressionTex[index],
     topicIds: prefix === "readiness" ? ["topic-math-calculus-limits-continuity"] : ["topic-math-calculus-integration-techniques"],
@@ -29,7 +43,7 @@ function registerQuestions(prefix: string, questions: Question[], expressionTex:
 }
 
 const methodSet = registerQuestions("method", methodQuestions, methodTex);
-const readinessSet = registerQuestions("readiness", readinessQuestions);
+const readinessSet = registerQuestions("readiness", readinessQuestions, readinessTex, readinessPrompts);
 const beeSet = registerQuestions("bee", beeQuestions, beeTex);
 
 export const assessments: AssessmentRecord[] = [

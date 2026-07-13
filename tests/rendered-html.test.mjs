@@ -17,8 +17,11 @@ test("server-renders the Better Grades homepage", async () => {
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
   const html = await response.text();
-  assert.match(html, /Find the answer/);
-  assert.match(html, /Understand the method/);
+  assert.match(html, /Free math help that gets to the point/);
+  assert.match(html, /Search the problem/);
+  assert.match(html, /Search 60 guides/);
+  assert.match(html, /Algebra/);
+  assert.match(html, /Calculus/);
   assert.match(html, /No account required/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|taking shape/i);
 });
@@ -41,16 +44,24 @@ test("unknown routes use the custom 404", async () => {
   assert.match(await response.text(), /Wrong turn\. Useful recovery/);
 });
 
-test("subject and course hubs expose the organized calculus library", async () => {
+test("subject and course hubs expose the organized math library", async () => {
   const subjects = await render("/subjects/");
   assert.equal(subjects.status, 200);
-  assert.match(await subjects.text(), /Find the course/);
+  assert.match(await subjects.text(), /Free help, organized like a course/);
   const response = await render("/subjects/math/calculus/");
   assert.equal(response.status, 200);
   const html = await response.text();
-  assert.match(html, /Six topics/);
+  assert.match(html, /One connected path/);
   assert.match(html, /Limits &amp; Continuity/);
   assert.match(html, /Sequences &amp; Series/);
+
+  const algebra = await render("/subjects/math/algebra/");
+  assert.equal(algebra.status, 200);
+  const algebraHtml = await algebra.text();
+  assert.match(algebraHtml, /Algebra/);
+  assert.match(algebraHtml, /Expressions &amp; Equations/);
+  assert.match(algebraHtml, /Polynomials &amp; Factoring/);
+  assert.match(algebraHtml, /30(?:<!-- -->)? full guides/);
 });
 
 test("library archetype renders a full worked article", async () => {
@@ -61,6 +72,17 @@ test("library archetype renders a full worked article", async () => {
   assert.match(html, /Worked example/);
   assert.match(html, /Common mistakes/);
   assert.match(html, /class="katex-display"/);
+});
+
+test("new Algebra articles render complete LaTeX-first lessons", async () => {
+  const response = await render("/subjects/math/algebra/polynomials-factoring/factoring-trinomials/");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /Factoring trinomials/);
+  assert.match(html, /Worked example/);
+  assert.match(html, /Common mistakes/);
+  assert.match(html, /class="katex-display"/);
+  assert.match(html, /application\/x-tex/);
 });
 
 test("robots and sitemap metadata routes are indexable and complete", async () => {
@@ -78,8 +100,25 @@ test("robots and sitemap metadata routes are indexable and complete", async () =
   assert.match(sitemapBody, /<urlset\b/);
   assert.match(sitemapBody, /\/subjects\/math\/calculus\/limits-continuity\/limit-of-sin-x-over-x\//);
   assert.match(sitemapBody, /\/subjects\/math\/calculus\/sequences-series\/taylor-series-remainder\//);
+  assert.match(sitemapBody, /\/subjects\/math\/algebra\/polynomials-factoring\/factoring-trinomials\//);
+  assert.match(sitemapBody, /\/subjects\/math\/algebra\/radicals-exponents-functions\/inverse-functions-vs-reciprocals\//);
   assert.match(sitemapBody, /\/practice\/math\/calculus\/exams\/calculus-foundations\//);
   assert.doesNotMatch(sitemapBody, /\/search\//);
+});
+
+test("all 60 registry articles render and include KaTeX", async () => {
+  const sitemap = await render("/sitemap.xml");
+  const sitemapBody = await sitemap.text();
+  const paths = [...sitemapBody.matchAll(/<loc>https:\/\/bettergrades\.net(\/subjects\/math\/(?:algebra|calculus)\/[^<]+\/[^<]+\/)<\/loc>/g)].map((match) => match[1]);
+  assert.equal(paths.length, 60);
+
+  for (const path of paths) {
+    const response = await render(path);
+    assert.equal(response.status, 200, path);
+    const html = await response.text();
+    assert.match(html, /class="katex-display"/, path);
+    assert.match(html, /Worked example/, path);
+  }
 });
 
 test("practice is a central category with all four assessment formats", async () => {

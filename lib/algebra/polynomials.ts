@@ -1,0 +1,75 @@
+import { algebraArticle } from "./shared";
+
+export const polynomialsArticles = [
+  algebraArticle({
+    slug: "exponent-rules", topicSlug: "polynomials-factoring", archetype: "concept",
+    title: "Exponent rules that come from counting factors", shortTitle: "Exponent rules",
+    deck: "The rules are compressed descriptions of repeated multiplication. Knowing where they come from prevents powers from spreading across sums illegally.",
+    course: "Algebra I", difficulty: "Foundational", minutes: 9,
+    formula: String.raw`a^ma^n=a^{m+n}\qquad(a^m)^n=a^{mn}`,
+    immediate: { label: "Core idea", text: "Same-base multiplication joins factor lists, division removes factors, and a power of a power repeats the whole list." },
+    sections: [
+      ["Products add exponents", "When bases match, multiplying combines repeated copies of the same factor. The total number of copies is the sum of the exponents.", "The bases must match. There is no comparable rule for x² times y³ because the repeated factors are different.", String.raw`x^3x^5=x^{3+5}=x^8`],
+      ["Quotients subtract and explain negative powers", "Dividing equal bases cancels common factors. If more factors remain in the denominator, a negative exponent records their reciprocal location.", "A zero exponent is the balanced case: every nonzero base divided by itself equals one.", String.raw`a^{-3}=\frac1{a^3},\quad a\ne0`],
+      ["Powers distribute over products, not sums", "Raising a product to a power repeats every factor, so each factor receives the exponent. A sum is not a factor list and cannot be handled term by term.", "Expanding (a + b)² shows the missing middle term that a false distribution would erase.", String.raw`(ab)^n=a^nb^n\qquad(a+b)^2\ne a^2+b^2`],
+    ],
+    example: { heading: "Use structure, not slogans", prompt: "Simplify (3x²y⁻¹)² · x³y.", steps: [[String.raw`(3x^2y^{-1})^2=9x^4y^{-2}`, "Apply the outer power to each factor."], [String.raw`9x^4y^{-2}\cdot x^3y=9x^7y^{-1}`, "Add exponents for matching bases."], [String.raw`9x^7y^{-1}=\frac{9x^7}{y}`, "Write the final answer with positive exponents."]], result: String.raw`\boxed{\frac{9x^7}{y}}` },
+    mistakes: ["Adding exponents when adding terms.", "Distributing a power across a sum.", "Leaving a negative exponent as though it means a negative value."], takeaways: ["Exponent rules describe factor counts.", "Negative powers indicate reciprocals.", "Products and sums behave differently."], related: ["multiply-polynomials", "rational-exponents", "simplifying-rational-expressions"],
+  }),
+  algebraArticle({
+    slug: "multiply-polynomials", topicSlug: "polynomials-factoring", archetype: "method",
+    title: "Multiplying polynomials without losing a term", shortTitle: "Multiply polynomials",
+    deck: "Every term in one factor multiplies every term in the other. Organize the products, then combine like terms once.",
+    course: "Algebra I", difficulty: "Foundational", minutes: 9,
+    formula: String.raw`(a+b)(c+d)=ac+ad+bc+bd`, immediate: { label: "Method", text: "The distributive property—not a special binomial trick—creates every product term." },
+    sections: [
+      ["Distribution scales to any number of terms", "For each term in the first polynomial, distribute across the entire second polynomial. A grid or vertical layout can make the pairings visible.", "FOIL is only the two-by-two case. Relying on the acronym becomes fragile as soon as a trinomial appears.", String.raw`(x+2)(x^2-3x+4)`],
+      ["Multiply coefficients and add exponents", "Within each product, multiply the numerical coefficients and use the product rule for matching variable bases.", "Carry signs with their coefficients. Writing negative terms explicitly reduces accidental sign changes.", String.raw`(-3x^2)(2x^4)=-6x^6`],
+      ["Combine only after all products exist", "Premature combining makes it easy to omit a pairing. List the products first, then group identical powers.", "A degree check helps: the product degree should usually equal the sum of factor degrees when leading coefficients are nonzero.", String.raw`\deg(fg)=\deg f+\deg g`],
+    ],
+    example: { heading: "Create all four products", prompt: "Expand (2x − 3)(x + 5).", steps: [[String.raw`2x(x)+2x(5)-3(x)-3(5)`, "Distribute each term in the first binomial."], [String.raw`2x^2+10x-3x-15`, "Multiply each pair."], [String.raw`2x^2+7x-15`, "Combine the like x-terms."]], result: String.raw`\boxed{2x^2+7x-15}` },
+    mistakes: ["Multiplying only the first and last terms.", "Adding rather than multiplying coefficients.", "Combining unlike powers of x."], takeaways: ["Every term pairs with every term.", "Signs belong to coefficients.", "Combine like terms at the end."], related: ["distributive-property", "factoring-trinomials", "special-factor-patterns"],
+  }),
+  algebraArticle({
+    slug: "greatest-common-factor", topicSlug: "polynomials-factoring", archetype: "method",
+    title: "Factor the greatest common factor before anything fancy", shortTitle: "Greatest common factor",
+    deck: "The GCF is the largest expression dividing every term. Removing it first exposes the smaller polynomial that actually needs attention.",
+    course: "Algebra I", difficulty: "Foundational", minutes: 8,
+    formula: String.raw`ab+ac=a(b+c)`, immediate: { label: "First move", text: "Before looking for trinomial or special patterns, ask what every term shares." },
+    sections: [
+      ["Find the numerical and variable parts separately", "The numerical GCF is the greatest common divisor of the coefficients. For each variable, use the smallest exponent appearing in every term.", "A term missing a variable has exponent zero, so that variable cannot be part of the common factor.", String.raw`\gcd(18x^3y,24x^2y^4)=6x^2y`],
+      ["Divide each term to build the inside", "After pulling out the GCF, divide every original term by it. The quotients form the polynomial inside parentheses.", "Expanding the result should reproduce the original expression exactly. That one-line check catches most omissions.", String.raw`15x^2-25x=5x(3x-5)`],
+      ["A negative GCF can improve the form", "When the leading term is negative, factoring out a negative common factor leaves a positive leading coefficient inside.", "This is optional but often makes later factoring and interpretation cleaner.", String.raw`-4x^2+12x=-4x(x-3)`],
+    ],
+    example: { heading: "Extract what every term shares", prompt: "Factor 18x³y − 24x²y² + 30x²y.", steps: [[String.raw`\gcd(18,24,30)=6`, "Find the common numerical factor."], [String.raw`x^{\min(3,2,2)}y^{\min(1,2,1)}=x^2y`, "Use the smallest shared exponents."], [String.raw`18x^3y-24x^2y^2+30x^2y=6x^2y(3x-4y+5)`, "Divide each term by the GCF."]], result: String.raw`\boxed{6x^2y(3x-4y+5)}` },
+    mistakes: ["Using the largest exponent instead of the smallest shared exponent.", "Leaving one term undivided inside the parentheses.", "Skipping the GCF before another factoring pattern."], takeaways: ["Factor numbers and variables separately.", "Use minimum shared exponents.", "Expand once to verify."], related: ["factoring-trinomials", "special-factor-patterns", "simplifying-rational-expressions"],
+  }),
+  algebraArticle({
+    slug: "factoring-trinomials", topicSlug: "polynomials-factoring", archetype: "method",
+    title: "Factoring trinomials: use product and sum, not random guessing", shortTitle: "Factor trinomials",
+    deck: "For x² + bx + c, find two numbers with product c and sum b. For ax² + bx + c, split the middle term using product ac.",
+    course: "Algebra I", difficulty: "Intermediate", minutes: 11,
+    formula: String.raw`x^2+bx+c=(x+m)(x+n),\quad mn=c,\ m+n=b`, immediate: { label: "Recognition", text: "Factoring reverses polynomial multiplication. The middle coefficient comes from a sum; the constant comes from a product." },
+    sections: [
+      ["The monic case has two clean conditions", "When the leading coefficient is one, list factor pairs of c and choose the pair whose sum is b. Signs follow from the product and sum.", "A positive c means the pair has matching signs; a negative c means opposite signs.", String.raw`x^2-7x+12=(x-3)(x-4)`],
+      ["Use ac to handle a leading coefficient", "For ax² + bx + c, find numbers whose product is ac and whose sum is b. Split bx into those two terms, then factor by grouping.", "This method is systematic and makes every coefficient visible, which is safer than guessing binomial fronts and backs.", String.raw`6x^2+11x+3=6x^2+9x+2x+3`],
+      ["Not every trinomial factors over the integers", "If no integer pair works, the trinomial may be prime over the integers even though it factors over the reals or complex numbers.", "The discriminant b² − 4ac predicts the root structure and can explain why integer factoring fails.", String.raw`b^2-4ac`],
+    ],
+    example: { heading: "Split the middle term", prompt: "Factor 6x² + 11x + 3.", steps: [[String.raw`ac=6\cdot3=18`, "Multiply the leading and constant coefficients."], [String.raw`9\cdot2=18,\quad9+2=11`, "Choose the product-sum pair."], [String.raw`6x^2+9x+2x+3`, "Split the middle term."], [String.raw`3x(2x+3)+1(2x+3)`, "Factor each group."], [String.raw`(3x+1)(2x+3)`, "Factor the shared binomial."]], result: String.raw`\boxed{(3x+1)(2x+3)}` },
+    mistakes: ["Looking for a product of c instead of ac when a ≠ 1.", "Choosing a pair with the right product but wrong sum.", "Declaring failure after one factor pair."], takeaways: ["Factoring reverses multiplication.", "Use product ac and sum b.", "Some trinomials are prime over the integers."], related: ["multiply-polynomials", "greatest-common-factor", "special-factor-patterns"],
+  }),
+  algebraArticle({
+    slug: "special-factor-patterns", topicSlug: "polynomials-factoring", archetype: "decision",
+    title: "Difference of squares or perfect-square trinomial?", shortTitle: "Special factor patterns",
+    deck: "Recognize the pattern from term count, signs, square roots, and the middle coefficient—then expand to confirm rather than trusting appearance alone.",
+    course: "Algebra I", difficulty: "Intermediate", minutes: 9,
+    formula: String.raw`a^2-b^2=(a-b)(a+b)\qquad a^2\pm2ab+b^2=(a\pm b)^2`, immediate: { label: "Decision", text: "Two squared terms with subtraction suggest a difference of squares. Three terms suggest a perfect square only when the middle term is exactly ±2ab." },
+    sections: [
+      ["Difference of squares needs subtraction", "Both terms must be perfect squares and the operation between them must be subtraction. A sum of squares does not factor into real linear factors by this pattern.", "Identify the square roots, then write the conjugate pair with opposite signs.", String.raw`9x^2-25=(3x-5)(3x+5)`],
+      ["Perfect-square trinomials need the middle check", "The first and last terms may be squares without the trinomial being a perfect square. Multiply their roots, double the product, and compare with the middle term.", "The sign of the middle term chooses the sign inside the repeated binomial.", String.raw`x^2-10x+25=(x-5)^2`],
+      ["Factor the GCF before pattern matching", "A common factor can hide the pattern or make the apparent square roots misleading. Remove it first and inspect what remains.", "Patterns can repeat: after a difference of squares, one factor may itself factor again.", String.raw`2x^3-18x=2x(x^2-9)=2x(x-3)(x+3)`],
+    ],
+    example: { heading: "Test the middle term", prompt: "Factor 4x² − 20x + 25.", steps: [[String.raw`\sqrt{4x^2}=2x,\qquad\sqrt{25}=5`, "Find the outer square roots."], [String.raw`-2(2x)(5)=-20x`, "The doubled product matches the middle term."], [String.raw`4x^2-20x+25=(2x-5)^2`, "Use the negative sign from the middle term."], [String.raw`(2x-5)^2=4x^2-20x+25`, "Expand to verify."]], result: String.raw`\boxed{(2x-5)^2}` },
+    mistakes: ["Factoring a sum of squares as real conjugates.", "Checking only the first and last terms of a trinomial.", "Stopping before removing a common factor."], takeaways: ["Count terms and inspect signs.", "Verify the ±2ab middle coefficient.", "Factor completely, not just once."], related: ["greatest-common-factor", "factoring-trinomials", "multiply-polynomials"],
+  }),
+];

@@ -4,15 +4,15 @@
 
 import { FormEvent, ReactNode, useEffect, useMemo, useState } from "react";
 import type { Question } from "../lib/activities";
+import { courseLibraries } from "../lib/course-library";
 import { problems, searchProblems, type Problem } from "../lib/content";
-import { getArticle } from "../lib/library";
 import { assessments, getAssessment, subjects } from "../lib/registry";
-import { CalculusHubContent, LibraryArticleContent, LibraryHomeSection, LibrarySearchResults, searchLibrary, TopicContent } from "./LibraryPages";
+import { CourseHubContent, getArticle, LibraryArticleContent, libraryArticleHref, LibraryHomeSection, LibrarySearchResults, searchLibrary, TopicContent } from "./LibraryPages";
 import { Formula, Math, MathOrText } from "./Math";
 
 const nav = [
-  ["Subjects", "/subjects/"], ["Practice", "/practice/"],
-  ["Answers", "/answers/"], ["Tools", "/tools/"],
+  ["Find answers", "/search/"], ["Learn by topic", "/subjects/math/"],
+  ["Practice", "/practice/"], ["Tools", "/tools/"],
 ];
 
 function Link({ href, children, className = "" }: { href: string; children: ReactNode; className?: string }) {
@@ -25,6 +25,7 @@ function Icon({ children }: { children: ReactNode }) {
 
 function SearchBox({ large = false, initial = "", label = "Search answers" }: { large?: boolean; initial?: string; label?: string }) {
   const [query, setQuery] = useState(initial);
+  const suggestions = query.trim().length >= 2 ? searchLibrary(query).slice(0, 5) : [];
   function submit(event: FormEvent) {
     event.preventDefault();
     const value = query.trim();
@@ -34,8 +35,9 @@ function SearchBox({ large = false, initial = "", label = "Search answers" }: { 
     <form className={`search-box ${large ? "search-box-large" : ""}`} onSubmit={submit} role="search">
       <label className="sr-only" htmlFor={`search-${large ? "large" : "small"}`}>{label}</label>
       <span className="search-symbol" aria-hidden="true">⌕</span>
-      <input id={`search-${large ? "large" : "small"}`} value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Enter a question, topic, or expression" autoComplete="off" />
-      <button type="submit" className="button button-ink">Search answers <span aria-hidden="true">→</span></button>
+      <input id={`search-${large ? "large" : "small"}`} value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Try ‘factor a trinomial’ or ‘integral of sec cubed’" autoComplete="off" aria-controls={suggestions.length ? "search-suggestions" : undefined} />
+      <button type="submit" className="button button-ink">Search 60 guides <span aria-hidden="true">→</span></button>
+      {suggestions.length > 0 && <div className="search-suggestions" id="search-suggestions" aria-label="Search suggestions">{suggestions.map((article) => <a href={libraryArticleHref(article)} key={`${article.domainSlug}-${article.slug}`}><span>{article.domainName} · {article.course}</span><b>{article.title}</b></a>)}<a className="search-all" href={`/search/?q=${encodeURIComponent(query.trim())}`}>See all results →</a></div>}
     </form>
   );
 }
@@ -115,15 +117,15 @@ function HomePage() {
     <Shell>
       <section className="hero section-pad">
         <div className="hero-copy">
-          <Eyebrow>Free answers. Complete explanations. Better practice.</Eyebrow>
-          <h1>Find the answer.<br /><em>Understand the method.</em></h1>
-          <p className="hero-lede">Search specific problems, use practical calculators, and practice the skills behind the solution—without an answer paywall.</p>
+          <Eyebrow>Free math help that gets to the point</Eyebrow>
+          <h1>Search the problem.<br /><em>Learn the method.</em></h1>
+          <p className="hero-lede">Type the question you have. Get a direct explanation, a worked example, and the next useful thing to practice—without an answer paywall.</p>
           <SearchBox large />
-          <div className="query-examples"><span>Try:</span><Link href="/search/?q=integral%20of%20sec%20cubed">integral of sec cubed</Link><Link href="/search/?q=differentiate%20x%5Ex">differentiate xˣ</Link><Link href="/search/?q=convergence%20test">choosing a convergence test</Link></div>
+          <div className="query-examples"><span>Try:</span><Link href="/search/?q=factor%20a%20trinomial">factor a trinomial</Link><Link href="/search/?q=slope%20from%20two%20points">slope from two points</Link><Link href="/search/?q=integral%20of%20sec%20cubed">integral of sec cubed</Link></div>
           <div className="hero-trust"><span>✓ No account required</span><span>✓ No hidden solution</span><span>✓ Checked by humans</span></div>
         </div>
         <div className="hero-interaction" aria-label="Integration method mini challenge">
-          <div className="paper-tab"><span>METHOD CHECK</span><span>01 / 01</span></div>
+          <div className="paper-tab"><span>QUICK CHECK · CALCULUS</span><span>01 / 01</span></div>
           <p className="micro-label">Which method should you try first?</p>
           <Math tex={String.raw`\int x e^x\,dx`} display className="hero-equation" label="integral of x e to the x, d x" />
           <div className="method-options">
@@ -183,26 +185,18 @@ function AnswersPage() {
 
 function SearchPage() {
   const [query, setQuery] = useState("");
+  const [domain, setDomain] = useState("all");
   useEffect(() => {
     const frame = requestAnimationFrame(() => setQuery(new URLSearchParams(window.location.search).get("q") || ""));
     return () => cancelAnimationFrame(frame);
   }, []);
-  const results = useMemo(() => searchProblems(query), [query]);
-  const libraryResults = searchLibrary(query);
-  return <Shell><section className="page-hero compact section-pad"><Eyebrow>Search</Eyebrow><h1>Ask it like you mean it.</h1><p>Expressions, plain English, course names, method names—we’ll sort exact answers from broader resources.</p><div className="inline-search"><span>⌕</span><input value={query} onChange={(e) => setQuery(e.target.value)} autoFocus placeholder="Enter a question, topic, or expression" /></div></section><section className="search-results section-pad"><div className="results-head"><h2>{query ? `Results for “${query}”` : "Browse reviewed resources"}</h2><span>{results.length + libraryResults.length} found</span></div>{results.length > 0 && <><h3 className="group-label">Exact and related answers</h3>{results.map((p) => <AnswerResult key={p.problem_id} problem={p} />)}</>}<LibrarySearchResults query={query} limit={12} />{(results.length > 0 || libraryResults.length > 0) && <><h3 className="group-label">Useful next moves</h3><div className="next-moves"><Link href="/subjects/math/calculus/"><b>Browse by calculus topic</b><span>Follow the organized library →</span></Link><Link href="/practice/math/calculus/quizzes/integration-method-selection/"><b>Method-selection practice</b><span>Train recognition →</span></Link></div></>}{!results.length && !libraryResults.length && <NoResults query={query} />}</section></Shell>;
+  const problemResults = useMemo(() => domain === "algebra" ? [] : searchProblems(query), [domain, query]);
+  const libraryResults = searchLibrary(query).filter((article) => domain === "all" || article.domainSlug === domain);
+  function submit(event: FormEvent) { event.preventDefault(); window.history.replaceState(null, "", query.trim() ? `/search/?q=${encodeURIComponent(query.trim())}` : "/search/"); }
+  return <Shell><section className="page-hero compact search-hero section-pad"><Eyebrow>Search Better Grades</Eyebrow><h1>What are you stuck on?</h1><p>Use plain English, a topic name, or the expression itself. Search covers every reviewed Algebra and Calculus guide.</p><form className="inline-search search-primary" onSubmit={submit}><span>⌕</span><input value={query} onChange={(e) => setQuery(e.target.value)} autoFocus placeholder="Try ‘solve a radical equation’" aria-label="Search all math guides" /><button type="submit">Search →</button></form><div className="search-filters" aria-label="Filter search results">{[["all", "All math"], ["algebra", "Algebra"], ["calculus", "Calculus"]].map(([value, label]) => <button key={value} type="button" className={domain === value ? "active" : ""} onClick={() => setDomain(value)}>{label}</button>)}</div></section><section className="search-results section-pad"><div className="results-head"><h2>{query ? `Results for “${query}”` : "Browse all reviewed guides"}</h2><span>{problemResults.length + libraryResults.length} found</span></div>{problemResults.length > 0 && <><h3 className="group-label">Direct answers</h3>{problemResults.map((p) => <AnswerResult key={p.problem_id} problem={p} />)}</>}<LibrarySearchResults query={query} limit={30} domain={domain} />{(problemResults.length > 0 || libraryResults.length > 0) && <><h3 className="group-label">Browse the course maps</h3><div className="next-moves"><Link href="/subjects/math/algebra/"><b>Algebra</b><span>30 guides across six topics →</span></Link><Link href="/subjects/math/calculus/"><b>Calculus</b><span>30 guides across six topics →</span></Link></div></>}{!problemResults.length && !libraryResults.length && <NoResults query={query} />}</section></Shell>;
 }
 
-function NoResults({ query }: { query: string }) { return <div className="no-results"><span className="big-symbol">∅</span><h3>We don’t have that exact answer yet.</h3><p>That’s a real no—not a coy “sign in to see more.” Try a broader topic, use the method finder, or browse the calculus hub.</p>{query && <code>{query}</code>}<div className="button-row"><Link href="/tools/math/calculus/integration-method-finder/" className="button button-ink">Try the method finder</Link><Link href="/subjects/math/calculus/" className="button button-ghost">Browse calculus</Link></div></div>; }
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars -- kept as a rollback-safe pre-KaTeX renderer until review approval
-function SecCubedPage() {
-  return <Shell narrow><article className="article"><nav className="breadcrumbs"><Link href="/answers/">Answers</Link><span>/</span><Link href="/subjects/math/calculus/">Calculus</Link><span>/</span><span>Integral of sec³x</span></nav><header className="article-header"><Eyebrow>Deep dive · Calculus II</Eyebrow><h1>What is the integral of sec³x?</h1><p className="article-kicker">Why the integral brings itself back.</p><div className="metadata"><span>Topic <b>Trig integrals</b></span><span>Difficulty <b>Intermediate</b></span><span>Method <b>Integration by parts</b></span><Verified /><span>Reviewed <b>July 11, 2026</b></span></div></header><section className="immediate-answer"><div className="answer-label"><span>Answer</span><button onClick={() => navigator.clipboard?.writeText("1/2 sec x tan x + 1/2 ln|sec x + tan x| + C")}>Copy</button></div><div className="equation giant-equation"><span>∫ sec<sup>3</sup>x dx =</span><strong>½ sec x tan x + ½ ln|sec x + tan x| + C</strong></div><div className="why"><strong>Why this works</strong><p>Integration by parts produces another copy of the original integral. Move that copy to the left, divide by two, and the antiderivative falls out.</p></div></section><section className="article-body"><h2>Quick explanation</h2><p>Write sec³x as sec x · sec²x. That gives us a factor whose antiderivative is tan x, while the remaining sec x differentiates into sec x tan x. The resulting integral contains sec³x again—not a failure, but the useful trick.</p><h2>Full derivation</h2><p>Let <span className="inline-math">I = ∫ sec³x dx</span>. Choose <span className="inline-math">u = sec x</span> and <span className="inline-math">dv = sec²x dx</span>.</p><div className="derivation"><p>du = sec x tan x dx</p><p>v = tan x</p><hr /><p>I = sec x tan x − ∫ sec x tan²x dx</p><p>= sec x tan x − ∫ sec x(sec²x − 1) dx</p><p>= sec x tan x − I + ∫ sec x dx</p><p>2I = sec x tan x + ln|sec x + tan x|</p><strong>I = ½ sec x tan x + ½ ln|sec x + tan x| + C</strong></div><aside className="callout"><span>THE KEY MOVE</span><h3>The original integral returning is good news.</h3><p>Once I appears on both sides, the calculus problem becomes a small algebra problem. Add I to both sides. That’s the whole magic trick—no smoke machine required.</p></aside><h2>Verification</h2><p>Differentiate the result. The first term contributes ½(sec x tan²x + sec³x). The logarithmic term differentiates to ½ sec x. Using tan²x + 1 = sec²x, everything combines to sec³x.</p><div className="verify-box"><span>Derivative of proposed answer</span><div className="equation">½ sec x tan²x + ½ sec³x + ½ sec x = sec³x</div><Verified /></div><h2>Common mistakes</h2><ol className="mistakes"><li><b>Stopping when the integral returns.</b><span>That is the moment to solve for I, not abandon ship.</span></li><li><b>Forgetting the factor of ½.</b><span>You get 2I before the final division.</span></li><li><b>Dropping | | around sec x + tan x.</b><span>The logarithmic antiderivative needs absolute value on its valid intervals.</span></li></ol><h2>What to do next</h2><div className="related-grid"><Link href="/learn/calculus/integration-by-parts/"><span>LEARN THE METHOD</span><b>Integration by parts</b><small>Recognition, setup, and when not to use it →</small></Link><Link href="/practice/calculus/integration-method-selection/"><span>PRACTICE</span><b>Choose the first move</b><small>10 questions with targeted feedback →</small></Link><Link href="/bee/"><span>COMPETE</span><b>Integration Bee</b><small>Try the integral under a little pressure →</small></Link></div></section></article></Shell>;
-}
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars -- kept as a rollback-safe pre-KaTeX renderer until review approval
-function LearnPage() {
-  return <Shell narrow><article className="article lesson"><nav className="breadcrumbs"><Link href="/">Learn</Link><span>/</span><Link href="/subjects/math/calculus/">Calculus</Link><span>/</span><span>Integration by parts</span></nav><header className="article-header"><Eyebrow>Method guide · Calculus II</Eyebrow><h1>Integration by parts, without the guessing game.</h1><p className="article-kicker">Reverse the product rule. Choose the factor that gets simpler.</p></header><section className="lesson-intro"><div className="formula-card"><span>THE FORMULA</span><div className="equation">∫ u dv = uv − ∫ v du</div></div><p>Integration by parts trades one integral for another. It is useful when a product contains a factor that becomes simpler after differentiation—like x, ln x, or an inverse trig function.</p></section><section className="article-body"><h2>How to recognize it</h2><div className="signal-list"><div><span>01</span><b>A product of unlike functions</b><p>Polynomial × exponential and polynomial × trig are strong signals.</p></div><div><span>02</span><b>A lonely logarithm or inverse trig function</b><p>Rewrite ln x as ln x · 1, then differentiate the awkward factor.</p></div><div><span>03</span><b>Differentiation simplifies one factor</b><p>If it makes the new integral worse, rethink the choice.</p></div></div><h2>A simple example</h2><div className="derivation"><p>∫ x eˣ dx</p><p>u = x &nbsp; → &nbsp; du = dx</p><p>dv = eˣ dx &nbsp; → &nbsp; v = eˣ</p><hr /><strong>∫ x eˣ dx = x eˣ − eˣ + C</strong></div><h2>The canonical loop</h2><p>The integral of sec³x is the memorable case because the original integral returns. That creates an equation you can solve.</p><Link href="/answers/calculus/integral-of-sec-cubed/" className="article-link"><span className="equation">∫ sec³x dx</span><b>See why it brings itself back →</b></Link><h2>When it is the wrong first move</h2><div className="wrong-move"><div className="equation">∫ 2x cos(x²) dx</div><p>Parts is possible, but it is clumsy. Since 2x is the derivative of x², a direct substitution is the clean first move.</p><strong>Better choice: u = x²</strong></div><h2>Common mistakes</h2><ul className="plain-list"><li>Treating LIATE as a law instead of a useful tie-breaker.</li><li>Choosing dv that has no manageable antiderivative.</li><li>Forgetting the minus sign in uv − ∫v du.</li><li>Stopping before checking whether the new integral is actually simpler.</li></ul><div className="lesson-cta"><div><Eyebrow>Ready to test the instinct?</Eyebrow><h2>Choose the method before doing the algebra.</h2></div><Link href="/practice/calculus/integration-method-selection/" className="button button-warm">Start practice →</Link></div></section></article></Shell>;
-}
+function NoResults({ query }: { query: string }) { return <div className="no-results"><span className="big-symbol">∅</span><h3>No useful match yet.</h3><p>Try the skill instead of the whole assignment, such as “factor trinomials,” “function notation,” or “integration by parts.”</p>{query && <code>{query}</code>}<div className="button-row"><Link href="/subjects/math/algebra/" className="button button-ink">Browse algebra</Link><Link href="/subjects/math/calculus/" className="button button-ghost">Browse calculus</Link></div></div>; }
 
 function SecCubedLatexPage() {
   const answerTex = String.raw`\frac12\sec x\tan x+\frac12\ln\!\left|\sec x+\tan x\right|+C`;
@@ -330,12 +324,12 @@ function Quiz({ questions, storageKey, title, mode = "practice" }: { questions: 
 const practiceLabels = { quiz: "Quick quiz", diagnostic: "Diagnostic", "practice-exam": "Practice exam", challenge: "Challenge" } as const;
 function AssessmentDirectory({ eyebrow, title, intro }: { eyebrow: string; title: string; intro: string }) { return <Shell><section className="page-hero section-pad"><Eyebrow>{eyebrow}</Eyebrow><h1>{title}</h1><p>{intro}</p></section><section className="activity-list section-pad">{assessments.map((item) => <Link href={item.path} className="activity-row" key={item.id}><span>{item.questions.length} Q</span><div><Eyebrow>{practiceLabels[item.kind]} · Mathematics · Calculus</Eyebrow><h2>{item.title}</h2><p>{item.description}</p><span className="tag">About {item.durationMinutes} minutes</span><span className="tag">Device-local progress</span></div><b>Start →</b></Link>)}</section></Shell>; }
 function PracticePage() { return <AssessmentDirectory eyebrow="Practice center" title="Quizzes, practice exams, diagnostics, and challenges." intro="One organized home for free, reviewed practice. Start by subject, then choose the kind of workout you need." />; }
-function MathPracticePage() { return <AssessmentDirectory eyebrow="Practice · Mathematics" title="Mathematics practice, organized to grow." intro="Calculus is live now. Algebra, geometry, and statistics can join the same structure without rebuilding the site." />; }
+function MathPracticePage() { return <AssessmentDirectory eyebrow="Practice · Mathematics" title="Practice that explains the miss." intro="The current interactive sets focus on calculus. Algebra now has 30 worked guides, and its first assessment set is the next content release." />; }
 function CalculusPracticePage() { return <AssessmentDirectory eyebrow="Practice · Mathematics · Calculus" title="Pick the kind of calculus practice you need." intro="Warm up with a quiz, find prerequisite gaps, take a mixed practice exam, or race the Integration Bee clock." />; }
 function AssessmentPage({ id }: { id: string }) { const assessment = getAssessment(id)!; const mode = assessment.kind === "diagnostic" ? "exam" : assessment.kind === "practice-exam" ? "practice-exam" : assessment.kind === "challenge" ? "bee" : "practice"; return <Shell><section className={mode === "bee" ? "bee-page section-pad" : "quiz-page section-pad"}><Quiz questions={assessment.questions} storageKey={assessment.storageKey} title={assessment.title} mode={mode} /></section></Shell>; }
 
-function SubjectsPage() { return <Shell><section className="page-hero section-pad"><Eyebrow>Subjects</Eyebrow><h1>Find the course.<br />Then find the gap.</h1><p>The structure starts with mathematics and is ready for more subjects without turning navigation into a junk drawer.</p></section><section className="single-product section-pad">{subjects.map((subject) => <Link href={subject.path} className="product-row" key={subject.id}><span className="product-mark">∑</span><div><Eyebrow>Subject</Eyebrow><h2>{subject.name}</h2><p>{subject.description}</p><span className="tag">Calculus live now</span><span className="tag">30 full resources</span></div><b>Explore ↗</b></Link>)}</section></Shell>; }
-function MathSubjectPage() { return <Shell><section className="subject-hero section-pad"><div><Eyebrow>Subject</Eyebrow><h1>Mathematics</h1><p>Learn the idea, see it worked, practice the decision, and keep every course in one coherent map.</p><div className="subject-hero-actions"><Link className="button button-ink" href="/subjects/math/calculus/">Open calculus</Link><Link className="button button-ghost" href="/practice/math/">Practice mathematics</Link></div></div><div className="subject-mark">∑<span>math</span></div></section><section className="single-product section-pad"><Link href="/subjects/math/calculus/" className="product-row"><span className="product-mark">∫</span><div><Eyebrow>Course · Live</Eyebrow><h2>Calculus</h2><p>Six topics, thirty full resources, four practice formats, and one connected route through the subject.</p><span className="tag">Calculus I & II</span><span className="tag">KaTeX notation</span></div><b>Explore ↗</b></Link></section></Shell>; }
+function SubjectsPage() { return <Shell><section className="page-hero section-pad"><Eyebrow>Subjects</Eyebrow><h1>Free help, organized like a course.</h1><p>Better Grades starts with Mathematics: searchable explanations, connected topics, worked examples, and practice that tells you what to review next.</p></section><section className="single-product section-pad">{subjects.map((subject) => <Link href={subject.path} className="product-row" key={subject.id}><span className="product-mark">∑</span><div><Eyebrow>Subject</Eyebrow><h2>{subject.name}</h2><p>{subject.description}</p><span className="tag">Algebra + Calculus</span><span className="tag">60 full guides</span></div><b>Explore ↗</b></Link>)}</section></Shell>; }
+function MathSubjectPage() { return <Shell><section className="subject-hero section-pad"><div><Eyebrow>Mathematics</Eyebrow><h1>Choose your course.</h1><p>Search first when you know the problem. Browse a course when you need the bigger picture.</p><div className="subject-hero-actions"><Link className="button button-ink" href="/search/">Search all math</Link><Link className="button button-ghost" href="/practice/math/">Open practice</Link></div></div><div className="subject-mark">∑<span>math</span></div></section><section className="course-directory-grid section-pad">{courseLibraries.map((course) => <Link href={`/subjects/math/${course.slug}/`} className="course-directory-card" key={course.slug}><span>{course.mark}</span><div><Eyebrow>{course.level}</Eyebrow><h2>{course.name}</h2><p>{course.description}</p><small>{course.topics.length} topics · {course.articles.length} full guides</small></div><b>Open course →</b></Link>)}</section></Shell>; }
 
 const policyContent: Record<string, { eyebrow: string; title: string; intro: string; sections: [string, string][] }> = {
   "/about/": { eyebrow: "About", title: "Built to teach, not tease.", intro: "Better Grades is a free academic answer bank where the final answer is the start of the explanation—not the end of a preview.", sections: [["Why this exists", "Students should not have to decode a cluttered page or reach a payment screen to confirm a mathematical answer. We publish direct results, original reasoning, and a useful next step."], ["What we are building", "Answers, methods, calculators, practice, and diagnostics share one structured problem model. The goal is coverage without duplication and scale without a mess."], ["What we will not do", "No paid answer wall, fake activity counters, scraped solution manuals, unsupported AI tutor claims, or thousands of thin numerical variants."]] },
@@ -355,12 +349,13 @@ export function BetterGradesApp({ path }: { path: string }) {
   if (path === "/") return <HomePage />;
   if (path === "/subjects/") return <SubjectsPage />;
   if (path === "/subjects/math/") return <MathSubjectPage />;
-  if (path === "/subjects/math/calculus/") return <Shell><CalculusHubContent /></Shell>;
-  const topicMatch = path.match(/^\/subjects\/math\/calculus\/([^/]+)\/$/);
-  if (topicMatch) return <Shell><TopicContent topicSlug={topicMatch[1]} /></Shell>;
-  const articleMatch = path.match(/^\/subjects\/math\/calculus\/([^/]+)\/([^/]+)\/$/);
+  const courseMatch = path.match(/^\/subjects\/math\/([^/]+)\/$/);
+  if (courseMatch && courseLibraries.some((course) => course.slug === courseMatch[1])) return <Shell><CourseHubContent domainSlug={courseMatch[1]} /></Shell>;
+  const topicMatch = path.match(/^\/subjects\/math\/([^/]+)\/([^/]+)\/$/);
+  if (topicMatch) return <Shell><TopicContent domainSlug={topicMatch[1]} topicSlug={topicMatch[2]} /></Shell>;
+  const articleMatch = path.match(/^\/subjects\/math\/([^/]+)\/([^/]+)\/([^/]+)\/$/);
   if (articleMatch) {
-    const article = getArticle(articleMatch[1], articleMatch[2]);
+    const article = getArticle(articleMatch[1], articleMatch[2], articleMatch[3]);
     if (article) return <Shell><LibraryArticleContent article={article} /></Shell>;
   }
   if (path === "/answers/") return <AnswersPage />;

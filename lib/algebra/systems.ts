@@ -1,0 +1,77 @@
+import { algebraArticle } from "./shared";
+
+export const systemsArticles = [
+  algebraArticle({
+    slug: "choosing-system-method", topicSlug: "systems-inequalities", archetype: "decision",
+    title: "Graphing, substitution, or elimination: which system method fits?", shortTitle: "Choose a system method",
+    deck: "Choose from the equation structure: graph when the intersection matters visually, substitute when a variable is already isolated, and eliminate when coefficients align.",
+    course: "Algebra I", difficulty: "Intermediate", minutes: 9,
+    formula: String.raw`\begin{cases}a_1x+b_1y=c_1\\a_2x+b_2y=c_2\end{cases}`,
+    immediate: { label: "Decision", text: "The methods solve the same problem. The best first move is the one that creates the least new algebra." },
+    sections: [
+      ["Graphing shows the geometry", "The solution is the point shared by both graphs. Graphing makes one, none, or infinitely many intersections visible and is excellent for estimating or interpreting.", "It is less reliable for exact answers when the intersection has awkward fractional coordinates or the graph scale is coarse.", String.raw`\text{solution}=\text{intersection}`],
+      ["Substitution follows an isolated variable", "If one equation already says x = expression or y = expression, insert that expression into the other equation. The system becomes one equation in one variable.", "Avoid substitution when isolation creates complicated fractions that elimination could bypass.", String.raw`y=2x+1\Rightarrow3x+y=11\to3x+(2x+1)=11`],
+      ["Elimination rewards aligned coefficients", "Add or subtract equations when one variable has opposite or equal coefficients. A small multiplication can create the needed pair.", "Write equations in aligned standard form first so like terms stay in the same columns.", String.raw`\begin{aligned}2x+3y&=7\\-2x+y&=5\end{aligned}`],
+    ],
+    example: { heading: "Choose before calculating", prompt: "Choose a method for y = 4x − 3 and 2x + y = 9, then solve.", steps: [[String.raw`2x+(4x-3)=9`, "Substitution is immediate because y is isolated."], [String.raw`6x=12\Rightarrow x=2`, "Solve the one-variable equation."], [String.raw`y=4(2)-3=5`, "Back-substitute for y."], [String.raw`2(2)+5=9`, "Check the pair in the other equation."]], result: String.raw`\boxed{(2,5)}` },
+    mistakes: ["Choosing graphing for an exact fractional intersection without enough precision.", "Substituting an expression into only part of an equation.", "Adding unaligned unlike terms during elimination."], takeaways: ["Match the method to the equation structure.", "Every method finds the same intersection.", "Check the ordered pair in both equations."], related: ["substitution-systems", "elimination-systems", "no-one-infinite-solutions"],
+  }),
+  algebraArticle({
+    slug: "substitution-systems", topicSlug: "systems-inequalities", archetype: "method",
+    title: "Solving systems by substitution", shortTitle: "Substitution method",
+    deck: "Replace one variable with an equal expression, solve the resulting one-variable equation, then recover and verify the second coordinate.",
+    course: "Algebra I", difficulty: "Intermediate", minutes: 9,
+    formula: String.raw`y=f(x),\quad g(x)+y=c\Rightarrow g(x)+f(x)=c`,
+    immediate: { label: "Method", text: "Substitution is equality in action: if y equals an expression, that expression can replace y everywhere." },
+    sections: [
+      ["Isolate the cheaper variable", "If neither variable is isolated, choose the coefficient ±1 when possible. Solving for that variable avoids introducing fractions.", "Keep the entire replacement expression in parentheses, especially when it is multiplied or subtracted.", String.raw`x=7-2y\Rightarrow3x-y=4\to3(7-2y)-y=4`],
+      ["Solve, then back-substitute", "After substitution, the equation contains one variable. Solve it normally, then use the simpler original equation to find the other value.", "The result is an ordered pair. A lone x-value is only half of a system solution.", String.raw`x=3\Rightarrow y=2(3)-1=5`],
+      ["Special outcomes remain meaningful", "If substitution produces a contradiction, the graphs never meet. If it produces an identity, the equations describe the same line.", "Do not divide by an expression that could be zero just to make the variable reappear; interpret the identity or contradiction directly.", String.raw`0=5\Rightarrow\varnothing\qquad0=0\Rightarrow\text{infinitely many}`],
+    ],
+    example: { heading: "Replace an equal quantity", prompt: "Solve x = 3y − 4 and 2x + y = 13.", steps: [[String.raw`2(3y-4)+y=13`, "Replace x in the second equation."], [String.raw`7y-8=13\Rightarrow7y=21\Rightarrow y=3`, "Solve for y."], [String.raw`x=3(3)-4=5`, "Back-substitute."], [String.raw`2(5)+3=13`, "Verify the pair."]], result: String.raw`\boxed{(5,3)}` },
+    mistakes: ["Dropping parentheses around the substituted expression.", "Stopping after finding one coordinate.", "Using the same equation twice during the check."], takeaways: ["Replace equals with equals.", "Isolate a variable cheaply.", "Return and verify an ordered pair."], related: ["choosing-system-method", "elimination-systems", "no-one-infinite-solutions"],
+  }),
+  algebraArticle({
+    slug: "elimination-systems", topicSlug: "systems-inequalities", archetype: "method",
+    title: "Solving systems by elimination", shortTitle: "Elimination method",
+    deck: "Align like terms, create opposite coefficients, add the equations, and recover the variable that was deliberately removed.",
+    course: "Algebra I", difficulty: "Intermediate", minutes: 10,
+    formula: String.raw`\begin{aligned}ax+by&=c\\-ax+dy&=e\end{aligned}\Rightarrow(b+d)y=c+e`,
+    immediate: { label: "Method", text: "Multiplying an entire equation by a nonzero number preserves its solution set. Use that freedom to create opposite coefficients." },
+    sections: [
+      ["Standard form keeps columns honest", "Put x-terms, y-terms, and constants in aligned columns. Missing terms can be written with coefficient zero.", "Before adding, verify that the chosen variable has equal magnitude and opposite signs. Equal signs call for subtraction instead.", String.raw`\begin{aligned}3x+2y&=11\\5x-2y&=13\end{aligned}`],
+      ["Multiply every term", "If a coefficient needs scaling, multiply both sides and every term in the equation. Scaling only the convenient term changes the equation.", "Choose small multipliers, often using the least common multiple of coefficient magnitudes.", String.raw`2(x+3y=7)\Rightarrow2x+6y=14`],
+      ["Back-substitution and checking finish the work", "Once one variable is found, substitute into whichever original equation has simpler coefficients. Then check the pair in both originals.", "A zero row with a nonzero constant signals no solution; a zero row with zero signals dependent equations.", String.raw`0=9\Rightarrow\text{no solution}`],
+    ],
+    example: { heading: "Cancel one variable", prompt: "Solve 3x + 2y = 11 and 5x − 2y = 13.", steps: [[String.raw`8x=24`, "Add the aligned equations; y cancels."], [String.raw`x=3`, "Divide by eight."], [String.raw`3(3)+2y=11\Rightarrow2y=2\Rightarrow y=1`, "Back-substitute."], [String.raw`5(3)-2(1)=13`, "Check the second equation."]], result: String.raw`\boxed{(3,1)}` },
+    mistakes: ["Multiplying only one term when scaling an equation.", "Adding coefficients with the same sign and expecting cancellation.", "Forgetting to solve for the eliminated variable afterward."], takeaways: ["Align the system first.", "Create opposite coefficients with whole-equation moves.", "Check the final pair twice."], related: ["choosing-system-method", "substitution-systems", "no-one-infinite-solutions"],
+  }),
+  algebraArticle({
+    slug: "no-one-infinite-solutions", topicSlug: "systems-inequalities", archetype: "concept",
+    title: "One solution, no solution, or infinitely many?", shortTitle: "Count system solutions",
+    deck: "For two linear equations, the coefficient pattern determines whether the graphs intersect once, never meet, or are actually the same line.",
+    course: "Algebra I", difficulty: "Intermediate", minutes: 8,
+    formula: String.raw`\text{intersecting}\;|\;\text{parallel}\;|\;\text{identical}`, immediate: { label: "Three cases", text: "A consistent independent system has one solution, an inconsistent system has none, and a dependent system has infinitely many." },
+    sections: [
+      ["One solution means different slopes", "Two nonvertical lines with different slopes cross exactly once. Algebraically, elimination or substitution produces a definite x and y.", "A vertical line and a nonvertical line also meet once unless a domain restriction says otherwise.", String.raw`m_1\ne m_2\Rightarrow\text{one solution}`],
+      ["No solution means parallel and distinct", "If the variable coefficients are proportional but the constants are not in the same ratio, the lines have the same direction and different positions.", "Elimination reduces the system to a false statement such as 0 = 6.", String.raw`\frac{a_1}{a_2}=\frac{b_1}{b_2}\ne\frac{c_1}{c_2}`],
+      ["Infinitely many means one equation is a rewrite of the other", "When all coefficients and constants are proportional, both equations name the same line. Every point on that line satisfies both.", "Elimination produces a true identity such as 0 = 0. The solution should be described as the full line, not as every point in the plane.", String.raw`2x+4y=10\Longleftrightarrow x+2y=5`],
+    ],
+    example: { heading: "Classify without graphing", prompt: "Classify 4x − 6y = 8 and 2x − 3y = 5.", steps: [[String.raw`2(2x-3y=5)\Rightarrow4x-6y=10`, "Scale the second equation to compare coefficients."], [String.raw`4x-6y=8\quad\text{and}\quad4x-6y=10`, "The left sides match but the constants differ."], [String.raw`0=-2`, "Subtracting produces a contradiction."]], result: String.raw`\boxed{\text{no solution}}` },
+    mistakes: ["Calling 0 = 0 one ordered-pair solution.", "Calling 0 = 6 an arithmetic mistake automatically.", "Comparing only one pair of coefficients."], takeaways: ["Different slopes meet once.", "Parallel distinct lines never meet.", "Identical equations share a whole line of solutions."], related: ["choosing-system-method", "variables-on-both-sides", "compound-inequalities"],
+  }),
+  algebraArticle({
+    slug: "compound-inequalities", topicSlug: "systems-inequalities", archetype: "method",
+    title: "Compound inequalities: and, or, and the sign flip", shortTitle: "Compound inequalities",
+    deck: "Solve each condition, reverse the inequality only when multiplying or dividing by a negative, then combine by intersection or union.",
+    course: "Algebra I", difficulty: "Intermediate", minutes: 10,
+    formula: String.raw`a<x<b\qquad x<a\ \text{or}\ x>b`, immediate: { label: "Logic", text: "And means both conditions must hold, so keep the overlap. Or means either condition may hold, so keep the combined regions." },
+    sections: [
+      ["The inequality sign records order", "Adding or subtracting the same amount preserves order. Multiplying or dividing by a positive also preserves it.", "A negative scale reverses the number line, so the inequality direction must reverse. This is not a memorized exception; it follows from order.", String.raw`-2x<8\Rightarrow x>-4`],
+      ["And means intersection", "A double inequality such as 2 < x ≤ 7 asks for values satisfying both a lower and upper bound. Solve all three parts with the same operation.", "Interval notation uses parentheses for excluded endpoints and brackets for included endpoints.", String.raw`2<x\le7\Longleftrightarrow(2,7]`],
+      ["Or means union", "An or statement keeps values from either branch. The solution may be two separate rays rather than one interval.", "Absolute-value inequalities often produce these patterns: less than gives an inside interval, while greater than gives outside rays.", String.raw`|x|>3\Longleftrightarrow x<-3\ \text{or}\ x>3`],
+    ],
+    example: { heading: "Solve all three parts", prompt: "Solve −5 ≤ 2x + 1 < 9.", steps: [[String.raw`-6\le2x<8`, "Subtract one from every part."], [String.raw`-3\le x<4`, "Divide every part by positive two."], [String.raw`[-3,4)`, "Translate included and excluded endpoints into interval notation."]], result: String.raw`\boxed{-3\le x<4}` },
+    mistakes: ["Flipping the sign after adding a negative instead of multiplying by one.", "Keeping a union for an and statement.", "Using a bracket at a strict endpoint."], takeaways: ["Only negative multiplication or division flips order.", "And keeps overlap.", "Or keeps the union."], related: ["solving-linear-equations", "no-one-infinite-solutions", "solving-radical-equations"],
+  }),
+];

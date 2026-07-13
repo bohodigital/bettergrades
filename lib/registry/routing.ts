@@ -19,7 +19,7 @@ export const registryRoutes: RegistryRoute[] = [
   ...fixedRoutes,
   ...subjects.map((item) => ({ path: item.path, title: item.name, description: item.description, indexable: true })),
   ...domains.map((item) => ({ path: item.path, title: `${item.name} resources`, description: item.description, indexable: true })),
-  ...topics.map((item) => ({ path: item.path, title: `${item.name} calculus resources`, description: item.description, indexable: true })),
+  ...topics.map((item) => ({ path: item.path, title: `${item.name} ${domains.find((domain) => domain.id === item.domainId)?.name ?? "mathematics"} resources`, description: item.description, indexable: true })),
   ...resources.map((item) => ({ path: item.path, title: item.title, description: item.description, indexable: true })),
   ...assessments.map((item) => ({ path: item.path, title: item.title, description: item.description, indexable: true })),
   ...tools.map((item) => ({ path: item.path, title: item.title, description: item.description, indexable: true })),
