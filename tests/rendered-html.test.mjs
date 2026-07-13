@@ -153,9 +153,59 @@ test("all 72 registry articles render and include KaTeX", async () => {
     assert.match(html, /Worked example/, path);
     assert.match(html, /data-article-format="latex-document"/, path);
     assert.doesNotMatch(html, /class="(?:worked-example|library-immediate|article-action-band)/, path);
-    assert.match(html, /On this page/, path);
+    assert.match(html, />Vocab</, path);
     assert.match(html, /class="page-term-chip"/, path);
     assert.match(html, /Learn more/, path);
+  }
+});
+
+test("vocabulary chips appear only on instructional detail pages", async () => {
+  const includedPaths = [
+    "/answers/calculus/integral-of-sec-cubed/",
+    "/learn/calculus/integration-by-parts/",
+    "/tools/math/algebra/expression-checker/",
+    "/tools/math/calculus/integration-method-finder/",
+    "/practice/math/calculus/quizzes/integration-method-selection/",
+    "/practice/math/calculus/diagnostics/calculus-readiness/",
+    "/practice/math/calculus/exams/calculus-foundations/",
+    "/practice/math/calculus/challenges/integration-bee/",
+  ];
+
+  for (const path of includedPaths) {
+    const response = await render(path);
+    assert.equal(response.status, 200, path);
+    const html = await response.text();
+    assert.match(html, /aria-label="Vocabulary on this page"/, path);
+    assert.match(html, />Vocab</, path);
+    assert.match(html, /class="page-term-chip"/, path);
+  }
+
+  const excludedPaths = [
+    "/",
+    "/search/",
+    "/subjects/",
+    "/subjects/math/",
+    "/subjects/math/algebra/",
+    "/subjects/math/calculus/",
+    "/subjects/math/algebra/polynomials-factoring/",
+    "/subjects/math/calculus/integration-techniques/",
+    "/answers/",
+    "/practice/",
+    "/practice/math/",
+    "/practice/math/calculus/",
+    "/tools/",
+    "/glossary/",
+    "/glossary/math/",
+    "/glossary/math/conventions/",
+    "/about/",
+    "/not-a-real-route/",
+  ];
+
+  for (const path of excludedPaths) {
+    const response = await render(path);
+    const html = await response.text();
+    assert.doesNotMatch(html, /class="page-terms"/, path);
+    assert.doesNotMatch(html, /aria-label="Vocabulary on this page"/, path);
   }
 });
 

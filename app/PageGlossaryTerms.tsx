@@ -23,10 +23,12 @@ function TermChip({ term }: { term: PageGlossaryTerm }) {
 
 export function PageGlossaryTerms({ path }: { path: string }) {
   const terms = getPageGlossaryTerms(path);
+  if (terms.length === 0) return null;
+
   return (
-    <section className="page-terms" aria-label="Terms on this page">
+    <section className="page-terms" aria-label="Vocabulary on this page">
       <div className="page-terms-inner">
-        <span className="page-terms-title">On this page</span>
+        <span className="page-terms-title">Vocab</span>
         <div className="page-term-list">{terms.map((term) => <TermChip term={term} key={term.id} />)}</div>
         <a className="page-terms-all" href="/glossary/math/">Math glossary <span aria-hidden="true">→</span></a>
       </div>
