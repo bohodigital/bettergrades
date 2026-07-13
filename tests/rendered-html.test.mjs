@@ -19,7 +19,9 @@ test("server-renders the Better Grades homepage", async () => {
   const html = await response.text();
   assert.match(html, /Free math help that gets to the point/);
   assert.match(html, /Search the problem/);
-  assert.match(html, /Search 60 guides/);
+  assert.match(html, /Search (?:<!-- -->)?72(?:<!-- -->)? guides/);
+  assert.match(html, /New in the library/);
+  assert.match(html, /Fresh explanations, ready to use/);
   assert.match(html, /Algebra/);
   assert.match(html, /Calculus/);
   assert.match(html, /No account required/);
@@ -61,7 +63,7 @@ test("subject and course hubs expose the organized math library", async () => {
   assert.match(algebraHtml, /Algebra/);
   assert.match(algebraHtml, /Expressions &amp; Equations/);
   assert.match(algebraHtml, /Polynomials &amp; Factoring/);
-  assert.match(algebraHtml, /30(?:<!-- -->)? full guides/);
+  assert.match(algebraHtml, /36(?:<!-- -->)? full guides/);
 });
 
 test("library archetype renders a full worked article", async () => {
@@ -72,6 +74,9 @@ test("library archetype renders a full worked article", async () => {
   assert.match(html, /Worked example/);
   assert.match(html, /Common mistakes/);
   assert.match(html, /class="katex-display"/);
+  assert.match(html, /Put it to work/);
+  assert.match(html, /Topic map/);
+  assert.match(html, /Practice/);
 });
 
 test("new Algebra articles render complete LaTeX-first lessons", async () => {
@@ -102,16 +107,18 @@ test("robots and sitemap metadata routes are indexable and complete", async () =
   assert.match(sitemapBody, /\/subjects\/math\/calculus\/sequences-series\/taylor-series-remainder\//);
   assert.match(sitemapBody, /\/subjects\/math\/algebra\/polynomials-factoring\/factoring-trinomials\//);
   assert.match(sitemapBody, /\/subjects\/math\/algebra\/radicals-exponents-functions\/inverse-functions-vs-reciprocals\//);
+  assert.match(sitemapBody, /\/subjects\/math\/algebra\/expressions-equations\/evaluating-expressions-by-substitution\//);
+  assert.match(sitemapBody, /\/subjects\/math\/calculus\/sequences-series\/ratio-test-vs-root-test\//);
   assert.match(sitemapBody, /\/practice\/math\/calculus\/exams\/calculus-foundations\//);
   assert.match(sitemapBody, /\/tools\/math\/algebra\/expression-checker\//);
   assert.doesNotMatch(sitemapBody, /\/search\//);
 });
 
-test("all 60 registry articles render and include KaTeX", async () => {
+test("all 72 registry articles render and include KaTeX", async () => {
   const sitemap = await render("/sitemap.xml");
   const sitemapBody = await sitemap.text();
   const paths = [...sitemapBody.matchAll(/<loc>https:\/\/bettergrades\.net(\/subjects\/math\/(?:algebra|calculus)\/[^<]+\/[^<]+\/)<\/loc>/g)].map((match) => match[1]);
-  assert.equal(paths.length, 60);
+  assert.equal(paths.length, 72);
 
   for (const path of paths) {
     const response = await render(path);
@@ -120,6 +127,36 @@ test("all 60 registry articles render and include KaTeX", async () => {
     assert.match(html, /class="katex-display"/, path);
     assert.match(html, /Worked example/, path);
   }
+});
+
+test("topic pages organize content by purpose and connect tools and practice", async () => {
+  const algebra = await render("/subjects/math/algebra/polynomials-factoring/");
+  assert.equal(algebra.status, 200);
+  const algebraHtml = await algebra.text();
+  assert.match(algebraHtml, /Understand the idea/);
+  assert.match(algebraHtml, /Work the method/);
+  assert.match(algebraHtml, /Choose a strategy/);
+  assert.match(algebraHtml, /Use (?:<!-- -->)?Algebra Expression Checker/);
+
+  const calculus = await render("/subjects/math/calculus/integration-techniques/");
+  assert.equal(calculus.status, 200);
+  const calculusHtml = await calculus.text();
+  assert.match(calculusHtml, /Use (?:<!-- -->)?Integration Method Finder/);
+  assert.match(calculusHtml, /Practice this topic/);
+});
+
+test("search is one typed index across content, tools, and practice", async () => {
+  const response = await render("/search/");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /Search Better Grades/);
+  assert.match(html, /72(?:<!-- -->)? complete guides/);
+  assert.match(html, /Filter by course/);
+  assert.match(html, /Filter by resource type/);
+  assert.match(html, /Guides and direct answers/);
+  assert.match(html, /Tools and practice/);
+  assert.match(html, /Algebra Expression Checker/);
+  assert.match(html, /Calculus foundations practice exam/);
 });
 
 test("practice is a central category with all four assessment formats", async () => {

@@ -5,10 +5,11 @@
 import { FormEvent, ReactNode, useEffect, useMemo, useState } from "react";
 import type { Question } from "../lib/activities";
 import { algebraCheckerHref, looksLikeAlgebraExpression } from "../lib/algebra-practice.mjs";
-import { courseLibraries } from "../lib/course-library";
+import { courseLibraries, libraryCounts } from "../lib/course-library";
 import { problems, searchProblems, type Problem } from "../lib/content";
 import { assessments, getAssessment, subjects } from "../lib/registry";
-import { CourseHubContent, getArticle, LibraryArticleContent, libraryArticleHref, LibraryHomeSection, LibrarySearchResults, searchLibrary, TopicContent } from "./LibraryPages";
+import { searchKindLabels, searchSite, type SearchKind, type SiteSearchRecord } from "../lib/site-search";
+import { CourseHubContent, getArticle, LibraryArticleContent, LibraryHomeSection, LibrarySearchResults, searchLibrary, TopicContent } from "./LibraryPages";
 import { AlgebraExpressionChecker } from "./AlgebraExpressionChecker";
 import { Formula, Math, MathOrText } from "./Math";
 
@@ -27,7 +28,8 @@ function Icon({ children }: { children: ReactNode }) {
 
 function SearchBox({ large = false, initial = "", label = "Search answers" }: { large?: boolean; initial?: string; label?: string }) {
   const [query, setQuery] = useState(initial);
-  const suggestions = query.trim().length >= 2 ? searchLibrary(query).slice(0, 5) : [];
+  const expressionSuggestion = query.trim().length >= 2 && looksLikeAlgebraExpression(query);
+  const suggestions = query.trim().length >= 2 ? searchSite(query).filter((record) => !expressionSuggestion || record.id !== "tool-math-algebra-expression-checker").slice(0, 5) : [];
   function submit(event: FormEvent) {
     event.preventDefault();
     const value = query.trim();
@@ -37,9 +39,9 @@ function SearchBox({ large = false, initial = "", label = "Search answers" }: { 
     <form className={`search-box ${large ? "search-box-large" : ""}`} onSubmit={submit} role="search">
       <label className="sr-only" htmlFor={`search-${large ? "large" : "small"}`}>{label}</label>
       <span className="search-symbol" aria-hidden="true">⌕</span>
-      <input id={`search-${large ? "large" : "small"}`} value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Try ‘factor a trinomial’ or ‘integral of sec cubed’" autoComplete="off" aria-controls={suggestions.length ? "search-suggestions" : undefined} />
-      <button type="submit" className="button button-ink">Search 60 guides <span aria-hidden="true">→</span></button>
-      {suggestions.length > 0 && <div className="search-suggestions" id="search-suggestions" aria-label="Search suggestions">{suggestions.map((article) => <a href={libraryArticleHref(article)} key={`${article.domainSlug}-${article.slug}`}><span>{article.domainName} · {article.course}</span><b>{article.title}</b></a>)}<a className="search-all" href={`/search/?q=${encodeURIComponent(query.trim())}`}>See all results →</a></div>}
+      <input id={`search-${large ? "large" : "small"}`} value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Try ‘factor a trinomial’ or ‘integral of sec cubed’" autoComplete="off" aria-controls={expressionSuggestion || suggestions.length ? "search-suggestions" : undefined} />
+      <button type="submit" className="button button-ink">Search {libraryCounts.articles} guides <span aria-hidden="true">→</span></button>
+      {(expressionSuggestion || suggestions.length > 0) && <div className="search-suggestions" id="search-suggestions" aria-label="Search suggestions">{expressionSuggestion && <a href={algebraCheckerHref(query)}><span>Interactive tool · Algebra</span><b>Open this expression in the checker</b></a>}{suggestions.map((record) => <a href={record.path} key={record.id}><span>{record.label} · {record.domainName}</span><b>{record.title}</b></a>)}<a className="search-all" href={`/search/?q=${encodeURIComponent(query.trim())}`}>See all results →</a></div>}
     </form>
   );
 }
@@ -185,18 +187,49 @@ function AnswersPage() {
   return <Shell><section className="page-hero compact section-pad"><Eyebrow>Answers & resources</Eyebrow><h1>Search the calculus library.</h1><p>Find specific problems, complete solutions, and organized guides to the method hiding underneath.</p><div className="inline-search"><span>⌕</span><input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Try “integral of sec cubed”" /></div></section><section className="hub-layout section-pad"><aside className="filters"><strong>Filter answers</strong>{["Subject", "Course", "Topic"].map((x) => <label key={x}>{x}<select><option>{x === "Subject" ? "Mathematics" : x === "Course" ? "All calculus" : "All topics"}</option></select></label>)}<label>Answer depth<select value={depth} onChange={(e) => setDepth(e.target.value)}><option>All depths</option><option>Quick answer</option><option>Full solution</option><option>Deep dive</option></select></label><p>Every published depth is free. “Short” is not a pricing tier.</p><a className="filter-topic-link" href="/subjects/math/calculus/">Browse by calculus topic →</a></aside><div className="results"><div className="results-head"><h2>{filtered.length ? `Exact answer${filtered.length === 1 ? "" : "s"}` : "No exact answer yet"}</h2><span>Recently reviewed first</span></div>{filtered.map((p) => <AnswerResult key={p.problem_id} problem={p} />)}<LibrarySearchResults query={query} limit={10} />{!filtered.length && !searchLibrary(query).length && <NoResults query={query} />}</div></section></Shell>;
 }
 
+const searchKindMarks: Record<SearchKind, string> = { guide: "§", topic: "01", tool: "x²", practice: "✓", answer: "=" };
+
+function SiteSearchResult({ record }: { record: SiteSearchRecord }) {
+  return <Link href={record.path} className={`site-search-result kind-${record.kind}`}><span className="site-search-mark">{searchKindMarks[record.kind]}</span><div><small>{searchKindLabels[record.kind]} · {record.domainName}{record.topicName ? ` · ${record.topicName}` : ""}</small><h3>{record.title}</h3><p>{record.description}</p></div><b>Open →</b></Link>;
+}
+
 function SearchPage() {
   const [query, setQuery] = useState("");
   const [domain, setDomain] = useState("all");
+  const [kind, setKind] = useState<"all" | SearchKind>("all");
   useEffect(() => {
     const frame = requestAnimationFrame(() => setQuery(new URLSearchParams(window.location.search).get("q") || ""));
     return () => cancelAnimationFrame(frame);
   }, []);
-  const problemResults = useMemo(() => domain === "algebra" ? [] : searchProblems(query), [domain, query]);
-  const libraryResults = searchLibrary(query).filter((article) => domain === "all" || article.domainSlug === domain);
-  const showExpressionTool = looksLikeAlgebraExpression(query);
+  const showExpressionTool = looksLikeAlgebraExpression(query) && (domain === "all" || domain === "algebra") && (kind === "all" || kind === "tool");
+  const siteResults = useMemo(() => searchSite(query, { domain, kind }).filter((record) => !showExpressionTool || record.id !== "tool-math-algebra-expression-checker"), [domain, kind, query, showExpressionTool]);
+  const visibleResults = siteResults.slice(0, query ? 48 : 24);
+  const resultGroups = [
+    { id: "content", title: "Guides and direct answers", description: "The explanation first: complete guides, worked examples, and reviewed answers.", records: visibleResults.filter((record) => record.kind === "guide" || record.kind === "answer") },
+    { id: "topics", title: "Topics and course maps", description: "See where this idea sits and what to learn before or after it.", records: visibleResults.filter((record) => record.kind === "topic") },
+    { id: "actions", title: "Tools and practice", description: "Check an expression, choose a method, or work an explained set.", records: visibleResults.filter((record) => record.kind === "tool" || record.kind === "practice") },
+  ];
+  const algebraCount = courseLibraries.find((course) => course.slug === "algebra")?.articles.length ?? 0;
+  const calculusCount = courseLibraries.find((course) => course.slug === "calculus")?.articles.length ?? 0;
   function submit(event: FormEvent) { event.preventDefault(); window.history.replaceState(null, "", query.trim() ? `/search/?q=${encodeURIComponent(query.trim())}` : "/search/"); }
-  return <Shell><section className="page-hero compact search-hero section-pad"><Eyebrow>Search Better Grades</Eyebrow><h1>What are you stuck on?</h1><p>Use plain English, a topic name, or the expression itself. Search covers every Algebra and Calculus guide.</p><form className="inline-search search-primary" onSubmit={submit}><span>⌕</span><input value={query} onChange={(e) => setQuery(e.target.value)} autoFocus placeholder="Try ‘solve a radical equation’ or ‘(2x-3)(x+5)’" aria-label="Search all math guides" /><button type="submit">Search →</button></form><div className="search-filters" aria-label="Filter search results">{[["all", "All math"], ["algebra", "Algebra"], ["calculus", "Calculus"]].map(([value, label]) => <button key={value} type="button" className={domain === value ? "active" : ""} onClick={() => setDomain(value)}>{label}</button>)}</div></section><section className="search-results section-pad"><div className="results-head"><h2>{query ? `Results for “${query}”` : "Browse all guides"}</h2><span>{problemResults.length + libraryResults.length + (showExpressionTool ? 1 : 0)} found</span></div>{showExpressionTool && <Link href={algebraCheckerHref(query)} className="expression-search-result"><span className="product-mark">x²</span><div><small>Interactive tool · Runs in your browser</small><h3>Check or simplify this expression</h3><p>Open your query in the algebra expression checker. It accepts keyboard math and raw LaTeX.</p></div><b>Open with expression ↗</b></Link>}{problemResults.length > 0 && <><h3 className="group-label">Direct answers</h3>{problemResults.map((p) => <AnswerResult key={p.problem_id} problem={p} />)}</>}<LibrarySearchResults query={query} limit={30} domain={domain} />{(problemResults.length > 0 || libraryResults.length > 0) && <><h3 className="group-label">Browse the course maps</h3><div className="next-moves"><Link href="/subjects/math/algebra/"><b>Algebra</b><span>30 guides across six topics →</span></Link><Link href="/subjects/math/calculus/"><b>Calculus</b><span>30 guides across six topics →</span></Link></div></>}{!problemResults.length && !libraryResults.length && !showExpressionTool && <NoResults query={query} />}</section></Shell>;
+  return (
+    <Shell>
+      <section className="page-hero compact search-hero section-pad">
+        <Eyebrow>Search Better Grades</Eyebrow><h1>What are you stuck on?</h1><p>Search {libraryCounts.articles} complete guides, topic maps, practice sets, tools, and direct answers from one organized index.</p>
+        <form className="inline-search search-primary" onSubmit={submit}><span>⌕</span><input value={query} onChange={(e) => setQuery(e.target.value)} autoFocus placeholder="Try ‘solve a radical equation’ or ‘(2x-3)(x+5)’" aria-label="Search all math resources" /><button type="submit">Search →</button></form>
+        <div className="search-filter-block"><span>Course</span><div className="search-filters" aria-label="Filter by course">{[["all", "All math"], ["algebra", "Algebra"], ["calculus", "Calculus"]].map(([value, label]) => <button key={value} type="button" className={domain === value ? "active" : ""} onClick={() => setDomain(value)}>{label}</button>)}</div></div>
+        <div className="search-filter-block"><span>Resource</span><div className="search-filters" aria-label="Filter by resource type">{[["all", "Everything"], ["guide", "Guides"], ["topic", "Topics"], ["tool", "Tools"], ["practice", "Practice"], ["answer", "Direct answers"]].map(([value, label]) => <button key={value} type="button" className={kind === value ? "active" : ""} onClick={() => setKind(value as "all" | SearchKind)}>{label}</button>)}</div></div>
+      </section>
+      <section className="search-results section-pad">
+        <div className="results-head"><h2>{query ? `Results for “${query}”` : "Browse the index"}</h2><span>{siteResults.length + (showExpressionTool ? 1 : 0)} found</span></div>
+        {showExpressionTool && <Link href={algebraCheckerHref(query)} className="expression-search-result"><span className="product-mark">x²</span><div><small>Interactive tool · Runs in your browser</small><h3>Check or simplify this expression</h3><p>Your expression is carried into the calculator. Nothing unrelated is mixed into the result list.</p></div><b>Open with expression ↗</b></Link>}
+        {resultGroups.map((group) => group.records.length ? <section className="site-search-group" key={group.id}><header><div><h3>{group.title}</h3><p>{group.description}</p></div><span>{group.records.length}</span></header><div className="site-search-list">{group.records.map((record) => <SiteSearchResult record={record} key={record.id} />)}</div></section> : null)}
+        {siteResults.length > visibleResults.length && <p className="search-limit-note">Showing the {visibleResults.length} strongest matches. Add another word or choose a filter to narrow the index.</p>}
+        {(siteResults.length > 0 || showExpressionTool) && <><h3 className="group-label">Keep browsing by course</h3><div className="next-moves"><Link href="/subjects/math/algebra/"><b>Algebra</b><span>{algebraCount} guides across six topics →</span></Link><Link href="/subjects/math/calculus/"><b>Calculus</b><span>{calculusCount} guides across six topics →</span></Link></div></>}
+        {!siteResults.length && !showExpressionTool && <NoResults query={query} />}
+      </section>
+    </Shell>
+  );
 }
 
 function NoResults({ query }: { query: string }) { return <div className="no-results"><span className="big-symbol">∅</span><h3>No useful match yet.</h3><p>Try the skill instead of the whole assignment, such as “factor trinomials,” “function notation,” or “integration by parts.”</p>{query && <code>{query}</code>}<div className="button-row"><Link href="/subjects/math/algebra/" className="button button-ink">Browse algebra</Link><Link href="/subjects/math/calculus/" className="button button-ghost">Browse calculus</Link></div></div>; }
@@ -327,11 +360,11 @@ function Quiz({ questions, storageKey, title, mode = "practice" }: { questions: 
 const practiceLabels = { quiz: "Quick quiz", diagnostic: "Diagnostic", "practice-exam": "Practice exam", challenge: "Challenge" } as const;
 function AssessmentDirectory({ eyebrow, title, intro }: { eyebrow: string; title: string; intro: string }) { return <Shell><section className="page-hero section-pad"><Eyebrow>{eyebrow}</Eyebrow><h1>{title}</h1><p>{intro}</p></section><section className="activity-list section-pad">{assessments.map((item) => <Link href={item.path} className="activity-row" key={item.id}><span>{item.questions.length} Q</span><div><Eyebrow>{practiceLabels[item.kind]} · Mathematics · Calculus</Eyebrow><h2>{item.title}</h2><p>{item.description}</p><span className="tag">About {item.durationMinutes} minutes</span><span className="tag">Device-local progress</span></div><b>Start →</b></Link>)}</section></Shell>; }
 function PracticePage() { return <AssessmentDirectory eyebrow="Practice center" title="Quizzes, practice exams, diagnostics, and challenges." intro="One organized home for free practice with explanations. Start by subject, then choose the kind of workout you need." />; }
-function MathPracticePage() { return <AssessmentDirectory eyebrow="Practice · Mathematics" title="Practice that explains the miss." intro="The current interactive sets focus on calculus. Algebra now has 30 worked guides, and its first assessment set is the next content release." />; }
+function MathPracticePage() { const algebraCount = courseLibraries.find((course) => course.slug === "algebra")?.articles.length ?? 0; return <AssessmentDirectory eyebrow="Practice · Mathematics" title="Practice that explains the miss." intro={`The current interactive sets focus on calculus. Algebra now has ${algebraCount} worked guides, and its first assessment set is the next content release.`} />; }
 function CalculusPracticePage() { return <AssessmentDirectory eyebrow="Practice · Mathematics · Calculus" title="Pick the kind of calculus practice you need." intro="Warm up with a quiz, find prerequisite gaps, take a mixed practice exam, or race the Integration Bee clock." />; }
 function AssessmentPage({ id }: { id: string }) { const assessment = getAssessment(id)!; const mode = assessment.kind === "diagnostic" ? "exam" : assessment.kind === "practice-exam" ? "practice-exam" : assessment.kind === "challenge" ? "bee" : "practice"; return <Shell><section className={mode === "bee" ? "bee-page section-pad" : "quiz-page section-pad"}><Quiz questions={assessment.questions} storageKey={assessment.storageKey} title={assessment.title} mode={mode} /></section></Shell>; }
 
-function SubjectsPage() { return <Shell><section className="page-hero section-pad"><Eyebrow>Subjects</Eyebrow><h1>Free help, organized like a course.</h1><p>Better Grades starts with Mathematics: searchable explanations, connected topics, worked examples, and practice that tells you what to review next.</p></section><section className="single-product section-pad">{subjects.map((subject) => <Link href={subject.path} className="product-row" key={subject.id}><span className="product-mark">∑</span><div><Eyebrow>Subject</Eyebrow><h2>{subject.name}</h2><p>{subject.description}</p><span className="tag">Algebra + Calculus</span><span className="tag">60 full guides</span></div><b>Explore ↗</b></Link>)}</section></Shell>; }
+function SubjectsPage() { return <Shell><section className="page-hero section-pad"><Eyebrow>Subjects</Eyebrow><h1>Free help, organized like a course.</h1><p>Better Grades starts with Mathematics: searchable explanations, connected topics, worked examples, and practice that tells you what to review next.</p></section><section className="single-product section-pad">{subjects.map((subject) => <Link href={subject.path} className="product-row" key={subject.id}><span className="product-mark">∑</span><div><Eyebrow>Subject</Eyebrow><h2>{subject.name}</h2><p>{subject.description}</p><span className="tag">Algebra + Calculus</span><span className="tag">{libraryCounts.articles} full guides</span></div><b>Explore ↗</b></Link>)}</section></Shell>; }
 function MathSubjectPage() { return <Shell><section className="subject-hero section-pad"><div><Eyebrow>Mathematics</Eyebrow><h1>Choose your course.</h1><p>Search first when you know the problem. Browse a course when you need the bigger picture.</p><div className="subject-hero-actions"><Link className="button button-ink" href="/search/">Search all math</Link><Link className="button button-ghost" href="/practice/math/">Open practice</Link></div></div><div className="subject-mark">∑<span>math</span></div></section><section className="course-directory-grid section-pad">{courseLibraries.map((course) => <Link href={`/subjects/math/${course.slug}/`} className="course-directory-card" key={course.slug}><span>{course.mark}</span><div><Eyebrow>{course.level}</Eyebrow><h2>{course.name}</h2><p>{course.description}</p><small>{course.topics.length} topics · {course.articles.length} full guides</small></div><b>Open course →</b></Link>)}</section></Shell>; }
 
 const policyContent: Record<string, { eyebrow: string; title: string; intro: string; sections: [string, string][] }> = {

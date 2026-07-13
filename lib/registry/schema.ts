@@ -41,6 +41,10 @@ export type ResourceRecord = {
   path: string;
   aliases: string[];
   reviewed: string;
+  sequence: number;
+  searchTerms: string[];
+  relatedToolIds: string[];
+  relatedAssessmentIds: string[];
 };
 
 export type RegistryQuestion = Question & {
