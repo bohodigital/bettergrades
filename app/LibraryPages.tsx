@@ -40,7 +40,7 @@ export function LibraryHomeSection() {
       <div className="course-home-grid">
         {courseLibraries.map((course) => <a href={`/subjects/math/${course.slug}/`} className="course-home-card" key={course.slug}><span>{course.mark}</span><div><small>{course.eyebrow}</small><h3>{course.name}</h3><p>{course.description}</p><em>{course.articles.length} full guides · {course.topics.length} topics</em></div><b>Browse {course.name.toLowerCase()} →</b></a>)}
       </div>
-      <div className="topic-home-action"><a className="button button-ink" href="/subjects/math/">Browse all mathematics →</a><span>60 reviewed guides · No account required</span></div>
+      <div className="topic-home-action"><a className="button button-ink" href="/subjects/math/">Browse all mathematics →</a><span>60 worked guides · No account required</span></div>
     </section>
   );
 }
@@ -97,7 +97,7 @@ export function LibraryArticleContent({ article }: { article: CourseArticle }) {
         {article.formula && <Math tex={article.formula} display className="library-header-formula" />}
       </header>
 
-      <div className="archetype-note"><span>{archetype.label}</span><p>{archetype.promise}</p><b>Reviewed {article.reviewed}</b></div>
+      <div className="archetype-note"><span>{archetype.label}</span><p>{archetype.promise}</p><b>Updated {article.reviewed}</b></div>
 
       {article.immediate && <section className="library-immediate"><div><span>{article.immediate.label}</span><b>Start here</b></div><div>{article.immediate.tex && <Math tex={article.immediate.tex} display className="library-immediate-formula" />}<p>{article.immediate.text}</p></div></section>}
 
