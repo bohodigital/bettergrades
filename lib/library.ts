@@ -33,6 +33,8 @@ export type LibraryArticle = {
   related: string[];
   searchTerms?: string[];
   reviewed: string;
+  /** Canonical Better Grades LaTeX body. Legacy structured fields compile to this format when omitted. */
+  documentSource?: string;
 };
 
 export const archetypes: Record<ArticleArchetype, { label: string; promise: string }> = {
@@ -205,7 +207,7 @@ export const libraryArticles: LibraryArticle[] = [
     title: "Implicit differentiation without losing dy/dx", shortTitle: "Implicit differentiation",
     deck: "Differentiate an equation whose y-values are not isolated, treating y as a function of x every time it appears.",
     course: "Calculus I", difficulty: "Intermediate", minutes: 9,
-    formula: String.raw`\frac{d}{dx}F(x,y)=0`,
+    formula: String.raw`\frac{d}{dx}f(x,y)=0`,
     immediate: { label: "Core move", text: "Differentiate both sides with respect to x, attach y′ whenever a y-expression is differentiated, then solve algebraically for y′." },
     sections: [
       { heading: "Why y′ appears", paragraphs: ["Even when the equation does not solve explicitly for y, the curve still makes y depend on x locally. Differentiating y² therefore requires the Chain Rule and produces 2y y′.", "The extra factor records how quickly y changes as x changes along the curve."] },
@@ -269,7 +271,7 @@ export const libraryArticles: LibraryArticle[] = [
     title: "Related rates: translate the geometry before differentiating", shortTitle: "Related rates",
     deck: "Connect changing quantities with one equation, differentiate with respect to time, and substitute only after the rates appear.",
     course: "Calculus I", difficulty: "Intermediate", minutes: 11,
-    formula: String.raw`\frac{d}{dt}F(x(t),y(t))=0`,
+    formula: String.raw`\frac{d}{dt}f(x(t),y(t))=0`,
     immediate: { label: "Workflow", text: "Draw the situation, name time-dependent quantities, write one equation, differentiate implicitly with respect to time, then substitute the instant’s values." },
     sections: [
       { heading: "Rates belong to a moment", paragraphs: ["A related-rates problem supplies values at a particular instant, not constants valid for all time. Substituting them before differentiating can erase the dependency that creates the requested rate.", "Keep every changing quantity as a function of time until the derivative equation is formed."] },
@@ -417,7 +419,7 @@ export const libraryArticles: LibraryArticle[] = [
     title: "Partial fractions: decompose before integrating", shortTitle: "Partial fractions",
     deck: "Turn a proper rational function into simpler fractions whose antiderivatives are logarithmic or inverse-trigonometric.",
     course: "Calculus II", difficulty: "Intermediate", minutes: 12,
-    formula: String.raw`\frac{P(x)}{Q(x)}=\sum\text{ simpler rational terms}`,
+    formula: String.raw`\frac{p(x)}{q(x)}=\sum\text{ simpler rational terms}`,
     immediate: { label: "Prerequisites", text: "First make the fraction proper by long division, then factor the denominator completely over the real numbers before choosing decomposition terms." },
     sections: [
       { heading: "The denominator determines the template", paragraphs: ["Distinct linear factors receive constants over each factor. Repeated linear factors require every power through the repetition. Irreducible quadratic factors receive linear numerators.", "The template is structural; missing a repeated term makes the coefficient system impossible or misleading."] },
@@ -425,8 +427,8 @@ export const libraryArticles: LibraryArticle[] = [
       { heading: "Recognize the final antiderivatives", paragraphs: ["Linear denominators produce logarithms. Repeated powers use the power rule after substitution. Irreducible quadratics may require completing the square and an arctangent form."] },
     ],
     example: { heading: "Two distinct linear factors", prompt: "Evaluate ∫ 1/(x² − 1) dx.", steps: [
-      { tex: String.raw`\frac1{(x-1)(x+1)}=\frac{A}{x-1}+\frac{B}{x+1}`, note: "Use one constant for each distinct linear factor." },
-      { tex: String.raw`A=\frac12,\qquad B=-\frac12`, note: "Solve by substituting x = 1 and x = −1." },
+      { tex: String.raw`\frac1{(x-1)(x+1)}=\frac{a}{x-1}+\frac{b}{x+1}`, note: "Use one lowercase constant for each distinct linear factor." },
+      { tex: String.raw`a=\frac12,\qquad b=-\frac12`, note: "Solve by substituting x = 1 and x = −1." },
       { tex: String.raw`\frac12\int\frac{dx}{x-1}-\frac12\int\frac{dx}{x+1}`, note: "Integrate the decomposed terms." },
     ], result: String.raw`\boxed{\frac12\ln\left|\frac{x-1}{x+1}\right|+C}` },
     mistakes: ["Skipping long division when the numerator degree is too large.", "Forgetting intermediate powers for repeated factors.", "Using a constant numerator over an irreducible quadratic."],

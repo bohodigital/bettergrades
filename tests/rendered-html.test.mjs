@@ -74,6 +74,10 @@ test("library archetype renders a full worked article", async () => {
   assert.match(html, /Worked example/);
   assert.match(html, /Common mistakes/);
   assert.match(html, /class="katex-display"/);
+  assert.match(html, /data-article-format="latex-document"/);
+  assert.match(html, /LaTeX article/);
+  assert.doesNotMatch(html, /class="(?:worked-example|library-immediate|article-action-band)/);
+  assert.doesNotMatch(html, /\\begin\{bgarticle\}/);
   assert.match(html, /Put it to work/);
   assert.match(html, /Topic map/);
   assert.match(html, /Practice/);
@@ -111,7 +115,28 @@ test("robots and sitemap metadata routes are indexable and complete", async () =
   assert.match(sitemapBody, /\/subjects\/math\/calculus\/sequences-series\/ratio-test-vs-root-test\//);
   assert.match(sitemapBody, /\/practice\/math\/calculus\/exams\/calculus-foundations\//);
   assert.match(sitemapBody, /\/tools\/math\/algebra\/expression-checker\//);
+  assert.match(sitemapBody, /\/glossary\/math\//);
+  assert.match(sitemapBody, /\/glossary\/math\/conventions\//);
   assert.doesNotMatch(sitemapBody, /\/search\//);
+});
+
+test("math glossary and conventions render as first-class indexed pages", async () => {
+  const glossary = await render("/glossary/math/");
+  assert.equal(glossary.status, 200);
+  const glossaryHtml = await glossary.text();
+  assert.match(glossaryHtml, /\d+(?:<!-- -->)? terms and notations/);
+  assert.match(glossaryHtml, /Derivative notations/);
+  assert.match(glossaryHtml, /id="derivative-notations"/);
+  assert.match(glossaryHtml, /\\frac d\{dx\}/);
+  assert.match(glossaryHtml, /Search terms and symbols/);
+
+  const conventions = await render("/glossary/math/conventions/");
+  assert.equal(conventions.status, 200);
+  const conventionsHtml = await conventions.text();
+  assert.match(conventionsHtml, /Lowercase is the rule/);
+  assert.match(conventionsHtml, /Every capital needs a job/);
+  assert.match(conventionsHtml, /Similar marks, different information/);
+  assert.match(conventionsHtml, /What the build rejects/);
 });
 
 test("all 72 registry articles render and include KaTeX", async () => {
@@ -126,6 +151,61 @@ test("all 72 registry articles render and include KaTeX", async () => {
     const html = await response.text();
     assert.match(html, /class="katex-display"/, path);
     assert.match(html, /Worked example/, path);
+    assert.match(html, /data-article-format="latex-document"/, path);
+    assert.doesNotMatch(html, /class="(?:worked-example|library-immediate|article-action-band)/, path);
+    assert.match(html, />Vocab</, path);
+    assert.match(html, /class="page-term-chip"/, path);
+    assert.match(html, /Learn more/, path);
+  }
+});
+
+test("vocabulary chips appear only on instructional detail pages", async () => {
+  const includedPaths = [
+    "/answers/calculus/integral-of-sec-cubed/",
+    "/learn/calculus/integration-by-parts/",
+    "/tools/math/algebra/expression-checker/",
+    "/tools/math/calculus/integration-method-finder/",
+    "/practice/math/calculus/quizzes/integration-method-selection/",
+    "/practice/math/calculus/diagnostics/calculus-readiness/",
+    "/practice/math/calculus/exams/calculus-foundations/",
+    "/practice/math/calculus/challenges/integration-bee/",
+  ];
+
+  for (const path of includedPaths) {
+    const response = await render(path);
+    assert.equal(response.status, 200, path);
+    const html = await response.text();
+    assert.match(html, /aria-label="Vocabulary on this page"/, path);
+    assert.match(html, />Vocab</, path);
+    assert.match(html, /class="page-term-chip"/, path);
+  }
+
+  const excludedPaths = [
+    "/",
+    "/search/",
+    "/subjects/",
+    "/subjects/math/",
+    "/subjects/math/algebra/",
+    "/subjects/math/calculus/",
+    "/subjects/math/algebra/polynomials-factoring/",
+    "/subjects/math/calculus/integration-techniques/",
+    "/answers/",
+    "/practice/",
+    "/practice/math/",
+    "/practice/math/calculus/",
+    "/tools/",
+    "/glossary/",
+    "/glossary/math/",
+    "/glossary/math/conventions/",
+    "/about/",
+    "/not-a-real-route/",
+  ];
+
+  for (const path of excludedPaths) {
+    const response = await render(path);
+    const html = await response.text();
+    assert.doesNotMatch(html, /class="page-terms"/, path);
+    assert.doesNotMatch(html, /aria-label="Vocabulary on this page"/, path);
   }
 });
 
@@ -151,10 +231,13 @@ test("search is one typed index across content, tools, and practice", async () =
   const html = await response.text();
   assert.match(html, /Search Better Grades/);
   assert.match(html, /72(?:<!-- -->)? complete guides/);
+  assert.match(html, /\d+(?:<!-- -->)? visual definitions/);
   assert.match(html, /Filter by course/);
   assert.match(html, /Filter by resource type/);
   assert.match(html, /Guides and direct answers/);
   assert.match(html, /Tools and practice/);
+  assert.match(html, /Terms, symbols, and notation/);
+  assert.match(html, />Glossary</);
   assert.match(html, /Algebra Expression Checker/);
   assert.match(html, /Calculus foundations practice exam/);
 });

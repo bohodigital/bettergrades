@@ -2,21 +2,39 @@
 
 /* eslint-disable @next/next/no-html-link-for-pages -- this route shell uses deliberate document navigation */
 
-import { FormEvent, ReactNode, useEffect, useMemo, useState } from "react";
+import { createContext, FormEvent, lazy, ReactNode, Suspense, useContext, useEffect, useMemo, useState } from "react";
 import type { Question } from "../lib/activities";
-import { algebraCheckerHref, looksLikeAlgebraExpression } from "../lib/algebra-practice.mjs";
+import { algebraCheckerHref } from "../lib/algebra-practice.mjs";
 import { courseLibraries, libraryCounts } from "../lib/course-library";
 import { problems, searchProblems, type Problem } from "../lib/content";
-import { assessments, getAssessment, subjects } from "../lib/registry";
-import { searchKindLabels, searchSite, type SearchKind, type SiteSearchRecord } from "../lib/site-search";
+import type { MathGlossaryTerm } from "../lib/glossary/math/registry.mjs";
+import { subjects } from "../lib/registry/catalog";
+import { assessments, getAssessment } from "../lib/registry/practice";
+import { isExpressionOnlyQuery, searchIndexCounts, searchKindLabels, searchSite, type SearchKind, type SiteSearchRecord } from "../lib/site-search";
 import { CourseHubContent, getArticle, LibraryArticleContent, LibraryHomeSection, LibrarySearchResults, searchLibrary, TopicContent } from "./LibraryPages";
 import { AlgebraExpressionChecker } from "./AlgebraExpressionChecker";
 import { Formula, Math, MathOrText } from "./Math";
+import { PageGlossaryTerms } from "./PageGlossaryTerms";
 
 const nav = [
   ["Find answers", "/search/"], ["Learn by topic", "/subjects/math/"],
-  ["Practice", "/practice/"], ["Tools", "/tools/"],
+  ["Practice", "/practice/"], ["Tools", "/tools/"], ["Glossary", "/glossary/math/"],
 ];
+
+const GlossaryHubPage = lazy(() => import("./GlossaryPages").then((module) => ({ default: module.GlossaryHubPage })));
+const MathGlossaryPage = lazy(() => import("./GlossaryPages").then((module) => ({ default: module.MathGlossaryPage })));
+const MathConventionsPage = lazy(() => import("./GlossaryPages").then((module) => ({ default: module.MathConventionsPage })));
+
+function GlossaryBoundary({ children }: { children: ReactNode }) {
+  return <Suspense fallback={<section className="glossary-loading section-pad"><span>Loading glossary…</span></section>}>{children}</Suspense>;
+}
+
+const PathContext = createContext("/");
+type GlossaryData = {
+  terms: readonly MathGlossaryTerm[];
+  categories: readonly { id: MathGlossaryTerm["categoryId"]; label: string; description: string }[];
+  uppercaseConventions: Readonly<Record<string, string>>;
+};
 
 function Link({ href, children, className = "" }: { href: string; children: ReactNode; className?: string }) {
   return <a href={href} className={className}>{children}</a>;
@@ -28,7 +46,7 @@ function Icon({ children }: { children: ReactNode }) {
 
 function SearchBox({ large = false, initial = "", label = "Search answers" }: { large?: boolean; initial?: string; label?: string }) {
   const [query, setQuery] = useState(initial);
-  const expressionSuggestion = query.trim().length >= 2 && looksLikeAlgebraExpression(query);
+  const expressionSuggestion = query.trim().length >= 2 && isExpressionOnlyQuery(query);
   const suggestions = query.trim().length >= 2 ? searchSite(query).filter((record) => !expressionSuggestion || record.id !== "tool-math-algebra-expression-checker").slice(0, 5) : [];
   function submit(event: FormEvent) {
     event.preventDefault();
@@ -96,8 +114,8 @@ function Footer() {
     <footer className="site-footer">
       <div className="footer-grid">
         <div><Link href="/" className="brand footer-brand"><span className="brand-mark">≥</span><span>Better Grades</span></Link><p>The answer is free.<br />Understanding it is the point.</p></div>
-        <div><strong>Explore</strong><Link href="/subjects/">Subjects</Link><Link href="/answers/">Answers</Link><Link href="/tools/">Tools</Link><Link href="/practice/">Practice</Link></div>
-        <div><strong>Standards</strong><Link href="/how-we-verify/">How we verify</Link><Link href="/editorial-policy/">Editorial policy</Link><Link href="/source-policy/">Sources & licensing</Link><Link href="/corrections/">Corrections</Link></div>
+        <div><strong>Explore</strong><Link href="/subjects/">Subjects</Link><Link href="/answers/">Answers</Link><Link href="/tools/">Tools</Link><Link href="/practice/">Practice</Link><Link href="/glossary/math/">Math glossary</Link></div>
+        <div><strong>Standards</strong><Link href="/glossary/math/conventions/">Math conventions</Link><Link href="/how-we-verify/">How we verify</Link><Link href="/editorial-policy/">Editorial policy</Link><Link href="/source-policy/">Sources & licensing</Link><Link href="/corrections/">Corrections</Link></div>
         <div><strong>About</strong><Link href="/about/">Why Better Grades</Link><Link href="/privacy/">Privacy</Link><Link href="/accessibility/">Accessibility</Link></div>
       </div>
       <div className="footer-bottom"><span>© 2026 BetterGrades.net</span><span>Original problems. Worked solutions. Zero answer paywalls.</span></div>
@@ -106,7 +124,8 @@ function Footer() {
 }
 
 function Shell({ children, narrow = false }: { children: ReactNode; narrow?: boolean }) {
-  return <><Header /><main className={narrow ? "narrow-main" : ""}>{children}</main><Footer /></>;
+  const path = useContext(PathContext);
+  return <><Header /><PageGlossaryTerms path={path} /><main className={narrow ? "narrow-main" : ""}>{children}</main><Footer /></>;
 }
 
 function Eyebrow({ children, warm = false }: { children: ReactNode; warm?: boolean }) {
@@ -187,7 +206,7 @@ function AnswersPage() {
   return <Shell><section className="page-hero compact section-pad"><Eyebrow>Answers & resources</Eyebrow><h1>Search the calculus library.</h1><p>Find specific problems, complete solutions, and organized guides to the method hiding underneath.</p><div className="inline-search"><span>⌕</span><input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Try “integral of sec cubed”" /></div></section><section className="hub-layout section-pad"><aside className="filters"><strong>Filter answers</strong>{["Subject", "Course", "Topic"].map((x) => <label key={x}>{x}<select><option>{x === "Subject" ? "Mathematics" : x === "Course" ? "All calculus" : "All topics"}</option></select></label>)}<label>Answer depth<select value={depth} onChange={(e) => setDepth(e.target.value)}><option>All depths</option><option>Quick answer</option><option>Full solution</option><option>Deep dive</option></select></label><p>Every published depth is free. “Short” is not a pricing tier.</p><a className="filter-topic-link" href="/subjects/math/calculus/">Browse by calculus topic →</a></aside><div className="results"><div className="results-head"><h2>{filtered.length ? `Exact answer${filtered.length === 1 ? "" : "s"}` : "No exact answer yet"}</h2><span>Recently reviewed first</span></div>{filtered.map((p) => <AnswerResult key={p.problem_id} problem={p} />)}<LibrarySearchResults query={query} limit={10} />{!filtered.length && !searchLibrary(query).length && <NoResults query={query} />}</div></section></Shell>;
 }
 
-const searchKindMarks: Record<SearchKind, string> = { guide: "§", topic: "01", tool: "x²", practice: "✓", answer: "=" };
+const searchKindMarks: Record<SearchKind, string> = { guide: "§", topic: "01", tool: "x²", practice: "✓", answer: "=", glossary: "Aa" };
 
 function SiteSearchResult({ record }: { record: SiteSearchRecord }) {
   return <Link href={record.path} className={`site-search-result kind-${record.kind}`}><span className="site-search-mark">{searchKindMarks[record.kind]}</span><div><small>{searchKindLabels[record.kind]} · {record.domainName}{record.topicName ? ` · ${record.topicName}` : ""}</small><h3>{record.title}</h3><p>{record.description}</p></div><b>Open →</b></Link>;
@@ -201,13 +220,19 @@ function SearchPage() {
     const frame = requestAnimationFrame(() => setQuery(new URLSearchParams(window.location.search).get("q") || ""));
     return () => cancelAnimationFrame(frame);
   }, []);
-  const showExpressionTool = looksLikeAlgebraExpression(query) && (domain === "all" || domain === "algebra") && (kind === "all" || kind === "tool");
+  const showExpressionTool = isExpressionOnlyQuery(query) && (domain === "all" || domain === "algebra") && (kind === "all" || kind === "tool");
   const siteResults = useMemo(() => searchSite(query, { domain, kind }).filter((record) => !showExpressionTool || record.id !== "tool-math-algebra-expression-checker"), [domain, kind, query, showExpressionTool]);
-  const visibleResults = siteResults.slice(0, query ? 48 : 24);
+  const visibleResults = query || kind !== "all" ? siteResults.slice(0, query ? 48 : 24) : [
+    ...siteResults.filter((record) => record.kind === "guide" || record.kind === "answer").slice(0, 8),
+    ...siteResults.filter((record) => record.kind === "topic").slice(0, 5),
+    ...siteResults.filter((record) => record.kind === "tool" || record.kind === "practice").slice(0, 5),
+    ...siteResults.filter((record) => record.kind === "glossary").slice(0, 5),
+  ];
   const resultGroups = [
     { id: "content", title: "Guides and direct answers", description: "The explanation first: complete guides, worked examples, and reviewed answers.", records: visibleResults.filter((record) => record.kind === "guide" || record.kind === "answer") },
     { id: "topics", title: "Topics and course maps", description: "See where this idea sits and what to learn before or after it.", records: visibleResults.filter((record) => record.kind === "topic") },
     { id: "actions", title: "Tools and practice", description: "Check an expression, choose a method, or work an explained set.", records: visibleResults.filter((record) => record.kind === "tool" || record.kind === "practice") },
+    { id: "glossary", title: "Terms, symbols, and notation", description: "Get a visual definition, then jump to the complete mathematics glossary.", records: visibleResults.filter((record) => record.kind === "glossary") },
   ];
   const algebraCount = courseLibraries.find((course) => course.slug === "algebra")?.articles.length ?? 0;
   const calculusCount = courseLibraries.find((course) => course.slug === "calculus")?.articles.length ?? 0;
@@ -215,10 +240,10 @@ function SearchPage() {
   return (
     <Shell>
       <section className="page-hero compact search-hero section-pad">
-        <Eyebrow>Search Better Grades</Eyebrow><h1>What are you stuck on?</h1><p>Search {libraryCounts.articles} complete guides, topic maps, practice sets, tools, and direct answers from one organized index.</p>
+        <Eyebrow>Search Better Grades</Eyebrow><h1>What are you stuck on?</h1><p>Search {libraryCounts.articles} complete guides, {searchIndexCounts.glossary} visual definitions, topic maps, practice sets, tools, and direct answers from one organized index.</p>
         <form className="inline-search search-primary" onSubmit={submit}><span>⌕</span><input value={query} onChange={(e) => setQuery(e.target.value)} autoFocus placeholder="Try ‘solve a radical equation’ or ‘(2x-3)(x+5)’" aria-label="Search all math resources" /><button type="submit">Search →</button></form>
         <div className="search-filter-block"><span>Course</span><div className="search-filters" aria-label="Filter by course">{[["all", "All math"], ["algebra", "Algebra"], ["calculus", "Calculus"]].map(([value, label]) => <button key={value} type="button" className={domain === value ? "active" : ""} onClick={() => setDomain(value)}>{label}</button>)}</div></div>
-        <div className="search-filter-block"><span>Resource</span><div className="search-filters" aria-label="Filter by resource type">{[["all", "Everything"], ["guide", "Guides"], ["topic", "Topics"], ["tool", "Tools"], ["practice", "Practice"], ["answer", "Direct answers"]].map(([value, label]) => <button key={value} type="button" className={kind === value ? "active" : ""} onClick={() => setKind(value as "all" | SearchKind)}>{label}</button>)}</div></div>
+        <div className="search-filter-block"><span>Resource</span><div className="search-filters" aria-label="Filter by resource type">{[["all", "Everything"], ["guide", "Guides"], ["topic", "Topics"], ["glossary", "Glossary"], ["tool", "Tools"], ["practice", "Practice"], ["answer", "Direct answers"]].map(([value, label]) => <button key={value} type="button" className={kind === value ? "active" : ""} onClick={() => setKind(value as "all" | SearchKind)}>{label}</button>)}</div></div>
       </section>
       <section className="search-results section-pad">
         <div className="results-head"><h2>{query ? `Results for “${query}”` : "Browse the index"}</h2><span>{siteResults.length + (showExpressionTool ? 1 : 0)} found</span></div>
@@ -381,7 +406,7 @@ function PolicyPage({ path }: { path: string }) { const data = policyContent[pat
 
 function NotFound() { return <Shell><section className="not-found section-pad"><span>4≥4</span><Eyebrow>That page did not make the grade</Eyebrow><h1>Wrong turn. Useful recovery.</h1><p>The page may have moved, or the expression may need a different phrasing. Search the answer bank or return to calculus.</p><SearchBox large /><div className="button-row"><Link href="/" className="button button-ghost">Back home</Link><Link href="/subjects/math/calculus/" className="text-link">Browse calculus →</Link></div></section></Shell>; }
 
-export function BetterGradesApp({ path }: { path: string }) {
+function BetterGradesRoute({ path, glossaryData }: { path: string; glossaryData?: GlossaryData }) {
   if (path === "/") return <HomePage />;
   if (path === "/subjects/") return <SubjectsPage />;
   if (path === "/subjects/math/") return <MathSubjectPage />;
@@ -396,6 +421,9 @@ export function BetterGradesApp({ path }: { path: string }) {
   }
   if (path === "/answers/") return <AnswersPage />;
   if (path === "/search/") return <SearchPage />;
+  if (path === "/glossary/" && glossaryData) return <Shell><GlossaryBoundary><GlossaryHubPage terms={glossaryData.terms} /></GlossaryBoundary></Shell>;
+  if (path === "/glossary/math/" && glossaryData) return <Shell><GlossaryBoundary><MathGlossaryPage terms={glossaryData.terms} categories={glossaryData.categories} /></GlossaryBoundary></Shell>;
+  if (path === "/glossary/math/conventions/" && glossaryData) return <Shell><GlossaryBoundary><MathConventionsPage uppercaseConventions={glossaryData.uppercaseConventions} /></GlossaryBoundary></Shell>;
   if (path === "/answers/calculus/integral-of-sec-cubed/") return <SecCubedLatexPage />;
   if (path === "/learn/calculus/integration-by-parts/") return <LearnLatexPage />;
   if (path === "/tools/") return <ToolsPage />;
@@ -410,4 +438,8 @@ export function BetterGradesApp({ path }: { path: string }) {
   if (path === "/practice/math/calculus/challenges/integration-bee/") return <AssessmentPage id="assessment-math-calculus-integration-bee" />;
   if (policyContent[path]) return <PolicyPage path={path} />;
   return <NotFound />;
+}
+
+export function BetterGradesApp({ path, glossaryData }: { path: string; glossaryData?: GlossaryData }) {
+  return <PathContext.Provider value={path}><BetterGradesRoute path={path} glossaryData={glossaryData} /></PathContext.Provider>;
 }

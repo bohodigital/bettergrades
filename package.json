@@ -8,9 +8,11 @@
   },
   "scripts": {
     "dev": "vinext dev",
-    "build": "vinext build",
+    "build": "node tools/generate-glossary-artifacts.mjs && vinext build",
     "start": "vinext start",
     "build:pages": "corepack pnpm run build && node tools/prepare-pages-build.mjs",
+    "article:compile": "node tools/article-source.mjs",
+    "glossary:generate": "node tools/generate-glossary-artifacts.mjs",
     "test": "corepack pnpm run build:pages && node --test tests/*.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --ignore-pattern worker-configuration.d.ts",
     "db:generate": "drizzle-kit generate"

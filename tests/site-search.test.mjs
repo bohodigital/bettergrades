@@ -57,6 +57,9 @@ test("expression-only input is reserved for the expression checker", () => {
   assert.equal(isExpressionOnlyQuery("(2x-3)(x+5)"), true);
   assert.equal(isExpressionOnlyQuery(String.raw`\frac{x^2-1}{x-1}`), true);
   assert.deepEqual(rankSearchRecords(records, "(2x-3)(x+5)"), []);
+  assert.equal(isExpressionOnlyQuery("d/dx"), false);
+  assert.equal(isExpressionOnlyQuery("dy/dx"), false);
+  assert.equal(isExpressionOnlyQuery("f'(x)"), false);
 });
 
 test("prose search ranks the best matching resource type", () => {

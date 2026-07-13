@@ -16,7 +16,7 @@ import {
 import { archetypes } from "../lib/library";
 import { getResourceRecord, tools } from "../lib/registry/catalog";
 import { assessments } from "../lib/registry/practice";
-import { Math } from "./Math";
+import { LatexArticleDocument } from "./LatexArticle";
 
 export { libraryArticleHref, libraryCounts };
 
@@ -113,46 +113,26 @@ export function LibraryArticleContent({ article }: { article: CourseArticle }) {
     <article className="library-article">
       <header className="library-article-header">
         <nav className="breadcrumbs"><a href="/subjects/">Subjects</a><span>/</span><a href="/subjects/math/">Mathematics</a><span>/</span><a href={`/subjects/math/${course.slug}/`}>{course.name}</a><span>/</span><a href={`/subjects/math/${course.slug}/${topic.slug}/`}>{topic.shortName}</a><span>/</span><span>{article.shortTitle}</span></nav>
-        <div className="article-format-line"><span>{archetype.label}</span><span>{article.course}</span><span>{article.difficulty}</span><span>{article.minutes} min read</span></div>
+        <p className="article-meta-line"><span>{archetype.label}</span><span>{article.course}</span><span>{article.difficulty}</span><span>{article.minutes} min</span></p>
         <h1>{article.title}</h1>
         <p>{article.deck}</p>
-        {article.formula && <Math tex={article.formula} display className="library-header-formula" />}
+        <p className="article-source-line">LaTeX article <span aria-hidden="true">·</span> Updated {article.reviewed}</p>
       </header>
 
-      <div className="archetype-note"><span>{archetype.label}</span><p>{archetype.promise}</p><b>Updated {article.reviewed}</b></div>
-
-      {article.immediate && <section className="library-immediate"><div><span>{article.immediate.label}</span><b>Start here</b></div><div>{article.immediate.tex && <Math tex={article.immediate.tex} display className="library-immediate-formula" />}<p>{article.immediate.text}</p></div></section>}
-
-      <section className="article-action-band" aria-label="Ways to use this guide">
-        <div><span>Put it to work</span><b>Read it, try it, check it.</b></div>
-        <a href={`/subjects/math/${course.slug}/${topic.slug}/`}><small>Topic map</small><strong>See the whole {topic.shortName.toLowerCase()} path</strong><i>→</i></a>
-        {articleTools.slice(0, 1).map((tool) => <a href={tool!.path} key={tool!.id}><small>Tool</small><strong>{tool!.title}</strong><i>→</i></a>)}
-        {articleAssessments.slice(0, 1).map((assessment) => <a href={assessment!.path} key={assessment!.id}><small>Practice</small><strong>{assessment!.title}</strong><i>→</i></a>)}
-      </section>
-
-      <div className="library-reading-layout">
-        <aside className="article-toc">
-          <strong>On this page</strong>
-          {article.sections.map((section, index) => <a key={section.heading} href={`#section-${index + 1}`}><span>0{index + 1}</span>{section.heading}</a>)}
-          <a href="#worked-example"><span>0{article.sections.length + 1}</span>Worked example</a>
-          <a href="#mistakes"><span>0{article.sections.length + 2}</span>Common mistakes</a>
+      <div className="latex-article-layout">
+        <aside className="latex-article-rail">
+          <strong>Article outline</strong>
+          {article.document.sections.map((section, index) => <a key={section.id} href={`#${section.id}`}><span>{String(index + 1).padStart(2, "0")}</span>{section.heading}</a>)}
+          <div className="latex-article-links">
+            <span>Put it to work</span>
+            <a href={`/subjects/math/${course.slug}/${topic.slug}/`}><small>Topic map</small><b>{topic.name}</b></a>
+            {articleTools.slice(0, 1).map((tool) => <a href={tool!.path} key={tool!.id}><small>Tool</small><b>{tool!.title}</b></a>)}
+            {articleAssessments.slice(0, 1).map((assessment) => <a href={assessment!.path} key={assessment!.id}><small>Practice</small><b>{assessment!.title}</b></a>)}
+          </div>
         </aside>
 
-        <div className="library-reading-column">
-          {article.sections.map((section, index) => <section id={`section-${index + 1}`} className="library-prose-section" key={section.heading}><span className="section-index">0{index + 1}</span><h2>{section.heading}</h2>{section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}{section.tex && <Math tex={section.tex} display className="section-formula" />}</section>)}
-
-          <section className="worked-example" id="worked-example">
-            <div className="worked-example-head"><span>Worked example</span><b>{article.example.heading}</b></div>
-            <h2>{article.example.prompt}</h2>
-            <div className="worked-steps">{article.example.steps.map((step, index) => <div key={`${step.tex}-${index}`}><span>{index + 1}</span><Math tex={step.tex} display /><p>{step.note}</p></div>)}</div>
-            <div className="worked-result"><span>Result</span><Math tex={article.example.result} display /></div>
-          </section>
-
-          <section className="mistake-takeaway-grid" id="mistakes">
-            <div><span>Watch for</span><h2>Common mistakes</h2><ol>{article.mistakes.map((mistake) => <li key={mistake}>{mistake}</li>)}</ol></div>
-            <div><span>Keep</span><h2>Three takeaways</h2><ol>{article.takeaways.map((takeaway) => <li key={takeaway}>{takeaway}</li>)}</ol></div>
-          </section>
-
+        <div className="latex-article-column">
+          <LatexArticleDocument document={article.document} />
           <section className="related-library"><div><p className="eyebrow">Continue the path</p><h2>Related resources</h2></div>{related.map((item) => <a href={libraryArticleHref(item)} key={item.slug}><span>{archetypes[item.archetype].label}</span><b>{item.title}</b><i>→</i></a>)}</section>
         </div>
       </div>

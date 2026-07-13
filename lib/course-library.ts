@@ -1,8 +1,9 @@
 import { algebraArticles, algebraTopics } from "./algebra";
 import { calculusExpansionArticles } from "./calculus/expansion";
 import { archetypes, libraryArticles, libraryTopics, type LibraryArticle, type LibraryTopic } from "./library";
+import { compileArticleDocument, type ArticleDocument } from "./article-document";
 
-export type CourseArticle = LibraryArticle & { domainSlug: string; domainName: string };
+export type CourseArticle = LibraryArticle & { domainSlug: string; domainName: string; document: ArticleDocument };
 
 export type CourseLibrary = {
   slug: string;
@@ -17,7 +18,7 @@ export type CourseLibrary = {
 };
 
 function withCourse(articles: LibraryArticle[], domainSlug: string, domainName: string): CourseArticle[] {
-  return articles.map((article) => ({ ...article, domainSlug, domainName }));
+  return articles.map((article) => ({ ...article, domainSlug, domainName, document: compileArticleDocument(article) }));
 }
 
 export const courseLibraries: CourseLibrary[] = [

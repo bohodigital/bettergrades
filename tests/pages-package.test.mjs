@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { access, readFile } from "node:fs/promises";
+import { access, readFile, readdir } from "node:fs/promises";
 import test from "node:test";
 
 test("Pages package contains the advanced Worker and static assets", async () => {
@@ -29,4 +29,8 @@ test("Pages package contains the advanced Worker and static assets", async () =>
   );
   assert.match(assetsIgnore, /^index\.js$/m);
   assert.match(assetsIgnore, /^ssr\/\*\*$/m);
+
+  const clientAssets = await readdir(new URL("../dist/pages/assets/", import.meta.url));
+  const clientJavaScript = await Promise.all(clientAssets.filter((name) => name.endsWith(".js")).map((name) => readFile(new URL(`../dist/pages/assets/${name}`, import.meta.url), "utf8")));
+  assert.ok(clientJavaScript.every((source) => !source.includes("A derivative is the limit of average rates over shrinking intervals")), "full glossary definitions must remain server-fed on glossary routes");
 });

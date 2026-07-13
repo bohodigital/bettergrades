@@ -1,0 +1,25 @@
+export type MathGlossaryVisual = { tex: string; label: string };
+export type MathGlossaryExternalLink = { label: string; url: string };
+export type MathGlossaryTerm = {
+  id: string;
+  term: string;
+  categoryId: "symbols" | "foundations" | "algebra" | "calculus";
+  shortDefinition: string;
+  definition: string;
+  aliases: readonly string[];
+  keywords: readonly string[];
+  visuals: readonly MathGlossaryVisual[];
+  externalLinks: readonly MathGlossaryExternalLink[];
+};
+export const mathGlossaryCategories: readonly { id: MathGlossaryTerm["categoryId"]; label: string; description: string }[];
+export const mathGlossaryTerms: readonly MathGlossaryTerm[];
+export function getMathGlossaryTerm(id: string): MathGlossaryTerm | undefined;
+export function glossaryLetter(term: MathGlossaryTerm): string;
+export function normalizeGlossaryText(value: string): string;
+export function searchMathGlossary(query: string, options?: { categoryId?: string; limit?: number }): MathGlossaryTerm[];
+export function contextualGlossaryTerms(text: string, preferredIds?: string[], limit?: number): MathGlossaryTerm[];
+export const latexCommandGlossaryMap: Readonly<Record<string, string>>;
+export const latexStructuralCommands: ReadonlySet<string>;
+export const uppercaseVariableConventions: Readonly<Record<string, string>>;
+export function validateMathNotation(source: string): { unknownCommands: string[]; undocumentedUppercase: string[] };
+export function validateMathGlossary(): string[];
