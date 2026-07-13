@@ -1,4 +1,5 @@
 import { algebraArticles, algebraTopics } from "./algebra";
+import { calculusExpansionArticles } from "./calculus/expansion";
 import { archetypes, libraryArticles, libraryTopics, type LibraryArticle, type LibraryTopic } from "./library";
 
 export type CourseArticle = LibraryArticle & { domainSlug: string; domainName: string };
@@ -40,11 +41,16 @@ export const courseLibraries: CourseLibrary[] = [
     mark: "∫",
     level: "Calculus I & II",
     topics: libraryTopics,
-    articles: withCourse(libraryArticles, "calculus", "Calculus"),
+    articles: withCourse([...libraryArticles, ...calculusExpansionArticles], "calculus", "Calculus"),
   },
 ];
 
 export const allLibraryArticles = courseLibraries.flatMap((course) => course.articles);
+export const libraryCounts = {
+  courses: courseLibraries.length,
+  topics: courseLibraries.reduce((sum, course) => sum + course.topics.length, 0),
+  articles: allLibraryArticles.length,
+};
 
 export const getCourseLibrary = (domainSlug: string) => courseLibraries.find((course) => course.slug === domainSlug);
 export const getCourseTopic = (domainSlug: string, topicSlug: string) => getCourseLibrary(domainSlug)?.topics.find((topic) => topic.slug === topicSlug);

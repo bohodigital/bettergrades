@@ -3,20 +3,28 @@
 /* eslint-disable @next/next/no-html-link-for-pages -- registry pages intentionally use document navigation for canonical routes */
 
 import {
-  allLibraryArticles,
   courseLibraries,
   getCourseArticle,
   getCourseLibrary,
   getCourseTopic,
   getCourseTopicArticles,
+  libraryCounts,
   libraryArticleHref,
   searchCourseLibrary,
   type CourseArticle,
 } from "../lib/course-library";
 import { archetypes } from "../lib/library";
+import { getResourceRecord, tools } from "../lib/registry/catalog";
+import { assessments } from "../lib/registry/practice";
 import { Math } from "./Math";
 
-export { libraryArticleHref };
+export { libraryArticleHref, libraryCounts };
+
+const resourceGroups = [
+  { id: "understand", title: "Understand the idea", description: "Direct answers and concept explanations that make the structure visible.", archetypes: ["answer", "concept"] },
+  { id: "methods", title: "Work the method", description: "Repeatable procedures with worked examples and checks.", archetypes: ["method"] },
+  { id: "decisions", title: "Choose a strategy", description: "Comparisons for the moments when several methods look possible.", archetypes: ["decision"] },
+] as const;
 
 export function ArticleRow({ article, index }: { article: CourseArticle; index: number }) {
   const archetype = archetypes[article.archetype];
@@ -31,6 +39,10 @@ export function ArticleRow({ article, index }: { article: CourseArticle; index: 
 }
 
 export function LibraryHomeSection() {
+  const freshGuides = courseLibraries
+    .flatMap((course) => course.articles)
+    .filter((article) => article.reviewed === "July 13, 2026")
+    .slice(0, 6);
   return (
     <section className="topic-home-section section-pad">
       <div className="section-heading">
@@ -40,7 +52,9 @@ export function LibraryHomeSection() {
       <div className="course-home-grid">
         {courseLibraries.map((course) => <a href={`/subjects/math/${course.slug}/`} className="course-home-card" key={course.slug}><span>{course.mark}</span><div><small>{course.eyebrow}</small><h3>{course.name}</h3><p>{course.description}</p><em>{course.articles.length} full guides · {course.topics.length} topics</em></div><b>Browse {course.name.toLowerCase()} →</b></a>)}
       </div>
-      <div className="topic-home-action"><a className="button button-ink" href="/subjects/math/">Browse all mathematics →</a><span>60 worked guides · No account required</span></div>
+      <div className="fresh-guides-head"><div><p className="eyebrow">New in the library</p><h3>Fresh explanations, ready to use.</h3></div><p>Full lessons with rendered math, worked examples, mistakes to avoid, and a clear next move.</p></div>
+      <div className="fresh-guides-list">{freshGuides.map((article, index) => <ArticleRow article={article} index={index} key={`${article.domainSlug}-${article.slug}`} />)}</div>
+      <div className="topic-home-action"><a className="button button-ink" href="/subjects/math/">Browse all mathematics →</a><span>{libraryCounts.articles} worked guides · No account required</span></div>
     </section>
   );
 }
@@ -57,6 +71,11 @@ export function TopicContent({ domainSlug, topicSlug }: { domainSlug: string; to
   const index = course.topics.findIndex((item) => item.slug === topicSlug);
   const previous = course.topics[index - 1];
   const next = course.topics[index + 1];
+  const topicResources = articles.map((article) => getResourceRecord(domainSlug, topicSlug, article.slug)).filter(Boolean);
+  const relatedToolIds = Array.from(new Set(topicResources.flatMap((resource) => resource?.relatedToolIds ?? [])));
+  const relatedAssessmentIds = Array.from(new Set(topicResources.flatMap((resource) => resource?.relatedAssessmentIds ?? [])));
+  const topicTools = relatedToolIds.map((id) => tools.find((tool) => tool.id === id)).filter(Boolean);
+  const topicAssessments = relatedAssessmentIds.map((id) => assessments.find((assessment) => assessment.id === id)).filter(Boolean);
   return (
     <>
       <section className="topic-page-hero section-pad">
@@ -64,8 +83,8 @@ export function TopicContent({ domainSlug, topicSlug }: { domainSlug: string; to
         <div className="topic-hero-grid"><div><p className="eyebrow">Topic {topic.sequence} of {course.topics.length}</p><h1>{topic.name}</h1><p>{topic.description}</p></div><span className="topic-big-number">{topic.accent}</span></div>
       </section>
       <section className="topic-page-body section-pad">
-        <aside><strong>Inside this topic</strong><span>{articles.length} full resources</span><p>Read in sequence, or use the format labels to choose the kind of explanation you need.</p><a href={`/subjects/math/${course.slug}/`}>All {course.name.toLowerCase()} topics →</a></aside>
-        <div className="topic-article-list">{articles.map((article, articleIndex) => <ArticleRow article={article} index={articleIndex} key={article.slug} />)}</div>
+        <aside><strong>Inside this topic</strong><span>{articles.length} full resources</span><p>Start with the idea, work a method, then use a decision guide when the route is not obvious.</p><a href={`/subjects/math/${course.slug}/`}>All {course.name.toLowerCase()} topics →</a>{topicTools.map((tool) => <a href={tool!.path} key={tool!.id}>Use {tool!.title} →</a>)}{topicAssessments.slice(0, 1).map((assessment) => <a href={assessment!.path} key={assessment!.id}>Practice this topic →</a>)}</aside>
+        <div className="topic-resource-groups">{resourceGroups.map((group) => { const groupArticles = articles.filter((article) => (group.archetypes as readonly string[]).includes(article.archetype)); if (!groupArticles.length) return null; return <section className="topic-resource-group" key={group.id}><header><span>{group.title}</span><p>{group.description}</p></header><div className="topic-article-list">{groupArticles.map((article) => <ArticleRow article={article} index={articles.indexOf(article)} key={article.slug} />)}</div></section>; })}</div>
       </section>
       <nav className="topic-sequence section-pad" aria-label="Adjacent topics">
         {previous ? <a href={`/subjects/math/${course.slug}/${previous.slug}/`}><small>← Previous topic</small><b>{previous.name}</b></a> : <span />}
@@ -86,6 +105,9 @@ export function LibraryArticleContent({ article }: { article: CourseArticle }) {
   const nextTopic = course.topics[topicIndex + 1];
   const archetype = archetypes[article.archetype];
   const related = article.related.map((slug) => course.articles.find((item) => item.slug === slug)).filter(Boolean) as CourseArticle[];
+  const resource = getResourceRecord(article.domainSlug, article.topicSlug, article.slug);
+  const articleTools = (resource?.relatedToolIds ?? []).map((id) => tools.find((tool) => tool.id === id)).filter(Boolean);
+  const articleAssessments = (resource?.relatedAssessmentIds ?? []).map((id) => assessments.find((assessment) => assessment.id === id)).filter(Boolean);
 
   return (
     <article className="library-article">
@@ -100,6 +122,13 @@ export function LibraryArticleContent({ article }: { article: CourseArticle }) {
       <div className="archetype-note"><span>{archetype.label}</span><p>{archetype.promise}</p><b>Updated {article.reviewed}</b></div>
 
       {article.immediate && <section className="library-immediate"><div><span>{article.immediate.label}</span><b>Start here</b></div><div>{article.immediate.tex && <Math tex={article.immediate.tex} display className="library-immediate-formula" />}<p>{article.immediate.text}</p></div></section>}
+
+      <section className="article-action-band" aria-label="Ways to use this guide">
+        <div><span>Put it to work</span><b>Read it, try it, check it.</b></div>
+        <a href={`/subjects/math/${course.slug}/${topic.slug}/`}><small>Topic map</small><strong>See the whole {topic.shortName.toLowerCase()} path</strong><i>→</i></a>
+        {articleTools.slice(0, 1).map((tool) => <a href={tool!.path} key={tool!.id}><small>Tool</small><strong>{tool!.title}</strong><i>→</i></a>)}
+        {articleAssessments.slice(0, 1).map((assessment) => <a href={assessment!.path} key={assessment!.id}><small>Practice</small><strong>{assessment!.title}</strong><i>→</i></a>)}
+      </section>
 
       <div className="library-reading-layout">
         <aside className="article-toc">
@@ -139,6 +168,10 @@ export function LibraryArticleContent({ article }: { article: CourseArticle }) {
 export function CourseHubContent({ domainSlug }: { domainSlug: string }) {
   const course = getCourseLibrary(domainSlug);
   if (!course) return null;
+  const domainId = `domain-math-${domainSlug}`;
+  const courseTools = tools.filter((tool) => tool.domainId === domainId);
+  const courseAssessments = assessments.filter((assessment) => assessment.domainId === domainId);
+  const startArticle = course.articles[0];
   return (
     <>
       <section className="subject-hero section-pad"><div><p className="eyebrow">{course.eyebrow}</p><h1>{course.name}</h1><p>{course.description}</p><small className="course-count-line">{course.articles.length} full guides · {course.topics.length} organized topics</small><div className="subject-hero-actions"><a className="button button-ink" href={`/search/?q=${course.slug}`}>Search {course.name.toLowerCase()}</a><a className="button button-ghost" href="/practice/">Open practice</a></div></div><div className="subject-mark">{course.mark}<span>{course.slug}</span></div></section>
@@ -146,7 +179,7 @@ export function CourseHubContent({ domainSlug }: { domainSlug: string }) {
         <div className="section-heading"><div><p className="eyebrow">The course map</p><h2>{course.topics.length} topics. One connected path.</h2></div><p>{course.promise}</p></div>
         <div className="calculus-map-list">{course.topics.map((topic) => <a href={`/subjects/math/${course.slug}/${topic.slug}/`} key={topic.slug}><span>{topic.accent}</span><div><b>{topic.name}</b><small>{topic.description}</small></div><em>{getCourseTopicArticles(course.slug, topic.slug).length} resources</em><i>→</i></a>)}</div>
       </section>
-      {course.slug === "calculus" && <section className="calculus-tools section-pad"><div><p className="eyebrow">Put it to work</p><h2>Learn, calculate, practice.</h2></div><a href="/tools/math/calculus/integration-method-finder/"><span>Tool</span><b>Integration Method Finder</b><small>Choose a first move →</small></a><a href="/practice/math/calculus/quizzes/integration-method-selection/"><span>Quiz</span><b>Method selection</b><small>10 focused questions →</small></a><a href="/practice/math/calculus/diagnostics/calculus-readiness/"><span>Diagnostic</span><b>Calculus readiness</b><small>Find prerequisite gaps →</small></a></section>}
+      <section className="calculus-tools section-pad"><div><p className="eyebrow">Put it to work</p><h2>Learn, calculate, practice.</h2></div>{startArticle && <a href={libraryArticleHref(startArticle)}><span>Start here</span><b>{startArticle.shortTitle}</b><small>Open the first guide →</small></a>}{courseTools.slice(0, 1).map((tool) => <a href={tool.path} key={tool.id}><span>Tool</span><b>{tool.title}</b><small>Open the interactive tool →</small></a>)}{courseAssessments.length ? courseAssessments.slice(0, 1).map((assessment) => <a href={assessment.path} key={assessment.id}><span>Practice</span><b>{assessment.title}</b><small>{assessment.questions.length} explained questions →</small></a>) : <a href={`/search/?q=${course.slug}`}><span>All content</span><b>{course.articles.length} complete guides</b><small>Search this course →</small></a>}</section>
     </>
   );
 }
@@ -161,5 +194,3 @@ export function LibrarySearchResults({ query, limit = 8, domain = "all" }: { que
   if (!results.length) return null;
   return <div className="library-search-group"><div className="results-head"><h2>Guides and explanations</h2><span>{results.length} useful matches</span></div>{results.map((article, index) => <ArticleRow article={article} index={index} key={`${article.domainSlug}-${article.slug}`} />)}</div>;
 }
-
-export const libraryCounts = { courses: courseLibraries.length, topics: courseLibraries.reduce((sum, course) => sum + course.topics.length, 0), articles: allLibraryArticles.length };

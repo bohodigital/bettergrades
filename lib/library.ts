@@ -31,6 +31,7 @@ export type LibraryArticle = {
   mistakes: string[];
   takeaways: string[];
   related: string[];
+  searchTerms?: string[];
   reviewed: string;
 };
 

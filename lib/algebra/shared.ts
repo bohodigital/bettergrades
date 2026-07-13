@@ -22,6 +22,7 @@ type AlgebraArticleInput = {
   mistakes: string[];
   takeaways: string[];
   related: string[];
+  searchTerms?: string[];
 };
 
 export function algebraArticle(input: AlgebraArticleInput): LibraryArticle {

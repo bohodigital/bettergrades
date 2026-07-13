@@ -5,6 +5,7 @@ import { systemsArticles } from "./systems";
 import { polynomialsArticles } from "./polynomials";
 import { rationalArticles } from "./rational";
 import { powersFunctionsArticles } from "./powers-functions";
+import { algebraExpansionArticles } from "./expansion";
 
 export const algebraTopics: LibraryTopic[] = [
   { slug: "expressions-equations", name: "Expressions & Equations", shortName: "Equations", description: "Translate algebraic structure, simplify without changing value, and solve equations with a reliable sequence of reversible moves.", sequence: 1, accent: "01" },
@@ -22,4 +23,5 @@ export const algebraArticles = [
   ...polynomialsArticles,
   ...rationalArticles,
   ...powersFunctionsArticles,
+  ...algebraExpansionArticles,
 ];
