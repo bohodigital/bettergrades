@@ -1,6 +1,7 @@
 export type Question = {
   prompt: string;
   expression?: string;
+  expressionTex?: string;
   choices: string[];
   answer: number;
   explanation: string;

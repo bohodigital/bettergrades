@@ -1,7 +1,7 @@
 /** Cloudflare Worker entry point for the vinext-starter template. */
 import { handleImageOptimization, DEFAULT_DEVICE_SIZES, DEFAULT_IMAGE_SIZES } from "vinext/server/image-optimization";
 import handler from "vinext/server/app-router-entry";
-import { routes } from "../lib/content";
+import { getRedirect, publicRoutes } from "../lib/registry";
 
 interface Env {
   ASSETS: Fetcher;
@@ -50,7 +50,7 @@ function fixedResponse(request: Request, body: string, contentType: string) {
 }
 
 function sitemapXml() {
-  const entries = routes
+  const entries = publicRoutes
     .filter((route) => route !== "/search/")
     .map((route) => {
       const priority = route === "/" ? "1.0" : route.includes("integral-of-sec-cubed") ? "0.9" : "0.7";
@@ -70,6 +70,9 @@ function sitemapXml() {
 const worker = {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
+
+    const redirect = getRedirect(url.pathname);
+    if (redirect) return withSecurityHeaders(Response.redirect(new URL(redirect.to, url), redirect.status));
 
     if (url.pathname === "/robots.txt" || url.pathname === "/robots.txt/") {
       return fixedResponse(
