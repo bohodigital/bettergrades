@@ -138,11 +138,15 @@ test("algebra expression checker is a registered browser-side tool", async () =>
   assert.equal(response.status, 200);
   const html = await response.text();
   assert.match(html, /Type it messy/);
-  assert.match(html, /Check a stored answer/);
-  assert.match(html, /Simplify my expression/);
+  assert.match(html, /Practice answer/);
+  assert.match(html, /Simplify/);
+  assert.match(html, /Compare/);
+  assert.match(html, /Evaluate/);
   assert.match(html, /Runs in your browser/);
-  assert.match(html, /Equivalent forms accepted/);
+  assert.match(html, /Keyboard or LaTeX/);
   assert.match(html, /Factor completely/);
+  assert.match(html, /id="algebra-expression"/);
+  assert.doesNotMatch(html, /Loading the math keyboard|mathfield-host|expression-mathfield/);
 });
 
 test("legacy content paths redirect to registry canonicals", async () => {

@@ -1,6 +1,13 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { ComputeEngine } from "@cortex-js/compute-engine";
+import {
+  compareAlgebraExpressions,
+  evaluateAlgebraExpression,
+  normalizeCalculatorInput,
+  parseVariableAssignments,
+  simplifyAlgebraExpression,
+} from "../lib/algebra-calculator.mjs";
 import { hasNumericCounterexample } from "../lib/algebra-equivalence.mjs";
 import { algebraCheckerHref, algebraPracticeProblems, looksLikeAlgebraExpression } from "../lib/algebra-practice.mjs";
 
@@ -36,4 +43,30 @@ test("search recognizes expression-shaped queries and preserves them in the tool
   assert.equal(looksLikeAlgebraExpression("simplify 4x^2 + 2x"), true);
   assert.equal(looksLikeAlgebraExpression("integration by parts"), false);
   assert.equal(algebraCheckerHref("(2x-3)(x+5)"), "/tools/math/algebra/expression-checker/?expression=(2x-3)(x%2B5)");
+});
+
+test("keyboard input normalization keeps algebra entry lightweight", () => {
+  assert.equal(normalizeCalculatorInput("simplify: (x + 2) × (x − 2)"), "(x + 2) * (x - 2)");
+  assert.deepEqual(parseVariableAssignments("x=2, y=-3.5"), { assignments: { x: 2, y: -3.5 } });
+  assert.match(parseVariableAssignments("x=1/2").error, /finite decimal or integer/);
+});
+
+test("calculator operations work through the same lazy browser engine", async () => {
+  const simplified = await simplifyAlgebraExpression("4x^2-3x+5x^2+2x");
+  assert.equal(simplified.status, "simplified");
+  assert.equal(simplified.latex, "9x^2-x");
+
+  const equivalent = await compareAlgebraExpressions("(x+5)(2x-3)", "2x^2+7x-15");
+  assert.equal(equivalent.status, "correct");
+
+  const different = await compareAlgebraExpressions("(x+5)(2x-3)", "2x^2+8x-15");
+  assert.equal(different.status, "incorrect");
+
+  const evaluated = await evaluateAlgebraExpression("x^2+2x-3", "x=4");
+  assert.equal(evaluated.status, "evaluated");
+  assert.equal(evaluated.latex, "21");
+
+  const missing = await evaluateAlgebraExpression("x+y", "x=2");
+  assert.equal(missing.status, "error");
+  assert.match(missing.message, /Assign y/);
 });

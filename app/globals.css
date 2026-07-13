@@ -381,8 +381,8 @@ h1 em, h2 em { color: var(--brand); font-family: var(--serif); font-weight: 500;
 .algebra-tool-hero h1 em { color: var(--brand); font-family: var(--serif); font-weight: 500; }
 .algebra-checker-layout { padding-bottom: 120px; display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: 30px; align-items: start; }
 .algebra-checker-main { min-width: 0; }
-.checker-mode-tabs { display: flex; gap: 7px; margin-bottom: 13px; padding: 5px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper-2); }
-.checker-mode-tabs button { flex: 1; padding: 11px 14px; border: 0; border-radius: 8px; background: transparent; color: var(--muted); cursor: pointer; font-size: 13px; font-weight: 850; }
+.checker-mode-tabs { margin-bottom: 13px; padding: 5px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 7px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper-2); }
+.checker-mode-tabs button { min-width: 0; padding: 11px 10px; border: 0; border-radius: 8px; background: transparent; color: var(--muted); cursor: pointer; font-size: 12px; font-weight: 850; }
 .checker-mode-tabs button.active { background: var(--ink); color: var(--paper); box-shadow: 0 4px 14px rgb(0 0 0 / 12%); }
 .checker-prompt { min-height: 190px; padding: 30px; display: grid; align-content: center; gap: 28px; border: 1px solid var(--line); border-bottom: 0; border-radius: 12px 12px 0 0; background: var(--ink); color: var(--paper); }
 .checker-prompt > div:first-child { display: grid; }
@@ -398,14 +398,15 @@ h1 em, h2 em { color: var(--brand); font-family: var(--serif); font-weight: 500;
 .input-mode-toggle { display: flex; gap: 3px; padding: 3px; border: 1px solid var(--line); border-radius: 99px; background: var(--surface-2); }
 .input-mode-toggle button { padding: 5px 9px; border: 0; border-radius: 99px; background: transparent; color: var(--muted); cursor: pointer; font-size: 10px; font-weight: 850; }
 .input-mode-toggle button.active { background: var(--brand); color: var(--paper); }
-.mathfield-host { min-height: 86px; padding: 14px 16px; display: flex; align-items: center; border: 2px solid var(--line); border-radius: 10px; background: var(--paper); }
-.mathfield-host:focus-within { border-color: var(--brand); box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand), transparent 82%); }
-.mathfield-host.hidden { display: none; }
-.mathfield-host > span { color: var(--muted); font-size: 13px; }
-.expression-mathfield { width: 100%; min-height: 52px; padding: 8px 4px; border: 0; background: transparent; color: var(--ink); font-size: clamp(1.35rem, 3vw, 2rem); --caret-color: var(--brand); --selection-background-color: var(--brand-soft); --contains-highlight-background-color: var(--warm-soft); }
-.expression-mathfield::part(menu-toggle) { display: none; }
 .expression-entry textarea { width: 100%; min-height: 86px; padding: 18px; resize: vertical; border: 2px solid var(--line); border-radius: 10px; outline: 0; background: var(--paper); color: var(--ink); font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 16px; }
 .expression-entry textarea:focus { border-color: var(--brand); box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand), transparent 82%); }
+.entry-help { margin: 8px 2px 0; color: var(--muted); font-size: 11px; }
+.secondary-entry, .value-assignment { margin-top: 22px; display: grid; gap: 8px; }
+.secondary-entry > label, .value-assignment > label { font-size: 11px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+.secondary-entry textarea { min-height: 72px; }
+.value-assignment input { width: 100%; padding: 14px 16px; border: 2px solid var(--line); border-radius: 10px; outline: 0; background: var(--paper); color: var(--ink); font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 15px; }
+.value-assignment input:focus { border-color: var(--brand); box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand), transparent 82%); }
+.value-assignment small { color: var(--muted); font-size: 11px; }
 .interpreted-line { margin-top: 14px; padding: 13px 15px; display: grid; grid-template-columns: 105px minmax(0, 1fr); gap: 12px; align-items: center; border-left: 3px solid var(--brand); background: var(--brand-soft); }
 .interpreted-line > span { color: var(--brand); font-size: 10px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
 .interpreted-line > div { min-width: 0; }
@@ -417,12 +418,16 @@ h1 em, h2 em { color: var(--brand); font-family: var(--serif); font-weight: 500;
 .checker-result { margin-top: 18px; padding: 28px; border: 1px solid var(--line); border-left: 6px solid var(--brand); border-radius: 8px 8px 24px 8px; background: var(--surface); box-shadow: var(--shadow); }
 .checker-result.correct { border-left-color: var(--good); background: color-mix(in srgb, var(--brand-soft), var(--surface) 55%); }
 .checker-result.incorrect { border-left-color: var(--bad); }
+.checker-result.evaluated { border-left-color: var(--good); background: color-mix(in srgb, var(--brand-soft), var(--surface) 55%); }
 .checker-result.uncertain { border-left-color: var(--warm); background: color-mix(in srgb, var(--warm-soft), var(--surface) 60%); }
 .checker-result.error { border-left-color: var(--warm); }
 .result-kicker { color: var(--brand); font-size: 10px; font-weight: 900; letter-spacing: .13em; text-transform: uppercase; }
 .checker-result h2 { margin: 7px 0 8px; font-size: clamp(1.7rem, 3vw, 2.5rem); }
 .checker-result > p { max-width: 670px; color: var(--muted); }
-.checker-result-math { margin: 22px 0; padding: 18px; border-radius: 8px; background: var(--paper); }
+.result-math-stack { margin: 22px 0; display: grid; gap: 8px; }
+.result-math-stack > small { color: var(--muted); font-size: 10px; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+.checker-result-math { padding: 18px; border-radius: 8px; background: var(--paper); }
+.checker-result-math.secondary { margin-top: 0; }
 .checker-result details { margin-top: 16px; padding-top: 13px; border-top: 1px solid var(--line); }
 .checker-result summary { color: var(--brand); cursor: pointer; font-size: 12px; font-weight: 850; }
 .checker-result details .latex { margin: 16px 0; }
@@ -808,7 +813,7 @@ h1 em, h2 em { color: var(--brand); font-family: var(--serif); font-weight: 500;
   .tool-aside { display: block; }
   .algebra-checker-aside { display: grid; grid-template-columns: 1fr; }
   .algebra-checker-aside > * { grid-column: 1; }
-  .checker-mode-tabs { display: grid; }
+  .checker-mode-tabs { grid-template-columns: 1fr 1fr; }
   .checker-prompt { min-height: 165px; padding: 22px; }
   .expression-entry { padding: 18px; }
   .entry-toolbar { align-items: flex-start; flex-direction: column; }
