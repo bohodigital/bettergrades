@@ -7,6 +7,7 @@ import argparse
 import json
 import os
 import re
+import shutil
 import subprocess
 import sys
 from datetime import datetime, timezone
@@ -25,6 +26,7 @@ DOMAINS = ("bettergrades.net", "www.bettergrades.net")
 REPO_ROOT = Path("/srv/local1/repos/bettergrades")
 OUTPUT_DIR = REPO_ROOT / "dist" / "pages"
 WRANGLER_CONFIG = REPO_ROOT / "wrangler.jsonc"
+VINEXT_DEPLOY_REDIRECT = REPO_ROOT / ".wrangler" / "deploy"
 SECRET_ROOT = Path("/srv/local1/secrets/broker")
 VAULT_PATH = SECRET_ROOT / "local1-agent-secrets.kdbx"
 KEY_FILE_PATH = SECRET_ROOT / "local1-agent-secrets.keyfile"
@@ -186,8 +188,15 @@ def scrub(text: str, token: str) -> str:
     return text.replace(token, "[redacted]") if token else text
 
 
+def clear_vinext_deploy_redirect() -> None:
+    """Prevent Wrangler Pages from following vinext's generated Worker config."""
+    if VINEXT_DEPLOY_REDIRECT.is_dir():
+        shutil.rmtree(VINEXT_DEPLOY_REDIRECT)
+
+
 def deploy(token: str) -> dict[str, Any]:
     sha = require_deployable_tree()
+    clear_vinext_deploy_redirect()
     environment = os.environ.copy()
     environment.update(
         {
@@ -201,6 +210,7 @@ def deploy(token: str) -> dict[str, Any]:
         WRANGLER,
         "pages",
         "deploy",
+        str(OUTPUT_DIR),
         "--project-name",
         PROJECT,
         "--branch",
