@@ -41,18 +41,20 @@ test("unknown routes use the custom 404", async () => {
   assert.match(await response.text(), /Wrong turn\. Useful recovery/);
 });
 
-test("topic hub exposes the organized calculus library", async () => {
-  const response = await render("/topics/");
+test("subject and course hubs expose the organized calculus library", async () => {
+  const subjects = await render("/subjects/");
+  assert.equal(subjects.status, 200);
+  assert.match(await subjects.text(), /Find the course/);
+  const response = await render("/subjects/math/calculus/");
   assert.equal(response.status, 200);
   const html = await response.text();
-  assert.match(html, /Choose the topic/);
+  assert.match(html, /Six topics/);
   assert.match(html, /Limits &amp; Continuity/);
   assert.match(html, /Sequences &amp; Series/);
-  assert.match(html, /30/);
 });
 
 test("library archetype renders a full worked article", async () => {
-  const response = await render("/library/limits-continuity/limit-of-sin-x-over-x/");
+  const response = await render("/subjects/math/calculus/limits-continuity/limit-of-sin-x-over-x/");
   assert.equal(response.status, 200);
   const html = await response.text();
   assert.match(html, /Why is the limit of sin x over x equal to 1/);
@@ -74,9 +76,27 @@ test("robots and sitemap metadata routes are indexable and complete", async () =
   assert.match(sitemap.headers.get("content-type") ?? "", /^application\/xml\b/i);
   const sitemapBody = await sitemap.text();
   assert.match(sitemapBody, /<urlset\b/);
-  assert.match(sitemapBody, /\/library\/limits-continuity\/limit-of-sin-x-over-x\//);
-  assert.match(sitemapBody, /\/library\/sequences-series\/taylor-series-remainder\//);
+  assert.match(sitemapBody, /\/subjects\/math\/calculus\/limits-continuity\/limit-of-sin-x-over-x\//);
+  assert.match(sitemapBody, /\/subjects\/math\/calculus\/sequences-series\/taylor-series-remainder\//);
+  assert.match(sitemapBody, /\/practice\/math\/calculus\/exams\/calculus-foundations\//);
   assert.doesNotMatch(sitemapBody, /\/search\//);
+});
+
+test("practice is a central category with all four assessment formats", async () => {
+  const response = await render("/practice/");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /Quick quiz/);
+  assert.match(html, /Practice exam/);
+  assert.match(html, /Diagnostic/);
+  assert.match(html, /Challenge/);
+  assert.match(html, /Calculus foundations practice exam/);
+});
+
+test("legacy content paths redirect to registry canonicals", async () => {
+  const response = await render("/library/limits-continuity/limit-of-sin-x-over-x/");
+  assert.equal(response.status, 308);
+  assert.equal(new URL(response.headers.get("location")).pathname, "/subjects/math/calculus/limits-continuity/limit-of-sin-x-over-x/");
 });
 
 test("Worker responses include baseline security headers", async () => {

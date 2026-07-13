@@ -1,10 +1,12 @@
 "use client";
 
+/* eslint-disable @next/next/no-html-link-for-pages -- registry pages intentionally use document navigation for canonical routes */
+
 import { archetypes, getTopic, getTopicArticles, libraryArticles, libraryTopics, type LibraryArticle } from "../lib/library";
 import { Math } from "./Math";
 
 function articleHref(article: LibraryArticle) {
-  return `/library/${article.topicSlug}/${article.slug}/`;
+  return `/subjects/math/calculus/${article.topicSlug}/${article.slug}/`;
 }
 
 function ArticleRow({ article, index }: { article: LibraryArticle; index: number }) {
@@ -23,16 +25,16 @@ export function LibraryHomeSection() {
   return (
     <section className="topic-home-section section-pad">
       <div className="section-heading">
-        <div><p className="eyebrow">The calculus library</p><h2>Organized by idea,<br /><em>not by accident.</em></h2></div>
-        <p>Six topic paths, thirty full resources, and four consistent reading formats. Start with the chapter you’re in—or the gap that keeps showing up.</p>
+        <div><p className="eyebrow">Mathematics · Calculus</p><h2>Organized by idea,<br /><em>built to expand.</em></h2></div>
+        <p>Calculus is the first complete course in a subject structure ready for algebra, geometry, statistics, and whatever comes next.</p>
       </div>
       <div className="topic-home-grid">
         {libraryTopics.map((topic) => {
           const articles = getTopicArticles(topic.slug);
-          return <a href={`/topics/calculus/${topic.slug}/`} className="topic-home-row" key={topic.slug}><span>{topic.accent}</span><div><b>{topic.name}</b><small>{topic.description}</small></div><em>{articles.length} guides</em><i>→</i></a>;
+          return <a href={`/subjects/math/calculus/${topic.slug}/`} className="topic-home-row" key={topic.slug}><span>{topic.accent}</span><div><b>{topic.name}</b><small>{topic.description}</small></div><em>{articles.length} guides</em><i>→</i></a>;
         })}
       </div>
-      <div className="topic-home-action"><a className="button button-ink" href="/topics/">Browse all calculus topics →</a><span>30 reviewed resources · No account required</span></div>
+      <div className="topic-home-action"><a className="button button-ink" href="/subjects/math/calculus/">Browse calculus →</a><span>30 reviewed resources · No account required</span></div>
     </section>
   );
 }
@@ -54,7 +56,7 @@ export function TopicsHubContent() {
           const articles = getTopicArticles(topic.slug);
           return (
             <section className="topic-directory-block" key={topic.slug}>
-              <header><span>{topic.accent}</span><div><p className="eyebrow">Topic {topic.sequence}</p><h2>{topic.name}</h2><p>{topic.description}</p></div><a href={`/topics/calculus/${topic.slug}/`}>Open topic →</a></header>
+              <header><span>{topic.accent}</span><div><p className="eyebrow">Topic {topic.sequence}</p><h2>{topic.name}</h2><p>{topic.description}</p></div><a href={`/subjects/math/calculus/${topic.slug}/`}>Open topic →</a></header>
               <div>{articles.map((article, index) => <ArticleRow article={article} index={index} key={article.slug} />)}</div>
             </section>
           );
@@ -74,16 +76,16 @@ export function TopicContent({ topicSlug }: { topicSlug: string }) {
   return (
     <>
       <section className="topic-page-hero section-pad">
-        <nav className="breadcrumbs"><a href="/topics/">Topics</a><span>/</span><a href="/subjects/math/calculus/">Calculus</a><span>/</span><span>{topic.name}</span></nav>
+        <nav className="breadcrumbs"><a href="/subjects/">Subjects</a><span>/</span><a href="/subjects/math/">Mathematics</a><span>/</span><a href="/subjects/math/calculus/">Calculus</a><span>/</span><span>{topic.name}</span></nav>
         <div className="topic-hero-grid"><div><p className="eyebrow">Topic {topic.sequence} of {libraryTopics.length}</p><h1>{topic.name}</h1><p>{topic.description}</p></div><span className="topic-big-number">{topic.accent}</span></div>
       </section>
       <section className="topic-page-body section-pad">
-        <aside><strong>Inside this topic</strong><span>{articles.length} full resources</span><p>Read in sequence for a guided path, or use the format labels to choose the kind of explanation you need.</p><a href="/topics/">All calculus topics →</a></aside>
+        <aside><strong>Inside this topic</strong><span>{articles.length} full resources</span><p>Read in sequence for a guided path, or use the format labels to choose the kind of explanation you need.</p><a href="/subjects/math/calculus/">All calculus topics →</a></aside>
         <div className="topic-article-list">{articles.map((article, articleIndex) => <ArticleRow article={article} index={articleIndex} key={article.slug} />)}</div>
       </section>
       <nav className="topic-sequence section-pad" aria-label="Adjacent topics">
-        {previous ? <a href={`/topics/calculus/${previous.slug}/`}><small>← Previous topic</small><b>{previous.name}</b></a> : <span />}
-        {next ? <a href={`/topics/calculus/${next.slug}/`}><small>Next topic →</small><b>{next.name}</b></a> : <a href="/topics/"><small>Library overview →</small><b>All calculus topics</b></a>}
+        {previous ? <a href={`/subjects/math/calculus/${previous.slug}/`}><small>← Previous topic</small><b>{previous.name}</b></a> : <span />}
+        {next ? <a href={`/subjects/math/calculus/${next.slug}/`}><small>Next topic →</small><b>{next.name}</b></a> : <a href="/subjects/math/calculus/"><small>Course overview →</small><b>All calculus topics</b></a>}
       </nav>
     </>
   );
@@ -103,7 +105,7 @@ export function LibraryArticleContent({ article }: { article: LibraryArticle }) 
   return (
     <article className="library-article">
       <header className="library-article-header">
-        <nav className="breadcrumbs"><a href="/topics/">Topics</a><span>/</span><a href={`/topics/calculus/${topic.slug}/`}>{topic.name}</a><span>/</span><span>{article.shortTitle}</span></nav>
+        <nav className="breadcrumbs"><a href="/subjects/">Subjects</a><span>/</span><a href="/subjects/math/">Mathematics</a><span>/</span><a href={`/subjects/math/calculus/${topic.slug}/`}>{topic.name}</a><span>/</span><span>{article.shortTitle}</span></nav>
         <div className="article-format-line"><span>{archetype.label}</span><span>{article.course}</span><span>{article.difficulty}</span><span>{article.minutes} min read</span></div>
         <h1>{article.title}</h1>
         <p>{article.deck}</p>
@@ -142,8 +144,8 @@ export function LibraryArticleContent({ article }: { article: LibraryArticle }) 
       </div>
 
       <nav className="article-sequence" aria-label="Adjacent articles">
-        {previous ? <a href={articleHref(previous)}><small>← Previous in {topic.shortName}</small><b>{previous.shortTitle}</b></a> : <a href={`/topics/calculus/${topic.slug}/`}><small>← Topic overview</small><b>{topic.name}</b></a>}
-        {next ? <a href={articleHref(next)}><small>Next in {topic.shortName} →</small><b>{next.shortTitle}</b></a> : nextTopic ? <a href={`/topics/calculus/${nextTopic.slug}/`}><small>Next topic →</small><b>{nextTopic.name}</b></a> : <a href="/topics/"><small>Library overview →</small><b>All calculus topics</b></a>}
+        {previous ? <a href={articleHref(previous)}><small>← Previous in {topic.shortName}</small><b>{previous.shortTitle}</b></a> : <a href={`/subjects/math/calculus/${topic.slug}/`}><small>← Topic overview</small><b>{topic.name}</b></a>}
+        {next ? <a href={articleHref(next)}><small>Next in {topic.shortName} →</small><b>{next.shortTitle}</b></a> : nextTopic ? <a href={`/subjects/math/calculus/${nextTopic.slug}/`}><small>Next topic →</small><b>{nextTopic.name}</b></a> : <a href="/subjects/math/calculus/"><small>Course overview →</small><b>All calculus topics</b></a>}
       </nav>
     </article>
   );
@@ -152,12 +154,12 @@ export function LibraryArticleContent({ article }: { article: LibraryArticle }) 
 export function CalculusHubContent() {
   return (
     <>
-      <section className="subject-hero section-pad"><div><p className="eyebrow">Mathematics · Subject hub</p><h1>Calculus</h1><p>Rates of change, accumulation, infinite processes—and a library organized well enough to show how they connect.</p><div className="subject-hero-actions"><a className="button button-ink" href="/topics/">Browse all topics</a><a className="button button-ghost" href="/search/">Search the library</a></div></div><div className="subject-mark">∫<span>dx</span></div></section>
+      <section className="subject-hero section-pad"><div><p className="eyebrow">Mathematics · Course hub</p><h1>Calculus</h1><p>Rates of change, accumulation, infinite processes—and a library organized well enough to show how they connect.</p><div className="subject-hero-actions"><a className="button button-ink" href="/practice/math/calculus/">Practice calculus</a><a className="button button-ghost" href="/search/">Search the library</a></div></div><div className="subject-mark">∫<span>dx</span></div></section>
       <section className="calculus-map section-pad">
         <div className="section-heading"><div><p className="eyebrow">The course map</p><h2>Six topics.<br /><em>One connected path.</em></h2></div><p>Read in sequence from limits through series, or open the topic that matches your course today.</p></div>
-        <div className="calculus-map-list">{libraryTopics.map((topic) => <a href={`/topics/calculus/${topic.slug}/`} key={topic.slug}><span>{topic.accent}</span><div><b>{topic.name}</b><small>{topic.description}</small></div><em>{getTopicArticles(topic.slug).length} resources</em><i>→</i></a>)}</div>
+        <div className="calculus-map-list">{libraryTopics.map((topic) => <a href={`/subjects/math/calculus/${topic.slug}/`} key={topic.slug}><span>{topic.accent}</span><div><b>{topic.name}</b><small>{topic.description}</small></div><em>{getTopicArticles(topic.slug).length} resources</em><i>→</i></a>)}</div>
       </section>
-      <section className="calculus-tools section-pad"><div><p className="eyebrow">Put it to work</p><h2>Learn, calculate, practice.</h2></div><a href="/calculators/integration-method-finder/"><span>Tool</span><b>Integration Method Finder</b><small>Choose a first move →</small></a><a href="/practice/calculus/integration-method-selection/"><span>Practice</span><b>Method selection</b><small>10 focused questions →</small></a><a href="/exams/calculus-readiness/"><span>Diagnostic</span><b>Calculus readiness</b><small>Find prerequisite gaps →</small></a></section>
+      <section className="calculus-tools section-pad"><div><p className="eyebrow">Put it to work</p><h2>Learn, calculate, practice.</h2></div><a href="/tools/math/calculus/integration-method-finder/"><span>Tool</span><b>Integration Method Finder</b><small>Choose a first move →</small></a><a href="/practice/math/calculus/quizzes/integration-method-selection/"><span>Quiz</span><b>Method selection</b><small>10 focused questions →</small></a><a href="/practice/math/calculus/diagnostics/calculus-readiness/"><span>Diagnostic</span><b>Calculus readiness</b><small>Find prerequisite gaps →</small></a></section>
     </>
   );
 }
