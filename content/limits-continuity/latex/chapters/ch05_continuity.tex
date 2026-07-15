@@ -1,0 +1,847 @@
+\begin{webpage}{calculus/continuity/continuity-at-a-point}{Continuity at a Point}{lesson}
+\chapter{Continuity and the Intermediate Value Theorem}
+
+\section{Continuity at a Point}
+
+\lessonobjective{
+Use the three-part continuity test at a point; distinguish continuity from merely having a limit; explain the graphical meaning of continuity.
+}
+
+A limit describes nearby behavior. Continuity connects that nearby behavior to the function's actual value.
+
+\begin{bgdefinition}[title={Continuity at \(x=a\)}]
+A function \(f\) is continuous at \(x=a\) if all three conditions hold:
+\begin{enumerate}
+  \item \(f(a)\) is defined;
+  \item \(\displaystyle\lim_{x\to a}f(x)\) exists;
+  \item \(\displaystyle\lim_{x\to a}f(x)=f(a)\).
+\end{enumerate}
+Equivalently,
+\[
+  \boxed{\lim_{x\to a}f(x)=f(a)}.
+\]
+\end{bgdefinition}
+
+\begin{bgconcept}
+Continuity means the graph, the nearby trend, and the actual dot all agree at the point. You approach one height, and the function is actually located at that height.
+\end{bgconcept}
+
+\begin{bgguided}[title={A continuous line}]
+Is \(f(x)=2x+1\) continuous at \(x=3\)?
+
+\begin{bgsolution}
+Check the three conditions.
+
+\textbf{1. The function value exists:}
+\[
+  f(3)=2(3)+1=7.
+\]
+
+\textbf{2. The limit exists:}
+\[
+  \lim_{x\to3}(2x+1)=7.
+\]
+
+\textbf{3. They agree:}
+\[
+  \lim_{x\to3}f(x)=f(3)=7.
+\]
+Therefore, \(f\) is continuous at \(3\).
+\end{bgsolution}
+\end{bgguided}
+
+\begin{bgexample}[title={A limit exists but continuity fails}]
+Let
+\[
+  g(x)=
+  \begin{cases}
+    x^2+1,&x\ne2,\\
+    9,&x=2.
+  \end{cases}
+\]
+Is \(g\) continuous at \(2\)?
+
+\begin{bgsolution}
+\textbf{Condition 1:} \(g(2)=9\), so the function value exists.
+
+\textbf{Condition 2:} Nearby values use \(x^2+1\), so
+\[
+  \lim_{x\to2}g(x)=5.
+\]
+The limit exists.
+
+\textbf{Condition 3:} Compare:
+\[
+  \lim_{x\to2}g(x)=5\ne9=g(2).
+\]
+Therefore, \(g\) is not continuous at \(2\).
+
+This discontinuity is removable. Redefining \(g(2)=5\) would repair it.
+\end{bgsolution}
+\end{bgexample}
+
+\begin{bgexample}[title={Continuity fails because no two-sided limit exists}]
+Let
+\[
+  h(x)=
+  \begin{cases}
+    x+1,&x<2,\\
+    6-x,&x\ge2.
+  \end{cases}
+\]
+Is \(h\) continuous at \(2\)?
+
+\begin{bgsolution}
+The function value exists:
+\[
+  h(2)=6-2=4.
+\]
+But
+\[
+  \lim_{x\to2^-}h(x)=3,
+\]
+while
+\[
+  \lim_{x\to2^+}h(x)=4.
+\]
+The one-sided limits disagree, so the two-sided limit does not exist. Condition 2 fails. Therefore, \(h\) is not continuous at \(2\).
+\end{bgsolution}
+\end{bgexample}
+
+\begin{bgexamnote}
+Do not use only the slogan ``draw without lifting your pencil.'' It is a helpful picture, not a complete test. At endpoints, one-sided continuity is allowed; on disconnected domains, a graph can be continuous at every point of its domain even though you cannot draw all pieces in one stroke.
+\end{bgexamnote}
+\webnext{calculus/continuity/intervals-endpoints}{Continuity on Intervals and at Endpoints}
+\end{webpage}
+
+\begin{webpage}{calculus/continuity/intervals-endpoints}{Continuity on Intervals and at Endpoints}{lesson}
+\section{Continuity on Intervals and at Endpoints}
+
+\lessonobjective{
+Determine intervals of continuity; use one-sided limits at endpoints; state the natural domains on which familiar functions are continuous.
+}
+
+A function is continuous on an open interval if it is continuous at every point in the interval.
+
+At the left endpoint \(a\) of a closed interval \([a,b]\), continuity requires
+\[
+  \lim_{x\to a^+}f(x)=f(a).
+\]
+At the right endpoint \(b\), continuity requires
+\[
+  \lim_{x\to b^-}f(x)=f(b).
+\]
+
+\begin{bgconcept}
+At the left edge of a road, there is no road to the left. It would be silly to demand traffic from a direction that does not exist. Endpoint continuity checks only from inside the interval.
+\end{bgconcept}
+
+\begin{bgguided}[title={Square root at its endpoint}]
+Is \(f(x)=\sqrt{x}\) continuous at \(x=0\) on its domain \([0,\infty)\)?
+
+\begin{bgsolution}
+The function value is
+\[
+  f(0)=0.
+\]
+Only the right-hand limit is relevant because negative inputs are outside the real domain:
+\[
+  \lim_{x\to0^+}\sqrt{x}=0.
+\]
+The right-hand limit equals the function value, so \(f\) is continuous at the endpoint \(0\).
+\end{bgsolution}
+\end{bgguided}
+\webnext{calculus/continuity/continuous-functions}{Which Functions Are Continuous?}
+\end{webpage}
+
+\begin{webpage}{calculus/continuity/continuous-functions}{Which Functions Are Continuous?}{reference}
+\subsection{Families of continuous functions}
+
+The following functions are continuous everywhere in their natural domains:
+
+\begin{itemize}
+  \item polynomials;
+  \item rational functions where the denominator is nonzero;
+  \item root functions where the root is real;
+  \item trigonometric functions wherever defined;
+  \item exponential functions;
+  \item logarithmic functions for positive arguments.
+\end{itemize}
+
+Sums, differences, products, constant multiples, and valid compositions of continuous functions are continuous. Quotients are continuous where their denominators are nonzero.
+
+\begin{bgexample}[title={Find intervals of continuity}]
+Find the intervals on which
+\[
+  f(x)=\frac{\sqrt{x+2}}{x^2-9}
+\]
+is continuous.
+
+\begin{bgsolution}
+The square root requires
+\[
+  x+2\ge0,
+\]
+so
+\[
+  x\ge-2.
+\]
+The denominator must be nonzero:
+\[
+  x^2-9\ne0
+\]
+so
+\[
+  x\ne-3,3.
+\]
+The value \(-3\) is already outside the square-root domain. The only excluded domain point within \([-2,\infty)\) is \(3\).
+
+Therefore, the function is continuous on
+\[
+  \boxed{[-2,3)\cup(3,\infty)}.
+\]
+At \(-2\), continuity is interpreted from the right.
+\end{bgsolution}
+\end{bgexample}
+
+\begin{bgexample}[title={Composition}]
+Where is
+\[
+  g(x)=\ln(4-x^2)
+\]
+continuous?
+
+\begin{bgsolution}
+The logarithm requires a positive argument:
+\[
+  4-x^2>0.
+\]
+This means
+\[
+  x^2<4,
+\]
+so
+\[
+  -2<x<2.
+\]
+The polynomial \(4-x^2\) is continuous everywhere, and \(\ln u\) is continuous for \(u>0\). Therefore the composition is continuous on
+\[
+  \boxed{(-2,2)}.
+\]
+\end{bgsolution}
+\end{bgexample}
+\webnext{calculus/continuity/types-of-discontinuity}{Types of Discontinuity}
+\end{webpage}
+
+\begin{webpage}{calculus/continuity/types-of-discontinuity}{Types of Discontinuity}{lesson}
+\section{Classifying Discontinuities}
+
+\lessonobjective{
+Distinguish removable, jump, infinite, and oscillatory discontinuities; connect each classification to the relevant limit behavior.
+}
+
+\begin{center}
+\begin{tabularx}{\textwidth}{@{}p{0.24\textwidth}X X@{}}
+\toprule
+\textbf{Type} & \textbf{Limit behavior} & \textbf{Typical graph feature}\\
+\midrule
+Removable & Finite two-sided limit exists, but value is missing or wrong & Hole or displaced dot\\
+Jump & Finite one-sided limits exist but disagree & Sudden step\\
+Infinite & Function becomes unbounded & Vertical asymptote\\
+Oscillatory & Outputs do not settle to one value & Endless oscillation\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{groupplot}[
+ group style={group size=2 by 2,horizontal sep=1cm,vertical sep=1cm},
+ width=0.43\textwidth,height=0.32\textwidth,
+ xmin=-2,xmax=2,ymin=-2.2,ymax=3.2,
+ axis lines=middle,grid=major,major grid style={draw=BGLine},
+ xtick=\empty,ytick=\empty
+]
+\nextgroupplot[title={Removable}]
+\addplot[BGBlue,very thick,domain=-2:-0.05]{x+1};
+\addplot[BGBlue,very thick,domain=0.05:2]{x+1};
+\addplot[only marks,mark=o,mark size=4pt,very thick,BGRed] coordinates {(0,1)};
+\nextgroupplot[title={Jump}]
+\addplot[BGBlue,very thick,domain=-2:0]{0};
+\addplot[BGGreen,very thick,domain=0:2]{2};
+\addplot[only marks,mark=o,mark size=4pt,very thick,BGBlue] coordinates {(0,0)};
+\addplot[only marks,mark=*,mark size=3pt,BGGreen] coordinates {(0,2)};
+\nextgroupplot[title={Infinite}]
+\addplot[BGBlue,very thick,domain=-2:-0.06,samples=120]{1/x};
+\addplot[BGBlue,very thick,domain=0.06:2,samples=120]{1/x};
+\nextgroupplot[title={Oscillatory}]
+\addplot[BGBlue,thick,domain=-2:-0.08,samples=120]{sin(deg(1/x))};
+\addplot[BGBlue,thick,domain=0.08:2,samples=120]{sin(deg(1/x))};
+\end{groupplot}
+\end{tikzpicture}
+\caption{The four principal discontinuity types encountered in first-semester calculus.}
+\label{fig:discontinuities}
+\end{figure}
+
+\begin{bgexample}[title={Classify a rational function's discontinuities}]
+Classify every discontinuity of
+\[
+  f(x)=\frac{x^2-1}{x^2-x-2}.
+\]
+
+\begin{bgsolution}
+Factor numerator and denominator:
+\[
+  x^2-1=(x-1)(x+1),
+\]
+\[
+  x^2-x-2=(x-2)(x+1).
+\]
+For \(x\ne-1\),
+\[
+  f(x)=\frac{x-1}{x-2}.
+\]
+At \(x=-1\), the common factor cancelled. The simplified function is finite:
+\[
+  \frac{-1-1}{-1-2}=\frac{-2}{-3}=\frac23.
+\]
+Thus \(x=-1\) is a removable discontinuity with a hole at \((-1,2/3)\).
+
+At \(x=2\), the remaining denominator is zero and the numerator is nonzero. Thus \(x=2\) is an infinite discontinuity and vertical asymptote.
+\end{bgsolution}
+\end{bgexample}
+\webnext{calculus/continuity/repair-removable-discontinuity}{How to Repair a Removable Discontinuity}
+\end{webpage}
+
+\begin{webpage}{calculus/continuity/repair-removable-discontinuity}{How to Repair a Removable Discontinuity}{lesson}
+\section{Repairing Removable Discontinuities}
+
+\lessonobjective{
+Choose a missing function value so that a function becomes continuous at a point.
+}
+
+If a finite limit exists at \(a\), define the missing or incorrect function value to equal that limit.
+
+\begin{bgguided}[title={Fill the hole with the approached value}]
+Let
+\[
+  f(x)=
+  \begin{cases}
+    \dfrac{x^2-4}{x-2},&x\ne2,\\
+    c,&x=2.
+  \end{cases}
+\]
+Find \(c\) so that \(f\) is continuous at \(2\).
+
+\begin{bgsolution}
+For \(x\ne2\),
+\[
+  \frac{x^2-4}{x-2}=x+2.
+\]
+Therefore,
+\[
+  \lim_{x\to2}f(x)=4.
+\]
+Continuity requires
+\[
+  f(2)=\lim_{x\to2}f(x).
+\]
+Since \(f(2)=c\), choose
+\[
+  \boxed{c=4}.
+\]
+\end{bgsolution}
+\end{bgguided}
+
+\input{checks/continuity-flow-01}
+
+\begin{bgexample}[title={Repair a more complicated hole}]
+Choose \(c\) so that
+\[
+  g(x)=
+  \begin{cases}
+    \dfrac{x^3-27}{x-3},&x\ne3,\\
+    c,&x=3
+  \end{cases}
+\]
+is continuous at \(3\).
+
+\begin{bgsolution}
+Factor the difference of cubes:
+\[
+  x^3-27=(x-3)(x^2+3x+9).
+\]
+Thus, for \(x\ne3\),
+\[
+  g(x)=x^2+3x+9.
+\]
+Take the limit:
+\[
+  3^2+3(3)+9=9+9+9=27.
+\]
+Therefore,
+\[
+  \boxed{c=27}.
+\]
+\end{bgsolution}
+\end{bgexample}
+
+\begin{bgmistake}
+Only removable discontinuities can be repaired by changing one function value. A jump or vertical asymptote reflects the behavior of infinitely many nearby points, not one misplaced dot.
+\end{bgmistake}
+\webnext{calculus/continuity/piecewise-parameters}{Choosing Parameters for Piecewise Continuity}
+\end{webpage}
+
+\begin{webpage}{calculus/continuity/piecewise-parameters}{Choosing Parameters for Piecewise Continuity}{lesson}
+\section{Choosing Parameters in Piecewise Functions}
+
+\lessonobjective{
+Set the left-hand expression, right-hand expression, and function value equal at a joining point; solve for unknown parameters.
+}
+
+At a piecewise join \(x=a\), continuity requires
+\[
+  \lim_{x\to a^-}f(x)
+  =f(a)
+  =\lim_{x\to a^+}f(x).
+\]
+For ordinary polynomial pieces, substitute \(x=a\) into both formulas and set the results equal.
+
+\begin{bgguided}[title={One parameter}]
+Find \(k\) so that
+\[
+  f(x)=
+  \begin{cases}
+    kx+1,&x<2,\\
+    x+3,&x\ge2
+  \end{cases}
+\]
+is continuous at \(2\).
+
+\begin{bgsolution}
+Left side at the join:
+\[
+  2k+1.
+\]
+Right side and function value:
+\[
+  2+3=5.
+\]
+Set them equal:
+\[
+  2k+1=5.
+\]
+Subtract \(1\):
+\[
+  2k=4.
+\]
+Divide by \(2\):
+\[
+  \boxed{k=2}.
+\]
+\end{bgsolution}
+\end{bgguided}
+
+\begin{bgexample}[title={The parameter appears in both pieces}]
+Find \(a\) so that
+\[
+  g(x)=
+  \begin{cases}
+    ax+1,&x<2,\\
+    x^2-a,&x\ge2
+  \end{cases}
+\]
+is continuous at \(2\).
+
+\begin{bgsolution}
+The left-hand limit is
+\[
+  2a+1.
+\]
+The right-hand limit and function value are
+\[
+  2^2-a=4-a.
+\]
+Set them equal:
+\[
+  2a+1=4-a.
+\]
+Add \(a\) to both sides:
+\[
+  3a+1=4.
+\]
+Subtract \(1\):
+\[
+  3a=3.
+\]
+Therefore,
+\[
+  \boxed{a=1}.
+\]
+\end{bgsolution}
+\end{bgexample}
+
+\begin{bgexample}[title={Exam-level: no parameter works}]
+Find \(k\) so that
+\[
+  h(x)=
+  \begin{cases}
+    kx+2,&x<1,\\
+    x^2+k,&x\ge1
+  \end{cases}
+\]
+is continuous at \(1\).
+
+\begin{bgsolution}
+The left-hand expression approaches
+\[
+  k+2.
+\]
+The right-hand expression and function value equal
+\[
+  1+k.
+\]
+Continuity would require
+\[
+  k+2=k+1.
+\]
+Subtracting \(k\) gives
+\[
+  2=1,
+\]
+which is impossible. Therefore,
+\[
+  \boxed{\text{no value of }k\text{ works}}.
+\]
+A parameter problem is not guaranteed to have a parameter solution. The algebra is allowed to reject the premise, rude though that may seem to a worksheet.
+\end{bgsolution}
+\end{bgexample}
+\webnext{calculus/continuity/two-parameter-continuity}{Two-Parameter Continuity Problems}
+\end{webpage}
+
+\begin{webpage}{calculus/continuity/two-parameter-continuity}{Two-Parameter Continuity Problems}{lesson}
+\subsection{Two conditions and two parameters}
+
+\begin{bgexample}[title={Solve a two-parameter continuity system}]
+Choose \(a\) and \(b\) so that
+\[
+  f(x)=
+  \begin{cases}
+    ax+b,&x<1,\\
+    x^2+1,&1\le x<3,\\
+    2x+a,&x\ge3
+  \end{cases}
+\]
+is continuous at both \(1\) and \(3\).
+
+\begin{bgsolution}
+At \(x=1\), continuity requires
+\[
+  a+b=1^2+1=2.
+\]
+At \(x=3\), continuity requires
+\[
+  3^2+1=2(3)+a.
+\]
+Thus,
+\[
+  10=6+a,
+\]
+so
+\[
+  a=4.
+\]
+Use \(a+b=2\):
+\[
+  4+b=2,
+\]
+so
+\[
+  b=-2.
+\]
+Therefore,
+\[
+  \boxed{a=4,\quad b=-2}.
+\]
+\end{bgsolution}
+\end{bgexample}
+\webnext{calculus/continuity/intermediate-value-theorem}{Intermediate Value Theorem}
+\end{webpage}
+
+\begin{webpage}{calculus/continuity/intermediate-value-theorem}{Intermediate Value Theorem}{lesson}
+\section{The Intermediate Value Theorem}
+
+\lessonobjective{
+Use continuity and endpoint values to prove that a function attains an intermediate output or has a root in an interval; distinguish existence from calculation.
+}
+
+\begin{bgconcept}
+A continuous path from below a horizontal line to above that line must cross it somewhere. You may not know exactly where the crossing occurs, but skipping it would require a jump.
+\end{bgconcept}
+
+\begin{bgtheorem}[title={Intermediate Value Theorem}]
+Suppose \(f\) is continuous on \([a,b]\). If \(N\) lies between \(f(a)\) and \(f(b)\), then there exists at least one \(c\in[a,b]\) such that
+\[
+  \boxed{f(c)=N}.
+\]
+In particular, if \(f(a)\) and \(f(b)\) have opposite signs, then there exists \(c\in(a,b)\) such that \(f(c)=0\).
+\end{bgtheorem}
+
+\begin{bgguided}[title={Crossing ground level}]
+Suppose a continuous function has
+\[
+  f(1)=-2
+  \qquad\text{and}\qquad
+  f(4)=5.
+\]
+The graph starts below the \(x\)-axis and ends above it. Because it is continuous, it must cross the axis somewhere between \(1\) and \(4\). Thus there is some \(c\in(1,4)\) with \(f(c)=0\).
+\end{bgguided}
+
+\input{checks/ivt-flow-01}
+
+\begin{bgexample}[title={Prove a polynomial has a root}]
+Show that
+\[
+  x^3+x-1=0
+\]
+has at least one solution in \((0,1)\).
+
+\begin{bgsolution}
+Define
+\[
+  f(x)=x^3+x-1.
+\]
+Polynomials are continuous everywhere, so \(f\) is continuous on \([0,1]\).
+
+Evaluate the endpoints:
+\[
+  f(0)=0+0-1=-1,
+\]
+\[
+  f(1)=1+1-1=1.
+\]
+Because \(-1<0<1\), the Intermediate Value Theorem guarantees some \(c\in(0,1)\) such that
+\[
+  f(c)=0.
+\]
+Therefore, the equation has at least one solution in \((0,1)\).
+\end{bgsolution}
+\end{bgexample}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=0.8\textwidth,height=0.48\textwidth,
+  xmin=0,xmax=1,ymin=-1.15,ymax=1.15,
+  axis lines=middle,xlabel={$x$},ylabel={$f(x)$},
+  grid=major,major grid style={draw=BGLine}
+]
+\addplot[BGBlue,very thick,domain=0:1,samples=140]{x^3+x-1};
+\addplot[only marks,mark=*,mark size=2.7pt,BGGold] coordinates {(0,-1) (1,1)};
+\addplot[only marks,mark=*,mark size=2.7pt,BGGreen] coordinates {(0.6823278,0)};
+\node[anchor=south,font=\small] at (axis cs:0.6823278,0) {$c$};
+\end{axis}
+\end{tikzpicture}
+\caption{Continuity and opposite endpoint signs guarantee at least one root between \(0\) and \(1\).}
+\label{fig:ivt}
+\end{figure}
+
+\begin{bgexamnote}
+The Intermediate Value Theorem does not give the exact root, does not prove the root is unique, and cannot be used unless continuity on the entire closed interval has been established.
+\end{bgexamnote}
+\webnext{calculus/continuity/bisection-method}{Bisection Method After the IVT}
+\end{webpage}
+
+\begin{webpage}{calculus/continuity/bisection-method}{Bisection Method After the IVT}{lesson}
+\section{Bisection: Turning Existence Into an Approximation}
+
+\lessonobjective{
+Use repeated sign changes on smaller intervals to approximate a root guaranteed by the Intermediate Value Theorem.
+}
+
+For
+\[
+  f(x)=x^3+x-1,
+\]
+we know a root lies in \((0,1)\). Test the midpoint \(0.5\):
+\[
+  f(0.5)=0.125+0.5-1=-0.375.
+\]
+Since \(f(0.5)<0\) and \(f(1)>0\), a root lies in \((0.5,1)\).
+
+Test the new midpoint \(0.75\):
+\[
+  f(0.75)=0.421875+0.75-1=0.171875>0.
+\]
+Now the root lies in \((0.5,0.75)\).
+
+Continue:
+\[
+\begin{array}{c|c|c}
+\text{interval}&\text{midpoint}&\text{sign at midpoint}\\
+\hline
+(0,1)&0.5&-\\
+(0.5,1)&0.75&+\\
+(0.5,0.75)&0.625&-\\
+(0.625,0.75)&0.6875&+\\
+(0.625,0.6875)&0.65625&-
+\end{array}
+\]
+The root is being trapped in shorter intervals. This is the bisection method.
+
+\begin{bgconcept}
+The Intermediate Value Theorem says a root is in the box. Bisection keeps cutting the box in half and throwing away the half that cannot contain the sign change.
+\end{bgconcept}
+\webnext{calculus/limits/epsilon-delta-introduction}{Epsilon-Delta Definition: An Introduction}
+\end{webpage}
+
+\begin{webpage}{calculus/continuity/continuity-review}{Continuity and IVT Review}{review}
+\section*{Chapter 5 Summary}
+\addcontentsline{toc}{section}{Chapter 5 Summary}
+
+\begin{bgsummary}
+\begin{itemize}
+  \item Continuity at \(a\) requires a defined value, an existing limit, and equality between them.
+  \item At endpoints, use the one-sided limit from inside the interval.
+  \item Removable discontinuities can be repaired with one value; jumps and asymptotes cannot.
+  \item For piecewise continuity, set the left and right expressions equal at the join.
+  \item The Intermediate Value Theorem guarantees an attained value, not its exact location or uniqueness.
+  \item Bisection refines an IVT interval into a numerical approximation.
+\end{itemize}
+\end{bgsummary}
+\webnext{calculus/limits/epsilon-delta-introduction}{Epsilon-Delta Definition: An Introduction}
+\end{webpage}
+
+\begin{webpage}{calculus/continuity/continuity-concept-quiz}{Continuity Concept Quiz}{quiz}
+\section*{Chapter 5 Concept Quiz}
+\addcontentsline{toc}{section}{Chapter 5 Concept Quiz}
+
+Use this as a short retrieval check after finishing the chapter. On the website, each item should accept an answer before revealing the hint and worked explanation.
+
+\begin{bgcheck}{continuity-q1}{choice}{yes}[Concept check]
+Is \(f(x)=x^2+1\) continuous at \(x=3\)? Enter yes or no.
+\begin{bghint}
+Polynomials are continuous everywhere.
+\end{bghint}
+\begin{bgreveal}
+Yes. The function is defined, the limit exists, and both equal \(10\).
+\end{bgreveal}
+\end{bgcheck}
+
+\begin{bgcheck}{repair-q1}{integer}{6}[Concept check]
+Choose \(c\) so \(f(x)=\frac{x^2-9}{x-3}\) for \(x\ne3\), and \(f(3)=c\), is continuous.
+\begin{bghint}
+Factor, cancel, and find the approached value at \(3\).
+\end{bghint}
+\begin{bgreveal}
+The nearby formula is \(x+3\), so choose \(c=6\).
+\end{bgreveal}
+\end{bgcheck}
+
+\begin{bgcheck}{piecewise-q1}{integer}{2}[Concept check]
+Choose \(a\) so \(2x+a\) for \(x<1\) joins continuously to \(x^2+3\) for \(x\ge1\).
+\begin{bghint}
+Set the left value at \(1\) equal to the right value at \(1\).
+\end{bghint}
+\begin{bgreveal}
+\(2+a=4\), so \(a=2\).
+\end{bgreveal}
+\end{bgcheck}
+
+\begin{bgcheck}{ivt-q1}{choice}{yes}[Concept check]
+Does the IVT guarantee a zero of \(x^3+x-1\) on \([0,1]\)? Enter yes or no.
+\begin{bghint}
+Check continuity and the signs at both endpoints.
+\end{bghint}
+\begin{bgreveal}
+Yes. The polynomial is continuous, with values \(-1\) and \(1\).
+\end{bgreveal}
+\end{bgcheck}
+
+\begin{bgsummary}[title={Quiz use on the website}]
+This page should report completion by concept, not merely a total score. A wrong answer should link back to the exact lesson that teaches the missing method. The same questions may appear in randomized numerical variants, but the canonical explanation should remain stable.
+\end{bgsummary}
+\webnext{calculus/limits/epsilon-delta-introduction}{Epsilon-Delta Definition: An Introduction}
+\end{webpage}
+
+\begin{webpage}{calculus/continuity/continuity-practice}{Continuity and IVT Practice Problems}{practice}
+\section*{Chapter 5 Exercises}
+\addcontentsline{toc}{section}{Chapter 5 Exercises}
+
+\subsection*{A. Three-part continuity test}
+\begin{bgexercises}[label=\textbf{5.\arabic*}]
+  \item Is \(f(x)=x^2+1\) continuous at \(x=2\)? Verify all three conditions.
+  \item Is \(g(x)=1/(x-3)\) continuous at \(x=3\)? Identify the first failed condition.
+  \item A function has \(f(1)=4\) and \(\lim_{x\to1}f(x)=4\). Is it continuous at \(1\)?
+  \item A function has \(f(1)=4\) and \(\lim_{x\to1}f(x)=5\). Which condition fails?
+  \item A function is undefined at \(2\), but its limit there is \(7\). Which conditions fail?
+  \item A function has unequal one-sided limits at \(0\). Can it be continuous there?
+  \item Explain why existence of \(f(a)\) alone says nothing about continuity.
+  \item Explain why existence of a finite limit alone does not guarantee continuity.
+\end{bgexercises}
+
+\subsection*{B. Intervals of continuity}
+\begin{bgexercises}[label=\textbf{5.\arabic*},resume]
+  \item Find intervals of continuity of \(1/(x^2-4)\).
+  \item Find intervals of continuity of \(\sqrt{x-1}\).
+  \item Find intervals of continuity of \(\sqrt{5-x}/(x+2)\).
+  \item Find intervals of continuity of \(\ln(x+3)\).
+  \item Find intervals of continuity of \(\tan x\) on \([-2\pi,2\pi]\).
+  \item Find intervals of continuity of \(\sqrt{x+2}/(x^2-9)\).
+  \item Find the domain and intervals of continuity of \(\ln(9-x^2)\).
+  \item Explain endpoint continuity for \(f(x)=\sqrt{4-x^2}\) on \([-2,2]\).
+\end{bgexercises}
+
+\subsection*{C. Classifying discontinuities}
+\begin{bgexercises}[label=\textbf{5.\arabic*},resume]
+  \item Classify the discontinuity of \((x^2-1)/(x-1)\) at \(1\).
+  \item Classify the discontinuity of \(|x|/x\) at \(0\).
+  \item Classify the discontinuity of \(1/(x-2)^2\) at \(2\).
+  \item Classify the discontinuity of \(\sin(1/x)\) at \(0\).
+  \item Find and classify every discontinuity of \((x^2-4)/(x^2-x-2)\).
+  \item Find and classify every discontinuity of \((x^2-9)/(x^2-6x+9)\).
+  \item Can changing one function value repair a jump? Explain.
+  \item Can changing one function value repair a vertical asymptote? Explain.
+\end{bgexercises}
+
+\subsection*{D. Repairing holes}
+\begin{bgexercises}[label=\textbf{5.\arabic*},resume]
+  \item Find \(c\) so \(f(2)=c\) makes \((x^2-4)/(x-2)\) continuous.
+  \item Find \(c\) so \(f(3)=c\) makes \((x^2-9)/(x-3)\) continuous.
+  \item Find \(c\) so \(f(1)=c\) makes \((x^3-1)/(x-1)\) continuous.
+  \item Find \(c\) so \(f(4)=c\) makes \((\sqrt{x}-2)/(x-4)\) continuous.
+  \item Explain why no value at \(x=0\) makes \(|x|/x\) continuous there.
+  \item Explain why no value at \(x=2\) makes \(1/(x-2)\) continuous there.
+\end{bgexercises}
+
+\subsection*{E. Piecewise parameters}
+\begin{bgexercises}[label=\textbf{5.\arabic*},resume]
+  \item Find \(k\) so \(\begin{cases}kx+1,&x<2,\\x+3,&x\ge2\end{cases}\) is continuous at \(2\).
+  \item Find \(a\) so \(\begin{cases}2x+a,&x<1,\\x^2+3,&x\ge1\end{cases}\) is continuous at \(1\).
+  \item Find \(b\) so \(\begin{cases}x^2+b,&x\le-1,\\3x+1,&x>-1\end{cases}\) is continuous at \(-1\).
+  \item Find \(m\) so \(\begin{cases}mx-4,&x<3,\\2x+m,&x\ge3\end{cases}\) is continuous at \(3\).
+  \item Determine whether any \(k\) makes \(\begin{cases}kx+5,&x<0,\\kx+2,&x\ge0\end{cases}\) continuous at \(0\).
+  \item Find \(a,b\) so \(\begin{cases}ax+b,&x<1,\\x^2+1,&1\le x<3,\\2x+a,&x\ge3\end{cases}\) is continuous at both joins.
+  \item Design a piecewise function with one parameter that becomes continuous when the parameter is \(7\).
+  \item Explain why setting left and right formulas equal is necessary but not always sufficient when the actual function value is defined by a third rule.
+\end{bgexercises}
+
+\subsection*{F. Intermediate Value Theorem and bisection}
+\begin{bgexercises}[label=\textbf{5.\arabic*},resume]
+  \item Show that \(x^3-2x-2=0\) has a root in \((1,2)\).
+  \item Show that \(x^5+x-2=0\) has a root in \((0,2)\).
+  \item Show that \(\cos x=x\) has a solution in \((0,1)\).
+  \item Explain why a sign change is sufficient but not necessary for a root to exist.
+  \item Give a continuous function with a root in \((-1,1)\) whose endpoint values have the same sign.
+  \item Explain why IVT cannot be applied to \(1/x\) on \([-1,1]\), despite opposite endpoint signs.
+  \item Use two bisection steps to narrow a root of \(x^3+x-1\) from \((0,1)\).
+  \item Use three bisection steps to narrow a root of \(x^3-2x-2\) from \((1,2)\).
+  \item Does IVT prove uniqueness? Give an example supporting your answer.
+  \item State every hypothesis and conclusion in a complete IVT solution.
+\end{bgexercises}
+
+Answers begin in \cref{app:chapter-answers}.
+\webnext{calculus/limits/epsilon-delta-introduction}{Epsilon-Delta Definition: An Introduction}
+\end{webpage}

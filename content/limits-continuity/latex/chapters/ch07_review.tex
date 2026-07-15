@@ -1,0 +1,246 @@
+\begin{webpage}{calculus/limits/unit-review}{Limits and Continuity Unit Review}{review}
+\chapter{Mastery Review and Practice Exams}
+
+\section{The Complete Limit Decision Process}
+
+A strong student does not merely know many techniques. A strong student can decide which technique applies when the problem is not labeled.
+
+\begin{bgmethod}[title={Master Decision Tree}]
+When evaluating a limit:
+\begin{enumerate}
+  \item \textbf{Read the direction.} Is the input approaching a finite number, one side of a finite number, \(+\infty\), or \(-\infty\)?
+  \item \textbf{Substitute when meaningful.}
+  \begin{itemize}
+    \item Real number: usually finished.
+    \item \(0/0\): algebraic indeterminate form.
+    \item Nonzero over zero: one-sided sign analysis.
+    \item \(\infty/\infty\): compare powers or divide by the dominant power.
+    \item \(\infty-\infty\): combine or rationalize.
+  \end{itemize}
+  \item \textbf{Inspect the structure.}
+  \begin{itemize}
+    \item polynomial factors \(\to\) factor and cancel;
+    \item radicals \(\to\) conjugate;
+    \item fractions inside fractions \(\to\) common denominator;
+    \item absolute values/piecewise rules \(\to\) one-sided cases;
+    \item bounded oscillation times zero \(\to\) squeeze;
+    \item trig near zero \(\to\) standard trig limits;
+    \item rational function at infinity \(\to\) degrees/dominant terms;
+    \item radical at negative infinity \(\to\) use \(|x|\).
+  \end{itemize}
+  \item \textbf{State the conclusion precisely.} Distinguish a finite number, \(\DNE\), \(+\infty\), and \(-\infty\).
+\end{enumerate}
+\end{bgmethod}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/common-exam-errors}{Common Limits Exam Errors}{review}
+\section{Common Exam Errors and Their Repairs}
+
+\begin{center}
+\begin{longtable}{@{}p{0.30\textwidth}p{0.31\textwidth}p{0.31\textwidth}@{}}
+\toprule
+\textbf{Error} & \textbf{Why it fails} & \textbf{Repair}\\
+\midrule
+\endhead
+Using the filled point as the limit & The point gives \(f(a)\), not nearby behavior & Trace the graph from both sides first\\
+Calling \(0/0\) the answer & It is an indeterminate form & Simplify, then substitute again\\
+Cancelling terms across addition & Cancellation applies to factors & Factor the entire numerator or denominator\\
+Ignoring left and right sides & Two-sided limits require agreement & Compute both one-sided limits\\
+Writing \(\sqrt{x^2}=x\) at negative infinity & The principal square root is nonnegative & Use \(\sqrt{x^2}=|x|=-x\) for \(x<0\)\\
+Using degrees in \(\sin x/x\) & The fundamental limit is a radian statement & Convert or use radian measure\\
+Applying IVT without continuity & Jumps can skip intermediate values & State continuity on the entire closed interval\\
+Claiming IVT gives the exact root & It gives existence only & Use bisection or another numerical method for location\\
+Using l'Hospital's Rule too early & It may be unavailable, circular, or hide the needed algebra & Use first-unit methods requested by the course\\
+\bottomrule
+\end{longtable}
+\end{center}
+\webnext{calculus/limits/unit-review}{Limits and Continuity Unit Review}
+\end{webpage}
+
+\begin{webpage}{calculus/study/correct-practice-test}{How to Correct a Calculus Practice Test}{study}
+\section{How to Correct a Practice Test}
+
+A practice test is useful only if corrections identify the cause of each error.
+
+For every missed problem, record:
+
+\begin{enumerate}
+  \item the first incorrect line, not merely the final answer;
+  \item the category of error: concept, method selection, algebra, sign, notation, or time pressure;
+  \item the smallest skill that would have prevented it;
+  \item one new problem of the same type, worked correctly without looking back.
+\end{enumerate}
+
+\begin{bgconcept}
+``I made a silly mistake'' is not a diagnosis. A sign error near a vertical asymptote, a failed factorization, and forgetting that one-sided limits must agree are different problems. Name the species before trying to exterminate it.
+\end{bgconcept}
+\webnext{calculus/limits/unit-review}{Limits and Continuity Unit Review}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/cumulative-practice}{Cumulative Limits and Continuity Practice}{practice}
+\section{Cumulative Review Set}
+
+Work this set without section labels telling you the method. Unless a calculator is explicitly permitted, use exact values.
+
+\subsection*{Part A: Concepts and graphs}
+\begin{bgexercises}[label=\textbf{R\arabic*.}]
+  \item Explain the difference between \(f(a)\) and \(\lim_{x\to a}f(x)\).
+  \item State the one-sided criterion for a two-sided limit.
+  \item List four reasons a limit may fail to exist.
+  \item State the three continuity conditions at \(a\).
+  \item Explain why changing one value can repair a hole but not a jump.
+  \item Explain why infinity is not treated as an ordinary real-number limit.
+  \item State the Squeeze Theorem.
+  \item State the fundamental sine limit and its unit requirement.
+  \item State the Intermediate Value Theorem, including every hypothesis.
+  \item Explain what IVT does not guarantee.
+\end{bgexercises}
+
+\subsection*{Part B: Finite limits}
+\begin{bgexercises}[label=\textbf{R\arabic*.},resume]
+  \item \(\displaystyle\lim_{x\to2}(3x^2-x+4)\)
+  \item \(\displaystyle\lim_{x\to-1}\frac{x^2+2}{x+4}\)
+  \item \(\displaystyle\lim_{x\to4}\frac{x^2-16}{x-4}\)
+  \item \(\displaystyle\lim_{x\to-2}\frac{x^3+8}{x+2}\)
+  \item \(\displaystyle\lim_{x\to1}\frac{x^4-1}{x^2-1}\)
+  \item \(\displaystyle\lim_{x\to0}\frac{\sqrt{x+25}-5}{x}\)
+  \item \(\displaystyle\lim_{x\to9}\frac{x-9}{\sqrt{x}-3}\)
+  \item \(\displaystyle\lim_{x\to0}\frac{\frac1{x+2}-\frac12}{x}\)
+  \item \(\displaystyle\lim_{x\to3}\frac{|x-3|}{x-3}\)
+  \item \(\displaystyle\lim_{x\to2}\frac{|x-2|}{\sqrt{|x-2|}}\)
+\end{bgexercises}
+
+\subsection*{Part C: Squeeze and trigonometry}
+\begin{bgexercises}[label=\textbf{R\arabic*.},resume]
+  \item \(\displaystyle\lim_{x\to0}x^3\sin(1/x)\)
+  \item \(\displaystyle\lim_{x\to0}x^2\cos(4/x)\)
+  \item \(\displaystyle\lim_{x\to0}\frac{\sin(6x)}x\)
+  \item \(\displaystyle\lim_{x\to0}\frac{\sin(2x)}{\sin(9x)}\)
+  \item \(\displaystyle\lim_{x\to0}\frac{\tan(5x)}{3x}\)
+  \item \(\displaystyle\lim_{x\to0}\frac{1-\cos(4x)}{x^2}\)
+  \item \(\displaystyle\lim_{x\to0}\frac{\sin(3x)\sin(7x)}{x^2}\)
+  \item \(\displaystyle\lim_{x\to0}\frac{1-\cos x}{x\sin x}\)
+\end{bgexercises}
+
+\subsection*{Part D: Infinite behavior}
+\begin{bgexercises}[label=\textbf{R\arabic*.},resume]
+  \item \(\displaystyle\lim_{x\to1^-}\frac{x+2}{x-1}\)
+  \item \(\displaystyle\lim_{x\to1^+}\frac{x+2}{x-1}\)
+  \item \(\displaystyle\lim_{x\to-2}\frac{-3}{(x+2)^2}\)
+  \item Find every hole and vertical asymptote of \(\dfrac{x^2-1}{x^2-3x+2}\).
+  \item \(\displaystyle\lim_{x\to\infty}\frac{4x^2-x}{2x^2+7}\)
+  \item \(\displaystyle\lim_{x\to-\infty}\frac{3x+1}{x^2+5}\)
+  \item \(\displaystyle\lim_{x\to\infty}\frac{x^3+1}{x^2-1}\)
+  \item Find the slant asymptote of \(\dfrac{x^2+2}{x-1}\).
+  \item \(\displaystyle\lim_{x\to\infty}\frac{\sqrt{4x^2+1}}x\)
+  \item \(\displaystyle\lim_{x\to-\infty}\frac{\sqrt{4x^2+1}}x\)
+  \item \(\displaystyle\lim_{x\to\infty}(\sqrt{x^2+12x}-x)\)
+  \item \(\displaystyle\lim_{x\to-\infty}(\sqrt{x^2+8x}+x)\)
+\end{bgexercises}
+
+\subsection*{Part E: Continuity and the IVT}
+\begin{bgexercises}[label=\textbf{R\arabic*.},resume]
+  \item Find intervals of continuity of \(\sqrt{x+1}/(x-2)\).
+  \item Classify all discontinuities of \((x^2-4)/(x^2-x-2)\).
+  \item Find \(c\) so \(\begin{cases}(x^2-9)/(x-3),&x\ne3,\\c,&x=3\end{cases}\) is continuous.
+  \item Find \(k\) so \(\begin{cases}kx+2,&x<1,\\x^2+4,&x\ge1\end{cases}\) is continuous at \(1\).
+  \item Determine whether any \(a\) makes \(\begin{cases}ax+1,&x<0,\\ax+4,&x\ge0\end{cases}\) continuous at \(0\).
+  \item Show that \(x^3-x-1=0\) has a root in \((1,2)\).
+  \item Explain why \(1/x\) cannot use IVT on \([-1,1]\).
+  \item Use two bisection steps to narrow a root of \(x^3-x-1\) from \((1,2)\).
+\end{bgexercises}
+
+\subsection*{Part F: Formal limits}
+\begin{bgexercises}[label=\textbf{R\arabic*.},resume]
+  \item Find a \(\delta\) in terms of \(\eps\) proving \(\lim_{x\to2}(4x-1)=7\).
+  \item Prove \(\lim_{x\to1}x^2=1\) using a local bound.
+  \item Explain why \(\delta=\eps\) does not automatically work for every function.
+  \item Translate \(|x-5|<0.01\) and \(|f(x)-3|<0.02\) into interval language.
+\end{bgexercises}
+\webnext{calculus/limits/unit-review}{Limits and Continuity Unit Review}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/practice-exam-a}{Limits and Continuity Practice Exam A}{exam}
+\section{Practice Examination A}
+
+\textbf{Suggested time:} 75 minutes. \textbf{Calculator:} none unless your course normally permits one. Show reasoning; unsupported answers may receive little credit.
+
+\subsection*{Part I: Concepts, 20 points}
+\begin{bgexercises}[label=\textbf{A\arabic*.}]
+  \item A graph approaches \(4\) from both sides at \(x=2\), but the filled point is \((2,7)\). State \(f(2)\) and the limit. Explain the distinction.
+  \item State all three continuity conditions at \(x=a\).
+  \item Explain why \(0/0\) is indeterminate rather than equal to zero.
+  \item State what the Intermediate Value Theorem guarantees and what it does not guarantee.
+\end{bgexercises}
+
+\subsection*{Part II: Finite limits, 35 points}
+\begin{bgexercises}[label=\textbf{A\arabic*.},resume]
+  \item \(\displaystyle\lim_{x\to-2}(2x^3-x+1)\)
+  \item \(\displaystyle\lim_{x\to3}\frac{x^2-9}{x-3}\)
+  \item \(\displaystyle\lim_{x\to0}\frac{\sqrt{x+9}-3}{x}\)
+  \item \(\displaystyle\lim_{x\to2}\frac{\frac1x-\frac12}{x-2}\)
+  \item \(\displaystyle\lim_{x\to0}\frac{\sin(7x)}{2x}\)
+  \item \(\displaystyle\lim_{x\to0}x^2\cos(1/x)\)
+  \item \(\displaystyle\lim_{x\to1}\frac{|x-1|}{x-1}\)
+\end{bgexercises}
+
+\subsection*{Part III: Infinite behavior, 25 points}
+\begin{bgexercises}[label=\textbf{A\arabic*.},resume]
+  \item Find both one-sided limits of \(\dfrac{x+1}{x-2}\) at \(x=2\).
+  \item \(\displaystyle\lim_{x\to-\infty}\frac{5x^2+1}{2x^2-3x}\)
+  \item \(\displaystyle\lim_{x\to-\infty}\frac{\sqrt{x^2+4}}x\)
+  \item Find the hole, vertical asymptote, and horizontal asymptote of \(\dfrac{x^2-1}{x^2-3x+2}\).
+\end{bgexercises}
+
+\subsection*{Part IV: Continuity and existence, 20 points}
+\begin{bgexercises}[label=\textbf{A\arabic*.},resume]
+  \item Find \(k\) so \(\begin{cases}kx+1,&x<2,\\x^2-1,&x\ge2\end{cases}\) is continuous at \(2\).
+  \item Use IVT to show \(x^3+x-3=0\) has a root in \((1,2)\).
+  \item Give a valid \(\delta\) in terms of \(\eps\) for \(\lim_{x\to3}(2x+1)=7\).
+\end{bgexercises}
+\webnext{calculus/limits/unit-review}{Limits and Continuity Unit Review}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/practice-exam-b}{Limits and Continuity Practice Exam B}{exam}
+\section{Practice Examination B}
+
+This exam is deliberately less patterned. It is meant to test whether you can identify methods rather than imitate section headings.
+
+\textbf{Suggested time:} 90 minutes.
+
+\begin{bgexercises}[label=\textbf{B\arabic*.}]
+  \item Let
+  \[
+    f(x)=\begin{cases}
+      x^2+1,&x<1,\\
+      5,&x=1,\\
+      3x-1,&x>1.
+    \end{cases}
+  \]
+  Find both one-sided limits, the two-sided limit, \(f(1)\), and determine continuity at \(1\).
+  \item \(\displaystyle\lim_{x\to2}\frac{x^3-8}{x^2-4}\)
+  \item \(\displaystyle\lim_{x\to0}\frac{\sqrt{1+4x}-\sqrt{1-x}}x\)
+  \item \(\displaystyle\lim_{x\to0}\frac{1-\cos(3x)}{x^2}\)
+  \item \(\displaystyle\lim_{x\to0}\frac{\tan(2x)}{\sin(5x)}\)
+  \item \(\displaystyle\lim_{x\to0}x\sin(1/x^2)\)
+  \item Find every discontinuity of \(\dfrac{(x-1)(x+2)}{(x-1)(x-3)^2}\), classify it, and state all one-sided infinite limits.
+  \item \(\displaystyle\lim_{x\to\infty}\frac{2x^3-x}{x^2+1}\)
+  \item Find the polynomial asymptote of the function in the previous problem.
+  \item \(\displaystyle\lim_{x\to-\infty}(\sqrt{x^2+10x}+x)\)
+  \item Find \(a,b\) so
+  \[
+    g(x)=\begin{cases}
+      ax+b,&x<1,\\
+      x^2+2,&1\le x<2,\\
+      3x+a,&x\ge2
+    \end{cases}
+  \]
+  is continuous at \(1\) and \(2\).
+  \item Show that \(x^5-3x+1=0\) has a root in \((0,1)\), then perform two bisection steps.
+  \item Prove \(\lim_{x\to1}(4x-3)=1\) using the formal definition.
+  \item A student claims that because \(f(-1)<0<f(1)\), every function has a root in \((-1,1)\). Give a counterexample and state the missing hypothesis.
+\end{bgexercises}
+
+Full answers and selected worked solutions are in the appendices. Do not read them until you have completed an honest attempt. The universe already contains enough answer keys masquerading as education.
+\webnext{calculus/limits/unit-review}{Limits and Continuity Unit Review}
+\end{webpage}

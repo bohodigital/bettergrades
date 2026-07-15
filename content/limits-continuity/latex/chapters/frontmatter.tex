@@ -1,0 +1,182 @@
+\begin{titlepage}
+\thispagestyle{empty}
+\begin{tikzpicture}[remember picture,overlay]
+  \fill[BGInk] (current page.south west) rectangle (current page.north east);
+  \fill[BGGold] (current page.south west) rectangle ([xshift=0.24in]current page.north west);
+  \draw[BGGold,line width=1.2pt] ([xshift=0.85in,yshift=-1.20in]current page.north west) -- ([xshift=-0.85in,yshift=-1.20in]current page.north east);
+  \foreach \x/\y in {1.1/1.5,1.6/1.8,2.1/1.4,2.6/2.0,3.1/1.6,3.6/2.15,4.1/1.75,4.6/2.3,5.1/1.9,5.6/2.45,6.1/2.0,6.6/2.55,7.1/2.05}{
+    \fill[BGGold!80] ([xshift=\x in,yshift=\y in]current page.south west) circle (1.4pt);
+  }
+\end{tikzpicture}
+\vspace*{1.55in}
+{\color{white}\fontsize{17}{21}\selectfont BETTERGRADES CALCULUS I}\par
+\vspace{0.28in}
+{\color{white}\fontsize{39}{45}\selectfont\bfseries Limits and Continuity}\par
+\vspace{0.22in}
+{\color{BGGold}\fontsize{21}{25}\selectfont A complete first-unit tutorial}\par
+\vspace{0.55in}
+{\color{white}\large Learn the idea. See every step. Practice until it sticks.}\par
+\vfill
+{\color{white}\normalsize Expanded tutorial edition}\par
+{\color{white}\small BetterGrades manuscript}\par
+\vspace{0.75in}
+\end{titlepage}
+
+\begin{webpage}{calculus/limits-and-continuity}{Limits and Continuity Course Overview}{hub}
+\chapter*{What This Book Is For}
+\addcontentsline{toc}{chapter}{What This Book Is For}
+
+This is not a packet of lecture notes. It is meant to be the thing you read when the lecture moved too quickly, the textbook skipped three algebra steps, the homework answer says only ``6,'' and every explanation online assumes you already understand the part you are trying to learn.
+
+A student who can do the prerequisite algebra in the diagnostic should be able to use this unit to learn the first major topic of Calculus I from beginning to end. The unit is designed to support three levels of understanding at the same time:
+
+\begin{description}
+  \item[Plain-language understanding.] What the idea means before the notation begins.
+  \item[Homework competence.] A repeatable method for solving the kinds of problems assigned in a first calculus course.
+  \item[Exam readiness.] Enough conceptual and algebraic control to handle unfamiliar versions of familiar problems without copying a pattern blindly.
+\end{description}
+
+Every major concept therefore appears in four forms:
+
+\begin{enumerate}
+  \item a plain-language explanation that assumes no prior calculus vocabulary;
+  \item a formal mathematical statement;
+  \item a fully worked example with no important algebra steps omitted;
+  \item practice organized from warm-up to exam level.
+\end{enumerate}
+
+\begin{bgconcept}
+Think of this book as a patient tutor who never gets annoyed when you ask, ``Why did that denominator disappear?'' The answer should be visible on the page. If a solution jumps from line one to line five, it has failed at its job, regardless of how elegant the author felt while writing it.
+\end{bgconcept}
+
+\section*{How to Study With This Unit}
+
+Do not read mathematics the way you read a news article. A worked solution only becomes useful when you attempt the next move before seeing it.
+
+For each worked example:
+
+\begin{enumerate}
+  \item Cover the solution.
+  \item Write down what direct substitution gives.
+  \item Name the obstacle: ordinary value, \(0/0\), division by zero, infinity over infinity, a jump, or something else.
+  \item Choose a method before uncovering the next line.
+  \item Compare your work with the solution and identify the first point where your reasoning differs.
+\end{enumerate}
+
+For each exercise set, use three passes:
+
+\begin{description}
+  \item[Pass 1: Learn.] Use the chapter and check answers after small groups of problems.
+  \item[Pass 2: Remember.] Return later and work without notes.
+  \item[Pass 3: Perform.] Work a mixed set under a time limit, with no labels telling you which method to use.
+\end{description}
+
+\begin{bgsummary}
+Looking at a solution and thinking ``that makes sense'' is not the same as being able to produce the solution. Recognition feels like knowledge because the page is doing half the thinking for you. Practice removes the page.
+\end{bgsummary}
+
+\section*{Suggested Pacing}
+
+The unit can be used as a two-week intensive review or a four-week first course unit.
+
+\begin{center}
+\begin{tabularx}{\textwidth}{@{}p{0.13\textwidth}X X@{}}
+\toprule
+\textbf{Session} & \textbf{Main work} & \textbf{Minimum practice}\\
+\midrule
+1 & Average change, instantaneous change, basic limit language & Chapter 1 warm-ups 1--10\\
+2 & Tables, graphs, function value versus limit & Chapter 1 core 11--24\\
+3 & One-sided limits and failure modes & Chapter 1 exam practice 25--40\\
+4 & Direct substitution and limit laws & Chapter 2 warm-ups 1--16\\
+5 & Factoring and cancellation & Chapter 2 core 17--34\\
+6 & Radicals, complex fractions, absolute values & Chapter 2 core 35--54\\
+7 & Squeeze Theorem and trig limits & Chapter 3 exercises 1--38\\
+8 & Infinite limits and vertical asymptotes & Chapter 4 exercises 1--26\\
+9 & Limits at infinity and radicals & Chapter 4 exercises 27--50\\
+10 & Continuity and discontinuity & Chapter 5 exercises 1--26\\
+11 & Parameter problems and IVT & Chapter 5 exercises 27--52\\
+12 & Formal definition or optional honors track & Chapter 6 selected exercises\\
+13 & Cumulative review & Chapter 7 review set\\
+14 & Practice exam and correction & Practice Exam A or B\\
+\bottomrule
+\end{tabularx}
+\end{center}
+\webnext{calculus/limits/prerequisite-diagnostic}{Calculus Limits Prerequisite Diagnostic}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/prerequisite-diagnostic}{Calculus Limits Prerequisite Diagnostic}{diagnostic}
+\chapter*{Prerequisite Diagnostic}
+\addcontentsline{toc}{chapter}{Prerequisite Diagnostic}
+
+Calculus introduces new ideas, but many wrong calculus answers are caused by old algebra. Complete this diagnostic without a calculator. A score below 15 out of 20 does not mean you cannot learn calculus. It means you should repair the identified skill before the notation becomes crowded enough to hide the original mistake.
+
+\section*{Diagnostic Questions}
+
+\begin{bgexercises}
+  \item Factor completely: \(x^2-25\).
+  \item Factor completely: \(x^3-8\).
+  \item Factor completely: \(2x^2-5x-3\).
+  \item Simplify and state all excluded values:
+  \[
+    \frac{x^2-9}{x-3}.
+  \]
+  \item Simplify:
+  \[
+    \frac{\frac{1}{x+2}-\frac12}{x}.
+  \]
+  \item Rationalize the numerator:
+  \[
+    \frac{\sqrt{x+9}-3}{x}.
+  \]
+  \item Solve \(|x-4|<0.3\).
+  \item Rewrite \(\sqrt{x^2}\) correctly for every real \(x\).
+  \item State the domain of \(f(x)=\dfrac{1}{x^2-4}\).
+  \item State the domain of \(g(x)=\sqrt{5-x}\).
+  \item Evaluate \(\sin(\pi/6)\), \(\cos(\pi/3)\), and \(\tan(\pi/4)\).
+  \item Simplify \(1-\cos^2\theta\).
+  \item If \(f(x)=x^2-3x\), find \(f(2+h)\).
+  \item For the same function, simplify
+  \[
+    \frac{f(2+h)-f(2)}{h},\qquad h\ne0.
+  \]
+  \item Solve \(3x+1=10\).
+  \item Solve \(2a+1=4-a\).
+  \item Find the slope through \((-1,2)\) and \((3,10)\).
+  \item Explain the difference between \(x=2\) and \(x\to2\).
+  \item Explain why \(\dfrac00\) is not equal to zero.
+  \item Sketch any function with a hole at \((1,3)\) and a filled point at \((1,5)\).
+\end{bgexercises}
+
+Answers and skill diagnoses appear in \cref{app:diagnostic-answers}.
+\webnext{calculus/limits/notation-guide}{Limit Notation Guide}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/notation-guide}{Limit Notation Guide}{reference}
+\chapter*{Notation You Will Meet}
+\addcontentsline{toc}{chapter}{Notation You Will Meet}
+
+\begin{longtable}{@{}p{0.26\textwidth}p{0.66\textwidth}@{}}
+\toprule
+\textbf{Notation} & \textbf{Meaning}\\
+\midrule
+\endhead
+\(f(a)\) & The actual output of \(f\) at the input \(a\).\\
+\(x\to a\) & The input \(x\) approaches \(a\); it need not equal \(a\).\\
+\(x\to a^-\) & The input approaches \(a\) using values less than \(a\).\\
+\(x\to a^+\) & The input approaches \(a\) using values greater than \(a\).\\
+\(\displaystyle\lim_{x\to a}f(x)=L\) & Nearby outputs approach \(L\) as nearby inputs approach \(a\).\\
+\(\DNE\) & The requested limit does not exist as one real number.\\
+\(+\infty,-\infty\) & Unbounded positive or negative behavior. These symbols are not real numbers.\\
+\([a,b]\) & The closed interval including both endpoints.\\
+\((a,b)\) & The open interval excluding both endpoints.\\
+\(\forall\) & ``For every.'' Used in the formal definition of a limit.\\
+\(\exists\) & ``There exists.''\\
+\(\eps,\delta\) & Output tolerance and input tolerance in the formal definition.\\
+\bottomrule
+\end{longtable}
+
+\begin{bgsource}
+The exposition in this unit is original. Its scope and sequencing were checked against \emph{Active Calculus}, 2nd edition, especially its treatment of numerical, graphical, and algebraic perspectives on limits. Historical problem types and applications were also checked against the public-domain texts \emph{Calculus Made Easy} by Silvanus P. Thompson and \emph{Elements of the Differential and Integral Calculus} by Granville and Smith. No Active Calculus exercise is reproduced verbatim. Public-domain examples are modernized, renumbered, and reworked when used as inspiration.
+\end{bgsource}
+\webnext{calculus/limits/why-limits-matter}{Why Limits Matter in Calculus}
+\end{webpage}

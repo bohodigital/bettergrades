@@ -1,0 +1,697 @@
+\begin{webpage}{calculus/limits/infinite-limits}{Infinite Limits Explained}{lesson}
+\chapter{Infinite Behavior and Asymptotes}
+
+\section{Infinite Limits}
+
+\lessonobjective{
+Interpret infinite-limit notation; determine one-sided signs near a vertical asymptote; distinguish unbounded behavior from an ordinary finite limit.
+}
+
+A finite limit asks whether outputs approach one real number. An infinite limit describes outputs whose magnitude grows without bound.
+
+\begin{bgdefinition}[title={Infinite-Limit Notation}]
+The statement
+\[
+  \lim_{x\to a}f(x)=+\infty
+\]
+means that \(f(x)\) becomes arbitrarily large and positive as \(x\) approaches \(a\).
+
+The statement
+\[
+  \lim_{x\to a}f(x)=-\infty
+\]
+means that \(f(x)\) becomes arbitrarily negative as \(x\) approaches \(a\).
+\end{bgdefinition}
+
+Infinity is not a real number. The notation records a direction of unbounded growth.
+
+\begin{bgconcept}
+Imagine a thermometer with no top. Saying the reading approaches \(+\infty\) does not mean it arrives at a final number called infinity. It means that no matter how large a height you name, the reading eventually exceeds it near the target input.
+\end{bgconcept}
+
+\begin{bgguided}[title={\(1/x\) near zero}]
+Consider \(f(x)=1/x\).
+
+From the right of zero, use small positive numbers:
+\[
+\begin{array}{c|c}
+x&1/x\\
+\hline
+0.1&10\\
+0.01&100\\
+0.001&1000
+\end{array}
+\]
+Thus,
+\[
+  \lim_{x\to0^+}\frac1x=+\infty.
+\]
+
+From the left, use small negative numbers:
+\[
+\begin{array}{c|c}
+x&1/x\\
+\hline
+-0.1&-10\\
+-0.01&-100\\
+-0.001&-1000
+\end{array}
+\]
+Thus,
+\[
+  \lim_{x\to0^-}\frac1x=-\infty.
+\]
+The one-sided behaviors differ, so the ordinary two-sided limit does not exist.
+\end{bgguided}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{groupplot}[
+  group style={group size=2 by 1,horizontal sep=1.2cm},
+  width=0.45\textwidth,height=0.42\textwidth,
+  xmin=-4,xmax=4,ymin=-8,ymax=8,
+  axis lines=middle,grid=major,major grid style={draw=BGLine},
+  xlabel={$x$},ylabel={$y$}
+]
+\nextgroupplot[title={$y=1/(x-1)$}]
+\addplot[BGBlue,very thick,domain=-4:0.94,samples=140]{1/(x-1)};
+\addplot[BGBlue,very thick,domain=1.06:4,samples=140]{1/(x-1)};
+\draw[dashed,BGRed] (axis cs:1,-8)--(axis cs:1,8);
+\nextgroupplot[title={$y=1/(x-1)^2$}]
+\addplot[BGGreen,very thick,domain=-4:0.94,samples=140]{1/(x-1)^2};
+\addplot[BGGreen,very thick,domain=1.06:4,samples=140]{1/(x-1)^2};
+\draw[dashed,BGRed] (axis cs:1,-8)--(axis cs:1,8);
+\end{groupplot}
+\end{tikzpicture}
+\caption{An odd power changes sign across the vertical asymptote; an even power remains positive on both sides.}
+\label{fig:odd-even-asymptote}
+\end{figure}
+\webnext{calculus/limits/vertical-asymptotes}{Vertical Asymptotes and One-Sided Sign Analysis}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/vertical-asymptotes}{Vertical Asymptotes and One-Sided Sign Analysis}{lesson}
+\section{Vertical Asymptotes and Sign Analysis}
+
+\lessonobjective{
+Find vertical asymptote candidates, cancel removable factors before classifying behavior, and use a sign chart to determine each one-sided infinite limit.
+}
+
+The line \(x=a\) is a vertical asymptote if the function becomes unbounded on at least one side of \(a\).
+
+For a rational function
+\[
+  f(x)=\frac{p(x)}{q(x)},
+\]
+zeros of \(q(x)\) are candidates. But first simplify common factors.
+
+\begin{bgmistake}
+A denominator zero does not automatically create a vertical asymptote. If the zero factor cancels with the numerator, the graph may have a removable hole instead.
+\end{bgmistake}
+
+\begin{bgguided}[title={Identify the sign before saying infinity}]
+Evaluate
+\[
+  \lim_{x\to2^-}\frac1{x-2}.
+\]
+
+\begin{bgsolution}
+As \(x\to2^-\), \(x-2\) is a tiny negative number. Dividing \(1\) by a tiny negative number gives a very large negative number. Therefore,
+\[
+  \boxed{\lim_{x\to2^-}\frac1{x-2}=-\infty}.
+\]
+\end{bgsolution}
+\end{bgguided}
+
+\input{checks/infinite-sign-01}
+
+\begin{bgmethod}[title={One-Sided Sign Chart}]
+To analyze \(p(x)/q(x)\) near \(x=a\):
+\begin{enumerate}
+  \item Factor numerator and denominator.
+  \item Cancel any common factor, while remembering the corresponding hole.
+  \item Determine the sign of every remaining factor just left of \(a\).
+  \item Determine the sign just right of \(a\).
+  \item Combine signs and decide whether the magnitude grows without bound.
+\end{enumerate}
+\end{bgmethod}
+
+\begin{bgexample}[title={A sign chart with several factors}]
+Find both one-sided limits of
+\[
+  f(x)=\frac{x+2}{(x-3)(x+1)}
+\]
+at \(x=3\).
+
+\begin{bgsolution}
+Near \(x=3\), the factors \(x+2\) and \(x+1\) are positive. Only \(x-3\) changes sign.
+
+From the left of \(3\):
+\[
+  x+2>0,\qquad x-3<0,\qquad x+1>0.
+\]
+The quotient is negative. Its denominator approaches zero in magnitude, so
+\[
+  \boxed{\lim_{x\to3^-}f(x)=-\infty}.
+\]
+
+From the right of \(3\):
+\[
+  x+2>0,\qquad x-3>0,\qquad x+1>0.
+\]
+The quotient is positive, so
+\[
+  \boxed{\lim_{x\to3^+}f(x)=+\infty}.
+\]
+Thus \(x=3\) is a vertical asymptote.
+\end{bgsolution}
+\end{bgexample}
+
+\begin{bgexample}[title={Even multiplicity}]
+Analyze
+\[
+  g(x)=\frac{x-4}{(x+2)^2}
+\]
+near \(x=-2\).
+
+\begin{bgsolution}
+Near \(-2\), the numerator \(x-4\) is negative. The denominator \((x+2)^2\) is positive on both sides and approaches zero.
+
+Therefore, on both sides the quotient is negative with unbounded magnitude:
+\[
+  \boxed{\lim_{x\to-2^-}g(x)=-\infty},
+\]
+\[
+  \boxed{\lim_{x\to-2^+}g(x)=-\infty}.
+\]
+The two one-sided infinite behaviors agree, so it is also common to write
+\[
+  \lim_{x\to-2}g(x)=-\infty.
+\]
+This does not mean the limit is a real number; it means both sides decrease without bound.
+\end{bgsolution}
+\end{bgexample}
+
+\begin{bgexample}[title={Exam-level: hole versus asymptote}]
+Find and classify every discontinuity of
+\[
+  h(x)=\frac{(x-1)(x+4)}{(x-1)(x-3)}.
+\]
+
+\begin{bgsolution}
+The original denominator is zero at \(x=1\) and \(x=3\). Cancel the common factor for \(x\ne1\):
+\[
+  h(x)=\frac{x+4}{x-3}.
+\]
+At \(x=1\), the simplified formula is finite:
+\[
+  \frac{1+4}{1-3}=-\frac52.
+\]
+Therefore \(x=1\) is a removable hole, not a vertical asymptote.
+
+At \(x=3\), the remaining denominator is zero while the numerator is \(7\ne0\). Thus \(x=3\) is a vertical asymptote.
+
+For signs near \(3\), the numerator is positive. The denominator \(x-3\) is negative from the left and positive from the right:
+\[
+  \lim_{x\to3^-}h(x)=-\infty,
+  \qquad
+  \lim_{x\to3^+}h(x)=+\infty.
+\]
+\end{bgsolution}
+\end{bgexample}
+\webnext{calculus/limits/limits-at-infinity}{Limits at Infinity and Horizontal Asymptotes}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/limits-at-infinity}{Limits at Infinity and Horizontal Asymptotes}{lesson}
+\section{Limits at Infinity}
+
+\lessonobjective{
+Interpret \(x\to\pm\infty\); find horizontal asymptotes by comparing dominant terms; evaluate rational-function end behavior.
+}
+
+The notation
+\[
+  \lim_{x\to\infty}f(x)=L
+\]
+asks what happens to outputs as inputs become arbitrarily large and positive. The notation
+\[
+  \lim_{x\to-\infty}f(x)=L
+\]
+asks what happens far to the left.
+
+If either end limit equals a finite number \(L\), then \(y=L\) is a horizontal asymptote on that end.
+
+\begin{bgconcept}
+A horizontal asymptote describes the far-away behavior of a graph. The graph may cross it nearby. An asymptote is not an electric fence. It is a long-term trend.
+\end{bgconcept}
+
+\subsection{Reciprocal powers}
+
+For every positive integer \(n\),
+\[
+  \lim_{x\to\infty}\frac1{x^n}=0,
+  \qquad
+  \lim_{x\to-\infty}\frac1{x^n}=0.
+\]
+These facts drive the degree rules for rational functions.
+
+\begin{bgguided}[title={One over a growing number}]
+Evaluate
+\[
+  \lim_{x\to\infty}\frac1x.
+\]
+
+\begin{bgsolution}
+As \(x\) becomes \(10,100,1000,\ldots\), the values \(1/x\) become
+\[
+  0.1,0.01,0.001,\ldots
+\]
+which approach zero. Therefore,
+\[
+  \boxed{0}.
+\]
+\end{bgsolution}
+\end{bgguided}
+
+\subsection{Equal degrees}
+
+\begin{bgexample}[title={Divide by the largest denominator power}]
+Evaluate
+\[
+  \lim_{x\to\infty}\frac{3x^2-2x+5}{x^2+4}.
+\]
+
+\begin{bgsolution}
+Divide every term by \(x^2\), the largest power in the denominator:
+\[
+\frac{3x^2-2x+5}{x^2+4}
+=\frac{3-\frac2x+\frac5{x^2}}{1+\frac4{x^2}}.
+\]
+As \(x\to\infty\), all reciprocal terms approach zero:
+\[
+  \frac{3-0+0}{1+0}=\boxed{3}.
+\]
+Thus \(y=3\) is a horizontal asymptote.
+\end{bgsolution}
+
+\input{checks/end-degree-01}
+\end{bgexample}
+
+\subsection{Numerator degree smaller than denominator degree}
+
+\begin{bgexample}[title={The denominator wins}]
+Evaluate
+\[
+  \lim_{x\to-\infty}\frac{5x-1}{x^2+3}.
+\]
+
+\begin{bgsolution}
+Divide by \(x^2\):
+\[
+  \frac{\frac5x-\frac1{x^2}}{1+\frac3{x^2}}.
+\]
+Every reciprocal term approaches zero, so
+\[
+  \boxed{0}.
+\]
+The quadratic denominator grows faster in magnitude than the linear numerator.
+\end{bgsolution}
+\end{bgexample}
+
+\subsection{Numerator degree larger than denominator degree}
+
+If the numerator degree is larger, there is no finite horizontal asymptote. The quotient may grow like a polynomial.
+
+\begin{bgexample}[title={Unbounded end behavior}]
+Evaluate
+\[
+  \lim_{x\to\infty}\frac{2x^3-x}{x^2+1}.
+\]
+
+\begin{bgsolution}
+The leading behavior is approximately
+\[
+  \frac{2x^3}{x^2}=2x,
+\]
+which grows to \(+\infty\). More formally, divide by \(x^2\):
+\[
+  \frac{2x-\frac1x}{1+\frac1{x^2}}.
+\]
+The numerator grows without bound while the denominator approaches \(1\), so
+\[
+  \boxed{+\infty}.
+\]
+\end{bgsolution}
+\end{bgexample}
+
+\begin{bgtheorem}[title={Rational-Function Degree Rules}]
+For \(f(x)=p(x)/q(x)\):
+\begin{itemize}
+  \item If \(\deg p<\deg q\), then \(f(x)\to0\) as \(x\to\pm\infty\).
+  \item If \(\deg p=\deg q\), the limit is the ratio of leading coefficients.
+  \item If \(\deg p>\deg q\), there is no finite horizontal asymptote; use division or dominant terms to determine the end behavior.
+\end{itemize}
+\end{bgtheorem}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=0.86\textwidth,height=0.46\textwidth,
+  xmin=-12,xmax=12,ymin=0,ymax=4.3,
+  axis lines=middle,xlabel={$x$},ylabel={$f(x)$},
+  grid=major,major grid style={draw=BGLine}
+]
+\addplot[BGBlue,very thick,domain=-12:12,samples=120]{(3*x^2-2*x+5)/(x^2+4)};
+\draw[dashed,BGRed,thick] (axis cs:-12,3)--(axis cs:12,3);
+\node[anchor=south west,font=\small,BGRed] at (axis cs:5,3) {$y=3$};
+\end{axis}
+\end{tikzpicture}
+\caption{The rational function approaches its horizontal asymptote \(y=3\) at both ends.}
+\label{fig:horizontal-asymptote}
+\end{figure}
+\webnext{calculus/limits/slant-asymptotes}{Polynomial and Slant Asymptotes}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/slant-asymptotes}{Polynomial and Slant Asymptotes}{lesson}
+\section{Polynomial and Slant Asymptotes}
+
+\lessonobjective{
+Use polynomial division when the numerator degree exceeds the denominator degree; identify a slant asymptote when the degree difference is one.
+}
+
+When the numerator degree is exactly one larger than the denominator degree, long division produces
+\[
+  f(x)=\text{linear quotient}+\frac{\text{remainder}}{q(x)}.
+\]
+The remainder term approaches zero, leaving a slant or oblique asymptote.
+
+\begin{bgexample}[title={Slant asymptote by division}]
+Find the end behavior of
+\[
+  f(x)=\frac{x^2+1}{x-1}.
+\]
+
+\begin{bgsolution}
+Divide \(x^2+1\) by \(x-1\):
+\[
+  \frac{x^2+1}{x-1}=x+1+\frac2{x-1}.
+\]
+As \(x\to\pm\infty\),
+\[
+  \frac2{x-1}\to0.
+\]
+Therefore the graph approaches
+\[
+  \boxed{y=x+1}.
+\]
+This is a slant asymptote. The function does not approach a finite number, but its difference from \(x+1\) approaches zero:
+\[
+  \lim_{x\to\pm\infty}[f(x)-(x+1)]=0.
+\]
+\end{bgsolution}
+\end{bgexample}
+\webnext{calculus/limits/radicals-at-infinity}{Radical Limits at Infinity}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/radicals-at-infinity}{Radical Limits at Infinity}{lesson}
+\section{Radicals at Infinity and the Absolute-Value Trap}
+
+\lessonobjective{
+Factor the highest power from a radical correctly; use \(\sqrt{x^2}=|x|\); evaluate radical differences by rationalization.
+}
+
+The identity
+\[
+  \boxed{\sqrt{x^2}=|x|}
+\]
+is essential. At positive infinity, \(|x|=x\). At negative infinity, \(|x|=-x\).
+
+\begin{bgguided}[title={Why the sign changes}]
+Evaluate
+\[
+  \lim_{x\to-\infty}\frac{\sqrt{x^2}}{x}.
+\]
+
+\begin{bgsolution}
+Since \(\sqrt{x^2}=|x|\),
+\[
+  \frac{\sqrt{x^2}}{x}=\frac{|x|}{x}.
+\]
+For negative \(x\), \(|x|=-x\). Therefore,
+\[
+  \frac{|x|}{x}=\frac{-x}{x}=-1.
+\]
+Hence
+\[
+  \boxed{-1}.
+\]
+Writing \(\sqrt{x^2}=x\) would incorrectly give \(+1\).
+\end{bgsolution}
+\end{bgguided}
+
+\begin{bgexample}[title={The same radical on two ends}]
+Evaluate
+\[
+  \lim_{x\to\infty}\frac{\sqrt{x^2+1}}{x}
+  \qquad\text{and}\qquad
+  \lim_{x\to-\infty}\frac{\sqrt{x^2+1}}{x}.
+\]
+
+\begin{bgsolution}
+Factor \(x^2\) inside the radical:
+\[
+  \sqrt{x^2+1}=\sqrt{x^2\left(1+\frac1{x^2}\right)}
+  =|x|\sqrt{1+\frac1{x^2}}.
+\]
+At positive infinity, \(|x|/x=1\), so
+\[
+  \boxed{1}.
+\]
+At negative infinity, \(|x|/x=-1\), so
+\[
+  \boxed{-1}.
+\]
+\end{bgsolution}
+\end{bgexample}
+\webnext{calculus/limits/infinity-minus-infinity}{Infinity Minus Infinity Limits}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/infinity-minus-infinity}{Infinity Minus Infinity Limits}{lesson}
+\subsection{The form \(\infty-\infty\)}
+
+A difference of two large expressions is indeterminate. Rationalization can reveal the finite remainder.
+
+\begin{bgexample}[title={Rationalize at infinity}]
+Evaluate
+\[
+  \lim_{x\to\infty}\left(\sqrt{x^2+3x}-x\right).
+\]
+
+\begin{bgsolution}
+Multiply by the conjugate:
+\begin{align*}
+\sqrt{x^2+3x}-x
+&=\frac{(x^2+3x)-x^2}{\sqrt{x^2+3x}+x}\\
+&=\frac{3x}{\sqrt{x^2+3x}+x}.
+\end{align*}
+Since \(x>0\) for large positive \(x\), divide numerator and denominator by \(x\):
+\[
+  \frac3{\sqrt{1+\frac3x}+1}.
+\]
+Now take the limit:
+\[
+  \frac3{1+1}=\boxed{\frac32}.
+\]
+\end{bgsolution}
+\end{bgexample}
+
+\begin{bgexample}[title={Exam-level: negative infinity changes the conjugate calculation}]
+Evaluate
+\[
+  \lim_{x\to-\infty}\left(\sqrt{x^2+4x}+x\right).
+\]
+
+\begin{bgsolution}
+Rationalize:
+\begin{align*}
+\sqrt{x^2+4x}+x
+&=\frac{(x^2+4x)-x^2}{\sqrt{x^2+4x}-x}\\
+&=\frac{4x}{\sqrt{x^2+4x}-x}.
+\end{align*}
+For \(x<0\), factor \(|x|=-x\) from the radical:
+\[
+  \sqrt{x^2+4x}=(-x)\sqrt{1+\frac4x}.
+\]
+Then the denominator becomes
+\[
+  -x\sqrt{1+\frac4x}-x
+  =-x\left(\sqrt{1+\frac4x}+1\right).
+\]
+Therefore,
+\[
+  \frac{4x}{-x\left(\sqrt{1+\frac4x}+1\right)}
+  =\frac{-4}{\sqrt{1+\frac4x}+1}.
+\]
+Taking the limit gives
+\[
+  \boxed{-2}.
+\]
+\end{bgsolution}
+\end{bgexample}
+\webnext{calculus/limits/complete-asymptote-analysis}{Complete Rational Function Asymptote Analysis}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/complete-asymptote-analysis}{Complete Rational Function Asymptote Analysis}{lesson}
+\section{Complete Asymptote Analysis}
+
+\begin{bgmethod}[title={Rational-Function Analysis Checklist}]
+For a rational function:
+\begin{enumerate}
+  \item Factor numerator and denominator.
+  \item Cancel common factors and record holes.
+  \item Set the remaining denominator equal to zero to find vertical asymptotes.
+  \item Use one-sided sign analysis at each vertical asymptote.
+  \item Compare degrees or divide polynomials to find horizontal or polynomial asymptotes.
+  \item Check both \(x\to\infty\) and \(x\to-\infty\); radical functions may behave differently on the two ends.
+\end{enumerate}
+\end{bgmethod}
+\webnext{calculus/continuity/continuity-at-a-point}{Continuity at a Point}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/infinite-behavior-review}{Infinite Limits and Asymptotes Review}{review}
+\section*{Chapter 4 Summary}
+\addcontentsline{toc}{section}{Chapter 4 Summary}
+
+\begin{bgsummary}
+\begin{itemize}
+  \item Infinite limits describe unbounded behavior; infinity is not a real number.
+  \item Remaining denominator zeros after cancellation give vertical asymptote candidates.
+  \item Sign charts determine \(+\infty\) versus \(-\infty\) on each side.
+  \item Rational end behavior is controlled by degrees and leading coefficients.
+  \item If the degree difference is one, polynomial division may reveal a slant asymptote.
+  \item At negative infinity, never replace \(\sqrt{x^2}\) by \(x\); use \(|x|=-x\).
+\end{itemize}
+\end{bgsummary}
+\webnext{calculus/continuity/continuity-at-a-point}{Continuity at a Point}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/infinite-behavior-concept-quiz}{Infinite Limits Concept Quiz}{quiz}
+\section*{Chapter 4 Concept Quiz}
+\addcontentsline{toc}{section}{Chapter 4 Concept Quiz}
+
+Use this as a short retrieval check after finishing the chapter. On the website, each item should accept an answer before revealing the hint and worked explanation.
+
+\begin{bgcheck}{infinite-q1}{choice}{-infinity}[Concept check]
+Evaluate \(\lim_{x\to2^-}\frac1{x-2}\).
+\begin{bghint}
+From the left, \(x-2\) is a small negative number.
+\end{bghint}
+\begin{bgreveal}
+A positive numerator divided by a small negative number tends to \(-\infty\).
+\end{bgreveal}
+\end{bgcheck}
+
+\begin{bgcheck}{vertical-q1}{integer}{3}[Concept check]
+For \(f(x)=1/(x-3)^2\), enter the \(x\)-value of the vertical asymptote.
+\begin{bghint}
+A vertical asymptote occurs where the denominator is zero and does not cancel.
+\end{bghint}
+\begin{bgreveal}
+\(x=3\).
+\end{bgreveal}
+\end{bgcheck}
+
+\begin{bgcheck}{end-q1}{rational}{2/5}[Concept check]
+Evaluate \(\lim_{x\to\infty}\frac{2x^2+1}{5x^2-3}\).
+\begin{bghint}
+The degrees match, so compare leading coefficients.
+\end{bghint}
+\begin{bgreveal}
+The limit is \(2/5\).
+\end{bgreveal}
+\end{bgcheck}
+
+\begin{bgcheck}{radical-infinity-q1}{integer}{-1}[Concept check]
+Evaluate \(\lim_{x\to-\infty}\frac{\sqrt{x^2+1}}x\).
+\begin{bghint}
+Remember \(\sqrt{x^2}=|x|=-x\) when \(x<0\).
+\end{bghint}
+\begin{bgreveal}
+The expression approaches \(-1\).
+\end{bgreveal}
+\end{bgcheck}
+
+\begin{bgsummary}[title={Quiz use on the website}]
+This page should report completion by concept, not merely a total score. A wrong answer should link back to the exact lesson that teaches the missing method. The same questions may appear in randomized numerical variants, but the canonical explanation should remain stable.
+\end{bgsummary}
+\webnext{calculus/continuity/continuity-at-a-point}{Continuity at a Point}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/infinite-behavior-practice}{Infinite Limits and Asymptote Practice}{practice}
+\section*{Chapter 4 Exercises}
+\addcontentsline{toc}{section}{Chapter 4 Exercises}
+
+\subsection*{A. One-sided infinite limits}
+\begin{bgexercises}[label=\textbf{4.\arabic*}]
+  \item \(\displaystyle\lim_{x\to4^-}\frac1{x-4}\)
+  \item \(\displaystyle\lim_{x\to4^+}\frac1{x-4}\)
+  \item \(\displaystyle\lim_{x\to0^-}\frac1{x^2}\)
+  \item \(\displaystyle\lim_{x\to0^+}\frac1{x^3}\)
+  \item \(\displaystyle\lim_{x\to-2^+}\frac{x-1}{x+2}\)
+  \item \(\displaystyle\lim_{x\to1^-}\frac{x+3}{(x-1)^2}\)
+  \item \(\displaystyle\lim_{x\to3^-}\frac{x+2}{(x-3)(x+1)}\)
+  \item \(\displaystyle\lim_{x\to3^+}\frac{x+2}{(x-3)(x+1)}\)
+  \item \(\displaystyle\lim_{x\to-1^-}\frac{2-x}{(x+1)^3}\)
+  \item \(\displaystyle\lim_{x\to-1^+}\frac{2-x}{(x+1)^3}\)
+\end{bgexercises}
+
+\subsection*{B. Holes and vertical asymptotes}
+\begin{bgexercises}[label=\textbf{4.\arabic*},resume]
+  \item Find and classify discontinuities of \(\dfrac{x-2}{(x-2)(x+1)}\).
+  \item Find and classify discontinuities of \(\dfrac{x^2-9}{(x-3)(x+2)}\).
+  \item Find all holes and vertical asymptotes of \(\dfrac{(x+1)(x-4)}{(x+1)(x-2)^2}\).
+  \item Determine one-sided behavior at every vertical asymptote of \(\dfrac{x+3}{(x-1)(x+2)}\).
+  \item Determine one-sided behavior at every vertical asymptote of \(\dfrac{x-5}{(x+1)^2}\).
+  \item Explain why a cancelled denominator factor creates a hole rather than a vertical asymptote.
+\end{bgexercises}
+
+\subsection*{C. Rational limits at infinity}
+\begin{bgexercises}[label=\textbf{4.\arabic*},resume]
+  \item \(\displaystyle\lim_{x\to\infty}\frac{4x+1}{x^2+7}\)
+  \item \(\displaystyle\lim_{x\to-\infty}\frac{2x^2-3}{5x^2+x}\)
+  \item \(\displaystyle\lim_{x\to\infty}\frac{7x^3+x}{2x^3-5}\)
+  \item \(\displaystyle\lim_{x\to-\infty}\frac{3x^4-x}{x^4+9}\)
+  \item \(\displaystyle\lim_{x\to\infty}\frac{x^2+1}{x^3+2}\)
+  \item \(\displaystyle\lim_{x\to-\infty}\frac{5x^3+1}{x^2-4}\)
+  \item \(\displaystyle\lim_{x\to\infty}\frac{-2x^5+x}{x^5+3}\)
+  \item Find all horizontal asymptotes of \(\dfrac{3x^2+1}{x^2-5x}\).
+  \item Find the slant asymptote of \(\dfrac{x^2+3}{x-2}\).
+  \item Use division to describe the end behavior of \(\dfrac{2x^3+x}{x^2-1}\).
+\end{bgexercises}
+
+\subsection*{D. Radicals at infinity}
+\begin{bgexercises}[label=\textbf{4.\arabic*},resume]
+  \item \(\displaystyle\lim_{x\to\infty}\frac{\sqrt{x^2+4}}{x}\)
+  \item \(\displaystyle\lim_{x\to-\infty}\frac{\sqrt{x^2+4}}{x}\)
+  \item \(\displaystyle\lim_{x\to\infty}\frac{\sqrt{9x^2+1}}{x}\)
+  \item \(\displaystyle\lim_{x\to-\infty}\frac{\sqrt{9x^2+1}}{x}\)
+  \item \(\displaystyle\lim_{x\to\infty}\left(\sqrt{x^2+8x}-x\right)\)
+  \item \(\displaystyle\lim_{x\to\infty}\left(\sqrt{4x^2+x}-2x\right)\)
+  \item \(\displaystyle\lim_{x\to-\infty}\left(\sqrt{x^2+6x}+x\right)\)
+  \item Explain the exact point where \(|x|\) must be used in a radical-at-infinity problem.
+\end{bgexercises}
+
+\subsection*{E. Mixed exam practice}
+\begin{bgexercises}[label=\textbf{4.\arabic*},resume]
+  \item Analyze all discontinuities and asymptotes of \(\dfrac{x^2-1}{x^2-3x+2}\).
+  \item Analyze all discontinuities and asymptotes of \(\dfrac{x^2-4}{x^2-x-2}\).
+  \item Find the exact one-sided limits at every vertical asymptote of \(\dfrac{x}{x^2-9}\).
+  \item Find the end behavior of \(\dfrac{2x^3-x+1}{x^2+4}\), including any polynomial asymptote.
+  \item Construct a rational function with a hole at \(x=1\), a vertical asymptote at \(x=-2\), and horizontal asymptote \(y=3\).
+  \item Explain why a graph may cross a horizontal asymptote but cannot take a finite value on a vertical asymptote where its formula is undefined.
+\end{bgexercises}
+
+Answers begin in \cref{app:chapter-answers}.
+\webnext{calculus/continuity/continuity-at-a-point}{Continuity at a Point}
+\end{webpage}

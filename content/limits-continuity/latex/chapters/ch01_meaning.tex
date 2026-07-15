@@ -1,0 +1,896 @@
+\begin{webpage}{calculus/limits/why-limits-matter}{Why Limits Matter in Calculus}{lesson}
+\chapter{What a Limit Means}
+
+\section{The Problem Calculus Is Trying to Solve}
+
+\lessonobjective{
+Explain the difference between average and instantaneous change; compute average rates on shrinking intervals; interpret a limit as a number approached by those rates.
+}
+
+Suppose you walk 12 feet in 3 seconds. Your average speed is
+\[
+  \frac{12\text{ feet}}{3\text{ seconds}}=4\text{ feet per second}.
+\]
+Nothing mysterious has happened. Two different times were compared, so the elapsed time in the denominator was not zero.
+
+Now ask a harder question: how fast were you moving at exactly \(t=2\) seconds? A single instant has no duration. If we try to compare the position at \(t=2\) with itself, we get
+\[
+  \frac{\text{position at }2-\text{position at }2}{2-2}
+  =\frac00,
+\]
+which is undefined.
+
+Calculus solves this problem by refusing to measure over an interval of zero length. Instead, it measures over ordinary intervals and makes those intervals shorter and shorter. If the resulting average rates settle toward one number, that number is the instantaneous rate.
+
+\begin{bgconcept}
+Imagine a video of a moving bicycle. One frame does not show speed. But if you compare two frames that are very close together, you can estimate the speed. Use frames closer and closer together, and the estimates may settle toward the speed at the chosen moment. A limit records the number those estimates approach.
+\end{bgconcept}
+
+\subsection{Average rate of change}
+
+For a function \(f\), the average rate of change from \(x=a\) to \(x=b\) is
+\[
+  \boxed{\frac{f(b)-f(a)}{b-a}}.
+\]
+This is also the slope of the secant line through the points
+\[
+  (a,f(a))\qquad\text{and}\qquad(b,f(b)).
+\]
+
+\begin{bgguided}[title={A straight-moving cart}]
+A toy cart has position
+\[
+  s(t)=3t+1
+\]
+in feet after \(t\) seconds. Find its average velocity from \(t=2\) to \(t=5\).
+
+\begin{bgsolution}
+First find the two positions:
+\[
+  s(2)=3(2)+1=7,
+\]
+\[
+  s(5)=3(5)+1=16.
+\]
+The position changed by
+\[
+  16-7=9\text{ feet}.
+\]
+The time changed by
+\[
+  5-2=3\text{ seconds}.
+\]
+Therefore,
+\[
+  \frac{s(5)-s(2)}{5-2}
+  =\frac{9}{3}
+  =\boxed{3\text{ ft/s}}.
+\]
+The cart moves at a constant rate, so every average velocity is \(3\) ft/s.
+\end{bgsolution}
+\end{bgguided}
+
+\begin{bgexample}[title={A ball thrown upward}]
+A ball has height
+\[
+  s(t)=64t-16t^2,
+\]
+where \(s\) is measured in feet and \(t\) in seconds. Find the average velocity from \(t=1\) to \(t=2\).
+
+\begin{bgsolution}
+\step{1}{Find the starting height.}
+\[
+  s(1)=64(1)-16(1)^2=64-16=48.
+\]
+\step{2}{Find the ending height.}
+\[
+  s(2)=64(2)-16(2)^2=128-64=64.
+\]
+\step{3}{Divide the change in height by the change in time.}
+\[
+  \frac{s(2)-s(1)}{2-1}
+  =\frac{64-48}{1}
+  =\boxed{16\text{ ft/s}}.
+\]
+The positive sign says that, on average, the ball moved upward over this interval.
+\end{bgsolution}
+\end{bgexample}
+
+\subsection{Shrinking the interval}
+
+To estimate the velocity at exactly \(t=1\), compare \(t=1\) with \(t=1+h\), where \(h\) is a small nonzero number. The average velocity is
+\[
+  \frac{s(1+h)-s(1)}{h}.
+\]
+Now simplify very carefully:
+\begin{align*}
+\frac{s(1+h)-s(1)}{h}
+&=\frac{64(1+h)-16(1+h)^2-48}{h}\\
+&=\frac{64+64h-16(1+2h+h^2)-48}{h}\\
+&=\frac{64+64h-16-32h-16h^2-48}{h}\\
+&=\frac{32h-16h^2}{h}\\
+&=\frac{h(32-16h)}{h}\\
+&=32-16h,\qquad h\ne0.
+\end{align*}
+
+Notice why \(h\ne0\) matters. We may cancel \(h\) because the shrinking intervals always have nonzero length. We are studying what happens as \(h\) gets close to zero, not substituting zero before simplifying.
+
+\begin{center}
+\begin{tabular}{@{}r r@{}}
+\toprule
+\(h\) & Average velocity \(32-16h\)\\
+\midrule
+\(1\) & \(16\)\\
+\(0.5\) & \(24\)\\
+\(0.1\) & \(30.4\)\\
+\(0.01\) & \(31.84\)\\
+\(0.001\) & \(31.984\)\\
+\(-0.001\) & \(32.016\)\\
+\(-0.01\) & \(32.16\)\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The values approach \(32\). We write
+\[
+  \boxed{\lim_{h\to0}\frac{s(1+h)-s(1)}{h}=32}.
+\]
+The instantaneous velocity at \(t=1\) is \(32\) ft/s.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=0.9\textwidth,height=0.50\textwidth,
+  xmin=0,xmax=4,ymin=0,ymax=72,
+  axis lines=middle,
+  xlabel={$t$ (seconds)},ylabel={$s(t)$ (feet)},
+  grid=both,minor tick num=1,
+  major grid style={draw=BGLine},minor grid style={draw=BGLine!45},
+  tick label style={font=\small},label style={font=\small}
+]
+\addplot[BGInk,very thick,domain=0:4,samples=120]{64*x-16*x^2};
+\addplot[only marks,mark=*,mark size=2.5pt,BGGold] coordinates {(1,48)};
+\node[anchor=south east,font=\small] at (axis cs:1,48) {$P$};
+\addplot[BGRed!55,thick,domain=0.25:2.25]{16*x+32};
+\addplot[BGRed!70,thick,domain=0.45:1.8]{24*x+24};
+\addplot[BGRed!90,thick,domain=0.60:1.55]{28.8*x+19.2};
+\addplot[BGGreen,very thick,domain=0.55:1.55]{32*x+16};
+\node[BGGreen,anchor=west,font=\small] at (axis cs:1.55,65.6) {tangent slope $32$};
+\end{axis}
+\end{tikzpicture}
+\caption{Secant lines through \(P=(1,48)\) approach the tangent line as the second point moves toward \(P\).}
+\label{fig:secants}
+\end{figure}
+
+\begin{bggraphspec}
+\textbf{Function:} \(s(t)=64t-16t^2\). \textbf{Window:} \(0\le t\le4\), \(0\le s\le72\). Fix \(P=(1,48)\). Allow a movable point \(Q=(1+h,s(1+h))\) with controls for positive and negative \(h\). Display the secant slope \(32-16h\) and the tangent line \(s-48=32(t-1)\). Include units in all labels.
+\end{bggraphspec}
+
+\begin{bgmistake}
+The instantaneous rate is not obtained by pretending \(0/0=0\), \(1\), or infinity. The expression \(0/0\) tells us that direct substitution has failed. The limit process asks what the quotient approaches for nonzero values that become arbitrarily small.
+\end{bgmistake}
+
+\begin{bgquickcheck}
+A particle has position \(p(t)=5t^2\). Find its average velocity from \(t=2\) to \(t=2+h\), simplify, and predict the instantaneous velocity at \(t=2\).
+
+\textbf{Answer.}
+\[
+\frac{5(2+h)^2-20}{h}
+=\frac{20h+5h^2}{h}
+=20+5h,
+\]
+so the instantaneous velocity is \(20\).
+\end{bgquickcheck}
+\webnext{calculus/limits/what-a-limit-means}{What a Limit Means}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/what-a-limit-means}{What a Limit Means}{lesson}
+\section{The Basic Language of Limits}
+
+\lessonobjective{
+Interpret \(\lim_{x\to a}f(x)=L\) in words; distinguish the input being approached from the output being approached; estimate a limit numerically and graphically.
+}
+
+\begin{bgconcept}
+When we say ``the limit is 7,'' we are not saying the input becomes 7. We are saying the \emph{output} approaches 7 while the \emph{input} approaches some specified number.
+\end{bgconcept}
+
+\begin{bgdefinition}
+We write
+\[
+  \boxed{\lim_{x\to a}f(x)=L}
+\]
+when the values of \(f(x)\) can be made as close as desired to \(L\) by taking \(x\) sufficiently close to \(a\), with \(x\ne a\).
+\end{bgdefinition}
+
+Read
+\[
+  \lim_{x\to3}f(x)=7
+\]
+as
+
+\begin{quote}
+``The limit of \(f(x)\) as \(x\) approaches \(3\) is \(7\).''
+\end{quote}
+
+The roles are:
+\[
+\underbrace{x}_{\text{changing input}}
+\to
+\underbrace{3}_{\text{input target}},
+\qquad
+\underbrace{f(x)}_{\text{changing output}}
+\to
+\underbrace{7}_{\text{output target}}.
+\]
+
+\begin{bgguided}[title={A limit with no hole}]
+Let \(f(x)=x+2\). What happens to \(f(x)\) as \(x\to3\)?
+
+\begin{bgsolution}
+If \(x\) is close to \(3\), then \(x+2\) is close to \(5\):
+\[
+\begin{array}{c|c}
+ x & x+2\\
+\hline
+2.9&4.9\\
+2.99&4.99\\
+3.01&5.01\\
+3.1&5.1
+\end{array}
+\]
+Therefore,
+\[
+  \boxed{\lim_{x\to3}(x+2)=5}.
+\]
+This limit is direct because the function has no break at \(x=3\). Later we will call this continuity.
+\end{bgsolution}
+\end{bgguided}
+
+\input{checks/limit-continuous-01}
+\webnext{calculus/limits/limit-at-a-hole}{Limits at Holes and Undefined Points}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/limit-at-a-hole}{Limits at Holes and Undefined Points}{lesson}
+\subsection{A function can have a limit where it is undefined}
+
+Consider
+\[
+  f(x)=\frac{x^2-4}{x-2}.
+\]
+At \(x=2\), the formula is undefined. For \(x\ne2\), however,
+\[
+  f(x)=\frac{(x-2)(x+2)}{x-2}=x+2.
+\]
+So the graph is the line \(y=x+2\) with one point removed.
+
+\begin{center}
+\begin{tabular}{@{}r r@{}}
+\toprule
+\(x\) & \(f(x)\)\\
+\midrule
+1.9 & 3.9\\
+1.99 & 3.99\\
+1.999 & 3.999\\
+2.001 & 4.001\\
+2.01 & 4.01\\
+2.1 & 4.1\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Both sides approach \(4\), so
+\[
+  \boxed{\lim_{x\to2}\frac{x^2-4}{x-2}=4}.
+\]
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=0.78\textwidth,height=0.48\textwidth,
+  xmin=-1,xmax=5,ymin=0,ymax=7,
+  axis lines=middle,xlabel={$x$},ylabel={$f(x)$},
+  grid=both,major grid style={draw=BGLine},minor tick num=1,
+  minor grid style={draw=BGLine!45},
+  xtick={-1,0,1,2,3,4,5},ytick={0,1,2,3,4,5,6,7}
+]
+\addplot[BGBlue,very thick,domain=-1:1.96,samples=80]{x+2};
+\addplot[BGBlue,very thick,domain=2.04:5,samples=80]{x+2};
+\addplot[only marks,mark=o,mark size=4pt,very thick,BGRed] coordinates {(2,4)};
+\draw[dashed,BGGray] (axis cs:2,0) -- (axis cs:2,4);
+\draw[dashed,BGGray] (axis cs:0,4) -- (axis cs:2,4);
+\node[anchor=south west,font=\small] at (axis cs:2,4) {hole};
+\end{axis}
+\end{tikzpicture}
+\caption{The function is undefined at \(x=2\), but nearby outputs approach \(4\).}
+\label{fig:hole}
+\end{figure}
+
+\begin{bgmethod}
+To estimate a limit from a table, use inputs on \emph{both} sides of the target. The table should move progressively closer to the target. A table gives evidence, not proof; algebra or a trustworthy graph is usually needed to confirm the pattern.
+\end{bgmethod}
+
+\begin{bgexample}[title={Table, graph, and algebra agree}]
+Estimate and then evaluate
+\[
+  \lim_{x\to1}\frac{x^3-1}{x-1}.
+\]
+
+\begin{bgsolution}
+\textbf{Numerical evidence.}
+\[
+\begin{array}{c|c}
+ x & \dfrac{x^3-1}{x-1}\\
+\hline
+0.9&2.71\\
+0.99&2.9701\\
+0.999&2.997001\\
+1.001&3.003001\\
+1.01&3.0301\\
+1.1&3.31
+\end{array}
+\]
+The values appear to approach \(3\).
+
+\textbf{Algebraic confirmation.} Use the difference-of-cubes identity:
+\[
+  x^3-1=(x-1)(x^2+x+1).
+\]
+For \(x\ne1\),
+\[
+  \frac{x^3-1}{x-1}=x^2+x+1.
+\]
+Therefore,
+\[
+\begin{aligned}
+\lim_{x\to1}\frac{x^3-1}{x-1}
+&=\lim_{x\to1}(x^2+x+1)\\
+&=1^2+1+1\\
+&=\boxed{3}.
+\end{aligned}
+\]
+\end{bgsolution}
+\end{bgexample}
+\webnext{calculus/limits/function-value-vs-limit}{Function Value vs. Limit}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/function-value-vs-limit}{Function Value vs. Limit}{lesson}
+\section{The Function Value and the Limit Are Different Questions}
+
+\lessonobjective{
+Determine \(f(a)\) and \(\lim_{x\to a}f(x)\) separately; explain why changing one isolated function value does not change the limit.
+}
+
+The expression \(f(a)\) asks:
+
+\begin{quote}
+What output has the function assigned at the single input \(a\)?
+\end{quote}
+
+The expression
+\[
+  \lim_{x\to a}f(x)
+\]
+asks:
+
+\begin{quote}
+What value do nearby outputs approach when nearby inputs approach \(a\)?
+\end{quote}
+
+These answers can agree, disagree, or one may fail to exist.
+
+\begin{bgguided}[title={The dot and the road}]
+Imagine a road drawn toward the point \((2,5)\), but someone places a separate dot at \((2,9)\). The road tells you where nearby points are going. The separate dot tells you the actual value at \(x=2\).
+
+Thus,
+\[
+  \lim_{x\to2}f(x)=5,
+  \qquad
+  f(2)=9.
+\]
+The limit follows the road, not the misplaced dot.
+\end{bgguided}
+
+\input{checks/limit-hole-01}
+
+\begin{bgexample}[title={A piecewise value does not control the limit}]
+Let
+\[
+  g(x)=
+  \begin{cases}
+    x^2+1,&x\ne2,\\
+    9,&x=2.
+  \end{cases}
+\]
+Find \(g(2)\) and \(\lim_{x\to2}g(x)\).
+
+\begin{bgsolution}
+The piecewise definition directly states
+\[
+  \boxed{g(2)=9}.
+\]
+For all nearby inputs \(x\ne2\), the rule is \(g(x)=x^2+1\). Therefore,
+\[
+\begin{aligned}
+\lim_{x\to2}g(x)
+&=\lim_{x\to2}(x^2+1)\\
+&=2^2+1\\
+&=\boxed{5}.
+\end{aligned}
+\]
+So
+\[
+  g(2)\ne\lim_{x\to2}g(x).
+\]
+\end{bgsolution}
+\end{bgexample}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=0.76\textwidth,height=0.49\textwidth,
+  xmin=-1,xmax=4,ymin=0,ymax=11,
+  axis lines=middle,xlabel={$x$},ylabel={$g(x)$},
+  grid=both,major grid style={draw=BGLine},minor tick num=1,
+  minor grid style={draw=BGLine!45}
+]
+\addplot[BGBlue,very thick,domain=-1:1.96,samples=100]{x^2+1};
+\addplot[BGBlue,very thick,domain=2.04:3.15,samples=100]{x^2+1};
+\addplot[only marks,mark=o,mark size=4pt,very thick,BGRed] coordinates {(2,5)};
+\addplot[only marks,mark=*,mark size=3pt,BGGold] coordinates {(2,9)};
+\node[anchor=west,font=\small] at (axis cs:2.08,5) {$\lim g(x)=5$};
+\node[anchor=west,font=\small] at (axis cs:2.08,9) {$g(2)=9$};
+\end{axis}
+\end{tikzpicture}
+\caption{The nearby parabola determines the limit; the filled point determines the function value.}
+\label{fig:value-v-limit}
+\end{figure}
+
+\begin{bgsummary}
+A single point has no control over a two-sided limit. You may change \(f(a)\), delete it, or define it later, and the limit remains the same as long as all nearby values with \(x\ne a\) remain unchanged.
+\end{bgsummary}
+
+\begin{bgquickcheck}
+Suppose \(f(x)=3x-1\) for every \(x\ne4\), while \(f(4)=-100\). Find
+\[
+  f(4)
+  \qquad\text{and}\qquad
+  \lim_{x\to4}f(x).
+\]
+
+\textbf{Answer.} \(f(4)=-100\), but
+\[
+  \lim_{x\to4}f(x)=3(4)-1=11.
+\]
+\end{bgquickcheck}
+\webnext{calculus/limits/one-sided-limits}{One-Sided Limits From the Left and Right}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/one-sided-limits}{One-Sided Limits From the Left and Right}{lesson}
+\section{One-Sided Limits}
+
+\lessonobjective{
+Read and compute left-hand and right-hand limits; use them to decide whether a two-sided limit exists.
+}
+
+An input can approach \(a\) from values smaller than \(a\) or from values greater than \(a\).
+
+\begin{bgdefinition}[title={One-Sided Limit Notation}]
+\[
+  \lim_{x\to a^-}f(x)=L
+\]
+means that \(f(x)\) approaches \(L\) as \(x\) approaches \(a\) using values \(x<a\).
+
+\[
+  \lim_{x\to a^+}f(x)=L
+\]
+means that \(f(x)\) approaches \(L\) as \(x\) approaches \(a\) using values \(x>a\).
+\end{bgdefinition}
+
+The minus and plus signs are directions, not arithmetic operations.
+
+\begin{bgconcept}
+Stand at the doorway \(x=a\). Approaching from the hallway on the left is \(x\to a^-\). Approaching from the hallway on the right is \(x\to a^+\). A two-sided meeting happens only if both groups arrive at the same height.
+\end{bgconcept}
+
+\begin{bgtheorem}[title={One-Sided Test for a Two-Sided Limit}]
+\[
+  \boxed{\lim_{x\to a}f(x)=L}
+\]
+if and only if
+\[
+  \boxed{\lim_{x\to a^-}f(x)=L
+  \quad\text{and}\quad
+  \lim_{x\to a^+}f(x)=L.}
+\]
+If the one-sided limits disagree, the two-sided limit does not exist.
+\end{bgtheorem}
+
+\begin{bgguided}[title={Two staircases}]
+Suppose the graph approaches height \(3\) from the left and height \(3\) from the right. Then the two-sided limit is \(3\).
+
+If the graph approaches height \(3\) from the left but height \(4\) from the right, there is no single answer to ``what height does the graph approach?'' The two-sided limit does not exist.
+\end{bgguided}
+
+\input{checks/left-right-01}
+
+\begin{bgexample}[title={A piecewise function with matching sides}]
+Let
+\[
+  f(x)=
+  \begin{cases}
+    x+1,&x<2,\\
+    5-x,&x\ge2.
+  \end{cases}
+\]
+Find the left-hand, right-hand, and two-sided limits at \(x=2\).
+
+\begin{bgsolution}
+For inputs to the left of \(2\), use \(x+1\):
+\[
+  \lim_{x\to2^-}f(x)=2+1=3.
+\]
+For inputs to the right of \(2\), use \(5-x\):
+\[
+  \lim_{x\to2^+}f(x)=5-2=3.
+\]
+The one-sided limits agree, so
+\[
+  \boxed{\lim_{x\to2}f(x)=3}.
+\]
+The actual value is also \(f(2)=3\), but that equality is not what made the two-sided limit exist. The matching one-sided limits did.
+\end{bgsolution}
+\end{bgexample}
+
+\begin{bgexample}[title={A jump}]
+Let
+\[
+  g(x)=
+  \begin{cases}
+    x+1,&x<2,\\
+    6-x,&x\ge2.
+  \end{cases}
+\]
+Find the one-sided and two-sided limits at \(x=2\).
+
+\begin{bgsolution}
+From the left,
+\[
+  \lim_{x\to2^-}g(x)=2+1=3.
+\]
+From the right,
+\[
+  \lim_{x\to2^+}g(x)=6-2=4.
+\]
+Because \(3\ne4\),
+\[
+  \boxed{\lim_{x\to2}g(x)=\DNE}.
+\]
+This is a jump discontinuity. The graph jumps from a left-hand height of \(3\) to a right-hand height of \(4\).
+\end{bgsolution}
+\end{bgexample}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=0.78\textwidth,height=0.48\textwidth,
+  xmin=-1,xmax=6,ymin=0,ymax=7,
+  axis lines=middle,xlabel={$x$},ylabel={$g(x)$},
+  grid=both,major grid style={draw=BGLine},minor tick num=1,
+  minor grid style={draw=BGLine!45}
+]
+\addplot[BGBlue,very thick,domain=-1:1.999,samples=100]{x+1};
+\addplot[BGGreen,very thick,domain=2:6,samples=100]{6-x};
+\addplot[only marks,mark=o,mark size=4pt,very thick,BGBlue] coordinates {(2,3)};
+\addplot[only marks,mark=*,mark size=3pt,BGGreen] coordinates {(2,4)};
+\draw[dashed,BGGray] (axis cs:2,0) -- (axis cs:2,4);
+\node[anchor=east,font=\small] at (axis cs:1.94,3) {left $\to3$};
+\node[anchor=west,font=\small] at (axis cs:2.06,4) {right $\to4$};
+\end{axis}
+\end{tikzpicture}
+\caption{Unequal one-sided limits produce a jump and no two-sided limit.}
+\label{fig:jump}
+\end{figure}
+
+\begin{bgexamnote}
+A filled point at \(x=a\) does not repair unequal one-sided limits. Even if you define \(g(2)=3.5\), the left side still approaches \(3\) and the right side still approaches \(4\). No single dot can persuade two disagreeing neighborhoods to cooperate.
+\end{bgexamnote}
+\webnext{calculus/limits/when-a-limit-does-not-exist}{When a Limit Does Not Exist}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/when-a-limit-does-not-exist}{When a Limit Does Not Exist}{lesson}
+\section{How a Limit Can Fail}
+
+\lessonobjective{
+Recognize and explain the major reasons a limit fails to exist: unequal one-sided limits, unbounded behavior, oscillation, or missing domain on one side.
+}
+
+Writing \(\DNE\) is not a full explanation. A good solution identifies the behavior responsible.
+
+\subsection{Failure mode 1: the sides disagree}
+
+This is the jump behavior already seen:
+\[
+  \lim_{x\to a^-}f(x)\ne\lim_{x\to a^+}f(x).
+\]
+
+\subsection{Failure mode 2: unbounded behavior}
+
+For
+\[
+  f(x)=\frac1x,
+\]
+as \(x\to0^+\), the outputs become arbitrarily large and positive. As \(x\to0^-\), they become arbitrarily negative. We write
+\[
+  \lim_{x\to0^+}\frac1x=+\infty,
+  \qquad
+  \lim_{x\to0^-}\frac1x=-\infty.
+\]
+The two-sided limit does not exist as a real number.
+
+\subsection{Failure mode 3: endless oscillation}
+
+For
+\[
+  f(x)=\sin\left(\frac1x\right),
+\]
+the argument \(1/x\) becomes arbitrarily large as \(x\to0\). The sine function cycles between \(-1\) and \(1\) infinitely often, so the outputs do not approach one number.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=0.88\textwidth,height=0.42\textwidth,
+  xmin=-0.25,xmax=0.25,ymin=-1.25,ymax=1.25,
+  axis lines=middle,xlabel={$x$},ylabel={$\sin(1/x)$},
+  samples=220,domain=-0.25:-0.01,
+  grid=major,major grid style={draw=BGLine}
+]
+\addplot[BGBlue,thick,domain=-0.25:-0.008,samples=260]{sin(deg(1/x))};
+\addplot[BGBlue,thick,domain=0.008:0.25,samples=260]{sin(deg(1/x))};
+\end{axis}
+\end{tikzpicture}
+\caption{The function \(\sin(1/x)\) oscillates increasingly rapidly near zero and has no limit there.}
+\label{fig:oscillation}
+\end{figure}
+
+\subsection{Failure mode 4: the function exists only on one side}
+
+The function \(f(x)=\sqrt{x}\) has no real values for \(x<0\). Therefore, the right-hand limit
+\[
+  \lim_{x\to0^+}\sqrt{x}=0
+\]
+exists, but an ordinary two-sided real limit at \(0\) is not available because there is no left-side domain near zero.
+
+At an endpoint of a domain or interval, a one-sided limit is often exactly the correct question. Later, continuity at endpoints will also use one-sided limits.
+
+\begin{bghomework}
+When asked why a limit does not exist, use one of these sentence frames:
+\begin{itemize}
+  \item ``The left-hand limit is \(A\) and the right-hand limit is \(B\), and \(A\ne B\).''
+  \item ``The function is unbounded near the target input.''
+  \item ``The function oscillates without approaching one output.''
+  \item ``The function has no domain values on one required side of the target.''
+\end{itemize}
+\end{bghomework}
+\webnext{calculus/limits/read-limits-from-graphs}{How to Read Limits From a Graph}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/read-limits-from-graphs}{How to Read Limits From a Graph}{lesson}
+\section{A Reliable Method for Reading a Graph}
+
+Graph questions are often rushed and surprisingly easy to misread. At each marked input \(x=a\), use the same order.
+
+\begin{bgmethod}[title={Graph-Reading Routine}]
+\begin{enumerate}
+  \item Trace the curve toward \(a\) from the left. Record the height approached.
+  \item Trace the curve toward \(a\) from the right. Record the height approached.
+  \item Compare the one-sided limits.
+  \item Only then inspect the filled point to find \(f(a)\).
+\end{enumerate}
+\end{bgmethod}
+
+\begin{bgexample}[title={Reading four quantities from one graph}]
+Suppose a graph has an open circle at \((3,6)\), the curve approaches that circle from both sides, and a filled point appears at \((3,-1)\). Find
+\[
+  \lim_{x\to3^-}f(x),\quad
+  \lim_{x\to3^+}f(x),\quad
+  \lim_{x\to3}f(x),\quad
+  f(3).
+\]
+
+\begin{bgsolution}
+Following the curve from the left gives
+\[
+  \lim_{x\to3^-}f(x)=6.
+\]
+Following the curve from the right gives
+\[
+  \lim_{x\to3^+}f(x)=6.
+\]
+The two sides agree, so
+\[
+  \lim_{x\to3}f(x)=6.
+\]
+The filled point gives the actual value:
+\[
+  f(3)=-1.
+\]
+Thus,
+\[
+  \boxed{6,\ 6,\ 6,\ -1}.
+\]
+\end{bgsolution}
+\end{bgexample}
+\webnext{calculus/limits/direct-substitution}{Direct Substitution for Limits}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/meaning-review}{Limit Meaning Review}{review}
+\section*{Chapter 1 Summary}
+\addcontentsline{toc}{section}{Chapter 1 Summary}
+
+\begin{bgsummary}
+\begin{itemize}
+  \item A limit describes nearby behavior, not necessarily the value at the target point.
+  \item \(f(a)\) and \(\lim_{x\to a}f(x)\) are separate questions.
+  \item A two-sided limit exists exactly when both one-sided limits exist and agree.
+  \item The major failure modes are a jump, unbounded behavior, oscillation, or missing domain on one side.
+  \item Tables suggest. Graphs display. Algebra confirms.
+\end{itemize}
+\end{bgsummary}
+\webnext{calculus/limits/direct-substitution}{Direct Substitution for Limits}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/meaning-concept-quiz}{Limit Meaning Concept Quiz}{quiz}
+\section*{Chapter 1 Concept Quiz}
+\addcontentsline{toc}{section}{Chapter 1 Concept Quiz}
+
+Use this as a short retrieval check after finishing the chapter. On the website, each item should accept an answer before revealing the hint and worked explanation.
+
+\begin{bgcheck}{limit-meaning-q1}{integer}{7}[Concept check]
+If \(\lim_{x\to 4}f(x)=7\), what output value is approached?
+\begin{bghint}
+The number after the equals sign is the output target.
+\end{bghint}
+\begin{bgreveal}
+\(7\). The input approaches \(4\), while the output approaches \(7\).
+\end{bgreveal}
+\end{bgcheck}
+
+\begin{bgcheck}{one-sided-q1}{integer}{3}[Concept check]
+A graph approaches \(3\) from the left at \(x=2\). What is \(\lim_{x\to2^-}f(x)\)?
+\begin{bghint}
+The superscript minus means use inputs smaller than \(2\).
+\end{bghint}
+\begin{bgreveal}
+The left-hand limit is \(3\).
+\end{bgreveal}
+\end{bgcheck}
+
+\begin{bgcheck}{hole-q1}{integer}{5}[Concept check]
+A curve approaches the open point \((1,5)\), while a filled point is at \((1,9)\). What is the limit as \(x\to1\)?
+\begin{bghint}
+The limit follows the nearby curve, not the filled point.
+\end{bghint}
+\begin{bgreveal}
+The limit is \(5\); the function value is \(9\).
+\end{bgreveal}
+\end{bgcheck}
+
+\begin{bgcheck}{rate-q1}{integer}{12}[Concept check]
+An average-rate expression simplifies to \(12-2h\). What value does it approach as \(h\to0\)?
+\begin{bghint}
+Set only the limiting value of \(h\) after simplification.
+\end{bghint}
+\begin{bgreveal}
+\(12-2(0)=12\).
+\end{bgreveal}
+\end{bgcheck}
+
+\begin{bgsummary}[title={Quiz use on the website}]
+This page should report completion by concept, not merely a total score. A wrong answer should link back to the exact lesson that teaches the missing method. The same questions may appear in randomized numerical variants, but the canonical explanation should remain stable.
+\end{bgsummary}
+\webnext{calculus/limits/direct-substitution}{Direct Substitution for Limits}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/meaning-practice}{Limit Meaning Practice Problems}{practice}
+\section*{Chapter 1 Exercises}
+\addcontentsline{toc}{section}{Chapter 1 Exercises}
+
+\subsection*{A. Warm-Up: meaning and notation}
+
+\begin{bgexercises}[label=\textbf{1.\arabic*}]
+  \item In the statement \(\lim_{x\to4}f(x)=9\), identify the input target and output target.
+  \item Write in symbols: ``The limit of \(g(t)\) as \(t\) approaches \(2\) is \(-5\).''
+  \item Write in words: \(\lim_{h\to0}Q(h)=12\).
+  \item True or false: if \(\lim_{x\to a}f(x)=L\), then \(f(a)=L\). Explain.
+  \item True or false: a function must be defined at \(a\) for \(\lim_{x\to a}f(x)\) to exist. Explain.
+  \item What does the superscript minus mean in \(x\to3^-\)?
+  \item What does the superscript plus mean in \(x\to3^+\)?
+  \item Explain why \(x\to2\) does not mean \(x=2\).
+  \item A graph approaches \(7\) from both sides at \(x=1\), but \(f(1)=10\). Find the limit.
+  \item A graph has no filled point at \(x=-2\), but both sides approach \(4\). Find \(f(-2)\) and the limit.
+\end{bgexercises}
+
+\subsection*{B. Average and instantaneous change}
+
+\begin{bgexercises}[label=\textbf{1.\arabic*},resume]
+  \item A car's position is \(s(t)=5t+2\). Find its average velocity on \([1,4]\).
+  \item A particle's position is \(s(t)=t^2\). Find its average velocity on \([3,3+h]\), simplify, and predict the instantaneous velocity at \(t=3\).
+  \item A ball's height is \(s(t)=80t-16t^2\). Find its average velocity on \([2,2+h]\) and its instantaneous velocity at \(t=2\).
+  \item A population model is \(P(t)=1000+50t+2t^2\). Find the average rate of change on \([4,4+h]\) and predict \(P'(4)\) informally from the limit.
+  \item Explain geometrically what the average rate of change represents on a graph.
+  \item Explain geometrically what the limiting secant line becomes when the limit exists.
+\end{bgexercises}
+
+\subsection*{C. Tables and formulas}
+
+\begin{bgexercises}[label=\textbf{1.\arabic*},resume]
+  \item Complete a table near \(x=3\) for \(f(x)=\dfrac{x^2-9}{x-3}\), then estimate the limit.
+  \item Complete a table near \(x=2\) for \(g(x)=\dfrac{x^3-8}{x-2}\), then estimate the limit.
+  \item For \(h(x)=\dfrac{x^2+x-6}{x-2}\), simplify for \(x\ne2\) and find the limit at \(2\).
+  \item For \(p(x)=\dfrac{x^2-1}{x-1}\), find \(p(1)\) and \(\lim_{x\to1}p(x)\).
+  \item Define \(q(1)=100\) and \(q(x)=x+1\) for \(x\ne1\). Find \(q(1)\) and the limit at \(1\).
+  \item Create two functions with different values at \(x=0\) but the same limit as \(x\to0\).
+\end{bgexercises}
+
+\subsection*{D. One-sided limits}
+
+\begin{bgexercises}[label=\textbf{1.\arabic*},resume]
+  \item Let \(f(x)=\begin{cases}2x+1,&x<1,\\x+3,&x\ge1.\end{cases}\) Find both one-sided limits and the two-sided limit at \(1\).
+  \item Let \(g(x)=\begin{cases}x^2,&x\le2,\\3x-1,&x>2.\end{cases}\) Find both one-sided limits at \(2\).
+  \item Let \(h(x)=\begin{cases}4,&x<0,\\4+x,&x\ge0.\end{cases}\) Does the limit at \(0\) exist?
+  \item Let \(k(x)=\begin{cases}-1,&x<3,\\2,&x\ge3.\end{cases}\) Explain why the limit at \(3\) does not exist.
+  \item Find \(\lim_{x\to0^-}|x|/x\) and \(\lim_{x\to0^+}|x|/x\).
+  \item Find \(\lim_{x\to2^-}|x-2|/(x-2)\) and the corresponding right-hand limit.
+\end{bgexercises}
+
+\subsection*{E. Failure modes and reasoning}
+
+\begin{bgexercises}[label=\textbf{1.\arabic*},resume]
+  \item State the reason \(\lim_{x\to0}1/x\) does not exist as a real number.
+  \item State the reason \(\lim_{x\to0}\sin(1/x)\) does not exist.
+  \item Does \(\lim_{x\to0^+}\sqrt{x}\) exist? Does the ordinary two-sided limit exist in the real domain?
+  \item A student says, ``The limit is \(7\) because the filled dot is at \((2,7)\).'' What information is missing?
+  \item A student says, ``The limit does not exist because the function is undefined at the point.'' Give a counterexample.
+  \item Construct a function whose left-hand limit at \(1\) is \(2\), right-hand limit is \(5\), and function value is \(-3\).
+  \item Construct a function that is undefined at \(4\) but has limit \(9\) there.
+  \item Explain why a finite table can suggest but cannot prove the existence of a limit for every possible function.
+\end{bgexercises}
+
+\subsection*{F. Exam-Level Mixed Questions}
+
+\begin{bgexercises}[label=\textbf{1.\arabic*},resume]
+  \item Suppose
+  \[
+    f(x)=\begin{cases}
+      x^2-1,&x<2,\\
+      4,&x=2,\\
+      2x-1,&x>2.
+    \end{cases}
+  \]
+  Find both one-sided limits, the two-sided limit, and \(f(2)\).
+  \item Suppose \(f(x)=x+4\) for every \(x\ne-1\), and \(f(-1)\) is not given. Determine the limit and list every possible value of \(f(-1)\) consistent with that limit.
+  \item A moving object's average velocity from \(t=5\) to \(t=5+h\) simplifies to \(18-3h\). Find its instantaneous velocity at \(t=5\), and explain the role of the limit.
+  \item Give a graph description for a function satisfying
+  \[
+    f(0)=2,\qquad
+    \lim_{x\to0^-}f(x)=1,\qquad
+    \lim_{x\to0^+}f(x)=1.
+  \]
+  \item Give a graph description for a function satisfying
+  \[
+    f(0)=2,\qquad
+    \lim_{x\to0^-}f(x)=1,\qquad
+    \lim_{x\to0^+}f(x)=3.
+  \]
+  \item Explain why the first function in the previous problem has a two-sided limit and the second does not.
+\end{bgexercises}
+
+Answers begin in \cref{app:chapter-answers}.
+\webnext{calculus/limits/direct-substitution}{Direct Substitution for Limits}
+\end{webpage}

@@ -1,4 +1,6 @@
 import assert from "node:assert/strict";
+import { readdir, readFile } from "node:fs/promises";
+import path from "node:path";
 import test from "node:test";
 
 import unitPayload from "../content/limits-continuity/unit.json" with { type: "json" };
@@ -91,4 +93,18 @@ test("route and search adapters expose every page exactly once", () => {
   assert.equal(lesson?.route.h1, "What a Limit Means");
   assert.ok(lesson?.checks.some((check) => check.id === "limit-continuous-01"));
   assert.ok(lesson?.page.nodes.some((node) => node.type === "definition"));
+});
+
+test("the standalone LaTeX source is present without generated or binary output", async () => {
+  const root = new URL("../content/limits-continuity/latex/", import.meta.url);
+  const files = await readdir(root, { recursive: true });
+  assert.ok(files.includes("main.tex"));
+  assert.ok(files.includes("bettergrades-webtext.sty"));
+  assert.ok(files.includes(path.join("chapters", "ch07_review.tex")));
+  assert.ok(files.includes(path.join("appendices", "references.tex")));
+  assert.ok(files.includes(path.join("checks", "limit-continuous-01.tex")));
+  assert.ok(files.every((file) => !/\.(?:pdf|zip|pyc)$/i.test(file)), files.join(", "));
+  const main = await readFile(new URL("../content/limits-continuity/latex/main.tex", import.meta.url), "utf8");
+  assert.match(main, /\\usepackage\{bettergrades-webtext\}/);
+  assert.match(main, /\\input\{appendices\/references\}/);
 });

@@ -1,0 +1,874 @@
+\begin{webpage}{calculus/limits/direct-substitution}{Direct Substitution for Limits}{lesson}
+\chapter{Evaluating Finite Limits}
+
+\section{Start With Direct Substitution}
+
+\lessonobjective{
+Evaluate limits of familiar continuous functions by substitution; interpret the result of substitution before choosing a more complicated method.
+}
+
+Once you understand what a limit means, most homework problems become a method-selection problem. The first move should almost always be the simplest one:
+
+\begin{bgmethod}[title={First Move for Nearly Every Limit}]
+Substitute the target input into the expression.
+
+\begin{itemize}
+  \item If you get an ordinary real number, that is usually the limit.
+  \item If you get \(0/0\), simplify the expression and try again.
+  \item If you get a nonzero number divided by zero, analyze one-sided infinite behavior.
+  \item If the input approaches infinity and you get an indeterminate form such as \(\infty/\infty\), compare dominant terms.
+\end{itemize}
+\end{bgmethod}
+
+Why does substitution work for so many functions? Because polynomials, rational functions away from zero denominators, root functions on their domains, and trigonometric functions on their domains are continuous. Continuity will be developed carefully in Chapter 5. For now, think of a continuous graph as one with no break at the target point.
+
+\begin{bgguided}[title={Substitute and stop}]
+Evaluate
+\[
+  \lim_{x\to2}(x+5).
+\]
+
+\begin{bgsolution}
+Replace \(x\) by \(2\):
+\[
+  2+5=7.
+\]
+Nothing breaks, no denominator becomes zero, and no special method is needed. Therefore,
+\[
+  \boxed{\lim_{x\to2}(x+5)=7}.
+\]
+\end{bgsolution}
+\end{bgguided}
+
+\input{checks/direct-sub-01}
+
+\begin{bgexample}[title={Polynomial substitution}]
+Evaluate
+\[
+  \lim_{x\to-2}(3x^3-4x^2+5x-1).
+\]
+
+\begin{bgsolution}
+Polynomials are continuous everywhere, so substitute \(x=-2\):
+\begin{align*}
+3(-2)^3-4(-2)^2+5(-2)-1
+&=3(-8)-4(4)-10-1\\
+&=-24-16-10-1\\
+&=\boxed{-51}.
+\end{align*}
+\end{bgsolution}
+\end{bgexample}
+
+\begin{bgexample}[title={Rational function with a safe denominator}]
+Evaluate
+\[
+  \lim_{x\to3}\frac{x^2+2x-1}{x+4}.
+\]
+
+\begin{bgsolution}
+Substitute first:
+\[
+  \frac{3^2+2(3)-1}{3+4}
+  =\frac{9+6-1}{7}
+  =\frac{14}{7}
+  =\boxed{2}.
+\]
+The denominator approaches \(7\), not zero, so the quotient law is valid.
+\end{bgsolution}
+\end{bgexample}
+
+\begin{bgexample}[title={A root function}]
+Evaluate
+\[
+  \lim_{x\to5}\sqrt{3x+1}.
+\]
+
+\begin{bgsolution}
+The expression under the root approaches
+\[
+  3(5)+1=16.
+\]
+Therefore,
+\[
+  \lim_{x\to5}\sqrt{3x+1}=\sqrt{16}=\boxed{4}.
+\]
+\end{bgsolution}
+\end{bgexample}
+
+\begin{bgmistake}
+Students sometimes overcomplicate a limit because the chapter is about limits. If substitution gives a legal real number, do not factor six polynomials, draw a sign chart, or summon l'Hospital's Rule from a future chapter. Stop.
+\end{bgmistake}
+\webnext{calculus/limits/limit-laws}{Limit Laws and How to Use Them}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/limit-laws}{Limit Laws and How to Use Them}{lesson}
+\section{Limit Laws}
+
+\lessonobjective{
+Use sums, differences, constant multiples, products, quotients, powers, and roots to build limits from simpler limits.
+}
+
+Suppose
+\[
+  \lim_{x\to a}f(x)=L
+  \qquad\text{and}\qquad
+  \lim_{x\to a}g(x)=M.
+\]
+The basic limit laws are:
+
+\begin{bgtheorem}[title={Limit Laws}]
+\begin{align*}
+\lim_{x\to a}[f(x)+g(x)]&=L+M,\\
+\lim_{x\to a}[f(x)-g(x)]&=L-M,\\
+\lim_{x\to a}[cf(x)]&=cL,\\
+\lim_{x\to a}[f(x)g(x)]&=LM,\\
+\lim_{x\to a}\frac{f(x)}{g(x)}&=\frac{L}{M},\qquad M\ne0,\\
+\lim_{x\to a}[f(x)]^n&=L^n.
+\end{align*}
+When the relevant root is defined,
+\[
+  \lim_{x\to a}\sqrt[n]{f(x)}=\sqrt[n]{L}.
+\]
+\end{bgtheorem}
+
+\begin{bgconcept}
+The laws say that limits cooperate with ordinary arithmetic, provided the arithmetic itself remains legal. If one part approaches \(3\) and another approaches \(5\), their sum approaches \(8\). The only major warning in the basic laws is division: the denominator's limit may not be zero.
+\end{bgconcept}
+
+\begin{bgguided}[title={Building a limit from known pieces}]
+Suppose
+\[
+  \lim_{x\to2}f(x)=3
+  \qquad\text{and}\qquad
+  \lim_{x\to2}g(x)=5.
+\]
+Find
+\[
+  \lim_{x\to2}[2f(x)+g(x)].
+\]
+
+\begin{bgsolution}
+The constant multiple law gives
+\[
+  \lim_{x\to2}2f(x)=2(3)=6.
+\]
+Then the sum law gives
+\[
+  6+5=11.
+\]
+Therefore,
+\[
+  \boxed{\lim_{x\to2}[2f(x)+g(x)]=11}.
+\]
+\end{bgsolution}
+\end{bgguided}
+
+\begin{bgexample}[title={Several laws at once}]
+Suppose
+\[
+  \lim_{x\to1}f(x)=-2,
+  \qquad
+  \lim_{x\to1}g(x)=4.
+\]
+Evaluate
+\[
+  \lim_{x\to1}\frac{[f(x)]^2+3g(x)}{g(x)-f(x)}.
+\]
+
+\begin{bgsolution}
+Apply the laws to each part:
+\[
+  [f(x)]^2\to(-2)^2=4,
+\]
+\[
+  3g(x)\to3(4)=12,
+\]
+so the numerator approaches
+\[
+  4+12=16.
+\]
+The denominator approaches
+\[
+  4-(-2)=6.
+\]
+Because \(6\ne0\), the quotient law applies:
+\[
+  \boxed{\frac{16}{6}=\frac83}.
+\]
+\end{bgsolution}
+\end{bgexample}
+
+\begin{bgquickcheck}
+If \(f(x)\to3\) and \(g(x)\to-1\) as \(x\to4\), evaluate
+\[
+  \lim_{x\to4}[f(x)g(x)+2f(x)].
+\]
+
+\textbf{Answer.} \(3(-1)+2(3)=3\).
+\end{bgquickcheck}
+\webnext{calculus/limits/zero-over-zero}{What 0/0 Means in a Limit}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/zero-over-zero}{What 0/0 Means in a Limit}{lesson}
+\section{The Indeterminate Form \texorpdfstring{\(0/0\)}{0/0}}
+
+\input{checks/zero-over-zero-01}
+
+\lessonobjective{
+Recognize \(0/0\) as a signal that direct substitution has not determined the limit; choose an algebraic method based on the expression's structure.
+}
+
+If direct substitution gives
+\[
+  \frac00,
+\]
+then the numerator and denominator both approach zero. The quotient might approach zero, a finite nonzero number, infinity, or no limit at all. The form itself does not decide.
+
+Compare:
+\[
+  \lim_{x\to0}\frac{x}{x}=1,
+\]
+\[
+  \lim_{x\to0}\frac{x^2}{x}=0,
+\]
+\[
+  \lim_{x\to0}\frac{x}{x^2}
+\]
+is unbounded, and
+\[
+  \lim_{x\to0}\frac{|x|}{x}
+\]
+does not exist. Every expression gives \(0/0\) under direct substitution, but the limits behave differently.
+
+\begin{bgconcept}
+The symbol \(0/0\) is like a locked door, not a room number. It says, ``You cannot enter this way.'' It does not tell you what is behind the door. Algebra must change the form of the expression before substitution becomes informative.
+\end{bgconcept}
+
+\begin{bghomework}[title={Method Selection After \(0/0\)}]
+\begin{center}
+\begin{tabularx}{\textwidth}{@{}p{0.35\textwidth}X@{}}
+\toprule
+\textbf{Visible structure} & \textbf{Method to try}\\
+\midrule
+Polynomials with common factors & Factor and cancel\\
+Square roots or other radicals & Multiply by a conjugate\\
+A fraction inside a fraction & Combine the smaller fractions first\\
+Absolute values or piecewise rules & Split into one-sided cases\\
+Trigonometric expressions near zero & Use identities and fundamental trig limits\\
+A bounded oscillating factor & Look for the Squeeze Theorem\\
+\bottomrule
+\end{tabularx}
+\end{center}
+\end{bghomework}
+\webnext{calculus/limits/factoring-limits}{Evaluating Limits by Factoring}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/factoring-limits}{Evaluating Limits by Factoring}{lesson}
+\section{Factoring and Cancellation}
+
+\lessonobjective{
+Evaluate finite limits by factoring a numerator or denominator, cancelling a common nonzero factor, and then substituting.
+}
+
+\begin{bgguided}[title={Why cancellation is legal in a limit}]
+Evaluate
+\[
+  \lim_{x\to2}\frac{x^2-4}{x-2}.
+\]
+
+\begin{bgsolution}
+Direct substitution gives \(0/0\), so factor:
+\[
+  x^2-4=(x-2)(x+2).
+\]
+For every nearby input \(x\ne2\),
+\[
+  \frac{(x-2)(x+2)}{x-2}=x+2.
+\]
+Now substitute:
+\[
+  2+2=4.
+\]
+Therefore,
+\[
+  \boxed{\lim_{x\to2}\frac{x^2-4}{x-2}=4}.
+\]
+We did not claim that the original expression is defined at \(x=2\). We only used the simplified expression for nearby values \(x\ne2\), exactly the values a limit studies.
+\end{bgsolution}
+\end{bgguided}
+
+\input{checks/factor-flow-01}
+
+\begin{bgexample}[title={Factor a quadratic}]
+Evaluate
+\[
+  \lim_{x\to3}\frac{x^2-5x+6}{x-3}.
+\]
+
+\begin{bgsolution}
+Substitution gives \(0/0\). Factor the numerator:
+\[
+  x^2-5x+6=(x-2)(x-3).
+\]
+Cancel the common factor for \(x\ne3\):
+\[
+  \frac{(x-2)(x-3)}{x-3}=x-2.
+\]
+Then
+\[
+  \lim_{x\to3}(x-2)=3-2=\boxed{1}.
+\]
+\end{bgsolution}
+\end{bgexample}
+
+\begin{bgexample}[title={Difference of cubes}]
+Evaluate
+\[
+  \lim_{x\to2}\frac{x^3-8}{x-2}.
+\]
+
+\begin{bgsolution}
+Use
+\[
+  a^3-b^3=(a-b)(a^2+ab+b^2).
+\]
+Thus,
+\[
+  x^3-8=(x-2)(x^2+2x+4).
+\]
+For \(x\ne2\),
+\[
+  \frac{x^3-8}{x-2}=x^2+2x+4.
+\]
+Now substitute:
+\[
+  2^2+2(2)+4=4+4+4=\boxed{12}.
+\]
+\end{bgsolution}
+\end{bgexample}
+
+\begin{bgexample}[title={Exam-level: factor more than once}]
+Evaluate
+\[
+  \lim_{x\to1}\frac{x^4-1}{x^2-1}.
+\]
+
+\begin{bgsolution}
+Substitution gives \(0/0\). Factor both differences of squares:
+\[
+  x^4-1=(x^2-1)(x^2+1),
+\]
+so
+\[
+  \frac{x^4-1}{x^2-1}=x^2+1,\qquad x\ne\pm1.
+\]
+Therefore,
+\[
+  \lim_{x\to1}(x^2+1)=1+1=\boxed{2}.
+\]
+An alternative full factorization is
+\[
+  x^4-1=(x-1)(x+1)(x^2+1),
+\]
+\[
+  x^2-1=(x-1)(x+1).
+\]
+Both routes lead to the same simplification.
+\end{bgsolution}
+\end{bgexample}
+
+\begin{bgexamnote}
+Cancel factors, not terms. From
+\[
+  \frac{x^2+2x}{x}
+\]
+you may factor the numerator and cancel:
+\[
+  \frac{x(x+2)}{x}=x+2.
+\]
+You may not ``cancel the \(x\)'' from only one term and write \(x^2+2\). Addition prevents cancellation until a common factor has been extracted.
+\end{bgexamnote}
+\webnext{calculus/limits/rationalizing-radicals}{Evaluating Radical Limits With Conjugates}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/rationalizing-radicals}{Evaluating Radical Limits With Conjugates}{lesson}
+\section{Rationalizing Radicals}
+
+\lessonobjective{
+Use a conjugate to remove a radical difference that creates \(0/0\), then evaluate the simplified limit.
+}
+
+A conjugate changes the sign between two terms:
+\[
+  \sqrt{A}-B
+  \qquad\longleftrightarrow\qquad
+  \sqrt{A}+B.
+\]
+Multiplying conjugates uses the difference-of-squares identity:
+\[
+  (u-v)(u+v)=u^2-v^2.
+\]
+This removes the radical difference.
+
+\begin{bgguided}[title={One conjugate, every line shown}]
+Evaluate
+\[
+  \lim_{x\to0}\frac{\sqrt{x+4}-2}{x}.
+\]
+
+\begin{bgsolution}
+Direct substitution gives
+\[
+  \frac{\sqrt4-2}{0}=\frac00.
+\]
+Multiply the fraction by \(1\) written as the conjugate over itself:
+\[
+\frac{\sqrt{x+4}-2}{x}
+\cdot
+\frac{\sqrt{x+4}+2}{\sqrt{x+4}+2}.
+\]
+Multiply the numerator using difference of squares:
+\[
+  (\sqrt{x+4})^2-2^2=x+4-4=x.
+\]
+Therefore,
+\[
+\frac{\sqrt{x+4}-2}{x}
+=\frac{x}{x(\sqrt{x+4}+2)}.
+\]
+For \(x\ne0\), cancel \(x\):
+\[
+  \frac{1}{\sqrt{x+4}+2}.
+\]
+Now substitute \(x=0\):
+\[
+  \frac1{\sqrt4+2}=\frac1{2+2}=\boxed{\frac14}.
+\]
+\end{bgsolution}
+\end{bgguided}
+
+\input{checks/conjugate-flow-01}
+
+\begin{bgexample}[title={Radical in the denominator}]
+Evaluate
+\[
+  \lim_{x\to9}\frac{x-9}{\sqrt{x}-3}.
+\]
+
+\begin{bgsolution}
+Substitution gives \(0/0\). Notice that
+\[
+  x-9=(\sqrt{x}-3)(\sqrt{x}+3).
+\]
+Therefore, for \(x\ne9\),
+\[
+  \frac{x-9}{\sqrt{x}-3}=\sqrt{x}+3.
+\]
+Now substitute:
+\[
+  \sqrt9+3=3+3=\boxed{6}.
+\]
+You could also multiply by the conjugate. Recognizing the hidden difference of squares is simply faster.
+\end{bgsolution}
+\end{bgexample}
+
+\begin{bgexample}[title={Exam-level: two radical terms}]
+Evaluate
+\[
+  \lim_{x\to0}\frac{\sqrt{1+3x}-\sqrt{1-x}}{x}.
+\]
+
+\begin{bgsolution}
+The numerator is a difference of radicals, so use its conjugate:
+\begin{align*}
+&\frac{\sqrt{1+3x}-\sqrt{1-x}}{x}
+\cdot
+\frac{\sqrt{1+3x}+\sqrt{1-x}}{\sqrt{1+3x}+\sqrt{1-x}}\\
+&=\frac{(1+3x)-(1-x)}{x\left(\sqrt{1+3x}+\sqrt{1-x}\right)}\\
+&=\frac{4x}{x\left(\sqrt{1+3x}+\sqrt{1-x}\right)}\\
+&=\frac4{\sqrt{1+3x}+\sqrt{1-x}},\qquad x\ne0.
+\end{align*}
+Now substitute:
+\[
+  \frac4{1+1}=\boxed{2}.
+\]
+\end{bgsolution}
+\end{bgexample}
+\webnext{calculus/limits/complex-fractions}{Limits With Complex Fractions}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/complex-fractions}{Limits With Complex Fractions}{lesson}
+\section{Complex Fractions}
+
+\lessonobjective{
+Combine smaller fractions using a common denominator before simplifying a limit whose numerator or denominator contains fractions.
+}
+
+\begin{bgconcept}
+A complex fraction is just a large fraction containing smaller fractions. Do not try to ``cancel through'' addition. First turn the top or bottom into one ordinary fraction. Then divide.
+\end{bgconcept}
+
+\begin{bgguided}[title={Combine the numerator first}]
+Evaluate
+\[
+  \lim_{x\to0}\frac{\frac1{x+1}-1}{x}.
+\]
+
+\begin{bgsolution}
+Direct substitution gives \(0/0\). Combine the two terms in the numerator:
+\[
+  \frac1{x+1}-1
+  =\frac1{x+1}-\frac{x+1}{x+1}
+  =\frac{1-(x+1)}{x+1}
+  =\frac{-x}{x+1}.
+\]
+Now place that result over \(x\):
+\[
+  \frac{\frac{-x}{x+1}}{x}
+  =\frac{-x}{x+1}\cdot\frac1x
+  =-\frac1{x+1},\qquad x\ne0.
+\]
+Substitute:
+\[
+  -\frac1{0+1}=\boxed{-1}.
+\]
+\end{bgsolution}
+\end{bgguided}
+
+\begin{bgexample}[title={Difference quotient for a reciprocal}]
+Evaluate
+\[
+  \lim_{h\to0}
+  \frac{\frac1{3+h}-\frac13}{h}.
+\]
+
+\begin{bgsolution}
+Combine the fractions in the numerator using denominator \(3(3+h)\):
+\begin{align*}
+\frac1{3+h}-\frac13
+&=\frac3{3(3+h)}-\frac{3+h}{3(3+h)}\\
+&=\frac{3-(3+h)}{3(3+h)}\\
+&=\frac{-h}{3(3+h)}.
+\end{align*}
+Now divide by \(h\):
+\[
+  \frac{\frac{-h}{3(3+h)}}{h}
+  =\frac{-h}{3(3+h)}\cdot\frac1h
+  =-\frac1{3(3+h)}.
+\]
+Take the limit:
+\[
+  -\frac1{3(3)}=\boxed{-\frac19}.
+\]
+\end{bgsolution}
+\end{bgexample}
+
+\begin{bgexample}[title={Exam-level: two rational terms}]
+Evaluate
+\[
+  \lim_{x\to2}
+  \frac{\frac1x-\frac12}{x-2}.
+\]
+
+\begin{bgsolution}
+Combine the numerator:
+\[
+  \frac1x-\frac12=\frac{2-x}{2x}=-\frac{x-2}{2x}.
+\]
+Therefore,
+\[
+  \frac{-\frac{x-2}{2x}}{x-2}
+  =-\frac1{2x},\qquad x\ne2.
+\]
+Now substitute:
+\[
+  -\frac1{2(2)}=\boxed{-\frac14}.
+\]
+\end{bgsolution}
+\end{bgexample}
+\webnext{calculus/limits/absolute-value-piecewise}{Limits With Absolute Values and Piecewise Functions}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/absolute-value-piecewise}{Limits With Absolute Values and Piecewise Functions}{lesson}
+\section{Absolute Values and Piecewise Rules}
+
+\lessonobjective{
+Rewrite absolute values on each side of a target and evaluate one-sided limits before deciding whether a two-sided limit exists.
+}
+
+The absolute value is piecewise:
+\[
+  |u|=
+  \begin{cases}
+    u,&u\ge0,\\
+    -u,&u<0.
+  \end{cases}
+\]
+The sign of the inside expression determines which rule applies.
+
+\begin{bgguided}[title={\(|x|/x\)}]
+Evaluate
+\[
+  \lim_{x\to0}\frac{|x|}{x}.
+\]
+
+\begin{bgsolution}
+For \(x>0\), \(|x|=x\), so
+\[
+  \frac{|x|}{x}=\frac{x}{x}=1.
+\]
+Therefore,
+\[
+  \lim_{x\to0^+}\frac{|x|}{x}=1.
+\]
+For \(x<0\), \(|x|=-x\), so
+\[
+  \frac{|x|}{x}=\frac{-x}{x}=-1.
+\]
+Therefore,
+\[
+  \lim_{x\to0^-}\frac{|x|}{x}=-1.
+\]
+The sides disagree, so
+\[
+  \boxed{\lim_{x\to0}\frac{|x|}{x}=\DNE}.
+\]
+\end{bgsolution}
+\end{bgguided}
+
+\begin{bgexample}[title={A shifted absolute value}]
+Evaluate
+\[
+  \lim_{x\to3}\frac{|x-3|}{x-3}.
+\]
+
+\begin{bgsolution}
+When \(x>3\), the inside \(x-3\) is positive, so
+\[
+  |x-3|=x-3
+\]
+and the quotient equals \(1\).
+
+When \(x<3\), the inside \(x-3\) is negative, so
+\[
+  |x-3|=-(x-3)
+\]
+and the quotient equals \(-1\).
+
+Thus,
+\[
+  \lim_{x\to3^-}\frac{|x-3|}{x-3}=-1,
+\]
+\[
+  \lim_{x\to3^+}\frac{|x-3|}{x-3}=1.
+\]
+Therefore the two-sided limit does not exist.
+\end{bgsolution}
+\end{bgexample}
+
+\begin{bgexample}[title={An absolute value whose limit does exist}]
+Evaluate
+\[
+  \lim_{x\to2}\frac{|x-2|}{\sqrt{|x-2|}}.
+\]
+
+\begin{bgsolution}
+For \(x\ne2\), \(|x-2|>0\), and
+\[
+  \frac{|x-2|}{\sqrt{|x-2|}}=\sqrt{|x-2|}.
+\]
+As \(x\to2\), the distance \(|x-2|\to0\). Therefore,
+\[
+  \sqrt{|x-2|}\to0,
+\]
+so
+\[
+  \boxed{0}.
+\]
+Absolute value does not automatically cause a limit to fail. It causes one-sided analysis when the formula changes sign or form across the target.
+\end{bgsolution}
+\end{bgexample}
+\webnext{calculus/limits/finite-limit-decision-tree}{Finite Limit Decision Tree}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/finite-limit-decision-tree}{Finite Limit Decision Tree}{reference}
+\section{The Finite-Limit Decision Tree}
+
+\begin{bgmethod}[title={A Repeatable Homework Procedure}]
+For a finite target \(x\to a\):
+\begin{enumerate}
+  \item Substitute \(x=a\).
+  \item If you get a real number, stop.
+  \item If you get \(0/0\), inspect the expression:
+  \begin{itemize}
+    \item factor polynomial expressions;
+    \item rationalize radical differences;
+    \item combine complex fractions;
+    \item split absolute values or piecewise functions into one-sided cases;
+    \item save trig limits for Chapter 3.
+  \end{itemize}
+  \item Simplify only for nearby values where the original expression is defined.
+  \item Substitute again.
+  \item State why the method is valid, especially if one-sided limits are involved.
+\end{enumerate}
+\end{bgmethod}
+\webnext{calculus/limits/squeeze-theorem}{The Squeeze Theorem}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/finite-limits-review}{Finite Limits Review}{review}
+\section*{Chapter 2 Summary}
+\addcontentsline{toc}{section}{Chapter 2 Summary}
+
+\begin{bgsummary}
+\begin{itemize}
+  \item Direct substitution is the correct first move, not an unsophisticated shortcut.
+  \item A legal real substitution result usually finishes the problem.
+  \item \(0/0\) is indeterminate; it tells you to transform the expression.
+  \item Factor polynomial forms, rationalize radicals, combine complex fractions, and use one-sided rules for absolute values.
+  \item Cancellation is legal in a limit when it is performed for nearby non-target inputs where the cancelled factor is nonzero.
+\end{itemize}
+\end{bgsummary}
+\webnext{calculus/limits/squeeze-theorem}{The Squeeze Theorem}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/finite-limits-concept-quiz}{Finite Limits Concept Quiz}{quiz}
+\section*{Chapter 2 Concept Quiz}
+\addcontentsline{toc}{section}{Chapter 2 Concept Quiz}
+
+Use this as a short retrieval check after finishing the chapter. On the website, each item should accept an answer before revealing the hint and worked explanation.
+
+\begin{bgcheck}{substitution-q1}{integer}{11}[Concept check]
+Evaluate \(\lim_{x\to3}(2x+5)\).
+\begin{bghint}
+This linear function is continuous, so substitute \(x=3\).
+\end{bghint}
+\begin{bgreveal}
+\(2(3)+5=11\).
+\end{bgreveal}
+\end{bgcheck}
+
+\begin{bgcheck}{factor-q1}{integer}{8}[Concept check]
+Evaluate \(\lim_{x\to4}\frac{x^2-16}{x-4}\).
+\begin{bghint}
+Factor \(x^2-16=(x-4)(x+4)\).
+\end{bghint}
+\begin{bgreveal}
+Cancel for \(x\ne4\), leaving \(x+4\), which approaches \(8\).
+\end{bgreveal}
+\end{bgcheck}
+
+\begin{bgcheck}{radical-q1}{rational}{1/6}[Concept check]
+Evaluate \(\lim_{x\to0}\frac{\sqrt{x+9}-3}{x}\).
+\begin{bghint}
+Multiply by the conjugate \(\sqrt{x+9}+3\).
+\end{bghint}
+\begin{bgreveal}
+The expression simplifies to \(1/(\sqrt{x+9}+3)\), so the limit is \(1/6\).
+\end{bgreveal}
+\end{bgcheck}
+
+\begin{bgcheck}{abs-q1}{choice}{DNE}[Concept check]
+Does \(\lim_{x\to0}|x|/x\) exist? Enter DNE if it does not.
+\begin{bghint}
+Check the left and right sides separately.
+\end{bghint}
+\begin{bgreveal}
+The left-hand limit is \(-1\) and the right-hand limit is \(1\), so the limit is DNE.
+\end{bgreveal}
+\end{bgcheck}
+
+\begin{bgsummary}[title={Quiz use on the website}]
+This page should report completion by concept, not merely a total score. A wrong answer should link back to the exact lesson that teaches the missing method. The same questions may appear in randomized numerical variants, but the canonical explanation should remain stable.
+\end{bgsummary}
+\webnext{calculus/limits/squeeze-theorem}{The Squeeze Theorem}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/finite-limits-practice}{Finite Limit Practice Problems}{practice}
+\section*{Chapter 2 Exercises}
+\addcontentsline{toc}{section}{Chapter 2 Exercises}
+
+\subsection*{A. Direct substitution and limit laws}
+\begin{bgexercises}[label=\textbf{2.\arabic*}]
+  \item \(\displaystyle\lim_{x\to3}(2x+7)\)
+  \item \(\displaystyle\lim_{x\to-2}(x^2-4x+1)\)
+  \item \(\displaystyle\lim_{t\to4}(t^3-2t)\)
+  \item \(\displaystyle\lim_{x\to1}\frac{x^2+3}{x+2}\)
+  \item \(\displaystyle\lim_{x\to-1}\frac{2x^2+x+5}{x^2+4}\)
+  \item \(\displaystyle\lim_{u\to8}\sqrt[3]{u+19}\)
+  \item \(\displaystyle\lim_{x\to0}(3\cos x+2\sin x)\)
+  \item If \(f(x)\to2\) and \(g(x)\to-3\), find \(\lim[4f(x)-g(x)]\).
+  \item With the same limits, find \(\lim f(x)g(x)\).
+  \item With the same limits, find \(\lim\dfrac{f(x)^2+g(x)}{f(x)-g(x)}\).
+  \item State why the quotient law cannot be used when the denominator's limit is zero.
+  \item Give an example where direct substitution produces a real number and therefore no algebraic simplification is needed.
+\end{bgexercises}
+
+\subsection*{B. Factoring}
+\begin{bgexercises}[label=\textbf{2.\arabic*},resume]
+  \item \(\displaystyle\lim_{x\to5}\frac{x^2-25}{x-5}\)
+  \item \(\displaystyle\lim_{x\to-3}\frac{x^2+5x+6}{x+3}\)
+  \item \(\displaystyle\lim_{x\to4}\frac{x^2-7x+12}{x-4}\)
+  \item \(\displaystyle\lim_{x\to2}\frac{x^3-8}{x-2}\)
+  \item \(\displaystyle\lim_{x\to-2}\frac{x^3+8}{x+2}\)
+  \item \(\displaystyle\lim_{x\to1}\frac{x^4-1}{x-1}\)
+  \item \(\displaystyle\lim_{x\to-1}\frac{x^4-1}{x+1}\)
+  \item \(\displaystyle\lim_{x\to3}\frac{x^2-9}{x^2-4x+3}\)
+  \item \(\displaystyle\lim_{x\to1}\frac{x^3-1}{x^2-1}\)
+  \item \(\displaystyle\lim_{h\to0}\frac{(2+h)^2-4}{h}\)
+  \item \(\displaystyle\lim_{h\to0}\frac{(3+h)^3-27}{h}\)
+  \item Explain why the cancelled expression and original expression may differ at the target but have the same limit.
+\end{bgexercises}
+
+\subsection*{C. Radical limits}
+\begin{bgexercises}[label=\textbf{2.\arabic*},resume]
+  \item \(\displaystyle\lim_{x\to0}\frac{\sqrt{x+9}-3}{x}\)
+  \item \(\displaystyle\lim_{x\to0}\frac{\sqrt{x+16}-4}{x}\)
+  \item \(\displaystyle\lim_{x\to25}\frac{x-25}{\sqrt{x}-5}\)
+  \item \(\displaystyle\lim_{x\to4}\frac{\sqrt{x}-2}{x-4}\)
+  \item \(\displaystyle\lim_{x\to0}\frac{\sqrt{1+5x}-1}{x}\)
+  \item \(\displaystyle\lim_{x\to0}\frac{\sqrt{4+x}-\sqrt{4-x}}{x}\)
+  \item \(\displaystyle\lim_{x\to3}\frac{x-3}{\sqrt{x+6}-3}\)
+  \item \(\displaystyle\lim_{x\to0}\frac{\sqrt{1+2x}-\sqrt{1-x}}{x}\)
+\end{bgexercises}
+
+\subsection*{D. Complex fractions}
+\begin{bgexercises}[label=\textbf{2.\arabic*},resume]
+  \item \(\displaystyle\lim_{x\to0}\frac{\frac1{x+1}-1}{x}\)
+  \item \(\displaystyle\lim_{x\to0}\frac{\frac1{x+2}-\frac12}{x}\)
+  \item \(\displaystyle\lim_{x\to0}\frac{\frac1{3+x}-\frac13}{x}\)
+  \item \(\displaystyle\lim_{x\to2}\frac{\frac1x-\frac12}{x-2}\)
+  \item \(\displaystyle\lim_{x\to1}\frac{\frac1{x+1}-\frac12}{x-1}\)
+  \item \(\displaystyle\lim_{h\to0}\frac{\frac1{a+h}-\frac1a}{h}\), where \(a\ne0\).
+  \item \(\displaystyle\lim_{x\to0}\frac{\frac{x}{x+1}}{x}\)
+  \item \(\displaystyle\lim_{x\to0}\frac{\frac1{1-x}-1}{x}\)
+\end{bgexercises}
+
+\subsection*{E. Absolute values and piecewise forms}
+\begin{bgexercises}[label=\textbf{2.\arabic*},resume]
+  \item \(\displaystyle\lim_{x\to0^-}\frac{|x|}{x}\)
+  \item \(\displaystyle\lim_{x\to0^+}\frac{|x|}{x}\)
+  \item \(\displaystyle\lim_{x\to0}\frac{|x|}{x}\)
+  \item \(\displaystyle\lim_{x\to2}\frac{|x-2|}{x-2}\)
+  \item \(\displaystyle\lim_{x\to-1^-}\frac{|x+1|}{x+1}\)
+  \item \(\displaystyle\lim_{x\to3}\frac{|x-3|}{\sqrt{|x-3|}}\)
+  \item Let \(f(x)=\begin{cases}x+2,&x<1,\\x^2+1,&x\ge1.\end{cases}\) Find the limit at \(1\).
+  \item Let \(g(x)=\begin{cases}2x,&x<2,\\x+3,&x\ge2.\end{cases}\) Find both one-sided limits at \(2\).
+\end{bgexercises}
+
+\subsection*{F. Mixed exam practice}
+\begin{bgexercises}[label=\textbf{2.\arabic*},resume]
+  \item \(\displaystyle\lim_{x\to2}\frac{x^3-4x}{x^2-4}\)
+  \item \(\displaystyle\lim_{x\to1}\frac{x^5-1}{x^2-1}\)
+  \item \(\displaystyle\lim_{x\to0}\frac{\sqrt{9+2x}-3}{x}\)
+  \item \(\displaystyle\lim_{x\to4}\frac{\frac1x-\frac14}{x-4}\)
+  \item \(\displaystyle\lim_{x\to0}\frac{|x|}{\sqrt{|x|}}\)
+  \item A student cancels \(x\) in \((x^2+x)/x\) and obtains \(x+1\). Explain why this cancellation is valid for \(x\ne0\), and distinguish it from cancelling a term across addition without factoring.
+  \item Design a \(0/0\) limit whose value is \(5\).
+  \item Design a \(0/0\) limit whose value is \(0\).
+  \item Design a \(0/0\) limit that does not exist.
+  \item Write a short decision procedure for determining whether to factor, rationalize, combine fractions, or split into one-sided cases.
+\end{bgexercises}
+
+Answers begin in \cref{app:chapter-answers}.
+\webnext{calculus/limits/squeeze-theorem}{The Squeeze Theorem}
+\end{webpage}

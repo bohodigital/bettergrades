@@ -1,0 +1,664 @@
+\begin{webpage}{calculus/limits/squeeze-theorem}{The Squeeze Theorem}{lesson}
+\chapter{The Squeeze Theorem and Trigonometric Limits}
+
+\section{When Direct Algebra Is Not Enough}
+
+\lessonobjective{
+Use upper and lower bounds to determine a limit even when the middle function oscillates or is difficult to evaluate directly.
+}
+
+Some functions refuse to simplify into a friendly formula. The Squeeze Theorem handles them by trapping their outputs between two simpler functions.
+
+\begin{bgconcept}
+Suppose three people walk through a doorway side by side. The person in the middle cannot end up above the person on the top or below the person on the bottom. If the top and bottom people are forced toward the same height, the middle person is forced there too. That is the Squeeze Theorem.
+\end{bgconcept}
+
+\begin{bgtheorem}[title={Squeeze Theorem}]
+Suppose that for all \(x\) sufficiently close to \(a\),
+\[
+  g(x)\le f(x)\le h(x),
+\]
+and suppose
+\[
+  \lim_{x\to a}g(x)=L
+  \qquad\text{and}\qquad
+  \lim_{x\to a}h(x)=L.
+\]
+Then
+\[
+  \boxed{\lim_{x\to a}f(x)=L}.
+\]
+\end{bgtheorem}
+
+\begin{bgguided}[title={A number trapped between shrinking walls}]
+Suppose \(f(x)\) satisfies
+\[
+  -x^2\le f(x)\le x^2
+\]
+near \(x=0\). Find \(\lim_{x\to0}f(x)\).
+
+\begin{bgsolution}
+The lower wall approaches
+\[
+  \lim_{x\to0}(-x^2)=0.
+\]
+The upper wall approaches
+\[
+  \lim_{x\to0}x^2=0.
+\]
+Because \(f(x)\) is trapped between two functions that both approach \(0\),
+\[
+  \boxed{\lim_{x\to0}f(x)=0}.
+\]
+We do not need a formula for \(f\). The trap is enough.
+\end{bgsolution}
+\end{bgguided}
+
+\input{checks/squeeze-flow-01}
+
+\subsection{Bounded oscillation times a shrinking factor}
+
+The inequalities
+\[
+  -1\le\sin u\le1
+\]
+and
+\[
+  -1\le\cos u\le1
+\]
+hold for every real \(u\). If a bounded trigonometric factor is multiplied by something that approaches zero, the product is often squeezed to zero.
+
+\begin{bgexample}[title={An oscillating function forced to zero}]
+Evaluate
+\[
+  \lim_{x\to0}x^2\sin\left(\frac1x\right).
+\]
+
+\begin{bgsolution}
+Start with the universal sine bound:
+\[
+  -1\le\sin\left(\frac1x\right)\le1.
+\]
+Since \(x^2\ge0\), multiply every part by \(x^2\) without reversing the inequalities:
+\[
+  -x^2\le x^2\sin\left(\frac1x\right)\le x^2.
+\]
+Now take limits of the outer functions:
+\[
+  \lim_{x\to0}(-x^2)=0,
+  \qquad
+  \lim_{x\to0}x^2=0.
+\]
+Therefore,
+\[
+  \boxed{\lim_{x\to0}x^2\sin\left(\frac1x\right)=0}.
+\]
+The sine factor continues oscillating. The shrinking factor \(x^2\) reduces the size of every oscillation until the graph is trapped near zero.
+\end{bgsolution}
+\end{bgexample}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=0.88\textwidth,height=0.46\textwidth,
+  xmin=-0.35,xmax=0.35,ymin=-0.13,ymax=0.13,
+  axis lines=middle,xlabel={$x$},ylabel={$y$},
+  grid=major,major grid style={draw=BGLine},
+  legend style={draw=none,fill=none,font=\small,at={(0.98,0.97)},anchor=north east}
+]
+\addplot[BGBlue,thick,domain=-0.35:-0.008,samples=140]{x^2*sin(deg(1/x))};
+\addplot[BGBlue,thick,domain=0.008:0.35,samples=140]{x^2*sin(deg(1/x))};
+\addlegendentry{$x^2\sin(1/x)$}
+\addplot[BGGreen,dashed,thick,domain=-0.35:0.35,samples=120]{x^2};
+\addlegendentry{$x^2$}
+\addplot[BGRed,dashed,thick,domain=-0.35:0.35,samples=120]{-x^2};
+\addlegendentry{$-x^2$}
+\end{axis}
+\end{tikzpicture}
+\caption{The oscillating function is trapped between \(-x^2\) and \(x^2\), both of which approach zero.}
+\label{fig:squeeze-oscillation}
+\end{figure}
+
+\begin{bggraphspec}
+\textbf{Functions:} \(y=x^2\sin(1/x)\), \(y=x^2\), and \(y=-x^2\). \textbf{Window:} \(-0.35\le x\le0.35\), \(-0.13\le y\le0.13\). Use at least 1500 samples on each side of zero for the oscillating curve. Do not connect across \(x=0\), where the displayed formula is undefined.
+\end{bggraphspec}
+
+\begin{bgexample}[title={Absolute-value squeeze}]
+Evaluate
+\[
+  \lim_{x\to0}x\cos\left(\frac{5}{x}\right).
+\]
+
+\begin{bgsolution}
+Because \(|\cos u|\le1\),
+\[
+  \left|x\cos\left(\frac5x\right)\right|
+  \le |x|.
+\]
+This means
+\[
+  -|x|\le x\cos\left(\frac5x\right)\le|x|.
+\]
+Both outer functions approach zero, so
+\[
+  \boxed{\lim_{x\to0}x\cos\left(\frac5x\right)=0}.
+\]
+\end{bgsolution}
+\end{bgexample}
+
+\begin{bghomework}
+When a function contains \(\sin(1/x)\), \(\cos(1/x)\), or another bounded oscillating factor, ask whether the rest of the expression approaches zero. The inequality
+\[
+  |\text{bounded factor}\times\text{shrinking factor}|
+  \le C|\text{shrinking factor}|
+\]
+is often the entire argument.
+\end{bghomework}
+\webnext{calculus/limits/sin-x-over-x}{Why sin(x)/x Approaches 1}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/sin-x-over-x}{Why sin(x)/x Approaches 1}{lesson}
+\section{The Fundamental Trigonometric Limit}
+
+\lessonobjective{
+Understand geometrically why \(\lim_{x\to0}\sin x/x=1\) when angles are measured in radians, and use it to evaluate scaled trigonometric limits.
+}
+
+The most important trigonometric limit in first-semester calculus is
+\[
+  \boxed{\lim_{x\to0}\frac{\sin x}{x}=1}.
+\]
+It is not a random formula. It follows from the geometry of the unit circle and the Squeeze Theorem.
+
+\begin{bgmistake}
+The formula requires radians. If \(x\) is measured in degrees, \(\sin x/x\) approaches \(\pi/180\), not \(1\). Calculus uses radians because arc length on the unit circle equals the angle measure itself.
+\end{bgmistake}
+\webnext{calculus/limits/sin-x-over-x-proof}{Geometric Proof of the sin(x)/x Limit}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/sin-x-over-x-proof}{Geometric Proof of the sin(x)/x Limit}{lesson}
+\subsection{The unit-circle comparison}
+
+Take an angle \(x\) with
+\[
+  0<x<\frac{\pi}{2}.
+\]
+In a unit circle:
+
+\begin{itemize}
+  \item the area of the inner triangle is \(\frac12\sin x\cos x\);
+  \item the area of the circular sector is \(\frac12x\);
+  \item the area of the outer tangent triangle is \(\frac12\tan x\).
+\end{itemize}
+
+Therefore,
+\[
+  \frac12\sin x\cos x
+  <\frac12x
+  <\frac12\tan x.
+\]
+Multiply by \(2\):
+\[
+  \sin x\cos x<x<\tan x.
+\]
+Since \(\sin x>0\), divide by \(\sin x\):
+\[
+  \cos x<\frac{x}{\sin x}<\frac1{\cos x}.
+\]
+Taking positive reciprocals reverses the inequalities:
+\[
+  \cos x<\frac{\sin x}{x}<1.
+\]
+As \(x\to0^+\), both outer expressions approach \(1\). Hence
+\[
+  \lim_{x\to0^+}\frac{\sin x}{x}=1.
+\]
+The function \(\sin x/x\) is even because
+\[
+  \frac{\sin(-x)}{-x}=\frac{\sin x}{x}.
+\]
+Thus the left-hand limit is also \(1\), and the two-sided limit is \(1\).
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[scale=3.2]
+\coordinate (O) at (0,0);
+\coordinate (A) at (1,0);
+\coordinate (B) at ({cos(32)},{sin(32)});
+\coordinate (T) at (1,{tan(32)});
+\draw[BGInk,thick] (O) circle (1);
+\draw[BGBlue,very thick] (O)--(A);
+\draw[BGBlue,very thick] (O)--(B);
+\draw[BGGreen,thick] (A)--(B);
+\draw[BGRed,thick] (A)--(T)--(O);
+\draw pic[draw=BGGold,fill=BGGold!18,angle radius=0.27cm,"$x$"{font=\small}] {angle=A--O--B};
+\fill[BGInk] (O) circle (0.015) (A) circle (0.015) (B) circle (0.015) (T) circle (0.015);
+\node[below left,font=\small] at (O) {$O$};
+\node[below right,font=\small] at (A) {$A$};
+\node[above,font=\small] at (B) {$B$};
+\node[right,font=\small] at (T) {$T$};
+\node[font=\small,BGGreen] at (0.78,0.23) {inner triangle};
+\node[font=\small,BGRed,rotate=25] at (0.61,0.62) {outer triangle};
+\end{tikzpicture}
+\caption{For a unit circle and \(0<x<\pi/2\), the inner triangle lies inside the sector, which lies inside the outer tangent triangle.}
+\label{fig:unit-circle-squeeze}
+\end{figure}
+
+\begin{bgconcept}
+Near zero, the arc length \(x\) and the vertical height \(\sin x\) become nearly indistinguishable. Their ratio approaches \(1\). The unit-circle proof turns ``nearly'' into inequalities strong enough for the Squeeze Theorem.
+\end{bgconcept}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=0.84\textwidth,height=0.46\textwidth,
+  xmin=-6.3,xmax=6.3,ymin=-0.35,ymax=1.18,
+  axis lines=middle,xlabel={$x$},ylabel={$\sin x/x$},
+  grid=major,major grid style={draw=BGLine},
+  xtick={-6.283,-3.142,0,3.142,6.283},
+  xticklabels={$-2\pi$,$-\pi$,$0$,$\pi$,$2\pi$}
+]
+\addplot[BGBlue,very thick,domain=-6.3:-0.035,samples=120]{sin(deg(x))/x};
+\addplot[BGBlue,very thick,domain=0.035:6.3,samples=120]{sin(deg(x))/x};
+\addplot[only marks,mark=o,mark size=4pt,very thick,BGRed] coordinates {(0,1)};
+\draw[dashed,BGGray] (axis cs:-6.3,1)--(axis cs:6.3,1);
+\end{axis}
+\end{tikzpicture}
+\caption{The graph of \(\sin x/x\) has a removable hole at \((0,1)\) and approaches \(1\) from both sides.}
+\label{fig:sinc}
+\end{figure}
+
+\begin{bgguided}[title={Use the exact pattern}]
+Evaluate
+\[
+  \lim_{x\to0}\frac{\sin x}{x}.
+\]
+
+\begin{bgsolution}
+This is the fundamental trigonometric limit itself:
+\[
+  \boxed{1}.
+\]
+No algebra is needed. Recognizing the pattern is the method.
+\end{bgsolution}
+\end{bgguided}
+
+\input{checks/trig-flow-01}
+\webnext{calculus/limits/scaled-sine-tangent}{Scaled Sine and Tangent Limits}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/scaled-sine-tangent}{Scaled Sine and Tangent Limits}{lesson}
+\section{Scaled Sine and Tangent Limits}
+
+\lessonobjective{
+Rewrite trigonometric limits so that a factor has the standard form \(\sin u/u\) or \(\tan u/u\).
+}
+
+\subsection{The substitution pattern}
+
+If \(u=kx\), then \(u\to0\) whenever \(x\to0\). We want to create the denominator \(kx\) that matches the sine argument.
+
+\begin{bgexample}[title={\(\sin(5x)/x\)}]
+Evaluate
+\[
+  \lim_{x\to0}\frac{\sin(5x)}{x}.
+\]
+
+\begin{bgsolution}
+The sine argument is \(5x\), but the denominator is only \(x\). Multiply and divide by \(5\):
+\[
+  \frac{\sin(5x)}{x}
+  =5\frac{\sin(5x)}{5x}.
+\]
+As \(x\to0\), \(5x\to0\), so
+\[
+  \frac{\sin(5x)}{5x}\to1.
+\]
+Therefore,
+\[
+  \boxed{5}.
+\]
+\end{bgsolution}
+\end{bgexample}
+
+\begin{bgguided}[title={Keep the outside constant}]
+Evaluate
+\[
+  \lim_{x\to0}\frac{\sin(3x)}{2x}.
+\]
+
+\begin{bgsolution}
+Create \(3x\) in the denominator:
+\[
+  \frac{\sin(3x)}{2x}
+  =\frac32\frac{\sin(3x)}{3x}.
+\]
+The standard factor approaches \(1\), so
+\[
+  \boxed{\frac32}.
+\]
+\end{bgsolution}
+\end{bgguided}
+\webnext{calculus/limits/ratio-of-sines}{Limits of Ratios of Sine Functions}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/ratio-of-sines}{Limits of Ratios of Sine Functions}{lesson}
+\subsection{Ratio of two sine expressions}
+
+\begin{bgexample}[title={Sine over sine}]
+Evaluate
+\[
+  \lim_{x\to0}\frac{\sin(4x)}{\sin(7x)}.
+\]
+
+\begin{bgsolution}
+Insert factors that create both standard limits:
+\begin{align*}
+\frac{\sin(4x)}{\sin(7x)}
+&=\frac{\sin(4x)}{4x}
+  \cdot\frac{4x}{7x}
+  \cdot\frac{7x}{\sin(7x)}\\
+&=\frac{\sin(4x)}{4x}
+  \cdot\frac47
+  \cdot\frac{7x}{\sin(7x)}.
+\end{align*}
+The first and third factors approach \(1\), so
+\[
+  \boxed{\frac47}.
+\]
+\end{bgsolution}
+\end{bgexample}
+
+\subsection{Tangent}
+
+Since
+\[
+  \frac{\tan x}{x}
+  =\frac{\sin x}{x\cos x},
+\]
+we have
+\[
+  \boxed{\lim_{x\to0}\frac{\tan x}{x}=1}.
+\]
+
+\begin{bgexample}[title={A tangent limit}]
+Evaluate
+\[
+  \lim_{x\to0}\frac{\tan(6x)}{2x}.
+\]
+
+\begin{bgsolution}
+Create \(6x\) in the denominator:
+\[
+  \frac{\tan(6x)}{2x}
+  =3\frac{\tan(6x)}{6x}.
+\]
+The standard tangent factor approaches \(1\), so
+\[
+  \boxed{3}.
+\]
+\end{bgsolution}
+\end{bgexample}
+\webnext{calculus/limits/cosine-limits}{Cosine Limits and Trigonometric Identities}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/cosine-limits}{Cosine Limits and Trigonometric Identities}{lesson}
+\section{Cosine Limits and Trigonometric Identities}
+
+\lessonobjective{
+Use conjugates and identities to reduce limits involving \(1-\cos x\), \(\sin^2x\), or other trigonometric expressions to standard forms.
+}
+
+\subsection{A first cosine limit}
+
+\[
+  \boxed{\lim_{x\to0}\frac{1-\cos x}{x}=0}.
+\]
+To show this, rationalize with \(1+\cos x\):
+\begin{align*}
+\frac{1-\cos x}{x}
+&\cdot\frac{1+\cos x}{1+\cos x}\\
+&=\frac{1-\cos^2x}{x(1+\cos x)}\\
+&=\frac{\sin^2x}{x(1+\cos x)}\\
+&=\frac{\sin x}{x}\cdot\frac{\sin x}{1+\cos x}.
+\end{align*}
+The first factor approaches \(1\), and the second approaches \(0/2=0\). Therefore the product approaches \(0\).
+
+\subsection{The second important cosine limit}
+
+\[
+  \boxed{\lim_{x\to0}\frac{1-\cos x}{x^2}=\frac12}.
+\]
+Again rationalize:
+\begin{align*}
+\frac{1-\cos x}{x^2}
+&=\frac{\sin^2x}{x^2(1+\cos x)}\\
+&=\left(\frac{\sin x}{x}\right)^2\frac1{1+\cos x}.
+\end{align*}
+Taking limits gives
+\[
+  1^2\cdot\frac12=\frac12.
+\]
+
+\begin{bgguided}[title={Recognize the squared pattern}]
+Evaluate
+\[
+  \lim_{x\to0}\frac{\sin^2x}{x^2}.
+\]
+
+\begin{bgsolution}
+Rewrite as a square:
+\[
+  \frac{\sin^2x}{x^2}
+  =\left(\frac{\sin x}{x}\right)^2.
+\]
+The inside approaches \(1\), so the square approaches
+\[
+  \boxed{1}.
+\]
+\end{bgsolution}
+\end{bgguided}
+
+\begin{bgexample}[title={Identity plus a standard limit}]
+Evaluate
+\[
+  \lim_{x\to0}\frac{1-\cos(3x)}{x^2}.
+\]
+
+\begin{bgsolution}
+Create \((3x)^2\) in the denominator:
+\[
+  \frac{1-\cos(3x)}{x^2}
+  =9\frac{1-\cos(3x)}{(3x)^2}.
+\]
+As \(x\to0\), \(3x\to0\), so the standard cosine limit gives
+\[
+  9\cdot\frac12=\boxed{\frac92}.
+\]
+\end{bgsolution}
+\end{bgexample}
+
+\begin{bgexample}[title={Exam-level: use an identity before the standard limit}]
+Evaluate
+\[
+  \lim_{x\to0}\frac{\sin(2x)\sin(5x)}{x^2}.
+\]
+
+\begin{bgsolution}
+Separate the two standard factors:
+\[
+\frac{\sin(2x)\sin(5x)}{x^2}
+=\left(\frac{\sin(2x)}{x}\right)
+ \left(\frac{\sin(5x)}{x}\right).
+\]
+Each factor can be rewritten:
+\[
+  \frac{\sin(2x)}{x}=2\frac{\sin(2x)}{2x}\to2,
+\]
+\[
+  \frac{\sin(5x)}{x}=5\frac{\sin(5x)}{5x}\to5.
+\]
+Therefore the product approaches
+\[
+  \boxed{10}.
+\]
+\end{bgsolution}
+\end{bgexample}
+
+\begin{bgexamnote}
+Do not replace \(\sin x\) by \(x\) as an algebraic identity. The statement \(\sin x\sim x\) near zero means their ratio approaches \(1\); it does not mean the two expressions are equal for nonzero \(x\). Preserve the limit argument.
+\end{bgexamnote}
+\webnext{calculus/limits/trig-limit-decision-guide}{Trigonometric Limit Decision Guide}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/trig-limit-decision-guide}{Trigonometric Limit Decision Guide}{reference}
+\section{Trig-Limit Decision Guide}
+
+\begin{bgmethod}
+For a trigonometric limit near zero:
+\begin{enumerate}
+  \item Substitute first.
+  \item If the result is \(0/0\), look for \(\sin u/u\), \(\tan u/u\), or \((1-\cos u)/u^2\).
+  \item Multiply by constants to make the denominator match the trigonometric argument.
+  \item Use identities such as \(1-\cos^2u=\sin^2u\) when needed.
+  \item If a bounded trig factor is multiplied by something tending to zero, consider the Squeeze Theorem.
+\end{enumerate}
+\end{bgmethod}
+\webnext{calculus/limits/infinite-limits}{Infinite Limits Explained}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/trig-limits-review}{Squeeze and Trigonometric Limits Review}{review}
+\section*{Chapter 3 Summary}
+\addcontentsline{toc}{section}{Chapter 3 Summary}
+
+\begin{bgsummary}
+\begin{itemize}
+  \item If \(g\le f\le h\) and both outer limits equal \(L\), then the middle limit is \(L\).
+  \item Bounded oscillation multiplied by a shrinking factor is often squeezed to zero.
+  \item In radians, \(\lim_{x\to0}\sin x/x=1\) and \(\lim_{x\to0}\tan x/x=1\).
+  \item Match the denominator to the trigonometric argument.
+  \item \(\lim_{x\to0}(1-\cos x)/x^2=1/2\).
+\end{itemize}
+\end{bgsummary}
+\webnext{calculus/limits/infinite-limits}{Infinite Limits Explained}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/trig-limits-concept-quiz}{Trigonometric Limits Concept Quiz}{quiz}
+\section*{Chapter 3 Concept Quiz}
+\addcontentsline{toc}{section}{Chapter 3 Concept Quiz}
+
+Use this as a short retrieval check after finishing the chapter. On the website, each item should accept an answer before revealing the hint and worked explanation.
+
+\begin{bgcheck}{squeeze-q1}{integer}{0}[Concept check]
+If \(-x^2\le f(x)\le x^2\), find \(\lim_{x\to0}f(x)\).
+\begin{bghint}
+Both outer functions approach the same value.
+\end{bghint}
+\begin{bgreveal}
+Both bounds approach \(0\), so the Squeeze Theorem gives \(0\).
+\end{bgreveal}
+\end{bgcheck}
+
+\begin{bgcheck}{sine-q1}{integer}{5}[Concept check]
+Evaluate \(\lim_{x\to0}\frac{\sin(5x)}{x}\).
+\begin{bghint}
+Make the denominator match the angle: multiply and divide by \(5\).
+\end{bghint}
+\begin{bgreveal}
+\(5\cdot\lim_{x\to0}\frac{\sin(5x)}{5x}=5\).
+\end{bgreveal}
+\end{bgcheck}
+
+\begin{bgcheck}{sine-ratio-q1}{rational}{3/7}[Concept check]
+Evaluate \(\lim_{x\to0}\frac{\sin(3x)}{\sin(7x)}\).
+\begin{bghint}
+Build one \(\sin u/u\) factor in the numerator and one in the denominator.
+\end{bghint}
+\begin{bgreveal}
+The limit is the ratio of the coefficients, \(3/7\).
+\end{bgreveal}
+\end{bgcheck}
+
+\begin{bgcheck}{cosine-q1}{rational}{1/2}[Concept check]
+Evaluate \(\lim_{x\to0}\frac{1-\cos x}{x^2}\).
+\begin{bghint}
+Use the standard cosine limit or multiply by \(1+\cos x\).
+\end{bghint}
+\begin{bgreveal}
+The limit is \(1/2\).
+\end{bgreveal}
+\end{bgcheck}
+
+\begin{bgsummary}[title={Quiz use on the website}]
+This page should report completion by concept, not merely a total score. A wrong answer should link back to the exact lesson that teaches the missing method. The same questions may appear in randomized numerical variants, but the canonical explanation should remain stable.
+\end{bgsummary}
+\webnext{calculus/limits/infinite-limits}{Infinite Limits Explained}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/trig-limits-practice}{Trigonometric Limit Practice Problems}{practice}
+\section*{Chapter 3 Exercises}
+\addcontentsline{toc}{section}{Chapter 3 Exercises}
+
+\subsection*{A. Squeeze Theorem}
+\begin{bgexercises}[label=\textbf{3.\arabic*}]
+  \item If \(-x^4\le f(x)\le x^4\) near zero, find \(\lim_{x\to0}f(x)\).
+  \item If \(2-x^2\le g(x)\le2+x^2\) near zero, find the limit.
+  \item Evaluate \(\lim_{x\to0}x^3\sin(1/x)\).
+  \item Evaluate \(\lim_{x\to0}x^2\cos(7/x)\).
+  \item Evaluate \(\lim_{x\to0}|x|\sin(4/x)\).
+  \item Evaluate \(\lim_{x\to0}x\cos(1/x^2)\).
+  \item Suppose \(|f(x)|\le5|x-2|\). Find \(\lim_{x\to2}f(x)\).
+  \item Explain why boundedness of \(f\) alone is not enough to conclude \(\lim_{x\to0}f(x)=0\).
+\end{bgexercises}
+
+\subsection*{B. Fundamental sine limits}
+\begin{bgexercises}[label=\textbf{3.\arabic*},resume]
+  \item \(\displaystyle\lim_{x\to0}\frac{\sin x}{x}\)
+  \item \(\displaystyle\lim_{x\to0}\frac{\sin(2x)}{x}\)
+  \item \(\displaystyle\lim_{x\to0}\frac{\sin(7x)}{3x}\)
+  \item \(\displaystyle\lim_{x\to0}\frac{\sin(5x)}{\sin(2x)}\)
+  \item \(\displaystyle\lim_{x\to0}\frac{\sin(3x)}{\sin(8x)}\)
+  \item \(\displaystyle\lim_{t\to0}\frac{\sin(\pi t)}{t}\)
+  \item \(\displaystyle\lim_{x\to0}\frac{x}{\sin(4x)}\)
+  \item \(\displaystyle\lim_{x\to0}\frac{3x}{\sin(5x)}\)
+\end{bgexercises}
+
+\subsection*{C. Tangent and cosine limits}
+\begin{bgexercises}[label=\textbf{3.\arabic*},resume]
+  \item \(\displaystyle\lim_{x\to0}\frac{\tan x}{x}\)
+  \item \(\displaystyle\lim_{x\to0}\frac{\tan(4x)}{x}\)
+  \item \(\displaystyle\lim_{x\to0}\frac{\tan(3x)}{2x}\)
+  \item \(\displaystyle\lim_{x\to0}\frac{1-\cos x}{x}\)
+  \item \(\displaystyle\lim_{x\to0}\frac{1-\cos x}{x^2}\)
+  \item \(\displaystyle\lim_{x\to0}\frac{1-\cos(4x)}{x^2}\)
+  \item \(\displaystyle\lim_{x\to0}\frac{\sin^2x}{x^2}\)
+  \item \(\displaystyle\lim_{x\to0}\frac{\sin^2(3x)}{x^2}\)
+\end{bgexercises}
+
+\subsection*{D. Mixed trigonometric limits}
+\begin{bgexercises}[label=\textbf{3.\arabic*},resume]
+  \item \(\displaystyle\lim_{x\to0}\frac{\sin(2x)\sin(3x)}{x^2}\)
+  \item \(\displaystyle\lim_{x\to0}\frac{\tan(5x)}{\sin(2x)}\)
+  \item \(\displaystyle\lim_{x\to0}\frac{1-\cos(2x)}{\sin^2x}\)
+  \item \(\displaystyle\lim_{x\to0}\frac{\sin(4x)}{x\cos x}\)
+  \item \(\displaystyle\lim_{x\to0}\frac{\sin x}{x(1+\cos x)}\)
+  \item \(\displaystyle\lim_{x\to0}\frac{\tan x-\sin x}{x}\)
+  \item \(\displaystyle\lim_{x\to0}\frac{1-\cos x}{x\sin x}\)
+  \item \(\displaystyle\lim_{x\to0}\frac{\sin(3x)}{\tan(5x)}\)
+\end{bgexercises}
+
+\subsection*{E. Reasoning and exam practice}
+\begin{bgexercises}[label=\textbf{3.\arabic*},resume]
+  \item Explain why radians are required for \(\lim_{x\to0}\sin x/x=1\).
+  \item Derive \(\lim_{x\to0}\tan x/x=1\) from the sine limit.
+  \item Derive \(\lim_{x\to0}(1-\cos x)/x^2=1/2\).
+  \item A student writes \(\sin(5x)=5x\). Explain what is wrong and how to use the limit correctly.
+  \item Give a squeeze argument for \(\lim_{x\to0}x^4\sin(1/x^3)\).
+  \item Create a trigonometric limit near zero whose value is \(7/4\).
+\end{bgexercises}
+
+Answers begin in \cref{app:chapter-answers}.
+\webnext{calculus/limits/infinite-limits}{Infinite Limits Explained}
+\end{webpage}
