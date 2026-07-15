@@ -5,6 +5,7 @@
 import { createContext, FormEvent, lazy, ReactNode, Suspense, useContext, useEffect, useMemo, useState } from "react";
 import type { Question } from "../lib/activities";
 import { algebraCheckerHref } from "../lib/algebra-practice.mjs";
+import { isLimitsUnitPath, limitsUnitPracticeRoutes } from "../lib/calculus/limits-unit.mjs";
 import { courseLibraries, libraryCounts } from "../lib/course-library";
 import { problems, searchProblems, type Problem } from "../lib/content";
 import type { MathGlossaryTerm } from "../lib/glossary/math/registry.mjs";
@@ -13,6 +14,7 @@ import { assessments, getAssessment } from "../lib/registry/practice";
 import { isExpressionOnlyQuery, searchIndexCounts, searchKindLabels, searchSite, type SearchKind, type SiteSearchRecord } from "../lib/site-search";
 import { CourseHubContent, getArticle, LibraryArticleContent, LibraryHomeSection, LibrarySearchResults, searchLibrary, TopicContent } from "./LibraryPages";
 import { AlgebraExpressionChecker } from "./AlgebraExpressionChecker";
+import { LimitsUnitPageContent } from "./LimitsUnitPages";
 import { Formula, Math, MathOrText } from "./Math";
 import { PageGlossaryTerms } from "./PageGlossaryTerms";
 
@@ -383,7 +385,7 @@ function Quiz({ questions, storageKey, title, mode = "practice" }: { questions: 
 }
 
 const practiceLabels = { quiz: "Quick quiz", diagnostic: "Diagnostic", "practice-exam": "Practice exam", challenge: "Challenge" } as const;
-function AssessmentDirectory({ eyebrow, title, intro }: { eyebrow: string; title: string; intro: string }) { return <Shell><section className="page-hero section-pad"><Eyebrow>{eyebrow}</Eyebrow><h1>{title}</h1><p>{intro}</p></section><section className="activity-list section-pad">{assessments.map((item) => <Link href={item.path} className="activity-row" key={item.id}><span>{item.questions.length} Q</span><div><Eyebrow>{practiceLabels[item.kind]} · Mathematics · Calculus</Eyebrow><h2>{item.title}</h2><p>{item.description}</p><span className="tag">About {item.durationMinutes} minutes</span><span className="tag">Device-local progress</span></div><b>Start →</b></Link>)}</section></Shell>; }
+function AssessmentDirectory({ eyebrow, title, intro }: { eyebrow: string; title: string; intro: string }) { return <Shell><section className="page-hero section-pad"><Eyebrow>{eyebrow}</Eyebrow><h1>{title}</h1><p>{intro}</p></section><section className="activity-list section-pad">{assessments.map((item) => <Link href={item.path} className="activity-row" key={item.id}><span>{item.questions.length} Q</span><div><Eyebrow>{practiceLabels[item.kind]} · Mathematics · Calculus</Eyebrow><h2>{item.title}</h2><p>{item.description}</p><span className="tag">About {item.durationMinutes} minutes</span><span className="tag">Device-local progress</span></div><b>Start →</b></Link>)}{limitsUnitPracticeRoutes.map((item) => <Link href={item.path} className="activity-row" key={item.path}><span>{item.checkIds.length || "—"} Q</span><div><Eyebrow>{item.pageType.replaceAll("-", " ")} · Calculus I · Limits</Eyebrow><h2>{item.h1}</h2><p>{item.description}</p><span className="tag">Full worked solutions</span><span className="tag">No account required</span></div><b>Start →</b></Link>)}</section></Shell>; }
 function PracticePage() { return <AssessmentDirectory eyebrow="Practice center" title="Quizzes, practice exams, diagnostics, and challenges." intro="One organized home for free practice with explanations. Start by subject, then choose the kind of workout you need." />; }
 function MathPracticePage() { const algebraCount = courseLibraries.find((course) => course.slug === "algebra")?.articles.length ?? 0; return <AssessmentDirectory eyebrow="Practice · Mathematics" title="Practice that explains the miss." intro={`The current interactive sets focus on calculus. Algebra now has ${algebraCount} worked guides, and its first assessment set is the next content release.`} />; }
 function CalculusPracticePage() { return <AssessmentDirectory eyebrow="Practice · Mathematics · Calculus" title="Pick the kind of calculus practice you need." intro="Warm up with a quiz, find prerequisite gaps, take a mixed practice exam, or race the Integration Bee clock." />; }
@@ -414,6 +416,7 @@ function BetterGradesRoute({ path, glossaryData }: { path: string; glossaryData?
   if (courseMatch && courseLibraries.some((course) => course.slug === courseMatch[1])) return <Shell><CourseHubContent domainSlug={courseMatch[1]} /></Shell>;
   const topicMatch = path.match(/^\/subjects\/math\/([^/]+)\/([^/]+)\/$/);
   if (topicMatch) return <Shell><TopicContent domainSlug={topicMatch[1]} topicSlug={topicMatch[2]} /></Shell>;
+  if (isLimitsUnitPath(path)) return <Shell><LimitsUnitPageContent path={path} /></Shell>;
   const articleMatch = path.match(/^\/subjects\/math\/([^/]+)\/([^/]+)\/([^/]+)\/$/);
   if (articleMatch) {
     const article = getArticle(articleMatch[1], articleMatch[2], articleMatch[3]);

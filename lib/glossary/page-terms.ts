@@ -11,6 +11,8 @@ const educationalDetailPaths = new Set([
 
 const assessmentDetailPath = /^\/practice\/math\/calculus\/(?:quizzes|diagnostics|exams|challenges)\/[^/]+\/$/;
 const assessmentTermIds = ["derivative", "definite-integral", "integrand", "limit", "series"];
+const limitsUnitPath = /^\/subjects\/math\/calculus\/limits-continuity\/unit\//;
+const limitsUnitTermIds = ["limit", "function", "continuity", "domain"];
 
 function resolveIds(ids: readonly string[]): PageGlossaryTerm[] {
   return ids.map((id) => pageTermSummaries[id]).filter((term): term is PageGlossaryTerm => Boolean(term));
@@ -23,5 +25,6 @@ export function getPageGlossaryTerms(path: string): PageGlossaryTerm[] {
   if (educationalDetailPaths.has(path)) return resolveIds(exactProfiles[path] ?? genericProfile);
   if (assessmentDetailPath.test(path)) return resolveIds(assessmentTermIds);
 
+  if (limitsUnitPath.test(path)) return resolveIds(limitsUnitTermIds);
   return [];
 }

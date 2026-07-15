@@ -8,6 +8,7 @@ import {
   parseLimitsUnitPage,
   validateLimitsUnitPayload,
 } from "../lib/calculus/limits-unit-core.mjs";
+import { getLimitsUnitPage, limitsUnitRoutes, limitsUnitSearchRecords } from "../lib/calculus/limits-unit.mjs";
 
 test("the v3 payload has one complete, collision-free course graph", () => {
   assert.equal(unitPayload.source.archiveSha256, "24e5cf5ca36d9756dc5fb9b799be1dc1c480891ef6046039440cd9b5e8b926f1");
@@ -65,6 +66,13 @@ test("typed answer validation accepts equivalents and rejects wrong answers", as
   assert.equal((await compareLimitAnswer(byId["left-right-01"], "5")).status, "incorrect");
   assert.equal((await compareLimitAnswer(byId["epsilon-flow-01"], String.raw`\frac{\varepsilon}{2}`)).status, "correct");
   assert.equal((await compareLimitAnswer(byId["epsilon-flow-01"], "epsilon/3")).status, "incorrect");
+
+  for (const check of unitPayload.checks) {
+    assert.equal((await compareLimitAnswer(check, check.canonicalAnswer)).status, "correct", check.id);
+    assert.notEqual((await compareLimitAnswer(check, "__definitely_wrong__")).status, "correct", check.id);
+    assert.equal(check.attemptRequiredBeforeReveal, true, check.id);
+    assert.ok(check.hintLatex.length > 0 && check.workedFeedbackLatex.length > 0, check.id);
+  }
 });
 
 test("provenance stays explicit and rights-separated", () => {
@@ -72,4 +80,15 @@ test("provenance stays explicit and rights-separated", () => {
   assert.equal(unitPayload.source.provenance.activeCalculusAdaptedMaterial, false);
   assert.match(unitPayload.source.provenance.note, /No Active Calculus exercise is reproduced verbatim/i);
   assert.ok(unitPayload.source.excludedArchiveMembers.every((path) => /\.(?:pdf|zip|py)$/i.test(path)));
+});
+
+test("route and search adapters expose every page exactly once", () => {
+  assert.equal(limitsUnitRoutes.length, 71);
+  assert.equal(limitsUnitSearchRecords.length, 71);
+  assert.equal(new Set(limitsUnitSearchRecords.map((record) => record.path)).size, 71);
+  assert.ok(limitsUnitSearchRecords.some((record) => record.kind === "practice" && record.label === "Practice exam"));
+  const lesson = getLimitsUnitPage(`${LIMITS_UNIT_PREFIX}limits/what-a-limit-means/`);
+  assert.equal(lesson?.route.h1, "What a Limit Means");
+  assert.ok(lesson?.checks.some((check) => check.id === "limit-continuous-01"));
+  assert.ok(lesson?.page.nodes.some((node) => node.type === "definition"));
 });

@@ -94,6 +94,26 @@ test("new Algebra articles render complete LaTeX-first lessons", async () => {
   assert.match(html, /application\/x-tex/);
 });
 
+test("limits unit lesson, quiz, practice, and exam routes server-render in the existing shell", async () => {
+  for (const [path, expected] of [
+    ["/subjects/math/calculus/limits-continuity/unit/limits/what-a-limit-means/", /What a Limit Means/],
+    ["/subjects/math/calculus/limits-continuity/unit/limits/meaning-concept-quiz/", /Limit Meaning Concept Quiz/],
+    ["/subjects/math/calculus/limits-continuity/unit/limits/meaning-practice/", /Limit Meaning Practice/],
+    ["/subjects/math/calculus/limits-continuity/unit/limits/practice-exam-a/", /Practice Examination A/],
+  ]) {
+    const response = await render(path);
+    assert.equal(response.status, 200, path);
+    const html = await response.text();
+    assert.match(html, expected, path);
+    assert.match(html, /Limits and Continuity/, path);
+    assert.match(html, /Course progress/, path);
+    assert.match(html, /Source &amp; rights/, path);
+    assert.doesNotMatch(html, /\\begin\{|&lt;script|javascript:/, path);
+    assert.doesNotMatch(html, /class="katex-error"/, path);
+    assert.match(html, /aria-label="Vocabulary on this page"/, path);
+  }
+});
+
 test("robots and sitemap metadata routes are indexable and complete", async () => {
   const robots = await render("/robots.txt");
   assert.equal(robots.status, 200);
@@ -117,6 +137,7 @@ test("robots and sitemap metadata routes are indexable and complete", async () =
   assert.match(sitemapBody, /\/tools\/math\/algebra\/expression-checker\//);
   assert.match(sitemapBody, /\/glossary\/math\//);
   assert.match(sitemapBody, /\/glossary\/math\/conventions\//);
+  assert.match(sitemapBody, /\/subjects\/math\/calculus\/limits-continuity\/unit\/limits\/what-a-limit-means\//);
   assert.doesNotMatch(sitemapBody, /\/search\//);
 });
 
@@ -142,7 +163,9 @@ test("math glossary and conventions render as first-class indexed pages", async 
 test("all 72 registry articles render and include KaTeX", async () => {
   const sitemap = await render("/sitemap.xml");
   const sitemapBody = await sitemap.text();
-  const paths = [...sitemapBody.matchAll(/<loc>https:\/\/bettergrades\.net(\/subjects\/math\/(?:algebra|calculus)\/[^<]+\/[^<]+\/)<\/loc>/g)].map((match) => match[1]);
+  const paths = [...sitemapBody.matchAll(/<loc>https:\/\/bettergrades\.net(\/subjects\/math\/(?:algebra|calculus)\/[^<]+\/[^<]+\/)<\/loc>/g)]
+    .map((match) => match[1])
+    .filter((path) => path.split("/").filter(Boolean).length === 5 && !path.includes("/unit/"));
   assert.equal(paths.length, 72);
 
   for (const path of paths) {
