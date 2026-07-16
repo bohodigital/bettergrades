@@ -114,6 +114,18 @@ test("limits unit lesson, quiz, practice, and exam routes server-render in the e
   }
 });
 
+test("limits tables and graph specifications render accessible bounded structures", async () => {
+  const response = await render("/subjects/math/calculus/limits-continuity/unit/limits/limit-at-a-hole/");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /class="limits-table-wrap"/);
+  assert.match(html, /<table>/);
+  assert.match(html, /<caption class="sr-only">Reference table<\/caption>/);
+  assert.match(html, /class="limits-graph-spec"/);
+  assert.match(html, /aria-label="Graph specification source"/);
+  assert.match(html, /Accessible graph specification details/);
+});
+
 test("robots and sitemap metadata routes are indexable and complete", async () => {
   const robots = await render("/robots.txt");
   assert.equal(robots.status, 200);

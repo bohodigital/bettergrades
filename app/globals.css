@@ -1020,8 +1020,14 @@ h1 em, h2 em { color: var(--brand); font-family: var(--serif); font-weight: 500;
 .limits-disclosure > div, .limits-disclosure > p { margin: 0; padding: 4px 18px 18px; }
 .limits-graph { margin: 28px 0; padding: 22px; border: 1px solid var(--line); border-radius: 16px; display: grid; grid-template-columns: 56px 1fr; gap: 18px; background: var(--surface); }
 .limits-graph > div { width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; background: var(--brand-soft); color: var(--brand); font-size: 26px; }
-.limits-graph figcaption { display: grid; gap: 4px; }
+.limits-graph figcaption { min-width: 0; display: grid; gap: 4px; }
 .limits-graph figcaption span { color: var(--muted); }
+.limits-graph-spec { max-width: 100%; margin: 12px 0 0; padding: 12px 14px; overflow-wrap: anywhere; white-space: pre-wrap; word-break: break-word; border: 1px solid var(--line); border-radius: 9px; background: var(--paper); color: var(--muted); font-size: 12px; line-height: 1.5; }
+.limits-table-wrap { max-width: 100%; margin: 28px 0; overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+.limits-table-wrap table { width: 100%; min-width: 420px; border-collapse: collapse; }
+.limits-table-wrap th, .limits-table-wrap td { padding: 12px 14px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+.limits-table-wrap th { background: var(--surface-2); color: var(--brand); font-size: 12px; letter-spacing: .04em; }
+.limits-table-wrap tr:last-child th, .limits-table-wrap tr:last-child td { border-bottom: 0; }
 .limits-check { margin: 42px 0; padding: clamp(22px, 4vw, 34px); border: 2px solid var(--brand); border-radius: 18px; background: var(--surface); box-shadow: var(--shadow); }
 .limits-check > header { display: flex; justify-content: space-between; gap: 16px; color: var(--brand); font-size: 12px; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; }
 .limits-check code { color: var(--muted); font-size: 11px; text-transform: none; }

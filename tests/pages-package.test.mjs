@@ -39,3 +39,10 @@ test("Pages package contains the advanced Worker and static assets", async () =>
   const appAsset = await readFile(new URL(`../dist/pages/assets/${appAssetName}`, import.meta.url), "utf8");
   assert.ok(Buffer.byteLength(appAsset) <= 500_000, `BetterGradesApp client asset exceeds 500 KB: ${Buffer.byteLength(appAsset)}`);
 });
+
+test("limits table and graph fallbacks remain bounded on narrow screens", async () => {
+  const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+  assert.match(css, /\.limits-graph figcaption \{[^}]*min-width: 0/);
+  assert.match(css, /\.limits-graph-spec \{[^}]*overflow-wrap: anywhere;[^}]*white-space: pre-wrap/);
+  assert.match(css, /\.limits-table-wrap \{[^}]*max-width: 100%;[^}]*overflow-x: auto/);
+});
