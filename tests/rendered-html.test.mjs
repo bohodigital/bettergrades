@@ -218,6 +218,7 @@ test("robots and sitemap metadata routes are indexable and complete", async () =
   const robots = await render("/robots.txt");
   assert.equal(robots.status, 200);
   assert.match(robots.headers.get("content-type") ?? "", /^text\/plain\b/i);
+  assert.match(robots.headers.get("cache-control") ?? "", /no-cache/i);
   const robotsBody = await robots.text();
   assert.doesNotMatch(robotsBody, /Disallow:/);
   assert.match(robotsBody, /Sitemap: https:\/\/bettergrades\.net\/sitemap\.xml/);
@@ -225,6 +226,7 @@ test("robots and sitemap metadata routes are indexable and complete", async () =
   const sitemap = await render("/sitemap.xml");
   assert.equal(sitemap.status, 200);
   assert.match(sitemap.headers.get("content-type") ?? "", /^application\/xml\b/i);
+  assert.match(sitemap.headers.get("cache-control") ?? "", /no-cache/i);
   const sitemapBody = await sitemap.text();
   assert.match(sitemapBody, /<urlset\b/);
   assert.match(sitemapBody, /\/subjects\/math\/calculus\/limits-continuity\/limit-of-sin-x-over-x\//);
