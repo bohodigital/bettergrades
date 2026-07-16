@@ -1,4 +1,4 @@
-import { limitsUnitRoutes } from "../calculus/limits-unit.mjs";
+import { limitsUnitRoutes } from "../calculus/limits-unit-index.mjs";
 import { domains, resources, subjects, tools, topics } from "./catalog";
 import { assessments } from "./practice";
 import type { RedirectRecord, RegistryRoute } from "./schema";

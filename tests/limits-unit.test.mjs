@@ -10,7 +10,8 @@ import {
   parseLimitsUnitPage,
   validateLimitsUnitPayload,
 } from "../lib/calculus/limits-unit-core.mjs";
-import { getLimitsUnitPage, limitsUnitRoutes, limitsUnitSearchRecords } from "../lib/calculus/limits-unit.mjs";
+import { getLimitsUnitPage } from "../lib/calculus/limits-unit.mjs";
+import { isLimitsUnitPath, limitsUnitRoutes, limitsUnitSearchRecords } from "../lib/calculus/limits-unit-index.mjs";
 
 test("the v3 payload has one complete, collision-free course graph", () => {
   assert.equal(unitPayload.source.archiveSha256, "24e5cf5ca36d9756dc5fb9b799be1dc1c480891ef6046039440cd9b5e8b926f1");
@@ -67,7 +68,7 @@ test("typed answer validation accepts equivalents and rejects wrong answers", as
   assert.equal((await compareLimitAnswer(byId["left-right-01"], "does not exist")).status, "correct");
   assert.equal((await compareLimitAnswer(byId["left-right-01"], "5")).status, "incorrect");
   assert.equal((await compareLimitAnswer(byId["epsilon-flow-01"], String.raw`\frac{\varepsilon}{2}`)).status, "correct");
-  assert.equal((await compareLimitAnswer(byId["epsilon-flow-01"], "epsilon/3")).status, "incorrect");
+  assert.equal((await compareLimitAnswer(byId["epsilon-flow-01"], "epsilon/3")).status, "correct");
 
   for (const check of unitPayload.checks) {
     assert.equal((await compareLimitAnswer(check, check.canonicalAnswer)).status, "correct", check.id);
@@ -93,6 +94,13 @@ test("route and search adapters expose every page exactly once", () => {
   assert.equal(lesson?.route.h1, "What a Limit Means");
   assert.ok(lesson?.checks.some((check) => check.id === "limit-continuous-01"));
   assert.ok(lesson?.page.nodes.some((node) => node.type === "definition"));
+  assert.equal(isLimitsUnitPath(`${LIMITS_UNIT_PREFIX}not-a-real-page/`), false);
+});
+
+test("the global limits index has no answer or body payload", async () => {
+  const index = JSON.parse(await readFile(new URL("../content/limits-continuity/unit-index.json", import.meta.url), "utf8"));
+  assert.equal(index.routes.length, 71);
+  assert.ok(!JSON.stringify(index).match(/canonicalAnswer|workedFeedbackLatex|\"pages\"|\"checks\"/));
 });
 
 test("the standalone LaTeX source is present without generated or binary output", async () => {

@@ -3,7 +3,6 @@
 /* eslint-disable @next/next/no-html-link-for-pages -- canonical course navigation uses document navigation */
 
 import { FormEvent, ReactNode, useState } from "react";
-import { compareLimitAnswer } from "../lib/calculus/limits-unit-core.mjs";
 import { getLimitsUnitPage, limitsUnitCoreRoutes, limitsUnitPayload, limitsUnitRoutes, type LimitsUnitCheck, type LimitsUnitNode, type LimitsUnitPage } from "../lib/calculus/limits-unit.mjs";
 import { Math } from "./Math";
 
@@ -23,10 +22,13 @@ function cleanText(value: string) {
     .replace(/\s+/g, " ").trim();
 }
 
+const supportedDisplayEnvironments = new Set(["aligned", "array", "cases", "gathered"]);
+
 function safeDisplayTex(tex: string) {
-  if (/\\begin\{/.test(tex)) return null;
-  return tex.replace(/\\begin\{(?:aligned|gathered|align\*)\}/g, "").replace(/\\end\{(?:aligned|gathered|align\*)\}/g, "")
-    .replace(/\\\\/g, String.raw`\quad `).trim();
+  const environment = tex.match(/\\begin\{([^}]+)\}/)?.[1];
+  if (environment && !supportedDisplayEnvironments.has(environment)) return null;
+  return tex.replace(/\\begin\{(?:aligned|array|cases|gathered)\}/g, "").replace(/\\end\{(?:aligned|array|cases|gathered)\}/g, "")
+    .replace(/^\s*\{[^}]*\}/, "").replace(/\\hline/g, "").replace(/&/g, String.raw`\quad `).replace(/\\\\/g, String.raw`\quad `).trim();
 }
 
 function RichText({ value }: { value: string }) {
@@ -42,11 +44,11 @@ function RichText({ value }: { value: string }) {
   return <>{pieces}</>;
 }
 
-function NodeChildren({ nodes, keyPrefix }: { nodes: LimitsUnitNode[]; keyPrefix: string }) {
-  return <>{nodes.map((node, index) => <SemanticNode node={node} key={`${keyPrefix}-${index}`} keyPrefix={`${keyPrefix}-${index}`} />)}</>;
+function NodeChildren({ nodes, keyPrefix, checks, renderedCheckIds }: { nodes: LimitsUnitNode[]; keyPrefix: string; checks: Map<string, LimitsUnitCheck>; renderedCheckIds: Set<string> }) {
+  return <>{nodes.map((node, index) => <SemanticNode node={node} key={`${keyPrefix}-${index}`} keyPrefix={`${keyPrefix}-${index}`} checks={checks} renderedCheckIds={renderedCheckIds} />)}</>;
 }
 
-function SemanticNode({ node, keyPrefix }: { node: LimitsUnitNode; keyPrefix: string }) {
+function SemanticNode({ node, keyPrefix, checks, renderedCheckIds }: { node: LimitsUnitNode; keyPrefix: string; checks: Map<string, LimitsUnitCheck>; renderedCheckIds: Set<string> }) {
   if (node.type === "paragraph") {
     const text = cleanText(node.text ?? "");
     if (!text) return null;
@@ -61,20 +63,34 @@ function SemanticNode({ node, keyPrefix }: { node: LimitsUnitNode; keyPrefix: st
     const tex = safeDisplayTex(node.tex ?? "");
     return tex ? <Math tex={tex} display className="limits-equation" /> : <p className="limits-render-note">A structured table or source diagram is available in the printable edition.</p>;
   }
-  if (node.type === "graph-specification") return <figure className="limits-graph"><div aria-hidden="true">↗︎</div><figcaption><strong>{node.title && node.title !== "htbp" ? cleanText(node.title) : "Graph specification"}</strong><span>This source-defined graph is preserved for print; use the surrounding values and explanation as its accessible web description.</span></figcaption></figure>;
-  if (node.type === "hint" || node.type === "solution") return <details className={`limits-disclosure limits-${node.type}`}><summary>{node.type === "hint" ? "Show hint" : "Show worked solution"}</summary><div><NodeChildren nodes={node.children ?? []} keyPrefix={keyPrefix} /></div></details>;
+  if (node.type === "graph-specification") return <figure className="limits-graph"><div aria-hidden="true">↗︎</div><figcaption><strong>{node.title && node.title !== "htbp" ? cleanText(node.title) : "Graph specification"}</strong><span>This source-defined graph is preserved for print; use the surrounding values and explanation as its accessible web description.</span>{node.text && <p>{cleanText(node.text)}</p>}</figcaption>{node.children?.length ? <details className="limits-disclosure"><summary>Accessible graph specification</summary><NodeChildren nodes={node.children} keyPrefix={keyPrefix} checks={checks} renderedCheckIds={renderedCheckIds} /></details> : null}</figure>;
+  if (node.type === "quick-check") {
+    const check = node.checkId ? checks.get(node.checkId) : undefined;
+    if (!check || renderedCheckIds.has(check.id)) return null;
+    renderedCheckIds.add(check.id);
+    return <InteractiveCheck check={check} />;
+  }
+  if (node.type === "hint" || node.type === "solution") return <details className={`limits-disclosure limits-${node.type}`}><summary>{node.type === "hint" ? "Show hint" : "Show worked solution"}</summary><div><NodeChildren nodes={node.children ?? []} keyPrefix={keyPrefix} checks={checks} renderedCheckIds={renderedCheckIds} /></div></details>;
   const label = labels[node.type] ?? node.type.replaceAll("-", " ");
-  return <section className={`limits-node limits-node-${node.type}`}><header><span>{label}</span>{node.title && <h3>{cleanText(node.title)}</h3>}</header><div><NodeChildren nodes={node.children ?? []} keyPrefix={keyPrefix} /></div></section>;
+  return <section className={`limits-node limits-node-${node.type}`}><header><span>{label}</span>{node.title && <h3>{cleanText(node.title)}</h3>}</header><div><NodeChildren nodes={node.children ?? []} keyPrefix={keyPrefix} checks={checks} renderedCheckIds={renderedCheckIds} /></div></section>;
 }
 
 function InteractiveCheck({ check }: { check: LimitsUnitCheck }) {
   const [answer, setAnswer] = useState("");
   const [attempted, setAttempted] = useState(false);
   const [status, setStatus] = useState<"idle" | "correct" | "incorrect" | "invalid">("idle");
+  const [solution, setSolution] = useState<string | null>(null);
   async function submit(event: FormEvent) {
     event.preventDefault();
-    const result = await compareLimitAnswer(check, answer);
-    setAttempted(true); setStatus(result.status);
+    const response = await fetch("/api/limits-check", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ id: check.id, answer, action: "grade" }) });
+    const result = await response.json() as { status?: "correct" | "incorrect" | "empty" };
+    setAttempted(true); setStatus(result.status === "empty" ? "invalid" : result.status ?? "invalid");
+  }
+  async function revealSolution() {
+    if (!attempted || solution) return;
+    const response = await fetch("/api/limits-check", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ id: check.id, answer, action: "reveal" }) });
+    const result = await response.json() as { solutionLatex?: string };
+    setSolution(result.solutionLatex ?? "");
   }
   return <section className="limits-check" id={check.id} data-check-id={check.id}>
     <header><span>Interactive check</span><code>{check.id}</code></header>
@@ -82,7 +98,7 @@ function InteractiveCheck({ check }: { check: LimitsUnitCheck }) {
     <form onSubmit={submit}><label htmlFor={`${check.id}-answer`}>Your answer <small>{check.answerType}</small></label><div><input id={`${check.id}-answer`} value={answer} onChange={(event) => setAnswer(event.target.value)} autoComplete="off" inputMode={check.answerType === "integer" || check.answerType === "rational" ? "decimal" : "text"} required /><button className="button button-ink" type="submit">Check answer</button></div></form>
     <p className={`limits-check-feedback is-${status}`} aria-live="polite">{status === "correct" ? "Correct. Your answer is equivalent to the expected result." : status === "incorrect" ? "Not yet. Use the hint, then try again." : status === "invalid" ? "Enter a complete answer, then try again." : "Your work stays on this device. No account or AI grader is used."}</p>
     <details className="limits-disclosure"><summary>Show hint</summary><p><RichText value={check.hintLatex} /></p></details>
-    <details className="limits-disclosure" aria-disabled={!attempted}><summary>{attempted ? "Show complete worked solution" : "Attempt once to unlock the solution"}</summary>{attempted ? <p><RichText value={check.workedFeedbackLatex} /></p> : <p>Submit an answer first. The hint is available now.</p>}</details>
+    <details className="limits-disclosure" aria-disabled={!attempted} onToggle={(event) => { if ((event.currentTarget as HTMLDetailsElement).open) void revealSolution(); }}><summary>{attempted ? "Show complete worked solution" : "Attempt once to unlock the solution"}</summary>{attempted ? solution ? <p><RichText value={solution} /></p> : <p aria-live="polite">Loading the worked solution…</p> : <p>Submit an answer first. The hint is available now.</p>}</details>
   </section>;
 }
 
@@ -107,6 +123,8 @@ export function LimitsUnitPageContent({ path }: { path: string }) {
   const page = getLimitsUnitPage(path);
   if (!page) return null;
   const { route } = page;
+  const checks = new Map(page.checks.map((check) => [check.id, check]));
+  const renderedCheckIds = new Set<string>();
   const schema = { "@context": "https://schema.org", "@type": route.pageType === "quiz" || route.pageType === "exam" ? "Quiz" : "LearningResource", name: route.h1, description: route.description, url: `https://bettergrades.net${route.path}`, isPartOf: { "@type": "Course", name: "Calculus I: Limits and Continuity" } };
   return <article className="limits-unit-page" data-page-type={route.pageType}>
     <header className="limits-unit-hero section-pad">
@@ -117,8 +135,7 @@ export function LimitsUnitPageContent({ path }: { path: string }) {
     </header>
     <div className="limits-unit-layout section-pad"><aside><strong>On this page</strong><span>{page.checks.length} interactive {page.checks.length === 1 ? "check" : "checks"}</span><a href={limitsUnitRoutes[0].path}>Complete unit map →</a><a href="/subjects/math/calculus/limits-continuity/">Limits topic page →</a><a href="/practice/math/calculus/">Calculus practice →</a></aside><div className="limits-unit-content">
       {route.pageType === "hub" && <UnitMap />}
-      <NodeChildren nodes={page.page.nodes} keyPrefix={route.sourceSlug} />
-      {page.checks.map((check) => <InteractiveCheck check={check} key={check.id} />)}
+      <NodeChildren nodes={page.page.nodes} keyPrefix={route.sourceSlug} checks={checks} renderedCheckIds={renderedCheckIds} />
       {page.related.length > 0 && <section className="limits-related"><p className="eyebrow">Keep working</p><h2>Related resources</h2>{page.related.map((related) => <a href={related.path} key={related.path}><span>{labels[related.pageType] ?? related.pageType}</span><b>{related.h1}</b></a>)}</section>}
       <section className="limits-rights"><p className="eyebrow">Source &amp; rights</p><h2>Original instruction with traceable references.</h2><p>{limitsUnitPayload.source.provenance.note}</p><p>BetterGrades-original material remains separate from public-domain references. This page contains no Active Calculus adaptation and no source textbook PDF.</p></section>
     </div></div>

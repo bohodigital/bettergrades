@@ -2,7 +2,7 @@
 
 /* eslint-disable @next/next/no-html-link-for-pages -- registry pages intentionally use document navigation for canonical routes */
 
-import { LIMITS_UNIT_PREFIX, limitsUnitPayload } from "../lib/calculus/limits-unit.mjs";
+import { LIMITS_UNIT_PREFIX, limitsUnitIndex } from "../lib/calculus/limits-unit-index.mjs";
 import {
   courseLibraries,
   getCourseArticle,
@@ -160,7 +160,7 @@ export function CourseHubContent({ domainSlug }: { domainSlug: string }) {
         <div className="section-heading"><div><p className="eyebrow">The course map</p><h2>{course.topics.length} topics. One connected path.</h2></div><p>{course.promise}</p></div>
         <div className="calculus-map-list">{course.topics.map((topic) => <a href={`/subjects/math/${course.slug}/${topic.slug}/`} key={topic.slug}><span>{topic.accent}</span><div><b>{topic.name}</b><small>{topic.description}</small></div><em>{getCourseTopicArticles(course.slug, topic.slug).length} resources</em><i>→</i></a>)}</div>
       </section>
-      <section className="calculus-tools section-pad"><div><p className="eyebrow">Put it to work</p><h2>Learn, calculate, practice.</h2></div>{domainSlug === "calculus" && <a href={LIMITS_UNIT_PREFIX}><span>Complete unit</span><b>Limits and Continuity</b><small>{limitsUnitPayload.unit.coreRouteCount} core pages · {limitsUnitPayload.unit.checkCount} checks →</small></a>}{startArticle && <a href={libraryArticleHref(startArticle)}><span>Start here</span><b>{startArticle.shortTitle}</b><small>Open the first guide →</small></a>}{courseTools.slice(0, 1).map((tool) => <a href={tool.path} key={tool.id}><span>Tool</span><b>{tool.title}</b><small>Open the interactive tool →</small></a>)}{courseAssessments.length ? courseAssessments.slice(0, 1).map((assessment) => <a href={assessment.path} key={assessment.id}><span>Practice</span><b>{assessment.title}</b><small>{assessment.questions.length} explained questions →</small></a>) : <a href={`/search/?q=${course.slug}`}><span>All content</span><b>{course.articles.length} complete guides</b><small>Search this course →</small></a>}</section>
+      <section className="calculus-tools section-pad"><div><p className="eyebrow">Put it to work</p><h2>Learn, calculate, practice.</h2></div>{domainSlug === "calculus" && <a href={LIMITS_UNIT_PREFIX}><span>Complete unit</span><b>Limits and Continuity</b><small>{limitsUnitIndex.unit.coreRouteCount} core pages · {limitsUnitIndex.unit.checkCount} checks →</small></a>}{startArticle && <a href={libraryArticleHref(startArticle)}><span>Start here</span><b>{startArticle.shortTitle}</b><small>Open the first guide →</small></a>}{courseTools.slice(0, 1).map((tool) => <a href={tool.path} key={tool.id}><span>Tool</span><b>{tool.title}</b><small>Open the interactive tool →</small></a>)}{courseAssessments.length ? courseAssessments.slice(0, 1).map((assessment) => <a href={assessment.path} key={assessment.id}><span>Practice</span><b>{assessment.title}</b><small>{assessment.questions.length} explained questions →</small></a>) : <a href={`/search/?q=${course.slug}`}><span>All content</span><b>{course.articles.length} complete guides</b><small>Search this course →</small></a>}</section>
     </>
   );
 }
