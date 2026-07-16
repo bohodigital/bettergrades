@@ -42,7 +42,7 @@ function fixedResponse(request: Request, body: string, contentType: string) {
   return withSecurityHeaders(
     new Response(request.method === "HEAD" ? null : body, {
       headers: {
-        "Cache-Control": "public, max-age=3600",
+        "Cache-Control": "no-cache, max-age=0, must-revalidate",
         "Content-Type": contentType,
       },
     }),
