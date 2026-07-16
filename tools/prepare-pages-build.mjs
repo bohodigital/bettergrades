@@ -51,7 +51,16 @@ await writeFile(
     {
       version: 1,
       include: ["/*"],
-      exclude: ["/assets/*", "/og.png", "/favicon.ico"],
+      exclude: [
+        "/assets/*",
+        "/og.png",
+        "/favicon.ico",
+        "/favicon.svg",
+        "/icon-192.png",
+        "/icon-512.png",
+        "/apple-touch-icon.png",
+        "/site.webmanifest",
+      ],
     },
     null,
     2,
