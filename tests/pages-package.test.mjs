@@ -43,7 +43,19 @@ test("Pages package contains the advanced Worker and static assets", async () =>
 test("limits tables and graph explanations remain bounded on narrow screens", async () => {
   const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
   assert.match(css, /\.limits-graph figcaption \{[^}]*min-width: 0/);
+  assert.match(css, /\.limits-graph-canvas \{[^}]*width: 100%;[^}]*max-width: 100%/);
   assert.match(css, /\.limits-graph-exposition \{[^}]*margin-top: 12px;[^}]*border-top:/);
   assert.doesNotMatch(css, /\.limits-graph-spec\b/);
   assert.match(css, /\.limits-table-wrap \{[^}]*max-width: 100%;[^}]*overflow-x: auto/);
+});
+
+test("the Limits graph renderer covers every imported source figure without SVG markup", async () => {
+  const component = await readFile(new URL("../app/LimitsGraphCanvas.tsx", import.meta.url), "utf8");
+  for (const id of [
+    "secant-tangent", "removable-hole", "limit-versus-value", "jump-discontinuity", "rapid-oscillation",
+    "squeeze-bounds", "unit-circle-squeeze", "sine-over-x", "vertical-asymptotes", "horizontal-asymptote",
+    "discontinuity-gallery", "ivt-root", "epsilon-delta-window",
+  ]) assert.match(component, new RegExp("graphId === [\"']" + id + "[\"']"), id);
+  assert.doesNotMatch(component, /<svg|dangerouslySetInnerHTML/);
+  assert.match(component, /role="img"/);
 });

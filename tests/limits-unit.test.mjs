@@ -81,14 +81,18 @@ After the graph.`;
 });
 
 test("all imported graph nodes exclude TeX implementation details", () => {
+  const figureGraphs = [];
   for (const page of unitPayload.pages) {
     const nodes = flatten(parseLimitsUnitPage(page.source));
     const graphNodes = nodes.filter((node) => node.type === "graph-specification");
     for (const graph of graphNodes) {
       assert.doesNotMatch(JSON.stringify(graph), /\\(?:begin|end|addplot|addlegendentry|draw|node|centering)\b|textwidth|axis cs:/, page.sourceFile);
       assert.ok(!(graph.children ?? []).some((child) => child.type === "graph-specification"), page.sourceFile);
+      if (graph.graphId) figureGraphs.push(graph);
     }
   }
+  assert.equal(figureGraphs.length, 13);
+  assert.equal(new Set(figureGraphs.map((graph) => graph.graphId)).size, 13);
 });
 
 test("all visible text nodes contain only supported inline markup", () => {
@@ -175,9 +179,9 @@ test("every route resolves its checks in source order without placeholder loss",
 test("structured math, tables, and graph specifications remain typed and renderable", () => {
   const nodes = flatten(unitPayload.pages.flatMap((page) => parseLimitsUnitPage(page.source)));
   assert.ok(nodes.some((node) => node.type === "math" && /\\begin\{aligned\}/.test(node.tex ?? "")));
-  assert.ok(nodes.some((node) => node.type === "math" && /\\left\\{\\matrix\{/.test(node.tex ?? "")));
+  assert.ok(nodes.some((node) => node.type === "math" && /\\begin\{cases\}/.test(node.tex ?? "")));
   assert.ok(nodes.some((node) => node.type === "table" && node.rows?.length));
-  assert.ok(nodes.some((node) => node.type === "graph-specification" && node.text?.trim()));
+  assert.equal(nodes.filter((node) => node.type === "graph-specification" && node.graphId).length, 13);
   assert.ok(!nodes.some((node) => node.type === "math" && /\\begin\{(?:align\*?|tabular|longtable|tabularx|groupplot)\}/.test(node.tex ?? "")));
 });
 
@@ -189,6 +193,20 @@ Session & Main work & Minimum practice\\
   assert.equal(table.type, "table");
   assert.deepEqual(table.rows[0], ["Session", "Main work", "Minimum practice"]);
   assert.doesNotMatch(JSON.stringify(table.rows), /textwidth|@\{|p\{0\.13/);
+});
+
+test("array cells retain their implicit math context", () => {
+  const [table] = parseLimitsUnitPage(String.raw`\[\begin{array}{c|c}x&\dfrac{x^2-1}{x-1}\\0.9&1.9\end{array}\]`);
+  assert.equal(table.type, "table");
+  assert.deepEqual(table.rows[0], [String.raw`\(x\)`, String.raw`\(\dfrac{x^2-1}{x-1}\)`]);
+});
+
+test("inline cases stay inside one inline-math paragraph", () => {
+  const nodes = parseLimitsUnitPage(String.raw`Let \(f(x)=\begin{cases}0,&x<0,\\1,&x\ge0.\end{cases}\) be a step function.`);
+  assert.equal(nodes.length, 1);
+  assert.equal(nodes[0].type, "paragraph");
+  assert.match(nodes[0].text, /\\begin\{cases\}/);
+  assert.match(nodes[0].text, /\\end\{cases\}/);
 });
 
 test("the global limits index has no answer or body payload", async () => {

@@ -8,6 +8,7 @@ export type LimitsUnitNode = {
   children?: LimitsUnitNode[];
   environment?: string;
   rows?: string[][];
+  graphId?: string;
 };
 export type LimitsUnitCheck = {
   id: string; routeSlug: string; mode: "checker"; answerType: "choice" | "expression" | "integer" | "rational";
