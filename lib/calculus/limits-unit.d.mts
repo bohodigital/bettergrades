@@ -51,9 +51,11 @@ export const limitsUnitPayload: {
   pages: LimitsUnitPageRecord[];
 };
 export const limitsUnitRoutes: LimitsUnitRoute[];
+export const limitsUnitChapters: Array<{ id: string; from: number; to: number; title: string; description: string; lens: string; routes: LimitsUnitRoute[] }>;
 export const limitsUnitSearchRecords: Array<{ id: string; kind: "guide" | "topic" | "practice"; title: string; description: string; path: string; domainSlug: string; domainName: string; topicName: string; label: string; keywords: string[]; priority: number }>;
 export const limitsUnitPracticeRoutes: LimitsUnitRoute[];
 export const limitsUnitCoreRoutes: LimitsUnitRoute[];
+export function getLimitsUnitChapter(coreSequenceIndex: number | null | undefined): { id: string; from: number; to: number; title: string; description: string; lens: string; routes: LimitsUnitRoute[] } | undefined;
 export function getLimitsUnitRoute(path: string): LimitsUnitRoute | undefined;
 export function getLimitsUnitRouteBySlug(sourceSlug: string): LimitsUnitRoute | undefined;
 export function getLimitsUnitPage(path: string): LimitsUnitPage | undefined;

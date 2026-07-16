@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 async function render(path = "/") {
@@ -10,6 +11,18 @@ async function render(path = "/") {
     { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
     { waitUntil() {}, passThroughOnException() {} },
   );
+}
+
+function visibleText(html) {
+  return html
+    .replace(/<script\b[\s\S]*?<\/script>/gi, " ")
+    .replace(/<style\b[\s\S]*?<\/style>/gi, " ")
+    .replace(/<annotation\b[\s\S]*?<\/annotation>/gi, " ")
+    .replace(/<!--[\s\S]*?-->/g, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&(?:nbsp|amp|lt|gt|quot|#39);/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 test("server-renders the Better Grades homepage", async () => {
@@ -115,16 +128,45 @@ test("limits unit lesson, quiz, practice, and exam routes server-render in the e
   }
 });
 
-test("limits tables and graph specifications render accessible bounded structures", async () => {
+test("limits tables and graph explanations render accessible bounded structures", async () => {
   const response = await render("/subjects/math/calculus/limits-continuity/unit/limits/limit-at-a-hole/");
   assert.equal(response.status, 200);
   const html = await response.text();
   assert.match(html, /class="limits-table-wrap"/);
   assert.match(html, /<table>/);
   assert.match(html, /<caption class="sr-only">Reference table<\/caption>/);
-  assert.match(html, /class="limits-graph-spec"/);
-  assert.match(html, /aria-label="Graph specification source"/);
-  assert.match(html, /Accessible graph specification details/);
+  assert.match(html, /Graph reading guide/);
+  assert.match(html, /nearby outputs approach/);
+  assert.doesNotMatch(html, /class="limits-graph-spec"|Graph specification source|Accessible graph specification details/);
+  assert.doesNotMatch(visibleText(html), /\\(?:begin|end|addplot|draw|node|caption|centering)\b|textwidth|axis cs:/);
+});
+
+test("every Limits unit route renders without visible source commands or math errors", async () => {
+  const unitIndex = JSON.parse(
+    await readFile(new URL("../content/limits-continuity/unit-index.json", import.meta.url), "utf8"),
+  );
+  const sourceCommand = /\\(?:begin|end|addplot|draw|node|caption|centering|texorpdfstring|cref|chapter|step|item)\b|textwidth|axis cs:/;
+
+  for (const route of unitIndex.routes) {
+    const response = await render(route.path);
+    assert.equal(response.status, 200, route.path);
+    const html = await response.text();
+    assert.doesNotMatch(visibleText(html), sourceCommand, route.path);
+    assert.doesNotMatch(html, /class="katex-error"/, route.path);
+  }
+});
+
+test("the Limits topic leads with the complete textbook map before extra articles", async () => {
+  const response = await render("/subjects/math/calculus/limits-continuity/");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /The complete textbook path/);
+  assert.match(html, /47(?:<!-- -->)? core pages/);
+  assert.match(html, /Start here: orientation/);
+  assert.match(html, /Formal limits/);
+  assert.match(html, /Deep dives and extra articles/);
+  assert.ok(html.indexOf("The complete textbook path") < html.indexOf("Deep dives and extra articles"));
+  assert.match(html, /Why is the limit of sin x over x equal to 1/);
 });
 
 test("robots and sitemap metadata routes are indexable and complete", async () => {

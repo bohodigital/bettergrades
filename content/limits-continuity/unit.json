@@ -3296,7 +3296,7 @@
           "environment": "tabularx",
           "rows": [
             [
-              "{@{}p{0.13\\textwidth}X X@{}}\n\n\\textbf{Session}",
+              "\\textbf{Session}",
               "\\textbf{Main work}",
               "\\textbf{Minimum practice}"
             ],
@@ -3591,7 +3591,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Answers and skill diagnoses appear in \\cref{app:diagnostic-answers}."
+          "text": "Answers and skill diagnoses appear in the referenced section."
         }
       ]
     },
@@ -3610,7 +3610,7 @@
           "environment": "longtable",
           "rows": [
             [
-              "{@{}p{0.26\\textwidth}p{0.66\\textwidth}@{}}\n\n\\textbf{Notation}",
+              "\\textbf{Notation}",
               "\\textbf{Meaning}"
             ],
             [
@@ -3901,7 +3901,7 @@
           "environment": "tabular",
           "rows": [
             [
-              "{@{}r r@{}}\n\n\\(h\\)",
+              "\\(h\\)",
               "Average velocity \\(32-16h\\)"
             ],
             [
@@ -3948,37 +3948,12 @@
         },
         {
           "type": "graph-specification",
-          "title": "htbp",
-          "text": "[htbp]\n\\centering\n\\begin{tikzpicture}\n\\begin{axis}[\nwidth=0.9\\textwidth,height=0.50\\textwidth,\nxmin=0,xmax=4,ymin=0,ymax=72,\naxis lines=middle,\nxlabel={$t$ (seconds)},ylabel={$s(t)$ (feet)},\ngrid=both,minor tick num=1,\nmajor grid style={draw=BGLine},minor grid style={draw=BGLine!45},\ntick label style={font=\\small},label style={font=\\small}\n]\n\\addplot[BGInk,very thick,domain=0:4,samples=120]{64*x-16*x^2};\n\\addplot[only marks,mark=*,mark size=2.5pt,BGGold] coordinates {(1,48)};\n\\node[anchor=south east,font=\\small] at (axis cs:1,48) {$P$};\n\\addplot[BGRed!55,thick,domain=0.25:2.25]{16*x+32};\n\\addplot[BGRed!70,thick,domain=0.45:1.8]{24*x+24};\n\\addplot[BGRed!90,thick,domain=0.60:1.55]{28.8*x+19.2};\n\\addplot[BGGreen,very thick,domain=0.55:1.55]{32*x+16};\n\\node[BGGreen,anchor=west,font=\\small] at (axis cs:1.55,65.6) {tangent slope $32$};\n\\end{axis}\n\\end{tikzpicture}\n\\caption{Secant lines through \\(P=(1,48)\\) approach the tangent line as the second point moves toward \\(P\\).}",
-          "children": [
-            {
-              "type": "paragraph",
-              "text": "[htbp] \\centering"
-            },
-            {
-              "type": "graph-specification",
-              "text": "\\begin{axis}[\nwidth=0.9\\textwidth,height=0.50\\textwidth,\nxmin=0,xmax=4,ymin=0,ymax=72,\naxis lines=middle,\nxlabel={$t$ (seconds)},ylabel={$s(t)$ (feet)},\ngrid=both,minor tick num=1,\nmajor grid style={draw=BGLine},minor grid style={draw=BGLine!45},\ntick label style={font=\\small},label style={font=\\small}\n]\n\\addplot[BGInk,very thick,domain=0:4,samples=120]{64*x-16*x^2};\n\\addplot[only marks,mark=*,mark size=2.5pt,BGGold] coordinates {(1,48)};\n\\node[anchor=south east,font=\\small] at (axis cs:1,48) {$P$};\n\\addplot[BGRed!55,thick,domain=0.25:2.25]{16*x+32};\n\\addplot[BGRed!70,thick,domain=0.45:1.8]{24*x+24};\n\\addplot[BGRed!90,thick,domain=0.60:1.55]{28.8*x+19.2};\n\\addplot[BGGreen,very thick,domain=0.55:1.55]{32*x+16};\n\\node[BGGreen,anchor=west,font=\\small] at (axis cs:1.55,65.6) {tangent slope $32$};\n\\end{axis}",
-              "children": [
-                {
-                  "type": "graph-specification",
-                  "text": "[\nwidth=0.9\\textwidth,height=0.50\\textwidth,\nxmin=0,xmax=4,ymin=0,ymax=72,\naxis lines=middle,\nxlabel={$t$ (seconds)},ylabel={$s(t)$ (feet)},\ngrid=both,minor tick num=1,\nmajor grid style={draw=BGLine},minor grid style={draw=BGLine!45},\ntick label style={font=\\small},label style={font=\\small}\n]\n\\addplot[BGInk,very thick,domain=0:4,samples=120]{64*x-16*x^2};\n\\addplot[only marks,mark=*,mark size=2.5pt,BGGold] coordinates {(1,48)};\n\\node[anchor=south east,font=\\small] at (axis cs:1,48) {$P$};\n\\addplot[BGRed!55,thick,domain=0.25:2.25]{16*x+32};\n\\addplot[BGRed!70,thick,domain=0.45:1.8]{24*x+24};\n\\addplot[BGRed!90,thick,domain=0.60:1.55]{28.8*x+19.2};\n\\addplot[BGGreen,very thick,domain=0.55:1.55]{32*x+16};\n\\node[BGGreen,anchor=west,font=\\small] at (axis cs:1.55,65.6) {tangent slope $32$};",
-                  "children": [
-                    {
-                      "type": "paragraph",
-                      "text": "[ width=0.9\\textwidth,height=0.50\\textwidth, xmin=0,xmax=4,ymin=0,ymax=72, axis lines=middle, xlabel={$t$ (seconds)},ylabel={$s(t)$ (feet)}, grid=both,minor tick num=1, major grid style={draw=BGLine},minor grid style={draw=BGLine!45}, tick label style={font=\\small},label style={font=\\small} ] \\addplot[BGInk,very thick,domain=0:4,samples=120]{64*x-16*x^2}; \\addplot[only marks,mark=*,mark size=2.5pt,BGGold] coordinates {(1,48)}; \\node[anchor=south east,font=\\small] at (axis cs:1,48) {$P$}; \\addplot[BGRed!55,thick,domain=0.25:2.25]{16*x+32}; \\addplot[BGRed!70,thick,domain=0.45:1.8]{24*x+24}; \\addplot[BGRed!90,thick,domain=0.60:1.55]{28.8*x+19.2}; \\addplot[BGGreen,very thick,domain=0.55:1.55]{32*x+16}; \\node[BGGreen,anchor=west,font=\\small] at (axis cs:1.55,65.6) {tangent slope $32$};"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "paragraph",
-              "text": "\\caption{Secant lines through \\(P=(1,48)\\) approach the tangent line as the second point moves toward \\(P\\).}"
-            }
-          ]
+          "title": "Graph reading guide",
+          "text": "Secant lines through \\(P=(1,48)\\) approach the tangent line as the second point moves toward \\(P\\)."
         },
         {
           "type": "graph-specification",
+          "title": "Interactive graph exploration",
           "children": [
             {
               "type": "paragraph",
@@ -4188,7 +4163,7 @@
           "environment": "tabular",
           "rows": [
             [
-              "{@{}r r@{}}\n\n\\(x\\)",
+              "\\(x\\)",
               "\\(f(x)\\)"
             ],
             [
@@ -4227,34 +4202,8 @@
         },
         {
           "type": "graph-specification",
-          "title": "htbp",
-          "text": "[htbp]\n\\centering\n\\begin{tikzpicture}\n\\begin{axis}[\nwidth=0.78\\textwidth,height=0.48\\textwidth,\nxmin=-1,xmax=5,ymin=0,ymax=7,\naxis lines=middle,xlabel={$x$},ylabel={$f(x)$},\ngrid=both,major grid style={draw=BGLine},minor tick num=1,\nminor grid style={draw=BGLine!45},\nxtick={-1,0,1,2,3,4,5},ytick={0,1,2,3,4,5,6,7}\n]\n\\addplot[BGBlue,very thick,domain=-1:1.96,samples=80]{x+2};\n\\addplot[BGBlue,very thick,domain=2.04:5,samples=80]{x+2};\n\\addplot[only marks,mark=o,mark size=4pt,very thick,BGRed] coordinates {(2,4)};\n\\draw[dashed,BGGray] (axis cs:2,0) -- (axis cs:2,4);\n\\draw[dashed,BGGray] (axis cs:0,4) -- (axis cs:2,4);\n\\node[anchor=south west,font=\\small] at (axis cs:2,4) {hole};\n\\end{axis}\n\\end{tikzpicture}\n\\caption{The function is undefined at \\(x=2\\), but nearby outputs approach \\(4\\).}",
-          "children": [
-            {
-              "type": "paragraph",
-              "text": "[htbp] \\centering"
-            },
-            {
-              "type": "graph-specification",
-              "text": "\\begin{axis}[\nwidth=0.78\\textwidth,height=0.48\\textwidth,\nxmin=-1,xmax=5,ymin=0,ymax=7,\naxis lines=middle,xlabel={$x$},ylabel={$f(x)$},\ngrid=both,major grid style={draw=BGLine},minor tick num=1,\nminor grid style={draw=BGLine!45},\nxtick={-1,0,1,2,3,4,5},ytick={0,1,2,3,4,5,6,7}\n]\n\\addplot[BGBlue,very thick,domain=-1:1.96,samples=80]{x+2};\n\\addplot[BGBlue,very thick,domain=2.04:5,samples=80]{x+2};\n\\addplot[only marks,mark=o,mark size=4pt,very thick,BGRed] coordinates {(2,4)};\n\\draw[dashed,BGGray] (axis cs:2,0) -- (axis cs:2,4);\n\\draw[dashed,BGGray] (axis cs:0,4) -- (axis cs:2,4);\n\\node[anchor=south west,font=\\small] at (axis cs:2,4) {hole};\n\\end{axis}",
-              "children": [
-                {
-                  "type": "graph-specification",
-                  "text": "[\nwidth=0.78\\textwidth,height=0.48\\textwidth,\nxmin=-1,xmax=5,ymin=0,ymax=7,\naxis lines=middle,xlabel={$x$},ylabel={$f(x)$},\ngrid=both,major grid style={draw=BGLine},minor tick num=1,\nminor grid style={draw=BGLine!45},\nxtick={-1,0,1,2,3,4,5},ytick={0,1,2,3,4,5,6,7}\n]\n\\addplot[BGBlue,very thick,domain=-1:1.96,samples=80]{x+2};\n\\addplot[BGBlue,very thick,domain=2.04:5,samples=80]{x+2};\n\\addplot[only marks,mark=o,mark size=4pt,very thick,BGRed] coordinates {(2,4)};\n\\draw[dashed,BGGray] (axis cs:2,0) -- (axis cs:2,4);\n\\draw[dashed,BGGray] (axis cs:0,4) -- (axis cs:2,4);\n\\node[anchor=south west,font=\\small] at (axis cs:2,4) {hole};",
-                  "children": [
-                    {
-                      "type": "paragraph",
-                      "text": "[ width=0.78\\textwidth,height=0.48\\textwidth, xmin=-1,xmax=5,ymin=0,ymax=7, axis lines=middle,xlabel={$x$},ylabel={$f(x)$}, grid=both,major grid style={draw=BGLine},minor tick num=1, minor grid style={draw=BGLine!45}, xtick={-1,0,1,2,3,4,5},ytick={0,1,2,3,4,5,6,7} ] \\addplot[BGBlue,very thick,domain=-1:1.96,samples=80]{x+2}; \\addplot[BGBlue,very thick,domain=2.04:5,samples=80]{x+2}; \\addplot[only marks,mark=o,mark size=4pt,very thick,BGRed] coordinates {(2,4)}; \\draw[dashed,BGGray] (axis cs:2,0) -- (axis cs:2,4); \\draw[dashed,BGGray] (axis cs:0,4) -- (axis cs:2,4); \\node[anchor=south west,font=\\small] at (axis cs:2,4) {hole};"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "paragraph",
-              "text": "\\caption{The function is undefined at \\(x=2\\), but nearby outputs approach \\(4\\).}"
-            }
-          ]
+          "title": "Graph reading guide",
+          "text": "The function is undefined at \\(x=2\\), but nearby outputs approach \\(4\\)."
         },
         {
           "type": "method",
@@ -4476,34 +4425,8 @@
         },
         {
           "type": "graph-specification",
-          "title": "htbp",
-          "text": "[htbp]\n\\centering\n\\begin{tikzpicture}\n\\begin{axis}[\nwidth=0.76\\textwidth,height=0.49\\textwidth,\nxmin=-1,xmax=4,ymin=0,ymax=11,\naxis lines=middle,xlabel={$x$},ylabel={$g(x)$},\ngrid=both,major grid style={draw=BGLine},minor tick num=1,\nminor grid style={draw=BGLine!45}\n]\n\\addplot[BGBlue,very thick,domain=-1:1.96,samples=100]{x^2+1};\n\\addplot[BGBlue,very thick,domain=2.04:3.15,samples=100]{x^2+1};\n\\addplot[only marks,mark=o,mark size=4pt,very thick,BGRed] coordinates {(2,5)};\n\\addplot[only marks,mark=*,mark size=3pt,BGGold] coordinates {(2,9)};\n\\node[anchor=west,font=\\small] at (axis cs:2.08,5) {$\\lim g(x)=5$};\n\\node[anchor=west,font=\\small] at (axis cs:2.08,9) {$g(2)=9$};\n\\end{axis}\n\\end{tikzpicture}\n\\caption{The nearby parabola determines the limit; the filled point determines the function value.}",
-          "children": [
-            {
-              "type": "paragraph",
-              "text": "[htbp] \\centering"
-            },
-            {
-              "type": "graph-specification",
-              "text": "\\begin{axis}[\nwidth=0.76\\textwidth,height=0.49\\textwidth,\nxmin=-1,xmax=4,ymin=0,ymax=11,\naxis lines=middle,xlabel={$x$},ylabel={$g(x)$},\ngrid=both,major grid style={draw=BGLine},minor tick num=1,\nminor grid style={draw=BGLine!45}\n]\n\\addplot[BGBlue,very thick,domain=-1:1.96,samples=100]{x^2+1};\n\\addplot[BGBlue,very thick,domain=2.04:3.15,samples=100]{x^2+1};\n\\addplot[only marks,mark=o,mark size=4pt,very thick,BGRed] coordinates {(2,5)};\n\\addplot[only marks,mark=*,mark size=3pt,BGGold] coordinates {(2,9)};\n\\node[anchor=west,font=\\small] at (axis cs:2.08,5) {$\\lim g(x)=5$};\n\\node[anchor=west,font=\\small] at (axis cs:2.08,9) {$g(2)=9$};\n\\end{axis}",
-              "children": [
-                {
-                  "type": "graph-specification",
-                  "text": "[\nwidth=0.76\\textwidth,height=0.49\\textwidth,\nxmin=-1,xmax=4,ymin=0,ymax=11,\naxis lines=middle,xlabel={$x$},ylabel={$g(x)$},\ngrid=both,major grid style={draw=BGLine},minor tick num=1,\nminor grid style={draw=BGLine!45}\n]\n\\addplot[BGBlue,very thick,domain=-1:1.96,samples=100]{x^2+1};\n\\addplot[BGBlue,very thick,domain=2.04:3.15,samples=100]{x^2+1};\n\\addplot[only marks,mark=o,mark size=4pt,very thick,BGRed] coordinates {(2,5)};\n\\addplot[only marks,mark=*,mark size=3pt,BGGold] coordinates {(2,9)};\n\\node[anchor=west,font=\\small] at (axis cs:2.08,5) {$\\lim g(x)=5$};\n\\node[anchor=west,font=\\small] at (axis cs:2.08,9) {$g(2)=9$};",
-                  "children": [
-                    {
-                      "type": "paragraph",
-                      "text": "[ width=0.76\\textwidth,height=0.49\\textwidth, xmin=-1,xmax=4,ymin=0,ymax=11, axis lines=middle,xlabel={$x$},ylabel={$g(x)$}, grid=both,major grid style={draw=BGLine},minor tick num=1, minor grid style={draw=BGLine!45} ] \\addplot[BGBlue,very thick,domain=-1:1.96,samples=100]{x^2+1}; \\addplot[BGBlue,very thick,domain=2.04:3.15,samples=100]{x^2+1}; \\addplot[only marks,mark=o,mark size=4pt,very thick,BGRed] coordinates {(2,5)}; \\addplot[only marks,mark=*,mark size=3pt,BGGold] coordinates {(2,9)}; \\node[anchor=west,font=\\small] at (axis cs:2.08,5) {$\\lim g(x)=5$}; \\node[anchor=west,font=\\small] at (axis cs:2.08,9) {$g(2)=9$};"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "paragraph",
-              "text": "\\caption{The nearby parabola determines the limit; the filled point determines the function value.}"
-            }
-          ]
+          "title": "Graph reading guide",
+          "text": "The nearby parabola determines the limit; the filled point determines the function value."
         },
         {
           "type": "summary",
@@ -4749,34 +4672,8 @@
         },
         {
           "type": "graph-specification",
-          "title": "htbp",
-          "text": "[htbp]\n\\centering\n\\begin{tikzpicture}\n\\begin{axis}[\nwidth=0.78\\textwidth,height=0.48\\textwidth,\nxmin=-1,xmax=6,ymin=0,ymax=7,\naxis lines=middle,xlabel={$x$},ylabel={$g(x)$},\ngrid=both,major grid style={draw=BGLine},minor tick num=1,\nminor grid style={draw=BGLine!45}\n]\n\\addplot[BGBlue,very thick,domain=-1:1.999,samples=100]{x+1};\n\\addplot[BGGreen,very thick,domain=2:6,samples=100]{6-x};\n\\addplot[only marks,mark=o,mark size=4pt,very thick,BGBlue] coordinates {(2,3)};\n\\addplot[only marks,mark=*,mark size=3pt,BGGreen] coordinates {(2,4)};\n\\draw[dashed,BGGray] (axis cs:2,0) -- (axis cs:2,4);\n\\node[anchor=east,font=\\small] at (axis cs:1.94,3) {left $\\to3$};\n\\node[anchor=west,font=\\small] at (axis cs:2.06,4) {right $\\to4$};\n\\end{axis}\n\\end{tikzpicture}\n\\caption{Unequal one-sided limits produce a jump and no two-sided limit.}",
-          "children": [
-            {
-              "type": "paragraph",
-              "text": "[htbp] \\centering"
-            },
-            {
-              "type": "graph-specification",
-              "text": "\\begin{axis}[\nwidth=0.78\\textwidth,height=0.48\\textwidth,\nxmin=-1,xmax=6,ymin=0,ymax=7,\naxis lines=middle,xlabel={$x$},ylabel={$g(x)$},\ngrid=both,major grid style={draw=BGLine},minor tick num=1,\nminor grid style={draw=BGLine!45}\n]\n\\addplot[BGBlue,very thick,domain=-1:1.999,samples=100]{x+1};\n\\addplot[BGGreen,very thick,domain=2:6,samples=100]{6-x};\n\\addplot[only marks,mark=o,mark size=4pt,very thick,BGBlue] coordinates {(2,3)};\n\\addplot[only marks,mark=*,mark size=3pt,BGGreen] coordinates {(2,4)};\n\\draw[dashed,BGGray] (axis cs:2,0) -- (axis cs:2,4);\n\\node[anchor=east,font=\\small] at (axis cs:1.94,3) {left $\\to3$};\n\\node[anchor=west,font=\\small] at (axis cs:2.06,4) {right $\\to4$};\n\\end{axis}",
-              "children": [
-                {
-                  "type": "graph-specification",
-                  "text": "[\nwidth=0.78\\textwidth,height=0.48\\textwidth,\nxmin=-1,xmax=6,ymin=0,ymax=7,\naxis lines=middle,xlabel={$x$},ylabel={$g(x)$},\ngrid=both,major grid style={draw=BGLine},minor tick num=1,\nminor grid style={draw=BGLine!45}\n]\n\\addplot[BGBlue,very thick,domain=-1:1.999,samples=100]{x+1};\n\\addplot[BGGreen,very thick,domain=2:6,samples=100]{6-x};\n\\addplot[only marks,mark=o,mark size=4pt,very thick,BGBlue] coordinates {(2,3)};\n\\addplot[only marks,mark=*,mark size=3pt,BGGreen] coordinates {(2,4)};\n\\draw[dashed,BGGray] (axis cs:2,0) -- (axis cs:2,4);\n\\node[anchor=east,font=\\small] at (axis cs:1.94,3) {left $\\to3$};\n\\node[anchor=west,font=\\small] at (axis cs:2.06,4) {right $\\to4$};",
-                  "children": [
-                    {
-                      "type": "paragraph",
-                      "text": "[ width=0.78\\textwidth,height=0.48\\textwidth, xmin=-1,xmax=6,ymin=0,ymax=7, axis lines=middle,xlabel={$x$},ylabel={$g(x)$}, grid=both,major grid style={draw=BGLine},minor tick num=1, minor grid style={draw=BGLine!45} ] \\addplot[BGBlue,very thick,domain=-1:1.999,samples=100]{x+1}; \\addplot[BGGreen,very thick,domain=2:6,samples=100]{6-x}; \\addplot[only marks,mark=o,mark size=4pt,very thick,BGBlue] coordinates {(2,3)}; \\addplot[only marks,mark=*,mark size=3pt,BGGreen] coordinates {(2,4)}; \\draw[dashed,BGGray] (axis cs:2,0) -- (axis cs:2,4); \\node[anchor=east,font=\\small] at (axis cs:1.94,3) {left $\\to3$}; \\node[anchor=west,font=\\small] at (axis cs:2.06,4) {right $\\to4$};"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "paragraph",
-              "text": "\\caption{Unequal one-sided limits produce a jump and no two-sided limit.}"
-            }
-          ]
+          "title": "Graph reading guide",
+          "text": "Unequal one-sided limits produce a jump and no two-sided limit."
         },
         {
           "type": "exam-note",
@@ -4871,34 +4768,8 @@
         },
         {
           "type": "graph-specification",
-          "title": "htbp",
-          "text": "[htbp]\n\\centering\n\\begin{tikzpicture}\n\\begin{axis}[\nwidth=0.88\\textwidth,height=0.42\\textwidth,\nxmin=-0.25,xmax=0.25,ymin=-1.25,ymax=1.25,\naxis lines=middle,xlabel={$x$},ylabel={$\\sin(1/x)$},\nsamples=220,domain=-0.25:-0.01,\ngrid=major,major grid style={draw=BGLine}\n]\n\\addplot[BGBlue,thick,domain=-0.25:-0.008,samples=260]{sin(deg(1/x))};\n\\addplot[BGBlue,thick,domain=0.008:0.25,samples=260]{sin(deg(1/x))};\n\\end{axis}\n\\end{tikzpicture}\n\\caption{The function \\(\\sin(1/x)\\) oscillates increasingly rapidly near zero and has no limit there.}",
-          "children": [
-            {
-              "type": "paragraph",
-              "text": "[htbp] \\centering"
-            },
-            {
-              "type": "graph-specification",
-              "text": "\\begin{axis}[\nwidth=0.88\\textwidth,height=0.42\\textwidth,\nxmin=-0.25,xmax=0.25,ymin=-1.25,ymax=1.25,\naxis lines=middle,xlabel={$x$},ylabel={$\\sin(1/x)$},\nsamples=220,domain=-0.25:-0.01,\ngrid=major,major grid style={draw=BGLine}\n]\n\\addplot[BGBlue,thick,domain=-0.25:-0.008,samples=260]{sin(deg(1/x))};\n\\addplot[BGBlue,thick,domain=0.008:0.25,samples=260]{sin(deg(1/x))};\n\\end{axis}",
-              "children": [
-                {
-                  "type": "graph-specification",
-                  "text": "[\nwidth=0.88\\textwidth,height=0.42\\textwidth,\nxmin=-0.25,xmax=0.25,ymin=-1.25,ymax=1.25,\naxis lines=middle,xlabel={$x$},ylabel={$\\sin(1/x)$},\nsamples=220,domain=-0.25:-0.01,\ngrid=major,major grid style={draw=BGLine}\n]\n\\addplot[BGBlue,thick,domain=-0.25:-0.008,samples=260]{sin(deg(1/x))};\n\\addplot[BGBlue,thick,domain=0.008:0.25,samples=260]{sin(deg(1/x))};",
-                  "children": [
-                    {
-                      "type": "paragraph",
-                      "text": "[ width=0.88\\textwidth,height=0.42\\textwidth, xmin=-0.25,xmax=0.25,ymin=-1.25,ymax=1.25, axis lines=middle,xlabel={$x$},ylabel={$\\sin(1/x)$}, samples=220,domain=-0.25:-0.01, grid=major,major grid style={draw=BGLine} ] \\addplot[BGBlue,thick,domain=-0.25:-0.008,samples=260]{sin(deg(1/x))}; \\addplot[BGBlue,thick,domain=0.008:0.25,samples=260]{sin(deg(1/x))};"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "paragraph",
-              "text": "\\caption{The function \\(\\sin(1/x)\\) oscillates increasingly rapidly near zero and has no limit there.}"
-            }
-          ]
+          "title": "Graph reading guide",
+          "text": "The function \\(\\sin(1/x)\\) oscillates increasingly rapidly near zero and has no limit there."
         },
         {
           "type": "heading",
@@ -5656,7 +5527,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Answers begin in \\cref{app:chapter-answers}."
+          "text": "Answers begin in the referenced section."
         }
       ]
     },
@@ -6066,7 +5937,7 @@
         {
           "type": "heading",
           "level": 2,
-          "text": "The Indeterminate Form \\texorpdfstring{\\(0/0\\)}{0/0}"
+          "text": "The Indeterminate Form \\(0/0\\)"
         },
         {
           "type": "quick-check",
@@ -6134,7 +6005,7 @@
               "environment": "tabularx",
               "rows": [
                 [
-                  "{@{}p{0.35\\textwidth}X@{}}\n\n\\textbf{Visible structure}",
+                  "\\textbf{Visible structure}",
                   "\\textbf{Method to try}"
                 ],
                 [
@@ -7761,7 +7632,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Answers begin in \\cref{app:chapter-answers}."
+          "text": "Answers begin in the referenced section."
         }
       ]
     },
@@ -7970,37 +7841,12 @@
         },
         {
           "type": "graph-specification",
-          "title": "htbp",
-          "text": "[htbp]\n\\centering\n\\begin{tikzpicture}\n\\begin{axis}[\nwidth=0.88\\textwidth,height=0.46\\textwidth,\nxmin=-0.35,xmax=0.35,ymin=-0.13,ymax=0.13,\naxis lines=middle,xlabel={$x$},ylabel={$y$},\ngrid=major,major grid style={draw=BGLine},\nlegend style={draw=none,fill=none,font=\\small,at={(0.98,0.97)},anchor=north east}\n]\n\\addplot[BGBlue,thick,domain=-0.35:-0.008,samples=140]{x^2*sin(deg(1/x))};\n\\addplot[BGBlue,thick,domain=0.008:0.35,samples=140]{x^2*sin(deg(1/x))};\n\\addlegendentry{$x^2\\sin(1/x)$}\n\\addplot[BGGreen,dashed,thick,domain=-0.35:0.35,samples=120]{x^2};\n\\addlegendentry{$x^2$}\n\\addplot[BGRed,dashed,thick,domain=-0.35:0.35,samples=120]{-x^2};\n\\addlegendentry{$-x^2$}\n\\end{axis}\n\\end{tikzpicture}\n\\caption{The oscillating function is trapped between \\(-x^2\\) and \\(x^2\\), both of which approach zero.}",
-          "children": [
-            {
-              "type": "paragraph",
-              "text": "[htbp] \\centering"
-            },
-            {
-              "type": "graph-specification",
-              "text": "\\begin{axis}[\nwidth=0.88\\textwidth,height=0.46\\textwidth,\nxmin=-0.35,xmax=0.35,ymin=-0.13,ymax=0.13,\naxis lines=middle,xlabel={$x$},ylabel={$y$},\ngrid=major,major grid style={draw=BGLine},\nlegend style={draw=none,fill=none,font=\\small,at={(0.98,0.97)},anchor=north east}\n]\n\\addplot[BGBlue,thick,domain=-0.35:-0.008,samples=140]{x^2*sin(deg(1/x))};\n\\addplot[BGBlue,thick,domain=0.008:0.35,samples=140]{x^2*sin(deg(1/x))};\n\\addlegendentry{$x^2\\sin(1/x)$}\n\\addplot[BGGreen,dashed,thick,domain=-0.35:0.35,samples=120]{x^2};\n\\addlegendentry{$x^2$}\n\\addplot[BGRed,dashed,thick,domain=-0.35:0.35,samples=120]{-x^2};\n\\addlegendentry{$-x^2$}\n\\end{axis}",
-              "children": [
-                {
-                  "type": "graph-specification",
-                  "text": "[\nwidth=0.88\\textwidth,height=0.46\\textwidth,\nxmin=-0.35,xmax=0.35,ymin=-0.13,ymax=0.13,\naxis lines=middle,xlabel={$x$},ylabel={$y$},\ngrid=major,major grid style={draw=BGLine},\nlegend style={draw=none,fill=none,font=\\small,at={(0.98,0.97)},anchor=north east}\n]\n\\addplot[BGBlue,thick,domain=-0.35:-0.008,samples=140]{x^2*sin(deg(1/x))};\n\\addplot[BGBlue,thick,domain=0.008:0.35,samples=140]{x^2*sin(deg(1/x))};\n\\addlegendentry{$x^2\\sin(1/x)$}\n\\addplot[BGGreen,dashed,thick,domain=-0.35:0.35,samples=120]{x^2};\n\\addlegendentry{$x^2$}\n\\addplot[BGRed,dashed,thick,domain=-0.35:0.35,samples=120]{-x^2};\n\\addlegendentry{$-x^2$}",
-                  "children": [
-                    {
-                      "type": "paragraph",
-                      "text": "[ width=0.88\\textwidth,height=0.46\\textwidth, xmin=-0.35,xmax=0.35,ymin=-0.13,ymax=0.13, axis lines=middle,xlabel={$x$},ylabel={$y$}, grid=major,major grid style={draw=BGLine}, legend style={draw=none,fill=none,font=\\small,at={(0.98,0.97)},anchor=north east} ] \\addplot[BGBlue,thick,domain=-0.35:-0.008,samples=140]{x^2*sin(deg(1/x))}; \\addplot[BGBlue,thick,domain=0.008:0.35,samples=140]{x^2*sin(deg(1/x))}; \\addlegendentry{$x^2\\sin(1/x)$} \\addplot[BGGreen,dashed,thick,domain=-0.35:0.35,samples=120]{x^2}; \\addlegendentry{$x^2$} \\addplot[BGRed,dashed,thick,domain=-0.35:0.35,samples=120]{-x^2}; \\addlegendentry{$-x^2$}"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "paragraph",
-              "text": "\\caption{The oscillating function is trapped between \\(-x^2\\) and \\(x^2\\), both of which approach zero.}"
-            }
-          ]
+          "title": "Graph reading guide",
+          "text": "The oscillating function is trapped between \\(-x^2\\) and \\(x^2\\), both of which approach zero."
         },
         {
           "type": "graph-specification",
+          "title": "Interactive graph exploration",
           "children": [
             {
               "type": "paragraph",
@@ -8195,29 +8041,8 @@
         },
         {
           "type": "graph-specification",
-          "title": "htbp",
-          "text": "[htbp]\n\\centering\n\\begin{tikzpicture}[scale=3.2]\n\\coordinate (O) at (0,0);\n\\coordinate (A) at (1,0);\n\\coordinate (B) at ({cos(32)},{sin(32)});\n\\coordinate (T) at (1,{tan(32)});\n\\draw[BGInk,thick] (O) circle (1);\n\\draw[BGBlue,very thick] (O)--(A);\n\\draw[BGBlue,very thick] (O)--(B);\n\\draw[BGGreen,thick] (A)--(B);\n\\draw[BGRed,thick] (A)--(T)--(O);\n\\draw pic[draw=BGGold,fill=BGGold!18,angle radius=0.27cm,\"$x$\"{font=\\small}] {angle=A--O--B};\n\\fill[BGInk] (O) circle (0.015) (A) circle (0.015) (B) circle (0.015) (T) circle (0.015);\n\\node[below left,font=\\small] at (O) {$O$};\n\\node[below right,font=\\small] at (A) {$A$};\n\\node[above,font=\\small] at (B) {$B$};\n\\node[right,font=\\small] at (T) {$T$};\n\\node[font=\\small,BGGreen] at (0.78,0.23) {inner triangle};\n\\node[font=\\small,BGRed,rotate=25] at (0.61,0.62) {outer triangle};\n\\end{tikzpicture}\n\\caption{For a unit circle and \\(0<x<\\pi/2\\), the inner triangle lies inside the sector, which lies inside the outer tangent triangle.}",
-          "children": [
-            {
-              "type": "paragraph",
-              "text": "[htbp] \\centering"
-            },
-            {
-              "type": "graph-specification",
-              "title": "scale=3.2",
-              "text": "[scale=3.2]\n\\coordinate (O) at (0,0);\n\\coordinate (A) at (1,0);\n\\coordinate (B) at ({cos(32)},{sin(32)});\n\\coordinate (T) at (1,{tan(32)});\n\\draw[BGInk,thick] (O) circle (1);\n\\draw[BGBlue,very thick] (O)--(A);\n\\draw[BGBlue,very thick] (O)--(B);\n\\draw[BGGreen,thick] (A)--(B);\n\\draw[BGRed,thick] (A)--(T)--(O);\n\\draw pic[draw=BGGold,fill=BGGold!18,angle radius=0.27cm,\"$x$\"{font=\\small}] {angle=A--O--B};\n\\fill[BGInk] (O) circle (0.015) (A) circle (0.015) (B) circle (0.015) (T) circle (0.015);\n\\node[below left,font=\\small] at (O) {$O$};\n\\node[below right,font=\\small] at (A) {$A$};\n\\node[above,font=\\small] at (B) {$B$};\n\\node[right,font=\\small] at (T) {$T$};\n\\node[font=\\small,BGGreen] at (0.78,0.23) {inner triangle};\n\\node[font=\\small,BGRed,rotate=25] at (0.61,0.62) {outer triangle};",
-              "children": [
-                {
-                  "type": "paragraph",
-                  "text": "[scale=3.2] \\coordinate (O) at (0,0); \\coordinate (A) at (1,0); \\coordinate (B) at ({cos(32)},{sin(32)}); \\coordinate (T) at (1,{tan(32)}); \\draw[BGInk,thick] (O) circle (1); \\draw[BGBlue,very thick] (O)--(A); \\draw[BGBlue,very thick] (O)--(B); \\draw[BGGreen,thick] (A)--(B); \\draw[BGRed,thick] (A)--(T)--(O); \\draw pic[draw=BGGold,fill=BGGold!18,angle radius=0.27cm,\"$x$\"{font=\\small}] {angle=A--O--B}; \\fill[BGInk] (O) circle (0.015) (A) circle (0.015) (B) circle (0.015) (T) circle (0.015); \\node[below left,font=\\small] at (O) {$O$}; \\node[below right,font=\\small] at (A) {$A$}; \\node[above,font=\\small] at (B) {$B$}; \\node[right,font=\\small] at (T) {$T$}; \\node[font=\\small,BGGreen] at (0.78,0.23) {inner triangle}; \\node[font=\\small,BGRed,rotate=25] at (0.61,0.62) {outer triangle};"
-                }
-              ]
-            },
-            {
-              "type": "paragraph",
-              "text": "\\caption{For a unit circle and \\(0<x<\\pi/2\\), the inner triangle lies inside the sector, which lies inside the outer tangent triangle.}"
-            }
-          ]
+          "title": "Graph reading guide",
+          "text": "For a unit circle and \\(0<x<\\pi/2\\), the inner triangle lies inside the sector, which lies inside the outer tangent triangle."
         },
         {
           "type": "concept",
@@ -8230,34 +8055,8 @@
         },
         {
           "type": "graph-specification",
-          "title": "htbp",
-          "text": "[htbp]\n\\centering\n\\begin{tikzpicture}\n\\begin{axis}[\nwidth=0.84\\textwidth,height=0.46\\textwidth,\nxmin=-6.3,xmax=6.3,ymin=-0.35,ymax=1.18,\naxis lines=middle,xlabel={$x$},ylabel={$\\sin x/x$},\ngrid=major,major grid style={draw=BGLine},\nxtick={-6.283,-3.142,0,3.142,6.283},\nxticklabels={$-2\\pi$,$-\\pi$,$0$,$\\pi$,$2\\pi$}\n]\n\\addplot[BGBlue,very thick,domain=-6.3:-0.035,samples=120]{sin(deg(x))/x};\n\\addplot[BGBlue,very thick,domain=0.035:6.3,samples=120]{sin(deg(x))/x};\n\\addplot[only marks,mark=o,mark size=4pt,very thick,BGRed] coordinates {(0,1)};\n\\draw[dashed,BGGray] (axis cs:-6.3,1)--(axis cs:6.3,1);\n\\end{axis}\n\\end{tikzpicture}\n\\caption{The graph of \\(\\sin x/x\\) has a removable hole at \\((0,1)\\) and approaches \\(1\\) from both sides.}",
-          "children": [
-            {
-              "type": "paragraph",
-              "text": "[htbp] \\centering"
-            },
-            {
-              "type": "graph-specification",
-              "text": "\\begin{axis}[\nwidth=0.84\\textwidth,height=0.46\\textwidth,\nxmin=-6.3,xmax=6.3,ymin=-0.35,ymax=1.18,\naxis lines=middle,xlabel={$x$},ylabel={$\\sin x/x$},\ngrid=major,major grid style={draw=BGLine},\nxtick={-6.283,-3.142,0,3.142,6.283},\nxticklabels={$-2\\pi$,$-\\pi$,$0$,$\\pi$,$2\\pi$}\n]\n\\addplot[BGBlue,very thick,domain=-6.3:-0.035,samples=120]{sin(deg(x))/x};\n\\addplot[BGBlue,very thick,domain=0.035:6.3,samples=120]{sin(deg(x))/x};\n\\addplot[only marks,mark=o,mark size=4pt,very thick,BGRed] coordinates {(0,1)};\n\\draw[dashed,BGGray] (axis cs:-6.3,1)--(axis cs:6.3,1);\n\\end{axis}",
-              "children": [
-                {
-                  "type": "graph-specification",
-                  "text": "[\nwidth=0.84\\textwidth,height=0.46\\textwidth,\nxmin=-6.3,xmax=6.3,ymin=-0.35,ymax=1.18,\naxis lines=middle,xlabel={$x$},ylabel={$\\sin x/x$},\ngrid=major,major grid style={draw=BGLine},\nxtick={-6.283,-3.142,0,3.142,6.283},\nxticklabels={$-2\\pi$,$-\\pi$,$0$,$\\pi$,$2\\pi$}\n]\n\\addplot[BGBlue,very thick,domain=-6.3:-0.035,samples=120]{sin(deg(x))/x};\n\\addplot[BGBlue,very thick,domain=0.035:6.3,samples=120]{sin(deg(x))/x};\n\\addplot[only marks,mark=o,mark size=4pt,very thick,BGRed] coordinates {(0,1)};\n\\draw[dashed,BGGray] (axis cs:-6.3,1)--(axis cs:6.3,1);",
-                  "children": [
-                    {
-                      "type": "paragraph",
-                      "text": "[ width=0.84\\textwidth,height=0.46\\textwidth, xmin=-6.3,xmax=6.3,ymin=-0.35,ymax=1.18, axis lines=middle,xlabel={$x$},ylabel={$\\sin x/x$}, grid=major,major grid style={draw=BGLine}, xtick={-6.283,-3.142,0,3.142,6.283}, xticklabels={$-2\\pi$,$-\\pi$,$0$,$\\pi$,$2\\pi$} ] \\addplot[BGBlue,very thick,domain=-6.3:-0.035,samples=120]{sin(deg(x))/x}; \\addplot[BGBlue,very thick,domain=0.035:6.3,samples=120]{sin(deg(x))/x}; \\addplot[only marks,mark=o,mark size=4pt,very thick,BGRed] coordinates {(0,1)}; \\draw[dashed,BGGray] (axis cs:-6.3,1)--(axis cs:6.3,1);"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "paragraph",
-              "text": "\\caption{The graph of \\(\\sin x/x\\) has a removable hole at \\((0,1)\\) and approaches \\(1\\) from both sides.}"
-            }
-          ]
+          "title": "Graph reading guide",
+          "text": "The graph of \\(\\sin x/x\\) has a removable hole at \\((0,1)\\) and approaches \\(1\\) from both sides."
         },
         {
           "type": "guided-walkthrough",
@@ -9272,7 +9071,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Answers begin in \\cref{app:chapter-answers}."
+          "text": "Answers begin in the referenced section."
         }
       ]
     },
@@ -9432,34 +9231,8 @@
         },
         {
           "type": "graph-specification",
-          "title": "htbp",
-          "text": "[htbp]\n\\centering\n\\begin{tikzpicture}\n\\begin{groupplot}[\ngroup style={group size=2 by 1,horizontal sep=1.2cm},\nwidth=0.45\\textwidth,height=0.42\\textwidth,\nxmin=-4,xmax=4,ymin=-8,ymax=8,\naxis lines=middle,grid=major,major grid style={draw=BGLine},\nxlabel={$x$},ylabel={$y$}\n]\n\\nextgroupplot[title={$y=1/(x-1)$}]\n\\addplot[BGBlue,very thick,domain=-4:0.94,samples=140]{1/(x-1)};\n\\addplot[BGBlue,very thick,domain=1.06:4,samples=140]{1/(x-1)};\n\\draw[dashed,BGRed] (axis cs:1,-8)--(axis cs:1,8);\n\\nextgroupplot[title={$y=1/(x-1)^2$}]\n\\addplot[BGGreen,very thick,domain=-4:0.94,samples=140]{1/(x-1)^2};\n\\addplot[BGGreen,very thick,domain=1.06:4,samples=140]{1/(x-1)^2};\n\\draw[dashed,BGRed] (axis cs:1,-8)--(axis cs:1,8);\n\\end{groupplot}\n\\end{tikzpicture}\n\\caption{An odd power changes sign across the vertical asymptote; an even power remains positive on both sides.}",
-          "children": [
-            {
-              "type": "paragraph",
-              "text": "[htbp] \\centering"
-            },
-            {
-              "type": "graph-specification",
-              "text": "\\begin{groupplot}[\ngroup style={group size=2 by 1,horizontal sep=1.2cm},\nwidth=0.45\\textwidth,height=0.42\\textwidth,\nxmin=-4,xmax=4,ymin=-8,ymax=8,\naxis lines=middle,grid=major,major grid style={draw=BGLine},\nxlabel={$x$},ylabel={$y$}\n]\n\\nextgroupplot[title={$y=1/(x-1)$}]\n\\addplot[BGBlue,very thick,domain=-4:0.94,samples=140]{1/(x-1)};\n\\addplot[BGBlue,very thick,domain=1.06:4,samples=140]{1/(x-1)};\n\\draw[dashed,BGRed] (axis cs:1,-8)--(axis cs:1,8);\n\\nextgroupplot[title={$y=1/(x-1)^2$}]\n\\addplot[BGGreen,very thick,domain=-4:0.94,samples=140]{1/(x-1)^2};\n\\addplot[BGGreen,very thick,domain=1.06:4,samples=140]{1/(x-1)^2};\n\\draw[dashed,BGRed] (axis cs:1,-8)--(axis cs:1,8);\n\\end{groupplot}",
-              "children": [
-                {
-                  "type": "graph-specification",
-                  "text": "[\ngroup style={group size=2 by 1,horizontal sep=1.2cm},\nwidth=0.45\\textwidth,height=0.42\\textwidth,\nxmin=-4,xmax=4,ymin=-8,ymax=8,\naxis lines=middle,grid=major,major grid style={draw=BGLine},\nxlabel={$x$},ylabel={$y$}\n]\n\\nextgroupplot[title={$y=1/(x-1)$}]\n\\addplot[BGBlue,very thick,domain=-4:0.94,samples=140]{1/(x-1)};\n\\addplot[BGBlue,very thick,domain=1.06:4,samples=140]{1/(x-1)};\n\\draw[dashed,BGRed] (axis cs:1,-8)--(axis cs:1,8);\n\\nextgroupplot[title={$y=1/(x-1)^2$}]\n\\addplot[BGGreen,very thick,domain=-4:0.94,samples=140]{1/(x-1)^2};\n\\addplot[BGGreen,very thick,domain=1.06:4,samples=140]{1/(x-1)^2};\n\\draw[dashed,BGRed] (axis cs:1,-8)--(axis cs:1,8);",
-                  "children": [
-                    {
-                      "type": "paragraph",
-                      "text": "[ group style={group size=2 by 1,horizontal sep=1.2cm}, width=0.45\\textwidth,height=0.42\\textwidth, xmin=-4,xmax=4,ymin=-8,ymax=8, axis lines=middle,grid=major,major grid style={draw=BGLine}, xlabel={$x$},ylabel={$y$} ] \\nextgroupplot[title={$y=1/(x-1)$}] \\addplot[BGBlue,very thick,domain=-4:0.94,samples=140]{1/(x-1)}; \\addplot[BGBlue,very thick,domain=1.06:4,samples=140]{1/(x-1)}; \\draw[dashed,BGRed] (axis cs:1,-8)--(axis cs:1,8); \\nextgroupplot[title={$y=1/(x-1)^2$}] \\addplot[BGGreen,very thick,domain=-4:0.94,samples=140]{1/(x-1)^2}; \\addplot[BGGreen,very thick,domain=1.06:4,samples=140]{1/(x-1)^2}; \\draw[dashed,BGRed] (axis cs:1,-8)--(axis cs:1,8);"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "paragraph",
-              "text": "\\caption{An odd power changes sign across the vertical asymptote; an even power remains positive on both sides.}"
-            }
-          ]
+          "title": "Graph reading guide",
+          "text": "An odd power changes sign across the vertical asymptote; an even power remains positive on both sides."
         }
       ]
     },
@@ -9987,34 +9760,8 @@
         },
         {
           "type": "graph-specification",
-          "title": "htbp",
-          "text": "[htbp]\n\\centering\n\\begin{tikzpicture}\n\\begin{axis}[\nwidth=0.86\\textwidth,height=0.46\\textwidth,\nxmin=-12,xmax=12,ymin=0,ymax=4.3,\naxis lines=middle,xlabel={$x$},ylabel={$f(x)$},\ngrid=major,major grid style={draw=BGLine}\n]\n\\addplot[BGBlue,very thick,domain=-12:12,samples=120]{(3*x^2-2*x+5)/(x^2+4)};\n\\draw[dashed,BGRed,thick] (axis cs:-12,3)--(axis cs:12,3);\n\\node[anchor=south west,font=\\small,BGRed] at (axis cs:5,3) {$y=3$};\n\\end{axis}\n\\end{tikzpicture}\n\\caption{The rational function approaches its horizontal asymptote \\(y=3\\) at both ends.}",
-          "children": [
-            {
-              "type": "paragraph",
-              "text": "[htbp] \\centering"
-            },
-            {
-              "type": "graph-specification",
-              "text": "\\begin{axis}[\nwidth=0.86\\textwidth,height=0.46\\textwidth,\nxmin=-12,xmax=12,ymin=0,ymax=4.3,\naxis lines=middle,xlabel={$x$},ylabel={$f(x)$},\ngrid=major,major grid style={draw=BGLine}\n]\n\\addplot[BGBlue,very thick,domain=-12:12,samples=120]{(3*x^2-2*x+5)/(x^2+4)};\n\\draw[dashed,BGRed,thick] (axis cs:-12,3)--(axis cs:12,3);\n\\node[anchor=south west,font=\\small,BGRed] at (axis cs:5,3) {$y=3$};\n\\end{axis}",
-              "children": [
-                {
-                  "type": "graph-specification",
-                  "text": "[\nwidth=0.86\\textwidth,height=0.46\\textwidth,\nxmin=-12,xmax=12,ymin=0,ymax=4.3,\naxis lines=middle,xlabel={$x$},ylabel={$f(x)$},\ngrid=major,major grid style={draw=BGLine}\n]\n\\addplot[BGBlue,very thick,domain=-12:12,samples=120]{(3*x^2-2*x+5)/(x^2+4)};\n\\draw[dashed,BGRed,thick] (axis cs:-12,3)--(axis cs:12,3);\n\\node[anchor=south west,font=\\small,BGRed] at (axis cs:5,3) {$y=3$};",
-                  "children": [
-                    {
-                      "type": "paragraph",
-                      "text": "[ width=0.86\\textwidth,height=0.46\\textwidth, xmin=-12,xmax=12,ymin=0,ymax=4.3, axis lines=middle,xlabel={$x$},ylabel={$f(x)$}, grid=major,major grid style={draw=BGLine} ] \\addplot[BGBlue,very thick,domain=-12:12,samples=120]{(3*x^2-2*x+5)/(x^2+4)}; \\draw[dashed,BGRed,thick] (axis cs:-12,3)--(axis cs:12,3); \\node[anchor=south west,font=\\small,BGRed] at (axis cs:5,3) {$y=3$};"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "paragraph",
-              "text": "\\caption{The rational function approaches its horizontal asymptote \\(y=3\\) at both ends.}"
-            }
-          ]
+          "title": "Graph reading guide",
+          "text": "The rational function approaches its horizontal asymptote \\(y=3\\) at both ends."
         }
       ]
     },
@@ -10934,7 +10681,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Answers begin in \\cref{app:chapter-answers}."
+          "text": "Answers begin in the referenced section."
         }
       ]
     },
@@ -11426,7 +11173,7 @@
           "environment": "tabularx",
           "rows": [
             [
-              "{@{}p{0.24\\textwidth}X X@{}}\n\n\\textbf{Type}",
+              "\\textbf{Type}",
               "\\textbf{Limit behavior}",
               "\\textbf{Typical graph feature}"
             ],
@@ -11454,34 +11201,8 @@
         },
         {
           "type": "graph-specification",
-          "title": "htbp",
-          "text": "[htbp]\n\\centering\n\\begin{tikzpicture}\n\\begin{groupplot}[\ngroup style={group size=2 by 2,horizontal sep=1cm,vertical sep=1cm},\nwidth=0.43\\textwidth,height=0.32\\textwidth,\nxmin=-2,xmax=2,ymin=-2.2,ymax=3.2,\naxis lines=middle,grid=major,major grid style={draw=BGLine},\nxtick=\\empty,ytick=\\empty\n]\n\\nextgroupplot[title={Removable}]\n\\addplot[BGBlue,very thick,domain=-2:-0.05]{x+1};\n\\addplot[BGBlue,very thick,domain=0.05:2]{x+1};\n\\addplot[only marks,mark=o,mark size=4pt,very thick,BGRed] coordinates {(0,1)};\n\\nextgroupplot[title={Jump}]\n\\addplot[BGBlue,very thick,domain=-2:0]{0};\n\\addplot[BGGreen,very thick,domain=0:2]{2};\n\\addplot[only marks,mark=o,mark size=4pt,very thick,BGBlue] coordinates {(0,0)};\n\\addplot[only marks,mark=*,mark size=3pt,BGGreen] coordinates {(0,2)};\n\\nextgroupplot[title={Infinite}]\n\\addplot[BGBlue,very thick,domain=-2:-0.06,samples=120]{1/x};\n\\addplot[BGBlue,very thick,domain=0.06:2,samples=120]{1/x};\n\\nextgroupplot[title={Oscillatory}]\n\\addplot[BGBlue,thick,domain=-2:-0.08,samples=120]{sin(deg(1/x))};\n\\addplot[BGBlue,thick,domain=0.08:2,samples=120]{sin(deg(1/x))};\n\\end{groupplot}\n\\end{tikzpicture}\n\\caption{The four principal discontinuity types encountered in first-semester calculus.}",
-          "children": [
-            {
-              "type": "paragraph",
-              "text": "[htbp] \\centering"
-            },
-            {
-              "type": "graph-specification",
-              "text": "\\begin{groupplot}[\ngroup style={group size=2 by 2,horizontal sep=1cm,vertical sep=1cm},\nwidth=0.43\\textwidth,height=0.32\\textwidth,\nxmin=-2,xmax=2,ymin=-2.2,ymax=3.2,\naxis lines=middle,grid=major,major grid style={draw=BGLine},\nxtick=\\empty,ytick=\\empty\n]\n\\nextgroupplot[title={Removable}]\n\\addplot[BGBlue,very thick,domain=-2:-0.05]{x+1};\n\\addplot[BGBlue,very thick,domain=0.05:2]{x+1};\n\\addplot[only marks,mark=o,mark size=4pt,very thick,BGRed] coordinates {(0,1)};\n\\nextgroupplot[title={Jump}]\n\\addplot[BGBlue,very thick,domain=-2:0]{0};\n\\addplot[BGGreen,very thick,domain=0:2]{2};\n\\addplot[only marks,mark=o,mark size=4pt,very thick,BGBlue] coordinates {(0,0)};\n\\addplot[only marks,mark=*,mark size=3pt,BGGreen] coordinates {(0,2)};\n\\nextgroupplot[title={Infinite}]\n\\addplot[BGBlue,very thick,domain=-2:-0.06,samples=120]{1/x};\n\\addplot[BGBlue,very thick,domain=0.06:2,samples=120]{1/x};\n\\nextgroupplot[title={Oscillatory}]\n\\addplot[BGBlue,thick,domain=-2:-0.08,samples=120]{sin(deg(1/x))};\n\\addplot[BGBlue,thick,domain=0.08:2,samples=120]{sin(deg(1/x))};\n\\end{groupplot}",
-              "children": [
-                {
-                  "type": "graph-specification",
-                  "text": "[\ngroup style={group size=2 by 2,horizontal sep=1cm,vertical sep=1cm},\nwidth=0.43\\textwidth,height=0.32\\textwidth,\nxmin=-2,xmax=2,ymin=-2.2,ymax=3.2,\naxis lines=middle,grid=major,major grid style={draw=BGLine},\nxtick=\\empty,ytick=\\empty\n]\n\\nextgroupplot[title={Removable}]\n\\addplot[BGBlue,very thick,domain=-2:-0.05]{x+1};\n\\addplot[BGBlue,very thick,domain=0.05:2]{x+1};\n\\addplot[only marks,mark=o,mark size=4pt,very thick,BGRed] coordinates {(0,1)};\n\\nextgroupplot[title={Jump}]\n\\addplot[BGBlue,very thick,domain=-2:0]{0};\n\\addplot[BGGreen,very thick,domain=0:2]{2};\n\\addplot[only marks,mark=o,mark size=4pt,very thick,BGBlue] coordinates {(0,0)};\n\\addplot[only marks,mark=*,mark size=3pt,BGGreen] coordinates {(0,2)};\n\\nextgroupplot[title={Infinite}]\n\\addplot[BGBlue,very thick,domain=-2:-0.06,samples=120]{1/x};\n\\addplot[BGBlue,very thick,domain=0.06:2,samples=120]{1/x};\n\\nextgroupplot[title={Oscillatory}]\n\\addplot[BGBlue,thick,domain=-2:-0.08,samples=120]{sin(deg(1/x))};\n\\addplot[BGBlue,thick,domain=0.08:2,samples=120]{sin(deg(1/x))};",
-                  "children": [
-                    {
-                      "type": "paragraph",
-                      "text": "[ group style={group size=2 by 2,horizontal sep=1cm,vertical sep=1cm}, width=0.43\\textwidth,height=0.32\\textwidth, xmin=-2,xmax=2,ymin=-2.2,ymax=3.2, axis lines=middle,grid=major,major grid style={draw=BGLine}, xtick=\\empty,ytick=\\empty ] \\nextgroupplot[title={Removable}] \\addplot[BGBlue,very thick,domain=-2:-0.05]{x+1}; \\addplot[BGBlue,very thick,domain=0.05:2]{x+1}; \\addplot[only marks,mark=o,mark size=4pt,very thick,BGRed] coordinates {(0,1)}; \\nextgroupplot[title={Jump}] \\addplot[BGBlue,very thick,domain=-2:0]{0}; \\addplot[BGGreen,very thick,domain=0:2]{2}; \\addplot[only marks,mark=o,mark size=4pt,very thick,BGBlue] coordinates {(0,0)}; \\addplot[only marks,mark=*,mark size=3pt,BGGreen] coordinates {(0,2)}; \\nextgroupplot[title={Infinite}] \\addplot[BGBlue,very thick,domain=-2:-0.06,samples=120]{1/x}; \\addplot[BGBlue,very thick,domain=0.06:2,samples=120]{1/x}; \\nextgroupplot[title={Oscillatory}] \\addplot[BGBlue,thick,domain=-2:-0.08,samples=120]{sin(deg(1/x))}; \\addplot[BGBlue,thick,domain=0.08:2,samples=120]{sin(deg(1/x))};"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "paragraph",
-              "text": "\\caption{The four principal discontinuity types encountered in first-semester calculus.}"
-            }
-          ]
+          "title": "Graph reading guide",
+          "text": "The four principal discontinuity types encountered in first-semester calculus."
         },
         {
           "type": "worked-example",
@@ -12149,34 +11870,8 @@
         },
         {
           "type": "graph-specification",
-          "title": "htbp",
-          "text": "[htbp]\n\\centering\n\\begin{tikzpicture}\n\\begin{axis}[\nwidth=0.8\\textwidth,height=0.48\\textwidth,\nxmin=0,xmax=1,ymin=-1.15,ymax=1.15,\naxis lines=middle,xlabel={$x$},ylabel={$f(x)$},\ngrid=major,major grid style={draw=BGLine}\n]\n\\addplot[BGBlue,very thick,domain=0:1,samples=140]{x^3+x-1};\n\\addplot[only marks,mark=*,mark size=2.7pt,BGGold] coordinates {(0,-1) (1,1)};\n\\addplot[only marks,mark=*,mark size=2.7pt,BGGreen] coordinates {(0.6823278,0)};\n\\node[anchor=south,font=\\small] at (axis cs:0.6823278,0) {$c$};\n\\end{axis}\n\\end{tikzpicture}\n\\caption{Continuity and opposite endpoint signs guarantee at least one root between \\(0\\) and \\(1\\).}",
-          "children": [
-            {
-              "type": "paragraph",
-              "text": "[htbp] \\centering"
-            },
-            {
-              "type": "graph-specification",
-              "text": "\\begin{axis}[\nwidth=0.8\\textwidth,height=0.48\\textwidth,\nxmin=0,xmax=1,ymin=-1.15,ymax=1.15,\naxis lines=middle,xlabel={$x$},ylabel={$f(x)$},\ngrid=major,major grid style={draw=BGLine}\n]\n\\addplot[BGBlue,very thick,domain=0:1,samples=140]{x^3+x-1};\n\\addplot[only marks,mark=*,mark size=2.7pt,BGGold] coordinates {(0,-1) (1,1)};\n\\addplot[only marks,mark=*,mark size=2.7pt,BGGreen] coordinates {(0.6823278,0)};\n\\node[anchor=south,font=\\small] at (axis cs:0.6823278,0) {$c$};\n\\end{axis}",
-              "children": [
-                {
-                  "type": "graph-specification",
-                  "text": "[\nwidth=0.8\\textwidth,height=0.48\\textwidth,\nxmin=0,xmax=1,ymin=-1.15,ymax=1.15,\naxis lines=middle,xlabel={$x$},ylabel={$f(x)$},\ngrid=major,major grid style={draw=BGLine}\n]\n\\addplot[BGBlue,very thick,domain=0:1,samples=140]{x^3+x-1};\n\\addplot[only marks,mark=*,mark size=2.7pt,BGGold] coordinates {(0,-1) (1,1)};\n\\addplot[only marks,mark=*,mark size=2.7pt,BGGreen] coordinates {(0.6823278,0)};\n\\node[anchor=south,font=\\small] at (axis cs:0.6823278,0) {$c$};",
-                  "children": [
-                    {
-                      "type": "paragraph",
-                      "text": "[ width=0.8\\textwidth,height=0.48\\textwidth, xmin=0,xmax=1,ymin=-1.15,ymax=1.15, axis lines=middle,xlabel={$x$},ylabel={$f(x)$}, grid=major,major grid style={draw=BGLine} ] \\addplot[BGBlue,very thick,domain=0:1,samples=140]{x^3+x-1}; \\addplot[only marks,mark=*,mark size=2.7pt,BGGold] coordinates {(0,-1) (1,1)}; \\addplot[only marks,mark=*,mark size=2.7pt,BGGreen] coordinates {(0.6823278,0)}; \\node[anchor=south,font=\\small] at (axis cs:0.6823278,0) {$c$};"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "paragraph",
-              "text": "\\caption{Continuity and opposite endpoint signs guarantee at least one root between \\(0\\) and \\(1\\).}"
-            }
-          ]
+          "title": "Graph reading guide",
+          "text": "Continuity and opposite endpoint signs guarantee at least one root between \\(0\\) and \\(1\\)."
         },
         {
           "type": "exam-note",
@@ -12981,7 +12676,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Answers begin in \\cref{app:chapter-answers}."
+          "text": "Answers begin in the referenced section."
         }
       ]
     },
@@ -13074,7 +12769,7 @@
           "environment": "tabularx",
           "rows": [
             [
-              "{@{}p{0.24\\textwidth}X@{}}\n\n\\textbf{Expression}",
+              "\\textbf{Expression}",
               "\\textbf{Meaning}"
             ],
             [
@@ -13517,37 +13212,12 @@
         },
         {
           "type": "graph-specification",
-          "title": "htbp",
-          "text": "[htbp]\n\\centering\n\\begin{tikzpicture}\n\\begin{axis}[\nwidth=0.84\\textwidth,height=0.50\\textwidth,\nxmin=-0.5,xmax=4.5,ymin=-0.5,ymax=8.5,\naxis lines=middle,xlabel={$x$},ylabel={$f(x)$},\ngrid=major,major grid style={draw=BGLine}\n]\n\\addplot[BGBlue,very thick,domain=-0.3:4.2,samples=140]{x^2/2+1};\n\\addplot[draw=none,name path=upper,domain=-0.5:4.5]{5.5};\n\\addplot[draw=none,name path=lower,domain=-0.5:4.5]{3.5};\n\\addplot[BGPaleGold] fill between[of=upper and lower];\n\\draw[BGGold,thick,dashed] (axis cs:-0.5,5.5)--(axis cs:4.5,5.5);\n\\draw[BGGold,thick,dashed] (axis cs:-0.5,3.5)--(axis cs:4.5,3.5);\n\\draw[BGGreen,thick,dashed] (axis cs:1.75,-0.5)--(axis cs:1.75,8.5);\n\\draw[BGGreen,thick,dashed] (axis cs:2.25,-0.5)--(axis cs:2.25,8.5);\n\\node[anchor=west,font=\\small,BGGold] at (axis cs:3.65,5.5) {$L+\\eps$};\n\\node[anchor=west,font=\\small,BGGold] at (axis cs:3.65,3.5) {$L-\\eps$};\n\\node[anchor=north,font=\\small,BGGreen] at (axis cs:1.75,-0.2) {$a-\\delta$};\n\\node[anchor=north,font=\\small,BGGreen] at (axis cs:2.25,-0.2) {$a+\\delta$};\n\\end{axis}\n\\end{tikzpicture}\n\\caption{An \\(\\eps\\)-band around \\(L\\) and a corresponding \\(\\delta\\)-window around \\(a\\). A valid \\(\\delta\\) keeps the nearby graph inside the band.}",
-          "children": [
-            {
-              "type": "paragraph",
-              "text": "[htbp] \\centering"
-            },
-            {
-              "type": "graph-specification",
-              "text": "\\begin{axis}[\nwidth=0.84\\textwidth,height=0.50\\textwidth,\nxmin=-0.5,xmax=4.5,ymin=-0.5,ymax=8.5,\naxis lines=middle,xlabel={$x$},ylabel={$f(x)$},\ngrid=major,major grid style={draw=BGLine}\n]\n\\addplot[BGBlue,very thick,domain=-0.3:4.2,samples=140]{x^2/2+1};\n\\addplot[draw=none,name path=upper,domain=-0.5:4.5]{5.5};\n\\addplot[draw=none,name path=lower,domain=-0.5:4.5]{3.5};\n\\addplot[BGPaleGold] fill between[of=upper and lower];\n\\draw[BGGold,thick,dashed] (axis cs:-0.5,5.5)--(axis cs:4.5,5.5);\n\\draw[BGGold,thick,dashed] (axis cs:-0.5,3.5)--(axis cs:4.5,3.5);\n\\draw[BGGreen,thick,dashed] (axis cs:1.75,-0.5)--(axis cs:1.75,8.5);\n\\draw[BGGreen,thick,dashed] (axis cs:2.25,-0.5)--(axis cs:2.25,8.5);\n\\node[anchor=west,font=\\small,BGGold] at (axis cs:3.65,5.5) {$L+\\eps$};\n\\node[anchor=west,font=\\small,BGGold] at (axis cs:3.65,3.5) {$L-\\eps$};\n\\node[anchor=north,font=\\small,BGGreen] at (axis cs:1.75,-0.2) {$a-\\delta$};\n\\node[anchor=north,font=\\small,BGGreen] at (axis cs:2.25,-0.2) {$a+\\delta$};\n\\end{axis}",
-              "children": [
-                {
-                  "type": "graph-specification",
-                  "text": "[\nwidth=0.84\\textwidth,height=0.50\\textwidth,\nxmin=-0.5,xmax=4.5,ymin=-0.5,ymax=8.5,\naxis lines=middle,xlabel={$x$},ylabel={$f(x)$},\ngrid=major,major grid style={draw=BGLine}\n]\n\\addplot[BGBlue,very thick,domain=-0.3:4.2,samples=140]{x^2/2+1};\n\\addplot[draw=none,name path=upper,domain=-0.5:4.5]{5.5};\n\\addplot[draw=none,name path=lower,domain=-0.5:4.5]{3.5};\n\\addplot[BGPaleGold] fill between[of=upper and lower];\n\\draw[BGGold,thick,dashed] (axis cs:-0.5,5.5)--(axis cs:4.5,5.5);\n\\draw[BGGold,thick,dashed] (axis cs:-0.5,3.5)--(axis cs:4.5,3.5);\n\\draw[BGGreen,thick,dashed] (axis cs:1.75,-0.5)--(axis cs:1.75,8.5);\n\\draw[BGGreen,thick,dashed] (axis cs:2.25,-0.5)--(axis cs:2.25,8.5);\n\\node[anchor=west,font=\\small,BGGold] at (axis cs:3.65,5.5) {$L+\\eps$};\n\\node[anchor=west,font=\\small,BGGold] at (axis cs:3.65,3.5) {$L-\\eps$};\n\\node[anchor=north,font=\\small,BGGreen] at (axis cs:1.75,-0.2) {$a-\\delta$};\n\\node[anchor=north,font=\\small,BGGreen] at (axis cs:2.25,-0.2) {$a+\\delta$};",
-                  "children": [
-                    {
-                      "type": "paragraph",
-                      "text": "[ width=0.84\\textwidth,height=0.50\\textwidth, xmin=-0.5,xmax=4.5,ymin=-0.5,ymax=8.5, axis lines=middle,xlabel={$x$},ylabel={$f(x)$}, grid=major,major grid style={draw=BGLine} ] \\addplot[BGBlue,very thick,domain=-0.3:4.2,samples=140]{x^2/2+1}; \\addplot[draw=none,name path=upper,domain=-0.5:4.5]{5.5}; \\addplot[draw=none,name path=lower,domain=-0.5:4.5]{3.5}; \\addplot[BGPaleGold] fill between[of=upper and lower]; \\draw[BGGold,thick,dashed] (axis cs:-0.5,5.5)--(axis cs:4.5,5.5); \\draw[BGGold,thick,dashed] (axis cs:-0.5,3.5)--(axis cs:4.5,3.5); \\draw[BGGreen,thick,dashed] (axis cs:1.75,-0.5)--(axis cs:1.75,8.5); \\draw[BGGreen,thick,dashed] (axis cs:2.25,-0.5)--(axis cs:2.25,8.5); \\node[anchor=west,font=\\small,BGGold] at (axis cs:3.65,5.5) {$L+\\eps$}; \\node[anchor=west,font=\\small,BGGold] at (axis cs:3.65,3.5) {$L-\\eps$}; \\node[anchor=north,font=\\small,BGGreen] at (axis cs:1.75,-0.2) {$a-\\delta$}; \\node[anchor=north,font=\\small,BGGreen] at (axis cs:2.25,-0.2) {$a+\\delta$};"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "paragraph",
-              "text": "\\caption{An \\(\\eps\\)-band around \\(L\\) and a corresponding \\(\\delta\\)-window around \\(a\\). A valid \\(\\delta\\) keeps the nearby graph inside the band.}"
-            }
-          ]
+          "title": "Graph reading guide",
+          "text": "An \\(\\eps\\)-band around \\(L\\) and a corresponding \\(\\delta\\)-window around \\(a\\). A valid \\(\\delta\\) keeps the nearby graph inside the band."
         },
         {
           "type": "graph-specification",
+          "title": "Interactive graph exploration",
           "children": [
             {
               "type": "paragraph",
@@ -14091,7 +13761,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Answers begin in \\cref{app:chapter-answers}."
+          "text": "Answers begin in the referenced section."
         }
       ]
     },
@@ -14162,7 +13832,7 @@
           "environment": "longtable",
           "rows": [
             [
-              "{@{}p{0.30\\textwidth}p{0.31\\textwidth}p{0.31\\textwidth}@{}}\n\n\\textbf{Error}",
+              "\\textbf{Error}",
               "\\textbf{Why it fails}",
               "\\textbf{Repair}"
             ],

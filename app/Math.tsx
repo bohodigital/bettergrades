@@ -85,10 +85,11 @@ export function Math({
   className?: string;
   label?: string;
 }) {
-  const key = `${display}:${tex}`;
+  const normalizedTex = tex.replace(/\\eps\b/g, String.raw`\varepsilon`).replace(/\\DNE\b/g, String.raw`\mathrm{DNE}`);
+  const key = `${display}:${normalizedTex}`;
   let html = cache.get(key);
   if (!html) {
-    html = katex.renderToString(tex, {
+    html = katex.renderToString(normalizedTex, {
       displayMode: display,
       throwOnError: false,
       strict: "ignore",

@@ -18,6 +18,7 @@ import { archetypes } from "../lib/library";
 import { getResourceRecord, tools } from "../lib/registry/catalog";
 import { assessments } from "../lib/registry/practice";
 import { LatexArticleDocument } from "./LatexArticle";
+import { LimitsUnitMap } from "./LimitsUnitMap";
 
 export { libraryArticleHref, libraryCounts };
 
@@ -77,15 +78,17 @@ export function TopicContent({ domainSlug, topicSlug }: { domainSlug: string; to
   const relatedAssessmentIds = Array.from(new Set(topicResources.flatMap((resource) => resource?.relatedAssessmentIds ?? [])));
   const topicTools = relatedToolIds.map((id) => tools.find((tool) => tool.id === id)).filter(Boolean);
   const topicAssessments = relatedAssessmentIds.map((id) => assessments.find((assessment) => assessment.id === id)).filter(Boolean);
+  const isLimitsTopic = domainSlug === "calculus" && topicSlug === "limits-continuity";
   return (
     <>
       <section className="topic-page-hero section-pad">
         <nav className="breadcrumbs"><a href="/subjects/">Subjects</a><span>/</span><a href="/subjects/math/">Mathematics</a><span>/</span><a href={`/subjects/math/${course.slug}/`}>{course.name}</a><span>/</span><span>{topic.name}</span></nav>
         <div className="topic-hero-grid"><div><p className="eyebrow">Topic {topic.sequence} of {course.topics.length}</p><h1>{topic.name}</h1><p>{topic.description}</p></div><span className="topic-big-number">{topic.accent}</span></div>
       </section>
+      {isLimitsTopic && <LimitsUnitMap showSupporting={false} topicPage />}
       <section className="topic-page-body section-pad">
-        <aside><strong>Inside this topic</strong><span>{articles.length} full resources</span><p>Start with the idea, work a method, then use a decision guide when the route is not obvious.</p>{domainSlug === "calculus" && topicSlug === "limits-continuity" && <a className="limits-unit-topic-link" href={LIMITS_UNIT_PREFIX}>Complete 71-page unit →</a>}<a href={`/subjects/math/${course.slug}/`}>All {course.name.toLowerCase()} topics →</a>{topicTools.map((tool) => <a href={tool!.path} key={tool!.id}>Use {tool!.title} →</a>)}{topicAssessments.slice(0, 1).map((assessment) => <a href={assessment!.path} key={assessment!.id}>Practice this topic →</a>)}</aside>
-        <div className="topic-resource-groups">{resourceGroups.map((group) => { const groupArticles = articles.filter((article) => (group.archetypes as readonly string[]).includes(article.archetype)); if (!groupArticles.length) return null; return <section className="topic-resource-group" key={group.id}><header><span>{group.title}</span><p>{group.description}</p></header><div className="topic-article-list">{groupArticles.map((article) => <ArticleRow article={article} index={articles.indexOf(article)} key={article.slug} />)}</div></section>; })}</div>
+        <aside><strong>{isLimitsTopic ? "Beyond the textbook" : "Inside this topic"}</strong><span>{articles.length} {isLimitsTopic ? "deep-dive articles" : "full resources"}</span><p>{isLimitsTopic ? "Use these focused explorations after the core map when one idea deserves a slower, closer look." : "Start with the idea, work a method, then use a decision guide when the route is not obvious."}</p>{isLimitsTopic && <a className="limits-unit-topic-link" href={LIMITS_UNIT_PREFIX}>Open every unit resource →</a>}<a href={`/subjects/math/${course.slug}/`}>All {course.name.toLowerCase()} topics →</a>{topicTools.map((tool) => <a href={tool!.path} key={tool!.id}>Use {tool!.title} →</a>)}{topicAssessments.slice(0, 1).map((assessment) => <a href={assessment!.path} key={assessment!.id}>Practice this topic →</a>)}</aside>
+        <div className="topic-resource-groups">{isLimitsTopic && <header className="topic-explorations-intro"><p className="eyebrow">Further exploration</p><h2>Deep dives and extra articles</h2><p>The core map above is the textbook. These articles are the side trails: close readings of a famous limit, a single method, or a conceptual distinction that rewards more time and more examples.</p></header>}{resourceGroups.map((group) => { const groupArticles = articles.filter((article) => (group.archetypes as readonly string[]).includes(article.archetype)); if (!groupArticles.length) return null; return <section className="topic-resource-group" key={group.id}><header><span>{group.title}</span><p>{group.description}</p></header><div className="topic-article-list">{groupArticles.map((article) => <ArticleRow article={article} index={articles.indexOf(article)} key={article.slug} />)}</div></section>; })}</div>
       </section>
       <nav className="topic-sequence section-pad" aria-label="Adjacent topics">
         {previous ? <a href={`/subjects/math/${course.slug}/${previous.slug}/`}><small>← Previous topic</small><b>{previous.name}</b></a> : <span />}

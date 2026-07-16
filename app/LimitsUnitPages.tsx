@@ -3,8 +3,9 @@
 /* eslint-disable @next/next/no-html-link-for-pages -- canonical course navigation uses document navigation */
 
 import { FormEvent, ReactNode, useState } from "react";
-import { limitsUnitCoreRoutes, limitsUnitRoutes } from "../lib/calculus/limits-unit-index.mjs";
+import { getLimitsUnitChapter, limitsUnitRoutes } from "../lib/calculus/limits-unit-index.mjs";
 import type { LimitsUnitNode, LimitsUnitPublicCheck, LimitsUnitPublicPage } from "../lib/calculus/limits-unit.mjs";
+import { LimitsUnitMap } from "./LimitsUnitMap";
 import { Math } from "./Math";
 
 const labels: Record<string, string> = {
@@ -16,16 +17,24 @@ const labels: Record<string, string> = {
 
 function cleanText(value: string) {
   return value.replace(/^\[(?:title=\{[^}]*\}|[^\]]*)\]\s*/, "")
+    .replace(/\\texorpdfstring\{(\\\([\s\S]*?\\\))\}\{[^}]*\}/g, "$1")
     .replace(/\\chapter\*?\{([^}]*)\}/g, "$1").replace(/\\step\{\d+\}\{([^}]*)\}/g, "$1")
     .replace(/\\(?:textbf|emph|textit)\{([^}]*)\}/g, "$1")
     .replace(/\\item(?:\[([^\]]+)\])?/g, (_, label: string | undefined) => label ? ` • ${label} ` : " • ")
     .replace(/``|''/g, '"').replace(/~/g, " ").replace(/\\(?:centering|newpage|clearpage)\b/g, "")
+    .replace(/\\(?:cref|Cref|ref|eqref|pageref)\{[^}]*\}/g, "the referenced section")
+    .replace(/\\label\{[^}]*\}/g, "")
     .replace(/\s+/g, " ").trim();
+}
+
+function normalizeWebTex(value: string) {
+  return value.replace(/\\eps\b/g, String.raw`\varepsilon`).replace(/\\DNE\b/g, String.raw`\mathrm{DNE}`);
 }
 
 const supportedDisplayEnvironments = new Set(["aligned", "array", "cases", "gathered"]);
 
 function safeDisplayTex(tex: string) {
+  tex = normalizeWebTex(tex);
   tex = tex.replace(/\\begin\{align\*?\}/g, "\\begin{aligned}").replace(/\\end\{align\*?\}/g, "\\end{aligned}");
   const environment = tex.match(/\\begin\{([^}]+)\}/)?.[1];
   if (environment && !supportedDisplayEnvironments.has(environment)) return null;
@@ -39,7 +48,7 @@ function RichText({ value }: { value: string }) {
   for (const match of cleaned.matchAll(expression)) {
     const start = match.index ?? 0;
     if (start > cursor) pieces.push(cleaned.slice(cursor, start));
-    pieces.push(<Math tex={match[1]} key={`${start}-${match[1]}`} />);
+    pieces.push(<Math tex={normalizeWebTex(match[1])} key={`${start}-${match[1]}`} />);
     cursor = start + match[0].length;
   }
   if (cursor < cleaned.length) pieces.push(cleaned.slice(cursor));
@@ -66,7 +75,7 @@ function SemanticNode({ node, keyPrefix, checks, renderedCheckIds }: { node: Lim
     return tex ? <Math tex={tex} display className="limits-equation" /> : <p className="limits-render-note">This structured mathematical display is available in the printable edition.</p>;
   }
   if (node.type === "table") return <div className="limits-table-wrap"><table><caption className="sr-only">Reference table</caption><tbody>{(node.rows ?? []).map((row, rowIndex) => <tr key={rowIndex}>{row.map((cell, cellIndex) => rowIndex === 0 ? <th scope="col" key={cellIndex}><RichText value={cell} /></th> : <td key={cellIndex}><RichText value={cell} /></td>)}</tr>)}</tbody></table></div>;
-  if (node.type === "graph-specification") return <figure className="limits-graph"><div aria-hidden="true">↗︎</div><figcaption><strong>{node.title && node.title !== "htbp" ? cleanText(node.title) : "Graph specification"}</strong><span>Source-defined graph specification.</span>{node.text && <pre className="limits-graph-spec" aria-label="Graph specification source">{cleanText(node.text)}</pre>}</figcaption>{node.children?.length ? <details className="limits-disclosure"><summary>Accessible graph specification details</summary><NodeChildren nodes={node.children} keyPrefix={keyPrefix} checks={checks} renderedCheckIds={renderedCheckIds} /></details> : null}</figure>;
+  if (node.type === "graph-specification") return <figure className="limits-graph"><div aria-hidden="true">↗︎</div><figcaption><strong>{node.title ? cleanText(node.title) : "Graph reading guide"}</strong>{node.text && <p><RichText value={node.text} /></p>}{node.children?.length ? <div className="limits-graph-exposition"><NodeChildren nodes={node.children} keyPrefix={keyPrefix} checks={checks} renderedCheckIds={renderedCheckIds} /></div> : null}</figcaption></figure>;
   if (node.type === "quick-check") {
     const check = node.checkId ? checks.get(node.checkId) : undefined;
     if (!check) return <section className="limits-node limits-node-quick-check"><header><span>Quick check</span></header><div><NodeChildren nodes={node.children ?? []} keyPrefix={keyPrefix} checks={checks} renderedCheckIds={renderedCheckIds} /></div></section>;
@@ -106,13 +115,21 @@ function InteractiveCheck({ check }: { check: LimitsUnitPublicCheck }) {
   </section>;
 }
 
-function UnitMap() {
-  const support = limitsUnitRoutes.filter((route) => !route.isCoreSequence);
-  return <section className="limits-unit-map" aria-label="Limits and Continuity course map">
-    <div><p className="eyebrow">Sequential core</p><h2>47 pages from prerequisites to formal limits.</h2></div>
-    <ol>{limitsUnitCoreRoutes.map((route) => <li key={route.path}><a href={route.path}><span>{String(route.coreSequenceIndex).padStart(2, "0")}</span><b>{route.h1}</b><small>{route.description}</small></a></li>)}</ol>
-    <div><p className="eyebrow">Supporting work</p><h2>Reviews, quizzes, references, and exams.</h2></div>
-    <div className="limits-support-grid">{support.map((route) => <a href={route.path} key={route.path}><span>{labels[route.pageType] ?? route.pageType.replaceAll("-", " ")}</span><b>{route.h1}</b><small>{route.description}</small></a>)}</div>
+const expositionTypes = new Set(["extension", "lesson", "reference", "review", "study"]);
+
+function TextbookOrientation({ page }: { page: LimitsUnitPublicPage }) {
+  if (!expositionTypes.has(page.route.pageType)) return null;
+  const coreIndex = page.route.coreSequenceIndex ?? page.returnRoute?.coreSequenceIndex;
+  const chapter = getLimitsUnitChapter(coreIndex);
+  if (!chapter) return null;
+  const previous = page.previous?.h1;
+  const next = page.next?.h1;
+  return <section className="limits-editorial-intro">
+    <p className="eyebrow">Where this chapter fits</p>
+    <h2>{chapter.title}</h2>
+    <p>{chapter.description}</p>
+    <p><strong>Reading lens:</strong> {chapter.lens} Keep that question in view while reading <em>{page.route.h1}</em>; the worked mathematics is evidence for the idea, not a substitute for it.</p>
+    <p>{previous && next ? <>This page connects <strong>{previous}</strong> to <strong>{next}</strong>. Read the explanation first, predict each example’s next move, and only then compare the written solution.</> : <>Use this page to name the idea in words, connect it to the notation, and explain why the method works before treating it as a pattern.</>}</p>
   </section>;
 }
 
@@ -135,8 +152,8 @@ export function LimitsUnitPageContent({ page }: { page: LimitsUnitPublicPage }) 
       <h1>{route.h1}</h1><p>{route.description}</p>
       <div className="limits-progress"><strong>Course progress</strong>{route.isCoreSequence ? <><span>{route.coreSequenceIndex} of 47 core pages</span><progress value={route.coreSequenceIndex ?? 0} max="47">{route.coreSequenceIndex} of 47</progress></> : <><span>Supporting resource</span><a href={page.returnRoute?.path ?? limitsUnitRoutes[0].path}>Return to the core path →</a></>}</div>
     </header>
-    <div className="limits-unit-layout section-pad"><aside><strong>On this page</strong><span>{page.checks.length} interactive {page.checks.length === 1 ? "check" : "checks"}</span><a href={limitsUnitRoutes[0].path}>Complete unit map →</a><a href="/subjects/math/calculus/limits-continuity/">Limits topic page →</a><a href="/practice/math/calculus/">Calculus practice →</a></aside><div className="limits-unit-content">
-      {route.pageType === "hub" && <UnitMap />}
+    <div className="limits-unit-layout section-pad"><aside><strong>On this page</strong><span>{page.checks.length} interactive {page.checks.length === 1 ? "check" : "checks"}</span><a href="/subjects/math/calculus/limits-continuity/">Main unit map →</a><a href={limitsUnitRoutes[0].path}>Full unit overview →</a><a href="/practice/math/calculus/">Calculus practice →</a></aside><div className="limits-unit-content">
+      {route.pageType === "hub" ? <LimitsUnitMap /> : <TextbookOrientation page={page} />}
       <NodeChildren nodes={page.page.nodes} keyPrefix={route.sourceSlug} checks={checks} renderedCheckIds={renderedCheckIds} />
       {page.related.length > 0 && <section className="limits-related"><p className="eyebrow">Keep working</p><h2>Related resources</h2>{page.related.map((related) => <a href={related.path} key={related.path}><span>{labels[related.pageType] ?? related.pageType}</span><b>{related.h1}</b></a>)}</section>}
       <section className="limits-rights"><p className="eyebrow">Source &amp; rights</p><h2>Original instruction with traceable references.</h2><p>{page.provenanceNote}</p><p>The verified handoff declares original composition and requires owner provenance review. BetterGrades-original material remains separate from public-domain references; no source textbook PDF is published here.</p></section>

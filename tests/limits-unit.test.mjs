@@ -56,6 +56,54 @@ test("all imported pages compile to typed semantic nodes without raw HTML", () =
     "exam-note", "summary", "graph-specification",
   ]) assert.ok(nodeTypes.has(required), `missing semantic node type ${required}`);
 });
+
+test("graph figures compile once as readable descriptions without plotting source", () => {
+  const source = String.raw`Before the graph.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=0.8\textwidth,xmin=-2,xmax=2]
+\addplot[thick]{x^2};
+\end{axis}
+\end{tikzpicture}
+\caption{The parabola approaches its minimum at the origin.}
+\label{fig:test-parabola}
+\end{figure}
+
+After the graph.`;
+  const nodes = flatten(parseLimitsUnitPage(source));
+  const graphs = nodes.filter((node) => node.type === "graph-specification");
+  assert.equal(graphs.length, 1);
+  assert.match(graphs[0].text ?? "", /parabola approaches its minimum/i);
+  assert.doesNotMatch(JSON.stringify(graphs[0]), /\\(?:begin|end|addplot|draw|node|caption|centering)\b|textwidth/);
+  assert.equal(nodes.filter((node) => node.type === "paragraph").length, 2);
+});
+
+test("all imported graph nodes exclude TeX implementation details", () => {
+  for (const page of unitPayload.pages) {
+    const nodes = flatten(parseLimitsUnitPage(page.source));
+    const graphNodes = nodes.filter((node) => node.type === "graph-specification");
+    for (const graph of graphNodes) {
+      assert.doesNotMatch(JSON.stringify(graph), /\\(?:begin|end|addplot|addlegendentry|draw|node|centering)\b|textwidth|axis cs:/, page.sourceFile);
+      assert.ok(!(graph.children ?? []).some((child) => child.type === "graph-specification"), page.sourceFile);
+    }
+  }
+});
+
+test("all visible text nodes contain only supported inline markup", () => {
+  for (const page of unitPayload.pages) {
+    const nodes = flatten(parseLimitsUnitPage(page.source));
+    for (const node of nodes) {
+      for (const value of [node.text, node.title].filter((candidate) => typeof candidate === "string")) {
+        const visibleMarkup = value
+          .replace(/\\\([\s\S]*?\\\)/g, "")
+          .replace(/\\(?:chapter\*?|step|textbf|emph|textit|item|centering|newpage|clearpage|cref|Cref|ref|eqref|pageref|label)\b/g, "");
+        assert.doesNotMatch(visibleMarkup, /\\[A-Za-z]+/, `${page.sourceFile}: ${value}`);
+      }
+    }
+  }
+});
 test("unsupported LaTeX environments fail instead of being silently dropped", () => {
   assert.throws(() => parseLimitsUnitPage(String.raw`\\begin{unknownsemantic}content\\end{unknownsemantic}`), /Unsupported LaTeX environment: unknownsemantic/);
 });
@@ -131,6 +179,16 @@ test("structured math, tables, and graph specifications remain typed and rendera
   assert.ok(nodes.some((node) => node.type === "table" && node.rows?.length));
   assert.ok(nodes.some((node) => node.type === "graph-specification" && node.text?.trim()));
   assert.ok(!nodes.some((node) => node.type === "math" && /\\begin\{(?:align\*?|tabular|longtable|tabularx|groupplot)\}/.test(node.tex ?? "")));
+});
+
+test("table layout arguments never become learner-visible cells", () => {
+  const [table] = parseLimitsUnitPage(String.raw`\begin{tabularx}{\textwidth}{@{}p{0.13\textwidth}X X@{}}
+Session & Main work & Minimum practice\\
+1 & Limit language & Warm-ups 1--10\\
+\end{tabularx}`);
+  assert.equal(table.type, "table");
+  assert.deepEqual(table.rows[0], ["Session", "Main work", "Minimum practice"]);
+  assert.doesNotMatch(JSON.stringify(table.rows), /textwidth|@\{|p\{0\.13/);
 });
 
 test("the global limits index has no answer or body payload", async () => {
