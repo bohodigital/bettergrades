@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Inspect or refresh BetterGrades SEO cache controls with a fixed safe scope."""
+"""Inspect or apply the BetterGrades SEO control-document cache rule."""
 
 from __future__ import annotations
 
@@ -18,20 +18,12 @@ from urllib.request import Request, urlopen
 
 REFERENCE = "boho-digital-services.cloudflare.primary-management"
 ZONE_NAME = "bettergrades.net"
-HOSTS = ("bettergrades.net", "www.bettergrades.net")
-DESIRED_BROWSER_CACHE_TTL = 0
-CONTROL_PATHS = (
-    "/",
-    "/robots.txt",
-    "/sitemap.xml",
-    "/favicon.ico",
-    "/favicon.svg",
-    "/icon-192.png",
-    "/icon-512.png",
-    "/apple-touch-icon.png",
-    "/site.webmanifest",
+CACHE_PHASE = "http_request_cache_settings"
+CACHE_RULE_REF = "bettergrades_seo_control_documents_bypass_cache"
+CACHE_RULE_EXPRESSION = '(http.request.uri.path in {"/robots.txt" "/sitemap.xml"})'
+CACHE_RULE_DESCRIPTION = (
+    "Always fetch robots.txt and sitemap.xml from the current deployment"
 )
-CONTROL_URLS = tuple(f"https://{host}{path}" for host in HOSTS for path in CONTROL_PATHS)
 API_BASE = "https://api.cloudflare.com/client/v4"
 SECRET_ROOT = Path("/srv/local1/secrets/broker")
 VAULT_PATH = SECRET_ROOT / "local1-agent-secrets.kdbx"
@@ -182,67 +174,120 @@ def resolve_zone(headers: dict[str, str]) -> str:
     return zone_id
 
 
-def browser_cache_ttl(zone_id: str, headers: dict[str, str]) -> int:
-    setting = request_api(
+def desired_rule() -> dict[str, Any]:
+    return {
+        "action": "set_cache_settings",
+        "action_parameters": {"cache": False},
+        "description": CACHE_RULE_DESCRIPTION,
+        "enabled": True,
+        "expression": CACHE_RULE_EXPRESSION,
+        "ref": CACHE_RULE_REF,
+    }
+
+
+def cache_entrypoint(zone_id: str, headers: dict[str, str]) -> dict[str, Any] | None:
+    rulesets = request_api(
+        "GET", f"/zones/{quote(zone_id, safe='')}/rulesets", headers
+    )
+    matches = [
+        row
+        for row in rulesets or []
+        if isinstance(row, dict) and row.get("phase") == CACHE_PHASE
+    ]
+    if not matches:
+        return None
+    if len(matches) != 1:
+        raise ControlError("the BetterGrades cache ruleset is not unique")
+    ruleset_id = matches[0].get("id")
+    if not isinstance(ruleset_id, str) or not ruleset_id:
+        raise ControlError("the BetterGrades cache ruleset has no usable identifier")
+    details = request_api(
         "GET",
-        f"/zones/{quote(zone_id, safe='')}/settings/browser_cache_ttl",
+        f"/zones/{quote(zone_id, safe='')}/rulesets/{quote(ruleset_id, safe='')}",
         headers,
     )
-    value = setting.get("value") if isinstance(setting, dict) else None
-    if not isinstance(value, int):
-        raise ControlError("Cloudflare returned an invalid Browser Cache TTL setting")
-    return value
+    if not isinstance(details, dict):
+        raise ControlError("Cloudflare returned an invalid cache ruleset")
+    return details
+
+
+def matching_rule(entrypoint: dict[str, Any] | None) -> dict[str, Any] | None:
+    if not isinstance(entrypoint, dict):
+        return None
+    rules = entrypoint.get("rules")
+    if not isinstance(rules, list):
+        return None
+    matches = [
+        rule
+        for rule in rules
+        if isinstance(rule, dict) and rule.get("ref") == CACHE_RULE_REF
+    ]
+    if len(matches) > 1:
+        raise ControlError("the BetterGrades SEO cache rule is duplicated")
+    return matches[0] if matches else None
+
+
+def rule_is_current(rule: dict[str, Any] | None) -> bool:
+    expected = desired_rule()
+    return bool(
+        isinstance(rule, dict)
+        and all(rule.get(key) == value for key, value in expected.items())
+    )
 
 
 def status(headers: dict[str, str]) -> dict[str, Any]:
     zone_id = resolve_zone(headers)
-    ttl = browser_cache_ttl(zone_id, headers)
+    entrypoint = cache_entrypoint(zone_id, headers)
+    rule = matching_rule(entrypoint)
+    current = rule_is_current(rule)
     return {
-        "ok": ttl == DESIRED_BROWSER_CACHE_TTL,
+        "ok": current,
         "reference": REFERENCE,
         "zone": ZONE_NAME,
-        "browser_cache_ttl": ttl,
-        "respects_origin_cache_headers": ttl == DESIRED_BROWSER_CACHE_TTL,
-        "fixed_control_url_count": len(CONTROL_URLS),
+        "phase": CACHE_PHASE,
+        "rule_ref": CACHE_RULE_REF,
+        "expression": CACHE_RULE_EXPRESSION,
+        "cache_eligible": False,
+        "rule_current": current,
     }
 
 
 def apply_controls(headers: dict[str, str]) -> dict[str, Any]:
     zone_id = resolve_zone(headers)
-    before = browser_cache_ttl(zone_id, headers)
-    changed = before != DESIRED_BROWSER_CACHE_TTL
-    if changed:
-        request_api(
-            "PATCH",
-            f"/zones/{quote(zone_id, safe='')}/settings/browser_cache_ttl",
-            headers,
-            {"value": DESIRED_BROWSER_CACHE_TTL},
+    entrypoint = cache_entrypoint(zone_id, headers)
+    rules = entrypoint.get("rules", []) if isinstance(entrypoint, dict) else []
+    if not isinstance(rules, list):
+        raise ControlError("the BetterGrades cache ruleset has invalid rules")
+    unrelated = [
+        rule
+        for rule in rules
+        if not isinstance(rule, dict) or rule.get("ref") != CACHE_RULE_REF
+    ]
+    if unrelated:
+        raise ControlError(
+            "refusing to overwrite unrelated BetterGrades cache rules; manual merge required"
         )
 
-    after = browser_cache_ttl(zone_id, headers)
-    if after != DESIRED_BROWSER_CACHE_TTL:
-        raise ControlError("Cloudflare did not retain the origin-respecting cache setting")
+    current = rule_is_current(matching_rule(entrypoint))
+    if not current:
+        result = request_api(
+            "PUT",
+            f"/zones/{quote(zone_id, safe='')}/rulesets/phases/{CACHE_PHASE}/entrypoint",
+            headers,
+            {
+                "description": "BetterGrades SEO control documents bypass edge cache",
+                "rules": [desired_rule()],
+            },
+        )
+        if not isinstance(result, dict) or not rule_is_current(matching_rule(result)):
+            raise ControlError("the BetterGrades SEO cache rule failed read-back verification")
 
-    purge_result = request_api(
-        "POST",
-        f"/zones/{quote(zone_id, safe='')}/purge_cache",
-        headers,
-        {"files": list(CONTROL_URLS)},
-    )
-    purge_id = purge_result.get("id") if isinstance(purge_result, dict) else None
-    if not isinstance(purge_id, str) or not purge_id:
-        raise ControlError("Cloudflare accepted the purge without a verifiable result identifier")
-
+    verified = status(headers)
+    if not verified.get("ok"):
+        raise ControlError("the BetterGrades SEO cache rule is not active after apply")
     return {
-        "ok": True,
-        "reference": REFERENCE,
-        "zone": ZONE_NAME,
-        "browser_cache_ttl_before": before,
-        "browser_cache_ttl_after": after,
-        "setting_changed": changed,
-        "respects_origin_cache_headers": True,
-        "purged_url_count": len(CONTROL_URLS),
-        "purge_id": purge_id,
+        **verified,
+        "changed": not current,
     }
 
 
@@ -256,11 +301,10 @@ def audit(action: str, outcome: str, details: dict[str, Any]) -> None:
         "reference": REFERENCE,
         "zone": ZONE_NAME,
         "outcome": outcome,
-        "browser_cache_ttl_before": details.get("browser_cache_ttl_before"),
-        "browser_cache_ttl_after": details.get("browser_cache_ttl_after"),
-        "setting_changed": details.get("setting_changed"),
-        "purged_url_count": details.get("purged_url_count", 0),
-        "purge_id": details.get("purge_id"),
+        "phase": details.get("phase"),
+        "rule_ref": details.get("rule_ref"),
+        "rule_current": details.get("rule_current"),
+        "changed": details.get("changed"),
     }
     fd = os.open(AUDIT_PATH, os.O_WRONLY | os.O_CREAT | os.O_APPEND, 0o600)
     with os.fdopen(fd, "a", encoding="utf-8") as stream:
