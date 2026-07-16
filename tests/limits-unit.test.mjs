@@ -47,6 +47,7 @@ test("all imported pages compile to typed semantic nodes without raw HTML", () =
     assert.ok(nodes.length > 0, page.sourceFile);
     visit(nodes);
     assert.ok(!JSON.stringify(nodes).includes("dangerouslySetInnerHTML"), page.sourceFile);
+    assert.ok(!JSON.stringify(nodes).includes("\\\\lessonobjective"), page.sourceFile);
   }
 
   for (const required of [

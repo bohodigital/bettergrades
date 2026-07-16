@@ -109,6 +109,7 @@ test("limits unit lesson, quiz, practice, and exam routes server-render in the e
     assert.match(html, /Course progress/, path);
     assert.match(html, /Source &amp; rights/, path);
     assert.doesNotMatch(html, /\\begin\{|&lt;script|javascript:/, path);
+    assert.doesNotMatch(html, /\\lessonobjective\b/, path);
     assert.doesNotMatch(html, /class="katex-error"/, path);
     assert.match(html, /aria-label="Vocabulary on this page"/, path);
   }
