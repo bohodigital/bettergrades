@@ -45,6 +45,10 @@ test("Pages package contains the advanced Worker and static assets", async () =>
   const manifest = JSON.parse(await readFile(new URL("../dist/pages/site.webmanifest", import.meta.url), "utf8"));
   assert.equal(manifest.name, "Better Grades");
   assert.ok(manifest.icons.some((icon) => icon.src === "/icon-512.png" && icon.sizes === "512x512"));
+
+  for (const path of ["/favicon.ico", "/favicon.svg", "/icon-192.png", "/icon-512.png", "/apple-touch-icon.png", "/site.webmanifest"]) {
+    assert.ok(routes.exclude.includes(path), `${path} must bypass the Worker and use the Pages static asset lane`);
+  }
 });
 
 test("limits tables and graph explanations remain bounded on narrow screens", async () => {
