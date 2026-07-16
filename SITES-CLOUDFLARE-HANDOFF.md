@@ -8,25 +8,35 @@ Stop before production work and read:
 
 ## Current owner-authorized release
 
-On 2026-07-16, the owner authorized the Limits and Continuity textbook cleanup
-and instructed the team to publish it after validation. The authorized scope is
-the navigation-first release in PR 15: the complete 47-page unit map leads the
-topic page, supporting deep-dive articles follow it, chapter pages include more
-exposition, and learner-visible LaTeX/TikZ/table-layout source is removed.
+On 2026-07-16, the owner authorized this final Limits and Continuity release and
+instructed the team to push it live after validation. The authorized scope is:
+use Section instead of learner-visible Chapter wording; publish complete,
+source-traced answer keys for Practice Exams A and B with prominent links from
+the exams and main unit map; keep the complete 47-page textbook map above the
+deep-dive articles; make every public page indexable with canonical, sitemap,
+and analytics tags; and publish the Better Grades greater-or-equal brand mark
+as the stable favicon and Organization logo identity.
 
 ```text
-Work order: WO-2026-07-15-BETTERGRADES-LIMITS-UNIT-INGEST-001
-Review branch: agent/bettergrades-limits-continuity-unit-1
-Pull request: https://github.com/bohodigital/bettergrades/pull/15
+Work order: WO-2026-07-16-BETTERGRADES-LIMITS-SECTION-ANSWERKEY-SEO-001
+Review branch: agent/bettergrades-limits-section-answer-keys-seo
+Pull request: recorded in MCP after exact-source preview validation
 Owner-visible private preview: https://better-grades.mankopoppi.chatgpt.site/
-Approval instruction: once these changes are complete, push them live
+Approval instruction: once done, push it live; do not stop until done
 Release evidence: exact commit, Sites version, Cloudflare deployment, and live checks are recorded in MCP
 ```
 
 The release commit is the commit containing this handoff entry. Production must
-be built from the merged tree for PR 15, and that tree must match the validated
-private-preview source tree. Any content or design change beyond this scope
-requires another private preview and approval.
+be built from the merged tree for this release, and that tree must match the
+validated private-preview source tree. Any content or design change beyond this
+scope requires another private preview and approval.
+
+## Previous Limits cleanup release
+
+The prior navigation and rendering cleanup was published through PR 15 under
+work order `WO-2026-07-15-BETTERGRADES-LIMITS-UNIT-INGEST-001`. It established
+the 47-page unit map, the deep-dive article flow, expanded exposition, and the
+removal of learner-visible LaTeX/TikZ/table-layout source.
 
 ## Previous approved production source
 

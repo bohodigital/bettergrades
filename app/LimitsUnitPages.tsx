@@ -14,6 +14,7 @@ const labels: Record<string, string> = {
   "worked-example": "Worked example", "guided-walkthrough": "Guided walkthrough",
   exercise: "Exercise", problem: "Problem", "quick-check": "Quick check",
   "common-mistake": "Common mistake", "exam-note": "Exam note", summary: "Summary", source: "Source note", table: "Reference table",
+  "answer-key": "Answer key",
 };
 
 function cleanText(value: string) {
@@ -25,6 +26,8 @@ function cleanText(value: string) {
     .replace(/``|''/g, '"').replace(/~/g, " ").replace(/\\(?:centering|newpage|clearpage)\b/g, "")
     .replace(/\\(?:cref|Cref|ref|eqref|pageref)\{[^}]*\}/g, "the referenced section")
     .replace(/\\label\{[^}]*\}/g, "")
+    .replace(/\bChapters\b/g, "Sections").replace(/\bChapter\b/g, "Section")
+    .replace(/\bchapters\b/g, "sections").replace(/\bchapter\b/g, "section")
     .replace(/\s+/g, " ").trim();
 }
 
@@ -128,16 +131,25 @@ const expositionTypes = new Set(["extension", "lesson", "reference", "review", "
 function TextbookOrientation({ page }: { page: LimitsUnitPublicPage }) {
   if (!expositionTypes.has(page.route.pageType)) return null;
   const coreIndex = page.route.coreSequenceIndex ?? page.returnRoute?.coreSequenceIndex;
-  const chapter = getLimitsUnitChapter(coreIndex);
-  if (!chapter) return null;
+  const section = getLimitsUnitChapter(coreIndex);
+  if (!section) return null;
   const previous = page.previous?.h1;
   const next = page.next?.h1;
   return <section className="limits-editorial-intro">
-    <p className="eyebrow">Where this chapter fits</p>
-    <h2>{chapter.title}</h2>
-    <p>{chapter.description}</p>
-    <p><strong>Reading lens:</strong> {chapter.lens} Keep that question in view while reading <em>{page.route.h1}</em>; the worked mathematics is evidence for the idea, not a substitute for it.</p>
+    <p className="eyebrow">Where this section fits</p>
+    <h2>{section.title}</h2>
+    <p>{section.description}</p>
+    <p><strong>Reading lens:</strong> {section.lens} Keep that question in view while reading <em>{page.route.h1}</em>; the worked mathematics is evidence for the idea, not a substitute for it.</p>
     <p>{previous && next ? <>This page connects <strong>{previous}</strong> to <strong>{next}</strong>. Read the explanation first, predict each example’s next move, and only then compare the written solution.</> : <>Use this page to name the idea in words, connect it to the notation, and explain why the method works before treating it as a pattern.</>}</p>
+  </section>;
+}
+
+function ExamAnswerKey({ page }: { page: LimitsUnitPublicPage }) {
+  if (!page.answerKey) return null;
+  return <section className="limits-answer-key" aria-labelledby="limits-answer-key-title">
+    <header><p className="eyebrow">Complete published key</p><h2 id="limits-answer-key-title">Practice Exam {page.answerKey.exam} answers</h2><p>Use the numbering from the exam. If your answer differs, identify the method or condition you missed before moving to the next item.</p></header>
+    <ol>{page.answerKey.answers.map((answer) => <li id={`${page.answerKey?.exam.toLowerCase()}${answer.number}`} data-answer-number={`${page.answerKey?.exam}${answer.number}`} key={answer.number}><strong>{page.answerKey?.exam}{answer.number}</strong><p><RichText value={answer.content} /></p></li>)}</ol>
+    <footer><strong>Source trace</strong><span>{page.answerKey.sourceFile}</span><code>{page.answerKey.sourceSha256}</code></footer>
   </section>;
 }
 
@@ -152,6 +164,7 @@ export function LimitsUnitPageContent({ page }: { page: LimitsUnitPublicPage }) 
   const { route } = page;
   const checks = new Map(page.checks.map((check) => [check.id, check]));
   const renderedCheckIds = new Set<string>();
+  const answerKeyRoute = page.related.find((related) => related.pageType === "answer-key");
   const schema = { "@context": "https://schema.org", "@type": route.pageType === "quiz" || route.pageType === "exam" ? "Quiz" : "LearningResource", name: route.h1, description: route.description, url: `https://bettergrades.net${route.path}`, isPartOf: { "@type": "Course", name: "Calculus I: Limits and Continuity" } };
   return <article className="limits-unit-page" data-page-type={route.pageType}>
     <header className="limits-unit-hero section-pad">
@@ -160,9 +173,11 @@ export function LimitsUnitPageContent({ page }: { page: LimitsUnitPublicPage }) 
       <h1>{route.h1}</h1><p>{route.description}</p>
       <div className="limits-progress"><strong>Course progress</strong>{route.isCoreSequence ? <><span>{route.coreSequenceIndex} of 47 core pages</span><progress value={route.coreSequenceIndex ?? 0} max="47">{route.coreSequenceIndex} of 47</progress></> : <><span>Supporting resource</span><a href={page.returnRoute?.path ?? limitsUnitRoutes[0].path}>Return to the core path →</a></>}</div>
     </header>
-    <div className="limits-unit-layout section-pad"><aside><strong>On this page</strong><span>{page.checks.length} interactive {page.checks.length === 1 ? "check" : "checks"}</span><a href="/subjects/math/calculus/limits-continuity/">Main unit map →</a><a href={limitsUnitRoutes[0].path}>Full unit overview →</a><a href="/practice/math/calculus/">Calculus practice →</a></aside><div className="limits-unit-content">
+    <div className="limits-unit-layout section-pad"><aside><strong>On this page</strong><span>{page.checks.length} interactive {page.checks.length === 1 ? "check" : "checks"}</span>{answerKeyRoute && <a className="limits-key-aside" href={answerKeyRoute.path}>Exam answer key →</a>}<a href="/subjects/math/calculus/limits-continuity/">Main unit map →</a><a href={limitsUnitRoutes[0].path}>Full unit overview →</a><a href="/practice/math/calculus/">Calculus practice →</a></aside><div className="limits-unit-content">
       {route.pageType === "hub" ? <LimitsUnitMap /> : <TextbookOrientation page={page} />}
+      {route.pageType === "exam" && answerKeyRoute && <section className="limits-exam-key-callout"><div><p className="eyebrow">Answer key published</p><h2>Finish first. Then check every answer.</h2><p>The complete key is online, numbered to match this exam, and linked to the verified source appendix.</p></div><a className="button button-ink" href={answerKeyRoute.path}>View the complete answer key →</a></section>}
       <NodeChildren nodes={page.page.nodes} keyPrefix={route.sourceSlug} checks={checks} renderedCheckIds={renderedCheckIds} />
+      <ExamAnswerKey page={page} />
       {page.related.length > 0 && <section className="limits-related"><p className="eyebrow">Keep working</p><h2>Related resources</h2>{page.related.map((related) => <a href={related.path} key={related.path}><span>{labels[related.pageType] ?? related.pageType}</span><b>{related.h1}</b></a>)}</section>}
       <section className="limits-rights"><p className="eyebrow">Source &amp; rights</p><h2>Original instruction with traceable references.</h2><p>{page.provenanceNote}</p><p>The verified handoff declares original composition and requires owner provenance review. BetterGrades-original material remains separate from public-domain references; no source textbook PDF is published here.</p></section>
     </div></div>

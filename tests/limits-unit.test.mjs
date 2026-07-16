@@ -152,15 +152,34 @@ test("provenance stays explicit and rights-separated", () => {
 });
 
 test("route and search adapters expose every page exactly once", () => {
-  assert.equal(limitsUnitRoutes.length, 71);
-  assert.equal(limitsUnitSearchRecords.length, 71);
-  assert.equal(new Set(limitsUnitSearchRecords.map((record) => record.path)).size, 71);
+  assert.equal(limitsUnitRoutes.length, 73);
+  assert.equal(limitsUnitSearchRecords.length, 73);
+  assert.equal(new Set(limitsUnitSearchRecords.map((record) => record.path)).size, 73);
   assert.ok(limitsUnitSearchRecords.some((record) => record.kind === "practice" && record.label === "Practice exam"));
+  assert.equal(limitsUnitSearchRecords.filter((record) => record.kind === "practice" && record.label === "Answer key").length, 2);
   const lesson = getLimitsUnitPage(`${LIMITS_UNIT_PREFIX}limits/what-a-limit-means/`);
   assert.equal(lesson?.route.h1, "What a Limit Means");
   assert.ok(lesson?.checks.some((check) => check.id === "limit-continuous-01"));
   assert.ok(lesson?.page.nodes.some((node) => node.type === "definition"));
   assert.equal(isLimitsUnitPath(`${LIMITS_UNIT_PREFIX}not-a-real-page/`), false);
+});
+
+test("both practice exams have complete source-traced public answer keys", () => {
+  for (const [exam, expectedAnswers] of [["a", 18], ["b", 14]]) {
+    const examPath = `${LIMITS_UNIT_PREFIX}limits/practice-exam-${exam}/`;
+    const keyPath = `${examPath}answer-key/`;
+    const examPage = getLimitsUnitPage(examPath);
+    const keyPage = getLimitsUnitPage(keyPath);
+
+    assert.ok(examPage?.related.some((route) => route.path === keyPath), `Exam ${exam.toUpperCase()} must link to its key`);
+    assert.equal(keyPage?.route.pageType, "answer-key");
+    assert.equal(keyPage?.route.indexable, true);
+    assert.equal(keyPage?.answerKey?.exam, exam.toUpperCase());
+    assert.equal(keyPage?.answerKey?.answers.length, expectedAnswers);
+    assert.match(keyPage?.answerKey?.sourceFile ?? "", /appendices\/answers\.tex$/);
+    assert.match(keyPage?.answerKey?.sourceSha256 ?? "", /^[a-f0-9]{64}$/);
+    assert.ok(keyPage?.answerKey?.answers.every((answer) => answer.number > 0 && answer.content.trim().length > 0));
+  }
 });
 
 test("every route resolves its checks in source order without placeholder loss", () => {

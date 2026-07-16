@@ -11,6 +11,23 @@ export const metadata: Metadata = {
   description:
     "Free academic answers, complete calculus explanations, practical calculators, and practice that teaches the next problem too.",
   applicationName: "Better Grades",
+  manifest: "/site.webmanifest",
+  themeColor: "#125d50",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 },
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
+      { url: "/icon-512.png", type: "image/png", sizes: "512x512" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: [{ url: "/apple-touch-icon.png", type: "image/png", sizes: "180x180" }],
+  },
   keywords: [
     "free math answers",
     "calculus help",
@@ -50,6 +67,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            { "@type": "Organization", "@id": "https://bettergrades.net/#organization", name: "Better Grades", alternateName: "BetterGrades.net", url: "https://bettergrades.net/", logo: { "@type": "ImageObject", url: "https://bettergrades.net/icon-512.png", contentUrl: "https://bettergrades.net/icon-512.png", width: 512, height: 512 }, image: "https://bettergrades.net/icon-512.png" },
+            { "@type": "WebSite", "@id": "https://bettergrades.net/#website", url: "https://bettergrades.net/", name: "Better Grades", publisher: { "@id": "https://bettergrades.net/#organization" }, inLanguage: "en-US" },
+          ],
+        }) }} />
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(){try{var t=localStorage.getItem('bg-theme')||'auto';var d=t==='dark'||(t==='auto'&&matchMedia('(prefers-color-scheme:dark)').matches);document.documentElement.dataset.theme=d?'dark':'light';document.documentElement.dataset.themeChoice=t}catch(e){}})()`,

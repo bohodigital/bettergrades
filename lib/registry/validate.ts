@@ -1,5 +1,5 @@
 import unitPayload from "../../content/limits-continuity/unit.json" with { type: "json" };
-import { limitsUnitSearchRecords } from "../calculus/limits-unit-index.mjs";
+import { limitsUnitRoutes, limitsUnitSearchRecords } from "../calculus/limits-unit-index.mjs";
 import { validateLimitsUnitPayload } from "../calculus/limits-unit-core.mjs";
 import { domains, resources, subjects, tools, topics } from "./catalog";
 import { assessments } from "./practice";
@@ -10,8 +10,8 @@ import { publicRoutes, redirects, registryRoutes } from "./routing";
 export function validateRegistry() {
   const errors: string[] = [];
   errors.push(...validateLimitsUnitPayload(unitPayload).map((error: string) => `Limits unit: ${error}`));
-  if (limitsUnitSearchRecords.length !== unitPayload.routes.length) errors.push("Limits unit: search record count does not match route count");
-  if (limitsUnitSearchRecords.some((record) => !unitPayload.routes.some((route) => route.path === record.path))) errors.push("Limits unit: orphaned search record");
+  if (limitsUnitSearchRecords.length !== limitsUnitRoutes.length) errors.push("Limits unit: search record count does not match published route count");
+  if (limitsUnitSearchRecords.some((record) => !limitsUnitRoutes.some((route) => route.path === record.path))) errors.push("Limits unit: orphaned search record");
   errors.push(...validateMathGlossary().map((error) => `Math glossary: ${error}`));
   const ids = [...subjects, ...domains, ...topics, ...resources, ...assessments, ...tools].map((item) => item.id);
   const duplicateIds = ids.filter((id, index) => ids.indexOf(id) !== index);

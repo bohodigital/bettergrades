@@ -24,6 +24,13 @@ export type LimitsUnitRoute = {
   nextCoreSlug: string | null; returnToSequenceSlug: string | null; supportCluster: string | null; supportKind: string | null;
 };
 export type LimitsUnitPageRecord = { sourceSlug: string; sourceFile: string; sha256: string; source: string; nodes: LimitsUnitNode[] };
+export type LimitsExamAnswerKey = {
+  exam: "A" | "B";
+  answers: Array<{ number: number; content: string }>;
+  sourceFile: string;
+  sourceSha256: string;
+  sourceHeading: string;
+};
 export type LimitsUnitPage = {
   route: LimitsUnitRoute;
   page: LimitsUnitPageRecord;
@@ -32,6 +39,7 @@ export type LimitsUnitPage = {
   next?: LimitsUnitRoute;
   returnRoute?: LimitsUnitRoute;
   related: LimitsUnitRoute[];
+  answerKey?: LimitsExamAnswerKey;
 };
 export type LimitsUnitPublicPage = {
   route: LimitsUnitRoute;
@@ -41,6 +49,7 @@ export type LimitsUnitPublicPage = {
   next?: LimitsUnitRoute;
   returnRoute?: LimitsUnitRoute;
   related: LimitsUnitRoute[];
+  answerKey?: LimitsExamAnswerKey;
   provenanceNote: string;
 };
 export const LIMITS_UNIT_PREFIX: string;
