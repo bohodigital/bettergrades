@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getRoute, publicRoutes } from "../../lib/registry";
 
+import { isLimitsUnitPath } from "../../lib/calculus/limits-unit-index.mjs";
+import { getPublicLimitsUnitPage } from "../../lib/calculus/limits-unit.mjs";
 function getPath(slug: string[] = []) {
   return `/${slug.join("/")}${slug.length ? "/" : ""}`;
 }
@@ -34,5 +36,6 @@ export default async function CatchAllPage({
       uppercaseConventions: registry.uppercaseVariableConventions,
     }))
     : undefined;
-  return <BetterGradesApp path={path} glossaryData={glossaryData} />;
+  const limitsUnitPage = isLimitsUnitPath(path) ? getPublicLimitsUnitPage(path) : undefined;
+  return <BetterGradesApp path={path} glossaryData={glossaryData} limitsUnitPage={limitsUnitPage} />;
 }

@@ -1,0 +1,344 @@
+[
+  {
+    "id": "limit-continuous-01",
+    "routeSlug": "calculus/limits/what-a-limit-means",
+    "mode": "checker",
+    "answerType": "integer",
+    "promptLatex": "Evaluate \\(\\lim_{x\\to3}(x^2+1)\\).",
+    "hintLatex": "This polynomial has no break at \\(x=3\\).",
+    "attemptRequiredBeforeReveal": true
+  },
+  {
+    "id": "limit-hole-01",
+    "routeSlug": "calculus/limits/limit-at-a-hole",
+    "mode": "checker",
+    "answerType": "integer",
+    "promptLatex": "Evaluate \\(\\lim_{x\\to2}\\frac{x^2-4}{x-2}\\).",
+    "hintLatex": "Factor the difference of squares.",
+    "attemptRequiredBeforeReveal": true
+  },
+  {
+    "id": "left-right-01",
+    "routeSlug": "calculus/limits/one-sided-limits",
+    "mode": "checker",
+    "answerType": "choice",
+    "promptLatex": "The left-hand limit is \\(2\\) and the right-hand limit is \\(5\\). What is the two-sided limit?",
+    "hintLatex": "A two-sided limit exists only when the sides agree.",
+    "attemptRequiredBeforeReveal": true
+  },
+  {
+    "id": "direct-sub-01",
+    "routeSlug": "calculus/limits/direct-substitution",
+    "mode": "checker",
+    "answerType": "integer",
+    "promptLatex": "Evaluate \\(\\lim_{x\\to2}(3x+1)\\).",
+    "hintLatex": "Substitute because the linear function is continuous.",
+    "attemptRequiredBeforeReveal": true
+  },
+  {
+    "id": "zero-over-zero-01",
+    "routeSlug": "calculus/limits/zero-over-zero",
+    "mode": "checker",
+    "answerType": "choice",
+    "promptLatex": "Direct substitution gives \\(0/0\\). Should you report DNE, report 0, or simplify the expression?",
+    "hintLatex": "\\(0/0\\) is a diagnosis, not an answer.",
+    "attemptRequiredBeforeReveal": true
+  },
+  {
+    "id": "factor-flow-01",
+    "routeSlug": "calculus/limits/factoring-limits",
+    "mode": "checker",
+    "answerType": "integer",
+    "promptLatex": "Evaluate \\(\\lim_{x\\to3}\\frac{x^2-9}{x-3}\\).",
+    "hintLatex": "Factor \\(x^2-9\\).",
+    "attemptRequiredBeforeReveal": true
+  },
+  {
+    "id": "conjugate-flow-01",
+    "routeSlug": "calculus/limits/rationalizing-radicals",
+    "mode": "checker",
+    "answerType": "rational",
+    "promptLatex": "Evaluate \\(\\lim_{x\\to0}\\frac{\\sqrt{x+4}-2}{x}\\).",
+    "hintLatex": "Use the conjugate \\(\\sqrt{x+4}+2\\).",
+    "attemptRequiredBeforeReveal": true
+  },
+  {
+    "id": "squeeze-flow-01",
+    "routeSlug": "calculus/limits/squeeze-theorem",
+    "mode": "checker",
+    "answerType": "integer",
+    "promptLatex": "Evaluate \\(\\lim_{x\\to0}x^2\\sin(1/x)\\).",
+    "hintLatex": "Use \\(|\\sin(1/x)|\\le1\\).",
+    "attemptRequiredBeforeReveal": true
+  },
+  {
+    "id": "trig-flow-01",
+    "routeSlug": "calculus/limits/scaled-sine-tangent",
+    "mode": "checker",
+    "answerType": "integer",
+    "promptLatex": "Evaluate \\(\\lim_{x\\to0}\\frac{\\sin(4x)}x\\).",
+    "hintLatex": "Multiply and divide by \\(4\\).",
+    "attemptRequiredBeforeReveal": true
+  },
+  {
+    "id": "infinite-sign-01",
+    "routeSlug": "calculus/limits/vertical-asymptotes",
+    "mode": "checker",
+    "answerType": "choice",
+    "promptLatex": "Evaluate \\(\\lim_{x\\to1^+}\\frac1{x-1}\\).",
+    "hintLatex": "From the right, the denominator is positive and tiny.",
+    "attemptRequiredBeforeReveal": true
+  },
+  {
+    "id": "end-degree-01",
+    "routeSlug": "calculus/limits/limits-at-infinity",
+    "mode": "checker",
+    "answerType": "rational",
+    "promptLatex": "Evaluate \\(\\lim_{x\\to\\infty}\\frac{3x^2+1}{2x^2-5}\\).",
+    "hintLatex": "Equal degrees: use the leading coefficients.",
+    "attemptRequiredBeforeReveal": true
+  },
+  {
+    "id": "continuity-flow-01",
+    "routeSlug": "calculus/continuity/repair-removable-discontinuity",
+    "mode": "checker",
+    "answerType": "integer",
+    "promptLatex": "Choose \\(c\\) so \\(f(x)=\\frac{x^2-16}{x-4}\\) for \\(x\\ne4\\), and \\(f(4)=c\\), is continuous.",
+    "hintLatex": "Find the limit at \\(4\\) after factoring.",
+    "attemptRequiredBeforeReveal": true
+  },
+  {
+    "id": "ivt-flow-01",
+    "routeSlug": "calculus/continuity/intermediate-value-theorem",
+    "mode": "checker",
+    "answerType": "choice",
+    "promptLatex": "Does the IVT guarantee a root of \\(x^3+x-1\\) on \\([0,1]\\)?",
+    "hintLatex": "Check continuity and endpoint signs.",
+    "attemptRequiredBeforeReveal": true
+  },
+  {
+    "id": "epsilon-flow-01",
+    "routeSlug": "calculus/limits/epsilon-delta-linear",
+    "mode": "checker",
+    "answerType": "expression",
+    "promptLatex": "For \\(f(x)=2x\\) at \\(x=3\\), choose \\(\\delta\\) in terms of \\(\\varepsilon\\).",
+    "hintLatex": "\\(|2x-6|=2|x-3|\\).",
+    "attemptRequiredBeforeReveal": true
+  },
+  {
+    "id": "limit-meaning-q1",
+    "routeSlug": "calculus/limits/meaning-concept-quiz",
+    "mode": "checker",
+    "answerType": "integer",
+    "promptLatex": "If \\(\\lim_{x\\to 4}f(x)=7\\), what output value is approached?",
+    "hintLatex": "The number after the equals sign is the output target.",
+    "attemptRequiredBeforeReveal": true
+  },
+  {
+    "id": "one-sided-q1",
+    "routeSlug": "calculus/limits/meaning-concept-quiz",
+    "mode": "checker",
+    "answerType": "integer",
+    "promptLatex": "A graph approaches \\(3\\) from the left at \\(x=2\\). What is \\(\\lim_{x\\to2^-}f(x)\\)?",
+    "hintLatex": "The superscript minus means use inputs smaller than \\(2\\).",
+    "attemptRequiredBeforeReveal": true
+  },
+  {
+    "id": "hole-q1",
+    "routeSlug": "calculus/limits/meaning-concept-quiz",
+    "mode": "checker",
+    "answerType": "integer",
+    "promptLatex": "A curve approaches the open point \\((1,5)\\), while a filled point is at \\((1,9)\\). What is the limit as \\(x\\to1\\)?",
+    "hintLatex": "The limit follows the nearby curve, not the filled point.",
+    "attemptRequiredBeforeReveal": true
+  },
+  {
+    "id": "rate-q1",
+    "routeSlug": "calculus/limits/meaning-concept-quiz",
+    "mode": "checker",
+    "answerType": "integer",
+    "promptLatex": "An average-rate expression simplifies to \\(12-2h\\). What value does it approach as \\(h\\to0\\)?",
+    "hintLatex": "Set only the limiting value of \\(h\\) after simplification.",
+    "attemptRequiredBeforeReveal": true
+  },
+  {
+    "id": "substitution-q1",
+    "routeSlug": "calculus/limits/finite-limits-concept-quiz",
+    "mode": "checker",
+    "answerType": "integer",
+    "promptLatex": "Evaluate \\(\\lim_{x\\to3}(2x+5)\\).",
+    "hintLatex": "This linear function is continuous, so substitute \\(x=3\\).",
+    "attemptRequiredBeforeReveal": true
+  },
+  {
+    "id": "factor-q1",
+    "routeSlug": "calculus/limits/finite-limits-concept-quiz",
+    "mode": "checker",
+    "answerType": "integer",
+    "promptLatex": "Evaluate \\(\\lim_{x\\to4}\\frac{x^2-16}{x-4}\\).",
+    "hintLatex": "Factor \\(x^2-16=(x-4)(x+4)\\).",
+    "attemptRequiredBeforeReveal": true
+  },
+  {
+    "id": "radical-q1",
+    "routeSlug": "calculus/limits/finite-limits-concept-quiz",
+    "mode": "checker",
+    "answerType": "rational",
+    "promptLatex": "Evaluate \\(\\lim_{x\\to0}\\frac{\\sqrt{x+9}-3}{x}\\).",
+    "hintLatex": "Multiply by the conjugate \\(\\sqrt{x+9}+3\\).",
+    "attemptRequiredBeforeReveal": true
+  },
+  {
+    "id": "abs-q1",
+    "routeSlug": "calculus/limits/finite-limits-concept-quiz",
+    "mode": "checker",
+    "answerType": "choice",
+    "promptLatex": "Does \\(\\lim_{x\\to0}|x|/x\\) exist? Enter DNE if it does not.",
+    "hintLatex": "Check the left and right sides separately.",
+    "attemptRequiredBeforeReveal": true
+  },
+  {
+    "id": "squeeze-q1",
+    "routeSlug": "calculus/limits/trig-limits-concept-quiz",
+    "mode": "checker",
+    "answerType": "integer",
+    "promptLatex": "If \\(-x^2\\le f(x)\\le x^2\\), find \\(\\lim_{x\\to0}f(x)\\).",
+    "hintLatex": "Both outer functions approach the same value.",
+    "attemptRequiredBeforeReveal": true
+  },
+  {
+    "id": "sine-q1",
+    "routeSlug": "calculus/limits/trig-limits-concept-quiz",
+    "mode": "checker",
+    "answerType": "integer",
+    "promptLatex": "Evaluate \\(\\lim_{x\\to0}\\frac{\\sin(5x)}{x}\\).",
+    "hintLatex": "Make the denominator match the angle: multiply and divide by \\(5\\).",
+    "attemptRequiredBeforeReveal": true
+  },
+  {
+    "id": "sine-ratio-q1",
+    "routeSlug": "calculus/limits/trig-limits-concept-quiz",
+    "mode": "checker",
+    "answerType": "rational",
+    "promptLatex": "Evaluate \\(\\lim_{x\\to0}\\frac{\\sin(3x)}{\\sin(7x)}\\).",
+    "hintLatex": "Build one \\(\\sin u/u\\) factor in the numerator and one in the denominator.",
+    "attemptRequiredBeforeReveal": true
+  },
+  {
+    "id": "cosine-q1",
+    "routeSlug": "calculus/limits/trig-limits-concept-quiz",
+    "mode": "checker",
+    "answerType": "rational",
+    "promptLatex": "Evaluate \\(\\lim_{x\\to0}\\frac{1-\\cos x}{x^2}\\).",
+    "hintLatex": "Use the standard cosine limit or multiply by \\(1+\\cos x\\).",
+    "attemptRequiredBeforeReveal": true
+  },
+  {
+    "id": "infinite-q1",
+    "routeSlug": "calculus/limits/infinite-behavior-concept-quiz",
+    "mode": "checker",
+    "answerType": "choice",
+    "promptLatex": "Evaluate \\(\\lim_{x\\to2^-}\\frac1{x-2}\\).",
+    "hintLatex": "From the left, \\(x-2\\) is a small negative number.",
+    "attemptRequiredBeforeReveal": true
+  },
+  {
+    "id": "vertical-q1",
+    "routeSlug": "calculus/limits/infinite-behavior-concept-quiz",
+    "mode": "checker",
+    "answerType": "integer",
+    "promptLatex": "For \\(f(x)=1/(x-3)^2\\), enter the \\(x\\)-value of the vertical asymptote.",
+    "hintLatex": "A vertical asymptote occurs where the denominator is zero and does not cancel.",
+    "attemptRequiredBeforeReveal": true
+  },
+  {
+    "id": "end-q1",
+    "routeSlug": "calculus/limits/infinite-behavior-concept-quiz",
+    "mode": "checker",
+    "answerType": "rational",
+    "promptLatex": "Evaluate \\(\\lim_{x\\to\\infty}\\frac{2x^2+1}{5x^2-3}\\).",
+    "hintLatex": "The degrees match, so compare leading coefficients.",
+    "attemptRequiredBeforeReveal": true
+  },
+  {
+    "id": "radical-infinity-q1",
+    "routeSlug": "calculus/limits/infinite-behavior-concept-quiz",
+    "mode": "checker",
+    "answerType": "integer",
+    "promptLatex": "Evaluate \\(\\lim_{x\\to-\\infty}\\frac{\\sqrt{x^2+1}}x\\).",
+    "hintLatex": "Remember \\(\\sqrt{x^2}=|x|=-x\\) when \\(x<0\\).",
+    "attemptRequiredBeforeReveal": true
+  },
+  {
+    "id": "continuity-q1",
+    "routeSlug": "calculus/continuity/continuity-concept-quiz",
+    "mode": "checker",
+    "answerType": "choice",
+    "promptLatex": "Is \\(f(x)=x^2+1\\) continuous at \\(x=3\\)? Enter yes or no.",
+    "hintLatex": "Polynomials are continuous everywhere.",
+    "attemptRequiredBeforeReveal": true
+  },
+  {
+    "id": "repair-q1",
+    "routeSlug": "calculus/continuity/continuity-concept-quiz",
+    "mode": "checker",
+    "answerType": "integer",
+    "promptLatex": "Choose \\(c\\) so \\(f(x)=\\frac{x^2-9}{x-3}\\) for \\(x\\ne3\\), and \\(f(3)=c\\), is continuous.",
+    "hintLatex": "Factor, cancel, and find the approached value at \\(3\\).",
+    "attemptRequiredBeforeReveal": true
+  },
+  {
+    "id": "piecewise-q1",
+    "routeSlug": "calculus/continuity/continuity-concept-quiz",
+    "mode": "checker",
+    "answerType": "integer",
+    "promptLatex": "Choose \\(a\\) so \\(2x+a\\) for \\(x<1\\) joins continuously to \\(x^2+3\\) for \\(x\\ge1\\).",
+    "hintLatex": "Set the left value at \\(1\\) equal to the right value at \\(1\\).",
+    "attemptRequiredBeforeReveal": true
+  },
+  {
+    "id": "ivt-q1",
+    "routeSlug": "calculus/continuity/continuity-concept-quiz",
+    "mode": "checker",
+    "answerType": "choice",
+    "promptLatex": "Does the IVT guarantee a zero of \\(x^3+x-1\\) on \\([0,1]\\)? Enter yes or no.",
+    "hintLatex": "Check continuity and the signs at both endpoints.",
+    "attemptRequiredBeforeReveal": true
+  },
+  {
+    "id": "epsilon-linear-q1",
+    "routeSlug": "calculus/limits/epsilon-delta-concept-quiz",
+    "mode": "checker",
+    "answerType": "expression",
+    "promptLatex": "For \\(f(x)=3x+1\\) at \\(x=2\\), give a working choice of \\(\\delta\\) in terms of \\(\\varepsilon\\).",
+    "hintLatex": "\\(|f(x)-7|=3|x-2|\\).",
+    "attemptRequiredBeforeReveal": true
+  },
+  {
+    "id": "epsilon-linear-q2",
+    "routeSlug": "calculus/limits/epsilon-delta-concept-quiz",
+    "mode": "checker",
+    "answerType": "expression",
+    "promptLatex": "For \\(f(x)=5x\\) at \\(x=1\\), give a working \\(\\delta\\).",
+    "hintLatex": "\\(|5x-5|=5|x-1|\\).",
+    "attemptRequiredBeforeReveal": true
+  },
+  {
+    "id": "epsilon-quadratic-q1",
+    "routeSlug": "calculus/limits/epsilon-delta-concept-quiz",
+    "mode": "checker",
+    "answerType": "expression",
+    "promptLatex": "For the standard proof that \\(x^2\\to4\\) as \\(x\\to2\\), enter the usual safe choice of \\(\\delta\\).",
+    "hintLatex": "First require \\(|x-2|<1\\), which makes \\(|x+2|<5\\).",
+    "attemptRequiredBeforeReveal": true
+  },
+  {
+    "id": "formal-reading-q1",
+    "routeSlug": "calculus/limits/epsilon-delta-concept-quiz",
+    "mode": "checker",
+    "answerType": "choice",
+    "promptLatex": "In \\(|f(x)-L|<\\varepsilon\\), does \\(\\varepsilon\\) control input distance or output distance?",
+    "hintLatex": "Look at which quantities are being compared.",
+    "attemptRequiredBeforeReveal": true
+  }
+]

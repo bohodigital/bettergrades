@@ -1,0 +1,183 @@
+\chapter{Digital Graph Specifications}
+
+This appendix translates the static textbook figures into implementation requirements for interactive BetterGrades graphics. Each interactive should support keyboard controls, screen-reader descriptions, a high-contrast mode, and a text alternative containing the relevant equations and conclusions.
+
+\section{Secant Lines Approaching a Tangent}
+
+\begin{bggraphspec}
+\textbf{Function:}
+\[
+  s(t)=64t-16t^2.
+\]
+\textbf{Primary window:} \(0\le t\le4\), \(0\le s\le72\). Fix \(P=(1,48)\). Define a movable point
+\[
+  Q_h=(1+h,s(1+h)),\qquad -0.8\le h\le1.5,\ h\ne0.
+\]
+Display the secant slope
+\[
+  m_h=\frac{s(1+h)-s(1)}h=32-16h.
+\]
+Display the tangent line
+\[
+  s-48=32(t-1).
+\]
+Controls should allow logarithmic stepping of \(|h|\) through \(1,0.5,0.2,0.1,0.05,0.01\), with a separate direction toggle. Show a synchronized table containing \(h\), \(Q_h\), and \(m_h\).
+\end{bggraphspec}
+
+\section{Removable Hole}
+
+\begin{bggraphspec}
+\textbf{Function:}
+\[
+  f(x)=\frac{x^2-4}{x-2},\qquad x\ne2.
+\]
+\textbf{Equivalent nearby rule:} \(f(x)=x+2\). \textbf{Window:} \(-1\le x\le5\), \(0\le y\le7\). Draw an open circle at \((2,4)\), no filled point, and optional table markers at \(1.9,1.99,1.999,2.001,2.01,2.1\). A toggle should add an arbitrary value \(f(2)=c\) without changing the displayed limit.
+\end{bggraphspec}
+
+\section{Function Value Versus Limit}
+
+\begin{bggraphspec}
+\textbf{Function:}
+\[
+  g(x)=\begin{cases}x^2+1,&x\ne2,\\9,&x=2.\end{cases}
+\]
+\textbf{Window:} \(-1\le x\le4\), \(0\le y\le11\). Use an open circle at \((2,5)\) and a filled point at \((2,9)\). Label the open point as the limiting value and the filled point as the actual function value. An adjustable filled point should demonstrate that changing \(g(2)\) leaves the limit unchanged.
+\end{bggraphspec}
+
+\section{Jump Discontinuity}
+
+\begin{bggraphspec}
+\textbf{Function:}
+\[
+  g(x)=\begin{cases}x+1,&x<2,\\6-x,&x\ge2.\end{cases}
+\]
+\textbf{Window:} \(-1\le x\le6\), \(0\le y\le7\). Draw an open circle at \((2,3)\) and a filled point at \((2,4)\). Provide separate left-approach and right-approach animations with labels
+\[
+  \lim_{x\to2^-}g(x)=3,
+  \qquad
+  \lim_{x\to2^+}g(x)=4.
+\]
+The two-sided limit readout must state \(\DNE\), not an average of \(3\) and \(4\).
+\end{bggraphspec}
+
+\section{Oscillation Near Zero}
+
+\begin{bggraphspec}
+\textbf{Function:}
+\[
+  f(x)=\sin(1/x),\qquad x\ne0.
+\]
+Use a zoom control with symmetric windows \([-r,r]\) for \(r=1,0.5,0.25,0.1,0.05\). Increase sampling density as \(r\) decreases. The graphic should emphasize that zooming does not make the function settle. Include two input sequences approaching zero that produce different fixed output behaviors, such as
+\[
+  x_n=\frac{1}{\pi/2+2\pi n}\quad\Rightarrow\quad f(x_n)=1,
+\]
+\[
+  y_n=\frac{1}{3\pi/2+2\pi n}\quad\Rightarrow\quad f(y_n)=-1.
+\]
+\end{bggraphspec}
+
+\section{Squeeze Theorem Oscillation}
+
+\begin{bggraphspec}
+\textbf{Functions:}
+\[
+  y=x^2\sin(1/x),\qquad y=x^2,\qquad y=-x^2.
+\]
+\textbf{Window:} \(-0.35\le x\le0.35\), \(-0.13\le y\le0.13\). Shade the region between the two parabolas. Include a slider moving toward zero and a live inequality
+\[
+  -x^2\le x^2\sin(1/x)\le x^2.
+\]
+The screen-reader description should state that the amplitude is at most \(x^2\), which approaches zero.
+\end{bggraphspec}
+
+\section{Unit-Circle Squeeze}
+
+\begin{bggraphspec}
+Draw a unit circle with angle \(x\in(0,\pi/2)\). Display the inner triangle, circular sector, and outer tangent triangle. Show their areas dynamically:
+\[
+  A_{\mathrm{inner}}=\frac12\sin x\cos x,
+\]
+\[
+  A_{\mathrm{sector}}=\frac12x,
+\]
+\[
+  A_{\mathrm{outer}}=\frac12\tan x.
+\]
+Use a slider for \(x\), measured only in radians, and display the resulting inequality chain leading to
+\[
+  \cos x<\frac{\sin x}{x}<1.
+\]
+\end{bggraphspec}
+
+\section{The Sinc Function}
+
+\begin{bggraphspec}
+\textbf{Function:}
+\[
+  f(x)=\frac{\sin x}{x},\qquad x\ne0.
+\]
+\textbf{Wide window:} \([-2\pi,2\pi]\times[-0.35,1.18]\). \textbf{Zoom window:} \([-0.5,0.5]\times[0.95,1.01]\). Draw an open circle at \((0,1)\) and a dashed line \(y=1\). Include a unit toggle locked to radians by default; if degrees are demonstrated, clearly show that the limiting value changes to \(\pi/180\).
+\end{bggraphspec}
+
+\section{Vertical Asymptote Multiplicity}
+
+\begin{bggraphspec}
+Compare
+\[
+  f(x)=\frac1{x-1}
+  \qquad\text{and}\qquad
+  g(x)=\frac1{(x-1)^2}.
+\]
+Use matched windows and a shared vertical asymptote \(x=1\). Show sign tables on each side. Emphasize that an odd power changes sign across the asymptote while an even power preserves sign.
+\end{bggraphspec}
+
+\section{Horizontal Asymptote}
+
+\begin{bggraphspec}
+\textbf{Function:}
+\[
+  f(x)=\frac{3x^2-2x+5}{x^2+4}.
+\]
+\textbf{Primary window:} \([-12,12]\times[0,4.3]\). Draw \(y=3\) as a dashed asymptote. Add a second view or zoom control extending to \(|x|=100\). Display
+\[
+  f(x)-3=\frac{-2x-7}{x^2+4}
+\]
+to show quantitatively why the difference approaches zero.
+\end{bggraphspec}
+
+\section{Discontinuity Gallery}
+
+\begin{bggraphspec}
+Provide four linked panels:
+\begin{enumerate}
+  \item removable: \((x^2-1)/(x-1)\);
+  \item jump: \(0\) for \(x<0\), \(2\) for \(x\ge0\);
+  \item infinite: \(1/x\);
+  \item oscillatory: \(\sin(1/x)\).
+\end{enumerate}
+Each panel should list the left limit, right limit, function value, two-sided limit, and classification. Avoid relying on color alone; use distinct marker styles and labels.
+\end{bggraphspec}
+
+\section{Intermediate Value Theorem}
+
+\begin{bggraphspec}
+\textbf{Function:}
+\[
+  f(x)=x^3+x-1
+\]
+on \([0,1]\). Mark \((0,-1)\), \((1,1)\), and the root near \(0.6823278\). Include a draggable horizontal target \(N\) between \(-1\) and \(1\). The graphic should find at least one corresponding \(c\) visually while stating that the theorem guarantees existence, not uniqueness or a closed-form value.
+\end{bggraphspec}
+
+\section{Epsilon-Delta Window}
+
+\begin{bggraphspec}
+Use \(f(x)=x^2/2+1\), \(a=2\), and \(L=3\). Provide an \(\eps\) slider controlling the horizontal band \((L-\eps,L+\eps)\). Compute or approximate the largest symmetric \(\delta\)-window about \(a\) whose graph remains in the band. Display the inequalities
+\[
+  |x-a|<\delta
+\]
+and
+\[
+  |f(x)-L|<\eps
+\]
+with synchronized highlighting. Include a mode in which a learner proposes \(\delta\) and the graphic identifies any violating points.
+\end{bggraphspec}

@@ -1,0 +1,494 @@
+\begin{webpage}{calculus/limits/epsilon-delta-introduction}{Epsilon-Delta Definition: An Introduction}{lesson}
+\chapter{Making Limits Precise}
+
+\section{Why the Informal Definition Needs Numbers}
+
+\lessonobjective{
+Translate ``arbitrarily close'' into inequalities; understand the roles of \(\eps\) and \(\delta\); verify simple formal limit proofs.
+}
+
+The informal definition says that \(f(x)\) can be made as close as desired to \(L\) by taking \(x\) sufficiently close to \(a\). The phrase ``as close as desired'' must be made numerical.
+
+\begin{bgconcept}
+Suppose a customer says, ``Make the board close to 10 feet long.'' A builder needs a tolerance: within one inch? one millimeter? The symbol \(\eps\) names the allowed output error. The symbol \(\delta\) tells how close the input must be to guarantee that error.
+\end{bgconcept}
+
+The distance between \(x\) and \(a\) is
+\[
+  |x-a|.
+\]
+The distance between \(f(x)\) and \(L\) is
+\[
+  |f(x)-L|.
+\]
+
+\begin{bgdefinition}[title={Formal \(\eps\)-\(\delta\) Definition}]
+We say
+\[
+  \lim_{x\to a}f(x)=L
+\]
+if
+\[
+  \boxed{\forall\eps>0,\ \exists\delta>0\text{ such that }
+  0<|x-a|<\delta\implies|f(x)-L|<\eps.}
+\]
+\end{bgdefinition}
+
+In words:
+
+\begin{quote}
+For every positive output tolerance \(\eps\), there is a positive input tolerance \(\delta\) such that every allowed input within \(\delta\) of \(a\), except \(a\) itself, produces an output within \(\eps\) of \(L\).
+\end{quote}
+
+\begin{center}
+\begin{tabularx}{0.9\textwidth}{@{}p{0.24\textwidth}X@{}}
+\toprule
+\textbf{Expression} & \textbf{Meaning}\\
+\midrule
+\(|x-a|<\delta\) & The input lies in the horizontal interval \((a-\delta,a+\delta)\).\\
+\(|f(x)-L|<\eps\) & The output lies in the vertical band \((L-\eps,L+\eps)\).\\
+\(0<|x-a|\) & The target input itself is excluded.\\
+\(\forall\eps>0\) & The argument must work for every requested accuracy.\\
+\(\exists\delta>0\) & We may choose an input tolerance depending on \(\eps\).\\
+\bottomrule
+\end{tabularx}
+\end{center}
+\webnext{calculus/limits/epsilon-delta-linear}{Epsilon-Delta Proofs for Linear Functions}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/epsilon-delta-linear}{Epsilon-Delta Proofs for Linear Functions}{lesson}
+\section{Linear Functions: The Cleanest Proofs}
+
+\lessonobjective{
+Construct a \(\delta\) directly from a requested \(\eps\) for a linear function.
+}
+
+\begin{bgguided}[title={\(f(x)=2x\)}]
+Prove
+\[
+  \lim_{x\to3}2x=6.
+\]
+
+\begin{bgsolution}
+We want the output error to be less than \(\eps\):
+\[
+  |2x-6|<\eps.
+\]
+Factor:
+\[
+  |2x-6|=2|x-3|.
+\]
+So it is enough to require
+\[
+  2|x-3|<\eps.
+\]
+Divide by \(2\):
+\[
+  |x-3|<\frac\eps2.
+\]
+Choose
+\[
+  \boxed{\delta=\frac\eps2}.
+\]
+Then if \(0<|x-3|<\delta\),
+\[
+  |2x-6|=2|x-3|<2\delta=2\left(\frac\eps2\right)=\eps.
+\]
+Therefore,
+\[
+  \lim_{x\to3}2x=6.
+\]
+\end{bgsolution}
+\end{bgguided}
+
+\input{checks/epsilon-flow-01}
+
+This proof has two phases.
+
+\begin{description}
+  \item[Discovery phase.] Start from the desired output inequality and work backward to guess a useful \(\delta\).
+  \item[Proof phase.] State the chosen \(\delta\), assume the input inequality, and work forward to the output inequality.
+\end{description}
+
+\begin{bgexample}[title={A general linear function}]
+Prove
+\[
+  \lim_{x\to2}(3x+1)=7.
+\]
+
+\begin{bgsolution}
+\textbf{Discovery.} We need
+\[
+  |(3x+1)-7|<\eps.
+\]
+Simplify:
+\[
+  |3x-6|=3|x-2|.
+\]
+Thus, requiring
+\[
+  |x-2|<\frac\eps3
+\]
+is enough.
+
+\textbf{Proof.} Let \(\eps>0\). Choose
+\[
+  \delta=\frac\eps3.
+\]
+If
+\[
+  0<|x-2|<\delta,
+\]
+then
+\[
+  |(3x+1)-7|=3|x-2|<3\delta=\eps.
+\]
+Therefore,
+\[
+  \boxed{\lim_{x\to2}(3x+1)=7}.
+\]
+\end{bgsolution}
+\end{bgexample}
+
+\begin{bgsummary}
+For \(f(x)=mx+b\), a standard choice is
+\[
+  \delta=\frac\eps{|m|}
+\]
+when \(m\ne0\). The output changes \(|m|\) times as much as the input, so the input tolerance must be \(|m|\) times smaller.
+\end{bgsummary}
+\webnext{calculus/limits/epsilon-delta-quadratic}{Epsilon-Delta Proofs for Quadratic Functions}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/epsilon-delta-quadratic}{Epsilon-Delta Proofs for Quadratic Functions}{lesson}
+\section{Nonlinear Functions: Controlling an Extra Factor}
+
+\lessonobjective{
+Use a preliminary restriction such as \(|x-a|<1\) to bound a factor that depends on \(x\); choose \(\delta\) as the minimum of two requirements.
+}
+
+For a quadratic, factoring the output error creates an extra factor involving \(x\).
+
+\begin{bgexample}[title={Prove \(\lim_{x\to2}x^2=4\)}]
+\begin{bgsolution}
+We need to make
+\[
+  |x^2-4|
+\]
+small. Factor:
+\[
+  |x^2-4|=|x-2||x+2|.
+\]
+The first factor is controlled by \(\delta\), but \(|x+2|\) still depends on \(x\). First impose the simple restriction
+\[
+  |x-2|<1.
+\]
+Then
+\[
+  1<x<3,
+\]
+so
+\[
+  3<x+2<5,
+\]
+and therefore
+\[
+  |x+2|<5.
+\]
+Now
+\[
+  |x^2-4|=|x-2||x+2|<5|x-2|.
+\]
+To make this less than \(\eps\), require
+\[
+  |x-2|<\frac\eps5.
+\]
+We need both restrictions, so choose
+\[
+  \boxed{\delta=\min\left\{1,\frac\eps5\right\}}.
+\]
+
+Now write the forward proof. Let \(\eps>0\), and choose the \(\delta\) above. If
+\[
+  0<|x-2|<\delta,
+\]
+then \(|x-2|<1\), so \(|x+2|<5\). Also, \(|x-2|<\eps/5\). Hence
+\[
+  |x^2-4|
+  =|x-2||x+2|
+  <5\left(\frac\eps5\right)
+  =\eps.
+\]
+Therefore,
+\[
+  \boxed{\lim_{x\to2}x^2=4}.
+\]
+\end{bgsolution}
+\end{bgexample}
+
+\begin{bgconcept}
+The minimum notation means, ``Use whichever restriction is smaller.'' If \(\eps/5\) is tiny, use it. If \(\eps/5\) is larger than \(1\), keep the local bound \(1\). Both jobs must be done at once.
+\end{bgconcept}
+
+\begin{bgexample}[title={A shifted square}]
+Prove
+\[
+  \lim_{x\to1}x^2=1.
+\]
+
+\begin{bgsolution}
+Factor the output error:
+\[
+  |x^2-1|=|x-1||x+1|.
+\]
+If \(|x-1|<1\), then \(0<x<2\), so \(|x+1|<3\). Therefore,
+\[
+  |x^2-1|<3|x-1|.
+\]
+Choose
+\[
+  \boxed{\delta=\min\left\{1,\frac\eps3\right\}}.
+\]
+Then
+\[
+  |x^2-1|<3\delta\le\eps.
+\]
+\end{bgsolution}
+\end{bgexample}
+\webnext{calculus/limits/epsilon-delta-graph}{Reading Epsilon and Delta From a Graph}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/epsilon-delta-graph}{Reading Epsilon and Delta From a Graph}{lesson}
+\section{Reading the Definition From a Graph}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=0.84\textwidth,height=0.50\textwidth,
+  xmin=-0.5,xmax=4.5,ymin=-0.5,ymax=8.5,
+  axis lines=middle,xlabel={$x$},ylabel={$f(x)$},
+  grid=major,major grid style={draw=BGLine}
+]
+\addplot[BGBlue,very thick,domain=-0.3:4.2,samples=140]{x^2/2+1};
+\addplot[draw=none,name path=upper,domain=-0.5:4.5]{5.5};
+\addplot[draw=none,name path=lower,domain=-0.5:4.5]{3.5};
+\addplot[BGPaleGold] fill between[of=upper and lower];
+\draw[BGGold,thick,dashed] (axis cs:-0.5,5.5)--(axis cs:4.5,5.5);
+\draw[BGGold,thick,dashed] (axis cs:-0.5,3.5)--(axis cs:4.5,3.5);
+\draw[BGGreen,thick,dashed] (axis cs:1.75,-0.5)--(axis cs:1.75,8.5);
+\draw[BGGreen,thick,dashed] (axis cs:2.25,-0.5)--(axis cs:2.25,8.5);
+\node[anchor=west,font=\small,BGGold] at (axis cs:3.65,5.5) {$L+\eps$};
+\node[anchor=west,font=\small,BGGold] at (axis cs:3.65,3.5) {$L-\eps$};
+\node[anchor=north,font=\small,BGGreen] at (axis cs:1.75,-0.2) {$a-\delta$};
+\node[anchor=north,font=\small,BGGreen] at (axis cs:2.25,-0.2) {$a+\delta$};
+\end{axis}
+\end{tikzpicture}
+\caption{An \(\eps\)-band around \(L\) and a corresponding \(\delta\)-window around \(a\). A valid \(\delta\) keeps the nearby graph inside the band.}
+\label{fig:epsilon-delta}
+\end{figure}
+
+\begin{bggraphspec}
+Use a continuous nonlinear function such as \(f(x)=x^2/2+1\) near \(a=2\), where \(L=3\). Provide an adjustable \(\eps\)-band and show the largest symmetric \(\delta\)-window whose graph segment remains inside the band. Display \(|x-a|<\delta\) and \(|f(x)-L|<\eps\) simultaneously.
+\end{bggraphspec}
+\webnext{calculus/limits/disprove-limit-epsilon-delta}{How to Disprove a Claimed Limit}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/disprove-limit-epsilon-delta}{How to Disprove a Claimed Limit}{lesson}
+\section{Proving a Limit Is Not a Claimed Number}
+
+To show
+\[
+  \lim_{x\to a}f(x)\ne L,
+\]
+it is enough to find one positive tolerance \(\eps_0\) for which no possible \(\delta\) works.
+
+\begin{bgexample}[title={A jump fails the formal definition}]
+Let
+\[
+  f(x)=
+  \begin{cases}
+    0,&x<0,\\
+    1,&x\ge0.
+  \end{cases}
+\]
+Show that \(\lim_{x\to0}f(x)\) does not equal \(1/2\).
+
+\begin{bgsolution}
+Choose
+\[
+  \eps_0=\frac14.
+\]
+The band around \(1/2\) is
+\[
+  \left(\frac14,\frac34\right).
+\]
+But every left-side input near zero has output \(0\), which lies outside this band, and every right-side input has output \(1\), also outside the band.
+
+No matter how small \(\delta>0\) is chosen, the point \(x=-\delta/2\) satisfies
+\[
+  0<|x|<\delta,
+\]
+but
+\[
+  \left|f(x)-\frac12\right|
+  =\left|0-\frac12\right|
+  =\frac12
+  >\frac14.
+\]
+Therefore the claimed limit cannot be \(1/2\). In fact, the left and right limits disagree, so no two-sided limit exists.
+\end{bgsolution}
+\end{bgexample}
+\webnext{calculus/limits/unit-review}{Limits and Continuity Unit Review}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/formal-infinite-limits}{Formal Definition of an Infinite Limit}{extension}
+\section{Formal Infinite Limits: Optional Extension}
+
+The statement
+\[
+  \lim_{x\to a}f(x)=+\infty
+\]
+can be formalized as follows:
+
+\begin{bgdefinition}[title={Formal Positive Infinite Limit}]
+For every \(M>0\), there exists \(\delta>0\) such that
+\[
+  0<|x-a|<\delta\implies f(x)>M.
+\]
+\end{bgdefinition}
+
+Instead of asking for an output band around a finite \(L\), the challenger names an arbitrarily high threshold \(M\). The proof must force the function above it.
+
+\begin{bgguided}[title={\(1/x^2\to+\infty\)}]
+Show formally that
+\[
+  \lim_{x\to0}\frac1{x^2}=+\infty.
+\]
+
+\begin{bgsolution}
+Let \(M>0\). We want
+\[
+  \frac1{x^2}>M.
+\]
+This is equivalent to
+\[
+  x^2<\frac1M,
+\]
+which is guaranteed by
+\[
+  |x|<\frac1{\sqrt M}.
+\]
+Choose
+\[
+  \delta=\frac1{\sqrt M}.
+\]
+Then \(0<|x|<\delta\) implies
+\[
+  x^2<\delta^2=\frac1M,
+\]
+so
+\[
+  \frac1{x^2}>M.
+\]
+\end{bgsolution}
+\end{bgguided}
+\webnext{calculus/limits/unit-review}{Limits and Continuity Unit Review}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/epsilon-delta-review}{Epsilon-Delta Review}{review}
+\section*{Chapter 6 Summary}
+\addcontentsline{toc}{section}{Chapter 6 Summary}
+
+\begin{bgsummary}
+\begin{itemize}
+  \item \(\eps\) is an allowed output error; \(\delta\) is an input tolerance that guarantees it.
+  \item Formal proofs work backward to discover \(\delta\) and forward to verify it.
+  \item Linear proofs usually use \(\delta=\eps/|m|\).
+  \item Nonlinear proofs often need a preliminary local bound and a minimum of two restrictions.
+  \item To disprove a claimed limit, one bad \(\eps_0\) is enough.
+\end{itemize}
+\end{bgsummary}
+\webnext{calculus/limits/unit-review}{Limits and Continuity Unit Review}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/epsilon-delta-concept-quiz}{Epsilon-Delta Concept Quiz}{quiz}
+\section*{Chapter 6 Concept Quiz}
+\addcontentsline{toc}{section}{Chapter 6 Concept Quiz}
+
+Use this as a short retrieval check after finishing the chapter. On the website, each item should accept an answer before revealing the hint and worked explanation.
+
+\begin{bgcheck}{epsilon-linear-q1}{expression}{epsilon/3}[Concept check]
+For \(f(x)=3x+1\) at \(x=2\), give a working choice of \(\delta\) in terms of \(\varepsilon\).
+\begin{bghint}
+\(|f(x)-7|=3|x-2|\).
+\end{bghint}
+\begin{bgreveal}
+Choose \(\delta=\varepsilon/3\).
+\end{bgreveal}
+\end{bgcheck}
+
+\begin{bgcheck}{epsilon-linear-q2}{expression}{epsilon/5}[Concept check]
+For \(f(x)=5x\) at \(x=1\), give a working \(\delta\).
+\begin{bghint}
+\(|5x-5|=5|x-1|\).
+\end{bghint}
+\begin{bgreveal}
+Choose \(\delta=\varepsilon/5\).
+\end{bgreveal}
+\end{bgcheck}
+
+\begin{bgcheck}{epsilon-quadratic-q1}{expression}{min(1,epsilon/5)}[Concept check]
+For the standard proof that \(x^2\to4\) as \(x\to2\), enter the usual safe choice of \(\delta\).
+\begin{bghint}
+First require \(|x-2|<1\), which makes \(|x+2|<5\).
+\end{bghint}
+\begin{bgreveal}
+Choose \(\delta=\min\{1,\varepsilon/5\}\).
+\end{bgreveal}
+\end{bgcheck}
+
+\begin{bgcheck}{formal-reading-q1}{choice}{output}[Concept check]
+In \(|f(x)-L|<\varepsilon\), does \(\varepsilon\) control input distance or output distance?
+\begin{bghint}
+Look at which quantities are being compared.
+\end{bghint}
+\begin{bgreveal}
+It controls output distance.
+\end{bgreveal}
+\end{bgcheck}
+
+\begin{bgsummary}[title={Quiz use on the website}]
+This page should report completion by concept, not merely a total score. A wrong answer should link back to the exact lesson that teaches the missing method. The same questions may appear in randomized numerical variants, but the canonical explanation should remain stable.
+\end{bgsummary}
+\webnext{calculus/limits/unit-review}{Limits and Continuity Unit Review}
+\end{webpage}
+
+\begin{webpage}{calculus/limits/epsilon-delta-practice}{Epsilon-Delta Practice Problems}{practice}
+\section*{Chapter 6 Exercises}
+\addcontentsline{toc}{section}{Chapter 6 Exercises}
+
+\begin{bgexercises}[label=\textbf{6.\arabic*}]
+  \item In your own words, explain the roles of \(\eps\) and \(\delta\).
+  \item Rewrite \(|x-3|<0.2\) as an ordinary interval.
+  \item Rewrite \(|f(x)-5|<0.1\) as a vertical output interval.
+  \item For \(f(x)=4x\), find a \(\delta\) in terms of \(\eps\) that proves \(\lim_{x\to2}f(x)=8\).
+  \item Prove \(\lim_{x\to1}(5x-2)=3\).
+  \item Prove \(\lim_{x\to-2}(3x+4)=-2\).
+  \item Prove \(\lim_{x\to4}(x/2)=2\).
+  \item Prove \(\lim_{x\to1}x^2=1\) using \(\delta=\min\{1,\eps/3\}\).
+  \item Prove \(\lim_{x\to3}x^2=9\) by first bounding \(|x+3|\).
+  \item Find a suitable \(\delta\) to prove \(\lim_{x\to2}(x^2+x)=6\).
+  \item Explain why a proof may choose a smaller \(\delta\) than necessary.
+  \item Explain why \(\delta\) may depend on \(\eps\), but not on the particular \(x\) chosen later.
+  \item Use \(\eps_0=1/4\) to show the step function in the chapter does not approach \(1/2\) at zero.
+  \item Give a formal \(M\)-\(\delta\) proof that \(1/x^2\to+\infty\) as \(x\to0\).
+  \item Give a formal \(N\)-style proof that \(1/x\to0\) as \(x\to\infty\).
+  \item Identify the first incorrect step in the claim: ``Choose \(\delta=\eps\). Then \(|x^2-4|<\eps\) whenever \(|x-2|<\delta\).''
+  \item Why is \(0<|x-a|\) included in the formal finite-limit definition?
+  \item Explain how the graphical \(\eps\)-band and \(\delta\)-window represent the quantified definition.
+\end{bgexercises}
+
+Answers begin in \cref{app:chapter-answers}.
+\webnext{calculus/limits/unit-review}{Limits and Continuity Unit Review}
+\end{webpage}

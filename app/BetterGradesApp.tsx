@@ -5,6 +5,8 @@
 import { createContext, FormEvent, lazy, ReactNode, Suspense, useContext, useEffect, useMemo, useState } from "react";
 import type { Question } from "../lib/activities";
 import { algebraCheckerHref } from "../lib/algebra-practice.mjs";
+import { isLimitsUnitPath, limitsUnitPracticeRoutes } from "../lib/calculus/limits-unit-index.mjs";
+import type { LimitsUnitPublicPage } from "../lib/calculus/limits-unit.mjs";
 import { courseLibraries, libraryCounts } from "../lib/course-library";
 import { problems, searchProblems, type Problem } from "../lib/content";
 import type { MathGlossaryTerm } from "../lib/glossary/math/registry.mjs";
@@ -13,6 +15,7 @@ import { assessments, getAssessment } from "../lib/registry/practice";
 import { isExpressionOnlyQuery, searchIndexCounts, searchKindLabels, searchSite, type SearchKind, type SiteSearchRecord } from "../lib/site-search";
 import { CourseHubContent, getArticle, LibraryArticleContent, LibraryHomeSection, LibrarySearchResults, searchLibrary, TopicContent } from "./LibraryPages";
 import { AlgebraExpressionChecker } from "./AlgebraExpressionChecker";
+
 import { Formula, Math, MathOrText } from "./Math";
 import { PageGlossaryTerms } from "./PageGlossaryTerms";
 
@@ -24,6 +27,7 @@ const nav = [
 const GlossaryHubPage = lazy(() => import("./GlossaryPages").then((module) => ({ default: module.GlossaryHubPage })));
 const MathGlossaryPage = lazy(() => import("./GlossaryPages").then((module) => ({ default: module.MathGlossaryPage })));
 const MathConventionsPage = lazy(() => import("./GlossaryPages").then((module) => ({ default: module.MathConventionsPage })));
+const LimitsUnitPageContent = lazy(() => import("./LimitsUnitPages").then((module) => ({ default: module.LimitsUnitPageContent })));
 
 function GlossaryBoundary({ children }: { children: ReactNode }) {
   return <Suspense fallback={<section className="glossary-loading section-pad"><span>Loading glossary…</span></section>}>{children}</Suspense>;
@@ -383,7 +387,7 @@ function Quiz({ questions, storageKey, title, mode = "practice" }: { questions: 
 }
 
 const practiceLabels = { quiz: "Quick quiz", diagnostic: "Diagnostic", "practice-exam": "Practice exam", challenge: "Challenge" } as const;
-function AssessmentDirectory({ eyebrow, title, intro }: { eyebrow: string; title: string; intro: string }) { return <Shell><section className="page-hero section-pad"><Eyebrow>{eyebrow}</Eyebrow><h1>{title}</h1><p>{intro}</p></section><section className="activity-list section-pad">{assessments.map((item) => <Link href={item.path} className="activity-row" key={item.id}><span>{item.questions.length} Q</span><div><Eyebrow>{practiceLabels[item.kind]} · Mathematics · Calculus</Eyebrow><h2>{item.title}</h2><p>{item.description}</p><span className="tag">About {item.durationMinutes} minutes</span><span className="tag">Device-local progress</span></div><b>Start →</b></Link>)}</section></Shell>; }
+function AssessmentDirectory({ eyebrow, title, intro }: { eyebrow: string; title: string; intro: string }) { return <Shell><section className="page-hero section-pad"><Eyebrow>{eyebrow}</Eyebrow><h1>{title}</h1><p>{intro}</p></section><section className="activity-list section-pad">{assessments.map((item) => <Link href={item.path} className="activity-row" key={item.id}><span>{item.questions.length} Q</span><div><Eyebrow>{practiceLabels[item.kind]} · Mathematics · Calculus</Eyebrow><h2>{item.title}</h2><p>{item.description}</p><span className="tag">About {item.durationMinutes} minutes</span><span className="tag">Device-local progress</span></div><b>Start →</b></Link>)}{limitsUnitPracticeRoutes.map((item) => <Link href={item.path} className="activity-row" key={item.path}><span>{item.checkIds.length || "—"} Q</span><div><Eyebrow>{item.pageType.replaceAll("-", " ")} · Calculus I · Limits</Eyebrow><h2>{item.h1}</h2><p>{item.description}</p><span className="tag">Full worked solutions</span><span className="tag">No account required</span></div><b>Start →</b></Link>)}</section></Shell>; }
 function PracticePage() { return <AssessmentDirectory eyebrow="Practice center" title="Quizzes, practice exams, diagnostics, and challenges." intro="One organized home for free practice with explanations. Start by subject, then choose the kind of workout you need." />; }
 function MathPracticePage() { const algebraCount = courseLibraries.find((course) => course.slug === "algebra")?.articles.length ?? 0; return <AssessmentDirectory eyebrow="Practice · Mathematics" title="Practice that explains the miss." intro={`The current interactive sets focus on calculus. Algebra now has ${algebraCount} worked guides, and its first assessment set is the next content release.`} />; }
 function CalculusPracticePage() { return <AssessmentDirectory eyebrow="Practice · Mathematics · Calculus" title="Pick the kind of calculus practice you need." intro="Warm up with a quiz, find prerequisite gaps, take a mixed practice exam, or race the Integration Bee clock." />; }
@@ -406,7 +410,7 @@ function PolicyPage({ path }: { path: string }) { const data = policyContent[pat
 
 function NotFound() { return <Shell><section className="not-found section-pad"><span>4≥4</span><Eyebrow>That page did not make the grade</Eyebrow><h1>Wrong turn. Useful recovery.</h1><p>The page may have moved, or the expression may need a different phrasing. Search the answer bank or return to calculus.</p><SearchBox large /><div className="button-row"><Link href="/" className="button button-ghost">Back home</Link><Link href="/subjects/math/calculus/" className="text-link">Browse calculus →</Link></div></section></Shell>; }
 
-function BetterGradesRoute({ path, glossaryData }: { path: string; glossaryData?: GlossaryData }) {
+function BetterGradesRoute({ path, glossaryData, limitsUnitPage }: { path: string; glossaryData?: GlossaryData; limitsUnitPage?: LimitsUnitPublicPage }) {
   if (path === "/") return <HomePage />;
   if (path === "/subjects/") return <SubjectsPage />;
   if (path === "/subjects/math/") return <MathSubjectPage />;
@@ -414,6 +418,10 @@ function BetterGradesRoute({ path, glossaryData }: { path: string; glossaryData?
   if (courseMatch && courseLibraries.some((course) => course.slug === courseMatch[1])) return <Shell><CourseHubContent domainSlug={courseMatch[1]} /></Shell>;
   const topicMatch = path.match(/^\/subjects\/math\/([^/]+)\/([^/]+)\/$/);
   if (topicMatch) return <Shell><TopicContent domainSlug={topicMatch[1]} topicSlug={topicMatch[2]} /></Shell>;
+  if (isLimitsUnitPath(path)) {
+    if (!limitsUnitPage) return <NotFound />;
+    return <Shell><Suspense fallback={<section className="section-pad">Loading lesson…</section>}><LimitsUnitPageContent page={limitsUnitPage} /></Suspense></Shell>;
+  }
   const articleMatch = path.match(/^\/subjects\/math\/([^/]+)\/([^/]+)\/([^/]+)\/$/);
   if (articleMatch) {
     const article = getArticle(articleMatch[1], articleMatch[2], articleMatch[3]);
@@ -440,6 +448,6 @@ function BetterGradesRoute({ path, glossaryData }: { path: string; glossaryData?
   return <NotFound />;
 }
 
-export function BetterGradesApp({ path, glossaryData }: { path: string; glossaryData?: GlossaryData }) {
-  return <PathContext.Provider value={path}><BetterGradesRoute path={path} glossaryData={glossaryData} /></PathContext.Provider>;
+export function BetterGradesApp({ path, glossaryData, limitsUnitPage }: { path: string; glossaryData?: GlossaryData; limitsUnitPage?: LimitsUnitPublicPage }) {
+  return <PathContext.Provider value={path}><BetterGradesRoute path={path} glossaryData={glossaryData} limitsUnitPage={limitsUnitPage} /></PathContext.Provider>;
 }

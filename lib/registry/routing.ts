@@ -1,3 +1,4 @@
+import { limitsUnitRoutes } from "../calculus/limits-unit-index.mjs";
 import { domains, resources, subjects, tools, topics } from "./catalog";
 import { assessments } from "./practice";
 import type { RedirectRecord, RegistryRoute } from "./schema";
@@ -24,6 +25,7 @@ export const registryRoutes: RegistryRoute[] = [
   ...domains.map((item) => ({ path: item.path, title: `${item.name} resources`, description: item.description, indexable: true })),
   ...topics.map((item) => ({ path: item.path, title: `${item.name} ${domains.find((domain) => domain.id === item.domainId)?.name ?? "mathematics"} resources`, description: item.description, indexable: true })),
   ...resources.map((item) => ({ path: item.path, title: item.title, description: item.description, indexable: true })),
+  ...limitsUnitRoutes.map((item) => ({ path: item.path, title: item.metadataTitle, description: item.description, indexable: item.indexable })),
   ...assessments.map((item) => ({ path: item.path, title: item.title, description: item.description, indexable: true })),
   ...tools.map((item) => ({ path: item.path, title: item.title, description: item.description, indexable: true })),
 ];
@@ -36,6 +38,7 @@ export const redirects: RedirectRecord[] = [
   { from: "/exams/", to: "/practice/", status: 308 },
   { from: "/calculators/", to: "/tools/", status: 308 },
   ...topics.map((item) => ({ from: `/topics/calculus/${item.slug}/`, to: item.path, status: 308 as const })),
+  ...limitsUnitRoutes.map((item) => ({ from: item.sourceCanonicalPath, to: item.path, status: 308 as const })),
   ...resources.flatMap((item) => item.aliases.map((from) => ({ from, to: item.path, status: 308 as const }))),
   ...assessments.flatMap((item) => item.aliases.map((from) => ({ from, to: item.path, status: 308 as const }))),
   ...tools.flatMap((item) => item.aliases.map((from) => ({ from, to: item.path, status: 308 as const }))),

@@ -1,3 +1,4 @@
+import { limitsUnitSearchRecords } from "./calculus/limits-unit-index.mjs";
 import { problems } from "./content";
 import { domains, resourceFormatLabel, resources, tools, topics } from "./registry/catalog";
 import { assessments } from "./registry/practice";
@@ -151,6 +152,7 @@ const glossaryRecords: SiteSearchRecord[] = mathGlossarySearchTerms.map((term) =
 }));
 
 export const siteSearchRecords: SiteSearchRecord[] = [
+  ...limitsUnitSearchRecords,
   ...guideRecords,
   ...topicRecords,
   ...toolRecords,

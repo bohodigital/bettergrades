@@ -1,0 +1,244 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{bettergrades-webtext}[2026/07/15 BetterGrades semantic web-textbook environments]
+
+\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{lmodern}
+\RequirePackage{microtype}
+\RequirePackage{amsmath,amssymb,amsthm,mathtools}
+\RequirePackage{booktabs,tabularx,array,longtable,multicol}
+\RequirePackage{enumitem}
+\RequirePackage{fancyhdr}
+\RequirePackage{titlesec}
+\RequirePackage{xcolor}
+\RequirePackage{tikz}
+\usetikzlibrary{arrows.meta,calc,positioning,backgrounds,patterns,decorations.pathreplacing,angles,quotes,intersections,shapes.geometric}
+\RequirePackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepgfplotslibrary{groupplots,fillbetween}
+\RequirePackage{hyperref}
+\RequirePackage[capitalize,noabbrev]{cleveref}
+\RequirePackage{needspace}
+\RequirePackage{etoolbox}
+\RequirePackage{setspace}
+\RequirePackage{ragged2e}
+\RequirePackage{makecell}
+\RequirePackage{graphicx}
+\RequirePackage{comment}
+\RequirePackage{xparse}
+\RequirePackage{framed}
+\RequirePackage{pgfkeys}
+\RequirePackage{ifthen}
+\RequirePackage{marginnote}
+
+\definecolor{BGInk}{HTML}{18242C}
+\definecolor{BGGold}{HTML}{B37A22}
+\definecolor{BGBlue}{HTML}{2F6178}
+\definecolor{BGGreen}{HTML}{477A65}
+\definecolor{BGRed}{HTML}{9B4A3F}
+\definecolor{BGPurple}{HTML}{735B82}
+\definecolor{BGLight}{HTML}{F5F2EB}
+\definecolor{BGLine}{HTML}{D8D2C7}
+\definecolor{BGGray}{HTML}{5D6870}
+\definecolor{BGPaleBlue}{HTML}{EDF4F7}
+\definecolor{BGPaleGreen}{HTML}{EFF6F1}
+\definecolor{BGPaleGold}{HTML}{FBF5E8}
+\definecolor{BGPaleRed}{HTML}{FAF0EE}
+\definecolor{BGPalePurple}{HTML}{F5F0F7}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=BGBlue,
+  citecolor=BGGreen,
+  urlcolor=BGBlue,
+  pdftitle={BetterGrades Calculus I: Limits and Continuity},
+  pdfauthor={BetterGrades},
+  pdfsubject={A web-ready, self-contained tutorial for the first unit of Calculus I}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\small\color{BGGray}\leftmark}
+\fancyhead[RO]{\small\color{BGGray}\rightmark}
+\fancyfoot[C]{\small\color{BGGray}\thepage}
+\renewcommand{\headrulewidth}{0.35pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{BGLine}\leaders\hrule height \headrulewidth\hfill}}
+
+\titleformat{\chapter}[display]
+  {\normalfont\bfseries\color{BGInk}}
+  {\filleft\fontsize{13}{15}\selectfont CALCULUS I \;\textcolor{BGGold}{/}\; CHAPTER \thechapter}
+  {0.4ex}
+  {\titlerule[1.1pt]\vspace{1.1ex}\Huge}
+  [\vspace{0.8ex}\titlerule]
+\titleformat{\section}{\Large\bfseries\color{BGInk}}{\thesection}{0.65em}{}
+\titleformat{\subsection}{\large\bfseries\color{BGBlue}}{\thesubsection}{0.6em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries\color{BGGreen}}{}{0em}{}
+
+\setlist[itemize]{leftmargin=1.45em,itemsep=0.25em,topsep=0.35em}
+\setlist[enumerate]{leftmargin=2.1em,itemsep=0.42em,topsep=0.5em}
+\setlist[description]{leftmargin=1.5em,labelindent=0em,itemsep=0.25em}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.62em}
+\setlength{\emergencystretch}{3em}
+\setstretch{1.03}
+
+\newtheoremstyle{bgplain}{0.8em}{0.8em}{\itshape}{}{}{.}{0.5em}{}
+\theoremstyle{bgplain}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{proposition}[theorem]{Proposition}
+
+\newif\ifbgshowwebmarkers
+\newif\ifbgshowreveals
+\newif\ifbgshowcheckmetadata
+\bgshowwebmarkersfalse
+\bgshowrevealstrue
+\bgshowcheckmetadatafalse
+
+\pgfkeys{/bgblock/.is family,/bgblock,
+ title/.store in=\BGBlockTitle,
+ title/.default={},
+ .unknown/.code={}}
+\newcommand{\bgparsetitle}[2]{%
+  \def\BGBlockTitle{#2}%
+  \pgfkeys{/bgblock/.cd,title={#2},#1}%
+}
+
+% A breakable one-sided accent, deliberately not a rectangular box.
+\newenvironment{bgleftbar}[1]{%
+  \def\FrameCommand{{\color{#1}\vrule width 2.2pt}\hspace{0.8em}}%
+  \MakeFramed{\advance\hsize-\width\FrameRestore}%
+}{\endMakeFramed}
+
+\newcommand{\bgblockheading}[2]{\noindent{\bfseries\color{#1}#2}\par\smallskip}
+
+\NewDocumentEnvironment{bgconcept}{O{}}{%
+  \bgparsetitle{#1}{Plain-language idea}\par\Needspace{4\baselineskip}\begin{bgleftbar}{BGBlue}\bgblockheading{BGBlue}{\BGBlockTitle}%
+}{\end{bgleftbar}\par\addvspace{0.45em}}
+
+\NewDocumentEnvironment{bgmethod}{O{}}{%
+  \bgparsetitle{#1}{Method}\par\Needspace{4\baselineskip}\begin{bgleftbar}{BGGold}\bgblockheading{BGGold}{\BGBlockTitle}%
+}{\end{bgleftbar}\par\addvspace{0.45em}}
+
+\NewDocumentEnvironment{bgdefinition}{O{}}{%
+  \bgparsetitle{#1}{Definition}\par\Needspace{4\baselineskip}\begin{bgleftbar}{BGBlue}\bgblockheading{BGBlue}{\BGBlockTitle}%
+}{\end{bgleftbar}\par\addvspace{0.45em}}
+
+\NewDocumentEnvironment{bgtheorem}{O{}}{%
+  \bgparsetitle{#1}{Theorem}\par\Needspace{4\baselineskip}\begin{bgleftbar}{BGPurple}\bgblockheading{BGPurple}{\BGBlockTitle}%
+}{\end{bgleftbar}\par\addvspace{0.45em}}
+
+\newcounter{bgexample}[chapter]
+\renewcommand{\thebgexample}{\thechapter.\arabic{bgexample}}
+\NewDocumentEnvironment{bgexample}{O{}}{%
+  \bgparsetitle{#1}{Worked Example}\refstepcounter{bgexample}\par\Needspace{6\baselineskip}\addvspace{0.9em}%
+  \noindent{\color{BGGreen}\rule{\textwidth}{0.8pt}}\par\smallskip
+  {\bfseries\color{BGInk}Example \thebgexample. \BGBlockTitle}\par\smallskip
+}{\par\smallskip\noindent{\color{BGLine}\rule{\textwidth}{0.35pt}}\par\addvspace{0.75em}}
+
+\NewDocumentEnvironment{bgguided}{O{}}{%
+  \bgparsetitle{#1}{Guided Walkthrough}\refstepcounter{bgexample}\par\Needspace{7\baselineskip}\addvspace{0.9em}%
+  \noindent{\color{BGGold}\rule{\textwidth}{0.8pt}}\par\smallskip
+  {\bfseries\color{BGInk}Guided Example \thebgexample. \BGBlockTitle}\par
+  {\small\color{BGGray}Every decision is stated explicitly; later examples become more compact.}\par\smallskip
+}{\par\smallskip\noindent{\color{BGLine}\rule{\textwidth}{0.35pt}}\par\addvspace{0.75em}}
+
+\NewDocumentEnvironment{bgsolution}{O{}}{%
+  \bgparsetitle{#1}{Solution}\par\Needspace{3\baselineskip}\begin{bgleftbar}{BGGreen}\bgblockheading{BGGreen}{\BGBlockTitle}%
+}{\end{bgleftbar}\par\addvspace{0.35em}}
+
+\NewDocumentEnvironment{bgtry}{O{}}{%
+  \bgparsetitle{#1}{Try this before reading on}\par\Needspace{3\baselineskip}\begin{bgleftbar}{BGGold}\bgblockheading{BGGold}{\BGBlockTitle}%
+}{\end{bgleftbar}\par\addvspace{0.35em}}
+
+\NewDocumentEnvironment{bgmistake}{O{}}{%
+  \bgparsetitle{#1}{Common error}\par\Needspace{3\baselineskip}\begin{bgleftbar}{BGRed}\bgblockheading{BGRed}{\BGBlockTitle}%
+}{\end{bgleftbar}\par\addvspace{0.35em}}
+
+\NewDocumentEnvironment{bgexamnote}{O{}}{%
+  \bgparsetitle{#1}{Exam note}\par\Needspace{3\baselineskip}\begin{bgleftbar}{BGRed}\bgblockheading{BGRed}{\BGBlockTitle}%
+}{\end{bgleftbar}\par\addvspace{0.35em}}
+
+\NewDocumentEnvironment{bgquickcheck}{O{}}{%
+  \bgparsetitle{#1}{Quick check}\par\Needspace{3\baselineskip}\begin{bgleftbar}{BGGold}\bgblockheading{BGGold}{\BGBlockTitle}%
+}{\end{bgleftbar}\par\addvspace{0.35em}}
+
+\NewDocumentEnvironment{bgsummary}{O{}}{%
+  \bgparsetitle{#1}{Keep these ideas}\par\Needspace{4\baselineskip}\addvspace{0.7em}%
+  \noindent{\color{BGPurple}\rule{\textwidth}{0.65pt}}\par\smallskip
+  {\bfseries\color{BGPurple}\BGBlockTitle}\par\smallskip
+}{\par\smallskip\noindent{\color{BGPurple}\rule{\textwidth}{0.3pt}}\par\addvspace{0.65em}}
+
+\NewDocumentEnvironment{bghomework}{O{}}{%
+  \bgparsetitle{#1}{Homework pattern}\par\Needspace{4\baselineskip}\begin{bgleftbar}{BGBlue}\bgblockheading{BGBlue}{\BGBlockTitle}%
+}{\end{bgleftbar}\par\addvspace{0.35em}}
+
+\NewDocumentEnvironment{bggraphspec}{O{}}{%
+  \bgparsetitle{#1}{Digital graph specification}\par\Needspace{4\baselineskip}\addvspace{0.65em}%
+  {\small\bfseries\color{BGGray}\BGBlockTitle}\par\smallskip\begingroup\small\color{BGGray}
+}{\par\endgroup\addvspace{0.6em}}
+
+\NewDocumentEnvironment{bgsource}{O{}}{%
+  \bgparsetitle{#1}{Source note}\par\Needspace{3\baselineskip}\begin{bgleftbar}{BGGray}\bgblockheading{BGGray}{\BGBlockTitle}\small
+}{\end{bgleftbar}\par\addvspace{0.35em}}
+
+% Exercises and problem pages are semantic rather than merely visual.
+\NewDocumentEnvironment{bgexercises}{O{}}{%
+  \begin{enumerate}[leftmargin=2.4em,itemsep=0.62em,topsep=0.45em,#1]
+}{\end{enumerate}}
+
+\newcounter{bgproblem}[chapter]
+\renewcommand{\thebgproblem}{\thechapter.P\arabic{bgproblem}}
+\NewDocumentEnvironment{bgproblem}{O{} m}{%
+  \refstepcounter{bgproblem}\bgparsetitle{#1}{Practice problem}\par\Needspace{4\baselineskip}%
+  \noindent{\bfseries\color{BGInk}Problem \thebgproblem. \BGBlockTitle}\hfill{\scriptsize\color{BGGray}ID: #2}\par\smallskip
+}{\par\addvspace{0.7em}}
+
+% Interactive checks: the website maps id/type/answer to a checker. PDF retains the learning content.
+\newcounter{bgcheck}[section]
+\renewcommand{\thebgcheck}{\thesection.C\arabic{bgcheck}}
+\NewDocumentEnvironment{bgcheck}{m m m O{Quick check}}{%
+  \refstepcounter{bgcheck}\def\BGCheckId{#1}\def\BGCheckType{#2}\def\BGCheckAnswer{#3}%
+  \par\Needspace{6\baselineskip}\addvspace{0.8em}
+  \noindent{\color{BGGold}\rule{\textwidth}{0.65pt}}\par\smallskip
+  {\bfseries\color{BGInk}#4 \thebgcheck}\hfill{\scriptsize\color{BGGray}Try before revealing}\par\smallskip
+  \ifbgshowcheckmetadata{\scriptsize\color{BGGray}Web ID: \texttt{#1}; input: \texttt{#2}; canonical answer: \texttt{#3}.\par\smallskip}\fi
+}{\par\smallskip\noindent{\color{BGLine}\rule{\textwidth}{0.3pt}}\par\addvspace{0.7em}}
+
+\NewDocumentEnvironment{bghint}{}{%
+  \par\begin{bgleftbar}{BGBlue}\bgblockheading{BGBlue}{Hint (hidden on the website until requested)}\small
+}{\end{bgleftbar}\par}
+
+\NewDocumentEnvironment{bgreveal}{}{%
+  \ifbgshowreveals\par\begin{bgleftbar}{BGGreen}\bgblockheading{BGGreen}{Answer and reasoning (revealed after an attempt)}\small\fi
+}{\ifbgshowreveals\end{bgleftbar}\par\fi}
+
+% Explicit web-page segmentation. Source parsers can split on these environments.
+\NewDocumentEnvironment{webpage}{m m m}{%
+  \clearpage\phantomsection\hypertarget{web:#1}{}%
+  \def\BGCurrentWebSlug{#1}\def\BGCurrentWebTitle{#2}\def\BGCurrentWebType{#3}%
+  \ifbgshowwebmarkers
+    \noindent{\scriptsize\color{BGGray}\textsc{Web #3} \quad \texttt{/#1}}\par\smallskip
+  \fi
+}{\par}
+
+\newcommand{\webnext}[2]{%
+  \par\addvspace{1.2em}\noindent{\color{BGLine}\rule{\textwidth}{0.35pt}}\par\smallskip
+  {\small\color{BGGray}\textbf{Continue in sequence:} \hyperlink{web:#1}{#2}}\par
+}
+
+\newcommand{\lessonobjective}[1]{%
+  \par\Needspace{4\baselineskip}\addvspace{0.6em}%
+  {\bfseries\color{BGInk}After this lesson, you will be able to}\par\smallskip
+  #1\par\addvspace{0.5em}%
+}
+\newcommand{\whyitworks}[1]{\par\smallskip\textbf{Why this works.} #1}
+\newcommand{\whattolearn}[1]{\par\smallskip\textbf{What to learn from this.} #1}
+\newcommand{\step}[2]{\textbf{Step #1:} #2\par}
+\newcommand{\workedreason}[2]{\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.20\textwidth}X@{}}\textbf{Move} & \textbf{Reason}\\\midrule #1 & #2\end{tabularx}}
+\newcommand{\difficulty}[1]{\hfill{\small\color{BGGray}Difficulty: #1/5}}
+\newcommand{\sourceadapted}[1]{\hfill{\scriptsize\color{BGGray}Problem type inspired by #1.}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\DNE}{\mathrm{DNE}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\answerline}{\vspace{1.2em}\hrulefill}
+\newcommand{\smallanswerline}{\rule{2.8cm}{0.4pt}}
