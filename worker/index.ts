@@ -50,12 +50,10 @@ function fixedResponse(request: Request, body: string, contentType: string) {
 }
 
 function sitemapXml() {
-  const entries = publicRoutes
-    .filter((route) => route !== "/search/")
-    .map((route) => {
+  const entries = publicRoutes.map((route) => {
       const priority = route === "/" ? "1.0" : route.includes("integral-of-sec-cubed") ? "0.9" : "0.7";
       const frequency = route === "/" ? "weekly" : "monthly";
-      return `<url><loc>https://bettergrades.net${route}</loc><lastmod>2026-07-11</lastmod><changefreq>${frequency}</changefreq><priority>${priority}</priority></url>`;
+      return `<url><loc>https://bettergrades.net${route}</loc><lastmod>2026-07-16</lastmod><changefreq>${frequency}</changefreq><priority>${priority}</priority></url>`;
     })
     .join("");
   return `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${entries}</urlset>`;
@@ -77,7 +75,7 @@ const worker = {
     if (url.pathname === "/robots.txt" || url.pathname === "/robots.txt/") {
       return fixedResponse(
         request,
-        "User-agent: *\nAllow: /\nDisallow: /search/\nSitemap: https://bettergrades.net/sitemap.xml\nHost: https://bettergrades.net\n",
+        "User-agent: *\nAllow: /\nSitemap: https://bettergrades.net/sitemap.xml\nHost: https://bettergrades.net\n",
         "text/plain; charset=utf-8",
       );
     }

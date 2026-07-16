@@ -38,6 +38,13 @@ test("Pages package contains the advanced Worker and static assets", async () =>
   assert.ok(appAssetName, "BetterGradesApp client asset is present");
   const appAsset = await readFile(new URL(`../dist/pages/assets/${appAssetName}`, import.meta.url), "utf8");
   assert.ok(Buffer.byteLength(appAsset) <= 500_000, `BetterGradesApp client asset exceeds 500 KB: ${Buffer.byteLength(appAsset)}`);
+
+  for (const file of ["favicon.ico", "favicon.svg", "icon-192.png", "icon-512.png", "apple-touch-icon.png", "site.webmanifest"]) {
+    await access(new URL(`../dist/pages/${file}`, import.meta.url));
+  }
+  const manifest = JSON.parse(await readFile(new URL("../dist/pages/site.webmanifest", import.meta.url), "utf8"));
+  assert.equal(manifest.name, "Better Grades");
+  assert.ok(manifest.icons.some((icon) => icon.src === "/icon-512.png" && icon.sizes === "512x512"));
 });
 
 test("limits tables and graph explanations remain bounded on narrow screens", async () => {

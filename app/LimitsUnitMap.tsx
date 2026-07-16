@@ -4,6 +4,7 @@ import { limitsUnitChapters, limitsUnitRoutes } from "../lib/calculus/limits-uni
 
 const routeLabels: Record<string, string> = {
   diagnostic: "Diagnostic",
+  "answer-key": "Answer key",
   exam: "Practice exam",
   extension: "Extension",
   hub: "Overview",
@@ -16,7 +17,8 @@ const routeLabels: Record<string, string> = {
 };
 
 export function LimitsUnitMap({ showSupporting = true, topicPage = false }: { showSupporting?: boolean; topicPage?: boolean }) {
-  const supporting = limitsUnitRoutes.filter((route) => !route.isCoreSequence);
+  const supporting = limitsUnitRoutes.filter((route) => !route.isCoreSequence && route.pageType !== "answer-key");
+  const answerKeys = limitsUnitRoutes.filter((route) => route.pageType === "answer-key");
   return (
     <section className={`limits-unit-map${topicPage ? " limits-topic-map" : ""}`} aria-label="Limits and Continuity textbook map">
       <header className="limits-map-intro">
@@ -24,11 +26,11 @@ export function LimitsUnitMap({ showSupporting = true, topicPage = false }: { sh
           <p className="eyebrow">Core textbook</p>
           <h2>The complete textbook path</h2>
         </div>
-        <p>Follow 47 core pages in order, from the first neighborhood idea to formal epsilon-delta reasoning. Each chapter mixes explanation, guided examples, short checks, and deliberate review.</p>
+        <p>Follow 47 core pages in order, from the first neighborhood idea to formal epsilon-delta reasoning. Each section mixes explanation, guided examples, short checks, and deliberate review.</p>
       </header>
       <div className="limits-map-stats" aria-label="Unit size">
         <span><b>47</b> core pages</span>
-        <span><b>7</b> connected chapters</span>
+        <span><b>7</b> connected sections</span>
         <span><b>38</b> interactive checks</span>
         <span><b>24</b> practice and reference extras</span>
       </div>
@@ -57,10 +59,14 @@ export function LimitsUnitMap({ showSupporting = true, topicPage = false }: { sh
       {showSupporting && <>
         <header className="limits-map-intro limits-map-support-heading">
           <div><p className="eyebrow">Practice around the path</p><h2>Reviews, quizzes, references, and exams</h2></div>
-          <p>Use these between chapters, after a confusing lesson, or as a mixed rehearsal before an exam. They support the sequence without interrupting it.</p>
+          <p>Use these between sections, after a confusing lesson, or as a mixed rehearsal before an exam. They support the sequence without interrupting it.</p>
         </header>
         <div className="limits-support-grid">{supporting.map((route) => <a href={route.path} key={route.path}><span>{routeLabels[route.pageType] ?? route.pageType.replaceAll("-", " ")}</span><b>{route.h1}</b><small>{route.description}</small></a>)}</div>
       </>}
+      <section className="limits-answer-key-map" aria-labelledby="limits-answer-key-heading">
+        <div><p className="eyebrow">Check your work</p><h2 id="limits-answer-key-heading">Exam answer keys</h2><p>Finish an honest attempt, then compare one problem at a time. Every supplied exam answer is published and source-traced.</p></div>
+        <div>{answerKeys.map((route) => <a href={route.path} key={route.path}><span>Complete key</span><b>{route.h1}</b><small>{route.description}</small><strong>Open answer key {"\u2192"}</strong></a>)}</div>
+      </section>
     </section>
   );
 }

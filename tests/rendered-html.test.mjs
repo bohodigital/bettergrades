@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
+import { limitsUnitRoutes } from "../lib/calculus/limits-unit-index.mjs";
 
 async function render(path = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
@@ -128,6 +129,28 @@ test("limits unit lesson, quiz, practice, and exam routes server-render in the e
   }
 });
 
+test("practice exams publish complete, prominent answer keys", async () => {
+  for (const [exam, count] of [["a", 18], ["b", 14]]) {
+    const examPath = `/subjects/math/calculus/limits-continuity/unit/limits/practice-exam-${exam}/`;
+    const keyPath = `${examPath}answer-key/`;
+    const examResponse = await render(examPath);
+    const examHtml = await examResponse.text();
+    assert.equal(examResponse.status, 200, examPath);
+    assert.match(examHtml, new RegExp(`href="${keyPath.replaceAll("/", "\\/")}"`), examPath);
+    assert.match(examHtml, /View the complete answer key/, examPath);
+
+    const keyResponse = await render(keyPath);
+    const keyHtml = await keyResponse.text();
+    assert.equal(keyResponse.status, 200, keyPath);
+    assert.match(keyHtml, new RegExp(`Practice Exam ${exam.toUpperCase()} Answer Key`), keyPath);
+    assert.equal((keyHtml.match(/data-answer-number=/g) ?? []).length, count, keyPath);
+    assert.match(keyHtml, /Source &amp; rights/, keyPath);
+    assert.match(keyHtml, /appendices\/answers\.tex/, keyPath);
+    assert.doesNotMatch(visibleText(keyHtml), /\\[A-Za-z]+|\\[()]/, keyPath);
+    assert.doesNotMatch(keyHtml, /class="katex-error"/, keyPath);
+  }
+});
+
 test("limits tables and graph explanations render accessible bounded structures", async () => {
   const response = await render("/subjects/math/calculus/limits-continuity/unit/limits/limit-at-a-hole/");
   assert.equal(response.status, 200);
@@ -144,16 +167,14 @@ test("limits tables and graph explanations render accessible bounded structures"
 });
 
 test("every Limits unit route renders without visible source commands or math errors", async () => {
-  const unitIndex = JSON.parse(
-    await readFile(new URL("../content/limits-continuity/unit-index.json", import.meta.url), "utf8"),
-  );
   const sourceCommand = /\\[A-Za-z]+|\\[()[\]{}]|\$[^$]{1,100}\$|textwidth|axis cs:/;
 
-  for (const route of unitIndex.routes) {
+  for (const route of limitsUnitRoutes) {
     const response = await render(route.path);
     assert.equal(response.status, 200, route.path);
     const html = await response.text();
     assert.doesNotMatch(visibleText(html), sourceCommand, route.path);
+    assert.doesNotMatch(visibleText(html), /\bChapter(?:s)?\b|\bchapter(?:s)?\b/, route.path);
     assert.doesNotMatch(html, /class="katex-error"/, route.path);
   }
 });
@@ -183,6 +204,11 @@ test("the Limits topic leads with the complete textbook map before extra article
   assert.match(html, /47(?:<!-- -->)? core pages/);
   assert.match(html, /Start here: orientation/);
   assert.match(html, /Formal limits/);
+  assert.match(visibleText(html), /7 connected sections/);
+  assert.match(html, /Exam answer keys/);
+  assert.match(html, /Practice Exam A Answer Key/);
+  assert.match(html, /Practice Exam B Answer Key/);
+  assert.doesNotMatch(visibleText(html), /\bChapter(?:s)?\b|\bchapter(?:s)?\b/);
   assert.match(html, /Deep dives and extra articles/);
   assert.ok(html.indexOf("The complete textbook path") < html.indexOf("Deep dives and extra articles"));
   assert.match(html, /Why is the limit of sin x over x equal to 1/);
@@ -193,7 +219,7 @@ test("robots and sitemap metadata routes are indexable and complete", async () =
   assert.equal(robots.status, 200);
   assert.match(robots.headers.get("content-type") ?? "", /^text\/plain\b/i);
   const robotsBody = await robots.text();
-  assert.match(robotsBody, /Disallow: \/search\//);
+  assert.doesNotMatch(robotsBody, /Disallow:/);
   assert.match(robotsBody, /Sitemap: https:\/\/bettergrades\.net\/sitemap\.xml/);
 
   const sitemap = await render("/sitemap.xml");
@@ -212,7 +238,38 @@ test("robots and sitemap metadata routes are indexable and complete", async () =
   assert.match(sitemapBody, /\/glossary\/math\//);
   assert.match(sitemapBody, /\/glossary\/math\/conventions\//);
   assert.match(sitemapBody, /\/subjects\/math\/calculus\/limits-continuity\/unit\/limits\/what-a-limit-means\//);
-  assert.doesNotMatch(sitemapBody, /\/search\//);
+  assert.match(sitemapBody, /\/subjects\/math\/calculus\/limits-continuity\/unit\/limits\/practice-exam-a\/answer-key\//);
+  assert.match(sitemapBody, /\/subjects\/math\/calculus\/limits-continuity\/unit\/limits\/practice-exam-b\/answer-key\//);
+  assert.match(sitemapBody, /\/search\//);
+});
+
+test("all registered pages are indexable and inherit search, canonical, and analytics tags", async () => {
+  const routingSource = await readFile(new URL("../lib/registry/routing.ts", import.meta.url), "utf8");
+  assert.doesNotMatch(routingSource, /indexable:\s*false/);
+  for (const path of ["/", "/search/", "/subjects/math/calculus/limits-continuity/unit/limits/practice-exam-a/answer-key/"]) {
+    const response = await render(path);
+    const html = await response.text();
+    assert.equal(response.status, 200, path);
+    assert.doesNotMatch(html, /noindex/i, path);
+    assert.match(html, /<meta[^>]+name="robots"[^>]+content="index, follow"/i, path);
+    assert.match(html, new RegExp(`<link[^>]+rel="canonical"[^>]+href="https://bettergrades\\.net${path.replaceAll("/", "\\/")}"`, "i"), path);
+    assert.match(html, /analytics\.bohodigitalservices\.com\/script\.js/, path);
+    assert.match(html, /data-website-id="7810f828-f3f0-4296-95e3-e01e8c37f234"/, path);
+    assert.match(html, /<title>[^<]+<\/title>/, path);
+    assert.match(html, /<meta[^>]+name="description"[^>]+content="[^"]+"/i, path);
+  }
+});
+
+test("the greater-or-equal brand mark supplies Google search identity signals", async () => {
+  const response = await render("/");
+  const html = await response.text();
+  assert.equal(response.status, 200);
+  assert.match(html, /<link[^>]+rel="icon"[^>]+href="https:\/\/bettergrades\.net\/favicon\.ico"/i);
+  assert.match(html, /<link[^>]+rel="manifest"[^>]+href="https:\/\/bettergrades\.net\/site\.webmanifest"/i);
+  assert.match(html, /<link[^>]+rel="apple-touch-icon"[^>]+href="https:\/\/bettergrades\.net\/apple-touch-icon\.png"/i);
+  assert.match(html, /"@type":"Organization"/);
+  assert.match(html, /"logo":\{"@type":"ImageObject","url":"https:\/\/bettergrades\.net\/icon-512\.png"/);
+  assert.match(html, /"@type":"WebSite"/);
 });
 
 test("math glossary and conventions render as first-class indexed pages", async () => {

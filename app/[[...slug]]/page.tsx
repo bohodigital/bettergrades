@@ -16,8 +16,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug?: st
   return {
     title: path === "/" ? { absolute: meta.title } : meta.title,
     description: meta.description,
-    alternates: { canonical: meta.indexable ? path : undefined },
-    robots: meta.indexable ? undefined : { index: false, follow: true },
+    alternates: { canonical: path },
+    robots: { index: true, follow: true },
   };
 }
 
