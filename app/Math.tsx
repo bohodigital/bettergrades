@@ -85,7 +85,7 @@ export function Math({
   className?: string;
   label?: string;
 }) {
-  const normalizedTex = tex.replace(/\\eps\b/g, String.raw`\varepsilon`).replace(/\\DNE\b/g, String.raw`\mathrm{DNE}`);
+  const normalizedTex = tex.replace(/\\eps(?=[^A-Za-z]|$)/g, String.raw`\varepsilon`).replace(/\\DNE(?=[^A-Za-z]|$)/g, String.raw`\mathrm{DNE}`);
   const key = `${display}:${normalizedTex}`;
   let html = cache.get(key);
   if (!html) {

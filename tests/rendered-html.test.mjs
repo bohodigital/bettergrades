@@ -121,7 +121,7 @@ test("limits unit lesson, quiz, practice, and exam routes server-render in the e
     assert.match(html, /Limits and Continuity/, path);
     assert.match(html, /Course progress/, path);
     assert.match(html, /Source &amp; rights/, path);
-    assert.doesNotMatch(html, /\\begin\{|&lt;script|javascript:/, path);
+    assert.doesNotMatch(visibleText(html), /\\begin\{|&lt;script|javascript:/, path);
     assert.doesNotMatch(html, /\\lessonobjective\b/, path);
     assert.doesNotMatch(html, /class="katex-error"/, path);
     assert.match(html, /aria-label="Vocabulary on this page"/, path);
@@ -135,8 +135,10 @@ test("limits tables and graph explanations render accessible bounded structures"
   assert.match(html, /class="limits-table-wrap"/);
   assert.match(html, /<table>/);
   assert.match(html, /<caption class="sr-only">Reference table<\/caption>/);
-  assert.match(html, /Graph reading guide/);
+  assert.match(html, /Read the graph/);
   assert.match(html, /nearby outputs approach/);
+  assert.match(html, /<canvas[^>]+class="limits-graph-canvas"[^>]+role="img"/);
+  assert.match(html, /data-graph-id="removable-hole"/);
   assert.doesNotMatch(html, /class="limits-graph-spec"|Graph specification source|Accessible graph specification details/);
   assert.doesNotMatch(visibleText(html), /\\(?:begin|end|addplot|draw|node|caption|centering)\b|textwidth|axis cs:/);
 });
@@ -145,7 +147,7 @@ test("every Limits unit route renders without visible source commands or math er
   const unitIndex = JSON.parse(
     await readFile(new URL("../content/limits-continuity/unit-index.json", import.meta.url), "utf8"),
   );
-  const sourceCommand = /\\(?:begin|end|addplot|draw|node|caption|centering|texorpdfstring|cref|chapter|step|item)\b|textwidth|axis cs:/;
+  const sourceCommand = /\\[A-Za-z]+|\\[()[\]{}]|\$[^$]{1,100}\$|textwidth|axis cs:/;
 
   for (const route of unitIndex.routes) {
     const response = await render(route.path);
@@ -153,6 +155,23 @@ test("every Limits unit route renders without visible source commands or math er
     const html = await response.text();
     assert.doesNotMatch(visibleText(html), sourceCommand, route.path);
     assert.doesNotMatch(html, /class="katex-error"/, route.path);
+  }
+});
+
+test("epsilon-delta routes render semantic titles, epsilon notation, and piecewise functions without raw TeX", async () => {
+  for (const path of [
+    "/subjects/math/calculus/limits-continuity/unit/limits/epsilon-delta-introduction/",
+    "/subjects/math/calculus/limits-continuity/unit/limits/epsilon-delta-linear/",
+    "/subjects/math/calculus/limits-continuity/unit/limits/epsilon-delta-quadratic/",
+    "/subjects/math/calculus/limits-continuity/unit/limits/epsilon-delta-graph/",
+    "/subjects/math/calculus/limits-continuity/unit/limits/disprove-limit-epsilon-delta/",
+  ]) {
+    const response = await render(path);
+    assert.equal(response.status, 200, path);
+    const html = await response.text();
+    assert.match(html, /class="katex/, path);
+    assert.doesNotMatch(visibleText(html), /\\[A-Za-z]+|\\[()]/, path);
+    assert.doesNotMatch(html, /class="katex-error"/, path);
   }
 });
 

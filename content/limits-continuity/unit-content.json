@@ -3495,7 +3495,8 @@
         },
         {
           "type": "graph-specification",
-          "title": "Graph reading guide",
+          "title": "Read the graph",
+          "graphId": "secant-tangent",
           "text": "Secant lines through \\(P=(1,48)\\) approach the tangent line as the second point moves toward \\(P\\)."
         },
         {
@@ -3631,24 +3632,24 @@
                   "environment": "array",
                   "rows": [
                     [
-                      "x",
-                      "x+2"
+                      "\\(x\\)",
+                      "\\(x+2\\)"
                     ],
                     [
-                      "2.9",
-                      "4.9"
+                      "\\(2.9\\)",
+                      "\\(4.9\\)"
                     ],
                     [
-                      "2.99",
-                      "4.99"
+                      "\\(2.99\\)",
+                      "\\(4.99\\)"
                     ],
                     [
-                      "3.01",
-                      "5.01"
+                      "\\(3.01\\)",
+                      "\\(5.01\\)"
                     ],
                     [
-                      "3.1",
-                      "5.1"
+                      "\\(3.1\\)",
+                      "\\(5.1\\)"
                     ]
                   ]
                 },
@@ -3749,7 +3750,8 @@
         },
         {
           "type": "graph-specification",
-          "title": "Graph reading guide",
+          "title": "Read the graph",
+          "graphId": "removable-hole",
           "text": "The function is undefined at \\(x=2\\), but nearby outputs approach \\(4\\)."
         },
         {
@@ -3785,32 +3787,32 @@
                   "environment": "array",
                   "rows": [
                     [
-                      "x",
-                      "\\dfrac{x^3-1}{x-1}"
+                      "\\(x\\)",
+                      "\\(\\dfrac{x^3-1}{x-1}\\)"
                     ],
                     [
-                      "0.9",
-                      "2.71"
+                      "\\(0.9\\)",
+                      "\\(2.71\\)"
                     ],
                     [
-                      "0.99",
-                      "2.9701"
+                      "\\(0.99\\)",
+                      "\\(2.9701\\)"
                     ],
                     [
-                      "0.999",
-                      "2.997001"
+                      "\\(0.999\\)",
+                      "\\(2.997001\\)"
                     ],
                     [
-                      "1.001",
-                      "3.003001"
+                      "\\(1.001\\)",
+                      "\\(3.003001\\)"
                     ],
                     [
-                      "1.01",
-                      "3.0301"
+                      "\\(1.01\\)",
+                      "\\(3.0301\\)"
                     ],
                     [
-                      "1.1",
-                      "3.31"
+                      "\\(1.1\\)",
+                      "\\(3.31\\)"
                     ]
                   ]
                 },
@@ -3933,7 +3935,7 @@
             },
             {
               "type": "math",
-              "tex": "g(x)=\n  \\left\\{\\matrix{\n    x^2+1,&x\\ne2,\\\\\n    9,&x=2.\n  }\\right."
+              "tex": "g(x)=\n  \\begin{cases}\n    x^2+1,&x\\ne2,\\\\\n    9,&x=2.\n  \\end{cases}"
             },
             {
               "type": "paragraph",
@@ -3972,7 +3974,8 @@
         },
         {
           "type": "graph-specification",
-          "title": "Graph reading guide",
+          "title": "Read the graph",
+          "graphId": "limit-versus-value",
           "text": "The nearby parabola determines the limit; the filled point determines the function value."
         },
         {
@@ -4125,7 +4128,7 @@
             },
             {
               "type": "math",
-              "tex": "f(x)=\n  \\left\\{\\matrix{\n    x+1,&x<2,\\\\\n    5-x,&x\\ge2.\n  }\\right."
+              "tex": "f(x)=\n  \\begin{cases}\n    x+1,&x<2,\\\\\n    5-x,&x\\ge2.\n  \\end{cases}"
             },
             {
               "type": "paragraph",
@@ -4176,7 +4179,7 @@
             },
             {
               "type": "math",
-              "tex": "g(x)=\n  \\left\\{\\matrix{\n    x+1,&x<2,\\\\\n    6-x,&x\\ge2.\n  }\\right."
+              "tex": "g(x)=\n  \\begin{cases}\n    x+1,&x<2,\\\\\n    6-x,&x\\ge2.\n  \\end{cases}"
             },
             {
               "type": "paragraph",
@@ -4219,7 +4222,8 @@
         },
         {
           "type": "graph-specification",
-          "title": "Graph reading guide",
+          "title": "Read the graph",
+          "graphId": "jump-discontinuity",
           "text": "Unequal one-sided limits produce a jump and no two-sided limit."
         },
         {
@@ -4315,7 +4319,8 @@
         },
         {
           "type": "graph-specification",
-          "title": "Graph reading guide",
+          "title": "Read the graph",
+          "graphId": "rapid-oscillation",
           "text": "The function \\(\\sin(1/x)\\) oscillates increasingly rapidly near zero and has no limit there."
         },
         {
@@ -4839,15 +4844,7 @@
           "children": [
             {
               "type": "paragraph",
-              "text": "Let \\(f(x)="
-            },
-            {
-              "type": "math",
-              "tex": "\\left\\{\\matrix{2x+1,&x<1,\\\\x+3,&x\\ge1.}\\right."
-            },
-            {
-              "type": "paragraph",
-              "text": "\\) Find both one-sided limits and the two-sided limit at \\(1\\)."
+              "text": "Let \\(f(x)=\\begin{cases}2x+1,&x<1,\\\\x+3,&x\\ge1.\\end{cases}\\) Find both one-sided limits and the two-sided limit at \\(1\\)."
             }
           ]
         },
@@ -4856,15 +4853,7 @@
           "children": [
             {
               "type": "paragraph",
-              "text": "Let \\(g(x)="
-            },
-            {
-              "type": "math",
-              "tex": "\\left\\{\\matrix{x^2,&x\\le2,\\\\3x-1,&x>2.}\\right."
-            },
-            {
-              "type": "paragraph",
-              "text": "\\) Find both one-sided limits at \\(2\\)."
+              "text": "Let \\(g(x)=\\begin{cases}x^2,&x\\le2,\\\\3x-1,&x>2.\\end{cases}\\) Find both one-sided limits at \\(2\\)."
             }
           ]
         },
@@ -4873,15 +4862,7 @@
           "children": [
             {
               "type": "paragraph",
-              "text": "Let \\(h(x)="
-            },
-            {
-              "type": "math",
-              "tex": "\\left\\{\\matrix{4,&x<0,\\\\4+x,&x\\ge0.}\\right."
-            },
-            {
-              "type": "paragraph",
-              "text": "\\) Does the limit at \\(0\\) exist?"
+              "text": "Let \\(h(x)=\\begin{cases}4,&x<0,\\\\4+x,&x\\ge0.\\end{cases}\\) Does the limit at \\(0\\) exist?"
             }
           ]
         },
@@ -4890,15 +4871,7 @@
           "children": [
             {
               "type": "paragraph",
-              "text": "Let \\(k(x)="
-            },
-            {
-              "type": "math",
-              "tex": "\\left\\{\\matrix{-1,&x<3,\\\\2,&x\\ge3.}\\right."
-            },
-            {
-              "type": "paragraph",
-              "text": "\\) Explain why the limit at \\(3\\) does not exist."
+              "text": "Let \\(k(x)=\\begin{cases}-1,&x<3,\\\\2,&x\\ge3.\\end{cases}\\) Explain why the limit at \\(3\\) does not exist."
             }
           ]
         },
@@ -5011,7 +4984,7 @@
             },
             {
               "type": "math",
-              "tex": "f(x)=\\left\\{\\matrix{\nx^2-1,&x<2,\\\\\n4,&x=2,\\\\\n2x-1,&x>2.\n}\\right."
+              "tex": "f(x)=\\begin{cases}\nx^2-1,&x<2,\\\\\n4,&x=2,\\\\\n2x-1,&x>2.\n\\end{cases}"
             },
             {
               "type": "paragraph",
@@ -6229,7 +6202,7 @@
         },
         {
           "type": "math",
-          "tex": "|u|=\n  \\left\\{\\matrix{\n    u,&u\\ge0,\\\\\n    -u,&u<0.\n  }\\right."
+          "tex": "|u|=\n  \\begin{cases}\n    u,&u\\ge0,\\\\\n    -u,&u<0.\n  \\end{cases}"
         },
         {
           "type": "paragraph",
@@ -7053,15 +7026,7 @@
           "children": [
             {
               "type": "paragraph",
-              "text": "Let \\(f(x)="
-            },
-            {
-              "type": "math",
-              "tex": "\\left\\{\\matrix{x+2,&x<1,\\\\x^2+1,&x\\ge1.}\\right."
-            },
-            {
-              "type": "paragraph",
-              "text": "\\) Find the limit at \\(1\\)."
+              "text": "Let \\(f(x)=\\begin{cases}x+2,&x<1,\\\\x^2+1,&x\\ge1.\\end{cases}\\) Find the limit at \\(1\\)."
             }
           ]
         },
@@ -7070,15 +7035,7 @@
           "children": [
             {
               "type": "paragraph",
-              "text": "Let \\(g(x)="
-            },
-            {
-              "type": "math",
-              "tex": "\\left\\{\\matrix{2x,&x<2,\\\\x+3,&x\\ge2.}\\right."
-            },
-            {
-              "type": "paragraph",
-              "text": "\\) Find both one-sided limits at \\(2\\)."
+              "text": "Let \\(g(x)=\\begin{cases}2x,&x<2,\\\\x+3,&x\\ge2.\\end{cases}\\) Find both one-sided limits at \\(2\\)."
             }
           ]
         },
@@ -7388,7 +7345,8 @@
         },
         {
           "type": "graph-specification",
-          "title": "Graph reading guide",
+          "title": "Read the graph",
+          "graphId": "squeeze-bounds",
           "text": "The oscillating function is trapped between \\(-x^2\\) and \\(x^2\\), both of which approach zero."
         },
         {
@@ -7588,7 +7546,8 @@
         },
         {
           "type": "graph-specification",
-          "title": "Graph reading guide",
+          "title": "Read the graph",
+          "graphId": "unit-circle-squeeze",
           "text": "For a unit circle and \\(0<x<\\pi/2\\), the inner triangle lies inside the sector, which lies inside the outer tangent triangle."
         },
         {
@@ -7602,7 +7561,8 @@
         },
         {
           "type": "graph-specification",
-          "title": "Graph reading guide",
+          "title": "Read the graph",
+          "graphId": "sine-over-x",
           "text": "The graph of \\(\\sin x/x\\) has a removable hole at \\((0,1)\\) and approaches \\(1\\) from both sides."
         },
         {
@@ -8711,20 +8671,20 @@
               "environment": "array",
               "rows": [
                 [
-                  "x",
-                  "1/x"
+                  "\\(x\\)",
+                  "\\(1/x\\)"
                 ],
                 [
-                  "0.1",
-                  "10"
+                  "\\(0.1\\)",
+                  "\\(10\\)"
                 ],
                 [
-                  "0.01",
-                  "100"
+                  "\\(0.01\\)",
+                  "\\(100\\)"
                 ],
                 [
-                  "0.001",
-                  "1000"
+                  "\\(0.001\\)",
+                  "\\(1000\\)"
                 ]
               ]
             },
@@ -8745,20 +8705,20 @@
               "environment": "array",
               "rows": [
                 [
-                  "x",
-                  "1/x"
+                  "\\(x\\)",
+                  "\\(1/x\\)"
                 ],
                 [
-                  "-0.1",
-                  "-10"
+                  "\\(-0.1\\)",
+                  "\\(-10\\)"
                 ],
                 [
-                  "-0.01",
-                  "-100"
+                  "\\(-0.01\\)",
+                  "\\(-100\\)"
                 ],
                 [
-                  "-0.001",
-                  "-1000"
+                  "\\(-0.001\\)",
+                  "\\(-1000\\)"
                 ]
               ]
             },
@@ -8778,7 +8738,8 @@
         },
         {
           "type": "graph-specification",
-          "title": "Graph reading guide",
+          "title": "Read the graph",
+          "graphId": "vertical-asymptotes",
           "text": "An odd power changes sign across the vertical asymptote; an even power remains positive on both sides."
         }
       ]
@@ -9307,7 +9268,8 @@
         },
         {
           "type": "graph-specification",
-          "title": "Graph reading guide",
+          "title": "Read the graph",
+          "graphId": "horizontal-asymptote",
           "text": "The rational function approaches its horizontal asymptote \\(y=3\\) at both ends."
         }
       ]
@@ -10349,7 +10311,7 @@
             },
             {
               "type": "math",
-              "tex": "g(x)=\n  \\left\\{\\matrix{\n    x^2+1,&x\\ne2,\\\\\n    9,&x=2.\n  }\\right."
+              "tex": "g(x)=\n  \\begin{cases}\n    x^2+1,&x\\ne2,\\\\\n    9,&x=2.\n  \\end{cases}"
             },
             {
               "type": "paragraph",
@@ -10404,7 +10366,7 @@
             },
             {
               "type": "math",
-              "tex": "h(x)=\n  \\left\\{\\matrix{\n    x+1,&x<2,\\\\\n    6-x,&x\\ge2.\n  }\\right."
+              "tex": "h(x)=\n  \\begin{cases}\n    x+1,&x<2,\\\\\n    6-x,&x\\ge2.\n  \\end{cases}"
             },
             {
               "type": "paragraph",
@@ -10748,7 +10710,8 @@
         },
         {
           "type": "graph-specification",
-          "title": "Graph reading guide",
+          "title": "Read the graph",
+          "graphId": "discontinuity-gallery",
           "text": "The four principal discontinuity types encountered in first-semester calculus."
         },
         {
@@ -10843,7 +10806,7 @@
             },
             {
               "type": "math",
-              "tex": "f(x)=\n  \\left\\{\\matrix{\n    \\dfrac{x^2-4}{x-2},&x\\ne2,\\\\\n    c,&x=2.\n  }\\right."
+              "tex": "f(x)=\n  \\begin{cases}\n    \\dfrac{x^2-4}{x-2},&x\\ne2,\\\\\n    c,&x=2.\n  \\end{cases}"
             },
             {
               "type": "paragraph",
@@ -10902,7 +10865,7 @@
             },
             {
               "type": "math",
-              "tex": "g(x)=\n  \\left\\{\\matrix{\n    \\dfrac{x^3-27}{x-3},&x\\ne3,\\\\\n    c,&x=3\n  }\\right."
+              "tex": "g(x)=\n  \\begin{cases}\n    \\dfrac{x^3-27}{x-3},&x\\ne3,\\\\\n    c,&x=3\n  \\end{cases}"
             },
             {
               "type": "paragraph",
@@ -11001,7 +10964,7 @@
             },
             {
               "type": "math",
-              "tex": "f(x)=\n  \\left\\{\\matrix{\n    kx+1,&x<2,\\\\\n    x+3,&x\\ge2\n  }\\right."
+              "tex": "f(x)=\n  \\begin{cases}\n    kx+1,&x<2,\\\\\n    x+3,&x\\ge2\n  \\end{cases}"
             },
             {
               "type": "paragraph",
@@ -11064,7 +11027,7 @@
             },
             {
               "type": "math",
-              "tex": "g(x)=\n  \\left\\{\\matrix{\n    ax+1,&x<2,\\\\\n    x^2-a,&x\\ge2\n  }\\right."
+              "tex": "g(x)=\n  \\begin{cases}\n    ax+1,&x<2,\\\\\n    x^2-a,&x\\ge2\n  \\end{cases}"
             },
             {
               "type": "paragraph",
@@ -11135,7 +11098,7 @@
             },
             {
               "type": "math",
-              "tex": "h(x)=\n  \\left\\{\\matrix{\n    kx+2,&x<1,\\\\\n    x^2+k,&x\\ge1\n  }\\right."
+              "tex": "h(x)=\n  \\begin{cases}\n    kx+2,&x<1,\\\\\n    x^2+k,&x\\ge1\n  \\end{cases}"
             },
             {
               "type": "paragraph",
@@ -11215,7 +11178,7 @@
             },
             {
               "type": "math",
-              "tex": "f(x)=\n  \\left\\{\\matrix{\n    ax+b,&x<1,\\\\\n    x^2+1,&1\\le x<3,\\\\\n    2x+a,&x\\ge3\n  }\\right."
+              "tex": "f(x)=\n  \\begin{cases}\n    ax+b,&x<1,\\\\\n    x^2+1,&1\\le x<3,\\\\\n    2x+a,&x\\ge3\n  \\end{cases}"
             },
             {
               "type": "paragraph",
@@ -11417,7 +11380,8 @@
         },
         {
           "type": "graph-specification",
-          "title": "Graph reading guide",
+          "title": "Read the graph",
+          "graphId": "ivt-root",
           "text": "Continuity and opposite endpoint signs guarantee at least one root between \\(0\\) and \\(1\\)."
         },
         {
@@ -11493,34 +11457,34 @@
           "environment": "array",
           "rows": [
             [
-              "\\text{interval}",
-              "\\text{midpoint}",
-              "\\text{sign at midpoint}"
+              "\\(\\text{interval}\\)",
+              "\\(\\text{midpoint}\\)",
+              "\\(\\text{sign at midpoint}\\)"
             ],
             [
-              "(0,1)",
-              "0.5",
-              "-"
+              "\\((0,1)\\)",
+              "\\(0.5\\)",
+              "\\(-\\)"
             ],
             [
-              "(0.5,1)",
-              "0.75",
-              "+"
+              "\\((0.5,1)\\)",
+              "\\(0.75\\)",
+              "\\(+\\)"
             ],
             [
-              "(0.5,0.75)",
-              "0.625",
-              "-"
+              "\\((0.5,0.75)\\)",
+              "\\(0.625\\)",
+              "\\(-\\)"
             ],
             [
-              "(0.625,0.75)",
-              "0.6875",
-              "+"
+              "\\((0.625,0.75)\\)",
+              "\\(0.6875\\)",
+              "\\(+\\)"
             ],
             [
-              "(0.625,0.6875)",
-              "0.65625",
-              "-"
+              "\\((0.625,0.6875)\\)",
+              "\\(0.65625\\)",
+              "\\(-\\)"
             ]
           ]
         },
@@ -12011,15 +11975,7 @@
           "children": [
             {
               "type": "paragraph",
-              "text": "Find \\(k\\) so \\("
-            },
-            {
-              "type": "math",
-              "tex": "\\left\\{\\matrix{kx+1,&x<2,\\\\x+3,&x\\ge2}\\right."
-            },
-            {
-              "type": "paragraph",
-              "text": "\\) is continuous at \\(2\\)."
+              "text": "Find \\(k\\) so \\(\\begin{cases}kx+1,&x<2,\\\\x+3,&x\\ge2\\end{cases}\\) is continuous at \\(2\\)."
             }
           ]
         },
@@ -12028,15 +11984,7 @@
           "children": [
             {
               "type": "paragraph",
-              "text": "Find \\(a\\) so \\("
-            },
-            {
-              "type": "math",
-              "tex": "\\left\\{\\matrix{2x+a,&x<1,\\\\x^2+3,&x\\ge1}\\right."
-            },
-            {
-              "type": "paragraph",
-              "text": "\\) is continuous at \\(1\\)."
+              "text": "Find \\(a\\) so \\(\\begin{cases}2x+a,&x<1,\\\\x^2+3,&x\\ge1\\end{cases}\\) is continuous at \\(1\\)."
             }
           ]
         },
@@ -12045,15 +11993,7 @@
           "children": [
             {
               "type": "paragraph",
-              "text": "Find \\(b\\) so \\("
-            },
-            {
-              "type": "math",
-              "tex": "\\left\\{\\matrix{x^2+b,&x\\le-1,\\\\3x+1,&x>-1}\\right."
-            },
-            {
-              "type": "paragraph",
-              "text": "\\) is continuous at \\(-1\\)."
+              "text": "Find \\(b\\) so \\(\\begin{cases}x^2+b,&x\\le-1,\\\\3x+1,&x>-1\\end{cases}\\) is continuous at \\(-1\\)."
             }
           ]
         },
@@ -12062,15 +12002,7 @@
           "children": [
             {
               "type": "paragraph",
-              "text": "Find \\(m\\) so \\("
-            },
-            {
-              "type": "math",
-              "tex": "\\left\\{\\matrix{mx-4,&x<3,\\\\2x+m,&x\\ge3}\\right."
-            },
-            {
-              "type": "paragraph",
-              "text": "\\) is continuous at \\(3\\)."
+              "text": "Find \\(m\\) so \\(\\begin{cases}mx-4,&x<3,\\\\2x+m,&x\\ge3\\end{cases}\\) is continuous at \\(3\\)."
             }
           ]
         },
@@ -12079,15 +12011,7 @@
           "children": [
             {
               "type": "paragraph",
-              "text": "Determine whether any \\(k\\) makes \\("
-            },
-            {
-              "type": "math",
-              "tex": "\\left\\{\\matrix{kx+5,&x<0,\\\\kx+2,&x\\ge0}\\right."
-            },
-            {
-              "type": "paragraph",
-              "text": "\\) continuous at \\(0\\)."
+              "text": "Determine whether any \\(k\\) makes \\(\\begin{cases}kx+5,&x<0,\\\\kx+2,&x\\ge0\\end{cases}\\) continuous at \\(0\\)."
             }
           ]
         },
@@ -12096,15 +12020,7 @@
           "children": [
             {
               "type": "paragraph",
-              "text": "Find \\(a,b\\) so \\("
-            },
-            {
-              "type": "math",
-              "tex": "\\left\\{\\matrix{ax+b,&x<1,\\\\x^2+1,&1\\le x<3,\\\\2x+a,&x\\ge3}\\right."
-            },
-            {
-              "type": "paragraph",
-              "text": "\\) is continuous at both joins."
+              "text": "Find \\(a,b\\) so \\(\\begin{cases}ax+b,&x<1,\\\\x^2+1,&1\\le x<3,\\\\2x+a,&x\\ge3\\end{cases}\\) is continuous at both joins."
             }
           ]
         },
@@ -12759,7 +12675,8 @@
         },
         {
           "type": "graph-specification",
-          "title": "Graph reading guide",
+          "title": "Read the graph",
+          "graphId": "epsilon-delta-window",
           "text": "An \\(\\eps\\)-band around \\(L\\) and a corresponding \\(\\delta\\)-window around \\(a\\). A valid \\(\\delta\\) keeps the nearby graph inside the band."
         },
         {
@@ -12807,7 +12724,7 @@
             },
             {
               "type": "math",
-              "tex": "f(x)=\n  \\left\\{\\matrix{\n    0,&x<0,\\\\\n    1,&x\\ge0.\n  }\\right."
+              "tex": "f(x)=\n  \\begin{cases}\n    0,&x<0,\\\\\n    1,&x\\ge0.\n  \\end{cases}"
             },
             {
               "type": "paragraph",
@@ -13889,15 +13806,7 @@
           "children": [
             {
               "type": "paragraph",
-              "text": "Find \\(c\\) so \\("
-            },
-            {
-              "type": "math",
-              "tex": "\\left\\{\\matrix{(x^2-9)/(x-3),&x\\ne3,\\\\c,&x=3}\\right."
-            },
-            {
-              "type": "paragraph",
-              "text": "\\) is continuous."
+              "text": "Find \\(c\\) so \\(\\begin{cases}(x^2-9)/(x-3),&x\\ne3,\\\\c,&x=3\\end{cases}\\) is continuous."
             }
           ]
         },
@@ -13906,15 +13815,7 @@
           "children": [
             {
               "type": "paragraph",
-              "text": "Find \\(k\\) so \\("
-            },
-            {
-              "type": "math",
-              "tex": "\\left\\{\\matrix{kx+2,&x<1,\\\\x^2+4,&x\\ge1}\\right."
-            },
-            {
-              "type": "paragraph",
-              "text": "\\) is continuous at \\(1\\)."
+              "text": "Find \\(k\\) so \\(\\begin{cases}kx+2,&x<1,\\\\x^2+4,&x\\ge1\\end{cases}\\) is continuous at \\(1\\)."
             }
           ]
         },
@@ -13923,15 +13824,7 @@
           "children": [
             {
               "type": "paragraph",
-              "text": "Determine whether any \\(a\\) makes \\("
-            },
-            {
-              "type": "math",
-              "tex": "\\left\\{\\matrix{ax+1,&x<0,\\\\ax+4,&x\\ge0}\\right."
-            },
-            {
-              "type": "paragraph",
-              "text": "\\) continuous at \\(0\\)."
+              "text": "Determine whether any \\(a\\) makes \\(\\begin{cases}ax+1,&x<0,\\\\ax+4,&x\\ge0\\end{cases}\\) continuous at \\(0\\)."
             }
           ]
         },
@@ -14180,15 +14073,7 @@
           "children": [
             {
               "type": "paragraph",
-              "text": "Find \\(k\\) so \\("
-            },
-            {
-              "type": "math",
-              "tex": "\\left\\{\\matrix{kx+1,&x<2,\\\\x^2-1,&x\\ge2}\\right."
-            },
-            {
-              "type": "paragraph",
-              "text": "\\) is continuous at \\(2\\)."
+              "text": "Find \\(k\\) so \\(\\begin{cases}kx+1,&x<2,\\\\x^2-1,&x\\ge2\\end{cases}\\) is continuous at \\(2\\)."
             }
           ]
         },
@@ -14240,7 +14125,7 @@
             },
             {
               "type": "math",
-              "tex": "f(x)=\\left\\{\\matrix{\nx^2+1,&x<1,\\\\\n5,&x=1,\\\\\n3x-1,&x>1.\n}\\right."
+              "tex": "f(x)=\\begin{cases}\nx^2+1,&x<1,\\\\\n5,&x=1,\\\\\n3x-1,&x>1.\n\\end{cases}"
             },
             {
               "type": "paragraph",
@@ -14338,7 +14223,7 @@
             },
             {
               "type": "math",
-              "tex": "g(x)=\\left\\{\\matrix{\nax+b,&x<1,\\\\\nx^2+2,&1\\le x<2,\\\\\n3x+a,&x\\ge2\n}\\right."
+              "tex": "g(x)=\\begin{cases}\nax+b,&x<1,\\\\\nx^2+2,&1\\le x<2,\\\\\n3x+a,&x\\ge2\n\\end{cases}"
             },
             {
               "type": "paragraph",

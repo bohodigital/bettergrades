@@ -5,6 +5,7 @@
 import { FormEvent, ReactNode, useState } from "react";
 import { getLimitsUnitChapter, limitsUnitRoutes } from "../lib/calculus/limits-unit-index.mjs";
 import type { LimitsUnitNode, LimitsUnitPublicCheck, LimitsUnitPublicPage } from "../lib/calculus/limits-unit.mjs";
+import { LimitsGraphCanvas } from "./LimitsGraphCanvas";
 import { LimitsUnitMap } from "./LimitsUnitMap";
 import { Math } from "./Math";
 
@@ -28,7 +29,7 @@ function cleanText(value: string) {
 }
 
 function normalizeWebTex(value: string) {
-  return value.replace(/\\eps\b/g, String.raw`\varepsilon`).replace(/\\DNE\b/g, String.raw`\mathrm{DNE}`);
+  return value.replace(/\\eps(?=[^A-Za-z]|$)/g, String.raw`\varepsilon`).replace(/\\DNE(?=[^A-Za-z]|$)/g, String.raw`\mathrm{DNE}`);
 }
 
 const supportedDisplayEnvironments = new Set(["aligned", "array", "cases", "gathered"]);
@@ -38,8 +39,12 @@ function safeDisplayTex(tex: string) {
   tex = tex.replace(/\\begin\{align\*?\}/g, "\\begin{aligned}").replace(/\\end\{align\*?\}/g, "\\end{aligned}");
   const environment = tex.match(/\\begin\{([^}]+)\}/)?.[1];
   if (environment && !supportedDisplayEnvironments.has(environment)) return null;
-  return tex.replace(/\\begin\{(?:aligned|array|cases|gathered)\}/g, "").replace(/\\end\{(?:aligned|array|cases|gathered)\}/g, "")
-    .replace(/^\s*\{[^}]*\}/, "").replace(/\\hline/g, "").replace(/&/g, String.raw`\quad `).replace(/\\\\/g, String.raw`\quad `).trim();
+  return tex.replace(/\\hline/g, "").trim();
+}
+
+function graphAriaText(value: string) {
+  return cleanText(value).replace(/\\\((.*?)\\\)/gs, "$1").replace(/\\(?:eps|varepsilon)/g, "epsilon")
+    .replace(/\\delta/g, "delta").replace(/\\(sin|cos|tan|lim)/g, "$1").replace(/[{}\\]/g, "").replace(/\s+/g, " ").trim();
 }
 
 function RichText({ value }: { value: string }) {
@@ -75,7 +80,10 @@ function SemanticNode({ node, keyPrefix, checks, renderedCheckIds }: { node: Lim
     return tex ? <Math tex={tex} display className="limits-equation" /> : <p className="limits-render-note">This structured mathematical display is available in the printable edition.</p>;
   }
   if (node.type === "table") return <div className="limits-table-wrap"><table><caption className="sr-only">Reference table</caption><tbody>{(node.rows ?? []).map((row, rowIndex) => <tr key={rowIndex}>{row.map((cell, cellIndex) => rowIndex === 0 ? <th scope="col" key={cellIndex}><RichText value={cell} /></th> : <td key={cellIndex}><RichText value={cell} /></td>)}</tr>)}</tbody></table></div>;
-  if (node.type === "graph-specification") return <figure className="limits-graph"><div aria-hidden="true">↗︎</div><figcaption><strong>{node.title ? cleanText(node.title) : "Graph reading guide"}</strong>{node.text && <p><RichText value={node.text} /></p>}{node.children?.length ? <div className="limits-graph-exposition"><NodeChildren nodes={node.children} keyPrefix={keyPrefix} checks={checks} renderedCheckIds={renderedCheckIds} /></div> : null}</figcaption></figure>;
+  if (node.type === "graph-specification") return <figure className={`limits-graph${node.graphId ? " limits-graph-visual" : " limits-graph-note"}`}>
+    {node.graphId ? <LimitsGraphCanvas graphId={node.graphId} label={graphAriaText(node.text ?? "Calculus graph for this lesson")} /> : null}
+    <figcaption><strong>{node.title ? <RichText value={node.title} /> : "Graph reading guide"}</strong>{node.text && <p><RichText value={node.text} /></p>}{node.children?.length ? <div className="limits-graph-exposition"><NodeChildren nodes={node.children} keyPrefix={keyPrefix} checks={checks} renderedCheckIds={renderedCheckIds} /></div> : null}</figcaption>
+  </figure>;
   if (node.type === "quick-check") {
     const check = node.checkId ? checks.get(node.checkId) : undefined;
     if (!check) return <section className="limits-node limits-node-quick-check"><header><span>Quick check</span></header><div><NodeChildren nodes={node.children ?? []} keyPrefix={keyPrefix} checks={checks} renderedCheckIds={renderedCheckIds} /></div></section>;
@@ -85,7 +93,7 @@ function SemanticNode({ node, keyPrefix, checks, renderedCheckIds }: { node: Lim
   }
   if (node.type === "hint" || node.type === "solution") return <details className={`limits-disclosure limits-${node.type}`}><summary>{node.type === "hint" ? "Show hint" : "Show worked solution"}</summary><div><NodeChildren nodes={node.children ?? []} keyPrefix={keyPrefix} checks={checks} renderedCheckIds={renderedCheckIds} /></div></details>;
   const label = labels[node.type] ?? node.type.replaceAll("-", " ");
-  return <section className={`limits-node limits-node-${node.type}`}><header><span>{label}</span>{node.title && <h3>{cleanText(node.title)}</h3>}</header><div><NodeChildren nodes={node.children ?? []} keyPrefix={keyPrefix} checks={checks} renderedCheckIds={renderedCheckIds} /></div></section>;
+  return <section className={`limits-node limits-node-${node.type}`}><header><span>{label}</span>{node.title && <h3><RichText value={node.title} /></h3>}</header><div><NodeChildren nodes={node.children ?? []} keyPrefix={keyPrefix} checks={checks} renderedCheckIds={renderedCheckIds} /></div></section>;
 }
 
 function InteractiveCheck({ check }: { check: LimitsUnitPublicCheck }) {
