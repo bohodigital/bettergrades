@@ -6,6 +6,7 @@ import { createContext, FormEvent, lazy, ReactNode, Suspense, useContext, useEff
 import type { Question } from "../lib/activities";
 import { algebraCheckerHref } from "../lib/algebra-practice.mjs";
 import { isLimitsUnitPath, limitsUnitPracticeRoutes } from "../lib/calculus/limits-unit-index.mjs";
+import type { LimitsUnitPublicPage } from "../lib/calculus/limits-unit.mjs";
 import { courseLibraries, libraryCounts } from "../lib/course-library";
 import { problems, searchProblems, type Problem } from "../lib/content";
 import type { MathGlossaryTerm } from "../lib/glossary/math/registry.mjs";
@@ -409,7 +410,7 @@ function PolicyPage({ path }: { path: string }) { const data = policyContent[pat
 
 function NotFound() { return <Shell><section className="not-found section-pad"><span>4≥4</span><Eyebrow>That page did not make the grade</Eyebrow><h1>Wrong turn. Useful recovery.</h1><p>The page may have moved, or the expression may need a different phrasing. Search the answer bank or return to calculus.</p><SearchBox large /><div className="button-row"><Link href="/" className="button button-ghost">Back home</Link><Link href="/subjects/math/calculus/" className="text-link">Browse calculus →</Link></div></section></Shell>; }
 
-function BetterGradesRoute({ path, glossaryData }: { path: string; glossaryData?: GlossaryData }) {
+function BetterGradesRoute({ path, glossaryData, limitsUnitPage }: { path: string; glossaryData?: GlossaryData; limitsUnitPage?: LimitsUnitPublicPage }) {
   if (path === "/") return <HomePage />;
   if (path === "/subjects/") return <SubjectsPage />;
   if (path === "/subjects/math/") return <MathSubjectPage />;
@@ -417,7 +418,10 @@ function BetterGradesRoute({ path, glossaryData }: { path: string; glossaryData?
   if (courseMatch && courseLibraries.some((course) => course.slug === courseMatch[1])) return <Shell><CourseHubContent domainSlug={courseMatch[1]} /></Shell>;
   const topicMatch = path.match(/^\/subjects\/math\/([^/]+)\/([^/]+)\/$/);
   if (topicMatch) return <Shell><TopicContent domainSlug={topicMatch[1]} topicSlug={topicMatch[2]} /></Shell>;
-  if (isLimitsUnitPath(path)) return <Shell><Suspense fallback={<section className="section-pad">Loading lesson…</section>}><LimitsUnitPageContent path={path} /></Suspense></Shell>;
+  if (isLimitsUnitPath(path)) {
+    if (!limitsUnitPage) return <NotFound />;
+    return <Shell><Suspense fallback={<section className="section-pad">Loading lesson…</section>}><LimitsUnitPageContent page={limitsUnitPage} /></Suspense></Shell>;
+  }
   const articleMatch = path.match(/^\/subjects\/math\/([^/]+)\/([^/]+)\/([^/]+)\/$/);
   if (articleMatch) {
     const article = getArticle(articleMatch[1], articleMatch[2], articleMatch[3]);
@@ -444,6 +448,6 @@ function BetterGradesRoute({ path, glossaryData }: { path: string; glossaryData?
   return <NotFound />;
 }
 
-export function BetterGradesApp({ path, glossaryData }: { path: string; glossaryData?: GlossaryData }) {
-  return <PathContext.Provider value={path}><BetterGradesRoute path={path} glossaryData={glossaryData} /></PathContext.Provider>;
+export function BetterGradesApp({ path, glossaryData, limitsUnitPage }: { path: string; glossaryData?: GlossaryData; limitsUnitPage?: LimitsUnitPublicPage }) {
+  return <PathContext.Provider value={path}><BetterGradesRoute path={path} glossaryData={glossaryData} limitsUnitPage={limitsUnitPage} /></PathContext.Provider>;
 }

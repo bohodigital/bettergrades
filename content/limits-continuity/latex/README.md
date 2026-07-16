@@ -4,15 +4,15 @@ This revision keeps the expanded tutorial content while changing the delivery mo
 
 Key files:
 
-- `main.tex`: printable build
+- `main.tex`: printable build entry point
 - `bettergrades-webtext.sty`: custom semantic environments
 - `chapters/`: tutorial content with explicit `webpage` boundaries
 - `checks/`: reusable in-flow knowledge checks
 - `quizzes/`: chapter concept quizzes
-- `web/manifest.json`: canonical route, SEO and navigation data
-- `web/checks.json`: answer-checker definitions
-- `web/problem-object-schema.json`: future public problem-page schema
-- `web/IMPLEMENTATION.md`: delivery requirements
+- `../unit.json`: canonical imported route, SEO, navigation, provenance, and typed-node payload
+- `../unit-index.json`: compact public route/search/sitemap index
+- `../unit-checks-public.json`: public check metadata without canonical answers or worked feedback
+- `../../../tools/import-limits-unit.mjs`: deterministic importer and payload generator
 
 Build:
 

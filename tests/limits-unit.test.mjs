@@ -13,6 +13,14 @@ import {
 import { getLimitsUnitPage } from "../lib/calculus/limits-unit.mjs";
 import { isLimitsUnitPath, limitsUnitRoutes, limitsUnitSearchRecords } from "../lib/calculus/limits-unit-index.mjs";
 
+function flatten(nodes, result = []) {
+  for (const node of nodes) {
+    result.push(node);
+    if (node.children) flatten(node.children, result);
+  }
+  return result;
+}
+
 test("the v3 payload has one complete, collision-free course graph", () => {
   assert.equal(unitPayload.source.archiveSha256, "24e5cf5ca36d9756dc5fb9b799be1dc1c480891ef6046039440cd9b5e8b926f1");
   assert.equal(unitPayload.routes.length, 71);
@@ -47,6 +55,10 @@ test("all imported pages compile to typed semantic nodes without raw HTML", () =
     "exam-note", "summary", "graph-specification",
   ]) assert.ok(nodeTypes.has(required), `missing semantic node type ${required}`);
 });
+test("unsupported LaTeX environments fail instead of being silently dropped", () => {
+  assert.throws(() => parseLimitsUnitPage(String.raw`\\begin{unknownsemantic}content\\end{unknownsemantic}`), /Unsupported LaTeX environment: unknownsemantic/);
+});
+
 
 test("every supplied check id is unique, routed, and attempt-gated", () => {
   const ids = unitPayload.checks.map((check) => check.id);
@@ -54,6 +66,7 @@ test("every supplied check id is unique, routed, and attempt-gated", () => {
   const routeSlugs = new Set(unitPayload.routes.map((route) => route.sourceSlug));
   for (const check of unitPayload.checks) {
     assert.ok(routeSlugs.has(check.routeSlug), check.id);
+    assert.equal(unitPayload.routes.filter((route) => route.checkIds.includes(check.id)).length, 1, check.id);
     assert.equal(check.attemptRequiredBeforeReveal, true, check.id);
     assert.ok(check.hintLatex && check.workedFeedbackLatex, check.id);
   }
@@ -95,6 +108,28 @@ test("route and search adapters expose every page exactly once", () => {
   assert.ok(lesson?.checks.some((check) => check.id === "limit-continuous-01"));
   assert.ok(lesson?.page.nodes.some((node) => node.type === "definition"));
   assert.equal(isLimitsUnitPath(`${LIMITS_UNIT_PREFIX}not-a-real-page/`), false);
+});
+
+test("every route resolves its checks in source order without placeholder loss", () => {
+  for (const route of unitPayload.routes) {
+    const page = unitPayload.pages.find((candidate) => candidate.sourceFile === route.sourceFile);
+    const nodes = flatten(page.nodes);
+    const sourceCheckIds = nodes.filter((node) => node.type === "quick-check" && node.checkId).map((node) => node.checkId);
+    assert.deepEqual(sourceCheckIds, route.checkIds, route.sourceSlug);
+    for (const node of nodes.filter((candidate) => candidate.type === "quick-check")) {
+      if (node.checkId) assert.ok(route.checkIds.includes(node.checkId), `${route.sourceSlug}: ${node.checkId}`);
+      else assert.ok(node.children?.length, `${route.sourceSlug}: empty quick check`);
+    }
+  }
+});
+
+test("structured math, tables, and graph specifications remain typed and renderable", () => {
+  const nodes = flatten(unitPayload.pages.flatMap((page) => parseLimitsUnitPage(page.source)));
+  assert.ok(nodes.some((node) => node.type === "math" && /\\begin\{aligned\}/.test(node.tex ?? "")));
+  assert.ok(nodes.some((node) => node.type === "math" && /\\left\\{\\matrix\{/.test(node.tex ?? "")));
+  assert.ok(nodes.some((node) => node.type === "table" && node.rows?.length));
+  assert.ok(nodes.some((node) => node.type === "graph-specification" && node.text?.trim()));
+  assert.ok(!nodes.some((node) => node.type === "math" && /\\begin\{(?:align\*?|tabular|longtable|tabularx|groupplot)\}/.test(node.tex ?? "")));
 });
 
 test("the global limits index has no answer or body payload", async () => {

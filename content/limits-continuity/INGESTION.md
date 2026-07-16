@@ -90,11 +90,14 @@ Before content changes, all required baseline gates passed:
 
 The safe modular source, semantic style, chapter files, appendices, reusable checks, quizzes, editorial entry point, and single-file entry point are retained in `content/limits-continuity/latex/`. Static source-integrity tests pass and reject PDF, ZIP, or compiled output in that tree.
 
-Runtime compilation is currently blocked because this Pi has none of `latexmk`, `pdflatex`, `lualatex`, `xelatex`, or `tectonic` installed. Local1 policy and this work order prohibit the worker from installing host packages. The required human action is to install a TeX distribution that provides `latexmk` plus the packages listed in `bettergrades-webtext.sty`, then run:
+Runtime compilation completed with the verified, isolated Tectonic 0.16.9 ARM64 executable at `/srv/local1/runtime/bettergrades/tooling/tectonic-0.16.9/tectonic`. The cache and output remained outside the repository:
 
-```bash
-cd /srv/local1/worktrees/bettergrades-limits-unit-1/content/limits-continuity/latex
-latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=/srv/local1/runtime/bettergrades/handoff/WO-2026-07-15-BETTERGRADES-LIMITS-UNIT-INGEST-001/latex-build main.tex
-```
+- Cache: `/srv/local1/runtime/bettergrades/tooling/tectonic-cache`
+- Output: `/srv/local1/runtime/bettergrades/print-validation/WO-2026-07-15-BETTERGRADES-LIMITS-UNIT-INGEST-001`
+- PDF: `main.pdf`, 175 pages
+- PDF SHA-256: `cc7918f269dff413813e4a98a327003c784253bfe05520755280d1fdef812511` (this rerun; the prior verified compile artifact was `f501b192789158027958f04a000c60d65faaccb69cb6fff3f1b5a1f1844eca08`)
+- Result: 0 fatal errors, 0 unresolved references, 8 Underfull/Overfull box warnings
 
-No private preview, pull request, merge, production deployment, DNS change, or production-domain claim was made after this mandatory validation gate became unavailable.
+Representative rendered pages (including lessons, checks, quizzes, exams, answers, graphs, and licensing) were visually inspected from the isolated PDF; no clipping, overlap, missing glyphs, or broken math was found. The PDF and all build output remain runtime validation artifacts and are not committed.
+
+No private preview, pull request, merge, production deployment, DNS change, or production-domain claim was made. The remaining publication boundary is explicit owner approval for the external Git push and subsequent preview workflow.

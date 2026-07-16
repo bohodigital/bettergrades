@@ -304,3 +304,23 @@ test("Worker responses include baseline security headers", async () => {
   assert.equal(response.headers.get("referrer-policy"), "strict-origin-when-cross-origin");
   assert.equal(response.headers.get("permissions-policy"), "camera=(), microphone=(), geolocation=()");
 });
+test("limits check endpoint bounds input and gates deterministic reveal", async () => {
+  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
+  workerUrl.searchParams.set("api", `${process.pid}-${Date.now()}`);
+  const { default: worker } = await import(workerUrl.href);
+  const request = (body) => worker.fetch(new Request("http://localhost/api/limits-check", {
+    method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body),
+  }), { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } }, { waitUntil() {}, passThroughOnException() {} });
+  assert.equal((await request({ id: "not-a-check", answer: "1" })).status, 404);
+  assert.equal((await request({ id: "limit-continuous-01", action: "reveal", answer: "" })).status, 400);
+  const incorrect = await request({ id: "limit-continuous-01", answer: "9" });
+  assert.equal(incorrect.status, 200);
+  assert.equal((await incorrect.json()).status, "incorrect");
+  const correct = await request({ id: "limit-continuous-01", answer: "10" });
+  assert.equal(correct.status, 200);
+  assert.equal((await correct.json()).status, "correct");
+  const reveal = await request({ id: "limit-continuous-01", action: "reveal", answer: "10" });
+  assert.equal(reveal.status, 200);
+  assert.equal((await reveal.json()).revealAllowed, true);
+  assert.equal((await request({ id: "limit-continuous-01", answer: "x".repeat(2001) })).status, 413);
+});

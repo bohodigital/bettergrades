@@ -3,14 +3,15 @@
 /* eslint-disable @next/next/no-html-link-for-pages -- canonical course navigation uses document navigation */
 
 import { FormEvent, ReactNode, useState } from "react";
-import { getLimitsUnitPage, limitsUnitCoreRoutes, limitsUnitPayload, limitsUnitRoutes, type LimitsUnitCheck, type LimitsUnitNode, type LimitsUnitPage } from "../lib/calculus/limits-unit.mjs";
+import { limitsUnitCoreRoutes, limitsUnitRoutes } from "../lib/calculus/limits-unit-index.mjs";
+import type { LimitsUnitNode, LimitsUnitPublicCheck, LimitsUnitPublicPage } from "../lib/calculus/limits-unit.mjs";
 import { Math } from "./Math";
 
 const labels: Record<string, string> = {
   concept: "Concept", definition: "Definition", method: "Method", theorem: "Theorem",
   "worked-example": "Worked example", "guided-walkthrough": "Guided walkthrough",
   exercise: "Exercise", problem: "Problem", "quick-check": "Quick check",
-  "common-mistake": "Common mistake", "exam-note": "Exam note", summary: "Summary", source: "Source note",
+  "common-mistake": "Common mistake", "exam-note": "Exam note", summary: "Summary", source: "Source note", table: "Reference table",
 };
 
 function cleanText(value: string) {
@@ -25,6 +26,7 @@ function cleanText(value: string) {
 const supportedDisplayEnvironments = new Set(["aligned", "array", "cases", "gathered"]);
 
 function safeDisplayTex(tex: string) {
+  tex = tex.replace(/\\begin\{align\*?\}/g, "\\begin{aligned}").replace(/\\end\{align\*?\}/g, "\\end{aligned}");
   const environment = tex.match(/\\begin\{([^}]+)\}/)?.[1];
   if (environment && !supportedDisplayEnvironments.has(environment)) return null;
   return tex.replace(/\\begin\{(?:aligned|array|cases|gathered)\}/g, "").replace(/\\end\{(?:aligned|array|cases|gathered)\}/g, "")
@@ -44,11 +46,11 @@ function RichText({ value }: { value: string }) {
   return <>{pieces}</>;
 }
 
-function NodeChildren({ nodes, keyPrefix, checks, renderedCheckIds }: { nodes: LimitsUnitNode[]; keyPrefix: string; checks: Map<string, LimitsUnitCheck>; renderedCheckIds: Set<string> }) {
+function NodeChildren({ nodes, keyPrefix, checks, renderedCheckIds }: { nodes: LimitsUnitNode[]; keyPrefix: string; checks: Map<string, LimitsUnitPublicCheck>; renderedCheckIds: Set<string> }) {
   return <>{nodes.map((node, index) => <SemanticNode node={node} key={`${keyPrefix}-${index}`} keyPrefix={`${keyPrefix}-${index}`} checks={checks} renderedCheckIds={renderedCheckIds} />)}</>;
 }
 
-function SemanticNode({ node, keyPrefix, checks, renderedCheckIds }: { node: LimitsUnitNode; keyPrefix: string; checks: Map<string, LimitsUnitCheck>; renderedCheckIds: Set<string> }) {
+function SemanticNode({ node, keyPrefix, checks, renderedCheckIds }: { node: LimitsUnitNode; keyPrefix: string; checks: Map<string, LimitsUnitPublicCheck>; renderedCheckIds: Set<string> }) {
   if (node.type === "paragraph") {
     const text = cleanText(node.text ?? "");
     if (!text) return null;
@@ -61,12 +63,14 @@ function SemanticNode({ node, keyPrefix, checks, renderedCheckIds }: { node: Lim
   }
   if (node.type === "math") {
     const tex = safeDisplayTex(node.tex ?? "");
-    return tex ? <Math tex={tex} display className="limits-equation" /> : <p className="limits-render-note">A structured table or source diagram is available in the printable edition.</p>;
+    return tex ? <Math tex={tex} display className="limits-equation" /> : <p className="limits-render-note">This structured mathematical display is available in the printable edition.</p>;
   }
-  if (node.type === "graph-specification") return <figure className="limits-graph"><div aria-hidden="true">↗︎</div><figcaption><strong>{node.title && node.title !== "htbp" ? cleanText(node.title) : "Graph specification"}</strong><span>This source-defined graph is preserved for print; use the surrounding values and explanation as its accessible web description.</span>{node.text && <p>{cleanText(node.text)}</p>}</figcaption>{node.children?.length ? <details className="limits-disclosure"><summary>Accessible graph specification</summary><NodeChildren nodes={node.children} keyPrefix={keyPrefix} checks={checks} renderedCheckIds={renderedCheckIds} /></details> : null}</figure>;
+  if (node.type === "table") return <div className="limits-table-wrap"><table><caption className="sr-only">Reference table</caption><tbody>{(node.rows ?? []).map((row, rowIndex) => <tr key={rowIndex}>{row.map((cell, cellIndex) => rowIndex === 0 ? <th scope="col" key={cellIndex}><RichText value={cell} /></th> : <td key={cellIndex}><RichText value={cell} /></td>)}</tr>)}</tbody></table></div>;
+  if (node.type === "graph-specification") return <figure className="limits-graph"><div aria-hidden="true">↗︎</div><figcaption><strong>{node.title && node.title !== "htbp" ? cleanText(node.title) : "Graph specification"}</strong><span>Source-defined graph specification.</span>{node.text && <pre className="limits-graph-spec" aria-label="Graph specification source">{cleanText(node.text)}</pre>}</figcaption>{node.children?.length ? <details className="limits-disclosure"><summary>Accessible graph specification details</summary><NodeChildren nodes={node.children} keyPrefix={keyPrefix} checks={checks} renderedCheckIds={renderedCheckIds} /></details> : null}</figure>;
   if (node.type === "quick-check") {
     const check = node.checkId ? checks.get(node.checkId) : undefined;
-    if (!check || renderedCheckIds.has(check.id)) return null;
+    if (!check) return <section className="limits-node limits-node-quick-check"><header><span>Quick check</span></header><div><NodeChildren nodes={node.children ?? []} keyPrefix={keyPrefix} checks={checks} renderedCheckIds={renderedCheckIds} /></div></section>;
+    if (renderedCheckIds.has(check.id)) return null;
     renderedCheckIds.add(check.id);
     return <InteractiveCheck check={check} />;
   }
@@ -75,7 +79,7 @@ function SemanticNode({ node, keyPrefix, checks, renderedCheckIds }: { node: Lim
   return <section className={`limits-node limits-node-${node.type}`}><header><span>{label}</span>{node.title && <h3>{cleanText(node.title)}</h3>}</header><div><NodeChildren nodes={node.children ?? []} keyPrefix={keyPrefix} checks={checks} renderedCheckIds={renderedCheckIds} /></div></section>;
 }
 
-function InteractiveCheck({ check }: { check: LimitsUnitCheck }) {
+function InteractiveCheck({ check }: { check: LimitsUnitPublicCheck }) {
   const [answer, setAnswer] = useState("");
   const [attempted, setAttempted] = useState(false);
   const [status, setStatus] = useState<"idle" | "correct" | "incorrect" | "invalid">("idle");
@@ -112,16 +116,14 @@ function UnitMap() {
   </section>;
 }
 
-function CourseNavigation({ page }: { page: LimitsUnitPage }) {
+function CourseNavigation({ page }: { page: LimitsUnitPublicPage }) {
   return <nav className="limits-sequence" aria-label="Limits and Continuity sequence">
     {page.previous ? <a href={page.previous.path}><small>← Previous · {page.previous.coreSequenceIndex} of 47</small><b>{page.previous.h1}</b></a> : <span />}
     {page.next ? <a href={page.next.path}><small>Next · {page.next.coreSequenceIndex} of 47 →</small><b>{page.next.h1}</b></a> : page.returnRoute && page.returnRoute.path !== page.route.path ? <a href={page.returnRoute.path}><small>Return to sequence →</small><b>{page.returnRoute.h1}</b></a> : <a href={limitsUnitRoutes[0].path}><small>Unit overview →</small><b>Limits and Continuity</b></a>}
   </nav>;
 }
 
-export function LimitsUnitPageContent({ path }: { path: string }) {
-  const page = getLimitsUnitPage(path);
-  if (!page) return null;
+export function LimitsUnitPageContent({ page }: { page: LimitsUnitPublicPage }) {
   const { route } = page;
   const checks = new Map(page.checks.map((check) => [check.id, check]));
   const renderedCheckIds = new Set<string>();
@@ -137,7 +139,7 @@ export function LimitsUnitPageContent({ path }: { path: string }) {
       {route.pageType === "hub" && <UnitMap />}
       <NodeChildren nodes={page.page.nodes} keyPrefix={route.sourceSlug} checks={checks} renderedCheckIds={renderedCheckIds} />
       {page.related.length > 0 && <section className="limits-related"><p className="eyebrow">Keep working</p><h2>Related resources</h2>{page.related.map((related) => <a href={related.path} key={related.path}><span>{labels[related.pageType] ?? related.pageType}</span><b>{related.h1}</b></a>)}</section>}
-      <section className="limits-rights"><p className="eyebrow">Source &amp; rights</p><h2>Original instruction with traceable references.</h2><p>{limitsUnitPayload.source.provenance.note}</p><p>BetterGrades-original material remains separate from public-domain references. This page contains no Active Calculus adaptation and no source textbook PDF.</p></section>
+      <section className="limits-rights"><p className="eyebrow">Source &amp; rights</p><h2>Original instruction with traceable references.</h2><p>{page.provenanceNote}</p><p>The verified handoff declares original composition and requires owner provenance review. BetterGrades-original material remains separate from public-domain references; no source textbook PDF is published here.</p></section>
     </div></div>
     <CourseNavigation page={page} />
     <script type="application/ld+json">{JSON.stringify(schema)}</script>

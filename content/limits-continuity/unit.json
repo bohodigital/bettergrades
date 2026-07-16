@@ -260,9 +260,7 @@
         "Article",
         "LearningResource"
       ],
-      "checkIds": [
-        "limit-hole-01"
-      ],
+      "checkIds": [],
       "relatedResources": [
         "calculus/limits/meaning-concept-quiz",
         "calculus/limits/meaning-practice",
@@ -300,7 +298,9 @@
         "Article",
         "LearningResource"
       ],
-      "checkIds": [],
+      "checkIds": [
+        "limit-hole-01"
+      ],
       "relatedResources": [
         "calculus/limits/meaning-concept-quiz",
         "calculus/limits/meaning-practice",
@@ -1078,7 +1078,9 @@
         "Article",
         "LearningResource"
       ],
-      "checkIds": [],
+      "checkIds": [
+        "trig-flow-01"
+      ],
       "relatedResources": [
         "calculus/limits/trig-limits-concept-quiz",
         "calculus/limits/trig-limits-practice",
@@ -1116,9 +1118,7 @@
         "Article",
         "LearningResource"
       ],
-      "checkIds": [
-        "trig-flow-01"
-      ],
+      "checkIds": [],
       "relatedResources": [
         "calculus/limits/trig-limits-concept-quiz",
         "calculus/limits/trig-limits-practice",
@@ -3292,8 +3292,85 @@
           "text": "The unit can be used as a two-week intensive review or a four-week first course unit."
         },
         {
-          "type": "math",
-          "tex": "\\begin{tabularx}{\\textwidth}{@{}p{0.13\\textwidth}X X@{}}\n\\toprule\n\\textbf{Session} & \\textbf{Main work} & \\textbf{Minimum practice}\\\\\n\\midrule\n1 & Average change, instantaneous change, basic limit language & Chapter 1 warm-ups 1--10\\\\\n2 & Tables, graphs, function value versus limit & Chapter 1 core 11--24\\\\\n3 & One-sided limits and failure modes & Chapter 1 exam practice 25--40\\\\\n4 & Direct substitution and limit laws & Chapter 2 warm-ups 1--16\\\\\n5 & Factoring and cancellation & Chapter 2 core 17--34\\\\\n6 & Radicals, complex fractions, absolute values & Chapter 2 core 35--54\\\\\n7 & Squeeze Theorem and trig limits & Chapter 3 exercises 1--38\\\\\n8 & Infinite limits and vertical asymptotes & Chapter 4 exercises 1--26\\\\\n9 & Limits at infinity and radicals & Chapter 4 exercises 27--50\\\\\n10 & Continuity and discontinuity & Chapter 5 exercises 1--26\\\\\n11 & Parameter problems and IVT & Chapter 5 exercises 27--52\\\\\n12 & Formal definition or optional honors track & Chapter 6 selected exercises\\\\\n13 & Cumulative review & Chapter 7 review set\\\\\n14 & Practice exam and correction & Practice Exam A or B\\\\\n\\bottomrule\n\\end{tabularx}"
+          "type": "table",
+          "environment": "tabularx",
+          "rows": [
+            [
+              "{@{}p{0.13\\textwidth}X X@{}}\n\n\\textbf{Session}",
+              "\\textbf{Main work}",
+              "\\textbf{Minimum practice}"
+            ],
+            [
+              "1",
+              "Average change, instantaneous change, basic limit language",
+              "Chapter 1 warm-ups 1--10"
+            ],
+            [
+              "2",
+              "Tables, graphs, function value versus limit",
+              "Chapter 1 core 11--24"
+            ],
+            [
+              "3",
+              "One-sided limits and failure modes",
+              "Chapter 1 exam practice 25--40"
+            ],
+            [
+              "4",
+              "Direct substitution and limit laws",
+              "Chapter 2 warm-ups 1--16"
+            ],
+            [
+              "5",
+              "Factoring and cancellation",
+              "Chapter 2 core 17--34"
+            ],
+            [
+              "6",
+              "Radicals, complex fractions, absolute values",
+              "Chapter 2 core 35--54"
+            ],
+            [
+              "7",
+              "Squeeze Theorem and trig limits",
+              "Chapter 3 exercises 1--38"
+            ],
+            [
+              "8",
+              "Infinite limits and vertical asymptotes",
+              "Chapter 4 exercises 1--26"
+            ],
+            [
+              "9",
+              "Limits at infinity and radicals",
+              "Chapter 4 exercises 27--50"
+            ],
+            [
+              "10",
+              "Continuity and discontinuity",
+              "Chapter 5 exercises 1--26"
+            ],
+            [
+              "11",
+              "Parameter problems and IVT",
+              "Chapter 5 exercises 27--52"
+            ],
+            [
+              "12",
+              "Formal definition or optional honors track",
+              "Chapter 6 selected exercises"
+            ],
+            [
+              "13",
+              "Cumulative review",
+              "Chapter 7 review set"
+            ],
+            [
+              "14",
+              "Practice exam and correction",
+              "Practice Exam A or B"
+            ]
+          ]
         }
       ]
     },
@@ -3529,8 +3606,62 @@
           "text": "\\chapter*{Notation You Will Meet}"
         },
         {
-          "type": "math",
-          "tex": "\\begin{longtable}{@{}p{0.26\\textwidth}p{0.66\\textwidth}@{}}\n\\toprule\n\\textbf{Notation} & \\textbf{Meaning}\\\\\n\\midrule\n\\endhead\n\\(f(a)\\) & The actual output of \\(f\\) at the input \\(a\\).\\\\\n\\(x\\to a\\) & The input \\(x\\) approaches \\(a\\); it need not equal \\(a\\).\\\\\n\\(x\\to a^-\\) & The input approaches \\(a\\) using values less than \\(a\\).\\\\\n\\(x\\to a^+\\) & The input approaches \\(a\\) using values greater than \\(a\\).\\\\\n\\(\\displaystyle\\lim_{x\\to a}f(x)=L\\) & Nearby outputs approach \\(L\\) as nearby inputs approach \\(a\\).\\\\\n\\(\\DNE\\) & The requested limit does not exist as one real number.\\\\\n\\(+\\infty,-\\infty\\) & Unbounded positive or negative behavior. These symbols are not real numbers.\\\\\n\\([a,b]\\) & The closed interval including both endpoints.\\\\\n\\((a,b)\\) & The open interval excluding both endpoints.\\\\\n\\(\\forall\\) & ``For every.'' Used in the formal definition of a limit.\\\\\n\\(\\exists\\) & ``There exists.''\\\\\n\\(\\eps,\\delta\\) & Output tolerance and input tolerance in the formal definition.\\\\\n\\bottomrule\n\\end{longtable}"
+          "type": "table",
+          "environment": "longtable",
+          "rows": [
+            [
+              "{@{}p{0.26\\textwidth}p{0.66\\textwidth}@{}}\n\n\\textbf{Notation}",
+              "\\textbf{Meaning}"
+            ],
+            [
+              "\\(f(a)\\)",
+              "The actual output of \\(f\\) at the input \\(a\\)."
+            ],
+            [
+              "\\(x\\to a\\)",
+              "The input \\(x\\) approaches \\(a\\); it need not equal \\(a\\)."
+            ],
+            [
+              "\\(x\\to a^-\\)",
+              "The input approaches \\(a\\) using values less than \\(a\\)."
+            ],
+            [
+              "\\(x\\to a^+\\)",
+              "The input approaches \\(a\\) using values greater than \\(a\\)."
+            ],
+            [
+              "\\(\\displaystyle\\lim_{x\\to a}f(x)=L\\)",
+              "Nearby outputs approach \\(L\\) as nearby inputs approach \\(a\\)."
+            ],
+            [
+              "\\(\\DNE\\)",
+              "The requested limit does not exist as one real number."
+            ],
+            [
+              "\\(+\\infty,-\\infty\\)",
+              "Unbounded positive or negative behavior. These symbols are not real numbers."
+            ],
+            [
+              "\\([a,b]\\)",
+              "The closed interval including both endpoints."
+            ],
+            [
+              "\\((a,b)\\)",
+              "The open interval excluding both endpoints."
+            ],
+            [
+              "\\(\\forall\\)",
+              "``For every.'' Used in the formal definition of a limit."
+            ],
+            [
+              "\\(\\exists\\)",
+              "``There exists.''"
+            ],
+            [
+              "\\(\\eps,\\delta\\)",
+              "Output tolerance and input tolerance in the formal definition."
+            ]
+          ]
         },
         {
           "type": "source",
@@ -3763,15 +3894,49 @@
         },
         {
           "type": "math",
-          "tex": "\\begin{align*}\n\\frac{s(1+h)-s(1)}{h}\n&=\\frac{64(1+h)-16(1+h)^2-48}{h}\\\\\n&=\\frac{64+64h-16(1+2h+h^2)-48}{h}\\\\\n&=\\frac{64+64h-16-32h-16h^2-48}{h}\\\\\n&=\\frac{32h-16h^2}{h}\\\\\n&=\\frac{h(32-16h)}{h}\\\\\n&=32-16h,\\qquad h\\ne0.\n\\end{align*}"
+          "tex": "\\begin{aligned}\n\\frac{s(1+h)-s(1)}{h}\n&=\\frac{64(1+h)-16(1+h)^2-48}{h}\\\\\n&=\\frac{64+64h-16(1+2h+h^2)-48}{h}\\\\\n&=\\frac{64+64h-16-32h-16h^2-48}{h}\\\\\n&=\\frac{32h-16h^2}{h}\\\\\n&=\\frac{h(32-16h)}{h}\\\\\n&=32-16h,\\qquad h\\ne0.\n\\end{aligned}"
         },
         {
           "type": "paragraph",
           "text": "Notice why \\(h\\ne0\\) matters. We may cancel \\(h\\) because the shrinking intervals always have nonzero length. We are studying what happens as \\(h\\) gets close to zero, not substituting zero before simplifying."
         },
         {
-          "type": "math",
-          "tex": "\\begin{tabular}{@{}r r@{}}\n\\toprule\n\\(h\\) & Average velocity \\(32-16h\\)\\\\\n\\midrule\n\\(1\\) & \\(16\\)\\\\\n\\(0.5\\) & \\(24\\)\\\\\n\\(0.1\\) & \\(30.4\\)\\\\\n\\(0.01\\) & \\(31.84\\)\\\\\n\\(0.001\\) & \\(31.984\\)\\\\\n\\(-0.001\\) & \\(32.016\\)\\\\\n\\(-0.01\\) & \\(32.16\\)\\\\\n\\bottomrule\n\\end{tabular}"
+          "type": "table",
+          "environment": "tabular",
+          "rows": [
+            [
+              "{@{}r r@{}}\n\n\\(h\\)",
+              "Average velocity \\(32-16h\\)"
+            ],
+            [
+              "\\(1\\)",
+              "\\(16\\)"
+            ],
+            [
+              "\\(0.5\\)",
+              "\\(24\\)"
+            ],
+            [
+              "\\(0.1\\)",
+              "\\(30.4\\)"
+            ],
+            [
+              "\\(0.01\\)",
+              "\\(31.84\\)"
+            ],
+            [
+              "\\(0.001\\)",
+              "\\(31.984\\)"
+            ],
+            [
+              "\\(-0.001\\)",
+              "\\(32.016\\)"
+            ],
+            [
+              "\\(-0.01\\)",
+              "\\(32.16\\)"
+            ]
+          ]
         },
         {
           "type": "paragraph",
@@ -3948,8 +4113,30 @@
                   "text": "If \\(x\\) is close to \\(3\\), then \\(x+2\\) is close to \\(5\\):"
                 },
                 {
-                  "type": "math",
-                  "tex": "\\begin{array}{c|c}\n x & x+2\\\\\n\\hline\n2.9&4.9\\\\\n2.99&4.99\\\\\n3.01&5.01\\\\\n3.1&5.1\n\\end{array}"
+                  "type": "table",
+                  "environment": "array",
+                  "rows": [
+                    [
+                      "x",
+                      "x+2"
+                    ],
+                    [
+                      "2.9",
+                      "4.9"
+                    ],
+                    [
+                      "2.99",
+                      "4.99"
+                    ],
+                    [
+                      "3.01",
+                      "5.01"
+                    ],
+                    [
+                      "3.1",
+                      "5.1"
+                    ]
+                  ]
                 },
                 {
                   "type": "paragraph",
@@ -4005,8 +4192,38 @@
           "text": "So the graph is the line \\(y=x+2\\) with one point removed."
         },
         {
-          "type": "math",
-          "tex": "\\begin{tabular}{@{}r r@{}}\n\\toprule\n\\(x\\) & \\(f(x)\\)\\\\\n\\midrule\n1.9 & 3.9\\\\\n1.99 & 3.99\\\\\n1.999 & 3.999\\\\\n2.001 & 4.001\\\\\n2.01 & 4.01\\\\\n2.1 & 4.1\\\\\n\\bottomrule\n\\end{tabular}"
+          "type": "table",
+          "environment": "tabular",
+          "rows": [
+            [
+              "{@{}r r@{}}\n\n\\(x\\)",
+              "\\(f(x)\\)"
+            ],
+            [
+              "1.9",
+              "3.9"
+            ],
+            [
+              "1.99",
+              "3.99"
+            ],
+            [
+              "1.999",
+              "3.999"
+            ],
+            [
+              "2.001",
+              "4.001"
+            ],
+            [
+              "2.01",
+              "4.01"
+            ],
+            [
+              "2.1",
+              "4.1"
+            ]
+          ]
         },
         {
           "type": "paragraph",
@@ -4076,8 +4293,38 @@
                   "text": "\\textbf{Numerical evidence.}"
                 },
                 {
-                  "type": "math",
-                  "tex": "\\begin{array}{c|c}\n x & \\dfrac{x^3-1}{x-1}\\\\\n\\hline\n0.9&2.71\\\\\n0.99&2.9701\\\\\n0.999&2.997001\\\\\n1.001&3.003001\\\\\n1.01&3.0301\\\\\n1.1&3.31\n\\end{array}"
+                  "type": "table",
+                  "environment": "array",
+                  "rows": [
+                    [
+                      "x",
+                      "\\dfrac{x^3-1}{x-1}"
+                    ],
+                    [
+                      "0.9",
+                      "2.71"
+                    ],
+                    [
+                      "0.99",
+                      "2.9701"
+                    ],
+                    [
+                      "0.999",
+                      "2.997001"
+                    ],
+                    [
+                      "1.001",
+                      "3.003001"
+                    ],
+                    [
+                      "1.01",
+                      "3.0301"
+                    ],
+                    [
+                      "1.1",
+                      "3.31"
+                    ]
+                  ]
                 },
                 {
                   "type": "paragraph",
@@ -4202,7 +4449,7 @@
             },
             {
               "type": "math",
-              "tex": "g(x)=\n  \\begin{cases}\n    x^2+1,&x\\ne2,\\\\\n    9,&x=2.\n  \\end{cases}"
+              "tex": "g(x)=\n  \\left\\{\\matrix{\n    x^2+1,&x\\ne2,\\\\\n    9,&x=2.\n  }\\right."
             },
             {
               "type": "paragraph",
@@ -4424,7 +4671,7 @@
             },
             {
               "type": "math",
-              "tex": "f(x)=\n  \\begin{cases}\n    x+1,&x<2,\\\\\n    5-x,&x\\ge2.\n  \\end{cases}"
+              "tex": "f(x)=\n  \\left\\{\\matrix{\n    x+1,&x<2,\\\\\n    5-x,&x\\ge2.\n  }\\right."
             },
             {
               "type": "paragraph",
@@ -4475,7 +4722,7 @@
             },
             {
               "type": "math",
-              "tex": "g(x)=\n  \\begin{cases}\n    x+1,&x<2,\\\\\n    6-x,&x\\ge2.\n  \\end{cases}"
+              "tex": "g(x)=\n  \\left\\{\\matrix{\n    x+1,&x<2,\\\\\n    6-x,&x\\ge2.\n  }\\right."
             },
             {
               "type": "paragraph",
@@ -4838,12 +5085,11 @@
         },
         {
           "type": "quick-check",
-          "title": "limit-meaning-q1",
           "checkId": "limit-meaning-q1",
           "children": [
             {
               "type": "paragraph",
-              "text": "{limit-meaning-q1}{integer}{7}[Concept check] If \\(\\lim_{x\\to 4}f(x)=7\\), what output value is approached?"
+              "text": "If \\(\\lim_{x\\to 4}f(x)=7\\), what output value is approached?"
             },
             {
               "type": "hint",
@@ -4867,12 +5113,11 @@
         },
         {
           "type": "quick-check",
-          "title": "one-sided-q1",
           "checkId": "one-sided-q1",
           "children": [
             {
               "type": "paragraph",
-              "text": "{one-sided-q1}{integer}{3}[Concept check] A graph approaches \\(3\\) from the left at \\(x=2\\). What is \\(\\lim_{x\\to2^-}f(x)\\)?"
+              "text": "A graph approaches \\(3\\) from the left at \\(x=2\\). What is \\(\\lim_{x\\to2^-}f(x)\\)?"
             },
             {
               "type": "hint",
@@ -4896,12 +5141,11 @@
         },
         {
           "type": "quick-check",
-          "title": "hole-q1",
           "checkId": "hole-q1",
           "children": [
             {
               "type": "paragraph",
-              "text": "{hole-q1}{integer}{5}[Concept check] A curve approaches the open point \\((1,5)\\), while a filled point is at \\((1,9)\\). What is the limit as \\(x\\to1\\)?"
+              "text": "A curve approaches the open point \\((1,5)\\), while a filled point is at \\((1,9)\\). What is the limit as \\(x\\to1\\)?"
             },
             {
               "type": "hint",
@@ -4925,12 +5169,11 @@
         },
         {
           "type": "quick-check",
-          "title": "rate-q1",
           "checkId": "rate-q1",
           "children": [
             {
               "type": "paragraph",
-              "text": "{rate-q1}{integer}{12}[Concept check] An average-rate expression simplifies to \\(12-2h\\). What value does it approach as \\(h\\to0\\)?"
+              "text": "An average-rate expression simplifies to \\(12-2h\\). What value does it approach as \\(h\\to0\\)?"
             },
             {
               "type": "hint",
@@ -5202,7 +5445,7 @@
             },
             {
               "type": "math",
-              "tex": "\\begin{cases}2x+1,&x<1,\\\\x+3,&x\\ge1.\\end{cases}"
+              "tex": "\\left\\{\\matrix{2x+1,&x<1,\\\\x+3,&x\\ge1.}\\right."
             },
             {
               "type": "paragraph",
@@ -5219,7 +5462,7 @@
             },
             {
               "type": "math",
-              "tex": "\\begin{cases}x^2,&x\\le2,\\\\3x-1,&x>2.\\end{cases}"
+              "tex": "\\left\\{\\matrix{x^2,&x\\le2,\\\\3x-1,&x>2.}\\right."
             },
             {
               "type": "paragraph",
@@ -5236,7 +5479,7 @@
             },
             {
               "type": "math",
-              "tex": "\\begin{cases}4,&x<0,\\\\4+x,&x\\ge0.\\end{cases}"
+              "tex": "\\left\\{\\matrix{4,&x<0,\\\\4+x,&x\\ge0.}\\right."
             },
             {
               "type": "paragraph",
@@ -5253,7 +5496,7 @@
             },
             {
               "type": "math",
-              "tex": "\\begin{cases}-1,&x<3,\\\\2,&x\\ge3.\\end{cases}"
+              "tex": "\\left\\{\\matrix{-1,&x<3,\\\\2,&x\\ge3.}\\right."
             },
             {
               "type": "paragraph",
@@ -5370,7 +5613,7 @@
             },
             {
               "type": "math",
-              "tex": "f(x)=\\begin{cases}\nx^2-1,&x<2,\\\\\n4,&x=2,\\\\\n2x-1,&x>2.\n\\end{cases}"
+              "tex": "f(x)=\\left\\{\\matrix{\nx^2-1,&x<2,\\\\\n4,&x=2,\\\\\n2x-1,&x>2.\n}\\right."
             },
             {
               "type": "paragraph",
@@ -5548,7 +5791,7 @@
                 },
                 {
                   "type": "math",
-                  "tex": "\\begin{align*}\n3(-2)^3-4(-2)^2+5(-2)-1\n&=3(-8)-4(4)-10-1\\\\\n&=-24-16-10-1\\\\\n&=\\boxed{-51}.\n\\end{align*}"
+                  "tex": "\\begin{aligned}\n3(-2)^3-4(-2)^2+5(-2)-1\n&=3(-8)-4(4)-10-1\\\\\n&=-24-16-10-1\\\\\n&=\\boxed{-51}.\n\\end{aligned}"
                 }
               ]
             }
@@ -5678,7 +5921,7 @@
             },
             {
               "type": "math",
-              "tex": "\\begin{align*}\n\\lim_{x\\to a}[f(x)+g(x)]&=L+M,\\\\\n\\lim_{x\\to a}[f(x)-g(x)]&=L-M,\\\\\n\\lim_{x\\to a}[cf(x)]&=cL,\\\\\n\\lim_{x\\to a}[f(x)g(x)]&=LM,\\\\\n\\lim_{x\\to a}\\frac{f(x)}{g(x)}&=\\frac{L}{M},\\qquad M\\ne0,\\\\\n\\lim_{x\\to a}[f(x)]^n&=L^n.\n\\end{align*}"
+              "tex": "\\begin{aligned}\n\\lim_{x\\to a}[f(x)+g(x)]&=L+M,\\\\\n\\lim_{x\\to a}[f(x)-g(x)]&=L-M,\\\\\n\\lim_{x\\to a}[cf(x)]&=cL,\\\\\n\\lim_{x\\to a}[f(x)g(x)]&=LM,\\\\\n\\lim_{x\\to a}\\frac{f(x)}{g(x)}&=\\frac{L}{M},\\qquad M\\ne0,\\\\\n\\lim_{x\\to a}[f(x)]^n&=L^n.\n\\end{aligned}"
             },
             {
               "type": "paragraph",
@@ -5919,8 +6162,38 @@
               "text": "[title={Method Selection After \\(0/0\\)}]"
             },
             {
-              "type": "math",
-              "tex": "\\begin{tabularx}{\\textwidth}{@{}p{0.35\\textwidth}X@{}}\n\\toprule\n\\textbf{Visible structure} & \\textbf{Method to try}\\\\\n\\midrule\nPolynomials with common factors & Factor and cancel\\\\\nSquare roots or other radicals & Multiply by a conjugate\\\\\nA fraction inside a fraction & Combine the smaller fractions first\\\\\nAbsolute values or piecewise rules & Split into one-sided cases\\\\\nTrigonometric expressions near zero & Use identities and fundamental trig limits\\\\\nA bounded oscillating factor & Look for the Squeeze Theorem\\\\\n\\bottomrule\n\\end{tabularx}"
+              "type": "table",
+              "environment": "tabularx",
+              "rows": [
+                [
+                  "{@{}p{0.35\\textwidth}X@{}}\n\n\\textbf{Visible structure}",
+                  "\\textbf{Method to try}"
+                ],
+                [
+                  "Polynomials with common factors",
+                  "Factor and cancel"
+                ],
+                [
+                  "Square roots or other radicals",
+                  "Multiply by a conjugate"
+                ],
+                [
+                  "A fraction inside a fraction",
+                  "Combine the smaller fractions first"
+                ],
+                [
+                  "Absolute values or piecewise rules",
+                  "Split into one-sided cases"
+                ],
+                [
+                  "Trigonometric expressions near zero",
+                  "Use identities and fundamental trig limits"
+                ],
+                [
+                  "A bounded oscillating factor",
+                  "Look for the Squeeze Theorem"
+                ]
+              ]
             }
           ]
         }
@@ -6374,7 +6647,7 @@
                 },
                 {
                   "type": "math",
-                  "tex": "\\begin{align*}\n&\\frac{\\sqrt{1+3x}-\\sqrt{1-x}}{x}\n\\cdot\n\\frac{\\sqrt{1+3x}+\\sqrt{1-x}}{\\sqrt{1+3x}+\\sqrt{1-x}}\\\\\n&=\\frac{(1+3x)-(1-x)}{x\\left(\\sqrt{1+3x}+\\sqrt{1-x}\\right)}\\\\\n&=\\frac{4x}{x\\left(\\sqrt{1+3x}+\\sqrt{1-x}\\right)}\\\\\n&=\\frac4{\\sqrt{1+3x}+\\sqrt{1-x}},\\qquad x\\ne0.\n\\end{align*}"
+                  "tex": "\\begin{aligned}\n&\\frac{\\sqrt{1+3x}-\\sqrt{1-x}}{x}\n\\cdot\n\\frac{\\sqrt{1+3x}+\\sqrt{1-x}}{\\sqrt{1+3x}+\\sqrt{1-x}}\\\\\n&=\\frac{(1+3x)-(1-x)}{x\\left(\\sqrt{1+3x}+\\sqrt{1-x}\\right)}\\\\\n&=\\frac{4x}{x\\left(\\sqrt{1+3x}+\\sqrt{1-x}\\right)}\\\\\n&=\\frac4{\\sqrt{1+3x}+\\sqrt{1-x}},\\qquad x\\ne0.\n\\end{aligned}"
                 },
                 {
                   "type": "paragraph",
@@ -6488,7 +6761,7 @@
                 },
                 {
                   "type": "math",
-                  "tex": "\\begin{align*}\n\\frac1{3+h}-\\frac13\n&=\\frac3{3(3+h)}-\\frac{3+h}{3(3+h)}\\\\\n&=\\frac{3-(3+h)}{3(3+h)}\\\\\n&=\\frac{-h}{3(3+h)}.\n\\end{align*}"
+                  "tex": "\\begin{aligned}\n\\frac1{3+h}-\\frac13\n&=\\frac3{3(3+h)}-\\frac{3+h}{3(3+h)}\\\\\n&=\\frac{3-(3+h)}{3(3+h)}\\\\\n&=\\frac{-h}{3(3+h)}.\n\\end{aligned}"
                 },
                 {
                   "type": "paragraph",
@@ -6586,7 +6859,7 @@
         },
         {
           "type": "math",
-          "tex": "|u|=\n  \\begin{cases}\n    u,&u\\ge0,\\\\\n    -u,&u<0.\n  \\end{cases}"
+          "tex": "|u|=\n  \\left\\{\\matrix{\n    u,&u\\ge0,\\\\\n    -u,&u<0.\n  }\\right."
         },
         {
           "type": "paragraph",
@@ -6833,12 +7106,11 @@
         },
         {
           "type": "quick-check",
-          "title": "substitution-q1",
           "checkId": "substitution-q1",
           "children": [
             {
               "type": "paragraph",
-              "text": "{substitution-q1}{integer}{11}[Concept check] Evaluate \\(\\lim_{x\\to3}(2x+5)\\)."
+              "text": "Evaluate \\(\\lim_{x\\to3}(2x+5)\\)."
             },
             {
               "type": "hint",
@@ -6862,12 +7134,11 @@
         },
         {
           "type": "quick-check",
-          "title": "factor-q1",
           "checkId": "factor-q1",
           "children": [
             {
               "type": "paragraph",
-              "text": "{factor-q1}{integer}{8}[Concept check] Evaluate \\(\\lim_{x\\to4}\\frac{x^2-16}{x-4}\\)."
+              "text": "Evaluate \\(\\lim_{x\\to4}\\frac{x^2-16}{x-4}\\)."
             },
             {
               "type": "hint",
@@ -6891,12 +7162,11 @@
         },
         {
           "type": "quick-check",
-          "title": "radical-q1",
           "checkId": "radical-q1",
           "children": [
             {
               "type": "paragraph",
-              "text": "{radical-q1}{rational}{1/6}[Concept check] Evaluate \\(\\lim_{x\\to0}\\frac{\\sqrt{x+9}-3}{x}\\)."
+              "text": "Evaluate \\(\\lim_{x\\to0}\\frac{\\sqrt{x+9}-3}{x}\\)."
             },
             {
               "type": "hint",
@@ -6920,12 +7190,11 @@
         },
         {
           "type": "quick-check",
-          "title": "abs-q1",
           "checkId": "abs-q1",
           "children": [
             {
               "type": "paragraph",
-              "text": "{abs-q1}{choice}{DNE}[Concept check] Does \\(\\lim_{x\\to0}|x|/x\\) exist? Enter DNE if it does not."
+              "text": "Does \\(\\lim_{x\\to0}|x|/x\\) exist? Enter DNE if it does not."
             },
             {
               "type": "hint",
@@ -7418,7 +7687,7 @@
             },
             {
               "type": "math",
-              "tex": "\\begin{cases}x+2,&x<1,\\\\x^2+1,&x\\ge1.\\end{cases}"
+              "tex": "\\left\\{\\matrix{x+2,&x<1,\\\\x^2+1,&x\\ge1.}\\right."
             },
             {
               "type": "paragraph",
@@ -7435,7 +7704,7 @@
             },
             {
               "type": "math",
-              "tex": "\\begin{cases}2x,&x<2,\\\\x+3,&x\\ge2.\\end{cases}"
+              "tex": "\\left\\{\\matrix{2x,&x<2,\\\\x+3,&x\\ge2.}\\right."
             },
             {
               "type": "paragraph",
@@ -8229,7 +8498,7 @@
                 },
                 {
                   "type": "math",
-                  "tex": "\\begin{align*}\n\\frac{\\sin(4x)}{\\sin(7x)}\n&=\\frac{\\sin(4x)}{4x}\n  \\cdot\\frac{4x}{7x}\n  \\cdot\\frac{7x}{\\sin(7x)}\\\\\n&=\\frac{\\sin(4x)}{4x}\n  \\cdot\\frac47\n  \\cdot\\frac{7x}{\\sin(7x)}.\n\\end{align*}"
+                  "tex": "\\begin{aligned}\n\\frac{\\sin(4x)}{\\sin(7x)}\n&=\\frac{\\sin(4x)}{4x}\n  \\cdot\\frac{4x}{7x}\n  \\cdot\\frac{7x}{\\sin(7x)}\\\\\n&=\\frac{\\sin(4x)}{4x}\n  \\cdot\\frac47\n  \\cdot\\frac{7x}{\\sin(7x)}.\n\\end{aligned}"
                 },
                 {
                   "type": "paragraph",
@@ -8341,7 +8610,7 @@
         },
         {
           "type": "math",
-          "tex": "\\begin{align*}\n\\frac{1-\\cos x}{x}\n&\\cdot\\frac{1+\\cos x}{1+\\cos x}\\\\\n&=\\frac{1-\\cos^2x}{x(1+\\cos x)}\\\\\n&=\\frac{\\sin^2x}{x(1+\\cos x)}\\\\\n&=\\frac{\\sin x}{x}\\cdot\\frac{\\sin x}{1+\\cos x}.\n\\end{align*}"
+          "tex": "\\begin{aligned}\n\\frac{1-\\cos x}{x}\n&\\cdot\\frac{1+\\cos x}{1+\\cos x}\\\\\n&=\\frac{1-\\cos^2x}{x(1+\\cos x)}\\\\\n&=\\frac{\\sin^2x}{x(1+\\cos x)}\\\\\n&=\\frac{\\sin x}{x}\\cdot\\frac{\\sin x}{1+\\cos x}.\n\\end{aligned}"
         },
         {
           "type": "paragraph",
@@ -8362,7 +8631,7 @@
         },
         {
           "type": "math",
-          "tex": "\\begin{align*}\n\\frac{1-\\cos x}{x^2}\n&=\\frac{\\sin^2x}{x^2(1+\\cos x)}\\\\\n&=\\left(\\frac{\\sin x}{x}\\right)^2\\frac1{1+\\cos x}.\n\\end{align*}"
+          "tex": "\\begin{aligned}\n\\frac{1-\\cos x}{x^2}\n&=\\frac{\\sin^2x}{x^2(1+\\cos x)}\\\\\n&=\\left(\\frac{\\sin x}{x}\\right)^2\\frac1{1+\\cos x}.\n\\end{aligned}"
         },
         {
           "type": "paragraph",
@@ -8565,12 +8834,11 @@
         },
         {
           "type": "quick-check",
-          "title": "squeeze-q1",
           "checkId": "squeeze-q1",
           "children": [
             {
               "type": "paragraph",
-              "text": "{squeeze-q1}{integer}{0}[Concept check] If \\(-x^2\\le f(x)\\le x^2\\), find \\(\\lim_{x\\to0}f(x)\\)."
+              "text": "If \\(-x^2\\le f(x)\\le x^2\\), find \\(\\lim_{x\\to0}f(x)\\)."
             },
             {
               "type": "hint",
@@ -8594,12 +8862,11 @@
         },
         {
           "type": "quick-check",
-          "title": "sine-q1",
           "checkId": "sine-q1",
           "children": [
             {
               "type": "paragraph",
-              "text": "{sine-q1}{integer}{5}[Concept check] Evaluate \\(\\lim_{x\\to0}\\frac{\\sin(5x)}{x}\\)."
+              "text": "Evaluate \\(\\lim_{x\\to0}\\frac{\\sin(5x)}{x}\\)."
             },
             {
               "type": "hint",
@@ -8623,12 +8890,11 @@
         },
         {
           "type": "quick-check",
-          "title": "sine-ratio-q1",
           "checkId": "sine-ratio-q1",
           "children": [
             {
               "type": "paragraph",
-              "text": "{sine-ratio-q1}{rational}{3/7}[Concept check] Evaluate \\(\\lim_{x\\to0}\\frac{\\sin(3x)}{\\sin(7x)}\\)."
+              "text": "Evaluate \\(\\lim_{x\\to0}\\frac{\\sin(3x)}{\\sin(7x)}\\)."
             },
             {
               "type": "hint",
@@ -8652,12 +8918,11 @@
         },
         {
           "type": "quick-check",
-          "title": "cosine-q1",
           "checkId": "cosine-q1",
           "children": [
             {
               "type": "paragraph",
-              "text": "{cosine-q1}{rational}{1/2}[Concept check] Evaluate \\(\\lim_{x\\to0}\\frac{1-\\cos x}{x^2}\\)."
+              "text": "Evaluate \\(\\lim_{x\\to0}\\frac{1-\\cos x}{x^2}\\)."
             },
             {
               "type": "hint",
@@ -9164,8 +9429,26 @@
               "text": "From the right of zero, use small positive numbers:"
             },
             {
-              "type": "math",
-              "tex": "\\begin{array}{c|c}\nx&1/x\\\\\n\\hline\n0.1&10\\\\\n0.01&100\\\\\n0.001&1000\n\\end{array}"
+              "type": "table",
+              "environment": "array",
+              "rows": [
+                [
+                  "x",
+                  "1/x"
+                ],
+                [
+                  "0.1",
+                  "10"
+                ],
+                [
+                  "0.01",
+                  "100"
+                ],
+                [
+                  "0.001",
+                  "1000"
+                ]
+              ]
             },
             {
               "type": "paragraph",
@@ -9180,8 +9463,26 @@
               "text": "From the left, use small negative numbers:"
             },
             {
-              "type": "math",
-              "tex": "\\begin{array}{c|c}\nx&1/x\\\\\n\\hline\n-0.1&-10\\\\\n-0.01&-100\\\\\n-0.001&-1000\n\\end{array}"
+              "type": "table",
+              "environment": "array",
+              "rows": [
+                [
+                  "x",
+                  "1/x"
+                ],
+                [
+                  "-0.1",
+                  "-10"
+                ],
+                [
+                  "-0.01",
+                  "-100"
+                ],
+                [
+                  "-0.001",
+                  "-1000"
+                ]
+              ]
             },
             {
               "type": "paragraph",
@@ -9211,8 +9512,14 @@
               "text": "\\begin{groupplot}[\ngroup style={group size=2 by 1,horizontal sep=1.2cm},\nwidth=0.45\\textwidth,height=0.42\\textwidth,\nxmin=-4,xmax=4,ymin=-8,ymax=8,\naxis lines=middle,grid=major,major grid style={draw=BGLine},\nxlabel={$x$},ylabel={$y$}\n]\n\\nextgroupplot[title={$y=1/(x-1)$}]\n\\addplot[BGBlue,very thick,domain=-4:0.94,samples=140]{1/(x-1)};\n\\addplot[BGBlue,very thick,domain=1.06:4,samples=140]{1/(x-1)};\n\\draw[dashed,BGRed] (axis cs:1,-8)--(axis cs:1,8);\n\\nextgroupplot[title={$y=1/(x-1)^2$}]\n\\addplot[BGGreen,very thick,domain=-4:0.94,samples=140]{1/(x-1)^2};\n\\addplot[BGGreen,very thick,domain=1.06:4,samples=140]{1/(x-1)^2};\n\\draw[dashed,BGRed] (axis cs:1,-8)--(axis cs:1,8);\n\\end{groupplot}",
               "children": [
                 {
-                  "type": "math",
-                  "tex": "\\begin{groupplot}[\n  group style={group size=2 by 1,horizontal sep=1.2cm},\n  width=0.45\\textwidth,height=0.42\\textwidth,\n  xmin=-4,xmax=4,ymin=-8,ymax=8,\n  axis lines=middle,grid=major,major grid style={draw=BGLine},\n  xlabel={$x$},ylabel={$y$}\n]\n\\nextgroupplot[title={$y=1/(x-1)$}]\n\\addplot[BGBlue,very thick,domain=-4:0.94,samples=140]{1/(x-1)};\n\\addplot[BGBlue,very thick,domain=1.06:4,samples=140]{1/(x-1)};\n\\draw[dashed,BGRed] (axis cs:1,-8)--(axis cs:1,8);\n\\nextgroupplot[title={$y=1/(x-1)^2$}]\n\\addplot[BGGreen,very thick,domain=-4:0.94,samples=140]{1/(x-1)^2};\n\\addplot[BGGreen,very thick,domain=1.06:4,samples=140]{1/(x-1)^2};\n\\draw[dashed,BGRed] (axis cs:1,-8)--(axis cs:1,8);\n\\end{groupplot}"
+                  "type": "graph-specification",
+                  "text": "[\ngroup style={group size=2 by 1,horizontal sep=1.2cm},\nwidth=0.45\\textwidth,height=0.42\\textwidth,\nxmin=-4,xmax=4,ymin=-8,ymax=8,\naxis lines=middle,grid=major,major grid style={draw=BGLine},\nxlabel={$x$},ylabel={$y$}\n]\n\\nextgroupplot[title={$y=1/(x-1)$}]\n\\addplot[BGBlue,very thick,domain=-4:0.94,samples=140]{1/(x-1)};\n\\addplot[BGBlue,very thick,domain=1.06:4,samples=140]{1/(x-1)};\n\\draw[dashed,BGRed] (axis cs:1,-8)--(axis cs:1,8);\n\\nextgroupplot[title={$y=1/(x-1)^2$}]\n\\addplot[BGGreen,very thick,domain=-4:0.94,samples=140]{1/(x-1)^2};\n\\addplot[BGGreen,very thick,domain=1.06:4,samples=140]{1/(x-1)^2};\n\\draw[dashed,BGRed] (axis cs:1,-8)--(axis cs:1,8);",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "text": "[ group style={group size=2 by 1,horizontal sep=1.2cm}, width=0.45\\textwidth,height=0.42\\textwidth, xmin=-4,xmax=4,ymin=-8,ymax=8, axis lines=middle,grid=major,major grid style={draw=BGLine}, xlabel={$x$},ylabel={$y$} ] \\nextgroupplot[title={$y=1/(x-1)$}] \\addplot[BGBlue,very thick,domain=-4:0.94,samples=140]{1/(x-1)}; \\addplot[BGBlue,very thick,domain=1.06:4,samples=140]{1/(x-1)}; \\draw[dashed,BGRed] (axis cs:1,-8)--(axis cs:1,8); \\nextgroupplot[title={$y=1/(x-1)^2$}] \\addplot[BGGreen,very thick,domain=-4:0.94,samples=140]{1/(x-1)^2}; \\addplot[BGGreen,very thick,domain=1.06:4,samples=140]{1/(x-1)^2}; \\draw[dashed,BGRed] (axis cs:1,-8)--(axis cs:1,8);"
+                    }
+                  ]
                 }
               ]
             },
@@ -10042,7 +10349,7 @@
                 },
                 {
                   "type": "math",
-                  "tex": "\\begin{align*}\n\\sqrt{x^2+3x}-x\n&=\\frac{(x^2+3x)-x^2}{\\sqrt{x^2+3x}+x}\\\\\n&=\\frac{3x}{\\sqrt{x^2+3x}+x}.\n\\end{align*}"
+                  "tex": "\\begin{aligned}\n\\sqrt{x^2+3x}-x\n&=\\frac{(x^2+3x)-x^2}{\\sqrt{x^2+3x}+x}\\\\\n&=\\frac{3x}{\\sqrt{x^2+3x}+x}.\n\\end{aligned}"
                 },
                 {
                   "type": "paragraph",
@@ -10085,7 +10392,7 @@
                 },
                 {
                   "type": "math",
-                  "tex": "\\begin{align*}\n\\sqrt{x^2+4x}+x\n&=\\frac{(x^2+4x)-x^2}{\\sqrt{x^2+4x}-x}\\\\\n&=\\frac{4x}{\\sqrt{x^2+4x}-x}.\n\\end{align*}"
+                  "tex": "\\begin{aligned}\n\\sqrt{x^2+4x}+x\n&=\\frac{(x^2+4x)-x^2}{\\sqrt{x^2+4x}-x}\\\\\n&=\\frac{4x}{\\sqrt{x^2+4x}-x}.\n\\end{aligned}"
                 },
                 {
                   "type": "paragraph",
@@ -10191,12 +10498,11 @@
         },
         {
           "type": "quick-check",
-          "title": "infinite-q1",
           "checkId": "infinite-q1",
           "children": [
             {
               "type": "paragraph",
-              "text": "{infinite-q1}{choice}{-infinity}[Concept check] Evaluate \\(\\lim_{x\\to2^-}\\frac1{x-2}\\)."
+              "text": "Evaluate \\(\\lim_{x\\to2^-}\\frac1{x-2}\\)."
             },
             {
               "type": "hint",
@@ -10220,12 +10526,11 @@
         },
         {
           "type": "quick-check",
-          "title": "vertical-q1",
           "checkId": "vertical-q1",
           "children": [
             {
               "type": "paragraph",
-              "text": "{vertical-q1}{integer}{3}[Concept check] For \\(f(x)=1/(x-3)^2\\), enter the \\(x\\)-value of the vertical asymptote."
+              "text": "For \\(f(x)=1/(x-3)^2\\), enter the \\(x\\)-value of the vertical asymptote."
             },
             {
               "type": "hint",
@@ -10249,12 +10554,11 @@
         },
         {
           "type": "quick-check",
-          "title": "end-q1",
           "checkId": "end-q1",
           "children": [
             {
               "type": "paragraph",
-              "text": "{end-q1}{rational}{2/5}[Concept check] Evaluate \\(\\lim_{x\\to\\infty}\\frac{2x^2+1}{5x^2-3}\\)."
+              "text": "Evaluate \\(\\lim_{x\\to\\infty}\\frac{2x^2+1}{5x^2-3}\\)."
             },
             {
               "type": "hint",
@@ -10278,12 +10582,11 @@
         },
         {
           "type": "quick-check",
-          "title": "radical-infinity-q1",
           "checkId": "radical-infinity-q1",
           "children": [
             {
               "type": "paragraph",
-              "text": "{radical-infinity-q1}{integer}{-1}[Concept check] Evaluate \\(\\lim_{x\\to-\\infty}\\frac{\\sqrt{x^2+1}}x\\)."
+              "text": "Evaluate \\(\\lim_{x\\to-\\infty}\\frac{\\sqrt{x^2+1}}x\\)."
             },
             {
               "type": "hint",
@@ -10840,7 +11143,7 @@
             },
             {
               "type": "math",
-              "tex": "g(x)=\n  \\begin{cases}\n    x^2+1,&x\\ne2,\\\\\n    9,&x=2.\n  \\end{cases}"
+              "tex": "g(x)=\n  \\left\\{\\matrix{\n    x^2+1,&x\\ne2,\\\\\n    9,&x=2.\n  }\\right."
             },
             {
               "type": "paragraph",
@@ -10895,7 +11198,7 @@
             },
             {
               "type": "math",
-              "tex": "h(x)=\n  \\begin{cases}\n    x+1,&x<2,\\\\\n    6-x,&x\\ge2.\n  \\end{cases}"
+              "tex": "h(x)=\n  \\left\\{\\matrix{\n    x+1,&x<2,\\\\\n    6-x,&x\\ge2.\n  }\\right."
             },
             {
               "type": "paragraph",
@@ -11215,8 +11518,35 @@
           "text": "\\lessonobjective{ Distinguish removable, jump, infinite, and oscillatory discontinuities; connect each classification to the relevant limit behavior. }"
         },
         {
-          "type": "math",
-          "tex": "\\begin{tabularx}{\\textwidth}{@{}p{0.24\\textwidth}X X@{}}\n\\toprule\n\\textbf{Type} & \\textbf{Limit behavior} & \\textbf{Typical graph feature}\\\\\n\\midrule\nRemovable & Finite two-sided limit exists, but value is missing or wrong & Hole or displaced dot\\\\\nJump & Finite one-sided limits exist but disagree & Sudden step\\\\\nInfinite & Function becomes unbounded & Vertical asymptote\\\\\nOscillatory & Outputs do not settle to one value & Endless oscillation\\\\\n\\bottomrule\n\\end{tabularx}"
+          "type": "table",
+          "environment": "tabularx",
+          "rows": [
+            [
+              "{@{}p{0.24\\textwidth}X X@{}}\n\n\\textbf{Type}",
+              "\\textbf{Limit behavior}",
+              "\\textbf{Typical graph feature}"
+            ],
+            [
+              "Removable",
+              "Finite two-sided limit exists, but value is missing or wrong",
+              "Hole or displaced dot"
+            ],
+            [
+              "Jump",
+              "Finite one-sided limits exist but disagree",
+              "Sudden step"
+            ],
+            [
+              "Infinite",
+              "Function becomes unbounded",
+              "Vertical asymptote"
+            ],
+            [
+              "Oscillatory",
+              "Outputs do not settle to one value",
+              "Endless oscillation"
+            ]
+          ]
         },
         {
           "type": "graph-specification",
@@ -11232,8 +11562,14 @@
               "text": "\\begin{groupplot}[\ngroup style={group size=2 by 2,horizontal sep=1cm,vertical sep=1cm},\nwidth=0.43\\textwidth,height=0.32\\textwidth,\nxmin=-2,xmax=2,ymin=-2.2,ymax=3.2,\naxis lines=middle,grid=major,major grid style={draw=BGLine},\nxtick=\\empty,ytick=\\empty\n]\n\\nextgroupplot[title={Removable}]\n\\addplot[BGBlue,very thick,domain=-2:-0.05]{x+1};\n\\addplot[BGBlue,very thick,domain=0.05:2]{x+1};\n\\addplot[only marks,mark=o,mark size=4pt,very thick,BGRed] coordinates {(0,1)};\n\\nextgroupplot[title={Jump}]\n\\addplot[BGBlue,very thick,domain=-2:0]{0};\n\\addplot[BGGreen,very thick,domain=0:2]{2};\n\\addplot[only marks,mark=o,mark size=4pt,very thick,BGBlue] coordinates {(0,0)};\n\\addplot[only marks,mark=*,mark size=3pt,BGGreen] coordinates {(0,2)};\n\\nextgroupplot[title={Infinite}]\n\\addplot[BGBlue,very thick,domain=-2:-0.06,samples=120]{1/x};\n\\addplot[BGBlue,very thick,domain=0.06:2,samples=120]{1/x};\n\\nextgroupplot[title={Oscillatory}]\n\\addplot[BGBlue,thick,domain=-2:-0.08,samples=120]{sin(deg(1/x))};\n\\addplot[BGBlue,thick,domain=0.08:2,samples=120]{sin(deg(1/x))};\n\\end{groupplot}",
               "children": [
                 {
-                  "type": "math",
-                  "tex": "\\begin{groupplot}[\n group style={group size=2 by 2,horizontal sep=1cm,vertical sep=1cm},\n width=0.43\\textwidth,height=0.32\\textwidth,\n xmin=-2,xmax=2,ymin=-2.2,ymax=3.2,\n axis lines=middle,grid=major,major grid style={draw=BGLine},\n xtick=\\empty,ytick=\\empty\n]\n\\nextgroupplot[title={Removable}]\n\\addplot[BGBlue,very thick,domain=-2:-0.05]{x+1};\n\\addplot[BGBlue,very thick,domain=0.05:2]{x+1};\n\\addplot[only marks,mark=o,mark size=4pt,very thick,BGRed] coordinates {(0,1)};\n\\nextgroupplot[title={Jump}]\n\\addplot[BGBlue,very thick,domain=-2:0]{0};\n\\addplot[BGGreen,very thick,domain=0:2]{2};\n\\addplot[only marks,mark=o,mark size=4pt,very thick,BGBlue] coordinates {(0,0)};\n\\addplot[only marks,mark=*,mark size=3pt,BGGreen] coordinates {(0,2)};\n\\nextgroupplot[title={Infinite}]\n\\addplot[BGBlue,very thick,domain=-2:-0.06,samples=120]{1/x};\n\\addplot[BGBlue,very thick,domain=0.06:2,samples=120]{1/x};\n\\nextgroupplot[title={Oscillatory}]\n\\addplot[BGBlue,thick,domain=-2:-0.08,samples=120]{sin(deg(1/x))};\n\\addplot[BGBlue,thick,domain=0.08:2,samples=120]{sin(deg(1/x))};\n\\end{groupplot}"
+                  "type": "graph-specification",
+                  "text": "[\ngroup style={group size=2 by 2,horizontal sep=1cm,vertical sep=1cm},\nwidth=0.43\\textwidth,height=0.32\\textwidth,\nxmin=-2,xmax=2,ymin=-2.2,ymax=3.2,\naxis lines=middle,grid=major,major grid style={draw=BGLine},\nxtick=\\empty,ytick=\\empty\n]\n\\nextgroupplot[title={Removable}]\n\\addplot[BGBlue,very thick,domain=-2:-0.05]{x+1};\n\\addplot[BGBlue,very thick,domain=0.05:2]{x+1};\n\\addplot[only marks,mark=o,mark size=4pt,very thick,BGRed] coordinates {(0,1)};\n\\nextgroupplot[title={Jump}]\n\\addplot[BGBlue,very thick,domain=-2:0]{0};\n\\addplot[BGGreen,very thick,domain=0:2]{2};\n\\addplot[only marks,mark=o,mark size=4pt,very thick,BGBlue] coordinates {(0,0)};\n\\addplot[only marks,mark=*,mark size=3pt,BGGreen] coordinates {(0,2)};\n\\nextgroupplot[title={Infinite}]\n\\addplot[BGBlue,very thick,domain=-2:-0.06,samples=120]{1/x};\n\\addplot[BGBlue,very thick,domain=0.06:2,samples=120]{1/x};\n\\nextgroupplot[title={Oscillatory}]\n\\addplot[BGBlue,thick,domain=-2:-0.08,samples=120]{sin(deg(1/x))};\n\\addplot[BGBlue,thick,domain=0.08:2,samples=120]{sin(deg(1/x))};",
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "text": "[ group style={group size=2 by 2,horizontal sep=1cm,vertical sep=1cm}, width=0.43\\textwidth,height=0.32\\textwidth, xmin=-2,xmax=2,ymin=-2.2,ymax=3.2, axis lines=middle,grid=major,major grid style={draw=BGLine}, xtick=\\empty,ytick=\\empty ] \\nextgroupplot[title={Removable}] \\addplot[BGBlue,very thick,domain=-2:-0.05]{x+1}; \\addplot[BGBlue,very thick,domain=0.05:2]{x+1}; \\addplot[only marks,mark=o,mark size=4pt,very thick,BGRed] coordinates {(0,1)}; \\nextgroupplot[title={Jump}] \\addplot[BGBlue,very thick,domain=-2:0]{0}; \\addplot[BGGreen,very thick,domain=0:2]{2}; \\addplot[only marks,mark=o,mark size=4pt,very thick,BGBlue] coordinates {(0,0)}; \\addplot[only marks,mark=*,mark size=3pt,BGGreen] coordinates {(0,2)}; \\nextgroupplot[title={Infinite}] \\addplot[BGBlue,very thick,domain=-2:-0.06,samples=120]{1/x}; \\addplot[BGBlue,very thick,domain=0.06:2,samples=120]{1/x}; \\nextgroupplot[title={Oscillatory}] \\addplot[BGBlue,thick,domain=-2:-0.08,samples=120]{sin(deg(1/x))}; \\addplot[BGBlue,thick,domain=0.08:2,samples=120]{sin(deg(1/x))};"
+                    }
+                  ]
                 }
               ]
             },
@@ -11339,7 +11675,7 @@
             },
             {
               "type": "math",
-              "tex": "f(x)=\n  \\begin{cases}\n    \\dfrac{x^2-4}{x-2},&x\\ne2,\\\\\n    c,&x=2.\n  \\end{cases}"
+              "tex": "f(x)=\n  \\left\\{\\matrix{\n    \\dfrac{x^2-4}{x-2},&x\\ne2,\\\\\n    c,&x=2.\n  }\\right."
             },
             {
               "type": "paragraph",
@@ -11398,7 +11734,7 @@
             },
             {
               "type": "math",
-              "tex": "g(x)=\n  \\begin{cases}\n    \\dfrac{x^3-27}{x-3},&x\\ne3,\\\\\n    c,&x=3\n  \\end{cases}"
+              "tex": "g(x)=\n  \\left\\{\\matrix{\n    \\dfrac{x^3-27}{x-3},&x\\ne3,\\\\\n    c,&x=3\n  }\\right."
             },
             {
               "type": "paragraph",
@@ -11501,7 +11837,7 @@
             },
             {
               "type": "math",
-              "tex": "f(x)=\n  \\begin{cases}\n    kx+1,&x<2,\\\\\n    x+3,&x\\ge2\n  \\end{cases}"
+              "tex": "f(x)=\n  \\left\\{\\matrix{\n    kx+1,&x<2,\\\\\n    x+3,&x\\ge2\n  }\\right."
             },
             {
               "type": "paragraph",
@@ -11564,7 +11900,7 @@
             },
             {
               "type": "math",
-              "tex": "g(x)=\n  \\begin{cases}\n    ax+1,&x<2,\\\\\n    x^2-a,&x\\ge2\n  \\end{cases}"
+              "tex": "g(x)=\n  \\left\\{\\matrix{\n    ax+1,&x<2,\\\\\n    x^2-a,&x\\ge2\n  }\\right."
             },
             {
               "type": "paragraph",
@@ -11635,7 +11971,7 @@
             },
             {
               "type": "math",
-              "tex": "h(x)=\n  \\begin{cases}\n    kx+2,&x<1,\\\\\n    x^2+k,&x\\ge1\n  \\end{cases}"
+              "tex": "h(x)=\n  \\left\\{\\matrix{\n    kx+2,&x<1,\\\\\n    x^2+k,&x\\ge1\n  }\\right."
             },
             {
               "type": "paragraph",
@@ -11715,7 +12051,7 @@
             },
             {
               "type": "math",
-              "tex": "f(x)=\n  \\begin{cases}\n    ax+b,&x<1,\\\\\n    x^2+1,&1\\le x<3,\\\\\n    2x+a,&x\\ge3\n  \\end{cases}"
+              "tex": "f(x)=\n  \\left\\{\\matrix{\n    ax+b,&x<1,\\\\\n    x^2+1,&1\\le x<3,\\\\\n    2x+a,&x\\ge3\n  }\\right."
             },
             {
               "type": "paragraph",
@@ -12023,8 +12359,40 @@
           "text": "Continue:"
         },
         {
-          "type": "math",
-          "tex": "\\begin{array}{c|c|c}\n\\text{interval}&\\text{midpoint}&\\text{sign at midpoint}\\\\\n\\hline\n(0,1)&0.5&-\\\\\n(0.5,1)&0.75&+\\\\\n(0.5,0.75)&0.625&-\\\\\n(0.625,0.75)&0.6875&+\\\\\n(0.625,0.6875)&0.65625&-\n\\end{array}"
+          "type": "table",
+          "environment": "array",
+          "rows": [
+            [
+              "\\text{interval}",
+              "\\text{midpoint}",
+              "\\text{sign at midpoint}"
+            ],
+            [
+              "(0,1)",
+              "0.5",
+              "-"
+            ],
+            [
+              "(0.5,1)",
+              "0.75",
+              "+"
+            ],
+            [
+              "(0.5,0.75)",
+              "0.625",
+              "-"
+            ],
+            [
+              "(0.625,0.75)",
+              "0.6875",
+              "+"
+            ],
+            [
+              "(0.625,0.6875)",
+              "0.65625",
+              "-"
+            ]
+          ]
         },
         {
           "type": "paragraph",
@@ -12080,12 +12448,11 @@
         },
         {
           "type": "quick-check",
-          "title": "continuity-q1",
           "checkId": "continuity-q1",
           "children": [
             {
               "type": "paragraph",
-              "text": "{continuity-q1}{choice}{yes}[Concept check] Is \\(f(x)=x^2+1\\) continuous at \\(x=3\\)? Enter yes or no."
+              "text": "Is \\(f(x)=x^2+1\\) continuous at \\(x=3\\)? Enter yes or no."
             },
             {
               "type": "hint",
@@ -12109,12 +12476,11 @@
         },
         {
           "type": "quick-check",
-          "title": "repair-q1",
           "checkId": "repair-q1",
           "children": [
             {
               "type": "paragraph",
-              "text": "{repair-q1}{integer}{6}[Concept check] Choose \\(c\\) so \\(f(x)=\\frac{x^2-9}{x-3}\\) for \\(x\\ne3\\), and \\(f(3)=c\\), is continuous."
+              "text": "Choose \\(c\\) so \\(f(x)=\\frac{x^2-9}{x-3}\\) for \\(x\\ne3\\), and \\(f(3)=c\\), is continuous."
             },
             {
               "type": "hint",
@@ -12138,12 +12504,11 @@
         },
         {
           "type": "quick-check",
-          "title": "piecewise-q1",
           "checkId": "piecewise-q1",
           "children": [
             {
               "type": "paragraph",
-              "text": "{piecewise-q1}{integer}{2}[Concept check] Choose \\(a\\) so \\(2x+a\\) for \\(x<1\\) joins continuously to \\(x^2+3\\) for \\(x\\ge1\\)."
+              "text": "Choose \\(a\\) so \\(2x+a\\) for \\(x<1\\) joins continuously to \\(x^2+3\\) for \\(x\\ge1\\)."
             },
             {
               "type": "hint",
@@ -12167,12 +12532,11 @@
         },
         {
           "type": "quick-check",
-          "title": "ivt-q1",
           "checkId": "ivt-q1",
           "children": [
             {
               "type": "paragraph",
-              "text": "{ivt-q1}{choice}{yes}[Concept check] Does the IVT guarantee a zero of \\(x^3+x-1\\) on \\([0,1]\\)? Enter yes or no."
+              "text": "Does the IVT guarantee a zero of \\(x^3+x-1\\) on \\([0,1]\\)? Enter yes or no."
             },
             {
               "type": "hint",
@@ -12521,7 +12885,7 @@
             },
             {
               "type": "math",
-              "tex": "\\begin{cases}kx+1,&x<2,\\\\x+3,&x\\ge2\\end{cases}"
+              "tex": "\\left\\{\\matrix{kx+1,&x<2,\\\\x+3,&x\\ge2}\\right."
             },
             {
               "type": "paragraph",
@@ -12538,7 +12902,7 @@
             },
             {
               "type": "math",
-              "tex": "\\begin{cases}2x+a,&x<1,\\\\x^2+3,&x\\ge1\\end{cases}"
+              "tex": "\\left\\{\\matrix{2x+a,&x<1,\\\\x^2+3,&x\\ge1}\\right."
             },
             {
               "type": "paragraph",
@@ -12555,7 +12919,7 @@
             },
             {
               "type": "math",
-              "tex": "\\begin{cases}x^2+b,&x\\le-1,\\\\3x+1,&x>-1\\end{cases}"
+              "tex": "\\left\\{\\matrix{x^2+b,&x\\le-1,\\\\3x+1,&x>-1}\\right."
             },
             {
               "type": "paragraph",
@@ -12572,7 +12936,7 @@
             },
             {
               "type": "math",
-              "tex": "\\begin{cases}mx-4,&x<3,\\\\2x+m,&x\\ge3\\end{cases}"
+              "tex": "\\left\\{\\matrix{mx-4,&x<3,\\\\2x+m,&x\\ge3}\\right."
             },
             {
               "type": "paragraph",
@@ -12589,7 +12953,7 @@
             },
             {
               "type": "math",
-              "tex": "\\begin{cases}kx+5,&x<0,\\\\kx+2,&x\\ge0\\end{cases}"
+              "tex": "\\left\\{\\matrix{kx+5,&x<0,\\\\kx+2,&x\\ge0}\\right."
             },
             {
               "type": "paragraph",
@@ -12606,7 +12970,7 @@
             },
             {
               "type": "math",
-              "tex": "\\begin{cases}ax+b,&x<1,\\\\x^2+1,&1\\le x<3,\\\\2x+a,&x\\ge3\\end{cases}"
+              "tex": "\\left\\{\\matrix{ax+b,&x<1,\\\\x^2+1,&1\\le x<3,\\\\2x+a,&x\\ge3}\\right."
             },
             {
               "type": "paragraph",
@@ -12822,8 +13186,34 @@
           "text": "For every positive output tolerance \\(\\eps\\), there is a positive input tolerance \\(\\delta\\) such that every allowed input within \\(\\delta\\) of \\(a\\), except \\(a\\) itself, produces an output within \\(\\eps\\) of \\(L\\)."
         },
         {
-          "type": "math",
-          "tex": "\\begin{tabularx}{0.9\\textwidth}{@{}p{0.24\\textwidth}X@{}}\n\\toprule\n\\textbf{Expression} & \\textbf{Meaning}\\\\\n\\midrule\n\\(|x-a|<\\delta\\) & The input lies in the horizontal interval \\((a-\\delta,a+\\delta)\\).\\\\\n\\(|f(x)-L|<\\eps\\) & The output lies in the vertical band \\((L-\\eps,L+\\eps)\\).\\\\\n\\(0<|x-a|\\) & The target input itself is excluded.\\\\\n\\(\\forall\\eps>0\\) & The argument must work for every requested accuracy.\\\\\n\\(\\exists\\delta>0\\) & We may choose an input tolerance depending on \\(\\eps\\).\\\\\n\\bottomrule\n\\end{tabularx}"
+          "type": "table",
+          "environment": "tabularx",
+          "rows": [
+            [
+              "{@{}p{0.24\\textwidth}X@{}}\n\n\\textbf{Expression}",
+              "\\textbf{Meaning}"
+            ],
+            [
+              "\\(|x-a|<\\delta\\)",
+              "The input lies in the horizontal interval \\((a-\\delta,a+\\delta)\\)."
+            ],
+            [
+              "\\(|f(x)-L|<\\eps\\)",
+              "The output lies in the vertical band \\((L-\\eps,L+\\eps)\\)."
+            ],
+            [
+              "\\(0<|x-a|\\)",
+              "The target input itself is excluded."
+            ],
+            [
+              "\\(\\forall\\eps>0\\)",
+              "The argument must work for every requested accuracy."
+            ],
+            [
+              "\\(\\exists\\delta>0\\)",
+              "We may choose an input tolerance depending on \\(\\eps\\)."
+            ]
+          ]
         }
       ]
     },
@@ -13324,7 +13714,7 @@
             },
             {
               "type": "math",
-              "tex": "f(x)=\n  \\begin{cases}\n    0,&x<0,\\\\\n    1,&x\\ge0.\n  \\end{cases}"
+              "tex": "f(x)=\n  \\left\\{\\matrix{\n    0,&x<0,\\\\\n    1,&x\\ge0.\n  }\\right."
             },
             {
               "type": "paragraph",
@@ -13528,12 +13918,11 @@
         },
         {
           "type": "quick-check",
-          "title": "epsilon-linear-q1",
           "checkId": "epsilon-linear-q1",
           "children": [
             {
               "type": "paragraph",
-              "text": "{epsilon-linear-q1}{expression}{epsilon/3}[Concept check] For \\(f(x)=3x+1\\) at \\(x=2\\), give a working choice of \\(\\delta\\) in terms of \\(\\varepsilon\\)."
+              "text": "For \\(f(x)=3x+1\\) at \\(x=2\\), give a working choice of \\(\\delta\\) in terms of \\(\\varepsilon\\)."
             },
             {
               "type": "hint",
@@ -13557,12 +13946,11 @@
         },
         {
           "type": "quick-check",
-          "title": "epsilon-linear-q2",
           "checkId": "epsilon-linear-q2",
           "children": [
             {
               "type": "paragraph",
-              "text": "{epsilon-linear-q2}{expression}{epsilon/5}[Concept check] For \\(f(x)=5x\\) at \\(x=1\\), give a working \\(\\delta\\)."
+              "text": "For \\(f(x)=5x\\) at \\(x=1\\), give a working \\(\\delta\\)."
             },
             {
               "type": "hint",
@@ -13586,12 +13974,11 @@
         },
         {
           "type": "quick-check",
-          "title": "epsilon-quadratic-q1",
           "checkId": "epsilon-quadratic-q1",
           "children": [
             {
               "type": "paragraph",
-              "text": "{epsilon-quadratic-q1}{expression}{min(1,epsilon/5)}[Concept check] For the standard proof that \\(x^2\\to4\\) as \\(x\\to2\\), enter the usual safe choice of \\(\\delta\\)."
+              "text": "For the standard proof that \\(x^2\\to4\\) as \\(x\\to2\\), enter the usual safe choice of \\(\\delta\\)."
             },
             {
               "type": "hint",
@@ -13615,12 +14002,11 @@
         },
         {
           "type": "quick-check",
-          "title": "formal-reading-q1",
           "checkId": "formal-reading-q1",
           "children": [
             {
               "type": "paragraph",
-              "text": "{formal-reading-q1}{choice}{output}[Concept check] In \\(|f(x)-L|<\\varepsilon\\), does \\(\\varepsilon\\) control input distance or output distance?"
+              "text": "In \\(|f(x)-L|<\\varepsilon\\), does \\(\\varepsilon\\) control input distance or output distance?"
             },
             {
               "type": "hint",
@@ -13896,8 +14282,60 @@
           "text": "Common Exam Errors and Their Repairs"
         },
         {
-          "type": "math",
-          "tex": "\\begin{longtable}{@{}p{0.30\\textwidth}p{0.31\\textwidth}p{0.31\\textwidth}@{}}\n\\toprule\n\\textbf{Error} & \\textbf{Why it fails} & \\textbf{Repair}\\\\\n\\midrule\n\\endhead\nUsing the filled point as the limit & The point gives \\(f(a)\\), not nearby behavior & Trace the graph from both sides first\\\\\nCalling \\(0/0\\) the answer & It is an indeterminate form & Simplify, then substitute again\\\\\nCancelling terms across addition & Cancellation applies to factors & Factor the entire numerator or denominator\\\\\nIgnoring left and right sides & Two-sided limits require agreement & Compute both one-sided limits\\\\\nWriting \\(\\sqrt{x^2}=x\\) at negative infinity & The principal square root is nonnegative & Use \\(\\sqrt{x^2}=|x|=-x\\) for \\(x<0\\)\\\\\nUsing degrees in \\(\\sin x/x\\) & The fundamental limit is a radian statement & Convert or use radian measure\\\\\nApplying IVT without continuity & Jumps can skip intermediate values & State continuity on the entire closed interval\\\\\nClaiming IVT gives the exact root & It gives existence only & Use bisection or another numerical method for location\\\\\nUsing l'Hospital's Rule too early & It may be unavailable, circular, or hide the needed algebra & Use first-unit methods requested by the course\\\\\n\\bottomrule\n\\end{longtable}"
+          "type": "table",
+          "environment": "longtable",
+          "rows": [
+            [
+              "{@{}p{0.30\\textwidth}p{0.31\\textwidth}p{0.31\\textwidth}@{}}\n\n\\textbf{Error}",
+              "\\textbf{Why it fails}",
+              "\\textbf{Repair}"
+            ],
+            [
+              "Using the filled point as the limit",
+              "The point gives \\(f(a)\\), not nearby behavior",
+              "Trace the graph from both sides first"
+            ],
+            [
+              "Calling \\(0/0\\) the answer",
+              "It is an indeterminate form",
+              "Simplify, then substitute again"
+            ],
+            [
+              "Cancelling terms across addition",
+              "Cancellation applies to factors",
+              "Factor the entire numerator or denominator"
+            ],
+            [
+              "Ignoring left and right sides",
+              "Two-sided limits require agreement",
+              "Compute both one-sided limits"
+            ],
+            [
+              "Writing \\(\\sqrt{x^2}=x\\) at negative infinity",
+              "The principal square root is nonnegative",
+              "Use \\(\\sqrt{x^2}=|x|=-x\\) for \\(x<0\\)"
+            ],
+            [
+              "Using degrees in \\(\\sin x/x\\)",
+              "The fundamental limit is a radian statement",
+              "Convert or use radian measure"
+            ],
+            [
+              "Applying IVT without continuity",
+              "Jumps can skip intermediate values",
+              "State continuity on the entire closed interval"
+            ],
+            [
+              "Claiming IVT gives the exact root",
+              "It gives existence only",
+              "Use bisection or another numerical method for location"
+            ],
+            [
+              "Using l'Hospital's Rule too early",
+              "It may be unavailable, circular, or hide the needed algebra",
+              "Use first-unit methods requested by the course"
+            ]
+          ]
         }
       ]
     },
@@ -14362,7 +14800,7 @@
             },
             {
               "type": "math",
-              "tex": "\\begin{cases}(x^2-9)/(x-3),&x\\ne3,\\\\c,&x=3\\end{cases}"
+              "tex": "\\left\\{\\matrix{(x^2-9)/(x-3),&x\\ne3,\\\\c,&x=3}\\right."
             },
             {
               "type": "paragraph",
@@ -14379,7 +14817,7 @@
             },
             {
               "type": "math",
-              "tex": "\\begin{cases}kx+2,&x<1,\\\\x^2+4,&x\\ge1\\end{cases}"
+              "tex": "\\left\\{\\matrix{kx+2,&x<1,\\\\x^2+4,&x\\ge1}\\right."
             },
             {
               "type": "paragraph",
@@ -14396,7 +14834,7 @@
             },
             {
               "type": "math",
-              "tex": "\\begin{cases}ax+1,&x<0,\\\\ax+4,&x\\ge0\\end{cases}"
+              "tex": "\\left\\{\\matrix{ax+1,&x<0,\\\\ax+4,&x\\ge0}\\right."
             },
             {
               "type": "paragraph",
@@ -14653,7 +15091,7 @@
             },
             {
               "type": "math",
-              "tex": "\\begin{cases}kx+1,&x<2,\\\\x^2-1,&x\\ge2\\end{cases}"
+              "tex": "\\left\\{\\matrix{kx+1,&x<2,\\\\x^2-1,&x\\ge2}\\right."
             },
             {
               "type": "paragraph",
@@ -14709,7 +15147,7 @@
             },
             {
               "type": "math",
-              "tex": "f(x)=\\begin{cases}\nx^2+1,&x<1,\\\\\n5,&x=1,\\\\\n3x-1,&x>1.\n\\end{cases}"
+              "tex": "f(x)=\\left\\{\\matrix{\nx^2+1,&x<1,\\\\\n5,&x=1,\\\\\n3x-1,&x>1.\n}\\right."
             },
             {
               "type": "paragraph",
@@ -14807,7 +15245,7 @@
             },
             {
               "type": "math",
-              "tex": "g(x)=\\begin{cases}\nax+b,&x<1,\\\\\nx^2+2,&1\\le x<2,\\\\\n3x+a,&x\\ge2\n\\end{cases}"
+              "tex": "g(x)=\\left\\{\\matrix{\nax+b,&x<1,\\\\\nx^2+2,&1\\le x<2,\\\\\n3x+a,&x\\ge2\n}\\right."
             },
             {
               "type": "paragraph",

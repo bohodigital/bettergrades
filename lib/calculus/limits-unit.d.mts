@@ -6,12 +6,15 @@ export type LimitsUnitNode = {
   level?: number;
   checkId?: string;
   children?: LimitsUnitNode[];
+  environment?: string;
+  rows?: string[][];
 };
 export type LimitsUnitCheck = {
   id: string; routeSlug: string; mode: "checker"; answerType: "choice" | "expression" | "integer" | "rational";
   canonicalAnswer: string; promptLatex: string; hintLatex: string; workedFeedbackLatex: string;
   attemptRequiredBeforeReveal: boolean;
 };
+export type LimitsUnitPublicCheck = Omit<LimitsUnitCheck, "canonicalAnswer" | "workedFeedbackLatex">;
 export type LimitsUnitRoute = {
   sourceSlug: string; sourceCanonicalPath: string; path: string; title: string; metadataTitle: string; h1: string; description: string;
   pageType: string; primaryQuery: string; sourceFile: string; sequenceIndex: number; breadcrumbs: string[];
@@ -29,6 +32,16 @@ export type LimitsUnitPage = {
   returnRoute?: LimitsUnitRoute;
   related: LimitsUnitRoute[];
 };
+export type LimitsUnitPublicPage = {
+  route: LimitsUnitRoute;
+  page: Omit<LimitsUnitPageRecord, "source">;
+  checks: LimitsUnitPublicCheck[];
+  previous?: LimitsUnitRoute;
+  next?: LimitsUnitRoute;
+  returnRoute?: LimitsUnitRoute;
+  related: LimitsUnitRoute[];
+  provenanceNote: string;
+};
 export const LIMITS_UNIT_PREFIX: string;
 export const limitsUnitPayload: {
   unit: { routeCount: number; coreRouteCount: number; supportingRouteCount: number; checkCount: number };
@@ -44,4 +57,5 @@ export const limitsUnitCoreRoutes: LimitsUnitRoute[];
 export function getLimitsUnitRoute(path: string): LimitsUnitRoute | undefined;
 export function getLimitsUnitRouteBySlug(sourceSlug: string): LimitsUnitRoute | undefined;
 export function getLimitsUnitPage(path: string): LimitsUnitPage | undefined;
+export function getPublicLimitsUnitPage(path: string): LimitsUnitPublicPage | undefined;
 export function isLimitsUnitPath(path: string): boolean;
