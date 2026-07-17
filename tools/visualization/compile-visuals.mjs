@@ -79,7 +79,8 @@ async function assertCurrent(path, expected, label) {
 }
 
 const sourceText = await readUtf8(sourcePath);
-const collection = JSON.parse(sourceText);
+const canonicalSourceText = sourceText.replace(/\r\n?/g, "\n");
+const collection = JSON.parse(canonicalSourceText);
 if (collection.collectionSchemaVersion !== 1 || !Array.isArray(collection.visuals)) {
   throw new Error("The Limits visual collection must use collectionSchemaVersion 1 and a visuals array.");
 }
@@ -103,7 +104,7 @@ const rendered = scenes.map((scene) => {
 const manifest = {
   manifestVersion: 1,
   collectionId: collection.collectionId,
-  sourceSha256: sha256(sourceText),
+  sourceSha256: sha256(canonicalSourceText),
   compilerVersion: "bvlp-compiler-v1",
   assetPrefix: "/visuals/v1",
   sceneCount: rendered.length,

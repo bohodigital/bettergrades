@@ -41,6 +41,17 @@ type PointValue = Readonly<{ x: Value; y: Value }>;
 type NumericPoint = Readonly<{ x: number; y: number }>;
 type Variables = Readonly<Record<string, number>>;
 
+// Browser, Windows, and Linux runtimes may differ by a few low-order bits for
+// transcendental functions.  Those bits are far below visual resolution, but
+// can otherwise move an adaptive sample across a refinement threshold and
+// change a content-addressed asset.  Normalize only sampled values at this
+// renderer boundary; authored coordinates and the safe AST remain unchanged.
+function stableSampleNumber(value: number): number {
+  if (!Number.isFinite(value)) return value;
+  const normalized = Number(value.toPrecision(12));
+  return Object.is(normalized, -0) ? 0 : normalized;
+}
+
 // Zod's generic layer factory intentionally accepts multiple expression
 // schemas, so its inferred CompiledScene type retains `unknown` at expression
 // and expression-backed coordinate leaves. The scene is validated immediately
@@ -330,14 +341,14 @@ function sampleLayer(
       const [xMin, xMax] = domainBounds(layer.geometry.domain);
       const available = { ...variables, [layer.geometry.variable]: 0 };
       assertVariablesAvailable(expression, available, scene, layer);
-      const result = sampleAdaptiveFunction((x) => evaluateNumericAst(expression, {
+      const result = sampleAdaptiveFunction((x) => stableSampleNumber(evaluateNumericAst(expression, {
         ...variables,
         [layer.geometry.variable]: x,
       }, {
         maxDepth: scene.performance.maxAstDepth,
         maxNodes: scene.performance.maxAstNodes,
         maxOperations: scene.performance.maxOperationsPerEvaluation,
-      }), {
+      })), {
         ...common,
         xMin,
         xMax,
@@ -356,8 +367,8 @@ function sampleLayer(
       assertVariablesAvailable(xExpression, available, scene, layer);
       assertVariablesAvailable(yExpression, available, scene, layer);
       const result = sampleAdaptiveParametric((parameter) => ({
-        x: evaluateNumericAst(xExpression, { ...variables, [layer.geometry.parameter]: parameter }),
-        y: evaluateNumericAst(yExpression, { ...variables, [layer.geometry.parameter]: parameter }),
+        x: stableSampleNumber(evaluateNumericAst(xExpression, { ...variables, [layer.geometry.parameter]: parameter })),
+        y: stableSampleNumber(evaluateNumericAst(yExpression, { ...variables, [layer.geometry.parameter]: parameter })),
       }), {
         ...common,
         parameterMin,
@@ -370,10 +381,10 @@ function sampleLayer(
     const available = { ...variables, [layer.geometry.angleVariable]: 0 };
     const radiusExpression = layer.geometry.radiusExpression;
     assertVariablesAvailable(radiusExpression, available, scene, layer);
-    const result = sampleAdaptivePolar((angle) => evaluateNumericAst(radiusExpression, {
+    const result = sampleAdaptivePolar((angle) => stableSampleNumber(evaluateNumericAst(radiusExpression, {
       ...variables,
       [layer.geometry.angleVariable]: angle,
-    }), {
+    })), {
       ...common,
       parameterMin,
       parameterMax,
