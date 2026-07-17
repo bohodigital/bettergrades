@@ -21,7 +21,13 @@ test("print source uses learner-visible Section wording without changing LaTeX c
 
   for (const file of files) {
     const source = await readFile(file, "utf8");
-    assert.doesNotMatch(source, /\b(?:CHAPTERS?|Chapters?)\b/, path.relative(printRoot, file));
+    const learnerVisibleSource = source
+      .replace(/\\chapter\*?/g, "")
+      .replace(/\\(?:chaptername|thechapter)\b/g, "")
+      .replace(/\{chapter\}|\[chapter\]/g, "")
+      .replace(/chapters\//g, "")
+      .replace(/chapter-answers/g, "");
+    assert.doesNotMatch(learnerVisibleSource, /\bchapters?\b/i, path.relative(printRoot, file));
   }
 
   const style = await readFile(path.join(printRoot, "bettergrades-webtext.sty"), "utf8");
