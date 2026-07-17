@@ -268,7 +268,7 @@ function buildLayerSchema(expressionSchema: z.ZodTypeAny) {
     presentation: PresentationSchema,
     references: z.array(IdentifierSchema).max(64).default([]),
   };
-  const layer = <T extends z.ZodRawShape>(kind: string, geometry: z.ZodObject<T>) =>
+  const layer = <K extends string, T extends z.ZodRawShape>(kind: K, geometry: z.ZodObject<T>) =>
     z.object({ ...common, kind: z.literal(kind), geometry }).strict();
 
   return z.discriminatedUnion("kind", [
