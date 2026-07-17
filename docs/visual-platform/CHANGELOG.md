@@ -45,7 +45,8 @@
   lint after the Pages emulator proved that scratch was otherwise scanned
   (`dee8fd9`).
 - Verified the Pages build, focused visual gate (13 public/4 interactive),
-  typecheck, full lint, and full 158/158 repository suite. Completed local
+  typecheck, full lint, and full 159/159 repository suite, including the
+  schema/registry/dependency/migration documentation-drift gate. Completed local
   desktop/mobile route, interaction, answer-key, map-order, math-rendering,
   metadata, analytics, and greater-or-equal identity inspection.
 - Compiled the final 175-page print artifact with Tectonic 0.16.9 cache-only;

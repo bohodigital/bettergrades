@@ -50,8 +50,8 @@ tracked separately because a passing local candidate is not a release.
 | lazy adapter boundaries | `lib/visualization/renderers/jsxgraph-adapter/`, `lib/visualization/renderers/uplot-adapter/`, `lib/visualization/renderers/future-specialist/` | implemented and isolated in `33850e4`; no heavy vendor adapter is activated by the current Limits migration |
 | compiled Limits manifest/assets | `content/visualizations/limits-continuity/compiled-scenes.v1.json`, `public/visuals/v1/` | 13 deterministic content-addressed assets generated and `--check` passing through `2a801d7` |
 | Limits source inventory and route delivery | `content/visualizations/limits-continuity/`, `lib/visualization/limits-public.server.mjs`, and `LIMITS_MIGRATION.md` | all 13 current visuals delivered through BVLP in `8a32870`; four progressively enhance with Interactive 2D; the legacy Limits canvas component is removed |
-| visual verification | `tools/visualization/verify-visuals.mjs` and `verify:visuals` | passing through `dee8fd9`: production build, 158/158 tests, exactly 13 public visuals, exactly 4 interactive scenes, strict artifact/route/leak checks, and mutation coverage |
-| integrated QA | `QA_REPORT.md` | build, typecheck, lint, 158/158 tests, desktop/mobile browser QA, measured bundles/leaks, answer-key/navigation/SEO checks, and a visually inspected 175-page cache-only Tectonic PDF; owner-only Sites preview and production remain pending |
+| visual verification | `tools/visualization/verify-visuals.mjs` and `verify:visuals` | production build, 159/159 tests including documentation drift, exactly 13 public visuals, exactly 4 interactive scenes, strict artifact/route/leak checks, and mutation coverage |
+| integrated QA | `QA_REPORT.md` | build, typecheck, lint, 159/159 tests, desktop/mobile browser QA, measured bundles/leaks, answer-key/navigation/SEO checks, and a visually inspected 175-page cache-only Tectonic PDF; owner-only Sites preview and production remain pending |
 
 ## Author workflow
 

@@ -49,7 +49,7 @@ below are relative to `/subjects/math/calculus/limits-continuity/`.
 
 All 13 VisualSpecs have complete caption, long description, accessibility,
 performance, provenance, and generated-SVG print declarations. The compiled
-manifest maps all 13 to hashed SVG assets. The integrated 158/158 repository
+manifest maps all 13 to hashed SVG assets. The integrated 159/159 repository
 test run includes strict 13-to-13 mapping, the 3 non-rendering nodes, stable
 routes/figures, schema parsing, discontinuity domains, semantic fields,
 multi-panel layouts, and absence of raw legacy drawing programs or executable

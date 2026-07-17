@@ -25,7 +25,7 @@ cost budgets, activation mode, dynamic import path, fallback, and module owner.
 | `bg-interactive-2d` | browser-core, <=30 KB gzip source target | pan/zoom/reset, readout, bounded controls, and compiled 2D layers; the accepted first pass covers four interactive Limits scenes | advanced constraints/loci/implicit curves, dense data, 3D; draggable-point/play-pause UI is not implemented in the accepted first pass | automatic progressive | `static-svg` |
 | `jsxgraph` | browser-lazy, registry budget 180,000 gzip bytes; no vendor chunk emitted by accepted Limits build | advanced constraints, geometry dependency graphs, implicit curves, loci, advanced ODE geometry | ordinary/static plots, dense series, 3D | explicit action required | `static-svg` |
 | `uplot` | browser-lazy, registry budget 55,000 gzip bytes; no vendor chunk emitted by accepted Limits build | dense precomputed numeric series, shared x-axis, cursor, zoom, markers/error bands | symbolic parsing, geometry, diagrams, 3D | near viewport | `static-svg`/static summary |
-| reserved 3D | unsupported | reserved camera/lighting/mesh/3D axes contracts | all production v1 rendering | fail | no silent fallback |
+| `future-specialist` | reserved and uninstalled | `surface-3d`, `vector-field-3d`, `molecular-3d`, `camera-3d`, and `mesh-3d` contract vocabulary only | all production v1 rendering | fail | no silent fallback; a future adapter must add an explicit static projection |
 
 ## Capability categories
 
@@ -51,7 +51,8 @@ print are renderer/accessibility contracts rather than capability IDs.
 
 The resolver tests in `tests/bvlp-core-schema.test.mjs` verify least-cost
 selection, capability inference, preferred-renderer safety, and fail-closed
-unsupported 3D. The full repository suite and strict visual verifier are the
-release gates. No handwritten support claim may override code evidence; a
-future generated documentation check may improve maintenance ergonomics but is
-not treated as implementation evidence.
+unsupported 3D. `tests/bvlp-documentation.test.mjs` validates every renderer,
+VisualKind, layer, control, capability, installed BVLP dependency, public Limits
+migration ID/print mapping, required document, and referenced ADR against the
+code and manifest. The full repository suite and strict visual verifier are the
+release gates. No handwritten support claim may override code evidence.

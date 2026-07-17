@@ -118,3 +118,15 @@ visuals are committed. Exactly four scenes progressively enhance with the
 first-party Interactive 2D renderer; no current Limits route activates a heavy
 vendor adapter. Final preview/production delivery evidence remains pending and
 must not be inferred from this architecture contract.
+
+## Architecture decisions
+
+- [ADR 0001: renderer-neutral VisualSpec](adr/0001-renderer-neutral-visualspec.md)
+- [ADR 0002: Static SVG default](adr/0002-static-svg-default.md)
+- [ADR 0003: interactive renderer hierarchy](adr/0003-interactive-renderer-hierarchy.md)
+- [ADR 0004: expression compilation boundary](adr/0004-expression-compilation-boundary.md)
+- [ADR 0005: Cloudflare delivery model](adr/0005-cloudflare-delivery-model.md)
+- [ADR 0006: adapter isolation](adr/0006-adapter-isolation.md)
+
+`tests/bvlp-documentation.test.mjs` enforces that these references exist and
+that the renderer/schema/dependency/migration vocabulary remains synchronized.

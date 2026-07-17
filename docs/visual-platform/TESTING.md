@@ -15,10 +15,10 @@ implementation worktree at
 | Gate | Result |
 | --- | --- |
 | `corepack pnpm run build:pages` | pass; exact candidate built through the existing Pages/vinext path |
-| `NODE_OPTIONS=--max-old-space-size=4096 corepack pnpm run verify:visuals` | pass; Pages build, 158/158 tests, strict 13-public/4-interactive artifact verifier |
+| `NODE_OPTIONS=--max-old-space-size=4096 corepack pnpm run verify:visuals` | pass; Pages build, 159/159 tests, strict 13-public/4-interactive artifact verifier |
 | `corepack pnpm exec tsc --noEmit` | pass |
 | `NODE_OPTIONS=--max-old-space-size=4096 corepack pnpm lint` | pass |
-| `NODE_OPTIONS=--max-old-space-size=4096 corepack pnpm test` | pass inside `verify:visuals`; 158/158, 0 failed |
+| `NODE_OPTIONS=--max-old-space-size=4096 corepack pnpm test` | pass inside `verify:visuals`; 159/159, 0 failed |
 | cache-only Tectonic 0.16.9 compile | pass; 175 pages, 0 fatal/unresolved errors, 8 accepted under/overfull warnings, 19-page visual inspection pass |
 
 The first default-heap lint attempt exhausted its 2 GB Node heap while stale

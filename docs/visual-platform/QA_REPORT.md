@@ -16,7 +16,7 @@ above; the final release commit must be recorded in the work-order closeout.
 ## Outcome
 
 The integrated candidate passes its Pages build, strengthened visual release
-gate, typecheck, full lint, and full 158-test repository suite. Local Pages-emulator
+gate, typecheck, full lint, and full 159-test repository suite. Local Pages-emulator
 browser QA confirms all 13 current Limits visual assets, all four interactions,
 mobile/desktop fallback behavior, answer-key discoverability, unit navigation,
 rendered math, analytics, indexability, and site identity. QA found one dark-
@@ -35,10 +35,10 @@ released.
 | Gate | Exact result |
 | --- | --- |
 | `corepack pnpm run build:pages` | pass; existing vinext/Pages pipeline built the candidate |
-| `NODE_OPTIONS=--max-old-space-size=4096 corepack pnpm run verify:visuals` | pass; production Pages build, 158/158 repository tests, strict 13-scene/4-interactive verifier |
+| `NODE_OPTIONS=--max-old-space-size=4096 corepack pnpm run verify:visuals` | pass; production Pages build, 159/159 repository tests including documentation drift, strict 13-scene/4-interactive verifier |
 | `corepack pnpm exec tsc --noEmit` | pass |
 | `NODE_OPTIONS=--max-old-space-size=4096 corepack pnpm lint` | pass |
-| `NODE_OPTIONS=--max-old-space-size=4096 corepack pnpm test` | pass as part of `verify:visuals`; 158/158, 0 failed, approximately 98.4 seconds |
+| `NODE_OPTIONS=--max-old-space-size=4096 corepack pnpm test` | pass as part of `verify:visuals`; 159/159, 0 failed; final duration recorded in command output |
 
 The initial default-heap lint process exhausted its 2 GB Node heap while stale
 local preview processes occupied memory. Only the stale loopback preview

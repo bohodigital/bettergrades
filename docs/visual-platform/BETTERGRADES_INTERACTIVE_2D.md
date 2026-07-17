@@ -73,7 +73,7 @@ The focused tests verify the source budget and forbidden-import boundary,
 visible failure with parent fallback ownership, deterministic range/step
 behavior, mathematical metric groups, scene summaries, bounded
 pan/zoom/reset transforms, ResizeObserver cleanup, reduced-motion detection,
-and fail-closed compiled-AST evaluation. The integrated 158/158 suite and local
+and fail-closed compiled-AST evaluation. The integrated 159/159 suite and local
 browser QA additionally cover route enhancement, mobile targets/overflow, and
 epsilon-delta keyboard behavior. The production chunk passes its boundary;
 live payload/network observations remain pending until preview/production QA.

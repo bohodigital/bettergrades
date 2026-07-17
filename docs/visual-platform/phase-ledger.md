@@ -43,7 +43,7 @@ recoverable through `2649ac0`.
 | 6 — representative Limits migration | complete | `0c7aa1d`; representative source gate, then browser evidence as part of bulk QA |
 | 7 — all Limits visual migration | complete | `8a32870`; exact 13 public visuals, 4 interactive, legacy canvas removed, mutation-tested verifier |
 | 8 — print parity | complete | Tectonic 0.16.9 cache-only 175-page compile, zero case-insensitive `chapter` terms, 19-page Poppler visual inspection pass |
-| 9 — verifier, performance, leak, and browser QA | complete locally | build/typecheck/lint/158 tests, desktop/mobile QA, final chunk measurement, and client leak scan pass; live host checks remain phase 10 |
+| 9 — verifier, performance, leak, and browser QA | complete locally | build/typecheck/lint/159 tests, documentation drift, desktop/mobile QA, final chunk measurement, and client leak scan pass; live host checks remain phase 10 |
 | 10 — exact preview, reviewed release, and live verification | pending | owner-only Sites preview and production deployment/live QA have not occurred |
 
 ## Integrated automated evidence
@@ -54,10 +54,10 @@ implementation candidate:
 | Check | Result |
 | --- | --- |
 | `corepack pnpm run build:pages` | pass |
-| `NODE_OPTIONS=--max-old-space-size=4096 corepack pnpm run verify:visuals` | pass; Pages build, 158/158 tests, exactly 13 public visual scenes and 4 interactive scenes |
+| `NODE_OPTIONS=--max-old-space-size=4096 corepack pnpm run verify:visuals` | pass; Pages build, 159/159 tests, exactly 13 public visual scenes and 4 interactive scenes |
 | `corepack pnpm exec tsc --noEmit` | pass |
 | `NODE_OPTIONS=--max-old-space-size=4096 corepack pnpm lint` | pass |
-| `NODE_OPTIONS=--max-old-space-size=4096 corepack pnpm test` | pass inside `verify:visuals`; 158/158, 0 failed |
+| `NODE_OPTIONS=--max-old-space-size=4096 corepack pnpm test` | pass inside `verify:visuals`; 159/159, 0 failed |
 
 The initial default-heap lint process exhausted its 2 GB Node heap while stale
 loopback preview servers were still resident. Those stale preview processes
