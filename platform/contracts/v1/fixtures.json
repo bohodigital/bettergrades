@@ -1,0 +1,248 @@
+{
+  "authored": {
+    "contractVersion": "1.0.0",
+    "course": {
+      "id": "calculus",
+      "slug": "calculus",
+      "title": "Calculus",
+      "description": "A representative authored course contract.",
+      "subject": "math",
+      "visibility": "draft",
+      "units": [{
+        "id": "limits-continuity",
+        "courseId": "calculus",
+        "slug": "limits-continuity",
+        "title": "Limits and Continuity",
+        "description": "A representative unit.",
+        "visibility": "draft",
+        "sections": [{
+          "id": "limit-foundations",
+          "unitId": "limits-continuity",
+          "slug": "limit-foundations",
+          "title": "Limit Foundations",
+          "description": "A representative section.",
+          "visibility": "draft",
+          "pages": [{
+            "id": "limit-meaning",
+            "sectionId": "limit-foundations",
+            "slug": "limit-meaning",
+            "route": "/courses/calculus/limits-continuity/limit-foundations/limit-meaning/",
+            "title": "What a limit means",
+            "summary": "A representative page.",
+            "pageKind": "lesson",
+            "visibility": "draft",
+            "sequenceRole": "core",
+            "metadata": {
+              "title": "What a limit means",
+              "description": "Understand the meaning of a limit.",
+              "canonicalRoute": "/courses/calculus/limits-continuity/limit-foundations/limit-meaning/",
+              "robots": "noindex-follow",
+              "searchIntent": "limit-meaning"
+            },
+            "bodyRef": "server:pages/limit-meaning",
+            "assessmentBankRef": "server:assessments/limit-meaning",
+            "provenance": {
+              "sourceId": "fixture",
+              "sourceKind": "authored",
+              "sourcePath": "platform/contracts/v1/fixtures.json",
+              "sourceRevision": "1",
+              "sourceLocator": "authored.course.units.0.sections.0.pages.0",
+              "contentSha256": "0000000000000000000000000000000000000000000000000000000000000000"
+            }
+          }]
+        }],
+        "sequence": {
+          "contractVersion": "1.0.0",
+          "entries": [{
+            "pageId": "limit-meaning",
+            "route": "/courses/calculus/limits-continuity/limit-foundations/limit-meaning/",
+            "ordinal": 0,
+            "role": "core",
+            "prerequisites": []
+          }]
+        }
+      }],
+      "provenance": {
+        "sourceId": "fixture",
+        "sourceKind": "authored",
+        "sourcePath": "platform/contracts/v1/fixtures.json",
+        "sourceRevision": "1",
+        "sourceLocator": "authored.course",
+        "contentSha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    },
+    "pages": [{
+      "contractVersion": "1.0.0",
+      "pageId": "limit-meaning",
+      "body": [{
+        "id": "opening",
+        "type": "paragraph",
+        "children": [{
+          "id": "opening-text",
+          "type": "text",
+          "text": "A limit describes nearby behavior.",
+          "provenance": {
+            "sourceId": "fixture",
+            "sourceKind": "authored",
+            "sourcePath": "platform/contracts/v1/fixtures.json",
+            "sourceRevision": "1",
+            "sourceLocator": "authored.pages.0.body.0.children.0",
+            "contentSha256": "0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        }],
+        "provenance": {
+          "sourceId": "fixture",
+          "sourceKind": "authored",
+          "sourcePath": "platform/contracts/v1/fixtures.json",
+          "sourceRevision": "1",
+          "sourceLocator": "authored.pages.0.body.0",
+          "contentSha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }, {
+        "id": "limit-curve-node",
+        "type": "visual",
+        "visualId": "limit-curve",
+        "provenance": {
+          "sourceId": "fixture",
+          "sourceKind": "authored",
+          "sourcePath": "platform/contracts/v1/fixtures.json",
+          "sourceRevision": "1",
+          "sourceLocator": "authored.pages.0.body.1",
+          "contentSha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }],
+      "visualIds": ["limit-curve"],
+      "assessmentIds": ["limit-check"],
+      "provenance": {
+        "sourceId": "fixture",
+        "sourceKind": "authored",
+        "sourcePath": "platform/contracts/v1/fixtures.json",
+        "sourceRevision": "1",
+        "sourceLocator": "authored.pages.0",
+        "contentSha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    }],
+    "visuals": [{
+      "contractVersion": "1.0.0",
+      "id": "limit-curve",
+      "sceneKind": "cartesian-2d",
+      "rendererCapability": "static-svg",
+      "renderingMode": "static",
+      "title": "A curve approaching a limit",
+      "caption": "The curve approaches the same height from both sides.",
+      "longDescription": "A Cartesian curve approaches y equals two as x approaches one.",
+      "expressions": [],
+      "datasets": [],
+      "layers": [{ "id": "axes", "kind": "axes", "xLabel": "x", "yLabel": "y" }],
+      "interactions": ["none"],
+      "reducedMotion": "static-equivalent",
+      "printFallback": { "kind": "static-svg", "assetRef": "visuals/limit-curve.svg", "altText": "A curve approaching y equals two." },
+      "provenance": {
+        "sourceId": "fixture",
+        "sourceKind": "authored",
+        "sourcePath": "platform/contracts/v1/fixtures.json",
+        "sourceRevision": "1",
+        "sourceLocator": "authored.visuals.0",
+        "contentSha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    }],
+    "assessments": [{
+      "id": "limit-check",
+      "prompt": [{
+        "id": "limit-check-prompt",
+        "type": "text",
+        "text": "What value is approached?",
+        "provenance": {
+          "sourceId": "fixture",
+          "sourceKind": "authored",
+          "sourcePath": "platform/contracts/v1/fixtures.json",
+          "sourceRevision": "1",
+          "sourceLocator": "authored.assessments.0.prompt.0",
+          "contentSha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }],
+      "visibility": "draft",
+      "responseKind": "numeric",
+      "answer": { "kind": "numeric", "value": 2, "absoluteTolerance": 0, "requiredForm": "exact" },
+      "acceptedVariants": [],
+      "hints": [],
+      "workedFeedback": [{
+        "id": "limit-check-feedback",
+        "type": "text",
+        "text": "Read the height approached from both sides.",
+        "provenance": {
+          "sourceId": "fixture",
+          "sourceKind": "authored",
+          "sourcePath": "platform/contracts/v1/fixtures.json",
+          "sourceRevision": "1",
+          "sourceLocator": "authored.assessments.0.workedFeedback.0",
+          "contentSha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }],
+      "provenance": {
+        "sourceId": "fixture",
+        "sourceKind": "authored",
+        "sourcePath": "platform/contracts/v1/fixtures.json",
+        "sourceRevision": "1",
+        "sourceLocator": "authored.assessments.0",
+        "contentSha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    }]
+  },
+  "globalIndex": {
+    "contractVersion": "1.0.0",
+    "generatedAt": "2026-07-17T00:00:00+00:00",
+    "courses": [{
+      "id": "calculus",
+      "title": "Calculus",
+      "description": "A representative public-safe index.",
+      "visibility": "draft",
+      "units": [{
+        "id": "limits-continuity",
+        "title": "Limits and Continuity",
+        "visibility": "draft",
+        "pages": [{
+          "id": "limit-meaning",
+          "route": "/courses/calculus/limits-continuity/limit-foundations/limit-meaning/",
+          "title": "What a limit means",
+          "summary": "A representative page.",
+          "visibility": "draft",
+          "sequenceRole": "core"
+        }]
+      }]
+    }],
+    "assessments": [{ "id": "limit-check", "pageId": "limit-meaning", "responseKind": "numeric", "visibility": "draft" }]
+  },
+  "serverPageBody": {
+    "contractVersion": "1.0.0",
+    "pageId": "limit-meaning",
+    "body": [{
+      "id": "server-text",
+      "type": "text",
+      "text": "This body remains server-only.",
+      "provenance": {
+        "sourceId": "fixture",
+        "sourceKind": "authored",
+        "sourcePath": "platform/contracts/v1/fixtures.json",
+        "sourceRevision": "1",
+        "sourceLocator": "serverPageBody.body.0",
+        "contentSha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    }],
+    "visualIds": [],
+    "assessmentIds": ["limit-check"],
+    "provenance": {
+      "sourceId": "fixture",
+      "sourceKind": "authored",
+      "sourcePath": "platform/contracts/v1/fixtures.json",
+      "sourceRevision": "1",
+      "sourceLocator": "serverPageBody",
+      "contentSha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  },
+  "serverAssessmentBank": {
+    "contractVersion": "1.0.0",
+    "pageId": "limit-meaning",
+    "assessments": []
+  }
+}

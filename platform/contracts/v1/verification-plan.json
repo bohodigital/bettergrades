@@ -1,0 +1,24 @@
+{
+  "contractVersion": "1.0.0",
+  "command": "corepack pnpm verify:textbook",
+  "gates": [
+    { "id": "contract-schemas", "required": true, "phase": "contract", "status": "runnable" },
+    { "id": "manifest-integrity", "required": true, "phase": "ingestion", "status": "planned" },
+    { "id": "route-collisions", "required": true, "phase": "ingestion", "status": "planned" },
+    { "id": "public-route-crawl", "required": true, "phase": "web", "status": "planned" },
+    { "id": "canonical-sitemap-robots-analytics", "required": true, "phase": "web", "status": "planned" },
+    { "id": "semantic-rendering", "required": true, "phase": "render", "status": "planned" },
+    { "id": "visible-latex", "required": true, "phase": "render", "status": "planned" },
+    { "id": "assessment-checks", "required": true, "phase": "assessment", "status": "planned" },
+    { "id": "answer-leak-scan", "required": true, "phase": "security", "status": "planned" },
+    { "id": "visual-capabilities", "required": true, "phase": "visual", "status": "planned" },
+    { "id": "graph-count-and-ids", "required": true, "phase": "visual", "status": "planned" },
+    { "id": "bundle-budgets", "required": true, "phase": "performance", "status": "planned" },
+    { "id": "hydration-budgets", "required": true, "phase": "performance", "status": "planned" },
+    { "id": "desktop-mobile-browser-qa", "required": true, "phase": "browser", "status": "planned" },
+    { "id": "accessibility", "required": true, "phase": "browser", "status": "planned" },
+    { "id": "provenance-completeness", "required": true, "phase": "content", "status": "planned" },
+    { "id": "release-visibility", "required": true, "phase": "release", "status": "planned" },
+    { "id": "print-compile-and-parity", "required": true, "phase": "print", "status": "planned" }
+  ]
+}
