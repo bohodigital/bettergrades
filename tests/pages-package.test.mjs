@@ -129,6 +129,7 @@ test("limits tables and generated visual fallbacks remain bounded on narrow scre
   assert.match(css, /\.limits-graph figcaption \{[^}]*min-width: 0/);
   assert.match(css, /\.bvlp-visual \{[^}]*min-width: 0/);
   assert.match(css, /\.bvlp-static-visual img \{[^}]*width: 100%;[^}]*height: auto;[^}]*max-width: 100%/);
+  assert.match(css, /\.bvlp-interactive__toolbar button, \.bvlp-interactive__control button \{[^}]*background: var\(--paper\);[^}]*color: var\(--ink\)/);
   assert.match(css, /\.bvlp-long-description summary \{[^}]*min-height: 44px/);
   assert.match(css, /\.limits-graph-exposition \{[^}]*margin-top: 12px;[^}]*border-top:/);
   assert.match(css, /@media print \{[^}]*\.bvlp-visual\.is-interactive-ready \.bvlp-static-visual \{[^}]*display: block !important/s);
