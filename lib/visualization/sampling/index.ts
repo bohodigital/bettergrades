@@ -192,7 +192,6 @@ export function sampleAdaptiveCurve(
         ]
       : [Number.POSITIVE_INFINITY];
     const error = Math.max(...deviations);
-    const chord = allFinite ? normalizedDistance(points[0], points[4], options.viewport) : Number.POSITIVE_INFINITY;
     const adjacentJump = allFinite
       ? Math.max(
           normalizedDistance(points[0], points[1], options.viewport),
