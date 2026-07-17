@@ -13,6 +13,8 @@
     "build:pages": "corepack pnpm run build && node tools/prepare-pages-build.mjs",
     "article:compile": "node tools/article-source.mjs",
     "glossary:generate": "node tools/generate-glossary-artifacts.mjs",
+    "test:platform-contracts": "node --test platform/contracts/v1/tests/platform-contracts.test.mjs",
+    "verify:textbook": "node tools/verify-textbook.mjs",
     "test": "corepack pnpm run build:pages && node --test tests/*.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --ignore-pattern worker-configuration.d.ts",
     "db:generate": "drizzle-kit generate"
@@ -23,7 +25,8 @@
     "katex": "^0.17.0",
     "next": "16.2.6",
     "react": "19.2.6",
-    "react-dom": "19.2.6"
+    "react-dom": "19.2.6",
+    "zod": "4.4.3"
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "1.37.1",
