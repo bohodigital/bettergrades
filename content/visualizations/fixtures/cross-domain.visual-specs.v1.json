@@ -1,0 +1,286 @@
+[
+  {
+    "schemaVersion": 1,
+    "id": "fixture-algebra-function",
+    "kind": "cartesian-2d",
+    "title": { "segments": [{ "kind": "text", "text": "Algebra function capability fixture" }] },
+    "caption": { "segments": [{ "kind": "text", "text": "Non-public algebra renderer vocabulary fixture." }] },
+    "learningPurpose": "Validate algebra function-path capability mapping in automated infrastructure tests.",
+    "longDescription": "A non-public test parabola with its vertex at the origin and no attached lesson or route.",
+    "coordinateSpace": { "type": "cartesian-2d", "variables": ["x", "y"], "unitsRequired": false },
+    "viewport": { "xMin": -3, "xMax": 3, "yMin": -1, "yMax": 7, "aspectRatio": 1.6, "padding": 0.04 },
+    "axes": {
+      "mode": "explicit",
+      "axes": [
+        { "id": "x-axis", "orientation": "x", "label": { "segments": [{ "kind": "text", "text": "x" }] }, "scale": "linear", "tickMode": "automatic", "showGrid": true },
+        { "id": "y-axis", "orientation": "y", "label": { "segments": [{ "kind": "text", "text": "y" }] }, "scale": "linear", "tickMode": "automatic", "showGrid": true }
+      ]
+    },
+    "panels": [],
+    "layers": [
+      {
+        "id": "algebra-function",
+        "kind": "function",
+        "visible": true,
+        "zIndex": 1,
+        "presentation": { "strokeToken": "visual-primary", "lineStyle": "solid", "markerShape": "none", "pattern": "none", "colorIndependentCue": "Solid curve labeled as an algebra fixture." },
+        "references": [],
+        "geometry": {
+          "expression": { "format": "ast", "ast": { "type": "power", "left": { "type": "variable", "name": "x" }, "right": { "type": "number", "value": 2 } } },
+          "variable": "x",
+          "domain": { "min": -3, "max": 3, "includeMin": true, "includeMax": true }
+        }
+      }
+    ],
+    "controls": [],
+    "accessibility": {
+      "ariaLabel": "Non-public algebra function fixture",
+      "summary": "A test parabola used only to validate the visual platform.",
+      "readingOrder": ["algebra-function"],
+      "colorIndependentDescription": "The fixture curve is identified by its solid stroke and label.",
+      "controlInstructions": [],
+      "reducedMotion": "not-applicable",
+      "staticFallbackEquivalent": true
+    },
+    "print": { "representation": "generated-svg", "caption": { "segments": [{ "kind": "text", "text": "Algebra infrastructure fixture." }] }, "grayscaleSafe": true, "pageBreak": "avoid", "widthInches": 5.5 },
+    "requiredCapabilities": ["static-fallback", "cartesian-axes", "function-paths"],
+    "preferredRenderer": "lowest-cost",
+    "provenance": { "route": "/__nonpublic__/fixtures/algebra-function", "sourceFile": "content/visualizations/fixtures/cross-domain.visual-specs.v1.json", "authoringId": "fixture-algebra-function", "visibility": "fixture" }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "fixture-linear-algebra-basis",
+    "kind": "matrix-transform-2d",
+    "title": { "segments": [{ "kind": "text", "text": "Linear algebra basis capability fixture" }] },
+    "caption": { "segments": [{ "kind": "text", "text": "Non-public basis-grid and vector vocabulary fixture." }] },
+    "learningPurpose": "Validate matrix-transform and basis-grid capability mapping in automated infrastructure tests.",
+    "longDescription": "A non-public test basis with two vectors and no attached lesson or route.",
+    "coordinateSpace": { "type": "cartesian-2d", "variables": ["x", "y"], "unitsRequired": false },
+    "viewport": { "xMin": -4, "xMax": 4, "yMin": -4, "yMax": 4, "aspectRatio": 1, "padding": 0.04 },
+    "axes": {
+      "mode": "explicit",
+      "axes": [
+        { "id": "x-axis", "orientation": "x", "label": { "segments": [{ "kind": "text", "text": "x" }] }, "scale": "linear", "tickMode": "automatic", "showGrid": false },
+        { "id": "y-axis", "orientation": "y", "label": { "segments": [{ "kind": "text", "text": "y" }] }, "scale": "linear", "tickMode": "automatic", "showGrid": false }
+      ]
+    },
+    "panels": [],
+    "layers": [
+      {
+        "id": "basis-grid",
+        "kind": "basis-grid",
+        "visible": true,
+        "zIndex": 0,
+        "presentation": { "strokeToken": "visual-grid", "lineStyle": "solid", "markerShape": "none", "pattern": "crosshatch", "colorIndependentCue": "Crosshatched basis grid." },
+        "references": [],
+        "geometry": { "origin": { "x": 0, "y": 0 }, "firstBasis": { "x": 2, "y": 1 }, "secondBasis": { "x": -1, "y": 2 } }
+      },
+      {
+        "id": "first-basis-vector",
+        "kind": "vector",
+        "visible": true,
+        "zIndex": 1,
+        "presentation": { "strokeToken": "visual-primary", "lineStyle": "solid", "markerShape": "triangle", "pattern": "none", "colorIndependentCue": "Solid arrow for the first basis vector." },
+        "references": ["basis-grid"],
+        "geometry": { "start": { "x": 0, "y": 0 }, "end": { "x": 2, "y": 1 }, "componentLabels": true }
+      },
+      {
+        "id": "second-basis-vector",
+        "kind": "vector",
+        "visible": true,
+        "zIndex": 1,
+        "presentation": { "strokeToken": "visual-secondary", "lineStyle": "dashed", "markerShape": "triangle", "pattern": "none", "colorIndependentCue": "Dashed arrow for the second basis vector." },
+        "references": ["basis-grid"],
+        "geometry": { "start": { "x": 0, "y": 0 }, "end": { "x": -1, "y": 2 }, "componentLabels": true }
+      }
+    ],
+    "controls": [],
+    "accessibility": {
+      "ariaLabel": "Non-public linear algebra basis fixture",
+      "summary": "A basis grid with two test vectors.",
+      "readingOrder": ["basis-grid", "first-basis-vector", "second-basis-vector"],
+      "colorIndependentDescription": "The two vectors use solid and dashed strokes in addition to color.",
+      "controlInstructions": [],
+      "reducedMotion": "not-applicable",
+      "staticFallbackEquivalent": true
+    },
+    "print": { "representation": "generated-svg", "caption": { "segments": [{ "kind": "text", "text": "Linear algebra infrastructure fixture." }] }, "grayscaleSafe": true, "pageBreak": "avoid", "widthInches": 5.5 },
+    "requiredCapabilities": ["static-fallback", "matrix-transform"],
+    "preferredRenderer": "lowest-cost",
+    "provenance": { "route": "/__nonpublic__/fixtures/linear-algebra-basis", "sourceFile": "content/visualizations/fixtures/cross-domain.visual-specs.v1.json", "authoringId": "fixture-linear-algebra-basis", "visibility": "fixture" }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "fixture-ode-direction-field",
+    "kind": "direction-field",
+    "title": { "segments": [{ "kind": "text", "text": "ODE direction-field capability fixture" }] },
+    "caption": { "segments": [{ "kind": "text", "text": "Non-public direction-arrow and ODE adapter fixture." }] },
+    "learningPurpose": "Validate direction-field and ODE solution-family capability mapping in automated infrastructure tests.",
+    "longDescription": "A non-public test field with three direction arrows and no attached lesson or route.",
+    "coordinateSpace": { "type": "cartesian-2d", "variables": ["t", "y"], "unitsRequired": false },
+    "viewport": { "xMin": -2, "xMax": 2, "yMin": -2, "yMax": 2, "aspectRatio": 1.4, "padding": 0.04 },
+    "axes": {
+      "mode": "explicit",
+      "axes": [
+        { "id": "t-axis", "orientation": "x", "label": { "segments": [{ "kind": "text", "text": "t" }] }, "scale": "linear", "tickMode": "automatic", "showGrid": true },
+        { "id": "y-axis", "orientation": "y", "label": { "segments": [{ "kind": "text", "text": "y" }] }, "scale": "linear", "tickMode": "automatic", "showGrid": true }
+      ]
+    },
+    "panels": [],
+    "layers": [
+      {
+        "id": "direction-left",
+        "kind": "direction-arrow",
+        "visible": true,
+        "zIndex": 1,
+        "presentation": { "strokeToken": "visual-primary", "lineStyle": "solid", "markerShape": "triangle", "pattern": "none", "colorIndependentCue": "Left test direction arrow." },
+        "references": [],
+        "geometry": { "start": { "x": -1.4, "y": -0.8 }, "end": { "x": -0.8, "y": -0.2 } }
+      },
+      {
+        "id": "direction-center",
+        "kind": "direction-arrow",
+        "visible": true,
+        "zIndex": 1,
+        "presentation": { "strokeToken": "visual-primary", "lineStyle": "solid", "markerShape": "triangle", "pattern": "none", "colorIndependentCue": "Center test direction arrow." },
+        "references": [],
+        "geometry": { "start": { "x": -0.3, "y": 0 }, "end": { "x": 0.3, "y": 0.4 } }
+      },
+      {
+        "id": "direction-right",
+        "kind": "direction-arrow",
+        "visible": true,
+        "zIndex": 1,
+        "presentation": { "strokeToken": "visual-primary", "lineStyle": "solid", "markerShape": "triangle", "pattern": "none", "colorIndependentCue": "Right test direction arrow." },
+        "references": [],
+        "geometry": { "start": { "x": 0.8, "y": 0.8 }, "end": { "x": 1.4, "y": 0.2 } }
+      }
+    ],
+    "controls": [],
+    "accessibility": {
+      "ariaLabel": "Non-public ODE direction-field fixture",
+      "summary": "Three test arrows exercise direction-field vocabulary.",
+      "readingOrder": ["direction-left", "direction-center", "direction-right"],
+      "colorIndependentDescription": "Every field sample is represented by a directional arrow, not color alone.",
+      "keyboardInstructions": "The optional advanced adapter is loaded only after explicit learner activation.",
+      "controlInstructions": [],
+      "reducedMotion": "manual-only",
+      "staticFallbackEquivalent": true
+    },
+    "print": { "representation": "generated-svg", "caption": { "segments": [{ "kind": "text", "text": "ODE infrastructure fixture." }] }, "grayscaleSafe": true, "pageBreak": "avoid", "widthInches": 5.5 },
+    "performance": { "maxSamples": 512, "maxAdaptiveDepth": 10, "maxAstNodes": 128, "maxAstDepth": 16, "maxOperationsPerEvaluation": 1024, "maxPayloadBytes": 32000, "maxAnimationFps": 20, "activation": "explicit-user-action" },
+    "requiredCapabilities": ["static-fallback", "direction-fields", "ode-solution-family"],
+    "preferredRenderer": "lowest-cost",
+    "provenance": { "route": "/__nonpublic__/fixtures/ode-direction-field", "sourceFile": "content/visualizations/fixtures/cross-domain.visual-specs.v1.json", "authoringId": "fixture-ode-direction-field", "visibility": "fixture" }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "fixture-physics-free-body",
+    "kind": "free-body-diagram",
+    "title": { "segments": [{ "kind": "text", "text": "Physics free-body capability fixture" }] },
+    "caption": { "segments": [{ "kind": "text", "text": "Non-public vector and diagram vocabulary fixture." }] },
+    "learningPurpose": "Validate free-body diagram and vector capability mapping in automated infrastructure tests.",
+    "longDescription": "A non-public test point with opposing vertical vectors and no attached lesson or route.",
+    "coordinateSpace": { "type": "diagram-2d", "variables": ["x", "y"], "unitsRequired": false },
+    "viewport": { "xMin": -3, "xMax": 3, "yMin": -3, "yMax": 3, "aspectRatio": 1, "padding": 0.04 },
+    "axes": { "mode": "none", "reason": "A free-body diagram uses a local diagram frame rather than plotted axes." },
+    "panels": [],
+    "layers": [
+      {
+        "id": "body-point",
+        "kind": "closed-point",
+        "visible": true,
+        "zIndex": 2,
+        "presentation": { "fillToken": "visual-ink", "lineStyle": "solid", "markerShape": "circle", "pattern": "none", "colorIndependentCue": "Filled central point representing the test body." },
+        "references": [],
+        "geometry": { "position": { "x": 0, "y": 0 } }
+      },
+      {
+        "id": "normal-force",
+        "kind": "vector",
+        "visible": true,
+        "zIndex": 1,
+        "presentation": { "strokeToken": "visual-primary", "lineStyle": "solid", "markerShape": "triangle", "pattern": "none", "colorIndependentCue": "Solid upward arrow labeled as the test normal vector." },
+        "references": ["body-point"],
+        "geometry": { "start": { "x": 0, "y": 0 }, "end": { "x": 0, "y": 2 }, "componentLabels": false }
+      },
+      {
+        "id": "weight-force",
+        "kind": "vector",
+        "visible": true,
+        "zIndex": 1,
+        "presentation": { "strokeToken": "visual-secondary", "lineStyle": "dashed", "markerShape": "triangle", "pattern": "none", "colorIndependentCue": "Dashed downward arrow labeled as the test weight vector." },
+        "references": ["body-point"],
+        "geometry": { "start": { "x": 0, "y": 0 }, "end": { "x": 0, "y": -2 }, "componentLabels": false }
+      }
+    ],
+    "controls": [],
+    "accessibility": {
+      "ariaLabel": "Non-public physics free-body fixture",
+      "summary": "A central test body with equal upward and downward vectors.",
+      "readingOrder": ["body-point", "normal-force", "weight-force"],
+      "colorIndependentDescription": "The upward vector is solid and the downward vector is dashed in addition to using different colors.",
+      "controlInstructions": [],
+      "reducedMotion": "not-applicable",
+      "staticFallbackEquivalent": true
+    },
+    "print": { "representation": "generated-svg", "caption": { "segments": [{ "kind": "text", "text": "Physics infrastructure fixture." }] }, "grayscaleSafe": true, "pageBreak": "avoid", "widthInches": 4.5 },
+    "requiredCapabilities": ["static-fallback", "diagram-primitives", "open-closed-points"],
+    "preferredRenderer": "lowest-cost",
+    "provenance": { "route": "/__nonpublic__/fixtures/physics-free-body", "sourceFile": "content/visualizations/fixtures/cross-domain.visual-specs.v1.json", "authoringId": "fixture-physics-free-body", "visibility": "fixture" }
+  },
+  {
+    "schemaVersion": 1,
+    "id": "fixture-chemistry-reaction-coordinate",
+    "kind": "reaction-coordinate",
+    "title": { "segments": [{ "kind": "text", "text": "Chemistry reaction-coordinate capability fixture" }] },
+    "caption": { "segments": [{ "kind": "text", "text": "Non-public sampled-series and diagram vocabulary fixture." }] },
+    "learningPurpose": "Validate reaction-coordinate and sampled-series capability mapping in automated infrastructure tests.",
+    "longDescription": "A non-public test energy profile with a single peak and no attached lesson or route.",
+    "coordinateSpace": { "type": "diagram-2d", "variables": ["progress", "energy"], "unitsRequired": false },
+    "viewport": { "xMin": 0, "xMax": 4, "yMin": 0, "yMax": 6, "aspectRatio": 1.5, "padding": 0.04 },
+    "axes": {
+      "mode": "explicit",
+      "axes": [
+        { "id": "progress-axis", "orientation": "x", "label": { "segments": [{ "kind": "text", "text": "reaction progress" }] }, "scale": "linear", "tickMode": "automatic", "showGrid": false },
+        { "id": "energy-axis", "orientation": "y", "label": { "segments": [{ "kind": "text", "text": "relative energy" }] }, "scale": "linear", "tickMode": "automatic", "showGrid": false }
+      ]
+    },
+    "panels": [],
+    "layers": [
+      {
+        "id": "energy-profile",
+        "kind": "sampled-series",
+        "visible": true,
+        "zIndex": 1,
+        "presentation": { "strokeToken": "visual-primary", "lineStyle": "solid", "markerShape": "circle", "pattern": "none", "colorIndependentCue": "Solid sampled profile with a marked central peak." },
+        "references": [],
+        "geometry": { "xValues": [0, 1, 2, 3, 4], "yValues": [1, 2, 5, 3, 2], "connect": true }
+      },
+      {
+        "id": "transition-marker",
+        "kind": "data-marker",
+        "visible": true,
+        "zIndex": 2,
+        "presentation": { "fillToken": "visual-warm", "lineStyle": "solid", "markerShape": "diamond", "pattern": "dots", "colorIndependentCue": "Diamond marker at the peak of the sampled profile." },
+        "references": ["energy-profile"],
+        "geometry": { "position": { "x": 2, "y": 5 }, "seriesLayerId": "energy-profile" }
+      }
+    ],
+    "controls": [],
+    "accessibility": {
+      "ariaLabel": "Non-public chemistry reaction-coordinate fixture",
+      "summary": "A five-point test profile rises to one peak and ends above its starting value.",
+      "readingOrder": ["energy-profile", "transition-marker"],
+      "colorIndependentDescription": "The profile is solid and its peak is marked by a diamond in addition to color.",
+      "controlInstructions": [],
+      "reducedMotion": "not-applicable",
+      "staticFallbackEquivalent": true,
+      "dataTableAlternative": [["progress", "0", "1", "2", "3", "4"], ["relative energy", "1", "2", "5", "3", "2"]]
+    },
+    "print": { "representation": "generated-svg", "caption": { "segments": [{ "kind": "text", "text": "Chemistry infrastructure fixture." }] }, "grayscaleSafe": true, "pageBreak": "avoid", "widthInches": 5.5 },
+    "requiredCapabilities": ["static-fallback", "diagram-primitives", "data-series"],
+    "preferredRenderer": "lowest-cost",
+    "provenance": { "route": "/__nonpublic__/fixtures/chemistry-reaction-coordinate", "sourceFile": "content/visualizations/fixtures/cross-domain.visual-specs.v1.json", "authoringId": "fixture-chemistry-reaction-coordinate", "visibility": "fixture" }
+  }
+]
