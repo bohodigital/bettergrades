@@ -60,6 +60,32 @@ test("build-only MathJSON boundary normalizes allowlisted CortexJS output", () =
     expressionLatex: "x^2+1",
   });
   assert.equal(evaluateNumericAst(ast, { x: 2 }), 5);
+
+  const rationalCompiler = createBuildOnlyLatexCompiler(
+    { parseLatexToMathJson: () => ["Rational", "x", 2] },
+    { allowedVariables: ["x"] },
+  );
+  const rational = rationalCompiler({
+    route: "/limits/",
+    sourceFile: "content/limits.ts",
+    visualId: "limit-graph",
+    layerId: "curve",
+    expressionLatex: String.raw`\frac{x}{2}`,
+  });
+  assert.equal(evaluateNumericAst(rational, { x: 3 }), 1.5);
+
+  const greekAliasCompiler = createBuildOnlyLatexCompiler(
+    { parseLatexToMathJson: () => ["Add", "epsilonSymbol", 1] },
+    { allowedVariables: ["varepsilon"] },
+  );
+  const greekAlias = greekAliasCompiler({
+    route: "/limits/",
+    sourceFile: "content/limits.ts",
+    visualId: "epsilon-delta-window",
+    layerId: "epsilon-upper",
+    expressionLatex: String.raw`1+\varepsilon`,
+  });
+  assert.equal(evaluateNumericAst(greekAlias, { varepsilon: 0.5 }), 1.5);
 });
 
 test("build-only boundary rejects unknown operators and reports complete source context", () => {

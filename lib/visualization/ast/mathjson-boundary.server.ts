@@ -67,6 +67,10 @@ const BINARY_HEADS = Object.freeze({
   Or: "or",
 } as const);
 
+const MATHJSON_SYMBOL_ALIASES: Readonly<Record<string, string>> = Object.freeze({
+  epsilonSymbol: "varepsilon",
+});
+
 function fold(
   type: "add" | "multiply",
   values: readonly unknown[],
@@ -91,14 +95,17 @@ function normalizeMathJson(value: unknown, context: NormalizeContext): NumericAs
     return { type: "number", value };
   }
   if (typeof value === "string") {
-    if (!context.allowedVariables.has(value)) {
+    const normalizedSymbol = context.allowedVariables.has(value)
+      ? value
+      : MATHJSON_SYMBOL_ALIASES[value];
+    if (!normalizedSymbol || !context.allowedVariables.has(normalizedSymbol)) {
       throw new ExpressionCompileError(
         "unknown-symbol",
         `Symbol ${value} is not in the expression variable allowlist.`,
         context.source,
       );
     }
-    return { type: "variable", name: value };
+    return { type: "variable", name: normalizedSymbol };
   }
   if (!Array.isArray(value) || typeof value[0] !== "string") {
     throw new ExpressionCompileError(
@@ -111,6 +118,20 @@ function normalizeMathJson(value: unknown, context: NormalizeContext): NumericAs
   const [head, ...args] = value;
   if (head === "Add" || head === "Multiply") {
     return fold(head === "Add" ? "add" : "multiply", args, context);
+  }
+  if (head === "Rational") {
+    if (args.length !== 2) {
+      throw new ExpressionCompileError(
+        "invalid-arity",
+        "Rational requires exactly a numerator and denominator.",
+        context.source,
+      );
+    }
+    return {
+      type: "divide",
+      left: normalizeMathJson(args[0], context),
+      right: normalizeMathJson(args[1], context),
+    };
   }
   const unary = UNARY_HEADS[head];
   if (unary) {
