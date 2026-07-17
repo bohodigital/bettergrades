@@ -55,6 +55,7 @@ type RuntimeLayer = {
   zIndex: number;
   presentation: RuntimePresentation;
   geometry: unknown;
+  label?: PublicCompiledScene["title"];
 };
 type FunctionGeometry = { expression: NumericAst; variable: string; domain: { min: number; max: number; includeMin: boolean; includeMax: boolean } };
 type LineGeometry = { start: RuntimePointValue; end: RuntimePointValue };
@@ -74,6 +75,88 @@ const TOUCH_STYLE: CSSProperties = { minWidth: 44, minHeight: 44 };
 
 function richText(value: { segments: Array<{ kind: "text"; text: string } | { kind: "math"; spokenText: string }> }): string {
   return value.segments.map((segment) => segment.kind === "text" ? segment.text : segment.spokenText).join(" ");
+}
+
+type RuntimeLabelBox = { x: number; y: number; width: number; height: number };
+
+function runtimeTextLines(text: string, maxCharacters = 30, maxLines = 2): string[] {
+  const words = text.trim().split(/\s+/).filter(Boolean);
+  const lines: string[] = [];
+  for (const word of words) {
+    const current = lines.at(-1);
+    if (!current || current.length + word.length + 1 > maxCharacters) lines.push(word);
+    else lines[lines.length - 1] = `${current} ${word}`;
+  }
+  if (lines.length <= maxLines) return lines.length ? lines : [""];
+  const visible = lines.slice(0, maxLines);
+  visible[maxLines - 1] = `${visible[maxLines - 1].replace(/[.,;:]?$/, "")}…`;
+  return visible;
+}
+
+function runtimeBoxesOverlap(left: RuntimeLabelBox, right: RuntimeLabelBox, padding = 4): boolean {
+  return left.x < right.x + right.width + padding
+    && left.x + left.width + padding > right.x
+    && left.y < right.y + right.height + padding
+    && left.y + left.height + padding > right.y;
+}
+
+function layoutRuntimeLabel(
+  point: { x: number; y: number },
+  text: string,
+  plot: PlotTransform,
+  occupied: RuntimeLabelBox[],
+  options: { size?: number; maxCharacters?: number; maxLines?: number } = {},
+) {
+  const size = options.size ?? 12;
+  const lines = runtimeTextLines(text, options.maxCharacters, options.maxLines);
+  const width = Math.min(plot.width - 18, Math.max(28, Math.max(...lines.map((line) => line.length)) * size * 0.58 + 6));
+  const height = Math.max(size * 1.22, lines.length * size * 1.22);
+  const left = plot.left + 9;
+  const top = plot.top + 9;
+  const right = plot.left + plot.width - 9;
+  const bottom = plot.top + plot.height - 9;
+  const clamp = (x: number, y: number): RuntimeLabelBox => ({ x: Math.max(left, Math.min(right - width, x)), y: Math.max(top, Math.min(bottom - height, y)), width, height });
+  const candidates = [
+    clamp(point.x + 10, point.y - height - 9),
+    clamp(point.x + 10, point.y + 10),
+    clamp(point.x - width - 10, point.y - height - 9),
+    clamp(point.x - width - 10, point.y + 10),
+    clamp(point.x - width / 2, point.y - height - 13),
+    clamp(point.x - width / 2, point.y + 13),
+  ];
+  let box = candidates.find((candidate) => occupied.every((other) => !runtimeBoxesOverlap(candidate, other)));
+  if (!box) {
+    for (let y = top; y <= bottom - height && !box; y += Math.max(10, height / 2)) {
+      for (let x = left; x <= right - width; x += 12) {
+        const candidate = { x, y, width, height };
+        if (occupied.every((other) => !runtimeBoxesOverlap(candidate, other))) { box = candidate; break; }
+      }
+    }
+  }
+  box ??= candidates[0];
+  occupied.push(box);
+  return { box, lines, x: box.x, y: box.y + size };
+}
+
+function renderRuntimeTextLabel(
+  point: { x: number; y: number },
+  text: string,
+  color: string,
+  plot: PlotTransform,
+  occupied: RuntimeLabelBox[],
+  options: { size?: number; maxCharacters?: number; maxLines?: number } = {},
+) {
+  const size = options.size ?? 12;
+  const placement = layoutRuntimeLabel(point, text, plot, occupied, options);
+  return <text
+    x={placement.x}
+    y={placement.y}
+    fill={color}
+    fontSize={size}
+    fontWeight="650"
+    data-bvlp-runtime-label-box={`${placement.box.x.toFixed(2)},${placement.box.y.toFixed(2)},${placement.box.width.toFixed(2)},${placement.box.height.toFixed(2)}`}
+    style={{ paintOrder: "stroke", stroke: "var(--surface, #fffcf6)", strokeWidth: 4, strokeLinejoin: "round" }}
+  >{placement.lines.map((line, index) => <tspan x={placement.x} dy={index === 0 ? 0 : "1.22em"} key={`${line}-${index}`}>{line}</tspan>)}</text>;
 }
 
 function numericParameters(state: InteractiveControlState): Record<string, number> {
@@ -127,6 +210,46 @@ function hiddenLayerIds(scene: PublicCompiledScene, state: InteractiveControlSta
   return hidden;
 }
 
+function runtimeLayerLabelAnchor(
+  layer: RuntimeLayer,
+  scene: PublicCompiledScene,
+  variables: Readonly<Record<string, number>>,
+  plot: PlotTransform,
+): { x: number; y: number } | undefined {
+  let point: { x: number; y: number } | undefined;
+  if (["point", "open-point", "closed-point", "data-marker"].includes(layer.kind)) {
+    point = pointValue((layer.geometry as PositionGeometry).position, variables, scene);
+  } else if (layer.kind === "vertical-asymptote") {
+    point = { x: evaluateSceneValue((layer.geometry as { x: RuntimeValue }).x, variables, scene), y: scene.viewport.yMax - (scene.viewport.yMax - scene.viewport.yMin) * 0.14 };
+  } else if (layer.kind === "horizontal-asymptote") {
+    point = { x: scene.viewport.xMin + (scene.viewport.xMax - scene.viewport.xMin) * 0.72, y: evaluateSceneValue((layer.geometry as { y: RuntimeValue }).y, variables, scene) };
+  } else if (layer.kind === "tangent-line") {
+    point = pointValue((layer.geometry as TangentGeometry).point, variables, scene);
+  } else if (layer.kind === "secant-line") {
+    point = pointValue((layer.geometry as SecantGeometry).secondPoint, variables, scene);
+  } else if (layer.kind === "line" || layer.kind === "segment") {
+    point = pointValue((layer.geometry as LineGeometry).end, variables, scene);
+  } else if (layer.kind === "function" || layer.kind === "piecewise-branch") {
+    const geometry = layer.geometry as FunctionGeometry;
+    const x = geometry.domain.min + (geometry.domain.max - geometry.domain.min) * 0.08;
+    point = { x, y: evaluateSceneValue(geometry.expression, { ...variables, [geometry.variable]: x }, scene) };
+  }
+  return point ? { x: plot.x(point.x), y: plot.y(point.y) } : undefined;
+}
+
+function renderRuntimeLayerLabel(
+  layer: RuntimeLayer,
+  scene: PublicCompiledScene,
+  variables: Readonly<Record<string, number>>,
+  plot: PlotTransform,
+  occupied: RuntimeLabelBox[],
+) {
+  if (!layer.label || layer.kind === "label" || layer.kind === "annotation") return null;
+  const anchor = runtimeLayerLabelAnchor(layer, scene, variables, plot);
+  if (!anchor) return null;
+  return renderRuntimeTextLabel(anchor, richText(layer.label), tokenColor(layer.presentation.strokeToken), plot, occupied, { size: 12, maxCharacters: 28, maxLines: 2 });
+}
+
 function regionShape(
   layer: RuntimeLayer,
   scene: PublicCompiledScene,
@@ -175,11 +298,13 @@ function renderLayer({
   scene,
   variables,
   plot,
+  occupiedLabels,
 }: {
   layer: RuntimeLayer;
   scene: PublicCompiledScene;
   variables: Readonly<Record<string, number>>;
   plot: PlotTransform;
+  occupiedLabels: RuntimeLabelBox[];
 }) {
   const stroke = tokenColor(layer.presentation.strokeToken);
   const fill = tokenColor(layer.presentation.fillToken, true);
@@ -264,7 +389,7 @@ function renderLayer({
     if (!point) return null;
     const anchor = pointValue(point, variables, scene);
     const content = richText(geometry.content);
-    return <text x={plot.x(anchor.x)} y={plot.y(anchor.y)} fill={stroke} fontSize="12" fontWeight="600">{content}</text>;
+    return renderRuntimeTextLabel({ x: plot.x(anchor.x), y: plot.y(anchor.y) }, content, stroke, plot, occupiedLabels, { size: 12, maxCharacters: 34, maxLines: 3 });
   }
   return null;
 }
@@ -275,6 +400,38 @@ function gridLines(plot: PlotTransform) {
     const y = plot.top + (plot.height * index) / 5;
     return <g key={index}><line x1={x} y1={plot.top} x2={x} y2={plot.top + plot.height} /><line x1={plot.left} y1={y} x2={plot.left + plot.width} y2={y} /></g>;
   });
+}
+
+function axisTickValues(min: number, max: number, count = 5): number[] {
+  return Array.from({ length: count }, (_, index) => min + ((max - min) * index) / (count - 1));
+}
+
+function formatAxisValue(value: number): string {
+  const rounded = Math.abs(value) < 1e-10 ? 0 : Number(value.toPrecision(4));
+  return String(rounded);
+}
+
+function renderInteractiveAxes(scene: PublicCompiledScene, viewport: RuntimeViewport, plot: PlotTransform) {
+  if (scene.axes.mode === "none") return null;
+  const xAxis = scene.axes.axes.find((axis) => axis.orientation === "x" || axis.orientation === "angular");
+  const yAxis = scene.axes.axes.find((axis) => axis.orientation === "y" || axis.orientation === "radial");
+  const xTicks = axisTickValues(viewport.xMin, viewport.xMax);
+  const yTicks = axisTickValues(viewport.yMin, viewport.yMax);
+  const xAxisY = viewport.yMin <= 0 && viewport.yMax >= 0 ? plot.y(0) : plot.top + plot.height;
+  const yAxisX = viewport.xMin <= 0 && viewport.xMax >= 0 ? plot.x(0) : plot.left;
+  const halo = { paintOrder: "stroke" as const, stroke: "var(--surface, #fffcf6)", strokeWidth: 3, strokeLinejoin: "round" as const };
+  return <g className="bvlp-interactive__axes" aria-hidden="true" fill="var(--muted, #68716a)" fontSize="10">
+    {xAxis && <>
+      <line x1={plot.left} x2={plot.left + plot.width} y1={xAxisY} y2={xAxisY} stroke="var(--ink, #17231e)" strokeWidth="1.4" />
+      {xTicks.map((value) => <g key={`x-${value}`}><line x1={plot.x(value)} x2={plot.x(value)} y1={xAxisY - 4} y2={xAxisY + 4} stroke="var(--ink, #17231e)" /><text x={plot.x(value)} y={plot.top + plot.height + 20} textAnchor="middle" style={halo}>{formatAxisValue(value)}</text></g>)}
+      <text x={plot.left + plot.width} y={plot.top + plot.height + 38} textAnchor="end" fontSize="12" fontWeight="700" style={halo}>{richText(xAxis.label)}</text>
+    </>}
+    {yAxis && <>
+      <line x1={yAxisX} x2={yAxisX} y1={plot.top} y2={plot.top + plot.height} stroke="var(--ink, #17231e)" strokeWidth="1.4" />
+      {yTicks.map((value) => <g key={`y-${value}`}><line x1={yAxisX - 4} x2={yAxisX + 4} y1={plot.y(value)} y2={plot.y(value)} stroke="var(--ink, #17231e)" /><text x={plot.left - 9} y={plot.y(value) + 4} textAnchor="end" style={halo}>{formatAxisValue(value)}</text></g>)}
+      <text x={plot.left - 8} y={plot.top - 8} textAnchor="end" fontSize="12" fontWeight="700" style={halo}>{richText(yAxis.label)}</text>
+    </>}
+  </g>;
 }
 
 function InteractiveControl({
@@ -353,7 +510,7 @@ function BgInteractive2DInstance({ scene, className, onReady, onError }: BgInter
   const [viewport, setViewport] = useState<RuntimeViewport>(originalViewport);
   const [state, setState] = useState<InteractiveControlState>(() => initialControlState(scene));
   const [announcement, setAnnouncement] = useState("Interactive controls loaded. The static visual remains available.");
-  const [readout, setReadout] = useState("Move across the plot for coordinates.");
+  const [readout, setReadout] = useState("Coordinates appear here while exploring.");
   const [pixelWidth, setPixelWidth] = useState(FRAME_WIDTH);
   const containerRef = useRef<HTMLDivElement>(null);
   const dragRef = useRef<{ pointerId: number; x: number; y: number } | null>(null);
@@ -422,10 +579,14 @@ function BgInteractive2DInstance({ scene, className, onReady, onError }: BgInter
   let plotContent: ReactNode;
   let renderError: string | null = initialError;
   try {
+    const occupiedLabels: RuntimeLabelBox[] = [];
     plotContent = (scene.layers as unknown as RuntimeLayer[])
       .filter((layer) => layer.visible && !hidden.has(layer.id))
       .sort((left, right) => left.zIndex - right.zIndex || left.id.localeCompare(right.id))
-      .map((layer) => <g key={layer.id}>{renderLayer({ layer, scene, variables: parameters, plot })}</g>);
+      .map((layer) => <g key={layer.id}>
+        {renderLayer({ layer, scene, variables: parameters, plot, occupiedLabels })}
+        {renderRuntimeLayerLabel(layer, scene, parameters, plot, occupiedLabels)}
+      </g>);
   } catch (error) {
     renderError = error instanceof Error ? error.message : String(error);
   }
@@ -442,8 +603,8 @@ function BgInteractive2DInstance({ scene, className, onReady, onError }: BgInter
   const clipId = `bvlp-clip-${scene.id}`;
   return <section ref={containerRef} className={className} data-bvlp-interactive="v1" data-reduced-motion={reducedMotion ? "true" : "false"} aria-label={`Interactive enhancement: ${scene.accessibility.ariaLabel}`}>
     <div className="bvlp-interactive__toolbar" role="group" aria-label="Plot view controls">
-      <button type="button" style={TOUCH_STYLE} onClick={() => zoom(0.8)} aria-label="Zoom plot in">+</button>
-      <button type="button" style={TOUCH_STYLE} onClick={() => zoom(1.25)} aria-label="Zoom plot out">−</button>
+      <button type="button" style={TOUCH_STYLE} onClick={() => zoom(0.8)} aria-label="Zoom plot in">Zoom in +</button>
+      <button type="button" style={TOUCH_STYLE} onClick={() => zoom(1.25)} aria-label="Zoom plot out">Zoom out −</button>
       <button type="button" style={TOUCH_STYLE} onClick={() => { setViewport(originalViewport); setAnnouncement("Plot view reset."); }}>Reset view</button>
       <output tabIndex={0} aria-label="Plot coordinate readout">{readout}</output>
     </div>
@@ -451,6 +612,7 @@ function BgInteractive2DInstance({ scene, className, onReady, onError }: BgInter
       <defs><clipPath id={clipId}><rect x={plot.left} y={plot.top} width={plot.width} height={plot.height} /></clipPath></defs>
       <rect x={plot.left} y={plot.top} width={plot.width} height={plot.height} fill="var(--surface, #fffcf6)" stroke="var(--line, #cfcabe)" />
       <g stroke="var(--line, #cfcabe)" strokeWidth="1" opacity="0.55">{gridLines(plot)}</g>
+      {renderInteractiveAxes(scene, viewport, plot)}
       <g clipPath={`url(#${clipId})`}>{plotContent}</g>
     </svg>
     <div className="bvlp-interactive__controls" role="group" aria-label="Interactive visual controls">

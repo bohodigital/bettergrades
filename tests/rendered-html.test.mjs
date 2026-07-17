@@ -149,6 +149,34 @@ test("limits unit lesson, quiz, practice, and exam routes server-render in the e
   }
 });
 
+test("Limits overviews, visual study stops, and exercise answer reveals render as textbook structure", async () => {
+  const practicePath = "/subjects/math/calculus/limits-continuity/unit/limits/meaning-practice/";
+  const response = await render(practicePath);
+  const html = await response.text();
+  assert.equal(response.status, 200, practicePath);
+  assert.match(html, /Section overview/);
+  assert.match(html, /Section 1: What a limit means/);
+  assert.match(html, /class="limits-reading-lens"/);
+  assert.match(html, /class="limits-overview-guides"/);
+  assert.match(html, />Notice</);
+  assert.match(html, />Decide</);
+  assert.match(html, />Avoid</);
+  assert.match(html, /Visual study stop/);
+  assert.match(html, /data-bvlp-visual="jump-discontinuity"/);
+  assert.equal((html.match(/data-exercise-number=/g) ?? []).length, 42);
+  assert.equal((html.match(/class="limits-exercise-answer"/g) ?? []).length, 42);
+  assert.equal((html.match(/<summary>Show answer<\/summary>/g) ?? []).length, 42);
+  assert.doesNotMatch(visibleText(html), /\\[A-Za-z]+|\\[()]/, practicePath);
+
+  const formalPath = "/subjects/math/calculus/limits-continuity/unit/limits/epsilon-delta-introduction/";
+  const formalResponse = await render(formalPath);
+  const formalHtml = await formalResponse.text();
+  assert.equal(formalResponse.status, 200, formalPath);
+  assert.match(formalHtml, /data-bvlp-visual="epsilon-delta-window"/);
+  assert.match(formalHtml, /vertical epsilon band/);
+  assert.doesNotMatch(visibleText(formalHtml), /\\[A-Za-z]+|\\[()]/, formalPath);
+});
+
 test("practice exams publish complete, prominent answer keys", async () => {
   for (const [exam, count] of [["a", 18], ["b", 14]]) {
     const examPath = `/subjects/math/calculus/limits-continuity/unit/limits/practice-exam-${exam}/`;

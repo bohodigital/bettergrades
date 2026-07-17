@@ -3,7 +3,7 @@
 /* eslint-disable @next/next/no-html-link-for-pages -- canonical course navigation uses document navigation */
 
 import { FormEvent, ReactNode, useState } from "react";
-import { getLimitsUnitChapter, limitsUnitRoutes } from "../lib/calculus/limits-unit-index.mjs";
+import { getLimitsUnitChapter, limitsUnitChapters, limitsUnitRoutes } from "../lib/calculus/limits-unit-index.mjs";
 import type { LimitsUnitNode, LimitsUnitPublicCheck, LimitsUnitPublicPage } from "../lib/calculus/limits-unit.mjs";
 import { BetterGradesVisual } from "./BetterGradesVisual";
 import { LimitsUnitMap } from "./LimitsUnitMap";
@@ -58,11 +58,11 @@ function RichText({ value }: { value: string }) {
   return <>{pieces}</>;
 }
 
-function NodeChildren({ nodes, keyPrefix, checks, renderedCheckIds }: { nodes: LimitsUnitNode[]; keyPrefix: string; checks: Map<string, LimitsUnitPublicCheck>; renderedCheckIds: Set<string> }) {
-  return <>{nodes.map((node, index) => <SemanticNode node={node} key={`${keyPrefix}-${index}`} keyPrefix={`${keyPrefix}-${index}`} checks={checks} renderedCheckIds={renderedCheckIds} />)}</>;
+function NodeChildren({ nodes, keyPrefix, checks, renderedCheckIds, exerciseAnswers }: { nodes: LimitsUnitNode[]; keyPrefix: string; checks: Map<string, LimitsUnitPublicCheck>; renderedCheckIds: Set<string>; exerciseAnswers: LimitsUnitPublicPage["exerciseAnswers"] }) {
+  return <>{nodes.map((node, index) => <SemanticNode node={node} key={`${keyPrefix}-${index}`} keyPrefix={`${keyPrefix}-${index}`} checks={checks} renderedCheckIds={renderedCheckIds} exerciseAnswers={exerciseAnswers} />)}</>;
 }
 
-function SemanticNode({ node, keyPrefix, checks, renderedCheckIds }: { node: LimitsUnitNode; keyPrefix: string; checks: Map<string, LimitsUnitPublicCheck>; renderedCheckIds: Set<string> }) {
+function SemanticNode({ node, keyPrefix, checks, renderedCheckIds, exerciseAnswers }: { node: LimitsUnitNode; keyPrefix: string; checks: Map<string, LimitsUnitPublicCheck>; renderedCheckIds: Set<string>; exerciseAnswers: LimitsUnitPublicPage["exerciseAnswers"] }) {
   if (node.type === "paragraph") {
     const text = cleanText(node.text ?? "");
     if (!text) return null;
@@ -83,18 +83,23 @@ function SemanticNode({ node, keyPrefix, checks, renderedCheckIds }: { node: Lim
       ? <BetterGradesVisual visual={node.visual} />
       : <p role="alert">This graph could not be loaded. Its complete reading guide remains below.</p>
       : null}
-    <figcaption><strong>{node.title ? <RichText value={node.title} /> : "Graph reading guide"}</strong>{node.text && <p><RichText value={node.text} /></p>}{node.children?.length ? <div className="limits-graph-exposition"><NodeChildren nodes={node.children} keyPrefix={keyPrefix} checks={checks} renderedCheckIds={renderedCheckIds} /></div> : null}</figcaption>
+    <figcaption><strong>{node.title ? <RichText value={node.title} /> : "Graph reading guide"}</strong>{node.text && <p><RichText value={node.text} /></p>}{node.children?.length ? <div className="limits-graph-exposition"><NodeChildren nodes={node.children} keyPrefix={keyPrefix} checks={checks} renderedCheckIds={renderedCheckIds} exerciseAnswers={exerciseAnswers} /></div> : null}</figcaption>
   </figure>;
   if (node.type === "quick-check") {
     const check = node.checkId ? checks.get(node.checkId) : undefined;
-    if (!check) return <section className="limits-node limits-node-quick-check"><header><span>Quick check</span></header><div><NodeChildren nodes={node.children ?? []} keyPrefix={keyPrefix} checks={checks} renderedCheckIds={renderedCheckIds} /></div></section>;
+    if (!check) return <section className="limits-node limits-node-quick-check"><header><span>Quick check</span></header><div><NodeChildren nodes={node.children ?? []} keyPrefix={keyPrefix} checks={checks} renderedCheckIds={renderedCheckIds} exerciseAnswers={exerciseAnswers} /></div></section>;
     if (renderedCheckIds.has(check.id)) return null;
     renderedCheckIds.add(check.id);
     return <InteractiveCheck check={check} />;
   }
-  if (node.type === "hint" || node.type === "solution") return <details className={`limits-disclosure limits-${node.type}`}><summary>{node.type === "hint" ? "Show hint" : "Show worked solution"}</summary><div><NodeChildren nodes={node.children ?? []} keyPrefix={keyPrefix} checks={checks} renderedCheckIds={renderedCheckIds} /></div></details>;
+  if (node.type === "hint" || node.type === "solution") return <details className={`limits-disclosure limits-${node.type}`}><summary>{node.type === "hint" ? "Show hint" : "Show worked solution"}</summary><div><NodeChildren nodes={node.children ?? []} keyPrefix={keyPrefix} checks={checks} renderedCheckIds={renderedCheckIds} exerciseAnswers={exerciseAnswers} /></div></details>;
   const label = labels[node.type] ?? node.type.replaceAll("-", " ");
-  return <section className={`limits-node limits-node-${node.type}`}><header><span>{label}</span>{node.title && <h3><RichText value={node.title} /></h3>}</header><div><NodeChildren nodes={node.children ?? []} keyPrefix={keyPrefix} checks={checks} renderedCheckIds={renderedCheckIds} /></div></section>;
+  const exerciseNumber = node.exerciseNumber;
+  const answer = exerciseNumber ? exerciseAnswers?.answers[exerciseNumber - 1] : undefined;
+  return <section className={`limits-node limits-node-${node.type}`} {...(exerciseNumber ? { "data-exercise-number": exerciseNumber } : {})}><header><span>{exerciseNumber ? `${label} ${exerciseNumber}` : label}</span>{node.title && <h3><RichText value={node.title} /></h3>}</header><div>
+    <NodeChildren nodes={node.children ?? []} keyPrefix={keyPrefix} checks={checks} renderedCheckIds={renderedCheckIds} exerciseAnswers={exerciseAnswers} />
+    {answer && <details className="limits-exercise-answer"><summary>Show answer</summary><div><p><RichText value={answer.content} /></p><small>Answer {answer.number} from the source-traced unit appendix.</small></div></details>}
+  </div></section>;
 }
 
 function InteractiveCheck({ check }: { check: LimitsUnitPublicCheck }) {
@@ -124,21 +129,78 @@ function InteractiveCheck({ check }: { check: LimitsUnitPublicCheck }) {
   </section>;
 }
 
-const expositionTypes = new Set(["extension", "lesson", "reference", "review", "study"]);
+const orientationExcludedTypes = new Set(["answer-key", "hub"]);
+
+const pageModeGuidance: Record<string, string> = {
+  diagnostic: "Answer from memory first, then use each reveal to decide exactly which prerequisite deserves a short review.",
+  exam: "Complete a timed first pass without reveals. On correction, open one answer at a time and name the first line where your reasoning changed course.",
+  extension: "Follow the central idea before collecting techniques; the point is to deepen the model, not merely add another formula.",
+  lesson: "Read the explanation, predict the next move in each example, and then compare your prediction with the written reasoning.",
+  practice: "Work in short groups, commit to a complete answer, and use the reveal as feedback rather than as the first step.",
+  quiz: "Commit to each response before opening support, then return to the exact lesson if the explanation exposes a concept gap.",
+  reference: "Use this page to organize ideas you have already met, and turn each entry into a question you can answer without looking.",
+  review: "Diagnose the method before calculating; mixed review is valuable because the section label no longer tells you what to do.",
+  study: "Translate the advice into a concrete routine you can repeat on your own work, not a checklist you merely read once.",
+};
+
+const supportSectionIds: Record<string, string> = {
+  meaning: "meaning",
+  finite: "finite",
+  trig: "trigonometric",
+  infinite: "infinite",
+  continuity: "continuity",
+  epsilon: "formal",
+};
+
+function sectionForPage(page: LimitsUnitPublicPage) {
+  if (page.route.coreSequenceIndex) return getLimitsUnitChapter(page.route.coreSequenceIndex);
+  const supportSectionId = page.route.supportCluster ? supportSectionIds[page.route.supportCluster] : undefined;
+  if (supportSectionId) return limitsUnitChapters.find(({ id }) => id === supportSectionId);
+  if (page.route.sourceSlug === "calculus/limits/formal-infinite-limits") return limitsUnitChapters.find(({ id }) => id === "infinite");
+  if (/common-exam-errors|correct-practice-test|cumulative-practice|practice-exam-[ab]$/.test(page.route.sourceSlug)) {
+    return limitsUnitChapters.find(({ id }) => id === "synthesis");
+  }
+  return getLimitsUnitChapter(page.returnRoute?.coreSequenceIndex);
+}
 
 function TextbookOrientation({ page }: { page: LimitsUnitPublicPage }) {
-  if (!expositionTypes.has(page.route.pageType)) return null;
-  const coreIndex = page.route.coreSequenceIndex ?? page.returnRoute?.coreSequenceIndex;
-  const section = getLimitsUnitChapter(coreIndex);
+  if (orientationExcludedTypes.has(page.route.pageType)) return null;
+  const section = sectionForPage(page);
   if (!section) return null;
   const previous = page.previous?.h1;
   const next = page.next?.h1;
-  return <section className="limits-editorial-intro">
-    <p className="eyebrow">Where this section fits</p>
-    <h2>{section.title}</h2>
-    <p>{section.description}</p>
-    <p><strong>Reading lens:</strong> {section.lens} Keep that question in view while reading <em>{page.route.h1}</em>; the worked mathematics is evidence for the idea, not a substitute for it.</p>
-    <p>{previous && next ? <>This page connects <strong>{previous}</strong> to <strong>{next}</strong>. Read the explanation first, predict each example’s next move, and only then compare the written solution.</> : <>Use this page to name the idea in words, connect it to the notation, and explain why the method works before treating it as a pattern.</>}</p>
+  const modeGuidance = pageModeGuidance[page.route.pageType] ?? pageModeGuidance.lesson;
+  return <section className="limits-editorial-intro" aria-labelledby="limits-section-overview-title">
+    <header className="limits-overview-header">
+      <div><p className="eyebrow">Section overview</p><span>{section.from === section.to ? `Core page ${section.from}` : `Core pages ${section.from}-${section.to}`}</span></div>
+      <h2 id="limits-section-overview-title">{section.title}</h2>
+      <p className="limits-overview-lede">{section.description}</p>
+    </header>
+    <aside className="limits-reading-lens" aria-label="Reading lens">
+      <span>Reading lens</span>
+      <p>{section.lens}</p>
+    </aside>
+    <div className="limits-overview-guides">
+      <article><span>Notice</span><p>{section.mentalModel}</p></article>
+      <article><span>Decide</span><p>{section.decision}</p></article>
+      <article><span>Avoid</span><p>{section.commonTrap}</p></article>
+    </div>
+    <footer className="limits-overview-footer">
+      <div><span>Use this page</span><p>{modeGuidance}</p></div>
+      <div><span>Check yourself</span><p>{section.checkpoint}</p></div>
+      <p className="limits-overview-connection">{previous && next ? <>This page connects <strong>{previous}</strong> to <strong>{next}</strong>, so keep both the incoming idea and the next decision in view.</> : <>Use <strong>{page.route.h1}</strong> to connect the section&apos;s central idea to notation, graphs, and a defensible next move.</>}</p>
+    </footer>
+  </section>;
+}
+
+function CompanionVisuals({ page }: { page: LimitsUnitPublicPage }) {
+  if (!page.companionVisuals.length) return null;
+  return <section className="limits-visual-study" aria-labelledby="limits-visual-study-title">
+    <header><p className="eyebrow">Visual study stop</p><h2 id="limits-visual-study-title">Read the picture before the symbols</h2><p>Pause at each graph long enough to say what the input is doing, what the output is doing, and which feature supports the next mathematical decision.</p></header>
+    <div>{page.companionVisuals.map(({ id, heading, explanation, visual }) => <figure className="limits-graph limits-graph-visual limits-companion-visual" key={id}>
+      <BetterGradesVisual visual={visual} />
+      <figcaption><strong>{heading}</strong><p>{explanation}</p></figcaption>
+    </figure>)}</div>
   </section>;
 }
 
@@ -171,10 +233,11 @@ export function LimitsUnitPageContent({ page }: { page: LimitsUnitPublicPage }) 
       <h1>{route.h1}</h1><p>{route.description}</p>
       <div className="limits-progress"><strong>Course progress</strong>{route.isCoreSequence ? <><span>{route.coreSequenceIndex} of 47 core pages</span><progress value={route.coreSequenceIndex ?? 0} max="47">{route.coreSequenceIndex} of 47</progress></> : <><span>Supporting resource</span><a href={page.returnRoute?.path ?? limitsUnitRoutes[0].path}>Return to the core path →</a></>}</div>
     </header>
-    <div className="limits-unit-layout section-pad"><aside><strong>On this page</strong><span>{page.checks.length} interactive {page.checks.length === 1 ? "check" : "checks"}</span>{answerKeyRoute && <a className="limits-key-aside" href={answerKeyRoute.path}>Exam answer key →</a>}<a href="/subjects/math/calculus/limits-continuity/">Main unit map →</a><a href={limitsUnitRoutes[0].path}>Full unit overview →</a><a href="/practice/math/calculus/">Calculus practice →</a></aside><div className="limits-unit-content">
+    <div className="limits-unit-layout section-pad"><aside><strong>On this page</strong><span>{page.checks.length} interactive {page.checks.length === 1 ? "check" : "checks"}</span>{page.exerciseAnswers && <span>{page.exerciseAnswers.answers.length} answer reveals</span>}{answerKeyRoute && <a className="limits-key-aside" href={answerKeyRoute.path}>Exam answer key →</a>}<a href="/subjects/math/calculus/limits-continuity/">Main unit map →</a><a href={limitsUnitRoutes[0].path}>Full unit overview →</a><a href="/practice/math/calculus/">Calculus practice →</a></aside><div className="limits-unit-content">
       {route.pageType === "hub" ? <LimitsUnitMap /> : <TextbookOrientation page={page} />}
+      <CompanionVisuals page={page} />
       {route.pageType === "exam" && answerKeyRoute && <section className="limits-exam-key-callout"><div><p className="eyebrow">Answer key published</p><h2>Finish first. Then check every answer.</h2><p>The complete key is online, numbered to match this exam, and linked to the verified source appendix.</p></div><a className="button button-ink" href={answerKeyRoute.path}>View the complete answer key →</a></section>}
-      <NodeChildren nodes={page.page.nodes} keyPrefix={route.sourceSlug} checks={checks} renderedCheckIds={renderedCheckIds} />
+      <NodeChildren nodes={page.page.nodes} keyPrefix={route.sourceSlug} checks={checks} renderedCheckIds={renderedCheckIds} exerciseAnswers={page.exerciseAnswers} />
       <ExamAnswerKey page={page} />
       {page.related.length > 0 && <section className="limits-related"><p className="eyebrow">Keep working</p><h2>Related resources</h2>{page.related.map((related) => <a href={related.path} key={related.path}><span>{labels[related.pageType] ?? related.pageType}</span><b>{related.h1}</b></a>)}</section>}
       <section className="limits-rights"><p className="eyebrow">Source &amp; rights</p><h2>Original instruction with traceable references.</h2><p>{page.provenanceNote}</p><p>The verified handoff declares original composition and requires owner provenance review. BetterGrades-original material remains separate from public-domain references; no source textbook PDF is published here.</p></section>

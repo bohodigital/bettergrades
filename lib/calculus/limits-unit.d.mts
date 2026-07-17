@@ -24,6 +24,7 @@ export type LimitsUnitNode = {
   environment?: string;
   rows?: string[][];
   graphId?: string;
+  exerciseNumber?: number;
   visual?: LimitsPublicVisual;
 };
 export type LimitsUnitCheck = {
@@ -47,6 +48,18 @@ export type LimitsExamAnswerKey = {
   sourceSha256: string;
   sourceHeading: string;
 };
+export type LimitsExerciseAnswers = {
+  label: string;
+  sourceFile: string;
+  sourceSha256: string;
+  answers: Array<{ number: number; content: string }>;
+};
+export type LimitsCompanionVisual = {
+  id: string;
+  heading: string;
+  explanation: string;
+  visual: LimitsPublicVisual;
+};
 export type LimitsUnitPage = {
   route: LimitsUnitRoute;
   page: LimitsUnitPageRecord;
@@ -66,6 +79,8 @@ export type LimitsUnitPublicPage = {
   returnRoute?: LimitsUnitRoute;
   related: LimitsUnitRoute[];
   answerKey?: LimitsExamAnswerKey;
+  exerciseAnswers?: LimitsExerciseAnswers;
+  companionVisuals: LimitsCompanionVisual[];
   provenanceNote: string;
 };
 export const LIMITS_UNIT_PREFIX: string;
@@ -77,11 +92,11 @@ export const limitsUnitPayload: {
   pages: LimitsUnitPageRecord[];
 };
 export const limitsUnitRoutes: LimitsUnitRoute[];
-export const limitsUnitChapters: Array<{ id: string; from: number; to: number; title: string; description: string; lens: string; routes: LimitsUnitRoute[] }>;
+export const limitsUnitChapters: Array<{ id: string; from: number; to: number; title: string; description: string; lens: string; mentalModel: string; decision: string; commonTrap: string; checkpoint: string; routes: LimitsUnitRoute[] }>;
 export const limitsUnitSearchRecords: Array<{ id: string; kind: "guide" | "topic" | "practice"; title: string; description: string; path: string; domainSlug: string; domainName: string; topicName: string; label: string; keywords: string[]; priority: number }>;
 export const limitsUnitPracticeRoutes: LimitsUnitRoute[];
 export const limitsUnitCoreRoutes: LimitsUnitRoute[];
-export function getLimitsUnitChapter(coreSequenceIndex: number | null | undefined): { id: string; from: number; to: number; title: string; description: string; lens: string; routes: LimitsUnitRoute[] } | undefined;
+export function getLimitsUnitChapter(coreSequenceIndex: number | null | undefined): { id: string; from: number; to: number; title: string; description: string; lens: string; mentalModel: string; decision: string; commonTrap: string; checkpoint: string; routes: LimitsUnitRoute[] } | undefined;
 export function getLimitsUnitRoute(path: string): LimitsUnitRoute | undefined;
 export function getLimitsUnitRouteBySlug(sourceSlug: string): LimitsUnitRoute | undefined;
 export function getLimitsUnitPage(path: string): LimitsUnitPage | undefined;

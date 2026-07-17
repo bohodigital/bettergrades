@@ -12,7 +12,7 @@ function allNodes(nodes) {
 
 const interactiveIds = new Set(["secant-tangent", "squeeze-bounds", "unit-circle-squeeze", "epsilon-delta-window"]);
 
-test("all and only the 13 existing Limits graphs use the public BVLP delivery path", async () => {
+test("all 13 canonical Limits graphs and their route-scoped study placements use the public BVLP delivery path", async () => {
   const delivered = [];
   for (const route of limitsUnitRoutes) {
     const page = getPublicLimitsUnitPage(route.path);
@@ -22,13 +22,16 @@ test("all and only the 13 existing Limits graphs use the public BVLP delivery pa
     }
     const requestedIds = pageNodes.filter((node) => node.graphId).map((node) => node.graphId);
     const deliveredIds = pageNodes.filter((node) => node.visual).map((node) => node.visual.id);
+    const companionIds = page.companionVisuals.map(({ visual }) => visual.id);
     assert.deepEqual(deliveredIds, requestedIds, `${route.path} must serialize exactly its requested visuals`);
     assert.equal(new Set(deliveredIds).size, deliveredIds.length, `${route.path} serialized a duplicate visual`);
+    assert.equal(new Set(companionIds).size, companionIds.length, `${route.path} serialized a duplicate companion visual`);
 
     const projection = JSON.stringify(page);
     assert.doesNotMatch(projection, /expressionLatex|canonicalAnswer|workedFeedbackLatex|@cortex-js/i, route.path);
+    const allowedIds = new Set([...requestedIds, ...companionIds]);
     for (const otherId of limitsPublicVisualIds) {
-      if (!requestedIds.includes(otherId)) assert.doesNotMatch(projection, new RegExp(`"id":"${otherId}"`), `${route.path} leaked ${otherId}`);
+      if (!allowedIds.has(otherId)) assert.doesNotMatch(projection, new RegExp(`"id":"${otherId}"`), `${route.path} leaked ${otherId}`);
     }
   }
   assert.equal(delivered.length, 13);

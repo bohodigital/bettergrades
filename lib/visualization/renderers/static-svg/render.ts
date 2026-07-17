@@ -198,7 +198,7 @@ function textBlock(
   x: number,
   y: number,
   text: string,
-  options: Readonly<{ className?: string; anchor?: "start" | "middle" | "end"; size?: number; weight?: number; maxCharacters?: number; maxLines?: number }> = {},
+  options: Readonly<{ className?: string; anchor?: "start" | "middle" | "end"; size?: number; weight?: number; maxCharacters?: number; maxLines?: number; labelBox?: TextLabelBox }> = {},
 ): string {
   const lines = splitText(text, options.maxCharacters ?? 34, options.maxLines ?? 3);
   const children = lines.map((line, index) => element("tspan", {
@@ -213,7 +213,64 @@ function textBlock(
     "font-size": options.size ?? 14,
     "font-weight": options.weight,
     "text-anchor": options.anchor ?? "start",
+    "data-bvlp-label-box": options.labelBox ? [options.labelBox.x, options.labelBox.y, options.labelBox.width, options.labelBox.height].map(formatNumber).join(",") : undefined,
   }, children);
+}
+
+type TextLabelBox = Readonly<{ x: number; y: number; width: number; height: number }>;
+type TextLabelPlacement = Readonly<{ x: number; y: number; anchor: "start" | "middle" | "end"; box: TextLabelBox }>;
+
+function boxesOverlap(left: TextLabelBox, right: TextLabelBox, padding = 3): boolean {
+  return left.x < right.x + right.width + padding
+    && left.x + left.width + padding > right.x
+    && left.y < right.y + right.height + padding
+    && left.y + left.height + padding > right.y;
+}
+
+function layoutTextLabel(
+  point: NumericPoint,
+  text: string,
+  panel: PanelLayout,
+  occupied: TextLabelBox[],
+  options: Readonly<{ size?: number; maxCharacters?: number; maxLines?: number }> = {},
+): TextLabelPlacement {
+  const size = options.size ?? 13;
+  const lines = splitText(text, options.maxCharacters ?? 28, options.maxLines ?? 2);
+  const width = Math.min(panel.plot.width - 16, Math.max(24, Math.max(...lines.map((line) => line.length)) * size * 0.59 + 3));
+  const height = Math.max(size * 1.18, lines.length * size * 1.18);
+  const leftBound = panel.plot.x + 8;
+  const topBound = panel.plot.y + 8;
+  const rightBound = panel.plot.x + panel.plot.width - 8;
+  const bottomBound = panel.plot.y + panel.plot.height - 8;
+  const clampBox = (x: number, y: number): TextLabelBox => ({
+    x: Math.max(leftBound, Math.min(rightBound - width, x)),
+    y: Math.max(topBound, Math.min(bottomBound - height, y)),
+    width,
+    height,
+  });
+  const candidates = [
+    clampBox(point.x + 11, point.y - height - 9),
+    clampBox(point.x + 11, point.y + 10),
+    clampBox(point.x - width - 11, point.y - height - 9),
+    clampBox(point.x - width - 11, point.y + 10),
+    clampBox(point.x - width / 2, point.y - height - 13),
+    clampBox(point.x - width / 2, point.y + 13),
+  ];
+  let box = candidates.find((candidate) => occupied.every((other) => !boxesOverlap(candidate, other)));
+  if (!box) {
+    for (let y = topBound; y <= bottomBound - height && !box; y += Math.max(10, height / 2)) {
+      for (let x = leftBound; x <= rightBound - width; x += 12) {
+        const candidate = { x, y, width, height };
+        if (occupied.every((other) => !boxesOverlap(candidate, other))) {
+          box = candidate;
+          break;
+        }
+      }
+    }
+  }
+  box ??= candidates[0];
+  occupied.push(box);
+  return { x: box.x, y: box.y + size, anchor: "start", box };
 }
 
 function ticksForAxis(
@@ -437,14 +494,19 @@ function genericLayerLabel(
   layer: Layer,
   anchor: NumericPoint | undefined,
   panel: PanelLayout,
+  occupied: TextLabelBox[],
 ): string {
   if (!layer.label || !anchor) return "";
   const point = projected(anchor, panel);
-  return textBlock(point.x + 9, point.y - 10, richTextToPlainText(layer.label), {
+  const text = richTextToPlainText(layer.label);
+  const placement = layoutTextLabel(point, text, panel, occupied, { size: 13, maxCharacters: 28, maxLines: 2 });
+  return textBlock(placement.x, placement.y, text, {
     className: "bvlp-annotation",
     size: 13,
     maxCharacters: 28,
     maxLines: 2,
+    anchor: placement.anchor,
+    labelBox: placement.box,
   });
 }
 
@@ -699,6 +761,7 @@ function renderLayer(
   panel: PanelLayout,
   variables: Variables,
   idPrefix: string,
+  occupiedLabels: TextLabelBox[],
 ): string {
   if (!layer.visible) return "";
   let body = "";
@@ -849,13 +912,19 @@ function renderLayer(
       break;
     case "label": {
       const point = projected(resolvePoint(layer.geometry.position, variables, scene, layer), panel);
-      body = textBlock(point.x, point.y, richTextToPlainText(layer.geometry.content), { className: "bvlp-annotation", size: 14, weight: 650 });
+      const text = richTextToPlainText(layer.geometry.content);
+      const placement = layoutTextLabel(point, text, panel, occupiedLabels, { size: 14, maxCharacters: 38, maxLines: 3 });
+      body = textBlock(placement.x, placement.y, text, { className: "bvlp-annotation", size: 14, weight: 650, maxCharacters: 38, maxLines: 3, anchor: placement.anchor, labelBox: placement.box });
       break;
     }
     case "annotation": {
       const anchor = resolvePoint(layer.geometry.anchor, variables, scene, layer);
       const point = projected(anchor, panel);
-      body = `${element("circle", { cx: point.x, cy: point.y, r: 2.5, fill: strokeColor(layer.presentation) })}${textBlock(point.x + 8, point.y - 8, richTextToPlainText(layer.geometry.content), { className: "bvlp-annotation", size: 13, maxCharacters: 38, maxLines: 3 })}`;
+      const text = richTextToPlainText(layer.geometry.content);
+      const placement = layoutTextLabel(point, text, panel, occupiedLabels, { size: 13, maxCharacters: 38, maxLines: 3 });
+      const leaderX = Math.max(placement.box.x, Math.min(placement.box.x + placement.box.width, point.x));
+      const leaderY = Math.max(placement.box.y, Math.min(placement.box.y + placement.box.height, point.y));
+      body = `${element("line", { x1: point.x, y1: point.y, x2: leaderX, y2: leaderY, stroke: strokeColor(layer.presentation), "stroke-opacity": 0.55, "stroke-width": 1 })}${element("circle", { cx: point.x, cy: point.y, r: 2.5, fill: strokeColor(layer.presentation) })}${textBlock(placement.x, placement.y, text, { className: "bvlp-annotation", size: 13, maxCharacters: 38, maxLines: 3, anchor: placement.anchor, labelBox: placement.box })}`;
       break;
     }
     case "error-band":
@@ -865,7 +934,7 @@ function renderLayer(
       body = element("desc", {}, escapeXml(`Linked objects: ${layer.geometry.objectIds.join(", ")}; relation: ${layer.geometry.relation}.`));
       break;
   }
-  body += genericLayerLabel(layer, labelAnchor, panel);
+  body += genericLayerLabel(layer, labelAnchor, panel, occupiedLabels);
   return layerGroup(layer, body);
 }
 
@@ -912,7 +981,8 @@ function renderPanel(
   const panelTitle = panel.title
     ? textBlock(panel.frame.x + panel.frame.width / 2, panel.frame.y + 20, title, { className: "bvlp-panel-title", anchor: "middle", size: 15, weight: 700, maxCharacters: 44, maxLines: 1 })
     : "";
-  const plottedLayers = element("g", { "clip-path": `url(#${clipId})` }, sortedLayers.map((layer) => renderLayer(scene, layer, panelForLayer(scene, layout, layer.panelId), variables, idPrefix)).join(""));
+  const occupiedLabels: TextLabelBox[] = [];
+  const plottedLayers = element("g", { "clip-path": `url(#${clipId})` }, sortedLayers.map((layer) => renderLayer(scene, layer, panelForLayer(scene, layout, layer.panelId), variables, idPrefix, occupiedLabels)).join(""));
   return element("g", { id: groupId, role: "group", "aria-labelledby": `${titleId} ${descId}` }, `${element("title", { id: titleId }, escapeXml(title))}${element("desc", { id: descId }, escapeXml(description))}${panelTitle}${renderAxes(panel)}${plottedLayers}`);
 }
 
