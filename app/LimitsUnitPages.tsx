@@ -6,7 +6,6 @@ import { FormEvent, ReactNode, useState } from "react";
 import { getLimitsUnitChapter, limitsUnitRoutes } from "../lib/calculus/limits-unit-index.mjs";
 import type { LimitsUnitNode, LimitsUnitPublicCheck, LimitsUnitPublicPage } from "../lib/calculus/limits-unit.mjs";
 import { BetterGradesVisual } from "./BetterGradesVisual";
-import { LimitsGraphCanvas } from "./LimitsGraphCanvas";
 import { LimitsUnitMap } from "./LimitsUnitMap";
 import { Math } from "./Math";
 
@@ -46,11 +45,6 @@ function safeDisplayTex(tex: string) {
   return tex.replace(/\\hline/g, "").trim();
 }
 
-function graphAriaText(value: string) {
-  return cleanText(value).replace(/\\\((.*?)\\\)/gs, "$1").replace(/\\(?:eps|varepsilon)/g, "epsilon")
-    .replace(/\\delta/g, "delta").replace(/\\(sin|cos|tan|lim)/g, "$1").replace(/[{}\\]/g, "").replace(/\s+/g, " ").trim();
-}
-
 function RichText({ value }: { value: string }) {
   const pieces: ReactNode[] = [], cleaned = cleanText(value), expression = /\\\((.+?)\\\)/gs;
   let cursor = 0;
@@ -87,7 +81,7 @@ function SemanticNode({ node, keyPrefix, checks, renderedCheckIds }: { node: Lim
   if (node.type === "graph-specification") return <figure className={`limits-graph${node.graphId ? " limits-graph-visual" : " limits-graph-note"}`}>
     {node.graphId ? node.visual
       ? <BetterGradesVisual visual={node.visual} />
-      : <LimitsGraphCanvas graphId={node.graphId} label={graphAriaText(node.text ?? "Calculus graph for this lesson")} />
+      : <p role="alert">This graph could not be loaded. Its complete reading guide remains below.</p>
       : null}
     <figcaption><strong>{node.title ? <RichText value={node.title} /> : "Graph reading guide"}</strong>{node.text && <p><RichText value={node.text} /></p>}{node.children?.length ? <div className="limits-graph-exposition"><NodeChildren nodes={node.children} keyPrefix={keyPrefix} checks={checks} renderedCheckIds={renderedCheckIds} /></div> : null}</figcaption>
   </figure>;

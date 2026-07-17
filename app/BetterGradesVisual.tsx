@@ -2,11 +2,30 @@
 
 /* eslint-disable @next/next/no-img-element -- immutable generated SVG is the authored fallback asset */
 
-import { useEffect, useRef, useState, type ComponentType } from "react";
+import { Component, useEffect, useRef, useState, type ComponentType, type ReactNode } from "react";
 import type { LimitsPublicVisual } from "../lib/calculus/limits-unit.mjs";
 import type { BgInteractive2DProps } from "../lib/visualization/renderers/bg-interactive-2d/index.tsx";
 
 type InteractiveRenderer = ComponentType<BgInteractive2DProps>;
+
+class VisualEnhancementBoundary extends Component<
+  { children: ReactNode; onError: (error: Error) => void },
+  { failed: boolean }
+> {
+  state = { failed: false };
+
+  static getDerivedStateFromError() {
+    return { failed: true };
+  }
+
+  componentDidCatch(error: unknown) {
+    this.props.onError(error instanceof Error ? error : new Error(String(error)));
+  }
+
+  render() {
+    return this.state.failed ? null : this.props.children;
+  }
+}
 
 function richText(value: LimitsPublicVisual["title"]): string {
   return value.segments
@@ -77,12 +96,15 @@ export function BetterGradesVisual({ visual }: { visual: LimitsPublicVisual }) {
       />
     </div>
     {hasInteractiveScene ? <div ref={target} className="bvlp-interactive-slot" aria-busy={near && !Renderer && !error}>
-      {Renderer && visual.interactiveScene ? <Renderer
-        scene={visual.interactiveScene}
-        className="bvlp-interactive-runtime"
-        onReady={() => { setReady(true); setError(undefined); }}
-        onError={(renderError) => { setReady(false); setError(renderError.message); }}
-      /> : null}
+      {Renderer && visual.interactiveScene ? <VisualEnhancementBoundary
+        key={`${visual.id}:${visual.sourceFingerprint}`}
+        onError={(renderError) => { setReady(false); setError(`Interactive controls failed safely: ${renderError.message}`); }}
+      ><Renderer
+          scene={visual.interactiveScene}
+          className="bvlp-interactive-runtime"
+          onReady={() => { setReady(true); setError(undefined); }}
+          onError={(renderError) => { setReady(false); setError(renderError.message); }}
+        /></VisualEnhancementBoundary> : null}
       {near && !Renderer && !error ? <p className="sr-only" role="status">Loading optional graph controls.</p> : null}
       {error ? <p className="bvlp-interactive-error" role="alert">{error}</p> : null}
     </div> : null}

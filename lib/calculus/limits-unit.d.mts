@@ -1,4 +1,4 @@
-import type { CompiledScene } from "../visualization/schema/index.ts";
+import type { CompiledScene, PublicCompiledScene } from "../visualization/schema/index.ts";
 
 export type LimitsPublicVisual = {
   id: string;
@@ -11,7 +11,7 @@ export type LimitsPublicVisual = {
   longDescription: string;
   accessibility: CompiledScene["accessibility"];
   sourceFingerprint: string;
-  interactiveScene?: CompiledScene;
+  interactiveScene?: PublicCompiledScene;
 };
 export type LimitsUnitNode = {
   type: string;

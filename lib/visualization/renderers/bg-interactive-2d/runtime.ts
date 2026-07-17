@@ -1,6 +1,6 @@
 import { evaluateNumericAst } from "../../ast/evaluate.ts";
 import type { NumericAst } from "../../ast/schema.ts";
-import type { CompiledScene } from "../../schema/index.ts";
+import type { PublicCompiledScene } from "../../schema/index.ts";
 
 export type RuntimeViewport = Readonly<{
   xMin: number;
@@ -112,7 +112,7 @@ export function panViewport(
   });
 }
 
-function astLimits(scene: CompiledScene) {
+function astLimits(scene: PublicCompiledScene) {
   return {
     maxDepth: scene.performance.maxAstDepth,
     maxNodes: scene.performance.maxAstNodes,
@@ -123,7 +123,7 @@ function astLimits(scene: CompiledScene) {
 export function evaluateSceneValue(
   value: number | NumericAst,
   variables: Readonly<Record<string, number>>,
-  scene: CompiledScene,
+  scene: PublicCompiledScene,
 ): number {
   if (typeof value === "number") return value;
   const result = evaluateNumericAst(value, variables, astLimits(scene));
@@ -136,7 +136,7 @@ export function sampleExpressionPath(
   variable: string,
   domain: { min: number; max: number; includeMin: boolean; includeMax: boolean },
   parameters: Readonly<Record<string, number>>,
-  scene: CompiledScene,
+  scene: PublicCompiledScene,
   plot: PlotTransform,
 ): string {
   const sampleLimit = Math.max(32, Math.min(384, scene.performance.maxSamples));

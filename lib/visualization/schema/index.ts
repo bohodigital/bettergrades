@@ -559,5 +559,8 @@ export type ControlKind = z.infer<typeof ControlKindSchema>;
 export type VisualCapability = z.infer<typeof VisualCapabilitySchema>;
 export type VisualSpec = z.infer<typeof VisualSpecSchema>;
 export type CompiledScene = z.infer<typeof CompiledSceneSchema>;
+export type PublicCompiledScene = Omit<CompiledScene, "provenance"> & {
+  provenance: Omit<CompiledScene["provenance"], "sourceFile">;
+};
 export type RendererId = z.infer<typeof RendererIdSchema>;
 export type ExpressionSource = z.infer<typeof ExpressionSourceSchema>;

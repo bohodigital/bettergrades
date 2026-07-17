@@ -1,10 +1,10 @@
-import type { CompiledScene } from "../../schema/index.ts";
+import type { PublicCompiledScene } from "../../schema/index.ts";
 
 export const INTERACTIVE_SOURCE_GZIP_BUDGET_BYTES = 30 * 1_024;
 
 export type InteractiveControlState = Readonly<Record<string, number | boolean>>;
 
-type SceneControl = CompiledScene["controls"][number];
+type SceneControl = PublicCompiledScene["controls"][number];
 
 function decimalPlaces(value: number): number {
   const source = String(value).toLowerCase();
@@ -71,7 +71,7 @@ export function stepIndexForKey(current: number, key: string, lastIndex: number)
   return current;
 }
 
-export function initialControlState(scene: Pick<CompiledScene, "controls">): InteractiveControlState {
+export function initialControlState(scene: Pick<PublicCompiledScene, "controls">): InteractiveControlState {
   const state: Record<string, number | boolean> = {};
   for (const control of scene.controls) {
     if (control.kind === "slider" || control.kind === "parameter-input") {
@@ -123,4 +123,3 @@ export const CONTROL_KEYS = Object.freeze(new Set([
   "Home",
   "End",
 ]));
-

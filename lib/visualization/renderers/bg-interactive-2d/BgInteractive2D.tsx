@@ -13,7 +13,7 @@ import {
 } from "react";
 
 import type { NumericAst } from "../../ast/schema.ts";
-import type { CompiledScene } from "../../schema/index.ts";
+import type { PublicCompiledScene } from "../../schema/index.ts";
 import {
   CONTROL_KEYS,
   controlAnnouncement,
@@ -39,7 +39,7 @@ import {
 } from "./runtime.ts";
 
 export type BgInteractive2DProps = Readonly<{
-  scene: CompiledScene;
+  scene: PublicCompiledScene;
   className?: string;
   onReady?: (sceneId: string) => void;
   onError?: (error: Error) => void;
@@ -47,7 +47,7 @@ export type BgInteractive2DProps = Readonly<{
 
 type RuntimeValue = number | NumericAst;
 type RuntimePointValue = { x: RuntimeValue; y: RuntimeValue };
-type RuntimePresentation = CompiledScene["layers"][number]["presentation"];
+type RuntimePresentation = PublicCompiledScene["layers"][number]["presentation"];
 type RuntimeLayer = {
   id: string;
   kind: string;
@@ -65,8 +65,8 @@ type PositionGeometry = { position: RuntimePointValue };
 type CircleGeometry = { center: RuntimePointValue; radius: RuntimeValue };
 type PolygonGeometry = { points: RuntimePointValue[] };
 type RegionGeometry = { boundaryLayerIds: string[] };
-type TextGeometry = { position?: RuntimePointValue; anchor?: RuntimePointValue; content: CompiledScene["title"] };
-type SceneControl = CompiledScene["controls"][number];
+type TextGeometry = { position?: RuntimePointValue; anchor?: RuntimePointValue; content: PublicCompiledScene["title"] };
+type SceneControl = PublicCompiledScene["controls"][number];
 type MutableState = Record<string, number | boolean>;
 
 const FRAME_WIDTH = 720;
@@ -109,7 +109,7 @@ function dashArray(layer: RuntimeLayer): string | undefined {
 function pointValue(
   point: { x: number | NumericAst; y: number | NumericAst },
   variables: Readonly<Record<string, number>>,
-  scene: CompiledScene,
+  scene: PublicCompiledScene,
 ) {
   return {
     x: evaluateSceneValue(point.x, variables, scene),
@@ -117,7 +117,7 @@ function pointValue(
   };
 }
 
-function hiddenLayerIds(scene: CompiledScene, state: InteractiveControlState): ReadonlySet<string> {
+function hiddenLayerIds(scene: PublicCompiledScene, state: InteractiveControlState): ReadonlySet<string> {
   const hidden = new Set<string>();
   for (const control of scene.controls) {
     if (control.kind === "toggle" && state[control.id] === false) {
@@ -129,7 +129,7 @@ function hiddenLayerIds(scene: CompiledScene, state: InteractiveControlState): R
 
 function regionShape(
   layer: RuntimeLayer,
-  scene: CompiledScene,
+  scene: PublicCompiledScene,
   variables: Readonly<Record<string, number>>,
   plot: PlotTransform,
 ) {
@@ -177,7 +177,7 @@ function renderLayer({
   plot,
 }: {
   layer: RuntimeLayer;
-  scene: CompiledScene;
+  scene: PublicCompiledScene;
   variables: Readonly<Record<string, number>>;
   plot: PlotTransform;
 }) {
@@ -334,7 +334,7 @@ function useReducedMotion() {
   return reduced;
 }
 
-function validateRuntimeScene(scene: CompiledScene): string | null {
+function validateRuntimeScene(scene: PublicCompiledScene): string | null {
   if (scene.compiledSceneVersion !== 1 || scene.sourceSpecVersion !== 1) return "Unsupported visual scene version.";
   if (!scene.staticFallback?.required || scene.staticFallback.rendererId !== "static-svg") return "A required static fallback was not declared.";
   if (scene.selectedRenderer !== "bg-interactive-2d") return `Scene selected ${scene.selectedRenderer}, not BetterGrades Interactive 2D.`;
