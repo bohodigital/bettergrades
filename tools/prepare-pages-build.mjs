@@ -53,6 +53,7 @@ await writeFile(
       include: ["/*"],
       exclude: [
         "/assets/*",
+        "/visuals/*",
         "/og.png",
         "/favicon.ico",
         "/favicon.svg",

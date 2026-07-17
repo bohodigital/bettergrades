@@ -3,6 +3,26 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 import { limitsUnitRoutes } from "../lib/calculus/limits-unit-index.mjs";
 
+const expectedLimitsVisuals = [
+  ["secant-tangent", "/subjects/math/calculus/limits-continuity/unit/limits/why-limits-matter/"],
+  ["removable-hole", "/subjects/math/calculus/limits-continuity/unit/limits/limit-at-a-hole/"],
+  ["limit-versus-value", "/subjects/math/calculus/limits-continuity/unit/limits/function-value-vs-limit/"],
+  ["jump-discontinuity", "/subjects/math/calculus/limits-continuity/unit/limits/one-sided-limits/"],
+  ["rapid-oscillation", "/subjects/math/calculus/limits-continuity/unit/limits/when-a-limit-does-not-exist/"],
+  ["squeeze-bounds", "/subjects/math/calculus/limits-continuity/unit/limits/squeeze-theorem/"],
+  ["unit-circle-squeeze", "/subjects/math/calculus/limits-continuity/unit/limits/sin-x-over-x-proof/"],
+  ["sine-over-x", "/subjects/math/calculus/limits-continuity/unit/limits/sin-x-over-x-proof/"],
+  ["vertical-asymptotes", "/subjects/math/calculus/limits-continuity/unit/limits/infinite-limits/"],
+  ["horizontal-asymptote", "/subjects/math/calculus/limits-continuity/unit/limits/limits-at-infinity/"],
+  ["discontinuity-gallery", "/subjects/math/calculus/limits-continuity/unit/continuity/types-of-discontinuity/"],
+  ["ivt-root", "/subjects/math/calculus/limits-continuity/unit/continuity/intermediate-value-theorem/"],
+  ["epsilon-delta-window", "/subjects/math/calculus/limits-continuity/unit/limits/epsilon-delta-graph/"],
+];
+
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
 async function render(path = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
@@ -151,19 +171,61 @@ test("practice exams publish complete, prominent answer keys", async () => {
   }
 });
 
-test("limits tables and graph explanations render accessible bounded structures", async () => {
-  const response = await render("/subjects/math/calculus/limits-continuity/unit/limits/limit-at-a-hole/");
-  assert.equal(response.status, 200);
-  const html = await response.text();
-  assert.match(html, /class="limits-table-wrap"/);
-  assert.match(html, /<table>/);
-  assert.match(html, /<caption class="sr-only">Reference table<\/caption>/);
-  assert.match(html, /Read the graph/);
-  assert.match(html, /nearby outputs approach/);
-  assert.match(html, /<canvas[^>]+class="limits-graph-canvas"[^>]+role="img"/);
-  assert.match(html, /data-graph-id="removable-hole"/);
-  assert.doesNotMatch(html, /class="limits-graph-spec"|Graph specification source|Accessible graph specification details/);
-  assert.doesNotMatch(visibleText(html), /\\(?:begin|end|addplot|draw|node|caption|centering)\b|textwidth|axis cs:/);
+test("all 13 Limits visuals server-render exact accessible static fallbacks without sensitive payloads", async () => {
+  const manifest = JSON.parse(
+    await readFile(new URL("../content/visualizations/limits-continuity/compiled-scenes.v1.json", import.meta.url), "utf8"),
+  );
+  assert.equal(manifest.sceneCount, 13);
+  assert.deepEqual(
+    manifest.scenes.map(({ id, route }) => [id, route]),
+    expectedLimitsVisuals,
+  );
+
+  const scenesByRoute = new Map();
+  for (const scene of manifest.scenes) {
+    const routeScenes = scenesByRoute.get(scene.route) ?? [];
+    routeScenes.push(scene);
+    scenesByRoute.set(scene.route, routeScenes);
+  }
+
+  for (const [path, scenes] of scenesByRoute) {
+    const response = await render(path);
+    assert.equal(response.status, 200, path);
+    const html = await response.text();
+    const renderedIds = [...html.matchAll(/data-bvlp-visual="([^"]+)"/g)].map((match) => match[1]);
+    assert.deepEqual(renderedIds, scenes.map(({ id }) => id), `${path} exact visual inventory`);
+    assert.equal((html.match(/data-static-fallback="retained"/g) ?? []).length, scenes.length, path);
+    assert.equal((html.match(/class="bvlp-long-description"/g) ?? []).length, scenes.length, path);
+    assert.equal((html.match(/Read this graph as text/g) ?? []).length, scenes.length, path);
+
+    for (const scene of scenes) {
+      const descriptionId = `bvlp-description-${scene.id}`;
+      assert.match(html, new RegExp(`data-bvlp-visual="${escapeRegExp(scene.id)}"`), scene.id);
+      assert.match(html, new RegExp(`data-bvlp-renderer="${escapeRegExp(scene.selectedRenderer)}"`), scene.id);
+      assert.match(html, new RegExp(`src="${escapeRegExp(scene.staticAsset.path)}"`), scene.id);
+      assert.match(html, new RegExp(`aria-describedby="${escapeRegExp(descriptionId)}"`), scene.id);
+      assert.match(html, new RegExp(`<details class="bvlp-long-description" id="${escapeRegExp(descriptionId)}">`), scene.id);
+    }
+
+    assert.doesNotMatch(html, /<canvas\b|limits-graph-canvas|data-graph-id=/, path);
+    assert.doesNotMatch(html, /canonicalAnswer|workedFeedbackLatex|@cortex-js\/compute-engine|\bComputeEngine\b/, path);
+    assert.doesNotMatch(html, /expressionLatex|class="katex-error"/, path);
+    assert.doesNotMatch(
+      visibleText(html),
+      /\\(?:begin|end|addplot|draw|node|caption|centering|varepsilon|epsilon|delta|frac|sqrt)\b|\$[^$]{1,100}\$|textwidth|axis cs:/,
+      path,
+    );
+  }
+
+  const boundedResponse = await render("/subjects/math/calculus/limits-continuity/unit/limits/limit-at-a-hole/");
+  const boundedHtml = await boundedResponse.text();
+  assert.equal(boundedResponse.status, 200);
+  assert.match(boundedHtml, /class="limits-table-wrap"/);
+  assert.match(boundedHtml, /<table>/);
+  assert.match(boundedHtml, /<caption class="sr-only">Reference table<\/caption>/);
+  assert.match(boundedHtml, /Read the graph/);
+  assert.match(boundedHtml, /nearby outputs approach/);
+  assert.doesNotMatch(boundedHtml, /class="limits-graph-spec"|Graph specification source|Accessible graph specification details/);
 });
 
 test("every Limits unit route renders without visible source commands or math errors", async () => {
@@ -418,7 +480,7 @@ test("algebra expression checker is a registered browser-side tool", async () =>
   assert.match(html, /Simplify/);
   assert.match(html, /Compare/);
   assert.match(html, /Evaluate/);
-  assert.match(html, /Runs in your browser/);
+  assert.match(html, /Bounded first-party request/);
   assert.match(html, /Keyboard or LaTeX/);
   assert.match(html, /Factor completely/);
   assert.match(html, /id="algebra-expression"/);

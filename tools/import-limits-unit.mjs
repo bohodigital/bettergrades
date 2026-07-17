@@ -143,5 +143,8 @@ const outputRoot = dirname(resolve(outputPath));
 const publicChecks = checks.map((check) => Object.fromEntries(Object.entries(check).filter(([key]) => key !== "canonicalAnswer" && key !== "workedFeedbackLatex")));
 await writeFile(resolve(outputRoot, "unit-content.json"), `${JSON.stringify({ source: { provenance: payload.source.provenance }, routes: payload.routes, pages: payload.pages }, null, 2)}\n`, "utf8");
 await writeFile(resolve(outputRoot, "unit-checks-public.json"), `${JSON.stringify(publicChecks, null, 2)}\n`, "utf8");
-await writeFile(resolve(outputRoot, "unit-index.json"), `${JSON.stringify({ unit: payload.unit, source: { provenance: payload.source.provenance }, routes: payload.routes }, null, 2)}\n`, "utf8");
+const publicIndexRoutes = payload.routes.map((route) => Object.fromEntries(
+  Object.entries(route).filter(([key]) => key !== "sourceFile"),
+));
+await writeFile(resolve(outputRoot, "unit-index.json"), `${JSON.stringify({ unit: payload.unit, source: { provenance: payload.source.provenance }, routes: publicIndexRoutes }, null, 2)}\n`, "utf8");
 console.log(`Imported ${routes.length} routes, ${pageEntries.length} pages, and ${checks.length} checks to ${resolve(outputPath)}.`);

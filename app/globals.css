@@ -1023,7 +1023,23 @@ h1 em, h2 em { color: var(--brand); font-family: var(--serif); font-weight: 500;
 .limits-disclosure > div, .limits-disclosure > p { margin: 0; padding: 4px 18px 18px; }
 .limits-graph { margin: 28px 0; padding: 22px; border: 1px solid var(--line); border-radius: 16px; display: grid; gap: 18px; background: var(--surface); }
 .limits-graph-visual { padding: clamp(14px, 3vw, 24px); box-shadow: var(--shadow); }
-.limits-graph-canvas { display: block; width: 100%; max-width: 100%; min-height: 260px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+.bvlp-visual { display: grid; gap: 12px; min-width: 0; }
+.bvlp-static-visual { overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: #fff; }
+.bvlp-static-visual img { display: block; width: 100%; height: auto; max-width: 100%; }
+.bvlp-interactive-slot { min-width: 0; }
+.bvlp-visual.is-interactive-ready .bvlp-static-visual { display: none; }
+.bvlp-interactive-runtime { display: grid; gap: 12px; padding: 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+.bvlp-interactive__toolbar, .bvlp-interactive__controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.bvlp-interactive__toolbar button, .bvlp-interactive__control button { border: 1px solid var(--line); border-radius: 9px; background: var(--paper); color: var(--ink); font: inherit; font-weight: 700; }
+.bvlp-interactive__toolbar output { margin-left: auto; color: var(--muted); font-variant-numeric: tabular-nums; }
+.bvlp-interactive__control { display: grid; grid-template-columns: minmax(10rem, 1fr) minmax(9rem, 2fr) auto; align-items: center; gap: 10px; flex: 1 1 22rem; }
+.bvlp-interactive__control input { width: 100%; }
+.bvlp-interactive__control output { min-width: 4.5rem; font-variant-numeric: tabular-nums; }
+.bvlp-interactive__summary { margin: 0; color: var(--muted); }
+.bvlp-interactive-error { margin: 0; padding: 12px; border: 1px solid var(--warm); border-radius: 9px; background: var(--warm-soft); }
+.bvlp-long-description { border-top: 1px solid var(--line); padding-top: 10px; color: var(--muted); }
+.bvlp-long-description summary { min-height: 44px; cursor: pointer; color: var(--brand); font-weight: 800; }
+.bvlp-long-description p { font-family: var(--serif); font-size: 16px; line-height: 1.65; }
 .limits-graph figcaption { min-width: 0; display: grid; gap: 4px; }
 .limits-graph figcaption > strong { color: var(--brand); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
 .limits-graph figcaption > p { margin: 8px 0 0; color: var(--muted); font-family: var(--serif); font-size: 17px; line-height: 1.65; }
@@ -1130,7 +1146,8 @@ h1 em, h2 em { color: var(--brand); font-family: var(--serif); font-weight: 500;
   .limits-sequence a:last-child { text-align: left; }
   .limits-node > div { padding: 18px 16px; }
   .limits-graph { padding: 14px; }
-  .limits-graph-canvas { min-height: 220px; }
+  .bvlp-interactive__control { grid-template-columns: 1fr; }
+  .bvlp-interactive__toolbar output { width: 100%; margin-left: 0; }
   .limits-map-stats { grid-template-columns: 1fr; }
   .limits-map-stats span { border-left: 0; border-top: 1px solid var(--line); padding-left: 0; }
   .limits-map-stats span:first-child { border-top: 0; }
@@ -1142,4 +1159,10 @@ h1 em, h2 em { color: var(--brand); font-family: var(--serif); font-weight: 500;
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+}
+
+@media print {
+  .bvlp-visual.is-interactive-ready .bvlp-static-visual { display: block !important; }
+  .bvlp-interactive-slot { display: none !important; }
+  .bvlp-long-description { break-inside: avoid; }
 }

@@ -1,0 +1,281 @@
+{
+  "$schema": "bettergrades.visual-migration-manifest/v1",
+  "schemaVersion": "1.0.0",
+  "migrationId": "limits-continuity-current-public-visuals",
+  "sourceInventory": {
+    "generatedUnit": "content/limits-continuity/unit.json",
+    "unitIndex": "content/limits-continuity/unit-index.json",
+    "legacyClientRenderer": "app/LimitsGraphCanvas.tsx",
+    "latexChapterRoot": "content/limits-continuity/latex/chapters",
+    "renderedGraphCount": 13,
+    "nonRenderingExplanatoryNodeCount": 3
+  },
+  "target": {
+    "specCollection": "content/visualizations/limits-continuity/visual-specs.v1.json",
+    "staticDefault": "svg",
+    "preserveStableIds": true,
+    "preservePublicPaths": true
+  },
+  "mappings": [
+    {
+      "stableId": "secant-tangent",
+      "visualSpecPointer": "visual-specs.v1.json#/visuals/0",
+      "sourceSlug": "calculus/limits/why-limits-matter",
+      "publicPath": "/subjects/math/calculus/limits-continuity/unit/limits/why-limits-matter/",
+      "generatedSourceFile": "calculus__limits__why-limits-matter.tex",
+      "legacyRenderers": [
+        { "kind": "client-canvas-2d", "source": "app/LimitsGraphCanvas.tsx", "selector": "secant-tangent" },
+        { "kind": "latex-pgfplots", "source": "content/limits-continuity/latex/chapters/ch01_meaning.tex", "lines": [140, 164], "printFigure": "fig:secants" }
+      ],
+      "printFigure": "fig:secants",
+      "parityAssertions": [
+        { "id": "curve-and-point", "expect": "s(t) = 64t - 16t^2 on 0 <= t <= 4 with closed P = (1, 48)." },
+        { "id": "secant-limit", "expect": "The active secant slope is 32 - 16h for nonzero h and approaches tangent slope 32 as h approaches zero." },
+        { "id": "units-and-fallback", "expect": "Seconds and feet remain explicit in labels, the long description states the slope progression, and print uses a deterministic static figure." }
+      ],
+      "knownLegacyVariances": [
+        "The client canvas uses a smaller 0..3.2 by 0..70 window and only a partial secant comparison; the authored migration follows the complete print source and explanatory node."
+      ]
+    },
+    {
+      "stableId": "removable-hole",
+      "visualSpecPointer": "visual-specs.v1.json#/visuals/1",
+      "sourceSlug": "calculus/limits/limit-at-a-hole",
+      "publicPath": "/subjects/math/calculus/limits-continuity/unit/limits/limit-at-a-hole/",
+      "generatedSourceFile": "calculus__limits__limit-at-a-hole.tex",
+      "legacyRenderers": [
+        { "kind": "client-canvas-2d", "source": "app/LimitsGraphCanvas.tsx", "selector": "removable-hole" },
+        { "kind": "latex-pgfplots", "source": "content/limits-continuity/latex/chapters/ch01_meaning.tex", "lines": [288, 309], "printFigure": "fig:hole" }
+      ],
+      "printFigure": "fig:hole",
+      "parityAssertions": [
+        { "id": "function", "expect": "The displayed curve is y = x + 2 on both sides of x = 2, never joined through the excluded input." },
+        { "id": "hole", "expect": "An open point at (2, 4), with non-color guide cues, identifies a removable discontinuity and two-sided limit 4." },
+        { "id": "fallback", "expect": "Static, interactive, accessible, and print representations preserve the open marker and caption." }
+      ],
+      "knownLegacyVariances": [
+        "The client canvas strokes one continuous line beneath the open marker; the migration splits the mathematical domain so the renderer cannot imply a defined value at x = 2."
+      ]
+    },
+    {
+      "stableId": "limit-versus-value",
+      "visualSpecPointer": "visual-specs.v1.json#/visuals/2",
+      "sourceSlug": "calculus/limits/function-value-vs-limit",
+      "publicPath": "/subjects/math/calculus/limits-continuity/unit/limits/function-value-vs-limit/",
+      "generatedSourceFile": "calculus__limits__function-value-vs-limit.tex",
+      "legacyRenderers": [
+        { "kind": "client-canvas-2d", "source": "app/LimitsGraphCanvas.tsx", "selector": "limit-versus-value" },
+        { "kind": "latex-pgfplots", "source": "content/limits-continuity/latex/chapters/ch01_meaning.tex", "lines": [430, 450], "printFigure": "fig:value-v-limit" }
+      ],
+      "printFigure": "fig:value-v-limit",
+      "parityAssertions": [
+        { "id": "function", "expect": "The nearby curve is y = x^2 + 1 with x = 2 excluded from that rule." },
+        { "id": "markers", "expect": "The open point (2, 5) states the limit and the closed point (2, 9) states g(2), using shape and text as well as color." },
+        { "id": "fallback", "expect": "The caption and long description explicitly distinguish nearby behavior from the assigned function value in every output mode." }
+      ],
+      "knownLegacyVariances": [
+        "The client canvas uses y maximum 10 while the print figure uses 11 and draws the parabola without a true domain break; the migration uses the print viewport and split domains."
+      ]
+    },
+    {
+      "stableId": "jump-discontinuity",
+      "visualSpecPointer": "visual-specs.v1.json#/visuals/3",
+      "sourceSlug": "calculus/limits/one-sided-limits",
+      "publicPath": "/subjects/math/calculus/limits-continuity/unit/limits/one-sided-limits/",
+      "generatedSourceFile": "calculus__limits__one-sided-limits.tex",
+      "legacyRenderers": [
+        { "kind": "client-canvas-2d", "source": "app/LimitsGraphCanvas.tsx", "selector": "jump-discontinuity" },
+        { "kind": "latex-pgfplots", "source": "content/limits-continuity/latex/chapters/ch01_meaning.tex", "lines": [576, 597], "printFigure": "fig:jump" }
+      ],
+      "printFigure": "fig:jump",
+      "parityAssertions": [
+        { "id": "branches", "expect": "y = x + 1 is used for x < 2 and y = 6 - x for x >= 2." },
+        { "id": "one-sided-values", "expect": "An open point at (2, 3), closed point at (2, 4), and text labels establish left limit 3, right limit 4, and two-sided DNE." },
+        { "id": "fallback", "expect": "Print and nonvisual descriptions preserve branch inclusivity and the mismatch between one-sided limits." }
+      ],
+      "knownLegacyVariances": [
+        "The client canvas ends at x = 5 while the print source ends at x = 6; the migration follows the print source."
+      ]
+    },
+    {
+      "stableId": "rapid-oscillation",
+      "visualSpecPointer": "visual-specs.v1.json#/visuals/4",
+      "sourceSlug": "calculus/limits/when-a-limit-does-not-exist",
+      "publicPath": "/subjects/math/calculus/limits-continuity/unit/limits/when-a-limit-does-not-exist/",
+      "generatedSourceFile": "calculus__limits__when-a-limit-does-not-exist.tex",
+      "legacyRenderers": [
+        { "kind": "client-canvas-2d", "source": "app/LimitsGraphCanvas.tsx", "selector": "rapid-oscillation" },
+        { "kind": "latex-pgfplots", "source": "content/limits-continuity/latex/chapters/ch01_meaning.tex", "lines": [643, 659], "printFigure": "fig:oscillation" }
+      ],
+      "printFigure": "fig:oscillation",
+      "parityAssertions": [
+        { "id": "function", "expect": "Both branches evaluate sin(1/x) only on explicit domains that exclude zero." },
+        { "id": "sampling", "expect": "Adaptive sampling resolves rapid oscillations and never draws a segment across x = 0." },
+        { "id": "meaning", "expect": "Caption and long description state that bounded oscillation still has no left, right, or two-sided limit at zero." }
+      ],
+      "knownLegacyVariances": [
+        "The client canvas uses a wider -0.65..0.65 window than the print figure's -0.25..0.25 window; the migration follows the print source for textbook parity."
+      ]
+    },
+    {
+      "stableId": "squeeze-bounds",
+      "visualSpecPointer": "visual-specs.v1.json#/visuals/5",
+      "sourceSlug": "calculus/limits/squeeze-theorem",
+      "publicPath": "/subjects/math/calculus/limits-continuity/unit/limits/squeeze-theorem/",
+      "generatedSourceFile": "calculus__limits__squeeze-theorem.tex",
+      "legacyRenderers": [
+        { "kind": "client-canvas-2d", "source": "app/LimitsGraphCanvas.tsx", "selector": "squeeze-bounds" },
+        { "kind": "latex-pgfplots", "source": "content/limits-continuity/latex/chapters/ch03_squeeze_trig.tex", "lines": [100, 121], "printFigure": "fig:squeeze-oscillation" }
+      ],
+      "printFigure": "fig:squeeze-oscillation",
+      "parityAssertions": [
+        { "id": "three-functions", "expect": "The scene contains x^2 sin(1/x), x^2, and -x^2 on the explanatory node's -0.35..0.35 by -0.13..0.13 window." },
+        { "id": "domain-and-sampling", "expect": "The middle function is sampled at least 1500 times per side with a hard break at zero; bounding curves meet at zero." },
+        { "id": "squeeze-meaning", "expect": "Line styles, labels, caption, and long description identify the upper, middle, and lower functions without relying on color." }
+      ],
+      "knownLegacyVariances": [
+        "The client canvas uses a much wider -1.1..1.1 window; the migration follows the exact textbook graph specification and print source."
+      ]
+    },
+    {
+      "stableId": "unit-circle-squeeze",
+      "visualSpecPointer": "visual-specs.v1.json#/visuals/6",
+      "sourceSlug": "calculus/limits/sin-x-over-x-proof",
+      "publicPath": "/subjects/math/calculus/limits-continuity/unit/limits/sin-x-over-x-proof/",
+      "generatedSourceFile": "calculus__limits__sin-x-over-x-proof.tex",
+      "legacyRenderers": [
+        { "kind": "client-canvas-2d", "source": "app/LimitsGraphCanvas.tsx", "selector": "unit-circle-squeeze" },
+        { "kind": "latex-tikz-geometry", "source": "content/limits-continuity/latex/chapters/ch03_squeeze_trig.tex", "lines": [223, 246], "printFigure": "fig:unit-circle-squeeze" }
+      ],
+      "printFigure": "fig:unit-circle-squeeze",
+      "parityAssertions": [
+        { "id": "geometry", "expect": "O = (0,0), A = (1,0), B = (cos(theta), sin(theta)), and T = (1,tan(theta)) remain on a true equal-scale plane." },
+        { "id": "containment", "expect": "Segments and regions preserve inner triangle <= sector <= outer tangent triangle for 0 < theta < pi/2." },
+        { "id": "fallback", "expect": "The fixed print state uses theta = 32 degrees and the long description names every point and containment relation." }
+      ],
+      "knownLegacyVariances": [
+        "The client canvas hard-codes about 0.68 radians while the print source uses 32 degrees; the migration uses 32 degrees as the fixed state and permits a bounded angle control."
+      ]
+    },
+    {
+      "stableId": "sine-over-x",
+      "visualSpecPointer": "visual-specs.v1.json#/visuals/7",
+      "sourceSlug": "calculus/limits/sin-x-over-x-proof",
+      "publicPath": "/subjects/math/calculus/limits-continuity/unit/limits/sin-x-over-x-proof/",
+      "generatedSourceFile": "calculus__limits__sin-x-over-x-proof.tex",
+      "legacyRenderers": [
+        { "kind": "client-canvas-2d", "source": "app/LimitsGraphCanvas.tsx", "selector": "sine-over-x" },
+        { "kind": "latex-pgfplots", "source": "content/limits-continuity/latex/chapters/ch03_squeeze_trig.tex", "lines": [252, 271], "printFigure": "fig:sinc" }
+      ],
+      "printFigure": "fig:sinc",
+      "parityAssertions": [
+        { "id": "function", "expect": "sin(x)/x is evaluated on separate negative and positive radian domains, never at or across zero." },
+        { "id": "hole-and-limit", "expect": "An open point at (0,1), a y = 1 guide, and text establish a removable hole with two-sided limit 1." },
+        { "id": "ticks-and-fallback", "expect": "Named pi ticks, caption, and long description survive static, accessible, and print outputs." }
+      ],
+      "knownLegacyVariances": [
+        "The client canvas uses -12..12 while the print source uses approximately -2pi..2pi; the migration follows the print source and its named radian ticks."
+      ]
+    },
+    {
+      "stableId": "vertical-asymptotes",
+      "visualSpecPointer": "visual-specs.v1.json#/visuals/8",
+      "sourceSlug": "calculus/limits/infinite-limits",
+      "publicPath": "/subjects/math/calculus/limits-continuity/unit/limits/infinite-limits/",
+      "generatedSourceFile": "calculus__limits__infinite-limits.tex",
+      "legacyRenderers": [
+        { "kind": "client-canvas-2d", "source": "app/LimitsGraphCanvas.tsx", "selector": "vertical-asymptotes" },
+        { "kind": "latex-pgfplots-group", "source": "content/limits-continuity/latex/chapters/ch04_infinite.tex", "lines": [67, 89], "printFigure": "fig:odd-even-asymptote" }
+      ],
+      "printFigure": "fig:odd-even-asymptote",
+      "parityAssertions": [
+        { "id": "functions", "expect": "Side-by-side panels show 1/(x-1) and 1/(x-1)^2 on explicit domains split at x = 1." },
+        { "id": "signs", "expect": "The odd panel has left -infinity and right +infinity; the even panel has +infinity on both sides." },
+        { "id": "asymptotes-and-fallback", "expect": "Dashed, labeled x = 1 asymptotes and panel order remain present in static, accessible, and print outputs." }
+      ],
+      "knownLegacyVariances": [
+        "The client canvas uses x -2..4 and y -6..8; the print source uses x -4..4 and y -8..8, which the migration preserves."
+      ]
+    },
+    {
+      "stableId": "horizontal-asymptote",
+      "visualSpecPointer": "visual-specs.v1.json#/visuals/9",
+      "sourceSlug": "calculus/limits/limits-at-infinity",
+      "publicPath": "/subjects/math/calculus/limits-continuity/unit/limits/limits-at-infinity/",
+      "generatedSourceFile": "calculus__limits__limits-at-infinity.tex",
+      "legacyRenderers": [
+        { "kind": "client-canvas-2d", "source": "app/LimitsGraphCanvas.tsx", "selector": "horizontal-asymptote" },
+        { "kind": "latex-pgfplots", "source": "content/limits-continuity/latex/chapters/ch04_infinite.tex", "lines": [356, 372], "printFigure": "fig:horizontal-asymptote" }
+      ],
+      "printFigure": "fig:horizontal-asymptote",
+      "parityAssertions": [
+        { "id": "function", "expect": "The curve is exactly (3x^2 - 2x + 5)/(x^2 + 4), whose real domain has no denominator exclusions." },
+        { "id": "end-behavior", "expect": "Both ends approach a dashed, labeled horizontal asymptote y = 3." },
+        { "id": "fallback", "expect": "The function, asymptote, caption, and end-behavior description remain present in print and nonvisual output." }
+      ],
+      "knownLegacyVariances": [
+        "The client canvas uses x -8..8 and y 0..5 while the print source uses x -12..12 and y 0..4.3; the migration follows the print source."
+      ]
+    },
+    {
+      "stableId": "discontinuity-gallery",
+      "visualSpecPointer": "visual-specs.v1.json#/visuals/10",
+      "sourceSlug": "calculus/continuity/types-of-discontinuity",
+      "publicPath": "/subjects/math/calculus/limits-continuity/unit/continuity/types-of-discontinuity/",
+      "generatedSourceFile": "calculus__continuity__types-of-discontinuity.tex",
+      "legacyRenderers": [
+        { "kind": "client-canvas-2d", "source": "app/LimitsGraphCanvas.tsx", "selector": "discontinuity-gallery" },
+        { "kind": "latex-pgfplots-group", "source": "content/limits-continuity/latex/chapters/ch05_continuity.tex", "lines": [256, 285], "printFigure": "fig:discontinuities" }
+      ],
+      "printFigure": "fig:discontinuities",
+      "parityAssertions": [
+        { "id": "panels", "expect": "The two-by-two order is removable, jump, infinite, oscillatory, with formulas and points matching the print source." },
+        { "id": "breaks", "expect": "Every panel uses explicit left/right domains at zero; infinite and oscillatory curves are never bridged." },
+        { "id": "classification", "expect": "Panel titles, marker shapes, asymptote style, caption, and long description allow classification without color." }
+      ],
+      "knownLegacyVariances": [
+        "The client canvas changes the removable function from x+1 to x, jump heights from 0 and 2 to -0.75 and 0.75, and the infinite function from 1/x to 0.45/x. The migration follows the authored print source because those changes are not mathematical parity."
+      ]
+    },
+    {
+      "stableId": "ivt-root",
+      "visualSpecPointer": "visual-specs.v1.json#/visuals/11",
+      "sourceSlug": "calculus/continuity/intermediate-value-theorem",
+      "publicPath": "/subjects/math/calculus/limits-continuity/unit/continuity/intermediate-value-theorem/",
+      "generatedSourceFile": "calculus__continuity__intermediate-value-theorem.tex",
+      "legacyRenderers": [
+        { "kind": "client-canvas-2d", "source": "app/LimitsGraphCanvas.tsx", "selector": "ivt-root" },
+        { "kind": "latex-pgfplots", "source": "content/limits-continuity/latex/chapters/ch05_continuity.tex", "lines": [632, 649], "printFigure": "fig:ivt" }
+      ],
+      "printFigure": "fig:ivt",
+      "parityAssertions": [
+        { "id": "function-and-domain", "expect": "f(x) = x^3 + x - 1 is shown continuously on the closed interval [0,1]." },
+        { "id": "sign-and-root", "expect": "Closed endpoints (0,-1), (1,1), and the closed root near (0.6823278,0) make the IVT sign change visible." },
+        { "id": "fallback", "expect": "Caption and long description distinguish the theorem's existence guarantee from the displayed numerical root location." }
+      ],
+      "knownLegacyVariances": [
+        "The client canvas incorrectly renders the root as an open point and expands the viewport beyond [0,1]; the migration uses the mathematically correct filled print point and print viewport."
+      ]
+    },
+    {
+      "stableId": "epsilon-delta-window",
+      "visualSpecPointer": "visual-specs.v1.json#/visuals/12",
+      "sourceSlug": "calculus/limits/epsilon-delta-graph",
+      "publicPath": "/subjects/math/calculus/limits-continuity/unit/limits/epsilon-delta-graph/",
+      "generatedSourceFile": "calculus__limits__epsilon-delta-graph.tex",
+      "legacyRenderers": [
+        { "kind": "client-canvas-2d", "source": "app/LimitsGraphCanvas.tsx", "selector": "epsilon-delta-window" },
+        { "kind": "latex-pgfplots", "source": "content/limits-continuity/latex/chapters/ch06_formal.tex", "lines": [264, 289], "printFigure": "fig:epsilon-delta" }
+      ],
+      "printFigure": "fig:epsilon-delta",
+      "parityAssertions": [
+        { "id": "function-and-target", "expect": "The nonlinear function f(x) = x^2/2 + 1 is centered at the limit target a = 2 and L = 3." },
+        { "id": "valid-window", "expect": "For default epsilon 0.75, the band is [2.25,3.75] and the largest symmetric delta is sqrt(5.5) - 2, approximately 0.34520788." },
+        { "id": "meaning-and-fallback", "expect": "Shading, boundary styles, simultaneous inequalities, caption, and long description communicate the implication without relying on color or client JavaScript." }
+      ],
+      "knownLegacyVariances": [
+        "The print source shades 3.5..5.5 while naming a = 2 and L = 3 in its explanatory node, so that print band is not centered at L and is mathematically inconsistent. The client canvas uses the correct L = 3 with epsilon 0.75 but rounds delta to 0.34. The migration preserves the correct meaning and uses the exact largest symmetric delta."
+      ]
+    }
+  ]
+}

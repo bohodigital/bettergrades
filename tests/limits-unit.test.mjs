@@ -6,10 +6,10 @@ import test from "node:test";
 import unitPayload from "../content/limits-continuity/unit.json" with { type: "json" };
 import {
   LIMITS_UNIT_PREFIX,
-  compareLimitAnswer,
   parseLimitsUnitPage,
   validateLimitsUnitPayload,
 } from "../lib/calculus/limits-unit-core.mjs";
+import { compareLimitAnswer } from "../lib/calculus/limits-unit-checker.server.mjs";
 import { getLimitsUnitPage } from "../lib/calculus/limits-unit.mjs";
 import { isLimitsUnitPath, limitsUnitRoutes, limitsUnitSearchRecords } from "../lib/calculus/limits-unit-index.mjs";
 
@@ -161,6 +161,12 @@ test("route and search adapters expose every page exactly once", () => {
   assert.equal(lesson?.route.h1, "What a Limit Means");
   assert.ok(lesson?.checks.some((check) => check.id === "limit-continuous-01"));
   assert.ok(lesson?.page.nodes.some((node) => node.type === "definition"));
+  const holeLesson = getLimitsUnitPage(`${LIMITS_UNIT_PREFIX}limits/limit-at-a-hole/`);
+  assert.match(holeLesson?.route.description ?? "", /exam-style practice\.$/);
+  for (const route of limitsUnitRoutes) {
+    assert.match(route.description, /[.!?]$/, `${route.path} has a truncated or unpunctuated description`);
+    assert.doesNotMatch(route.description, /\b(?:ex|p|pr|pra|prac|pract|practi|practic|exam-s|exam-sty|exam-styl)$/i, route.path);
+  }
   assert.equal(isLimitsUnitPath(`${LIMITS_UNIT_PREFIX}not-a-real-page/`), false);
 });
 

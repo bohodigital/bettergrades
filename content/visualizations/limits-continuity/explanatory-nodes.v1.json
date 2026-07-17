@@ -1,0 +1,85 @@
+{
+  "$schema": "bettergrades.non-rendering-visual-guidance/v1",
+  "schemaVersion": "1.0.0",
+  "collectionId": "limits-continuity-non-rendering-graph-specifications",
+  "purpose": "Preserve the three generated graph-specification nodes that explain existing visuals but have no graphId and must not become separate public figures.",
+  "nodes": [
+    {
+      "nodeId": "secant-tangent-explanatory-node",
+      "sourceNodeType": "graph-specification",
+      "sourceGraphId": null,
+      "title": "Interactive graph exploration",
+      "sourceSlug": "calculus/limits/why-limits-matter",
+      "generatedSourceFile": "calculus__limits__why-limits-matter.tex",
+      "linkedStableVisualId": "secant-tangent",
+      "renderAsPublicVisual": false,
+      "publishBehavior": "authoring-guidance-only",
+      "normalizedInstruction": "Use s(t) = 64t - 16t squared on 0 <= t <= 4 and 0 <= s <= 72. Fix P = (1, 48), allow Q = (1 + h, s(1 + h)) for positive and negative nonzero h, display secant slope 32 - 16h and tangent line s - 48 = 32(t - 1), and include units in every label.",
+      "structuredRequirements": {
+        "functionExpressionLatex": "64t-16t^2",
+        "viewport": { "t": [0, 4], "s": [0, 72] },
+        "fixedPoint": { "label": "P", "coordinates": [1, 48] },
+        "movablePoint": { "label": "Q", "xLatex": "1+h", "yLatex": "64(1+h)-16(1+h)^2", "excludeParameterValues": [0] },
+        "secantSlopeLatex": "32-16h",
+        "tangentLineLatex": "s-48=32(t-1)",
+        "units": { "t": "seconds", "s": "feet", "slope": "feet per second" }
+      },
+      "provenance": {
+        "generatedNodeSource": "content/limits-continuity/unit.json",
+        "latexSource": "content/limits-continuity/latex/chapters/ch01_meaning.tex",
+        "latexLines": [166, 168]
+      }
+    },
+    {
+      "nodeId": "squeeze-bounds-explanatory-node",
+      "sourceNodeType": "graph-specification",
+      "sourceGraphId": null,
+      "title": "Interactive graph exploration",
+      "sourceSlug": "calculus/limits/squeeze-theorem",
+      "generatedSourceFile": "calculus__limits__squeeze-theorem.tex",
+      "linkedStableVisualId": "squeeze-bounds",
+      "renderAsPublicVisual": false,
+      "publishBehavior": "authoring-guidance-only",
+      "normalizedInstruction": "Use y = x squared times sin(1/x), y = x squared, and y = negative x squared on -0.35 <= x <= 0.35 and -0.13 <= y <= 0.13. Sample the oscillating curve at least 1500 times on each side of zero and never connect across x = 0, where its displayed formula is undefined.",
+      "structuredRequirements": {
+        "functionExpressionsLatex": ["x^2\\sin\\left(\\frac{1}{x}\\right)", "x^2", "-x^2"],
+        "viewport": { "x": [-0.35, 0.35], "y": [-0.13, 0.13] },
+        "minimumSamplesPerSide": 1500,
+        "hardDomainBreaks": [0],
+        "neverBridgeDomainBreaks": true
+      },
+      "provenance": {
+        "generatedNodeSource": "content/limits-continuity/unit.json",
+        "latexSource": "content/limits-continuity/latex/chapters/ch03_squeeze_trig.tex",
+        "latexLines": [123, 125]
+      }
+    },
+    {
+      "nodeId": "epsilon-delta-window-explanatory-node",
+      "sourceNodeType": "graph-specification",
+      "sourceGraphId": null,
+      "title": "Interactive graph exploration",
+      "sourceSlug": "calculus/limits/epsilon-delta-graph",
+      "generatedSourceFile": "calculus__limits__epsilon-delta-graph.tex",
+      "linkedStableVisualId": "epsilon-delta-window",
+      "renderAsPublicVisual": false,
+      "publishBehavior": "authoring-guidance-only",
+      "normalizedInstruction": "Use f(x) = x squared divided by 2 plus 1 near a = 2 and L = 3. Provide an adjustable epsilon band, derive the largest symmetric delta window whose nearby graph remains inside that band, and display 0 < |x - a| < delta and |f(x) - L| < epsilon simultaneously.",
+      "structuredRequirements": {
+        "functionExpressionLatex": "\\frac{x^2}{2}+1",
+        "a": 2,
+        "L": 3,
+        "adjustableParameter": "epsilon",
+        "derivedParameter": "delta",
+        "largestSymmetricDeltaLatex": "\\sqrt{4+2\\varepsilon}-2",
+        "inputCondition": "0 < |x - a| < delta",
+        "outputCondition": "|f(x) - L| < epsilon"
+      },
+      "provenance": {
+        "generatedNodeSource": "content/limits-continuity/unit.json",
+        "latexSource": "content/limits-continuity/latex/chapters/ch06_formal.tex",
+        "latexLines": [291, 293]
+      }
+    }
+  ]
+}

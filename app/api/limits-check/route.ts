@@ -1,16 +1,18 @@
 import unitPayload from "../../../content/limits-continuity/unit.json" with { type: "json" };
-import { compareLimitAnswer } from "../../../lib/calculus/limits-unit-core.mjs";
+import { compareLimitAnswer } from "../../../lib/calculus/limits-unit-checker.server.mjs";
 
 const MAX_BODY_BYTES = 16 * 1024;
 const MAX_ID_LENGTH = 128;
 const MAX_ANSWER_LENGTH = 2_000;
 const checksById = new Map(unitPayload.checks.map((check) => [check.id, check]));
+type LimitsCheckInput = { id?: unknown; answer?: unknown; action?: unknown };
+type InputResult = { body: LimitsCheckInput } | { error: string; status: number };
 
 function errorResponse(error: string, status: number) {
   return Response.json({ error }, { status });
 }
 
-async function readInput(request: Request) {
+async function readInput(request: Request): Promise<InputResult> {
   const declaredLength = Number(request.headers.get("content-length"));
   if (Number.isFinite(declaredLength) && declaredLength > MAX_BODY_BYTES) return { error: "Request body is too large.", status: 413 } as const;
   let raw: string;
@@ -23,7 +25,7 @@ async function readInput(request: Request) {
   try {
     const parsed: unknown = JSON.parse(raw);
     if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return { error: "Request body must be a JSON object.", status: 400 } as const;
-    return { body: parsed as { id?: unknown; answer?: unknown; action?: unknown } } as const;
+    return { body: parsed as LimitsCheckInput };
   } catch {
     return { error: "Request body must be valid JSON.", status: 400 } as const;
   }

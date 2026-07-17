@@ -1,3 +1,18 @@
+import type { CompiledScene, PublicCompiledScene } from "../visualization/schema/index.ts";
+
+export type LimitsPublicVisual = {
+  id: string;
+  selectedRenderer: string;
+  hydration: string;
+  staticAsset: { path: string; sha256: string; bytes: number; width: number; height: number };
+  title: CompiledScene["title"];
+  caption: CompiledScene["caption"];
+  learningPurpose: string;
+  longDescription: string;
+  accessibility: CompiledScene["accessibility"];
+  sourceFingerprint: string;
+  interactiveScene?: PublicCompiledScene;
+};
 export type LimitsUnitNode = {
   type: string;
   title?: string;
@@ -9,6 +24,7 @@ export type LimitsUnitNode = {
   environment?: string;
   rows?: string[][];
   graphId?: string;
+  visual?: LimitsPublicVisual;
 };
 export type LimitsUnitCheck = {
   id: string; routeSlug: string; mode: "checker"; answerType: "choice" | "expression" | "integer" | "rational";

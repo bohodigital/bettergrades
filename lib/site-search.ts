@@ -161,7 +161,7 @@ export const siteSearchRecords: SiteSearchRecord[] = [
   ...glossaryRecords,
 ];
 
-export function searchSite(query: string, options: SiteSearchOptions = {}) {
+export function searchSite(query: string, options: SiteSearchOptions = {}): SiteSearchRecord[] {
   const domain = options.domain ?? "all";
   const kind = options.kind ?? "all";
   const available = siteSearchRecords.filter((record) => (domain === "all" || record.domainSlug === domain) && (kind === "all" || record.kind === kind));

@@ -1,0 +1,5407 @@
+{
+  "manifestVersion": 1,
+  "collectionId": "limits-continuity-current-public-visuals",
+  "sourceSha256": "8b0da6b6faed0a6b345389cf0838319e7cd0e8926d46441414699b9149a22881",
+  "compilerVersion": "bvlp-compiler-v1",
+  "assetPrefix": "/visuals/v1",
+  "sceneCount": 13,
+  "scenes": [
+    {
+      "id": "secant-tangent",
+      "route": "/subjects/math/calculus/limits-continuity/unit/limits/why-limits-matter/",
+      "selectedRenderer": "bg-interactive-2d",
+      "hydration": "near-viewport",
+      "staticAsset": {
+        "path": "/visuals/v1/secant-tangent.91535d4a19331ce4.svg",
+        "sha256": "91535d4a19331ce416782861d62c10400d5272cb45b99c1281a57e7e3fad98b4",
+        "bytes": 12596,
+        "width": 960,
+        "height": 533
+      },
+      "compiledScene": {
+        "compiledSceneVersion": 1,
+        "sourceSpecVersion": 1,
+        "id": "secant-tangent",
+        "kind": "cartesian-2d",
+        "title": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "Secant lines approach a tangent line"
+            }
+          ]
+        },
+        "caption": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "Secant lines through P = (1, 48) approach the tangent line as the second point moves toward P."
+            }
+          ]
+        },
+        "learningPurpose": "Connect average velocity over a nonzero time interval to instantaneous velocity as the second point approaches P.",
+        "longDescription": "A position curve s(t) = 64t - 16t squared is shown from 0 to 4 seconds. P is fixed at t = 1 second and s = 48 feet. Three secant states through P have slopes 16, 24, and 28.8 feet per second. The active secant can use positive or negative nonzero h and rotates toward the tangent line, whose slope is 32 feet per second.",
+        "coordinateSpace": {
+          "type": "cartesian-2d",
+          "variables": [
+            "t",
+            "s"
+          ],
+          "unitsRequired": true
+        },
+        "viewport": {
+          "xMin": 0,
+          "xMax": 4,
+          "yMin": 0,
+          "yMax": 72,
+          "aspectRatio": 1.8,
+          "padding": 0.04
+        },
+        "axes": {
+          "mode": "explicit",
+          "axes": [
+            {
+              "id": "t-axis",
+              "orientation": "x",
+              "label": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "t (seconds)"
+                  }
+                ]
+              },
+              "unit": {
+                "symbol": "s",
+                "name": "seconds",
+                "quantity": "time"
+              },
+              "scale": "linear",
+              "tickMode": "automatic",
+              "showGrid": true
+            },
+            {
+              "id": "s-axis",
+              "orientation": "y",
+              "label": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "s(t) (feet)"
+                  }
+                ]
+              },
+              "unit": {
+                "symbol": "ft",
+                "name": "feet",
+                "quantity": "position"
+              },
+              "scale": "linear",
+              "tickMode": "automatic",
+              "showGrid": true
+            }
+          ]
+        },
+        "panels": [],
+        "layers": [
+          {
+            "id": "position-curve",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Heavy solid position curve."
+            },
+            "references": [],
+            "kind": "function",
+            "geometry": {
+              "expression": {
+                "type": "add",
+                "left": {
+                  "type": "multiply",
+                  "left": {
+                    "type": "number",
+                    "value": -16
+                  },
+                  "right": {
+                    "type": "power",
+                    "left": {
+                      "type": "variable",
+                      "name": "t"
+                    },
+                    "right": {
+                      "type": "number",
+                      "value": 2
+                    }
+                  }
+                },
+                "right": {
+                  "type": "multiply",
+                  "left": {
+                    "type": "number",
+                    "value": 64
+                  },
+                  "right": {
+                    "type": "variable",
+                    "name": "t"
+                  }
+                }
+              },
+              "variable": "t",
+              "domain": {
+                "min": 0,
+                "max": 4,
+                "includeMin": true,
+                "includeMax": true
+              }
+            }
+          },
+          {
+            "id": "secant-h-one",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-secondary",
+              "lineStyle": "dotted",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Dotted reference secant for h = 1."
+            },
+            "references": [],
+            "kind": "function",
+            "geometry": {
+              "expression": {
+                "type": "add",
+                "left": {
+                  "type": "multiply",
+                  "left": {
+                    "type": "number",
+                    "value": 16
+                  },
+                  "right": {
+                    "type": "variable",
+                    "name": "t"
+                  }
+                },
+                "right": {
+                  "type": "number",
+                  "value": 32
+                }
+              },
+              "variable": "t",
+              "domain": {
+                "min": 0.25,
+                "max": 2.25,
+                "includeMin": true,
+                "includeMax": true
+              }
+            }
+          },
+          {
+            "id": "secant-h-half",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-secondary",
+              "lineStyle": "dashed",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Dashed reference secant for h = 0.5."
+            },
+            "references": [],
+            "kind": "function",
+            "geometry": {
+              "expression": {
+                "type": "add",
+                "left": {
+                  "type": "multiply",
+                  "left": {
+                    "type": "number",
+                    "value": 24
+                  },
+                  "right": {
+                    "type": "variable",
+                    "name": "t"
+                  }
+                },
+                "right": {
+                  "type": "number",
+                  "value": 24
+                }
+              },
+              "variable": "t",
+              "domain": {
+                "min": 0.45,
+                "max": 1.8,
+                "includeMin": true,
+                "includeMax": true
+              }
+            }
+          },
+          {
+            "id": "active-secant",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Heavy active secant controlled by the nonzero h step control."
+            },
+            "references": [],
+            "kind": "function",
+            "geometry": {
+              "expression": {
+                "type": "add",
+                "left": {
+                  "type": "add",
+                  "left": {
+                    "type": "multiply",
+                    "left": {
+                      "type": "variable",
+                      "name": "t"
+                    },
+                    "right": {
+                      "type": "add",
+                      "left": {
+                        "type": "multiply",
+                        "left": {
+                          "type": "number",
+                          "value": -16
+                        },
+                        "right": {
+                          "type": "variable",
+                          "name": "h"
+                        }
+                      },
+                      "right": {
+                        "type": "number",
+                        "value": 32
+                      }
+                    }
+                  },
+                  "right": {
+                    "type": "multiply",
+                    "left": {
+                      "type": "number",
+                      "value": 16
+                    },
+                    "right": {
+                      "type": "variable",
+                      "name": "h"
+                    }
+                  }
+                },
+                "right": {
+                  "type": "number",
+                  "value": 16
+                }
+              },
+              "variable": "t",
+              "domain": {
+                "min": 0.25,
+                "max": 2.25,
+                "includeMin": true,
+                "includeMax": true
+              }
+            }
+          },
+          {
+            "id": "tangent-line",
+            "visible": true,
+            "zIndex": 0,
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "tangent slope 32"
+                }
+              ]
+            },
+            "presentation": {
+              "strokeToken": "visual-success",
+              "lineStyle": "double",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Double-stroked tangent line through P."
+            },
+            "references": [],
+            "kind": "tangent-line",
+            "geometry": {
+              "point": {
+                "x": 1,
+                "y": 48
+              },
+              "slope": 32
+            }
+          },
+          {
+            "id": "point-p",
+            "visible": true,
+            "zIndex": 0,
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "P = (1, 48)"
+                }
+              ]
+            },
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "fillToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "circle",
+              "pattern": "none",
+              "colorIndependentCue": "Filled circle labeled P at (1, 48)."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 1,
+                "y": 48
+              }
+            }
+          },
+          {
+            "id": "point-q",
+            "visible": true,
+            "zIndex": 0,
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "movable point Q"
+                }
+              ]
+            },
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "fillToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "none",
+              "colorIndependentCue": "Filled diamond labeled Q distinguishes the movable point from P."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": {
+                  "type": "add",
+                  "left": {
+                    "type": "variable",
+                    "name": "h"
+                  },
+                  "right": {
+                    "type": "number",
+                    "value": 1
+                  }
+                },
+                "y": {
+                  "type": "add",
+                  "left": {
+                    "type": "multiply",
+                    "left": {
+                      "type": "number",
+                      "value": -16
+                    },
+                    "right": {
+                      "type": "power",
+                      "left": {
+                        "type": "add",
+                        "left": {
+                          "type": "variable",
+                          "name": "h"
+                        },
+                        "right": {
+                          "type": "number",
+                          "value": 1
+                        }
+                      },
+                      "right": {
+                        "type": "number",
+                        "value": 2
+                      }
+                    }
+                  },
+                  "right": {
+                    "type": "multiply",
+                    "left": {
+                      "type": "number",
+                      "value": 64
+                    },
+                    "right": {
+                      "type": "add",
+                      "left": {
+                        "type": "variable",
+                        "name": "h"
+                      },
+                      "right": {
+                        "type": "number",
+                        "value": 1
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": "slope-note",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Text annotation states both slope formulas."
+            },
+            "references": [],
+            "kind": "annotation",
+            "geometry": {
+              "anchor": {
+                "x": 2.1,
+                "y": 66
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "Secant slope = 32 - 16h; tangent slope = 32."
+                  }
+                ]
+              },
+              "targetLayerId": "active-secant"
+            }
+          }
+        ],
+        "controls": [
+          {
+            "id": "h-control",
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "Horizontal change h"
+                }
+              ]
+            },
+            "announcementTemplate": "h is {value}; the secant slope is 32 minus 16h feet per second.",
+            "kind": "step-control",
+            "parameter": "h",
+            "values": [
+              -0.75,
+              -0.5,
+              -0.25,
+              -0.1,
+              0.1,
+              0.2,
+              0.5,
+              1
+            ],
+            "initialIndex": 5
+          }
+        ],
+        "accessibility": {
+          "ariaLabel": "Interactive graph of secant lines approaching the tangent to a position curve.",
+          "summary": "P stays fixed while nonzero h moves Q and changes the secant slope toward 32 feet per second.",
+          "readingOrder": [
+            "position-curve",
+            "point-p",
+            "secant-h-one",
+            "secant-h-half",
+            "active-secant",
+            "point-q",
+            "tangent-line",
+            "slope-note",
+            "h-control"
+          ],
+          "colorIndependentDescription": "The position curve is heavy and solid, reference secants are dotted and dashed, the active secant is heavy, and the tangent is double-stroked. P is a circle and Q is a diamond.",
+          "keyboardInstructions": "Focus the h control and use its step commands. Zero is intentionally absent because a secant requires two distinct points.",
+          "controlInstructions": [
+            "Choose positive or negative nonzero h values and compare the announced secant slope with 32."
+          ],
+          "reducedMotion": "disable-animation",
+          "staticFallbackEquivalent": true
+        },
+        "print": {
+          "representation": "generated-svg",
+          "caption": {
+            "segments": [
+              {
+                "kind": "text",
+                "text": "Secant lines through P = (1, 48) approach the tangent line as h approaches zero."
+              }
+            ]
+          },
+          "grayscaleSafe": true,
+          "pageBreak": "avoid",
+          "widthInches": 7.2
+        },
+        "performance": {
+          "maxSamples": 2048,
+          "maxAdaptiveDepth": 12,
+          "maxAstNodes": 128,
+          "maxAstDepth": 20,
+          "maxOperationsPerEvaluation": 1024,
+          "maxPayloadBytes": 65536,
+          "maxAnimationFps": 30,
+          "activation": "near-viewport"
+        },
+        "requiredCapabilities": [
+          "annotations",
+          "cartesian-axes",
+          "function-paths",
+          "open-closed-points",
+          "parameter-controls",
+          "static-fallback"
+        ],
+        "selectedRenderer": "bg-interactive-2d",
+        "staticFallback": {
+          "required": true,
+          "rendererId": "static-svg"
+        },
+        "delivery": {
+          "hydration": "near-viewport",
+          "publicFieldsOnly": true
+        },
+        "provenance": {
+          "route": "/subjects/math/calculus/limits-continuity/unit/limits/why-limits-matter/",
+          "sourceFile": "content/visualizations/limits-continuity/visual-specs.v1.json",
+          "sourceVisualId": "secant-tangent",
+          "sourceFingerprint": "bvlp1-ad078815",
+          "compilerVersion": "bvlp-compiler-v1",
+          "visibility": "public"
+        }
+      }
+    },
+    {
+      "id": "removable-hole",
+      "route": "/subjects/math/calculus/limits-continuity/unit/limits/limit-at-a-hole/",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/removable-hole.c2bb37844f20cf00.svg",
+        "sha256": "c2bb37844f20cf00fc165b657cee07d338ddeb65b9a2a316d93c5b775af9b422",
+        "bytes": 10968,
+        "width": 960,
+        "height": 600
+      },
+      "compiledScene": {
+        "compiledSceneVersion": 1,
+        "sourceSpecVersion": 1,
+        "id": "removable-hole",
+        "kind": "piecewise-cartesian-2d",
+        "title": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "A limit at a removable hole"
+            }
+          ]
+        },
+        "caption": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "The function is undefined at x = 2, but nearby outputs approach 4."
+            }
+          ]
+        },
+        "learningPurpose": "Show that a two-sided limit depends on nearby outputs even when the function is undefined at the target input.",
+        "longDescription": "The line y = x + 2 is drawn on two explicit domains, one to the left of 2 and one to the right. An open circle at (2, 4) marks the missing value. Dashed horizontal and vertical guides identify x = 2 and y = 4, so the common approached height remains clear without relying on color.",
+        "coordinateSpace": {
+          "type": "cartesian-2d",
+          "variables": [
+            "x",
+            "y"
+          ],
+          "unitsRequired": false
+        },
+        "viewport": {
+          "xMin": -1,
+          "xMax": 5,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.6,
+          "padding": 0.04
+        },
+        "axes": {
+          "mode": "explicit",
+          "axes": [
+            {
+              "id": "x-axis",
+              "orientation": "x",
+              "label": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "x"
+                  }
+                ]
+              },
+              "scale": "linear",
+              "tickMode": "fixed-step",
+              "tickStep": 1,
+              "showGrid": true
+            },
+            {
+              "id": "y-axis",
+              "orientation": "y",
+              "label": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "f(x)"
+                  }
+                ]
+              },
+              "scale": "linear",
+              "tickMode": "fixed-step",
+              "tickStep": 1,
+              "showGrid": true
+            }
+          ]
+        },
+        "panels": [],
+        "layers": [
+          {
+            "id": "line-left",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Solid left branch stops before x = 2."
+            },
+            "references": [],
+            "kind": "piecewise-branch",
+            "geometry": {
+              "expression": {
+                "type": "add",
+                "left": {
+                  "type": "variable",
+                  "name": "x"
+                },
+                "right": {
+                  "type": "number",
+                  "value": 2
+                }
+              },
+              "variable": "x",
+              "domain": {
+                "min": -1,
+                "max": 2,
+                "includeMin": true,
+                "includeMax": false
+              }
+            }
+          },
+          {
+            "id": "line-right",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Solid right branch begins after x = 2."
+            },
+            "references": [],
+            "kind": "piecewise-branch",
+            "geometry": {
+              "expression": {
+                "type": "add",
+                "left": {
+                  "type": "variable",
+                  "name": "x"
+                },
+                "right": {
+                  "type": "number",
+                  "value": 2
+                }
+              },
+              "variable": "x",
+              "domain": {
+                "min": 2,
+                "max": 5,
+                "includeMin": false,
+                "includeMax": true
+              }
+            }
+          },
+          {
+            "id": "hole",
+            "visible": true,
+            "zIndex": 0,
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "hole at (2, 4)"
+                }
+              ]
+            },
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "circle",
+              "pattern": "none",
+              "colorIndependentCue": "Open circle marks the excluded point (2, 4)."
+            },
+            "references": [],
+            "kind": "open-point",
+            "geometry": {
+              "position": {
+                "x": 2,
+                "y": 4
+              }
+            }
+          },
+          {
+            "id": "x-guide",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-guide",
+              "lineStyle": "dashed",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Dashed vertical guide identifies x = 2."
+            },
+            "references": [],
+            "kind": "line",
+            "geometry": {
+              "start": {
+                "x": 2,
+                "y": 0
+              },
+              "end": {
+                "x": 2,
+                "y": 4
+              }
+            }
+          },
+          {
+            "id": "y-guide",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-guide",
+              "lineStyle": "dashed",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Dashed horizontal guide identifies y = 4."
+            },
+            "references": [],
+            "kind": "line",
+            "geometry": {
+              "start": {
+                "x": 0,
+                "y": 4
+              },
+              "end": {
+                "x": 2,
+                "y": 4
+              }
+            }
+          },
+          {
+            "id": "hole-note",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Text annotation states the limit and undefined value."
+            },
+            "references": [],
+            "kind": "annotation",
+            "geometry": {
+              "anchor": {
+                "x": 2.2,
+                "y": 4.7
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "Both sides approach 4; f(2) is undefined."
+                  }
+                ]
+              },
+              "targetLayerId": "hole"
+            }
+          }
+        ],
+        "controls": [],
+        "accessibility": {
+          "ariaLabel": "Graph of y equals x plus 2 with a removable hole at (2, 4).",
+          "summary": "Both branches approach the open point (2, 4), so the limit is 4 although f(2) is undefined.",
+          "readingOrder": [
+            "line-left",
+            "line-right",
+            "hole",
+            "x-guide",
+            "y-guide",
+            "hole-note"
+          ],
+          "colorIndependentDescription": "The curve is split into left and right branches and the missing value is an open circle with dashed coordinate guides.",
+          "controlInstructions": [],
+          "reducedMotion": "not-applicable",
+          "staticFallbackEquivalent": true
+        },
+        "print": {
+          "representation": "generated-svg",
+          "caption": {
+            "segments": [
+              {
+                "kind": "text",
+                "text": "The function is undefined at x = 2, but nearby outputs approach 4."
+              }
+            ]
+          },
+          "grayscaleSafe": true,
+          "pageBreak": "avoid",
+          "widthInches": 6.5
+        },
+        "performance": {
+          "maxSamples": 1024,
+          "maxAdaptiveDepth": 10,
+          "maxAstNodes": 64,
+          "maxAstDepth": 16,
+          "maxOperationsPerEvaluation": 512,
+          "maxPayloadBytes": 32768,
+          "maxAnimationFps": 30,
+          "activation": "none"
+        },
+        "requiredCapabilities": [
+          "annotations",
+          "cartesian-axes",
+          "open-closed-points",
+          "piecewise-paths",
+          "static-fallback"
+        ],
+        "selectedRenderer": "static-svg",
+        "staticFallback": {
+          "required": true,
+          "rendererId": "static-svg"
+        },
+        "delivery": {
+          "hydration": "none",
+          "publicFieldsOnly": true
+        },
+        "provenance": {
+          "route": "/subjects/math/calculus/limits-continuity/unit/limits/limit-at-a-hole/",
+          "sourceFile": "content/visualizations/limits-continuity/visual-specs.v1.json",
+          "sourceVisualId": "removable-hole",
+          "sourceFingerprint": "bvlp1-7be524e6",
+          "compilerVersion": "bvlp-compiler-v1",
+          "visibility": "public"
+        }
+      }
+    },
+    {
+      "id": "limit-versus-value",
+      "route": "/subjects/math/calculus/limits-continuity/unit/limits/function-value-vs-limit/",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/limit-versus-value.08b9e3897dd99003.svg",
+        "sha256": "08b9e3897dd99003a5d19201bb55cf293902bc3e24efb000bb438e45a63f4c62",
+        "bytes": 10941,
+        "width": 960,
+        "height": 619
+      },
+      "compiledScene": {
+        "compiledSceneVersion": 1,
+        "sourceSpecVersion": 1,
+        "id": "limit-versus-value",
+        "kind": "piecewise-cartesian-2d",
+        "title": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "Function value versus limit"
+            }
+          ]
+        },
+        "caption": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "The nearby parabola determines the limit; the filled point determines the function value."
+            }
+          ]
+        },
+        "learningPurpose": "Separate the height approached by nearby points from the function's assigned value at the target input.",
+        "longDescription": "The parabola y = x squared + 1 approaches an open circle at (2, 5) from both sides. A separate filled diamond at (2, 9) shows that g(2) equals 9. The open and filled marker shapes, labels, and split domains establish that the limit equals 5 while the function value equals 9.",
+        "coordinateSpace": {
+          "type": "cartesian-2d",
+          "variables": [
+            "x",
+            "y"
+          ],
+          "unitsRequired": false
+        },
+        "viewport": {
+          "xMin": -1,
+          "xMax": 4,
+          "yMin": 0,
+          "yMax": 11,
+          "aspectRatio": 1.55,
+          "padding": 0.04
+        },
+        "axes": {
+          "mode": "explicit",
+          "axes": [
+            {
+              "id": "x-axis",
+              "orientation": "x",
+              "label": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "x"
+                  }
+                ]
+              },
+              "scale": "linear",
+              "tickMode": "automatic",
+              "showGrid": true
+            },
+            {
+              "id": "y-axis",
+              "orientation": "y",
+              "label": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "g(x)"
+                  }
+                ]
+              },
+              "scale": "linear",
+              "tickMode": "automatic",
+              "showGrid": true
+            }
+          ]
+        },
+        "panels": [],
+        "layers": [
+          {
+            "id": "parabola-left",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Solid parabola branch stops before x = 2."
+            },
+            "references": [],
+            "kind": "piecewise-branch",
+            "geometry": {
+              "expression": {
+                "type": "add",
+                "left": {
+                  "type": "power",
+                  "left": {
+                    "type": "variable",
+                    "name": "x"
+                  },
+                  "right": {
+                    "type": "number",
+                    "value": 2
+                  }
+                },
+                "right": {
+                  "type": "number",
+                  "value": 1
+                }
+              },
+              "variable": "x",
+              "domain": {
+                "min": -1,
+                "max": 2,
+                "includeMin": true,
+                "includeMax": false
+              }
+            }
+          },
+          {
+            "id": "parabola-right",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Solid parabola branch resumes after x = 2."
+            },
+            "references": [],
+            "kind": "piecewise-branch",
+            "geometry": {
+              "expression": {
+                "type": "add",
+                "left": {
+                  "type": "power",
+                  "left": {
+                    "type": "variable",
+                    "name": "x"
+                  },
+                  "right": {
+                    "type": "number",
+                    "value": 2
+                  }
+                },
+                "right": {
+                  "type": "number",
+                  "value": 1
+                }
+              },
+              "variable": "x",
+              "domain": {
+                "min": 2,
+                "max": 4,
+                "includeMin": false,
+                "includeMax": true
+              }
+            }
+          },
+          {
+            "id": "limit-hole",
+            "visible": true,
+            "zIndex": 0,
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "limit = 5"
+                }
+              ]
+            },
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "circle",
+              "pattern": "none",
+              "colorIndependentCue": "Open circle marks the approached height 5."
+            },
+            "references": [],
+            "kind": "open-point",
+            "geometry": {
+              "position": {
+                "x": 2,
+                "y": 5
+              }
+            }
+          },
+          {
+            "id": "function-value",
+            "visible": true,
+            "zIndex": 0,
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "g(2) = 9"
+                }
+              ]
+            },
+            "presentation": {
+              "strokeToken": "visual-warning",
+              "fillToken": "visual-warning",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "none",
+              "colorIndependentCue": "Filled diamond marks the assigned function value 9."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 2,
+                "y": 9
+              }
+            }
+          },
+          {
+            "id": "value-note",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Text explicitly compares the limit and function value."
+            },
+            "references": [],
+            "kind": "annotation",
+            "geometry": {
+              "anchor": {
+                "x": 2.25,
+                "y": 7.2
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "limit = 5, but g(2) = 9"
+                  }
+                ]
+              },
+              "targetLayerId": "function-value"
+            }
+          }
+        ],
+        "controls": [],
+        "accessibility": {
+          "ariaLabel": "Parabola with an open point at (2, 5) and a filled point at (2, 9).",
+          "summary": "Nearby values approach 5 while the assigned value g(2) is 9.",
+          "readingOrder": [
+            "parabola-left",
+            "parabola-right",
+            "limit-hole",
+            "function-value",
+            "value-note"
+          ],
+          "colorIndependentDescription": "The limit uses an open circle and the function value uses a filled diamond, each with a text label.",
+          "controlInstructions": [],
+          "reducedMotion": "not-applicable",
+          "staticFallbackEquivalent": true
+        },
+        "print": {
+          "representation": "generated-svg",
+          "caption": {
+            "segments": [
+              {
+                "kind": "text",
+                "text": "The nearby parabola determines the limit; the filled point determines the function value."
+              }
+            ]
+          },
+          "grayscaleSafe": true,
+          "pageBreak": "avoid",
+          "widthInches": 6.5
+        },
+        "performance": {
+          "maxSamples": 1024,
+          "maxAdaptiveDepth": 10,
+          "maxAstNodes": 64,
+          "maxAstDepth": 16,
+          "maxOperationsPerEvaluation": 512,
+          "maxPayloadBytes": 32768,
+          "maxAnimationFps": 30,
+          "activation": "none"
+        },
+        "requiredCapabilities": [
+          "annotations",
+          "cartesian-axes",
+          "open-closed-points",
+          "piecewise-paths",
+          "static-fallback"
+        ],
+        "selectedRenderer": "static-svg",
+        "staticFallback": {
+          "required": true,
+          "rendererId": "static-svg"
+        },
+        "delivery": {
+          "hydration": "none",
+          "publicFieldsOnly": true
+        },
+        "provenance": {
+          "route": "/subjects/math/calculus/limits-continuity/unit/limits/function-value-vs-limit/",
+          "sourceFile": "content/visualizations/limits-continuity/visual-specs.v1.json",
+          "sourceVisualId": "limit-versus-value",
+          "sourceFingerprint": "bvlp1-ae73a942",
+          "compilerVersion": "bvlp-compiler-v1",
+          "visibility": "public"
+        }
+      }
+    },
+    {
+      "id": "jump-discontinuity",
+      "route": "/subjects/math/calculus/limits-continuity/unit/limits/one-sided-limits/",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/jump-discontinuity.56de2f0f134dfd74.svg",
+        "sha256": "56de2f0f134dfd74daed16d617fce5ea84db018cab8058378b8a5ea7dfa2aa32",
+        "bytes": 12241,
+        "width": 960,
+        "height": 582
+      },
+      "compiledScene": {
+        "compiledSceneVersion": 1,
+        "sourceSpecVersion": 1,
+        "id": "jump-discontinuity",
+        "kind": "piecewise-cartesian-2d",
+        "title": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "Unequal one-sided limits"
+            }
+          ]
+        },
+        "caption": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "Unequal one-sided limits produce a jump and no two-sided limit."
+            }
+          ]
+        },
+        "learningPurpose": "Show that a two-sided limit does not exist when finite left-hand and right-hand limits disagree.",
+        "longDescription": "For x less than 2, the line y = x + 1 approaches the open circle (2, 3). For x at least 2, the line y = 6 - x begins at the filled diamond (2, 4). Text labels state that the left-hand limit is 3 and the right-hand limit is 4, so the two-sided limit does not exist.",
+        "coordinateSpace": {
+          "type": "cartesian-2d",
+          "variables": [
+            "x",
+            "y"
+          ],
+          "unitsRequired": false
+        },
+        "viewport": {
+          "xMin": -1,
+          "xMax": 6,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.65,
+          "padding": 0.04
+        },
+        "axes": {
+          "mode": "explicit",
+          "axes": [
+            {
+              "id": "x-axis",
+              "orientation": "x",
+              "label": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "x"
+                  }
+                ]
+              },
+              "scale": "linear",
+              "tickMode": "automatic",
+              "showGrid": true
+            },
+            {
+              "id": "y-axis",
+              "orientation": "y",
+              "label": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "g(x)"
+                  }
+                ]
+              },
+              "scale": "linear",
+              "tickMode": "automatic",
+              "showGrid": true
+            }
+          ]
+        },
+        "panels": [],
+        "layers": [
+          {
+            "id": "left-branch",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Solid left branch terminates at an open point."
+            },
+            "references": [],
+            "kind": "piecewise-branch",
+            "geometry": {
+              "expression": {
+                "type": "add",
+                "left": {
+                  "type": "variable",
+                  "name": "x"
+                },
+                "right": {
+                  "type": "number",
+                  "value": 1
+                }
+              },
+              "variable": "x",
+              "domain": {
+                "min": -1,
+                "max": 2,
+                "includeMin": true,
+                "includeMax": false
+              }
+            }
+          },
+          {
+            "id": "right-branch",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-secondary",
+              "lineStyle": "double",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Double-stroked right branch begins at a filled point."
+            },
+            "references": [],
+            "kind": "piecewise-branch",
+            "geometry": {
+              "expression": {
+                "type": "add",
+                "left": {
+                  "type": "negate",
+                  "operand": {
+                    "type": "variable",
+                    "name": "x"
+                  }
+                },
+                "right": {
+                  "type": "number",
+                  "value": 6
+                }
+              },
+              "variable": "x",
+              "domain": {
+                "min": 2,
+                "max": 6,
+                "includeMin": true,
+                "includeMax": true
+              }
+            }
+          },
+          {
+            "id": "left-limit",
+            "visible": true,
+            "zIndex": 0,
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "left approaches 3"
+                }
+              ]
+            },
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "solid",
+              "markerShape": "circle",
+              "pattern": "none",
+              "colorIndependentCue": "Open circle at (2, 3) marks the left-hand height."
+            },
+            "references": [],
+            "kind": "open-point",
+            "geometry": {
+              "position": {
+                "x": 2,
+                "y": 3
+              }
+            }
+          },
+          {
+            "id": "right-value",
+            "visible": true,
+            "zIndex": 0,
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "right approaches 4 and g(2) = 4"
+                }
+              ]
+            },
+            "presentation": {
+              "strokeToken": "visual-secondary",
+              "fillToken": "visual-secondary",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "none",
+              "colorIndependentCue": "Filled diamond at (2, 4) marks the included right-hand value."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 2,
+                "y": 4
+              }
+            }
+          },
+          {
+            "id": "target-guide",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-guide",
+              "lineStyle": "dashed",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Dashed vertical guide identifies x = 2."
+            },
+            "references": [],
+            "kind": "line",
+            "geometry": {
+              "start": {
+                "x": 2,
+                "y": 0
+              },
+              "end": {
+                "x": 2,
+                "y": 4
+              }
+            }
+          },
+          {
+            "id": "jump-note",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Text states why the two-sided limit does not exist."
+            },
+            "references": [],
+            "kind": "annotation",
+            "geometry": {
+              "anchor": {
+                "x": 2.35,
+                "y": 5.2
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "left limit 3 is not equal to right limit 4"
+                  }
+                ]
+              },
+              "targetLayerId": "right-value"
+            }
+          }
+        ],
+        "controls": [],
+        "accessibility": {
+          "ariaLabel": "Piecewise graph with a jump at x = 2.",
+          "summary": "The left branch approaches 3 and the right branch approaches 4, so the two-sided limit does not exist.",
+          "readingOrder": [
+            "left-branch",
+            "left-limit",
+            "right-branch",
+            "right-value",
+            "target-guide",
+            "jump-note"
+          ],
+          "colorIndependentDescription": "The left branch is solid with an open circle; the right branch is double-stroked with a filled diamond. Labels give both one-sided heights.",
+          "controlInstructions": [],
+          "reducedMotion": "not-applicable",
+          "staticFallbackEquivalent": true
+        },
+        "print": {
+          "representation": "generated-svg",
+          "caption": {
+            "segments": [
+              {
+                "kind": "text",
+                "text": "Unequal one-sided limits produce a jump and no two-sided limit."
+              }
+            ]
+          },
+          "grayscaleSafe": true,
+          "pageBreak": "avoid",
+          "widthInches": 6.5
+        },
+        "performance": {
+          "maxSamples": 1024,
+          "maxAdaptiveDepth": 10,
+          "maxAstNodes": 64,
+          "maxAstDepth": 16,
+          "maxOperationsPerEvaluation": 512,
+          "maxPayloadBytes": 32768,
+          "maxAnimationFps": 30,
+          "activation": "none"
+        },
+        "requiredCapabilities": [
+          "annotations",
+          "cartesian-axes",
+          "open-closed-points",
+          "piecewise-paths",
+          "static-fallback"
+        ],
+        "selectedRenderer": "static-svg",
+        "staticFallback": {
+          "required": true,
+          "rendererId": "static-svg"
+        },
+        "delivery": {
+          "hydration": "none",
+          "publicFieldsOnly": true
+        },
+        "provenance": {
+          "route": "/subjects/math/calculus/limits-continuity/unit/limits/one-sided-limits/",
+          "sourceFile": "content/visualizations/limits-continuity/visual-specs.v1.json",
+          "sourceVisualId": "jump-discontinuity",
+          "sourceFingerprint": "bvlp1-2bdcc4ef",
+          "compilerVersion": "bvlp-compiler-v1",
+          "visibility": "public"
+        }
+      }
+    },
+    {
+      "id": "rapid-oscillation",
+      "route": "/subjects/math/calculus/limits-continuity/unit/limits/when-a-limit-does-not-exist/",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/rapid-oscillation.6d8288056c1db057.svg",
+        "sha256": "6d8288056c1db057db18d93d800209ff2f728c196a7f0e4e1d4b47c981a02b9e",
+        "bytes": 29553,
+        "width": 960,
+        "height": 480
+      },
+      "compiledScene": {
+        "compiledSceneVersion": 1,
+        "sourceSpecVersion": 1,
+        "id": "rapid-oscillation",
+        "kind": "piecewise-cartesian-2d",
+        "title": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "Rapid oscillation near zero"
+            }
+          ]
+        },
+        "caption": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "The function sin(1/x) oscillates increasingly rapidly near zero and has no limit there."
+            }
+          ]
+        },
+        "learningPurpose": "Demonstrate a limit failure caused by outputs oscillating indefinitely rather than approaching one value.",
+        "longDescription": "Two explicit branches of y = sin(1/x) are drawn for negative and positive x near zero. The curve remains between -1 and 1 but swings more rapidly as x approaches zero. Neither domain includes zero, no segment connects across zero, and every neighborhood contains many high and low values instead of one approached height.",
+        "coordinateSpace": {
+          "type": "cartesian-2d",
+          "variables": [
+            "x",
+            "y"
+          ],
+          "unitsRequired": false
+        },
+        "viewport": {
+          "xMin": -0.25,
+          "xMax": 0.25,
+          "yMin": -1.25,
+          "yMax": 1.25,
+          "aspectRatio": 2,
+          "padding": 0.03
+        },
+        "axes": {
+          "mode": "explicit",
+          "axes": [
+            {
+              "id": "x-axis",
+              "orientation": "x",
+              "label": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "x"
+                  }
+                ]
+              },
+              "scale": "linear",
+              "tickMode": "automatic",
+              "showGrid": true
+            },
+            {
+              "id": "y-axis",
+              "orientation": "y",
+              "label": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "sin(1/x)"
+                  }
+                ]
+              },
+              "scale": "linear",
+              "tickMode": "fixed-step",
+              "tickStep": 0.5,
+              "showGrid": true
+            }
+          ]
+        },
+        "panels": [],
+        "layers": [
+          {
+            "id": "oscillation-left",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Solid oscillating branch stops before zero."
+            },
+            "references": [],
+            "kind": "piecewise-branch",
+            "geometry": {
+              "expression": {
+                "type": "sin",
+                "operand": {
+                  "type": "divide",
+                  "left": {
+                    "type": "number",
+                    "value": 1
+                  },
+                  "right": {
+                    "type": "variable",
+                    "name": "x"
+                  }
+                }
+              },
+              "variable": "x",
+              "domain": {
+                "min": -0.25,
+                "max": 0,
+                "includeMin": true,
+                "includeMax": false
+              }
+            }
+          },
+          {
+            "id": "oscillation-right",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Solid oscillating branch starts after zero."
+            },
+            "references": [],
+            "kind": "piecewise-branch",
+            "geometry": {
+              "expression": {
+                "type": "sin",
+                "operand": {
+                  "type": "divide",
+                  "left": {
+                    "type": "number",
+                    "value": 1
+                  },
+                  "right": {
+                    "type": "variable",
+                    "name": "x"
+                  }
+                }
+              },
+              "variable": "x",
+              "domain": {
+                "min": 0,
+                "max": 0.25,
+                "includeMin": false,
+                "includeMax": true
+              }
+            }
+          },
+          {
+            "id": "oscillation-note",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Text identifies the endless oscillation near the hard domain break."
+            },
+            "references": [],
+            "kind": "annotation",
+            "geometry": {
+              "anchor": {
+                "x": 0.035,
+                "y": 1.08
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "infinitely many swings occur near 0"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "controls": [],
+        "accessibility": {
+          "ariaLabel": "Two branches of sin(1/x) oscillating rapidly near zero.",
+          "summary": "The bounded outputs continue swinging between -1 and 1 in every neighborhood of zero, so no limit exists.",
+          "readingOrder": [
+            "oscillation-left",
+            "oscillation-right",
+            "oscillation-note"
+          ],
+          "colorIndependentDescription": "Separate left and right solid branches leave a visible break at x = 0, and a text annotation names the infinite oscillation.",
+          "controlInstructions": [],
+          "reducedMotion": "not-applicable",
+          "staticFallbackEquivalent": true
+        },
+        "print": {
+          "representation": "generated-svg",
+          "caption": {
+            "segments": [
+              {
+                "kind": "text",
+                "text": "The function sin(1/x) oscillates increasingly rapidly near zero and has no limit there."
+              }
+            ]
+          },
+          "grayscaleSafe": true,
+          "pageBreak": "avoid",
+          "widthInches": 7.1
+        },
+        "performance": {
+          "maxSamples": 4096,
+          "maxAdaptiveDepth": 18,
+          "maxAstNodes": 64,
+          "maxAstDepth": 16,
+          "maxOperationsPerEvaluation": 2048,
+          "maxPayloadBytes": 65536,
+          "maxAnimationFps": 30,
+          "activation": "none"
+        },
+        "requiredCapabilities": [
+          "annotations",
+          "cartesian-axes",
+          "piecewise-paths",
+          "static-fallback"
+        ],
+        "selectedRenderer": "static-svg",
+        "staticFallback": {
+          "required": true,
+          "rendererId": "static-svg"
+        },
+        "delivery": {
+          "hydration": "none",
+          "publicFieldsOnly": true
+        },
+        "provenance": {
+          "route": "/subjects/math/calculus/limits-continuity/unit/limits/when-a-limit-does-not-exist/",
+          "sourceFile": "content/visualizations/limits-continuity/visual-specs.v1.json",
+          "sourceVisualId": "rapid-oscillation",
+          "sourceFingerprint": "bvlp1-382416ae",
+          "compilerVersion": "bvlp-compiler-v1",
+          "visibility": "public"
+        }
+      }
+    },
+    {
+      "id": "squeeze-bounds",
+      "route": "/subjects/math/calculus/limits-continuity/unit/limits/squeeze-theorem/",
+      "selectedRenderer": "bg-interactive-2d",
+      "hydration": "near-viewport",
+      "staticAsset": {
+        "path": "/visuals/v1/squeeze-bounds.7dd135c74ef628d4.svg",
+        "sha256": "7dd135c74ef628d431446cff1c77cedec273ca987de6c549648c8d1a53af49c7",
+        "bytes": 16924,
+        "width": 960,
+        "height": 505
+      },
+      "compiledScene": {
+        "compiledSceneVersion": 1,
+        "sourceSpecVersion": 1,
+        "id": "squeeze-bounds",
+        "kind": "piecewise-cartesian-2d",
+        "title": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "An oscillating function squeezed to zero"
+            }
+          ]
+        },
+        "caption": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "The oscillating function is trapped between -x squared and x squared, both of which approach zero."
+            }
+          ]
+        },
+        "learningPurpose": "Make the Squeeze Theorem visible by comparing an oscillating middle function with upper and lower bounds that share limit zero.",
+        "longDescription": "The middle curve y = x squared times sin(1/x) oscillates on separate domains to the left and right of zero. A dashed upper curve y = x squared and a dotted lower curve y = negative x squared form a narrowing envelope. The middle curve remains inside that envelope, and all three approach zero. The middle formula is undefined at zero and is never connected across it.",
+        "coordinateSpace": {
+          "type": "cartesian-2d",
+          "variables": [
+            "x",
+            "y"
+          ],
+          "unitsRequired": false
+        },
+        "viewport": {
+          "xMin": -0.35,
+          "xMax": 0.35,
+          "yMin": -0.13,
+          "yMax": 0.13,
+          "aspectRatio": 1.9,
+          "padding": 0.03
+        },
+        "axes": {
+          "mode": "explicit",
+          "axes": [
+            {
+              "id": "x-axis",
+              "orientation": "x",
+              "label": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "x"
+                  }
+                ]
+              },
+              "scale": "linear",
+              "tickMode": "automatic",
+              "showGrid": true
+            },
+            {
+              "id": "y-axis",
+              "orientation": "y",
+              "label": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "y"
+                  }
+                ]
+              },
+              "scale": "linear",
+              "tickMode": "automatic",
+              "showGrid": true
+            }
+          ]
+        },
+        "panels": [],
+        "layers": [
+          {
+            "id": "middle-left",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Heavy solid middle function on the negative side."
+            },
+            "references": [],
+            "kind": "piecewise-branch",
+            "geometry": {
+              "expression": {
+                "type": "multiply",
+                "left": {
+                  "type": "sin",
+                  "operand": {
+                    "type": "divide",
+                    "left": {
+                      "type": "number",
+                      "value": 1
+                    },
+                    "right": {
+                      "type": "variable",
+                      "name": "x"
+                    }
+                  }
+                },
+                "right": {
+                  "type": "power",
+                  "left": {
+                    "type": "variable",
+                    "name": "x"
+                  },
+                  "right": {
+                    "type": "number",
+                    "value": 2
+                  }
+                }
+              },
+              "variable": "x",
+              "domain": {
+                "min": -0.35,
+                "max": 0,
+                "includeMin": true,
+                "includeMax": false
+              }
+            }
+          },
+          {
+            "id": "middle-right",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Heavy solid middle function on the positive side."
+            },
+            "references": [],
+            "kind": "piecewise-branch",
+            "geometry": {
+              "expression": {
+                "type": "multiply",
+                "left": {
+                  "type": "sin",
+                  "operand": {
+                    "type": "divide",
+                    "left": {
+                      "type": "number",
+                      "value": 1
+                    },
+                    "right": {
+                      "type": "variable",
+                      "name": "x"
+                    }
+                  }
+                },
+                "right": {
+                  "type": "power",
+                  "left": {
+                    "type": "variable",
+                    "name": "x"
+                  },
+                  "right": {
+                    "type": "number",
+                    "value": 2
+                  }
+                }
+              },
+              "variable": "x",
+              "domain": {
+                "min": 0,
+                "max": 0.35,
+                "includeMin": false,
+                "includeMax": true
+              }
+            }
+          },
+          {
+            "id": "upper-bound",
+            "visible": true,
+            "zIndex": 0,
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "upper bound y = x squared"
+                }
+              ]
+            },
+            "presentation": {
+              "strokeToken": "visual-bound",
+              "lineStyle": "dashed",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Dashed upper bounding curve."
+            },
+            "references": [],
+            "kind": "function",
+            "geometry": {
+              "expression": {
+                "type": "power",
+                "left": {
+                  "type": "variable",
+                  "name": "x"
+                },
+                "right": {
+                  "type": "number",
+                  "value": 2
+                }
+              },
+              "variable": "x",
+              "domain": {
+                "min": -0.35,
+                "max": 0.35,
+                "includeMin": true,
+                "includeMax": true
+              }
+            }
+          },
+          {
+            "id": "lower-bound",
+            "visible": true,
+            "zIndex": 0,
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "lower bound y = negative x squared"
+                }
+              ]
+            },
+            "presentation": {
+              "strokeToken": "visual-bound",
+              "lineStyle": "dotted",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Dotted lower bounding curve."
+            },
+            "references": [],
+            "kind": "function",
+            "geometry": {
+              "expression": {
+                "type": "negate",
+                "operand": {
+                  "type": "power",
+                  "left": {
+                    "type": "variable",
+                    "name": "x"
+                  },
+                  "right": {
+                    "type": "number",
+                    "value": 2
+                  }
+                }
+              },
+              "variable": "x",
+              "domain": {
+                "min": -0.35,
+                "max": 0.35,
+                "includeMin": true,
+                "includeMax": true
+              }
+            }
+          },
+          {
+            "id": "squeeze-note",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Text states the bounding inequality."
+            },
+            "references": [],
+            "kind": "annotation",
+            "geometry": {
+              "anchor": {
+                "x": 0.08,
+                "y": 0.105
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "-x^2 <= x^2 sin(1/x) <= x^2"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "controls": [
+          {
+            "id": "bounds-toggle",
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "Show bounding functions"
+                }
+              ]
+            },
+            "announcementTemplate": "Bounding functions are {value}.",
+            "kind": "toggle",
+            "targetLayerIds": [
+              "upper-bound",
+              "lower-bound"
+            ],
+            "initial": true
+          }
+        ],
+        "accessibility": {
+          "ariaLabel": "Oscillating function squeezed between x squared and negative x squared.",
+          "summary": "The middle curve stays between two bounds that both approach zero, so its limit is zero.",
+          "readingOrder": [
+            "middle-left",
+            "middle-right",
+            "upper-bound",
+            "lower-bound",
+            "squeeze-note",
+            "bounds-toggle"
+          ],
+          "colorIndependentDescription": "The middle function is heavy and solid, the upper bound is dashed, and the lower bound is dotted. The inequality is also written as text.",
+          "keyboardInstructions": "Focus the bounds toggle and use Space or Enter to show or hide both bounds.",
+          "controlInstructions": [
+            "Compare the middle curve with and without its dashed and dotted bounds."
+          ],
+          "reducedMotion": "disable-animation",
+          "staticFallbackEquivalent": true
+        },
+        "print": {
+          "representation": "generated-svg",
+          "caption": {
+            "segments": [
+              {
+                "kind": "text",
+                "text": "The oscillating function is trapped between -x squared and x squared, both of which approach zero."
+              }
+            ]
+          },
+          "grayscaleSafe": true,
+          "pageBreak": "avoid",
+          "widthInches": 7.1
+        },
+        "performance": {
+          "maxSamples": 4096,
+          "maxAdaptiveDepth": 18,
+          "maxAstNodes": 96,
+          "maxAstDepth": 18,
+          "maxOperationsPerEvaluation": 4096,
+          "maxPayloadBytes": 98304,
+          "maxAnimationFps": 30,
+          "activation": "near-viewport"
+        },
+        "requiredCapabilities": [
+          "annotations",
+          "cartesian-axes",
+          "function-paths",
+          "parameter-controls",
+          "piecewise-paths",
+          "static-fallback"
+        ],
+        "selectedRenderer": "bg-interactive-2d",
+        "staticFallback": {
+          "required": true,
+          "rendererId": "static-svg"
+        },
+        "delivery": {
+          "hydration": "near-viewport",
+          "publicFieldsOnly": true
+        },
+        "provenance": {
+          "route": "/subjects/math/calculus/limits-continuity/unit/limits/squeeze-theorem/",
+          "sourceFile": "content/visualizations/limits-continuity/visual-specs.v1.json",
+          "sourceVisualId": "squeeze-bounds",
+          "sourceFingerprint": "bvlp1-e669c37c",
+          "compilerVersion": "bvlp-compiler-v1",
+          "visibility": "public"
+        }
+      }
+    },
+    {
+      "id": "unit-circle-squeeze",
+      "route": "/subjects/math/calculus/limits-continuity/unit/limits/sin-x-over-x-proof/",
+      "selectedRenderer": "bg-interactive-2d",
+      "hydration": "near-viewport",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-circle-squeeze.d35dfad0bd8ee426.svg",
+        "sha256": "d35dfad0bd8ee4260d5369522f7f0f681b611ddc4dd386fc86cfe6c0f59e9b89",
+        "bytes": 10485,
+        "width": 960,
+        "height": 680
+      },
+      "compiledScene": {
+        "compiledSceneVersion": 1,
+        "sourceSpecVersion": 1,
+        "id": "unit-circle-squeeze",
+        "kind": "geometry-2d",
+        "title": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "Unit-circle squeeze geometry"
+            }
+          ]
+        },
+        "caption": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "For a unit circle and 0 < theta < pi/2, the inner triangle lies inside the sector, which lies inside the outer tangent triangle."
+            }
+          ]
+        },
+        "learningPurpose": "Compare the areas of an inner triangle, circular sector, and outer tangent triangle to establish the inequalities behind the sine limit.",
+        "longDescription": "A unit circle is centered at O = (0, 0). A = (1, 0), B = (cos theta, sin theta), and T = (1, tan theta). Segments form an inner triangle OAB and an outer tangent triangle OAT, while the circle arc and radii bound the sector AOB. Patterned regions and a written inequality show inner triangle area less than or equal to sector area less than or equal to outer triangle area.",
+        "coordinateSpace": {
+          "type": "cartesian-2d",
+          "variables": [
+            "x",
+            "y"
+          ],
+          "unitsRequired": false
+        },
+        "viewport": {
+          "xMin": -0.1,
+          "xMax": 1.25,
+          "yMin": -0.1,
+          "yMax": 1.2,
+          "aspectRatio": 1,
+          "padding": 0.04
+        },
+        "axes": {
+          "mode": "none",
+          "reason": "The proof uses labeled Euclidean construction points on a unit circle rather than numeric coordinate axes."
+        },
+        "panels": [],
+        "layers": [
+          {
+            "id": "unit-circle",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Solid unit circle centered at O."
+            },
+            "references": [],
+            "kind": "circle",
+            "geometry": {
+              "center": {
+                "x": 0,
+                "y": 0
+              },
+              "radius": 1
+            }
+          },
+          {
+            "id": "point-o",
+            "visible": true,
+            "zIndex": 0,
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "O"
+                }
+              ]
+            },
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "fillToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "circle",
+              "pattern": "none",
+              "colorIndependentCue": "Filled point O at the center."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 0,
+                "y": 0
+              }
+            }
+          },
+          {
+            "id": "point-a",
+            "visible": true,
+            "zIndex": 0,
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "A"
+                }
+              ]
+            },
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "fillToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "circle",
+              "pattern": "none",
+              "colorIndependentCue": "Filled point A at (1, 0)."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 1,
+                "y": 0
+              }
+            }
+          },
+          {
+            "id": "point-b",
+            "visible": true,
+            "zIndex": 0,
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "B"
+                }
+              ]
+            },
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "fillToken": "visual-primary",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "none",
+              "colorIndependentCue": "Filled diamond B moves along the circle."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": {
+                  "type": "cos",
+                  "operand": {
+                    "type": "variable",
+                    "name": "theta"
+                  }
+                },
+                "y": {
+                  "type": "sin",
+                  "operand": {
+                    "type": "variable",
+                    "name": "theta"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": "point-t",
+            "visible": true,
+            "zIndex": 0,
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "T"
+                }
+              ]
+            },
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "fillToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "square",
+              "pattern": "none",
+              "colorIndependentCue": "Filled square T lies on the vertical tangent through A."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 1,
+                "y": {
+                  "type": "tan",
+                  "operand": {
+                    "type": "variable",
+                    "name": "theta"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": "radius-oa",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Solid radius from O to A."
+            },
+            "references": [],
+            "kind": "segment",
+            "geometry": {
+              "start": {
+                "x": 0,
+                "y": 0
+              },
+              "end": {
+                "x": 1,
+                "y": 0
+              }
+            }
+          },
+          {
+            "id": "radius-ob",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "double",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Double-stroked radius from O to B."
+            },
+            "references": [],
+            "kind": "segment",
+            "geometry": {
+              "start": {
+                "x": 0,
+                "y": 0
+              },
+              "end": {
+                "x": {
+                  "type": "cos",
+                  "operand": {
+                    "type": "variable",
+                    "name": "theta"
+                  }
+                },
+                "y": {
+                  "type": "sin",
+                  "operand": {
+                    "type": "variable",
+                    "name": "theta"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": "chord-ab",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-success",
+              "lineStyle": "dashed",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Dashed chord AB bounds the inner triangle."
+            },
+            "references": [],
+            "kind": "segment",
+            "geometry": {
+              "start": {
+                "x": 1,
+                "y": 0
+              },
+              "end": {
+                "x": {
+                  "type": "cos",
+                  "operand": {
+                    "type": "variable",
+                    "name": "theta"
+                  }
+                },
+                "y": {
+                  "type": "sin",
+                  "operand": {
+                    "type": "variable",
+                    "name": "theta"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": "tangent-at-a",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "lineStyle": "dotted",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Dotted vertical tangent segment AT."
+            },
+            "references": [],
+            "kind": "segment",
+            "geometry": {
+              "start": {
+                "x": 1,
+                "y": 0
+              },
+              "end": {
+                "x": 1,
+                "y": {
+                  "type": "tan",
+                  "operand": {
+                    "type": "variable",
+                    "name": "theta"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": "outer-ray",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "lineStyle": "double",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Double-stroked segment OT bounds the outer triangle."
+            },
+            "references": [],
+            "kind": "segment",
+            "geometry": {
+              "start": {
+                "x": 0,
+                "y": 0
+              },
+              "end": {
+                "x": 1,
+                "y": {
+                  "type": "tan",
+                  "operand": {
+                    "type": "variable",
+                    "name": "theta"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": "inner-triangle",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-success",
+              "fillToken": "visual-success-soft",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "diagonal",
+              "colorIndependentCue": "Diagonal-patterned inner triangle OAB."
+            },
+            "references": [],
+            "kind": "polygon",
+            "geometry": {
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 1,
+                  "y": 0
+                },
+                {
+                  "x": {
+                    "type": "cos",
+                    "operand": {
+                      "type": "variable",
+                      "name": "theta"
+                    }
+                  },
+                  "y": {
+                    "type": "sin",
+                    "operand": {
+                      "type": "variable",
+                      "name": "theta"
+                    }
+                  }
+                }
+              ],
+              "closed": true
+            }
+          },
+          {
+            "id": "sector-region",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "fillToken": "visual-neutral-soft",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "dots",
+              "colorIndependentCue": "Dotted sector region bounded by the circle arc and radii OA and OB."
+            },
+            "references": [],
+            "kind": "region",
+            "geometry": {
+              "boundaryLayerIds": [
+                "unit-circle",
+                "radius-oa",
+                "radius-ob"
+              ]
+            }
+          },
+          {
+            "id": "outer-triangle",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "fillToken": "visual-emphasis-soft",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "crosshatch",
+              "colorIndependentCue": "Crosshatched outer triangle OAT."
+            },
+            "references": [],
+            "kind": "polygon",
+            "geometry": {
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 1,
+                  "y": 0
+                },
+                {
+                  "x": 1,
+                  "y": {
+                    "type": "tan",
+                    "operand": {
+                      "type": "variable",
+                      "name": "theta"
+                    }
+                  }
+                }
+              ],
+              "closed": true
+            }
+          },
+          {
+            "id": "area-note",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Text states the containment inequality."
+            },
+            "references": [],
+            "kind": "annotation",
+            "geometry": {
+              "anchor": {
+                "x": 0.1,
+                "y": 1.08
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "inner triangle area <= sector area <= outer triangle area"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "controls": [
+          {
+            "id": "theta-control",
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "Angle theta in radians"
+                }
+              ]
+            },
+            "announcementTemplate": "Theta is {value} radians.",
+            "kind": "slider",
+            "parameter": "theta",
+            "min": 0.15,
+            "max": 1.35,
+            "step": 0.05,
+            "initial": 0.5585053606381855
+          }
+        ],
+        "accessibility": {
+          "ariaLabel": "Interactive unit-circle construction comparing inner triangle, sector, and outer tangent triangle.",
+          "summary": "For angles strictly between zero and pi over two, the inner triangle lies within the sector, which lies within the outer triangle.",
+          "readingOrder": [
+            "unit-circle",
+            "point-o",
+            "point-a",
+            "point-b",
+            "point-t",
+            "radius-oa",
+            "radius-ob",
+            "chord-ab",
+            "tangent-at-a",
+            "outer-ray",
+            "inner-triangle",
+            "sector-region",
+            "outer-triangle",
+            "area-note",
+            "theta-control"
+          ],
+          "colorIndependentDescription": "The inner triangle has diagonal hatching, the sector has dots, and the outer triangle has crosshatching. Point shapes and line styles are distinct and all points are labeled.",
+          "keyboardInstructions": "Focus the theta slider and use arrow keys. The bounded range stays strictly between zero and pi over two.",
+          "controlInstructions": [
+            "Change theta and verify that the three patterned regions retain their containment order."
+          ],
+          "reducedMotion": "disable-animation",
+          "staticFallbackEquivalent": true
+        },
+        "print": {
+          "representation": "generated-svg",
+          "caption": {
+            "segments": [
+              {
+                "kind": "text",
+                "text": "For a unit circle and 0 < theta < pi/2, the inner triangle lies inside the sector, which lies inside the outer tangent triangle."
+              }
+            ]
+          },
+          "grayscaleSafe": true,
+          "pageBreak": "avoid",
+          "widthInches": 5.6
+        },
+        "performance": {
+          "maxSamples": 512,
+          "maxAdaptiveDepth": 10,
+          "maxAstNodes": 128,
+          "maxAstDepth": 20,
+          "maxOperationsPerEvaluation": 2048,
+          "maxPayloadBytes": 98304,
+          "maxAnimationFps": 30,
+          "activation": "near-viewport"
+        },
+        "requiredCapabilities": [
+          "annotations",
+          "geometry-primitives",
+          "open-closed-points",
+          "parameter-controls",
+          "regions",
+          "static-fallback"
+        ],
+        "selectedRenderer": "bg-interactive-2d",
+        "staticFallback": {
+          "required": true,
+          "rendererId": "static-svg"
+        },
+        "delivery": {
+          "hydration": "near-viewport",
+          "publicFieldsOnly": true
+        },
+        "provenance": {
+          "route": "/subjects/math/calculus/limits-continuity/unit/limits/sin-x-over-x-proof/",
+          "sourceFile": "content/visualizations/limits-continuity/visual-specs.v1.json",
+          "sourceVisualId": "unit-circle-squeeze",
+          "sourceFingerprint": "bvlp1-6cb63d2c",
+          "compilerVersion": "bvlp-compiler-v1",
+          "visibility": "public"
+        }
+      }
+    },
+    {
+      "id": "sine-over-x",
+      "route": "/subjects/math/calculus/limits-continuity/unit/limits/sin-x-over-x-proof/",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/sine-over-x.30c4b03f1af612cf.svg",
+        "sha256": "30c4b03f1af612cf772b80ca8767c659d016406ce92e4c2c375974c9fc8d4a10",
+        "bytes": 10476,
+        "width": 960,
+        "height": 533
+      },
+      "compiledScene": {
+        "compiledSceneVersion": 1,
+        "sourceSpecVersion": 1,
+        "id": "sine-over-x",
+        "kind": "piecewise-cartesian-2d",
+        "title": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "The sine-over-x limit"
+            }
+          ]
+        },
+        "caption": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "The graph of sin(x)/x has a removable hole at (0, 1) and approaches 1 from both sides."
+            }
+          ]
+        },
+        "learningPurpose": "Show graphically that sin(x)/x approaches 1 from both sides even though the displayed formula is undefined at zero.",
+        "longDescription": "The even function y = sin(x) divided by x is drawn from approximately negative 2 pi to 2 pi in two explicit branches that stop at zero. An open circle at (0, 1) marks the missing formula value. A dashed horizontal guide marks y = 1, and both branches approach that guide as x approaches zero.",
+        "coordinateSpace": {
+          "type": "cartesian-2d",
+          "variables": [
+            "x",
+            "y"
+          ],
+          "unitsRequired": false
+        },
+        "viewport": {
+          "xMin": -6.3,
+          "xMax": 6.3,
+          "yMin": -0.35,
+          "yMax": 1.18,
+          "aspectRatio": 1.8,
+          "padding": 0.03
+        },
+        "axes": {
+          "mode": "explicit",
+          "axes": [
+            {
+              "id": "x-axis",
+              "orientation": "x",
+              "label": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "x (radians)"
+                  }
+                ]
+              },
+              "scale": "linear",
+              "tickMode": "explicit",
+              "tickValues": [
+                -6.283185307179586,
+                -3.141592653589793,
+                0,
+                3.141592653589793,
+                6.283185307179586
+              ],
+              "showGrid": true
+            },
+            {
+              "id": "y-axis",
+              "orientation": "y",
+              "label": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "sin(x)/x"
+                  }
+                ]
+              },
+              "scale": "linear",
+              "tickMode": "automatic",
+              "showGrid": true
+            }
+          ]
+        },
+        "panels": [],
+        "layers": [
+          {
+            "id": "sinc-left",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Solid negative-domain branch stops before zero."
+            },
+            "references": [],
+            "kind": "piecewise-branch",
+            "geometry": {
+              "expression": {
+                "type": "divide",
+                "left": {
+                  "type": "sin",
+                  "operand": {
+                    "type": "variable",
+                    "name": "x"
+                  }
+                },
+                "right": {
+                  "type": "variable",
+                  "name": "x"
+                }
+              },
+              "variable": "x",
+              "domain": {
+                "min": -6.3,
+                "max": 0,
+                "includeMin": true,
+                "includeMax": false
+              }
+            }
+          },
+          {
+            "id": "sinc-right",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Solid positive-domain branch starts after zero."
+            },
+            "references": [],
+            "kind": "piecewise-branch",
+            "geometry": {
+              "expression": {
+                "type": "divide",
+                "left": {
+                  "type": "sin",
+                  "operand": {
+                    "type": "variable",
+                    "name": "x"
+                  }
+                },
+                "right": {
+                  "type": "variable",
+                  "name": "x"
+                }
+              },
+              "variable": "x",
+              "domain": {
+                "min": 0,
+                "max": 6.3,
+                "includeMin": false,
+                "includeMax": true
+              }
+            }
+          },
+          {
+            "id": "hole-at-one",
+            "visible": true,
+            "zIndex": 0,
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "hole at (0, 1)"
+                }
+              ]
+            },
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "circle",
+              "pattern": "none",
+              "colorIndependentCue": "Open circle marks the missing point at (0, 1)."
+            },
+            "references": [],
+            "kind": "open-point",
+            "geometry": {
+              "position": {
+                "x": 0,
+                "y": 1
+              }
+            }
+          },
+          {
+            "id": "limit-guide",
+            "visible": true,
+            "zIndex": 0,
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "y = 1"
+                }
+              ]
+            },
+            "presentation": {
+              "strokeToken": "visual-guide",
+              "lineStyle": "dashed",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Dashed horizontal guide marks the approached height 1."
+            },
+            "references": [],
+            "kind": "line",
+            "geometry": {
+              "start": {
+                "x": -6.3,
+                "y": 1
+              },
+              "end": {
+                "x": 6.3,
+                "y": 1
+              }
+            }
+          },
+          {
+            "id": "sinc-note",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Text identifies the common one-sided limit."
+            },
+            "references": [],
+            "kind": "annotation",
+            "geometry": {
+              "anchor": {
+                "x": 0.65,
+                "y": 1.08
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "both sides approach 1"
+                  }
+                ]
+              },
+              "targetLayerId": "hole-at-one"
+            }
+          }
+        ],
+        "controls": [],
+        "accessibility": {
+          "ariaLabel": "Graph of sin(x) divided by x with an open point at (0, 1).",
+          "summary": "Separate left and right branches approach 1 at zero even though the formula is undefined there.",
+          "readingOrder": [
+            "sinc-left",
+            "sinc-right",
+            "limit-guide",
+            "hole-at-one",
+            "sinc-note"
+          ],
+          "colorIndependentDescription": "The two solid branches stop at an open circle, and a dashed horizontal guide with text marks y = 1.",
+          "controlInstructions": [],
+          "reducedMotion": "not-applicable",
+          "staticFallbackEquivalent": true
+        },
+        "print": {
+          "representation": "generated-svg",
+          "caption": {
+            "segments": [
+              {
+                "kind": "text",
+                "text": "The graph of sin(x)/x has a removable hole at (0, 1) and approaches 1 from both sides."
+              }
+            ]
+          },
+          "grayscaleSafe": true,
+          "pageBreak": "avoid",
+          "widthInches": 6.8
+        },
+        "performance": {
+          "maxSamples": 4096,
+          "maxAdaptiveDepth": 16,
+          "maxAstNodes": 64,
+          "maxAstDepth": 16,
+          "maxOperationsPerEvaluation": 2048,
+          "maxPayloadBytes": 65536,
+          "maxAnimationFps": 30,
+          "activation": "none"
+        },
+        "requiredCapabilities": [
+          "annotations",
+          "cartesian-axes",
+          "open-closed-points",
+          "piecewise-paths",
+          "static-fallback"
+        ],
+        "selectedRenderer": "static-svg",
+        "staticFallback": {
+          "required": true,
+          "rendererId": "static-svg"
+        },
+        "delivery": {
+          "hydration": "none",
+          "publicFieldsOnly": true
+        },
+        "provenance": {
+          "route": "/subjects/math/calculus/limits-continuity/unit/limits/sin-x-over-x-proof/",
+          "sourceFile": "content/visualizations/limits-continuity/visual-specs.v1.json",
+          "sourceVisualId": "sine-over-x",
+          "sourceFingerprint": "bvlp1-d8c3a9cc",
+          "compilerVersion": "bvlp-compiler-v1",
+          "visibility": "public"
+        }
+      }
+    },
+    {
+      "id": "vertical-asymptotes",
+      "route": "/subjects/math/calculus/limits-continuity/unit/limits/infinite-limits/",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/vertical-asymptotes.0256bfd78d217cca.svg",
+        "sha256": "0256bfd78d217cca33b4f9820918e152d57f1f140a6ff4458959f1e86e2dc78a",
+        "bytes": 15627,
+        "width": 960,
+        "height": 338
+      },
+      "compiledScene": {
+        "compiledSceneVersion": 1,
+        "sourceSpecVersion": 1,
+        "id": "vertical-asymptotes",
+        "kind": "piecewise-cartesian-2d",
+        "title": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "Odd and even powers at a vertical asymptote"
+            }
+          ]
+        },
+        "caption": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "An odd power changes sign across the vertical asymptote; an even power remains positive on both sides."
+            }
+          ]
+        },
+        "learningPurpose": "Compare one-sided signs for reciprocal functions with odd and even denominator powers.",
+        "longDescription": "Two ordered panels share the vertical asymptote x = 1. In the odd-power panel, y = 1/(x - 1) falls without bound from the left and rises without bound from the right. In the even-power panel, y = 1/(x - 1) squared rises without bound from both sides. Each panel uses explicit left and right domains and a dashed asymptote.",
+        "coordinateSpace": {
+          "type": "cartesian-2d",
+          "variables": [
+            "x",
+            "y"
+          ],
+          "unitsRequired": false
+        },
+        "viewport": {
+          "xMin": -4,
+          "xMax": 4,
+          "yMin": -8,
+          "yMax": 8,
+          "aspectRatio": 1.1,
+          "padding": 0.04
+        },
+        "axes": {
+          "mode": "explicit",
+          "axes": [
+            {
+              "id": "x-axis",
+              "orientation": "x",
+              "label": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "x"
+                  }
+                ]
+              },
+              "scale": "linear",
+              "tickMode": "automatic",
+              "showGrid": true
+            },
+            {
+              "id": "y-axis",
+              "orientation": "y",
+              "label": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "y"
+                  }
+                ]
+              },
+              "scale": "linear",
+              "tickMode": "automatic",
+              "showGrid": true
+            }
+          ]
+        },
+        "panels": [
+          {
+            "id": "odd-power-panel",
+            "title": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "Odd power: 1/(x - 1)"
+                }
+              ]
+            },
+            "description": "The signs differ across x = 1.",
+            "row": 0,
+            "column": 0,
+            "rowSpan": 1,
+            "columnSpan": 1,
+            "order": 0
+          },
+          {
+            "id": "even-power-panel",
+            "title": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "Even power: 1/(x - 1)^2"
+                }
+              ]
+            },
+            "description": "Both sides stay positive near x = 1.",
+            "row": 0,
+            "column": 1,
+            "rowSpan": 1,
+            "columnSpan": 1,
+            "order": 1
+          }
+        ],
+        "layers": [
+          {
+            "id": "odd-left",
+            "panelId": "odd-power-panel",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Solid odd-power left branch stops before x = 1."
+            },
+            "references": [],
+            "kind": "piecewise-branch",
+            "geometry": {
+              "expression": {
+                "type": "divide",
+                "left": {
+                  "type": "number",
+                  "value": 1
+                },
+                "right": {
+                  "type": "add",
+                  "left": {
+                    "type": "variable",
+                    "name": "x"
+                  },
+                  "right": {
+                    "type": "number",
+                    "value": -1
+                  }
+                }
+              },
+              "variable": "x",
+              "domain": {
+                "min": -4,
+                "max": 1,
+                "includeMin": true,
+                "includeMax": false
+              }
+            }
+          },
+          {
+            "id": "odd-right",
+            "panelId": "odd-power-panel",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Solid odd-power right branch starts after x = 1."
+            },
+            "references": [],
+            "kind": "piecewise-branch",
+            "geometry": {
+              "expression": {
+                "type": "divide",
+                "left": {
+                  "type": "number",
+                  "value": 1
+                },
+                "right": {
+                  "type": "add",
+                  "left": {
+                    "type": "variable",
+                    "name": "x"
+                  },
+                  "right": {
+                    "type": "number",
+                    "value": -1
+                  }
+                }
+              },
+              "variable": "x",
+              "domain": {
+                "min": 1,
+                "max": 4,
+                "includeMin": false,
+                "includeMax": true
+              }
+            }
+          },
+          {
+            "id": "odd-asymptote",
+            "panelId": "odd-power-panel",
+            "visible": true,
+            "zIndex": 0,
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "x = 1"
+                }
+              ]
+            },
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "lineStyle": "dashed",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Dashed vertical asymptote x = 1."
+            },
+            "references": [],
+            "kind": "vertical-asymptote",
+            "geometry": {
+              "x": 1
+            }
+          },
+          {
+            "id": "even-left",
+            "panelId": "even-power-panel",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-secondary",
+              "lineStyle": "double",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Double-stroked even-power left branch stops before x = 1."
+            },
+            "references": [],
+            "kind": "piecewise-branch",
+            "geometry": {
+              "expression": {
+                "type": "power",
+                "left": {
+                  "type": "add",
+                  "left": {
+                    "type": "variable",
+                    "name": "x"
+                  },
+                  "right": {
+                    "type": "number",
+                    "value": -1
+                  }
+                },
+                "right": {
+                  "type": "number",
+                  "value": -2
+                }
+              },
+              "variable": "x",
+              "domain": {
+                "min": -4,
+                "max": 1,
+                "includeMin": true,
+                "includeMax": false
+              }
+            }
+          },
+          {
+            "id": "even-right",
+            "panelId": "even-power-panel",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-secondary",
+              "lineStyle": "double",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Double-stroked even-power right branch starts after x = 1."
+            },
+            "references": [],
+            "kind": "piecewise-branch",
+            "geometry": {
+              "expression": {
+                "type": "power",
+                "left": {
+                  "type": "add",
+                  "left": {
+                    "type": "variable",
+                    "name": "x"
+                  },
+                  "right": {
+                    "type": "number",
+                    "value": -1
+                  }
+                },
+                "right": {
+                  "type": "number",
+                  "value": -2
+                }
+              },
+              "variable": "x",
+              "domain": {
+                "min": 1,
+                "max": 4,
+                "includeMin": false,
+                "includeMax": true
+              }
+            }
+          },
+          {
+            "id": "even-asymptote",
+            "panelId": "even-power-panel",
+            "visible": true,
+            "zIndex": 0,
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "x = 1"
+                }
+              ]
+            },
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "lineStyle": "dashed",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Dashed vertical asymptote x = 1."
+            },
+            "references": [],
+            "kind": "vertical-asymptote",
+            "geometry": {
+              "x": 1
+            }
+          }
+        ],
+        "controls": [],
+        "accessibility": {
+          "ariaLabel": "Two panels comparing odd and even reciprocal powers near x = 1.",
+          "summary": "The odd power changes sign across the asymptote; the even power approaches positive infinity from both sides.",
+          "readingOrder": [
+            "odd-power-panel",
+            "odd-left",
+            "odd-right",
+            "odd-asymptote",
+            "even-power-panel",
+            "even-left",
+            "even-right",
+            "even-asymptote"
+          ],
+          "colorIndependentDescription": "The odd-power curves are solid, the even-power curves are double-stroked, and both panels mark x = 1 with a dashed line and title.",
+          "controlInstructions": [],
+          "reducedMotion": "not-applicable",
+          "staticFallbackEquivalent": true
+        },
+        "print": {
+          "representation": "generated-svg",
+          "caption": {
+            "segments": [
+              {
+                "kind": "text",
+                "text": "An odd power changes sign across the vertical asymptote; an even power remains positive on both sides."
+              }
+            ]
+          },
+          "grayscaleSafe": true,
+          "pageBreak": "avoid",
+          "widthInches": 7.4
+        },
+        "performance": {
+          "maxSamples": 4096,
+          "maxAdaptiveDepth": 16,
+          "maxAstNodes": 64,
+          "maxAstDepth": 16,
+          "maxOperationsPerEvaluation": 2048,
+          "maxPayloadBytes": 98304,
+          "maxAnimationFps": 30,
+          "activation": "none"
+        },
+        "requiredCapabilities": [
+          "asymptotes",
+          "cartesian-axes",
+          "multi-panel",
+          "piecewise-paths",
+          "static-fallback"
+        ],
+        "selectedRenderer": "static-svg",
+        "staticFallback": {
+          "required": true,
+          "rendererId": "static-svg"
+        },
+        "delivery": {
+          "hydration": "none",
+          "publicFieldsOnly": true
+        },
+        "provenance": {
+          "route": "/subjects/math/calculus/limits-continuity/unit/limits/infinite-limits/",
+          "sourceFile": "content/visualizations/limits-continuity/visual-specs.v1.json",
+          "sourceVisualId": "vertical-asymptotes",
+          "sourceFingerprint": "bvlp1-c6b981f5",
+          "compilerVersion": "bvlp-compiler-v1",
+          "visibility": "public"
+        }
+      }
+    },
+    {
+      "id": "horizontal-asymptote",
+      "route": "/subjects/math/calculus/limits-continuity/unit/limits/limits-at-infinity/",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/horizontal-asymptote.c9d0a15824c7a42e.svg",
+        "sha256": "c9d0a15824c7a42e2d0dab70d4e537fa7a57d85542d4ee13d20fabb8b64321ed",
+        "bytes": 10665,
+        "width": 960,
+        "height": 519
+      },
+      "compiledScene": {
+        "compiledSceneVersion": 1,
+        "sourceSpecVersion": 1,
+        "id": "horizontal-asymptote",
+        "kind": "cartesian-2d",
+        "title": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "Approaching a horizontal asymptote"
+            }
+          ]
+        },
+        "caption": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "The rational function approaches its horizontal asymptote y = 3 at both ends."
+            }
+          ]
+        },
+        "learningPurpose": "Connect equal-degree rational end behavior to the ratio of leading coefficients.",
+        "longDescription": "The rational curve f(x) = (3x squared - 2x + 5)/(x squared + 4) is drawn from x = -12 to x = 12. Its denominator never vanishes for real x. A dashed horizontal line marks y = 3, and both ends of the solid curve move closer to that line, showing equal limits at positive and negative infinity.",
+        "coordinateSpace": {
+          "type": "cartesian-2d",
+          "variables": [
+            "x",
+            "y"
+          ],
+          "unitsRequired": false
+        },
+        "viewport": {
+          "xMin": -12,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 4.3,
+          "aspectRatio": 1.85,
+          "padding": 0.03
+        },
+        "axes": {
+          "mode": "explicit",
+          "axes": [
+            {
+              "id": "x-axis",
+              "orientation": "x",
+              "label": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "x"
+                  }
+                ]
+              },
+              "scale": "linear",
+              "tickMode": "automatic",
+              "showGrid": true
+            },
+            {
+              "id": "y-axis",
+              "orientation": "y",
+              "label": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "f(x)"
+                  }
+                ]
+              },
+              "scale": "linear",
+              "tickMode": "automatic",
+              "showGrid": true
+            }
+          ]
+        },
+        "panels": [],
+        "layers": [
+          {
+            "id": "rational-curve",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Heavy solid rational curve."
+            },
+            "references": [],
+            "kind": "function",
+            "geometry": {
+              "expression": {
+                "type": "divide",
+                "left": {
+                  "type": "add",
+                  "left": {
+                    "type": "add",
+                    "left": {
+                      "type": "multiply",
+                      "left": {
+                        "type": "number",
+                        "value": 3
+                      },
+                      "right": {
+                        "type": "power",
+                        "left": {
+                          "type": "variable",
+                          "name": "x"
+                        },
+                        "right": {
+                          "type": "number",
+                          "value": 2
+                        }
+                      }
+                    },
+                    "right": {
+                      "type": "multiply",
+                      "left": {
+                        "type": "number",
+                        "value": -2
+                      },
+                      "right": {
+                        "type": "variable",
+                        "name": "x"
+                      }
+                    }
+                  },
+                  "right": {
+                    "type": "number",
+                    "value": 5
+                  }
+                },
+                "right": {
+                  "type": "add",
+                  "left": {
+                    "type": "power",
+                    "left": {
+                      "type": "variable",
+                      "name": "x"
+                    },
+                    "right": {
+                      "type": "number",
+                      "value": 2
+                    }
+                  },
+                  "right": {
+                    "type": "number",
+                    "value": 4
+                  }
+                }
+              },
+              "variable": "x",
+              "domain": {
+                "min": -12,
+                "max": 12,
+                "includeMin": true,
+                "includeMax": true
+              }
+            }
+          },
+          {
+            "id": "asymptote",
+            "visible": true,
+            "zIndex": 0,
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "y = 3"
+                }
+              ]
+            },
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "lineStyle": "dashed",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Dashed horizontal asymptote labeled y = 3."
+            },
+            "references": [],
+            "kind": "horizontal-asymptote",
+            "geometry": {
+              "y": 3
+            }
+          },
+          {
+            "id": "end-note",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Text identifies the shared end behavior."
+            },
+            "references": [],
+            "kind": "annotation",
+            "geometry": {
+              "anchor": {
+                "x": 5,
+                "y": 3.35
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "both ends approach y = 3"
+                  }
+                ]
+              },
+              "targetLayerId": "asymptote"
+            }
+          }
+        ],
+        "controls": [],
+        "accessibility": {
+          "ariaLabel": "Rational function approaching the horizontal asymptote y = 3 at both ends.",
+          "summary": "The curve approaches the dashed line y = 3 as x tends to positive or negative infinity.",
+          "readingOrder": [
+            "rational-curve",
+            "asymptote",
+            "end-note"
+          ],
+          "colorIndependentDescription": "The function is a heavy solid curve and the asymptote is a dashed line labeled y = 3.",
+          "controlInstructions": [],
+          "reducedMotion": "not-applicable",
+          "staticFallbackEquivalent": true
+        },
+        "print": {
+          "representation": "generated-svg",
+          "caption": {
+            "segments": [
+              {
+                "kind": "text",
+                "text": "The rational function approaches its horizontal asymptote y = 3 at both ends."
+              }
+            ]
+          },
+          "grayscaleSafe": true,
+          "pageBreak": "avoid",
+          "widthInches": 6.9
+        },
+        "performance": {
+          "maxSamples": 2048,
+          "maxAdaptiveDepth": 12,
+          "maxAstNodes": 96,
+          "maxAstDepth": 18,
+          "maxOperationsPerEvaluation": 1024,
+          "maxPayloadBytes": 49152,
+          "maxAnimationFps": 30,
+          "activation": "none"
+        },
+        "requiredCapabilities": [
+          "annotations",
+          "asymptotes",
+          "cartesian-axes",
+          "function-paths",
+          "static-fallback"
+        ],
+        "selectedRenderer": "static-svg",
+        "staticFallback": {
+          "required": true,
+          "rendererId": "static-svg"
+        },
+        "delivery": {
+          "hydration": "none",
+          "publicFieldsOnly": true
+        },
+        "provenance": {
+          "route": "/subjects/math/calculus/limits-continuity/unit/limits/limits-at-infinity/",
+          "sourceFile": "content/visualizations/limits-continuity/visual-specs.v1.json",
+          "sourceVisualId": "horizontal-asymptote",
+          "sourceFingerprint": "bvlp1-473484a1",
+          "compilerVersion": "bvlp-compiler-v1",
+          "visibility": "public"
+        }
+      }
+    },
+    {
+      "id": "discontinuity-gallery",
+      "route": "/subjects/math/calculus/limits-continuity/unit/continuity/types-of-discontinuity/",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/discontinuity-gallery.eb64e379da139eb1.svg",
+        "sha256": "eb64e379da139eb1bf7998e3c2bfd35690bc5548bce5267cd900dc3b3c80112b",
+        "bytes": 30350,
+        "width": 960,
+        "height": 644
+      },
+      "compiledScene": {
+        "compiledSceneVersion": 1,
+        "sourceSpecVersion": 1,
+        "id": "discontinuity-gallery",
+        "kind": "piecewise-cartesian-2d",
+        "title": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "Four types of discontinuity"
+            }
+          ]
+        },
+        "caption": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "The four principal discontinuity types encountered in first-semester calculus."
+            }
+          ]
+        },
+        "learningPurpose": "Compare removable, jump, infinite, and oscillatory discontinuities in a consistent four-panel layout.",
+        "longDescription": "A two-by-two gallery compares behavior at x = 0. Removable shows y = x + 1 with an open point at (0, 1). Jump shows y = 0 to the left and y = 2 to the right with open and filled markers. Infinite shows y = 1/x on split domains with a vertical asymptote. Oscillatory shows y = sin(1/x) on split domains that never settle near zero.",
+        "coordinateSpace": {
+          "type": "cartesian-2d",
+          "variables": [
+            "x",
+            "y"
+          ],
+          "unitsRequired": false
+        },
+        "viewport": {
+          "xMin": -2,
+          "xMax": 2,
+          "yMin": -2.2,
+          "yMax": 3.2,
+          "aspectRatio": 1.25,
+          "padding": 0.03
+        },
+        "axes": {
+          "mode": "explicit",
+          "axes": [
+            {
+              "id": "x-axis",
+              "orientation": "x",
+              "label": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "x"
+                  }
+                ]
+              },
+              "scale": "linear",
+              "tickMode": "automatic",
+              "showGrid": true
+            },
+            {
+              "id": "y-axis",
+              "orientation": "y",
+              "label": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "y"
+                  }
+                ]
+              },
+              "scale": "linear",
+              "tickMode": "automatic",
+              "showGrid": true
+            }
+          ]
+        },
+        "panels": [
+          {
+            "id": "removable-panel",
+            "title": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "Removable"
+                }
+              ]
+            },
+            "description": "Both sides approach one missing height.",
+            "row": 0,
+            "column": 0,
+            "rowSpan": 1,
+            "columnSpan": 1,
+            "order": 0
+          },
+          {
+            "id": "jump-panel",
+            "title": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "Jump"
+                }
+              ]
+            },
+            "description": "Finite one-sided limits disagree.",
+            "row": 0,
+            "column": 1,
+            "rowSpan": 1,
+            "columnSpan": 1,
+            "order": 1
+          },
+          {
+            "id": "infinite-panel",
+            "title": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "Infinite"
+                }
+              ]
+            },
+            "description": "Outputs become unbounded at a vertical asymptote.",
+            "row": 1,
+            "column": 0,
+            "rowSpan": 1,
+            "columnSpan": 1,
+            "order": 2
+          },
+          {
+            "id": "oscillatory-panel",
+            "title": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "Oscillatory"
+                }
+              ]
+            },
+            "description": "Outputs continue oscillating without settling.",
+            "row": 1,
+            "column": 1,
+            "rowSpan": 1,
+            "columnSpan": 1,
+            "order": 3
+          }
+        ],
+        "layers": [
+          {
+            "id": "removable-left",
+            "panelId": "removable-panel",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Solid left branch stops before zero."
+            },
+            "references": [],
+            "kind": "piecewise-branch",
+            "geometry": {
+              "expression": {
+                "type": "add",
+                "left": {
+                  "type": "variable",
+                  "name": "x"
+                },
+                "right": {
+                  "type": "number",
+                  "value": 1
+                }
+              },
+              "variable": "x",
+              "domain": {
+                "min": -2,
+                "max": 0,
+                "includeMin": true,
+                "includeMax": false
+              }
+            }
+          },
+          {
+            "id": "removable-right",
+            "panelId": "removable-panel",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Solid right branch begins after zero."
+            },
+            "references": [],
+            "kind": "piecewise-branch",
+            "geometry": {
+              "expression": {
+                "type": "add",
+                "left": {
+                  "type": "variable",
+                  "name": "x"
+                },
+                "right": {
+                  "type": "number",
+                  "value": 1
+                }
+              },
+              "variable": "x",
+              "domain": {
+                "min": 0,
+                "max": 2,
+                "includeMin": false,
+                "includeMax": true
+              }
+            }
+          },
+          {
+            "id": "removable-hole",
+            "panelId": "removable-panel",
+            "visible": true,
+            "zIndex": 0,
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "missing point (0, 1)"
+                }
+              ]
+            },
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "circle",
+              "pattern": "none",
+              "colorIndependentCue": "Open circle marks the removable hole."
+            },
+            "references": [],
+            "kind": "open-point",
+            "geometry": {
+              "position": {
+                "x": 0,
+                "y": 1
+              }
+            }
+          },
+          {
+            "id": "jump-left",
+            "panelId": "jump-panel",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Solid lower branch approaches zero."
+            },
+            "references": [],
+            "kind": "piecewise-branch",
+            "geometry": {
+              "expression": {
+                "type": "number",
+                "value": 0
+              },
+              "variable": "x",
+              "domain": {
+                "min": -2,
+                "max": 0,
+                "includeMin": true,
+                "includeMax": false
+              }
+            }
+          },
+          {
+            "id": "jump-right",
+            "panelId": "jump-panel",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-secondary",
+              "lineStyle": "double",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Double-stroked upper branch starts at height two."
+            },
+            "references": [],
+            "kind": "piecewise-branch",
+            "geometry": {
+              "expression": {
+                "type": "number",
+                "value": 2
+              },
+              "variable": "x",
+              "domain": {
+                "min": 0,
+                "max": 2,
+                "includeMin": true,
+                "includeMax": true
+              }
+            }
+          },
+          {
+            "id": "jump-open",
+            "panelId": "jump-panel",
+            "visible": true,
+            "zIndex": 0,
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "left height 0"
+                }
+              ]
+            },
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "solid",
+              "markerShape": "circle",
+              "pattern": "none",
+              "colorIndependentCue": "Open circle marks the left-hand height zero."
+            },
+            "references": [],
+            "kind": "open-point",
+            "geometry": {
+              "position": {
+                "x": 0,
+                "y": 0
+              }
+            }
+          },
+          {
+            "id": "jump-closed",
+            "panelId": "jump-panel",
+            "visible": true,
+            "zIndex": 0,
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "right height 2"
+                }
+              ]
+            },
+            "presentation": {
+              "strokeToken": "visual-secondary",
+              "fillToken": "visual-secondary",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "none",
+              "colorIndependentCue": "Filled diamond marks the included right-hand height two."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 0,
+                "y": 2
+              }
+            }
+          },
+          {
+            "id": "infinite-left",
+            "panelId": "infinite-panel",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Solid reciprocal branch stops before zero."
+            },
+            "references": [],
+            "kind": "piecewise-branch",
+            "geometry": {
+              "expression": {
+                "type": "divide",
+                "left": {
+                  "type": "number",
+                  "value": 1
+                },
+                "right": {
+                  "type": "variable",
+                  "name": "x"
+                }
+              },
+              "variable": "x",
+              "domain": {
+                "min": -2,
+                "max": 0,
+                "includeMin": true,
+                "includeMax": false
+              }
+            }
+          },
+          {
+            "id": "infinite-right",
+            "panelId": "infinite-panel",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Solid reciprocal branch begins after zero."
+            },
+            "references": [],
+            "kind": "piecewise-branch",
+            "geometry": {
+              "expression": {
+                "type": "divide",
+                "left": {
+                  "type": "number",
+                  "value": 1
+                },
+                "right": {
+                  "type": "variable",
+                  "name": "x"
+                }
+              },
+              "variable": "x",
+              "domain": {
+                "min": 0,
+                "max": 2,
+                "includeMin": false,
+                "includeMax": true
+              }
+            }
+          },
+          {
+            "id": "infinite-asymptote",
+            "panelId": "infinite-panel",
+            "visible": true,
+            "zIndex": 0,
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "x = 0"
+                }
+              ]
+            },
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "lineStyle": "dashed",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Dashed vertical asymptote at zero."
+            },
+            "references": [],
+            "kind": "vertical-asymptote",
+            "geometry": {
+              "x": 0
+            }
+          },
+          {
+            "id": "oscillatory-left",
+            "panelId": "oscillatory-panel",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Solid oscillating branch stops before zero."
+            },
+            "references": [],
+            "kind": "piecewise-branch",
+            "geometry": {
+              "expression": {
+                "type": "sin",
+                "operand": {
+                  "type": "divide",
+                  "left": {
+                    "type": "number",
+                    "value": 1
+                  },
+                  "right": {
+                    "type": "variable",
+                    "name": "x"
+                  }
+                }
+              },
+              "variable": "x",
+              "domain": {
+                "min": -2,
+                "max": 0,
+                "includeMin": true,
+                "includeMax": false
+              }
+            }
+          },
+          {
+            "id": "oscillatory-right",
+            "panelId": "oscillatory-panel",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Solid oscillating branch begins after zero."
+            },
+            "references": [],
+            "kind": "piecewise-branch",
+            "geometry": {
+              "expression": {
+                "type": "sin",
+                "operand": {
+                  "type": "divide",
+                  "left": {
+                    "type": "number",
+                    "value": 1
+                  },
+                  "right": {
+                    "type": "variable",
+                    "name": "x"
+                  }
+                }
+              },
+              "variable": "x",
+              "domain": {
+                "min": 0,
+                "max": 2,
+                "includeMin": false,
+                "includeMax": true
+              }
+            }
+          }
+        ],
+        "controls": [],
+        "accessibility": {
+          "ariaLabel": "Four-panel gallery of removable, jump, infinite, and oscillatory discontinuities.",
+          "summary": "The panels compare a common missing height, unequal one-sided heights, unbounded behavior, and endless oscillation.",
+          "readingOrder": [
+            "removable-panel",
+            "removable-left",
+            "removable-right",
+            "removable-hole",
+            "jump-panel",
+            "jump-left",
+            "jump-right",
+            "jump-open",
+            "jump-closed",
+            "infinite-panel",
+            "infinite-left",
+            "infinite-right",
+            "infinite-asymptote",
+            "oscillatory-panel",
+            "oscillatory-left",
+            "oscillatory-right"
+          ],
+          "colorIndependentDescription": "Panel titles name each type. Open and filled markers distinguish inclusion, the jump branches use different line styles, and the infinite panel has a dashed asymptote.",
+          "controlInstructions": [],
+          "reducedMotion": "not-applicable",
+          "staticFallbackEquivalent": true
+        },
+        "print": {
+          "representation": "generated-svg",
+          "caption": {
+            "segments": [
+              {
+                "kind": "text",
+                "text": "The four principal discontinuity types encountered in first-semester calculus."
+              }
+            ]
+          },
+          "grayscaleSafe": true,
+          "pageBreak": "avoid",
+          "widthInches": 7.4
+        },
+        "performance": {
+          "maxSamples": 8192,
+          "maxAdaptiveDepth": 18,
+          "maxAstNodes": 128,
+          "maxAstDepth": 20,
+          "maxOperationsPerEvaluation": 4096,
+          "maxPayloadBytes": 131072,
+          "maxAnimationFps": 30,
+          "activation": "none"
+        },
+        "requiredCapabilities": [
+          "asymptotes",
+          "cartesian-axes",
+          "multi-panel",
+          "open-closed-points",
+          "piecewise-paths",
+          "static-fallback"
+        ],
+        "selectedRenderer": "static-svg",
+        "staticFallback": {
+          "required": true,
+          "rendererId": "static-svg"
+        },
+        "delivery": {
+          "hydration": "none",
+          "publicFieldsOnly": true
+        },
+        "provenance": {
+          "route": "/subjects/math/calculus/limits-continuity/unit/continuity/types-of-discontinuity/",
+          "sourceFile": "content/visualizations/limits-continuity/visual-specs.v1.json",
+          "sourceVisualId": "discontinuity-gallery",
+          "sourceFingerprint": "bvlp1-45b73cf8",
+          "compilerVersion": "bvlp-compiler-v1",
+          "visibility": "public"
+        }
+      }
+    },
+    {
+      "id": "ivt-root",
+      "route": "/subjects/math/calculus/limits-continuity/unit/continuity/intermediate-value-theorem/",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/ivt-root.71af12e5381ad9f8.svg",
+        "sha256": "71af12e5381ad9f89d536a5a0a2f1183fce844723efd575cd441b12aec7d1f47",
+        "bytes": 10466,
+        "width": 960,
+        "height": 582
+      },
+      "compiledScene": {
+        "compiledSceneVersion": 1,
+        "sourceSpecVersion": 1,
+        "id": "ivt-root",
+        "kind": "cartesian-2d",
+        "title": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "A root guaranteed by the Intermediate Value Theorem"
+            }
+          ]
+        },
+        "caption": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "Continuity and opposite endpoint signs guarantee at least one root between 0 and 1."
+            }
+          ]
+        },
+        "learningPurpose": "Show how continuity and opposite endpoint signs guarantee at least one zero between the endpoints.",
+        "longDescription": "The continuous curve f(x) = x cubed + x - 1 is shown on the closed interval from 0 to 1. A filled circle at (0, -1) lies below the x-axis and a filled square at (1, 1) lies above it. The curve crosses the axis at a filled diamond c approximately 0.6823, illustrating a root whose existence the Intermediate Value Theorem guarantees.",
+        "coordinateSpace": {
+          "type": "cartesian-2d",
+          "variables": [
+            "x",
+            "y"
+          ],
+          "unitsRequired": false
+        },
+        "viewport": {
+          "xMin": 0,
+          "xMax": 1,
+          "yMin": -1.15,
+          "yMax": 1.15,
+          "aspectRatio": 1.65,
+          "padding": 0.04
+        },
+        "axes": {
+          "mode": "explicit",
+          "axes": [
+            {
+              "id": "x-axis",
+              "orientation": "x",
+              "label": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "x"
+                  }
+                ]
+              },
+              "scale": "linear",
+              "tickMode": "automatic",
+              "showGrid": true
+            },
+            {
+              "id": "y-axis",
+              "orientation": "y",
+              "label": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "f(x)"
+                  }
+                ]
+              },
+              "scale": "linear",
+              "tickMode": "automatic",
+              "showGrid": true
+            }
+          ]
+        },
+        "panels": [],
+        "layers": [
+          {
+            "id": "ivt-function",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Heavy solid continuous curve."
+            },
+            "references": [],
+            "kind": "function",
+            "geometry": {
+              "expression": {
+                "type": "add",
+                "left": {
+                  "type": "add",
+                  "left": {
+                    "type": "power",
+                    "left": {
+                      "type": "variable",
+                      "name": "x"
+                    },
+                    "right": {
+                      "type": "number",
+                      "value": 3
+                    }
+                  },
+                  "right": {
+                    "type": "variable",
+                    "name": "x"
+                  }
+                },
+                "right": {
+                  "type": "number",
+                  "value": -1
+                }
+              },
+              "variable": "x",
+              "domain": {
+                "min": 0,
+                "max": 1,
+                "includeMin": true,
+                "includeMax": true
+              }
+            }
+          },
+          {
+            "id": "left-endpoint",
+            "visible": true,
+            "zIndex": 0,
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "f(0) = -1"
+                }
+              ]
+            },
+            "presentation": {
+              "strokeToken": "visual-warning",
+              "fillToken": "visual-warning",
+              "lineStyle": "solid",
+              "markerShape": "circle",
+              "pattern": "none",
+              "colorIndependentCue": "Filled circle at the negative left endpoint."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 0,
+                "y": -1
+              }
+            }
+          },
+          {
+            "id": "right-endpoint",
+            "visible": true,
+            "zIndex": 0,
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "f(1) = 1"
+                }
+              ]
+            },
+            "presentation": {
+              "strokeToken": "visual-success",
+              "fillToken": "visual-success",
+              "lineStyle": "solid",
+              "markerShape": "square",
+              "pattern": "none",
+              "colorIndependentCue": "Filled square at the positive right endpoint."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 1,
+                "y": 1
+              }
+            }
+          },
+          {
+            "id": "root",
+            "visible": true,
+            "zIndex": 0,
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "c is approximately 0.6823"
+                }
+              ]
+            },
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "fillToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "none",
+              "colorIndependentCue": "Filled diamond marks the displayed root."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 0.6823278038280193,
+                "y": 0
+              }
+            }
+          },
+          {
+            "id": "ivt-note",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Text states the sign-change argument."
+            },
+            "references": [],
+            "kind": "annotation",
+            "geometry": {
+              "anchor": {
+                "x": 0.24,
+                "y": 0.32
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "f(0) < 0 < f(1), so a root exists in (0, 1)"
+                  }
+                ]
+              },
+              "targetLayerId": "root"
+            }
+          }
+        ],
+        "controls": [],
+        "accessibility": {
+          "ariaLabel": "Continuous cubic crossing the x-axis between endpoints of opposite sign.",
+          "summary": "f(0) is negative and f(1) is positive, so continuity guarantees a root between them.",
+          "readingOrder": [
+            "ivt-function",
+            "left-endpoint",
+            "right-endpoint",
+            "root",
+            "ivt-note"
+          ],
+          "colorIndependentDescription": "The negative endpoint is a filled circle, the positive endpoint is a filled square, and the root is a filled diamond, all with text labels.",
+          "controlInstructions": [],
+          "reducedMotion": "not-applicable",
+          "staticFallbackEquivalent": true
+        },
+        "print": {
+          "representation": "generated-svg",
+          "caption": {
+            "segments": [
+              {
+                "kind": "text",
+                "text": "Continuity and opposite endpoint signs guarantee at least one root between 0 and 1."
+              }
+            ]
+          },
+          "grayscaleSafe": true,
+          "pageBreak": "avoid",
+          "widthInches": 6.4
+        },
+        "performance": {
+          "maxSamples": 1024,
+          "maxAdaptiveDepth": 10,
+          "maxAstNodes": 64,
+          "maxAstDepth": 16,
+          "maxOperationsPerEvaluation": 512,
+          "maxPayloadBytes": 32768,
+          "maxAnimationFps": 30,
+          "activation": "none"
+        },
+        "requiredCapabilities": [
+          "annotations",
+          "cartesian-axes",
+          "function-paths",
+          "open-closed-points",
+          "static-fallback"
+        ],
+        "selectedRenderer": "static-svg",
+        "staticFallback": {
+          "required": true,
+          "rendererId": "static-svg"
+        },
+        "delivery": {
+          "hydration": "none",
+          "publicFieldsOnly": true
+        },
+        "provenance": {
+          "route": "/subjects/math/calculus/limits-continuity/unit/continuity/intermediate-value-theorem/",
+          "sourceFile": "content/visualizations/limits-continuity/visual-specs.v1.json",
+          "sourceVisualId": "ivt-root",
+          "sourceFingerprint": "bvlp1-c111d5bb",
+          "compilerVersion": "bvlp-compiler-v1",
+          "visibility": "public"
+        }
+      }
+    },
+    {
+      "id": "epsilon-delta-window",
+      "route": "/subjects/math/calculus/limits-continuity/unit/limits/epsilon-delta-graph/",
+      "selectedRenderer": "bg-interactive-2d",
+      "hydration": "near-viewport",
+      "staticAsset": {
+        "path": "/visuals/v1/epsilon-delta-window.4e9abb86d15e6763.svg",
+        "sha256": "4e9abb86d15e67632f28246b29503b88f7054ace74d0c9fe9e69b9fec3d41427",
+        "bytes": 13133,
+        "width": 960,
+        "height": 582
+      },
+      "compiledScene": {
+        "compiledSceneVersion": 1,
+        "sourceSpecVersion": 1,
+        "id": "epsilon-delta-window",
+        "kind": "cartesian-2d",
+        "title": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "An epsilon band and delta window"
+            }
+          ]
+        },
+        "caption": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "An epsilon band around L and a corresponding delta window around a. A valid delta keeps the nearby graph inside the band."
+            }
+          ]
+        },
+        "learningPurpose": "Connect the output condition |f(x) - L| < epsilon to an input window 0 < |x - a| < delta on a nonlinear graph.",
+        "longDescription": "The curve f(x) = x squared divided by 2 plus 1 passes through (a, L) = (2, 3). A horizontally patterned band extends from 3 - epsilon to 3 + epsilon. A vertically patterned window is bounded by 4 - square root of (4 + 2 epsilon) and square root of (4 + 2 epsilon). With epsilon 0.75, the largest symmetric delta is about 0.3452, and nearby curve points inside that punctured window remain in the output band.",
+        "coordinateSpace": {
+          "type": "cartesian-2d",
+          "variables": [
+            "x",
+            "y"
+          ],
+          "unitsRequired": false
+        },
+        "viewport": {
+          "xMin": -0.5,
+          "xMax": 4.5,
+          "yMin": -0.5,
+          "yMax": 8.5,
+          "aspectRatio": 1.65,
+          "padding": 0.03
+        },
+        "axes": {
+          "mode": "explicit",
+          "axes": [
+            {
+              "id": "x-axis",
+              "orientation": "x",
+              "label": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "x"
+                  }
+                ]
+              },
+              "scale": "linear",
+              "tickMode": "automatic",
+              "showGrid": true
+            },
+            {
+              "id": "y-axis",
+              "orientation": "y",
+              "label": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "f(x)"
+                  }
+                ]
+              },
+              "scale": "linear",
+              "tickMode": "automatic",
+              "showGrid": true
+            }
+          ]
+        },
+        "panels": [],
+        "layers": [
+          {
+            "id": "epsilon-function",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Heavy solid nonlinear function curve."
+            },
+            "references": [],
+            "kind": "function",
+            "geometry": {
+              "expression": {
+                "type": "add",
+                "left": {
+                  "type": "multiply",
+                  "left": {
+                    "type": "divide",
+                    "left": {
+                      "type": "number",
+                      "value": 1
+                    },
+                    "right": {
+                      "type": "number",
+                      "value": 2
+                    }
+                  },
+                  "right": {
+                    "type": "power",
+                    "left": {
+                      "type": "variable",
+                      "name": "x"
+                    },
+                    "right": {
+                      "type": "number",
+                      "value": 2
+                    }
+                  }
+                },
+                "right": {
+                  "type": "number",
+                  "value": 1
+                }
+              },
+              "variable": "x",
+              "domain": {
+                "min": -0.3,
+                "max": 4.2,
+                "includeMin": true,
+                "includeMax": true
+              }
+            }
+          },
+          {
+            "id": "epsilon-lower",
+            "visible": true,
+            "zIndex": 0,
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "L - epsilon"
+                }
+              ]
+            },
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "lineStyle": "dashed",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Dashed lower boundary of the epsilon band."
+            },
+            "references": [],
+            "kind": "line",
+            "geometry": {
+              "start": {
+                "x": -0.5,
+                "y": {
+                  "type": "add",
+                  "left": {
+                    "type": "negate",
+                    "operand": {
+                      "type": "variable",
+                      "name": "varepsilon"
+                    }
+                  },
+                  "right": {
+                    "type": "number",
+                    "value": 3
+                  }
+                }
+              },
+              "end": {
+                "x": 4.5,
+                "y": {
+                  "type": "add",
+                  "left": {
+                    "type": "negate",
+                    "operand": {
+                      "type": "variable",
+                      "name": "varepsilon"
+                    }
+                  },
+                  "right": {
+                    "type": "number",
+                    "value": 3
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": "epsilon-upper",
+            "visible": true,
+            "zIndex": 0,
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "L + epsilon"
+                }
+              ]
+            },
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "lineStyle": "dashed",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Dashed upper boundary of the epsilon band."
+            },
+            "references": [],
+            "kind": "line",
+            "geometry": {
+              "start": {
+                "x": -0.5,
+                "y": {
+                  "type": "add",
+                  "left": {
+                    "type": "variable",
+                    "name": "varepsilon"
+                  },
+                  "right": {
+                    "type": "number",
+                    "value": 3
+                  }
+                }
+              },
+              "end": {
+                "x": 4.5,
+                "y": {
+                  "type": "add",
+                  "left": {
+                    "type": "variable",
+                    "name": "varepsilon"
+                  },
+                  "right": {
+                    "type": "number",
+                    "value": 3
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": "epsilon-band",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "fillToken": "visual-emphasis-soft",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "diagonal",
+              "colorIndependentCue": "Diagonal-patterned horizontal epsilon band."
+            },
+            "references": [],
+            "kind": "region",
+            "geometry": {
+              "boundaryLayerIds": [
+                "epsilon-lower",
+                "epsilon-upper"
+              ]
+            }
+          },
+          {
+            "id": "delta-left",
+            "visible": true,
+            "zIndex": 0,
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "a - delta"
+                }
+              ]
+            },
+            "presentation": {
+              "strokeToken": "visual-success",
+              "lineStyle": "dotted",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Dotted left boundary of the delta window."
+            },
+            "references": [],
+            "kind": "line",
+            "geometry": {
+              "start": {
+                "x": {
+                  "type": "add",
+                  "left": {
+                    "type": "negate",
+                    "operand": {
+                      "type": "sqrt",
+                      "operand": {
+                        "type": "add",
+                        "left": {
+                          "type": "multiply",
+                          "left": {
+                            "type": "number",
+                            "value": 2
+                          },
+                          "right": {
+                            "type": "variable",
+                            "name": "varepsilon"
+                          }
+                        },
+                        "right": {
+                          "type": "number",
+                          "value": 4
+                        }
+                      }
+                    }
+                  },
+                  "right": {
+                    "type": "number",
+                    "value": 4
+                  }
+                },
+                "y": -0.5
+              },
+              "end": {
+                "x": {
+                  "type": "add",
+                  "left": {
+                    "type": "negate",
+                    "operand": {
+                      "type": "sqrt",
+                      "operand": {
+                        "type": "add",
+                        "left": {
+                          "type": "multiply",
+                          "left": {
+                            "type": "number",
+                            "value": 2
+                          },
+                          "right": {
+                            "type": "variable",
+                            "name": "varepsilon"
+                          }
+                        },
+                        "right": {
+                          "type": "number",
+                          "value": 4
+                        }
+                      }
+                    }
+                  },
+                  "right": {
+                    "type": "number",
+                    "value": 4
+                  }
+                },
+                "y": 8.5
+              }
+            }
+          },
+          {
+            "id": "delta-right",
+            "visible": true,
+            "zIndex": 0,
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "a + delta"
+                }
+              ]
+            },
+            "presentation": {
+              "strokeToken": "visual-success",
+              "lineStyle": "dotted",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Dotted right boundary of the delta window."
+            },
+            "references": [],
+            "kind": "line",
+            "geometry": {
+              "start": {
+                "x": {
+                  "type": "sqrt",
+                  "operand": {
+                    "type": "add",
+                    "left": {
+                      "type": "multiply",
+                      "left": {
+                        "type": "number",
+                        "value": 2
+                      },
+                      "right": {
+                        "type": "variable",
+                        "name": "varepsilon"
+                      }
+                    },
+                    "right": {
+                      "type": "number",
+                      "value": 4
+                    }
+                  }
+                },
+                "y": -0.5
+              },
+              "end": {
+                "x": {
+                  "type": "sqrt",
+                  "operand": {
+                    "type": "add",
+                    "left": {
+                      "type": "multiply",
+                      "left": {
+                        "type": "number",
+                        "value": 2
+                      },
+                      "right": {
+                        "type": "variable",
+                        "name": "varepsilon"
+                      }
+                    },
+                    "right": {
+                      "type": "number",
+                      "value": 4
+                    }
+                  }
+                },
+                "y": 8.5
+              }
+            }
+          },
+          {
+            "id": "delta-window",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "fillToken": "visual-success-soft",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "crosshatch",
+              "colorIndependentCue": "Crosshatched vertical delta window."
+            },
+            "references": [],
+            "kind": "region",
+            "geometry": {
+              "boundaryLayerIds": [
+                "delta-left",
+                "delta-right"
+              ]
+            }
+          },
+          {
+            "id": "limit-point",
+            "visible": true,
+            "zIndex": 0,
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "(a, L) = (2, 3)"
+                }
+              ]
+            },
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "fillToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "none",
+              "colorIndependentCue": "Filled diamond identifies the limit target (2, 3)."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 2,
+                "y": 3
+              }
+            }
+          },
+          {
+            "id": "epsilon-delta-note",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Text states the epsilon-delta implication."
+            },
+            "references": [],
+            "kind": "annotation",
+            "geometry": {
+              "anchor": {
+                "x": 2.55,
+                "y": 7.4
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "0 < |x - a| < delta implies |f(x) - L| < epsilon"
+                  }
+                ]
+              },
+              "targetLayerId": "limit-point"
+            }
+          }
+        ],
+        "controls": [
+          {
+            "id": "epsilon-control",
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "Epsilon"
+                }
+              ]
+            },
+            "announcementTemplate": "Epsilon is {value}; the largest symmetric delta updates from the nonlinear boundary.",
+            "kind": "slider",
+            "parameter": "varepsilon",
+            "min": 0.1,
+            "max": 1.5,
+            "step": 0.05,
+            "initial": 0.75
+          }
+        ],
+        "accessibility": {
+          "ariaLabel": "Interactive epsilon band and delta window for f(x) = x squared over 2 plus 1 near (2, 3).",
+          "summary": "Changing epsilon changes a centered output band and the largest symmetric input window that keeps nearby outputs inside it.",
+          "readingOrder": [
+            "epsilon-function",
+            "epsilon-band",
+            "epsilon-lower",
+            "epsilon-upper",
+            "delta-window",
+            "delta-left",
+            "delta-right",
+            "limit-point",
+            "epsilon-delta-note",
+            "epsilon-control"
+          ],
+          "colorIndependentDescription": "The epsilon band has diagonal hatching and dashed horizontal boundaries. The delta window has crosshatching and dotted vertical boundaries. The limit point is a filled diamond.",
+          "keyboardInstructions": "Focus the epsilon slider and use arrow keys. The delta window updates without animation.",
+          "controlInstructions": [
+            "Increase and decrease epsilon and compare the widths of the horizontal band and vertical window."
+          ],
+          "reducedMotion": "disable-animation",
+          "staticFallbackEquivalent": true
+        },
+        "print": {
+          "representation": "generated-svg",
+          "caption": {
+            "segments": [
+              {
+                "kind": "text",
+                "text": "An epsilon band around L and a corresponding delta window around a. A valid delta keeps the nearby graph inside the band."
+              }
+            ]
+          },
+          "grayscaleSafe": true,
+          "pageBreak": "avoid",
+          "widthInches": 6.8
+        },
+        "performance": {
+          "maxSamples": 2048,
+          "maxAdaptiveDepth": 14,
+          "maxAstNodes": 128,
+          "maxAstDepth": 22,
+          "maxOperationsPerEvaluation": 2048,
+          "maxPayloadBytes": 98304,
+          "maxAnimationFps": 30,
+          "activation": "near-viewport"
+        },
+        "requiredCapabilities": [
+          "annotations",
+          "cartesian-axes",
+          "function-paths",
+          "open-closed-points",
+          "parameter-controls",
+          "regions",
+          "static-fallback"
+        ],
+        "selectedRenderer": "bg-interactive-2d",
+        "staticFallback": {
+          "required": true,
+          "rendererId": "static-svg"
+        },
+        "delivery": {
+          "hydration": "near-viewport",
+          "publicFieldsOnly": true
+        },
+        "provenance": {
+          "route": "/subjects/math/calculus/limits-continuity/unit/limits/epsilon-delta-graph/",
+          "sourceFile": "content/visualizations/limits-continuity/visual-specs.v1.json",
+          "sourceVisualId": "epsilon-delta-window",
+          "sourceFingerprint": "bvlp1-e6b940d8",
+          "compilerVersion": "bvlp-compiler-v1",
+          "visibility": "public"
+        }
+      }
+    }
+  ]
+}
