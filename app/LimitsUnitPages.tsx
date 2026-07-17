@@ -5,6 +5,7 @@
 import { FormEvent, ReactNode, useState } from "react";
 import { getLimitsUnitChapter, limitsUnitRoutes } from "../lib/calculus/limits-unit-index.mjs";
 import type { LimitsUnitNode, LimitsUnitPublicCheck, LimitsUnitPublicPage } from "../lib/calculus/limits-unit.mjs";
+import { BetterGradesVisual } from "./BetterGradesVisual";
 import { LimitsGraphCanvas } from "./LimitsGraphCanvas";
 import { LimitsUnitMap } from "./LimitsUnitMap";
 import { Math } from "./Math";
@@ -84,7 +85,10 @@ function SemanticNode({ node, keyPrefix, checks, renderedCheckIds }: { node: Lim
   }
   if (node.type === "table") return <div className="limits-table-wrap"><table><caption className="sr-only">Reference table</caption><tbody>{(node.rows ?? []).map((row, rowIndex) => <tr key={rowIndex}>{row.map((cell, cellIndex) => rowIndex === 0 ? <th scope="col" key={cellIndex}><RichText value={cell} /></th> : <td key={cellIndex}><RichText value={cell} /></td>)}</tr>)}</tbody></table></div>;
   if (node.type === "graph-specification") return <figure className={`limits-graph${node.graphId ? " limits-graph-visual" : " limits-graph-note"}`}>
-    {node.graphId ? <LimitsGraphCanvas graphId={node.graphId} label={graphAriaText(node.text ?? "Calculus graph for this lesson")} /> : null}
+    {node.graphId ? node.visual
+      ? <BetterGradesVisual visual={node.visual} />
+      : <LimitsGraphCanvas graphId={node.graphId} label={graphAriaText(node.text ?? "Calculus graph for this lesson")} />
+      : null}
     <figcaption><strong>{node.title ? <RichText value={node.title} /> : "Graph reading guide"}</strong>{node.text && <p><RichText value={node.text} /></p>}{node.children?.length ? <div className="limits-graph-exposition"><NodeChildren nodes={node.children} keyPrefix={keyPrefix} checks={checks} renderedCheckIds={renderedCheckIds} /></div> : null}</figcaption>
   </figure>;
   if (node.type === "quick-check") {
