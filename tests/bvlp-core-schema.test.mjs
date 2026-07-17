@@ -115,6 +115,15 @@ test("compiler rejects undeclared inferred capabilities and duplicate compilatio
   spec.requiredCapabilities = ["static-fallback", "cartesian-axes"];
   assert.throws(() => compileVisualSpec(spec), /function-paths/);
   assert.throws(() => compileVisualSpecs([makeVisualSpec(), makeVisualSpec()]), /duplicated/);
+
+  const latex = cloneFixture(makeVisualSpec());
+  latex.layers[0].geometry.expression = { format: "latex", expressionLatex: "x" };
+  assert.throws(
+    () => compileVisualSpec(latex, {
+      compileLatex: () => ({ type: "variable", name: "undeclared" }),
+    }),
+    /not allowlisted/,
+  );
 });
 
 test("capability inference is derived from scene primitives and controls", () => {

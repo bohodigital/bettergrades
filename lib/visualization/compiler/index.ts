@@ -72,18 +72,19 @@ function compileLayerExpressions(
   }
   if (!value || typeof value !== "object") return value;
   const record = value as Record<string, unknown>;
+  const validationOptions = {
+    maxDepth: spec.performance?.maxAstDepth ?? DEFAULT_PERFORMANCE_HINTS.maxAstDepth,
+    maxNodes: spec.performance?.maxAstNodes ?? DEFAULT_PERFORMANCE_HINTS.maxAstNodes,
+    maxOperations: spec.performance?.maxOperationsPerEvaluation ?? DEFAULT_PERFORMANCE_HINTS.maxOperationsPerEvaluation,
+    allowedVariables: [
+      ...spec.coordinateSpace.variables,
+      ...spec.controls.flatMap((control) =>
+        "parameter" in control ? [control.parameter] : [],
+      ),
+    ],
+  };
   if (record.format === "ast" && record.ast !== undefined) {
-    return validateNumericAst(record.ast, {
-      maxDepth: spec.performance?.maxAstDepth ?? DEFAULT_PERFORMANCE_HINTS.maxAstDepth,
-      maxNodes: spec.performance?.maxAstNodes ?? DEFAULT_PERFORMANCE_HINTS.maxAstNodes,
-      maxOperations: spec.performance?.maxOperationsPerEvaluation ?? DEFAULT_PERFORMANCE_HINTS.maxOperationsPerEvaluation,
-      allowedVariables: [
-        ...spec.coordinateSpace.variables,
-        ...spec.controls.flatMap((control) =>
-          "parameter" in control ? [control.parameter] : [],
-        ),
-      ],
-    });
+    return validateNumericAst(record.ast, validationOptions);
   }
   if (record.format === "latex" && typeof record.expressionLatex === "string") {
     if (!options.compileLatex) {
@@ -94,7 +95,10 @@ function compileLayerExpressions(
         context.layerId,
       );
     }
-    return options.compileLatex({ ...context, expressionLatex: record.expressionLatex });
+    return validateNumericAst(
+      options.compileLatex({ ...context, expressionLatex: record.expressionLatex }),
+      validationOptions,
+    );
   }
   return Object.fromEntries(
     Object.entries(record).map(([key, child]) => [
