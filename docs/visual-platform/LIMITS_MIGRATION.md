@@ -93,6 +93,24 @@ white-on-white interaction-toolbar regression; `5a1a13d` fixed it. The mobile
 recheck measured dark background `rgb(19, 26, 23)`, light text
 `rgb(237, 241, 233)`, and a 44 by 44 control.
 
+## Route-scoped study placements and label layout
+
+The canonical table above remains the exact source migration map: every one of
+the 13 scenes is still requested and delivered once by its authored graph node.
+The 2026-07-17 editorial pass additionally reuses verified public scenes as
+route-scoped study stops on selected text-heavy pages. These wrappers carry a
+page-specific heading and explanation, never a second specification, renderer,
+or source expression. `verifyPublicProjection` validates their public safety,
+manifest metadata, static asset identity, and route-local uniqueness.
+
+The same pass made generated layer labels deterministic and collision-aware.
+Each static label publishes a bounded `data-bvlp-label-box`; the release test
+asserts that boxes do not overlap within an asset and never escape the SVG.
+Interactive 2D now renders labeled axes and uses the same bounded placement
+strategy for authored labels. Full rationale, answer-reveal provenance, and
+route placement inventory are in
+`docs/limits-unit/EDITORIAL_VISUAL_POLISH_2026-07-17.md`.
+
 ## Remaining gates
 
 Parity requires correct objects/functions/domains/discontinuities/open and
@@ -101,9 +119,13 @@ meaning, valid print, usable desktop/mobile, no raw source, and preserved
 instructional purpose. It does not require pixel identity.
 
 The old Limits-specific renderer is removed, so there are not two permanent
-architectures. Local migration and browser parity are complete through
-`dee8fd9`. The cache-only Tectonic 0.16.9 compile produced a 175-page candidate
+architectures. The prior migration release was completed in `af95228`, with
+owner-only preview, production deployment, and live QA recorded by its release
+work order. The cache-only Tectonic 0.16.9 compile produced a 175-page candidate
 PDF with no fatal or unresolved errors; its full terminology scan and 19-page
-rendered inspection pass. Owner-only Sites preview and production deployment/live QA remain
-open. Rollback uses the prior immutable deployment or a source revert; it does
-not restore a duplicate runtime architecture.
+rendered inspection pass. This editorial pass retains the same release gates
+and rollback design. Its exact commit, preview, deployment, live QA, and
+rollback evidence belong to
+`WO-2026-07-17-BETTERGRADES-LIMITS-EDITORIAL-VISUAL-POLISH-001`; rollback uses
+the prior immutable deployment or a source revert and does not restore a
+duplicate runtime architecture.

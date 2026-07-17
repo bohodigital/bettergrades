@@ -41,7 +41,10 @@ export function LimitsUnitMap({ showSupporting = true, topicPage = false }: { sh
               <div><span>{String(chapter.from).padStart(2, "0")}–{String(chapter.to).padStart(2, "0")}</span><h3>{chapter.title}</h3></div>
               <p>{chapter.description}</p>
             </header>
-            <p className="limits-chapter-lens"><strong>Reading lens:</strong> {chapter.lens}</p>
+            <aside className="limits-reading-lens limits-map-lens" aria-label={`${chapter.title} reading lens`}>
+              <span>Reading lens</span>
+              <p>{chapter.lens}</p>
+            </aside>
             <ol>
               {chapter.routes.map((route) => (
                 <li key={route.path}>

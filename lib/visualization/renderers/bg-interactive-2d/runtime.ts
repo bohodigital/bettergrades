@@ -53,10 +53,10 @@ export function makePlotTransform(
   width: number,
   height: number,
 ): PlotTransform {
-  const left = 52;
-  const top = 18;
-  const right = 18;
-  const bottom = 42;
+  const left = 64;
+  const top = 28;
+  const right = 28;
+  const bottom = 56;
   const innerWidth = Math.max(1, width - left - right);
   const innerHeight = Math.max(1, height - top - bottom);
   const xSpan = viewport.xMax - viewport.xMin;

@@ -32,6 +32,10 @@ export type LimitsUnitChapter = {
   title: string;
   description: string;
   lens: string;
+  mentalModel: string;
+  decision: string;
+  commonTrap: string;
+  checkpoint: string;
   routes: LimitsUnitRoute[];
 };
 export const limitsUnitChapters: LimitsUnitChapter[];

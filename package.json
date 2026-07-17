@@ -8,10 +8,12 @@
   },
   "scripts": {
     "dev": "vinext dev",
-    "build": "corepack pnpm run visuals:check && node tools/generate-glossary-artifacts.mjs && vinext build",
+    "build": "corepack pnpm run answers:check && corepack pnpm run visuals:check && node tools/generate-glossary-artifacts.mjs && vinext build",
     "start": "vinext start",
     "build:pages": "corepack pnpm run build && node tools/prepare-pages-build.mjs",
     "article:compile": "node tools/article-source.mjs",
+    "answers:import": "node tools/import-limits-exercise-answers.mjs && node tools/import-limits-exam-answer-keys.mjs",
+    "answers:check": "node tools/import-limits-exercise-answers.mjs --check",
     "glossary:generate": "node tools/generate-glossary-artifacts.mjs",
     "visuals:compile": "node tools/visualization/compile-visuals.mjs",
     "visuals:check": "node tools/visualization/compile-visuals.mjs --check",

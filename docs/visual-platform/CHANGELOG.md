@@ -1,5 +1,18 @@
 # BVLP changelog
 
+## 2026-07-17 — Limits editorial and visual polish
+
+- Added route-scoped study placements of existing verified scenes on eleven
+  previously text-heavy lessons and practice pages without expanding the exact
+  13-scene canonical migration inventory.
+- Added deterministic collision-aware label layout metadata to generated SVGs,
+  plus leader lines for moved annotations.
+- Added labeled axes, ticks, bounded label placement, larger margins, and clearer
+  controls to BetterGrades Interactive 2D.
+- Centered and width-bounded canonical and companion visual containers.
+- Added a verifier path for companion scene safety and a generated-asset overlap
+  test. See `docs/limits-unit/EDITORIAL_VISUAL_POLISH_2026-07-17.md`.
+
 ## Unreleased
 
 - Established the infrastructure-only BVLP documentation and decision record.

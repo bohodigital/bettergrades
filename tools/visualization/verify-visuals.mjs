@@ -317,7 +317,29 @@ export async function verifyPublicProjection(manifest, { root = projectRoot } = 
       assertPublicVisualSafety(node.visual, id);
     }
 
-    if (deliveredNodes.length) {
+    const companionVisuals = projection.companionVisuals ?? [];
+    const companionIds = companionVisuals.map((companion) => companion.visual?.id);
+    if (new Set(companionIds).size !== companionIds.length) {
+      fail(`public route ${route.path} repeats a companion visual.`);
+    }
+    for (const companion of companionVisuals) {
+      const id = companion.visual?.id;
+      if (!expectedVisualIdSet.has(id)) fail(`public route ${route.path} delivers out-of-scope companion visual ${id}.`);
+      if (companion.id !== id || typeof companion.heading !== "string" || typeof companion.explanation !== "string") {
+        fail(`public route ${route.path} has an invalid companion visual wrapper.`);
+      }
+      const entry = manifestById.get(id);
+      if (companion.visual.selectedRenderer !== entry.selectedRenderer || companion.visual.hydration !== entry.hydration) {
+        fail(`companion visual metadata for ${id} on ${route.path} does not match its manifest entry.`);
+      }
+      if (JSON.stringify(companion.visual.staticAsset) !== JSON.stringify(entry.staticAsset)) {
+        fail(`companion static asset projection for ${id} on ${route.path} does not match its manifest entry.`);
+      }
+      assertPublicVisualSafety(companion.visual, id);
+      inspectForPublicLeaks(companion, `companion visual ${id} on ${route.path}`, { rejectRawLatex: true, rejectSourceFile: true });
+    }
+
+    if (deliveredNodes.length || companionVisuals.length) {
       inspectForPublicLeaks(projection, `public route ${route.path}`);
     }
   }
