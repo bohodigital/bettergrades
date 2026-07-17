@@ -41,9 +41,9 @@ function ResultCard({ result, mode, activeProblem }: { result: AlgebraResult; mo
     : result.status === "incorrect"
       ? "Different"
       : result.status === "simplified"
-        ? "Simplified locally"
+        ? "Simplified"
         : result.status === "evaluated"
-          ? "Calculated locally"
+          ? "Calculated"
           : "Checker note";
 
   return (
@@ -131,7 +131,7 @@ export function AlgebraExpressionChecker() {
   const normalizedPreview = normalizeCalculatorInput(expression);
   const missingRequiredInput = !expression.trim() || (mode === "compare" && !comparison.trim());
   const submitLabel = checking
-    ? "Working in your browser…"
+    ? "Working securely…"
     : mode === "practice"
       ? "Check my answer →"
       : mode === "simplify"
@@ -145,8 +145,8 @@ export function AlgebraExpressionChecker() {
       <section className="tool-hero algebra-tool-hero section-pad">
         <p className="eyebrow">Tools · Mathematics · Algebra</p>
         <h1>Type it messy.<br /><em>See it clearly.</em></h1>
-        <p>Check an answer, simplify an expression, compare two forms, or substitute values. The page is usable immediately; the symbolic engine loads only when you start working.</p>
-        <div className="tool-badges"><span>Runs in your browser</span><span>No account</span><span>Keyboard or LaTeX</span><span>Conservative equivalence checks</span></div>
+        <p>Check an answer, simplify an expression, compare two forms, or substitute values. A bounded request goes to the Better Grades calculator service only when you submit your work.</p>
+        <div className="tool-badges"><span>Bounded first-party request</span><span>No account</span><span>Keyboard or LaTeX</span><span>Conservative equivalence checks</span></div>
       </section>
 
       <section className="algebra-checker-layout section-pad">
@@ -258,7 +258,7 @@ export function AlgebraExpressionChecker() {
           <div className="scope-card"><span>What works now</span><p>Polynomial arithmetic, distributing, combining like terms, expansion, factoring checks, expression comparison, and numeric substitution.</p></div>
           <div className="scope-card warning"><span>Deliberate boundary</span><p>It does not grade equations, inequalities, solution sets, units, domain restrictions, or answers that require a particular form.</p></div>
           {mode === "practice" && <><h2>Pick a problem</h2><ProblemPicker active={activeProblem} onPick={chooseProblem} /><div className="hint-card"><span>Hint</span><p>{activeProblem.hint}</p></div></>}
-          <p className="local-note"><b>Private by design:</b> parsing and comparison happen on this device. Nothing you type is sent to a grading API.</p>
+          <p className="local-note"><b>Private by design:</b> your entry is sent only to the same-origin Better Grades calculator for transient processing. This feature does not log or store the expression.</p>
         </aside>
       </section>
     </>

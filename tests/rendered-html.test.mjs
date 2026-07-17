@@ -418,7 +418,7 @@ test("algebra expression checker is a registered browser-side tool", async () =>
   assert.match(html, /Simplify/);
   assert.match(html, /Compare/);
   assert.match(html, /Evaluate/);
-  assert.match(html, /Runs in your browser/);
+  assert.match(html, /Bounded first-party request/);
   assert.match(html, /Keyboard or LaTeX/);
   assert.match(html, /Factor completely/);
   assert.match(html, /id="algebra-expression"/);

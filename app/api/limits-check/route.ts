@@ -1,5 +1,5 @@
 import unitPayload from "../../../content/limits-continuity/unit.json" with { type: "json" };
-import { compareLimitAnswer } from "../../../lib/calculus/limits-unit-core.mjs";
+import { compareLimitAnswer } from "../../../lib/calculus/limits-unit-checker.server.mjs";
 
 const MAX_BODY_BYTES = 16 * 1024;
 const MAX_ID_LENGTH = 128;

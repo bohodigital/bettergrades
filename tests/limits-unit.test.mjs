@@ -6,10 +6,10 @@ import test from "node:test";
 import unitPayload from "../content/limits-continuity/unit.json" with { type: "json" };
 import {
   LIMITS_UNIT_PREFIX,
-  compareLimitAnswer,
   parseLimitsUnitPage,
   validateLimitsUnitPayload,
 } from "../lib/calculus/limits-unit-core.mjs";
+import { compareLimitAnswer } from "../lib/calculus/limits-unit-checker.server.mjs";
 import { getLimitsUnitPage } from "../lib/calculus/limits-unit.mjs";
 import { isLimitsUnitPath, limitsUnitRoutes, limitsUnitSearchRecords } from "../lib/calculus/limits-unit-index.mjs";
 
