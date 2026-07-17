@@ -19,6 +19,8 @@ const ALLOWED_FIELDS = {
 
 type AlgebraAction = keyof typeof ALLOWED_FIELDS;
 type InputBody = Record<string, unknown>;
+type InputResult = { body: InputBody } | { error: string; status: number };
+type BoundedStringResult = { value: string } | { error: string; status: number };
 
 function jsonResponse(body: unknown, init?: ResponseInit) {
   const headers = new Headers(init?.headers);
@@ -30,7 +32,7 @@ function errorResponse(error: string, status: number) {
   return jsonResponse({ error }, { status });
 }
 
-async function readInput(request: Request) {
+async function readInput(request: Request): Promise<InputResult> {
   const mediaType = request.headers.get("content-type")?.split(";", 1)[0].trim().toLowerCase();
   if (mediaType !== "application/json") return { error: "Content-Type must be application/json.", status: 415 } as const;
 
@@ -54,7 +56,7 @@ async function readInput(request: Request) {
   }
 }
 
-function readBoundedString(body: InputBody, field: string, maximum: number) {
+function readBoundedString(body: InputBody, field: string, maximum: number): BoundedStringResult {
   const value = body[field];
   if (typeof value !== "string") return { error: `${field} must be a string.`, status: 400 } as const;
   if (value.length > maximum) return { error: `${field} is too long.`, status: 413 } as const;
