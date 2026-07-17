@@ -24,3 +24,14 @@ missing sitemap/canonical/robots
 or analytics metadata, redirect mismatches, missing graph/check associations,
 answer leakage, print evidence gaps, or screenshot failure. It never deploys or
 changes production.
+
+This is a historical baseline-capture tool, not the BVLP release verifier. Its
+expected route, sitemap, check, and visual counts are deliberately frozen to the
+accepted `eb665cef15c58592a7e99c979af6d04fbc823eea` snapshot. BVLP uses a
+separate `verify:visuals` command whose expectations are derived from the
+versioned visual registry and migration manifest rather than these constants.
+
+Known baseline limitations retained for auditability are recorded in
+`docs/visual-platform/integration-gate.md`. In particular, the snapshot does not
+itself attest an immutable production deployment, browser console/network
+health, route-level visual payloads, or a complete answer-value leak scan.
