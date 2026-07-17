@@ -17,7 +17,7 @@
     "visuals:check": "node tools/visualization/compile-visuals.mjs --check",
     "verify:visuals": "corepack pnpm test && node tools/visualization/verify-visuals.mjs",
     "test": "corepack pnpm run build:pages && node --test tests/*.test.mjs",
-    "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --ignore-pattern worker-configuration.d.ts",
+    "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --ignore-pattern .wrangler --ignore-pattern worker-configuration.d.ts",
     "db:generate": "drizzle-kit generate"
   },
   "dependencies": {
