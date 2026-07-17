@@ -66,6 +66,11 @@ test("Pages package contains the advanced Worker and static assets", async () =>
       /canonicalAnswer|workedFeedbackLatex|@cortex-js\/compute-engine|\bComputeEngine\b/,
       "assessment answers, worked feedback, and the server-only Cortex parser must not enter client JavaScript",
     );
+    assert.doesNotMatch(
+      source,
+      /sourceFile:["'`]calculus__[^"'`]*\.tex["'`]/,
+      "route-source filenames must not enter client JavaScript",
+    );
   }
   const appAssetName = clientAssets.find((name) => /^BetterGradesApp-.*\.js$/.test(name));
   assert.ok(appAssetName, "BetterGradesApp client asset is present");
