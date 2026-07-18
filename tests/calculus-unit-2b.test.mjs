@@ -140,6 +140,19 @@ test("Unit 2B visuals use 27 static scenes, six core interactives, and one expli
   }
 });
 
+test("the explicit JSXGraph ladder keeps a complete keyboard and accessibility contract", async () => {
+  const source = await readFile(new URL("../app/JsxGraphLadder.tsx", import.meta.url), "utf8");
+  assert.match(source, /aria-label="Ladder foot distance from the wall"/);
+  assert.match(source, /aria-valuetext=/);
+  assert.match(source, /onKeyDown=\{handleDistanceKey\}/);
+  for (const key of ["ArrowDown", "ArrowLeft", "ArrowRight", "ArrowUp", "Home", "End", "PageDown", "PageUp"]) {
+    assert.match(source, new RegExp(`\\b${key}:`));
+  }
+  assert.match(source, /event\.preventDefault\(\)/);
+  assert.match(source, /footRef\.current\?\.moveTo/);
+  assert.match(source, /boardRef\.current\?\.update\(\)/);
+});
+
 test("every curated substantial application model carries the complete modeling contract", () => {
   assert.equal(applicationModels.models.length, 11);
   const routes = new Set(unitRoutes.map((route) => route.path));

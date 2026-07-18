@@ -30,9 +30,15 @@ The first owner-only Sites preview (version 24, source commit `75363212dfc9fbe4c
 
 The correction anchors vertical-axis titles at the plot's left boundary and lets the text extend inward. Limits, Unit 2A, and Unit 2B content-addressed SVG fallbacks were regenerated because the shared renderer owns all three collections. After regeneration, Windows again passed ESLint, TypeScript, the production build and Pages package, 159/159 core tests, 3/3 exhaustive calculus route tests, and 26/26 shell route tests: **188/188 passing**. Version 24 is not an acceptable release artifact and must be replaced by a preview built from the corrected commit.
 
+The replacement owner-only Sites preview (version 25, exact source `660d02de27827b8fb6c499a535c96d4a55958ca8`) passed the desktop and mobile map, Section/Lens, static-visual, native-interactive, answer-reveal, exam-key, metadata, analytics, indexability, and search-identity checks. The explicitly activated JSXGraph ladder also loaded its constrained board while retaining the complete static fallback. That review nevertheless found that the ladder range input relied only on browser-native keyboard stepping even though its authored accessibility contract promises a keyboard-operable endpoint. Version 25 was therefore **rejected** rather than promoted.
+
+The ladder now implements explicit Arrow, Page, Home, and End behavior, updates the constrained point and board through one bounded path, exposes a descriptive control label and live value text, and has a source-contract regression test. After this correction, Windows passed ESLint, TypeScript, the production build and Pages package, 160/160 core tests, 3/3 exhaustive calculus route tests, and 26/26 shell route tests: **189/189 passing**. A new private preview is required from the corrected commit.
+
 ## Pi validation
 
 The isolated ARM worktree `/srv/local1/worktrees/bettergrades-unit-2b-v3` at implementation commit `897a6f064f2480717eec403bed28397dc013bb86` passed the frozen install, ESLint, TypeScript, exact import/visual checks, production Vinext build, advanced-worker package, 159/159 inexpensive tests, 3/3 calculus-unit route renders, and 26/26 site-shell route renders. Total: **188/188 passing on the Pi**. The final render process left 6.1 GiB available with zero swap use. Canonical `/srv/local1/repos/bettergrades` remained clean on the accepted Unit 2A baseline during this validation.
+
+The exact renderer-corrected candidate `660d02de27827b8fb6c499a535c96d4a55958ca8` (tree `67a626da8a5da4438ddc0ae5d017626d975039fc`) was then revalidated independently in the same isolated Pi worktree. Frozen install, ESLint, TypeScript, build, Pages package, 159/159 core tests, 3/3 calculus route tests, and 26/26 shell route tests all passed again: **188/188**. The host reported 6.3 GiB available after validation; 267 MiB of the configured 2 GiB swap was in use system-wide. Canonical `main` was still the clean accepted Unit 2A baseline.
 
 ## Payload and performance gates
 

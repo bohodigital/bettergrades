@@ -49,8 +49,10 @@
     "pagesPackage": "passed",
     "tests": 188,
     "passed": 188,
-    "availableMemoryAfter": "6.1 GiB",
-    "swapUsedAfter": "0 B"
+    "availableMemoryAfter": "6.3 GiB",
+    "swapUsedAfter": "267 MiB",
+    "validatedCommit": "660d02de27827b8fb6c499a535c96d4a55958ca8",
+    "validatedTree": "67a626da8a5da4438ddc0ae5d017626d975039fc"
   },
   "piPrint": {
     "compiler": "Tectonic 0.16.9",
@@ -60,7 +62,25 @@
     "extractableTextCharacters": 210790,
     "visualReview": "passed"
   },
-  "sites": null,
+  "sites": {
+    "rejectedVersions": [
+      {
+        "versionNumber": 24,
+        "sourceCommit": "75363212dfc9fbe4c2cead19969fa1f46e550312",
+        "reason": "Shared static-renderer vertical-axis label clipped at the plot edge."
+      },
+      {
+        "versionNumber": 25,
+        "versionId": "appgprj_6a52d8b9848c81918fa5ff88a08eece0~appgver_11ec7486981c8191bf3e9bb58d54ee58",
+        "deploymentId": "appgdep_6a5b43586838819194c5a72f5473c7e2",
+        "sourceCommit": "660d02de27827b8fb6c499a535c96d4a55958ca8",
+        "archiveSha256": "0074ee2aefbe89675a4a2becc11abe8ed6dcb6f556d5d7d1ff87ec899facda8e",
+        "archiveStorageHash": "sha256:e654db363c86ac5e30793e80e9aab86c84e6b6921e9524b762db6459b46c0846",
+        "reason": "Explicit JSXGraph ladder keyboard behavior was not independently enforced."
+      }
+    ],
+    "acceptedVersion": null
+  },
   "pullRequest": null,
   "mergeCommit": null,
   "mergeTree": null,

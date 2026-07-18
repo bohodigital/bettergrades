@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState, type KeyboardEvent } from "react";
 import type { PublicCompiledScene } from "../lib/visualization/schema/index.ts";
 
 type Board = { create: (kind: string, parents: unknown[], attributes?: Record<string, unknown>) => unknown; update: () => void };
@@ -60,11 +60,28 @@ export function JsxGraphLadder({ scene, descriptionId, onReady, onError }: { sce
     boardRef.current?.update();
   }
 
+  function handleDistanceKey(event: KeyboardEvent<HTMLInputElement>) {
+    const nextByKey: Record<string, number> = {
+      ArrowDown: distance - 0.25,
+      ArrowLeft: distance - 0.25,
+      ArrowRight: distance + 0.25,
+      ArrowUp: distance + 0.25,
+      End: 9.5,
+      Home: 1,
+      PageDown: distance - 1,
+      PageUp: distance + 1,
+    };
+    const next = nextByKey[event.key];
+    if (next === undefined) return;
+    event.preventDefault();
+    updateDistance(next);
+  }
+
   return <div className="bvlp-jsxgraph-enhancement">
     {!active ? <button className="button button-ink" type="button" onClick={() => void activate()} disabled={loading}>{loading ? "Loading constrained geometry…" : "Activate the sliding ladder"}</button> : null}
     <div id={boardId} className="bvlp-jsxgraph-board" aria-label="Interactive sliding ladder constrained to a wall and ground" />
     {active ? <label className="bvlp-jsxgraph-control">Ladder foot x
-      <input type="range" min="1" max="9.5" step="0.25" value={distance} onChange={(event) => updateDistance(Number(event.target.value))} />
+      <input type="range" min="1" max="9.5" step="0.25" value={distance} aria-label="Ladder foot distance from the wall" aria-valuetext={`x = ${distance.toFixed(2)}; y = ${Math.sqrt(Math.max(0, 100 - distance ** 2)).toFixed(2)}`} style={{ minHeight: 44, touchAction: "manipulation" }} onChange={(event) => updateDistance(Number(event.target.value))} onKeyDown={handleDistanceKey} />
       <output aria-live="polite">x = {distance.toFixed(2)}; y = {Math.sqrt(Math.max(0, 100 - distance ** 2)).toFixed(2)}</output>
     </label> : null}
   </div>;
