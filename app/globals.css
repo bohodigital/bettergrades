@@ -1161,6 +1161,23 @@ h1 em, h2 em { color: var(--brand); font-family: var(--serif); font-weight: 500;
 
 .calculus-unit-page .breadcrumbs > span { display: inline-flex; gap: 8px; align-items: center; }
 .calculus-unit-page .breadcrumbs i { color: var(--line-dark); font-style: normal; }
+.calculus-unit-page .limits-unit-hero .breadcrumbs { margin-bottom: 30px; }
+.calculus-unit-switcher { width: min(100%, 1040px); margin: 0 0 46px; padding: 16px; border: 1px solid var(--line); border-radius: 18px; display: grid; grid-template-columns: minmax(190px, .65fr) minmax(0, 1.35fr); gap: 16px; align-items: stretch; background: color-mix(in srgb, var(--surface), var(--paper) 28%); box-shadow: 0 18px 44px color-mix(in srgb, var(--ink), transparent 94%); }
+.calculus-unit-switcher-intro { padding: 12px 14px; display: flex; flex-direction: column; justify-content: center; }
+.calculus-unit-switcher-intro > span { color: var(--brand); font-size: 11px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+.calculus-unit-switcher-intro > strong { margin-top: 5px; font-size: 1.15rem; }
+.calculus-unit-switcher-intro > p { margin: 9px 0 0; color: var(--muted); font-family: var(--serif); font-size: 14px; line-height: 1.48; }
+.calculus-unit-switcher-links { min-width: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.calculus-unit-switcher-links > a { min-width: 0; padding: 15px 16px; border: 1px solid var(--line); border-radius: 13px; display: grid; align-content: center; gap: 4px; background: var(--paper); color: var(--ink); transition: border-color .16s ease, background .16s ease, transform .16s ease; }
+.calculus-unit-switcher-links > a:hover { border-color: var(--brand); transform: translateY(-1px); }
+.calculus-unit-switcher-links > a:focus-visible { outline: 3px solid color-mix(in srgb, var(--brand), transparent 50%); outline-offset: 3px; }
+.calculus-unit-switcher-links > a.is-current { border-color: var(--brand); background: var(--brand-soft); box-shadow: inset 4px 0 0 var(--brand); }
+.calculus-unit-switcher-links small { color: var(--brand); font-size: 11px; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
+.calculus-unit-switcher-links b { overflow-wrap: anywhere; font-size: 16px; }
+.calculus-unit-switcher-links span { color: var(--muted); font-size: 12px; line-height: 1.4; }
+.calculus-unit-switcher.is-compact { margin-top: 28px; margin-bottom: 34px; grid-template-columns: 1fr; }
+.calculus-unit-switcher.is-compact .calculus-unit-switcher-intro { padding-block: 6px; }
+.calculus-unit-switcher.is-compact .calculus-unit-switcher-intro > p { max-width: 640px; }
 .calculus-prerequisites { margin: 34px 0 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 .calculus-prerequisites > div { min-width: 0; padding: clamp(22px, 3vw, 30px); border: 1px solid var(--line); border-radius: 16px; background: var(--surface); }
 .calculus-prerequisites h3 { margin: 8px 0 12px; font-size: clamp(1.35rem, 2.5vw, 1.9rem); }
@@ -1192,6 +1209,7 @@ h1 em, h2 em { color: var(--brand); font-family: var(--serif); font-weight: 500;
   .limits-support-grid { grid-template-columns: 1fr; }
   .limits-overview-guides { grid-template-columns: 1fr; }
   .calculus-prerequisites { grid-template-columns: 1fr; }
+  .calculus-unit-switcher { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 520px) {
@@ -1217,6 +1235,10 @@ h1 em, h2 em { color: var(--brand); font-family: var(--serif); font-weight: 500;
   .limits-reading-lens > span { padding-top: 0; }
   .limits-overview-header > div { align-items: flex-start; flex-direction: column; gap: 8px; }
   .limits-overview-footer { grid-template-columns: 1fr; }
+  .calculus-unit-switcher { margin-bottom: 34px; padding: 12px; }
+  .calculus-unit-switcher-intro { padding: 8px 6px; }
+  .calculus-unit-switcher-links { grid-template-columns: 1fr; }
+  .calculus-unit-switcher-links > a { padding: 14px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1224,6 +1246,7 @@ h1 em, h2 em { color: var(--brand); font-family: var(--serif); font-weight: 500;
 }
 
 @media print {
+  .calculus-unit-switcher { display: none !important; }
   .bvlp-visual.is-interactive-ready .bvlp-static-visual { display: block !important; }
   .bvlp-interactive-slot { display: none !important; }
   .bvlp-long-description { break-inside: avoid; }

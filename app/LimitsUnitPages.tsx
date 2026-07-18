@@ -215,8 +215,8 @@ function ExamAnswerKey({ page }: { page: LimitsUnitPublicPage }) {
 
 function CourseNavigation({ page }: { page: LimitsUnitPublicPage }) {
   return <nav className="limits-sequence" aria-label="Limits and Continuity sequence">
-    {page.previous ? <a href={page.previous.path}><small>← Previous · {page.previous.coreSequenceIndex} of 47</small><b>{page.previous.h1}</b></a> : <span />}
-    {page.next ? <a href={page.next.path}><small>Next · {page.next.coreSequenceIndex} of 47 →</small><b>{page.next.h1}</b></a> : page.returnRoute && page.returnRoute.path !== page.route.path ? <a href={page.returnRoute.path}><small>Return to sequence →</small><b>{page.returnRoute.h1}</b></a> : <a href={limitsUnitRoutes[0].path}><small>Unit overview →</small><b>Limits and Continuity</b></a>}
+    {page.previous ? <a href={page.previous.path}><small>← Previous in the textbook</small><b>{page.previous.h1}</b></a> : <span />}
+    {page.next ? <a href={page.next.path}><small>Next in the textbook →</small><b>{page.next.h1}</b></a> : page.returnRoute && page.returnRoute.path !== page.route.path ? <a href={page.returnRoute.path}><small>Return to sequence →</small><b>{page.returnRoute.h1}</b></a> : <a href={limitsUnitRoutes[0].path}><small>Unit overview →</small><b>Limits and Continuity</b></a>}
   </nav>;
 }
 
@@ -231,9 +231,9 @@ export function LimitsUnitPageContent({ page }: { page: LimitsUnitPublicPage }) 
       <nav className="breadcrumbs"><a href="/subjects/">Subjects</a><span>/</span><a href="/subjects/math/">Mathematics</a><span>/</span><a href="/subjects/math/calculus/">Calculus</a><span>/</span><a href="/subjects/math/calculus/limits-continuity/">Limits &amp; Continuity</a><span>/</span><span>{route.h1}</span></nav>
       <p className="eyebrow">Calculus I · Limits and Continuity · {labels[route.pageType] ?? route.pageType}</p>
       <h1>{route.h1}</h1><p>{route.description}</p>
-      <div className="limits-progress"><strong>Course progress</strong>{route.isCoreSequence ? <><span>{route.coreSequenceIndex} of 47 core pages</span><progress value={route.coreSequenceIndex ?? 0} max="47">{route.coreSequenceIndex} of 47</progress></> : <><span>Supporting resource</span><a href={page.returnRoute?.path ?? limitsUnitRoutes[0].path}>Return to the core path →</a></>}</div>
+      <div className="limits-progress"><strong>{route.isCoreSequence ? "Core textbook path" : "Supporting resource"}</strong><span>{route.isCoreSequence ? "Follow the sequence or choose a destination from the main unit map." : "Use this page when the main sequence reveals a specific question or skill gap."}</span>{route.pageType !== "hub" && <a href={page.returnRoute?.path ?? limitsUnitRoutes[0].path}>Return to the core path →</a>}</div>
     </header>
-    <div className="limits-unit-layout section-pad"><aside><strong>On this page</strong><span>{page.checks.length} interactive {page.checks.length === 1 ? "check" : "checks"}</span>{page.exerciseAnswers && <span>{page.exerciseAnswers.answers.length} answer reveals</span>}{answerKeyRoute && <a className="limits-key-aside" href={answerKeyRoute.path}>Exam answer key →</a>}<a href="/subjects/math/calculus/limits-continuity/">Main unit map →</a><a href={limitsUnitRoutes[0].path}>Full unit overview →</a><a href="/practice/math/calculus/">Calculus practice →</a></aside><div className="limits-unit-content">
+    <div className="limits-unit-layout section-pad"><aside><strong>On this page</strong><span>Explanation and interactive practice</span>{page.exerciseAnswers && <span>Attempt-gated answer reveals</span>}{answerKeyRoute && <a className="limits-key-aside" href={answerKeyRoute.path}>Exam answer key →</a>}<a href="/subjects/math/calculus/limits-continuity/">Main unit map →</a><a href={limitsUnitRoutes[0].path}>Full unit overview →</a><a href="/practice/math/calculus/">Calculus practice →</a></aside><div className="limits-unit-content">
       {route.pageType === "hub" ? <LimitsUnitMap /> : <TextbookOrientation page={page} />}
       <CompanionVisuals page={page} />
       {route.pageType === "exam" && answerKeyRoute && <section className="limits-exam-key-callout"><div><p className="eyebrow">Answer key published</p><h2>Finish first. Then check every answer.</h2><p>The complete key is online, numbered to match this exam, and linked to the verified source appendix.</p></div><a className="button button-ink" href={answerKeyRoute.path}>View the complete answer key →</a></section>}
