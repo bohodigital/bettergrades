@@ -25,7 +25,7 @@
 
 ## Pi validation
 
-The initial implementation bundle SHA-256 was `be62e4d83164547a2cedb1e1065a14b7fed661371407be44b8bd848e6fe57f44`. It fast-forwarded only the isolated Pi worktree. Frozen install, supply-chain postinstalls, answer checks, visual checks, lint, typecheck, and build passed there. The initial unconstrained full test run caused severe but temporary ARM memory pressure during the exhaustive 67-page render sweep; the process exited without mutating the canonical checkout, and the Pi recovered to 7.2 GiB available memory with no test process left. The release candidate changes the standard test command to `--test-concurrency=1`; the exact serial Pi rerun remains mandatory.
+The initial implementation bundle SHA-256 was `be62e4d83164547a2cedb1e1065a14b7fed661371407be44b8bd848e6fe57f44`. It fast-forwarded only the isolated Pi worktree. Frozen install, supply-chain postinstalls, answer checks, visual checks, lint, typecheck, and build passed there. The initial unconstrained full test run caused severe but temporary ARM memory pressure during the exhaustive 67-page render sweep; the process exited without mutating the canonical checkout, and the Pi recovered to 7.2 GiB available memory with no test process left. A serial rerun passed the full Unit 2A sweep but the combined general render-test process later reached Node's 2 GiB heap ceiling. The release candidate therefore uses both `--test-concurrency=1` and a separate Unit 2A rendered-route test process; the exact Pi rerun remains mandatory.
 
 ## Browser and release gates
 

@@ -22,7 +22,7 @@ The deployable Pages asset directory contains 74 files totaling 2,479,632 raw by
 
 Frozen dependency installation reuses the lockfile and the committed package build allowlist. ARM-native `sharp`, `workerd`, `esbuild`, and `unrs-resolver` postinstalls pass. Build and server-render tests are the controlling platform evidence; Windows workerd availability is not treated as production evidence.
 
-The first unconstrained Pi test attempt exhausted practical memory while concurrent Node test files reached the 67-route sweep. No test assertion had failed. The test script now fixes concurrency at one; the exact serial rerun is required before release.
+The first unconstrained Pi test attempt exhausted practical memory while concurrent Node test files reached the 67-route sweep. A serial rerun then passed the complete Unit 2A sweep but the long-lived general rendered-page process reached Node's 2 GiB heap limit afterward. The release suite now fixes concurrency at one and runs the 67-route Unit 2A sweep in a separate process so heap is released between route families; the exact isolated serial rerun is required before release.
 
 ## Remaining release measurement
 

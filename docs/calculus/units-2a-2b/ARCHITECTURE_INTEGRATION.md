@@ -37,4 +37,4 @@ The Limits implementation remains separately owned. Its release invariants conti
 
 ## Resource discipline learned from the Pi
 
-The exhaustive rendered-route test is intentionally serial (`--test-concurrency=1`). Parallel Node test workers created avoidable ARM memory pressure even though every individual gate was healthy. Serial execution preserves the same assertions, uses bounded memory, and is the controlling Raspberry Pi validation mode for Unit 2A and later units.
+The suite is intentionally serial (`--test-concurrency=1`), and Unit 2A's exhaustive 67-route render sweep runs in its own test file/process. Parallel Node workers created avoidable ARM memory pressure; serializing alone still let the already-large general rendered-page file retain enough heap to hit Node's 2 GiB default after the Unit 2A sweep had passed. Process isolation preserves the same assertions, releases heap between route families, and is the controlling Raspberry Pi validation mode for Unit 2A and later units.

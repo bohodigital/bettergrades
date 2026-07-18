@@ -14,4 +14,4 @@
 - Added full-route rendered HTML gates for raw TeX, broken math, missing visuals, duplicated checks, and malformed Lens blocks.
 - Split cumulative practice into 36 semantic exercise cards with 36 attempt-gated, server-only answers and added a three-pass practice workflow.
 - Suppressed three redundant printable-source graph placeholders while retaining their server ingestion record and the complete authored BVLP visuals.
-- Serialized the test runner to keep exhaustive route QA economical and reliable on the Raspberry Pi.
+- Serialized the test runner and isolated Unit 2A's exhaustive render sweep in its own process to keep route QA economical and reliable on the Raspberry Pi.

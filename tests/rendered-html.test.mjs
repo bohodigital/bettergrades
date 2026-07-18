@@ -408,31 +408,6 @@ test("all registry articles not superseded by a released unit render in their or
   }
 });
 
-test("all 67 Unit 2A pages render as clean textbook pages with no source notation", async () => {
-  assert.equal(calculusUnitRoutes.length, 67);
-  for (const route of calculusUnitRoutes) {
-    const response = await render(route.path);
-    assert.equal(response.status, 200, route.path);
-    const html = await response.text();
-    assert.match(html, /data-unit-id="calc-1-unit-2a-derivative-foundations-techniques"/, route.path);
-    const renderedTitle = route.title.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("'", "&#x27;").replaceAll('"', "&quot;");
-    assert.match(html, new RegExp(`<h1>${escapeRegExp(renderedTitle)}</h1>`), route.path);
-    assert.doesNotMatch(visibleText(html), /\\(?:begin|end|frac|varepsilon|textbf|emph|section|chapter|addplot|draw|node)\b|\$\$|\\[()[\]]/, route.path);
-    assert.doesNotMatch(html, /This equation could not be rendered safely|This visual is temporarily unavailable|class="katex-error"/, route.path);
-    assert.doesNotMatch(visibleText(html), /visual accompanies the complete printable source|Graph reading guide/, route.path);
-    const renderedCheckIds = [...html.matchAll(/data-check-id="([^"]+)"/g)].map((match) => match[1]);
-    assert.equal(renderedCheckIds.length, new Set(renderedCheckIds).size, `${route.path} renders each interactive check once`);
-    if (route.pageType !== "hub") {
-      assert.match(html, /Section overview/, route.path);
-      assert.match(html, /Reading lens/, route.path);
-    }
-    if (route.path.endsWith("/unit-2a-cumulative-practice/")) {
-      assert.equal((html.match(/Show supplied answer/g) ?? []).length, 36);
-      assert.match(html, /Work in three passes/);
-    }
-  }
-});
-
 test("vocabulary chips appear only on instructional detail pages", async () => {
   const includedPaths = [
     "/answers/calculus/integral-of-sec-cubed/",
