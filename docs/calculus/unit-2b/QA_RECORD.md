@@ -40,6 +40,8 @@ The isolated ARM worktree `/srv/local1/worktrees/bettergrades-unit-2b-v3` at imp
 
 The exact renderer-corrected candidate `660d02de27827b8fb6c499a535c96d4a55958ca8` (tree `67a626da8a5da4438ddc0ae5d017626d975039fc`) was then revalidated independently in the same isolated Pi worktree. Frozen install, ESLint, TypeScript, build, Pages package, 159/159 core tests, 3/3 calculus route tests, and 26/26 shell route tests all passed again: **188/188**. The host reported 6.3 GiB available after validation; 267 MiB of the configured 2 GiB swap was in use system-wide. Canonical `main` was still the clean accepted Unit 2A baseline.
 
+The final interaction-hardened candidate `2363b95f8672baa62394c9a944e8c0dbf0c6f2a8` (tree `4e39203bd0bba04652061eaf63ffa22a4a2f0834`) passed the entire ARM sequence once more: frozen install, ESLint, TypeScript, production build, Pages package, 160/160 core tests, 3/3 exhaustive calculus route tests, and 26/26 shell route tests. Total: **189/189 passing on the Pi**. The host reported 6.3 GiB available afterward; 389 MiB of the configured 2 GiB swap was in use system-wide. Canonical `main` remained clean on the accepted Unit 2A baseline.
+
 ## Payload and performance gates
 
 | Artifact | Raw bytes | Gzip bytes |
@@ -56,18 +58,19 @@ The advanced Pages package contains 184 files totaling 23,611,615 raw bytes. Uni
 
 A deterministic 34-item contact grid was reviewed at desktop scale after authoring. Each graph or diagram was checked for the intended mathematical relationship, centered composition, bounded labels, collision-free annotations, units where applicable, color-independent cues, accessible title/description, and static/no-JavaScript meaning. Mathematical and label defects found in the first review were corrected and the affected assets were regenerated and rechecked.
 
-## Browser gates required before acceptance
+## Accepted owner-only Sites browser validation
 
-The owner-only Sites candidate and exact public deployment must verify:
+Sites version 26 is the accepted private review candidate. It was saved from exact source commit `2363b95f8672baa62394c9a944e8c0dbf0c6f2a8` and deployed only to the existing custom access policy: one allowed owner and zero groups. Browser-visible checks established:
 
-- map-first hub with nine distinct Section/Reading Lens groups and explorations below;
-- no learner-visible `Chapter`, raw TeX, math errors, loading shell, or horizontal overflow;
-- representative static and BetterGrades Interactive 2D visuals on desktop and an actual 390 by 844 viewport;
-- JSXGraph static fallback before activation, lazy network load only after activation, usable ladder/slider afterward, and no console error;
-- empty answer reveal blocked, then a real attempt revealing only the selected answer;
-- Practice Exams A and B each show 14 problems and prominent key links;
-- both key routes show 14 numbered answers and Exam B answer 14 includes the required modeling critique;
-- unique canonical, `index, follow`, analytics, sitemap, robots, greater-or-equal icons, Organization logo/image JSON-LD, security headers, and custom 404;
-- Limits and Unit 2A regression samples remain live.
+- the map-first hub contains nine distinct Section/Reading Lens groups, assessments and prominent keys after the map, then optional explorations;
+- no learner-visible `Chapter`, raw TeX, noindex, loading shell, or horizontal overflow on the audited routes;
+- the corrected position/velocity/acceleration visual loads at 960 by 558 source resolution, is exactly centered, keeps the complete `aligned values` title inside the plot, and scales to 315 pixels within a 375-pixel mobile layout;
+- all six BetterGrades Interactive 2D lessons enhanced successfully, exposed bounded controls or layer toggles, responded to interaction, and retained zero horizontal overflow;
+- the JSXGraph ladder retained its complete static fallback before activation, created the constrained SVG board only after explicit activation, and exposed the labeled slider afterward;
+- ArrowLeft changed the ladder from `x=8.00, y=6.00` to `x=7.75, y=6.32`; Home changed it to `x=1.00, y=9.95`; End changed it to `x=9.50, y=3.12`;
+- an empty cumulative-practice reveal remained blocked; after one real attempt, exactly one supplied answer appeared and the other 29 remained closed;
+- Practice Exams A and B each contain 14 exercises and prominent key links; both key routes contain 14 numbered answers; Exam B answer 14 names an assumption, consequence, and measurement or model improvement;
+- canonical URLs, `index, follow`, analytics, sitemap/robots coverage, greater-or-equal icons, Web App Manifest, and Organization logo/image JSON-LD are present;
+- the 375-pixel mobile hub has nine readable Lens blocks with body and root scroll width exactly 375 pixels.
 
-Exact Sites and production evidence is added after those gates pass; a successful status code is not acceptance.
+The public Cloudflare deployment must repeat representative identity, navigation, visual, answer, indexability, security-header, and Limits/Unit 2A regression checks against the immutable deployment and both public hostnames. A successful status code alone is not acceptance.
