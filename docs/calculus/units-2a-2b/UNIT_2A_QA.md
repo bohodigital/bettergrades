@@ -4,7 +4,8 @@
 
 - Branch: `agent/bettergrades-unit-2a-v3`
 - Initial implementation commit: `c5274b51c41065ce4b8a74f40d3331b288f1f815`
-- Final reviewed candidate commit/tree: recorded after the QA and documentation commits are sealed.
+- Implementation and QA commit: `9886a22e0f548df9fbb88fb894c8b35777cff1c8`
+- Implementation and QA tree: `d55057fef79961eda58fc1f5ca314394d202f0a9`
 - Baseline: `e85b9b80fdb77aaf5346c555a2c1378024fd33ca`
 
 ## Windows validation
