@@ -19,7 +19,16 @@ async function json(name) {
   return JSON.parse((await readFile(resolve(directory, name), "utf8")).replace(/^\uFEFF/, ""));
 }
 
-const [index, pages, publicProblems, serverProblems, publicSets, serverSets, visuals, provenance] = await Promise.all([
+async function optionalJson(name, fallback) {
+  try {
+    return await json(name);
+  } catch (error) {
+    if (error && typeof error === "object" && error.code === "ENOENT") return fallback;
+    throw error;
+  }
+}
+
+const [index, pages, publicProblems, serverProblems, publicSets, serverSets, visuals, provenance, exerciseAnswers] = await Promise.all([
   json("unit-index.public.json"),
   json("pages.server.json"),
   json("assessments.public.json"),
@@ -28,6 +37,7 @@ const [index, pages, publicProblems, serverProblems, publicSets, serverSets, vis
   json("assessment-sets.server.json"),
   json("visual-authoring-briefs.v3.json"),
   json("provenance.json"),
+  optionalJson("exercise-answers.server.json", { schemaVersion: 1, unitId: null, routes: [] }),
 ]);
 
 function assertCount(label, actual, wanted) {
@@ -42,6 +52,14 @@ assertCount("assessment sets", publicSets.assessments.length, expected.sets);
 assertCount("server assessment sets", serverSets.assessments.length, expected.sets);
 assertCount("visual briefs", visuals.visuals.length, expected.visuals);
 assertCount("route provenance records", provenance.routes.length, expected.routes);
+if (exerciseAnswers.routes.length) {
+  if (exerciseAnswers.unitId !== index.unit_id) throw new Error(`${requested} exercise-answer unit ID does not match the normalized unit.`);
+  if (new Set(exerciseAnswers.routes.map((route) => route.routeId)).size !== exerciseAnswers.routes.length) throw new Error(`${requested} has duplicate exercise-answer route IDs.`);
+  for (const answerRoute of exerciseAnswers.routes) {
+    if (!index.routes.some((route) => route.route_id === answerRoute.routeId)) throw new Error(`${requested} exercise answers reference unknown route ${answerRoute.routeId}.`);
+    if (!Array.isArray(answerRoute.answers) || !answerRoute.answers.length || answerRoute.answers.some((answer) => !String(answer.response ?? "").trim())) throw new Error(`${answerRoute.routeId} has an empty exercise answer.`);
+  }
+}
 
 const pathForSlug = (slug) => `/${String(slug).replace(/^\/+|\/+$/g, "")}/`;
 const pageByRouteId = new Map(pages.pages.map((page) => [page.route_id, page]));
@@ -103,14 +121,44 @@ function normalizeRouteText(value) {
     .trim();
 }
 
+function injectExerciseSolutions(nodes, answerRoute) {
+  const cursor = { value: 0 };
+  function visit(items) {
+    const result = [];
+    for (const node of items) {
+      const current = node.children ? { ...node, children: visit(node.children) } : node;
+      result.push(current);
+      if (node.type !== "exercise") continue;
+      const answer = answerRoute.answers[cursor.value++];
+      if (!answer) throw new Error(`${answerRoute.routeId} has fewer supplied answers than exercises.`);
+      result.push({
+        type: "solution",
+        title: `Exercise ${cursor.value} answer`,
+        children: [{ type: "paragraph", text: answer.response }],
+      });
+    }
+    return result;
+  }
+  const result = visit(nodes);
+  if (cursor.value !== answerRoute.answers.length) {
+    throw new Error(`${answerRoute.routeId} has ${cursor.value} exercises but ${answerRoute.answers.length} supplied answers.`);
+  }
+  return result;
+}
+
 const compiledPages = pages.pages.map((page) => {
   const route = index.routes.find((candidate) => candidate.route_id === page.route_id);
   if (!route) throw new Error(`Page ${page.route_id} has no route.`);
   let nodes;
+  const exerciseAnswerRoute = exerciseAnswers.routes.find((candidate) => candidate.routeId === page.route_id);
   try {
     nodes = page.source_format === "markdown"
       ? parseAnswerKey(page.source_markdown, page.title)
-      : parseCalculusUnitPage(page.source_latex, { visualIds: route.visual_ids });
+      : parseCalculusUnitPage(page.source_latex, {
+        visualIds: route.visual_ids,
+        enumerateAsExercises: Boolean(exerciseAnswerRoute) || ["diagnostic", "exam", "practice"].includes(route.page_type),
+      });
+    if (exerciseAnswerRoute) nodes = injectExerciseSolutions(nodes, exerciseAnswerRoute);
   } catch (error) {
     throw new Error(`${requested} ${route.url} (${page.source_file}): ${error instanceof Error ? error.message : String(error)}`);
   }

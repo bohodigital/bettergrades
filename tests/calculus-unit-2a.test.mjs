@@ -7,6 +7,7 @@ import pagesArtifact from "../content/calculus/units/unit-2a/pages.compiled.serv
 import publicProblems from "../content/calculus/units/unit-2a/assessments.public.json" with { type: "json" };
 import publicSets from "../content/calculus/units/unit-2a/assessment-sets.public.json" with { type: "json" };
 import compiledVisuals from "../content/calculus/units/unit-2a/compiled-scenes.v1.json" with { type: "json" };
+import exerciseAnswers from "../content/calculus/units/unit-2a/exercise-answers.server.json" with { type: "json" };
 import { evaluateCalculusAnswer, revealCalculusAnswer } from "../lib/calculus/calculus-assessment.server.mjs";
 import { calculusUnitRoutes, calculusUnitSearchRecords, getCalculusUnitRoute, isCalculusUnitPath } from "../lib/calculus/calculus-units-index.mjs";
 import { getCalculusUnitReveal, getPublicCalculusUnitPage } from "../lib/calculus/calculus-unit.mjs";
@@ -71,6 +72,7 @@ test("public page payloads are route-local and strip ordinary solution bodies", 
     walk(page.page.nodes, (node) => {
       if (route.pageType !== "answer-key") assert.notEqual(node.type, "solution", route.path);
       if (node.type === "solution-reveal") assert.equal(node.children, undefined);
+      assert.notEqual(node.type, "graph-specification", route.path);
       if (node.type === "visual-reference") {
         assert.ok(node.visual, `${route.path} ${node.visualId}`);
         assert.ok(node.visual.staticAsset.path.startsWith("/visuals/v1/unit-2a-"));
@@ -124,6 +126,18 @@ test("route answer reveals require the exact unit, route, and reveal ID", () => 
   assert.ok(getCalculusUnitReveal(UNIT_ID, route.id, revealIds[0]).length > 0);
   assert.equal(getCalculusUnitReveal(UNIT_ID, "wrong-route", revealIds[0]), undefined);
   assert.equal(getCalculusUnitReveal("wrong-unit", route.id, revealIds[0]), undefined);
+});
+
+test("the cumulative practice set has one attempt-gated answer for every exercise", () => {
+  const route = getCalculusUnitRoute("/subjects/math/calculus/derivatives/unit-2a-cumulative-practice/");
+  const compiled = pagesArtifact.pages.find((page) => page.routeId === route.id);
+  assert.equal(compiled.nodes.filter((node) => node.type === "exercise").length, 36);
+  assert.equal(compiled.nodes.filter((node) => node.type === "solution").length, 36);
+  assert.equal(exerciseAnswers.routes[0].answers.length, 36);
+  const page = getPublicCalculusUnitPage(route.path);
+  const revealIds = page.page.nodes.filter((node) => node.type === "solution-reveal").map((node) => node.revealId);
+  assert.equal(revealIds.length, 36);
+  for (const revealId of revealIds) assert.ok(getCalculusUnitReveal(UNIT_ID, route.id, revealId)?.length > 0, revealId);
 });
 
 test("all 27 Unit 2A visuals retain static fallbacks and the approved renderer split", () => {

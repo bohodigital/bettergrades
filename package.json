@@ -21,7 +21,7 @@
     "visuals:compile": "node tools/visualization/compile-visuals.mjs && node tools/visualization/compile-calculus-unit-visuals.mjs --unit=unit-2a",
     "visuals:check": "node tools/visualization/compile-visuals.mjs --check && node tools/visualization/author-calculus-unit-visuals.mjs --unit=unit-2a --check && node tools/visualization/compile-calculus-unit-visuals.mjs --unit=unit-2a --check && node tools/import-calculus-unit.mjs --unit=unit-2a --check",
     "verify:visuals": "corepack pnpm test && node tools/visualization/verify-visuals.mjs",
-    "test": "corepack pnpm run build:pages && node --test tests/*.test.mjs",
+    "test": "corepack pnpm run build:pages && node --test --test-concurrency=1 tests/*.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --ignore-pattern .wrangler --ignore-pattern worker-configuration.d.ts",
     "db:generate": "drizzle-kit generate"
   },

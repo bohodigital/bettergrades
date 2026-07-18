@@ -70,8 +70,112 @@
           "text": "Complete without a calculator unless your course normally permits one."
         },
         {
-          "type": "paragraph",
-          "text": "\\item Expand \\((x+h)^2\\). \\item Factor \\(x^2-9\\). \\item Simplify \\((x^2-4)/(x-2)\\) for \\(x\\ne2\\). \\item Rewrite \\(1/x^3\\) with a negative exponent. \\item Rewrite \\(\\sqrt[3]{x^2}\\) with a rational exponent. \\item Simplify \\(\\frac{1/(x+h)-1/x}{h}\\). \\item Solve \\(3x^2-12x+9=0\\). \\item State the slope formula through \\((x_1,y_1)\\) and \\((x_2,y_2)\\). \\item Write the point-slope equation for slope \\(4\\) through \\((2,-1)\\). \\item Evaluate \\(\\lim_{h\\to0}[(2+h)^2-4]/h\\). \\item State \\(\\lim_{u\\to0}\\sin u/u\\). \\item For \\(f(x)=x^2\\), calculate \\(f(a+h)-f(a)\\)."
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Expand \\((x+h)^2\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Factor \\(x^2-9\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Simplify \\((x^2-4)/(x-2)\\) for \\(x\\ne2\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Rewrite \\(1/x^3\\) with a negative exponent."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Rewrite \\(\\sqrt[3]{x^2}\\) with a rational exponent."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Simplify \\(\\frac{1/(x+h)-1/x}{h}\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Solve \\(3x^2-12x+9=0\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "State the slope formula through \\((x_1,y_1)\\) and \\((x_2,y_2)\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Write the point-slope equation for slope \\(4\\) through \\((2,-1)\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Evaluate \\(\\lim_{h\\to0}[(2+h)^2-4]/h\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "State \\(\\lim_{u\\to0}\\sin u/u\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "For \\(f(x)=x^2\\), calculate \\(f(a+h)-f(a)\\)."
+            }
+          ]
         },
         {
           "type": "solution",
@@ -8427,8 +8531,118 @@
           "text": "Part A: Meaning and first principles"
         },
         {
-          "type": "paragraph",
-          "text": "\\item Explain the difference between \\(f(3)\\) and \\(f'(3)\\). \\item Use the limit definition to find \\(f'(2)\\) for \\(f(x)=x^2+1\\). \\item Use the limit definition to find \\(g'(1)\\) for \\(g(x)=1/x\\). \\item Find the tangent and normal lines to \\(y=x^2-2x\\) at \\(x=3\\). \\item If \\(C'(100)=7.5\\) for a cost function in dollars, interpret the value with units. \\item Sketch a continuous function that is not differentiable at one point and explain the failure."
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Explain the difference between \\(f(3)\\) and \\(f'(3)\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 1 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "\\(f(3)\\) is the function's output at input 3. \\(f'(3)\\) is the instantaneous rate of change, or tangent slope, at input 3; the two quantities generally have different units."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Use the limit definition to find \\(f'(2)\\) for \\(f(x)=x^2+1\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 2 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "The difference quotient is \\([((2+h)^2+1)-5]/h=4+h\\), so \\(f'(2)=\\lim_{h\\to0}(4+h)=\\boxed{4}\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Use the limit definition to find \\(g'(1)\\) for \\(g(x)=1/x\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 3 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "\\([g(1+h)-g(1)]/h=[1/(1+h)-1]/h=-1/(1+h)\\), so \\(g'(1)=\\boxed{-1}\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the tangent and normal lines to \\(y=x^2-2x\\) at \\(x=3\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 4 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "At \\(x=3\\), the point is \\((3,3)\\) and \\(y'=2x-2=4\\). The tangent is \\(y-3=4(x-3)\\); the normal is \\(y-3=-\\tfrac14(x-3)\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "If \\(C'(100)=7.5\\) for a cost function in dollars, interpret the value with units."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 5 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "\\(C'(100)=7.5\\) means that near a production level of 100 units, cost is increasing by about $7.50 for each additional unit produced."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Sketch a continuous function that is not differentiable at one point and explain the failure."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 6 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "One example is \\(f(x)=|x|\\). It is continuous at 0, but the left-hand slope is \\(-1\\) and the right-hand slope is \\(1\\), so no single derivative exists there."
+            }
+          ]
         },
         {
           "type": "heading",
@@ -8436,8 +8650,118 @@
           "text": "Part B: Powers and algebraic rules"
         },
         {
-          "type": "paragraph",
-          "text": "[resume] \\item Differentiate \\(7x^8-3x^{1/2}+5x^{-4}\\). \\item Differentiate \\((x^2+1)(x^3-2x)\\). \\item Differentiate \\((3x-1)/(x^2+4)\\). \\item Differentiate \\(x^3\\sqrt{x}+4/x^2\\) after rewriting with exponents. \\item Find the tangent line to \\(x^4-2x^2\\) at \\(x=1\\). \\item Find every input where \\(f(x)=x^3-3x\\) has a horizontal tangent."
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Differentiate \\(7x^8-3x^{1/2}+5x^{-4}\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 7 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "\\(\\dfrac{d}{dx}(7x^8-3x^{1/2}+5x^{-4})=\\boxed{56x^7-\\tfrac32x^{-1/2}-20x^{-5}}\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Differentiate \\((x^2+1)(x^3-2x)\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 8 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "The product expands to \\(x^5-x^3-2x\\), so its derivative is \\(\\boxed{5x^4-3x^2-2}\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Differentiate \\((3x-1)/(x^2+4)\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 9 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "By the quotient rule, \\(\\boxed{\\dfrac{-3x^2+2x+12}{(x^2+4)^2}}\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Differentiate \\(x^3\\sqrt{x}+4/x^2\\) after rewriting with exponents."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 10 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Rewrite as \\(x^{7/2}+4x^{-2}\\). The derivative is \\(\\boxed{\\tfrac72x^{5/2}-8x^{-3}}\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the tangent line to \\(x^4-2x^2\\) at \\(x=1\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 11 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "The point is \\((1,-1)\\) and \\(f'(1)=4-4=0\\), so the tangent line is \\(\\boxed{y=-1}\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find every input where \\(f(x)=x^3-3x\\) has a horizontal tangent."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 12 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Horizontal tangents satisfy \\(f'(x)=3x^2-3=0\\), giving \\(\\boxed{x=-1,1}\\)."
+            }
+          ]
         },
         {
           "type": "heading",
@@ -8445,8 +8769,118 @@
           "text": "Part C: Trigonometric, exponential, and logarithmic functions"
         },
         {
-          "type": "paragraph",
-          "text": "[resume] \\item Differentiate \\(x^2\\sin x\\). \\item Differentiate \\(\\tan x/(x+1)\\). \\item Differentiate \\((x^2-1)e^x\\). \\item Differentiate \\(5^x+\\log_3x\\). \\item Find the tangent line to \\(y=\\ln x\\) at \\(x=e\\). \\item Find all \\(x\\in[0,2\\pi]\\) where \\((\\sin x+\\cos x)'=0\\)."
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Differentiate \\(x^2\\sin x\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 13 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "By the product rule, \\(\\boxed{2x\\sin x+x^2\\cos x}\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Differentiate \\(\\tan x/(x+1)\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 14 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "\\(\\boxed{\\dfrac{(x+1)\\sec^2x-\\tan x}{(x+1)^2}}\\), where \\(x\\ne-1\\) and \\(\\cos x\\ne0\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Differentiate \\((x^2-1)e^x\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 15 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "\\(\\boxed{e^x(x^2+2x-1)}\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Differentiate \\(5^x+\\log_3x\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 16 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "\\(\\boxed{5^x\\ln5+\\dfrac{1}{x\\ln3}}\\), for \\(x>0\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the tangent line to \\(y=\\ln x\\) at \\(x=e\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 17 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "At \\(x=e\\), the point is \\((e,1)\\) and the slope is \\(1/e\\). Thus \\(\\boxed{y-1=(x-e)/e}\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find all \\(x\\in[0,2\\pi]\\) where \\((\\sin x+\\cos x)'=0\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 18 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Set \\(\\cos x-\\sin x=0\\). On \\([0,2\\pi]\\), the solutions are \\(\\boxed{x=\\pi/4,5\\pi/4}\\)."
+            }
+          ]
         },
         {
           "type": "heading",
@@ -8454,8 +8888,156 @@
           "text": "Part D: Chain rule and combined rules"
         },
         {
-          "type": "paragraph",
-          "text": "[resume] \\item Differentiate \\((5x^2-1)^7\\). \\item Differentiate \\(\\sqrt{1+x^4}\\). \\item Differentiate \\(\\cos(3x^2)\\). \\item Differentiate \\(e^{\\sin x}\\). \\item Differentiate \\(\\ln(x^3-4x)\\). \\item Differentiate \\(x^3\\tan(2x)\\). \\item Differentiate \\(\\sin(x^2)/(x^2+1)\\). \\item Differentiate \\(1/(1+e^{-x})\\)."
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Differentiate \\((5x^2-1)^7\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 19 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "\\(\\boxed{70x(5x^2-1)^6}\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Differentiate \\(\\sqrt{1+x^4}\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 20 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "\\(\\boxed{\\dfrac{2x^3}{\\sqrt{1+x^4}}}\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Differentiate \\(\\cos(3x^2)\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 21 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "\\(\\boxed{-6x\\sin(3x^2)}\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Differentiate \\(e^{\\sin x}\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 22 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "\\(\\boxed{e^{\\sin x}\\cos x}\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Differentiate \\(\\ln(x^3-4x)\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 23 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "\\(\\boxed{\\dfrac{3x^2-4}{x^3-4x}}\\), on intervals where the logarithm's argument \\(x^3-4x\\) is positive."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Differentiate \\(x^3\\tan(2x)\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 24 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "\\(\\boxed{3x^2\\tan(2x)+2x^3\\sec^2(2x)}\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Differentiate \\(\\sin(x^2)/(x^2+1)\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 25 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "\\(\\boxed{\\dfrac{2x[(x^2+1)\\cos(x^2)-\\sin(x^2)]}{(x^2+1)^2}}\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Differentiate \\(1/(1+e^{-x})\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 26 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "\\(\\boxed{\\dfrac{e^{-x}}{(1+e^{-x})^2}}\\)."
+            }
+          ]
         },
         {
           "type": "heading",
@@ -8463,8 +9045,194 @@
           "text": "Part E: Implicit, inverse, logarithmic, and higher derivatives"
         },
         {
-          "type": "paragraph",
-          "text": "[resume] \\item Find \\(y'\\) for \\(x^3+y^3=6xy\\). \\item Find the tangent line to \\(x^2+xy+y^2=7\\) at \\((1,2)\\). \\item Find \\(y''\\) for \\(x^2+y^2=9\\). \\item If \\(f(3)=8\\) and \\(f'(3)=-2\\), find \\((f^{-1})'(8)\\). \\item Differentiate \\(\\arcsin(2x)\\). \\item Differentiate \\(\\arctan(x^2)\\). \\item Use logarithmic differentiation on \\(x^2(x+1)^3/(x^2+4)\\). \\item Differentiate \\((x+2)^{x^2}\\). \\item Find \\(f''\\) for \\(f(x)=x^2e^x\\). \\item Find \\(g^{(3)}\\) for \\(g(x)=x\\cos x\\)."
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find \\(y'\\) for \\(x^3+y^3=6xy\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 27 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Implicit differentiation gives \\(3x^2+3y^2y'=6y+6xy'\\), so \\(\\boxed{y'=\\dfrac{2y-x^2}{y^2-2x}}\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the tangent line to \\(x^2+xy+y^2=7\\) at \\((1,2)\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 28 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "\\(y'=-(2x+y)/(x+2y)\\), so at \\((1,2)\\) the slope is \\(-4/5\\). The tangent is \\(\\boxed{y-2=-\\tfrac45(x-1)}\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find \\(y''\\) for \\(x^2+y^2=9\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 29 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "From \\(y'=-x/y\\), differentiate again to obtain \\(y''=-(x^2+y^2)/y^3\\). Because \\(x^2+y^2=9\\), \\(\\boxed{y''=-9/y^3}\\) where \\(y\\ne0\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "If \\(f(3)=8\\) and \\(f'(3)=-2\\), find \\((f^{-1})'(8)\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 30 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "\\((f^{-1})'(8)=1/f'(3)=\\boxed{-1/2}\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Differentiate \\(\\arcsin(2x)\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 31 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "\\(\\boxed{\\dfrac{2}{\\sqrt{1-4x^2}}}\\), for \\(|x|<1/2\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Differentiate \\(\\arctan(x^2)\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 32 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "\\(\\boxed{\\dfrac{2x}{1+x^4}}\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Use logarithmic differentiation on \\(x^2(x+1)^3/(x^2+4)\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 33 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "If \\(y=x^2(x+1)^3/(x^2+4)\\), then \\(\\boxed{y'=y(2/x+3/(x+1)-2x/(x^2+4))}\\), with the original expression's domain restrictions."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Differentiate \\((x+2)^{x^2}\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 34 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Logarithmic differentiation gives \\(\\boxed{(x+2)^{x^2}[2x\\ln(x+2)+x^2/(x+2)]}\\), for \\(x>-2\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find \\(f''\\) for \\(f(x)=x^2e^x\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 35 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "\\(f'(x)=e^x(x^2+2x)\\), so \\(\\boxed{f''(x)=e^x(x^2+4x+2)}\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find \\(g^{(3)}\\) for \\(g(x)=x\\cos x\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 36 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "For \\(g(x)=x\\cos x\\), \\(g''(x)=-2\\sin x-x\\cos x\\), so \\(\\boxed{g^{(3)}(x)=x\\sin x-3\\cos x}\\)."
+            }
+          ]
         }
       ],
       "sectionId": "review",
@@ -8484,8 +9252,130 @@
           "text": "\\textbf{Suggested time: 100 minutes. Show structure and algebra.}"
         },
         {
-          "type": "paragraph",
-          "text": "\\item Use the limit definition to find the derivative of \\(f(x)=x^2+3x\\) at \\(x=1\\). \\item Find the tangent and normal lines to \\(y=1/x\\) at \\(x=2\\). \\item Differentiate \\(4x^{7/3}-5x^{-2}\\). \\item Differentiate \\((x^2+1)^4e^x\\). \\item Differentiate \\(\\ln(1+\\sin^2x)\\). \\item Differentiate \\([\\tan(1+x^2)]^5/(x^3+1)\\). \\item Find \\(dy/dx\\) for \\(x^2+xy+2y^2=10\\). \\item Find the tangent line to \\(y=\\arcsin(x/2)\\) at \\(x=1\\). \\item If \\(g=f^{-1}\\), \\(f(2)=5\\), and \\(f'(2)=-3\\), find \\(g'(5)\\). \\item Use logarithmic differentiation to differentiate \\((x^2+1)^{e^x}\\). \\item Find the first four derivatives of \\(x^4-3x^3+2x\\). \\item Explain why differentiability at \\(a\\) implies continuity at \\(a\\), but continuity does not imply differentiability. \\item A response model is \\(R(d)=100d/(d+12)\\). Find \\(R'(d)\\) and interpret \\(R'(12)\\). \\item Write a rule-selection explanation, without computing, for \\(y=e^{\\sin(x^2)}(x+1)^3\\)."
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Use the limit definition to find the derivative of \\(f(x)=x^2+3x\\) at \\(x=1\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the tangent and normal lines to \\(y=1/x\\) at \\(x=2\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Differentiate \\(4x^{7/3}-5x^{-2}\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Differentiate \\((x^2+1)^4e^x\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Differentiate \\(\\ln(1+\\sin^2x)\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Differentiate \\([\\tan(1+x^2)]^5/(x^3+1)\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find \\(dy/dx\\) for \\(x^2+xy+2y^2=10\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the tangent line to \\(y=\\arcsin(x/2)\\) at \\(x=1\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "If \\(g=f^{-1}\\), \\(f(2)=5\\), and \\(f'(2)=-3\\), find \\(g'(5)\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Use logarithmic differentiation to differentiate \\((x^2+1)^{e^x}\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the first four derivatives of \\(x^4-3x^3+2x\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Explain why differentiability at \\(a\\) implies continuity at \\(a\\), but continuity does not imply differentiability."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "A response model is \\(R(d)=100d/(d+12)\\). Find \\(R'(d)\\) and interpret \\(R'(12)\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Write a rule-selection explanation, without computing, for \\(y=e^{\\sin(x^2)}(x+1)^3\\)."
+            }
+          ]
         }
       ],
       "sectionId": "review",
@@ -8505,8 +9395,130 @@
           "text": "\\textbf{Suggested time: 110 minutes. This version emphasizes synthesis.}"
         },
         {
-          "type": "paragraph",
-          "text": "\\item Derive the power rule for \\(x^4\\) from the limit definition. \\item A graph of \\(f\\) has a corner at \\(x=0\\). Explain what must fail in the one-sided derivative limits. \\item Differentiate \\(x^3\\sqrt{x^2+1}/(x-2)^4\\). \\item Differentiate \\(\\sec^3(2x)\\). \\item Differentiate \\(\\log_5(1+e^{3x})\\). \\item Differentiate \\(\\arctan(\\sqrt{x})\\). \\item For \\(x^3+y^3=6xy\\), find tangent and normal lines at \\((3,3)\\). \\item If \\(f(2)=5\\), \\(f'(2)=-3\\), and \\(f''(2)=4\\), derive \\((f^{-1})''(5)\\). \\item Differentiate \\(x^{\\sin x}\\) for \\(x>0\\). \\item Find \\(f''\\) for \\(f(x)=e^{x^2}\\) and factor the result. \\item Find a formula for the \\(n\\)th derivative of \\(e^{ax}\\). \\item Determine where the derivative of \\(\\arcsin(2x)\\) exists as a finite real number. \\item A calibration function is \\(S(V)=\\ln(1+V^2)\\), where \\(V(P)=0.5\\sqrt{P+4}\\). Find \\(dS/dP\\) at \\(P=12\\). \\item Explain how the chain rule becomes multiplication of local response factors in the previous problem."
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Derive the power rule for \\(x^4\\) from the limit definition."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "A graph of \\(f\\) has a corner at \\(x=0\\). Explain what must fail in the one-sided derivative limits."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Differentiate \\(x^3\\sqrt{x^2+1}/(x-2)^4\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Differentiate \\(\\sec^3(2x)\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Differentiate \\(\\log_5(1+e^{3x})\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Differentiate \\(\\arctan(\\sqrt{x})\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "For \\(x^3+y^3=6xy\\), find tangent and normal lines at \\((3,3)\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "If \\(f(2)=5\\), \\(f'(2)=-3\\), and \\(f''(2)=4\\), derive \\((f^{-1})''(5)\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Differentiate \\(x^{\\sin x}\\) for \\(x>0\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find \\(f''\\) for \\(f(x)=e^{x^2}\\) and factor the result."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find a formula for the \\(n\\)th derivative of \\(e^{ax}\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Determine where the derivative of \\(\\arcsin(2x)\\) exists as a finite real number."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "A calibration function is \\(S(V)=\\ln(1+V^2)\\), where \\(V(P)=0.5\\sqrt{P+4}\\). Find \\(dS/dP\\) at \\(P=12\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Explain how the chain rule becomes multiplication of local response factors in the previous problem."
+            }
+          ]
         }
       ],
       "sectionId": "review",
