@@ -36,9 +36,11 @@ test("Unit 2A has the exact unique route and core-sequence inventory", () => {
 });
 
 test("Unit 2A owns its canonical paths without duplicate registry records", () => {
-  assert.equal(calculusUnitRoutes.length, 67);
-  assert.equal(calculusUnitSearchRecords.length, 67);
-  for (const route of calculusUnitRoutes) {
+  const unitRoutes = calculusUnitRoutes.filter((route) => route.unitId === UNIT_ID);
+  const unitSearchRecords = calculusUnitSearchRecords.filter((record) => unitRoutes.some((route) => route.path === record.path));
+  assert.equal(unitRoutes.length, 67);
+  assert.equal(unitSearchRecords.length, 67);
+  for (const route of unitRoutes) {
     assert.equal(isCalculusUnitPath(route.path), true);
     assert.equal(getCalculusUnitRoute(route.path)?.id, route.id);
     assert.equal(calculusUnitSearchRecords.filter((record) => record.path === route.path).length, 1);
@@ -64,7 +66,7 @@ test("all 67 server pages compile semantically with no raw drawing source", () =
 test("public page payloads are route-local and strip ordinary solution bodies", () => {
   let checkCount = 0;
   const visualIds = new Set();
-  for (const route of calculusUnitRoutes) {
+  for (const route of calculusUnitRoutes.filter((route) => route.unitId === UNIT_ID)) {
     const page = getPublicCalculusUnitPage(route.path);
     assert.ok(page, route.path);
     assert.equal(page.route.id, route.id);

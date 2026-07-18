@@ -20,7 +20,9 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "jsxgraph": ["./lib/visualization/renderers/jsxgraph-adapter/minimal-vendor.ts"],
+      "@bvlp-jsxgraph-src/*": ["./node_modules/jsxgraph/src/*"]
     }
   },
   "include": [

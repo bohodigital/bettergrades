@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { access, readFile, readdir } from "node:fs/promises";
 import test from "node:test";
+import { gzipSync } from "node:zlib";
 
 const expectedLimitsVisuals = [
   ["secant-tangent", "/subjects/math/calculus/limits-continuity/unit/limits/why-limits-matter/"],
@@ -89,12 +90,15 @@ test("Pages package contains the advanced Worker and static assets", async () =>
   }
 });
 
-test("Pages package preserves the exact Limits inventory alongside the exact Unit 2A inventory", async () => {
+test("Pages package preserves the exact Limits, Unit 2A, and Unit 2B visual inventories", async () => {
   const limitsManifest = JSON.parse(
     await readFile(new URL("../content/visualizations/limits-continuity/compiled-scenes.v1.json", import.meta.url), "utf8"),
   );
   const unitManifest = JSON.parse(
     await readFile(new URL("../content/calculus/units/unit-2a/compiled-scenes.v1.json", import.meta.url), "utf8"),
+  );
+  const unit2bManifest = JSON.parse(
+    await readFile(new URL("../content/calculus/units/unit-2b/compiled-scenes.v1.json", import.meta.url), "utf8"),
   );
   assert.equal(limitsManifest.manifestVersion, 1);
   assert.equal(limitsManifest.sceneCount, 13);
@@ -106,7 +110,10 @@ test("Pages package preserves the exact Limits inventory alongside the exact Uni
   assert.equal(unitManifest.manifestVersion, 1);
   assert.equal(unitManifest.sceneCount, 27);
   assert.equal(unitManifest.scenes.length, 27);
-  const manifests = [limitsManifest, unitManifest];
+  assert.equal(unit2bManifest.manifestVersion, 1);
+  assert.equal(unit2bManifest.sceneCount, 34);
+  assert.equal(unit2bManifest.scenes.length, 34);
+  const manifests = [limitsManifest, unitManifest, unit2bManifest];
   const expectedAssetNames = manifests.flatMap(({ scenes }) => scenes.map(({ staticAsset }) => staticAsset.path.split("/").at(-1))).sort();
   const publicAssetNames = (await readdir(new URL("../public/visuals/v1/", import.meta.url)))
     .filter((name) => name.endsWith(".svg"))
@@ -134,6 +141,17 @@ test("Pages package preserves the exact Limits inventory alongside the exact Uni
     assert.match(svg, /^<svg\b/);
     assert.doesNotMatch(svg, /expressionLatex|\\(?:frac|sin|varepsilon|epsilon|delta|sqrt)\b|<script\b|<foreignObject\b/i, id);
   }
+});
+
+test("the JSXGraph construction stays explicit-action lazy and below its 180 KB gzip budget", async () => {
+  const directory = new URL("../dist/pages/assets/", import.meta.url);
+  const scripts = (await readdir(directory)).filter((name) => name.endsWith(".js"));
+  const chunks = await Promise.all(scripts.map(async (name) => ({ name, body: await readFile(new URL(name, directory)) })));
+  const vendor = chunks.filter(({ body }) => body.includes(Buffer.from("JessieCode")));
+  assert.equal(vendor.length, 1, "exactly one lazy JSXGraph construction chunk should be emitted");
+  assert.match(vendor[0].name, /minimal-vendor/);
+  assert.ok(gzipSync(vendor[0].body, { level: 9 }).byteLength <= 180_000, `${vendor[0].name} exceeds the registry lazy-gzip budget`);
+  assert.ok(chunks.filter(({ name }) => /BetterGradesApp|BetterGradesVisual|framework/.test(name)).every(({ body }) => !body.includes(Buffer.from("JessieCode"))), "ordinary application chunks must not absorb JSXGraph");
 });
 
 test("limits tables and generated visual fallbacks remain bounded on narrow screens and in print", async () => {

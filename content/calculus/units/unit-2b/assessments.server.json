@@ -1,0 +1,370 @@
+{
+  "schema_version": "3.0.0",
+  "unit_id": "calc-1-unit-2b-derivative-applications",
+  "problem_count": 22,
+  "problems": [
+    {
+      "problem_id": "interpretation-template-01",
+      "canonical_answer": "temperature decreasing 0.4 degrees C per minute",
+      "accepted_answers": [
+        "temperature decreasing 0.4 degrees C per minute"
+      ],
+      "normalization": "rubric_or_attempt_and_reveal",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "rubric": {
+        "required_concepts": [
+          "t=12 minutes",
+          "temperature",
+          "decreasing",
+          "0.4",
+          "degrees Celsius per minute"
+        ],
+        "model_response": "At t=12 minutes, temperature is decreasing at approximately 0.4 degrees Celsius per minute."
+      },
+      "worked_solution_latex": "At \\(t=12\\) minutes, the temperature is decreasing at about \\(0.4\\) degrees Celsius per minute.",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "motion-sign-01",
+      "canonical_answer": "speeding-up",
+      "accepted_answers": [
+        "speeding-up"
+      ],
+      "normalization": "choice_id_or_normalized_label",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "Both quantities are negative, so the magnitude of velocity is increasing. The object is \\(\\boxed{\\text{speeding up}}\\).",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "linearization-01",
+      "canonical_answer": "3.025",
+      "accepted_answers": [
+        "3.025"
+      ],
+      "tolerance": 1e-06,
+      "normalization": "absolute_tolerance",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "\\[\nL(x)=3+\\frac16(x-9),\n\\]\nso \\(L(9.15)=3+0.025=\\boxed{3.025}\\).",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "related-basic-01",
+      "canonical_answer": "48pi",
+      "accepted_answers": [
+        "48pi"
+      ],
+      "normalization": "algebraic_equivalence_with_domain_awareness",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "\\[\n\\frac{dS}{dt}=8\\pi r\\frac{dr}{dt}=8\\pi(3)(2)=\\boxed{48\\pi}.\n\\]\nThe canonical metadata should use \\(48\\pi\\), not the placeholder.",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "critical-01",
+      "canonical_answer": "-2,0,2",
+      "accepted_answers": [
+        "-2,0,2"
+      ],
+      "normalization": "unordered_set_normalization",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "\\[\nf'(x)=4x^3-16x=4x(x-2)(x+2),\n\\]\nso \\(\\boxed{-2,0,2}\\).",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "increase-01",
+      "canonical_answer": "(-infinity,0) union (2,infinity)",
+      "accepted_answers": [
+        "(-infinity,0) union (2,infinity)"
+      ],
+      "normalization": "interval_union_normalization",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "The product is positive outside the roots, so \\(\\boxed{(-\\infty,0)\\cup(2,\\infty)}\\).",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "optimization-anatomy-01",
+      "canonical_answer": "area objective perimeter constraint",
+      "accepted_answers": [
+        "area objective perimeter constraint"
+      ],
+      "normalization": "rubric_or_attempt_and_reveal",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "rubric": {
+        "required_concepts": [
+          "objective is area",
+          "constraint is perimeter 2x+2y=40",
+          "positive dimensions"
+        ],
+        "model_response": "Maximize A=xy subject to 2x+2y=40 with x,y>0."
+      },
+      "worked_solution_latex": "The objective is area \\(A=xy\\). The constraint is perimeter \\(2x+2y=40\\), with \\(x>0\\) and \\(y>0\\).",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "lhopital-basic-01",
+      "canonical_answer": "2",
+      "accepted_answers": [
+        "2"
+      ],
+      "normalization": "exact_integer",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "The form is \\(0/0\\). Differentiate separately:\n\\[\n\\lim_{x\\to0}\\frac{2\\cos(2x)}1=\\boxed2.\n\\]",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "motion-extra-01",
+      "canonical_answer": "6t-4",
+      "accepted_answers": [
+        "6t-4"
+      ],
+      "normalization": "algebraic_equivalence_with_domain_awareness",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "Velocity is s'(t)=6t-4.",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "linear-extra-01",
+      "canonical_answer": "2.01",
+      "accepted_answers": [
+        "2.01"
+      ],
+      "tolerance": 1e-06,
+      "normalization": "absolute_tolerance",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "At a=4, L(x)=2+(x-4)/4, so L(4.04)=2.01.",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "related-extra-01",
+      "canonical_answer": "20pi",
+      "accepted_answers": [
+        "20pi"
+      ],
+      "normalization": "algebraic_equivalence_with_domain_awareness",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "dA/dt=2πr dr/dt=2π(5)(2)=20π.",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "mvt-extra-01",
+      "canonical_answer": "3/2",
+      "accepted_answers": [
+        "3/2"
+      ],
+      "normalization": "exact_rational",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "The secant slope is 3. Solve 2c=3 to get c=3/2.",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "concavity-extra-01",
+      "canonical_answer": "(0,infinity)",
+      "accepted_answers": [
+        "(0,infinity)"
+      ],
+      "normalization": "interval_union_normalization",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "f''(x)=6x, which is positive for x>0; the interval is (0,∞).",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "optimization-extra-01",
+      "canonical_answer": "10",
+      "accepted_answers": [
+        "10"
+      ],
+      "normalization": "exact_integer",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "A=x(20-x) has vertex x=10, giving a 10-by-10 square.",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "lhopital-extra-01",
+      "canonical_answer": "1/2",
+      "accepted_answers": [
+        "1/2"
+      ],
+      "normalization": "exact_rational",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "Differentiate twice: sin x/(2x) then cos x/2, giving 1/2.",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "newton-extra-01",
+      "canonical_answer": "1.5",
+      "accepted_answers": [
+        "1.5"
+      ],
+      "tolerance": 1e-06,
+      "normalization": "absolute_tolerance",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "x1=2-(2²-2)/(2·2)=2-1/2=1.5.",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "app-drug-peak-01",
+      "canonical_answer": "2",
+      "accepted_answers": [
+        "2"
+      ],
+      "tolerance": 1e-06,
+      "normalization": "absolute_tolerance",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "C'(t)=20e^{-0.5t}(1-0.5t); the sign changes from positive to negative at t=2.",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "app-radar-01",
+      "canonical_answer": "0.04",
+      "accepted_answers": [
+        "0.04"
+      ],
+      "tolerance": 1e-06,
+      "normalization": "absolute_tolerance",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "tan θ=h/5, so sec²θ θ'=h'/5. At h=5, sec²θ=2, hence θ'=0.4/10=0.04 rad/min.",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "app-tolerance-01",
+      "canonical_answer": "0.8",
+      "accepted_answers": [
+        "0.8"
+      ],
+      "tolerance": 1e-06,
+      "normalization": "absolute_tolerance",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "For fixed height V∝r², so relative volume error≈2(0.02/5)=0.008=0.8%.",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "app-aircraft-01",
+      "canonical_answer": "-40",
+      "accepted_answers": [
+        "-40"
+      ],
+      "normalization": "exact_integer",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "z=50 and zz'=xx'+yy'=30(600)+40(-500)=-2000, so z'=-40 km/h.",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "advanced-convex-01",
+      "canonical_answer": "global minimum",
+      "accepted_answers": [
+        "global minimum"
+      ],
+      "normalization": "choice_id_or_normalized_label",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "For a differentiable convex function, the tangent inequality gives f(x)≥f(c)+f'(c)(x-c)=f(c), so c is a global minimum.",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "advanced-newton-cycle-01",
+      "canonical_answer": "cycle 0 and 1",
+      "accepted_answers": [
+        "cycle 0 and 1"
+      ],
+      "normalization": "rubric_or_attempt_and_reveal",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "rubric": {
+        "required_concepts": [
+          "x1=1",
+          "x2=0",
+          "cycle"
+        ],
+        "model_response": "The first two iterates are 1 and 0, returning to the start and producing a two-cycle."
+      },
+      "worked_solution_latex": "x1=0-f(0)/f'(0)=1 and x2=1-f(1)/f'(1)=0, so the iteration cycles 0↔1.",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    }
+  ],
+  "classification": "SERVER_ONLY_DO_NOT_BUNDLE"
+}

@@ -9,7 +9,7 @@ import { renderStaticSvg } from "../../lib/visualization/renderers/static-svg/in
 const root = resolve(import.meta.dirname, "../..");
 const requested = process.argv.find((argument) => argument.startsWith("--unit="))?.split("=")[1] ?? "unit-2a";
 const checkOnly = process.argv.includes("--check");
-const expectations = { "unit-2a": { count: 27, interactive: 1 }, "unit-2b": { count: 34, interactive: 6 } };
+const expectations = { "unit-2a": { count: 27, interactive: 1, jsxgraph: 0 }, "unit-2b": { count: 34, interactive: 7, jsxgraph: 1 } };
 const expected = expectations[requested];
 if (!expected) throw new Error(`Unknown calculus unit ${requested}.`);
 const directory = resolve(root, "content/calculus/units", requested);
@@ -30,6 +30,8 @@ for (const spec of collection.visuals) {
 }
 const compileLatex = await createCortexJsLatexCompiler({ allowedVariables: [...variables].sort(), maxDepth: 32, maxNodes: 512, maxExpressionLength: 2_048 });
 const scenes = compileVisualSpecs(collection.visuals, { compileLatex });
+if (scenes.filter((scene) => scene.delivery.hydration !== "none").length !== expected.interactive) throw new Error(`${requested} hydrated scene inventory differs from the release plan.`);
+if (scenes.filter((scene) => scene.selectedRenderer === "jsxgraph").length !== expected.jsxgraph) throw new Error(`${requested} JSXGraph inventory differs from the release plan.`);
 const rendered = scenes.map((scene) => {
   const asset = renderStaticSvg(scene, { assetPrefix: "/visuals/v1", maxOutputBytes: 50_000 });
   if (!asset.meetsTarget || asset.requiresSizeJustification) throw new Error(`${scene.id} static SVG is ${asset.byteLength} bytes and exceeds the approved target.`);

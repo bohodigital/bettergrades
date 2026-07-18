@@ -31,8 +31,9 @@ function visibleText(html) {
 }
 
 test("all 67 Unit 2A pages render as clean textbook pages with no source notation", async () => {
-  assert.equal(calculusUnitRoutes.length, 67);
-  for (const route of calculusUnitRoutes) {
+  const unitRoutes = calculusUnitRoutes.filter((route) => route.unitId === "calc-1-unit-2a-derivative-foundations-techniques");
+  assert.equal(unitRoutes.length, 67);
+  for (const route of unitRoutes) {
     const response = await render(route.path);
     assert.equal(response.status, 200, route.path);
     const html = await response.text();
@@ -53,4 +54,39 @@ test("all 67 Unit 2A pages render as clean textbook pages with no source notatio
       assert.match(html, /Work in three passes/);
     }
   }
+});
+
+test("all 76 Unit 2B pages render as clean application-textbook pages", async () => {
+  const unitRoutes = calculusUnitRoutes.filter((route) => route.unitId === "calc-1-unit-2b-derivative-applications");
+  assert.equal(unitRoutes.length, 76);
+  for (const route of unitRoutes) {
+    const response = await render(route.path);
+    assert.equal(response.status, 200, route.path);
+    const html = await response.text();
+    assert.match(html, /data-unit-id="calc-1-unit-2b-derivative-applications"/, route.path);
+    const renderedTitle = route.title.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("'", "&#x27;").replaceAll('"', "&quot;");
+    assert.match(html, new RegExp(`<h1>${escapeRegExp(renderedTitle)}</h1>`), route.path);
+    assert.doesNotMatch(visibleText(html), /\\(?:begin|end|frac|textbf|emph|section|chapter|addplot|draw|node)\b|\$\$|\\[()[\]]/, route.path);
+    assert.doesNotMatch(html, /This equation could not be rendered safely|This visual is temporarily unavailable|class="katex-error"/, route.path);
+    const renderedCheckIds = [...html.matchAll(/data-check-id="([^"]+)"/g)].map((match) => match[1]);
+    assert.equal(renderedCheckIds.length, new Set(renderedCheckIds).size, `${route.path} renders each interactive check once`);
+    if (route.pageType !== "hub") {
+      assert.match(html, /Section overview/, route.path);
+      assert.match(html, /Reading lens/, route.path);
+    }
+    const answerRoute = route.path.match(/\/(?:bridge-diagnostic|interpretation-review|approximation-review|related-rates-review|theorems-shape-review|optimization-review|lhopital-review|modeling-studio-review|advanced-newton-convergence|cumulative-practice)\/$/);
+    if (answerRoute) assert.ok((html.match(/Show supplied answer/g) ?? []).length > 0, route.path);
+    if (route.path.endsWith("/cumulative-practice/")) assert.equal((html.match(/Show supplied answer/g) ?? []).length, 30);
+  }
+});
+
+test("the Unit 2B map uses application-specific orientation and released navigation", async () => {
+  const response = await render("/subjects/math/calculus/derivative-applications/");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  const text = visibleText(html);
+  assert.match(text, /The complete Unit 2B path/);
+  assert.match(text, /Turn derivatives into explanations, estimates, and decisions/);
+  assert.match(text, /Review Unit 2A foundations/);
+  assert.doesNotMatch(text, /The complete Unit 2A path|release-gated|Coming after verified 2A release/);
 });

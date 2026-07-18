@@ -31,6 +31,7 @@ export const calculusUnitRoutes: ReadonlyArray<CalculusUnitRoute>;
 export const calculusUnitSearchRecords: Array<Record<string, unknown>>;
 export const calculusUnitPracticeRoutes: ReadonlyArray<CalculusUnitRoute>;
 export const calculusUnitSectionGuidance: Readonly<Record<string, { lens: string; mentalModel: string; decision: string; commonTrap: string; checkpoint: string }>>;
+export function getCalculusUnitSectionGuidance(unitId: string, sectionId: string): { lens: string; mentalModel: string; decision: string; commonTrap: string; checkpoint: string };
 export function getCalculusUnitRoute(path: string): CalculusUnitRoute | undefined;
 export function getCalculusUnitCollection(unitId: string): CalculusUnitCollection | undefined;
 export function getCalculusUnitForPath(path: string): CalculusUnitCollection | undefined;

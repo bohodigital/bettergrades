@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "classification": "SERVER_ONLY_ATTEMPT_GATED_EXERCISE_ANSWERS",
+  "unitId": "calc-1-unit-2b-derivative-applications",
+  "routes": [
+    {
+      "routeId": "calc-1-unit-2b-derivative-applications:bridge-diagnostic",
+      "provenance": { "questionSource": "Normalized v3 Unit 2B bridge diagnostic", "answerComposition": "BetterGrades-original derivations completed during repository integration", "reviewStatus": "Mathematical and server-boundary review complete" },
+      "answers": [
+        { "response": "\\(\\dfrac{d}{dx}(x^4-3x^2+1)=\\boxed{4x^3-6x}\\)." },
+        { "response": "By the chain rule, \\(\\dfrac{d}{dx}(x^2+1)^5=\\boxed{10x(x^2+1)^4}\\)." },
+        { "response": "By the product rule, \\(\\dfrac{d}{dx}(x^2e^x)=\\boxed{e^x(x^2+2x)}\\)." },
+        { "response": "Differentiate implicitly: \\(2x+2yy'=0\\), so \\(\\boxed{dy/dx=-x/y}\\) where \\(y\\ne0\\)." },
+        { "response": "\\(\\boxed{s'(t)=3t^2-6}\\) and \\(\\boxed{s''(t)=6t}\\)." },
+        { "response": "Because cost is measured in dollars and output in items, \\(C'(q)\\) is measured in \\(\\boxed{\\text{dollars per item}}\\)." },
+        { "response": "Divide by 3 and factor: \\(x^2-4x+3=(x-1)(x-3)=0\\), so \\(\\boxed{x=1,3}\\)." },
+        { "response": "The equation \\(f'(x)=0\\) only identifies a stationary candidate. A sign change, comparison of values, or another valid test is still needed; for example, \\(f(x)=x^3\\) has \\(f'(0)=0\\) but no extremum at 0." }
+      ]
+    },
+    {
+      "routeId": "calc-1-unit-2b-derivative-applications:interpretation-review",
+      "provenance": { "questionSource": "Normalized v3 Unit 2B interpretation review and supplied appendix answers", "answerComposition": "Supplied answers expanded with BetterGrades-original derivations for complete coverage", "reviewStatus": "Mathematical and server-boundary review complete" },
+      "answers": [
+        { "response": "\\(v(t)=4t^3-16t=4t(t-2)(t+2)\\) and \\(a(t)=12t^2-16\\). Rest occurs when \\(v=0\\), so \\(\\boxed{t=-2,0,2}\\)." },
+        { "response": "\\(v(t)=3t^2-6t=3t(t-2)\\). On \\([0,4]\\), velocity is negative on \\((0,2)\\) and positive on \\((2,4)\\), so direction changes at \\(\\boxed{t=2}\\)." },
+        { "response": "For the previous problem, \\(a(t)=6(t-1)\\). Speed increases where \\(v\\) and \\(a\\) have the same sign: \\(\\boxed{(0,1)\\cup(2,4)}\\)." },
+        { "response": "A suitable example is \\(s(t)=1-e^{-t}\\) for \\(t\\ge0\\). Then \\(v=e^{-t}>0\\) but \\(v'=-e^{-t}<0\\), so position rises while its slope decreases; the graph is increasing and concave down." },
+        { "response": "Near 100 units, revenue is increasing by about \\(\\boxed{\\$80}\\) for one more unit. The marginal revenue itself is decreasing by about \\(\\boxed{\\$0.60\\text{ per item per item}}\\), so added units are still valuable but progressively less so." },
+        { "response": "One valid equally spaced table is \\(x=1,2,3\\) with \\(f(x)=x^3\\), giving values \\(1,8,27\\). With spacing \\(h=1\\), \\(f'(2)\\approx[27-1]/2=13\\) and \\(f''(2)\\approx[27-2(8)+1]=12\\). Smaller symmetric spacing usually improves the estimate, provided measurement noise does not dominate." },
+        { "response": "For \\(f(x)=x^3-3x\\), the graph of \\(f\\) is a cubic with turning points at \\(x=\\pm1\\). Its derivative \\(f'(x)=3x^2-3\\) is an upward-opening parabola with zeros at those inputs, and \\(f''(x)=6x\\) is a line through the origin. Match graphs using those zeros and signs." }
+      ]
+    },
+    {
+      "routeId": "calc-1-unit-2b-derivative-applications:approximation-review",
+      "provenance": { "questionSource": "Normalized v3 Unit 2B approximation review and supplied appendix answers", "answerComposition": "Supplied answers expanded with BetterGrades-original derivations for complete coverage", "reviewStatus": "Mathematical and server-boundary review complete" },
+      "answers": [
+        { "response": "At \\(a=2\\), \\(f(2)=1/2\\) and \\(f'(2)=-1/4\\), so \\(L(x)=1/2-(x-2)/4\\). Thus \\(\\boxed{1/2.03\\approx L(2.03)=0.4925}\\)." },
+        { "response": "Use \\(f(x)=x^{1/4}\\) at \\(a=16\\). Since \\(f(16)=2\\) and \\(f'(16)=1/32\\), \\(\\boxed{15.8^{1/4}\\approx2-0.2/32=1.99375}\\)." },
+        { "response": "With \\(h\\) fixed, \\(V=\\pi r^2h\\) gives \\(\\boxed{dV=2\\pi rh\\,dr}\\). Insert the nominal radius, height, and small radius change only after differentiating." },
+        { "response": "For \\(A=s^2\\), \\(dA/A=(2s\\,ds)/s^2=2\\,ds/s\\). Therefore the percentage area error is approximately \\(\\boxed{2}\\) times the percentage side-length error." },
+        { "response": "Newton's formula is \\(x_{n+1}=x_n-(x_n^3-5)/(3x_n^2)\\). From \\(x_0=2\\), \\(x_1=13/8=1.625\\), and \\(x_2\\approx\\boxed{1.71006}\\), approaching \\(\\sqrt[3]{5}\\approx1.70998\\)." },
+        { "response": "For the concave-down function \\(f(x)=\\sqrt{x}\\), a tangent line lies locally above the curve, so its linearization is an overestimate. For example, the tangent at \\(x=4\\) gives \\(\\sqrt{4.5}\\approx2.125\\), slightly above the actual value." }
+      ]
+    },
+    {
+      "routeId": "calc-1-unit-2b-derivative-applications:related-rates-review",
+      "provenance": { "questionSource": "Normalized v3 Unit 2B related-rates review and supplied appendix answers", "answerComposition": "Supplied answers expanded with BetterGrades-original derivations for complete coverage", "reviewStatus": "Mathematical and server-boundary review complete" },
+      "answers": [
+        { "response": "From \\(A=\\pi r^2\\), \\(dA/dt=2\\pi r\\,dr/dt\\). At \\(r=20\\), \\(100=40\\pi\\,dr/dt\\), so \\(\\boxed{dr/dt=5/(2\\pi)\\text{ m/min}}\\)." },
+        { "response": "From \\(V=s^3\\), \\(dV/dt=3s^2ds/dt\\). Thus \\(12=3(2)^2ds/dt\\), so \\(\\boxed{ds/dt=1\\text{ cm/s}}\\)." },
+        { "response": "Because \\(r=h\\), \\(V=\\pi h^3/3\\), so \\(dV/dt=\\pi h^2dh/dt\\). At \\(h=3\\), \\(6=9\\pi dh/dt\\), giving \\(\\boxed{dh/dt=2/(3\\pi)\\text{ m/min}}\\)." },
+        { "response": "Let altitude be the constant \\(H\\), horizontal distance be \\(x\\), and elevation angle be \\(\\theta\\). From \\(\\tan\\theta=H/x\\), differentiation gives \\(\\sec^2\\theta\\,\\theta'=-Hx'/x^2\\), hence \\(\\boxed{\\theta'=-Hx'/(x^2+H^2)}\\). The sign reverses if the chosen angle is complementary." },
+        { "response": "Replacing \\(r\\) by 10 first turns \\(V=4\\pi r^3/3\\) into a constant snapshot. Its derivative is then zero, incorrectly erasing the changing radius. Differentiate the variable relationship first: \\(dV/dt=4\\pi r^2dr/dt\\), then substitute \\(r=10\\)." }
+      ]
+    },
+    {
+      "routeId": "calc-1-unit-2b-derivative-applications:theorems-shape-review",
+      "provenance": { "questionSource": "Normalized v3 Unit 2B theorems and shape review and supplied appendix answers", "answerComposition": "Supplied answers expanded with BetterGrades-original derivations for complete coverage", "reviewStatus": "Mathematical and server-boundary review complete" },
+      "answers": [
+        { "response": "\\(f'(x)=4x(x^2-2)\\), so candidates are \\(-3,-\\sqrt2,0,\\sqrt2,2\\). Their values are \\(45,-4,0,-4,0\\). Therefore the absolute maximum is \\(\\boxed{45\\text{ at }x=-3}\\), and the absolute minimum is \\(\\boxed{-4\\text{ at }x=\\pm\\sqrt2}\\)." },
+        { "response": "The function is continuous on \\([0,\\pi]\\), differentiable inside, and \\(f(0)=f(\\pi)=0\\). Since \\(f'(x)=\\cos x\\), Rolle's point satisfies \\(\\cos c=0\\), so \\(\\boxed{c=\\pi/2}\\)." },
+        { "response": "The secant slope is \\((2-1)/(4-1)=1/3\\). Solve \\(f'(c)=1/(2\\sqrt c)=1/3\\), obtaining \\(\\boxed{c=9/4}\\), which lies in \\((1,4)\\)." },
+        { "response": "\\(f'(x)=4x^2(x-3)\\). The function decreases on \\(\\boxed{(-\\infty,3)}\\) (with a stationary non-extremum at 0) and increases on \\(\\boxed{(3,\\infty)}\\). Thus \\(x=3\\) is a local minimum and \\(x=0\\) is not an extremum." },
+        { "response": "\\(f'(x)=4x(x^2-2)\\). Sign changes show local minima at \\(\\boxed{x=\\pm\\sqrt2}\\), each with value \\(-4\\), and a local maximum at \\(\\boxed{x=0}\\) with value 0." },
+        { "response": "\\(f''(x)=6x-12\\). The curve is concave down on \\(\\boxed{(-\\infty,2)}\\), concave up on \\(\\boxed{(2,\\infty)}\\), and has an inflection point at \\(\\boxed{(2,2)}\\)." },
+        { "response": "For \\(f=(x^2-1)/(x^2+1)\\), the domain is all real numbers; the graph is even, has x-intercepts \\(\\pm1\\), y-intercept \\(-1\\), and horizontal asymptote \\(y=1\\). Since \\(f'=4x/(x^2+1)^2\\), it decreases for \\(x<0\\), increases for \\(x>0\\), and has an absolute minimum \\((0,-1)\\). Since \\(f''=4(1-3x^2)/(x^2+1)^3\\), inflection points are \\(\\boxed{(\\pm1/\\sqrt3,-1/2)}\\); it is concave up between them and down outside." },
+        { "response": "The equation \\(f''(c)=0\\) only makes \\(c\\) a candidate. Concavity must actually change. For \\(f(x)=x^4\\), \\(f''(0)=0\\), but \\(f''(x)=12x^2\\ge0\\) on both sides, so 0 is not an inflection point." }
+      ]
+    },
+    {
+      "routeId": "calc-1-unit-2b-derivative-applications:optimization-review",
+      "provenance": { "questionSource": "Normalized v3 Unit 2B optimization review and supplied appendix answers", "answerComposition": "Supplied answers expanded with BetterGrades-original derivations for complete coverage", "reviewStatus": "Mathematical and server-boundary review complete" },
+      "answers": [
+        { "response": "Let sides be \\(x,y\\). The constraint \\(2x+2y=60\\) gives \\(y=30-x\\), so \\(A=x(30-x)\\) on \\([0,30]\\). Since \\(A'=30-2x\\), the maximum occurs at \\(\\boxed{x=y=15}\\), with area \\(225\\)." },
+        { "response": "Let \\(x\\) be each perpendicular side and \\(y\\) the river-parallel side. Then \\(2x+y=600\\), so \\(A=x(600-2x)\\). The critical point is \\(x=150\\), giving \\(\\boxed{150\\text{ m by }300\\text{ m}}\\) and maximum area \\(45{,}000\\text{ m}^2\\)." },
+        { "response": "For fixed \\(V=\\pi r^2h\\), use \\(h=V/(\\pi r^2)\\) in \\(S=2\\pi r^2+2\\pi rh\\). Differentiation gives the minimum condition \\(\\boxed{h=2r}\\): height equals diameter." },
+        { "response": "A point on the curve is \\((x,\\sqrt x)\\), \\(x\\ge0\\). Minimize \\(D^2=(x-3)^2+x=x^2-5x+9\\). Since \\((D^2)'=2x-5\\), the closest point is \\(\\boxed{(5/2,\\sqrt{5/2})}\\)." },
+        { "response": "\\(P'(q)=-4q+120\\), so the interior candidate is \\(q=30\\). Comparing \\(P(0),P(30),P(50)\\) shows the maximum is \\(\\boxed{P(30)=1300}\\)." },
+        { "response": "If the strip width is \\(W\\) and each folded edge has width \\(x\\), then the base is \\(W-2x\\) and cross-sectional area is \\(A=x(W-2x)\\), with \\(0<x<W/2\\). Since \\(A'=W-4x\\), choose \\(\\boxed{x=W/4}\\); the base is \\(W/2\\)." },
+        { "response": "For nonnegative distances, the square function is strictly increasing. Therefore \\(D_1<D_2\\) exactly when \\(D_1^2<D_2^2\\), so both objectives have the same minimizing location, while the squared version avoids a square root." },
+        { "response": "Let the rectangle have width \\(w\\), height \\(h\\), and a semicircle of radius \\(w/2\\). With fixed outside perimeter \\(P\\), \\(w+2h+\\pi w/2=P\\), so \\(h=[P-w(1+\\pi/2)]/2\\). The area is \\(A(w)=wh+\\pi w^2/8\\), on \\(\\boxed{0<w<P/(1+\\pi/2)}\\). Differentiate this one-variable objective and compare the interior candidate with the limiting endpoints." }
+      ]
+    },
+    {
+      "routeId": "calc-1-unit-2b-derivative-applications:lhopital-review",
+      "provenance": { "questionSource": "Normalized v3 Unit 2B L'Hopital review and supplied appendix answers", "answerComposition": "Supplied answers expanded with concise derivations", "reviewStatus": "Mathematical and server-boundary review complete" },
+      "answers": [
+        { "response": "The form is \\(0/0\\). One valid application gives \\(\\lim 2e^{2x}/1=\\boxed{2}\\)." },
+        { "response": "The form remains \\(0/0\\) through three differentiations: \\((\\sin x-x)/x^3\\to(\\cos x-1)/(3x^2)\\to-\\sin x/(6x)\\to-\\cos x/6\\). The limit is \\(\\boxed{-1/6}\\)." },
+        { "response": "Repeated differentiation, or exponential growth dominance, gives \\(\\boxed{0}\\)." },
+        { "response": "The form is \\(\\infty/\\infty\\). Differentiating gives \\((1/x)/(1/(2\\sqrt x))=2/\\sqrt x\\to\\boxed{0}\\)." },
+        { "response": "Rewrite as \\(\\ln x/(1/x^2)\\). L'Hopital gives \\((1/x)/(-2/x^3)=-x^2/2\\to\\boxed{0}\\)." },
+        { "response": "Rationalization gives \\(x/[\\sqrt{x^2+x}+x]=1/[\\sqrt{1+1/x}+1]\\to\\boxed{1/2}\\). L'Hopital also works after verifying the original \\(\\infty-\\infty\\) expression has first been transformed." },
+        { "response": "Let \\(y=x^x\\). Then \\(\\ln y=x\\ln x\\to0\\), so \\(y\\to e^0=\\boxed{1}\\)." },
+        { "response": "Direct substitution gives \\(2/3\\), not \\(0/0\\) or \\(\\infty/\\infty\\). Therefore L'Hopital's Rule is invalid and unnecessary; the limit is \\(\\boxed{2/3}\\)." }
+      ]
+    },
+    {
+      "routeId": "calc-1-unit-2b-derivative-applications:modeling-studio-review",
+      "provenance": { "questionSource": "Normalized v3 Unit 2B modeling studio review and supplied appendix answers", "answerComposition": "Supplied answers expanded with BetterGrades-original derivations and a complete open-model rubric", "reviewStatus": "Mathematical and server-boundary review complete" },
+      "answers": [
+        { "response": "\\(C'(t)=20e^{-0.5t}(1-0.5t)\\), so the peak occurs at \\(\\boxed{t=2}\\) with concentration \\(\\boxed{40/e}\\). The model increases on \\([0,2)\\) and decreases afterward." },
+        { "response": "Area \\(A=4\\pi r^2\\) gives \\(dA/dt=8\\pi r(0.2)=\\boxed{2\\pi\\text{ cm}^2/\\text{s}}\\) at \\(r=5\\). Volume \\(V=4\\pi r^3/3\\) gives \\(dV/dt=4\\pi r^2(0.2)=\\boxed{20\\pi\\text{ cm}^3/\\text{s}}\\)." },
+        { "response": "With road position \\(x\\), camera offset 30, and angle \\(\\theta\\), \\(\\tan\\theta=x/30\\). Thus \\(\\sec^2\\theta\\,\\theta'=x'/30\\), so for \\(x'=15\\), \\(\\boxed{\\theta'=450/(x^2+900)\\text{ rad/s}}\\)." },
+        { "response": "\\(D'(v)=1+v/(0.75\\cdot9.8)\\). Thus \\(D'(15)\\approx3.041\\) and \\(D'(30)\\approx5.082\\) distance-units per speed-unit. Stopping distance is more sensitive at 30 because the quadratic braking contribution grows with speed." },
+        { "response": "For sphere volume, \\(dV/V\\approx3\\,dr/r\\). Therefore the relative uncertainty is \\(3(0.03/6)=0.015\\), or \\(\\boxed{1.5\\%}\\)." },
+        { "response": "Revenue is \\(R=q(100-0.1q)\\), so profit is \\(P=75q-0.1q^2-5000\\). The feasible demand domain is \\(0\\le q\\le1000\\). Since \\(P'=75-0.2q\\), the maximum occurs at \\(\\boxed{q=375}\\), where price is still nonnegative." },
+        { "response": "\\(R'(d)=1200/(d+10)^2>0\\), so response increases. \\(R''(d)=-2400/(d+10)^3<0\\), so it is concave down and shows diminishing returns. As \\(d\\to\\infty\\), \\(\\boxed{R(d)\\to120}\\)." },
+        { "response": "One valid model is daily sales \\(S(a)\\) versus advertising spend \\(a\\) in dollars. Then \\(S'(a)\\) has units sales per advertising dollar and estimates the next-dollar lift locally. State a domain such as \\(0\\le a\\le5000\\), assume price and audience mix are stable over the observation window, fit from measured pairs \\((a,S)\\), and warn that saturation or seasonality can invalidate extrapolation. Full credit requires variables, units, relationship or data source, derivative objective, domain, assumptions, and a contextual interpretation." }
+      ]
+    },
+    {
+      "routeId": "calc-1-unit-2b-derivative-applications:advanced-newton-convergence",
+      "provenance": { "questionSource": "Normalized v3 Unit 2B advanced Newton exploration", "answerComposition": "BetterGrades-original derivations added during repository integration", "reviewStatus": "Mathematical and server-boundary review complete" },
+      "answers": [
+        { "response": "For \\(f(x)=x^2-2\\), Newton gives \\(x_{n+1}=(x_n+2/x_n)/2\\). From \\(x_0=1.5\\), \\(x_1=17/12\\approx1.4166667\\) and \\(x_2=577/408\\approx1.4142157\\). Compared with \\(\\sqrt2\\), the errors fall from about \\(2.45\\times10^{-3}\\) to \\(2.12\\times10^{-6}\\), illustrating near-quadratic convergence." },
+        { "response": "For \\(f(x)=x^{1/3}\\), \\(f'(x)=1/(3x^{2/3})\\) is undefined at the root. Away from zero, Newton's formula simplifies to \\(x_{n+1}=x_n-3x_n=-2x_n\\), so the magnitude doubles and the sign alternates instead of converging." },
+        { "response": "For \\(f(x)=x^3-2x+2\\), starting at 0 gives \\(x_1=1\\), and starting at 1 gives \\(x_1=0\\), creating the two-cycle \\(0\\leftrightarrow1\\). Other starts may converge to the real root near \\(\\boxed{-1.7693}\\), wander for several steps, or diverge; the experiment shows why a root's existence does not guarantee convergence from every starting value." }
+      ]
+    },
+    {
+      "routeId": "calc-1-unit-2b-derivative-applications:cumulative-practice",
+      "provenance": { "questionSource": "Normalized v3 Unit 2B cumulative-practice route", "answerComposition": "BetterGrades-original derivations completed during repository integration", "reviewStatus": "Mathematical and server-boundary review complete" },
+      "answers": [
+        { "response": "Near 200 units, \\(R'(200)=45\\) means revenue is increasing by about \\(\\boxed{\\$45}\\) for one additional unit. \\(R''(200)=-0.3\\) means marginal revenue is decreasing by about \\(\\boxed{\\$0.30\\text{ per item per item}}\\)." },
+        { "response": "\\(v=3(t-1)(t-3)\\), \\(a=6(t-2)\\), and rest occurs at \\(t=1,3\\). Motion is positive on \\((0,1)\\cup(3,5)\\) and negative on \\((1,3)\\). Speed increases where \\(v,a\\) share a sign: \\(\\boxed{(1,2)\\cup(3,5)}\\)." },
+        { "response": "One example is \\(s(t)=1-e^{-t}\\) for \\(t\\ge0\\). Its velocity \\(e^{-t}\\) is positive and decreasing, so the position graph rises while bending downward." },
+        { "response": "For equally spaced inputs \\(x_{i-1},x_i,x_{i+1}\\) with spacing \\(h\\), use \\(\\boxed{f'(x_i)\\approx[f_{i+1}-f_{i-1}]/(2h)}\\) and \\(\\boxed{f''(x_i)\\approx[f_{i+1}-2f_i+f_{i-1}]/h^2}\\). Include the input and output units." },
+        { "response": "\\(h'(t)=(18\\pi/20)\\sin(\\pi t/20)\\). At \\(t=10\\), \\(\\boxed{h'(10)=0.9\\pi}\\) height-units per time-unit, so the rider is moving upward at the wheel's maximum vertical speed." },
+        { "response": "At 25, \\(f=5\\) and \\(f'=1/10\\), so \\(L(x)=5+(x-25)/10\\). Therefore \\(\\boxed{\\sqrt{25.4}\\approx5.04}\\)." },
+        { "response": "At 1, \\(\\ln1=0\\) and the slope is 1, so \\(L(x)=x-1\\). Thus \\(\\boxed{\\ln1.03\\approx0.03}\\)." },
+        { "response": "For \\(V=4\\pi r^3/3\\), \\(|dV|\\approx4\\pi r^2|dr|=4\\pi(12)^2(0.05)=\\boxed{28.8\\pi\\text{ cm}^3}\\). Relative error is \\(3(0.05/12)=0.0125\\), or \\(\\boxed{1.25\\%}\\)." },
+        { "response": "For \\(x^2-5=0\\), Newton gives \\(x_{n+1}=(x_n+5/x_n)/2\\). From 2, \\(x_1=2.25\\) and \\(x_2=\\boxed{2.236111\\ldots}\\), close to \\(\\sqrt5\\)." },
+        { "response": "Newton can fail when the derivative is zero or nearly zero, when the start enters a cycle, or when tangents jump away from the desired root. For example, \\(x^3-2x+2\\) cycles \\(0\\leftrightarrow1\\)." },
+        { "response": "With \\(x^2+y^2=100\\), \\(2x(1)+2yy'=0\\). At \\(x=6\\), \\(y=8\\), so \\(\\boxed{y'=-3/4\\text{ ft/s}}\\): the top moves downward." },
+        { "response": "Similarity gives \\(r/h=5/15=1/3\\), so \\(V=\\pi h^3/27\\). Then \\(dV/dt=(\\pi h^2/9)dh/dt\\). At \\(h=6\\), \\(3=4\\pi dh/dt\\), so \\(\\boxed{dh/dt=3/(4\\pi)\\text{ m/min}}\\)." },
+        { "response": "Let \\(x\\) be distance along the path and \\(\\theta\\) the camera angle. From \\(\\tan\\theta=x/40\\), \\(\\theta'=40x'/(x^2+1600)\\). At closest approach \\(x=0\\) and \\(x'=8\\), so \\(\\boxed{\\theta'=0.2\\text{ rad/s}}\\)." },
+        { "response": "If separation is \\(z\\), then \\(z^2=x^2+y^2\\). At \\((x,y)=(6,8)\\), \\(z=10\\), \\(x'=50\\), and \\(y'=-40\\). Thus \\(z'=[6(50)+8(-40)]/10=\\boxed{-2\\text{ km/h}}\\): separation is decreasing." },
+        { "response": "Example: a spherical balloon has radius \\(r=3\\) m increasing at \\(dr/dt=0.2\\) m/min. Since \\(V=4\\pi r^3/3\\), \\(dV/dt=4\\pi r^2dr/dt=\\boxed{7.2\\pi\\text{ m}^3/\\text{min}}\\). The model assumes a sphere and uniform radial growth." },
+        { "response": "Candidates are endpoints and \\(f'=3(x^2-1)=0\\), so \\(x=-2,-1,1,2\\). Values are \\(-2,2,-2,2\\). The absolute maximum is \\(\\boxed{2\\text{ at }x=-1,2}\\); the absolute minimum is \\(\\boxed{-2\\text{ at }x=-2,1}\\)." },
+        { "response": "The hypotheses hold, \\(f(0)=f(\\pi)=0\\), and \\(f'(x)=\\cos x\\). The guaranteed point is \\(\\boxed{c=\\pi/2}\\)." },
+        { "response": "The average slope is \\(1/3\\). Solving \\(1/(2\\sqrt c)=1/3\\) gives \\(\\boxed{c=9/4}\\)." },
+        { "response": "For \\(f=x^3-3x^2\\), \\(f'=3x(x-2)\\): increasing on \\(( -\\infty,0)\\cup(2,\\infty)\\), decreasing on \\((0,2)\\), local max \\((0,0)\\), local min \\((2,-4)\\). Since \\(f''=6(x-1)\\), it is concave down for \\(x<1\\), up for \\(x>1\\), with inflection \\(\\boxed{(1,-2)}\\)." },
+        { "response": "For \\(f=(x^2+1)/(x^2-1)\\), the domain excludes \\(\\pm1\\); the graph is even, has y-intercept \\(-1\\), no x-intercepts, vertical asymptotes \\(x=\\pm1\\), and horizontal asymptote \\(y=1\\). \\(f'=-4x/(x^2-1)^2\\), so it increases for \\(x<0\\) on each domain interval and decreases for \\(x>0\\), with local maximum \\((0,-1)\\). \\(f''=4(3x^2+1)/(x^2-1)^3\\), so it is concave down on \\((-1,1)\\), up outside, and has no inflection point because \\(\\pm1\\) are not in the domain." },
+        { "response": "By the Mean Value Theorem, some \\(c\\) between \\(a,b\\) satisfies \\(f(b)-f(a)=f'(c)(b-a)\\). Taking absolute values gives \\(|f(b)-f(a)|=|f'(c)||b-a|\\le\\boxed{M|b-a|}\\)." },
+        { "response": "With \\(y=30-x\\), area is \\(A=x(30-x)\\) on \\([0,30]\\). The maximum occurs at \\(\\boxed{x=y=15}\\), with area \\(225\\)." },
+        { "response": "With perpendicular sides \\(x\\) and river-parallel side \\(y\\), \\(2x+y=600\\). Maximizing \\(A=x(600-2x)\\) gives \\(\\boxed{x=150\\text{ m},\\ y=300\\text{ m}}\\)." },
+        { "response": "The volume constraint gives \\(h=500/r^2\\). Surface area is \\(S=2\\pi r^2+1000\\pi/r\\), so \\(S'=4\\pi r-1000\\pi/r^2=0\\) gives \\(r^3=250\\). Thus \\(\\boxed{r=\\sqrt[3]{250}\\text{ and }h=2\\sqrt[3]{250}}\\), approximately 6.30 by 12.60." },
+        { "response": "Minimize \\(D^2=(x-3)^2+x=x^2-5x+9\\), \\(x\\ge0\\). Its derivative vanishes at \\(x=5/2\\), so the closest point is \\(\\boxed{(5/2,\\sqrt{5/2})}\\)." },
+        { "response": "Revenue is \\(R=80q-0.05q^2\\), so profit is \\(P=60q-0.05q^2-2000\\), with feasible demand domain \\(0\\le q\\le1600\\). Since \\(P'=60-0.1q\\), the maximum occurs at \\(\\boxed{q=600}\\), with profit \\(\\boxed{16000}\\)." },
+        { "response": "The form is \\(0/0\\). Two differentiations give \\(e^x/(2)\\to\\boxed{1/2}\\)." },
+        { "response": "Exponential growth dominates any fixed polynomial; three applications of L'Hopital also reduce the numerator to a constant over \\(e^x\\). The limit is \\(\\boxed{0}\\)." },
+        { "response": "Let \\(y=x^x\\). Then \\(\\ln y=x\\ln x\\to0\\), so \\(\\boxed{y\\to1}\\)." },
+        { "response": "For example, \\(\\lim_{x\\to0}(2+x)/(3-x)=\\boxed{2/3}\\) by direct substitution. The form is neither \\(0/0\\) nor \\(\\infty/\\infty\\), so L'Hopital is unnecessary and invalid." }
+      ]
+    }
+  ]
+}
