@@ -1,43 +1,50 @@
 # Unit 2A QA record
 
-## Exact candidate
+## Exact candidate and release identity
 
-- Branch: `agent/bettergrades-unit-2a-v3`
-- Initial implementation commit: `c5274b51c41065ce4b8a74f40d3331b288f1f815`
-- Implementation and QA commit: `9886a22e0f548df9fbb88fb894c8b35777cff1c8`
-- Implementation and QA tree: `d55057fef79961eda58fc1f5ca314394d202f0a9`
-- Pi-validated release candidate commit: `f3263e2e339c39733e72470107375acb93c49b7b`
-- Pi-validated release candidate tree: `ed4365f904436cf2fe2105cee09ab430f723b09c`
-- Visual-fidelity correction commit: `08205022b4ca0f67a620c4d116b2a53dd862b39a`
-- Visual-fidelity correction tree: `e91d167dfeb8a2b3d883be32a5d361a3225ff894`
-- Baseline: `e85b9b80fdb77aaf5346c555a2c1378024fd33ca`
-
-## Windows validation
-
-- Frozen install: pass.
-- Answer checks: 10 Limits reveal sets / 348 answers; 2 Limits exam keys / 32 answers.
-- Visual checks: 13 Limits scenes; 27 Unit 2A scenes.
-- Unit import: 67 routes, 49 core routes, 34 checks, 7 assessment sets, 27 visuals.
+- Branch: `agent/bettergrades-unit-2a-v3`.
+- Baseline: `e85b9b80fdb77aaf5346c555a2c1378024fd33ca`.
+- Initial implementation: `c5274b51c41065ce4b8a74f40d3331b288f1f815`.
+- Visual-fidelity correction: `08205022b4ca0f67a620c4d116b2a53dd862b39a`.
+- Corrected reviewed branch head: `32717b4bb60fb858b9baab6482696f9ee3444ddb`.
+- Corrected reviewed branch tree: `839f910b25782065d713c4dcb472a5cf427217b7`.
+- PR 24 merged commit: `36e0091b9014ea13c7a043ff258c9edd05bdf2f4`.
+- Merged tree: `839f910b25782065d713c4dcb472a5cf427217b7`, exactly equal to the reviewed tree.
 - Unit public-route SHA-256: `0e5d94136eb5dd161b7bec8002cebc58ce246823d64c7e4ec2633f7c3113592e`.
-- ESLint: pass.
-- TypeScript: pass.
-- Vinext/Pages build: pass.
-- Full suite before the new practice-reveal regression test: 174/174 pass.
-- Updated suite: 175/175 pass in 151.3 seconds. The only first-run failure was a test that inspected nonvisible RSC transport text; the assertion was narrowed to learner-visible text, and the complete suite then passed.
-- Post-Sites visual-fidelity suite: 175/175 pass in 164.9 seconds after replacing the generic Unit 2A diagram scaffolds and correcting all plotted derivative relationships.
-- All 67 Unit 2A HTML pages: pass raw-TeX, math-error, missing-visual, unique-check, Lens, title, and status gates.
-- Cumulative practice: 36 semantic exercises, 36 server-only answers, 36 attempt-gated reveals, and no answer payload in public indexes or unrelated client chunks.
 
-## Pi validation
+## Inventory and contract gates
 
-The initial implementation bundle SHA-256 was `be62e4d83164547a2cedb1e1065a14b7fed661371407be44b8bd848e6fe57f44`. It fast-forwarded only the isolated Pi worktree. Frozen install, supply-chain postinstalls, answer checks, visual checks, lint, typecheck, and build passed there. The initial unconstrained full test run caused severe but temporary ARM memory pressure during the exhaustive 67-page render sweep; the process exited without mutating the canonical checkout. A serial rerun passed the full Unit 2A sweep but the combined general render-test process later reached Node's 2 GiB heap ceiling. The corrected exact candidate uses both `--test-concurrency=1` and a separate Unit 2A rendered-route process. On the Pi it passed 175/175 tests in 130.2 seconds; afterward 6.9 GiB was available and swap use was zero. The isolated worktree was clean and canonical `main` remained `e85b9b80fdb77aaf5346c555a2c1378024fd33ca`.
+- 67 routes, 49 core routes, 34 checks, 7 assessment sets, and 27 visuals.
+- 36 cumulative exercises, 36 server-only answers, and 36 independent attempt gates.
+- Two exam keys with 14 numbered answers each.
+- All Unit 2A pages passed title, Lens, route ownership, raw-TeX, math-error, missing-visual, unique-check, public-payload, and source-path gates.
+- Limits retained 73 routes, 38 checks, 348 route answers, two exam keys, and 13 visuals.
 
-After the visual-fidelity correction, the isolated Pi worktree fast-forwarded through the verified Git bundle SHA-256 `fcf8673b19cc1b82522f099c2b8eaa065b94bfab64e3b9ad049094eb0c7d4da0`. Frozen install, ESLint, TypeScript, exact visual/import checks, ARM Vinext/Pages build, and the full 175-test serial suite passed again in 130.2 seconds at product commit `08205022b4ca0f67a620c4d116b2a53dd862b39a`. Canonical `main` was still untouched during this validation.
+## Windows and Pi validation
 
-## Browser and release gates
+Frozen install, supply-chain allowlist, answer checks, visual checks, ESLint, TypeScript, Vinext/Pages build, and the complete suite passed. The final Windows suite passed 175/175 in 164.9 seconds after the visual correction. The final isolated Pi suite passed 175/175 in 130.2 seconds. Exact merged canonical `main` then rebuilt and passed 175/175 in 130.2 seconds; GitHub main workflow run `29634083079` also succeeded.
 
-Local production-build browser QA passed the textbook-first map, 49-page sequence, eight section-specific Lens blocks, derivative detail exposition, quick-check wrong/correct/reveal states, all 36 cumulative-practice attempt gates, and Exam A's 14-item linked answer key. Light and dark themes rendered with the expected contrast tokens.
+The initial unconstrained Pi run caused temporary memory pressure, and a combined long-lived render process later reached Node's 2 GiB heap ceiling. No canonical worktree was mutated. Serial concurrency and a separate Unit 2A render process corrected the failure mode and are mandatory for Unit 2B.
 
-The first owner-only Sites candidate, version 22 at commit `ae0efbeed3857460a78d0a4e0ede1ab854b8dfff`, deployed successfully but was deliberately rejected during browser QA: its first derivative figure was a sparse generic three-annotation scaffold rather than the four-stage semantic diagram required by the authoring brief. The release remained private and canonical `main` remained untouched. The correction replaces generic graph data with exact functions, slopes, points, secants, tangents, inverse pairs, implicit curves, and local neighborhoods; replaces process scaffolds with labeled instructional diagrams; centers labels within bounded boxes; and retains the 27-scene, 26-static/1-interactive contract.
+## Private Sites QA
 
-The corrected set was inspected in a 27-item browser contact grid. A real 390 by 844 browser viewport then confirmed the derivative lesson, Lens block, and revised four-stage visual have no horizontal overflow; the SVG rendered at 315 by 183 CSS pixels from its 960 by 558 source with complete intrinsic dimensions. The corrected exact owner-only Sites candidate, merged tree, Cloudflare deployment, and live-host verification remain pending.
+Private Sites version 22 at `ae0efbeed3857460a78d0a4e0ede1ab854b8dfff` was rejected: the first derivative figure was a sparse generic scaffold and multiple plots used placeholder curve families. It was not merged or publicly released.
+
+All 27 scenes were corrected to encode the exact instructional relationships and bounded centered labels. The corrected set passed a 27-item desktop contact grid. A real 390 by 844 lesson view showed a 315 by 183 rendering from its 960 by 558 source without overflow.
+
+The accepted owner-only candidate is Sites version 23, source `32717b4bb60fb858b9baab6482696f9ee3444ddb`, version ID `appgprj_6a52d8b9848c81918fa5ff88a08eece0~appgver_e88f255de780819199ed94ec10d930da`, and deployment ID `appgdep_6a5b1a537a5481919c1b6673c0935692`. Access was custom, one owner, zero groups.
+
+## Live production QA
+
+Immutable deployment `https://b9fa0b41.bettergrades-vhc.pages.dev`, Pages host, apex, and WWW served the exact Unit 2A hub. Browser QA confirmed:
+
+- map-first 49-page textbook sequence and eight specific Section/Reading Lens groups;
+- no learner-visible `Chapter`, raw TeX, missing math, or horizontal overflow;
+- a centered, collision-free, correctly labeled derivative-loop visual on desktop and 390-pixel mobile;
+- an empty exercise attempt remains blocked and a real attempt reveals only that exercise's answer;
+- Exam A key lists Problems 1 through 14 and both keys are prominent from the hub;
+- unique canonical, `index, follow`, analytics, sitemap, robots, greater-or-equal icons and Organization logo JSON-LD;
+- Limits hub and a representative legacy route remain live;
+- representative unknown route returns the custom 404.
+
+The primary-management status check confirmed the BetterGrades SEO control-document cache rule is current. No DNS, binding, ownership, billing, credential, or deployment-wrapper mutation was required.

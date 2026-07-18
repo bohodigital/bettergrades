@@ -25,7 +25,9 @@ The program is deliberately sequential:
 - [Accessibility report](./ACCESSIBILITY_REPORT.md)
 - [Unit 2A QA](./UNIT_2A_QA.md)
 - [Unit 2A release](./UNIT_2A_RELEASE.md)
+- [Unit 2A production postmortem](./UNIT_2A_POSTMORTEM.md)
+- [Revised Unit 2B plan](./UNIT_2B_PLAN_REVISION.md)
 - [Rollback](./ROLLBACK.md)
 - [Changelog](./CHANGELOG.md)
 
-Release-specific postmortems and combined verification reports are added only after the corresponding production evidence exists.
+The Unit 2A release, postmortem, machine-readable summary, and revised Unit 2B plan are complete. The combined verification report remains gated on the separate Unit 2B production release.
