@@ -24,6 +24,10 @@ At `2026-07-18T08:26:46Z`, the candidate passed:
 
 Total: **188/188 passing**. Exhaustive rendered routes run in separate serial Node processes to release heap between families and remain economical on ARM.
 
+## Pi validation
+
+The isolated ARM worktree `/srv/local1/worktrees/bettergrades-unit-2b-v3` at implementation commit `897a6f064f2480717eec403bed28397dc013bb86` passed the frozen install, ESLint, TypeScript, exact import/visual checks, production Vinext build, advanced-worker package, 159/159 inexpensive tests, 3/3 calculus-unit route renders, and 26/26 site-shell route renders. Total: **188/188 passing on the Pi**. The final render process left 6.1 GiB available with zero swap use. Canonical `/srv/local1/repos/bettergrades` remained clean on the accepted Unit 2A baseline during this validation.
+
 ## Payload and performance gates
 
 | Artifact | Raw bytes | Gzip bytes |

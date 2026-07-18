@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "unit": "calc-1-unit-2b-derivative-applications",
-  "status": "candidate",
+  "status": "pi_validated_candidate",
   "baselineCommit": "1c5415113141e570f336c06210a8ff94cfee6d7f",
   "archiveSha256": "e641e8ea951006e81548eaca12749675a0d6aa38f5a5ff689c641c295e9443e7",
   "masterProgramSha256": "3ffef61ddc2b6f3cd67127555ac2e3470cd3d41637436f80e5ea6be7646fc469",
@@ -36,9 +36,30 @@
     "javascript": false,
     "visualReview": "passed"
   },
+  "implementationCommit": "897a6f064f2480717eec403bed28397dc013bb86",
+  "implementationTree": "d9bc91093c5f4d4b775ad36ec2f4faf9b953d5b4",
   "candidateCommit": null,
   "candidateTree": null,
-  "piValidation": null,
+  "piValidation": {
+    "worktree": "/srv/local1/worktrees/bettergrades-unit-2b-v3",
+    "install": "passed",
+    "lint": "passed",
+    "typecheck": "passed",
+    "build": "passed",
+    "pagesPackage": "passed",
+    "tests": 188,
+    "passed": 188,
+    "availableMemoryAfter": "6.1 GiB",
+    "swapUsedAfter": "0 B"
+  },
+  "piPrint": {
+    "compiler": "Tectonic 0.16.9",
+    "pages": 170,
+    "bytes": 530075,
+    "sha256": "5816ba382ed9aa7abdcf1654ebcd6eac0db8fba638c5124aaf8847deb6ff3da9",
+    "extractableTextCharacters": 210790,
+    "visualReview": "passed"
+  },
   "sites": null,
   "pullRequest": null,
   "mergeCommit": null,
