@@ -348,7 +348,7 @@ function renderAxes(panel: PanelLayout): string {
       output.push(element("line", { x1: x - 4, x2: x + 4, y1: y, y2: y, stroke: "#334155", "stroke-width": 1 }));
       output.push(textBlock(plot.x - 8, y + 4, formatTick(value), { anchor: "end", size: 11, maxLines: 1 }));
     }
-    output.push(textBlock(plot.x - 7, plot.y - 7, richTextToPlainText(yAxis.label), { className: "bvlp-axis-label", anchor: "end", size: 13, maxLines: 1 }));
+    output.push(textBlock(plot.x, plot.y - 7, richTextToPlainText(yAxis.label), { className: "bvlp-axis-label", anchor: "start", size: 13, maxLines: 1 }));
   }
   return output.join("");
 }

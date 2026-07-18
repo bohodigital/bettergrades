@@ -24,6 +24,12 @@ At `2026-07-18T08:26:46Z`, the candidate passed:
 
 Total: **188/188 passing**. Exhaustive rendered routes run in separate serial Node processes to release heap between families and remain economical on ARM.
 
+## Rejected private preview and renderer correction
+
+The first owner-only Sites preview (version 24, source commit `75363212dfc9fbe4c2cead19969fa1f46e550312`) was **rejected** during browser-visible QA. The Unit 2B position/velocity/acceleration figure exposed a shared static-renderer defect: a long vertical-axis title was placed just outside the plot and clipped at the left edge.
+
+The correction anchors vertical-axis titles at the plot's left boundary and lets the text extend inward. Limits, Unit 2A, and Unit 2B content-addressed SVG fallbacks were regenerated because the shared renderer owns all three collections. After regeneration, Windows again passed ESLint, TypeScript, the production build and Pages package, 159/159 core tests, 3/3 exhaustive calculus route tests, and 26/26 shell route tests: **188/188 passing**. Version 24 is not an acceptable release artifact and must be replaced by a preview built from the corrected commit.
+
 ## Pi validation
 
 The isolated ARM worktree `/srv/local1/worktrees/bettergrades-unit-2b-v3` at implementation commit `897a6f064f2480717eec403bed28397dc013bb86` passed the frozen install, ESLint, TypeScript, exact import/visual checks, production Vinext build, advanced-worker package, 159/159 inexpensive tests, 3/3 calculus-unit route renders, and 26/26 site-shell route renders. Total: **188/188 passing on the Pi**. The final render process left 6.1 GiB available with zero swap use. Canonical `/srv/local1/repos/bettergrades` remained clean on the accepted Unit 2A baseline during this validation.
