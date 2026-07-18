@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "unit": "2A",
+  "status": "accepted_live",
+  "baselineCommit": "e85b9b80fdb77aaf5346c555a2c1378024fd33ca",
+  "reviewBranch": "agent/bettergrades-unit-2a-v3",
+  "reviewedCommit": "32717b4bb60fb858b9baab6482696f9ee3444ddb",
+  "reviewedTree": "839f910b25782065d713c4dcb472a5cf427217b7",
+  "mergedCommit": "36e0091b9014ea13c7a043ff258c9edd05bdf2f4",
+  "mergedTree": "839f910b25782065d713c4dcb472a5cf427217b7",
+  "githubPullRequest": 24,
+  "githubMainWorkflowRun": 29634083079,
+  "sites": {
+    "projectId": "appgprj_6a52d8b9848c81918fa5ff88a08eece0",
+    "acceptedVersionNumber": 23,
+    "acceptedVersionId": "appgprj_6a52d8b9848c81918fa5ff88a08eece0~appgver_e88f255de780819199ed94ec10d930da",
+    "acceptedDeploymentId": "appgdep_6a5b1a537a5481919c1b6673c0935692",
+    "accessMode": "custom_owner_only",
+    "allowedUsers": 1,
+    "allowedGroups": 0,
+    "rejectedVersionNumber": 22,
+    "rejectedReason": "generic diagram scaffolds and placeholder curve families"
+  },
+  "cloudflare": {
+    "project": "bettergrades",
+    "immutableUrl": "https://b9fa0b41.bettergrades-vhc.pages.dev",
+    "pagesUrl": "https://bettergrades-vhc.pages.dev",
+    "apexUrl": "https://bettergrades.net",
+    "wwwUrl": "https://www.bettergrades.net",
+    "deployedAt": "2026-07-18T06:36:06.163285+00:00",
+    "domainsActive": true,
+    "seoControlRuleCurrent": true,
+    "controlPlaneCredentialReference": "boho-digital-services.cloudflare.primary-management"
+  },
+  "inventory": {
+    "routes": 67,
+    "coreRoutes": 49,
+    "quickChecks": 34,
+    "assessmentSets": 7,
+    "visuals": 27,
+    "staticVisuals": 26,
+    "interactiveVisuals": 1,
+    "examAnswerKeys": 2,
+    "answersPerExamKey": 14,
+    "cumulativeExercises": 36,
+    "attemptGatedAnswers": 36
+  },
+  "validation": {
+    "windowsTestsPassed": 175,
+    "windowsTestsFailed": 0,
+    "windowsDurationSeconds": 164.9,
+    "piTestsPassed": 175,
+    "piTestsFailed": 0,
+    "piDurationSeconds": 130.2,
+    "printPages": 166,
+    "printSha256": "1a1acbb6e897ad9d426f44faad4f3a6dff35172ebbf3228534cd6eee89363de1",
+    "liveHostParity": true,
+    "limitsRegressionPassed": true,
+    "rawLatexVisible": false,
+    "answerLeakDetected": false,
+    "horizontalOverflowDetected": false
+  },
+  "performance": {
+    "betterGradesAppRawBytes": 377026,
+    "betterGradesAppGzipBytes": 104417,
+    "calculusUnitPagesRawBytes": 24283,
+    "calculusUnitPagesGzipBytes": 7162,
+    "betterGradesVisualRawBytes": 3106,
+    "betterGradesVisualGzipBytes": 1407,
+    "pagesFiles": 146,
+    "pagesRawBytes": 18697940,
+    "unitSvgBytes": 356554,
+    "largestSvgBytes": 18088
+  },
+  "programWindow": {
+    "workOrderCreatedAt": "2026-07-18T02:02:36+00:00",
+    "productionDeployedAt": "2026-07-18T06:36:06.163285+00:00",
+    "approximateMinutes": 274,
+    "phaseTokenTelemetry": "not_captured"
+  },
+  "unit2bDecision": "proceed_on_accepted_architecture_with_application_and_visual_fidelity_validators",
+  "requiredUnit2bControls": [
+    "complete application-model template",
+    "brief-derived visual fidelity assertions",
+    "34-item visual contact grid before Sites",
+    "Exam B problem 14 presence and leak tests",
+    "server-only route-scoped attempt gates",
+    "serial process-isolated ARM SSR",
+    "semantic-readiness browser measurements",
+    "exact-tree Sites and Cloudflare release evidence"
+  ]
+}
