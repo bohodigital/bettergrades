@@ -5,6 +5,8 @@ import { getRoute, publicRoutes } from "../../lib/registry";
 
 import { isLimitsUnitPath } from "../../lib/calculus/limits-unit-index.mjs";
 import { getPublicLimitsUnitPage } from "../../lib/calculus/limits-unit.mjs";
+import { isCalculusUnitPath } from "../../lib/calculus/calculus-units-index.mjs";
+import { getPublicCalculusUnitPage } from "../../lib/calculus/calculus-unit.mjs";
 function getPath(slug: string[] = []) {
   return `/${slug.join("/")}${slug.length ? "/" : ""}`;
 }
@@ -37,5 +39,6 @@ export default async function CatchAllPage({
     }))
     : undefined;
   const limitsUnitPage = isLimitsUnitPath(path) ? getPublicLimitsUnitPage(path) : undefined;
-  return <BetterGradesApp path={path} glossaryData={glossaryData} limitsUnitPage={limitsUnitPage} />;
+  const calculusUnitPage = isCalculusUnitPath(path) ? getPublicCalculusUnitPage(path) : undefined;
+  return <BetterGradesApp path={path} glossaryData={glossaryData} limitsUnitPage={limitsUnitPage} calculusUnitPage={calculusUnitPage} />;
 }

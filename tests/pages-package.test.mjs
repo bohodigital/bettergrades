@@ -89,18 +89,25 @@ test("Pages package contains the advanced Worker and static assets", async () =>
   }
 });
 
-test("Pages package contains the exact 13 immutable Limits visual assets", async () => {
-  const manifest = JSON.parse(
+test("Pages package preserves the exact Limits inventory alongside the exact Unit 2A inventory", async () => {
+  const limitsManifest = JSON.parse(
     await readFile(new URL("../content/visualizations/limits-continuity/compiled-scenes.v1.json", import.meta.url), "utf8"),
   );
-  assert.equal(manifest.manifestVersion, 1);
-  assert.equal(manifest.sceneCount, 13);
-  assert.equal(manifest.scenes.length, 13);
+  const unitManifest = JSON.parse(
+    await readFile(new URL("../content/calculus/units/unit-2a/compiled-scenes.v1.json", import.meta.url), "utf8"),
+  );
+  assert.equal(limitsManifest.manifestVersion, 1);
+  assert.equal(limitsManifest.sceneCount, 13);
+  assert.equal(limitsManifest.scenes.length, 13);
   assert.deepEqual(
-    manifest.scenes.map(({ id, route }) => [id, route]),
+    limitsManifest.scenes.map(({ id, route }) => [id, route]),
     expectedLimitsVisuals,
   );
-  const expectedAssetNames = manifest.scenes.map(({ staticAsset }) => staticAsset.path.split("/").at(-1)).sort();
+  assert.equal(unitManifest.manifestVersion, 1);
+  assert.equal(unitManifest.sceneCount, 27);
+  assert.equal(unitManifest.scenes.length, 27);
+  const manifests = [limitsManifest, unitManifest];
+  const expectedAssetNames = manifests.flatMap(({ scenes }) => scenes.map(({ staticAsset }) => staticAsset.path.split("/").at(-1))).sort();
   const publicAssetNames = (await readdir(new URL("../public/visuals/v1/", import.meta.url)))
     .filter((name) => name.endsWith(".svg"))
     .sort();
@@ -110,7 +117,7 @@ test("Pages package contains the exact 13 immutable Limits visual assets", async
   assert.deepEqual(publicAssetNames, expectedAssetNames, "public visual directory must contain the exact manifest inventory");
   assert.deepEqual(packagedAssetNames, expectedAssetNames, "Pages visual directory must contain the exact manifest inventory");
 
-  for (const scene of manifest.scenes) {
+  for (const scene of manifests.flatMap(({ scenes }) => scenes)) {
     const { id, staticAsset } = scene;
     assert.equal(
       staticAsset.path,

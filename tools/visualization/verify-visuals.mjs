@@ -245,8 +245,10 @@ export async function verifyManifestAssets(manifest, { root = projectRoot } = {}
     }
   }
 
-  const presentSvgNames = (await readdir(resolve(root, assetDirectoryRelativePath))).filter((name) => name.endsWith(".svg"));
-  assertSameIdSet(presentSvgNames, [...expectedFileNames], "generated SVG file inventory");
+  const manifestIds = manifest.scenes.map((entry) => entry.id);
+  const presentManifestSvgNames = (await readdir(resolve(root, assetDirectoryRelativePath)))
+    .filter((name) => name.endsWith(".svg") && manifestIds.some((id) => name.startsWith(`${id}.`)));
+  assertSameIdSet(presentManifestSvgNames, [...expectedFileNames], "generated SVG file inventory");
 }
 
 export function assertPublicVisualSafety(visual, id) {

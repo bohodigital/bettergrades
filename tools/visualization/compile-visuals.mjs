@@ -28,6 +28,7 @@ const expectedIds = new Set([
   "ivt-root",
   "epsilon-delta-window",
 ]);
+const isLimitsAssetName = (name) => [...expectedIds].some((id) => name.startsWith(`${id}.`));
 
 function sha256(value) {
   return createHash("sha256").update(value).digest("hex");
@@ -132,7 +133,7 @@ if (checkOnly) {
     await assertCurrent(resolve(assetDirectory, asset.assetFileName), asset.svg, `Static SVG for ${scene.id}`);
   }
   const existing = await readdir(assetDirectory);
-  const stale = existing.filter((name) => name.endsWith(".svg") && !expectedAssetNames.has(name));
+  const stale = existing.filter((name) => isLimitsAssetName(name) && name.endsWith(".svg") && !expectedAssetNames.has(name));
   if (stale.length) throw new Error(`Stale generated visual assets are present: ${stale.join(", ")}.`);
   console.log(`Verified ${rendered.length} deterministic compiled scenes and static SVG assets.`);
 } else {
@@ -141,7 +142,7 @@ if (checkOnly) {
     await writeAtomic(resolve(assetDirectory, asset.assetFileName), asset.svg);
   }
   for (const name of await readdir(assetDirectory)) {
-    if (/^[a-z][a-z0-9-]*\.[a-f0-9]{16}\.svg$/.test(name) && !expectedAssetNames.has(name)) {
+    if (isLimitsAssetName(name) && /^[a-z][a-z0-9-]*\.[a-f0-9]{16}\.svg$/.test(name) && !expectedAssetNames.has(name)) {
       await unlink(resolve(assetDirectory, name));
     }
   }

@@ -1,4 +1,5 @@
 import { limitsUnitRoutes } from "../calculus/limits-unit-index.mjs";
+import { calculusUnitRoutes } from "../calculus/calculus-units-index.mjs";
 import { domains, resources, subjects, tools, topics } from "./catalog";
 import { assessments } from "./practice";
 import type { RedirectRecord, RegistryRoute } from "./schema";
@@ -18,13 +19,15 @@ const fixedRoutes: RegistryRoute[] = [
   { path: "/search/", title: "Search Better Grades", description: "Search free answers, complete topic guides, practice, tools, and visual mathematics definitions.", indexable: true },
   ...["about", "how-we-verify", "editorial-policy", "source-policy", "corrections", "privacy", "accessibility"].map((slug) => ({ path: `/${slug}/`, title: "Better Grades", description: "Better Grades publishing and product standards.", indexable: true })),
 ];
+const calculusUnitRoutePaths = new Set(calculusUnitRoutes.map((route) => route.path));
 
 export const registryRoutes: RegistryRoute[] = [
   ...fixedRoutes,
   ...subjects.map((item) => ({ path: item.path, title: item.name, description: item.description, indexable: true })),
   ...domains.map((item) => ({ path: item.path, title: `${item.name} resources`, description: item.description, indexable: true })),
-  ...topics.map((item) => ({ path: item.path, title: `${item.name} ${domains.find((domain) => domain.id === item.domainId)?.name ?? "mathematics"} resources`, description: item.description, indexable: true })),
-  ...resources.map((item) => ({ path: item.path, title: item.title, description: item.description, indexable: true })),
+  ...calculusUnitRoutes.map((item) => ({ path: item.path, title: item.title, description: item.description, indexable: item.indexable })),
+  ...topics.filter((item) => !calculusUnitRoutePaths.has(item.path)).map((item) => ({ path: item.path, title: `${item.name} ${domains.find((domain) => domain.id === item.domainId)?.name ?? "mathematics"} resources`, description: item.description, indexable: true })),
+  ...resources.filter((item) => !calculusUnitRoutePaths.has(item.path)).map((item) => ({ path: item.path, title: item.title, description: item.description, indexable: true })),
   ...limitsUnitRoutes.map((item) => ({ path: item.path, title: item.metadataTitle, description: item.description, indexable: item.indexable })),
   ...assessments.map((item) => ({ path: item.path, title: item.title, description: item.description, indexable: true })),
   ...tools.map((item) => ({ path: item.path, title: item.title, description: item.description, indexable: true })),

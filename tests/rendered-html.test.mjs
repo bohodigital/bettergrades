@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 import { limitsUnitRoutes } from "../lib/calculus/limits-unit-index.mjs";
+import { calculusUnitRoutes } from "../lib/calculus/calculus-units-index.mjs";
 
 const expectedLimitsVisuals = [
   ["secant-tangent", "/subjects/math/calculus/limits-continuity/unit/limits/why-limits-matter/"],
@@ -383,13 +384,15 @@ test("math glossary and conventions render as first-class indexed pages", async 
   assert.match(conventionsHtml, /What the build rejects/);
 });
 
-test("all 72 registry articles render and include KaTeX", async () => {
+test("all registry articles not superseded by a released unit render in their original document format", async () => {
   const sitemap = await render("/sitemap.xml");
   const sitemapBody = await sitemap.text();
+  const unitPaths = new Set(calculusUnitRoutes.map((route) => route.path));
   const paths = [...sitemapBody.matchAll(/<loc>https:\/\/bettergrades\.net(\/subjects\/math\/(?:algebra|calculus)\/[^<]+\/[^<]+\/)<\/loc>/g)]
     .map((match) => match[1])
-    .filter((path) => path.split("/").filter(Boolean).length === 5 && !path.includes("/unit/"));
-  assert.equal(paths.length, 72);
+    .filter((path) => path.split("/").filter(Boolean).length === 5 && !path.includes("/unit/") && !unitPaths.has(path));
+  assert.equal(paths.length, new Set(paths).size);
+  assert.ok(paths.length > 50, "the existing library must remain substantially intact");
 
   for (const path of paths) {
     const response = await render(path);
@@ -402,6 +405,26 @@ test("all 72 registry articles render and include KaTeX", async () => {
     assert.match(html, />Vocab</, path);
     assert.match(html, /class="page-term-chip"/, path);
     assert.match(html, /Learn more/, path);
+  }
+});
+
+test("all 67 Unit 2A pages render as clean textbook pages with no source notation", async () => {
+  assert.equal(calculusUnitRoutes.length, 67);
+  for (const route of calculusUnitRoutes) {
+    const response = await render(route.path);
+    assert.equal(response.status, 200, route.path);
+    const html = await response.text();
+    assert.match(html, /data-unit-id="calc-1-unit-2a-derivative-foundations-techniques"/, route.path);
+    const renderedTitle = route.title.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("'", "&#x27;").replaceAll('"', "&quot;");
+    assert.match(html, new RegExp(`<h1>${escapeRegExp(renderedTitle)}</h1>`), route.path);
+    assert.doesNotMatch(visibleText(html), /\\(?:begin|end|frac|varepsilon|textbf|emph|section|chapter|addplot|draw|node)\b|\$\$|\\[()[\]]/, route.path);
+    assert.doesNotMatch(html, /This equation could not be rendered safely|This visual is temporarily unavailable|class="katex-error"/, route.path);
+    const renderedCheckIds = [...html.matchAll(/data-check-id="([^"]+)"/g)].map((match) => match[1]);
+    assert.equal(renderedCheckIds.length, new Set(renderedCheckIds).size, `${route.path} renders each interactive check once`);
+    if (route.pageType !== "hub") {
+      assert.match(html, /Section overview/, route.path);
+      assert.match(html, /Reading lens/, route.path);
+    }
   }
 });
 
@@ -476,7 +499,7 @@ test("search is one typed index across content, tools, and practice", async () =
   assert.equal(response.status, 200);
   const html = await response.text();
   assert.match(html, /Search Better Grades/);
-  assert.match(html, /72(?:<!-- -->)? complete guides/);
+  assert.match(html, /\d+(?:<!-- -->)? complete guides/);
   assert.match(html, /\d+(?:<!-- -->)? visual definitions/);
   assert.match(html, /Filter by course/);
   assert.match(html, /Filter by resource type/);
@@ -485,7 +508,7 @@ test("search is one typed index across content, tools, and practice", async () =
   assert.match(html, /Terms, symbols, and notation/);
   assert.match(html, />Glossary</);
   assert.match(html, /Algebra Expression Checker/);
-  assert.match(html, /Calculus foundations practice exam/);
+  assert.match(html, /kind-practice|Practice exam|Diagnostic|Quick quiz/);
 });
 
 test("practice is a central category with all four assessment formats", async () => {

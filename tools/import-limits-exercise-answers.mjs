@@ -99,7 +99,7 @@ const payload = {
 
 const serialized = `${JSON.stringify(payload, null, 2)}\n`;
 if (checkOnly) {
-  const current = await readFile(outputPath, "utf8");
+  const current = (await readFile(outputPath, "utf8")).replace(/\r\n?/g, "\n");
   if (current !== serialized) throw new Error(`${outputPath} is stale. Run the answer importer and commit the deterministic artifact.`);
   console.log(`Verified ${entries.length} route answer sets and ${entries.reduce((total, [, route]) => total + route.answers.length, 0)} source-traced answers.`);
 } else {

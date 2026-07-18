@@ -1071,7 +1071,7 @@ h1 em, h2 em { color: var(--brand); font-family: var(--serif); font-weight: 500;
 .limits-map-intro { display: grid; grid-template-columns: minmax(280px, .8fr) minmax(340px, 1.2fr); gap: 60px; align-items: end; }
 .limits-map-intro h2 { margin: 8px 0 0; font-size: clamp(2.25rem, 4.5vw, 4rem); }
 .limits-map-intro > p { margin: 0; color: var(--muted); font-family: var(--serif); font-size: 18px; line-height: 1.7; }
-.limits-map-stats { margin: 38px 0 56px; display: grid; grid-template-columns: repeat(4, 1fr); border-block: 1px solid var(--line); }
+.limits-map-stats { margin: 38px 0 56px; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-block: 1px solid var(--line); }
 .limits-map-stats span { padding: 18px 14px; border-left: 1px solid var(--line); color: var(--muted); font-size: 11px; text-transform: uppercase; }
 .limits-map-stats span:first-child { border-left: 0; padding-left: 0; }
 .limits-map-stats b { margin-right: 5px; color: var(--ink); font-family: var(--math); font-size: 22px; }
@@ -1152,6 +1152,28 @@ h1 em, h2 em { color: var(--brand); font-family: var(--serif); font-weight: 500;
 .limits-sequence small { color: var(--brand); font-weight: 750; }
 .limits-unit-topic-link { color: var(--warm) !important; font-weight: 850 !important; }
 
+.calculus-unit-page .breadcrumbs > span { display: inline-flex; gap: 8px; align-items: center; }
+.calculus-unit-page .breadcrumbs i { color: var(--line-dark); font-style: normal; }
+.calculus-prerequisites { margin: 34px 0 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.calculus-prerequisites > div { min-width: 0; padding: clamp(22px, 3vw, 30px); border: 1px solid var(--line); border-radius: 16px; background: var(--surface); }
+.calculus-prerequisites h3 { margin: 8px 0 12px; font-size: clamp(1.35rem, 2.5vw, 1.9rem); }
+.calculus-prerequisites p:not(.eyebrow) { margin: 0; color: var(--muted); font-family: var(--serif); font-size: 16px; line-height: 1.65; }
+.calculus-unit-map .limits-chapter > header > div > span { white-space: nowrap; letter-spacing: .08em; text-transform: uppercase; }
+.calculus-unit-visual { width: 100%; max-width: 880px; margin-inline: auto; }
+.calculus-choice-list { margin: 12px 0 16px !important; display: grid !important; grid-template-columns: 1fr !important; gap: 8px !important; }
+.limits-check form .calculus-choice-list label { padding: 11px 13px; border: 1px solid var(--line); border-radius: 10px; display: grid; grid-template-columns: 18px minmax(0, 1fr); justify-content: start; gap: 10px; align-items: start; background: var(--paper); font-weight: 600; cursor: pointer; }
+.limits-check form .calculus-choice-list input { width: 16px; margin-top: 3px; }
+.limits-check-feedback.is-uncertain { color: var(--warm-dark); font-weight: 800; }
+.calculus-attempt-reveal textarea { width: 100%; max-width: 100%; margin: 8px 0 12px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 9px; resize: vertical; background: var(--paper); color: var(--ink); font: inherit; }
+.calculus-attempt-reveal > p { margin: 0; padding: 0 24px 20px; color: var(--muted); font-size: 14px; }
+.calculus-assessment-set { margin: 62px 0; padding-top: 42px; border-top: 2px solid var(--ink); }
+.calculus-assessment-set > header { max-width: 720px; margin-bottom: 28px; }
+.calculus-assessment-set > header h2 { margin: 8px 0 12px; font-size: clamp(2rem, 4vw, 3rem); }
+.calculus-assessment-set > header p:not(.eyebrow) { color: var(--muted); font-family: var(--serif); font-size: 17px; line-height: 1.65; }
+.limits-node-answer-key-item { border-left: 5px solid var(--brand); }
+.limits-node-answer-key-item > header { background: var(--brand-soft); }
+.limits-node-answer-key-item > div { font-size: 18px; }
+
 @media (max-width: 800px) {
   .limits-unit-layout { grid-template-columns: 1fr; }
   .limits-unit-layout > aside { position: static; padding: 18px; border: 1px solid var(--line); border-radius: 12px; }
@@ -1159,9 +1181,10 @@ h1 em, h2 em { color: var(--brand); font-family: var(--serif); font-weight: 500;
   .limits-map-intro, .limits-chapter-map { grid-template-columns: 1fr; gap: 22px; }
   .limits-answer-key-map, .limits-exam-key-callout { grid-template-columns: 1fr; }
   .limits-map-stats { grid-template-columns: 1fr 1fr; }
-  .limits-map-stats span:nth-child(3) { border-left: 0; }
+  .limits-map-stats span:nth-child(odd) { border-left: 0; }
   .limits-support-grid { grid-template-columns: 1fr; }
   .limits-overview-guides { grid-template-columns: 1fr; }
+  .calculus-prerequisites { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 520px) {

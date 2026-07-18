@@ -1,0 +1,527 @@
+{
+  "schema_version": "3.0.0",
+  "unit_id": "calc-1-unit-2a-derivative-foundations-techniques",
+  "problem_count": 34,
+  "problems": [
+    {
+      "problem_id": "meaning-derivative-01",
+      "canonical_answer": "rate of change",
+      "accepted_answers": [
+        "rate of change"
+      ],
+      "normalization": "choice_id_or_normalized_label",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "It is a \\boxed{\\text{rate of change}} measured in degrees Celsius per meter near a depth of \\(50\\) meters.",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "deriv-foundation-01",
+      "canonical_answer": "12",
+      "accepted_answers": [
+        "12"
+      ],
+      "normalization": "exact_integer",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "\\[\n\\frac{(6+h)^2-36}{h}=\\frac{12h+h^2}{h}=12+h\\to\\boxed{12}.\n\\]",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "difference-quotient-01",
+      "canonical_answer": "2a+1",
+      "accepted_answers": [
+        "2a+1"
+      ],
+      "normalization": "algebraic_equivalence_with_domain_awareness",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "\\[\n\\frac{g(a+h)-g(a)}h\n=\\frac{2ah+h^2+h}{h}=2a+h+1\\to\\boxed{2a+1}.\n\\]",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "tangent-line-01",
+      "canonical_answer": "y=6x-9",
+      "accepted_answers": [
+        "y=6x-9"
+      ],
+      "normalization": "algebraic_equivalence_with_domain_awareness",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "\\[\ny-9=6(x-3),\n\\]\nso \\(\\boxed{y=6x-9}\\). The web checker should accept equivalent point-slope and slope-intercept forms.",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "units-derivative-01",
+      "canonical_answer": "liters per centimeter",
+      "accepted_answers": [
+        "liters per centimeter"
+      ],
+      "normalization": "rubric_or_attempt_and_reveal",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "rubric": {
+        "required_concepts": [
+          "liters",
+          "per centimeter"
+        ],
+        "model_response": "liters per centimeter"
+      },
+      "worked_solution_latex": "The output is measured in liters and the input in centimeters, so the units are \\(\\boxed{\\text{liters per centimeter}}\\).",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "differentiability-01",
+      "canonical_answer": "continuous-not-differentiable",
+      "accepted_answers": [
+        "continuous-not-differentiable"
+      ],
+      "normalization": "choice_id_or_normalized_label",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "The graph has a corner at \\(x=3\\), so it is \\(\\boxed{\\text{continuous but not differentiable}}\\).",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "power-rule-01",
+      "canonical_answer": "18x^5-8x^3+2",
+      "accepted_answers": [
+        "18x^5-8x^3+2"
+      ],
+      "normalization": "algebraic_equivalence_with_domain_awareness",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "\\(\\boxed{18x^5-8x^3+2}\\).",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "linearity-01",
+      "canonical_answer": "10x^4+6x^-4",
+      "accepted_answers": [
+        "10x^4+6x^-4"
+      ],
+      "normalization": "algebraic_equivalence_with_domain_awareness",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "\\(\\boxed{10x^4+6x^{-4}}\\).",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "product-rule-01",
+      "canonical_answer": "3x^2sin(x)+x^3cos(x)",
+      "accepted_answers": [
+        "3x^2sin(x)+x^3cos(x)"
+      ],
+      "normalization": "algebraic_equivalence_with_domain_awareness",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "\\(\\boxed{3x^2\\sin x+x^3\\cos x}\\).",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "quotient-rule-01",
+      "canonical_answer": "(1-x^2)/(x^2+1)^2",
+      "accepted_answers": [
+        "(1-x^2)/(x^2+1)^2"
+      ],
+      "normalization": "algebraic_equivalence_with_domain_awareness",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "\\[\n\\frac{(1)(x^2+1)-x(2x)}{(x^2+1)^2}\n=\\boxed{\\frac{1-x^2}{(x^2+1)^2}}.\n\\]",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "sin-cos-01",
+      "canonical_answer": "4cos(x)-2sin(x)",
+      "accepted_answers": [
+        "4cos(x)-2sin(x)"
+      ],
+      "normalization": "algebraic_equivalence_with_domain_awareness",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "\\(\\boxed{4\\cos x-2\\sin x}\\).",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "special-map-01",
+      "canonical_answer": "e^x",
+      "accepted_answers": [
+        "e^x"
+      ],
+      "normalization": "choice_id_or_normalized_label",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "\\(\\boxed{e^x}\\). More generally, every constant multiple \\(Ce^x\\) has the same property.",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "exp-e-01",
+      "canonical_answer": "e^x(x+1)",
+      "accepted_answers": [
+        "e^x(x+1)"
+      ],
+      "normalization": "algebraic_equivalence_with_domain_awareness",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "\\(\\boxed{e^x+xe^x=e^x(x+1)}\\).",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "ln-01",
+      "canonical_answer": "2xln(x)+x",
+      "accepted_answers": [
+        "2xln(x)+x"
+      ],
+      "normalization": "algebraic_equivalence_with_domain_awareness",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "\\(\\boxed{2x\\ln x+x}\\).",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "chain-map-01",
+      "canonical_answer": "3",
+      "accepted_answers": [
+        "3"
+      ],
+      "normalization": "exact_integer",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "There are \\(\\boxed{3}\\): exponential, sine, and square. The derivative is \\(e^{\\sin(x^2)}\\cos(x^2)2x\\).",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "chain-basic-01",
+      "canonical_answer": "12(4x+1)^2",
+      "accepted_answers": [
+        "12(4x+1)^2"
+      ],
+      "normalization": "algebraic_equivalence_with_domain_awareness",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "\\(\\boxed{12(4x+1)^2}\\).",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "chain-trig-01",
+      "canonical_answer": "6xcos(3x^2)",
+      "accepted_answers": [
+        "6xcos(3x^2)"
+      ],
+      "normalization": "algebraic_equivalence_with_domain_awareness",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "\\(\\boxed{6x\\cos(3x^2)}\\).",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "implicit-01",
+      "canonical_answer": "-x/(4y)",
+      "accepted_answers": [
+        "-x/(4y)"
+      ],
+      "normalization": "algebraic_equivalence_with_domain_awareness",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "\\[\n2x+8yy'=0\\quad\\Rightarrow\\quad \\boxed{y'=-\\frac{x}{4y}}.\n\\]\nThe canonical checker should store \\(-x/(4y)\\), not the placeholder value in the environment metadata.",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "inverse-function-01",
+      "canonical_answer": "1/8",
+      "accepted_answers": [
+        "1/8"
+      ],
+      "normalization": "exact_rational",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "\\(\\boxed{1/8}\\).",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "higher-computation-01",
+      "canonical_answer": "12x^2-12",
+      "accepted_answers": [
+        "12x^2-12"
+      ],
+      "normalization": "algebraic_equivalence_with_domain_awareness",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "\\[\np'(x)=4x^3-12x,\n\\qquad\np''(x)=\\boxed{12x^2-12}.\n\\]",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "power-extra-01",
+      "canonical_answer": "20x^4",
+      "accepted_answers": [
+        "20x^4"
+      ],
+      "normalization": "algebraic_equivalence_with_domain_awareness",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "By the power rule, d(4x^5)/dx=4·5x^4=20x^4.",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "power-extra-02",
+      "canonical_answer": "-3x^-4",
+      "accepted_answers": [
+        "-3x^-4"
+      ],
+      "normalization": "algebraic_equivalence_with_domain_awareness",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "The power rule gives d(x^{-3})/dx=-3x^{-4}.",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "product-extra-01",
+      "canonical_answer": "2xsin(x)+x^2cos(x)",
+      "accepted_answers": [
+        "2xsin(x)+x^2cos(x)"
+      ],
+      "normalization": "algebraic_equivalence_with_domain_awareness",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "Use the product rule: 2x sin x+x^2 cos x.",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "quotient-extra-01",
+      "canonical_answer": "(1-x^2)/(x^2+1)^2",
+      "accepted_answers": [
+        "(1-x^2)/(x^2+1)^2"
+      ],
+      "normalization": "algebraic_equivalence_with_domain_awareness",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "[(x^2+1)-2x^2]/(x^2+1)^2=(1-x^2)/(x^2+1)^2.",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "trig-extra-01",
+      "canonical_answer": "-sin(x)",
+      "accepted_answers": [
+        "-sin(x)"
+      ],
+      "normalization": "algebraic_equivalence_with_domain_awareness",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "The derivative of cosine is -sin x.",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "exp-extra-01",
+      "canonical_answer": "2e^(2x)",
+      "accepted_answers": [
+        "2e^(2x)"
+      ],
+      "normalization": "algebraic_equivalence_with_domain_awareness",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "The chain rule gives e^{2x}·2=2e^{2x}.",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "log-extra-01",
+      "canonical_answer": "2x/(x^2+1)",
+      "accepted_answers": [
+        "2x/(x^2+1)"
+      ],
+      "normalization": "algebraic_equivalence_with_domain_awareness",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "For u=x^2+1, (ln u)'=u'/u=2x/(x^2+1).",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "chain-extra-01",
+      "canonical_answer": "10x(x^2+1)^4",
+      "accepted_answers": [
+        "10x(x^2+1)^4"
+      ],
+      "normalization": "algebraic_equivalence_with_domain_awareness",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "5(x^2+1)^4·2x=10x(x^2+1)^4.",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "implicit-extra-01",
+      "canonical_answer": "-x/y",
+      "accepted_answers": [
+        "-x/y"
+      ],
+      "normalization": "algebraic_equivalence_with_domain_awareness",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "2x+2yy'=0, so y'=-x/y.",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "inverse-extra-01",
+      "canonical_answer": "1/6",
+      "accepted_answers": [
+        "1/6"
+      ],
+      "normalization": "exact_rational",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "(f^{-1})'(9)=1/f'(2)=1/6.",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "app-ferris-01",
+      "canonical_answer": "9pi/10",
+      "accepted_answers": [
+        "9pi/10"
+      ],
+      "normalization": "algebraic_equivalence_with_domain_awareness",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "h'(t)=18(π/20)sin(πt/20); at t=10 this is 9π/10.",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "app-average-cost-01",
+      "canonical_answer": "-0.1",
+      "accepted_answers": [
+        "-0.1"
+      ],
+      "tolerance": 1e-06,
+      "normalization": "absolute_tolerance",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "A'(q)=-1200/q²+0.02, so A'(100)=-0.12+0.02=-0.10.",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "app-elasticity-01",
+      "canonical_answer": "0.6",
+      "accepted_answers": [
+        "0.6"
+      ],
+      "tolerance": 1e-06,
+      "normalization": "absolute_tolerance",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "Q_L=0.6Q/L, hence LQ_L/Q=0.6.",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "advanced-little-o-01",
+      "canonical_answer": "h^2",
+      "accepted_answers": [
+        "h^2"
+      ],
+      "normalization": "algebraic_equivalence_with_domain_awareness",
+      "units_policy": "accept_equivalent_units_when_prompt_supplies_units; otherwise unitless",
+      "worked_solution_latex": "(3+h)^2=9+6h+h², so after subtracting the linear part the remainder is h².",
+      "feedback": {
+        "correct": "Correct. Check the interpretation and units before moving on.",
+        "incorrect": "Recheck the governing rule, algebra, domain, and units.",
+        "uncertain": "The checker could not establish equivalence. Compare structure or reveal the worked solution."
+      }
+    }
+  ],
+  "classification": "SERVER_ONLY_DO_NOT_BUNDLE"
+}

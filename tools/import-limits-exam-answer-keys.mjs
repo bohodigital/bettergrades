@@ -4,7 +4,8 @@ import { resolve } from "node:path";
 
 const sourcePath = resolve("content/limits-continuity/latex/appendices/answers.tex");
 const outputPath = resolve("content/limits-continuity/exam-answer-keys.json");
-const source = await readFile(sourcePath, "utf8");
+const source = (await readFile(sourcePath, "utf8")).replace(/\r\n?/g, "\n");
+const checkOnly = process.argv.includes("--check");
 
 function extractKey(exam, expectedCount, nextHeading) {
   const heading = `Practice Examination ${exam} Solutions`;
@@ -40,5 +41,12 @@ const payload = {
   ],
 };
 
-await writeFile(outputPath, `${JSON.stringify(payload, null, 2)}\n`, "utf8");
-console.log(`Imported ${payload.keys.length} exam answer keys with ${payload.keys.reduce((total, key) => total + key.answers.length, 0)} answers to ${outputPath}.`);
+const serialized = `${JSON.stringify(payload, null, 2)}\n`;
+if (checkOnly) {
+  const current = (await readFile(outputPath, "utf8")).replace(/\r\n?/g, "\n");
+  if (current !== serialized) throw new Error(`${outputPath} is stale. Run the exam-key importer and commit the deterministic artifact.`);
+  console.log(`Verified ${payload.keys.length} exam answer keys with ${payload.keys.reduce((total, key) => total + key.answers.length, 0)} source-traced answers.`);
+} else {
+  await writeFile(outputPath, serialized, "utf8");
+  console.log(`Imported ${payload.keys.length} exam answer keys with ${payload.keys.reduce((total, key) => total + key.answers.length, 0)} answers to ${outputPath}.`);
+}

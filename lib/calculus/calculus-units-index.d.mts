@@ -1,0 +1,37 @@
+export type CalculusUnitRoute = {
+  id: string;
+  unitId: string;
+  path: string;
+  slug: string;
+  title: string;
+  description: string;
+  pageType: string;
+  sequenceIndex: number;
+  isCore: boolean;
+  coreSequenceIndex: number | null;
+  sectionId: string;
+  sectionTitle: string;
+  breadcrumbs: Array<{ name: string; path: string }>;
+  previousPath: string | null;
+  nextPath: string | null;
+  previousCorePath: string | null;
+  nextCorePath: string | null;
+  visualIds: string[];
+  searchTerms: string[];
+  relatedPaths: string[];
+  indexable: boolean;
+  releaseState: string;
+};
+export type CalculusUnitCollection = {
+  unit: { id: string; code: string; title: string; shortTitle: string; root: string; prerequisiteUnit?: string; nextUnit?: string; routeCount: number; coreRouteCount: number; problemCount: number; assessmentSetCount: number; visualCount: number };
+  routes: CalculusUnitRoute[];
+};
+export const calculusUnits: ReadonlyArray<Record<string, unknown>>;
+export const calculusUnitRoutes: ReadonlyArray<CalculusUnitRoute>;
+export const calculusUnitSearchRecords: Array<Record<string, unknown>>;
+export const calculusUnitPracticeRoutes: ReadonlyArray<CalculusUnitRoute>;
+export const calculusUnitSectionGuidance: Readonly<Record<string, { lens: string; mentalModel: string; decision: string; commonTrap: string; checkpoint: string }>>;
+export function getCalculusUnitRoute(path: string): CalculusUnitRoute | undefined;
+export function getCalculusUnitCollection(unitId: string): CalculusUnitCollection | undefined;
+export function getCalculusUnitForPath(path: string): CalculusUnitCollection | undefined;
+export function isCalculusUnitPath(path: string): boolean;

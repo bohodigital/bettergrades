@@ -1,4 +1,5 @@
 import { limitsUnitSearchRecords } from "./calculus/limits-unit-index.mjs";
+import { calculusUnitRoutes, calculusUnitSearchRecords } from "./calculus/calculus-units-index.mjs";
 import { problems } from "./content";
 import { domains, resourceFormatLabel, resources, tools, topics } from "./registry/catalog";
 import { assessments } from "./registry/practice";
@@ -40,7 +41,8 @@ export const searchKindLabels: Record<SearchKind, string> = {
 const domainFor = (domainId: string) => domains.find((domain) => domain.id === domainId);
 const topicFor = (topicId: string) => topics.find((topic) => topic.id === topicId);
 
-const guideRecords: SiteSearchRecord[] = resources.map((resource) => {
+const calculusUnitPaths = new Set(calculusUnitRoutes.map((route) => route.path));
+const guideRecords: SiteSearchRecord[] = resources.filter((resource) => !calculusUnitPaths.has(resource.path)).map((resource) => {
   const domain = domainFor(resource.domainId)!;
   const topic = topicFor(resource.topicId)!;
   return {
@@ -71,7 +73,7 @@ const topicRecords: SiteSearchRecord[] = [
     keywords: [domain.name, "course", "syllabus", "topics", "learn"],
     priority: 82,
   })),
-  ...topics.map((topic) => {
+  ...topics.filter((topic) => !calculusUnitPaths.has(topic.path)).map((topic) => {
     const domain = domainFor(topic.domainId)!;
     return {
       id: topic.id,
@@ -153,6 +155,7 @@ const glossaryRecords: SiteSearchRecord[] = mathGlossarySearchTerms.map((term) =
 
 export const siteSearchRecords: SiteSearchRecord[] = [
   ...limitsUnitSearchRecords,
+  ...(calculusUnitSearchRecords as SiteSearchRecord[]),
   ...guideRecords,
   ...topicRecords,
   ...toolRecords,
