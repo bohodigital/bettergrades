@@ -913,8 +913,23 @@ function renderLayer(
     case "label": {
       const point = projected(resolvePoint(layer.geometry.position, variables, scene, layer), panel);
       const text = richTextToPlainText(layer.geometry.content);
-      const placement = layoutTextLabel(point, text, panel, occupiedLabels, { size: 14, maxCharacters: 38, maxLines: 3 });
-      body = textBlock(placement.x, placement.y, text, { className: "bvlp-annotation", size: 14, weight: 650, maxCharacters: 38, maxLines: 3, anchor: placement.anchor, labelBox: placement.box });
+      const size = 14;
+      const lines = splitText(text, 30, 3);
+      const width = Math.min(panel.plot.width - 16, Math.max(24, Math.max(...lines.map((line) => line.length)) * size * 0.59 + 3));
+      const height = Math.max(size * 1.18, lines.length * size * 1.18);
+      const box = {
+        x: Math.max(panel.plot.x + 8, Math.min(panel.plot.x + panel.plot.width - width - 8, point.x - width / 2)),
+        y: Math.max(panel.plot.y + 8, Math.min(panel.plot.y + panel.plot.height - height - 8, point.y - height / 2)),
+        width,
+        height,
+      };
+      if (occupiedLabels.some((other) => boxesOverlap(box, other))) {
+        const placement = layoutTextLabel(point, text, panel, occupiedLabels, { size, maxCharacters: 30, maxLines: 3 });
+        body = textBlock(placement.x, placement.y, text, { className: "bvlp-annotation", size, weight: 650, maxCharacters: 30, maxLines: 3, anchor: placement.anchor, labelBox: placement.box });
+      } else {
+        occupiedLabels.push(box);
+        body = textBlock(box.x + box.width / 2, box.y + size, text, { className: "bvlp-annotation", size, weight: 650, maxCharacters: 30, maxLines: 3, anchor: "middle", labelBox: box });
+      }
       break;
     }
     case "annotation": {
