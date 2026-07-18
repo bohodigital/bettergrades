@@ -32,6 +32,8 @@
 
 The initial implementation bundle SHA-256 was `be62e4d83164547a2cedb1e1065a14b7fed661371407be44b8bd848e6fe57f44`. It fast-forwarded only the isolated Pi worktree. Frozen install, supply-chain postinstalls, answer checks, visual checks, lint, typecheck, and build passed there. The initial unconstrained full test run caused severe but temporary ARM memory pressure during the exhaustive 67-page render sweep; the process exited without mutating the canonical checkout. A serial rerun passed the full Unit 2A sweep but the combined general render-test process later reached Node's 2 GiB heap ceiling. The corrected exact candidate uses both `--test-concurrency=1` and a separate Unit 2A rendered-route process. On the Pi it passed 175/175 tests in 130.2 seconds; afterward 6.9 GiB was available and swap use was zero. The isolated worktree was clean and canonical `main` remained `e85b9b80fdb77aaf5346c555a2c1378024fd33ca`.
 
+After the visual-fidelity correction, the isolated Pi worktree fast-forwarded through the verified Git bundle SHA-256 `fcf8673b19cc1b82522f099c2b8eaa065b94bfab64e3b9ad049094eb0c7d4da0`. Frozen install, ESLint, TypeScript, exact visual/import checks, ARM Vinext/Pages build, and the full 175-test serial suite passed again in 130.2 seconds at product commit `08205022b4ca0f67a620c4d116b2a53dd862b39a`. Canonical `main` was still untouched during this validation.
+
 ## Browser and release gates
 
 Local production-build browser QA passed the textbook-first map, 49-page sequence, eight section-specific Lens blocks, derivative detail exposition, quick-check wrong/correct/reveal states, all 36 cumulative-practice attempt gates, and Exam A's 14-item linked answer key. Light and dark themes rendered with the expected contrast tokens.
