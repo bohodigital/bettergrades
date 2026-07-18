@@ -26,14 +26,8 @@ export function LimitsUnitMap({ showSupporting = true, topicPage = false }: { sh
           <p className="eyebrow">Core textbook</p>
           <h2>The complete textbook path</h2>
         </div>
-        <p>Follow 47 core pages in order, from the first neighborhood idea to formal epsilon-delta reasoning. Each section mixes explanation, guided examples, short checks, and deliberate review.</p>
+        <p>Follow the core path from the first neighborhood idea to formal epsilon-delta reasoning. Each section mixes explanation, guided examples, short checks, and deliberate review.</p>
       </header>
-      <div className="limits-map-stats" aria-label="Unit size">
-        <span><b>47</b> core pages</span>
-        <span><b>7</b> connected sections</span>
-        <span><b>38</b> interactive checks</span>
-        <span><b>24</b> practice and reference extras</span>
-      </div>
       <div className="limits-chapter-map">
         {limitsUnitChapters.map((chapter) => (
           <section className="limits-chapter" id={`unit-${chapter.id}`} key={chapter.id}>

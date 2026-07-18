@@ -2,14 +2,13 @@
 
 /* eslint-disable @next/next/no-html-link-for-pages -- registry pages intentionally use document navigation for canonical routes */
 
-import { LIMITS_UNIT_PREFIX, limitsUnitIndex } from "../lib/calculus/limits-unit-index.mjs";
+import { LIMITS_UNIT_PREFIX } from "../lib/calculus/limits-unit-index.mjs";
 import {
   courseLibraries,
   getCourseArticle,
   getCourseLibrary,
   getCourseTopic,
   getCourseTopicArticles,
-  libraryCounts,
   libraryArticleHref,
   searchCourseLibrary,
   type CourseArticle,
@@ -18,9 +17,10 @@ import { archetypes } from "../lib/library";
 import { getResourceRecord, tools } from "../lib/registry/catalog";
 import { assessments } from "../lib/registry/practice";
 import { LatexArticleDocument } from "./LatexArticle";
+import { CalculusUnitNavigation, UNIT_2A_ROOT, UNIT_2B_ROOT } from "./CalculusUnitNavigation";
 import { LimitsUnitMap } from "./LimitsUnitMap";
 
-export { libraryArticleHref, libraryCounts };
+export { libraryArticleHref };
 
 const resourceGroups = [
   { id: "understand", title: "Understand the idea", description: "Direct answers and concept explanations that make the structure visible.", archetypes: ["answer", "concept"] },
@@ -34,7 +34,7 @@ export function ArticleRow({ article, index }: { article: CourseArticle; index: 
     <a className="library-row" href={libraryArticleHref(article)} data-domain={article.domainSlug}>
       <span className="library-row-number">{String(index + 1).padStart(2, "0")}</span>
       <span className="library-row-main"><small>{article.domainName} · {archetype.label}</small><b>{article.title}</b><em>{article.deck}</em></span>
-      <span className="library-row-meta"><small>{article.course}</small><small>{article.minutes} min</small></span>
+      <span className="library-row-meta"><small>{article.course}</small><small>{archetypes[article.archetype].label}</small></span>
       <span className="library-row-arrow" aria-hidden="true">↗</span>
     </a>
   );
@@ -52,11 +52,11 @@ export function LibraryHomeSection() {
         <p>Every course is organized by topic, then by the kind of help: direct answer, method, concept, or decision guide.</p>
       </div>
       <div className="course-home-grid">
-        {courseLibraries.map((course) => <a href={`/subjects/math/${course.slug}/`} className="course-home-card" key={course.slug}><span>{course.mark}</span><div><small>{course.eyebrow}</small><h3>{course.name}</h3><p>{course.description}</p><em>{course.articles.length} full guides · {course.topics.length} topics</em></div><b>Browse {course.name.toLowerCase()} →</b></a>)}
+        {courseLibraries.map((course) => <a href={`/subjects/math/${course.slug}/`} className="course-home-card" key={course.slug}><span>{course.mark}</span><div><small>{course.eyebrow}</small><h3>{course.name}</h3><p>{course.description}</p><em>Connected guides and course maps</em></div><b>Browse {course.name.toLowerCase()} →</b></a>)}
       </div>
       <div className="fresh-guides-head"><div><p className="eyebrow">New in the library</p><h3>Fresh explanations, ready to use.</h3></div><p>Full lessons with rendered math, worked examples, mistakes to avoid, and a clear next move.</p></div>
       <div className="fresh-guides-list">{freshGuides.map((article, index) => <ArticleRow article={article} index={index} key={`${article.domainSlug}-${article.slug}`} />)}</div>
-      <div className="topic-home-action"><a className="button button-ink" href="/subjects/math/">Browse all mathematics →</a><span>{libraryCounts.articles} worked guides · No account required</span></div>
+      <div className="topic-home-action"><a className="button button-ink" href="/subjects/math/">Browse all mathematics →</a><span>Worked guides · No account required</span></div>
     </section>
   );
 }
@@ -83,11 +83,11 @@ export function TopicContent({ domainSlug, topicSlug }: { domainSlug: string; to
     <>
       <section className="topic-page-hero section-pad">
         <nav className="breadcrumbs"><a href="/subjects/">Subjects</a><span>/</span><a href="/subjects/math/">Mathematics</a><span>/</span><a href={`/subjects/math/${course.slug}/`}>{course.name}</a><span>/</span><span>{topic.name}</span></nav>
-        <div className="topic-hero-grid"><div><p className="eyebrow">Topic {topic.sequence} of {course.topics.length}</p><h1>{topic.name}</h1><p>{topic.description}</p></div><span className="topic-big-number">{topic.accent}</span></div>
+        <div className="topic-hero-grid"><div><p className="eyebrow">{course.name} course topic</p><h1>{topic.name}</h1><p>{topic.description}</p></div><span className="topic-big-number" aria-hidden="true">{course.mark}</span></div>
       </section>
       {isLimitsTopic && <LimitsUnitMap showSupporting={false} topicPage />}
       <section className="topic-page-body section-pad">
-        <aside><strong>{isLimitsTopic ? "Beyond the textbook" : "Inside this topic"}</strong><span>{articles.length} {isLimitsTopic ? "deep-dive articles" : "full resources"}</span><p>{isLimitsTopic ? "Use these focused explorations after the core map when one idea deserves a slower, closer look." : "Start with the idea, work a method, then use a decision guide when the route is not obvious."}</p>{isLimitsTopic && <a className="limits-unit-topic-link" href={LIMITS_UNIT_PREFIX}>Open every unit resource →</a>}<a href={`/subjects/math/${course.slug}/`}>All {course.name.toLowerCase()} topics →</a>{topicTools.map((tool) => <a href={tool!.path} key={tool!.id}>Use {tool!.title} →</a>)}{topicAssessments.slice(0, 1).map((assessment) => <a href={assessment!.path} key={assessment!.id}>Practice this topic →</a>)}</aside>
+        <aside><strong>{isLimitsTopic ? "Beyond the textbook" : "Inside this topic"}</strong><span>{isLimitsTopic ? "Focused deep-dive articles" : "Guides, examples, and decision support"}</span><p>{isLimitsTopic ? "Use these focused explorations after the core map when one idea deserves a slower, closer look." : "Start with the idea, work a method, then use a decision guide when the route is not obvious."}</p>{isLimitsTopic && <a className="limits-unit-topic-link" href={LIMITS_UNIT_PREFIX}>Open every unit resource →</a>}<a href={`/subjects/math/${course.slug}/`}>All {course.name.toLowerCase()} topics →</a>{topicTools.map((tool) => <a href={tool!.path} key={tool!.id}>Use {tool!.title} →</a>)}{topicAssessments.slice(0, 1).map((assessment) => <a href={assessment!.path} key={assessment!.id}>Practice this topic →</a>)}</aside>
         <div className="topic-resource-groups">{isLimitsTopic && <header className="topic-explorations-intro"><p className="eyebrow">Further exploration</p><h2>Deep dives and extra articles</h2><p>The core map above is the textbook. These articles are the side trails: close readings of a famous limit, a single method, or a conceptual distinction that rewards more time and more examples.</p></header>}{resourceGroups.map((group) => { const groupArticles = articles.filter((article) => (group.archetypes as readonly string[]).includes(article.archetype)); if (!groupArticles.length) return null; return <section className="topic-resource-group" key={group.id}><header><span>{group.title}</span><p>{group.description}</p></header><div className="topic-article-list">{groupArticles.map((article) => <ArticleRow article={article} index={articles.indexOf(article)} key={article.slug} />)}</div></section>; })}</div>
       </section>
       <nav className="topic-sequence section-pad" aria-label="Adjacent topics">
@@ -112,12 +112,14 @@ export function LibraryArticleContent({ article }: { article: CourseArticle }) {
   const resource = getResourceRecord(article.domainSlug, article.topicSlug, article.slug);
   const articleTools = (resource?.relatedToolIds ?? []).map((id) => tools.find((tool) => tool.id === id)).filter(Boolean);
   const articleAssessments = (resource?.relatedAssessmentIds ?? []).map((id) => assessments.find((assessment) => assessment.id === id)).filter(Boolean);
+  const isUnit2aArticle = article.domainSlug === "calculus" && article.topicSlug === "derivatives";
 
   return (
     <article className="library-article">
       <header className="library-article-header">
         <nav className="breadcrumbs"><a href="/subjects/">Subjects</a><span>/</span><a href="/subjects/math/">Mathematics</a><span>/</span><a href={`/subjects/math/${course.slug}/`}>{course.name}</a><span>/</span><a href={`/subjects/math/${course.slug}/${topic.slug}/`}>{topic.shortName}</a><span>/</span><span>{article.shortTitle}</span></nav>
-        <p className="article-meta-line"><span>{archetype.label}</span><span>{article.course}</span><span>{article.difficulty}</span><span>{article.minutes} min</span></p>
+        {isUnit2aArticle && <CalculusUnitNavigation currentUnit="2A" compact />}
+        <p className="article-meta-line"><span>{archetype.label}</span><span>Calculus I · {isUnit2aArticle ? "Unit 2A" : article.course}</span><span>{article.difficulty}</span></p>
         <h1>{article.title}</h1>
         <p>{article.deck}</p>
         <p className="article-source-line">LaTeX article <span aria-hidden="true">·</span> Updated {article.reviewed}</p>
@@ -158,12 +160,12 @@ export function CourseHubContent({ domainSlug }: { domainSlug: string }) {
   const startArticle = course.articles[0];
   return (
     <>
-      <section className="subject-hero section-pad"><div><p className="eyebrow">{course.eyebrow}</p><h1>{course.name}</h1><p>{course.description}</p><small className="course-count-line">{course.articles.length} full guides · {course.topics.length} organized topics</small><div className="subject-hero-actions"><a className="button button-ink" href={`/search/?q=${course.slug}`}>Search {course.name.toLowerCase()}</a><a className="button button-ghost" href="/practice/">Open practice</a></div></div><div className="subject-mark">{course.mark}<span>{course.slug}</span></div></section>
+      <section className="subject-hero section-pad"><div><p className="eyebrow">{course.eyebrow}</p><h1>{course.name}</h1><p>{course.description}</p><div className="subject-hero-actions"><a className="button button-ink" href={`/search/?q=${course.slug}`}>Search {course.name.toLowerCase()}</a><a className="button button-ghost" href="/practice/">Open practice</a></div></div><div className="subject-mark">{course.mark}<span>{course.slug}</span></div></section>
       <section className="calculus-map section-pad">
-        <div className="section-heading"><div><p className="eyebrow">The course map</p><h2>{course.topics.length} topics. One connected path.</h2></div><p>{course.promise}</p></div>
-        <div className="calculus-map-list">{course.topics.map((topic) => <a href={`/subjects/math/${course.slug}/${topic.slug}/`} key={topic.slug}><span>{topic.accent}</span><div><b>{topic.name}</b><small>{topic.description}</small></div><em>{getCourseTopicArticles(course.slug, topic.slug).length} resources</em><i>→</i></a>)}</div>
+        <div className="section-heading"><div><p className="eyebrow">The course map</p><h2>One connected path.</h2></div><p>{course.promise}</p></div>
+        <div className="calculus-map-list">{course.topics.map((topic) => <a href={`/subjects/math/${course.slug}/${topic.slug}/`} key={topic.slug}><span aria-hidden="true">{course.mark}</span><div><b>{topic.name}</b><small>{topic.description}</small></div><em>Open topic</em><i>→</i></a>)}</div>
       </section>
-      <section className="calculus-tools section-pad"><div><p className="eyebrow">Put it to work</p><h2>Learn, calculate, practice.</h2></div>{domainSlug === "calculus" && <a href={LIMITS_UNIT_PREFIX}><span>Complete unit</span><b>Limits and Continuity</b><small>{limitsUnitIndex.unit.coreRouteCount} core pages · {limitsUnitIndex.unit.checkCount} checks →</small></a>}{startArticle && <a href={libraryArticleHref(startArticle)}><span>Start here</span><b>{startArticle.shortTitle}</b><small>Open the first guide →</small></a>}{courseTools.slice(0, 1).map((tool) => <a href={tool.path} key={tool.id}><span>Tool</span><b>{tool.title}</b><small>Open the interactive tool →</small></a>)}{courseAssessments.length ? courseAssessments.slice(0, 1).map((assessment) => <a href={assessment.path} key={assessment.id}><span>Practice</span><b>{assessment.title}</b><small>{assessment.questions.length} explained questions →</small></a>) : <a href={`/search/?q=${course.slug}`}><span>All content</span><b>{course.articles.length} complete guides</b><small>Search this course →</small></a>}</section>
+      <section className="calculus-tools section-pad"><div><p className="eyebrow">Put it to work</p><h2>Learn, calculate, practice.</h2></div>{domainSlug === "calculus" && <><a href={LIMITS_UNIT_PREFIX}><span>Unit 1</span><b>Limits and Continuity</b><small>Start with the ideas derivatives depend on →</small></a><a href={UNIT_2A_ROOT}><span>Unit 2A</span><b>Derivative Foundations</b><small>Build meaning, rules, and differentiation technique →</small></a><a href={UNIT_2B_ROOT}><span>Unit 2B</span><b>Derivative Applications</b><small>Use derivatives for analysis, approximation, and modeling →</small></a></>}{startArticle && <a href={libraryArticleHref(startArticle)}><span>Start here</span><b>{startArticle.shortTitle}</b><small>Open the first guide →</small></a>}{courseTools.slice(0, 1).map((tool) => <a href={tool.path} key={tool.id}><span>Tool</span><b>{tool.title}</b><small>Open the interactive tool →</small></a>)}{courseAssessments.length ? courseAssessments.slice(0, 1).map((assessment) => <a href={assessment.path} key={assessment.id}><span>Practice</span><b>{assessment.title}</b><small>Open explained practice →</small></a>) : <a href={`/search/?q=${course.slug}`}><span>All content</span><b>Complete guides</b><small>Search this course →</small></a>}</section>
     </>
   );
 }
@@ -176,5 +178,5 @@ export function searchLibrary(query: string) { return searchCourseLibrary(query)
 export function LibrarySearchResults({ query, limit = 8, domain = "all" }: { query: string; limit?: number; domain?: string }) {
   const results = searchLibrary(query).filter((article) => domain === "all" || article.domainSlug === domain).slice(0, limit);
   if (!results.length) return null;
-  return <div className="library-search-group"><div className="results-head"><h2>Guides and explanations</h2><span>{results.length} useful matches</span></div>{results.map((article, index) => <ArticleRow article={article} index={index} key={`${article.domainSlug}-${article.slug}`} />)}</div>;
+  return <div className="library-search-group"><div className="results-head"><h2>Guides and explanations</h2><span>Best matches for this search</span></div>{results.map((article, index) => <ArticleRow article={article} index={index} key={`${article.domainSlug}-${article.slug}`} />)}</div>;
 }

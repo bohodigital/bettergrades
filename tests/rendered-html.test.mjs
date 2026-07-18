@@ -54,7 +54,7 @@ test("server-renders the Better Grades homepage", async () => {
   const html = await response.text();
   assert.match(html, /Free math help that gets to the point/);
   assert.match(html, /Search the problem/);
-  assert.match(html, /Search (?:<!-- -->)?72(?:<!-- -->)? guides/);
+  assert.match(html, /Search guides/);
   assert.match(html, /New in the library/);
   assert.match(html, /Fresh explanations, ready to use/);
   assert.match(html, /Algebra/);
@@ -98,7 +98,7 @@ test("subject and course hubs expose the organized math library", async () => {
   assert.match(algebraHtml, /Algebra/);
   assert.match(algebraHtml, /Expressions &amp; Equations/);
   assert.match(algebraHtml, /Polynomials &amp; Factoring/);
-  assert.match(algebraHtml, /36(?:<!-- -->)? full guides/);
+  assert.match(algebraHtml, /Complete guides/);
 });
 
 test("library archetype renders a full worked article", async () => {
@@ -141,7 +141,7 @@ test("limits unit lesson, quiz, practice, and exam routes server-render in the e
     const html = await response.text();
     assert.match(html, expected, path);
     assert.match(html, /Limits and Continuity/, path);
-    assert.match(html, /Course progress/, path);
+    assert.match(html, /(?:Core textbook path|Supporting resource)/, path);
     assert.match(html, /Source &amp; rights/, path);
     assert.doesNotMatch(visibleText(html), /\\begin\{|&lt;script|javascript:/, path);
     assert.doesNotMatch(html, /\\lessonobjective\b/, path);
@@ -292,10 +292,9 @@ test("the Limits topic leads with the complete textbook map before extra article
   assert.equal(response.status, 200);
   const html = await response.text();
   assert.match(html, /The complete textbook path/);
-  assert.match(html, /47(?:<!-- -->)? core pages/);
   assert.match(html, /Start here: orientation/);
   assert.match(html, /Formal limits/);
-  assert.match(visibleText(html), /7 connected sections/);
+  assert.doesNotMatch(visibleText(html), /\b(?:core pages|connected sections|interactive checks|practice and reference extras)\b/i);
   assert.match(html, /Exam answer keys/);
   assert.match(html, /Practice Exam A Answer Key/);
   assert.match(html, /Practice Exam B Answer Key/);
@@ -303,6 +302,18 @@ test("the Limits topic leads with the complete textbook map before extra article
   assert.match(html, /Deep dives and extra articles/);
   assert.ok(html.indexOf("The complete textbook path") < html.indexOf("Deep dives and extra articles"));
   assert.match(html, /Why is the limit of sin x over x equal to 1/);
+});
+
+test("course and search directories avoid inventory marketing counts outside the glossary", async () => {
+  const inventoryCount = /\b\d+(?:[–-]\d+)?\s+(?:topics|pages|guides|resources|checks|questions|visuals|study hours|useful matches|visual definitions)\b/i;
+  for (const path of ["/subjects/", "/subjects/math/", "/subjects/math/calculus/", "/subjects/math/algebra/", "/practice/math/calculus/", "/search/", "/subjects/math/calculus/limits-continuity/", "/subjects/math/calculus/derivatives/", "/subjects/math/calculus/derivative-applications/"]) {
+    const response = await render(path);
+    assert.equal(response.status, 200, path);
+    assert.doesNotMatch(visibleText(await response.text()), inventoryCount, path);
+  }
+  const glossary = await render("/glossary/math/");
+  assert.equal(glossary.status, 200);
+  assert.match(visibleText(await glossary.text()), /\b\d+\s+(?:terms and notations|entries)\b/i);
 });
 
 test("robots and sitemap metadata routes are indexable and complete", async () => {
@@ -479,8 +490,8 @@ test("search is one typed index across content, tools, and practice", async () =
   assert.equal(response.status, 200);
   const html = await response.text();
   assert.match(html, /Search Better Grades/);
-  assert.match(html, /\d+(?:<!-- -->)? complete guides/);
-  assert.match(html, /\d+(?:<!-- -->)? visual definitions/);
+  assert.match(html, /Organized by resource type/);
+  assert.match(html, /visual definitions/);
   assert.match(html, /Filter by course/);
   assert.match(html, /Filter by resource type/);
   assert.match(html, /Guides and direct answers/);
