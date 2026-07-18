@@ -8,7 +8,7 @@
 | CalculusUnitPages client chunk | 24,283 | 7,162 |
 | BetterGradesVisual client chunk | 3,106 | 1,407 |
 
-The deployable Pages asset directory contains 74 files totaling 2,479,632 raw bytes. The complete advanced Pages package contains 146 files totaling 18,557,288 raw bytes. Unit 2A's 27 static SVG fallbacks total 356,020 bytes; the largest is 16,468 bytes. The route-scoped cumulative-practice answers increase server payload only; they do not change the BetterGradesApp or BetterGradesVisual client chunks.
+The complete advanced Pages package contains 146 files totaling 18,697,940 raw bytes. Unit 2A's 27 static SVG fallbacks total 356,554 bytes; the largest is 18,088 bytes. The visual-fidelity correction therefore remains far below the 50 KB per-asset ceiling and does not change the BetterGradesApp, CalculusUnitPages, or BetterGradesVisual client chunks. The route-scoped cumulative-practice answers increase server payload only; they do not change the client chunks.
 
 ## Budget controls
 
