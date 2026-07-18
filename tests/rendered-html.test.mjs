@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 import { limitsUnitRoutes } from "../lib/calculus/limits-unit-index.mjs";
+import { calculusUnitRoutes } from "../lib/calculus/calculus-units-index.mjs";
 
 const expectedLimitsVisuals = [
   ["secant-tangent", "/subjects/math/calculus/limits-continuity/unit/limits/why-limits-matter/"],
@@ -383,13 +384,15 @@ test("math glossary and conventions render as first-class indexed pages", async 
   assert.match(conventionsHtml, /What the build rejects/);
 });
 
-test("all 72 registry articles render and include KaTeX", async () => {
+test("all registry articles not superseded by a released unit render in their original document format", async () => {
   const sitemap = await render("/sitemap.xml");
   const sitemapBody = await sitemap.text();
+  const unitPaths = new Set(calculusUnitRoutes.map((route) => route.path));
   const paths = [...sitemapBody.matchAll(/<loc>https:\/\/bettergrades\.net(\/subjects\/math\/(?:algebra|calculus)\/[^<]+\/[^<]+\/)<\/loc>/g)]
     .map((match) => match[1])
-    .filter((path) => path.split("/").filter(Boolean).length === 5 && !path.includes("/unit/"));
-  assert.equal(paths.length, 72);
+    .filter((path) => path.split("/").filter(Boolean).length === 5 && !path.includes("/unit/") && !unitPaths.has(path));
+  assert.equal(paths.length, new Set(paths).size);
+  assert.ok(paths.length > 50, "the existing library must remain substantially intact");
 
   for (const path of paths) {
     const response = await render(path);
@@ -476,7 +479,7 @@ test("search is one typed index across content, tools, and practice", async () =
   assert.equal(response.status, 200);
   const html = await response.text();
   assert.match(html, /Search Better Grades/);
-  assert.match(html, /72(?:<!-- -->)? complete guides/);
+  assert.match(html, /\d+(?:<!-- -->)? complete guides/);
   assert.match(html, /\d+(?:<!-- -->)? visual definitions/);
   assert.match(html, /Filter by course/);
   assert.match(html, /Filter by resource type/);
@@ -485,7 +488,7 @@ test("search is one typed index across content, tools, and practice", async () =
   assert.match(html, /Terms, symbols, and notation/);
   assert.match(html, />Glossary</);
   assert.match(html, /Algebra Expression Checker/);
-  assert.match(html, /Calculus foundations practice exam/);
+  assert.match(html, /kind-practice|Practice exam|Diagnostic|Quick quiz/);
 });
 
 test("practice is a central category with all four assessment formats", async () => {

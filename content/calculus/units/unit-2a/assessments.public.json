@@ -1,0 +1,909 @@
+{
+  "schema_version": "3.0.0",
+  "unit_id": "calc-1-unit-2a-derivative-foundations-techniques",
+  "problem_count": 34,
+  "problems": [
+    {
+      "problem_id": "meaning-derivative-01",
+      "unit_id": "calc-1-unit-2a-derivative-foundations-techniques",
+      "page_slug": "subjects/math/calculus/derivatives/what-does-derivative-mean",
+      "prompt_latex": "If \\(T(d)\\) is temperature in degrees Celsius at depth \\(d\\) meters, what kind of quantity is \\(T'(50)\\)?",
+      "answer_type": "multiple_choice",
+      "choices": [
+        "a temperature value",
+        "a rate of change",
+        "an accumulated total",
+        "a depth"
+      ],
+      "hints": [
+        "Look at the output units divided by the input units."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "what-does-derivative-mean"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "deriv-foundation-01",
+      "unit_id": "calc-1-unit-2a-derivative-foundations-techniques",
+      "page_slug": "subjects/math/calculus/derivatives/why-derivatives-matter",
+      "prompt_latex": "For \\(f(x)=x^2\\), evaluate\n\\[\n\\lim_{h\\to0}\\frac{f(6+h)-f(6)}{h}.\n\\]",
+      "answer_type": "integer",
+      "hints": [
+        "Expand \\((6+h)^2\\), subtract \\(36\\), then divide every term by \\(h\\)."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "why-derivatives-matter"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "difference-quotient-01",
+      "unit_id": "calc-1-unit-2a-derivative-foundations-techniques",
+      "page_slug": "subjects/math/calculus/derivatives/difference-quotient-algebra",
+      "prompt_latex": "For \\(g(x)=x^2+x\\), simplify the difference quotient and then let \\(h\\to0\\).",
+      "answer_type": "symbolic_expression",
+      "hints": [
+        "Expand \\((a+h)^2+(a+h)\\), subtract \\(a^2+a\\), and factor \\(h\\)."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "difference-quotient-algebra"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "tangent-line-01",
+      "unit_id": "calc-1-unit-2a-derivative-foundations-techniques",
+      "page_slug": "subjects/math/calculus/derivatives/tangent-line-equation",
+      "prompt_latex": "Find the tangent line to \\(f(x)=x^2\\) at \\(x=3\\).",
+      "answer_type": "symbolic_expression",
+      "hints": [
+        "The point is \\((3,9)\\), and the derivative slope is \\(2(3)=6\\)."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "tangent-line-equation"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "units-derivative-01",
+      "unit_id": "calc-1-unit-2a-derivative-foundations-techniques",
+      "page_slug": "subjects/math/calculus/derivatives/notation-and-units",
+      "prompt_latex": "A tank contains \\(W(h)\\) liters of water when the depth is \\(h\\) centimeters. What are the units of \\(W'(h)\\)?",
+      "answer_type": "text_rubric",
+      "hints": [
+        "Derivative units are output units divided by input units."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "notation-and-units"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "differentiability-01",
+      "unit_id": "calc-1-unit-2a-derivative-foundations-techniques",
+      "page_slug": "subjects/math/calculus/derivatives/differentiability-and-continuity",
+      "prompt_latex": "Which statement best describes \\(f(x)=|x-3|\\) at \\(x=3\\)?\n\\begin{enumerate}[label=\\Alph*.]\n\\item discontinuous;\n\\item continuous and differentiable;\n\\item continuous but not differentiable;\n\\item differentiable but not continuous.\n\\end{enumerate}",
+      "answer_type": "multiple_choice",
+      "choices": [
+        "discontinuous",
+        "continuous and differentiable",
+        "continuous but not differentiable",
+        "differentiable but not continuous"
+      ],
+      "hints": [
+        "Compare the left-hand and right-hand slopes at the corner."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "differentiability-and-continuity"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "power-rule-01",
+      "unit_id": "calc-1-unit-2a-derivative-foundations-techniques",
+      "page_slug": "subjects/math/calculus/derivatives/power-rule",
+      "prompt_latex": "Differentiate \\(3x^6-2x^4+2x-11\\).",
+      "answer_type": "symbolic_expression",
+      "hints": [
+        "Differentiate each power term and remember that constants disappear."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "power-rule"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "linearity-01",
+      "unit_id": "calc-1-unit-2a-derivative-foundations-techniques",
+      "page_slug": "subjects/math/calculus/derivatives/sum-and-constant-multiple-rules",
+      "prompt_latex": "Differentiate \\(2x^5-2x^{-3}+8\\).",
+      "answer_type": "symbolic_expression",
+      "hints": [
+        "Use the power rule on both variable terms; the constant contributes zero."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "sum-and-constant-multiple-rules"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "product-rule-01",
+      "unit_id": "calc-1-unit-2a-derivative-foundations-techniques",
+      "page_slug": "subjects/math/calculus/derivatives/product-rule",
+      "prompt_latex": "Differentiate \\(x^3\\sin x\\).",
+      "answer_type": "symbolic_expression",
+      "hints": [
+        "Differentiate one factor at a time and add the two contributions."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "product-rule"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "quotient-rule-01",
+      "unit_id": "calc-1-unit-2a-derivative-foundations-techniques",
+      "page_slug": "subjects/math/calculus/derivatives/quotient-rule",
+      "prompt_latex": "Differentiate \\(x/(x^2+1)\\).",
+      "answer_type": "symbolic_expression",
+      "hints": [
+        "Use denominator times derivative of numerator minus numerator times derivative of denominator, over the denominator squared."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "quotient-rule"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "sin-cos-01",
+      "unit_id": "calc-1-unit-2a-derivative-foundations-techniques",
+      "page_slug": "subjects/math/calculus/derivatives/sine-and-cosine",
+      "prompt_latex": "Differentiate \\(4\\sin x+2\\cos x\\).",
+      "answer_type": "symbolic_expression",
+      "hints": [
+        "Differentiate sine to cosine and cosine to negative sine."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "sine-and-cosine"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "special-map-01",
+      "unit_id": "calc-1-unit-2a-derivative-foundations-techniques",
+      "page_slug": "subjects/math/calculus/derivatives/why-special-derivatives-are-not-random",
+      "prompt_latex": "Which familiar nonzero function is equal to its own derivative?",
+      "answer_type": "multiple_choice",
+      "choices": [
+        "x^2",
+        "e^x",
+        "ln x",
+        "sin x"
+      ],
+      "hints": [
+        "Look for the function whose local rate is always equal to its current value."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "why-special-derivatives-are-not-random"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "exp-e-01",
+      "unit_id": "calc-1-unit-2a-derivative-foundations-techniques",
+      "page_slug": "subjects/math/calculus/derivatives/exponential-e",
+      "prompt_latex": "Differentiate \\(xe^x\\).",
+      "answer_type": "symbolic_expression",
+      "hints": [
+        "This is a product of x and e^x."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "exponential-e"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "ln-01",
+      "unit_id": "calc-1-unit-2a-derivative-foundations-techniques",
+      "page_slug": "subjects/math/calculus/derivatives/natural-log",
+      "prompt_latex": "Differentiate \\(x^2\\ln x\\).",
+      "answer_type": "symbolic_expression",
+      "hints": [
+        "Use the product rule and (ln x)'=1/x."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "natural-log"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "chain-map-01",
+      "unit_id": "calc-1-unit-2a-derivative-foundations-techniques",
+      "page_slug": "subjects/math/calculus/derivatives/chain-rule-map",
+      "prompt_latex": "How many nonconstant chain-rule layers appear in \\(e^{\\sin(x^2)}\\)?",
+      "answer_type": "integer",
+      "hints": [
+        "Count each nonconstant function machine from outside to inside."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "chain-rule-map"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "chain-basic-01",
+      "unit_id": "calc-1-unit-2a-derivative-foundations-techniques",
+      "page_slug": "subjects/math/calculus/derivatives/chain-rule-basic",
+      "prompt_latex": "Differentiate \\((4x+1)^3\\).",
+      "answer_type": "symbolic_expression",
+      "hints": [
+        "Differentiate the outer cube and multiply by the derivative of 4x+1."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "chain-rule-basic"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "chain-trig-01",
+      "unit_id": "calc-1-unit-2a-derivative-foundations-techniques",
+      "page_slug": "subjects/math/calculus/derivatives/chain-trig",
+      "prompt_latex": "Differentiate \\(\\sin(3x^2)\\).",
+      "answer_type": "symbolic_expression",
+      "hints": [
+        "Differentiate sine first, then multiply by the derivative of 3x^2."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "chain-trig"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "implicit-01",
+      "unit_id": "calc-1-unit-2a-derivative-foundations-techniques",
+      "page_slug": "subjects/math/calculus/derivatives/implicit-differentiation",
+      "prompt_latex": "For \\(x^2+4y^2=20\\), find \\(dy/dx\\).",
+      "answer_type": "symbolic_expression",
+      "hints": [
+        "Differentiate y^2 with a factor y' and solve for y'."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "implicit-differentiation"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "inverse-function-01",
+      "unit_id": "calc-1-unit-2a-derivative-foundations-techniques",
+      "page_slug": "subjects/math/calculus/derivatives/inverse-function-rule",
+      "prompt_latex": "If \\(f(4)=10\\) and \\(f'(4)=8\\), find \\((f^{-1})'(10)\\).",
+      "answer_type": "rational",
+      "hints": [
+        "The inverse slope is the reciprocal of the original slope at the corresponding point."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "inverse-function-rule"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "higher-computation-01",
+      "unit_id": "calc-1-unit-2a-derivative-foundations-techniques",
+      "page_slug": "subjects/math/calculus/derivatives/higher-derivative-techniques",
+      "prompt_latex": "If \\(p(x)=x^4-6x^2\\), find \\(p''(x)\\).",
+      "answer_type": "symbolic_expression",
+      "hints": [
+        "Differentiate \\(p\\) once, then differentiate that result."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "higher-derivative-techniques"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "power-extra-01",
+      "unit_id": "calc-1-unit-2a-derivative-foundations-techniques",
+      "page_slug": "subjects/math/calculus/derivatives/power-rule",
+      "prompt_latex": "Differentiate $4x^5$.",
+      "answer_type": "symbolic_expression",
+      "hints": [
+        "Bring down the exponent and reduce it by one."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "power-rule"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "power-extra-02",
+      "unit_id": "calc-1-unit-2a-derivative-foundations-techniques",
+      "page_slug": "subjects/math/calculus/derivatives/negative-fractional-powers",
+      "prompt_latex": "Differentiate $x^{-3}$.",
+      "answer_type": "symbolic_expression",
+      "hints": [
+        "Use the power rule with exponent $-3$."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "negative-fractional-powers"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "product-extra-01",
+      "unit_id": "calc-1-unit-2a-derivative-foundations-techniques",
+      "page_slug": "subjects/math/calculus/derivatives/product-rule",
+      "prompt_latex": "Differentiate $x^2\\sin x$.",
+      "answer_type": "symbolic_expression",
+      "hints": [
+        "Use two product-rule terms."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "product-rule"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "quotient-extra-01",
+      "unit_id": "calc-1-unit-2a-derivative-foundations-techniques",
+      "page_slug": "subjects/math/calculus/derivatives/quotient-rule",
+      "prompt_latex": "Differentiate $x/(x^2+1)$.",
+      "answer_type": "symbolic_expression",
+      "hints": [
+        "Use low d-high minus high d-low."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "quotient-rule"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "trig-extra-01",
+      "unit_id": "calc-1-unit-2a-derivative-foundations-techniques",
+      "page_slug": "subjects/math/calculus/derivatives/sine-and-cosine",
+      "prompt_latex": "Differentiate $\\cos x$.",
+      "answer_type": "symbolic_expression",
+      "hints": [
+        "The cosine derivative is negative sine."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "sine-and-cosine"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "exp-extra-01",
+      "unit_id": "calc-1-unit-2a-derivative-foundations-techniques",
+      "page_slug": "subjects/math/calculus/derivatives/exponential-e",
+      "prompt_latex": "Differentiate $e^{2x}$.",
+      "answer_type": "symbolic_expression",
+      "hints": [
+        "Chain rule: multiply by the derivative of $2x$."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "exponential-e"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "log-extra-01",
+      "unit_id": "calc-1-unit-2a-derivative-foundations-techniques",
+      "page_slug": "subjects/math/calculus/derivatives/natural-log",
+      "prompt_latex": "Differentiate $\\ln(x^2+1)$.",
+      "answer_type": "symbolic_expression",
+      "hints": [
+        "Use $u'/u$."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "natural-log"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "chain-extra-01",
+      "unit_id": "calc-1-unit-2a-derivative-foundations-techniques",
+      "page_slug": "subjects/math/calculus/derivatives/chain-rule-basic",
+      "prompt_latex": "Differentiate $(x^2+1)^5$.",
+      "answer_type": "symbolic_expression",
+      "hints": [
+        "Outer power derivative times inner derivative."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "chain-rule-basic"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "implicit-extra-01",
+      "unit_id": "calc-1-unit-2a-derivative-foundations-techniques",
+      "page_slug": "subjects/math/calculus/derivatives/implicit-differentiation",
+      "prompt_latex": "For $x^2+y^2=9$, find $dy/dx$.",
+      "answer_type": "symbolic_expression",
+      "hints": [
+        "Differentiate $y^2$ as $2yy'$."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "implicit-differentiation"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "inverse-extra-01",
+      "unit_id": "calc-1-unit-2a-derivative-foundations-techniques",
+      "page_slug": "subjects/math/calculus/derivatives/inverse-function-rule",
+      "prompt_latex": "If $f(2)=9$ and $f'(2)=6$, find $(f^{-1})'(9)$.",
+      "answer_type": "rational",
+      "hints": [
+        "Use the reciprocal slope at the corresponding input."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "inverse-function-rule"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "app-ferris-01",
+      "unit_id": "calc-1-unit-2a-derivative-foundations-techniques",
+      "page_slug": "subjects/math/calculus/derivatives/sine-and-cosine",
+      "prompt_latex": "For $h(t)=22-18\\cos(\\pi t/20)$, find $h'(10)$.",
+      "answer_type": "symbolic_expression",
+      "hints": [
+        "Differentiate with the chain rule and use $\\sin(\\pi/2)=1$."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "sine-and-cosine"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "app-average-cost-01",
+      "unit_id": "calc-1-unit-2a-derivative-foundations-techniques",
+      "page_slug": "subjects/math/calculus/derivatives/quotient-rule",
+      "prompt_latex": "For $A(q)=1200/q+18+0.02q$, find $A'(100)$.",
+      "answer_type": "numeric",
+      "hints": [
+        "Differentiate term by term."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "quotient-rule"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "app-elasticity-01",
+      "unit_id": "calc-1-unit-2a-derivative-foundations-techniques",
+      "page_slug": "subjects/math/calculus/derivatives/logarithmic-differentiation",
+      "prompt_latex": "For $Q=12K^{0.4}L^{0.6}$ with $K$ fixed, find labor elasticity.",
+      "answer_type": "numeric",
+      "hints": [
+        "Compute $LQ_L/Q$."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "logarithmic-differentiation"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "advanced-little-o-01",
+      "unit_id": "calc-1-unit-2a-derivative-foundations-techniques",
+      "page_slug": "subjects/math/calculus/derivatives/advanced-local-linearity-little-o",
+      "prompt_latex": "For $f(x)=x^2$ at $a=3$, identify the remainder after the linear term.",
+      "answer_type": "symbolic_expression",
+      "hints": [
+        "Expand $(3+h)^2$."
+      ],
+      "difficulty": "advanced",
+      "topics": [
+        "advanced-local-linearity-little-o"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    }
+  ]
+}
