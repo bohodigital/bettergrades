@@ -1,6 +1,6 @@
 # Unit 2B QA record
 
-Status: implementation candidate; production identity is recorded only after merge and deployment.
+Status: released to production on 2026-07-18; exact source, preview, deployment, validation, and rollback identities are recorded below.
 
 ## Baseline and content identity
 
@@ -74,3 +74,37 @@ Sites version 26 is the accepted private review candidate. It was saved from exa
 - the 375-pixel mobile hub has nine readable Lens blocks with body and root scroll width exactly 375 pixels.
 
 The public Cloudflare deployment must repeat representative identity, navigation, visual, answer, indexability, security-header, and Limits/Unit 2A regression checks against the immutable deployment and both public hostnames. A successful status code alone is not acceptance.
+
+## Git integration and production release
+
+The reviewed Unit 2B branch was merged by squash in [PR #26](https://github.com/bohodigital/bettergrades/pull/26). The merge commit is `9377587b9c1459fc107b892df2c9a805b09657d5`, and its tree `e7871bbb20935d3b4750abd57871e10bc70ed3fc` is byte-identical to the final reviewed branch tree. Canonical Pi `main` then passed the frozen install, ESLint, TypeScript, production build, Pages package, 160/160 core tests, 3/3 exhaustive calculus-route tests, and 26/26 exhaustive shell-route tests: **189/189 passing**.
+
+The first Cloudflare publish attempt was rejected before activation because Wrangler's final Worker bundle exceeded the account's 3 MiB limit. The fixed deploy wrapper returned no immutable success URL, the previous Unit 2A production deployment remained available, and no DNS, domain, binding, or access policy was changed. Investigation showed that the explicitly activated JSXGraph vendor was correctly lazy in the browser but was also present as a redundant 1,581,505-byte SSR module.
+
+The narrow correction keeps the specialist import behind Vite's build-time SSR boundary. The client still emits exactly one lazy JSXGraph vendor chunk, but neither `_worker.js` nor any SSR chunk contains JessieCode or the JSXGraph vendor. A Pages-package regression test now enforces both exclusions. The isolated Pi hotfix at `9cd5036f12512a974c5143e5c17dfc91408fe4a5` passed the full **189/189** sequence; SSR transformed modules fell from 223 to 187. Owner-only Sites version 27 then preserved the static fallback, explicit activation, and keyboard results (`7.75/6.32` after ArrowLeft, `1.00/9.95` after Home) plus the complete Unit 2B map and metadata. [PR #27](https://github.com/bohodigital/bettergrades/pull/27) merged the exact hotfix as `2f6d46f16941b8c932d4104c03339e58a6db607e`, tree `d9d277ccc6d362fba59447c878e4f55fecedb8be`; both GitHub validation runs passed.
+
+Canonical Pi `main` was rebuilt at that exact merge. Frozen install, ESLint, TypeScript, the production build, Pages package, all exact import and visual checks, the Unit 2B contract tests, and the new package boundary tests passed. The fixed BetterGrades wrapper deployed that commit to existing project `bettergrades` without changing DNS or bindings:
+
+- Cloudflare deployment ID: `cce6668e-f111-4f6c-ad68-9e06cc3b7080`;
+- immutable URL: `https://cce6668e.bettergrades-vhc.pages.dev`;
+- apex and `www` domains: active, validated, and verified;
+- deployment credential lane: fixed reference `boho-digital-services.cloudflare.pages-deploy`, as required for ordinary Pages publishing; the primary-management credential was not invoked because no account, zone, DNS, or recovery control-plane action was needed.
+
+## Live acceptance
+
+The immutable deployment, Pages subdomain, apex, and `www` all returned the Unit 2B textbook. A complete apex sweep returned **76/76 canonical Unit 2B routes with HTTP 200**. The sitemap contains all 76 canonical routes plus four retained, indexable derivative-application deep articles; `robots.txt` allows crawling and points to the canonical sitemap. An unknown route follows the normalized trailing-slash redirect and finishes at the custom HTTP 404.
+
+Browser-visible desktop and mobile checks established:
+
+- nine Reading Lens sections, the complete map before exams, both prominent exam keys, then optional explorations;
+- no learner-visible `Chapter`, raw LaTeX, math-error fallback, `noindex`, or horizontal overflow;
+- the labeled position/velocity/acceleration SVG loads at 960 by 558 source resolution, scales to 315 pixels, and is centered with 30-pixel margins in the mobile content width;
+- the browser-only ladder retains its 960 by 558 fallback, activates successfully, and reaches `x=9.50, y=3.12` with End;
+- a native BetterGrades Interactive 2D scene hydrates only when visible, exposes labeled zoom/reset and range controls, responds to End, and retains the static fallback;
+- cumulative practice exposes 30 gated answers, blocks an empty attempt, then opens exactly one answer while the other 29 remain closed;
+- Practice Exam B's key contains 14 numbered answers, with answer 14 naming an assumption, consequence, and proposed measurement or model improvement;
+- the epsilon-delta Limits route and Unit 2A hub retain clean semantic math, visuals, map/Lens structure, answer keys, canonicals, and `index, follow`;
+- canonical metadata, analytics, Web App Manifest, greater-or-equal favicon/icon assets, and Organization logo/image JSON-LD are live;
+- recent owner-only Sites worker logs contain zero error events.
+
+Baseline response headers include `X-Content-Type-Options: nosniff`, a deny-all camera/microphone/geolocation Permissions Policy, and `Referrer-Policy: strict-origin-when-cross-origin`. The deployed SVG, manifest, favicon, and 512-pixel search-identity icon all return their intended content types.
