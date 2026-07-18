@@ -5,6 +5,7 @@
 import { Component, useEffect, useRef, useState, type ComponentType, type ReactNode } from "react";
 import type { LimitsPublicVisual } from "../lib/calculus/limits-unit.mjs";
 import type { BgInteractive2DProps } from "../lib/visualization/renderers/bg-interactive-2d/index.tsx";
+import { AdvancedGeometryVisual } from "./AdvancedGeometryVisual";
 
 type InteractiveRenderer = ComponentType<BgInteractive2DProps>;
 
@@ -60,13 +61,15 @@ function useNearViewport(enabled: boolean) {
 export function BetterGradesVisual({ visual }: { visual: LimitsPublicVisual }) {
   const descriptionId = `bvlp-description-${visual.id}`;
   const hasInteractiveScene = Boolean(visual.interactiveScene);
-  const { near, target } = useNearViewport(hasInteractiveScene);
+  const hasCoreInteractiveScene = hasInteractiveScene && visual.selectedRenderer === "bg-interactive-2d";
+  const hasAdvancedInteractiveScene = hasInteractiveScene && visual.selectedRenderer !== "static-svg" && !hasCoreInteractiveScene;
+  const { near, target } = useNearViewport(hasCoreInteractiveScene);
   const [Renderer, setRenderer] = useState<InteractiveRenderer>();
   const [ready, setReady] = useState(false);
   const [error, setError] = useState<string>();
 
   useEffect(() => {
-    if (!near || !visual.interactiveScene || Renderer || error) return;
+    if (!near || !hasCoreInteractiveScene || !visual.interactiveScene || Renderer || error) return;
     let active = true;
     import("../lib/visualization/renderers/bg-interactive-2d/index.tsx")
       .then((module) => {
@@ -76,7 +79,7 @@ export function BetterGradesVisual({ visual }: { visual: LimitsPublicVisual }) {
         if (active) setError("Interactive controls could not load. The complete static graph remains available.");
       });
     return () => { active = false; };
-  }, [Renderer, error, near, visual.interactiveScene]);
+  }, [Renderer, error, hasCoreInteractiveScene, near, visual.interactiveScene]);
 
   return <div
     className={`bvlp-visual${ready ? " is-interactive-ready" : ""}`}
@@ -84,7 +87,7 @@ export function BetterGradesVisual({ visual }: { visual: LimitsPublicVisual }) {
     data-bvlp-renderer={visual.selectedRenderer}
     data-source-fingerprint={visual.sourceFingerprint}
   >
-    <div className="bvlp-static-visual" data-static-fallback="retained" aria-hidden={ready ? "true" : undefined}>
+    <div id={`bvlp-static-${visual.id}`} className="bvlp-static-visual" data-static-fallback="retained" aria-hidden={ready ? "true" : undefined}>
       <img
         src={visual.staticAsset.path}
         width={visual.staticAsset.width}
@@ -95,7 +98,7 @@ export function BetterGradesVisual({ visual }: { visual: LimitsPublicVisual }) {
         decoding="async"
       />
     </div>
-    {hasInteractiveScene ? <div ref={target} className="bvlp-interactive-slot" aria-busy={near && !Renderer && !error}>
+    {hasCoreInteractiveScene ? <div ref={target} className="bvlp-interactive-slot" aria-busy={near && !Renderer && !error}>
       {Renderer && visual.interactiveScene ? <VisualEnhancementBoundary
         key={`${visual.id}:${visual.sourceFingerprint}`}
         onError={(renderError) => { setReady(false); setError(`Interactive controls failed safely: ${renderError.message}`); }}
@@ -107,7 +110,7 @@ export function BetterGradesVisual({ visual }: { visual: LimitsPublicVisual }) {
         /></VisualEnhancementBoundary> : null}
       {near && !Renderer && !error ? <p className="sr-only" role="status">Loading optional graph controls.</p> : null}
       {error ? <p className="bvlp-interactive-error" role="alert">{error}</p> : null}
-    </div> : null}
+    </div> : hasAdvancedInteractiveScene && visual.interactiveScene ? <div className="bvlp-interactive-slot"><AdvancedGeometryVisual scene={visual.interactiveScene} descriptionId={descriptionId} onReady={() => { setReady(true); setError(undefined); }} onError={(renderError) => { setReady(false); setError(renderError.message); }} />{error ? <p className="bvlp-interactive-error" role="alert">{error}</p> : null}</div> : null}
     <details className="bvlp-long-description" id={descriptionId}>
       <summary>Read this graph as text</summary>
       <p><strong>{richText(visual.title)}.</strong> {visual.longDescription}</p>

@@ -1043,6 +1043,13 @@ h1 em, h2 em { color: var(--brand); font-family: var(--serif); font-weight: 500;
 .bvlp-interactive__control output { min-width: 4.5rem; font-variant-numeric: tabular-nums; }
 .bvlp-interactive__summary { margin: 0; color: var(--muted); }
 .bvlp-interactive-error { margin: 0; padding: 12px; border: 1px solid var(--warm); border-radius: 9px; background: var(--warm-soft); }
+.bvlp-jsxgraph-enhancement { display: grid; gap: 14px; justify-items: center; padding: 16px; border: 1px solid var(--line); border-radius: 14px; background: var(--paper); }
+.bvlp-jsxgraph-board { position: relative; overflow: hidden; width: min(100%, 760px); min-height: 440px; border: 1px solid var(--line); border-radius: 12px; background: #fff; touch-action: none; }
+.bvlp-jsxgraph-board:empty { display: none; }
+.bvlp-jsxgraph-control { width: min(100%, 680px); display: grid; grid-template-columns: auto minmax(160px, 1fr) auto; align-items: center; gap: 12px; color: var(--ink); font-weight: 800; }
+.bvlp-jsxgraph-control input { width: 100%; }
+.bvlp-jsxgraph-control output { min-width: 155px; color: var(--muted); font-variant-numeric: tabular-nums; font-weight: 700; }
+@media (max-width: 620px) { .bvlp-jsxgraph-board { min-height: 300px; } .bvlp-jsxgraph-control { grid-template-columns: 1fr; } .bvlp-jsxgraph-control output { min-width: 0; } }
 .bvlp-long-description { border-top: 1px solid var(--line); padding-top: 10px; color: var(--muted); }
 .bvlp-long-description summary { min-height: 44px; cursor: pointer; color: var(--brand); font-weight: 800; }
 .bvlp-long-description p { font-family: var(--serif); font-size: 16px; line-height: 1.65; }

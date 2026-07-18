@@ -1,0 +1,1455 @@
+{
+  "schema_version": "3.0.0",
+  "unit_id": "calc-1-unit-2b-derivative-applications",
+  "visual_count": 34,
+  "note": "These are normalized authoring briefs. Codex must translate them into the exact live BVLP VisualSpec schema and validate with pnpm verify:visuals; they are not precompiled scenes.",
+  "visuals": [
+    {
+      "schema_version": "3.0.0-authoring-brief",
+      "visual_id": "2B-V01",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "route": "subjects/math/calculus/derivative-applications/how-to-translate-word-problems",
+      "title_latex": "A word problem becomes calculus through a translation pipeline",
+      "caption_latex": "Strong application work moves from the situation to named variables, then to an equation, then to a derivative, and finally back to a sentence in the original context.",
+      "learning_purpose": "This diagram establishes the standard architecture for every substantial word problem in Unit 2B. It should appear in the unit hub, be referenced by related-rates and optimization lessons, and become the structure of interactive solution forms. The goal is to make modeling visible as a sequence of decisions rather than a magical jump from prose to symbols.",
+      "long_description": "Strong application work moves from the situation to named variables, then to an equation, then to a derivative, and finally back to a sentence in the original context. The derivative sits in the middle of the work. Most application errors happen before it, when variables or relationships are chosen badly, or after it, when a correct number is reported without units or meaning. The final check may send you back to the model if the answer is physically impossible.",
+      "reading_guide_latex": "The derivative sits in the middle of the work. Most application errors happen before it, when variables or relationships are chosen badly, or after it, when a correct number is reported without units or meaning. The final check may send you back to the model if the answer is physically impossible.",
+      "editorial_brief_latex": "\\textbf{Instructional purpose.} This diagram establishes the standard architecture for every substantial word problem in Unit 2B. It should appear in the unit hub, be referenced by related-rates and optimization lessons, and become the structure of interactive solution forms. The goal is to make modeling visible as a sequence of decisions rather than a magical jump from prose to symbols.\n\n\\textbf{Composition.} Use five main stages and a final model-check node. The dashed return arrow is essential: a model is not automatically valid merely because its derivative was computed correctly. Each node should contain an action and not simply a noun. Keep units visible in the variables and interpretation stages.\n\n\\textbf{Web behavior.} Application pages should implement this as a persistent stepper. Learners first name quantities and units, then select or write a relationship, then differentiate. The system should not reveal the equation immediately after a wrong first attempt; instead, it should offer a diagram or targeted hint. At the interpretation stage, require a sentence template containing quantity, time/input, sign, and units.\n\n\\textbf{Accessibility.} Provide the six stages as an ordered list. On mobile, stack vertically. Alt text must include the feedback loop: ``After checking the result, revise the assumptions if the answer is implausible.'' Color should reinforce but never replace numbering and labels.",
+      "proposed_visual_kind": "geometry-2d",
+      "required_capabilities": [
+        "static-render",
+        "accessible-description",
+        "print-fallback"
+      ],
+      "recommended_renderer": "static-svg",
+      "implementation_status": "authoring_ready",
+      "print_mapping": {
+        "source_macro": "BGVTwoBTranslatePipeline",
+        "existing_print_source": "chapters/hub.tex",
+        "required": true
+      },
+      "accessibility": {
+        "caption_required": true,
+        "long_description_required": true,
+        "keyboard_required": false,
+        "reduced_motion_required": false
+      },
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "schema_version": "3.0.0-authoring-brief",
+      "visual_id": "2B-V02",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "route": "subjects/math/calculus/derivative-applications/position-velocity-acceleration",
+      "title_latex": "Position, velocity, and acceleration are three synchronized views of motion",
+      "caption_latex": "Position tells where the object is. Velocity tells how position changes. Acceleration tells how velocity changes. Aligning the graphs by time makes changes of direction and speeding behavior visible.",
+      "learning_purpose": "This stacked graph is the core visual for motion interpretation. It should replace the common practice of teaching three formulas in isolation. Students need to see that position, velocity, and acceleration share the same time axis and describe different layers of the same event.",
+      "long_description": "Position tells where the object is. Velocity tells how position changes. Acceleration tells how velocity changes. Aligning the graphs by time makes changes of direction and speeding behavior visible. Follow one time vertically through all three panels. Zeros of velocity correspond to horizontal tangents and possible direction changes in position. The sign of velocity tells direction. The sign of acceleration tells whether velocity is moving upward or downward, but speeding up depends on the signs of both velocity and acceleration.",
+      "reading_guide_latex": "Follow one time vertically through all three panels. Zeros of velocity correspond to horizontal tangents and possible direction changes in position. The sign of velocity tells direction. The sign of acceleration tells whether velocity is moving upward or downward, but speeding up depends on the signs of both velocity and acceleration.",
+      "editorial_brief_latex": "\\textbf{Instructional purpose.} This stacked graph is the core visual for motion interpretation. It should replace the common practice of teaching three formulas in isolation. Students need to see that position, velocity, and acceleration share the same time axis and describe different layers of the same event.\n\n\\textbf{Mathematical specification.} Use $s(t)=t^3-6t^2+9t$, $v(t)=3t^2-12t+9$, and $a(t)=6t-12$ on $0\\le t\\le5$. Align panel widths and horizontal scales exactly. Mark or optionally annotate $t=1$, $t=2$, and $t=3$, where important sign or turning behavior occurs.\n\n\\textbf{Web behavior.} A shared vertical cursor should display all three values and a plain-language motion sentence, such as ``moving left and slowing down.'' A play control may move the particle along a number line while the cursor advances, but animation must be pausable and frame-step accessible. Include a toggle for sign strips beneath $v$ and $a$.\n\n\\textbf{Accessibility.} Alt text should summarize intervals of direction and acceleration, not attempt to list every plotted point. The three equations must be available as text. On mobile, preserve the vertical stack and synchronized cursor.",
+      "proposed_visual_kind": "data-series",
+      "required_capabilities": [
+        "static-render",
+        "accessible-description",
+        "print-fallback"
+      ],
+      "recommended_renderer": "static-svg",
+      "implementation_status": "authoring_ready",
+      "print_mapping": {
+        "source_macro": "BGVTwoBMotionStack",
+        "existing_print_source": "chapters/m01_interpretation_motion.tex",
+        "required": true
+      },
+      "accessibility": {
+        "caption_required": true,
+        "long_description_required": true,
+        "keyboard_required": false,
+        "reduced_motion_required": false
+      },
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "schema_version": "3.0.0-authoring-brief",
+      "visual_id": "2B-V03",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "route": "subjects/math/calculus/derivative-applications/speeding-up-slowing-down",
+      "title_latex": "Speeding up and slowing down depend on two signs",
+      "caption_latex": "An object speeds up when velocity and acceleration have the same sign and slows down when their signs differ. The rule follows from whether the magnitude $|v|$ is moving away from or toward zero.",
+      "learning_purpose": "This matrix targets one of the most persistent motion misconceptions: confusing negative velocity with deceleration. The key idea is magnitude. The labels ``more negative'' and ``toward zero'' make that mechanism explicit.",
+      "long_description": "An object speeds up when velocity and acceleration have the same sign and slows down when their signs differ. The rule follows from whether the magnitude |v| is moving away from or toward zero. Negative velocity does not mean slowing down. It means motion in the negative direction. If acceleration is also negative, the velocity becomes more negative and the speed increases. The table organizes all four sign combinations so you can reason rather than guess from the word ``negative.''",
+      "reading_guide_latex": "Negative velocity does not mean slowing down. It means motion in the negative direction. If acceleration is also negative, the velocity becomes more negative and the speed increases. The table organizes all four sign combinations so you can reason rather than guess from the word ``negative.''",
+      "editorial_brief_latex": "\\textbf{Instructional purpose.} This matrix targets one of the most persistent motion misconceptions: confusing negative velocity with deceleration. The key idea is magnitude. The labels ``more negative'' and ``toward zero'' make that mechanism explicit.\n\n\\textbf{Composition.} Use velocity signs as rows and acceleration signs as columns. Each interior cell states speeding/slowing and includes a short verbal explanation. Color is supportive only; the words must carry the meaning. The footnote states the general rule using $|v|$.\n\n\\textbf{Web behavior.} Present random pairs of velocity and acceleration values. A number-line animation should show the velocity point moving under the influence of acceleration for a short time. The learner predicts speeding or slowing before revealing the motion. Avoid a car animation that implies rightward motion is inherently positive; a number line is more mathematically honest.\n\n\\textbf{Accessibility.} Implement as a real HTML table with row and column headers. Alt text may summarize the same-sign/opposite-sign rule. On mobile, the matrix may remain a table with horizontal scrolling rather than being converted to four unlabeled cards.",
+      "proposed_visual_kind": "cartesian-2d",
+      "required_capabilities": [
+        "static-render",
+        "accessible-description",
+        "print-fallback"
+      ],
+      "recommended_renderer": "static-svg",
+      "implementation_status": "authoring_ready",
+      "print_mapping": {
+        "source_macro": "BGVTwoBSpeedSigns",
+        "existing_print_source": "chapters/m01_interpretation_motion.tex",
+        "required": true
+      },
+      "accessibility": {
+        "caption_required": true,
+        "long_description_required": true,
+        "keyboard_required": false,
+        "reduced_motion_required": false
+      },
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "schema_version": "3.0.0-authoring-brief",
+      "visual_id": "2B-E01",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "route": "subjects/math/calculus/derivative-applications/derivative-graphs",
+      "title_latex": "translating between $f$ and $f'$",
+      "caption_latex": "The zeros and signs of \\(f'(x)=3x^2-3\\) encode the increasing and decreasing behavior of \\(f(x)=x^3-3x\\).",
+      "learning_purpose": "Train bidirectional translation between the local slopes of a function and the values and signs of its derivative.",
+      "long_description": "The zeros and signs of (f'(x)=3x 2-3 ) encode the increasing and decreasing behavior of (f(x)=x 3-3x ).",
+      "reading_guide_latex": "See the adjacent lesson prose and the detailed editorial brief.",
+      "editorial_brief_latex": "\\textbf{Purpose.} This paired graph trains bidirectional translation: slopes on $f$ become heights on $f'$, and signs on $f'$ become increasing or decreasing intervals on $f$. It should not be presented as a matching puzzle based on overall shape.\n\n\\textbf{Composition.} Use $f(x)=x^3-3x$ and $f'(x)=3x^2-3$ with aligned horizontal axes. Mark $x=-1$ and $x=1$ in both panels. In the original graph these are horizontal tangents and local extrema; in the derivative graph they are zeros. Shade or annotate the intervals where $f'$ is positive and negative in the web edition.\n\n\\textbf{Interaction.} A shared cursor should report $f(a)$, $f'(a)$, and a short sentence such as ``the original graph is decreasing here.'' A tangent line on the upper/original graph should update with the cursor. Include a reverse activity in which the derivative graph is shown first and the learner sketches possible behavior of the original up to a vertical shift.\n\n\\textbf{Accessibility.} Alt text should list the derivative sign intervals and corresponding behavior. On mobile, stack the panels and preserve aligned x-scales. Use direct formulas and different line patterns.",
+      "proposed_visual_kind": "cartesian-2d",
+      "required_capabilities": [
+        "static-render",
+        "accessible-description",
+        "print-fallback"
+      ],
+      "recommended_renderer": "static-svg",
+      "implementation_status": "authoring_ready",
+      "print_mapping": {
+        "source_macro": null,
+        "existing_print_source": "chapters/m01_interpretation_motion.tex",
+        "required": true
+      },
+      "accessibility": {
+        "caption_required": true,
+        "long_description_required": true,
+        "keyboard_required": false,
+        "reduced_motion_required": false
+      },
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "schema_version": "3.0.0-authoring-brief",
+      "visual_id": "2B-V04",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "route": "subjects/math/calculus/derivative-applications/rates-from-data",
+      "title_latex": "Finite data produce derivative estimates, not exact derivatives",
+      "caption_latex": "Forward, backward, and central differences use different neighboring measurements. Symmetric data often make the central estimate more accurate, but measurement noise and spacing still matter.",
+      "learning_purpose": "This visual distinguishes mathematical derivatives from data-derived estimates and opens discussion of uncertainty. It should reinforce that units and measurement spacing are part of the answer.",
+      "long_description": "Forward, backward, and central differences use different neighboring measurements. Symmetric data often make the central estimate more accurate, but measurement noise and spacing still matter. At the target time t=3 , the lines use measurements on different sides. The estimates are close but not identical because the temperature curve is not perfectly linear. A derivative estimated from a table should therefore be reported with appropriate precision and with the units degrees Celsius per minute.",
+      "reading_guide_latex": "At the target time $t=3$, the lines use measurements on different sides. The estimates are close but not identical because the temperature curve is not perfectly linear. A derivative estimated from a table should therefore be reported with appropriate precision and with the units degrees Celsius per minute.",
+      "editorial_brief_latex": "\\textbf{Instructional purpose.} This visual distinguishes mathematical derivatives from data-derived estimates and opens discussion of uncertainty. It should reinforce that units and measurement spacing are part of the answer.\n\n\\textbf{Composition.} Plot a smooth curve through a small temperature data set and highlight three measurements around $t=3$. Draw backward, forward, and central secants with distinct patterns. The central line should be visually emphasized but not labeled ``correct.''\n\n\\textbf{Web behavior.} Let users change the data spacing and add controlled noise. Display each finite-difference estimate and compare it with the derivative of an underlying hidden model when the ``show benchmark'' toggle is enabled. Ask the learner to choose a sensible number of reported decimal places.\n\n\\textbf{Accessibility.} Provide the data table adjacent to the graph in the web version. Alt text should identify the target time and the three secant choices. Line styles must remain distinct in grayscale.",
+      "proposed_visual_kind": "cartesian-2d",
+      "required_capabilities": [
+        "static-render",
+        "accessible-description",
+        "print-fallback"
+      ],
+      "recommended_renderer": "static-svg",
+      "implementation_status": "authoring_ready",
+      "print_mapping": {
+        "source_macro": "BGVTwoBDataRates",
+        "existing_print_source": "chapters/m01_interpretation_motion.tex",
+        "required": true
+      },
+      "accessibility": {
+        "caption_required": true,
+        "long_description_required": true,
+        "keyboard_required": false,
+        "reduced_motion_required": false
+      },
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "schema_version": "3.0.0-authoring-brief",
+      "visual_id": "2B-E02",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "route": "subjects/math/calculus/derivative-applications/local-linearity",
+      "title_latex": "square-root curve and its linearization",
+      "caption_latex": "Near \\(x=4\\), the graph of \\(\\sqrt x\\) is nearly indistinguishable from its tangent line.",
+      "learning_purpose": "Make local linearity visible by comparing a function with its tangent approximation while the viewing window and target point change.",
+      "long_description": "Near (x=4 ), the graph of ( x ) is nearly indistinguishable from its tangent line.",
+      "reading_guide_latex": "See the adjacent lesson prose and the detailed editorial brief.",
+      "editorial_brief_latex": "\\textbf{Purpose.} The graph introduces local linearity before the approximation formula becomes routine. The learner should see both that the tangent is not the curve and that the difference becomes difficult to detect near the contact point.\n\n\\textbf{Composition.} Plot $f(x)=\\sqrt{x}$ and $L(x)=2+\\frac14(x-4)$, mark $(4,2)$, and preserve a wide view. The web edition should pair this with a linked magnified view whose window is controlled by a zoom slider. Display the signed error $f(x)-L(x)$ and the absolute error.\n\n\\textbf{Interaction.} The learner moves a target point, predicts whether the tangent overestimates or underestimates based on concavity, and then reveals the true value. A second slider shrinks $|x-4|$ and shows the error relative to the displacement. Avoid displaying so many decimals that the numerical readout becomes the lesson.\n\n\\textbf{Accessibility.} Alt text should name both formulas, the contact point, and the fact that the tangent lies above the concave-down square-root curve near the point. On mobile, stack wide and zoomed views and put the error table below.",
+      "proposed_visual_kind": "cartesian-2d",
+      "required_capabilities": [
+        "static-render",
+        "accessible-description",
+        "print-fallback",
+        "parameter-control",
+        "linked-update",
+        "reduced-motion"
+      ],
+      "recommended_renderer": "bettergrades-interactive-2d",
+      "implementation_status": "provisional_after_2a_postmortem",
+      "print_mapping": {
+        "source_macro": null,
+        "existing_print_source": "chapters/m02_approximation.tex",
+        "required": true
+      },
+      "accessibility": {
+        "caption_required": true,
+        "long_description_required": true,
+        "keyboard_required": true,
+        "reduced_motion_required": true
+      },
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "schema_version": "3.0.0-authoring-brief",
+      "visual_id": "2B-V05",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "route": "subjects/math/calculus/derivative-applications/why-linear-approximation-works",
+      "title_latex": "Linearization replaces a difficult local curve with an easy line",
+      "caption_latex": "Near $x=a$, the tangent line starts at the known value $f(a)$ and changes at the known rate $f'(a)$. The horizontal move $\\Delta x$ creates the estimated vertical move $f'(a)\\Delta x$.",
+      "learning_purpose": "This visual should connect the line formula to an incremental mental model. Many students can substitute into L(x) but cannot explain what the terms mean. The two measurement arrows make f(a)+f'(a) x visible.",
+      "long_description": "Near x=a , the tangent line starts at the known value f(a) and changes at the known rate f'(a) . The horizontal move x creates the estimated vertical move f'(a) x . For f(x)= x near a=4 , the known point is (4,2) and the slope is 1/4 . Moving from 4 to 4.5 gives x=0.5 , so the tangent predicts a vertical change of (1/4)(0.5)=0.125 . The estimate is therefore 2.125 .",
+      "reading_guide_latex": "For $f(x)=\\sqrt{x}$ near $a=4$, the known point is $(4,2)$ and the slope is $1/4$. Moving from $4$ to $4.5$ gives $\\Delta x=0.5$, so the tangent predicts a vertical change of $(1/4)(0.5)=0.125$. The estimate is therefore $2.125$.",
+      "editorial_brief_latex": "\\textbf{Instructional purpose.} This visual should connect the line formula to an incremental mental model. Many students can substitute into $L(x)$ but cannot explain what the terms mean. The two measurement arrows make $f(a)+f'(a)\\Delta x$ visible.\n\n\\textbf{Mathematical specification.} Use $f(x)=\\sqrt{x}$ at $a=4$ and estimate at $x=4.5$. Plot the curve and tangent $L(x)=2+\\frac14(x-4)$. Mark the known point and the tangent estimate. The actual curve value may be marked with an open symbol in the interactive version so the error can be seen.\n\n\\textbf{Web behavior.} Allow a draggable target $x$. Display $\\Delta x$, predicted $\\Delta y$, linear estimate, true value, and error. A zoom slider should show the error shrinking. Ask the learner to predict over- or underestimation from concavity before revealing the true value.\n\n\\textbf{Accessibility.} Alt text should narrate the horizontal and vertical moves and give the computed estimate. Use arrow labels and not color alone. On mobile, position the numeric calculation beneath the graph.",
+      "proposed_visual_kind": "cartesian-2d",
+      "required_capabilities": [
+        "static-render",
+        "accessible-description",
+        "print-fallback"
+      ],
+      "recommended_renderer": "static-svg",
+      "implementation_status": "authoring_ready",
+      "print_mapping": {
+        "source_macro": "BGVTwoBLocalLinearity",
+        "existing_print_source": "chapters/m02_approximation.tex",
+        "required": true
+      },
+      "accessibility": {
+        "caption_required": true,
+        "long_description_required": true,
+        "keyboard_required": false,
+        "reduced_motion_required": false
+      },
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "schema_version": "3.0.0-authoring-brief",
+      "visual_id": "2B-V06",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "route": "subjects/math/calculus/derivative-applications/differentials",
+      "title_latex": "Differentials separate the actual change from the tangent-line estimate",
+      "caption_latex": "The curve produces the actual output change $\\Delta y$. The tangent line produces the differential $dy=f'(x)dx$. Their vertical gap is the approximation error.",
+      "learning_purpose": "This visual prevents the common equation dy= y from being treated as exact. It should reinforce that dy belongs to the tangent model and y belongs to the original function.",
+      "long_description": "The curve produces the actual output change y . The tangent line produces the differential dy=f'(x)dx . Their vertical gap is the approximation error. Starting at x=1 , the input changes by dx=0.7 . The tangent predicts dy=2(0.7)=1.4 , while the curve actually changes by y=1.89 . The two quantities are close only when the input change is sufficiently small; they are not identical by definition.",
+      "reading_guide_latex": "Starting at $x=1$, the input changes by $dx=0.7$. The tangent predicts $dy=2(0.7)=1.4$, while the curve actually changes by $\\Delta y=1.89$. The two quantities are close only when the input change is sufficiently small; they are not identical by definition.",
+      "editorial_brief_latex": "\\textbf{Instructional purpose.} This visual prevents the common equation $dy=\\Delta y$ from being treated as exact. It should reinforce that $dy$ belongs to the tangent model and $\\Delta y$ belongs to the original function.\n\n\\textbf{Mathematical specification.} Use $f(x)=x^2$ at $x=1$ with $dx=0.7$. Plot the tangent $y=2x-1$. Mark the actual point on the curve and the tangent estimate at the new input. Label horizontal change, predicted vertical change, actual vertical change, and error.\n\n\\textbf{Web behavior.} Let the learner shrink $dx$ and observe the error. Display $\\Delta y-dy$ and the relative error. A checkbox may switch between positive and negative $dx$ to show that the geometry works in both directions.\n\n\\textbf{Accessibility.} Alt text should explicitly distinguish actual and approximate changes. Use different arrow positions and labels so colors are unnecessary. On mobile, enlarge the local region and put equations below.",
+      "proposed_visual_kind": "cartesian-2d",
+      "required_capabilities": [
+        "static-render",
+        "accessible-description",
+        "print-fallback"
+      ],
+      "recommended_renderer": "static-svg",
+      "implementation_status": "authoring_ready",
+      "print_mapping": {
+        "source_macro": "BGVTwoBDifferentials",
+        "existing_print_source": "chapters/m02_approximation.tex",
+        "required": true
+      },
+      "accessibility": {
+        "caption_required": true,
+        "long_description_required": true,
+        "keyboard_required": false,
+        "reduced_motion_required": false
+      },
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "schema_version": "3.0.0-authoring-brief",
+      "visual_id": "2B-V07",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "route": "subjects/math/calculus/derivative-applications/newtons-method",
+      "title_latex": "Newton's method turns tangent lines into improved root estimates",
+      "caption_latex": "At each estimate, the tangent line is easier to solve than the curve. Its $x$-intercept becomes the next estimate. Repeating the construction can converge rapidly to a root.",
+      "learning_purpose": "The visual should make the iteration formula geometrically inevitable. Students should see that -f(x n)/f'(x n) is the horizontal correction obtained from the tangent line, not an arbitrary numerical recipe.",
+      "long_description": "At each estimate, the tangent line is easier to solve than the curve. Its x -intercept becomes the next estimate. Repeating the construction can converge rapidly to a root. The first tangent begins at (2,2) and crosses the axis at x 1=1.5 . The next tangent begins on the curve at x 1 and crosses near x 2=1.4167 . The intercepts move toward 2 . Each step uses x n+1 =x n-f(x n)/f'(x n) .",
+      "reading_guide_latex": "The first tangent begins at $(2,2)$ and crosses the axis at $x_1=1.5$. The next tangent begins on the curve at $x_1$ and crosses near $x_2=1.4167$. The intercepts move toward $\\sqrt2$. Each step uses $x_{n+1}=x_n-f(x_n)/f'(x_n)$.",
+      "editorial_brief_latex": "\\textbf{Instructional purpose.} The visual should make the iteration formula geometrically inevitable. Students should see that $-f(x_n)/f'(x_n)$ is the horizontal correction obtained from the tangent line, not an arbitrary numerical recipe.\n\n\\textbf{Mathematical specification.} Use $f(x)=x^2-2$ with $x_0=2$. Draw at least the first two tangent lines and mark their axis intercepts. The final root need not be marked exactly; the sequence should visibly approach it. Use labels $x_0,x_1,x_2$.\n\n\\textbf{Web behavior.} Provide step, reset, and starting-value controls. Display a table of $n$, $x_n$, $f(x_n)$, and absolute error when the true root is known. Include deliberately poor starting values to demonstrate failure or slow convergence. Never autoplay without controls.\n\n\\textbf{Accessibility.} Alt text should narrate the two tangent steps and list the estimates. Keyboard controls are required. On mobile, show one iteration at a time with a persistent history table.",
+      "proposed_visual_kind": "cartesian-2d",
+      "required_capabilities": [
+        "static-render",
+        "accessible-description",
+        "print-fallback"
+      ],
+      "recommended_renderer": "static-svg",
+      "implementation_status": "authoring_ready",
+      "print_mapping": {
+        "source_macro": "BGVTwoBNewton",
+        "existing_print_source": "chapters/m02_approximation.tex",
+        "required": true
+      },
+      "accessibility": {
+        "caption_required": true,
+        "long_description_required": true,
+        "keyboard_required": false,
+        "reduced_motion_required": false
+      },
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "schema_version": "3.0.0-authoring-brief",
+      "visual_id": "2B-E03",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "route": "subjects/math/calculus/derivative-applications/newtons-method",
+      "title_latex": "Newton iteration tool",
+      "caption_latex": "Newton iteration tool",
+      "learning_purpose": "Turn Newton’s method into an inspectable tangent-line iteration, including convergence, divergence, derivative-zero warnings, and cycles.",
+      "long_description": "A coordinate graph shows a function, the current iterate, its tangent line, and the next x-intercept. A synchronized table lists each iterate, residual, and error when a reference root is known. Previous steps remain as a light trail. Controls allow step, undo, reset, and starting-value changes. Failure states such as a nearly horizontal tangent, divergence, or a two-cycle are explained in text and equations.",
+      "reading_guide_latex": "See the adjacent lesson prose and the detailed editorial brief.",
+      "editorial_brief_latex": "\\textbf{Purpose.} This specification extends the static Newton visual into a complete numerical laboratory. It should make each tangent construction inspectable and make failure modes available rather than presenting only a perfectly convergent example.\n\n\\textbf{Required views.} Show the curve, current point, tangent, next intercept, and complete iteration table. Preserve prior intercepts as a light trail so the sequence is visible. Include a residual column $|f(x_n)|$ and, when a benchmark root is known, an error column.\n\n\\textbf{Controls and feedback.} Provide step, undo, reset, and starting-value controls. Never autoplay by default. If $f'(x_n)$ is zero or very small, show a specific warning. Include examples that converge to different roots, diverge, or cycle. A textual explanation must accompany every failure state.\n\n\\textbf{Accessibility.} Every graphical step must also appear as an equation and table row. Keyboard operation is mandatory. On mobile, show one tangent step at a time with the table immediately below.",
+      "proposed_visual_kind": "cartesian-2d",
+      "required_capabilities": [
+        "static-render",
+        "accessible-description",
+        "print-fallback",
+        "parameter-control",
+        "linked-update",
+        "reduced-motion"
+      ],
+      "recommended_renderer": "bettergrades-interactive-2d",
+      "implementation_status": "provisional_after_2a_postmortem",
+      "print_mapping": {
+        "source_macro": null,
+        "existing_print_source": "chapters/m02_approximation.tex",
+        "required": true
+      },
+      "accessibility": {
+        "caption_required": true,
+        "long_description_required": true,
+        "keyboard_required": true,
+        "reduced_motion_required": true
+      },
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "schema_version": "3.0.0-authoring-brief",
+      "visual_id": "2B-V08",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "route": "subjects/math/calculus/derivative-applications/related-rates-workflow",
+      "title_latex": "Related rates use one geometric relationship at one frozen instant",
+      "caption_latex": "The quantities change with time, but the equation relating them is geometric or physical. Differentiate the relationship first, then substitute the measurements and rates from the instant of interest.",
+      "learning_purpose": "This visual should be reused verbatim across every related-rates lesson so students internalize a stable method. The ``frozen instant'' language belongs in the accompanying prose: the diagram at one moment supplies values, while derivatives describe how those values are changing at that moment.",
+      "long_description": "The quantities change with time, but the equation relating them is geometric or physical. Differentiate the relationship first, then substitute the measurements and rates from the instant of interest. The most important order is ``relationship, differentiate, substitute.'' If you insert snapshot numbers too early, variables disappear and the derivative has nothing left to describe. The diagram also reminds you that related-rates answers need a sign and units, not merely a magnitude.",
+      "reading_guide_latex": "The most important order is ``relationship, differentiate, substitute.'' If you insert snapshot numbers too early, variables disappear and the derivative has nothing left to describe. The diagram also reminds you that related-rates answers need a sign and units, not merely a magnitude.",
+      "editorial_brief_latex": "\\textbf{Instructional purpose.} This visual should be reused verbatim across every related-rates lesson so students internalize a stable method. The ``frozen instant'' language belongs in the accompanying prose: the diagram at one moment supplies values, while derivatives describe how those values are changing at that moment.\n\n\\textbf{Composition.} Use six stages arranged in a compact serpentine path. The relationship stage should be visually emphasized because it is the conceptual bottleneck. The substitution stage must occur after differentiation.\n\n\\textbf{Web behavior.} Each problem page should reveal one stage at a time. Diagram labels and variable definitions should persist as a side panel. If a learner substitutes early, feedback should explain why a constant cannot later be differentiated as a changing quantity. A unit checker should verify dimensions in the final response.\n\n\\textbf{Accessibility.} Provide a numbered textual workflow. On mobile, use a vertical stepper. Alt text should mention the critical order of operations.",
+      "proposed_visual_kind": "cartesian-2d",
+      "required_capabilities": [
+        "static-render",
+        "accessible-description",
+        "print-fallback"
+      ],
+      "recommended_renderer": "static-svg",
+      "implementation_status": "authoring_ready",
+      "print_mapping": {
+        "source_macro": "BGVTwoBRelatedWorkflow",
+        "existing_print_source": "chapters/m03_related_rates.tex",
+        "required": true
+      },
+      "accessibility": {
+        "caption_required": true,
+        "long_description_required": true,
+        "keyboard_required": false,
+        "reduced_motion_required": false
+      },
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "schema_version": "3.0.0-authoring-brief",
+      "visual_id": "2B-V09",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "route": "subjects/math/calculus/derivative-applications/related-rates-pythagorean",
+      "title_latex": "Sliding ladder geometry",
+      "caption_latex": "The wall, ground, and ladder form a right triangle. The fixed ladder length gives $x^2+y^2=L^2$, while $dx/dt$ and $dy/dt$ describe the horizontal and vertical endpoint speeds.",
+      "learning_purpose": "The diagram should support variable selection and sign reasoning before any numbers are used. It must show that L is constant while x and y vary. Arrows make the direction conventions explicit.",
+      "long_description": "The wall, ground, and ladder form a right triangle. The fixed ladder length gives x 2+y 2=L 2 , while dx/dt and dy/dt describe the horizontal and vertical endpoint speeds. As the foot moves away from the wall, x increases. Because the ladder length stays fixed, the top must move downward, so y decreases. Differentiating x 2+y 2=L 2 gives 2x dx/dt+2y dy/dt=0 , which already predicts opposite signs.",
+      "reading_guide_latex": "As the foot moves away from the wall, $x$ increases. Because the ladder length stays fixed, the top must move downward, so $y$ decreases. Differentiating $x^2+y^2=L^2$ gives $2x\\,dx/dt+2y\\,dy/dt=0$, which already predicts opposite signs.",
+      "editorial_brief_latex": "\\textbf{Instructional purpose.} The diagram should support variable selection and sign reasoning before any numbers are used. It must show that $L$ is constant while $x$ and $y$ vary. Arrows make the direction conventions explicit.\n\n\\textbf{Composition.} Draw a vertical wall, horizontal ground, right-angle marker, and ladder. Label $x$, $y$, and fixed length $L$. Add motion arrows at the endpoints with signed rate labels. Keep the geometry simple; decorative textures or a cartoon worker add no mathematical value.\n\n\\textbf{Web behavior.} Drag the foot horizontally while maintaining fixed ladder length. Update $x$, $y$, and the tangent rate relationship. Let users specify $dx/dt$ and calculate $dy/dt$. The top endpoint should move continuously and the Pythagorean equation should remain visible.\n\n\\textbf{Accessibility.} Alt text should describe the right triangle, fixed hypotenuse, and endpoint directions. The interactive controls need keyboard alternatives. On mobile, use a square drawing area and place rate inputs below.",
+      "proposed_visual_kind": "geometry-2d",
+      "required_capabilities": [
+        "static-render",
+        "accessible-description",
+        "print-fallback",
+        "constrained-draggable-geometry"
+      ],
+      "recommended_renderer": "jsxgraph",
+      "implementation_status": "provisional_after_2a_postmortem",
+      "print_mapping": {
+        "source_macro": "BGVTwoBLadder",
+        "existing_print_source": "chapters/m03_related_rates.tex",
+        "required": true
+      },
+      "accessibility": {
+        "caption_required": true,
+        "long_description_required": true,
+        "keyboard_required": true,
+        "reduced_motion_required": true
+      },
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "schema_version": "3.0.0-authoring-brief",
+      "visual_id": "2B-V10",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "route": "subjects/math/calculus/derivative-applications/related-rates-volume",
+      "title_latex": "A conical tank combines volume and similar-triangle relationships",
+      "caption_latex": "The water volume depends on both radius and depth. Similar triangles provide $r/h=R/H$, allowing the two changing dimensions to be expressed using one variable before differentiating.",
+      "learning_purpose": "This visual addresses the two-equation structure of many volume problems. Students often differentiate the volume formula while leaving both r and h unknown, then discover they have too many rates. The similar-triangle labels should make the reduction step visible.",
+      "long_description": "The water volume depends on both radius and depth. Similar triangles provide r/h=R/H , allowing the two changing dimensions to be expressed using one variable before differentiating. The large cone and the water cone have the same shape, so r/h=R/H . That relationship is not optional bookkeeping; it eliminates one changing variable from V=(1/3) r 2h . Only after that substitution is the volume differentiated with respect to time.",
+      "reading_guide_latex": "The large cone and the water cone have the same shape, so $r/h=R/H$. That relationship is not optional bookkeeping; it eliminates one changing variable from $V=(1/3)\\pi r^2h$. Only after that substitution is the volume differentiated with respect to time.",
+      "editorial_brief_latex": "\\textbf{Instructional purpose.} This visual addresses the two-equation structure of many volume problems. Students often differentiate the volume formula while leaving both $r$ and $h$ unknown, then discover they have too many rates. The similar-triangle labels should make the reduction step visible.\n\n\\textbf{Composition.} Draw the full cone and a smaller similar water cone sharing the vertex. Label full dimensions $R,H$ and water dimensions $r,h$. Show the water level as an ellipse and add an upward depth-rate arrow. Use consistent radius labels from the central axis to the side.\n\n\\textbf{Web behavior.} A water-level slider should resize the inner cone while preserving similarity. Display the ratios $r/h$ and $R/H$. Let users choose whether to eliminate $r$ or $h$, then differentiate the resulting one-variable volume expression.\n\n\\textbf{Accessibility.} Alt text should state that the water region is a smaller similar cone and list both equations. On mobile, avoid overly shallow ellipses that become invisible. Provide the geometry as SVG with labeled text elements, not a raster image.",
+      "proposed_visual_kind": "geometry-2d",
+      "required_capabilities": [
+        "static-render",
+        "accessible-description",
+        "print-fallback"
+      ],
+      "recommended_renderer": "static-svg",
+      "implementation_status": "authoring_ready",
+      "print_mapping": {
+        "source_macro": "BGVTwoBConeTank",
+        "existing_print_source": "chapters/m03_related_rates.tex",
+        "required": true
+      },
+      "accessibility": {
+        "caption_required": true,
+        "long_description_required": true,
+        "keyboard_required": false,
+        "reduced_motion_required": false
+      },
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "schema_version": "3.0.0-authoring-brief",
+      "visual_id": "2B-V11",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "route": "subjects/math/calculus/derivative-applications/related-rates-shadows",
+      "title_latex": "Shadow problems are similar-triangle problems",
+      "caption_latex": "A light, a person, and the shadow tip form one large triangle. The person's height and shadow form a smaller triangle. Their proportional sides connect walking speed to shadow growth.",
+      "learning_purpose": "The visual should prevent variable ambiguity. Students frequently use the same symbol for the person's distance from the light and the shadow length, or forget that the shadow tip is farther from the light by their sum.",
+      "long_description": "A light, a person, and the shadow tip form one large triangle. The person's height and shadow form a smaller triangle. Their proportional sides connect walking speed to shadow growth. The large triangle has height H and base x+s . The smaller triangle has height h and base s . Similarity gives H/(x+s)=h/s . Notice that the shadow tip's distance from the light is x+s , not just s .",
+      "reading_guide_latex": "The large triangle has height $H$ and base $x+s$. The smaller triangle has height $h$ and base $s$. Similarity gives $H/(x+s)=h/s$. Notice that the shadow tip's distance from the light is $x+s$, not just $s$.",
+      "editorial_brief_latex": "\\textbf{Instructional purpose.} The visual should prevent variable ambiguity. Students frequently use the same symbol for the person's distance from the light and the shadow length, or forget that the shadow tip is farther from the light by their sum.\n\n\\textbf{Composition.} Draw a vertical light, a person, and the ray through the person's head to the shadow tip. Label heights $H,h$ and bases $x,s$. Motion arrows should distinguish the person's speed from the tip's speed. Keep the ground line horizontal and the light ray straight so the similar triangles are unmistakable.\n\n\\textbf{Web behavior.} Let the person move while the shadow geometry updates. Display both similar triangles with optional outlines. Ask learners to identify which base corresponds to each height before showing the proportion. Then calculate shadow length and tip speed.\n\n\\textbf{Accessibility.} Alt text should state the two triangles and the proportion. The human figure can remain schematic; mathematical labels matter more than realism. On mobile, use a horizontally scrollable wide diagram or a responsive SVG with labels repositioned.",
+      "proposed_visual_kind": "geometry-2d",
+      "required_capabilities": [
+        "static-render",
+        "accessible-description",
+        "print-fallback"
+      ],
+      "recommended_renderer": "static-svg",
+      "implementation_status": "authoring_ready",
+      "print_mapping": {
+        "source_macro": "BGVTwoBShadow",
+        "existing_print_source": "chapters/m03_related_rates.tex",
+        "required": true
+      },
+      "accessibility": {
+        "caption_required": true,
+        "long_description_required": true,
+        "keyboard_required": false,
+        "reduced_motion_required": false
+      },
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "schema_version": "3.0.0-authoring-brief",
+      "visual_id": "2B-V12",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "route": "subjects/math/calculus/derivative-applications/related-rates-angle",
+      "title_latex": "Changing-angle problems need a geometry snapshot",
+      "caption_latex": "A target moving along a straight path, a fixed tracking station, and the line of sight form a right triangle. The changing angle is related to position by tangent, sine, or cosine depending on the known quantities.",
+      "learning_purpose": "This figure models camera, radar, and lighthouse tracking. Its main job is to force a correct trigonometric relationship and to distinguish fixed from changing distances.",
+      "long_description": "A target moving along a straight path, a fixed tracking station, and the line of sight form a right triangle. The changing angle is related to position by tangent, sine, or cosine depending on the known quantities. The fixed perpendicular distance is d , the target's horizontal position is x , and the line-of-sight angle is . If =d/x or x/d , the choice depends on where the angle is placed. The diagram decides the equation; memorizing a generic tangent relationship does not.",
+      "reading_guide_latex": "The fixed perpendicular distance is $d$, the target's horizontal position is $x$, and the line-of-sight angle is $\\theta$. If $\\tan\\theta=d/x$ or $x/d$, the choice depends on where the angle is placed. The diagram decides the equation; memorizing a generic tangent relationship does not.",
+      "editorial_brief_latex": "\\textbf{Instructional purpose.} This figure models camera, radar, and lighthouse tracking. Its main job is to force a correct trigonometric relationship and to distinguish fixed from changing distances.\n\n\\textbf{Composition.} Use a right triangle with a fixed vertical or perpendicular distance, a changing horizontal position, line of sight, and angle at the station. Include a target motion arrow. Label all quantities and explicitly mark the right angle.\n\n\\textbf{Web behavior.} A draggable target should update $x$, $r$, and $\\theta$. The learner chooses a trigonometric equation before differentiation. A unit display should distinguish angular rate in radians per second from linear rate in meters per second. Include a reminder that derivative formulas for trigonometric functions assume radians.\n\n\\textbf{Accessibility.} Alt text should state the station, target, right triangle, and chosen angle. Keyboard controls should move the target. On mobile, preserve the triangle's aspect ratio and place numeric outputs below.",
+      "proposed_visual_kind": "geometry-2d",
+      "required_capabilities": [
+        "static-render",
+        "accessible-description",
+        "print-fallback",
+        "parameter-control",
+        "linked-update",
+        "reduced-motion"
+      ],
+      "recommended_renderer": "bettergrades-interactive-2d",
+      "implementation_status": "provisional_after_2a_postmortem",
+      "print_mapping": {
+        "source_macro": "BGVTwoBRadar",
+        "existing_print_source": "chapters/m03_related_rates.tex",
+        "required": true
+      },
+      "accessibility": {
+        "caption_required": true,
+        "long_description_required": true,
+        "keyboard_required": true,
+        "reduced_motion_required": true
+      },
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "schema_version": "3.0.0-authoring-brief",
+      "visual_id": "2B-V13",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "route": "subjects/math/calculus/derivative-applications/extrema-and-critical-numbers",
+      "title_latex": "Critical numbers are candidates, not automatic extrema",
+      "caption_latex": "Horizontal tangents and nondifferentiable interior points create candidates. Endpoints matter on closed intervals. Function values must be compared to determine absolute extrema.",
+      "learning_purpose": "This graph should dismantle the false rule ``set the derivative equal to zero and you have the maximum.'' It distinguishes candidate generation from classification and absolute comparison.",
+      "long_description": "Horizontal tangents and nondifferentiable interior points create candidates. Endpoints matter on closed intervals. Function values must be compared to determine absolute extrema. The marked interior points are where f'=0 in this example. They must be evaluated, but not all are guaranteed to be maxima or minima. The endpoints are also candidates for absolute extrema on the closed interval. The final answer comes from comparing heights.",
+      "reading_guide_latex": "The marked interior points are where $f'=0$ in this example. They must be evaluated, but not all are guaranteed to be maxima or minima. The endpoints are also candidates for absolute extrema on the closed interval. The final answer comes from comparing heights.",
+      "editorial_brief_latex": "\\textbf{Instructional purpose.} This graph should dismantle the false rule ``set the derivative equal to zero and you have the maximum.'' It distinguishes candidate generation from classification and absolute comparison.\n\n\\textbf{Composition.} Plot a smooth function on a visibly closed interval, mark all interior critical points and both endpoints, and label them as candidates rather than conclusions. The function need not have a simple formula in the student-facing visual; the emphasis is procedural.\n\n\\textbf{Web behavior.} Let learners click all candidates. Only after all are selected should a value table appear. A follow-up asks which are local extrema and which are absolute extrema. Include at least one critical point that is not an extremum in alternate examples.\n\n\\textbf{Accessibility.} Alt text should list the candidate types and state that heights are compared. On mobile, pair the graph with a table. Markers need shapes or labels, not color alone.",
+      "proposed_visual_kind": "cartesian-2d",
+      "required_capabilities": [
+        "static-render",
+        "accessible-description",
+        "print-fallback"
+      ],
+      "recommended_renderer": "static-svg",
+      "implementation_status": "authoring_ready",
+      "print_mapping": {
+        "source_macro": "BGVTwoBExtrema",
+        "existing_print_source": "chapters/m04_theorems_shape.tex",
+        "required": true
+      },
+      "accessibility": {
+        "caption_required": true,
+        "long_description_required": true,
+        "keyboard_required": false,
+        "reduced_motion_required": false
+      },
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "schema_version": "3.0.0-authoring-brief",
+      "visual_id": "2B-V14",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "route": "subjects/math/calculus/derivative-applications/mean-value-theorem",
+      "title_latex": "The Mean Value Theorem matches an average slope somewhere inside",
+      "caption_latex": "For a continuous curve on $[a,b]$ that is differentiable inside, at least one tangent line is parallel to the secant line joining the endpoints.",
+      "learning_purpose": "The visual should make the theorem's conclusion geometric and distinguish it from Rolle's special case. The parallel lines are the central feature; endpoint and interior conditions belong in adjacent prose.",
+      "long_description": "For a continuous curve on [a,b] that is differentiable inside, at least one tangent line is parallel to the secant line joining the endpoints. The red secant records the average rate over the whole interval. The green tangent has the same slope at an interior point. The theorem guarantees at least one such point under its hypotheses; it does not say that the point is the midpoint or that it is unique.",
+      "reading_guide_latex": "The red secant records the average rate over the whole interval. The green tangent has the same slope at an interior point. The theorem guarantees at least one such point under its hypotheses; it does not say that the point is the midpoint or that it is unique.",
+      "editorial_brief_latex": "\\textbf{Instructional purpose.} The visual should make the theorem's conclusion geometric and distinguish it from Rolle's special case. The parallel lines are the central feature; endpoint and interior conditions belong in adjacent prose.\n\n\\textbf{Mathematical specification.} Plot a smooth curve with endpoint secant and one interior tangent of matching slope. Use clear endpoint markers and an interior marker. Avoid a symmetric curve that makes the MVT point look inevitably central.\n\n\\textbf{Web behavior.} Allow the learner to adjust endpoint locations and search for points where $f'(c)$ equals the secant slope. A hypothesis toggle can introduce a corner or discontinuity and show that the guarantee may fail. Do not imply the theorem finds $c$ automatically; a solver is a separate task.\n\n\\textbf{Accessibility.} Alt text should state that the secant and tangent are parallel and give the theorem conditions. Distinguish lines by color and pattern. On mobile, equations and hypotheses should appear below the graph.",
+      "proposed_visual_kind": "cartesian-2d",
+      "required_capabilities": [
+        "static-render",
+        "accessible-description",
+        "print-fallback",
+        "parameter-control",
+        "linked-update",
+        "reduced-motion"
+      ],
+      "recommended_renderer": "bettergrades-interactive-2d",
+      "implementation_status": "provisional_after_2a_postmortem",
+      "print_mapping": {
+        "source_macro": "BGVTwoBMVT",
+        "existing_print_source": "chapters/m04_theorems_shape.tex",
+        "required": true
+      },
+      "accessibility": {
+        "caption_required": true,
+        "long_description_required": true,
+        "keyboard_required": true,
+        "reduced_motion_required": true
+      },
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "schema_version": "3.0.0-authoring-brief",
+      "visual_id": "2B-V15",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "route": "subjects/math/calculus/derivative-applications/first-derivative-test",
+      "title_latex": "A derivative sign chart turns algebra into a graph story",
+      "caption_latex": "Critical numbers divide the domain into intervals. Testing the sign of $f'$ on each interval determines whether the original function rises or falls and classifies sign changes.",
+      "learning_purpose": "The chart should bridge symbolic factor signs and graph behavior. It is a reusable component for increasing/decreasing intervals, the first derivative test, and optimization verification.",
+      "long_description": "Critical numbers divide the domain into intervals. Testing the sign of f' on each interval determines whether the original function rises or falls and classifies sign changes. A positive derivative means the original function increases; a negative derivative means it decreases. At x=-2 , the sign changes from positive to negative, so f has a local maximum. At x=1 , the sign changes from negative to positive, so f has a local minimum.",
+      "reading_guide_latex": "A positive derivative means the original function increases; a negative derivative means it decreases. At $x=-2$, the sign changes from positive to negative, so $f$ has a local maximum. At $x=1$, the sign changes from negative to positive, so $f$ has a local minimum.",
+      "editorial_brief_latex": "\\textbf{Instructional purpose.} The chart should bridge symbolic factor signs and graph behavior. It is a reusable component for increasing/decreasing intervals, the first derivative test, and optimization verification.\n\n\\textbf{Composition.} Use a horizontal number line with critical values, derivative signs above intervals, and miniature behavior arrows for $f$ above or below. Label local max/min only after the sign change. The chart must not imply a critical number with no sign change is an extremum.\n\n\\textbf{Web behavior.} Given a factored derivative, let learners place critical values and choose signs. The system should support a test-point table and then animate a qualitative curve. Alternate examples should include repeated roots where the derivative sign does not change.\n\n\\textbf{Accessibility.} Provide a table with columns interval, sign of $f'$, behavior of $f$. On mobile, the table may be primary and the number line secondary. Alt text should state the sign sequence and classifications.",
+      "proposed_visual_kind": "cartesian-2d",
+      "required_capabilities": [
+        "static-render",
+        "accessible-description",
+        "print-fallback"
+      ],
+      "recommended_renderer": "static-svg",
+      "implementation_status": "authoring_ready",
+      "print_mapping": {
+        "source_macro": "BGVTwoBSignChart",
+        "existing_print_source": "chapters/m04_theorems_shape.tex",
+        "required": true
+      },
+      "accessibility": {
+        "caption_required": true,
+        "long_description_required": true,
+        "keyboard_required": false,
+        "reduced_motion_required": false
+      },
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "schema_version": "3.0.0-authoring-brief",
+      "visual_id": "2B-V16",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "route": "subjects/math/calculus/derivative-applications/concavity",
+      "title_latex": "Concavity describes how slopes change",
+      "caption_latex": "On a concave-up curve, tangent slopes increase and tangent lines lie locally below the graph. On a concave-down curve, slopes decrease and tangents lie locally above.",
+      "learning_purpose": "This paired visual unifies three equivalent perspectives: sign of f'' , monotonicity of f' , and tangent placement. It should correct the misconception that concave up means increasing or that concave down means negative.",
+      "long_description": "On a concave-up curve, tangent slopes increase and tangent lines lie locally below the graph. On a concave-down curve, slopes decrease and tangents lie locally above. In the left panel, tangent slopes progress from negative to zero to positive, so they are increasing and f''>0 . In the right panel, slopes progress from positive to zero to negative, so they are decreasing and f''<0 . Concavity is about the trend of slopes, not whether the function itself is above or below the axis.",
+      "reading_guide_latex": "In the left panel, tangent slopes progress from negative to zero to positive, so they are increasing and $f''>0$. In the right panel, slopes progress from positive to zero to negative, so they are decreasing and $f''<0$. Concavity is about the trend of slopes, not whether the function itself is above or below the axis.",
+      "editorial_brief_latex": "\\textbf{Instructional purpose.} This paired visual unifies three equivalent perspectives: sign of $f''$, monotonicity of $f'$, and tangent placement. It should correct the misconception that concave up means increasing or that concave down means negative.\n\n\\textbf{Composition.} Use $x^2$ and $4-x^2$ with three representative tangents each. Match axis scales. Tangent lines should visibly lie below the concave-up graph and above the concave-down graph near contact points.\n\n\\textbf{Web behavior.} A draggable tangent should move along each curve while its slope is plotted in a small derivative panel. A toggle can display $f''$. Ask learners to predict concavity from a sequence of slope values before showing the curve.\n\n\\textbf{Accessibility.} Alt text should describe how slopes change and where tangents lie. Direct labels are required. On mobile, stack the panels vertically.",
+      "proposed_visual_kind": "cartesian-2d",
+      "required_capabilities": [
+        "static-render",
+        "accessible-description",
+        "print-fallback"
+      ],
+      "recommended_renderer": "static-svg",
+      "implementation_status": "authoring_ready",
+      "print_mapping": {
+        "source_macro": "BGVTwoBConcavity",
+        "existing_print_source": "chapters/m04_theorems_shape.tex",
+        "required": true
+      },
+      "accessibility": {
+        "caption_required": true,
+        "long_description_required": true,
+        "keyboard_required": false,
+        "reduced_motion_required": false
+      },
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "schema_version": "3.0.0-authoring-brief",
+      "visual_id": "2B-V17",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "route": "subjects/math/calculus/derivative-applications/curve-sketching",
+      "title_latex": "Complete curve analysis layers many facts onto one graph",
+      "caption_latex": "Domain, intercepts, asymptotes, critical points, monotonicity, concavity, and end behavior are not separate chores. Together they explain why the graph has its shape.",
+      "learning_purpose": "This figure should model the final product of curve analysis without making the process look like arbitrary annotation. The surrounding lesson must build the graph in layers and connect each layer to a calculation.",
+      "long_description": "Domain, intercepts, asymptotes, critical points, monotonicity, concavity, and end behavior are not separate chores. Together they explain why the graph has its shape. The graph of x/(x 2+1) has no vertical asymptotes, crosses the origin, approaches zero at both ends, and has extrema at x= 1 . Derivative signs explain where it rises and falls; second-derivative signs explain the changes in bending. Each annotation answers part of one coherent shape question.",
+      "reading_guide_latex": "The graph of $x/(x^2+1)$ has no vertical asymptotes, crosses the origin, approaches zero at both ends, and has extrema at $x=\\pm1$. Derivative signs explain where it rises and falls; second-derivative signs explain the changes in bending. Each annotation answers part of one coherent shape question.",
+      "editorial_brief_latex": "\\textbf{Instructional purpose.} This figure should model the final product of curve analysis without making the process look like arbitrary annotation. The surrounding lesson must build the graph in layers and connect each layer to a calculation.\n\n\\textbf{Mathematical specification.} Use $f(x)=x/(x^2+1)$. Mark intercept, local extrema, horizontal asymptote, and optional inflection points. The web version should include sign strips for $f'$ and $f''$ beneath the graph. Do not crowd the static figure with every label; the editorial brief specifies progressive layering.\n\n\\textbf{Web behavior.} Add toggles for domain/intercepts, asymptotes, first derivative, second derivative, and final graph. Each toggle should reveal both algebra and its visual consequence. A reconstruction activity can ask learners to sketch the graph from a completed analysis table before comparing.\n\n\\textbf{Accessibility.} Provide a structured summary table with feature, location, and consequence. Alt text should describe the overall shape and named features. On mobile, let users switch layers rather than overlaying all at once.",
+      "proposed_visual_kind": "geometry-2d",
+      "required_capabilities": [
+        "static-render",
+        "accessible-description",
+        "print-fallback"
+      ],
+      "recommended_renderer": "static-svg",
+      "implementation_status": "authoring_ready",
+      "print_mapping": {
+        "source_macro": "BGVTwoBCurveAnalysis",
+        "existing_print_source": "chapters/m04_theorems_shape.tex",
+        "required": true
+      },
+      "accessibility": {
+        "caption_required": true,
+        "long_description_required": true,
+        "keyboard_required": false,
+        "reduced_motion_required": false
+      },
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "schema_version": "3.0.0-authoring-brief",
+      "visual_id": "2B-E04",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "route": "subjects/math/calculus/derivative-applications/curve-sketching",
+      "title_latex": "layered curve-analysis explorer",
+      "caption_latex": "layered curve-analysis explorer",
+      "learning_purpose": "Show how a complete curve sketch is assembled from domain, intercepts, limits, first-derivative signs, extrema, second-derivative signs, inflection points, and asymptotes.",
+      "long_description": "A layered analysis of f(x)=x/(x^2+1) begins with domain, intercepts, and symmetry, then adds end behavior, first-derivative sign intervals, extrema, second-derivative sign intervals, inflection points, and final annotations. Each graphical layer is paired with the algebra or sign table that justifies it. A nonvisual feature table presents the same evidence in reading order.",
+      "reading_guide_latex": "See the adjacent lesson prose and the detailed editorial brief.",
+      "editorial_brief_latex": "\\textbf{Purpose.} This interactive should reveal how a complete sketch is assembled from evidence. It is not merely a polished final graph. Learners need to see domain, intercepts, limits, first-derivative signs, critical points, second-derivative signs, inflection points, and asymptotes added in a deliberate order.\n\n\\textbf{Layer design.} Use $f(x)=x/(x^2+1)$ in the specified window. Provide separate toggles for original formula and domain, intercepts and symmetry, end behavior, $f'$ sign strip, extrema, $f''$ sign strip, inflection points, and final annotations. Every layer should include the corresponding algebra or sign table beneath the graph.\n\n\\textbf{Learning activity.} Before each layer is revealed, ask for a prediction. The final mode should allow the graph to be hidden while the analysis table remains, requiring the learner to sketch the curve. A comparison overlay then provides feedback without erasing the learner's drawing.\n\n\\textbf{Accessibility.} The complete feature table is the nonvisual equivalent and must be fully usable. Toggle states need accessible names. On mobile, show one layer at a time and keep the table directly adjacent.",
+      "proposed_visual_kind": "cartesian-2d",
+      "required_capabilities": [
+        "static-render",
+        "accessible-description",
+        "print-fallback",
+        "parameter-control",
+        "linked-update",
+        "reduced-motion"
+      ],
+      "recommended_renderer": "bettergrades-interactive-2d",
+      "implementation_status": "provisional_after_2a_postmortem",
+      "print_mapping": {
+        "source_macro": null,
+        "existing_print_source": "chapters/m04_theorems_shape.tex",
+        "required": true
+      },
+      "accessibility": {
+        "caption_required": true,
+        "long_description_required": true,
+        "keyboard_required": true,
+        "reduced_motion_required": true
+      },
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "schema_version": "3.0.0-authoring-brief",
+      "visual_id": "2B-V18",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "route": "subjects/math/calculus/derivative-applications/optimization-modeling",
+      "title_latex": "An optimization diagram separates the objective from the constraint",
+      "caption_latex": "For a rectangle with fixed perimeter, width and length cannot vary independently. The constraint eliminates one variable; the objective function then measures the area to maximize.",
+      "learning_purpose": "This visual should establish the anatomy of optimization: quantity to optimize, restriction, feasible variables, and one-variable objective. It should be reused in later geometry examples with different shapes.",
+      "long_description": "For a rectangle with fixed perimeter, width and length cannot vary independently. The constraint eliminates one variable; the objective function then measures the area to maximize. The area formula A=xy is the objective. The perimeter equation is the constraint. Solving the constraint for y gives A(x)=x(P/2-x) , a one-variable function that can be differentiated. The diagram keeps the two jobs separate.",
+      "reading_guide_latex": "The area formula $A=xy$ is the objective. The perimeter equation is the constraint. Solving the constraint for $y$ gives $A(x)=x(P/2-x)$, a one-variable function that can be differentiated. The diagram keeps the two jobs separate.",
+      "editorial_brief_latex": "\\textbf{Instructional purpose.} This visual should establish the anatomy of optimization: quantity to optimize, restriction, feasible variables, and one-variable objective. It should be reused in later geometry examples with different shapes.\n\n\\textbf{Composition.} Draw a labeled rectangle with area inside and place the perimeter constraint in a separate card connected by an arrow. The separate card matters because students often differentiate the constraint instead of the objective or never use the constraint to reduce variables.\n\n\\textbf{Web behavior.} Let a slider vary $x$ while preserving perimeter. The rectangle should reshape, and an area graph should update simultaneously. The learner predicts the maximizing shape before differentiating. Show the feasible interval $0<x<P/2$.\n\n\\textbf{Accessibility.} Alt text should state the objective and constraint. The interactive slider needs keyboard support and numeric entry. On mobile, stack the rectangle above the constraint and area graph.",
+      "proposed_visual_kind": "cartesian-2d",
+      "required_capabilities": [
+        "static-render",
+        "accessible-description",
+        "print-fallback"
+      ],
+      "recommended_renderer": "static-svg",
+      "implementation_status": "authoring_ready",
+      "print_mapping": {
+        "source_macro": "BGVTwoBOptimizationRectangle",
+        "existing_print_source": "chapters/m05_optimization.tex",
+        "required": true
+      },
+      "accessibility": {
+        "caption_required": true,
+        "long_description_required": true,
+        "keyboard_required": false,
+        "reduced_motion_required": false
+      },
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "schema_version": "3.0.0-authoring-brief",
+      "visual_id": "2B-V19",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "route": "subjects/math/calculus/derivative-applications/optimization-geometry",
+      "title_latex": "A box-from-a-sheet problem begins with the net",
+      "caption_latex": "Cutting squares of side $x$ from each corner leaves base dimensions $L-2x$ and $W-2x$ and creates height $x$. The volume model comes directly from the folded geometry.",
+      "learning_purpose": "The net is essential because the volume formula is otherwise easy to memorize incorrectly. It also makes the physical domain visible.",
+      "long_description": "Cutting squares of side x from each corner leaves base dimensions L-2x and W-2x and creates height x . The volume model comes directly from the folded geometry. The cut size x becomes the box height. Each original sheet dimension loses x at both ends, which explains the factors L-2x and W-2x . The feasible domain is limited by the smaller sheet dimension; otherwise a base length becomes zero or negative.",
+      "reading_guide_latex": "The cut size $x$ becomes the box height. Each original sheet dimension loses $x$ at both ends, which explains the factors $L-2x$ and $W-2x$. The feasible domain is limited by the smaller sheet dimension; otherwise a base length becomes zero or negative.",
+      "editorial_brief_latex": "\\textbf{Instructional purpose.} The net is essential because the volume formula is otherwise easy to memorize incorrectly. It also makes the physical domain visible.\n\n\\textbf{Composition.} Draw a rectangular sheet, shade the four removed corner squares, and show fold lines. Label the remaining base dimensions and the cut size. Include the resulting volume formula beneath the net. A secondary three-dimensional folded view may be added on the web but is not necessary in the static PDF.\n\n\\textbf{Web behavior.} A slider controls $x$, updating both the net and a 3D box preview. Plot $V(x)$ on the feasible interval and mark the current volume. Prevent values outside the domain while explaining why they are infeasible.\n\n\\textbf{Accessibility.} Alt text should explain how each dimension changes. The 3D preview must not replace the labeled net. On mobile, the net should remain large enough for fold lines and labels to be read.",
+      "proposed_visual_kind": "geometry-2d",
+      "required_capabilities": [
+        "static-render",
+        "accessible-description",
+        "print-fallback",
+        "parameter-control",
+        "linked-update",
+        "reduced-motion"
+      ],
+      "recommended_renderer": "bettergrades-interactive-2d",
+      "implementation_status": "provisional_after_2a_postmortem",
+      "print_mapping": {
+        "source_macro": "BGVTwoBOpenBox",
+        "existing_print_source": "chapters/m05_optimization.tex",
+        "required": true
+      },
+      "accessibility": {
+        "caption_required": true,
+        "long_description_required": true,
+        "keyboard_required": true,
+        "reduced_motion_required": true
+      },
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "schema_version": "3.0.0-authoring-brief",
+      "visual_id": "2B-V20",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "route": "subjects/math/calculus/derivative-applications/optimization-business-science",
+      "title_latex": "Marginal quantities are slopes of total quantities",
+      "caption_latex": "Marginal cost and marginal revenue are derivative graphs. Profit increases where marginal revenue exceeds marginal cost and is stationary where they are equal.",
+      "learning_purpose": "This paired visual connects derivative language to a business decision and prevents students from confusing cost with marginal cost. It also gives a graphical reason for the condition MR=MC at an interior profit optimum.",
+      "long_description": "Marginal cost and marginal revenue are derivative graphs. Profit increases where marginal revenue exceeds marginal cost and is stationary where they are equal. The left panel shows accumulated revenue and cost. The right panel shows their slopes. Before q=6 , marginal revenue exceeds marginal cost, so producing another unit increases profit. After q=6 , marginal cost is larger, so additional production reduces profit in this model.",
+      "reading_guide_latex": "The left panel shows accumulated revenue and cost. The right panel shows their slopes. Before $q=6$, marginal revenue exceeds marginal cost, so producing another unit increases profit. After $q=6$, marginal cost is larger, so additional production reduces profit in this model.",
+      "editorial_brief_latex": "\\textbf{Instructional purpose.} This paired visual connects derivative language to a business decision and prevents students from confusing cost with marginal cost. It also gives a graphical reason for the condition $MR=MC$ at an interior profit optimum.\n\n\\textbf{Mathematical specification.} Use simple functions such as $R(q)=8q$ and $C(q)=\\frac12q^2+2q+15$, so $MR=8$ and $MC=q+2$. Mark the marginal intersection at $q=6$. The total curves need not intersect at the same quantity; the visual is about slopes and profit change.\n\n\\textbf{Web behavior.} A shared cursor should show total values, marginal values, and profit. Shade regions where $MR>MC$ and $MR<MC$. A production slider can display the predicted effect of one additional unit.\n\n\\textbf{Accessibility.} Alt text should explain the relationship between panels and the significance of $q=6$. Use direct labels and line patterns. On mobile, stack totals above marginals with a synchronized cursor.",
+      "proposed_visual_kind": "cartesian-2d",
+      "required_capabilities": [
+        "static-render",
+        "accessible-description",
+        "print-fallback"
+      ],
+      "recommended_renderer": "static-svg",
+      "implementation_status": "authoring_ready",
+      "print_mapping": {
+        "source_macro": "BGVTwoBBusinessCurves",
+        "existing_print_source": "chapters/m05_optimization.tex",
+        "required": true
+      },
+      "accessibility": {
+        "caption_required": true,
+        "long_description_required": true,
+        "keyboard_required": false,
+        "reduced_motion_required": false
+      },
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "schema_version": "3.0.0-authoring-brief",
+      "visual_id": "2B-V21",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "route": "subjects/math/calculus/derivative-applications/lhopital-rule",
+      "title_latex": "L'Hopital's Rule begins with form identification, not differentiation",
+      "caption_latex": "The rule applies only after a quotient limit is verified to have the form $0/0$ or $\\infty/\\infty$. Other forms must first be transformed or handled by simpler methods.",
+      "learning_purpose": "The flowchart is primarily an error-prevention tool. It should make form verification a required step and distinguish repeated legitimate applications from automatic repeated differentiation.",
+      "long_description": "The rule applies only after a quotient limit is verified to have the form 0/0 or / . Other forms must first be transformed or handled by simpler methods. You do not use L'Hopital's Rule because a fraction looks complicated. First evaluate the numerator and denominator limits separately. If the verified form is not 0/0 or / , differentiating top and bottom is not justified. After applying the rule, test the new form again.",
+      "reading_guide_latex": "You do not use L'Hopital's Rule because a fraction looks complicated. First evaluate the numerator and denominator limits separately. If the verified form is not $0/0$ or $\\infty/\\infty$, differentiating top and bottom is not justified. After applying the rule, test the new form again.",
+      "editorial_brief_latex": "\\textbf{Instructional purpose.} The flowchart is primarily an error-prevention tool. It should make form verification a required step and distinguish repeated legitimate applications from automatic repeated differentiation.\n\n\\textbf{Composition.} Use a central yes/no decision and a loop from re-evaluation back to differentiation only when the new limit remains indeterminate. The ``no'' branch explicitly points to algebra, identities, comparison, or transformation. Avoid wording that suggests L'Hopital evaluates the original functions pointwise.\n\n\\textbf{Web behavior.} The learner must classify the form before the derivative fields unlock. For forms such as $0\\cdot\\infty$ or $1^\\infty$, the interface should direct them to a transformation step. Each repeated application requires a new form check.\n\n\\textbf{Accessibility.} Provide the flow as a numbered decision list. On mobile, use vertically arranged cards. Alt text should include the allowed forms and the recheck loop.",
+      "proposed_visual_kind": "cartesian-2d",
+      "required_capabilities": [
+        "static-render",
+        "accessible-description",
+        "print-fallback"
+      ],
+      "recommended_renderer": "static-svg",
+      "implementation_status": "authoring_ready",
+      "print_mapping": {
+        "source_macro": "BGVTwoBLHopitalFlow",
+        "existing_print_source": "chapters/m06_lhopital.tex",
+        "required": true
+      },
+      "accessibility": {
+        "caption_required": true,
+        "long_description_required": true,
+        "keyboard_required": false,
+        "reduced_motion_required": false
+      },
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "schema_version": "3.0.0-authoring-brief",
+      "visual_id": "2B-V22",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "route": "subjects/math/calculus/derivative-applications/other-indeterminate-forms",
+      "title_latex": "Other indeterminate forms must be transformed before L'Hopital",
+      "caption_latex": "Products become quotients, differences are combined or rationalized, and powers are handled by logarithms. The transformation creates a quotient of type $0/0$ or $\\infty/\\infty$.",
+      "learning_purpose": "This map organizes forms often taught as a disconnected list. The destination is not ``use L'Hopital'' but ``create an eligible quotient and then verify its form.''",
+      "long_description": "Products become quotients, differences are combined or rationalized, and powers are handled by logarithms. The transformation creates a quotient of type 0/0 or / . The original expression determines the transformation. A product is not a quotient, so L'Hopital cannot be applied directly. A power form is usually simplified by taking logarithms, evaluating the logarithmic limit, and then exponentiating the result.",
+      "reading_guide_latex": "The original expression determines the transformation. A product is not a quotient, so L'Hopital cannot be applied directly. A power form is usually simplified by taking logarithms, evaluating the logarithmic limit, and then exponentiating the result.",
+      "editorial_brief_latex": "\\textbf{Instructional purpose.} This map organizes forms often taught as a disconnected list. The destination is not ``use L'Hopital'' but ``create an eligible quotient and then verify its form.''\n\n\\textbf{Composition.} Place three original-form groups across the top, their characteristic transformations beneath, and a shared quotient goal at the bottom. The power group includes all three classical exponential forms. Keep examples in the prose rather than overcrowding the map.\n\n\\textbf{Web behavior.} Give learners a form and ask them to choose a transformation. Show equivalent algebra step by step. For powers, maintain the distinction between the temporary variable $y$ and $\\ln y$. After finding the logarithmic limit $L$, require the final answer $e^L$.\n\n\\textbf{Accessibility.} Provide a table with columns original form, transformation, target form. On mobile, stack the three branches. Alt text should state all transformations.",
+      "proposed_visual_kind": "cartesian-2d",
+      "required_capabilities": [
+        "static-render",
+        "accessible-description",
+        "print-fallback"
+      ],
+      "recommended_renderer": "static-svg",
+      "implementation_status": "authoring_ready",
+      "print_mapping": {
+        "source_macro": "BGVTwoBIndeterminateMap",
+        "existing_print_source": "chapters/m06_lhopital.tex",
+        "required": true
+      },
+      "accessibility": {
+        "caption_required": true,
+        "long_description_required": true,
+        "keyboard_required": false,
+        "reduced_motion_required": false
+      },
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "schema_version": "3.0.0-authoring-brief",
+      "visual_id": "2B-V23",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "route": "subjects/math/calculus/derivative-applications/medication-concentration",
+      "title_latex": "A concentration model separates amount, rate, and peak time",
+      "caption_latex": "The concentration curve rises, reaches a peak where its derivative is zero, and then falls. The derivative graph identifies when the medication level is increasing or decreasing most rapidly.",
+      "learning_purpose": "This application visual demonstrates amount versus rate and gives optimization a medically meaningful context without pretending the simplified model supports clinical decisions. The model-limit sentence should remain prominent.",
+      "long_description": "The concentration curve rises, reaches a peak where its derivative is zero, and then falls. The derivative graph identifies when the medication level is increasing or decreasing most rapidly. The left graph shows the modeled concentration. The right graph shows its rate of change. The concentration peaks when the rate crosses zero from positive to negative. The model describes a simplified response, not an individual dosing recommendation; interpretation must remain within the model's assumptions.",
+      "reading_guide_latex": "The left graph shows the modeled concentration. The right graph shows its rate of change. The concentration peaks when the rate crosses zero from positive to negative. The model describes a simplified response, not an individual dosing recommendation; interpretation must remain within the model's assumptions.",
+      "editorial_brief_latex": "\\textbf{Instructional purpose.} This application visual demonstrates amount versus rate and gives optimization a medically meaningful context without pretending the simplified model supports clinical decisions. The model-limit sentence should remain prominent.\n\n\\textbf{Mathematical specification.} Use $C(t)=te^{-0.35t}$ on $0\\le t\\le12$ and $C'(t)=e^{-0.35t}(1-0.35t)$. Mark the common peak/zero time $t=1/0.35$. Axis units should be generic concentration units unless a specific sourced model justifies medical units.\n\n\\textbf{Web behavior.} A shared cursor shows concentration and rate at the same time. Sliders may adjust model parameters with a notice that the result is illustrative. Ask learners to identify increasing, decreasing, and peak intervals before showing the derivative graph.\n\n\\textbf{Accessibility.} Alt text should describe the rise, peak, fall, and derivative sign change. Keep a textual model disclaimer adjacent to the figure. On mobile, stack concentration above derivative.",
+      "proposed_visual_kind": "cartesian-2d",
+      "required_capabilities": [
+        "static-render",
+        "accessible-description",
+        "print-fallback"
+      ],
+      "recommended_renderer": "static-svg",
+      "implementation_status": "authoring_ready",
+      "print_mapping": {
+        "source_macro": "BGVTwoBMedication",
+        "existing_print_source": "chapters/m07_modeling_studio.tex",
+        "required": true
+      },
+      "accessibility": {
+        "caption_required": true,
+        "long_description_required": true,
+        "keyboard_required": false,
+        "reduced_motion_required": false
+      },
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "schema_version": "3.0.0-authoring-brief",
+      "visual_id": "2B-V24",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "route": "subjects/math/calculus/derivative-applications/stopping-distance",
+      "title_latex": "Stopping distance has a reaction part and a braking part",
+      "caption_latex": "Total stopping distance is the sum of distance traveled before braking begins and distance traveled while slowing to rest. The first part grows roughly linearly with speed; the second often grows roughly quadratically.",
+      "learning_purpose": "This visual gives derivatives a concrete safety application and shows how model terms correspond to stages of a process. It should encourage interpretation of the derivative as marginal risk with respect to speed.",
+      "long_description": "Total stopping distance is the sum of distance traveled before braking begins and distance traveled while slowing to rest. The first part grows roughly linearly with speed; the second often grows roughly quadratically. Doubling speed doubles the reaction-distance term but multiplies the quadratic braking term by four. The derivative D'(v)= +v/a measures how strongly stopping distance responds to a small increase in speed. It is a sensitivity statement, not merely another distance calculation.",
+      "reading_guide_latex": "Doubling speed doubles the reaction-distance term but multiplies the quadratic braking term by four. The derivative $D'(v)=\\tau+v/a$ measures how strongly stopping distance responds to a small increase in speed. It is a sensitivity statement, not merely another distance calculation.",
+      "editorial_brief_latex": "\\textbf{Instructional purpose.} This visual gives derivatives a concrete safety application and shows how model terms correspond to stages of a process. It should encourage interpretation of the derivative as marginal risk with respect to speed.\n\n\\textbf{Composition.} Use a horizontal timeline/distance line with three events and two labeled segments. Place the model above. Avoid realistic crash imagery; the mathematical decomposition is the focus. The proportional symbol on braking distance should be replaced by an exact term only when assumptions and units are specified.\n\n\\textbf{Web behavior.} A speed slider updates reaction, braking, and total distance bars. Display $D'(v)$ and a sentence such as ``near this speed, one additional speed unit adds approximately ... distance units.'' Parameter controls for reaction time and deceleration should include plausible-range warnings.\n\n\\textbf{Accessibility.} Alt text should list the three events and two terms. The bars need textual numeric outputs. On mobile, stack the two distance components vertically if the horizontal line becomes cramped.",
+      "proposed_visual_kind": "cartesian-2d",
+      "required_capabilities": [
+        "static-render",
+        "accessible-description",
+        "print-fallback"
+      ],
+      "recommended_renderer": "static-svg",
+      "implementation_status": "authoring_ready",
+      "print_mapping": {
+        "source_macro": "BGVTwoBStopping",
+        "existing_print_source": "chapters/m07_modeling_studio.tex",
+        "required": true
+      },
+      "accessibility": {
+        "caption_required": true,
+        "long_description_required": true,
+        "keyboard_required": false,
+        "reduced_motion_required": false
+      },
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "schema_version": "3.0.0-authoring-brief",
+      "visual_id": "2B-V25",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "route": "subjects/math/calculus/derivative-applications/manufacturing-tolerance",
+      "title_latex": "Input tolerance becomes output uncertainty through the derivative",
+      "caption_latex": "A small measurement interval around $x$ maps to an output interval around $f(x)$. The local slope estimates how much the output uncertainty is amplified or reduced.",
+      "learning_purpose": "This visual connects differentials to manufacturing, measurement, and numerical sensitivity. It should make the phrase ``error propagation'' geometric rather than merely symbolic.",
+      "long_description": "A small measurement interval around x maps to an output interval around f(x) . The local slope estimates how much the output uncertainty is amplified or reduced. Near x=2 for f(x)=x 2 , the slope is 4 . An input uncertainty of about 0.1 therefore produces an output uncertainty of roughly 0.4 . The derivative is acting as a local amplification factor.",
+      "reading_guide_latex": "Near $x=2$ for $f(x)=x^2$, the slope is $4$. An input uncertainty of about $\\pm0.1$ therefore produces an output uncertainty of roughly $\\pm0.4$. The derivative is acting as a local amplification factor.",
+      "editorial_brief_latex": "\\textbf{Instructional purpose.} This visual connects differentials to manufacturing, measurement, and numerical sensitivity. It should make the phrase ``error propagation'' geometric rather than merely symbolic.\n\n\\textbf{Mathematical specification.} Use $f(x)=x^2$ near $x=2$, with input interval $[1.9,2.1]$. Show the tangent and a vertical input band. Indicate the approximate output band from $dy=f'(2)dx$. The exact nonlinear output range may be displayed interactively for comparison.\n\n\\textbf{Web behavior.} Sliders control nominal input and tolerance. Display approximate and exact output ranges, absolute error, and relative error. An optional condition-number view shows relative amplification $|xf'(x)/f(x)|$ where defined.\n\n\\textbf{Accessibility.} Alt text should state the nominal value, input tolerance, slope, and approximate output tolerance. Use labeled brackets in addition to shading. On mobile, numerical ranges should appear in a table beneath the graph.",
+      "proposed_visual_kind": "cartesian-2d",
+      "required_capabilities": [
+        "static-render",
+        "accessible-description",
+        "print-fallback"
+      ],
+      "recommended_renderer": "static-svg",
+      "implementation_status": "authoring_ready",
+      "print_mapping": {
+        "source_macro": "BGVTwoBTolerance",
+        "existing_print_source": "chapters/m07_modeling_studio.tex",
+        "required": true
+      },
+      "accessibility": {
+        "caption_required": true,
+        "long_description_required": true,
+        "keyboard_required": false,
+        "reduced_motion_required": false
+      },
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "schema_version": "3.0.0-authoring-brief",
+      "visual_id": "2B-V26",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "route": "subjects/math/calculus/derivative-applications/marginal-analysis",
+      "title_latex": "A marginal value is the slope of a total curve at one production level",
+      "caption_latex": "The tangent to total cost at $q$ has slope $C'(q)$. Over one additional unit, that slope approximates the actual cost increase $C(q+1)-C(q)$ when the scale is appropriate.",
+      "learning_purpose": "This graph makes the connection between a derivative and ``one more unit'' precise while preserving the approximation language. It should discourage the false identity C'(q)=C(q+1)-C(q) .",
+      "long_description": "The tangent to total cost at q has slope C'(q) . Over one additional unit, that slope approximates the actual cost increase C(q+1)-C(q) when the scale is appropriate. At q=5 , the tangent slope is 8 dollars per unit. That predicts that the next unit will add about 8 dollars to total cost. The actual finite increase is close but not necessarily equal, because marginal cost is an instantaneous rate while producing one full unit is a nonzero change.",
+      "reading_guide_latex": "At $q=5$, the tangent slope is $8$ dollars per unit. That predicts that the next unit will add about $8$ dollars to total cost. The actual finite increase is close but not necessarily equal, because marginal cost is an instantaneous rate while producing one full unit is a nonzero change.",
+      "editorial_brief_latex": "\\textbf{Instructional purpose.} This graph makes the connection between a derivative and ``one more unit'' precise while preserving the approximation language. It should discourage the false identity $C'(q)=C(q+1)-C(q)$.\n\n\\textbf{Mathematical specification.} Use $C(q)=0.6q^2+2q+15$. At $q=5$, $C'(5)=8$. Draw the tangent and mark both $q=5$ and $q=6$. Show the tangent's predicted one-unit rise and, optionally, the actual curve rise.\n\n\\textbf{Web behavior.} A quantity slider updates marginal cost, predicted next-unit cost, and actual finite difference. Let the step size vary from a small fraction to one unit so the approximation quality can be observed.\n\n\\textbf{Accessibility.} Alt text should state the total-cost formula, tangent slope, and approximation. On mobile, pair the graph with a small table of nominal quantity, marginal cost, actual increment, and error.",
+      "proposed_visual_kind": "cartesian-2d",
+      "required_capabilities": [
+        "static-render",
+        "accessible-description",
+        "print-fallback"
+      ],
+      "recommended_renderer": "static-svg",
+      "implementation_status": "authoring_ready",
+      "print_mapping": {
+        "source_macro": "BGVTwoBMarginal",
+        "existing_print_source": "chapters/m07_modeling_studio.tex",
+        "required": true
+      },
+      "accessibility": {
+        "caption_required": true,
+        "long_description_required": true,
+        "keyboard_required": false,
+        "reduced_motion_required": false
+      },
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "schema_version": "3.0.0-authoring-brief",
+      "visual_id": "2B-V27",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "route": "subjects/math/calculus/derivative-applications/advanced-sensitivity-elasticity",
+      "title_latex": "Elasticity measures how relative input error is amplified",
+      "caption_latex": "Absolute sensitivity uses $f'(x)$. Relative sensitivity uses the dimensionless factor $E(x)=x f'(x)/f(x)$, which predicts the approximate percentage output change caused by a one-percent input change.",
+      "learning_purpose": "This visual distinguishes absolute derivative sensitivity from relative conditioning. It should help students understand why a derivative of 1000 is not automatically ``large'' and why percentage comparisons often provide the meaningful scale.",
+      "long_description": "Absolute sensitivity uses f'(x) . Relative sensitivity uses the dimensionless factor E(x)=x f'(x)/f(x) , which predicts the approximate percentage output change caused by a one-percent input change. The first box measures error as a fraction of the input rather than in raw units. Elasticity multiplies that fraction. The result is a fractional output error, so the comparison works across quantities with different units and scales. Large |E(x)| warns that small relative input errors may be strongly amplified.",
+      "reading_guide_latex": "The first box measures error as a fraction of the input rather than in raw units. Elasticity multiplies that fraction. The result is a fractional output error, so the comparison works across quantities with different units and scales. Large $|E(x)|$ warns that small relative input errors may be strongly amplified.",
+      "editorial_brief_latex": "\\textbf{Instructional purpose.} This visual distinguishes absolute derivative sensitivity from relative conditioning. It should help students understand why a derivative of $1000$ is not automatically ``large'' and why percentage comparisons often provide the meaningful scale.\n\n\\textbf{Exact composition and examples.} Use a three-stage left-to-right pipeline: relative input error, elasticity, relative output error. Display the approximation $\\Delta f/f\\approx E(x)\\Delta x/x$. Include the power-function example $E=n$ in a separate lower strip. The example must say ``approximately'' and should not imply that finite percentage changes are exact.\n\n\\textbf{Web interaction.} Let users select models such as $x^2$, $x^3$, $e^x$, and $\\ln x$, choose an operating point, and enter a small percentage perturbation. Compare the derivative prediction with the exact percentage change. Display both signed elasticity and its magnitude as a condition measure. Warn when the perturbation is too large for a local approximation.\n\n\\textbf{Accessibility and QA.} Alt text should narrate the multiplicative pipeline and power-function example. Equations must be available as MathML or accessible LaTeX. On mobile, stack the boxes. Verify unit cancellation, signs, and exact-versus-approximate readouts; test points where $f(x)=0$, where relative sensitivity is undefined and the interface must explain why.",
+      "proposed_visual_kind": "geometry-2d",
+      "required_capabilities": [
+        "static-render",
+        "accessible-description",
+        "print-fallback"
+      ],
+      "recommended_renderer": "static-svg",
+      "implementation_status": "authoring_ready",
+      "print_mapping": {
+        "source_macro": "BGVTwoBConditioning",
+        "existing_print_source": "chapters/m08_advanced.tex",
+        "required": true
+      },
+      "accessibility": {
+        "caption_required": true,
+        "long_description_required": true,
+        "keyboard_required": false,
+        "reduced_motion_required": false
+      },
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "schema_version": "3.0.0-authoring-brief",
+      "visual_id": "2B-V28",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "route": "subjects/math/calculus/derivative-applications/advanced-newton-convergence",
+      "title_latex": "Near a simple root, Newton's error is approximately squared each step",
+      "caption_latex": "For a well-chosen starting point, the number of correct digits can roughly double from one iteration to the next. The table visualizes this rapid error collapse for $x^2-2=0$.",
+      "learning_purpose": "The table makes ``quadratic convergence'' visible without requiring a full proof. It also creates a benchmark against which slow convergence or failure can be recognized. Students should see that Newton's method is spectacular near a suitable simple root but not universally magical.",
+      "long_description": "For a well-chosen starting point, the number of correct digits can roughly double from one iteration to the next. The table visualizes this rapid error collapse for x 2-2=0 . The error does not merely shrink by a fixed percentage. Once the iterates are close to the simple root, an error around 10 -3 is followed by one around 10 -6 , then around 10 -12 . That is the practical signature of quadratic convergence.",
+      "reading_guide_latex": "The error does not merely shrink by a fixed percentage. Once the iterates are close to the simple root, an error around $10^{-3}$ is followed by one around $10^{-6}$, then around $10^{-12}$. That is the practical signature of quadratic convergence.",
+      "editorial_brief_latex": "\\textbf{Instructional purpose.} The table makes ``quadratic convergence'' visible without requiring a full proof. It also creates a benchmark against which slow convergence or failure can be recognized. Students should see that Newton's method is spectacular near a suitable simple root but not universally magical.\n\n\\textbf{Mathematical specification.} Use $f(x)=x^2-2$, $x_0=1.5$, and $x_{n+1}=(x_n+2/x_n)/2$. Report enough digits to show the pattern but label rounded values honestly. The error column should be computed against a high-precision value of $\\sqrt2$. A note should connect $e_{n+1}\\approx C e_n^2$ to the changing exponents of ten.\n\n\\textbf{Web interaction.} Allow a starting value and number of steps. Plot the iterates on the usual tangent-intercept graph while also updating the error table. Add a ``compare $e_{n+1}$ with $e_n^2$'' toggle. A failure gallery should offer a zero derivative, a two-cycle, and a multiple root, but only after the successful pattern is understood.\n\n\\textbf{Accessibility and QA.} Implement the table as actual HTML with headers, not as a raster graphic. Alt text should state the four error magnitudes and the squaring pattern. Verify every displayed digit independently. On mobile, the table may scroll horizontally; do not shrink numerals until they become unreadable.",
+      "proposed_visual_kind": "geometry-2d",
+      "required_capabilities": [
+        "static-render",
+        "accessible-description",
+        "print-fallback"
+      ],
+      "recommended_renderer": "static-svg",
+      "implementation_status": "authoring_ready",
+      "print_mapping": {
+        "source_macro": "BGVTwoBNewtonConvergence",
+        "existing_print_source": "chapters/m08_advanced.tex",
+        "required": true
+      },
+      "accessibility": {
+        "caption_required": true,
+        "long_description_required": true,
+        "keyboard_required": false,
+        "reduced_motion_required": false
+      },
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "schema_version": "3.0.0-authoring-brief",
+      "visual_id": "2B-V29",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "route": "subjects/math/calculus/derivative-applications/advanced-convexity",
+      "title_latex": "For a convex function, a stationary point is automatically global",
+      "caption_latex": "A convex graph lies above each tangent line. When the tangent slope is zero, that horizontal line supports the entire graph from below, so no other point can have a smaller function value.",
+      "learning_purpose": "This visual shows why convex optimization is unusually trustworthy. In ordinary optimization, a critical point is only a candidate. Under convexity, the tangent inequality converts a zero derivative into a global guarantee.",
+      "long_description": "A convex graph lies above each tangent line. When the tangent slope is zero, that horizontal line supports the entire graph from below, so no other point can have a smaller function value. The horizontal green line touches the curve at the stationary point and stays below the graph everywhere shown. Convexity turns the local derivative statement f'(x *)=0 into the global conclusion f(x) f(x *) for every point in the interval.",
+      "reading_guide_latex": "The horizontal green line touches the curve at the stationary point and stays below the graph everywhere shown. Convexity turns the local derivative statement $f'(x_*)=0$ into the global conclusion $f(x)\\ge f(x_*)$ for every point in the interval.",
+      "editorial_brief_latex": "\\textbf{Instructional purpose.} This visual shows why convex optimization is unusually trustworthy. In ordinary optimization, a critical point is only a candidate. Under convexity, the tangent inequality converts a zero derivative into a global guarantee.\n\n\\textbf{Exact composition.} Plot one clearly convex function with a unique minimum and its horizontal tangent at the minimizing point. The curve should remain visibly above the tangent across the full window. Label the stationary point, tangent, and inequality $f(y)\\ge f(x_*)+f'(x_*)(y-x_*)=f(x_*)$. Avoid using a symmetric parabola as if symmetry were the reason; accompanying prose should name convexity.\n\n\\textbf{Web interaction.} Let the learner move the tangent point along a convex curve and observe that every tangent remains below the graph. Then switch to a nonconvex curve where a tangent may cross and a stationary point may fail to be global. A second toggle can compare $f''\\ge0$ with an increasing derivative graph.\n\n\\textbf{Accessibility and QA.} Alt text should state the tangent-below-graph property and global-minimum conclusion. Use line pattern and labels in addition to color. Test the interaction at endpoints and flat intervals. On mobile, keep the inequality below the plot rather than overlapping it.",
+      "proposed_visual_kind": "cartesian-2d",
+      "required_capabilities": [
+        "static-render",
+        "accessible-description",
+        "print-fallback"
+      ],
+      "recommended_renderer": "static-svg",
+      "implementation_status": "authoring_ready",
+      "print_mapping": {
+        "source_macro": "BGVTwoBConvexity",
+        "existing_print_source": "chapters/m08_advanced.tex",
+        "required": true
+      },
+      "accessibility": {
+        "caption_required": true,
+        "long_description_required": true,
+        "keyboard_required": false,
+        "reduced_motion_required": false
+      },
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "schema_version": "3.0.0-authoring-brief",
+      "visual_id": "2B-V30",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "route": "subjects/math/calculus/derivative-applications/advanced-cauchy-mvt",
+      "title_latex": "Cauchy's theorem matches a ratio of secant changes to a ratio of instantaneous rates",
+      "caption_latex": "For two functions on the same input interval, one interior point $c$ makes $[f(b)-f(a)]/[g(b)-g(a)]=f'(c)/g'(c)$. The same $c$ must be used in both derivative graphs.",
+      "learning_purpose": "The paired plots should make Cauchy's theorem feel like a two-function version of the ordinary Mean Value Theorem. The crucial feature is that one shared point c produces the derivative ratio, not two unrelated points chosen separately.",
+      "long_description": "For two functions on the same input interval, one interior point c makes [f(b)-f(a)]/[g(b)-g(a)]=f'(c)/g'(c) . The same c must be used in both derivative graphs. Both panels use the same input interval and the same interior point. For this example, the secant changes satisfy f/ g=8/2=4 , while the derivative ratio at c=2 is f'(2)/g'(2)=4/1=4 . The theorem compares two changing quantities rather than comparing either one directly with x .",
+      "reading_guide_latex": "Both panels use the same input interval and the same interior point. For this example, the secant changes satisfy $\\Delta f/\\Delta g=8/2=4$, while the derivative ratio at $c=2$ is $f'(2)/g'(2)=4/1=4$. The theorem compares two changing quantities rather than comparing either one directly with $x$.",
+      "editorial_brief_latex": "\\textbf{Instructional purpose.} The paired plots should make Cauchy's theorem feel like a two-function version of the ordinary Mean Value Theorem. The crucial feature is that one shared point $c$ produces the derivative ratio, not two unrelated points chosen separately.\n\n\\textbf{Mathematical specification.} Use $a=1$, $b=3$, $f(x)=x^2+1$, and $g(x)=x+1$. The secant changes are $8$ and $2$, and at $c=2$ the derivatives are $4$ and $1$. Mark corresponding endpoints and $c$ in both panels. Use one line style for secants and another for tangents; direct labels should identify the ratios.\n\n\\textbf{Web interaction.} Permit alternative pairs of functions satisfying the hypotheses. The learner moves $c$ and watches the derivative ratio until it matches the fixed secant-change ratio. A later reveal connects the construction to a $0/0$ quotient limit. The interface must prevent the misleading interpretation that $f/g=f'/g'$ pointwise.\n\n\\textbf{Accessibility and QA.} Alt text should list both functions, interval, changes, derivatives, and equality of ratios. Synchronize keyboard focus between corresponding points in the two panels. On mobile, stack the graphs and keep a shared $c$ slider. Verify all equations and axis limits; the left plot must include $f(3)=10$, so its vertical maximum must exceed the point rather than clipping it.",
+      "proposed_visual_kind": "cartesian-2d",
+      "required_capabilities": [
+        "static-render",
+        "accessible-description",
+        "print-fallback"
+      ],
+      "recommended_renderer": "static-svg",
+      "implementation_status": "authoring_ready",
+      "print_mapping": {
+        "source_macro": "BGVTwoBCauchyMVT",
+        "existing_print_source": "chapters/m08_advanced.tex",
+        "required": true
+      },
+      "accessibility": {
+        "caption_required": true,
+        "long_description_required": true,
+        "keyboard_required": false,
+        "reduced_motion_required": false
+      },
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    }
+  ]
+}

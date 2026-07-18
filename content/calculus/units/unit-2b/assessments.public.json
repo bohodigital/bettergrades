@@ -1,0 +1,591 @@
+{
+  "schema_version": "3.0.0",
+  "unit_id": "calc-1-unit-2b-derivative-applications",
+  "problem_count": 22,
+  "problems": [
+    {
+      "problem_id": "interpretation-template-01",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "page_slug": "subjects/math/calculus/derivative-applications/interpreting-derivatives",
+      "prompt_latex": "If \\(T'(12)=-0.4\\) and \\(T\\) is degrees Celsius while time is minutes, give a complete interpretation.",
+      "answer_type": "text_rubric",
+      "hints": [
+        "Include the time, the quantity, the sign, the magnitude, and the units."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "interpreting-derivatives"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "motion-sign-01",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "page_slug": "subjects/math/calculus/derivative-applications/speeding-up-slowing-down",
+      "prompt_latex": "At an instant, \\(v=-4\\) m/s and \\(a=-2\\) m/s\\(^2\\). Is the object speeding up or slowing down?",
+      "answer_type": "multiple_choice",
+      "choices": [
+        "speeding up",
+        "slowing down",
+        "moving at constant speed",
+        "cannot be determined"
+      ],
+      "hints": [
+        "Speed increases when velocity and acceleration have the same sign."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "speeding-up-slowing-down"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "linearization-01",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "page_slug": "subjects/math/calculus/derivative-applications/linearization-practice",
+      "prompt_latex": "Use the tangent to \\(\\sqrt x\\) at \\(x=9\\) to estimate \\(\\sqrt{9.15}\\).",
+      "answer_type": "numeric",
+      "hints": [
+        "Use L(x)=f(9)+f'(9)(x-9)."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "linearization-practice"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "related-basic-01",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "page_slug": "subjects/math/calculus/derivative-applications/related-rates-workflow",
+      "prompt_latex": "A sphere's radius grows at \\(2\\) cm/s. How fast is its surface area \\(S=4\\pi r^2\\) changing when \\(r=3\\)?",
+      "answer_type": "symbolic_expression",
+      "hints": [
+        "Differentiate S=4πr² with respect to time before substituting."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "related-rates-workflow"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "critical-01",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "page_slug": "subjects/math/calculus/derivative-applications/extrema-and-critical-numbers",
+      "prompt_latex": "Find the critical numbers of \\(f(x)=x^4-8x^2\\).",
+      "answer_type": "set",
+      "hints": [
+        "Critical numbers occur where f'=0 or where f' is undefined in the domain."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "extrema-and-critical-numbers"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "increase-01",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "page_slug": "subjects/math/calculus/derivative-applications/increasing-decreasing",
+      "prompt_latex": "For \\(f'(x)=x(x-2)\\), where is \\(f\\) increasing?",
+      "answer_type": "interval",
+      "hints": [
+        "Make a sign chart for x(x-2)."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "increasing-decreasing"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "optimization-anatomy-01",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "page_slug": "subjects/math/calculus/derivative-applications/anatomy-of-optimization",
+      "prompt_latex": "A rectangle has perimeter \\(40\\) and should have maximum area. Name the objective and constraint.",
+      "answer_type": "text_rubric",
+      "hints": [
+        "The objective is what is maximized; the constraint is the fixed relationship."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "anatomy-of-optimization"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "lhopital-basic-01",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "page_slug": "subjects/math/calculus/derivative-applications/lhopital-rule",
+      "prompt_latex": "Evaluate \\(\\lim_{x\\to0}\\sin(2x)/x\\) using L'Hopital's Rule.",
+      "answer_type": "integer",
+      "hints": [
+        "Confirm 0/0, then differentiate numerator and denominator separately."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "lhopital-rule"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "motion-extra-01",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "page_slug": "subjects/math/calculus/derivative-applications/position-velocity-acceleration",
+      "prompt_latex": "If $s(t)=3t^2-4t$, find velocity.",
+      "answer_type": "symbolic_expression",
+      "hints": [
+        "Velocity is the derivative of position."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "position-velocity-acceleration"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "linear-extra-01",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "page_slug": "subjects/math/calculus/derivative-applications/local-linearity",
+      "prompt_latex": "Use the tangent to $\\sqrt{x}$ at $x=4$ to estimate $\\sqrt{4.04}$.",
+      "answer_type": "numeric",
+      "hints": [
+        "$L(x)=2+(x-4)/4$."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "local-linearity"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "related-extra-01",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "page_slug": "subjects/math/calculus/derivative-applications/related-rates-workflow",
+      "prompt_latex": "A circle has $r=5$ and $dr/dt=2$. Find $dA/dt$.",
+      "answer_type": "symbolic_expression",
+      "hints": [
+        "$dA/dt=2\\pi r\\,dr/dt$."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "related-rates-workflow"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "mvt-extra-01",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "page_slug": "subjects/math/calculus/derivative-applications/mean-value-theorem",
+      "prompt_latex": "For $f(x)=x^2$ on $[1,2]$, find the MVT point $c$.",
+      "answer_type": "rational",
+      "hints": [
+        "Average slope is $3$ and $f'(c)=2c$."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "mean-value-theorem"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "concavity-extra-01",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "page_slug": "subjects/math/calculus/derivative-applications/concavity",
+      "prompt_latex": "Where is $f(x)=x^3$ concave up?",
+      "answer_type": "interval",
+      "hints": [
+        "$f''(x)=6x$."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "concavity"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "optimization-extra-01",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "page_slug": "subjects/math/calculus/derivative-applications/optimization-modeling",
+      "prompt_latex": "A rectangle has perimeter 40. What side length gives the maximum-area square?",
+      "answer_type": "integer",
+      "hints": [
+        "Use $A=x(20-x)$."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "optimization-modeling"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "lhopital-extra-01",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "page_slug": "subjects/math/calculus/derivative-applications/lhopital-zero-over-zero",
+      "prompt_latex": "Evaluate $\\lim_{x\\to0}(1-\\cos x)/x^2$.",
+      "answer_type": "rational",
+      "hints": [
+        "Apply L'Hopital twice."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "lhopital-zero-over-zero"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "newton-extra-01",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "page_slug": "subjects/math/calculus/derivative-applications/newtons-method",
+      "prompt_latex": "For $f(x)=x^2-2$ and $x_0=2$, compute $x_1$.",
+      "answer_type": "numeric",
+      "hints": [
+        "$x_1=2-(4-2)/4$."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "newtons-method"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "app-drug-peak-01",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "page_slug": "subjects/math/calculus/derivative-applications/first-derivative-test",
+      "prompt_latex": "For $C(t)=20te^{-0.5t}$, at what time is concentration maximal?",
+      "answer_type": "numeric",
+      "hints": [
+        "Factor $C'(t)$ and locate its sign change."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "first-derivative-test"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "app-radar-01",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "page_slug": "subjects/math/calculus/derivative-applications/related-rates-angle",
+      "prompt_latex": "A target is 5 km horizontally from radar and rises at 0.4 km/min. Find angle rate when altitude is 5 km.",
+      "answer_type": "numeric",
+      "hints": [
+        "Use $\tan\theta=h/5$."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "related-rates-angle"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "app-tolerance-01",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "page_slug": "subjects/math/calculus/derivative-applications/error-estimation",
+      "prompt_latex": "A cylinder radius is $5.00\\pm0.02$ mm with fixed height. Estimate relative volume error as a percent.",
+      "answer_type": "numeric",
+      "hints": [
+        "For $V\\propto r^2$, relative error is about twice the radius relative error."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "error-estimation"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "app-aircraft-01",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "page_slug": "subjects/math/calculus/derivative-applications/related-rates-pythagorean",
+      "prompt_latex": "Aircraft coordinates are $(30,0)$ and $(0,40)$ km with rates $x'=600$, $y'=-500$. Find separation rate.",
+      "answer_type": "integer",
+      "hints": [
+        "Use $zz'=xx'+yy'$ and $z=50$."
+      ],
+      "difficulty": "foundational",
+      "topics": [
+        "related-rates-pythagorean"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "advanced-convex-01",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "page_slug": "subjects/math/calculus/derivative-applications/advanced-convexity",
+      "prompt_latex": "For a differentiable convex function, what kind of minimum is any point where $f'=0$?",
+      "answer_type": "multiple_choice",
+      "choices": [
+        "local maximum only",
+        "local minimum only",
+        "global minimum",
+        "neither a maximum nor minimum"
+      ],
+      "hints": [
+        "Use the tangent inequality."
+      ],
+      "difficulty": "advanced",
+      "topics": [
+        "advanced-convexity"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    },
+    {
+      "problem_id": "advanced-newton-cycle-01",
+      "unit_id": "calc-1-unit-2b-derivative-applications",
+      "page_slug": "subjects/math/calculus/derivative-applications/advanced-newton-convergence",
+      "prompt_latex": "For $f(x)=x^3-2x+2$ and $x_0=0$, describe the first two Newton iterates.",
+      "answer_type": "text_rubric",
+      "hints": [
+        "Compute $x_1$ and $x_2$."
+      ],
+      "difficulty": "advanced",
+      "topics": [
+        "advanced-newton-convergence"
+      ],
+      "skills": [],
+      "provenance": {
+        "composition_status": "BetterGrades-original composition declared by source handoff; owner provenance review required before public release",
+        "reference_corpora": [
+          "Active Calculus Single Variable 2e (CC BY-SA reference corpus)",
+          "Calculus Made Easy (public domain)",
+          "Granville (public domain)",
+          "Greenhill (public domain)",
+          "Shaw (public domain)"
+        ],
+        "active_calculus_policy": "Any direct adaptation must be separately identified, attributed, and handled under the applicable ShareAlike terms."
+      }
+    }
+  ]
+}
