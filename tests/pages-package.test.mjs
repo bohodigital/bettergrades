@@ -152,6 +152,13 @@ test("the JSXGraph construction stays explicit-action lazy and below its 180 KB 
   assert.match(vendor[0].name, /minimal-vendor/);
   assert.ok(gzipSync(vendor[0].body, { level: 9 }).byteLength <= 180_000, `${vendor[0].name} exceeds the registry lazy-gzip budget`);
   assert.ok(chunks.filter(({ name }) => /BetterGradesApp|BetterGradesVisual|framework/.test(name)).every(({ body }) => !body.includes(Buffer.from("JessieCode"))), "ordinary application chunks must not absorb JSXGraph");
+
+  const worker = await readFile(new URL("../dist/pages/_worker.js", import.meta.url));
+  const ssrDirectory = new URL("../dist/pages/ssr/assets/", import.meta.url);
+  const ssrScripts = (await readdir(ssrDirectory)).filter((name) => name.endsWith(".js"));
+  const ssrChunks = await Promise.all(ssrScripts.map(async (name) => readFile(new URL(name, ssrDirectory))));
+  assert.ok(!worker.includes(Buffer.from("JessieCode")), "the Cloudflare Worker must not absorb the browser-only JSXGraph vendor");
+  assert.ok(ssrChunks.every((body) => !body.includes(Buffer.from("JessieCode"))), "SSR chunks must not absorb the browser-only JSXGraph vendor");
 });
 
 test("limits tables and generated visual fallbacks remain bounded on narrow screens and in print", async () => {

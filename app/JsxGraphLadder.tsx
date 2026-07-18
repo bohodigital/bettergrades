@@ -7,6 +7,14 @@ type Board = { create: (kind: string, parents: unknown[], attributes?: Record<st
 type Point = { X: () => number; moveTo: (position: [number, number]) => void; on: (event: string, callback: () => void) => void };
 type JxgApi = { JSXGraph: { initBoard: (id: string, options: Record<string, unknown>) => Board; freeBoard: (board: Board) => void } };
 
+// This component is rendered on the server to preserve the complete static
+// fallback. The specialist renderer is browser-only: keeping its import behind
+// the build-time SSR constant prevents JSXGraph from entering the Cloudflare
+// Worker while retaining the same explicit-action client chunk.
+const loadBrowserAdapter = (import.meta as ImportMeta & { env: { SSR: boolean } }).env.SSR
+  ? null
+  : () => import("../lib/visualization/renderers/jsxgraph-adapter/index.ts");
+
 export function JsxGraphLadder({ scene, descriptionId, onReady, onError }: { scene: PublicCompiledScene; descriptionId: string; onReady: () => void; onError: (error: Error) => void }) {
   const boardId = `jsxgraph-ladder-${useId().replace(/[^A-Za-z0-9_-]/g, "")}`;
   const boardRef = useRef<Board | null>(null);
@@ -26,7 +34,8 @@ export function JsxGraphLadder({ scene, descriptionId, onReady, onError }: { sce
     if (active || loading) return;
     setLoading(true);
     try {
-      const { loadJsxGraphAdapter } = await import("../lib/visualization/renderers/jsxgraph-adapter/index.ts");
+      if (!loadBrowserAdapter) throw new Error("The advanced geometry renderer is available only in the browser.");
+      const { loadJsxGraphAdapter } = await loadBrowserAdapter();
       const loaded = await loadJsxGraphAdapter({
         scene: scene as never,
         learnerActivated: true,
