@@ -1,0 +1,3758 @@
+{
+  "manifestVersion": 1,
+  "collectionId": "unit-3b-calculus-visuals",
+  "sourceSha256": "b5fcb031add0c6a0486c6f8bd0365e06fe1837839ab1c673106d73e3f78e4154",
+  "compilerVersion": "bvlp-compiler-v1",
+  "sceneCount": 9,
+  "interactiveCount": 4,
+  "scenes": [
+    {
+      "id": "unit-3b-u3b-v01",
+      "sourceVisualId": "unit-3b-u3b-v01",
+      "selectedRenderer": "bg-interactive-2d",
+      "hydration": "near-viewport",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-3b-u3b-v01.942dfe697a3c5c51.svg",
+        "sha256": "942dfe697a3c5c5179130971c2645a10b1d45747707474e701556a22c23cbc91",
+        "bytes": 16181,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Vertical slices between two curves"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Vertical slices between two curves. Show top-minus-bottom slice height and accumulated region."
+          }
+        ]
+      },
+      "learningPurpose": "Show top-minus-bottom slice height and accumulated region.",
+      "longDescription": "A vertical strip extends from lower curve x 2 to upper curve 2x; its height is 2x-x 2. Show top-minus-bottom slice height and accumulated region. Keep graph scale equal enough that region shape is not misleading.",
+      "accessibility": {
+        "ariaLabel": "Vertical slices between two curves. Show top-minus-bottom slice height and accumulated region.",
+        "summary": "A vertical strip extends from lower curve x 2 to upper curve 2x; its height is 2x-x 2. Show top-minus-bottom slice height and accumulated region. Keep graph scale equal enough that region shape is not misleading.",
+        "readingOrder": [
+          "bounded-region",
+          "upper-curve",
+          "lower-curve",
+          "moving-slice",
+          "slice-height-label",
+          "slice-rule",
+          "slice-control"
+        ],
+        "colorIndependentDescription": "Every relationship in vertical slices between two curves uses written labels together with distinct line styles, markers, or fill patterns; color is never the only carrier of meaning.",
+        "keyboardInstructions": "Use Tab to reach the bounded control, then use arrow keys or labeled buttons to change one value at a time.",
+        "controlInstructions": [
+          "Vertical slice position"
+        ],
+        "reducedMotion": "disable-animation",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-3b9f0c9c",
+      "visibility": "public",
+      "interactiveScene": {
+        "compiledSceneVersion": 1,
+        "sourceSpecVersion": 1,
+        "id": "unit-3b-u3b-v01",
+        "kind": "cartesian-2d",
+        "title": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "Vertical slices between two curves"
+            }
+          ]
+        },
+        "caption": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "Vertical slices between two curves. Show top-minus-bottom slice height and accumulated region."
+            }
+          ]
+        },
+        "learningPurpose": "Show top-minus-bottom slice height and accumulated region.",
+        "longDescription": "A vertical strip extends from lower curve x 2 to upper curve 2x; its height is 2x-x 2. Show top-minus-bottom slice height and accumulated region. Keep graph scale equal enough that region shape is not misleading.",
+        "coordinateSpace": {
+          "type": "cartesian-2d",
+          "variables": [
+            "x",
+            "y"
+          ],
+          "unitsRequired": false
+        },
+        "viewport": {
+          "xMin": 0,
+          "xMax": 2.08,
+          "yMin": 0,
+          "yMax": 4.65,
+          "aspectRatio": 1.72,
+          "padding": 0.07
+        },
+        "axes": {
+          "mode": "explicit",
+          "axes": [
+            {
+              "id": "x-axis",
+              "orientation": "x",
+              "label": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "x"
+                  }
+                ]
+              },
+              "scale": "linear",
+              "tickMode": "fixed-step",
+              "tickStep": 0.5,
+              "showGrid": true
+            },
+            {
+              "id": "y-axis",
+              "orientation": "y",
+              "label": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "y"
+                  }
+                ]
+              },
+              "scale": "linear",
+              "tickMode": "fixed-step",
+              "tickStep": 1,
+              "showGrid": true
+            }
+          ]
+        },
+        "panels": [],
+        "layers": [
+          {
+            "id": "bounded-region",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-secondary",
+              "fillToken": "visual-secondary",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "dots",
+              "colorIndependentCue": "Patterned area between upper line and lower parabola."
+            },
+            "references": [],
+            "kind": "polygon",
+            "geometry": {
+              "points": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 0.05,
+                  "y": 0.1
+                },
+                {
+                  "x": 0.1,
+                  "y": 0.2
+                },
+                {
+                  "x": 0.15,
+                  "y": 0.3
+                },
+                {
+                  "x": 0.2,
+                  "y": 0.4
+                },
+                {
+                  "x": 0.25,
+                  "y": 0.5
+                },
+                {
+                  "x": 0.3,
+                  "y": 0.6
+                },
+                {
+                  "x": 0.35,
+                  "y": 0.7
+                },
+                {
+                  "x": 0.4,
+                  "y": 0.8
+                },
+                {
+                  "x": 0.45,
+                  "y": 0.9
+                },
+                {
+                  "x": 0.5,
+                  "y": 1
+                },
+                {
+                  "x": 0.55,
+                  "y": 1.1
+                },
+                {
+                  "x": 0.6,
+                  "y": 1.2
+                },
+                {
+                  "x": 0.65,
+                  "y": 1.3
+                },
+                {
+                  "x": 0.7,
+                  "y": 1.4
+                },
+                {
+                  "x": 0.75,
+                  "y": 1.5
+                },
+                {
+                  "x": 0.8,
+                  "y": 1.6
+                },
+                {
+                  "x": 0.85,
+                  "y": 1.7
+                },
+                {
+                  "x": 0.9,
+                  "y": 1.8
+                },
+                {
+                  "x": 0.95,
+                  "y": 1.9
+                },
+                {
+                  "x": 1,
+                  "y": 2
+                },
+                {
+                  "x": 1.05,
+                  "y": 2.1
+                },
+                {
+                  "x": 1.1,
+                  "y": 2.2
+                },
+                {
+                  "x": 1.15,
+                  "y": 2.3
+                },
+                {
+                  "x": 1.2,
+                  "y": 2.4
+                },
+                {
+                  "x": 1.25,
+                  "y": 2.5
+                },
+                {
+                  "x": 1.3,
+                  "y": 2.6
+                },
+                {
+                  "x": 1.35,
+                  "y": 2.7
+                },
+                {
+                  "x": 1.4,
+                  "y": 2.8
+                },
+                {
+                  "x": 1.45,
+                  "y": 2.9
+                },
+                {
+                  "x": 1.5,
+                  "y": 3
+                },
+                {
+                  "x": 1.55,
+                  "y": 3.1
+                },
+                {
+                  "x": 1.6,
+                  "y": 3.2
+                },
+                {
+                  "x": 1.65,
+                  "y": 3.3
+                },
+                {
+                  "x": 1.7,
+                  "y": 3.4
+                },
+                {
+                  "x": 1.75,
+                  "y": 3.5
+                },
+                {
+                  "x": 1.8,
+                  "y": 3.6
+                },
+                {
+                  "x": 1.85,
+                  "y": 3.7
+                },
+                {
+                  "x": 1.9,
+                  "y": 3.8
+                },
+                {
+                  "x": 1.95,
+                  "y": 3.9
+                },
+                {
+                  "x": 2,
+                  "y": 4
+                },
+                {
+                  "x": 2,
+                  "y": 4
+                },
+                {
+                  "x": 1.95,
+                  "y": 3.8025
+                },
+                {
+                  "x": 1.9,
+                  "y": 3.61
+                },
+                {
+                  "x": 1.85,
+                  "y": 3.4225
+                },
+                {
+                  "x": 1.8,
+                  "y": 3.24
+                },
+                {
+                  "x": 1.75,
+                  "y": 3.0625
+                },
+                {
+                  "x": 1.7,
+                  "y": 2.89
+                },
+                {
+                  "x": 1.65,
+                  "y": 2.7225
+                },
+                {
+                  "x": 1.6,
+                  "y": 2.56
+                },
+                {
+                  "x": 1.55,
+                  "y": 2.4025
+                },
+                {
+                  "x": 1.5,
+                  "y": 2.25
+                },
+                {
+                  "x": 1.45,
+                  "y": 2.1025
+                },
+                {
+                  "x": 1.4,
+                  "y": 1.96
+                },
+                {
+                  "x": 1.35,
+                  "y": 1.8225
+                },
+                {
+                  "x": 1.3,
+                  "y": 1.69
+                },
+                {
+                  "x": 1.25,
+                  "y": 1.5625
+                },
+                {
+                  "x": 1.2,
+                  "y": 1.44
+                },
+                {
+                  "x": 1.15,
+                  "y": 1.3225
+                },
+                {
+                  "x": 1.1,
+                  "y": 1.21
+                },
+                {
+                  "x": 1.05,
+                  "y": 1.1025
+                },
+                {
+                  "x": 1,
+                  "y": 1
+                },
+                {
+                  "x": 0.95,
+                  "y": 0.9025
+                },
+                {
+                  "x": 0.9,
+                  "y": 0.81
+                },
+                {
+                  "x": 0.85,
+                  "y": 0.7225
+                },
+                {
+                  "x": 0.8,
+                  "y": 0.64
+                },
+                {
+                  "x": 0.75,
+                  "y": 0.5625
+                },
+                {
+                  "x": 0.7,
+                  "y": 0.49
+                },
+                {
+                  "x": 0.65,
+                  "y": 0.4225
+                },
+                {
+                  "x": 0.6,
+                  "y": 0.36
+                },
+                {
+                  "x": 0.55,
+                  "y": 0.3025
+                },
+                {
+                  "x": 0.5,
+                  "y": 0.25
+                },
+                {
+                  "x": 0.45,
+                  "y": 0.2025
+                },
+                {
+                  "x": 0.4,
+                  "y": 0.16
+                },
+                {
+                  "x": 0.35,
+                  "y": 0.1225
+                },
+                {
+                  "x": 0.3,
+                  "y": 0.09
+                },
+                {
+                  "x": 0.25,
+                  "y": 0.0625
+                },
+                {
+                  "x": 0.2,
+                  "y": 0.04
+                },
+                {
+                  "x": 0.15,
+                  "y": 0.0225
+                },
+                {
+                  "x": 0.1,
+                  "y": 0.01
+                },
+                {
+                  "x": 0.05,
+                  "y": 0.0025
+                },
+                {
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "closed": true
+            }
+          },
+          {
+            "id": "upper-curve",
+            "visible": true,
+            "zIndex": 0,
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "upper y=2x"
+                }
+              ]
+            },
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "double",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "upper y=2x; double curve."
+            },
+            "references": [],
+            "kind": "sampled-series",
+            "geometry": {
+              "xValues": [
+                0,
+                0.02,
+                0.04,
+                0.06,
+                0.08,
+                0.1,
+                0.12,
+                0.14,
+                0.16,
+                0.18,
+                0.2,
+                0.22,
+                0.24,
+                0.26,
+                0.28,
+                0.3,
+                0.32,
+                0.34,
+                0.36,
+                0.38,
+                0.4,
+                0.42,
+                0.44,
+                0.46,
+                0.48,
+                0.5,
+                0.52,
+                0.54,
+                0.56,
+                0.58,
+                0.6,
+                0.62,
+                0.64,
+                0.66,
+                0.68,
+                0.7,
+                0.72,
+                0.74,
+                0.76,
+                0.78,
+                0.8,
+                0.82,
+                0.84,
+                0.86,
+                0.88,
+                0.9,
+                0.92,
+                0.94,
+                0.96,
+                0.98,
+                1,
+                1.02,
+                1.04,
+                1.06,
+                1.08,
+                1.1,
+                1.12,
+                1.14,
+                1.16,
+                1.18,
+                1.2,
+                1.22,
+                1.24,
+                1.26,
+                1.28,
+                1.3,
+                1.32,
+                1.34,
+                1.36,
+                1.38,
+                1.4,
+                1.42,
+                1.44,
+                1.46,
+                1.48,
+                1.5,
+                1.52,
+                1.54,
+                1.56,
+                1.58,
+                1.6,
+                1.62,
+                1.64,
+                1.66,
+                1.68,
+                1.7,
+                1.72,
+                1.74,
+                1.76,
+                1.78,
+                1.8,
+                1.82,
+                1.84,
+                1.86,
+                1.88,
+                1.9,
+                1.92,
+                1.94,
+                1.96,
+                1.98,
+                2
+              ],
+              "yValues": [
+                0,
+                0.04,
+                0.08,
+                0.12,
+                0.16,
+                0.2,
+                0.24,
+                0.28,
+                0.32,
+                0.36,
+                0.4,
+                0.44,
+                0.48,
+                0.52,
+                0.56,
+                0.6,
+                0.64,
+                0.68,
+                0.72,
+                0.76,
+                0.8,
+                0.84,
+                0.88,
+                0.92,
+                0.96,
+                1,
+                1.04,
+                1.08,
+                1.12,
+                1.16,
+                1.2,
+                1.24,
+                1.28,
+                1.32,
+                1.36,
+                1.4,
+                1.44,
+                1.48,
+                1.52,
+                1.56,
+                1.6,
+                1.64,
+                1.68,
+                1.72,
+                1.76,
+                1.8,
+                1.84,
+                1.88,
+                1.92,
+                1.96,
+                2,
+                2.04,
+                2.08,
+                2.12,
+                2.16,
+                2.2,
+                2.24,
+                2.28,
+                2.32,
+                2.36,
+                2.4,
+                2.44,
+                2.48,
+                2.52,
+                2.56,
+                2.6,
+                2.64,
+                2.68,
+                2.72,
+                2.76,
+                2.8,
+                2.84,
+                2.88,
+                2.92,
+                2.96,
+                3,
+                3.04,
+                3.08,
+                3.12,
+                3.16,
+                3.2,
+                3.24,
+                3.28,
+                3.32,
+                3.36,
+                3.4,
+                3.44,
+                3.48,
+                3.52,
+                3.56,
+                3.6,
+                3.64,
+                3.68,
+                3.72,
+                3.76,
+                3.8,
+                3.84,
+                3.88,
+                3.92,
+                3.96,
+                4
+              ],
+              "connect": true
+            }
+          },
+          {
+            "id": "lower-curve",
+            "visible": true,
+            "zIndex": 0,
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "lower y=x squared"
+                }
+              ]
+            },
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "lower y=x squared; solid curve."
+            },
+            "references": [],
+            "kind": "sampled-series",
+            "geometry": {
+              "xValues": [
+                0,
+                0.02,
+                0.04,
+                0.06,
+                0.08,
+                0.1,
+                0.12,
+                0.14,
+                0.16,
+                0.18,
+                0.2,
+                0.22,
+                0.24,
+                0.26,
+                0.28,
+                0.3,
+                0.32,
+                0.34,
+                0.36,
+                0.38,
+                0.4,
+                0.42,
+                0.44,
+                0.46,
+                0.48,
+                0.5,
+                0.52,
+                0.54,
+                0.56,
+                0.58,
+                0.6,
+                0.62,
+                0.64,
+                0.66,
+                0.68,
+                0.7,
+                0.72,
+                0.74,
+                0.76,
+                0.78,
+                0.8,
+                0.82,
+                0.84,
+                0.86,
+                0.88,
+                0.9,
+                0.92,
+                0.94,
+                0.96,
+                0.98,
+                1,
+                1.02,
+                1.04,
+                1.06,
+                1.08,
+                1.1,
+                1.12,
+                1.14,
+                1.16,
+                1.18,
+                1.2,
+                1.22,
+                1.24,
+                1.26,
+                1.28,
+                1.3,
+                1.32,
+                1.34,
+                1.36,
+                1.38,
+                1.4,
+                1.42,
+                1.44,
+                1.46,
+                1.48,
+                1.5,
+                1.52,
+                1.54,
+                1.56,
+                1.58,
+                1.6,
+                1.62,
+                1.64,
+                1.66,
+                1.68,
+                1.7,
+                1.72,
+                1.74,
+                1.76,
+                1.78,
+                1.8,
+                1.82,
+                1.84,
+                1.86,
+                1.88,
+                1.9,
+                1.92,
+                1.94,
+                1.96,
+                1.98,
+                2
+              ],
+              "yValues": [
+                0,
+                0.0004,
+                0.0016,
+                0.0036,
+                0.0064,
+                0.01,
+                0.0144,
+                0.0196,
+                0.0256,
+                0.0324,
+                0.04,
+                0.0484,
+                0.0576,
+                0.0676,
+                0.0784,
+                0.09,
+                0.1024,
+                0.1156,
+                0.1296,
+                0.1444,
+                0.16,
+                0.1764,
+                0.1936,
+                0.2116,
+                0.2304,
+                0.25,
+                0.2704,
+                0.2916,
+                0.3136,
+                0.3364,
+                0.36,
+                0.3844,
+                0.4096,
+                0.4356,
+                0.4624,
+                0.49,
+                0.5184,
+                0.5476,
+                0.5776,
+                0.6084,
+                0.64,
+                0.6724,
+                0.7056,
+                0.7396,
+                0.7744,
+                0.81,
+                0.8464,
+                0.8836,
+                0.9216,
+                0.9604,
+                1,
+                1.0404,
+                1.0816,
+                1.1236,
+                1.1664,
+                1.21,
+                1.2544,
+                1.2996,
+                1.3456,
+                1.3924,
+                1.44,
+                1.4884,
+                1.5376,
+                1.5876,
+                1.6384,
+                1.69,
+                1.7424,
+                1.7956,
+                1.8496,
+                1.9044,
+                1.96,
+                2.0164,
+                2.0736,
+                2.1316,
+                2.1904,
+                2.25,
+                2.3104,
+                2.3716,
+                2.4336,
+                2.4964,
+                2.56,
+                2.6244,
+                2.6896,
+                2.7556,
+                2.8224,
+                2.89,
+                2.9584,
+                3.0276,
+                3.0976,
+                3.1684,
+                3.24,
+                3.3124,
+                3.3856,
+                3.4596,
+                3.5344,
+                3.61,
+                3.6864,
+                3.7636,
+                3.8416,
+                3.9204,
+                4
+              ],
+              "connect": true
+            }
+          },
+          {
+            "id": "moving-slice",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "lineStyle": "double",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Movable vertical slice shows top minus bottom.; double segment."
+            },
+            "references": [],
+            "kind": "segment",
+            "geometry": {
+              "start": {
+                "x": {
+                  "type": "variable",
+                  "name": "p"
+                },
+                "y": {
+                  "type": "power",
+                  "left": {
+                    "type": "variable",
+                    "name": "p"
+                  },
+                  "right": {
+                    "type": "number",
+                    "value": 2
+                  }
+                }
+              },
+              "end": {
+                "x": {
+                  "type": "variable",
+                  "name": "p"
+                },
+                "y": {
+                  "type": "multiply",
+                  "left": {
+                    "type": "number",
+                    "value": 2
+                  },
+                  "right": {
+                    "type": "variable",
+                    "name": "p"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": "slice-height-label",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Label: slice height = 2x - x squared."
+            },
+            "references": [],
+            "kind": "label",
+            "geometry": {
+              "position": {
+                "x": 0.52,
+                "y": 2.25
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "slice height = 2x - x squared"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "slice-rule",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Annotation: Area adds (top - bottom) dx from x=0 to x=2.."
+            },
+            "references": [],
+            "kind": "annotation",
+            "geometry": {
+              "anchor": {
+                "x": 1.04,
+                "y": 4.37
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "Area adds (top - bottom) dx from x=0 to x=2."
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "controls": [
+          {
+            "id": "slice-control",
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "Vertical slice position"
+                }
+              ]
+            },
+            "announcementTemplate": "The vertical slice is at x equals {value}; its height is two x minus x squared.",
+            "kind": "slider",
+            "parameter": "p",
+            "min": 0.2,
+            "max": 1.8,
+            "step": 0.2,
+            "initial": 1
+          }
+        ],
+        "accessibility": {
+          "ariaLabel": "Vertical slices between two curves. Show top-minus-bottom slice height and accumulated region.",
+          "summary": "A vertical strip extends from lower curve x 2 to upper curve 2x; its height is 2x-x 2. Show top-minus-bottom slice height and accumulated region. Keep graph scale equal enough that region shape is not misleading.",
+          "readingOrder": [
+            "bounded-region",
+            "upper-curve",
+            "lower-curve",
+            "moving-slice",
+            "slice-height-label",
+            "slice-rule",
+            "slice-control"
+          ],
+          "colorIndependentDescription": "Every relationship in vertical slices between two curves uses written labels together with distinct line styles, markers, or fill patterns; color is never the only carrier of meaning.",
+          "keyboardInstructions": "Use Tab to reach the bounded control, then use arrow keys or labeled buttons to change one value at a time.",
+          "controlInstructions": [
+            "Vertical slice position"
+          ],
+          "reducedMotion": "disable-animation",
+          "staticFallbackEquivalent": true
+        },
+        "print": {
+          "representation": "generated-svg",
+          "caption": {
+            "segments": [
+              {
+                "kind": "text",
+                "text": "Vertical slices between two curves. Show top-minus-bottom slice height and accumulated region."
+              }
+            ]
+          },
+          "grayscaleSafe": true,
+          "pageBreak": "avoid",
+          "widthInches": 7.1
+        },
+        "performance": {
+          "maxSamples": 2048,
+          "maxAdaptiveDepth": 12,
+          "maxAstNodes": 192,
+          "maxAstDepth": 24,
+          "maxOperationsPerEvaluation": 2048,
+          "maxPayloadBytes": 65536,
+          "maxAnimationFps": 30,
+          "activation": "near-viewport"
+        },
+        "requiredCapabilities": [
+          "annotations",
+          "cartesian-axes",
+          "data-series",
+          "parameter-controls",
+          "static-fallback"
+        ],
+        "selectedRenderer": "bg-interactive-2d",
+        "staticFallback": {
+          "required": true,
+          "rendererId": "static-svg"
+        },
+        "delivery": {
+          "hydration": "near-viewport",
+          "publicFieldsOnly": true
+        },
+        "provenance": {
+          "route": "/subjects/math/calculus/integration-applications/area-between-curves/",
+          "sourceVisualId": "unit-3b-u3b-v01",
+          "sourceFingerprint": "bvlp1-3b9f0c9c",
+          "compilerVersion": "bvlp-compiler-v1",
+          "visibility": "public"
+        }
+      }
+    },
+    {
+      "id": "unit-3b-u3b-v02",
+      "sourceVisualId": "unit-3b-u3b-v02",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-3b-u3b-v02.986e62a7b6c1b3d0.svg",
+        "sha256": "986e62a7b6c1b3d00a55782ad5d78cf060b8b6bac80712d8707783a5b99f62b7",
+        "bytes": 8385,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "A solid assembled from cross-sectional slices"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "A solid assembled from cross-sectional slices. Show a base interval, one cross-section, and stacked slices."
+          }
+        ]
+      },
+      "learningPurpose": "Show a base interval, one cross-section, and stacked slices.",
+      "longDescription": "A solid is decomposed into thin slabs; each slab volume is approximately A(x)dx. Show a base interval, one cross-section, and stacked slices. Do not imply slices are literally infinitesimal physical objects.",
+      "accessibility": {
+        "ariaLabel": "A solid assembled from cross-sectional slices. Show a base interval, one cross-section, and stacked slices.",
+        "summary": "A solid is decomposed into thin slabs; each slab volume is approximately A(x)dx. Show a base interval, one cross-section, and stacked slices. Do not imply slices are literally infinitesimal physical objects.",
+        "readingOrder": [
+          "solid-body",
+          "front-face",
+          "slice-1",
+          "slice-2",
+          "slice-3",
+          "slice-4",
+          "slice-5",
+          "thickness",
+          "cross-section-label",
+          "volume-rule"
+        ],
+        "colorIndependentDescription": "Every relationship in a solid assembled from cross-sectional slices uses written labels together with distinct line styles, markers, or fill patterns; color is never the only carrier of meaning.",
+        "controlInstructions": [],
+        "reducedMotion": "not-applicable",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-b470b67c",
+      "visibility": "public"
+    },
+    {
+      "id": "unit-3b-u3b-v03",
+      "sourceVisualId": "unit-3b-u3b-v03",
+      "selectedRenderer": "bg-interactive-2d",
+      "hydration": "near-viewport",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-3b-u3b-v03.b78cc0a70b80ff3b.svg",
+        "sha256": "b78cc0a70b80ff3be2e923318d2dedac8cfd6c55791d83a1fb4f70c743635ebe",
+        "bytes": 12179,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Washer geometry"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Washer geometry. Show outer radius, inner radius, and thickness for rotation around a horizontal axis."
+          }
+        ]
+      },
+      "learningPurpose": "Show outer radius, inner radius, and thickness for rotation around a horizontal axis.",
+      "longDescription": "A vertical strip rotated around the x-axis forms a washer with outer and inner radii. Show outer radius, inner radius, and thickness for rotation around a horizontal axis. Measure radii from the axis, not from the other curve.",
+      "accessibility": {
+        "ariaLabel": "Washer geometry. Show outer radius, inner radius, and thickness for rotation around a horizontal axis.",
+        "summary": "A vertical strip rotated around the x-axis forms a washer with outer and inner radii. Show outer radius, inner radius, and thickness for rotation around a horizontal axis. Measure radii from the axis, not from the other curve.",
+        "readingOrder": [
+          "washer-region",
+          "rotation-axis",
+          "moving-outer-radius",
+          "moving-inner-radius",
+          "outer-radius-source-label",
+          "inner-radius-source-label",
+          "outer-circle",
+          "inner-circle",
+          "washer-r",
+          "washer-outer-radius",
+          "washer-r-label",
+          "washer-outer-radius-label",
+          "washer-area",
+          "washer-slice-control"
+        ],
+        "colorIndependentDescription": "Every relationship in washer geometry uses written labels together with distinct line styles, markers, or fill patterns; color is never the only carrier of meaning.",
+        "keyboardInstructions": "Use Tab to reach the bounded control, then use arrow keys or labeled buttons to change one value at a time.",
+        "controlInstructions": [
+          "Washer slice position"
+        ],
+        "reducedMotion": "disable-animation",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-4bff1bed",
+      "visibility": "public",
+      "interactiveScene": {
+        "compiledSceneVersion": 1,
+        "sourceSpecVersion": 1,
+        "id": "unit-3b-u3b-v03",
+        "kind": "geometry-2d",
+        "title": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "Washer geometry"
+            }
+          ]
+        },
+        "caption": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "Washer geometry. Show outer radius, inner radius, and thickness for rotation around a horizontal axis."
+            }
+          ]
+        },
+        "learningPurpose": "Show outer radius, inner radius, and thickness for rotation around a horizontal axis.",
+        "longDescription": "A vertical strip rotated around the x-axis forms a washer with outer and inner radii. Show outer radius, inner radius, and thickness for rotation around a horizontal axis. Measure radii from the axis, not from the other curve.",
+        "coordinateSpace": {
+          "type": "diagram-2d",
+          "variables": [
+            "x",
+            "y"
+          ],
+          "unitsRequired": false
+        },
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7.4,
+          "aspectRatio": 1.72,
+          "padding": 0.07
+        },
+        "axes": {
+          "mode": "none",
+          "reason": "Labels and dimension guides carry the instructional geometry."
+        },
+        "panels": [],
+        "layers": [
+          {
+            "id": "washer-region",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-secondary",
+              "fillToken": "visual-secondary",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "dots",
+              "colorIndependentCue": "Region between two curves above the rotation axis."
+            },
+            "references": [],
+            "kind": "polygon",
+            "geometry": {
+              "points": [
+                {
+                  "x": 0.8,
+                  "y": 1.2
+                },
+                {
+                  "x": 4.3,
+                  "y": 1.2
+                },
+                {
+                  "x": 4.3,
+                  "y": 4.3
+                },
+                {
+                  "x": 0.8,
+                  "y": 5.4
+                }
+              ],
+              "closed": true
+            }
+          },
+          {
+            "id": "rotation-axis",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "double",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Horizontal axis of rotation.; double segment."
+            },
+            "references": [],
+            "kind": "segment",
+            "geometry": {
+              "start": {
+                "x": 0.3,
+                "y": 0.7
+              },
+              "end": {
+                "x": 5,
+                "y": 0.7
+              }
+            }
+          },
+          {
+            "id": "moving-outer-radius",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "double",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Outer radius R(x), measured from the axis.; double segment."
+            },
+            "references": [],
+            "kind": "segment",
+            "geometry": {
+              "start": {
+                "x": {
+                  "type": "variable",
+                  "name": "p"
+                },
+                "y": 0.7
+              },
+              "end": {
+                "x": {
+                  "type": "variable",
+                  "name": "p"
+                },
+                "y": {
+                  "type": "add",
+                  "left": {
+                    "type": "multiply",
+                    "left": {
+                      "type": "number",
+                      "value": -0.31
+                    },
+                    "right": {
+                      "type": "variable",
+                      "name": "p"
+                    }
+                  },
+                  "right": {
+                    "type": "number",
+                    "value": 5.64
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": "moving-inner-radius",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "lineStyle": "dashed",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Inner radius r(x), measured from the axis.; dashed segment."
+            },
+            "references": [],
+            "kind": "segment",
+            "geometry": {
+              "start": {
+                "x": {
+                  "type": "add",
+                  "left": {
+                    "type": "variable",
+                    "name": "p"
+                  },
+                  "right": {
+                    "type": "number",
+                    "value": 0.12
+                  }
+                },
+                "y": 0.7
+              },
+              "end": {
+                "x": {
+                  "type": "add",
+                  "left": {
+                    "type": "variable",
+                    "name": "p"
+                  },
+                  "right": {
+                    "type": "number",
+                    "value": 0.12
+                  }
+                },
+                "y": 1.2
+              }
+            }
+          },
+          {
+            "id": "outer-radius-source-label",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Label: R(x): axis to upper curve."
+            },
+            "references": [],
+            "kind": "label",
+            "geometry": {
+              "position": {
+                "x": 2.2,
+                "y": 5.95
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "R(x): axis to upper curve"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "inner-radius-source-label",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Label: r(x): axis to lower curve."
+            },
+            "references": [],
+            "kind": "label",
+            "geometry": {
+              "position": {
+                "x": 2.2,
+                "y": 0.25
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "r(x): axis to lower curve"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "outer-circle",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "double",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Outer washer boundary R.; double curve."
+            },
+            "references": [],
+            "kind": "sampled-series",
+            "geometry": {
+              "xValues": [
+                10.85,
+                10.829895330336157,
+                10.769925927648183,
+                10.671116974873675,
+                10.53515943522138,
+                10.364381021342858,
+                10.161701207306058,
+                9.930589092117852,
+                9.674999086613285,
+                9.399306598190377,
+                9.108224617515802,
+                8.80673569640159,
+                8.500000767968007,
+                8.193263496498833,
+                7.891774596158793,
+                7.600694820829518,
+                7.325000208386511,
+                7.06941026204178,
+                6.838299878764891,
+                6.63561991367557,
+                6.46484015774659,
+                6.328882713597716,
+                6.2300744698812185,
+                6.1701045634070635,
+                6.150000000000141,
+                6.170104469183995,
+                6.230074283046912,
+                6.328883336655194,
+                6.4648397968107485,
+                6.635619474227705,
+                6.838299368324114,
+                7.069411553722685,
+                7.324999583227015,
+                7.600694153906655,
+                7.891776168809676,
+                8.193262780802533,
+                8.500000046095979,
+                8.806737310600708,
+                9.108223920240926,
+                9.39930593126761,
+                9.675000496613553,
+                9.930588519418137,
+                10.161700696865456,
+                10.364380581895192,
+                10.535160249285195,
+                10.67111669862516,
+                10.769925740814116,
+                10.829895542849435,
+                10.84999999999989
+              ],
+              "yValues": [
+                3.5,
+                3.806737264899087,
+                4.108223875715625,
+                4.399305888680477,
+                4.675000456693269,
+                4.930588482847726,
+                5.161700664270672,
+                5.364380553833744,
+                5.535160226237224,
+                5.671116680984984,
+                5.769925728883603,
+                5.829895536832721,
+                5.849999999999874,
+                5.8298954305762045,
+                5.769925518188251,
+                5.671117268762133,
+                5.5351598192054245,
+                5.364380058262969,
+                5.161701750341265,
+                4.930589701387827,
+                4.674999751693198,
+                4.399305136583343,
+                4.108225359315914,
+                3.8067364577995457,
+                3.4999991859360144,
+                3.1932642578967854,
+                2.891775337958901,
+                2.600693359222496,
+                2.3250008734664163,
+                2.069410871311744,
+                1.838298760099169,
+                1.6356189505957053,
+                1.464840541730621,
+                1.3288830074861622,
+                1.2300740604213178,
+                1.170104663647097,
+                1.1500000000000004,
+                1.1701046756805904,
+                1.2300740842823177,
+                1.3288830427664897,
+                1.4648405878266177,
+                1.6356190067185785,
+                1.8382988252887165,
+                2.0694109444525504,
+                2.325000953307014,
+                2.600693444396751,
+                2.8917754270094944,
+                3.193264349300033,
+                3.4999992781279707
+              ],
+              "connect": true
+            }
+          },
+          {
+            "id": "inner-circle",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "lineStyle": "dashed",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Inner washer boundary r.; dashed curve."
+            },
+            "references": [],
+            "kind": "sampled-series",
+            "geometry": {
+              "xValues": [
+                9.4,
+                9.392300339277677,
+                9.369333333992921,
+                9.331491607398428,
+                9.27942276242521,
+                9.21401826349301,
+                9.136396207053384,
+                9.047885184215348,
+                8.949999650192321,
+                8.844415292923975,
+                8.732937087559243,
+                8.617473245430396,
+                8.500000294115408,
+                8.382526445467638,
+                8.267062611294858,
+                8.155585250530454,
+                8.0500000798076,
+                7.952114568441533,
+                7.863604208888682,
+                7.785982094599155,
+                7.720577081690183,
+                7.668508273292742,
+                7.630666818252382,
+                7.607699620028237,
+                7.600000000000054,
+                7.607699583942807,
+                7.630666746698817,
+                7.6685085119105,
+                7.720576943459435,
+                7.785981926299972,
+                7.863604013400725,
+                7.952115063127837,
+                8.049999840384814,
+                8.155584995113188,
+                8.267063213586685,
+                8.382526171371182,
+                8.500000017653779,
+                8.617473863634313,
+                8.732936820517802,
+                8.844415037506744,
+                8.950000190192425,
+                9.047884964883542,
+                9.136396011565493,
+                9.214018095193904,
+                9.27942307419433,
+                9.331491501601125,
+                9.369333262439449,
+                9.392300420665741,
+                9.399999999999958
+              ],
+              "yValues": [
+                3.5,
+                3.617473846131565,
+                3.7329368034655586,
+                3.8444150211967782,
+                3.9500001749038054,
+                4.047884950877853,
+                4.136395999082385,
+                4.214018084446966,
+                4.279423065367447,
+                4.331491494845313,
+                4.369333257870316,
+                4.392300418361468,
+                4.399999999999952,
+                4.392300377667483,
+                4.369333177178479,
+                4.3314917199514555,
+                4.279422909482928,
+                4.214017894653903,
+                4.136396415024315,
+                4.047885417552785,
+                3.9499999049037777,
+                3.8444147331595784,
+                3.7329373716529033,
+                3.617473537029613,
+                3.499999688230814,
+                3.382526737066854,
+                3.267062895388515,
+                3.1555846907660623,
+                3.050000334519053,
+                2.952114801778966,
+                2.8636037804635115,
+                2.7859817257600574,
+                2.7205772287478975,
+                2.6685083858457643,
+                2.6306666614379512,
+                2.607699658418037,
+                2.6,
+                2.607699663026609,
+                2.6306666705762067,
+                2.6685083993573793,
+                2.7205772464016835,
+                2.7859817472539237,
+                2.863603805429721,
+                2.9521148297903386,
+                3.0500003650963032,
+                3.15558472338599,
+                3.267062929492998,
+                3.382526772072353,
+                3.4999997235383717
+              ],
+              "connect": true
+            }
+          },
+          {
+            "id": "washer-r",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "lineStyle": "dashed",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Inner radius r.; dashed segment."
+            },
+            "references": [],
+            "kind": "segment",
+            "geometry": {
+              "start": {
+                "x": 8.5,
+                "y": 3.5
+              },
+              "end": {
+                "x": 9.4,
+                "y": 3.5
+              }
+            }
+          },
+          {
+            "id": "washer-outer-radius",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "double",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Outer radius R.; double segment."
+            },
+            "references": [],
+            "kind": "segment",
+            "geometry": {
+              "start": {
+                "x": 8.5,
+                "y": 3.5
+              },
+              "end": {
+                "x": 10.85,
+                "y": 3.5
+              }
+            }
+          },
+          {
+            "id": "washer-r-label",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Label: r."
+            },
+            "references": [],
+            "kind": "label",
+            "geometry": {
+              "position": {
+                "x": 8.92,
+                "y": 3.05
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "r"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "washer-outer-radius-label",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Label: R."
+            },
+            "references": [],
+            "kind": "label",
+            "geometry": {
+              "position": {
+                "x": 9.72,
+                "y": 4.02
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "R"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "washer-area",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Label: cross-section area = pi(R squared - r squared)."
+            },
+            "references": [],
+            "kind": "label",
+            "geometry": {
+              "position": {
+                "x": 8.5,
+                "y": 6.55
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "cross-section area = pi(R squared - r squared)"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "controls": [
+          {
+            "id": "washer-slice-control",
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "Washer slice position"
+                }
+              ]
+            },
+            "announcementTemplate": "The vertical source slice is at x equals {value}; both radii are measured from the rotation axis.",
+            "kind": "slider",
+            "parameter": "p",
+            "min": 1,
+            "max": 4,
+            "step": 0.5,
+            "initial": 2.5
+          }
+        ],
+        "accessibility": {
+          "ariaLabel": "Washer geometry. Show outer radius, inner radius, and thickness for rotation around a horizontal axis.",
+          "summary": "A vertical strip rotated around the x-axis forms a washer with outer and inner radii. Show outer radius, inner radius, and thickness for rotation around a horizontal axis. Measure radii from the axis, not from the other curve.",
+          "readingOrder": [
+            "washer-region",
+            "rotation-axis",
+            "moving-outer-radius",
+            "moving-inner-radius",
+            "outer-radius-source-label",
+            "inner-radius-source-label",
+            "outer-circle",
+            "inner-circle",
+            "washer-r",
+            "washer-outer-radius",
+            "washer-r-label",
+            "washer-outer-radius-label",
+            "washer-area",
+            "washer-slice-control"
+          ],
+          "colorIndependentDescription": "Every relationship in washer geometry uses written labels together with distinct line styles, markers, or fill patterns; color is never the only carrier of meaning.",
+          "keyboardInstructions": "Use Tab to reach the bounded control, then use arrow keys or labeled buttons to change one value at a time.",
+          "controlInstructions": [
+            "Washer slice position"
+          ],
+          "reducedMotion": "disable-animation",
+          "staticFallbackEquivalent": true
+        },
+        "print": {
+          "representation": "generated-svg",
+          "caption": {
+            "segments": [
+              {
+                "kind": "text",
+                "text": "Washer geometry. Show outer radius, inner radius, and thickness for rotation around a horizontal axis."
+              }
+            ]
+          },
+          "grayscaleSafe": true,
+          "pageBreak": "avoid",
+          "widthInches": 7.1
+        },
+        "performance": {
+          "maxSamples": 2048,
+          "maxAdaptiveDepth": 12,
+          "maxAstNodes": 192,
+          "maxAstDepth": 24,
+          "maxOperationsPerEvaluation": 2048,
+          "maxPayloadBytes": 65536,
+          "maxAnimationFps": 30,
+          "activation": "near-viewport"
+        },
+        "requiredCapabilities": [
+          "annotations",
+          "data-series",
+          "geometry-primitives",
+          "parameter-controls",
+          "static-fallback"
+        ],
+        "selectedRenderer": "bg-interactive-2d",
+        "staticFallback": {
+          "required": true,
+          "rendererId": "static-svg"
+        },
+        "delivery": {
+          "hydration": "near-viewport",
+          "publicFieldsOnly": true
+        },
+        "provenance": {
+          "route": "/subjects/math/calculus/integration-applications/disks-and-washers/",
+          "sourceVisualId": "unit-3b-u3b-v03",
+          "sourceFingerprint": "bvlp1-4bff1bed",
+          "compilerVersion": "bvlp-compiler-v1",
+          "visibility": "public"
+        }
+      }
+    },
+    {
+      "id": "unit-3b-u3b-v04",
+      "sourceVisualId": "unit-3b-u3b-v04",
+      "selectedRenderer": "bg-interactive-2d",
+      "hydration": "near-viewport",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-3b-u3b-v04.27f6e9ba1f95b270.svg",
+        "sha256": "27f6e9ba1f95b270c9b62a6400ff499f4d9fd9c26d6e474f38c916d601ddb39e",
+        "bytes": 11914,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Cylindrical shell from a vertical strip"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Cylindrical shell from a vertical strip. Show radius, height, circumference, and thickness."
+          }
+        ]
+      },
+      "learningPurpose": "Show radius, height, circumference, and thickness.",
+      "longDescription": "A vertical strip at distance x from the y-axis forms a shell of radius x and height top-bottom. Show radius, height, circumference, and thickness. Do not confuse shell radius with function height.",
+      "accessibility": {
+        "ariaLabel": "Cylindrical shell from a vertical strip. Show radius, height, circumference, and thickness.",
+        "summary": "A vertical strip at distance x from the y-axis forms a shell of radius x and height top-bottom. Show radius, height, circumference, and thickness. Do not confuse shell radius with function height.",
+        "readingOrder": [
+          "shell-region",
+          "shell-axis",
+          "shell-radius",
+          "shell-height",
+          "shell-radius-label",
+          "shell-height-label",
+          "shell-top",
+          "shell-bottom",
+          "shell-left",
+          "shell-right",
+          "shell-top-label",
+          "shell-bottom-label",
+          "shell-product",
+          "shell-slice-control"
+        ],
+        "colorIndependentDescription": "Every relationship in cylindrical shell from a vertical strip uses written labels together with distinct line styles, markers, or fill patterns; color is never the only carrier of meaning.",
+        "keyboardInstructions": "Use Tab to reach the bounded control, then use arrow keys or labeled buttons to change one value at a time.",
+        "controlInstructions": [
+          "Shell slice position"
+        ],
+        "reducedMotion": "disable-animation",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-fc391939",
+      "visibility": "public",
+      "interactiveScene": {
+        "compiledSceneVersion": 1,
+        "sourceSpecVersion": 1,
+        "id": "unit-3b-u3b-v04",
+        "kind": "geometry-2d",
+        "title": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "Cylindrical shell from a vertical strip"
+            }
+          ]
+        },
+        "caption": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "Cylindrical shell from a vertical strip. Show radius, height, circumference, and thickness."
+            }
+          ]
+        },
+        "learningPurpose": "Show radius, height, circumference, and thickness.",
+        "longDescription": "A vertical strip at distance x from the y-axis forms a shell of radius x and height top-bottom. Show radius, height, circumference, and thickness. Do not confuse shell radius with function height.",
+        "coordinateSpace": {
+          "type": "diagram-2d",
+          "variables": [
+            "x",
+            "y"
+          ],
+          "unitsRequired": false
+        },
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7.4,
+          "aspectRatio": 1.72,
+          "padding": 0.07
+        },
+        "axes": {
+          "mode": "none",
+          "reason": "Labels and dimension guides carry the instructional geometry."
+        },
+        "panels": [],
+        "layers": [
+          {
+            "id": "shell-region",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-secondary",
+              "fillToken": "visual-secondary",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "dots",
+              "colorIndependentCue": "Region rotated about the vertical axis."
+            },
+            "references": [],
+            "kind": "polygon",
+            "geometry": {
+              "points": [
+                {
+                  "x": 0,
+                  "y": 4
+                },
+                {
+                  "x": 0.05,
+                  "y": 3.9975
+                },
+                {
+                  "x": 0.1,
+                  "y": 3.99
+                },
+                {
+                  "x": 0.15,
+                  "y": 3.9775
+                },
+                {
+                  "x": 0.2,
+                  "y": 3.96
+                },
+                {
+                  "x": 0.25,
+                  "y": 3.9375
+                },
+                {
+                  "x": 0.3,
+                  "y": 3.91
+                },
+                {
+                  "x": 0.35,
+                  "y": 3.8775
+                },
+                {
+                  "x": 0.4,
+                  "y": 3.84
+                },
+                {
+                  "x": 0.45,
+                  "y": 3.7975
+                },
+                {
+                  "x": 0.5,
+                  "y": 3.75
+                },
+                {
+                  "x": 0.55,
+                  "y": 3.6975
+                },
+                {
+                  "x": 0.6,
+                  "y": 3.64
+                },
+                {
+                  "x": 0.65,
+                  "y": 3.5775
+                },
+                {
+                  "x": 0.7,
+                  "y": 3.51
+                },
+                {
+                  "x": 0.75,
+                  "y": 3.4375
+                },
+                {
+                  "x": 0.8,
+                  "y": 3.36
+                },
+                {
+                  "x": 0.85,
+                  "y": 3.2775
+                },
+                {
+                  "x": 0.9,
+                  "y": 3.19
+                },
+                {
+                  "x": 0.95,
+                  "y": 3.0975
+                },
+                {
+                  "x": 1,
+                  "y": 3
+                },
+                {
+                  "x": 1.05,
+                  "y": 2.8975
+                },
+                {
+                  "x": 1.1,
+                  "y": 2.79
+                },
+                {
+                  "x": 1.15,
+                  "y": 2.6775
+                },
+                {
+                  "x": 1.2,
+                  "y": 2.56
+                },
+                {
+                  "x": 1.25,
+                  "y": 2.4375
+                },
+                {
+                  "x": 1.3,
+                  "y": 2.31
+                },
+                {
+                  "x": 1.35,
+                  "y": 2.1775
+                },
+                {
+                  "x": 1.4,
+                  "y": 2.04
+                },
+                {
+                  "x": 1.45,
+                  "y": 1.8975
+                },
+                {
+                  "x": 1.5,
+                  "y": 1.75
+                },
+                {
+                  "x": 1.55,
+                  "y": 1.5975
+                },
+                {
+                  "x": 1.6,
+                  "y": 1.44
+                },
+                {
+                  "x": 1.65,
+                  "y": 1.2775
+                },
+                {
+                  "x": 1.7,
+                  "y": 1.11
+                },
+                {
+                  "x": 1.75,
+                  "y": 0.9375
+                },
+                {
+                  "x": 1.8,
+                  "y": 0.76
+                },
+                {
+                  "x": 1.85,
+                  "y": 0.5775
+                },
+                {
+                  "x": 1.9,
+                  "y": 0.39
+                },
+                {
+                  "x": 1.95,
+                  "y": 0.1975
+                },
+                {
+                  "x": 2,
+                  "y": 0
+                },
+                {
+                  "x": 2,
+                  "y": 0
+                },
+                {
+                  "x": 1.95,
+                  "y": 0
+                },
+                {
+                  "x": 1.9,
+                  "y": 0
+                },
+                {
+                  "x": 1.85,
+                  "y": 0
+                },
+                {
+                  "x": 1.8,
+                  "y": 0
+                },
+                {
+                  "x": 1.75,
+                  "y": 0
+                },
+                {
+                  "x": 1.7,
+                  "y": 0
+                },
+                {
+                  "x": 1.65,
+                  "y": 0
+                },
+                {
+                  "x": 1.6,
+                  "y": 0
+                },
+                {
+                  "x": 1.55,
+                  "y": 0
+                },
+                {
+                  "x": 1.5,
+                  "y": 0
+                },
+                {
+                  "x": 1.45,
+                  "y": 0
+                },
+                {
+                  "x": 1.4,
+                  "y": 0
+                },
+                {
+                  "x": 1.35,
+                  "y": 0
+                },
+                {
+                  "x": 1.3,
+                  "y": 0
+                },
+                {
+                  "x": 1.25,
+                  "y": 0
+                },
+                {
+                  "x": 1.2,
+                  "y": 0
+                },
+                {
+                  "x": 1.15,
+                  "y": 0
+                },
+                {
+                  "x": 1.1,
+                  "y": 0
+                },
+                {
+                  "x": 1.05,
+                  "y": 0
+                },
+                {
+                  "x": 1,
+                  "y": 0
+                },
+                {
+                  "x": 0.95,
+                  "y": 0
+                },
+                {
+                  "x": 0.9,
+                  "y": 0
+                },
+                {
+                  "x": 0.85,
+                  "y": 0
+                },
+                {
+                  "x": 0.8,
+                  "y": 0
+                },
+                {
+                  "x": 0.75,
+                  "y": 0
+                },
+                {
+                  "x": 0.7,
+                  "y": 0
+                },
+                {
+                  "x": 0.65,
+                  "y": 0
+                },
+                {
+                  "x": 0.6,
+                  "y": 0
+                },
+                {
+                  "x": 0.55,
+                  "y": 0
+                },
+                {
+                  "x": 0.5,
+                  "y": 0
+                },
+                {
+                  "x": 0.45,
+                  "y": 0
+                },
+                {
+                  "x": 0.4,
+                  "y": 0
+                },
+                {
+                  "x": 0.35,
+                  "y": 0
+                },
+                {
+                  "x": 0.3,
+                  "y": 0
+                },
+                {
+                  "x": 0.25,
+                  "y": 0
+                },
+                {
+                  "x": 0.2,
+                  "y": 0
+                },
+                {
+                  "x": 0.15,
+                  "y": 0
+                },
+                {
+                  "x": 0.1,
+                  "y": 0
+                },
+                {
+                  "x": 0.05,
+                  "y": 0
+                },
+                {
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "closed": true
+            }
+          },
+          {
+            "id": "shell-axis",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "double",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Vertical axis of rotation.; double segment."
+            },
+            "references": [],
+            "kind": "segment",
+            "geometry": {
+              "start": {
+                "x": 0,
+                "y": 0.2
+              },
+              "end": {
+                "x": 0,
+                "y": 5.3
+              }
+            }
+          },
+          {
+            "id": "shell-radius",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "lineStyle": "double",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Shell radius x.; double segment."
+            },
+            "references": [],
+            "kind": "segment",
+            "geometry": {
+              "start": {
+                "x": 0,
+                "y": 0.35
+              },
+              "end": {
+                "x": {
+                  "type": "variable",
+                  "name": "p"
+                },
+                "y": 0.35
+              }
+            }
+          },
+          {
+            "id": "shell-height",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "double",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Shell height is top minus bottom.; double segment."
+            },
+            "references": [],
+            "kind": "segment",
+            "geometry": {
+              "start": {
+                "x": {
+                  "type": "variable",
+                  "name": "p"
+                },
+                "y": 0.2
+              },
+              "end": {
+                "x": {
+                  "type": "variable",
+                  "name": "p"
+                },
+                "y": {
+                  "type": "add",
+                  "left": {
+                    "type": "negate",
+                    "operand": {
+                      "type": "power",
+                      "left": {
+                        "type": "variable",
+                        "name": "p"
+                      },
+                      "right": {
+                        "type": "number",
+                        "value": 2
+                      }
+                    }
+                  },
+                  "right": {
+                    "type": "number",
+                    "value": 4
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": "shell-radius-label",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Label: radius x."
+            },
+            "references": [],
+            "kind": "label",
+            "geometry": {
+              "position": {
+                "x": 1.15,
+                "y": 0.78
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "radius x"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "shell-height-label",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Label: height = top - bottom."
+            },
+            "references": [],
+            "kind": "label",
+            "geometry": {
+              "position": {
+                "x": 3.1,
+                "y": 4.75
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "height = top - bottom"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "shell-top",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Top rim of cylindrical shell.; solid curve."
+            },
+            "references": [],
+            "kind": "sampled-series",
+            "geometry": {
+              "xValues": [
+                10.299999999999999,
+                10.282034124981244,
+                10.228444445983481,
+                10.140147083929666,
+                10.018653112325488,
+                9.866042614817022,
+                9.684924483124561,
+                9.478398763169144,
+                9.249999183782084,
+                9.003635683489271,
+                8.743519870971568,
+                8.474104239337592,
+                8.200000686269282,
+                7.925895039424488,
+                7.656479426354666,
+                7.396365584571058,
+                7.150000186217732,
+                6.921600659696908,
+                6.7150764874069235,
+                6.5339582207313605,
+                6.38134652394376,
+                6.259852637683065,
+                6.171555909255557,
+                6.117965780065886,
+                6.100000000000126,
+                6.117965695866548,
+                6.17155574229724,
+                6.259853194457833,
+                6.381346201405349,
+                6.533957828033268,
+                6.715076031268356,
+                6.921601813964952,
+                7.149999627564566,
+                7.396364988597435,
+                7.656480831702263,
+                7.925894399866093,
+                8.200000041192151,
+                8.474105681813397,
+                8.74351924787487,
+                9.003635087515736,
+                9.250000443782323,
+                9.478398251394932,
+                9.68492402698615,
+                9.866042222119107,
+                10.018653839786769,
+                10.140146837069292,
+                10.22844427902538,
+                10.28203431488673,
+                10.299999999999901
+              ],
+              "yValues": [
+                5.15,
+                5.237713805111569,
+                5.323926146587618,
+                5.4071632158269285,
+                5.486000130594841,
+                5.559087429988797,
+                5.6251756793148475,
+                5.683133503053734,
+                5.731969222141028,
+                5.770846982817834,
+                5.799102165876503,
+                5.81625097904323,
+                5.8219999999999645,
+                5.8162509486583875,
+                5.799102105626599,
+                5.7708471508970876,
+                5.731969105747254,
+                5.683133361341581,
+                5.625175989884822,
+                5.559087778439413,
+                5.485999928994821,
+                5.4071630007591525,
+                5.323926570834168,
+                5.237713574315445,
+                5.149999767212341,
+                5.062286630343251,
+                4.976073628556758,
+                4.892836569105327,
+                4.814000249774226,
+                4.740912385328295,
+                4.674824156079422,
+                4.616866355234176,
+                4.568030997465097,
+                4.529152928098171,
+                4.500897773873671,
+                4.483749078285468,
+                4.478000000000001,
+                4.483749081726535,
+                4.500897780696901,
+                4.529152938186844,
+                4.568031010646591,
+                4.61686637128293,
+                4.674824174720859,
+                4.740912406243453,
+                4.81400027260524,
+                4.892836593461539,
+                4.976073654021439,
+                5.0622866564806905,
+                5.149999793575318
+              ],
+              "connect": true
+            }
+          },
+          {
+            "id": "shell-bottom",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "dashed",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Bottom rim of cylindrical shell.; dashed curve."
+            },
+            "references": [],
+            "kind": "sampled-series",
+            "geometry": {
+              "xValues": [
+                10.299999999999999,
+                10.282034124981244,
+                10.228444445983481,
+                10.140147083929666,
+                10.018653112325488,
+                9.866042614817022,
+                9.684924483124561,
+                9.478398763169144,
+                9.249999183782084,
+                9.003635683489271,
+                8.743519870971568,
+                8.474104239337592,
+                8.200000686269282,
+                7.925895039424488,
+                7.656479426354666,
+                7.396365584571058,
+                7.150000186217732,
+                6.921600659696908,
+                6.7150764874069235,
+                6.5339582207313605,
+                6.38134652394376,
+                6.259852637683065,
+                6.171555909255557,
+                6.117965780065886,
+                6.100000000000126,
+                6.117965695866548,
+                6.17155574229724,
+                6.259853194457833,
+                6.381346201405349,
+                6.533957828033268,
+                6.715076031268356,
+                6.921601813964952,
+                7.149999627564566,
+                7.396364988597435,
+                7.656480831702263,
+                7.925894399866093,
+                8.200000041192151,
+                8.474105681813397,
+                8.74351924787487,
+                9.003635087515736,
+                9.250000443782323,
+                9.478398251394932,
+                9.68492402698615,
+                9.866042222119107,
+                10.018653839786769,
+                10.140146837069292,
+                10.22844427902538,
+                10.28203431488673,
+                10.299999999999901
+              ],
+              "yValues": [
+                1.85,
+                1.9377138051115688,
+                2.023926146587617,
+                2.1071632158269282,
+                2.186000130594841,
+                2.2590874299887966,
+                2.3251756793148477,
+                2.3831335030537346,
+                2.4319692221410274,
+                2.470846982817834,
+                2.499102165876503,
+                2.516250979043229,
+                2.5219999999999643,
+                2.5162509486583873,
+                2.499102105626598,
+                2.470847150897087,
+                2.4319691057472532,
+                2.383133361341581,
+                2.3251759898848214,
+                2.2590877784394126,
+                2.185999928994821,
+                2.1071630007591517,
+                2.023926570834168,
+                1.9377135743154448,
+                1.8499997672123412,
+                1.762286630343251,
+                1.6760736285567581,
+                1.5928365691053266,
+                1.5140002497742264,
+                1.4409123853282946,
+                1.374824156079422,
+                1.3168663552341762,
+                1.2680309974650967,
+                1.2291529280981708,
+                1.2008977738736704,
+                1.183749078285468,
+                1.1780000000000002,
+                1.1837490817265348,
+                1.200897780696901,
+                1.229152938186843,
+                1.2680310106465904,
+                1.3168663712829298,
+                1.3748241747208585,
+                1.4409124062434528,
+                1.51400027260524,
+                1.5928365934615392,
+                1.6760736540214385,
+                1.7622866564806905,
+                1.8499997935753176
+              ],
+              "connect": true
+            }
+          },
+          {
+            "id": "shell-left",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Shell side shows height.; solid segment."
+            },
+            "references": [],
+            "kind": "segment",
+            "geometry": {
+              "start": {
+                "x": 6.1,
+                "y": 1.85
+              },
+              "end": {
+                "x": 6.1,
+                "y": 5.15
+              }
+            }
+          },
+          {
+            "id": "shell-right",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Shell side shows height.; solid segment."
+            },
+            "references": [],
+            "kind": "segment",
+            "geometry": {
+              "start": {
+                "x": 10.3,
+                "y": 1.85
+              },
+              "end": {
+                "x": 10.3,
+                "y": 5.15
+              }
+            }
+          },
+          {
+            "id": "shell-top-label",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Label: top rim."
+            },
+            "references": [],
+            "kind": "label",
+            "geometry": {
+              "position": {
+                "x": 8.2,
+                "y": 4.55
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "top rim"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "shell-bottom-label",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Label: bottom rim."
+            },
+            "references": [],
+            "kind": "label",
+            "geometry": {
+              "position": {
+                "x": 8.2,
+                "y": 1.15
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "bottom rim"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "shell-product",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Label: 2 pi x times height times dx."
+            },
+            "references": [],
+            "kind": "label",
+            "geometry": {
+              "position": {
+                "x": 8.2,
+                "y": 6.65
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "2 pi x times height times dx"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "controls": [
+          {
+            "id": "shell-slice-control",
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "Shell slice position"
+                }
+              ]
+            },
+            "announcementTemplate": "The vertical source strip is at x equals {value}; radius and height update together.",
+            "kind": "slider",
+            "parameter": "p",
+            "min": 0.25,
+            "max": 1.75,
+            "step": 0.25,
+            "initial": 1
+          }
+        ],
+        "accessibility": {
+          "ariaLabel": "Cylindrical shell from a vertical strip. Show radius, height, circumference, and thickness.",
+          "summary": "A vertical strip at distance x from the y-axis forms a shell of radius x and height top-bottom. Show radius, height, circumference, and thickness. Do not confuse shell radius with function height.",
+          "readingOrder": [
+            "shell-region",
+            "shell-axis",
+            "shell-radius",
+            "shell-height",
+            "shell-radius-label",
+            "shell-height-label",
+            "shell-top",
+            "shell-bottom",
+            "shell-left",
+            "shell-right",
+            "shell-top-label",
+            "shell-bottom-label",
+            "shell-product",
+            "shell-slice-control"
+          ],
+          "colorIndependentDescription": "Every relationship in cylindrical shell from a vertical strip uses written labels together with distinct line styles, markers, or fill patterns; color is never the only carrier of meaning.",
+          "keyboardInstructions": "Use Tab to reach the bounded control, then use arrow keys or labeled buttons to change one value at a time.",
+          "controlInstructions": [
+            "Shell slice position"
+          ],
+          "reducedMotion": "disable-animation",
+          "staticFallbackEquivalent": true
+        },
+        "print": {
+          "representation": "generated-svg",
+          "caption": {
+            "segments": [
+              {
+                "kind": "text",
+                "text": "Cylindrical shell from a vertical strip. Show radius, height, circumference, and thickness."
+              }
+            ]
+          },
+          "grayscaleSafe": true,
+          "pageBreak": "avoid",
+          "widthInches": 7.1
+        },
+        "performance": {
+          "maxSamples": 2048,
+          "maxAdaptiveDepth": 12,
+          "maxAstNodes": 192,
+          "maxAstDepth": 24,
+          "maxOperationsPerEvaluation": 2048,
+          "maxPayloadBytes": 65536,
+          "maxAnimationFps": 30,
+          "activation": "near-viewport"
+        },
+        "requiredCapabilities": [
+          "annotations",
+          "data-series",
+          "geometry-primitives",
+          "parameter-controls",
+          "static-fallback"
+        ],
+        "selectedRenderer": "bg-interactive-2d",
+        "staticFallback": {
+          "required": true,
+          "rendererId": "static-svg"
+        },
+        "delivery": {
+          "hydration": "near-viewport",
+          "publicFieldsOnly": true
+        },
+        "provenance": {
+          "route": "/subjects/math/calculus/integration-applications/cylindrical-shells/",
+          "sourceVisualId": "unit-3b-u3b-v04",
+          "sourceFingerprint": "bvlp1-fc391939",
+          "compilerVersion": "bvlp-compiler-v1",
+          "visibility": "public"
+        }
+      }
+    },
+    {
+      "id": "unit-3b-u3b-v05",
+      "sourceVisualId": "unit-3b-u3b-v05",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-3b-u3b-v05.d4f2fe0b69c057bb.svg",
+        "sha256": "d4f2fe0b69c057bb0ba5101689184494499beaf8e75b75489d49492cd42149ff",
+        "bytes": 14930,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Polygonal approximation to arc length"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Polygonal approximation to arc length. Show a curve approximated by many short chord segments."
+          }
+        ]
+      },
+      "learningPurpose": "Show a curve approximated by many short chord segments.",
+      "longDescription": "A curve is approximated by polygonal chords whose total length approaches arc length. Show a curve approximated by many short chord segments. Do not describe dx and dy as independent finite legs in the final formula.",
+      "accessibility": {
+        "ariaLabel": "Polygonal approximation to arc length. Show a curve approximated by many short chord segments.",
+        "summary": "A curve is approximated by polygonal chords whose total length approaches arc length. Show a curve approximated by many short chord segments. Do not describe dx and dy as independent finite legs in the final formula.",
+        "readingOrder": [
+          "smooth-curve",
+          "chord-1",
+          "chord-2",
+          "chord-3",
+          "chord-4",
+          "chord-5",
+          "chord-6",
+          "chord-7",
+          "chord-8",
+          "arc-point-a",
+          "arc-point-b",
+          "chord-label",
+          "arc-limit"
+        ],
+        "colorIndependentDescription": "Every relationship in polygonal approximation to arc length uses written labels together with distinct line styles, markers, or fill patterns; color is never the only carrier of meaning.",
+        "controlInstructions": [],
+        "reducedMotion": "not-applicable",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-a9b26606",
+      "visibility": "public"
+    },
+    {
+      "id": "unit-3b-u3b-v06",
+      "sourceVisualId": "unit-3b-u3b-v06",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-3b-u3b-v06.28ce912fd28c9da6.svg",
+        "sha256": "28ce912fd28c9da60a82a083b60cec3aa6639d5192d397c731fc0f9cdbea07e6",
+        "bytes": 7650,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Balance point of a nonuniform rod"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Balance point of a nonuniform rod. Show density, weighted moment, and center of mass location."
+          }
+        ]
+      },
+      "learningPurpose": "Show density, weighted moment, and center of mass location.",
+      "longDescription": "A nonuniform rod balances at x-bar, shifted toward the denser side. Show density, weighted moment, and center of mass location. Do not imply center of mass must be geometric midpoint.",
+      "accessibility": {
+        "ariaLabel": "Balance point of a nonuniform rod. Show density, weighted moment, and center of mass location.",
+        "summary": "A nonuniform rod balances at x-bar, shifted toward the denser side. Show density, weighted moment, and center of mass location. Do not imply center of mass must be geometric midpoint.",
+        "readingOrder": [
+          "rod-light",
+          "rod-medium",
+          "rod-heavy",
+          "rod-axis",
+          "geometric-midpoint",
+          "center-of-mass",
+          "midpoint-label",
+          "center-label",
+          "moment-rule"
+        ],
+        "colorIndependentDescription": "Every relationship in balance point of a nonuniform rod uses written labels together with distinct line styles, markers, or fill patterns; color is never the only carrier of meaning.",
+        "controlInstructions": [],
+        "reducedMotion": "not-applicable",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-0d179b6f",
+      "visibility": "public"
+    },
+    {
+      "id": "unit-3b-u3b-v07",
+      "sourceVisualId": "unit-3b-u3b-v07",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-3b-u3b-v07.2738a10a19d62647.svg",
+        "sha256": "2738a10a19d6264713998059422d35014f30cad86dc1b6b2420f444b0456abd5",
+        "bytes": 12099,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Work as force-distance accumulation"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Work as force-distance accumulation. Show force curve and thin work contribution F(x)dx."
+          }
+        ]
+      },
+      "learningPurpose": "Show force curve and thin work contribution F(x)dx.",
+      "longDescription": "Area under a force-position graph has units newton-meters and equals work. Show force curve and thin work contribution F(x)dx. Do not graph force versus time for a force-distance work integral without a change of variables.",
+      "accessibility": {
+        "ariaLabel": "Work as force-distance accumulation. Show force curve and thin work contribution F(x)dx.",
+        "summary": "Area under a force-position graph has units newton-meters and equals work. Show force curve and thin work contribution F(x)dx. Do not graph force versus time for a force-distance work integral without a change of variables.",
+        "readingOrder": [
+          "work-area",
+          "force-curve",
+          "thin-work-strip",
+          "work-units"
+        ],
+        "colorIndependentDescription": "Every relationship in work as force-distance accumulation uses written labels together with distinct line styles, markers, or fill patterns; color is never the only carrier of meaning.",
+        "controlInstructions": [],
+        "reducedMotion": "not-applicable",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-3508cbf4",
+      "visibility": "public"
+    },
+    {
+      "id": "unit-3b-u3b-v08",
+      "sourceVisualId": "unit-3b-u3b-v08",
+      "selectedRenderer": "bg-interactive-2d",
+      "hydration": "near-viewport",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-3b-u3b-v08.1e1bb01121374f24.svg",
+        "sha256": "1e1bb01121374f2482f8d8e703a5260eca10737caf52dafea9aee777667752f8",
+        "bytes": 7736,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "A horizontal liquid slice lifted to an outlet"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "A horizontal liquid slice lifted to an outlet. Show slice volume, weight, lift distance, and tank geometry."
+          }
+        ]
+      },
+      "learningPurpose": "Show slice volume, weight, lift distance, and tank geometry.",
+      "longDescription": "A thin liquid layer at height y has volume A(y)dy and must be lifted D(y). Show slice volume, weight, lift distance, and tank geometry. Keep density, weight density, and mass density distinct.",
+      "accessibility": {
+        "ariaLabel": "A horizontal liquid slice lifted to an outlet. Show slice volume, weight, lift distance, and tank geometry.",
+        "summary": "A thin liquid layer at height y has volume A(y)dy and must be lifted D(y). Show slice volume, weight, lift distance, and tank geometry. Keep density, weight density, and mass density distinct.",
+        "readingOrder": [
+          "tank-water",
+          "tank-left",
+          "tank-right",
+          "outlet",
+          "moving-liquid-slice",
+          "lift-distance",
+          "slice-area",
+          "distance-label",
+          "pumping-product",
+          "liquid-slice-control"
+        ],
+        "colorIndependentDescription": "Every relationship in a horizontal liquid slice lifted to an outlet uses written labels together with distinct line styles, markers, or fill patterns; color is never the only carrier of meaning.",
+        "keyboardInstructions": "Use Tab to reach the bounded control, then use arrow keys or labeled buttons to change one value at a time.",
+        "controlInstructions": [
+          "Liquid slice height"
+        ],
+        "reducedMotion": "disable-animation",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-29f5ffb8",
+      "visibility": "public",
+      "interactiveScene": {
+        "compiledSceneVersion": 1,
+        "sourceSpecVersion": 1,
+        "id": "unit-3b-u3b-v08",
+        "kind": "geometry-2d",
+        "title": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "A horizontal liquid slice lifted to an outlet"
+            }
+          ]
+        },
+        "caption": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "A horizontal liquid slice lifted to an outlet. Show slice volume, weight, lift distance, and tank geometry."
+            }
+          ]
+        },
+        "learningPurpose": "Show slice volume, weight, lift distance, and tank geometry.",
+        "longDescription": "A thin liquid layer at height y has volume A(y)dy and must be lifted D(y). Show slice volume, weight, lift distance, and tank geometry. Keep density, weight density, and mass density distinct.",
+        "coordinateSpace": {
+          "type": "diagram-2d",
+          "variables": [
+            "x",
+            "y"
+          ],
+          "unitsRequired": false
+        },
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7.5,
+          "aspectRatio": 1.72,
+          "padding": 0.07
+        },
+        "axes": {
+          "mode": "none",
+          "reason": "Labels and dimension guides carry the instructional geometry."
+        },
+        "panels": [],
+        "layers": [
+          {
+            "id": "tank-water",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-secondary",
+              "fillToken": "visual-secondary",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "dots",
+              "colorIndependentCue": "Water fills the rectangular tank."
+            },
+            "references": [],
+            "kind": "polygon",
+            "geometry": {
+              "points": [
+                {
+                  "x": 2,
+                  "y": 0.8
+                },
+                {
+                  "x": 6,
+                  "y": 0.8
+                },
+                {
+                  "x": 6,
+                  "y": 5
+                },
+                {
+                  "x": 2,
+                  "y": 5
+                }
+              ],
+              "closed": true
+            }
+          },
+          {
+            "id": "tank-left",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Left tank wall.; solid segment."
+            },
+            "references": [],
+            "kind": "segment",
+            "geometry": {
+              "start": {
+                "x": 2,
+                "y": 0.5
+              },
+              "end": {
+                "x": 2,
+                "y": 5.3
+              }
+            }
+          },
+          {
+            "id": "tank-right",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Right tank wall.; solid segment."
+            },
+            "references": [],
+            "kind": "segment",
+            "geometry": {
+              "start": {
+                "x": 6,
+                "y": 0.5
+              },
+              "end": {
+                "x": 6,
+                "y": 5.3
+              }
+            }
+          },
+          {
+            "id": "outlet",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "double",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Outlet lies above the tank.; double segment."
+            },
+            "references": [],
+            "kind": "segment",
+            "geometry": {
+              "start": {
+                "x": 6,
+                "y": 6.3
+              },
+              "end": {
+                "x": 9.7,
+                "y": 6.3
+              }
+            }
+          },
+          {
+            "id": "moving-liquid-slice",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "fillToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "crosshatch",
+              "colorIndependentCue": "Movable horizontal liquid layer of thickness dy."
+            },
+            "references": [],
+            "kind": "polygon",
+            "geometry": {
+              "points": [
+                {
+                  "x": 2.15,
+                  "y": {
+                    "type": "add",
+                    "left": {
+                      "type": "variable",
+                      "name": "p"
+                    },
+                    "right": {
+                      "type": "number",
+                      "value": -0.1
+                    }
+                  }
+                },
+                {
+                  "x": 5.85,
+                  "y": {
+                    "type": "add",
+                    "left": {
+                      "type": "variable",
+                      "name": "p"
+                    },
+                    "right": {
+                      "type": "number",
+                      "value": -0.1
+                    }
+                  }
+                },
+                {
+                  "x": 5.85,
+                  "y": {
+                    "type": "add",
+                    "left": {
+                      "type": "variable",
+                      "name": "p"
+                    },
+                    "right": {
+                      "type": "number",
+                      "value": 0.1
+                    }
+                  }
+                },
+                {
+                  "x": 2.15,
+                  "y": {
+                    "type": "add",
+                    "left": {
+                      "type": "variable",
+                      "name": "p"
+                    },
+                    "right": {
+                      "type": "number",
+                      "value": 0.1
+                    }
+                  }
+                }
+              ],
+              "closed": true
+            }
+          },
+          {
+            "id": "lift-distance",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "dashed",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Lift distance D(y).; dashed segment."
+            },
+            "references": [],
+            "kind": "segment",
+            "geometry": {
+              "start": {
+                "x": 6.45,
+                "y": {
+                  "type": "variable",
+                  "name": "p"
+                }
+              },
+              "end": {
+                "x": 6.45,
+                "y": 6.3
+              }
+            }
+          },
+          {
+            "id": "slice-area",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Label: slice volume A(y) dy."
+            },
+            "references": [],
+            "kind": "label",
+            "geometry": {
+              "position": {
+                "x": 3.95,
+                "y": {
+                  "type": "add",
+                  "left": {
+                    "type": "variable",
+                    "name": "p"
+                  },
+                  "right": {
+                    "type": "number",
+                    "value": 0.55
+                  }
+                }
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "slice volume A(y) dy"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "distance-label",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Label: D(y) = outlet height - y."
+            },
+            "references": [],
+            "kind": "label",
+            "geometry": {
+              "position": {
+                "x": 8.25,
+                "y": 4.45
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "D(y) = outlet height - y"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "pumping-product",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Annotation: Work slice = weight density times A(y) dy times D(y).."
+            },
+            "references": [],
+            "kind": "annotation",
+            "geometry": {
+              "anchor": {
+                "x": 8.1,
+                "y": 1.45
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "Work slice = weight density times A(y) dy times D(y)."
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "controls": [
+          {
+            "id": "liquid-slice-control",
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "Liquid slice height"
+                }
+              ]
+            },
+            "announcementTemplate": "The liquid slice is at height y equals {value}; its lift distance changes oppositely.",
+            "kind": "slider",
+            "parameter": "p",
+            "min": 1,
+            "max": 4.8,
+            "step": 0.4,
+            "initial": 3
+          }
+        ],
+        "accessibility": {
+          "ariaLabel": "A horizontal liquid slice lifted to an outlet. Show slice volume, weight, lift distance, and tank geometry.",
+          "summary": "A thin liquid layer at height y has volume A(y)dy and must be lifted D(y). Show slice volume, weight, lift distance, and tank geometry. Keep density, weight density, and mass density distinct.",
+          "readingOrder": [
+            "tank-water",
+            "tank-left",
+            "tank-right",
+            "outlet",
+            "moving-liquid-slice",
+            "lift-distance",
+            "slice-area",
+            "distance-label",
+            "pumping-product",
+            "liquid-slice-control"
+          ],
+          "colorIndependentDescription": "Every relationship in a horizontal liquid slice lifted to an outlet uses written labels together with distinct line styles, markers, or fill patterns; color is never the only carrier of meaning.",
+          "keyboardInstructions": "Use Tab to reach the bounded control, then use arrow keys or labeled buttons to change one value at a time.",
+          "controlInstructions": [
+            "Liquid slice height"
+          ],
+          "reducedMotion": "disable-animation",
+          "staticFallbackEquivalent": true
+        },
+        "print": {
+          "representation": "generated-svg",
+          "caption": {
+            "segments": [
+              {
+                "kind": "text",
+                "text": "A horizontal liquid slice lifted to an outlet. Show slice volume, weight, lift distance, and tank geometry."
+              }
+            ]
+          },
+          "grayscaleSafe": true,
+          "pageBreak": "avoid",
+          "widthInches": 7.1
+        },
+        "performance": {
+          "maxSamples": 2048,
+          "maxAdaptiveDepth": 12,
+          "maxAstNodes": 192,
+          "maxAstDepth": 24,
+          "maxOperationsPerEvaluation": 2048,
+          "maxPayloadBytes": 65536,
+          "maxAnimationFps": 30,
+          "activation": "near-viewport"
+        },
+        "requiredCapabilities": [
+          "annotations",
+          "geometry-primitives",
+          "parameter-controls",
+          "static-fallback"
+        ],
+        "selectedRenderer": "bg-interactive-2d",
+        "staticFallback": {
+          "required": true,
+          "rendererId": "static-svg"
+        },
+        "delivery": {
+          "hydration": "near-viewport",
+          "publicFieldsOnly": true
+        },
+        "provenance": {
+          "route": "/subjects/math/calculus/integration-applications/pumping-liquids/",
+          "sourceVisualId": "unit-3b-u3b-v08",
+          "sourceFingerprint": "bvlp1-29f5ffb8",
+          "compilerVersion": "bvlp-compiler-v1",
+          "visibility": "public"
+        }
+      }
+    },
+    {
+      "id": "unit-3b-u3b-v09",
+      "sourceVisualId": "unit-3b-u3b-v09",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-3b-u3b-v09.3769e3b32f70010c.svg",
+        "sha256": "3769e3b32f70010c99cc128d079c73813fa945e104c2a390c94af8b1089dc99c",
+        "bytes": 9389,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Pressure increasing with depth on a submerged plate"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Pressure increasing with depth on a submerged plate. Show horizontal strip, depth, pressure, strip width, and force."
+          }
+        ]
+      },
+      "learningPurpose": "Show horizontal strip, depth, pressure, strip width, and force.",
+      "longDescription": "Pressure arrows grow with depth; force on strip equals pressure times strip area. Show horizontal strip, depth, pressure, strip width, and force. Depth is measured below surface, not from tank bottom unless coordinates are converted.",
+      "accessibility": {
+        "ariaLabel": "Pressure increasing with depth on a submerged plate. Show horizontal strip, depth, pressure, strip width, and force.",
+        "summary": "Pressure arrows grow with depth; force on strip equals pressure times strip area. Show horizontal strip, depth, pressure, strip width, and force. Depth is measured below surface, not from tank bottom unless coordinates are converted.",
+        "readingOrder": [
+          "waterline",
+          "submerged-plate",
+          "pressure-strip",
+          "depth",
+          "pressure-arrow-1",
+          "pressure-arrow-2",
+          "pressure-arrow-3",
+          "pressure-arrow-4",
+          "strip-width",
+          "force-rule"
+        ],
+        "colorIndependentDescription": "Every relationship in pressure increasing with depth on a submerged plate uses written labels together with distinct line styles, markers, or fill patterns; color is never the only carrier of meaning.",
+        "controlInstructions": [],
+        "reducedMotion": "not-applicable",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-12a3af79",
+      "visibility": "public"
+    }
+  ]
+}
