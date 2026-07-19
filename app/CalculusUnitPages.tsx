@@ -6,7 +6,7 @@ import { FormEvent, ReactNode, useState } from "react";
 import { getCalculusUnitCollection, getCalculusUnitSectionGuidance } from "../lib/calculus/calculus-units-index.mjs";
 import type { CalculusPublicProblem, CalculusUnitNode, CalculusUnitPublicPage } from "../lib/calculus/calculus-unit.mjs";
 import { BetterGradesVisual } from "./BetterGradesVisual";
-import { CalculusUnitNavigation, UNIT_2A_ROOT, UNIT_2B_ROOT } from "./CalculusUnitNavigation";
+import { CalculusUnitNavigation, UNIT_2A_ROOT, UNIT_2B_ROOT, UNIT_3A_ROOT, UNIT_3B_ROOT } from "./CalculusUnitNavigation";
 import { Math } from "./Math";
 
 const labels: Record<string, string> = {
@@ -238,6 +238,13 @@ const integralDeepDives = [
   ["/subjects/math/calculus/integration-techniques/improper-integrals/", "Improper integrals and convergence"],
 ];
 
+const integrationApplicationDeepDives = [
+  ["/subjects/math/calculus/integration-applications/horizontal-slices/", "When horizontal slices describe the region more cleanly"],
+  ["/subjects/math/calculus/integration-applications/choosing-a-volume-method/", "A decision guide for washers, shells, and known cross-sections"],
+  ["/subjects/math/calculus/integration-applications/physics-application-studio/", "A physics studio for mass, work, pumping, and pressure"],
+  ["/subjects/math/calculus/integration-applications/common-errors/", "Why plausible integration models fail"],
+];
+
 const unitMapProfiles = {
   "calc-1-unit-2a-derivative-foundations-techniques": {
     pathIntro: "Start with meaning, build the differentiation toolkit in sequence, and use reviews to make rule selection independent of page labels.",
@@ -263,11 +270,20 @@ const unitMapProfiles = {
     prerequisites: "You should recognize common derivatives, manipulate functions and fractions, use identities, read graphs and tables, and keep units attached to rates. Return to the derivative maps whenever verification exposes a gap.",
     focus: "one integration method, famous integral, or conceptual distinction",
   },
+  "calc-1-unit-3b-integration-applications": {
+    pathIntro: "Begin with one-dimensional area, build three-dimensional volume from slices and rotations, then carry the same contribution-times-width architecture into length, mass, work, fluids, economics, and probability.",
+    teachesTitle: "Turn integrals into geometric, physical, and quantitative models.",
+    teaches: "Choose vertical or horizontal slices; model areas, solids, arc and surface length, density and balance, variable-force work, pumping, hydrostatic force, marginal totals, and probability; then defend each setup with units and geometry.",
+    prerequisitesTitle: "Unit 3A integration foundations and a dependable derivative toolkit.",
+    prerequisites: "You should interpret definite integrals, find antiderivatives, use substitution when needed, solve intersections, sketch basic curves, and track units. Every Unit 3B page links back to Unit 3A when technique—not modeling—is the obstacle.",
+    focus: "one modeling choice, slice geometry, or real-world interpretation",
+  },
 } as const;
 
 function UnitMap({ page }: { page: CalculusUnitPublicPage }) {
   const applicationsUnit = page.unit.id === "calc-1-unit-2b-derivative-applications";
-  const integralUnit = page.unit.id === "calc-1-unit-3a-integral-foundations-techniques";
+  const integralFoundationsUnit = page.unit.id === "calc-1-unit-3a-integral-foundations-techniques";
+  const integrationApplicationsUnit = page.unit.id === "calc-1-unit-3b-integration-applications";
   const profile = unitMapProfiles[page.unit.id as keyof typeof unitMapProfiles] ?? unitMapProfiles["calc-1-unit-2a-derivative-foundations-techniques"];
   const unitRoutes = getCalculusUnitCollection(page.route.unitId)?.routes ?? [];
   const core = unitRoutes.filter((route) => route.isCore).sort((a, b) => (a.coreSequenceIndex ?? 0) - (b.coreSequenceIndex ?? 0));
@@ -275,7 +291,7 @@ function UnitMap({ page }: { page: CalculusUnitPublicPage }) {
   const assessments = unitRoutes.filter((route) => ["diagnostic", "review", "quiz", "practice", "exam", "reference"].includes(route.pageType));
   const answerKeys = unitRoutes.filter((route) => route.pageType === "answer-key");
   const explorations = unitRoutes.filter((route) => route.pageType === "exploration");
-  const focusedArticles = integralUnit ? integralDeepDives : applicationsUnit ? [] : derivativeDeepDives;
+  const focusedArticles = integralFoundationsUnit ? integralDeepDives : integrationApplicationsUnit ? integrationApplicationDeepDives : applicationsUnit ? [] : derivativeDeepDives;
   return <section className="limits-unit-map calculus-unit-map" aria-label={`${page.unit.shortTitle} textbook map`}>
     <header className="limits-map-intro"><div><p className="eyebrow">Core textbook</p><h2>The complete Unit {page.unit.code} path</h2></div><p>{profile.pathIntro}</p></header>
     <section className="calculus-prerequisites"><div><p className="eyebrow">What this unit teaches</p><h3>{profile.teachesTitle}</h3><p>{profile.teaches}</p></div><div><p className="eyebrow">Prerequisites</p><h3>{profile.prerequisitesTitle}</h3><p>{profile.prerequisites}</p></div></section>
@@ -285,7 +301,7 @@ function UnitMap({ page }: { page: CalculusUnitPublicPage }) {
     <section className="limits-answer-key-map" aria-labelledby="calculus-answer-key-heading"><div><p className="eyebrow">Check your work</p><h2 id="calculus-answer-key-heading">Published exam answer keys</h2><p>Every exam has a separately routed, numbered key. Finish the exam first, then compare one item at a time.</p></div><div>{answerKeys.map((route) => <a href={route.path} key={route.path}><span>Complete key</span><b>{route.title}</b><small>{route.description}</small><strong>Open answer key →</strong></a>)}</div></section>
     <header className="limits-map-intro limits-map-support-heading"><div><p className="eyebrow">Go deeper</p><h2>Focused integral explorations</h2></div><p>These articles zoom in on {profile.focus}. They are enrichment around the textbook path, not a replacement for it.</p></header>
     <div className="limits-support-grid">{explorations.map((route) => <a href={route.path} key={route.path}><span>Advanced exploration</span><b>{route.title}</b><small>{route.description}</small></a>)}{focusedArticles.map(([href, title]) => <a href={href} key={href}><span>Focused article</span><b>{title}</b><small>A concise in-depth exploration connected to the main unit.</small></a>)}</div>
-    {applicationsUnit ? <section className="limits-exam-key-callout"><div><p className="eyebrow">Finish the derivative sequence</p><h2>Connect applications back to derivative foundations</h2><p>Use Unit 2A whenever an application reveals a differentiation gap, then return here and complete the model with units, assumptions, interpretation, and a reasonableness check.</p></div><a className="button button-ink" href={UNIT_2A_ROOT}>Review Unit 2A foundations →</a></section> : integralUnit ? <section className="limits-exam-key-callout"><div><p className="eyebrow">Continue the integral story</p><h2>Explore applications of integration</h2><p>Carry accumulated contributions into area, volume, length, mass, work, fluid force, marginal quantities, and probability. The focused application articles remain available while Unit 3B completes its release gate.</p></div><a className="button button-ink" href="/subjects/math/calculus/integration-applications/">Explore integration applications →</a></section> : <section className="limits-exam-key-callout"><div><p className="eyebrow">Next in the textbook</p><h2>Unit 2B: Applications of Derivatives</h2><p>Put derivative calculations to work in motion, approximation, related rates, curve analysis, optimization, indeterminate limits, and applied modeling.</p></div><a className="button button-ink" href={UNIT_2B_ROOT}>Continue to Unit 2B →</a></section>}
+    {applicationsUnit ? <section className="limits-exam-key-callout"><div><p className="eyebrow">Finish the derivative sequence</p><h2>Connect applications back to derivative foundations</h2><p>Use Unit 2A whenever an application reveals a differentiation gap, then return here and complete the model with units, assumptions, interpretation, and a reasonableness check.</p></div><a className="button button-ink" href={UNIT_2A_ROOT}>Review Unit 2A foundations →</a></section> : integralFoundationsUnit ? <section className="limits-exam-key-callout"><div><p className="eyebrow">Continue the integral story</p><h2>Unit 3B: Applications of Integration</h2><p>Carry accumulated contributions into area, volume, length, mass, work, fluid force, marginal quantities, and probability in the complete published applications unit.</p></div><a className="button button-ink" href={UNIT_3B_ROOT}>Continue to Unit 3B →</a></section> : integrationApplicationsUnit ? <section className="limits-exam-key-callout"><div><p className="eyebrow">Repair the integration toolkit</p><h2>Return easily to Unit 3A foundations</h2><p>When the model is clear but the antiderivative or numerical method is not, review the matching Unit 3A technique, then return here to finish the setup, units, and interpretation.</p></div><a className="button button-ink" href={UNIT_3A_ROOT}>Review Unit 3A foundations →</a></section> : <section className="limits-exam-key-callout"><div><p className="eyebrow">Next in the textbook</p><h2>Unit 2B: Applications of Derivatives</h2><p>Put derivative calculations to work in motion, approximation, related rates, curve analysis, optimization, indeterminate limits, and applied modeling.</p></div><a className="button button-ink" href={UNIT_2B_ROOT}>Continue to Unit 2B →</a></section>}
   </section>;
 }
 
@@ -298,12 +314,14 @@ export function CalculusUnitPageContent({ page }: { page: CalculusUnitPublicPage
   const renderedChecks = new Set<string>();
   const embeddedCheckIds = collectEmbeddedCheckIds(page.page.nodes);
   const answerKey = page.related.find((route) => route.pageType === "answer-key");
-  const currentUnit = page.unit.code === "2B" ? "2B" : page.unit.code === "3A" ? "3A" : "2A";
+  const currentUnit = page.unit.code === "2B" ? "2B" : page.unit.code === "3A" ? "3A" : page.unit.code === "3B" ? "3B" : "2A";
   const companion = currentUnit === "2A"
     ? { root: UNIT_2B_ROOT, label: "Continue to Unit 2B →" }
     : currentUnit === "2B"
       ? { root: UNIT_2A_ROOT, label: "Review Unit 2A foundations →" }
-      : { root: UNIT_2B_ROOT, label: "Review derivative applications →" };
+      : currentUnit === "3A"
+        ? { root: UNIT_3B_ROOT, label: "Continue to Unit 3B applications →" }
+        : { root: UNIT_3A_ROOT, label: "Review Unit 3A foundations →" };
   const integralUnit = currentUnit.startsWith("3");
   const routeUrl = `https://bettergrades.net${page.route.path}`;
   const courseUrl = `https://bettergrades.net${page.unit.root}`;

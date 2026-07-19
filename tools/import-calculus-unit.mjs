@@ -172,6 +172,8 @@ function normalizeRouteText(value) {
 
 function descriptionFor(route) {
   const raw = normalizeRouteText(route.seo?.meta_description ?? route.meta_description).replace(/\.{3,}|…/g, ".");
+  if (requested === "unit-3b" && route.page_type === "hub") return "Learn applications of integration through area, volume, length, mass, work, fluids, marginal quantities, probability, worked examples, visual reasoning, practice, and published exam keys.";
+  if (requested === "unit-3b" && route.route_id.endsWith("/common-errors")) return "Identify and repair common integration-application errors involving slice orientation, radii, bounds, density, depth, units, and interpretation.";
   if (!handoff || route.page_type === "hub") return raw;
   if (route.page_type === "lesson" || /\b(?:BetterGrad|calcul|calcu|pract|practi|integ|applic|displac)\.$/i.test(raw)) {
     return `Learn ${normalizeRouteText(route.title)} through clear explanation, worked examples, visual reasoning, checks, and connected integral-calculus practice.`;
@@ -212,12 +214,68 @@ function injectExerciseSolutions(nodes, answerRoute) {
   return result;
 }
 
+const unit3bExercisePrompts = new Map(Object.entries({
+  "subjects/math/calculus/integration-applications/physics-application-studio": [
+    "A particle has velocity \\(v(t)=(t-1)(t-3)\\) for \\(0\\le t\\le4\\). Find its displacement and total distance traveled, and explain how the sign changes affect the two totals.",
+    "A spring requires \\(12\\,\\mathrm{N}\\) of force at an extension of \\(0.06\\,\\mathrm{m}\\). Find the work required to stretch it from \\(0.10\\,\\mathrm{m}\\) to \\(0.25\\,\\mathrm{m}\\) beyond equilibrium.",
+    "A rectangular tank is \\(4\\,\\mathrm{m}\\) long, \\(3\\,\\mathrm{m}\\) wide, and \\(2\\,\\mathrm{m}\\) deep. It is full of water, which is pumped to an outlet \\(1\\,\\mathrm{m}\\) above the top. Using water weight density \\(9800\\,\\mathrm{N/m^3}\\), set up and evaluate the work.",
+    "A triangular vertical plate has a \\(4\\,\\mathrm{m}\\) top edge at the water surface and a vertex \\(3\\,\\mathrm{m}\\) below the surface. Using water weight density \\(9800\\,\\mathrm{N/m^3}\\), find the hydrostatic force.",
+    "A rod occupies \\(0\\le x\\le L\\) and has linear density \\(\\lambda(x)=a+bx\\), where \\(a,b,L>0\\). Find its mass, first moment about the origin, and center of mass.",
+    "Force-position data are \\(F(0)=5\\), \\(F(1)=7\\), \\(F(2)=8\\), \\(F(3)=10\\), and \\(F(4)=14\\) newtons. Estimate the work from \\(x=0\\) to \\(x=4\\) meters with the Trapezoidal Rule and state the units.",
+  ],
+  "subjects/math/calculus/integration-applications/review": [
+    "Find the area between \\(y=2x\\) and \\(y=x^2\\) on \\(0\\le x\\le2\\) using vertical slices.",
+    "Set up and evaluate the same area between \\(y=2x\\) and \\(y=x^2\\) using horizontal slices.",
+    "For the region between \\(y=2x\\) and \\(y=x^2\\) on \\(0\\le x\\le2\\), find the volume about the \\(x\\)-axis with washers and the volume about the \\(y\\)-axis with shells. Compare how radius and height are defined.",
+    "The base is the region under \\(y=\\sqrt{4-x^2}\\) above the \\(x\\)-axis for \\(-2\\le x\\le2\\). Cross-sections perpendicular to the \\(x\\)-axis are semicircles whose diameters lie in the base. Find the volume.",
+    "Find the arc length of \\(y=2x+1\\) on \\([0,3]\\), then verify the result with the distance formula between the endpoints.",
+    "A rod occupies \\([0,3]\\) and has density \\(\\lambda(x)=2+x\\). Find its mass and center of mass.",
+    "A spring has constant \\(k=200\\,\\mathrm{N/m}\\). Find the work required to stretch it from \\(0.10\\,\\mathrm{m}\\) to \\(0.30\\,\\mathrm{m}\\) beyond equilibrium.",
+    "A full conical tank is \\(4\\,\\mathrm{m}\\) high with top radius \\(2\\,\\mathrm{m}\\). Water is pumped to an outlet \\(1\\,\\mathrm{m}\\) above the top. Set up and evaluate the work using \\(9800\\,\\mathrm{N/m^3}\\).",
+    "A vertical rectangular plate is \\(2\\,\\mathrm{m}\\) wide and extends from the water surface to a depth of \\(3\\,\\mathrm{m}\\). Find the hydrostatic force using \\(9800\\,\\mathrm{N/m^3}\\).",
+    "Marginal cost is \\(C'(q)=20+0.04q\\) dollars per unit and \\(C(100)=5000\\). Find \\(C(200)\\) and identify the accumulated added cost.",
+  ],
+  "subjects/math/calculus/integration-applications/cumulative-practice": [
+    "Find the area enclosed by \\(y=x^2\\) and \\(y=2x+3\\).",
+    "Rotate that same enclosed region about the horizontal line \\(y=-1\\). Set up and evaluate the washer integral.",
+    "Rotate that same enclosed region about the vertical line \\(x=-2\\). Set up and evaluate the shell integral.",
+    "The base is the region enclosed by \\(y=x^2\\) and \\(y=2x+3\\). Cross-sections perpendicular to the \\(x\\)-axis are squares. Find the volume.",
+    "Find the arc length of \\(y=x^{3/2}\\) on \\([0,4/9]\\).",
+    "A rod occupies \\([0,1]\\) and has density \\(\\lambda(x)=1+x^2\\). Find its mass and center of mass.",
+    "A spring has constant \\(k=200\\,\\mathrm{N/m}\\). Find the work required to stretch it from \\(0.10\\,\\mathrm{m}\\) to \\(0.30\\,\\mathrm{m}\\) beyond equilibrium.",
+    "A \\(4\\,\\mathrm{m}\\)-long triangular trough has ends \\(2\\,\\mathrm{m}\\) deep and \\(3\\,\\mathrm{m}\\) wide at the top. It is full of water. Set up and evaluate the work to pump the water to the top edge using \\(9800\\,\\mathrm{N/m^3}\\).",
+    "A triangular vertical gate has a \\(4\\,\\mathrm{m}\\) top edge at the water surface and a vertex \\(3\\,\\mathrm{m}\\) below. Find the hydrostatic force using \\(9800\\,\\mathrm{N/m^3}\\).",
+    "Marginal cost is \\(C'(q)=15+0.02q\\) dollars per unit and fixed cost is \\(C(0)=2000\\). Find \\(C(300)\\).",
+    "A probability density has the form \\(p(x)=kx\\) on \\([0,2]\\). Find \\(k\\), verify normalization, and compute \\(E[X]\\).",
+  ],
+}));
+
+function applyExercisePromptOverrides(nodes, routeId) {
+  const prompts = unit3bExercisePrompts.get(routeId);
+  if (!prompts) return nodes;
+  const cursor = { value: 0 };
+  function visit(items) {
+    return items.map((node) => {
+      if (node.type === "exercise") {
+        const prompt = prompts[cursor.value++];
+        if (!prompt) throw new Error(`${routeId} has more exercises than authored prompts.`);
+        return { ...node, children: [{ type: "paragraph", text: prompt }] };
+      }
+      return node.children ? { ...node, children: visit(node.children) } : node;
+    });
+  }
+  const result = visit(nodes);
+  if (cursor.value !== prompts.length) throw new Error(`${routeId} has ${cursor.value} exercises but ${prompts.length} authored prompts.`);
+  return result;
+}
+
 function removeResidualListSource(nodes) {
   return nodes.map((node) => ({
     ...node,
     ...(node.text ? {
       text: node.text
         .replace(/\\item(?:\[([^\]]+)\])?/g, (_, label) => label ? ` • ${label}: ` : " • ")
+        .replace(/\band two practice exams\b/gi, "practice exams and published answer keys")
         .replace(/\s+/g, " ")
         .trim(),
     } : {}),
@@ -265,9 +323,10 @@ const compiledPages = sourcePages.map((page) => {
     else {
       nodes = parseCalculusUnitPage(page.source_latex ?? page.body_latex, {
         visualIds: visualIdsFor(route),
-        enumerateAsExercises: Boolean(exerciseAnswerRoute) || ["diagnostic", "exam", "practice"].includes(route.page_type),
+        enumerateAsExercises: ["diagnostic", "exam", "practice"].includes(route.page_type),
       });
       if (handoff) nodes = removeResidualListSource(nodes);
+      if (requested === "unit-3b") nodes = applyExercisePromptOverrides(nodes, route.route_id);
       if (exerciseAnswerRoute) nodes = injectExerciseSolutions(nodes, exerciseAnswerRoute);
     }
   } catch (error) {

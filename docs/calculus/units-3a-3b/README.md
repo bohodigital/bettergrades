@@ -19,3 +19,5 @@ This directory is the durable evidence packet for the staged Better Grades integ
 5. Build, review, integrate, deploy, and verify Unit 3B separately.
 
 The release and combined-live reports are authoritative for deployed identifiers and URLs. A green source build is not recorded as a production release.
+
+Unit 3B prepublication evidence is recorded in `UNIT_3B_QA.md`. Its release report and machine-readable deployment evidence are added only after the reviewed candidate, merged tree, and live origins have been verified.

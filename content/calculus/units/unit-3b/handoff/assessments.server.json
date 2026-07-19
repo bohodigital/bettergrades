@@ -1,0 +1,310 @@
+{
+  "schema_version": "3.0.0",
+  "unit_id": "calc-1-unit-3b-integration-applications",
+  "assessments": [
+    {
+      "assessment_id": "u3b-area-01",
+      "canonical_answer": "4/3",
+      "accepted_answers": [
+        "4/3"
+      ],
+      "validator": "exact-rational",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "hint_latex": "Integrate top minus bottom.",
+      "solution_latex": "\\[\\int_0^2(2x-x^2)dx=4/3.\\]",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u3b-area-01"
+    },
+    {
+      "assessment_id": "u3b-slice-choice-01",
+      "canonical_answer": "horizontal",
+      "accepted_answers": [
+        "horizontal"
+      ],
+      "validator": "multiple-choice",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "hint_latex": "Both boundaries are already functions of \\(y\\).",
+      "solution_latex": "Use horizontal slices.",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u3b-slice-choice-01"
+    },
+    {
+      "assessment_id": "u3b-slicing-01",
+      "canonical_answer": "8/3",
+      "accepted_answers": [
+        "8/3"
+      ],
+      "validator": "exact-rational",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "hint_latex": "Cross-sectional area is \\(x^2\\).",
+      "solution_latex": "\\[\\int_0^2x^2\\,dx=\\frac{8}{3}.\\]",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u3b-slicing-01"
+    },
+    {
+      "assessment_id": "u3b-disk-01",
+      "canonical_answer": "8pi",
+      "accepted_answers": [
+        "8pi"
+      ],
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "hint_latex": "Use disks with radius \\(\\sqrt{x}\\).",
+      "solution_latex": "\\[V=\\pi\\int_0^4x\\,dx=8\\pi.\\]",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u3b-disk-01"
+    },
+    {
+      "assessment_id": "u3b-shell-01",
+      "canonical_answer": "8pi",
+      "accepted_answers": [
+        "8pi"
+      ],
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "hint_latex": "Radius is \\(x\\), height is \\(4-x^2\\).",
+      "solution_latex": "\\[2\\pi\\int_0^2x(4-x^2)dx=8\\pi.\\]",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u3b-shell-01"
+    },
+    {
+      "assessment_id": "u3b-volume-choice-01",
+      "canonical_answer": "shells",
+      "accepted_answers": [
+        "shells"
+      ],
+      "validator": "multiple-choice",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "hint_latex": "Vertical strips are parallel to the y-axis.",
+      "solution_latex": "Cylindrical shells often preserve the given x-description.",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u3b-volume-choice-01"
+    },
+    {
+      "assessment_id": "u3b-arc-01",
+      "canonical_answer": "3sqrt(5)",
+      "accepted_answers": [
+        "3sqrt(5)"
+      ],
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "hint_latex": "The derivative is constant 2.",
+      "solution_latex": "\\[L=\\int_0^3\\sqrt{1+4}\\,dx=3\\sqrt5.\\]",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u3b-arc-01"
+    },
+    {
+      "assessment_id": "u3b-surface-01",
+      "canonical_answer": "pi*sqrt(2)",
+      "accepted_answers": [
+        "pi*sqrt(2)"
+      ],
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "hint_latex": "Use radius x and arc factor \\(\\sqrt2\\).",
+      "solution_latex": "\\[2\\pi\\int_0^1x\\sqrt2dx=\\pi\\sqrt2.\\]",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u3b-surface-01"
+    },
+    {
+      "assessment_id": "u3b-mass-01",
+      "canonical_answer": "21/2",
+      "accepted_answers": [
+        "21/2"
+      ],
+      "validator": "exact-rational",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "hint_latex": "Integrate density over position.",
+      "solution_latex": "\\[\\int_0^3(2+x)dx=21/2\\text{ kg}.\\]",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u3b-mass-01"
+    },
+    {
+      "assessment_id": "u3b-com-01",
+      "canonical_answer": "12/7",
+      "accepted_answers": [
+        "12/7"
+      ],
+      "validator": "exact-rational",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "hint_latex": "Compute mass and moment, then divide.",
+      "solution_latex": "\\[\\bar{x}=18/(21/2)=12/7.\\]",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u3b-com-01"
+    },
+    {
+      "assessment_id": "u3b-work-01",
+      "canonical_answer": "64",
+      "accepted_answers": [
+        "64"
+      ],
+      "validator": "exact-integer",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "hint_latex": "Integrate force with respect to displacement.",
+      "solution_latex": "\\[W=[10x+3x^2/2]_0^4=64\\text{ J}.\\]",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u3b-work-01"
+    },
+    {
+      "assessment_id": "u3b-spring-01",
+      "canonical_answer": "6.25",
+      "accepted_answers": [
+        "6.25"
+      ],
+      "validator": "decimal-tolerance",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": 0.005,
+      "hint_latex": "Integrate \\(200x\\) from 0 to 0.25.",
+      "solution_latex": "\\[100(0.25)^2=6.25\\text{ J}.\\]",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u3b-spring-01"
+    },
+    {
+      "assessment_id": "u3b-pump-01",
+      "canonical_answer": "117600*integral_0^2(3-y)dy",
+      "accepted_answers": [
+        "117600*integral_0^2(3-y)dy"
+      ],
+      "validator": "required-integral-setup",
+      "equivalence_policy": "equivalent-integral-setup",
+      "tolerance": null,
+      "hint_latex": "Use weight density times cross-sectional area times lifting distance.",
+      "solution_latex": "\\[W=9800\\int_0^2 12(3-y)dy.\\]",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u3b-pump-01"
+    },
+    {
+      "assessment_id": "u3b-fluid-01",
+      "canonical_answer": "88200",
+      "accepted_answers": [
+        "88200"
+      ],
+      "validator": "exact-integer",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "hint_latex": "Integrate \\(9800\\cdot y\\cdot2\\) from 0 to 3.",
+      "solution_latex": "\\[19600[y^2/2]_0^3=88200\\text{ N}.\\]",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u3b-fluid-01"
+    },
+    {
+      "assessment_id": "u3b-marginal-01",
+      "canonical_answer": "2600",
+      "accepted_answers": [
+        "2600"
+      ],
+      "validator": "exact-integer",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "hint_latex": "Integrate marginal cost over the production interval.",
+      "solution_latex": "\\[\\bigl[20q+0.02q^2\\bigr]_{100}^{200}=2600.\\]",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u3b-marginal-01"
+    },
+    {
+      "assessment_id": "u3b-prob-01",
+      "canonical_answer": "1/4",
+      "accepted_answers": [
+        "1/4"
+      ],
+      "validator": "exact-rational",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "hint_latex": "Integrate the density from 0 to 1/2.",
+      "solution_latex": "\\[[x^2]_0^{1/2}=1/4.\\]",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u3b-prob-01"
+    }
+  ]
+}

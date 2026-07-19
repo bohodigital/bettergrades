@@ -12,6 +12,7 @@ function getPath(slug: string[] = []) {
 }
 
 function getCalculusUnitSeo(path: string) {
+  if (path.startsWith("/subjects/math/calculus/integration-applications/")) return { code: "3B", name: "Applications of Integration", topic: "integration applications" };
   if (path.startsWith("/subjects/math/calculus/integrals/")) return { code: "3A", name: "Integral Foundations and Techniques", topic: "integrals" };
   if (path.startsWith("/subjects/math/calculus/derivative-applications/")) return { code: "2B", name: "Applications of Derivatives" };
   if (path.startsWith("/subjects/math/calculus/derivatives/")) return { code: "2A", name: "Derivative Foundations and Techniques" };

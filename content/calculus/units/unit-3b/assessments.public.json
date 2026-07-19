@@ -1,0 +1,351 @@
+{
+  "schema_version": "3.0.0",
+  "unit_id": "calc-1-unit-3b-integration-applications",
+  "problem_count": 16,
+  "problems": [
+    {
+      "problem_id": "u3b-area-01",
+      "unit_id": "calc-1-unit-3b-integration-applications",
+      "page_slug": "subjects/math/calculus/integration-applications/area-between-curves",
+      "prompt_latex": "Find the area between \\(y=2x\\) and \\(y=x^2\\) from \\(x=0\\) to \\(x=2\\).",
+      "answer_type": "rational",
+      "choices": [],
+      "hints": [
+        "Integrate top minus bottom."
+      ],
+      "difficulty": "course-practice",
+      "topics": [
+        "area-between-curves"
+      ],
+      "skills": [
+        "standard-symbolic"
+      ],
+      "provenance": {
+        "composition_status": "BetterGrades-original verified handoff composition; source references remain rights-separated."
+      }
+    },
+    {
+      "problem_id": "u3b-slice-choice-01",
+      "unit_id": "calc-1-unit-3b-integration-applications",
+      "page_slug": "subjects/math/calculus/integration-applications/horizontal-slices",
+      "prompt_latex": "For the region bounded by \\(x=y^2\\) and \\(x=y+2\\), which slice orientation gives one integral most naturally?",
+      "answer_type": "multiple_choice",
+      "choices": [
+        "horizontal",
+        "vertical"
+      ],
+      "hints": [
+        "Both boundaries are already functions of \\(y\\)."
+      ],
+      "difficulty": "course-practice",
+      "topics": [
+        "horizontal-slices"
+      ],
+      "skills": [
+        "standard-symbolic"
+      ],
+      "provenance": {
+        "composition_status": "BetterGrades-original verified handoff composition; source references remain rights-separated."
+      }
+    },
+    {
+      "problem_id": "u3b-slicing-01",
+      "unit_id": "calc-1-unit-3b-integration-applications",
+      "page_slug": "subjects/math/calculus/integration-applications/volumes-by-slicing",
+      "prompt_latex": "A solid has square cross-sections of side \\(x\\) for \\(0\\le x\\le2\\). Find its volume.",
+      "answer_type": "rational",
+      "choices": [],
+      "hints": [
+        "Cross-sectional area is \\(x^2\\)."
+      ],
+      "difficulty": "course-practice",
+      "topics": [
+        "volumes-by-slicing"
+      ],
+      "skills": [
+        "standard-symbolic"
+      ],
+      "provenance": {
+        "composition_status": "BetterGrades-original verified handoff composition; source references remain rights-separated."
+      }
+    },
+    {
+      "problem_id": "u3b-disk-01",
+      "unit_id": "calc-1-unit-3b-integration-applications",
+      "page_slug": "subjects/math/calculus/integration-applications/disks-and-washers",
+      "prompt_latex": "Find the volume obtained by rotating \\(y=\\sqrt{x}\\), \\(0\\le x\\le4\\), around the x-axis.",
+      "answer_type": "symbolic_expression",
+      "choices": [],
+      "hints": [
+        "Use disks with radius \\(\\sqrt{x}\\)."
+      ],
+      "difficulty": "course-practice",
+      "topics": [
+        "disks-and-washers"
+      ],
+      "skills": [
+        "standard-symbolic"
+      ],
+      "provenance": {
+        "composition_status": "BetterGrades-original verified handoff composition; source references remain rights-separated."
+      }
+    },
+    {
+      "problem_id": "u3b-shell-01",
+      "unit_id": "calc-1-unit-3b-integration-applications",
+      "page_slug": "subjects/math/calculus/integration-applications/cylindrical-shells",
+      "prompt_latex": "Use shells to rotate the region under \\(y=4-x^2\\), \\(0\\le x\\le2\\), about the y-axis.",
+      "answer_type": "symbolic_expression",
+      "choices": [],
+      "hints": [
+        "Radius is \\(x\\), height is \\(4-x^2\\)."
+      ],
+      "difficulty": "course-practice",
+      "topics": [
+        "cylindrical-shells"
+      ],
+      "skills": [
+        "standard-symbolic"
+      ],
+      "provenance": {
+        "composition_status": "BetterGrades-original verified handoff composition; source references remain rights-separated."
+      }
+    },
+    {
+      "problem_id": "u3b-volume-choice-01",
+      "unit_id": "calc-1-unit-3b-integration-applications",
+      "page_slug": "subjects/math/calculus/integration-applications/choosing-a-volume-method",
+      "prompt_latex": "A region is described by \\(y=f(x)\\) and rotated around the y-axis. Which method often avoids solving for x as a function of y?",
+      "answer_type": "multiple_choice",
+      "choices": [
+        "shells",
+        "washers",
+        "known cross-sections",
+        "arc length"
+      ],
+      "hints": [
+        "Vertical strips are parallel to the y-axis."
+      ],
+      "difficulty": "course-practice",
+      "topics": [
+        "choosing-a-volume-method"
+      ],
+      "skills": [
+        "standard-symbolic"
+      ],
+      "provenance": {
+        "composition_status": "BetterGrades-original verified handoff composition; source references remain rights-separated."
+      }
+    },
+    {
+      "problem_id": "u3b-arc-01",
+      "unit_id": "calc-1-unit-3b-integration-applications",
+      "page_slug": "subjects/math/calculus/integration-applications/arc-length",
+      "prompt_latex": "Find the arc length of \\(y=2x+1\\) on \\([0,3]\\).",
+      "answer_type": "symbolic_expression",
+      "choices": [],
+      "hints": [
+        "The derivative is constant 2."
+      ],
+      "difficulty": "course-practice",
+      "topics": [
+        "arc-length"
+      ],
+      "skills": [
+        "standard-symbolic"
+      ],
+      "provenance": {
+        "composition_status": "BetterGrades-original verified handoff composition; source references remain rights-separated."
+      }
+    },
+    {
+      "problem_id": "u3b-surface-01",
+      "unit_id": "calc-1-unit-3b-integration-applications",
+      "page_slug": "subjects/math/calculus/integration-applications/surface-area-of-revolution",
+      "prompt_latex": "Find the surface area generated by rotating \\(y=x\\), \\(0\\le x\\le1\\), around the x-axis.",
+      "answer_type": "symbolic_expression",
+      "choices": [],
+      "hints": [
+        "Use radius x and arc factor \\(\\sqrt2\\)."
+      ],
+      "difficulty": "course-practice",
+      "topics": [
+        "surface-area-of-revolution"
+      ],
+      "skills": [
+        "standard-symbolic"
+      ],
+      "provenance": {
+        "composition_status": "BetterGrades-original verified handoff composition; source references remain rights-separated."
+      }
+    },
+    {
+      "problem_id": "u3b-mass-01",
+      "unit_id": "calc-1-unit-3b-integration-applications",
+      "page_slug": "subjects/math/calculus/integration-applications/density-and-mass",
+      "prompt_latex": "A 3-meter rod has density \\(2+x\\) kg/m. Find its mass.",
+      "answer_type": "rational",
+      "choices": [],
+      "hints": [
+        "Integrate density over position."
+      ],
+      "difficulty": "course-practice",
+      "topics": [
+        "density-and-mass"
+      ],
+      "skills": [
+        "standard-symbolic"
+      ],
+      "provenance": {
+        "composition_status": "BetterGrades-original verified handoff composition; source references remain rights-separated."
+      }
+    },
+    {
+      "problem_id": "u3b-com-01",
+      "unit_id": "calc-1-unit-3b-integration-applications",
+      "page_slug": "subjects/math/calculus/integration-applications/moments-and-center-of-mass",
+      "prompt_latex": "For density \\(\\lambda(x)=2+x\\) on \\([0,3]\\), find the center of mass.",
+      "answer_type": "rational",
+      "choices": [],
+      "hints": [
+        "Compute mass and moment, then divide."
+      ],
+      "difficulty": "course-practice",
+      "topics": [
+        "moments-and-center-of-mass"
+      ],
+      "skills": [
+        "standard-symbolic"
+      ],
+      "provenance": {
+        "composition_status": "BetterGrades-original verified handoff composition; source references remain rights-separated."
+      }
+    },
+    {
+      "problem_id": "u3b-work-01",
+      "unit_id": "calc-1-unit-3b-integration-applications",
+      "page_slug": "subjects/math/calculus/integration-applications/work-and-variable-force",
+      "prompt_latex": "A force \\(F(x)=10+3x\\) N moves an object from 0 to 4 m. Find the work.",
+      "answer_type": "integer",
+      "choices": [],
+      "hints": [
+        "Integrate force with respect to displacement."
+      ],
+      "difficulty": "course-practice",
+      "topics": [
+        "work-and-variable-force"
+      ],
+      "skills": [
+        "standard-symbolic"
+      ],
+      "provenance": {
+        "composition_status": "BetterGrades-original verified handoff composition; source references remain rights-separated."
+      }
+    },
+    {
+      "problem_id": "u3b-spring-01",
+      "unit_id": "calc-1-unit-3b-integration-applications",
+      "page_slug": "subjects/math/calculus/integration-applications/spring-work",
+      "prompt_latex": "A spring has \\(k=200\\) N/m. Find the work to stretch it from 0 to 0.25 m.",
+      "answer_type": "decimal",
+      "choices": [],
+      "hints": [
+        "Integrate \\(200x\\) from 0 to 0.25."
+      ],
+      "difficulty": "course-practice",
+      "topics": [
+        "spring-work"
+      ],
+      "skills": [
+        "standard-symbolic"
+      ],
+      "provenance": {
+        "composition_status": "BetterGrades-original verified handoff composition; source references remain rights-separated."
+      }
+    },
+    {
+      "problem_id": "u3b-pump-01",
+      "unit_id": "calc-1-unit-3b-integration-applications",
+      "page_slug": "subjects/math/calculus/integration-applications/pumping-liquids",
+      "prompt_latex": "For the rectangular water tank described in the lesson, write the work integral.",
+      "answer_type": "integral_setup",
+      "choices": [],
+      "hints": [
+        "Use weight density times cross-sectional area times lifting distance."
+      ],
+      "difficulty": "course-practice",
+      "topics": [
+        "pumping-liquids"
+      ],
+      "skills": [
+        "equivalent-integral-setup"
+      ],
+      "provenance": {
+        "composition_status": "BetterGrades-original verified handoff composition; source references remain rights-separated."
+      }
+    },
+    {
+      "problem_id": "u3b-fluid-01",
+      "unit_id": "calc-1-unit-3b-integration-applications",
+      "page_slug": "subjects/math/calculus/integration-applications/fluid-pressure",
+      "prompt_latex": "A 2 m wide rectangular gate extends from the water surface to depth 3 m. Use water weight density 9800 N/m^3. Find the total force.",
+      "answer_type": "integer",
+      "choices": [],
+      "hints": [
+        "Integrate \\(9800\\cdot y\\cdot2\\) from 0 to 3."
+      ],
+      "difficulty": "course-practice",
+      "topics": [
+        "fluid-pressure"
+      ],
+      "skills": [
+        "standard-symbolic"
+      ],
+      "provenance": {
+        "composition_status": "BetterGrades-original verified handoff composition; source references remain rights-separated."
+      }
+    },
+    {
+      "problem_id": "u3b-marginal-01",
+      "unit_id": "calc-1-unit-3b-integration-applications",
+      "page_slug": "subjects/math/calculus/integration-applications/marginal-quantities",
+      "prompt_latex": "If \\(C'(q)=20+0.04q\\), find the added cost from \\(q=100\\) to \\(q=200\\).",
+      "answer_type": "integer",
+      "choices": [],
+      "hints": [
+        "Integrate marginal cost over the production interval."
+      ],
+      "difficulty": "course-practice",
+      "topics": [
+        "marginal-quantities"
+      ],
+      "skills": [
+        "standard-symbolic"
+      ],
+      "provenance": {
+        "composition_status": "BetterGrades-original verified handoff composition; source references remain rights-separated."
+      }
+    },
+    {
+      "problem_id": "u3b-prob-01",
+      "unit_id": "calc-1-unit-3b-integration-applications",
+      "page_slug": "subjects/math/calculus/integration-applications/probability-density",
+      "prompt_latex": "For density \\(p(x)=2x\\) on \\([0,1]\\), find \\(P(X\\le1/2)\\).",
+      "answer_type": "rational",
+      "choices": [],
+      "hints": [
+        "Integrate the density from 0 to 1/2."
+      ],
+      "difficulty": "course-practice",
+      "topics": [
+        "probability-density"
+      ],
+      "skills": [
+        "standard-symbolic"
+      ],
+      "provenance": {
+        "composition_status": "BetterGrades-original verified handoff composition; source references remain rights-separated."
+      }
+    }
+  ]
+}

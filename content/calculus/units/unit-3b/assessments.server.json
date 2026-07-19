@@ -1,0 +1,279 @@
+{
+  "schema_version": "3.0.0",
+  "unit_id": "calc-1-unit-3b-integration-applications",
+  "problem_count": 16,
+  "problems": [
+    {
+      "problem_id": "u3b-area-01",
+      "canonical_answer": "4/3",
+      "accepted_answers": [
+        "4/3"
+      ],
+      "normalization": "exact-rational",
+      "validator": "exact-rational",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "\\[\\int_0^2(2x-x^2)dx=4/3.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u3b-slice-choice-01",
+      "canonical_answer": "horizontal",
+      "accepted_answers": [
+        "horizontal"
+      ],
+      "normalization": "multiple-choice",
+      "validator": "multiple-choice",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "Use horizontal slices.",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u3b-slicing-01",
+      "canonical_answer": "8/3",
+      "accepted_answers": [
+        "8/3"
+      ],
+      "normalization": "exact-rational",
+      "validator": "exact-rational",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "\\[\\int_0^2x^2\\,dx=\\frac{8}{3}.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u3b-disk-01",
+      "canonical_answer": "8pi",
+      "accepted_answers": [
+        "8pi"
+      ],
+      "normalization": "symbolic-equivalence",
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "\\[V=\\pi\\int_0^4x\\,dx=8\\pi.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u3b-shell-01",
+      "canonical_answer": "8pi",
+      "accepted_answers": [
+        "8pi"
+      ],
+      "normalization": "symbolic-equivalence",
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "\\[2\\pi\\int_0^2x(4-x^2)dx=8\\pi.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u3b-volume-choice-01",
+      "canonical_answer": "shells",
+      "accepted_answers": [
+        "shells"
+      ],
+      "normalization": "multiple-choice",
+      "validator": "multiple-choice",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "Cylindrical shells often preserve the given x-description.",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u3b-arc-01",
+      "canonical_answer": "3sqrt(5)",
+      "accepted_answers": [
+        "3sqrt(5)"
+      ],
+      "normalization": "symbolic-equivalence",
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "\\[L=\\int_0^3\\sqrt{1+4}\\,dx=3\\sqrt5.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u3b-surface-01",
+      "canonical_answer": "pi*sqrt(2)",
+      "accepted_answers": [
+        "pi*sqrt(2)"
+      ],
+      "normalization": "symbolic-equivalence",
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "\\[2\\pi\\int_0^1x\\sqrt2dx=\\pi\\sqrt2.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u3b-mass-01",
+      "canonical_answer": "21/2",
+      "accepted_answers": [
+        "21/2"
+      ],
+      "normalization": "exact-rational",
+      "validator": "exact-rational",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "\\[\\int_0^3(2+x)dx=21/2\\text{ kg}.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u3b-com-01",
+      "canonical_answer": "12/7",
+      "accepted_answers": [
+        "12/7"
+      ],
+      "normalization": "exact-rational",
+      "validator": "exact-rational",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "\\[\\bar{x}=18/(21/2)=12/7.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u3b-work-01",
+      "canonical_answer": "64",
+      "accepted_answers": [
+        "64"
+      ],
+      "normalization": "exact-integer",
+      "validator": "exact-integer",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "\\[W=[10x+3x^2/2]_0^4=64\\text{ J}.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u3b-spring-01",
+      "canonical_answer": "6.25",
+      "accepted_answers": [
+        "6.25"
+      ],
+      "normalization": "decimal-tolerance",
+      "validator": "decimal-tolerance",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": 0.005,
+      "worked_solution_latex": "\\[100(0.25)^2=6.25\\text{ J}.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u3b-pump-01",
+      "canonical_answer": "117600*integral_0^2(3-y)dy",
+      "accepted_answers": [
+        "117600*integral_0^2(3-y)dy"
+      ],
+      "normalization": "required-integral-setup",
+      "validator": "required-integral-setup",
+      "equivalence_policy": "equivalent-integral-setup",
+      "tolerance": null,
+      "worked_solution_latex": "\\[W=9800\\int_0^2 12(3-y)dy.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u3b-fluid-01",
+      "canonical_answer": "88200",
+      "accepted_answers": [
+        "88200"
+      ],
+      "normalization": "exact-integer",
+      "validator": "exact-integer",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "\\[19600[y^2/2]_0^3=88200\\text{ N}.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u3b-marginal-01",
+      "canonical_answer": "2600",
+      "accepted_answers": [
+        "2600"
+      ],
+      "normalization": "exact-integer",
+      "validator": "exact-integer",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "\\[\\bigl[20q+0.02q^2\\bigr]_{100}^{200}=2600.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u3b-prob-01",
+      "canonical_answer": "1/4",
+      "accepted_answers": [
+        "1/4"
+      ],
+      "normalization": "exact-rational",
+      "validator": "exact-rational",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "\\[[x^2]_0^{1/2}=1/4.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    }
+  ]
+}

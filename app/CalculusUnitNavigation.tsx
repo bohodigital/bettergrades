@@ -24,10 +24,10 @@ const groups: Record<UnitCode, {
   "3A": {
     label: "Unit 3 · Integrals",
     title: "Calculus I",
-    description: "Carry derivative fluency into accumulation, the Fundamental Theorem, and a dependable integration toolkit.",
+    description: "Build integral foundations in 3A, then use them for geometric and physical modeling in 3B.",
     links: [
-      { code: "2B", root: UNIT_2B_ROOT, title: "Derivative applications", current: "You are here · Open the unit map", other: "Review the derivative bridge" },
       { code: "3A", root: UNIT_3A_ROOT, title: "Integral foundations", current: "You are here · Open the unit map", other: "Build accumulation and integration technique" },
+      { code: "3B", root: UNIT_3B_ROOT, title: "Integration applications", current: "You are here · Open the unit map", other: "Continue to geometry and modeling" },
     ],
   },
   "3B": undefined as never,
