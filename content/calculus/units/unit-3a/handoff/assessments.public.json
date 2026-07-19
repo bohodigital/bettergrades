@@ -1,0 +1,302 @@
+{
+  "schema_version": "3.0.0",
+  "unit_id": "calc-1-unit-3a-integral-foundations-techniques",
+  "assessments": [
+    {
+      "assessment_id": "u3a-antiderivative-01",
+      "route_id": "subjects/math/calculus/integrals/antiderivatives",
+      "input_type": "expression",
+      "prompt_latex": "Find the general antiderivative of \\(6x^2-6x+4\\).",
+      "choices": [],
+      "has_hint": true,
+      "has_solution": true,
+      "provenance_id": "prov-check-u3a-antiderivative-01"
+    },
+    {
+      "assessment_id": "u3a-c-01",
+      "route_id": "subjects/math/calculus/integrals/indefinite-integrals-and-c",
+      "input_type": "expression",
+      "prompt_latex": "Evaluate \\(\\int(4x^{-2}+3x)\\,dx\\).",
+      "choices": [],
+      "has_hint": true,
+      "has_solution": true,
+      "provenance_id": "prov-check-u3a-c-01"
+    },
+    {
+      "assessment_id": "u3a-ivp-01",
+      "route_id": "subjects/math/calculus/integrals/initial-value-problems",
+      "input_type": "expression",
+      "prompt_latex": "If \\(F'(x)=6x^2-1\\) and \\(F(0)=4\\), find \\(F(x)\\).",
+      "choices": [],
+      "has_hint": true,
+      "has_solution": true,
+      "provenance_id": "prov-check-u3a-ivp-01"
+    },
+    {
+      "assessment_id": "u3a-rate-total-01",
+      "route_id": "subjects/math/calculus/integrals/rates-to-total-change",
+      "input_type": "integer",
+      "prompt_latex": "A pump delivers water at rates \\(4,5,3,2\\) liters/minute over four consecutive 2-minute intervals. Use those interval rates to estimate the total delivered volume.",
+      "choices": [],
+      "has_hint": true,
+      "has_solution": true,
+      "provenance_id": "prov-check-u3a-rate-total-01"
+    },
+    {
+      "assessment_id": "u3a-displacement-01",
+      "route_id": "subjects/math/calculus/integrals/displacement-and-distance",
+      "input_type": "integer",
+      "prompt_latex": "If \\(v(t)=2t-4\\) on \\([0,4]\\), what is the displacement?",
+      "choices": [],
+      "has_hint": true,
+      "has_solution": true,
+      "provenance_id": "prov-check-u3a-displacement-01"
+    },
+    {
+      "assessment_id": "u3a-partition-01",
+      "route_id": "subjects/math/calculus/integrals/partitions-and-sigma-notation",
+      "input_type": "rational",
+      "prompt_latex": "What is \\(\\Delta x\\) when \\([2,8]\\) is divided into \\(10\\) equal subintervals?",
+      "choices": [],
+      "has_hint": true,
+      "has_solution": true,
+      "provenance_id": "prov-check-u3a-partition-01"
+    },
+    {
+      "assessment_id": "u3a-riemann-01",
+      "route_id": "subjects/math/calculus/integrals/left-right-midpoint-riemann-sums",
+      "input_type": "integer",
+      "prompt_latex": "Use two left-endpoint rectangles to approximate \\(\\int_0^2 (x+2)\\,dx\\).",
+      "choices": [],
+      "has_hint": true,
+      "has_solution": true,
+      "provenance_id": "prov-check-u3a-riemann-01"
+    },
+    {
+      "assessment_id": "u3a-riemann-limit-01",
+      "route_id": "subjects/math/calculus/integrals/riemann-sum-limit",
+      "input_type": "rational",
+      "prompt_latex": "Evaluate \\(\\lim_{n\\to\\infty}\\frac{n+1}{2n}\\).",
+      "choices": [],
+      "has_hint": true,
+      "has_solution": true,
+      "provenance_id": "prov-check-u3a-riemann-limit-01"
+    },
+    {
+      "assessment_id": "u3a-signed-area-01",
+      "route_id": "subjects/math/calculus/integrals/definite-integral-signed-area",
+      "input_type": "integer",
+      "prompt_latex": "A graph encloses area 5 above the axis and area 7 below the axis. What is the definite integral?",
+      "choices": [],
+      "has_hint": true,
+      "has_solution": true,
+      "provenance_id": "prov-check-u3a-signed-area-01"
+    },
+    {
+      "assessment_id": "u3a-properties-01",
+      "route_id": "subjects/math/calculus/integrals/properties-of-definite-integrals",
+      "input_type": "integer",
+      "prompt_latex": "If \\(\\int_1^4 f=7\\), what is \\(\\int_4^1 f\\)?",
+      "choices": [],
+      "has_hint": true,
+      "has_solution": true,
+      "provenance_id": "prov-check-u3a-properties-01"
+    },
+    {
+      "assessment_id": "u3a-average-value-01",
+      "route_id": "subjects/math/calculus/integrals/average-value-of-a-function",
+      "input_type": "integer",
+      "prompt_latex": "Find the average value of \\(f(x)=2x\\) on \\([1,3]\\).",
+      "choices": [],
+      "has_hint": true,
+      "has_solution": true,
+      "provenance_id": "prov-check-u3a-average-value-01"
+    },
+    {
+      "assessment_id": "u3a-accumulation-01",
+      "route_id": "subjects/math/calculus/integrals/accumulation-functions",
+      "input_type": "integer",
+      "prompt_latex": "For \\(A(x)=\\int_3^x f(t)\\,dt\\), what is \\(A(3)\\)?",
+      "choices": [],
+      "has_hint": true,
+      "has_solution": true,
+      "provenance_id": "prov-check-u3a-accumulation-01"
+    },
+    {
+      "assessment_id": "u3a-ftc1-01",
+      "route_id": "subjects/math/calculus/integrals/fundamental-theorem-part-one",
+      "input_type": "expression",
+      "prompt_latex": "If \\(F(x)=\\int_0^x\\cos(t^2)\\,dt\\), find \\(F'(x)\\).",
+      "choices": [],
+      "has_hint": true,
+      "has_solution": true,
+      "provenance_id": "prov-check-u3a-ftc1-01"
+    },
+    {
+      "assessment_id": "u3a-ftc2-01",
+      "route_id": "subjects/math/calculus/integrals/fundamental-theorem-part-two",
+      "input_type": "integer",
+      "prompt_latex": "Evaluate \\(\\int_0^3 2x\\,dx\\).",
+      "choices": [],
+      "has_hint": true,
+      "has_solution": true,
+      "provenance_id": "prov-check-u3a-ftc2-01"
+    },
+    {
+      "assessment_id": "u3a-net-change-01",
+      "route_id": "subjects/math/calculus/integrals/net-change-theorem",
+      "input_type": "integer",
+      "prompt_latex": "A population changes at rate \\(P'(t)=3t\\) people/year for \\(0\\le t\\le4\\). What is the net population change?",
+      "choices": [],
+      "has_hint": true,
+      "has_solution": true,
+      "provenance_id": "prov-check-u3a-net-change-01"
+    },
+    {
+      "assessment_id": "u3a-variable-limits-01",
+      "route_id": "subjects/math/calculus/integrals/variable-limits-and-chain-rule",
+      "input_type": "expression",
+      "prompt_latex": "Find \\(\\frac{d}{dx}\\int_0^{x^2}\\sin t\\,dt\\).",
+      "choices": [],
+      "has_hint": true,
+      "has_solution": true,
+      "provenance_id": "prov-check-u3a-variable-limits-01"
+    },
+    {
+      "assessment_id": "u3a-basic-rules-01",
+      "route_id": "subjects/math/calculus/integrals/basic-antiderivative-rules",
+      "input_type": "expression",
+      "prompt_latex": "Evaluate \\(\\int(x^3+2\\sin x)\\,dx\\).",
+      "choices": [],
+      "has_hint": true,
+      "has_solution": true,
+      "provenance_id": "prov-check-u3a-basic-rules-01"
+    },
+    {
+      "assessment_id": "u3a-substitution-01",
+      "route_id": "subjects/math/calculus/integrals/substitution",
+      "input_type": "expression",
+      "prompt_latex": "Evaluate \\(\\int(3x+1)^4\\,dx\\).",
+      "choices": [],
+      "has_hint": true,
+      "has_solution": true,
+      "provenance_id": "prov-check-u3a-substitution-01"
+    },
+    {
+      "assessment_id": "u3a-def-sub-01",
+      "route_id": "subjects/math/calculus/integrals/definite-integrals-by-substitution",
+      "input_type": "expression",
+      "prompt_latex": "Evaluate \\(\\int_0^1 x e^{x^2}\\,dx\\).",
+      "choices": [],
+      "has_hint": true,
+      "has_solution": true,
+      "provenance_id": "prov-check-u3a-def-sub-01"
+    },
+    {
+      "assessment_id": "u3a-parts-01",
+      "route_id": "subjects/math/calculus/integrals/integration-by-parts",
+      "input_type": "expression",
+      "prompt_latex": "Evaluate \\(\\int xe^x\\,dx\\).",
+      "choices": [],
+      "has_hint": true,
+      "has_solution": true,
+      "provenance_id": "prov-check-u3a-parts-01"
+    },
+    {
+      "assessment_id": "u3a-trig-int-01",
+      "route_id": "subjects/math/calculus/integrals/trigonometric-integrals",
+      "input_type": "expression",
+      "prompt_latex": "Evaluate \\(\\int\\sin^2x\\cos x\\,dx\\).",
+      "choices": [],
+      "has_hint": true,
+      "has_solution": true,
+      "provenance_id": "prov-check-u3a-trig-int-01"
+    },
+    {
+      "assessment_id": "u3a-trig-sub-01",
+      "route_id": "subjects/math/calculus/integrals/trigonometric-substitution",
+      "input_type": "multiple_choice",
+      "prompt_latex": "Which substitution is natural for \\(\\sqrt{x^2+25}\\)?",
+      "choices": [
+        "x=5tan(theta)",
+        "x=5sin(theta)",
+        "x=5sec(theta)",
+        "x=25tan(theta)"
+      ],
+      "has_hint": true,
+      "has_solution": true,
+      "provenance_id": "prov-check-u3a-trig-sub-01"
+    },
+    {
+      "assessment_id": "u3a-pf-01",
+      "route_id": "subjects/math/calculus/integrals/partial-fractions",
+      "input_type": "expression",
+      "prompt_latex": "Evaluate \\(\\int \\frac{1}{x(x+1)}\\,dx\\).",
+      "choices": [],
+      "has_hint": true,
+      "has_solution": true,
+      "provenance_id": "prov-check-u3a-pf-01"
+    },
+    {
+      "assessment_id": "u3a-strategy-01",
+      "route_id": "subjects/math/calculus/integrals/integration-strategy",
+      "input_type": "multiple_choice",
+      "prompt_latex": "Which method is the natural first choice for \\(\\int x\\ln x\\,dx\\)?",
+      "choices": [
+        "integration by parts",
+        "u-substitution",
+        "partial fractions",
+        "trigonometric substitution"
+      ],
+      "has_hint": true,
+      "has_solution": true,
+      "provenance_id": "prov-check-u3a-strategy-01"
+    },
+    {
+      "assessment_id": "u3a-trap-01",
+      "route_id": "subjects/math/calculus/integrals/numerical-integration",
+      "input_type": "integer",
+      "prompt_latex": "Using one trapezoid, estimate \\(\\int_0^2 x^2\\,dx\\).",
+      "choices": [],
+      "has_hint": true,
+      "has_solution": true,
+      "provenance_id": "prov-check-u3a-trap-01"
+    },
+    {
+      "assessment_id": "u3a-simpson-01",
+      "route_id": "subjects/math/calculus/integrals/simpsons-rule",
+      "input_type": "integer",
+      "prompt_latex": "Use Simpson’s Rule with \\(n=2\\) to estimate \\(\\int_0^2 x^3\\,dx\\).",
+      "choices": [],
+      "has_hint": true,
+      "has_solution": true,
+      "provenance_id": "prov-check-u3a-simpson-01"
+    },
+    {
+      "assessment_id": "u3a-improper-inf-01",
+      "route_id": "subjects/math/calculus/integrals/improper-integrals-infinite-intervals",
+      "input_type": "multiple_choice",
+      "prompt_latex": "Does \\(\\int_1^\\infty x^{-3}\\,dx\\) converge or diverge?",
+      "choices": [
+        "converges",
+        "diverges"
+      ],
+      "has_hint": true,
+      "has_solution": true,
+      "provenance_id": "prov-check-u3a-improper-inf-01"
+    },
+    {
+      "assessment_id": "u3a-improper-sing-01",
+      "route_id": "subjects/math/calculus/integrals/improper-integrals-unbounded-functions",
+      "input_type": "multiple_choice",
+      "prompt_latex": "Does \\(\\int_0^1x^{-1/2}\\,dx\\) converge?",
+      "choices": [
+        "converges",
+        "diverges"
+      ],
+      "has_hint": true,
+      "has_solution": true,
+      "provenance_id": "prov-check-u3a-improper-sing-01"
+    }
+  ]
+}

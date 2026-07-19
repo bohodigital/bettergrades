@@ -1,0 +1,483 @@
+{
+  "schema_version": "3.0.0",
+  "unit_id": "calc-1-unit-3a-integral-foundations-techniques",
+  "problem_count": 28,
+  "problems": [
+    {
+      "problem_id": "u3a-antiderivative-01",
+      "canonical_answer": "2x^3-3x^2+4x+C",
+      "accepted_answers": [
+        "2x^3-3x^2+4x+C"
+      ],
+      "normalization": "symbolic-equivalence",
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "antiderivative-up-to-additive-constant",
+      "tolerance": null,
+      "worked_solution_latex": "\\[\\int(6x^2-6x+4)\\,dx=2x^3-3x^2+4x+C.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u3a-c-01",
+      "canonical_answer": "-4/x+3x^2/2+C",
+      "accepted_answers": [
+        "-4/x+3x^2/2+C"
+      ],
+      "normalization": "symbolic-equivalence",
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "antiderivative-up-to-additive-constant",
+      "tolerance": null,
+      "worked_solution_latex": "\\[\\int(4x^{-2}+3x)\\,dx=-4x^{-1}+\\frac32x^2+C.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u3a-ivp-01",
+      "canonical_answer": "2x^3-x+4",
+      "accepted_answers": [
+        "2x^3-x+4"
+      ],
+      "normalization": "symbolic-equivalence",
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "\\[F(x)=2x^3-x+C,\\quad F(0)=C=4.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u3a-rate-total-01",
+      "canonical_answer": "28",
+      "accepted_answers": [
+        "28"
+      ],
+      "normalization": "exact-integer",
+      "validator": "exact-integer",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "\\[2(4+5+3+2)=28\\text{ liters}.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u3a-displacement-01",
+      "canonical_answer": "0",
+      "accepted_answers": [
+        "0"
+      ],
+      "normalization": "exact-integer",
+      "validator": "exact-integer",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "\\[\\int_0^4(2t-4)\\,dt=[t^2-4t]_0^4=0.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u3a-partition-01",
+      "canonical_answer": "3/5",
+      "accepted_answers": [
+        "3/5"
+      ],
+      "normalization": "exact-rational",
+      "validator": "exact-rational",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "\\[\\Delta x=(8-2)/10=3/5.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u3a-riemann-01",
+      "canonical_answer": "5",
+      "accepted_answers": [
+        "5"
+      ],
+      "normalization": "exact-integer",
+      "validator": "exact-integer",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "\\[L_2=1\\bigl(f(0)+f(1)\\bigr)=2+3=5.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u3a-riemann-limit-01",
+      "canonical_answer": "1/2",
+      "accepted_answers": [
+        "1/2"
+      ],
+      "normalization": "exact-rational",
+      "validator": "exact-rational",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "\\[\\frac{1+1/n}{2}\\to\\frac12.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u3a-signed-area-01",
+      "canonical_answer": "-2",
+      "accepted_answers": [
+        "-2"
+      ],
+      "normalization": "exact-integer",
+      "validator": "exact-integer",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "\\[5-7=-2.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u3a-properties-01",
+      "canonical_answer": "-7",
+      "accepted_answers": [
+        "-7"
+      ],
+      "normalization": "exact-integer",
+      "validator": "exact-integer",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "\\[\\int_4^1 f=-7.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u3a-average-value-01",
+      "canonical_answer": "4",
+      "accepted_answers": [
+        "4"
+      ],
+      "normalization": "exact-integer",
+      "validator": "exact-integer",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "\\[f_{avg}=\\frac12[x^2]_1^3=\\frac12(8)=4.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u3a-accumulation-01",
+      "canonical_answer": "0",
+      "accepted_answers": [
+        "0"
+      ],
+      "normalization": "exact-integer",
+      "validator": "exact-integer",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "\\[A(3)=\\int_3^3f(t)\\,dt=0.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u3a-ftc1-01",
+      "canonical_answer": "cos(x^2)",
+      "accepted_answers": [
+        "cos(x^2)"
+      ],
+      "normalization": "symbolic-equivalence",
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "\\[F'(x)=\\cos(x^2).\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u3a-ftc2-01",
+      "canonical_answer": "9",
+      "accepted_answers": [
+        "9"
+      ],
+      "normalization": "exact-integer",
+      "validator": "exact-integer",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "\\[[x^2]_0^3=9.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u3a-net-change-01",
+      "canonical_answer": "24",
+      "accepted_answers": [
+        "24"
+      ],
+      "normalization": "exact-integer",
+      "validator": "exact-integer",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "\\[\\int_0^4 3t\\,dt=\\frac32(16)=24.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u3a-variable-limits-01",
+      "canonical_answer": "2x*sin(x^2)",
+      "accepted_answers": [
+        "2x*sin(x^2)"
+      ],
+      "normalization": "symbolic-equivalence",
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "\\[2x\\sin(x^2).\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u3a-basic-rules-01",
+      "canonical_answer": "x^4/4-2cos(x)+C",
+      "accepted_answers": [
+        "x^4/4-2cos(x)+C"
+      ],
+      "normalization": "symbolic-equivalence",
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "antiderivative-up-to-additive-constant",
+      "tolerance": null,
+      "worked_solution_latex": "\\[x^4/4-2\\cos x+C.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u3a-substitution-01",
+      "canonical_answer": "(3x+1)^5/15+C",
+      "accepted_answers": [
+        "(3x+1)^5/15+C"
+      ],
+      "normalization": "symbolic-equivalence",
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "antiderivative-up-to-additive-constant",
+      "tolerance": null,
+      "worked_solution_latex": "\\[\\frac13\\int u^4du=\\frac{u^5}{15}+C.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u3a-def-sub-01",
+      "canonical_answer": "(e-1)/2",
+      "accepted_answers": [
+        "(e-1)/2"
+      ],
+      "normalization": "symbolic-equivalence",
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "\\[\\frac12\\int_0^1e^u\\,du=\\frac{e-1}{2}.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u3a-parts-01",
+      "canonical_answer": "xe^x-e^x+C",
+      "accepted_answers": [
+        "xe^x-e^x+C"
+      ],
+      "normalization": "symbolic-equivalence",
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "antiderivative-up-to-additive-constant",
+      "tolerance": null,
+      "worked_solution_latex": "\\[xe^x-e^x+C.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u3a-trig-int-01",
+      "canonical_answer": "sin(x)^3/3+C",
+      "accepted_answers": [
+        "sin(x)^3/3+C"
+      ],
+      "normalization": "symbolic-equivalence",
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "antiderivative-up-to-additive-constant",
+      "tolerance": null,
+      "worked_solution_latex": "\\[\\int u^2du=u^3/3+C.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u3a-trig-sub-01",
+      "canonical_answer": "x=5tan(theta)",
+      "accepted_answers": [
+        "x=5tan(theta)"
+      ],
+      "normalization": "multiple-choice",
+      "validator": "multiple-choice",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "Use \\(x=5\\tan\\theta\\).",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u3a-pf-01",
+      "canonical_answer": "ln|x|-ln|x+1|+C",
+      "accepted_answers": [
+        "ln|x|-ln|x+1|+C"
+      ],
+      "normalization": "symbolic-equivalence",
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "antiderivative-up-to-additive-constant",
+      "tolerance": null,
+      "worked_solution_latex": "\\[\\ln|x|-\\ln|x+1|+C.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u3a-strategy-01",
+      "canonical_answer": "integration by parts",
+      "accepted_answers": [
+        "integration by parts"
+      ],
+      "normalization": "multiple-choice",
+      "validator": "multiple-choice",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "Integration by parts is the natural choice.",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u3a-trap-01",
+      "canonical_answer": "4",
+      "accepted_answers": [
+        "4"
+      ],
+      "normalization": "exact-integer",
+      "validator": "exact-integer",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "\\[T_1=2(0+4)/2=4.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u3a-simpson-01",
+      "canonical_answer": "4",
+      "accepted_answers": [
+        "4"
+      ],
+      "normalization": "exact-integer",
+      "validator": "exact-integer",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "\\[(1/3)(0+4+8)=4.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u3a-improper-inf-01",
+      "canonical_answer": "converges",
+      "accepted_answers": [
+        "converges"
+      ],
+      "normalization": "multiple-choice",
+      "validator": "multiple-choice",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "It converges, with value \\(1/2\\).",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u3a-improper-sing-01",
+      "canonical_answer": "converges",
+      "accepted_answers": [
+        "converges"
+      ],
+      "normalization": "multiple-choice",
+      "validator": "multiple-choice",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "It converges to 2.",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    }
+  ]
+}

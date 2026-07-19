@@ -4,6 +4,11 @@ import { resolve } from "node:path";
 const root = resolve(import.meta.dirname, "../..");
 const requested = process.argv.find((argument) => argument.startsWith("--unit="))?.split("=")[1] ?? "unit-2a";
 const checkOnly = process.argv.includes("--check");
+if (requested === "unit-3a") {
+  const { authorUnit3aVisuals } = await import("./unit-3a-visual-definitions.mjs");
+  await authorUnit3aVisuals({ root, checkOnly });
+  process.exit(0);
+}
 if (requested === "unit-2b") {
   const { authorUnit2bVisuals } = await import("./unit-2b-visual-definitions.mjs");
   await authorUnit2bVisuals({ root, checkOnly });

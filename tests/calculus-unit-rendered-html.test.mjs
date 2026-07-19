@@ -123,3 +123,44 @@ test("focused derivative articles remain visibly and semantically connected to U
     assert.match(html, /<meta[^>]+name="description"[^>]+Unit 2A/i, path);
   }
 });
+
+test("all Unit 3A pages render as clean integral-textbook pages", async () => {
+  const unitRoutes = calculusUnitRoutes.filter((route) => route.unitId === "calc-1-unit-3a-integral-foundations-techniques");
+  assert.equal(unitRoutes.length, 36);
+  for (const route of unitRoutes) {
+    const response = await render(route.path);
+    assert.equal(response.status, 200, route.path);
+    const html = await response.text();
+    const text = visibleText(html);
+    assert.match(html, /data-unit-id="calc-1-unit-3a-integral-foundations-techniques"/, route.path);
+    assert.match(text, /Calculus I.*Unit 3A/, route.path);
+    assert.match(html, /aria-label="Calculus Unit 3 course navigation"/, route.path);
+    assert.match(html, /href="\/subjects\/math\/calculus\/integrals\/"[^>]+aria-current="location"/, route.path);
+    assert.match(html, /href="\/subjects\/math\/calculus\/derivative-applications\/"/, route.path);
+    const renderedTitle = route.title.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("'", "&#x27;").replaceAll('"', "&quot;");
+    assert.match(html, new RegExp(`<h1>${escapeRegExp(renderedTitle)}</h1>`), route.path);
+    if (route.pageType !== "hub" && !/Unit 3A/.test(route.title)) assert.match(html, /<title>[^<]+\| Unit 3A \| Better Grades<\/title>/, route.path);
+    assert.doesNotMatch(text, /\\(?:begin|end|frac|varepsilon|textbf|emph|section|chapter|addplot|draw|node)\b|\$\$|\\[()[\]]/, route.path);
+    assert.doesNotMatch(text, /\b\d+\s+(?:topics|pages|study hours|interactive checks|BVLP visuals)\b/i, route.path);
+    assert.doesNotMatch(html, /This equation could not be rendered safely|This visual is temporarily unavailable|class="katex-error"/, route.path);
+    const renderedCheckIds = [...html.matchAll(/data-check-id="([^"]+)"/g)].map((match) => match[1]);
+    assert.equal(renderedCheckIds.length, new Set(renderedCheckIds).size, `${route.path} renders each interactive check once`);
+    if (route.pageType !== "hub") {
+      assert.match(html, /Section overview/, route.path);
+      assert.match(html, /Reading lens/, route.path);
+    }
+    if (route.path.endsWith("/cumulative-practice/")) assert.equal((html.match(/Show supplied answer/g) ?? []).length, 12);
+  }
+});
+
+test("the Unit 3A map leads with the textbook and preserves focused integral articles below", async () => {
+  const response = await render("/subjects/math/calculus/integrals/");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  const text = visibleText(html);
+  assert.match(text, /The complete Unit 3A path/);
+  assert.match(text, /Begin with antiderivatives and accumulated change/);
+  assert.match(text, /Focused integral explorations/);
+  assert.match(html, /href="\/subjects\/math\/calculus\/integration-techniques\/"/);
+  assert.match(html, /href="\/subjects\/math\/calculus\/derivative-applications\/"/);
+});

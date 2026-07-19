@@ -197,7 +197,7 @@ function SemanticNode({ node, keyPrefix, unitId, routeId, checks, renderedChecks
     const tex = safeDisplayTex(node.tex ?? "");
     return tex ? <Math tex={tex} display className="limits-equation" /> : <p role="alert">This equation could not be rendered safely.</p>;
   }
-  if (node.type === "table") return <div className="limits-table-wrap"><table><caption className="sr-only">Derivative reference table</caption><tbody>{(node.rows ?? []).map((row, rowIndex) => <tr key={rowIndex}>{row.map((cell, cellIndex) => rowIndex === 0 ? <th scope="col" key={cellIndex}><RichText value={cell} /></th> : <td key={cellIndex}><RichText value={cell} /></td>)}</tr>)}</tbody></table></div>;
+  if (node.type === "table") return <div className="limits-table-wrap"><table><caption className="sr-only">Calculus reference table</caption><tbody>{(node.rows ?? []).map((row, rowIndex) => <tr key={rowIndex}>{row.map((cell, cellIndex) => rowIndex === 0 ? <th scope="col" key={cellIndex}><RichText value={cell} /></th> : <td key={cellIndex}><RichText value={cell} /></td>)}</tr>)}</tbody></table></div>;
   if (node.type === "visual-reference") return <figure className="limits-graph limits-graph-visual calculus-unit-visual">{node.visual ? <BetterGradesVisual visual={node.visual} /> : <p role="alert">This visual is temporarily unavailable.</p>}<figcaption><strong>{node.title ?? "Visual study"}</strong>{node.text && <p><RichText value={node.text} /></p>}{node.visual && <p>{node.visual.caption.segments.map((segment) => segment.kind === "text" ? segment.text : segment.spokenText).join(" ")}</p>}</figcaption></figure>;
   if (node.type === "graph-specification" && /accompanies the complete printable source/i.test(node.text ?? "")) return null;
   if (node.type === "quick-check") {
@@ -221,32 +221,71 @@ function TextbookOrientation({ page }: { page: CalculusUnitPublicPage }) {
   </section>;
 }
 
-const deepDives = [
+const derivativeDeepDives = [
   ["/subjects/math/calculus/derivatives/derivative-of-x-to-the-x/", "Why x to the x needs logarithmic differentiation"],
   ["/subjects/math/calculus/derivatives/chain-rule/", "The Chain Rule as a structure-reading skill"],
   ["/subjects/math/calculus/derivatives/product-rule-vs-quotient-rule/", "Product Rule or Quotient Rule?"],
   ["/subjects/math/calculus/derivatives/derivatives-of-inverse-trig-functions/", "Inverse-trigonometric derivative patterns"],
 ];
 
+const integralDeepDives = [
+  ["/subjects/math/calculus/integration-techniques/", "Integration techniques: the in-depth article collection"],
+  ["/subjects/math/calculus/integration-techniques/u-substitution/", "u-Substitution as a structure-reading method"],
+  ["/learn/calculus/integration-by-parts/", "Integration by parts: recognition, setup, and examples"],
+  ["/answers/calculus/integral-of-sec-cubed/", "Why the integral of sec³x brings itself back"],
+  ["/subjects/math/calculus/integration-techniques/trigonometric-integrals/", "Choosing a trigonometric-integral identity"],
+  ["/subjects/math/calculus/integration-techniques/partial-fractions/", "Partial fractions as an integration method"],
+  ["/subjects/math/calculus/integration-techniques/improper-integrals/", "Improper integrals and convergence"],
+];
+
+const unitMapProfiles = {
+  "calc-1-unit-2a-derivative-foundations-techniques": {
+    pathIntro: "Start with meaning, build the differentiation toolkit in sequence, and use reviews to make rule selection independent of page labels.",
+    teachesTitle: "Turn local change into a dependable derivative toolkit.",
+    teaches: "Connect limits, tangent slopes, formulas, graphs, tables, and units; then differentiate powers, products, quotients, special functions, compositions, implicit equations, inverses, and variable exponents.",
+    prerequisitesTitle: "Algebra, functions, and Unit 1 limits.",
+    prerequisites: "You should be comfortable with factoring, exponents, function notation, slopes, and finite limits. Use the diagnostic when you are unsure.",
+    focus: "one derivative pattern, proof idea, or decision",
+  },
+  "calc-1-unit-2b-derivative-applications": {
+    pathIntro: "Begin with interpretation, move through approximation and modeling, and finish by defending conclusions with units, domains, assumptions, and reasonableness checks.",
+    teachesTitle: "Turn derivatives into explanations, estimates, and decisions.",
+    teaches: "Interpret motion and sensitivity; build linear and Newton approximations; connect related quantities; analyze complete graphs; optimize feasible designs; evaluate indeterminate limits; and test models against their assumptions.",
+    prerequisitesTitle: "Unit 2A derivative foundations and fluent algebra.",
+    prerequisites: "You should be able to compute common derivatives, solve equations, read graphs, and track units. Use the bridge diagnostic and linked Unit 2A refreshers when a calculation skill needs repair.",
+    focus: "one modeling choice, theorem, or interpretation",
+  },
+  "calc-1-unit-3a-integral-foundations-techniques": {
+    pathIntro: "Begin with antiderivatives and accumulated change, build the definite integral from sums, connect both parts of the Fundamental Theorem, and choose integration methods from structure before finishing with numerical and improper integrals.",
+    teachesTitle: "Turn local contributions into exact and approximate accumulated totals.",
+    teaches: "Recover functions from derivatives; construct signed totals from rates and areas; use Riemann sums and the Fundamental Theorem; choose substitution, parts, trigonometric, and partial-fraction methods; and justify numerical or improper results.",
+    prerequisitesTitle: "Units 2A and 2B derivative fluency, algebra, and trigonometry.",
+    prerequisites: "You should recognize common derivatives, manipulate functions and fractions, use identities, read graphs and tables, and keep units attached to rates. Return to the derivative maps whenever verification exposes a gap.",
+    focus: "one integration method, famous integral, or conceptual distinction",
+  },
+} as const;
+
 function UnitMap({ page }: { page: CalculusUnitPublicPage }) {
   const applicationsUnit = page.unit.id === "calc-1-unit-2b-derivative-applications";
+  const integralUnit = page.unit.id === "calc-1-unit-3a-integral-foundations-techniques";
+  const profile = unitMapProfiles[page.unit.id as keyof typeof unitMapProfiles] ?? unitMapProfiles["calc-1-unit-2a-derivative-foundations-techniques"];
   const unitRoutes = getCalculusUnitCollection(page.route.unitId)?.routes ?? [];
   const core = unitRoutes.filter((route) => route.isCore).sort((a, b) => (a.coreSequenceIndex ?? 0) - (b.coreSequenceIndex ?? 0));
   const sections = [...new Map(core.map((route) => [route.sectionId, { id: route.sectionId, title: route.sectionTitle }])).values()];
   const assessments = unitRoutes.filter((route) => ["diagnostic", "review", "quiz", "practice", "exam", "reference"].includes(route.pageType));
   const answerKeys = unitRoutes.filter((route) => route.pageType === "answer-key");
   const explorations = unitRoutes.filter((route) => route.pageType === "exploration");
-  const focusedArticles = applicationsUnit ? [] : deepDives;
+  const focusedArticles = integralUnit ? integralDeepDives : applicationsUnit ? [] : derivativeDeepDives;
   return <section className="limits-unit-map calculus-unit-map" aria-label={`${page.unit.shortTitle} textbook map`}>
-    <header className="limits-map-intro"><div><p className="eyebrow">Core textbook</p><h2>The complete Unit {page.unit.code} path</h2></div><p>{applicationsUnit ? "Begin with interpretation, move through approximation and modeling, and finish by defending conclusions with units, domains, assumptions, and reasonableness checks." : "Start with meaning, build the differentiation toolkit in sequence, and use reviews to make rule selection independent of page labels."}</p></header>
-    <section className="calculus-prerequisites"><div><p className="eyebrow">What this unit teaches</p><h3>{applicationsUnit ? "Turn derivatives into explanations, estimates, and decisions." : "Turn local change into a dependable derivative toolkit."}</h3><p>{applicationsUnit ? "Interpret motion and sensitivity; build linear and Newton approximations; connect related quantities; analyze complete graphs; optimize feasible designs; evaluate indeterminate limits; and test models against their assumptions." : "Connect limits, tangent slopes, formulas, graphs, tables, and units; then differentiate powers, products, quotients, special functions, compositions, implicit equations, inverses, and variable exponents."}</p></div><div><p className="eyebrow">Prerequisites</p><h3>{applicationsUnit ? "Unit 2A derivative foundations and fluent algebra." : "Algebra, functions, and Unit 1 limits."}</h3><p>{applicationsUnit ? "You should be able to compute common derivatives, solve equations, read graphs, and track units. Use the bridge diagnostic and linked Unit 2A refreshers when a calculation skill needs repair." : "You should be comfortable with factoring, exponents, function notation, slopes, and finite limits. Use the diagnostic when you are unsure."}</p></div></section>
+    <header className="limits-map-intro"><div><p className="eyebrow">Core textbook</p><h2>The complete Unit {page.unit.code} path</h2></div><p>{profile.pathIntro}</p></header>
+    <section className="calculus-prerequisites"><div><p className="eyebrow">What this unit teaches</p><h3>{profile.teachesTitle}</h3><p>{profile.teaches}</p></div><div><p className="eyebrow">Prerequisites</p><h3>{profile.prerequisitesTitle}</h3><p>{profile.prerequisites}</p></div></section>
     <div className="limits-chapter-map">{sections.map((section) => { const guidance = getCalculusUnitSectionGuidance(page.unit.id, section.id); return <section className="limits-chapter" id={`unit-${section.id}`} key={section.id}><header><div><span>Section</span><h3>{section.title}</h3></div><p>{guidance.lens}</p></header><aside className="limits-reading-lens limits-map-lens" aria-label={`${section.title} reading lens`}><span>Reading lens</span><p>{guidance.mentalModel}</p></aside><ol>{core.filter((route) => route.sectionId === section.id).map((route) => <li key={route.path}><a href={route.path}><span>{String(route.coreSequenceIndex).padStart(2, "0")}</span><b>{route.title}</b><small>{labels[route.pageType] ?? route.pageType.replaceAll("-", " ")}</small></a></li>)}</ol></section>; })}</div>
     <header className="limits-map-intro limits-map-support-heading"><div><p className="eyebrow">Practice around the path</p><h2>Reviews, quizzes, diagnostics, and exams</h2></div><p>Use these after a section or whenever a worked example reveals a specific gap. The answer keys are separated so an honest first attempt stays easy.</p></header>
     <div className="limits-support-grid">{assessments.map((route) => <a href={route.path} key={route.path}><span>{route.pageType.replaceAll("-", " ")}</span><b>{route.title}</b><small>{route.description}</small></a>)}</div>
     <section className="limits-answer-key-map" aria-labelledby="calculus-answer-key-heading"><div><p className="eyebrow">Check your work</p><h2 id="calculus-answer-key-heading">Published exam answer keys</h2><p>Every exam has a separately routed, numbered key. Finish the exam first, then compare one item at a time.</p></div><div>{answerKeys.map((route) => <a href={route.path} key={route.path}><span>Complete key</span><b>{route.title}</b><small>{route.description}</small><strong>Open answer key →</strong></a>)}</div></section>
-    <header className="limits-map-intro limits-map-support-heading"><div><p className="eyebrow">Go deeper</p><h2>Optional explorations and focused articles</h2></div><p>These articles zoom in on one derivative pattern, proof idea, or decision. They are enrichment around the textbook path, not a replacement for it.</p></header>
+    <header className="limits-map-intro limits-map-support-heading"><div><p className="eyebrow">Go deeper</p><h2>Focused integral explorations</h2></div><p>These articles zoom in on {profile.focus}. They are enrichment around the textbook path, not a replacement for it.</p></header>
     <div className="limits-support-grid">{explorations.map((route) => <a href={route.path} key={route.path}><span>Advanced exploration</span><b>{route.title}</b><small>{route.description}</small></a>)}{focusedArticles.map(([href, title]) => <a href={href} key={href}><span>Focused article</span><b>{title}</b><small>A concise in-depth exploration connected to the main unit.</small></a>)}</div>
-    {applicationsUnit ? <section className="limits-exam-key-callout"><div><p className="eyebrow">Finish the derivative sequence</p><h2>Connect applications back to derivative foundations</h2><p>Use Unit 2A whenever an application reveals a differentiation gap, then return here and complete the model with units, assumptions, interpretation, and a reasonableness check.</p></div><a className="button button-ink" href="/subjects/math/calculus/derivatives/">Review Unit 2A foundations →</a></section> : <section className="limits-exam-key-callout"><div><p className="eyebrow">Next in the textbook</p><h2>Unit 2B: Applications of Derivatives</h2><p>Put derivative calculations to work in motion, approximation, related rates, curve analysis, optimization, indeterminate limits, and applied modeling.</p></div><a className="button button-ink" href="/subjects/math/calculus/derivative-applications/">Continue to Unit 2B →</a></section>}
+    {applicationsUnit ? <section className="limits-exam-key-callout"><div><p className="eyebrow">Finish the derivative sequence</p><h2>Connect applications back to derivative foundations</h2><p>Use Unit 2A whenever an application reveals a differentiation gap, then return here and complete the model with units, assumptions, interpretation, and a reasonableness check.</p></div><a className="button button-ink" href={UNIT_2A_ROOT}>Review Unit 2A foundations →</a></section> : integralUnit ? <section className="limits-exam-key-callout"><div><p className="eyebrow">Continue the integral story</p><h2>Explore applications of integration</h2><p>Carry accumulated contributions into area, volume, length, mass, work, fluid force, marginal quantities, and probability. The focused application articles remain available while Unit 3B completes its release gate.</p></div><a className="button button-ink" href="/subjects/math/calculus/integration-applications/">Explore integration applications →</a></section> : <section className="limits-exam-key-callout"><div><p className="eyebrow">Next in the textbook</p><h2>Unit 2B: Applications of Derivatives</h2><p>Put derivative calculations to work in motion, approximation, related rates, curve analysis, optimization, indeterminate limits, and applied modeling.</p></div><a className="button button-ink" href={UNIT_2B_ROOT}>Continue to Unit 2B →</a></section>}
   </section>;
 }
 
@@ -259,19 +298,24 @@ export function CalculusUnitPageContent({ page }: { page: CalculusUnitPublicPage
   const renderedChecks = new Set<string>();
   const embeddedCheckIds = collectEmbeddedCheckIds(page.page.nodes);
   const answerKey = page.related.find((route) => route.pageType === "answer-key");
-  const currentUnit = page.unit.code === "2B" ? "2B" : "2A";
-  const otherUnitRoot = currentUnit === "2A" ? UNIT_2B_ROOT : UNIT_2A_ROOT;
+  const currentUnit = page.unit.code === "2B" ? "2B" : page.unit.code === "3A" ? "3A" : "2A";
+  const companion = currentUnit === "2A"
+    ? { root: UNIT_2B_ROOT, label: "Continue to Unit 2B →" }
+    : currentUnit === "2B"
+      ? { root: UNIT_2A_ROOT, label: "Review Unit 2A foundations →" }
+      : { root: UNIT_2B_ROOT, label: "Review derivative applications →" };
+  const integralUnit = currentUnit.startsWith("3");
   const routeUrl = `https://bettergrades.net${page.route.path}`;
   const courseUrl = `https://bettergrades.net${page.unit.root}`;
   const schema = { "@context": "https://schema.org", "@graph": [
-    { "@type": page.route.pageType === "quiz" || page.route.pageType === "exam" ? "Quiz" : "LearningResource", "@id": `${routeUrl}#learning-resource`, name: page.route.title, description: page.route.description, url: routeUrl, educationalLevel: "Calculus I", learningResourceType: labels[page.route.pageType] ?? page.route.pageType.replaceAll("-", " "), about: [`Calculus Unit ${page.unit.code}`, page.unit.shortTitle, "derivatives"], isPartOf: { "@type": "Course", "@id": `${courseUrl}#course`, name: page.unit.title, courseCode: `Calculus I Unit ${page.unit.code}`, url: courseUrl, provider: { "@id": "https://bettergrades.net/#organization" } } },
+    { "@type": page.route.pageType === "quiz" || page.route.pageType === "exam" ? "Quiz" : "LearningResource", "@id": `${routeUrl}#learning-resource`, name: page.route.title, description: page.route.description, url: routeUrl, educationalLevel: "Calculus I", learningResourceType: labels[page.route.pageType] ?? page.route.pageType.replaceAll("-", " "), about: [`Calculus Unit ${page.unit.code}`, page.unit.shortTitle, integralUnit ? "integrals" : "derivatives"], isPartOf: { "@type": "Course", "@id": `${courseUrl}#course`, name: page.unit.title, courseCode: `Calculus I Unit ${page.unit.code}`, url: courseUrl, provider: { "@id": "https://bettergrades.net/#organization" } } },
     { "@type": "BreadcrumbList", "@id": `${routeUrl}#breadcrumbs`, itemListElement: page.route.breadcrumbs.map((crumb, index) => ({ "@type": "ListItem", position: index + 1, name: crumb.name, item: `https://bettergrades.net${crumb.path}` })) },
   ] };
   return <article className="limits-unit-page calculus-unit-page" data-page-type={page.route.pageType} data-unit-id={page.unit.id}>
     <header className="limits-unit-hero section-pad"><nav className="breadcrumbs">{page.route.breadcrumbs.map((crumb, index) => <span key={`${crumb.path}-${index}`}>{index > 0 && <i>/</i>}<a href={crumb.path}>{crumb.name}</a></span>)}</nav><CalculusUnitNavigation currentUnit={currentUnit} /><p className="eyebrow">Calculus I · Unit {page.unit.code} · {labels[page.route.pageType] ?? page.route.pageType.replaceAll("-", " ")}</p><h1>{page.route.title}</h1><p>{page.route.description}</p><div className="limits-progress"><strong>{page.route.isCore ? "Core textbook path" : "Supporting resource"}</strong><span>{page.route.isCore ? "Follow the sequence or choose a destination from the unit map." : "Use this page when the main sequence reveals a specific gap or question."}</span>{page.route.pageType !== "hub" && <a href={page.unit.root}>Open the Unit {page.unit.code} map →</a>}</div></header>
-    <div className="limits-unit-layout section-pad"><aside><strong>On this page</strong><span>Explanation and interactive practice</span>{answerKey && <a className="limits-key-aside" href={answerKey.path}>Exam answer key →</a>}<a href={page.unit.root}>Unit {page.unit.code} map →</a><a className="limits-unit-topic-link" href={otherUnitRoot}>{currentUnit === "2A" ? "Continue to Unit 2B →" : "Review Unit 2A foundations →"}</a><a href="/practice/math/calculus/">Calculus practice →</a></aside><div className="limits-unit-content">
+    <div className="limits-unit-layout section-pad"><aside><strong>On this page</strong><span>Explanation and interactive practice</span>{answerKey && <a className="limits-key-aside" href={answerKey.path}>Exam answer key →</a>}<a href={page.unit.root}>Unit {page.unit.code} map →</a><a className="limits-unit-topic-link" href={companion.root}>{companion.label}</a><a href="/practice/math/calculus/">Calculus practice →</a></aside><div className="limits-unit-content">
       {page.route.pageType === "hub" ? <UnitMap page={page} /> : <TextbookOrientation page={page} />}
-      {page.route.pageType === "practice" && <section className="limits-node limits-node-method calculus-practice-method"><header><span>Practice method</span><h2>Work in three passes</h2></header><div><p><strong>First, classify.</strong> Name the derivative idea or rule before writing algebra. This separates a recognition error from a calculation error.</p><p><strong>Second, solve without the key.</strong> Record a complete attempt, including domains, units, or interpretation when the prompt asks for them.</p><p><strong>Third, reveal one answer at a time.</strong> Compare the first line where your work differs, close the answer, and redo that item from a blank start.</p></div></section>}
+      {page.route.pageType === "practice" && <section className="limits-node limits-node-method calculus-practice-method"><header><span>Practice method</span><h2>Work in three passes</h2></header><div><p><strong>First, classify.</strong> Name the {integralUnit ? "integral output and structural method" : "derivative idea or rule"} before writing algebra. This separates a recognition error from a calculation error.</p><p><strong>Second, solve without the key.</strong> Record a complete attempt, including bounds, constants, domains, units, or interpretation when the prompt asks for them.</p><p><strong>Third, reveal one answer at a time.</strong> Compare the first line where your work differs, close the answer, and redo that item from a blank start.</p></div></section>}
       {page.route.pageType === "exam" && answerKey && <section className="limits-exam-key-callout"><div><p className="eyebrow">Answer key published</p><h2>Finish first. Then check every answer.</h2><p>The complete numbered key is online as its own easy-to-find route.</p></div><a className="button button-ink" href={answerKey.path}>View the complete answer key →</a></section>}
       <NodeChildren nodes={page.page.nodes} keyPrefix={page.route.id} unitId={page.unit.id} routeId={page.route.id} checks={checks} renderedChecks={renderedChecks} />
       {page.assessmentSet && <section className="calculus-assessment-set"><header><p className="eyebrow">Structured concept quiz</p><h2>{page.assessmentSet.title}</h2><p>Write a response before revealing the model. These conceptual items use an honest attempt-and-reveal rubric rather than pretending an open response has one machine-provable wording.</p></header>{page.assessmentSet.items.map((item) => <InteractiveProblem key={item.id} problem={{ id: item.id, unitId: page.unit.id, pageSlug: page.route.slug, promptLatex: item.promptLatex, answerType: item.answerType, choices: [], hints: [], difficulty: "conceptual", topics: [], skills: [], attemptRequiredBeforeReveal: true }} />)}</section>}
