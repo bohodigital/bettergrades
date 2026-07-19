@@ -56,15 +56,15 @@
     },
     {
       "problem_id": "u3a-rate-total-01",
-      "canonical_answer": "28",
+      "canonical_answer": "\\int_0^4 (3t)\\,dt",
       "accepted_answers": [
-        "28"
+        "3\\int_0^4 (t)\\,dt"
       ],
-      "normalization": "exact-integer",
-      "validator": "exact-integer",
-      "equivalence_policy": "standard-symbolic",
+      "normalization": "required-integral-setup",
+      "validator": "required-integral-setup",
+      "equivalence_policy": "equivalent-integral-structure",
       "tolerance": null,
-      "worked_solution_latex": "\\[2(4+5+3+2)=28\\text{ liters}.\\]",
+      "worked_solution_latex": "\\[V=\\int_0^4 3t\\,dt.\\] The integrand has units liters per minute and \\(dt\\) has units minutes, so the integral gives liters.",
       "feedback": {
         "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
         "incorrect": "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",

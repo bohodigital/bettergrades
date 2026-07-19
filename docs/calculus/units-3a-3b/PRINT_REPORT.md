@@ -10,3 +10,5 @@
 - The source handoff's student and editorial PDFs are not copied into the site or deployment package.
 
 The rendered-site suite verifies clean semantic output and print CSS invariants. Hosted print-preview sampling and any browser-specific discrepancy are recorded in the unit QA/release report.
+
+No browser-specific print discrepancy was found in the source/rendered checks. The release did not publish any handoff PDF. A separate physical-browser print dialog was not available in the production QA surface and is not claimed.

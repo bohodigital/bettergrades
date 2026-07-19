@@ -70,18 +70,18 @@
       "problem_id": "u3a-rate-total-01",
       "unit_id": "calc-1-unit-3a-integral-foundations-techniques",
       "page_slug": "subjects/math/calculus/integrals/rates-to-total-change",
-      "prompt_latex": "A pump delivers water at rates \\(4,5,3,2\\) liters/minute over four consecutive 2-minute intervals. Use those interval rates to estimate the total delivered volume.",
-      "answer_type": "integer",
+      "prompt_latex": "Water enters a tank at the rate \\(r(t)=3t\\) liters per minute for \\(0\\le t\\le4\\). Write a definite integral that gives the total volume delivered; do not evaluate it.",
+      "answer_type": "integral_setup",
       "choices": [],
       "hints": [
-        "Multiply each rate by the common interval width and add."
+        "Accumulated volume is the integral of the rate over the full time interval."
       ],
       "difficulty": "course-practice",
       "topics": [
         "rates-to-total-change"
       ],
       "skills": [
-        "standard-symbolic"
+        "equivalent-integral-structure"
       ],
       "provenance": {
         "composition_status": "BetterGrades-original verified handoff composition; source references remain rights-separated."

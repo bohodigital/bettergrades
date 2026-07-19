@@ -212,6 +212,19 @@ function injectExerciseSolutions(nodes, answerRoute) {
   return result;
 }
 
+function removeResidualListSource(nodes) {
+  return nodes.map((node) => ({
+    ...node,
+    ...(node.text ? {
+      text: node.text
+        .replace(/\\item(?:\[([^\]]+)\])?/g, (_, label) => label ? ` • ${label}: ` : " • ")
+        .replace(/\s+/g, " ")
+        .trim(),
+    } : {}),
+    ...(node.children ? { children: removeResidualListSource(node.children) } : {}),
+  }));
+}
+
 function parseMarkdownAnswerKey(markdown, title) {
   const source = String(markdown ?? "").replace(/\r\n?/g, "\n");
   const parts = source.split(/^##\s+(\d+)\s*$/gm);
@@ -254,6 +267,7 @@ const compiledPages = sourcePages.map((page) => {
         visualIds: visualIdsFor(route),
         enumerateAsExercises: Boolean(exerciseAnswerRoute) || ["diagnostic", "exam", "practice"].includes(route.page_type),
       });
+      if (handoff) nodes = removeResidualListSource(nodes);
       if (exerciseAnswerRoute) nodes = injectExerciseSolutions(nodes, exerciseAnswerRoute);
     }
   } catch (error) {
@@ -310,6 +324,24 @@ const validatorToAnswerType = {
   "symbolic-equivalence": "symbolic_expression",
 };
 
+function assessmentOverride(problemId) {
+  if (requested !== "unit-3a" || problemId !== "u3a-rate-total-01") return null;
+  return {
+    public: {
+      input_type: "expression",
+      prompt_latex: "Water enters a tank at the rate \\(r(t)=3t\\) liters per minute for \\(0\\le t\\le4\\). Write a definite integral that gives the total volume delivered; do not evaluate it.",
+    },
+    server: {
+      canonical_answer: "\\int_0^4 (3t)\\,dt",
+      accepted_answers: ["3\\int_0^4 (t)\\,dt"],
+      validator: "required-integral-setup",
+      equivalence_policy: "equivalent-integral-structure",
+      hint_latex: "Accumulated volume is the integral of the rate over the full time interval.",
+      solution_latex: "\\[V=\\int_0^4 3t\\,dt.\\] The integrand has units liters per minute and \\(dt\\) has units minutes, so the integral gives liters.",
+    },
+  };
+}
+
 function normalizedAssessments() {
   if (!handoff) return { publicProblems: publicInput, serverProblems: serverInput, publicSets: publicSetInput, serverSets: serverSetInput };
   const serverById = new Map(sourceProblemsServer.map((problem) => [problem.assessment_id, problem]));
@@ -318,14 +350,17 @@ function normalizedAssessments() {
     unit_id: unitId,
     problem_count: sourceProblemsPublic.length,
     problems: sourceProblemsPublic.map((problem) => {
-      const secret = serverById.get(problem.assessment_id);
-      if (!secret) throw new Error(`${problem.assessment_id} has no server assessment.`);
+      const sourceSecret = serverById.get(problem.assessment_id);
+      if (!sourceSecret) throw new Error(`${problem.assessment_id} has no server assessment.`);
+      const override = assessmentOverride(problem.assessment_id);
+      const publicProblem = { ...problem, ...override?.public };
+      const secret = { ...sourceSecret, ...override?.server };
       return {
         problem_id: problem.assessment_id,
         unit_id: unitId,
         page_slug: problem.route_id,
-        prompt_latex: problem.prompt_latex,
-        answer_type: validatorToAnswerType[secret.validator] ?? problem.input_type.replaceAll("-", "_"),
+        prompt_latex: publicProblem.prompt_latex,
+        answer_type: validatorToAnswerType[secret.validator] ?? publicProblem.input_type.replaceAll("-", "_"),
         choices: problem.choices ?? [],
         hints: problem.has_hint && secret.hint_latex ? [secret.hint_latex] : [],
         difficulty: "course-practice",
@@ -339,7 +374,9 @@ function normalizedAssessments() {
     schema_version: index.schema_version,
     unit_id: unitId,
     problem_count: sourceProblemsServer.length,
-    problems: sourceProblemsServer.map((problem) => ({
+    problems: sourceProblemsServer.map((sourceProblem) => {
+      const problem = { ...sourceProblem, ...assessmentOverride(sourceProblem.assessment_id)?.server };
+      return {
       problem_id: problem.assessment_id,
       canonical_answer: problem.canonical_answer,
       accepted_answers: problem.accepted_answers,
@@ -353,7 +390,8 @@ function normalizedAssessments() {
         incorrect: "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
         uncertain: "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution.",
       },
-    })),
+    };
+    }),
   };
   const serverSetsById = new Map(sourceSetsServer.map((set) => [set.assessment_set_id, set]));
   const publicSets = {

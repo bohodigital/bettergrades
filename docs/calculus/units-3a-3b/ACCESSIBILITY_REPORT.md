@@ -12,3 +12,5 @@
 - Responsive Lens blocks, tables, and visual containers are bounded against horizontal overflow.
 
 The automated accessibility and keyboard contracts pass locally. Hosted desktop/mobile, light/dark, keyboard, reduced-motion, and JavaScript-disabled observations are recorded in the unit release report.
+
+Live desktop review confirmed light/dark switching, no horizontal overflow, interactive visual status feedback, fallback retention, attempt-gated answer controls, and semantic answer-key content. The available browser could not create a true mobile viewport; mobile-device evidence is therefore not claimed beyond the narrow-layout regression suite. JavaScript-disabled behavior is covered by retained server-rendered SVG and content fallbacks rather than a separate hosted browser session.

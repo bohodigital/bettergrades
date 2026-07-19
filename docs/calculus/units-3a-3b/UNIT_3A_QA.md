@@ -17,4 +17,4 @@ The Unit 3A source candidate passes:
 - canonical, index/follow, sitemap, search, analytics, search-identity, security-header, and 404 regressions; and
 - full existing Unit 1, Unit 2A, and Unit 2B regressions.
 
-Final local suite: 202 tests passed, 0 failed. The exact commit, owner-only Sites version, Git integration, immutable deployment, hosted browser matrix, and live crawl are release evidence and are recorded in `UNIT_3A_RELEASE.md`.
+Corrective-candidate local suite: 202 tests passed, 0 failed. The initial release's Pi-native build and suite passed after the one heap-limited rendered file was rerun with a bounded 4 GB Node heap; the corrected candidate receives a fresh Pi-native validation before merge. Exact commits, owner-only Sites versions, Git integration, immutable deployments, hosted browser evidence, and the limitation for true mobile emulation are recorded in `UNIT_3A_RELEASE.md`.
