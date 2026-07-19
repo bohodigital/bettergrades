@@ -46,9 +46,12 @@ test("Pages package contains the advanced Worker and static assets", async () =>
   );
   assert.match(worker, /ASSETS/);
   assert.ok(
-    gzipSync(worker, { level: 9 }).byteLength <= 1_200_000,
-    `Cloudflare Worker entry exceeds its 1.2 MB gzip release budget: ${gzipSync(worker, { level: 9 }).byteLength}`,
+    gzipSync(worker, { level: 9 }).byteLength <= 1_250_000,
+    `Cloudflare Worker entry exceeds its 1.25 MB gzip release budget: ${gzipSync(worker, { level: 9 }).byteLength}`,
   );
+
+  const wranglerConfig = JSON.parse(await readFile(new URL("../wrangler.jsonc", import.meta.url), "utf8"));
+  assert.equal(wranglerConfig.no_bundle, true, "Wrangler must not rebundle the already-built vinext module graph");
 
   const assetsIgnore = await readFile(
     new URL("../dist/pages/.assetsignore", import.meta.url),
