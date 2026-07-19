@@ -153,13 +153,13 @@ const sceneDefinitions = {
     annotation("volume-rule", 7.1, 6.15, "One slab is approximately A(x) dx; integration adds all slabs."),
   ]),
 
-  "U3B-V03": () => geometry({ xMin: 0, xMax: 12, yMin: 0, yMax: 7.4 }, [
+  "U3B-V03": () => geometry({ xMin: 0, xMax: 12, yMin: -0.6, yMax: 7.4 }, [
     polygon("washer-region", [[0.8, 1.2], [4.3, 1.2], [4.3, 4.3], [0.8, 5.4]], "Region between two curves above the rotation axis.", "visual-secondary", "dots"),
     guide("rotation-axis", 0.3, 0.7, 5, 0.7, "Horizontal axis of rotation.", "visual-ink", "double"),
     guide("moving-outer-radius", expr("p"), 0.7, expr("p"), expr("5.64-0.31p"), "Outer radius R(x), measured from the axis.", "visual-primary", "double"),
     guide("moving-inner-radius", expr("p+0.12"), 0.7, expr("p+0.12"), 1.2, "Inner radius r(x), measured from the axis.", "visual-emphasis", "dashed"),
     label("outer-radius-source-label", 2.2, 5.95, "R(x): axis to upper curve"),
-    label("inner-radius-source-label", 2.2, 0.25, "r(x): axis to lower curve"),
+    label("inner-radius-source-label", 2.2, -0.3, "r(x): axis to lower curve"),
     unlabeledSeries("outer-circle", { xValues: circle(8.5, 3.5, 2.35).map(([x]) => x), yValues: circle(8.5, 3.5, 2.35).map(([, y]) => y) }, "Outer washer boundary R.", "visual-primary", "double"),
     unlabeledSeries("inner-circle", { xValues: circle(8.5, 3.5, 0.9).map(([x]) => x), yValues: circle(8.5, 3.5, 0.9).map(([, y]) => y) }, "Inner washer boundary r.", "visual-emphasis", "dashed"),
     guide("washer-r", 8.5, 3.5, 9.4, 3.5, "Inner radius r.", "visual-emphasis", "dashed"),

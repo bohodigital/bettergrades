@@ -41,3 +41,11 @@ test("the enhancement exposes a visible failure while preserving parent fallback
   assert.match(source, /minHeight:\s*44/);
 });
 
+test("the lightweight renderer draws connected and unconnected sampled series", () => {
+  const source = readFileSync(join(ROOT, "BgInteractive2D.tsx"), "utf8");
+  assert.match(source, /layer\.kind === "sampled-series"/);
+  assert.match(source, /geometry\.connect/);
+  assert.match(source, /<polyline/);
+  assert.match(source, /<circle key=\{`\$\{layer\.id\}-\$\{index\}`\}/);
+});
+

@@ -64,6 +64,7 @@ type TangentGeometry = { point: RuntimePointValue; slope: RuntimeValue };
 type SecantGeometry = { firstPoint: RuntimePointValue; secondPoint: RuntimePointValue };
 type PositionGeometry = { position: RuntimePointValue };
 type CircleGeometry = { center: RuntimePointValue; radius: RuntimeValue };
+type SampledSeriesGeometry = { xValues: number[]; yValues: number[]; connect: boolean };
 type PolygonGeometry = { points: RuntimePointValue[] };
 type RegionGeometry = { boundaryLayerIds: string[] };
 type TextGeometry = { position?: RuntimePointValue; anchor?: RuntimePointValue; content: PublicCompiledScene["title"] };
@@ -314,6 +315,18 @@ function renderLayer({
     strokeDasharray: dashArray(layer),
     vectorEffect: "non-scaling-stroke" as const,
   };
+  if (layer.kind === "sampled-series") {
+    const geometry = layer.geometry as SampledSeriesGeometry;
+    const points = geometry.xValues.map((x, index) => ({ x: plot.x(x), y: plot.y(geometry.yValues[index]) }));
+    if (geometry.connect) {
+      return <polyline
+        points={points.map((point) => `${point.x.toFixed(2)},${point.y.toFixed(2)}`).join(" ")}
+        fill="none"
+        {...common}
+      />;
+    }
+    return <g>{points.map((point, index) => <circle key={`${layer.id}-${index}`} cx={point.x} cy={point.y} r={3} fill={fill} {...common} />)}</g>;
+  }
   if (layer.kind === "function" || layer.kind === "piecewise-branch") {
     const geometry = layer.geometry as FunctionGeometry;
     const d = sampleExpressionPath(
