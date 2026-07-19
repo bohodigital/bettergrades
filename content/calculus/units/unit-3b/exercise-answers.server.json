@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "unitId": "calc-1-unit-3b-integration-applications",
+  "routes": [
+    {
+      "routeId": "subjects/math/calculus/integration-applications/physics-application-studio",
+      "answers": [
+        {
+          "response": "An antiderivative is \\(V(t)=t^3/3-2t^2+3t\\). Displacement is \\(V(4)-V(0)=4/3\\). Velocity is positive on \\([0,1]\\), negative on \\([1,3]\\), and positive on \\([3,4]\\), so distance is \\(4/3+4/3+4/3=4\\). Displacement keeps direction; distance adds the magnitudes of each signed contribution."
+        },
+        {
+          "response": "Hooke's law gives \\(k=12/0.06=200\\,\\mathrm{N/m}\\). Therefore \\(W=\\int_{0.10}^{0.25}200x\\,dx=100[x^2]_{0.10}^{0.25}=5.25\\,\\mathrm{J}\\). The nonzero lower bound matters because the requested work begins after the spring is already stretched."
+        },
+        {
+          "response": "Let \\(y\\) measure height from the bottom. A slice has volume \\(12\\,dy\\), weight \\(9800(12)\\,dy\\), and lift distance \\(3-y\\). Thus \\(W=117600\\int_0^2(3-y)\\,dy=470400\\,\\mathrm{J}\\). The factors are weight density, slice volume, and lift distance."
+        },
+        {
+          "response": "At depth \\(y\\), similar triangles give strip width \\(w(y)=4(1-y/3)\\). Pressure is \\(9800y\\), so \\(F=9800\\int_0^3y\\,4(1-y/3)\\,dy=58800\\,\\mathrm{N}\\). Depth is measured from the water surface, where pressure begins at zero."
+        },
+        {
+          "response": "Mass is \\(m=\\int_0^L(a+bx)\\,dx=aL+bL^2/2\\). The first moment is \\(M=\\int_0^Lx(a+bx)\\,dx=aL^2/2+bL^3/3\\). Hence \\(\\bar x=M/m=(aL^2/2+bL^3/3)/(aL+bL^2/2)\\). Because density increases with \\(x\\), the balance point lies to the right of the geometric midpoint when \\(b>0\\)."
+        },
+        {
+          "response": "With spacing \\(\\Delta x=1\\), the Trapezoidal Rule gives \\(W\\approx[5/2+7+8+10+14/2](1)=34.5\\,\\mathrm{J}\\). Force is graphed against distance, so the accumulated area has units newton-meters, which are joules."
+        }
+      ]
+    },
+    {
+      "routeId": "subjects/math/calculus/integration-applications/review",
+      "answers": [
+        {
+          "response": "On \\([0,2]\\), the line is above the parabola. Therefore \\(A=\\int_0^2(2x-x^2)\\,dx=[x^2-x^3/3]_0^2=4/3\\). A nonnegative slice height confirms that this is geometric area."
+        },
+        {
+          "response": "Solve for horizontal boundaries: \\(x=y/2\\) is left and \\(x=\\sqrt y\\) is right for \\(0\\le y\\le4\\). Thus \\(A=\\int_0^4(\\sqrt y-y/2)\\,dy=4/3\\), agreeing with the vertical-slice result."
+        },
+        {
+          "response": "About the \\(x\\)-axis, \\(V=\\pi\\int_0^2[(2x)^2-(x^2)^2]\\,dx=64\\pi/15\\). About the \\(y\\)-axis, \\(V=2\\pi\\int_0^2x(2x-x^2)\\,dx=8\\pi/3\\). Washers use outer radius minus inner radius squared; shells use radius times vertical height. These are different solids because the axes differ."
+        },
+        {
+          "response": "The diameter is \\(d(x)=\\sqrt{4-x^2}\\), so each semicircle has area \\(A(x)=\\pi d(x)^2/8=\\pi(4-x^2)/8\\). Therefore \\(V=\\pi/8\\int_{-2}^{2}(4-x^2)\\,dx=4\\pi/3\\)."
+        },
+        {
+          "response": "Since \\(y'=2\\), \\(L=\\int_0^3\\sqrt{1+(y')^2}\\,dx=\\int_0^3\\sqrt5\\,dx=3\\sqrt5\\). The endpoints differ by \\(3\\) horizontally and \\(6\\) vertically, so their distance is \\(\\sqrt{3^2+6^2}=3\\sqrt5\\)."
+        },
+        {
+          "response": "Mass is \\(m=\\int_0^3(2+x)\\,dx=21/2\\). The moment about the origin is \\(M=\\int_0^3x(2+x)\\,dx=18\\). Hence \\(\\bar x=M/m=12/7\\), which reasonably lies inside the rod and to the right of its midpoint."
+        },
+        {
+          "response": "Hooke's law gives \\(F(x)=200x\\). Thus \\(W=\\int_{0.10}^{0.30}200x\\,dx=100(0.30^2-0.10^2)=8\\,\\mathrm{J}\\)."
+        },
+        {
+          "response": "At height \\(y\\) above the vertex, similar triangles give radius \\(r(y)=y/2\\), area \\(\\pi y^2/4\\), and lift distance \\(5-y\\). Therefore \\(W=9800\\int_0^4(\\pi y^2/4)(5-y)\\,dy=313600\\pi/3\\,\\mathrm{J}\\)."
+        },
+        {
+          "response": "A strip at depth \\(y\\) has area \\(2\\,dy\\) and pressure \\(9800y\\). Hence \\(F=9800\\int_0^3 2y\\,dy=88200\\,\\mathrm{N}\\)."
+        },
+        {
+          "response": "The added cost is \\(\\int_{100}^{200}(20+0.04q)\\,dq=2600\\) dollars. Therefore \\(C(200)=C(100)+2600=7600\\) dollars. Integrating marginal cost accumulates the cost of the additional units only."
+        }
+      ]
+    },
+    {
+      "routeId": "subjects/math/calculus/integration-applications/cumulative-practice",
+      "answers": [
+        {
+          "response": "The intersections satisfy \\(x^2=2x+3\\), so \\(x=-1,3\\). The line is above the parabola between them. Thus \\(A=\\int_{-1}^{3}(2x+3-x^2)\\,dx=32/3\\)."
+        },
+        {
+          "response": "Measured from \\(y=-1\\), the outer radius is \\(R=2x+4\\) and inner radius is \\(r=x^2+1\\). Therefore \\(V=\\pi\\int_{-1}^{3}[(2x+4)^2-(x^2+1)^2]\\,dx=1408\\pi/15\\). Both radii are distances from the axis, not distances between curves."
+        },
+        {
+          "response": "A shell has radius \\(x+2\\) and height \\(2x+3-x^2\\). Thus \\(V=2\\pi\\int_{-1}^{3}(x+2)(2x+3-x^2)\\,dx=64\\pi\\)."
+        },
+        {
+          "response": "The square side is the vertical base width \\(s(x)=2x+3-x^2\\). Hence \\(V=\\int_{-1}^{3}(2x+3-x^2)^2\\,dx=512/15\\). Squaring the side produces cross-sectional area before integration adds the slabs."
+        },
+        {
+          "response": "Here \\(y'=(3/2)\\sqrt x\\), so \\(L=\\int_0^{4/9}\\sqrt{1+9x/4}\\,dx=\\frac{8}{27}[(1+9x/4)^{3/2}]_0^{4/9}=\\frac{8}{27}(2\\sqrt2-1)\\)."
+        },
+        {
+          "response": "Mass is \\(m=\\int_0^1(1+x^2)\\,dx=4/3\\). The first moment is \\(M=\\int_0^1x(1+x^2)\\,dx=3/4\\). Therefore \\(\\bar x=M/m=9/16\\)."
+        },
+        {
+          "response": "Using \\(F(x)=kx=200x\\), \\(W=\\int_{0.10}^{0.30}200x\\,dx=8\\,\\mathrm{J}\\). The bounds are extensions from equilibrium, not total spring length."
+        },
+        {
+          "response": "At height \\(y\\) above the bottom, the liquid width is \\(3y/2\\), so a slice has volume \\(4(3y/2)\\,dy=6y\\,dy\\) and lift distance \\(2-y\\). Thus \\(W=9800\\int_0^2 6y(2-y)\\,dy=78400\\,\\mathrm{J}\\)."
+        },
+        {
+          "response": "At depth \\(y\\), width is \\(4(1-y/3)\\). Therefore \\(F=9800\\int_0^3y\\,4(1-y/3)\\,dy=58800\\,\\mathrm{N}\\). The pressure grows with depth while the gate width shrinks."
+        },
+        {
+          "response": "Accumulated variable cost is \\(\\int_0^{300}(15+0.02q)\\,dq=5400\\). Adding fixed cost gives \\(C(300)=2000+5400=7400\\) dollars."
+        },
+        {
+          "response": "Normalization requires \\(1=\\int_0^2kx\\,dx=2k\\), so \\(k=1/2\\). Then \\(E[X]=\\int_0^2x(\\tfrac12x)\\,dx=4/3\\). The density is nonnegative on its support and its total area is one."
+        }
+      ]
+    }
+  ]
+}

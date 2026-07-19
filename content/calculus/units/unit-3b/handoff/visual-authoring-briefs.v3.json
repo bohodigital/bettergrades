@@ -1,0 +1,193 @@
+{
+  "schema_version": "3.0.0",
+  "unit_id": "calc-1-unit-3b-integration-applications",
+  "visual_briefs": [
+    {
+      "title": "Vertical slices between two curves",
+      "learning_purpose": "Show top-minus-bottom slice height and accumulated region.",
+      "recommended_renderer": "interactive-2d",
+      "visual_kind": "cartesian-2d",
+      "composition": "Curves y=2x and y=x^2 on [0,2], movable vertical slice.",
+      "interaction": "Draggable slice x.",
+      "long_description": "A vertical strip extends from lower curve x^2 to upper curve 2x; its height is 2x-x^2.",
+      "misconception_control": "Keep graph scale equal enough that region shape is not misleading.",
+      "schema_version": "3.0.0",
+      "visual_id": "U3B-V01",
+      "route_id": "subjects/math/calculus/integration-applications/area-between-curves",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "interactive-2d",
+        "static-svg-fallback",
+        "keyboard-controls",
+        "reduced-motion",
+        "parameter-control"
+      ],
+      "provenance_id": "prov-visual-u3b-v01"
+    },
+    {
+      "title": "A solid assembled from cross-sectional slices",
+      "learning_purpose": "Show a base interval, one cross-section, and stacked slices.",
+      "recommended_renderer": "static-svg",
+      "visual_kind": "geometry-2d",
+      "composition": "Perspective diagram with x-axis, slice thickness dx, cross-sectional area A(x), and volume sum.",
+      "interaction": "",
+      "long_description": "A solid is decomposed into thin slabs; each slab volume is approximately A(x)dx.",
+      "misconception_control": "Do not imply slices are literally infinitesimal physical objects.",
+      "schema_version": "3.0.0",
+      "visual_id": "U3B-V02",
+      "route_id": "subjects/math/calculus/integration-applications/volumes-by-slicing",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "static-svg",
+        "accessible-description",
+        "print-fallback"
+      ],
+      "provenance_id": "prov-visual-u3b-v02"
+    },
+    {
+      "title": "Washer geometry",
+      "learning_purpose": "Show outer radius, inner radius, and thickness for rotation around a horizontal axis.",
+      "recommended_renderer": "interactive-2d",
+      "visual_kind": "geometry-2d",
+      "composition": "Region and a representative vertical slice rotated into a washer; labeled R(x), r(x), dx.",
+      "interaction": "Slider moves slice.",
+      "long_description": "A vertical strip rotated around the x-axis forms a washer with outer and inner radii.",
+      "misconception_control": "Measure radii from the axis, not from the other curve.",
+      "schema_version": "3.0.0",
+      "visual_id": "U3B-V03",
+      "route_id": "subjects/math/calculus/integration-applications/disks-and-washers",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "interactive-2d",
+        "static-svg-fallback",
+        "keyboard-controls",
+        "reduced-motion",
+        "parameter-control"
+      ],
+      "provenance_id": "prov-visual-u3b-v03"
+    },
+    {
+      "title": "Cylindrical shell from a vertical strip",
+      "learning_purpose": "Show radius, height, circumference, and thickness.",
+      "recommended_renderer": "interactive-2d",
+      "visual_kind": "geometry-2d",
+      "composition": "Vertical strip at x rotating around y-axis into shell; labels x, height, dx.",
+      "interaction": "Move slice.",
+      "long_description": "A vertical strip at distance x from the y-axis forms a shell of radius x and height top-bottom.",
+      "misconception_control": "Do not confuse shell radius with function height.",
+      "schema_version": "3.0.0",
+      "visual_id": "U3B-V04",
+      "route_id": "subjects/math/calculus/integration-applications/cylindrical-shells",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "interactive-2d",
+        "static-svg-fallback",
+        "keyboard-controls",
+        "reduced-motion"
+      ],
+      "provenance_id": "prov-visual-u3b-v04"
+    },
+    {
+      "title": "Polygonal approximation to arc length",
+      "learning_purpose": "Show a curve approximated by many short chord segments.",
+      "recommended_renderer": "static-svg",
+      "visual_kind": "cartesian-2d",
+      "composition": "Smooth curve with adjustable number of line segments and total length estimate.",
+      "interaction": "n slider.",
+      "long_description": "A curve is approximated by polygonal chords whose total length approaches arc length.",
+      "misconception_control": "Do not describe dx and dy as independent finite legs in the final formula.",
+      "schema_version": "3.0.0",
+      "visual_id": "U3B-V05",
+      "route_id": "subjects/math/calculus/integration-applications/arc-length",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "static-svg",
+        "accessible-description",
+        "print-fallback"
+      ],
+      "provenance_id": "prov-visual-u3b-v05"
+    },
+    {
+      "title": "Balance point of a nonuniform rod",
+      "learning_purpose": "Show density, weighted moment, and center of mass location.",
+      "recommended_renderer": "static-svg",
+      "visual_kind": "number-line",
+      "composition": "Rod with varying shading, labeled center of mass and two sample mass elements.",
+      "interaction": "",
+      "long_description": "A nonuniform rod balances at x-bar, shifted toward the denser side.",
+      "misconception_control": "Do not imply center of mass must be geometric midpoint.",
+      "schema_version": "3.0.0",
+      "visual_id": "U3B-V06",
+      "route_id": "subjects/math/calculus/integration-applications/moments-and-center-of-mass",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "static-svg",
+        "accessible-description",
+        "print-fallback"
+      ],
+      "provenance_id": "prov-visual-u3b-v06"
+    },
+    {
+      "title": "Work as force-distance accumulation",
+      "learning_purpose": "Show force curve and thin work contribution F(x)dx.",
+      "recommended_renderer": "static-svg",
+      "visual_kind": "cartesian-2d",
+      "composition": "Force versus position graph with shaded strip and accumulated work area.",
+      "interaction": "",
+      "long_description": "Area under a force-position graph has units newton-meters and equals work.",
+      "misconception_control": "Do not graph force versus time for a force-distance work integral without a change of variables.",
+      "schema_version": "3.0.0",
+      "visual_id": "U3B-V07",
+      "route_id": "subjects/math/calculus/integration-applications/work-and-variable-force",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "static-svg",
+        "accessible-description",
+        "print-fallback"
+      ],
+      "provenance_id": "prov-visual-u3b-v07"
+    },
+    {
+      "title": "A horizontal liquid slice lifted to an outlet",
+      "learning_purpose": "Show slice volume, weight, lift distance, and tank geometry.",
+      "recommended_renderer": "interactive-2d",
+      "visual_kind": "geometry-2d",
+      "composition": "Vertical tank diagram with movable horizontal slice and labeled A(y), dy, distance D(y).",
+      "interaction": "Slider moves slice height.",
+      "long_description": "A thin liquid layer at height y has volume A(y)dy and must be lifted D(y).",
+      "misconception_control": "Keep density, weight density, and mass density distinct.",
+      "schema_version": "3.0.0",
+      "visual_id": "U3B-V08",
+      "route_id": "subjects/math/calculus/integration-applications/pumping-liquids",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "interactive-2d",
+        "static-svg-fallback",
+        "keyboard-controls",
+        "reduced-motion",
+        "parameter-control"
+      ],
+      "provenance_id": "prov-visual-u3b-v08"
+    },
+    {
+      "title": "Pressure increasing with depth on a submerged plate",
+      "learning_purpose": "Show horizontal strip, depth, pressure, strip width, and force.",
+      "recommended_renderer": "static-svg",
+      "visual_kind": "geometry-2d",
+      "composition": "Submerged vertical plate with waterline and movable horizontal strip.",
+      "interaction": "Move strip.",
+      "long_description": "Pressure arrows grow with depth; force on strip equals pressure times strip area.",
+      "misconception_control": "Depth is measured below surface, not from tank bottom unless coordinates are converted.",
+      "schema_version": "3.0.0",
+      "visual_id": "U3B-V09",
+      "route_id": "subjects/math/calculus/integration-applications/fluid-pressure",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "static-svg",
+        "accessible-description",
+        "print-fallback"
+      ],
+      "provenance_id": "prov-visual-u3b-v09"
+    }
+  ]
+}

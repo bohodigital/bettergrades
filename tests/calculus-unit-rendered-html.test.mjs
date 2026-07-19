@@ -136,7 +136,7 @@ test("all Unit 3A pages render as clean integral-textbook pages", async () => {
     assert.match(text, /Calculus I.*Unit 3A/, route.path);
     assert.match(html, /aria-label="Calculus Unit 3 course navigation"/, route.path);
     assert.match(html, /href="\/subjects\/math\/calculus\/integrals\/"[^>]+aria-current="location"/, route.path);
-    assert.match(html, /href="\/subjects\/math\/calculus\/derivative-applications\/"/, route.path);
+    assert.match(html, /href="\/subjects\/math\/calculus\/integration-applications\/"/, route.path);
     const renderedTitle = route.title.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("'", "&#x27;").replaceAll('"', "&quot;");
     assert.match(html, new RegExp(`<h1>${escapeRegExp(renderedTitle)}</h1>`), route.path);
     if (route.pageType !== "hub" && !/Unit 3A/.test(route.title)) assert.match(html, /<title>[^<]+\| Unit 3A \| Better Grades<\/title>/, route.path);
@@ -162,5 +162,55 @@ test("the Unit 3A map leads with the textbook and preserves focused integral art
   assert.match(text, /Begin with antiderivatives and accumulated change/);
   assert.match(text, /Focused integral explorations/);
   assert.match(html, /href="\/subjects\/math\/calculus\/integration-techniques\/"/);
-  assert.match(html, /href="\/subjects\/math\/calculus\/derivative-applications\/"/);
+  assert.match(html, /href="\/subjects\/math\/calculus\/integration-applications\/"/);
+});
+
+test("all Unit 3B pages render as clean application-textbook pages", async () => {
+  const unitRoutes = calculusUnitRoutes.filter((route) => route.unitId === "calc-1-unit-3b-integration-applications");
+  assert.equal(unitRoutes.length, 25);
+  const answerCounts = new Map([
+    ["/subjects/math/calculus/integration-applications/physics-application-studio/", 6],
+    ["/subjects/math/calculus/integration-applications/review/", 10],
+    ["/subjects/math/calculus/integration-applications/cumulative-practice/", 11],
+  ]);
+  for (const route of unitRoutes) {
+    const response = await render(route.path);
+    assert.equal(response.status, 200, route.path);
+    const html = await response.text();
+    const text = visibleText(html);
+    assert.match(html, /data-unit-id="calc-1-unit-3b-integration-applications"/, route.path);
+    assert.match(text, /Calculus I.*Unit 3B/, route.path);
+    assert.match(html, /aria-label="Calculus Unit 3 course navigation"/, route.path);
+    assert.match(html, /href="\/subjects\/math\/calculus\/integration-applications\/"[^>]+aria-current="location"/, route.path);
+    assert.match(html, /href="\/subjects\/math\/calculus\/integrals\/"/, route.path);
+    const renderedTitle = route.title.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("'", "&#x27;").replaceAll('"', "&quot;");
+    assert.match(html, new RegExp(`<h1>${escapeRegExp(renderedTitle)}</h1>`), route.path);
+    if (route.pageType !== "hub" && !/Unit 3B/.test(route.title)) assert.match(html, /<title>[^<]+\| Unit 3B \| Better Grades<\/title>/, route.path);
+    assert.doesNotMatch(text, /\\(?:begin|end|frac|varepsilon|textbf|emph|section|chapter|addplot|draw|node)\b|\$\$|\\[()[\]]/, route.path);
+    assert.doesNotMatch(text, /\b\d+\s+(?:topics|pages|study hours|interactive checks|BVLP visuals)\b/i, route.path);
+    assert.doesNotMatch(html, /This equation could not be rendered safely|This visual is temporarily unavailable|class="katex-error"/, route.path);
+    const renderedCheckIds = [...html.matchAll(/data-check-id="([^"]+)"/g)].map((match) => match[1]);
+    assert.equal(renderedCheckIds.length, new Set(renderedCheckIds).size, `${route.path} renders each interactive check once`);
+    if (route.pageType !== "hub") {
+      assert.match(html, /Section overview/, route.path);
+      assert.match(html, /Reading lens/, route.path);
+    }
+    if (answerCounts.has(route.path)) assert.equal((html.match(/Show supplied answer/g) ?? []).length, answerCounts.get(route.path), route.path);
+    if (route.pageType === "exam") assert.match(html, /View the complete answer key/, route.path);
+  }
+});
+
+test("the Unit 3B map leads with its textbook, published keys, application studios, and Unit 3A return path", async () => {
+  const response = await render("/subjects/math/calculus/integration-applications/");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  const text = visibleText(html);
+  assert.match(text, /The complete Unit 3B path/);
+  assert.match(text, /Begin with one-dimensional area/);
+  assert.match(text, /Published exam answer keys/);
+  assert.match(text, /Focused integral explorations/);
+  assert.match(text, /Return easily to Unit 3A foundations/);
+  assert.match(html, /href="\/subjects\/math\/calculus\/integrals\/"/);
+  assert.match(html, /href="\/subjects\/math\/calculus\/integration-applications\/practice-exam-a-answer-key\/"/);
+  assert.match(html, /href="\/subjects\/math\/calculus\/integration-applications\/physics-application-studio\/"/);
 });

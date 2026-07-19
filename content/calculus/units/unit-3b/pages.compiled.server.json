@@ -1,0 +1,2843 @@
+{
+  "schemaVersion": 1,
+  "unitId": "calc-1-unit-3b-integration-applications",
+  "pageCount": 25,
+  "pages": [
+    {
+      "routeId": "subjects/math/calculus/integration-applications",
+      "nodes": [
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Unit 3B: Applications of Integration"
+        },
+        {
+          "type": "paragraph",
+          "text": "Unit 3A built the integral as accumulated change and developed methods for computing it. Unit 3B uses that machinery in standard geometric, physical, and quantitative applications. The emphasis is not on collecting exotic formulas. It is on constructing the correct small contribution, integrating over the correct variable, and interpreting the result with units."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Unit map"
+        },
+        {
+          "type": "paragraph",
+          "text": "• Area between curves • Volumes by slicing, disks, washers, shells, and known cross-sections • Arc length and surface area • Density, mass, moments, and center of mass • Work, springs, pumping, and fluid pressure • Accumulation from marginal quantities and probability densities • Review, modeling practice, practice exams and published answer keys"
+        },
+        {
+          "type": "concept",
+          "title": "The application template",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={The application template}] Nearly every application follows the same structure:"
+            },
+            {
+              "type": "math",
+              "tex": "\\text{total}=\\lim\\sum(\\text{local contribution})=\\int(\\text{contribution density})\\,d(\\text{input})."
+            },
+            {
+              "type": "paragraph",
+              "text": "The hard part is choosing the contribution correctly. Once the model is right, the calculus is often routine."
+            }
+          ]
+        }
+      ],
+      "sectionId": "orientation",
+      "sectionTitle": "Orientation and applications roadmap",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integration-applications/area-between-curves",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Set up and evaluate area integrals using top-minus-bottom or right-minus-left."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Area Between Curves"
+        },
+        {
+          "type": "exposition",
+          "title": "Area is built from the length of a representative slice",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Area is built from the length of a representative slice}] For a vertical slice, the local height of a region is top minus bottom. Multiplying that height by a small width \\(dx\\) gives a thin rectangle whose area approximates the corresponding piece of the region. Integrating adds these pieces. The formula is therefore not a slogan to memorize but a direct description of the geometry of one slice."
+            },
+            {
+              "type": "paragraph",
+              "text": "The first task is to find intersections and determine which curve is on top over each interval. If the order changes, the setup must be split. A negative result is a warning that the curves were subtracted in the wrong order, because geometric area cannot be negative. Sketching the region and drawing one labeled slice is usually faster than repairing an integral assembled blindly."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "For vertical slices,"
+        },
+        {
+          "type": "math",
+          "tex": "A=\\int_a^b[\\text{top}-\\text{bottom}]dx."
+        },
+        {
+          "type": "paragraph",
+          "text": "For horizontal slices,"
+        },
+        {
+          "type": "math",
+          "tex": "A=\\int_c^d[\\text{right}-\\text{left}]dy."
+        },
+        {
+          "type": "guided-walkthrough",
+          "title": "Area enclosed by a line and parabola",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Area enclosed by a line and parabola}] Find the area between \\(y=2x\\) and \\(y=x^2\\)."
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Intersections satisfy \\(2x=x^2\\), so \\(x=0,2\\). On \\([0,2]\\), \\(2x\\ge x^2\\). Therefore"
+                },
+                {
+                  "type": "math",
+                  "tex": "A=\\int_0^2(2x-x^2)dx\n=\\left[x^2-\\frac{x^3}{3}\\right]_0^2\n=\\frac43."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u3b-area-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the area between \\(y=2x\\) and \\(y=x^2\\) from \\(x=0\\) to \\(x=2\\)."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Integrate top minus bottom."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "\\int_0^2(2x-x^2)dx=4/3."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "visual-reference",
+          "visualId": "u3b-v01",
+          "title": "Visual study"
+        }
+      ],
+      "sectionId": "area-volume",
+      "sectionTitle": "Area and volume",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integration-applications/horizontal-slices",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Choose the orientation that avoids unnecessary piecewise integrals."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Choosing Vertical or Horizontal Slices"
+        },
+        {
+          "type": "exposition",
+          "title": "Choose the orientation that describes the region simply",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Choose the orientation that describes the region simply}] Vertical slices are not automatically superior. Some regions are naturally described by right-minus-left as functions of \\(y\\), especially when the boundaries are already given as \\(x=g(y)\\). The orientation should be chosen to make each slice a single segment with a simple length and to avoid unnecessary piecewise formulas."
+            },
+            {
+              "type": "paragraph",
+              "text": "Draw both a vertical and a horizontal test slice before committing to an integral. Ask which boundaries the slice touches and whether those boundaries change as the slice moves. The differential must match the orientation: vertical slices have thickness \\(dx\\), horizontal slices have thickness \\(dy\\). This small planning step often turns a two-integral mess into one clean calculation."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "A region may be simple vertically but piecewise horizontally, or vice versa. Sketch first. Draw one representative slice. Label its length using the axis perpendicular to the slice."
+        },
+        {
+          "type": "worked-example",
+          "title": "A sideways region",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={A sideways region}] The region between \\(x=y^2\\) and \\(x=2y+3\\) is naturally described with horizontal slices. Intersections solve \\(y^2=2y+3\\), giving \\(y=-1,3\\). Since the line lies to the right,"
+            },
+            {
+              "type": "math",
+              "tex": "A=\\int_{-1}^{3}[(2y+3)-y^2]dy."
+            },
+            {
+              "type": "paragraph",
+              "text": "A vertical setup would require solving for \\(y\\) and splitting the region."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u3b-slice-choice-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "For the region bounded by \\(x=y^2\\) and \\(x=y+2\\), which slice orientation gives one integral most naturally?"
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Both boundaries are already functions of \\(y\\)."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Use horizontal slices."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sectionId": "area-volume",
+      "sectionTitle": "Area and volume",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integration-applications/volumes-by-slicing",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Model volume as the integral of cross-sectional area."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Volumes by Slicing"
+        },
+        {
+          "type": "exposition",
+          "title": "A solid is accumulated cross-sectional area",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={A solid is accumulated cross-sectional area}] If we know the area of a cross-section at each position, a thin slab has volume approximately equal to cross-sectional area times thickness. Summing the slabs and taking a limit gives \\(V=\\int A(x)\\,dx\\) or \\(V=\\int A(y)\\,dy\\). This principle covers far more than solids of revolution: squares, triangles, semicircles, and other prescribed shapes all fit the same model."
+            },
+            {
+              "type": "paragraph",
+              "text": "The essential modeling step is translating a length in the base region into the dimension of the cross-section. State whether that length is a side, diameter, radius, base, or height before writing \\(A(x)\\). Units provide a useful check: area units times length units must produce cubic units. If the integrand does not have units of volume per unit input, the geometry has probably been mistranslated."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "If a solid has cross-sectional area \\(A(x)\\) perpendicular to the \\(x\\)-axis, then"
+        },
+        {
+          "type": "math",
+          "tex": "V=\\int_a^bA(x)\\,dx."
+        },
+        {
+          "type": "paragraph",
+          "text": "A thin slab has approximate volume \\(A(x_i^*)\\Delta x\\). The integral adds the slabs in the limit."
+        },
+        {
+          "type": "application",
+          "title": "A wedge with triangular cross-sections",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={A wedge with triangular cross-sections}] A solid has base \\(0\\le x\\le4\\), and the cross-section at \\(x\\) is an equilateral triangle with side \\(s(x)=\\sqrt{x}\\). Since triangle area is \\(\\sqrt3s^2/4\\),"
+            },
+            {
+              "type": "math",
+              "tex": "A(x)=\\frac{\\sqrt3}{4}x,\n\\qquad\nV=\\int_0^4\\frac{\\sqrt3}{4}x\\,dx=2\\sqrt3."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u3b-slicing-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "A solid has square cross-sections of side \\(x\\) for \\(0\\le x\\le2\\). Find its volume."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Cross-sectional area is \\(x^2\\)."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "\\int_0^2x^2\\,dx=\\frac{8}{3}."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "visual-reference",
+          "visualId": "u3b-v02",
+          "title": "Visual study"
+        }
+      ],
+      "sectionId": "area-volume",
+      "sectionTitle": "Area and volume",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integration-applications/disks-and-washers",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Construct radius functions and integrate cross-sectional areas for solids of revolution."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Disks and Washers"
+        },
+        {
+          "type": "exposition",
+          "title": "Radii are distances from the axis of rotation",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Radii are distances from the axis of rotation}] Disks and washers arise from slices perpendicular to the axis of rotation. The radius is not automatically the function value; it is the distance from the axis to the boundary. If the region does not touch the axis, rotation leaves a hole, and the cross-sectional area is outer disk minus inner disk: \\(\\pi(R^2-r^2)\\)."
+            },
+            {
+              "type": "paragraph",
+              "text": "A labeled representative slice prevents most mistakes. Mark the axis, the outer radius, the inner radius, and the thickness before integrating. If the axis is shifted, use distance expressions such as \\(f(x)-c\\) rather than copying \\(f(x)\\). Square the radii only after those distances are correct. The geometry decides the formula; the algebra merely carries it out."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Rotating a region around an axis creates circular cross-sections. A disk has area \\(\\pi R^2\\). A washer has area"
+        },
+        {
+          "type": "math",
+          "tex": "\\pi(R^2-r^2)."
+        },
+        {
+          "type": "guided-walkthrough",
+          "title": "Rotate a region around the x-axis",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Rotate a region around the x-axis}] Rotate the region under \\(y=\\sqrt{x}\\) from \\(x=0\\) to \\(x=4\\) around the \\(x\\)-axis."
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Each vertical slice forms a disk of radius \\(R(x)=\\sqrt{x}\\). Therefore"
+                },
+                {
+                  "type": "math",
+                  "tex": "V=\\pi\\int_0^4(\\sqrt{x})^2dx\n=\\pi\\int_0^4x\\,dx=8\\pi."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u3b-disk-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the volume obtained by rotating \\(y=\\sqrt{x}\\), \\(0\\le x\\le4\\), around the x-axis."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Use disks with radius \\(\\sqrt{x}\\)."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "V=\\pi\\int_0^4x\\,dx=8\\pi."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "visual-reference",
+          "visualId": "u3b-v03",
+          "title": "Visual study"
+        }
+      ],
+      "sectionId": "area-volume",
+      "sectionTitle": "Area and volume",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integration-applications/cylindrical-shells",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Use radius-times-height shell formulas and choose shells when they simplify the geometry."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Cylindrical Shells"
+        },
+        {
+          "type": "exposition",
+          "title": "Shells accumulate thin cylindrical walls",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Shells accumulate thin cylindrical walls}] A strip parallel to the axis of rotation sweeps out a thin cylindrical shell. Its volume is approximately circumference times height times thickness: \\(2\\pi(\\text{radius})(\\text{height})(\\text{thickness})\\). The radius is the strip's distance from the axis, while the height is the length of the strip inside the region."
+            },
+            {
+              "type": "paragraph",
+              "text": "Shells are especially useful when washers would require solving for the other variable or splitting the region. They preserve the original orientation of many function descriptions. As with every volume method, draw one strip and imagine its rotation. If the strip is parallel to the axis, shells are natural; if it is perpendicular, disks or washers are natural. That geometric distinction is more reliable than memorizing which formula uses \\(dx\\)."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "A thin cylindrical shell has approximate volume"
+        },
+        {
+          "type": "math",
+          "tex": "2\\pi(\\text{radius})(\\text{height})(\\text{thickness})."
+        },
+        {
+          "type": "paragraph",
+          "text": "Thus"
+        },
+        {
+          "type": "math",
+          "tex": "V=2\\pi\\int_a^b r(x)h(x)\\,dx."
+        },
+        {
+          "type": "worked-example",
+          "title": "Rotate under a parabola around the y-axis",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Rotate under a parabola around the y-axis}] Rotate the region under \\(y=4-x^2\\) above the \\(x\\)-axis for \\(0\\le x\\le2\\) about the \\(y\\)-axis. Shell radius is \\(x\\), height is \\(4-x^2\\):"
+            },
+            {
+              "type": "math",
+              "tex": "V=2\\pi\\int_0^2x(4-x^2)dx=8\\pi."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u3b-shell-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Use shells to rotate the region under \\(y=4-x^2\\), \\(0\\le x\\le2\\), about the y-axis."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Radius is \\(x\\), height is \\(4-x^2\\)."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "2\\pi\\int_0^2x(4-x^2)dx=8\\pi."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "visual-reference",
+          "visualId": "u3b-v04",
+          "title": "Visual study"
+        }
+      ],
+      "sectionId": "area-volume",
+      "sectionTitle": "Area and volume",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integration-applications/choosing-a-volume-method",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Choose slices and variables that minimize algebra and interval splitting."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Choosing a Volume Method"
+        },
+        {
+          "type": "exposition",
+          "title": "Choose the slice before choosing the formula",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Choose the slice before choosing the formula}] Volume problems become confusing when students begin with a formula instead of a geometric slice. Start by drawing the region and the axis of rotation. Then test a vertical and horizontal strip. A strip perpendicular to the axis produces disks or washers, while a strip parallel to the axis produces shells. The best method is the one that describes the entire solid with the fewest simple pieces."
+            },
+            {
+              "type": "paragraph",
+              "text": "Method choice should reduce algebra and avoid unnecessary inverse functions. A correct but awkward setup may still be inferior if another orientation gives one clean integral. Record the radius, height, or cross-sectional area directly on the sketch and check units before evaluating. The calculation is usually routine once the geometry has been made explicit; most of the intellectual work occurs before the integral sign appears."
+            }
+          ]
+        },
+        {
+          "type": "decision",
+          "title": "Method selection",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Method selection}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "• Slices perpendicular to the axis of rotation produce disks or washers. • Slices parallel to the axis produce shells. • Use \\(dx\\) for vertical slices and \\(dy\\) for horizontal slices. • Sketch one slice and its rotation before writing an integral. • Prefer the method that gives one simple integral over several awkward pieces."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u3b-volume-choice-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "A region is described by \\(y=f(x)\\) and rotated around the y-axis. Which method often avoids solving for x as a function of y?"
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Vertical strips are parallel to the y-axis."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Cylindrical shells often preserve the given x-description."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sectionId": "area-volume",
+      "sectionTitle": "Area and volume",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integration-applications/arc-length",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Derive and apply the arc-length formula for graphs in x or y."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Arc Length"
+        },
+        {
+          "type": "exposition",
+          "title": "Curved length is a limit of straight lengths",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Curved length is a limit of straight lengths}] To measure a curve, approximate it by many short line segments. Each segment is the hypotenuse of a tiny right triangle with horizontal change \\(\\Delta x\\) and vertical change \\(\\Delta y\\). The Pythagorean theorem gives the segment length, and the derivative replaces the ratio \\(\\Delta y/\\Delta x\\) in the limiting process. This produces the arc-length factor \\(\\sqrt{1+[f'(x)]^2}\\)."
+            },
+            {
+              "type": "paragraph",
+              "text": "Arc-length integrals are often harder to evaluate than they are to set up. The square root may not simplify to an elementary antiderivative, so a numerical answer can be the appropriate final result. Distinguish setup from evaluation: a correct exact integral already represents the length. Check the special case of a straight line, where the formula should agree with the ordinary distance formula."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "A short piece of curve behaves approximately like the hypotenuse of a tiny right triangle:"
+        },
+        {
+          "type": "math",
+          "tex": "\\Delta s\\approx\\sqrt{(\\Delta x)^2+(\\Delta y)^2}."
+        },
+        {
+          "type": "paragraph",
+          "text": "Dividing by \\(\\Delta x\\) and passing to the limit gives"
+        },
+        {
+          "type": "math",
+          "tex": "L=\\int_a^b\\sqrt{1+[f'(x)]^2}\\,dx."
+        },
+        {
+          "type": "worked-example",
+          "title": "Length of a straight line",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Length of a straight line}] For \\(f(x)=2x+1\\) on \\([0,3]\\), \\(f'=2\\), so"
+            },
+            {
+              "type": "math",
+              "tex": "L=\\int_0^3\\sqrt5\\,dx=3\\sqrt5."
+            },
+            {
+              "type": "paragraph",
+              "text": "This matches the distance formula between \\((0,1)\\) and \\((3,7)\\)."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u3b-arc-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the arc length of \\(y=2x+1\\) on \\([0,3]\\)."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "The derivative is constant 2."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "L=\\int_0^3\\sqrt{1+4}\\,dx=3\\sqrt5."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "visual-reference",
+          "visualId": "u3b-v05",
+          "title": "Visual study"
+        }
+      ],
+      "sectionId": "length-mass",
+      "sectionTitle": "Length, surface, mass, and balance",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integration-applications/surface-area-of-revolution",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Construct surface-area integrals from circumference times arc-length elements."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Surface Area of Revolution"
+        },
+        {
+          "type": "exposition",
+          "title": "Surface area combines circumference with slanted length",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Surface area combines circumference with slanted length}] A short piece of curve has length approximately \\(ds\\). Rotating it around an axis creates a narrow band whose area is approximately circumference times slanted width, \\(2\\pi r\\,ds\\). Substituting the arc-length element gives the standard surface-area formula. This explains why surface area includes both a radius factor and a square-root derivative factor."
+            },
+            {
+              "type": "paragraph",
+              "text": "The radius must be measured from the chosen axis, and the curve must be described without double-counting the surface. Surface-area integrals are sensitive to setup and may be difficult to evaluate exactly. A complete solution should identify the radius, the arc-length factor, the interval, and the units. Comparing simple cases with known cone or cylinder formulas is an excellent check on the model."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Rotating a short arc element around an axis produces a thin frustum-like band. Around the \\(x\\)-axis,"
+        },
+        {
+          "type": "math",
+          "tex": "S=2\\pi\\int_a^bf(x)\\sqrt{1+[f'(x)]^2}\\,dx,"
+        },
+        {
+          "type": "paragraph",
+          "text": "provided \\(f(x)\\ge0\\). The radius must be measured from the axis of rotation."
+        },
+        {
+          "type": "worked-example",
+          "title": "A cone from a line segment",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={A cone from a line segment}] Rotate \\(y=x\\), \\(0\\le x\\le1\\), around the \\(x\\)-axis:"
+            },
+            {
+              "type": "math",
+              "tex": "S=2\\pi\\int_0^1x\\sqrt2\\,dx=\\pi\\sqrt2."
+            },
+            {
+              "type": "paragraph",
+              "text": "This is the lateral surface area of a cone with radius \\(1\\) and slant height \\(\\sqrt2\\)."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u3b-surface-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the surface area generated by rotating \\(y=x\\), \\(0\\le x\\le1\\), around the x-axis."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Use radius x and arc factor \\(\\sqrt2\\)."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "2\\pi\\int_0^1x\\sqrt2dx=\\pi\\sqrt2."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sectionId": "length-mass",
+      "sectionTitle": "Length, surface, mass, and balance",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integration-applications/density-and-mass",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Integrate linear density, area density, or volume density to find mass."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Density and Mass"
+        },
+        {
+          "type": "exposition",
+          "title": "Density tells how mass is distributed",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Density tells how mass is distributed}] When density is constant, mass is density times size. When density varies, divide the object into small pieces. A short rod segment of length \\(dx\\) has mass approximately \\(\\lambda(x)dx\\), an area element has mass approximately \\(\\rho(x)dA\\), and a volume element has mass approximately \\(\\delta(x)dV\\). Integration adds the nonuniform contributions."
+            },
+            {
+              "type": "paragraph",
+              "text": "The form of the density must match the dimension of the object. Linear density has units of mass per length, surface density has mass per area, and volume density has mass per volume. Multiplying by the corresponding differential element should leave units of mass. This unit cancellation is one of the cleanest ways to verify that the model uses the correct density and integration variable."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "For a thin rod along \\([a,b]\\) with linear density \\(\\lambda(x)\\) mass per length,"
+        },
+        {
+          "type": "math",
+          "tex": "m=\\int_a^b\\lambda(x)\\,dx."
+        },
+        {
+          "type": "paragraph",
+          "text": "The same idea extends to surface and volume density with area or volume elements."
+        },
+        {
+          "type": "application",
+          "title": "A rod with increasing density",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={A rod with increasing density}] A 3-meter rod has density \\(\\lambda(x)=2+x\\) kilograms per meter. Its mass is"
+            },
+            {
+              "type": "math",
+              "tex": "m=\\int_0^3(2+x)dx=\\frac{21}{2}\\text{ kg}."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u3b-mass-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "A 3-meter rod has density \\(2+x\\) kg/m. Find its mass."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Integrate density over position."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "\\int_0^3(2+x)dx=21/2\\text{ kg}."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sectionId": "length-mass",
+      "sectionTitle": "Length, surface, mass, and balance",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integration-applications/moments-and-center-of-mass",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Compute the first moment and center of mass of a one-dimensional object."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Moments and Center of Mass"
+        },
+        {
+          "type": "exposition",
+          "title": "Center of mass is a weighted average of position",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Center of mass is a weighted average of position}] A center of mass is not generally the geometric midpoint. Pieces with more mass exert more influence on the balance point. The moment about an origin multiplies each small mass contribution by its position, and integrating produces the total weighted position. Dividing the moment by total mass gives the center of mass."
+            },
+            {
+              "type": "paragraph",
+              "text": "The choice of origin affects the moment but not the physical balance point after the coordinates are interpreted consistently. Symmetry can simplify calculations and should be used before integration. A sensible final answer must lie within the object's occupied interval or region. If it falls outside, either the moment sign, density, or total mass has been mishandled."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "For density \\(\\lambda(x)\\), mass is"
+        },
+        {
+          "type": "math",
+          "tex": "m=\\int_a^b\\lambda(x)dx,"
+        },
+        {
+          "type": "paragraph",
+          "text": "and the moment about the origin is"
+        },
+        {
+          "type": "math",
+          "tex": "M=\\int_a^bx\\lambda(x)dx."
+        },
+        {
+          "type": "paragraph",
+          "text": "The center of mass is"
+        },
+        {
+          "type": "math",
+          "tex": "\\bar{x}=\\frac{M}{m}."
+        },
+        {
+          "type": "worked-example",
+          "title": "Center of mass of the increasing-density rod",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Center of mass of the increasing-density rod}] For \\(\\lambda(x)=2+x\\) on \\([0,3]\\),"
+            },
+            {
+              "type": "math",
+              "tex": "m=\\frac{21}{2},\n\\qquad\nM=\\int_0^3x(2+x)dx=18."
+            },
+            {
+              "type": "paragraph",
+              "text": "Thus"
+            },
+            {
+              "type": "math",
+              "tex": "\\bar{x}=\\frac{18}{21/2}=\\frac{12}{7}\\text{ m}."
+            },
+            {
+              "type": "paragraph",
+              "text": "This lies to the right of the midpoint \\(1.5\\), as expected because density increases with \\(x\\)."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u3b-com-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "For density \\(\\lambda(x)=2+x\\) on \\([0,3]\\), find the center of mass."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Compute mass and moment, then divide."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "\\bar{x}=18/(21/2)=12/7."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "visual-reference",
+          "visualId": "u3b-v06",
+          "title": "Visual study"
+        }
+      ],
+      "sectionId": "length-mass",
+      "sectionTitle": "Length, surface, mass, and balance",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integration-applications/work-and-variable-force",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Model work as the integral of force over displacement and interpret units."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Work and Variable Force"
+        },
+        {
+          "type": "exposition",
+          "title": "Work accumulates force through distance",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Work accumulates force through distance}] For a constant force acting in the direction of motion, work is force times distance. If the force varies with position, divide the displacement into short intervals. On each interval, the force is approximately constant, so the local work is \\(F(x_i^*)\\Delta x\\). The integral \\(\\int_a^b F(x)\\,dx\\) is the limiting total."
+            },
+            {
+              "type": "paragraph",
+              "text": "Signs and units carry physical meaning. Force in the direction of displacement contributes positive work, while an opposing force contributes negative work. In SI units, newtons times meters give joules. A graph of force versus position makes the interpretation visible: work is signed area under the force curve, not area under a position or time graph unless the variables have been transformed appropriately."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "For constant force parallel to motion, \\(W=Fd\\). For varying force,"
+        },
+        {
+          "type": "math",
+          "tex": "W=\\int_a^bF(x)\\,dx."
+        },
+        {
+          "type": "paragraph",
+          "text": "In SI units, newtons times meters gives joules."
+        },
+        {
+          "type": "application",
+          "title": "A linearly increasing force",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={A linearly increasing force}] A force \\(F(x)=10+3x\\) newtons moves an object from \\(x=0\\) to \\(x=4\\) meters:"
+            },
+            {
+              "type": "math",
+              "tex": "W=\\int_0^4(10+3x)dx=64\\text{ J}."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u3b-work-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "A force \\(F(x)=10+3x\\) N moves an object from 0 to 4 m. Find the work."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Integrate force with respect to displacement."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "W=[10x+3x^2/2]_0^4=64\\text{ J}."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "visual-reference",
+          "visualId": "u3b-v07",
+          "title": "Visual study"
+        }
+      ],
+      "sectionId": "quantitative-applications",
+      "sectionTitle": "Physics and quantitative applications",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integration-applications/spring-work",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Use Hooke’s law and integrate variable spring force."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Work Done on Springs"
+        },
+        {
+          "type": "exposition",
+          "title": "A spring's force changes with extension",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={A spring's force changes with extension}] Hooke's Law models an ideal spring by \\(F(x)=kx\\), where \\(x\\) is displacement from the natural length and \\(k\\) is the spring constant. Because the required force grows as the spring is stretched or compressed farther, work cannot be found by multiplying one endpoint force by the entire distance. The force must be integrated over the displacement interval."
+            },
+            {
+              "type": "paragraph",
+              "text": "Be careful about the coordinate used for \\(x\\). If lengths are measured from a wall or from the spring's total length, first convert them to extension from equilibrium. The work done by an external agent and the work done by the spring have opposite signs, depending on the convention. State which quantity is being computed and include consistent units for \\(k\\), displacement, and work."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Hooke's law gives \\(F(x)=kx\\), where \\(x\\) is displacement from equilibrium. Work to stretch from \\(a\\) to \\(b\\) is"
+        },
+        {
+          "type": "math",
+          "tex": "W=\\int_a^bkx\\,dx=\\frac{k}{2}(b^2-a^2)."
+        },
+        {
+          "type": "worked-example",
+          "title": "Calibrate the spring first",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Calibrate the spring first}] A 20-newton force stretches a spring \\(0.10\\) meter. Then \\(k=20/0.10=200\\) N/m. Work to stretch from equilibrium to \\(0.25\\) meter is"
+            },
+            {
+              "type": "math",
+              "tex": "\\int_0^{0.25}200x\\,dx=6.25\\text{ J}."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u3b-spring-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "A spring has \\(k=200\\) N/m. Find the work to stretch it from 0 to 0.25 m."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Integrate \\(200x\\) from 0 to 0.25."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "100(0.25)^2=6.25\\text{ J}."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sectionId": "quantitative-applications",
+      "sectionTitle": "Physics and quantitative applications",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integration-applications/pumping-liquids",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Build work integrals from slice volume, fluid weight density, and lifting distance."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Pumping Liquids"
+        },
+        {
+          "type": "exposition",
+          "title": "Every fluid layer travels a different distance",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Every fluid layer travels a different distance}] Pumping problems combine three local quantities: the volume of a thin fluid slice, its weight per unit volume, and the distance that slice must be lifted. A horizontal slice at height \\(y\\) has volume approximately \\(A(y)dy\\), weight approximately \\(\\gamma A(y)dy\\), and work approximately weight times lifting distance. Integrating over the fluid depth adds the work for all slices."
+            },
+            {
+              "type": "paragraph",
+              "text": "The lifting distance is often the most commonly omitted factor. It must be measured from the slice's current height to the outlet, not from the bottom of the tank unless those distances happen to coincide. A sketch with the coordinate axis, fluid level, slice, and outlet labeled is essential. The resulting integrand should have units of energy per unit height before multiplication by \\(dy\\)."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "For a horizontal slice at height \\(y\\):"
+        },
+        {
+          "type": "math",
+          "tex": "\\text{slice volume}=A(y)\\,dy,"
+        },
+        {
+          "type": "math",
+          "tex": "\\text{slice weight}=\\delta A(y)\\,dy,"
+        },
+        {
+          "type": "paragraph",
+          "text": "where \\(\\delta\\) is weight density, and"
+        },
+        {
+          "type": "math",
+          "tex": "dW=\\delta A(y)D(y)\\,dy."
+        },
+        {
+          "type": "application",
+          "title": "Pump water from a rectangular tank",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Pump water from a rectangular tank}] A tank is 4 m long, 3 m wide, and 2 m deep, filled with water. Pump water to an outlet 1 m above the top. Let \\(y\\) measure height from the bottom. Cross-sectional area is \\(12\\), lift distance is \\(3-y\\), and water weight density is approximately \\(9800\\) N/m\\(^3\\):"
+            },
+            {
+              "type": "math",
+              "tex": "W=9800\\int_0^2 12(3-y)dy."
+            },
+            {
+              "type": "paragraph",
+              "text": "The setup is the main modeling achievement; evaluation is routine."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u3b-pump-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "For the rectangular water tank described in the lesson, write the work integral."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Use weight density times cross-sectional area times lifting distance."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "W=9800\\int_0^2 12(3-y)dy."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "visual-reference",
+          "visualId": "u3b-v08",
+          "title": "Visual study"
+        }
+      ],
+      "sectionId": "quantitative-applications",
+      "sectionTitle": "Physics and quantitative applications",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integration-applications/fluid-pressure",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Integrate pressure over a submerged surface using horizontal strips."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Fluid Pressure and Hydrostatic Force"
+        },
+        {
+          "type": "exposition",
+          "title": "Pressure depends on depth, force also depends on area",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Pressure depends on depth, force also depends on area}] Fluid pressure increases linearly with depth according to \\(p=\\gamma h\\), where \\(\\gamma\\) is weight density. Pressure alone is not force. A thin strip of a submerged plate experiences force approximately equal to pressure at that depth times the strip's area. Integrating these strip forces gives the total hydrostatic force."
+            },
+            {
+              "type": "paragraph",
+              "text": "The depth variable and strip width depend on the geometry and coordinate choice. A strip near the surface has lower pressure than an equally sized strip deeper down. For vertical plates, horizontal strips usually keep depth constant across each strip and are therefore natural. Check that pressure units multiplied by area units produce force units, and distinguish depth below the surface from height above the bottom."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Fluid pressure at depth \\(h\\) is"
+        },
+        {
+          "type": "math",
+          "tex": "p=\\delta h,"
+        },
+        {
+          "type": "paragraph",
+          "text": "where \\(\\delta\\) is weight density. A horizontal strip of width \\(w(y)\\) and thickness \\(dy\\) has area \\(w(y)dy\\), so"
+        },
+        {
+          "type": "math",
+          "tex": "dF=\\delta h(y)w(y)dy."
+        },
+        {
+          "type": "application",
+          "title": "A rectangular gate",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={A rectangular gate}] A vertical rectangular gate is 2 m wide and extends from the water surface to depth 3 m. With \\(y\\) measured downward,"
+            },
+            {
+              "type": "math",
+              "tex": "F=9800\\int_0^3 y(2)dy=88200\\text{ N}."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u3b-fluid-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "A 2 m wide rectangular gate extends from the water surface to depth 3 m. Use water weight density \\(9800\\,\\mathrm{N/m^3}\\). Find the total force."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Integrate \\(9800\\cdot y\\cdot2\\) from 0 to 3."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "19600[y^2/2]_0^3=88200\\text{ N}."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "visual-reference",
+          "visualId": "u3b-v09",
+          "title": "Visual study"
+        }
+      ],
+      "sectionId": "quantitative-applications",
+      "sectionTitle": "Physics and quantitative applications",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integration-applications/marginal-quantities",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Integrate marginal cost, revenue, or profit to recover total change."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Recovering Totals from Marginal Quantities"
+        },
+        {
+          "type": "exposition",
+          "title": "A marginal function is a rate of total change",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={A marginal function is a rate of total change}] In economics, a marginal quantity is a derivative. Marginal cost \\(C'(q)\\) measures the approximate change in total cost for one additional unit near production level \\(q\\). Integrating a marginal function over a production interval recovers the net change in the corresponding total function. One known total value is then needed to recover the absolute total."
+            },
+            {
+              "type": "paragraph",
+              "text": "The interpretation should not be reduced to symbol manipulation. The integral \\(\\int_a^b C'(q)\\,dq\\) is the increase in cost from producing \\(a\\) units to producing \\(b\\) units, not the total cost at \\(b\\) unless \\(C(a)=0\\). Units provide the distinction: dollars per unit times units gives dollars. The same reasoning applies to marginal revenue, marginal profit, and other accumulated business quantities."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "If \\(C'(q)\\) is marginal cost in dollars per unit, then the added cost of increasing production from \\(q=a\\) to \\(q=b\\) is"
+        },
+        {
+          "type": "math",
+          "tex": "C(b)-C(a)=\\int_a^bC'(q)dq."
+        },
+        {
+          "type": "paragraph",
+          "text": "An initial fixed cost determines the constant when a complete cost function is required."
+        },
+        {
+          "type": "application",
+          "title": "Production expansion",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Production expansion}] Suppose \\(C'(q)=20+0.04q\\) dollars per item and \\(C(0)=5000\\). Then"
+            },
+            {
+              "type": "math",
+              "tex": "C(q)=20q+0.02q^2+5000."
+            },
+            {
+              "type": "paragraph",
+              "text": "The cost of expanding production from 100 to 150 items is"
+            },
+            {
+              "type": "math",
+              "tex": "\\int_{100}^{150}(20+0.04q)dq."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u3b-marginal-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "If \\(C'(q)=20+0.04q\\), find the added cost from \\(q=100\\) to \\(q=200\\)."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Integrate marginal cost over the production interval."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "\\bigl[20q+0.02q^2\\bigr]_{100}^{200}=2600."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sectionId": "quantitative-applications",
+      "sectionTitle": "Physics and quantitative applications",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integration-applications/probability-density",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Interpret probability as accumulated density and calculate expected value for a continuous model."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Probability Density and Expected Value"
+        },
+        {
+          "type": "exposition",
+          "title": "Probability is continuous mass distributed over outcomes",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Probability is continuous mass distributed over outcomes}] For a continuous random variable, a density function does not give the probability of one exact value. Probabilities come from integrating density over intervals. The total area under a valid density must equal one, and the density must be nonnegative. Thus \\(\\int_a^b f(x)\\,dx\\) measures the probability that the random variable falls between \\(a\\) and \\(b\\)."
+            },
+            {
+              "type": "paragraph",
+              "text": "Expected value is a weighted average in which each possible value is weighted by its density. The integral \\(E[X]=\\int x f(x)\\,dx\\) is therefore closely related to center of mass. A density may be greater than one at some points without violating probability rules; only integrated probability must lie between zero and one. Always verify normalization before using a proposed function as a probability density."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "A probability density \\(p(x)\\) satisfies \\(p(x)\\ge0\\) and"
+        },
+        {
+          "type": "math",
+          "tex": "\\int_{-\\infty}^{\\infty}p(x)dx=1."
+        },
+        {
+          "type": "paragraph",
+          "text": "Probabilities are areas:"
+        },
+        {
+          "type": "math",
+          "tex": "P(a\\le X\\le b)=\\int_a^bp(x)dx."
+        },
+        {
+          "type": "paragraph",
+          "text": "The expected value is"
+        },
+        {
+          "type": "math",
+          "tex": "E[X]=\\int_{-\\infty}^{\\infty}xp(x)dx,"
+        },
+        {
+          "type": "paragraph",
+          "text": "when the improper integral converges."
+        },
+        {
+          "type": "worked-example",
+          "title": "A simple triangular density",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={A simple triangular density}] Let \\(p(x)=2x\\) on \\([0,1]\\) and \\(0\\) elsewhere. It is normalized because"
+            },
+            {
+              "type": "math",
+              "tex": "\\int_0^12x\\,dx=1."
+            },
+            {
+              "type": "paragraph",
+              "text": "Then"
+            },
+            {
+              "type": "math",
+              "tex": "P(X\\le1/2)=\\int_0^{1/2}2x\\,dx=\\frac14,"
+            },
+            {
+              "type": "paragraph",
+              "text": "and"
+            },
+            {
+              "type": "math",
+              "tex": "E[X]=\\int_0^1x(2x)dx=\\frac23."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u3b-prob-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "For density \\(p(x)=2x\\) on \\([0,1]\\), find \\(P(X\\le1/2)\\)."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Integrate the density from 0 to 1/2."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "[x^2]_0^{1/2}=1/4."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sectionId": "quantitative-applications",
+      "sectionTitle": "Physics and quantitative applications",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integration-applications/physics-application-studio",
+      "nodes": [
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Physics Application Studio"
+        },
+        {
+          "type": "modeling-lab",
+          "title": "A compact set of standard models",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={A compact set of standard models}] For each situation, identify the local contribution, variable of integration, bounds, units, and final interpretation before evaluating."
+            },
+            {
+              "type": "exercise",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "A particle has velocity \\(v(t)=(t-1)(t-3)\\) for \\(0\\le t\\le4\\). Find its displacement and total distance traveled, and explain how the sign changes affect the two totals."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "title": "Exercise 1 answer",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "An antiderivative is \\(V(t)=t^3/3-2t^2+3t\\). Displacement is \\(V(4)-V(0)=4/3\\). Velocity is positive on \\([0,1]\\), negative on \\([1,3]\\), and positive on \\([3,4]\\), so distance is \\(4/3+4/3+4/3=4\\). Displacement keeps direction; distance adds the magnitudes of each signed contribution."
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "A spring requires \\(12\\,\\mathrm{N}\\) of force at an extension of \\(0.06\\,\\mathrm{m}\\). Find the work required to stretch it from \\(0.10\\,\\mathrm{m}\\) to \\(0.25\\,\\mathrm{m}\\) beyond equilibrium."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "title": "Exercise 2 answer",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Hooke's law gives \\(k=12/0.06=200\\,\\mathrm{N/m}\\). Therefore \\(W=\\int_{0.10}^{0.25}200x\\,dx=100[x^2]_{0.10}^{0.25}=5.25\\,\\mathrm{J}\\). The nonzero lower bound matters because the requested work begins after the spring is already stretched."
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "A rectangular tank is \\(4\\,\\mathrm{m}\\) long, \\(3\\,\\mathrm{m}\\) wide, and \\(2\\,\\mathrm{m}\\) deep. It is full of water, which is pumped to an outlet \\(1\\,\\mathrm{m}\\) above the top. Using water weight density \\(9800\\,\\mathrm{N/m^3}\\), set up and evaluate the work."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "title": "Exercise 3 answer",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Let \\(y\\) measure height from the bottom. A slice has volume \\(12\\,dy\\), weight \\(9800(12)\\,dy\\), and lift distance \\(3-y\\). Thus \\(W=117600\\int_0^2(3-y)\\,dy=470400\\,\\mathrm{J}\\). The factors are weight density, slice volume, and lift distance."
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "A triangular vertical plate has a \\(4\\,\\mathrm{m}\\) top edge at the water surface and a vertex \\(3\\,\\mathrm{m}\\) below the surface. Using water weight density \\(9800\\,\\mathrm{N/m^3}\\), find the hydrostatic force."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "title": "Exercise 4 answer",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "At depth \\(y\\), similar triangles give strip width \\(w(y)=4(1-y/3)\\). Pressure is \\(9800y\\), so \\(F=9800\\int_0^3y\\,4(1-y/3)\\,dy=58800\\,\\mathrm{N}\\). Depth is measured from the water surface, where pressure begins at zero."
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "A rod occupies \\(0\\le x\\le L\\) and has linear density \\(\\lambda(x)=a+bx\\), where \\(a,b,L>0\\). Find its mass, first moment about the origin, and center of mass."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "title": "Exercise 5 answer",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Mass is \\(m=\\int_0^L(a+bx)\\,dx=aL+bL^2/2\\). The first moment is \\(M=\\int_0^Lx(a+bx)\\,dx=aL^2/2+bL^3/3\\). Hence \\(\\bar x=M/m=(aL^2/2+bL^3/3)/(aL+bL^2/2)\\). Because density increases with \\(x\\), the balance point lies to the right of the geometric midpoint when \\(b>0\\)."
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Force-position data are \\(F(0)=5\\), \\(F(1)=7\\), \\(F(2)=8\\), \\(F(3)=10\\), and \\(F(4)=14\\) newtons. Estimate the work from \\(x=0\\) to \\(x=4\\) meters with the Trapezoidal Rule and state the units."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "title": "Exercise 6 answer",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "With spacing \\(\\Delta x=1\\), the Trapezoidal Rule gives \\(W\\approx[5/2+7+8+10+14/2](1)=34.5\\,\\mathrm{J}\\). Force is graphed against distance, so the accumulated area has units newton-meters, which are joules."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sectionId": "quantitative-applications",
+      "sectionTitle": "Physics and quantitative applications",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integration-applications/review",
+      "nodes": [
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Unit 3B Review"
+        },
+        {
+          "type": "summary",
+          "title": "Modeling questions to ask",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Modeling questions to ask}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "• What small object or contribution am I adding? • What variable naturally locates that object? • What is its size, density, force, or distance factor? • What are the correct bounds? • Do the units of the integrand times the differential produce the desired units? • Does the sign have physical or geometric meaning?"
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the area between \\(y=2x\\) and \\(y=x^2\\) on \\(0\\le x\\le2\\) using vertical slices."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 1 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "On \\([0,2]\\), the line is above the parabola. Therefore \\(A=\\int_0^2(2x-x^2)\\,dx=[x^2-x^3/3]_0^2=4/3\\). A nonnegative slice height confirms that this is geometric area."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Set up and evaluate the same area between \\(y=2x\\) and \\(y=x^2\\) using horizontal slices."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 2 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Solve for horizontal boundaries: \\(x=y/2\\) is left and \\(x=\\sqrt y\\) is right for \\(0\\le y\\le4\\). Thus \\(A=\\int_0^4(\\sqrt y-y/2)\\,dy=4/3\\), agreeing with the vertical-slice result."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "For the region between \\(y=2x\\) and \\(y=x^2\\) on \\(0\\le x\\le2\\), find the volume about the \\(x\\)-axis with washers and the volume about the \\(y\\)-axis with shells. Compare how radius and height are defined."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 3 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "About the \\(x\\)-axis, \\(V=\\pi\\int_0^2[(2x)^2-(x^2)^2]\\,dx=64\\pi/15\\). About the \\(y\\)-axis, \\(V=2\\pi\\int_0^2x(2x-x^2)\\,dx=8\\pi/3\\). Washers use outer radius minus inner radius squared; shells use radius times vertical height. These are different solids because the axes differ."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "The base is the region under \\(y=\\sqrt{4-x^2}\\) above the \\(x\\)-axis for \\(-2\\le x\\le2\\). Cross-sections perpendicular to the \\(x\\)-axis are semicircles whose diameters lie in the base. Find the volume."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 4 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "The diameter is \\(d(x)=\\sqrt{4-x^2}\\), so each semicircle has area \\(A(x)=\\pi d(x)^2/8=\\pi(4-x^2)/8\\). Therefore \\(V=\\pi/8\\int_{-2}^{2}(4-x^2)\\,dx=4\\pi/3\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the arc length of \\(y=2x+1\\) on \\([0,3]\\), then verify the result with the distance formula between the endpoints."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 5 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Since \\(y'=2\\), \\(L=\\int_0^3\\sqrt{1+(y')^2}\\,dx=\\int_0^3\\sqrt5\\,dx=3\\sqrt5\\). The endpoints differ by \\(3\\) horizontally and \\(6\\) vertically, so their distance is \\(\\sqrt{3^2+6^2}=3\\sqrt5\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "A rod occupies \\([0,3]\\) and has density \\(\\lambda(x)=2+x\\). Find its mass and center of mass."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 6 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Mass is \\(m=\\int_0^3(2+x)\\,dx=21/2\\). The moment about the origin is \\(M=\\int_0^3x(2+x)\\,dx=18\\). Hence \\(\\bar x=M/m=12/7\\), which reasonably lies inside the rod and to the right of its midpoint."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "A spring has constant \\(k=200\\,\\mathrm{N/m}\\). Find the work required to stretch it from \\(0.10\\,\\mathrm{m}\\) to \\(0.30\\,\\mathrm{m}\\) beyond equilibrium."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 7 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Hooke's law gives \\(F(x)=200x\\). Thus \\(W=\\int_{0.10}^{0.30}200x\\,dx=100(0.30^2-0.10^2)=8\\,\\mathrm{J}\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "A full conical tank is \\(4\\,\\mathrm{m}\\) high with top radius \\(2\\,\\mathrm{m}\\). Water is pumped to an outlet \\(1\\,\\mathrm{m}\\) above the top. Set up and evaluate the work using \\(9800\\,\\mathrm{N/m^3}\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 8 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "At height \\(y\\) above the vertex, similar triangles give radius \\(r(y)=y/2\\), area \\(\\pi y^2/4\\), and lift distance \\(5-y\\). Therefore \\(W=9800\\int_0^4(\\pi y^2/4)(5-y)\\,dy=313600\\pi/3\\,\\mathrm{J}\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "A vertical rectangular plate is \\(2\\,\\mathrm{m}\\) wide and extends from the water surface to a depth of \\(3\\,\\mathrm{m}\\). Find the hydrostatic force using \\(9800\\,\\mathrm{N/m^3}\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 9 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "A strip at depth \\(y\\) has area \\(2\\,dy\\) and pressure \\(9800y\\). Hence \\(F=9800\\int_0^3 2y\\,dy=88200\\,\\mathrm{N}\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Marginal cost is \\(C'(q)=20+0.04q\\) dollars per unit and \\(C(100)=5000\\). Find \\(C(200)\\) and identify the accumulated added cost."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 10 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "The added cost is \\(\\int_{100}^{200}(20+0.04q)\\,dq=2600\\) dollars. Therefore \\(C(200)=C(100)+2600=7600\\) dollars. Integrating marginal cost accumulates the cost of the additional units only."
+            }
+          ]
+        }
+      ],
+      "sectionId": "review",
+      "sectionTitle": "Review, practice, exams, and answer keys",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integration-applications/common-errors",
+      "nodes": [
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Common Application Errors"
+        },
+        {
+          "type": "paragraph",
+          "text": "• Writing an integral before drawing a representative slice. • Using top-minus-bottom with a horizontal slice. • Measuring a radius from the wrong axis. • Forgetting to square disk and washer radii. • Using shell height as a radius. • Omitting the arc-length factor in surface area. • Mixing mass density and weight density. • Using constant-force work when force varies. • Treating pressure as total force rather than force per area. • Reporting a number without units or contextual meaning."
+        }
+      ],
+      "sectionId": "review",
+      "sectionTitle": "Review, practice, exams, and answer keys",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integration-applications/cumulative-practice",
+      "nodes": [
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Cumulative Practice"
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the area enclosed by \\(y=x^2\\) and \\(y=2x+3\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 1 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "The intersections satisfy \\(x^2=2x+3\\), so \\(x=-1,3\\). The line is above the parabola between them. Thus \\(A=\\int_{-1}^{3}(2x+3-x^2)\\,dx=32/3\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Rotate that same enclosed region about the horizontal line \\(y=-1\\). Set up and evaluate the washer integral."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 2 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Measured from \\(y=-1\\), the outer radius is \\(R=2x+4\\) and inner radius is \\(r=x^2+1\\). Therefore \\(V=\\pi\\int_{-1}^{3}[(2x+4)^2-(x^2+1)^2]\\,dx=1408\\pi/15\\). Both radii are distances from the axis, not distances between curves."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Rotate that same enclosed region about the vertical line \\(x=-2\\). Set up and evaluate the shell integral."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 3 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "A shell has radius \\(x+2\\) and height \\(2x+3-x^2\\). Thus \\(V=2\\pi\\int_{-1}^{3}(x+2)(2x+3-x^2)\\,dx=64\\pi\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "The base is the region enclosed by \\(y=x^2\\) and \\(y=2x+3\\). Cross-sections perpendicular to the \\(x\\)-axis are squares. Find the volume."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 4 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "The square side is the vertical base width \\(s(x)=2x+3-x^2\\). Hence \\(V=\\int_{-1}^{3}(2x+3-x^2)^2\\,dx=512/15\\). Squaring the side produces cross-sectional area before integration adds the slabs."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the arc length of \\(y=x^{3/2}\\) on \\([0,4/9]\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 5 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Here \\(y'=(3/2)\\sqrt x\\), so \\(L=\\int_0^{4/9}\\sqrt{1+9x/4}\\,dx=\\frac{8}{27}[(1+9x/4)^{3/2}]_0^{4/9}=\\frac{8}{27}(2\\sqrt2-1)\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "A rod occupies \\([0,1]\\) and has density \\(\\lambda(x)=1+x^2\\). Find its mass and center of mass."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 6 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Mass is \\(m=\\int_0^1(1+x^2)\\,dx=4/3\\). The first moment is \\(M=\\int_0^1x(1+x^2)\\,dx=3/4\\). Therefore \\(\\bar x=M/m=9/16\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "A spring has constant \\(k=200\\,\\mathrm{N/m}\\). Find the work required to stretch it from \\(0.10\\,\\mathrm{m}\\) to \\(0.30\\,\\mathrm{m}\\) beyond equilibrium."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 7 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Using \\(F(x)=kx=200x\\), \\(W=\\int_{0.10}^{0.30}200x\\,dx=8\\,\\mathrm{J}\\). The bounds are extensions from equilibrium, not total spring length."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "A \\(4\\,\\mathrm{m}\\)-long triangular trough has ends \\(2\\,\\mathrm{m}\\) deep and \\(3\\,\\mathrm{m}\\) wide at the top. It is full of water. Set up and evaluate the work to pump the water to the top edge using \\(9800\\,\\mathrm{N/m^3}\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 8 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "At height \\(y\\) above the bottom, the liquid width is \\(3y/2\\), so a slice has volume \\(4(3y/2)\\,dy=6y\\,dy\\) and lift distance \\(2-y\\). Thus \\(W=9800\\int_0^2 6y(2-y)\\,dy=78400\\,\\mathrm{J}\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "A triangular vertical gate has a \\(4\\,\\mathrm{m}\\) top edge at the water surface and a vertex \\(3\\,\\mathrm{m}\\) below. Find the hydrostatic force using \\(9800\\,\\mathrm{N/m^3}\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 9 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "At depth \\(y\\), width is \\(4(1-y/3)\\). Therefore \\(F=9800\\int_0^3y\\,4(1-y/3)\\,dy=58800\\,\\mathrm{N}\\). The pressure grows with depth while the gate width shrinks."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Marginal cost is \\(C'(q)=15+0.02q\\) dollars per unit and fixed cost is \\(C(0)=2000\\). Find \\(C(300)\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 10 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Accumulated variable cost is \\(\\int_0^{300}(15+0.02q)\\,dq=5400\\). Adding fixed cost gives \\(C(300)=2000+5400=7400\\) dollars."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "A probability density has the form \\(p(x)=kx\\) on \\([0,2]\\). Find \\(k\\), verify normalization, and compute \\(E[X]\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 11 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Normalization requires \\(1=\\int_0^2kx\\,dx=2k\\), so \\(k=1/2\\). Then \\(E[X]=\\int_0^2x(\\tfrac12x)\\,dx=4/3\\). The density is nonnegative on its support and its total area is one."
+            }
+          ]
+        }
+      ],
+      "sectionId": "review",
+      "sectionTitle": "Review, practice, exams, and answer keys",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integration-applications/practice-exam-a",
+      "nodes": [
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Practice Exam A"
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the area between \\(y=2x\\) and \\(y=x^2\\) on \\([0,2]\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "The region bounded by \\(x=y^2\\) and \\(x=y+2\\) is described most naturally with horizontal slices. Find its area."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Rotate the region under \\(y=\\sqrt{x}\\), \\(0\\le x\\le4\\), around the \\(x\\)-axis. Find the volume."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Use cylindrical shells to rotate the region under \\(y=4-x^2\\), \\(0\\le x\\le2\\), around the \\(y\\)-axis."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "A solid has square cross-sections perpendicular to the \\(x\\)-axis. The side length is \\(2-x\\) for \\(0\\le x\\le2\\). Find the volume."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the arc length of \\(y=2x+1\\) on \\([0,3]\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "A rod occupies \\([0,3]\\) and has density \\(\\lambda(x)=2+x\\) kg/m. Find its mass and center of mass."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "A force \\(F(x)=10+3x\\) newtons moves an object from \\(x=0\\) to \\(x=4\\) meters. Find the work."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "A rectangular tank is 4 m long, 3 m wide, and 2 m deep, and is full of water. Water is pumped to an outlet 1 m above the top. Set up and evaluate the work using water weight density \\(9800\\,\\mathrm{N/m^3}\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "A vertical rectangular gate is 2 m wide and extends from the water surface to a depth of 3 m. Find the hydrostatic force using water weight density \\(9800\\,\\mathrm{N/m^3}\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "If marginal cost is \\(C'(q)=20+0.04q\\), find the added cost of increasing production from 100 to 200 units."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "The probability density is \\(p(x)=2x\\) on \\([0,1]\\). Find \\(P(X\\le1/2)\\) and \\(E[X]\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "For one problem above, explain how the units of the slice contribution become the units of the final answer. Also give one independent reasonableness check."
+            }
+          ]
+        }
+      ],
+      "sectionId": "review",
+      "sectionTitle": "Review, practice, exams, and answer keys",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integration-applications/practice-exam-a-answer-key",
+      "nodes": [
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Unit 3B Practice Exam A Answer Key"
+        },
+        {
+          "type": "paragraph",
+          "text": "Finish an honest attempt first. Then compare one numbered response at a time, locate the first line where your reasoning diverged, and retry without the key open."
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 1",
+          "answerNumber": 1,
+          "children": [
+            {
+              "type": "math",
+              "tex": "A=\\int_0^2(2x-x^2)dx=\\frac43."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 2",
+          "answerNumber": 2,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Intersections are \\(y=-1,2\\), and the line is to the right:"
+            },
+            {
+              "type": "math",
+              "tex": "A=\\int_{-1}^{2}\\bigl[(y+2)-y^2\\bigr]dy=\\frac92."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 3",
+          "answerNumber": 3,
+          "children": [
+            {
+              "type": "math",
+              "tex": "V=\\pi\\int_0^4(\\sqrt{x})^2dx=8\\pi."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 4",
+          "answerNumber": 4,
+          "children": [
+            {
+              "type": "math",
+              "tex": "V=2\\pi\\int_0^2x(4-x^2)dx=8\\pi."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 5",
+          "answerNumber": 5,
+          "children": [
+            {
+              "type": "math",
+              "tex": "V=\\int_0^2(2-x)^2dx=\\frac83."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 6",
+          "answerNumber": 6,
+          "children": [
+            {
+              "type": "math",
+              "tex": "L=\\int_0^3\\sqrt{1+2^2}\\,dx=3\\sqrt5."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 7",
+          "answerNumber": 7,
+          "children": [
+            {
+              "type": "math",
+              "tex": "m=\\int_0^3(2+x)dx=\\frac{21}{2},\n\\qquad\n\\bar x=\\frac{\\int_0^3x(2+x)dx}{m}=\\frac{12}{7}\\text{ m}."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 8",
+          "answerNumber": 8,
+          "children": [
+            {
+              "type": "math",
+              "tex": "W=\\int_0^4(10+3x)dx=64\\text{ J}."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 9",
+          "answerNumber": 9,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Let \\(y\\) measure height above the bottom. A slice has volume \\(12dy\\), weight \\(9800(12)dy\\), and lifting distance \\(3-y\\):"
+            },
+            {
+              "type": "math",
+              "tex": "W=117600\\int_0^2(3-y)dy=470400\\text{ J}."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 10",
+          "answerNumber": 10,
+          "children": [
+            {
+              "type": "math",
+              "tex": "F=9800\\int_0^3 2y\\,dy=88200\\text{ N}."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 11",
+          "answerNumber": 11,
+          "children": [
+            {
+              "type": "math",
+              "tex": "\\int_{100}^{200}(20+0.04q)dq=2600\\text{ dollars}."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 12",
+          "answerNumber": 12,
+          "children": [
+            {
+              "type": "math",
+              "tex": "P(X\\le1/2)=\\int_0^{1/2}2x\\,dx=\\frac14,\n\\qquad\nE[X]=\\int_0^1x(2x)dx=\\frac23."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 13",
+          "answerNumber": 13,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "A correct response identifies, for example, \\((\\mathrm{N/m^3})(\\mathrm{m^3})(\\mathrm{m})=\\mathrm{N\\,m}=\\mathrm{J}\\) in a pumping problem. A reasonableness check may use sign, units, comparison with a constant-force estimate, geometric bounds, or expected magnitude."
+            }
+          ]
+        }
+      ],
+      "sectionId": "review",
+      "sectionTitle": "Review, practice, exams, and answer keys",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integration-applications/practice-exam-b",
+      "nodes": [
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Practice Exam B"
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the area enclosed by \\(y=x+2\\) and \\(y=x^2\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Rotate the region under \\(y=1-x^2\\), \\(0\\le x\\le1\\), around the \\(x\\)-axis. Find the volume."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Rotate the same region around the \\(y\\)-axis using cylindrical shells."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "A solid has semicircular cross-sections perpendicular to the \\(x\\)-axis. The diameter at \\(x\\) is \\(2\\sqrt{x}\\) for \\(0\\le x\\le4\\). Find the volume."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the surface area generated by rotating \\(y=x\\), \\(0\\le x\\le1\\), around the \\(x\\)-axis."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "A rod occupies \\([0,1]\\) and has density \\(\\lambda(x)=1+x^2\\). Find its mass and center of mass."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "A spring has constant \\(k=200\\,\\mathrm{N/m}\\). Find the work required to stretch it from 0.10 m to 0.30 m beyond equilibrium."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "A vertical cylindrical tank has radius 1 m and height 2 m and is full of water. Pump the water to an outlet 1 m above the top. Set up and evaluate the work."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "A triangular gate has its top edge at the water surface, width 4 m at the surface, and vertex 3 m below the surface. Find the hydrostatic force."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "If \\(C'(q)=15+0.02q\\) and \\(C(0)=2000\\), find \\(C(300)\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "The density \\(p(x)=3x^2\\) is defined on \\([0,1]\\). Verify normalization and find \\(E[X]\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "For the region under \\(y=1-x^2\\) on \\([0,1]\\), explain why shells are natural about the \\(y\\)-axis while disks are natural about the \\(x\\)-axis."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Critique this statement: ``Once an integral is written, units and geometry no longer matter.'' Give at least two concrete reasons it is false."
+            }
+          ]
+        }
+      ],
+      "sectionId": "review",
+      "sectionTitle": "Review, practice, exams, and answer keys",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integration-applications/practice-exam-b-answer-key",
+      "nodes": [
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Unit 3B Practice Exam B Answer Key"
+        },
+        {
+          "type": "paragraph",
+          "text": "Finish an honest attempt first. Then compare one numbered response at a time, locate the first line where your reasoning diverged, and retry without the key open."
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 1",
+          "answerNumber": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Intersections are \\(x=-1,2\\):"
+            },
+            {
+              "type": "math",
+              "tex": "A=\\int_{-1}^{2}(x+2-x^2)dx=\\frac92."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 2",
+          "answerNumber": 2,
+          "children": [
+            {
+              "type": "math",
+              "tex": "V=\\pi\\int_0^1(1-x^2)^2dx=\\frac{8\\pi}{15}."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 3",
+          "answerNumber": 3,
+          "children": [
+            {
+              "type": "math",
+              "tex": "V=2\\pi\\int_0^1x(1-x^2)dx=\\frac{\\pi}{2}."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 4",
+          "answerNumber": 4,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "The area of a semicircle with diameter \\(d\\) is \\(\\pi d^2/8\\), so"
+            },
+            {
+              "type": "math",
+              "tex": "V=\\int_0^4\\frac{\\pi(2\\sqrt{x})^2}{8}dx=4\\pi."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 5",
+          "answerNumber": 5,
+          "children": [
+            {
+              "type": "math",
+              "tex": "S=2\\pi\\int_0^1x\\sqrt{1+1^2}dx=\\pi\\sqrt2."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 6",
+          "answerNumber": 6,
+          "children": [
+            {
+              "type": "math",
+              "tex": "m=\\int_0^1(1+x^2)dx=\\frac43,\n\\qquad\n\\bar x=\\frac{\\int_0^1x(1+x^2)dx}{m}=\\frac{9}{16}."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 7",
+          "answerNumber": 7,
+          "children": [
+            {
+              "type": "math",
+              "tex": "W=\\int_{0.10}^{0.30}200x\\,dx=8\\text{ J}."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 8",
+          "answerNumber": 8,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "With \\(y\\) measured from the bottom, slice volume is \\(\\pi dy\\) and lift distance is \\(3-y\\):"
+            },
+            {
+              "type": "math",
+              "tex": "W=9800\\pi\\int_0^2(3-y)dy=39200\\pi\\text{ J}."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 9",
+          "answerNumber": 9,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Let \\(y\\) be depth below the surface. The width is \\(4(1-y/3)\\):"
+            },
+            {
+              "type": "math",
+              "tex": "F=9800\\int_0^3 y\\,4\\left(1-\\frac y3\\right)dy=58800\\text{ N}."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 10",
+          "answerNumber": 10,
+          "children": [
+            {
+              "type": "math",
+              "tex": "C(300)=2000+\\int_0^{300}(15+0.02q)dq=7400."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 11",
+          "answerNumber": 11,
+          "children": [
+            {
+              "type": "math",
+              "tex": "\\int_0^1 3x^2dx=1,\n\\qquad\nE[X]=\\int_0^1x(3x^2)dx=\\frac34."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 12",
+          "answerNumber": 12,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Vertical strips are parallel to the \\(y\\)-axis and create shells around the \\(y\\)-axis; the same vertical strips are perpendicular to the \\(x\\)-axis and create disks around the \\(x\\)-axis. Both methods preserve the given \\(x\\)-description without solving for an inverse function."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 13",
+          "answerNumber": 13,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Units verify that the local contribution has the right physical dimension, while geometry determines radii, heights, widths, and distances. Ignoring either can yield a numerically evaluated integral that represents the wrong quantity."
+            }
+          ]
+        }
+      ],
+      "sectionId": "review",
+      "sectionTitle": "Review, practice, exams, and answer keys",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    }
+  ]
+}
