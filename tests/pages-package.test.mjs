@@ -45,6 +45,10 @@ test("Pages package contains the advanced Worker and static assets", async () =>
     "utf8",
   );
   assert.match(worker, /ASSETS/);
+  assert.ok(
+    gzipSync(worker, { level: 9 }).byteLength <= 1_200_000,
+    `Cloudflare Worker entry exceeds its 1.2 MB gzip release budget: ${gzipSync(worker, { level: 9 }).byteLength}`,
+  );
 
   const assetsIgnore = await readFile(
     new URL("../dist/pages/.assetsignore", import.meta.url),
@@ -106,6 +110,11 @@ test("Pages package preserves the exact Limits, Unit 2A, Unit 2B, Unit 3A, and U
   const unit3bManifest = JSON.parse(
     await readFile(new URL("../content/calculus/units/unit-3b/compiled-scenes.v1.json", import.meta.url), "utf8"),
   );
+  const runtimeManifests = await Promise.all(
+    ["unit-2a", "unit-2b", "unit-3a", "unit-3b"].map(async (unit) => JSON.parse(
+      await readFile(new URL(`../content/calculus/units/${unit}/public-runtime-scenes.server.json`, import.meta.url), "utf8"),
+    )),
+  );
   assert.equal(limitsManifest.manifestVersion, 1);
   assert.equal(limitsManifest.sceneCount, 13);
   assert.equal(limitsManifest.scenes.length, 13);
@@ -125,6 +134,23 @@ test("Pages package preserves the exact Limits, Unit 2A, Unit 2B, Unit 3A, and U
   assert.equal(unit3bManifest.manifestVersion, 1);
   assert.equal(unit3bManifest.sceneCount, 9);
   assert.equal(unit3bManifest.scenes.length, 9);
+  const calculusManifests = [unitManifest, unit2bManifest, unit3aManifest, unit3bManifest];
+  for (let index = 0; index < runtimeManifests.length; index += 1) {
+    const sourceManifest = calculusManifests[index];
+    const runtimeManifest = runtimeManifests[index];
+    assert.equal(runtimeManifest.manifestVersion, 1);
+    assert.equal(runtimeManifest.sceneCount, sourceManifest.sceneCount);
+    assert.equal(runtimeManifest.scenes.length, sourceManifest.sceneCount);
+    assert.equal(runtimeManifest.interactiveCount, sourceManifest.scenes.filter(({ hydration }) => hydration !== "none").length);
+    assert.deepEqual(runtimeManifest.scenes.map(({ id }) => id), sourceManifest.scenes.map(({ id }) => id));
+    for (const runtimeScene of runtimeManifest.scenes) {
+      const sourceScene = sourceManifest.scenes.find(({ id }) => id === runtimeScene.id);
+      assert.deepEqual(runtimeScene.staticAsset, sourceScene.staticAsset);
+      assert.equal(runtimeScene.sourceFingerprint, sourceScene.compiledScene.provenance.sourceFingerprint);
+      assert.equal(runtimeScene.visibility, "public");
+      assert.equal(Object.hasOwn(runtimeScene, "interactiveScene"), runtimeScene.hydration !== "none");
+    }
+  }
   const manifests = [limitsManifest, unitManifest, unit2bManifest, unit3aManifest, unit3bManifest];
   const expectedAssetNames = manifests.flatMap(({ scenes }) => scenes.map(({ staticAsset }) => staticAsset.path.split("/").at(-1))).sort();
   const publicAssetNames = (await readdir(new URL("../public/visuals/v1/", import.meta.url)))
