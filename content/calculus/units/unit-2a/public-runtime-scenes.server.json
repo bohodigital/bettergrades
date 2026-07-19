@@ -1,0 +1,1850 @@
+{
+  "manifestVersion": 1,
+  "collectionId": "unit-2a-calculus-visuals",
+  "sourceSha256": "71c169c26766682360d84b0ccf37beb18242b9d340735b0b1004009469735cbd",
+  "compilerVersion": "bvlp-compiler-v1",
+  "sceneCount": 27,
+  "interactiveCount": 1,
+  "scenes": [
+    {
+      "id": "unit-2a-2a-v01",
+      "sourceVisualId": "unit-2a-2a-v01",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-2a-2a-v01.1a4c76cad05f607d.svg",
+        "sha256": "1a4c76cad05f607dc31c8a054d2cb395ceb6846a7cff3a4617c41073ccf717eb",
+        "bytes": 11814,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "What a derivative connects"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "A derivative ties together four descriptions of the same local behavior: a changing quantity, an average rate on a short interval, the limiting instantaneous rate, and the slope of a tangent line."
+          }
+        ]
+      },
+      "learningPurpose": "This opening diagram should remove the common impression that \"derivative\" is merely a new symbol or a memorized rule. It establishes a semantic loop: amount, finite change, limiting change, and geometry. The learner should be able to enter the loop from any box. A motion problem may begin with amount and rate; a graph problem may begin with tangent slope; a table problem may begin with finite differences.",
+      "longDescription": "A derivative ties together four descriptions of the same local behavior: a changing quantity, an average rate on a short interval, the limiting instantaneous rate, and the slope of a tangent line. Begin at the upper-left box. A function gives an amount. Comparing two nearby amounts produces an average rate. Letting the input interval shrink produces the derivative. The derivative is also the slope of the tangent line, so the diagram closes by returning to the original graph. The arrows do not describe four unrelated formulas; they describe four ways to talk about one local change.",
+      "accessibility": {
+        "ariaLabel": "A derivative ties together four descriptions of the same local behavior: a changing quantity, an average rate on a short interval, the limiting instantaneous rate, and the slope of a tangent line.",
+        "summary": "A derivative ties together four descriptions of the same local behavior: a changing quantity, an average rate on a short interval, the limiting instantaneous rate, and the slope of a tangent line. Begin at the upper-left box. A function gives an amount. Comparing two nearby amounts produces an average rate. Letting the input interval shrink produces the derivative. The derivative is also the slope of the tangent line, so the diagram closes by returning to the original graph. The arrows do not describe four unrelated formulas; they describe four ways to talk about one local change.",
+        "readingOrder": [
+          "quantity-box",
+          "average-box",
+          "tangent-box",
+          "instant-box",
+          "compare-arrow",
+          "shrink-arrow",
+          "interpret-arrow",
+          "return-arrow",
+          "quantity-label",
+          "average-label",
+          "tangent-label",
+          "instant-label",
+          "compare-label",
+          "shrink-label",
+          "interpret-label",
+          "return-label"
+        ],
+        "colorIndependentDescription": "The visual uses labeled positions, solid and dashed line styles, and written descriptions so what a derivative connects does not depend on color.",
+        "controlInstructions": [],
+        "reducedMotion": "not-applicable",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-cbdcf12b",
+      "visibility": "public"
+    },
+    {
+      "id": "unit-2a-2a-e01",
+      "sourceVisualId": "unit-2a-2a-e01",
+      "selectedRenderer": "bg-interactive-2d",
+      "hydration": "near-viewport",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-2a-2a-e01.fd5c7c668b6c937f.svg",
+        "sha256": "fd5c7c668b6c937f973aff2281e310ca7983e0095f9bbb7fbefe61249cb8afce",
+        "bytes": 10719,
+        "width": 960,
+        "height": 549
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "secant lines converging to a tangent"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Secant lines approach the tangent line to s(t)=t²+3t at t=2."
+          }
+        ]
+      },
+      "learningPurpose": "Show that instantaneous rate is the limit of ordinary secant slopes and connect each nonzero interval width to a visible secant line.",
+      "longDescription": "Secant lines approach the tangent line to (s(t)=t 2+3t ) at (t=2 ). Show that instantaneous rate is the limit of ordinary secant slopes and connect each nonzero interval width to a visible secant line.",
+      "accessibility": {
+        "ariaLabel": "Secant lines approach the tangent line to s(t)=t²+3t at t=2.",
+        "summary": "Secant lines approach the tangent line to (s(t)=t 2+3t ) at (t=2 ). Show that instantaneous rate is the limit of ordinary secant slopes and connect each nonzero interval width to a visible secant line.",
+        "readingOrder": [
+          "position-curve",
+          "active-secant",
+          "tangent-line",
+          "point-p",
+          "point-q",
+          "slope-note",
+          "h-control"
+        ],
+        "colorIndependentDescription": "The visual uses labeled positions, solid and dashed line styles, and written descriptions so secant lines converging to a tangent does not depend on color.",
+        "keyboardInstructions": "Focus the step control and use the Previous and Next buttons to move the second secant point.",
+        "controlInstructions": [
+          "Move through the nonzero h values and compare each secant slope with the tangent slope 7."
+        ],
+        "reducedMotion": "disable-animation",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-771b0179",
+      "visibility": "public",
+      "interactiveScene": {
+        "compiledSceneVersion": 1,
+        "sourceSpecVersion": 1,
+        "id": "unit-2a-2a-e01",
+        "kind": "cartesian-2d",
+        "title": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "secant lines converging to a tangent"
+            }
+          ]
+        },
+        "caption": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "Secant lines approach the tangent line to s(t)=t²+3t at t=2."
+            }
+          ]
+        },
+        "learningPurpose": "Show that instantaneous rate is the limit of ordinary secant slopes and connect each nonzero interval width to a visible secant line.",
+        "longDescription": "Secant lines approach the tangent line to (s(t)=t 2+3t ) at (t=2 ). Show that instantaneous rate is the limit of ordinary secant slopes and connect each nonzero interval width to a visible secant line.",
+        "coordinateSpace": {
+          "type": "cartesian-2d",
+          "variables": [
+            "t",
+            "s"
+          ],
+          "unitsRequired": false
+        },
+        "viewport": {
+          "xMin": -0.5,
+          "xMax": 4.5,
+          "yMin": -3,
+          "yMax": 25,
+          "aspectRatio": 1.75,
+          "padding": 0.05
+        },
+        "axes": {
+          "mode": "explicit",
+          "axes": [
+            {
+              "id": "t-axis",
+              "orientation": "x",
+              "label": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "t"
+                  }
+                ]
+              },
+              "scale": "linear",
+              "tickMode": "fixed-step",
+              "tickStep": 1,
+              "showGrid": true
+            },
+            {
+              "id": "s-axis",
+              "orientation": "y",
+              "label": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "s(t)"
+                  }
+                ]
+              },
+              "scale": "linear",
+              "tickMode": "fixed-step",
+              "tickStep": 5,
+              "showGrid": true
+            }
+          ]
+        },
+        "panels": [],
+        "layers": [
+          {
+            "id": "position-curve",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Heavy solid position curve."
+            },
+            "references": [],
+            "kind": "function",
+            "geometry": {
+              "expression": {
+                "type": "add",
+                "left": {
+                  "type": "power",
+                  "left": {
+                    "type": "variable",
+                    "name": "t"
+                  },
+                  "right": {
+                    "type": "number",
+                    "value": 2
+                  }
+                },
+                "right": {
+                  "type": "multiply",
+                  "left": {
+                    "type": "number",
+                    "value": 3
+                  },
+                  "right": {
+                    "type": "variable",
+                    "name": "t"
+                  }
+                }
+              },
+              "variable": "t",
+              "domain": {
+                "min": -0.5,
+                "max": 4.5,
+                "includeMin": true,
+                "includeMax": true
+              }
+            }
+          },
+          {
+            "id": "active-secant",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "lineStyle": "dashed",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Dashed secant line controlled by h."
+            },
+            "references": [],
+            "kind": "function",
+            "geometry": {
+              "expression": {
+                "type": "add",
+                "left": {
+                  "type": "add",
+                  "left": {
+                    "type": "multiply",
+                    "left": {
+                      "type": "variable",
+                      "name": "t"
+                    },
+                    "right": {
+                      "type": "add",
+                      "left": {
+                        "type": "variable",
+                        "name": "h"
+                      },
+                      "right": {
+                        "type": "number",
+                        "value": 7
+                      }
+                    }
+                  },
+                  "right": {
+                    "type": "multiply",
+                    "left": {
+                      "type": "number",
+                      "value": -2
+                    },
+                    "right": {
+                      "type": "variable",
+                      "name": "h"
+                    }
+                  }
+                },
+                "right": {
+                  "type": "number",
+                  "value": -4
+                }
+              },
+              "variable": "t",
+              "domain": {
+                "min": -0.5,
+                "max": 4.5,
+                "includeMin": true,
+                "includeMax": true
+              }
+            }
+          },
+          {
+            "id": "tangent-line",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-success",
+              "lineStyle": "double",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Double tangent line with slope 7."
+            },
+            "references": [],
+            "kind": "function",
+            "geometry": {
+              "expression": {
+                "type": "add",
+                "left": {
+                  "type": "multiply",
+                  "left": {
+                    "type": "number",
+                    "value": 7
+                  },
+                  "right": {
+                    "type": "variable",
+                    "name": "t"
+                  }
+                },
+                "right": {
+                  "type": "number",
+                  "value": -4
+                }
+              },
+              "variable": "t",
+              "domain": {
+                "min": -0.5,
+                "max": 4.5,
+                "includeMin": true,
+                "includeMax": true
+              }
+            }
+          },
+          {
+            "id": "point-p",
+            "visible": true,
+            "zIndex": 0,
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "P at t = 2"
+                }
+              ]
+            },
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "fillToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "circle",
+              "pattern": "none",
+              "colorIndependentCue": "Filled circle marks the fixed point P."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 2,
+                "y": 10
+              }
+            }
+          },
+          {
+            "id": "point-q",
+            "visible": true,
+            "zIndex": 0,
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "movable Q"
+                }
+              ]
+            },
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "fillToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "none",
+              "colorIndependentCue": "Filled diamond marks the movable second point Q."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": {
+                  "type": "add",
+                  "left": {
+                    "type": "variable",
+                    "name": "h"
+                  },
+                  "right": {
+                    "type": "number",
+                    "value": 2
+                  }
+                },
+                "y": {
+                  "type": "add",
+                  "left": {
+                    "type": "power",
+                    "left": {
+                      "type": "add",
+                      "left": {
+                        "type": "variable",
+                        "name": "h"
+                      },
+                      "right": {
+                        "type": "number",
+                        "value": 2
+                      }
+                    },
+                    "right": {
+                      "type": "number",
+                      "value": 2
+                    }
+                  },
+                  "right": {
+                    "type": "multiply",
+                    "left": {
+                      "type": "number",
+                      "value": 3
+                    },
+                    "right": {
+                      "type": "add",
+                      "left": {
+                        "type": "variable",
+                        "name": "h"
+                      },
+                      "right": {
+                        "type": "number",
+                        "value": 2
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": "slope-note",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Written slope comparison identifies convergence."
+            },
+            "references": [],
+            "kind": "annotation",
+            "geometry": {
+              "anchor": {
+                "x": 0.1,
+                "y": 20
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "secant slope = 7 + h; tangent slope = 7"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "controls": [
+          {
+            "id": "h-control",
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "Horizontal step h"
+                }
+              ]
+            },
+            "announcementTemplate": "h is {value}; the secant slope is 7 plus h.",
+            "kind": "step-control",
+            "parameter": "h",
+            "values": [
+              -1.5,
+              -1,
+              -0.5,
+              -0.2,
+              0.2,
+              0.5,
+              1,
+              1.5
+            ],
+            "initialIndex": 5
+          }
+        ],
+        "accessibility": {
+          "ariaLabel": "Secant lines approach the tangent line to s(t)=t²+3t at t=2.",
+          "summary": "Secant lines approach the tangent line to (s(t)=t 2+3t ) at (t=2 ). Show that instantaneous rate is the limit of ordinary secant slopes and connect each nonzero interval width to a visible secant line.",
+          "readingOrder": [
+            "position-curve",
+            "active-secant",
+            "tangent-line",
+            "point-p",
+            "point-q",
+            "slope-note",
+            "h-control"
+          ],
+          "colorIndependentDescription": "The visual uses labeled positions, solid and dashed line styles, and written descriptions so secant lines converging to a tangent does not depend on color.",
+          "keyboardInstructions": "Focus the step control and use the Previous and Next buttons to move the second secant point.",
+          "controlInstructions": [
+            "Move through the nonzero h values and compare each secant slope with the tangent slope 7."
+          ],
+          "reducedMotion": "disable-animation",
+          "staticFallbackEquivalent": true
+        },
+        "print": {
+          "representation": "generated-svg",
+          "caption": {
+            "segments": [
+              {
+                "kind": "text",
+                "text": "Secant lines approach the tangent line to s(t)=t²+3t at t=2."
+              }
+            ]
+          },
+          "grayscaleSafe": true,
+          "pageBreak": "avoid",
+          "widthInches": 7.1
+        },
+        "performance": {
+          "maxSamples": 2048,
+          "maxAdaptiveDepth": 12,
+          "maxAstNodes": 128,
+          "maxAstDepth": 20,
+          "maxOperationsPerEvaluation": 1024,
+          "maxPayloadBytes": 65536,
+          "maxAnimationFps": 30,
+          "activation": "near-viewport"
+        },
+        "requiredCapabilities": [
+          "annotations",
+          "cartesian-axes",
+          "function-paths",
+          "open-closed-points",
+          "parameter-controls",
+          "static-fallback"
+        ],
+        "selectedRenderer": "bg-interactive-2d",
+        "staticFallback": {
+          "required": true,
+          "rendererId": "static-svg"
+        },
+        "delivery": {
+          "hydration": "near-viewport",
+          "publicFieldsOnly": true
+        },
+        "provenance": {
+          "route": "/subjects/math/calculus/derivatives/why-derivatives-matter/",
+          "sourceVisualId": "unit-2a-2a-e01",
+          "sourceFingerprint": "bvlp1-771b0179",
+          "compilerVersion": "bvlp-compiler-v1",
+          "visibility": "public"
+        }
+      }
+    },
+    {
+      "id": "unit-2a-2a-v02",
+      "sourceVisualId": "unit-2a-2a-v02",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-2a-2a-v02.cc67f0cef9b084b4.svg",
+        "sha256": "cc67f0cef9b084b41480cbbac6d91b5a289bd8e1934350a9131112cab2c553eb",
+        "bytes": 15820,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "A curve becomes line-like under magnification"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "The derivative exists when the graph near a point is captured, to first order, by one line. The right panel magnifies the marked neighborhood from the left panel."
+          }
+        ]
+      },
+      "learningPurpose": "This visual should carry more conceptual weight than a standard tangent-line picture. Students often interpret a tangent as a line that \"touches once\" or as an arbitrary line placed against a curve. The paired views instead show that a derivative is a local approximation statement. The tangent is privileged because its error becomes small relative to the horizontal displacement.",
+      "longDescription": "The derivative exists when the graph near a point is captured, to first order, by one line. The right panel magnifies the marked neighborhood from the left panel. The left panel shows a visibly curved parabola and its tangent line at x=2 . The red rectangle marks the small region enlarged on the right. In that magnified region, the curve and tangent are almost indistinguishable. This is the practical meaning of differentiability: the line captures the first-order behavior near the point even though it does not match the curve globally.",
+      "accessibility": {
+        "ariaLabel": "The derivative exists when the graph near a point is captured, to first order, by one line. The right panel magnifies the marked neighborhood from the left panel.",
+        "summary": "The derivative exists when the graph near a point is captured, to first order, by one line. The right panel magnifies the marked neighborhood from the left panel. The left panel shows a visibly curved parabola and its tangent line at x=2 . The red rectangle marks the small region enlarged on the right. In that magnified region, the curve and tangent are almost indistinguishable. This is the practical meaning of differentiability: the line captures the first-order behavior near the point even though it does not match the curve globally.",
+        "readingOrder": [
+          "relationship-1",
+          "relationship-2",
+          "zoom-neighborhood",
+          "contact-point",
+          "zoom-note"
+        ],
+        "colorIndependentDescription": "The visual uses labeled positions, solid and dashed line styles, and written descriptions so a curve becomes line-like under magnification does not depend on color.",
+        "controlInstructions": [],
+        "reducedMotion": "not-applicable",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-2a949872",
+      "visibility": "public"
+    },
+    {
+      "id": "unit-2a-2a-v03",
+      "sourceVisualId": "unit-2a-2a-v03",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-2a-2a-v03.051146e6af54a2b5.svg",
+        "sha256": "051146e6af54a2b5cab756f5691c73950079b285efe11632a5687fe6aea83068",
+        "bytes": 12125,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "The difference quotient as a sequence of algebra jobs"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Every first-principles derivative follows the same pipeline: shift the input, subtract the complete outputs, factor the input change, cancel only after factoring, and then take the limit."
+          }
+        ]
+      },
+      "learningPurpose": "This process diagram externalizes the hidden decisions in a limit-definition calculation. It is especially useful for learners who can follow a completed derivation but cannot reproduce it independently. The six stages should correspond to headings in worked examples and to feedback states in the interactive checker.",
+      "longDescription": "Every first-principles derivative follows the same pipeline: shift the input, subtract the complete outputs, factor the input change, cancel only after factoring, and then take the limit. Treat the quotient as a workflow, not as one giant line of algebra. The factor h appears because f(a+h)-f(a) measures a change caused by an input change of h . It is legal to cancel that factor while h 0 ; the limit is then taken afterward. The order matters.",
+      "accessibility": {
+        "ariaLabel": "Every first-principles derivative follows the same pipeline: shift the input, subtract the complete outputs, factor the input change, cancel only after factoring, and then take the limit.",
+        "summary": "Every first-principles derivative follows the same pipeline: shift the input, subtract the complete outputs, factor the input change, cancel only after factoring, and then take the limit. Treat the quotient as a workflow, not as one giant line of algebra. The factor h appears because f(a+h)-f(a) measures a change caused by an input change of h . It is legal to cancel that factor while h 0 ; the limit is then taken afterward. The order matters.",
+        "readingOrder": [
+          "shift-box",
+          "subtract-box",
+          "quotient-box",
+          "factor-box",
+          "cancel-box",
+          "limit-box",
+          "a1-arrow",
+          "a2-arrow",
+          "a3-arrow",
+          "a4-arrow",
+          "a5-arrow",
+          "shift-label",
+          "subtract-label",
+          "quotient-label",
+          "factor-label",
+          "cancel-label",
+          "limit-label"
+        ],
+        "colorIndependentDescription": "The visual uses labeled positions, solid and dashed line styles, and written descriptions so the difference quotient as a sequence of algebra jobs does not depend on color.",
+        "controlInstructions": [],
+        "reducedMotion": "not-applicable",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-025b1c81",
+      "visibility": "public"
+    },
+    {
+      "id": "unit-2a-2a-v04",
+      "sourceVisualId": "unit-2a-2a-v04",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-2a-2a-v04.6d7a43f6c2ba56c6.svg",
+        "sha256": "6d7a43f6c2ba56c6b2d2007007a4d667c2743c21d56195b41fd72729342b00bd",
+        "bytes": 17690,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Tangent and normal lines at the same point"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "The tangent follows the curve's local direction. The normal passes through the same point at a right angle, so its slope is the negative reciprocal of the tangent slope when both slopes are finite and nonzero."
+          }
+        ]
+      },
+      "learningPurpose": "The visual should prevent students from treating tangent-line and normal-line questions as unrelated formula exercises. Both use point-slope form; the only difference is the slope. The normal slope is derived from perpendicularity, not from differentiating a second time.",
+      "longDescription": "The tangent follows the curve's local direction. The normal passes through the same point at a right angle, so its slope is the negative reciprocal of the tangent slope when both slopes are finite and nonzero. Both lines pass through the point (2,0) . The green line matches the curve's immediate direction and has slope 2 . The purple line is perpendicular, so its slope is -1/2 . The two equations therefore come from the same point but different slope information.",
+      "accessibility": {
+        "ariaLabel": "The tangent follows the curve's local direction. The normal passes through the same point at a right angle, so its slope is the negative reciprocal of the tangent slope when both slopes are finite and nonzero.",
+        "summary": "The tangent follows the curve's local direction. The normal passes through the same point at a right angle, so its slope is the negative reciprocal of the tangent slope when both slopes are finite and nonzero. Both lines pass through the point (2,0) . The green line matches the curve's immediate direction and has slope 2 . The purple line is perpendicular, so its slope is -1/2 . The two equations therefore come from the same point but different slope information.",
+        "readingOrder": [
+          "relationship-1",
+          "relationship-2",
+          "relationship-3",
+          "shared-point"
+        ],
+        "colorIndependentDescription": "The visual uses labeled positions, solid and dashed line styles, and written descriptions so tangent and normal lines at the same point does not depend on color.",
+        "controlInstructions": [],
+        "reducedMotion": "not-applicable",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-a9973d94",
+      "visibility": "public"
+    },
+    {
+      "id": "unit-2a-2a-e02",
+      "sourceVisualId": "unit-2a-2a-e02",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-2a-2a-e02.0052020c71003c31.svg",
+        "sha256": "0052020c71003c31eb7e0179610c361a0f6e2eaa54f97e0009ccb1b3b5840803",
+        "bytes": 11616,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "original function and derivative graph"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "For f(x)=x², the derivative graph f'(x)=2x records the slope of the parabola."
+          }
+        ]
+      },
+      "learningPurpose": "Teach the derivative function as a record of tangent slopes: slope on the original graph becomes height on the derivative graph.",
+      "longDescription": "For (f(x)=x 2 ), the derivative graph (f'(x)=2x ) records the slope of the parabola. Teach the derivative function as a record of tangent slopes: slope on the original graph becomes height on the derivative graph.",
+      "accessibility": {
+        "ariaLabel": "For f(x)=x², the derivative graph f'(x)=2x records the slope of the parabola.",
+        "summary": "For (f(x)=x 2 ), the derivative graph (f'(x)=2x ) records the slope of the parabola. Teach the derivative function as a record of tangent slopes: slope on the original graph becomes height on the derivative graph.",
+        "readingOrder": [
+          "relationship-1",
+          "relationship-2"
+        ],
+        "colorIndependentDescription": "The visual uses labeled positions, solid and dashed line styles, and written descriptions so original function and derivative graph does not depend on color.",
+        "controlInstructions": [],
+        "reducedMotion": "not-applicable",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-a15a267d",
+      "visibility": "public"
+    },
+    {
+      "id": "unit-2a-2a-v05",
+      "sourceVisualId": "unit-2a-2a-v05",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-2a-2a-v05.15b0d7e94967e906.svg",
+        "sha256": "15b0d7e94967e90611e560a9ea08b48d293c1aadea6e384e10b0f0b07187cdb7",
+        "bytes": 9729,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Different notations, one local rate"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Prime notation emphasizes the derivative function, Leibniz notation names the changing variables, and operator notation emphasizes differentiation as an action. Units remain output units per input unit in every notation."
+          }
+        ]
+      },
+      "learningPurpose": "This visual should reduce notation anxiety by showing equivalence before students are asked to switch fluently among forms. The bottom node is deliberately larger because meaning and units matter more than typographic preference.",
+      "longDescription": "Prime notation emphasizes the derivative function, Leibniz notation names the changing variables, and operator notation emphasizes differentiation as an action. Units remain output units per input unit in every notation. The three symbols do not describe three different quantities. They emphasize different aspects of the same derivative. Prime notation is compact, Leibniz notation keeps the input and output variables visible, and operator notation makes the differentiation step explicit. The bottom box is the invariant meaning shared by all three.",
+      "accessibility": {
+        "ariaLabel": "Prime notation emphasizes the derivative function, Leibniz notation names the changing variables, and operator notation emphasizes differentiation as an action. Units remain output units per input unit in every notation.",
+        "summary": "Prime notation emphasizes the derivative function, Leibniz notation names the changing variables, and operator notation emphasizes differentiation as an action. Units remain output units per input unit in every notation. The three symbols do not describe three different quantities. They emphasize different aspects of the same derivative. Prime notation is compact, Leibniz notation keeps the input and output variables visible, and operator notation makes the differentiation step explicit. The bottom box is the invariant meaning shared by all three.",
+        "readingOrder": [
+          "prime-box",
+          "leibniz-box",
+          "operator-box",
+          "meaning-box",
+          "p-arrow",
+          "l-arrow",
+          "o-arrow",
+          "prime-label",
+          "leibniz-label",
+          "operator-label",
+          "meaning-label"
+        ],
+        "colorIndependentDescription": "The visual uses labeled positions, solid and dashed line styles, and written descriptions so different notations, one local rate does not depend on color.",
+        "controlInstructions": [],
+        "reducedMotion": "not-applicable",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-321fa6ab",
+      "visibility": "public"
+    },
+    {
+      "id": "unit-2a-2a-v06",
+      "sourceVisualId": "unit-2a-2a-v06",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-2a-2a-v06.db7c645227383fa5.svg",
+        "sha256": "db7c645227383fa584c50579906d00ca34021c085130fd902a9065d075a31e4e",
+        "bytes": 18090,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Estimating a derivative from nearby data"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "A backward difference uses data to the left, a forward difference uses data to the right, and a central difference spans both sides of the target. The central secant is often the best estimate when the spacing is symmetric."
+          }
+        ]
+      },
+      "learningPurpose": "This visual connects table-based difference quotients to secant-line geometry and prepares students for numerical differentiation. It should make clear that a derivative estimate is not produced by a mysterious calculator command; it is a slope computed from finite data.",
+      "longDescription": "A backward difference uses data to the left, a forward difference uses data to the right, and a central difference spans both sides of the target. The central secant is often the best estimate when the spacing is symmetric. At x=2 , the true slope of x 2 is 4 . The left secant underestimates it and the right secant overestimates it. The central secant through the points at x=1 and x=3 has slope 4 , exactly matching the derivative in this symmetric quadratic example. In real data, the match is usually approximate rather than exact.",
+      "accessibility": {
+        "ariaLabel": "A backward difference uses data to the left, a forward difference uses data to the right, and a central difference spans both sides of the target. The central secant is often the best estimate when the spacing is symmetric.",
+        "summary": "A backward difference uses data to the left, a forward difference uses data to the right, and a central difference spans both sides of the target. The central secant is often the best estimate when the spacing is symmetric. At x=2 , the true slope of x 2 is 4 . The left secant underestimates it and the right secant overestimates it. The central secant through the points at x=1 and x=3 has slope 4 , exactly matching the derivative in this symmetric quadratic example. In real data, the match is usually approximate rather than exact.",
+        "readingOrder": [
+          "relationship-1",
+          "relationship-2",
+          "relationship-3",
+          "relationship-4",
+          "data-left",
+          "data-center",
+          "data-right"
+        ],
+        "colorIndependentDescription": "The visual uses labeled positions, solid and dashed line styles, and written descriptions so estimating a derivative from nearby data does not depend on color.",
+        "controlInstructions": [],
+        "reducedMotion": "not-applicable",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-a5f71541",
+      "visibility": "public"
+    },
+    {
+      "id": "unit-2a-2a-v07",
+      "sourceVisualId": "unit-2a-2a-v07",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-2a-2a-v07.ad1d96f1141cdb4f.svg",
+        "sha256": "ad1d96f1141cdb4f7d3bdbff6d10b1c5d31610c73702faefc335fb3daf008c3f",
+        "bytes": 16568,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Continuity does not guarantee a derivative"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "All four graphs are continuous at the marked point. Only the smooth graph has one finite limiting slope; the corner, cusp, and vertical tangent fail for different reasons."
+          }
+        ]
+      },
+      "learningPurpose": "The gallery separates four behaviors that are often collapsed into the vague phrase \"not smooth.\" The student should be able to diagnose the exact failure by examining one-sided secant slopes. The first panel provides a control case so the other three are not interpreted as the only possible continuous shapes.",
+      "longDescription": "All four graphs are continuous at the marked point. Only the smooth graph has one finite limiting slope; the corner, cusp, and vertical tangent fail for different reasons. The graph can remain unbroken and still fail to have an ordinary derivative. At a corner, the finite one-sided slopes disagree. At a cusp, the slopes diverge with opposite signs. At a vertical tangent, the slopes become unbounded with the same overall vertical direction. Continuity asks whether the graph joins; differentiability asks whether it has one finite local direction.",
+      "accessibility": {
+        "ariaLabel": "All four graphs are continuous at the marked point. Only the smooth graph has one finite limiting slope; the corner, cusp, and vertical tangent fail for different reasons.",
+        "summary": "All four graphs are continuous at the marked point. Only the smooth graph has one finite limiting slope; the corner, cusp, and vertical tangent fail for different reasons. The graph can remain unbroken and still fail to have an ordinary derivative. At a corner, the finite one-sided slopes disagree. At a cusp, the slopes diverge with opposite signs. At a vertical tangent, the slopes become unbounded with the same overall vertical direction. Continuity asks whether the graph joins; differentiability asks whether it has one finite local direction.",
+        "readingOrder": [
+          "relationship-1",
+          "relationship-2",
+          "relationship-3",
+          "relationship-4",
+          "origin"
+        ],
+        "colorIndependentDescription": "The visual uses labeled positions, solid and dashed line styles, and written descriptions so continuity does not guarantee a derivative does not depend on color.",
+        "controlInstructions": [],
+        "reducedMotion": "not-applicable",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-51f1b69a",
+      "visibility": "public"
+    },
+    {
+      "id": "unit-2a-2a-v08",
+      "sourceVisualId": "unit-2a-2a-v08",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-2a-2a-v08.6bccced524f80766.svg",
+        "sha256": "6bccced524f8076653c8ff2a4cee5ecee2e9aff309efad9f4042f4ee2a0371fd",
+        "bytes": 17800,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "The power rule changes both exponent and slope pattern"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "For x n, differentiation multiplies by the old exponent and lowers the exponent by one. The paired graphs show how the derivative records the original curve's changing steepness."
+          }
+        ]
+      },
+      "learningPurpose": "This four-panel visual should make the power rule memorable through shape correspondence. It also corrects the misconception that a zero derivative always means a local maximum or minimum: x 3 has derivative zero at the origin but continues increasing.",
+      "longDescription": "For x n , differentiation multiplies by the old exponent and lowers the exponent by one. The paired graphs show how the derivative records the original curve's changing steepness. For x 2 , slopes are negative on the left, zero at the origin, and positive on the right, so the derivative is the line 2x . For x 3 , the graph increases everywhere and flattens at the origin, so the derivative 3x 2 is nonnegative and touches zero there. The rule matches the geometry rather than merely manipulating symbols.",
+      "accessibility": {
+        "ariaLabel": "For x n, differentiation multiplies by the old exponent and lowers the exponent by one. The paired graphs show how the derivative records the original curve's changing steepness.",
+        "summary": "For x n , differentiation multiplies by the old exponent and lowers the exponent by one. The paired graphs show how the derivative records the original curve's changing steepness. For x 2 , slopes are negative on the left, zero at the origin, and positive on the right, so the derivative is the line 2x . For x 3 , the graph increases everywhere and flattens at the origin, so the derivative 3x 2 is nonnegative and touches zero there. The rule matches the geometry rather than merely manipulating symbols.",
+        "readingOrder": [
+          "relationship-1",
+          "relationship-2",
+          "relationship-3",
+          "relationship-4"
+        ],
+        "colorIndependentDescription": "The visual uses labeled positions, solid and dashed line styles, and written descriptions so the power rule changes both exponent and slope pattern does not depend on color.",
+        "controlInstructions": [],
+        "reducedMotion": "not-applicable",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-cec49988",
+      "visibility": "public"
+    },
+    {
+      "id": "unit-2a-2a-v09",
+      "sourceVisualId": "unit-2a-2a-v09",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-2a-2a-v09.223f1e6e635005e1.svg",
+        "sha256": "223f1e6e635005e132150891db33f576deb22b62c90684a02c1875d45fda73c1",
+        "bytes": 8202,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Why the product rule has two terms"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "When both side lengths of a rectangle change, the area changes because the width changes and because the height changes. The two first-order strips become the two terms in the product rule."
+          }
+        ]
+      },
+      "learningPurpose": "This is the central conceptual visual for the product rule. It shows why differentiating each factor and multiplying the results is wrong: that would retain only the tiny corner. The first-order change comes from two strips, one for each factor changing while the other is held at its current value.",
+      "longDescription": "When both side lengths of a rectangle change, the area changes because the width changes and because the height changes. The two first-order strips become the two terms in the product rule. The original area is uv . A small width change adds a vertical strip of area approximately v du . A small height change adds a horizontal strip of area approximately u dv . The tiny corner du dv is second order and becomes negligible compared with the two strips in the derivative limit. Thus d(uv)=u dv+v du .",
+      "accessibility": {
+        "ariaLabel": "When both side lengths of a rectangle change, the area changes because the width changes and because the height changes. The two first-order strips become the two terms in the product rule.",
+        "summary": "When both side lengths of a rectangle change, the area changes because the width changes and because the height changes. The two first-order strips become the two terms in the product rule. The original area is uv . A small width change adds a vertical strip of area approximately v du . A small height change adds a horizontal strip of area approximately u dv . The tiny corner du dv is second order and becomes negligible compared with the two strips in the derivative limit. Thus d(uv)=u dv+v du .",
+        "readingOrder": [
+          "area-box",
+          "width-strip-box",
+          "height-strip-box",
+          "corner-box",
+          "area-label",
+          "width-strip-label",
+          "height-strip-label",
+          "corner-label",
+          "rule-label"
+        ],
+        "colorIndependentDescription": "The visual uses labeled positions, solid and dashed line styles, and written descriptions so why the product rule has two terms does not depend on color.",
+        "controlInstructions": [],
+        "reducedMotion": "not-applicable",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-4c9e0aae",
+      "visibility": "public"
+    },
+    {
+      "id": "unit-2a-2a-v10",
+      "sourceVisualId": "unit-2a-2a-v10",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-2a-2a-v10.96d78a883c0347c6.svg",
+        "sha256": "96d78a883c0347c6f27a0202b408964475c3ebcbe301873acb006c6648a4560e",
+        "bytes": 10492,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "The quotient rule balances numerator growth against denominator growth"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "A ratio increases when its numerator grows, but denominator growth pushes the ratio in the opposite direction. The quotient rule records these competing effects and scales them by the square of the denominator."
+          }
+        ]
+      },
+      "learningPurpose": "Students frequently memorize a rhyme for the quotient rule and then reverse the numerator. This visual supplies a sign-based interpretation: numerator growth raises the ratio, while denominator growth lowers it. That interpretation offers a plausibility check even when the full algebra is complicated.",
+      "longDescription": "A ratio increases when its numerator grows, but denominator growth pushes the ratio in the opposite direction. The quotient rule records these competing effects and scales them by the square of the denominator. The positive term measures what numerator change would do if the denominator were temporarily fixed. The negative term measures how denominator growth reduces the ratio. The order in the numerator therefore matters. The denominator is squared because the ratio's sensitivity is itself scaled by the current denominator.",
+      "accessibility": {
+        "ariaLabel": "A ratio increases when its numerator grows, but denominator growth pushes the ratio in the opposite direction. The quotient rule records these competing effects and scales them by the square of the denominator.",
+        "summary": "A ratio increases when its numerator grows, but denominator growth pushes the ratio in the opposite direction. The quotient rule records these competing effects and scales them by the square of the denominator. The positive term measures what numerator change would do if the denominator were temporarily fixed. The negative term measures how denominator growth reduces the ratio. The order in the numerator therefore matters. The denominator is squared because the ratio's sensitivity is itself scaled by the current denominator.",
+        "readingOrder": [
+          "ratio-box",
+          "numerator-box",
+          "denominator-box",
+          "rule-box",
+          "r1-arrow",
+          "r2-arrow",
+          "r3-arrow",
+          "r4-arrow",
+          "ratio-label",
+          "numerator-label",
+          "denominator-label",
+          "rule-label"
+        ],
+        "colorIndependentDescription": "The visual uses labeled positions, solid and dashed line styles, and written descriptions so the quotient rule balances numerator growth against denominator growth does not depend on color.",
+        "controlInstructions": [],
+        "reducedMotion": "not-applicable",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-9876bac9",
+      "visibility": "public"
+    },
+    {
+      "id": "unit-2a-2a-v11",
+      "sourceVisualId": "unit-2a-2a-v11",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-2a-2a-v11.bd2817b5b888be8f.svg",
+        "sha256": "bd2817b5b888be8fe25955ac8930252691b4359d462e0cc37466c767b7878f63",
+        "bytes": 11602,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Choose rules from the outside structure"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Before differentiating, identify the outermost operation. Sum, product, quotient, and composition structures determine the first rule; inner pieces are then differentiated recursively."
+          }
+        ]
+      },
+      "learningPurpose": "This flowchart addresses the main obstacle after students learn several rules: rule selection. The key principle is syntactic structure. The first rule is determined by the last operation used to build the expression, not by whichever familiar symbol appears first when reading left to right.",
+      "longDescription": "Before differentiating, identify the outermost operation. Sum, product, quotient, and composition structures determine the first rule; inner pieces are then differentiated recursively. Read an expression as a construction, not as a row of symbols. For (x 2+1) 5 , the outer operation is a fifth power applied to an inner function, so begin with the chain rule. For (x 2+1)e x , the outer operation is multiplication, so begin with the product rule. After that first choice, repeat the same analysis on each component.",
+      "accessibility": {
+        "ariaLabel": "Before differentiating, identify the outermost operation. Sum, product, quotient, and composition structures determine the first rule; inner pieces are then differentiated recursively.",
+        "summary": "Before differentiating, identify the outermost operation. Sum, product, quotient, and composition structures determine the first rule; inner pieces are then differentiated recursively. Read an expression as a construction, not as a row of symbols. For (x 2+1) 5 , the outer operation is a fifth power applied to an inner function, so begin with the chain rule. For (x 2+1)e x , the outer operation is multiplication, so begin with the product rule. After that first choice, repeat the same analysis on each component.",
+        "readingOrder": [
+          "start-box",
+          "sum-box",
+          "product-box",
+          "quotient-box",
+          "composition-box",
+          "repeat-box",
+          "s1-arrow",
+          "s2-arrow",
+          "s3-arrow",
+          "s4-arrow",
+          "start-label",
+          "sum-label",
+          "product-label",
+          "quotient-label",
+          "composition-label",
+          "repeat-label"
+        ],
+        "colorIndependentDescription": "The visual uses labeled positions, solid and dashed line styles, and written descriptions so choose rules from the outside structure does not depend on color.",
+        "controlInstructions": [],
+        "reducedMotion": "not-applicable",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-3195ea2e",
+      "visibility": "public"
+    },
+    {
+      "id": "unit-2a-2a-v12",
+      "sourceVisualId": "unit-2a-2a-v12",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-2a-2a-v12.83e40803ed38bc40.svg",
+        "sha256": "83e40803ed38bc40845ddcd2c7ee3d4e5cd5f89fd5d3ae070bc4738892ce328e",
+        "bytes": 14733,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Sine and cosine derivatives are phase relationships"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "The slope pattern of sin x is exactly cos x. The slope pattern of cos x is -sin x. Matching heights on the derivative graph to slopes on the original graph makes the formulas visible."
+          }
+        ]
+      },
+      "learningPurpose": "This figure turns two memorized formulas into graph-reading facts. It should be used alongside a unit-circle derivation, but it remains valuable afterward as a sign and phase check. Students can detect a missing minus sign in ( x)' by asking whether cosine is decreasing just to the right of zero.",
+      "longDescription": "The slope pattern of x is exactly x . The slope pattern of x is - x . Matching heights on the derivative graph to slopes on the original graph makes the formulas visible. In the upper panel, the dashed cosine curve is positive exactly where sine is increasing, zero at sine's peaks and troughs, and negative where sine is decreasing. In the lower panel, the dashed negative-sine curve plays the same role for cosine. The derivative formulas encode these slope patterns.",
+      "accessibility": {
+        "ariaLabel": "The slope pattern of sin x is exactly cos x. The slope pattern of cos x is -sin x. Matching heights on the derivative graph to slopes on the original graph makes the formulas visible.",
+        "summary": "The slope pattern of x is exactly x . The slope pattern of x is - x . Matching heights on the derivative graph to slopes on the original graph makes the formulas visible. In the upper panel, the dashed cosine curve is positive exactly where sine is increasing, zero at sine's peaks and troughs, and negative where sine is decreasing. In the lower panel, the dashed negative-sine curve plays the same role for cosine. The derivative formulas encode these slope patterns.",
+        "readingOrder": [
+          "relationship-1",
+          "relationship-2",
+          "relationship-3"
+        ],
+        "colorIndependentDescription": "The visual uses labeled positions, solid and dashed line styles, and written descriptions so sine and cosine derivatives are phase relationships does not depend on color.",
+        "controlInstructions": [],
+        "reducedMotion": "not-applicable",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-017cbd2a",
+      "visibility": "public"
+    },
+    {
+      "id": "unit-2a-2a-v13",
+      "sourceVisualId": "unit-2a-2a-v13",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-2a-2a-v13.d43c5aabd5e65638.svg",
+        "sha256": "d43c5aabd5e65638eaab13994e0b3bc39aafd22ba0c770f48f84ee6ac0b6125e",
+        "bytes": 12860,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "The special base e has slope equal to height"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "For y=e x, the tangent slope at every input equals the function value there. At x=0, both the height and the slope are 1."
+          }
+        ]
+      },
+      "learningPurpose": "The graph should convey why base e is mathematically distinguished without pretending that the single tangent at zero proves the derivative formula everywhere. The surrounding prose should connect the visual to the limit definition and to continuous proportional growth.",
+      "longDescription": "For y=e x , the tangent slope at every input equals the function value there. At x=0 , both the height and the slope are 1 . The tangent line at (0,1) has slope 1 , matching the exponential's height. At every other input, the same phenomenon persists: the derivative of e x is e x . This is why e is the natural base for continuous growth models and calculus.",
+      "accessibility": {
+        "ariaLabel": "For y=e x, the tangent slope at every input equals the function value there. At x=0, both the height and the slope are 1.",
+        "summary": "For y=e x , the tangent slope at every input equals the function value there. At x=0 , both the height and the slope are 1 . The tangent line at (0,1) has slope 1 , matching the exponential's height. At every other input, the same phenomenon persists: the derivative of e x is e x . This is why e is the natural base for continuous growth models and calculus.",
+        "readingOrder": [
+          "relationship-1",
+          "relationship-2",
+          "exp-contact"
+        ],
+        "colorIndependentDescription": "The visual uses labeled positions, solid and dashed line styles, and written descriptions so the special base e has slope equal to height does not depend on color.",
+        "controlInstructions": [],
+        "reducedMotion": "not-applicable",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-8bc80abc",
+      "visibility": "public"
+    },
+    {
+      "id": "unit-2a-2a-v14",
+      "sourceVisualId": "unit-2a-2a-v14",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-2a-2a-v14.0232373d30ca957d.svg",
+        "sha256": "0232373d30ca957dc3d2ad0fcfb6548b92c90b9d4bdd37ce34af8908fee3d85f",
+        "bytes": 14890,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "The logarithm inherits reciprocal slopes from its inverse"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "The graphs of e x and ln x reflect across y=x. Tangent slopes at inverse points are reciprocals, which leads to (ln x)'=1/x."
+          }
+        ]
+      },
+      "learningPurpose": "This visual links the logarithm derivative to the inverse-function rule and reinforces the geometric meaning of inverse functions. It should reduce the appearance that 1/x is an arbitrary entry in a formula table.",
+      "longDescription": "The graphs of e x and x reflect across y=x . Tangent slopes at inverse points are reciprocals, which leads to ( x)'=1/x . The point (1,e) on the exponential reflects to (e,1) on the logarithm. Reflection swaps horizontal and vertical change, so slopes become reciprocals. Since the exponential slope at input 1 is e , the logarithm slope at input e is 1/e . In general, the logarithm slope at x is 1/x .",
+      "accessibility": {
+        "ariaLabel": "The graphs of e x and ln x reflect across y=x. Tangent slopes at inverse points are reciprocals, which leads to (ln x)'=1/x.",
+        "summary": "The graphs of e x and x reflect across y=x . Tangent slopes at inverse points are reciprocals, which leads to ( x)'=1/x . The point (1,e) on the exponential reflects to (e,1) on the logarithm. Reflection swaps horizontal and vertical change, so slopes become reciprocals. Since the exponential slope at input 1 is e , the logarithm slope at input e is 1/e . In general, the logarithm slope at x is 1/x .",
+        "readingOrder": [
+          "relationship-1",
+          "relationship-2",
+          "relationship-3",
+          "exp-inverse-point",
+          "log-inverse-point"
+        ],
+        "colorIndependentDescription": "The visual uses labeled positions, solid and dashed line styles, and written descriptions so the logarithm inherits reciprocal slopes from its inverse does not depend on color.",
+        "controlInstructions": [],
+        "reducedMotion": "not-applicable",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-b2b9ac5c",
+      "visibility": "public"
+    },
+    {
+      "id": "unit-2a-2a-v15",
+      "sourceVisualId": "unit-2a-2a-v15",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-2a-2a-v15.1856e9f74d42dc4d.svg",
+        "sha256": "1856e9f74d42dc4d947403e618a67712df04f88a799899c384bd99da3f3ed8e1",
+        "bytes": 9014,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Composition is a two-stage function machine"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "The inner function changes x into u=g(x). The outer function changes u into y=f(u). The chain rule multiplies the local rate of the second stage by the local rate of the first."
+          }
+        ]
+      },
+      "learningPurpose": "This is the primary non-symbolic explanation of the chain rule. It should be introduced before the power-of-a-function shortcut. The machine metaphor is useful only if the intermediate variable and rate units remain visible; otherwise it degenerates into another mnemonic.",
+      "longDescription": "The inner function changes x into u=g(x) . The outer function changes u into y=f(u) . The chain rule multiplies the local rate of the second stage by the local rate of the first. A change in x first creates a change in the inner quantity u . That inner change then creates a change in the final output y . The overall response is the product of the two local conversion rates. The outer derivative must be evaluated at the actual inner output u=g(x) .",
+      "accessibility": {
+        "ariaLabel": "The inner function changes x into u=g(x). The outer function changes u into y=f(u). The chain rule multiplies the local rate of the second stage by the local rate of the first.",
+        "summary": "The inner function changes x into u=g(x) . The outer function changes u into y=f(u) . The chain rule multiplies the local rate of the second stage by the local rate of the first. A change in x first creates a change in the inner quantity u . That inner change then creates a change in the final output y . The overall response is the product of the two local conversion rates. The outer derivative must be evaluated at the actual inner output u=g(x) .",
+        "readingOrder": [
+          "input-box",
+          "inner-box",
+          "outer-box",
+          "inner-rate-arrow",
+          "outer-rate-arrow",
+          "input-label",
+          "inner-label",
+          "outer-label",
+          "inner-rate-label",
+          "outer-rate-label",
+          "formula-label"
+        ],
+        "colorIndependentDescription": "The visual uses labeled positions, solid and dashed line styles, and written descriptions so composition is a two-stage function machine does not depend on color.",
+        "controlInstructions": [],
+        "reducedMotion": "not-applicable",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-07177825",
+      "visibility": "public"
+    },
+    {
+      "id": "unit-2a-2a-v16",
+      "sourceVisualId": "unit-2a-2a-v16",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-2a-2a-v16.4a031329dbfb8639.svg",
+        "sha256": "4a031329dbfb8639c63108eb875fbd08a3f81de25a0dd8346b50118a6605803f",
+        "bytes": 8600,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Multiple chain-rule layers peel from the outside inward"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "A deeply nested expression is handled one layer at a time. Differentiate the outer shell, keep the inner contents unchanged, and then multiply by the derivative of the next layer."
+          }
+        ]
+      },
+      "learningPurpose": "This visual counters the habit of searching left-to-right for familiar formulas. Nested composition is spatial: one operation encloses another. The outside-in reading order is therefore more natural than the printed linear order.",
+      "longDescription": "A deeply nested expression is handled one layer at a time. Differentiate the outer shell, keep the inner contents unchanged, and then multiply by the derivative of the next layer. The nested rectangles are not separate factors; they are layers of composition. Start with the outer square, then differentiate the exponential, then the sine, then the polynomial. At every stage, multiply by the derivative of the next inner layer. This is why a multi-layer derivative becomes a product of local rates.",
+      "accessibility": {
+        "ariaLabel": "A deeply nested expression is handled one layer at a time. Differentiate the outer shell, keep the inner contents unchanged, and then multiply by the derivative of the next layer.",
+        "summary": "A deeply nested expression is handled one layer at a time. Differentiate the outer shell, keep the inner contents unchanged, and then multiply by the derivative of the next layer. The nested rectangles are not separate factors; they are layers of composition. Start with the outer square, then differentiate the exponential, then the sine, then the polynomial. At every stage, multiply by the derivative of the next inner layer. This is why a multi-layer derivative becomes a product of local rates.",
+        "readingOrder": [
+          "square-box",
+          "exponential-box",
+          "sine-box",
+          "polynomial-box",
+          "square-label",
+          "exponential-label",
+          "sine-label",
+          "polynomial-label",
+          "order-label"
+        ],
+        "colorIndependentDescription": "The visual uses labeled positions, solid and dashed line styles, and written descriptions so multiple chain-rule layers peel from the outside inward does not depend on color.",
+        "controlInstructions": [],
+        "reducedMotion": "not-applicable",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-e1a1242c",
+      "visibility": "public"
+    },
+    {
+      "id": "unit-2a-2a-v17",
+      "sourceVisualId": "unit-2a-2a-v17",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-2a-2a-v17.4160817393d20b2a.svg",
+        "sha256": "4160817393d20b2a59817621b51221c04dacea5af1785f9570cea7242d6fac3d",
+        "bytes": 16184,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "An implicit curve has local slopes even without one global formula y=f(x)"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "The circle x²+y²=25 contains upper and lower branches. Implicit differentiation gives one slope formula, dy/dx=-x/y, valid wherever y 0."
+          }
+        ]
+      },
+      "learningPurpose": "The visual should establish why implicit differentiation is needed: the geometric object is perfectly legitimate even when it is not represented globally by one explicit function. It also reinforces that y depends locally on x along the curve.",
+      "longDescription": "The circle x 2+y 2=25 contains upper and lower branches. Implicit differentiation gives one slope formula, dy/dx=-x/y , valid wherever y 0 . The circle is not one function of x because most vertical lines meet it twice. Nevertheless, at the point (3,4) the curve has a definite tangent. Differentiating the relationship gives 2x+2y y'=0 , so y'=-x/y=-3/4 at that point.",
+      "accessibility": {
+        "ariaLabel": "The circle x²+y²=25 contains upper and lower branches. Implicit differentiation gives one slope formula, dy/dx=-x/y, valid wherever y 0.",
+        "summary": "The circle x 2+y 2=25 contains upper and lower branches. Implicit differentiation gives one slope formula, dy/dx=-x/y , valid wherever y 0 . The circle is not one function of x because most vertical lines meet it twice. Nevertheless, at the point (3,4) the curve has a definite tangent. Differentiating the relationship gives 2x+2y y'=0 , so y'=-x/y=-3/4 at that point.",
+        "readingOrder": [
+          "relationship-1",
+          "relationship-2",
+          "relationship-3",
+          "implicit-point"
+        ],
+        "colorIndependentDescription": "The visual uses labeled positions, solid and dashed line styles, and written descriptions so an implicit curve has local slopes even without one global formula y=f(x) does not depend on color.",
+        "controlInstructions": [],
+        "reducedMotion": "not-applicable",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-6e40df26",
+      "visibility": "public"
+    },
+    {
+      "id": "unit-2a-2a-v18",
+      "sourceVisualId": "unit-2a-2a-v18",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-2a-2a-v18.f9cf1d46f0d877a4.svg",
+        "sha256": "f9cf1d46f0d877a46750692e84b19953c793b1fa090b23c89a6d9d985d6ebe9f",
+        "bytes": 17050,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Inverse-function slopes are reciprocal because coordinates swap"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Reflecting a graph across y=x swaps horizontal and vertical changes. A tangent with slope m reflects to one with slope 1/m."
+          }
+        ]
+      },
+      "learningPurpose": "This visual provides the geometric justification for (f -1 )'(a)=1/f'(f -1 (a)) . It must make clear that the two derivatives are evaluated at corresponding points, not at the same horizontal coordinate.",
+      "longDescription": "Reflecting a graph across y=x swaps horizontal and vertical changes. A tangent with slope m reflects to one with slope 1/m . The point (2,4) on y=x 2 reflects to (4,2) on y= x . The tangent slope 4 reflects to slope 1/4 . This geometric swap explains the inverse derivative formula: the inverse rate is the reciprocal of the original rate, evaluated at the matching input.",
+      "accessibility": {
+        "ariaLabel": "Reflecting a graph across y=x swaps horizontal and vertical changes. A tangent with slope m reflects to one with slope 1/m.",
+        "summary": "Reflecting a graph across y=x swaps horizontal and vertical changes. A tangent with slope m reflects to one with slope 1/m . The point (2,4) on y=x 2 reflects to (4,2) on y= x . The tangent slope 4 reflects to slope 1/4 . This geometric swap explains the inverse derivative formula: the inverse rate is the reciprocal of the original rate, evaluated at the matching input.",
+        "readingOrder": [
+          "relationship-1",
+          "relationship-2",
+          "relationship-3",
+          "relationship-4",
+          "relationship-5",
+          "function-point",
+          "inverse-point"
+        ],
+        "colorIndependentDescription": "The visual uses labeled positions, solid and dashed line styles, and written descriptions so inverse-function slopes are reciprocal because coordinates swap does not depend on color.",
+        "controlInstructions": [],
+        "reducedMotion": "not-applicable",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-8952269c",
+      "visibility": "public"
+    },
+    {
+      "id": "unit-2a-2a-v19",
+      "sourceVisualId": "unit-2a-2a-v19",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-2a-2a-v19.9b6ae517a97fc8c0.svg",
+        "sha256": "9b6ae517a97fc8c02108f6ca0cca2d08e86113b6d3fc5352e264d8e3ed1436f3",
+        "bytes": 9889,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Logarithms turn difficult multiplication into easier addition"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Logarithmic differentiation is useful because logs transform products into sums, quotients into differences, and exponents into coefficients before differentiation."
+          }
+        ]
+      },
+      "learningPurpose": "The visual should explain why logarithmic differentiation is a strategic rewrite rather than a mysterious special rule. It shows the structural simplification before any derivative is taken.",
+      "longDescription": "Logarithmic differentiation is useful because logs transform products into sums, quotients into differences, and exponents into coefficients before differentiation. The original expression contains a quotient, powers, a radical, and an exponential. Taking logarithms separates those structures. After expansion, each term can be differentiated with familiar rules. The final step, not shown in the last box, is to multiply by y and replace y with the original expression.",
+      "accessibility": {
+        "ariaLabel": "Logarithmic differentiation is useful because logs transform products into sums, quotients into differences, and exponents into coefficients before differentiation.",
+        "summary": "Logarithmic differentiation is useful because logs transform products into sums, quotients into differences, and exponents into coefficients before differentiation. The original expression contains a quotient, powers, a radical, and an exponential. Taking logarithms separates those structures. After expansion, each term can be differentiated with familiar rules. The final step, not shown in the last box, is to multiply by y and replace y with the original expression.",
+        "readingOrder": [
+          "original-box",
+          "take-log-box",
+          "expand-box",
+          "differentiate-box",
+          "v1-arrow",
+          "v2-arrow",
+          "v3-arrow",
+          "original-label",
+          "take-log-label",
+          "expand-label",
+          "differentiate-label"
+        ],
+        "colorIndependentDescription": "The visual uses labeled positions, solid and dashed line styles, and written descriptions so logarithms turn difficult multiplication into easier addition does not depend on color.",
+        "controlInstructions": [],
+        "reducedMotion": "not-applicable",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-db395108",
+      "visibility": "public"
+    },
+    {
+      "id": "unit-2a-2a-v20",
+      "sourceVisualId": "unit-2a-2a-v20",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-2a-2a-v20.fd09b96716c4b1de.svg",
+        "sha256": "fd09b96716c4b1def6fec7bf16687a49c761566de1c41fa4a85b6f7369d4b3f5",
+        "bytes": 15483,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "A function, its first derivative, and its second derivative tell a layered story"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "The height of f' records the slope of f. The height of f\" records how that slope changes. Reading the three graphs together reveals increasing behavior and concavity."
+          }
+        ]
+      },
+      "learningPurpose": "The stacked layout is designed to teach cross-graph translation. It should be revisited in Unit 2B for motion and curve analysis. The learner should track one input vertically through all three panels.",
+      "longDescription": "The height of f' records the slope of f . The height of f\" records how that slope changes. Reading the three graphs together reveals increasing behavior and concavity. Where f' is positive, f rises; where f' is negative, f falls. Where f\" is positive, the slopes shown by f' are increasing and f is concave up; where f\" is negative, f is concave down. The zeros of the lower graphs mark transitions in the graphs above them.",
+      "accessibility": {
+        "ariaLabel": "The height of f' records the slope of f. The height of f\" records how that slope changes. Reading the three graphs together reveals increasing behavior and concavity.",
+        "summary": "The height of f' records the slope of f . The height of f\" records how that slope changes. Reading the three graphs together reveals increasing behavior and concavity. Where f' is positive, f rises; where f' is negative, f falls. Where f\" is positive, the slopes shown by f' are increasing and f is concave up; where f\" is negative, f is concave down. The zeros of the lower graphs mark transitions in the graphs above them.",
+        "readingOrder": [
+          "relationship-1",
+          "relationship-2",
+          "relationship-3"
+        ],
+        "colorIndependentDescription": "The visual uses labeled positions, solid and dashed line styles, and written descriptions so a function, its first derivative, and its second derivative tell a layered story does not depend on color.",
+        "controlInstructions": [],
+        "reducedMotion": "not-applicable",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-ab1b1d48",
+      "visibility": "public"
+    },
+    {
+      "id": "unit-2a-2a-v21",
+      "sourceVisualId": "unit-2a-2a-v21",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-2a-2a-v21.f59b7b7dd45f8fee.svg",
+        "sha256": "f59b7b7dd45f8feeaf87d253496cd573b4d3003b2657fec8177774db3fc33bc1",
+        "bytes": 12553,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "A complete derivative solution has a planning stage and a checking stage"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Reliable differentiation separates structure recognition, rule application, simplification, and verification. Skipping planning is faster only until it produces a derivative of the wrong expression."
+          }
+        ]
+      },
+      "learningPurpose": "This visual closes Unit 2A by converting many isolated skills into a repeatable problem-solving routine. It also supports metacognition: students learn to locate the stage at which an error occurred.",
+      "longDescription": "Reliable differentiation separates structure recognition, rule application, simplification, and verification. Skipping planning is faster only until it produces a derivative of the wrong expression. The derivative calculation is the middle of the process, not the whole process. A short rule plan prevents missing chain-rule factors. A final check catches impossible signs, units, or domains. When an error appears, trace backward to the earliest incorrect decision rather than randomly changing algebra at the end.",
+      "accessibility": {
+        "ariaLabel": "Reliable differentiation separates structure recognition, rule application, simplification, and verification. Skipping planning is faster only until it produces a derivative of the wrong expression.",
+        "summary": "Reliable differentiation separates structure recognition, rule application, simplification, and verification. Skipping planning is faster only until it produces a derivative of the wrong expression. The derivative calculation is the middle of the process, not the whole process. A short rule plan prevents missing chain-rule factors. A final check catches impossible signs, units, or domains. When an error appears, trace backward to the earliest incorrect decision rather than randomly changing algebra at the end.",
+        "readingOrder": [
+          "parse-box",
+          "plan-box",
+          "differentiate-box",
+          "simplify-box",
+          "check-box",
+          "q1-arrow",
+          "q2-arrow",
+          "q3-arrow",
+          "q4-arrow",
+          "repair-arrow",
+          "parse-label",
+          "plan-label",
+          "differentiate-label",
+          "simplify-label",
+          "check-label",
+          "repair-label",
+          "routine-label"
+        ],
+        "colorIndependentDescription": "The visual uses labeled positions, solid and dashed line styles, and written descriptions so a complete derivative solution has a planning stage and a checking stage does not depend on color.",
+        "controlInstructions": [],
+        "reducedMotion": "not-applicable",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-883ce6a3",
+      "visibility": "public"
+    },
+    {
+      "id": "unit-2a-2a-v22",
+      "sourceVisualId": "unit-2a-2a-v22",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-2a-2a-v22.d8579681a25e98c2.svg",
+        "sha256": "d8579681a25e98c29d6305250817f8bdc23778b9bb4ba2dc6c40a065b4719c5a",
+        "bytes": 13582,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "The nonlinear remainder shrinks faster than the input step"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "For f(x)=x² at a=3, the exact change is 6h+h². The tangent model keeps 6h; the discarded remainder h² becomes small not only in absolute size, but also relative to h."
+          }
+        ]
+      },
+      "learningPurpose": "This figure turns the symbolic statement r(h)=o(h) into a comparison of scales. Students often hear that the tangent error is \"small\" without learning what kind of smallness differentiability requires. The figure must make clear that the remainder is negligible relative to the first-order input displacement, not merely that it tends to zero.",
+      "longDescription": "For f(x)=x 2 at a=3 , the exact change is 6h+h 2 . The tangent model keeps 6h ; the discarded remainder h 2 becomes small not only in absolute size, but also relative to h . Near h=0 , the gold curve falls toward zero much faster than the blue V-shaped graph. Dividing the remainder by the step gives h 2/|h|=|h| , which also approaches zero. That relative comparison, rather than the mere fact that both quantities are small, is what little- o notation records.",
+      "accessibility": {
+        "ariaLabel": "For f(x)=x² at a=3, the exact change is 6h+h². The tangent model keeps 6h; the discarded remainder h² becomes small not only in absolute size, but also relative to h.",
+        "summary": "For f(x)=x 2 at a=3 , the exact change is 6h+h 2 . The tangent model keeps 6h ; the discarded remainder h 2 becomes small not only in absolute size, but also relative to h . Near h=0 , the gold curve falls toward zero much faster than the blue V-shaped graph. Dividing the remainder by the step gives h 2/|h|=|h| , which also approaches zero. That relative comparison, rather than the mere fact that both quantities are small, is what little- o notation records.",
+        "readingOrder": [
+          "relationship-1",
+          "relationship-2",
+          "remainder-half",
+          "remainder-quarter",
+          "remainder-tenth"
+        ],
+        "colorIndependentDescription": "The visual uses labeled positions, solid and dashed line styles, and written descriptions so the nonlinear remainder shrinks faster than the input step does not depend on color.",
+        "controlInstructions": [],
+        "reducedMotion": "not-applicable",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-ea40f386",
+      "visibility": "public"
+    },
+    {
+      "id": "unit-2a-2a-v23",
+      "sourceVisualId": "unit-2a-2a-v23",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-2a-2a-v23.c22073778fccb453.svg",
+        "sha256": "c22073778fccb4531b6295538227278e282aa76670fdd5f2d5c97b14e35d0c8c",
+        "bytes": 12735,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "A derivative may be rough, but it cannot jump over slope values"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "The left panel shows a step-shaped candidate with a genuine jump; Darboux's Theorem rules it out as the derivative of any everywhere-differentiable function on that interval. The right panel crosses every intermediate height."
+          }
+        ]
+      },
+      "learningPurpose": "The side-by-side comparison should prevent the false inference that \"derivatives need not be continuous\" means \"any discontinuous graph can be a derivative.\" The visual introduces a global restriction on local slope data and gives students a quick way to reject an impossible proposed derivative graph.",
+      "longDescription": "The left panel shows a step-shaped candidate with a genuine jump; Darboux's Theorem rules it out as the derivative of any everywhere-differentiable function on that interval. The right panel crosses every intermediate height. The left graph goes from slope -1 to slope 1 without ever taking slope 0 . A derivative cannot do that. It may oscillate or fail to be continuous in subtler ways, but whenever it takes two slope values it must take every value between them somewhere in between.",
+      "accessibility": {
+        "ariaLabel": "The left panel shows a step-shaped candidate with a genuine jump; Darboux's Theorem rules it out as the derivative of any everywhere-differentiable function on that interval. The right panel crosses every intermediate height.",
+        "summary": "The left panel shows a step-shaped candidate with a genuine jump; Darboux's Theorem rules it out as the derivative of any everywhere-differentiable function on that interval. The right panel crosses every intermediate height. The left graph goes from slope -1 to slope 1 without ever taking slope 0 . A derivative cannot do that. It may oscillate or fail to be continuous in subtler ways, but whenever it takes two slope values it must take every value between them somewhere in between.",
+        "readingOrder": [
+          "relationship-1",
+          "relationship-2",
+          "relationship-3",
+          "relationship-4",
+          "jump-left-open",
+          "jump-right-closed"
+        ],
+        "colorIndependentDescription": "The visual uses labeled positions, solid and dashed line styles, and written descriptions so a derivative may be rough, but it cannot jump over slope values does not depend on color.",
+        "controlInstructions": [],
+        "reducedMotion": "not-applicable",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-cff2b0b5",
+      "visibility": "public"
+    },
+    {
+      "id": "unit-2a-2a-v24",
+      "sourceVisualId": "unit-2a-2a-v24",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-2a-2a-v24.bee967a1aa3e2a29.svg",
+        "sha256": "bee967a1aa3e2a299502c10ef727a203658579655fe15850994853578a70e5dc",
+        "bytes": 9643,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "The chain rule composes two local scale changes"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "A small input change h is first scaled by g'(a), then the resulting change is scaled by f'(g(a)). The total first-order scale factor is their product, in the same order as the function composition."
+          }
+        ]
+      },
+      "learningPurpose": "This diagram reframes the chain rule as a statement about local input-output transformations rather than a mnemonic about \"outside\" and \"inside.\" It prepares advanced readers for Jacobian matrices while remaining intelligible in one dimension.",
+      "longDescription": "A small input change h is first scaled by g'(a) , then the resulting change is scaled by f'(g(a)) . The total first-order scale factor is their product, in the same order as the function composition. Follow the perturbation from left to right. The inner function converts h into approximately g'(a)h . The outer function acts on that new change, producing approximately f'(g(a))g'(a)h . Multiplication appears because two one-dimensional linear scalings are composed.",
+      "accessibility": {
+        "ariaLabel": "A small input change h is first scaled by g'(a), then the resulting change is scaled by f'(g(a)). The total first-order scale factor is their product, in the same order as the function composition.",
+        "summary": "A small input change h is first scaled by g'(a) , then the resulting change is scaled by f'(g(a)) . The total first-order scale factor is their product, in the same order as the function composition. Follow the perturbation from left to right. The inner function converts h into approximately g'(a)h . The outer function acts on that new change, producing approximately f'(g(a))g'(a)h . Multiplication appears because two one-dimensional linear scalings are composed.",
+        "readingOrder": [
+          "input-step-box",
+          "after-g-box",
+          "after-f-box",
+          "g-scale-arrow",
+          "f-scale-arrow",
+          "input-step-label",
+          "after-g-label",
+          "after-f-label",
+          "g-scale-label",
+          "f-scale-label",
+          "composition-label"
+        ],
+        "colorIndependentDescription": "The visual uses labeled positions, solid and dashed line styles, and written descriptions so the chain rule composes two local scale changes does not depend on color.",
+        "controlInstructions": [],
+        "reducedMotion": "not-applicable",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-8dc65345",
+      "visibility": "public"
+    },
+    {
+      "id": "unit-2a-2a-v25",
+      "sourceVisualId": "unit-2a-2a-v25",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-2a-2a-v25.c014b7662c61ac99.svg",
+        "sha256": "c014b7662c61ac99de3efc85325440d2a13c8b6c0379c038559c0ac5522db0f4",
+        "bytes": 17103,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "An implicit curve can be a function locally even when it is not one globally"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Near (3,4), a narrow vertical strip meets the circle in one upper-branch point for each nearby x, so y can be solved locally as a smooth function of x. Near (5,0), the vertical tangent marks failure of that choice of output variable."
+          }
+        ]
+      },
+      "learningPurpose": "The paired panels make the word \"locally\" concrete. Students often treat the vertical-line test as an all-or-nothing verdict and miss that an implicit relation can define a function after restricting to a neighborhood and branch. The second panel links the theorem's nonzero-partial condition to visible geometry.",
+      "longDescription": "Near (3,4) , a narrow vertical strip meets the circle in one upper-branch point for each nearby x , so y can be solved locally as a smooth function of x . Near (5,0) , the vertical tangent marks failure of that choice of output variable. The whole circle fails the vertical-line test, but locality changes the question. Around (3,4) , after choosing a small enough neighborhood and the upper branch, nearby x -values determine exactly one nearby y -value. At (5,0) , F y=2y=0 and the tangent is vertical, so solving smoothly for y as a function of x breaks down there.",
+      "accessibility": {
+        "ariaLabel": "Near (3,4), a narrow vertical strip meets the circle in one upper-branch point for each nearby x, so y can be solved locally as a smooth function of x. Near (5,0), the vertical tangent marks failure of that choice of output variable.",
+        "summary": "Near (3,4) , a narrow vertical strip meets the circle in one upper-branch point for each nearby x , so y can be solved locally as a smooth function of x . Near (5,0) , the vertical tangent marks failure of that choice of output variable. The whole circle fails the vertical-line test, but locality changes the question. Around (3,4) , after choosing a small enough neighborhood and the upper branch, nearby x -values determine exactly one nearby y -value. At (5,0) , F y=2y=0 and the tangent is vertical, so solving smoothly for y as a function of x breaks down there.",
+        "readingOrder": [
+          "relationship-1",
+          "relationship-2",
+          "local-strip",
+          "good-local-point",
+          "failure-point",
+          "vertical-tangent"
+        ],
+        "colorIndependentDescription": "The visual uses labeled positions, solid and dashed line styles, and written descriptions so an implicit curve can be a function locally even when it is not one globally does not depend on color.",
+        "controlInstructions": [],
+        "reducedMotion": "not-applicable",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-6e234484",
+      "visibility": "public"
+    }
+  ]
+}

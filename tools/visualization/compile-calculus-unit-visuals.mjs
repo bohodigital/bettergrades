@@ -15,7 +15,59 @@ if (!expected) throw new Error(`Unknown calculus unit ${requested}.`);
 const directory = resolve(root, "content/calculus/units", requested);
 const sourcePath = resolve(directory, "visual-specs.v1.json");
 const manifestPath = resolve(directory, "compiled-scenes.v1.json");
+const runtimeManifestPath = resolve(directory, "public-runtime-scenes.server.json");
 const assetDirectory = resolve(root, "public/visuals/v1");
+
+function publicInteractiveScene(scene) {
+  const {
+    compiledSceneVersion,
+    sourceSpecVersion,
+    id,
+    kind,
+    title,
+    caption,
+    learningPurpose,
+    longDescription,
+    coordinateSpace,
+    viewport,
+    axes,
+    panels,
+    layers,
+    controls,
+    accessibility,
+    print,
+    performance,
+    requiredCapabilities,
+    selectedRenderer,
+    staticFallback,
+    delivery,
+  } = scene;
+  const { route, sourceVisualId, sourceFingerprint, compilerVersion, visibility } = scene.provenance;
+  return {
+    compiledSceneVersion,
+    sourceSpecVersion,
+    id,
+    kind,
+    title,
+    caption,
+    learningPurpose,
+    longDescription,
+    coordinateSpace,
+    viewport,
+    axes,
+    panels,
+    layers,
+    controls,
+    accessibility,
+    print,
+    performance,
+    requiredCapabilities,
+    selectedRenderer,
+    staticFallback,
+    delivery,
+    provenance: { route, sourceVisualId, sourceFingerprint, compilerVersion, visibility },
+  };
+}
 
 const sourceText = (await readFile(sourcePath, "utf8")).replace(/\r\n?/g, "\n");
 const collection = JSON.parse(sourceText);
@@ -55,6 +107,33 @@ const manifest = {
   })),
 };
 const manifestText = `${JSON.stringify(manifest, null, 2)}\n`;
+const runtimeManifest = {
+  manifestVersion: 1,
+  collectionId: collection.collectionId,
+  sourceSha256: manifest.sourceSha256,
+  compilerVersion: manifest.compilerVersion,
+  sceneCount: manifest.sceneCount,
+  interactiveCount: rendered.filter(({ scene }) => scene.delivery.hydration !== "none").length,
+  scenes: manifest.scenes.map((entry) => {
+    const scene = entry.compiledScene;
+    return {
+      id: entry.id,
+      sourceVisualId: entry.sourceVisualId,
+      selectedRenderer: entry.selectedRenderer,
+      hydration: entry.hydration,
+      staticAsset: entry.staticAsset,
+      title: scene.title,
+      caption: scene.caption,
+      learningPurpose: scene.learningPurpose,
+      longDescription: scene.longDescription,
+      accessibility: scene.accessibility,
+      sourceFingerprint: scene.provenance.sourceFingerprint,
+      visibility: scene.provenance.visibility,
+      ...(entry.hydration === "none" ? {} : { interactiveScene: publicInteractiveScene(scene) }),
+    };
+  }),
+};
+const runtimeManifestText = `${JSON.stringify(runtimeManifest, null, 2)}\n`;
 const expectedAssets = new Map(rendered.map(({ asset }) => [asset.assetFileName, asset.svg]));
 
 async function assertCurrent(path, expectedText, label) {
@@ -68,6 +147,7 @@ async function assertCurrent(path, expectedText, label) {
 
 if (checkOnly) {
   await assertCurrent(manifestPath, manifestText, `${requested} compiled visual manifest`);
+  await assertCurrent(runtimeManifestPath, runtimeManifestText, `${requested} public runtime visual manifest`);
   for (const [name, svg] of expectedAssets) await assertCurrent(resolve(assetDirectory, name), svg, `${requested} static SVG ${name}`);
   const stale = (await readdir(assetDirectory)).filter((name) => name.startsWith(`${requested}-`) && name.endsWith(".svg") && !expectedAssets.has(name));
   if (stale.length) throw new Error(`${requested} has stale SVG assets: ${stale.join(", ")}.`);
@@ -83,5 +163,8 @@ if (checkOnly) {
   const temporary = `${manifestPath}.tmp-${process.pid}`;
   await writeFile(temporary, manifestText, "utf8");
   await rename(temporary, manifestPath);
+  const runtimeTemporary = `${runtimeManifestPath}.tmp-${process.pid}`;
+  await writeFile(runtimeTemporary, runtimeManifestText, "utf8");
+  await rename(runtimeTemporary, runtimeManifestPath);
 }
 console.log(`${checkOnly ? "Verified" : "Compiled"} ${rendered.length} ${requested} BVLP scenes and static SVG fallbacks.`);
