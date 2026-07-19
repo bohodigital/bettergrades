@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "unit": "3B",
+  "status": "release_live_verified",
+  "work_order": "WO-2026-07-18-BETTERGRADES-CALCULUS-UNITS-3A-3B-V3-001",
+  "inputs": {
+    "archive_sha256": "d6a102fca7235eb850747a22d9b2f42394db3643d52e4374bb8cd31289a80655",
+    "owner_contract_sha256": "fa666564799e45556c545bee9a36f1b50820244993c6798c2fe216924955b9d4"
+  },
+  "reviewed_candidate": {
+    "commit": "8b7b83e3e51c5acfcf039c235d244122bcd2c7e6",
+    "tree": "2616ac44de0da31b7bb4dead1b83740f5facaabf"
+  },
+  "sites": {
+    "project_id": "appgprj_6a52d8b9848c81918fa5ff88a08eece0",
+    "version_number": 34,
+    "version_id": "appgprj_6a52d8b9848c81918fa5ff88a08eece0~appgver_933072133f348191b2ca856bc60a986c",
+    "deployment_id": "appgdep_6a5c588b748481919a5f1e1ee53ec0c5",
+    "deployment_status": "succeeded",
+    "url": "https://better-grades.mankopoppi.chatgpt.site",
+    "access_mode": "custom",
+    "owner_count": 1,
+    "workspace_group_count": 0,
+    "tenant_group_count": 0,
+    "local_archive_sha256": "74a03a34795923aaeb41f9aa25075ebcef61ad811d16e04dbe4f26022cc1dcda",
+    "archive_content_hash": "sha256:75d49a9ff2f17ec48a69d4623421b387ae2b5876494aa1ce6812ce1f1ed2d6e7",
+    "archive_bytes": 45598720,
+    "archive_files": 466
+  },
+  "git": {
+    "pull_requests": [33, 34, 35, 36],
+    "implementation_merge": "6b38b7cd83ec7b9b35a2a8179da84eab76445a6c",
+    "size_correction_merge": "5a19b34ee611ee4eaea03ba723bed8c798099181",
+    "prebundle_merge": "b955d0a44937eb5ed275dd78e667a638eda7e14a",
+    "visual_correction_merge": "ccd2f172f73c8a83f73e17b2008838a14b2d21bc",
+    "deployed_tree": "2616ac44de0da31b7bb4dead1b83740f5facaabf",
+    "repository_checks": "passed_for_each_exact_head"
+  },
+  "cloudflare": {
+    "project": "bettergrades",
+    "production_branch": "main",
+    "deployed_commit": "ccd2f172f73c8a83f73e17b2008838a14b2d21bc",
+    "immutable_url": "https://a14da09c.bettergrades-vhc.pages.dev",
+    "pages_url": "https://bettergrades-vhc.pages.dev",
+    "apex_url": "https://bettergrades.net",
+    "www_url": "https://www.bettergrades.net",
+    "custom_domains_active": true,
+    "seo_control_reference": "boho-digital-services.cloudflare.primary-management",
+    "seo_control_rule_current": true
+  },
+  "package": {
+    "worker_raw_bytes": 11476461,
+    "worker_gzip_bytes": 2506639,
+    "worker_gzip_budget_bytes": 2883584,
+    "standalone_worker": true,
+    "relative_imports": false
+  },
+  "verification": {
+    "candidate_tests": { "passed": 214, "failed": 0 },
+    "candidate_lint": "passed",
+    "candidate_typescript": "passed",
+    "visual_verifier": "passed",
+    "final_pages_package_tests": { "passed": 5, "failed": 0 },
+    "origins": 4,
+    "unit_3a_routes_per_origin": 36,
+    "unit_3a_visuals_per_origin": 11,
+    "unit_3a_answer_keys_per_origin": 2,
+    "unit_3b_routes_per_origin": 25,
+    "unit_3b_visuals_per_origin": 9,
+    "unit_3b_answer_keys_per_origin": 2,
+    "semantic_crawl": "passed",
+    "grader_probes": "passed",
+    "exercise_reveal": "passed",
+    "desktop_browser": "passed",
+    "mobile_browser_390x844": "passed",
+    "dark_theme": "passed",
+    "horizontal_overflow": "none_observed"
+  },
+  "rollback": {
+    "immediate_prior_unit_3b_commit": "b955d0a44937eb5ed275dd78e667a638eda7e14a",
+    "immediate_prior_unit_3b_url": "https://8da64cc8.bettergrades-vhc.pages.dev",
+    "accepted_unit_3a_only_url": "https://65e4d5ff.bettergrades-vhc.pages.dev"
+  },
+  "evidence": {
+    "unit_3a_live_report": "/srv/local1/runtime/bettergrades/intake/units-3a-3b-v3/unit3a-live-verification-final.json",
+    "unit_3b_live_report": "/srv/local1/runtime/bettergrades/intake/units-3a-3b-v3/unit3b-live-verification-final.json"
+  }
+}
