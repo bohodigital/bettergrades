@@ -49,7 +49,7 @@ function betweenCurves(top, bottom, min, max, count = 40) {
 }
 
 function circle(cx, cy, radius, count = 48) {
-  return samples((angle) => cy + radius * Math.sin(angle), 0, 2 * Math.PI, count + 1).xValues.map((angle, index) => [cx + radius * Math.cos(angle), cy + radius * Math.sin(angle)]);
+  return samples((angle) => cy + radius * Math.sin(angle), 0, 2 * Math.PI, count + 1).xValues.map((angle) => [cx + radius * Math.cos(angle), cy + radius * Math.sin(angle)]);
 }
 
 const series = (id, data, labelValue, token = "visual-primary", lineStyle = "solid") => ({
