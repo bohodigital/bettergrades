@@ -1,0 +1,233 @@
+{
+  "schema_version": "3.0.0",
+  "unit_id": "calc-1-unit-3a-integral-foundations-techniques",
+  "visual_briefs": [
+    {
+      "title": "Velocity as signed accumulated change",
+      "learning_purpose": "Show how small velocity rectangles accumulate to displacement.",
+      "recommended_renderer": "static-svg",
+      "visual_kind": "cartesian-2d",
+      "composition": "Velocity curve with positive and negative regions, partition marks, and rectangle contributions.",
+      "interaction": "",
+      "long_description": "A velocity graph above the axis contributes positive displacement; below contributes negative displacement.",
+      "misconception_control": "Do not label total distance as signed displacement.",
+      "schema_version": "3.0.0",
+      "visual_id": "U3A-V01",
+      "route_id": "subjects/math/calculus/integrals/rates-to-total-change",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "static-svg",
+        "accessible-description",
+        "print-fallback"
+      ],
+      "provenance_id": "prov-visual-u3a-v01"
+    },
+    {
+      "title": "Three Riemann-sum choices",
+      "learning_purpose": "Compare left, right, and midpoint rectangles for the same increasing curve.",
+      "recommended_renderer": "interactive-2d",
+      "visual_kind": "cartesian-2d",
+      "composition": "Three linked panels or a selector for left, right, and midpoint samples on f(x)=x^2+1 over [0,2].",
+      "interaction": "Slider for rectangle count and method selector.",
+      "long_description": "An increasing curved graph with rectangles whose heights use left, right, or midpoint samples.",
+      "misconception_control": "Do not imply midpoint is always exact or always an overestimate.",
+      "schema_version": "3.0.0",
+      "visual_id": "U3A-V02",
+      "route_id": "subjects/math/calculus/integrals/left-right-midpoint-riemann-sums",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "interactive-2d",
+        "static-svg-fallback",
+        "keyboard-controls",
+        "reduced-motion",
+        "parameter-control"
+      ],
+      "provenance_id": "prov-visual-u3a-v02"
+    },
+    {
+      "title": "Rectangles converging to a fixed total",
+      "learning_purpose": "Show Riemann rectangles becoming narrower while the sum stabilizes.",
+      "recommended_renderer": "interactive-2d",
+      "visual_kind": "cartesian-2d",
+      "composition": "f(x)=x^2 on [0,2], adjustable n, left/midpoint selector, sum readout.",
+      "interaction": "n slider 2 to 80.",
+      "long_description": "A parabola with increasingly narrow rectangles and a numerical estimate approaching 8/3.",
+      "misconception_control": "Avoid saying rectangles become area; state their summed areas converge to the integral.",
+      "schema_version": "3.0.0",
+      "visual_id": "U3A-V03",
+      "route_id": "subjects/math/calculus/integrals/riemann-sum-limit",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "interactive-2d",
+        "static-svg-fallback",
+        "keyboard-controls",
+        "reduced-motion",
+        "parameter-control"
+      ],
+      "provenance_id": "prov-visual-u3a-v03"
+    },
+    {
+      "title": "Positive and negative signed regions",
+      "learning_purpose": "Display a curve crossing the axis with positive regions above and negative region below.",
+      "recommended_renderer": "static-svg",
+      "visual_kind": "cartesian-2d",
+      "composition": "Piecewise or polynomial curve, shaded regions with signs and net-sum equation.",
+      "interaction": "",
+      "long_description": "A curve crosses the x-axis; areas above count positively and areas below count negatively.",
+      "misconception_control": "Do not call the integral total geometric area.",
+      "schema_version": "3.0.0",
+      "visual_id": "U3A-V04",
+      "route_id": "subjects/math/calculus/integrals/definite-integral-signed-area",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "static-svg",
+        "accessible-description",
+        "print-fallback"
+      ],
+      "provenance_id": "prov-visual-u3a-v04"
+    },
+    {
+      "title": "Equal-area average-height rectangle",
+      "learning_purpose": "Compare the area under a curve with a rectangle of equal area and height f_avg.",
+      "recommended_renderer": "static-svg",
+      "visual_kind": "cartesian-2d",
+      "composition": "Positive curve on [a,b], horizontal line at average value, equal-area rectangle.",
+      "interaction": "",
+      "long_description": "A curve and a rectangle over the same interval have equal area; rectangle height is the average value.",
+      "misconception_control": "Do not confuse average function value with average rate of change.",
+      "schema_version": "3.0.0",
+      "visual_id": "U3A-V05",
+      "route_id": "subjects/math/calculus/integrals/average-value-of-a-function",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "static-svg",
+        "accessible-description",
+        "print-fallback"
+      ],
+      "provenance_id": "prov-visual-u3a-v05"
+    },
+    {
+      "title": "Moving upper bound and accumulated area",
+      "learning_purpose": "Show A(x)=int_a^x f(t)dt changing as x moves.",
+      "recommended_renderer": "interactive-2d",
+      "visual_kind": "cartesian-2d",
+      "composition": "Two linked panels: integrand with moving shaded interval and accumulation graph.",
+      "interaction": "Draggable x or slider.",
+      "long_description": "As x moves, the shaded signed area updates and a point traces A(x).",
+      "misconception_control": "Preserve sign when the integrand is below the axis.",
+      "schema_version": "3.0.0",
+      "visual_id": "U3A-V06",
+      "route_id": "subjects/math/calculus/integrals/accumulation-functions",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "interactive-2d",
+        "static-svg-fallback",
+        "keyboard-controls",
+        "reduced-motion",
+        "parameter-control"
+      ],
+      "provenance_id": "prov-visual-u3a-v06"
+    },
+    {
+      "title": "Substitution as relabeling a composed differential",
+      "learning_purpose": "Map inner expression u=g(x), differential du=g prime dx, and simplified integral.",
+      "recommended_renderer": "static-svg",
+      "visual_kind": "geometry-2d",
+      "composition": "Three-stage dependency diagram from original integrand to u-integral to back-substitution.",
+      "interaction": "",
+      "long_description": "A flow diagram shows an inner function and its derivative being replaced by u and du.",
+      "misconception_control": "Do not teach substitution as arbitrary symbol swapping.",
+      "schema_version": "3.0.0",
+      "visual_id": "U3A-V07",
+      "route_id": "subjects/math/calculus/integrals/substitution",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "static-svg",
+        "accessible-description",
+        "print-fallback"
+      ],
+      "provenance_id": "prov-visual-u3a-v07"
+    },
+    {
+      "title": "Integration by parts from the product rule",
+      "learning_purpose": "Show product rule rearranged and integrated, with u and dv roles.",
+      "recommended_renderer": "static-svg",
+      "visual_kind": "geometry-2d",
+      "composition": "Stepwise proof diagram and a small decision cue for choosing u.",
+      "interaction": "",
+      "long_description": "The product rule is rearranged to produce integral u dv = uv - integral v du.",
+      "misconception_control": "Do not present LIATE as a theorem; it is a heuristic.",
+      "schema_version": "3.0.0",
+      "visual_id": "U3A-V08",
+      "route_id": "subjects/math/calculus/integrals/integration-by-parts",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "static-svg",
+        "accessible-description",
+        "print-fallback"
+      ],
+      "provenance_id": "prov-visual-u3a-v08"
+    },
+    {
+      "title": "Reference triangles for trig substitution",
+      "learning_purpose": "Connect radical forms to right triangles and substitution choices.",
+      "recommended_renderer": "static-svg",
+      "visual_kind": "geometry-2d",
+      "composition": "Three labeled triangles for sqrt(a^2-x^2), sqrt(a^2+x^2), sqrt(x^2-a^2).",
+      "interaction": "",
+      "long_description": "Three right triangles encode x=a sin theta, x=a tan theta, and x=a sec theta.",
+      "misconception_control": "State domain restrictions and the role of absolute values.",
+      "schema_version": "3.0.0",
+      "visual_id": "U3A-V09",
+      "route_id": "subjects/math/calculus/integrals/trigonometric-substitution",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "static-svg",
+        "accessible-description",
+        "print-fallback"
+      ],
+      "provenance_id": "prov-visual-u3a-v09"
+    },
+    {
+      "title": "Midpoint rectangles and trapezoids",
+      "learning_purpose": "Compare midpoint and trapezoidal approximations against a curved graph.",
+      "recommended_renderer": "interactive-2d",
+      "visual_kind": "cartesian-2d",
+      "composition": "Same integrand and partition with method selector and error readout.",
+      "interaction": "Adjust n and method.",
+      "long_description": "A smooth curve is approximated by midpoint rectangles or trapezoids.",
+      "misconception_control": "Do not claim one method always overestimates.",
+      "schema_version": "3.0.0",
+      "visual_id": "U3A-V10",
+      "route_id": "subjects/math/calculus/integrals/numerical-integration",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "interactive-2d",
+        "static-svg-fallback",
+        "keyboard-controls",
+        "reduced-motion"
+      ],
+      "provenance_id": "prov-visual-u3a-v10"
+    },
+    {
+      "title": "Tail area and convergence",
+      "learning_purpose": "Show finite truncations of an infinite-interval integral and a running total approaching a limit.",
+      "recommended_renderer": "static-svg",
+      "visual_kind": "cartesian-2d",
+      "composition": "f(x)=1/x^2 from 1 to R with R slider and accumulated area readout.",
+      "interaction": "R slider.",
+      "long_description": "The shaded tail extends right while accumulated area approaches 1.",
+      "misconception_control": "Do not portray infinity as a reachable endpoint.",
+      "schema_version": "3.0.0",
+      "visual_id": "U3A-V11",
+      "route_id": "subjects/math/calculus/integrals/improper-integrals-infinite-intervals",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "static-svg",
+        "accessible-description",
+        "print-fallback"
+      ],
+      "provenance_id": "prov-visual-u3a-v11"
+    }
+  ]
+}

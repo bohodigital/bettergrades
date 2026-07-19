@@ -1,0 +1,4472 @@
+{
+  "schemaVersion": 1,
+  "unitId": "calc-1-unit-3a-integral-foundations-techniques",
+  "pageCount": 36,
+  "pages": [
+    {
+      "routeId": "subjects/math/calculus/integrals",
+      "nodes": [
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Unit 3A: Integral Foundations and Techniques"
+        },
+        {
+          "type": "paragraph",
+          "text": "Differential calculus begins with a local question: how fast is a quantity changing right now? Integral calculus begins with the complementary question: if we know a rate, a density, or many tiny contributions, how much total change has accumulated?"
+        },
+        {
+          "type": "paragraph",
+          "text": "This unit develops that question from the ground up. We begin with antiderivatives and simple total-change problems, then construct definite integrals from Riemann sums. The Fundamental Theorem of Calculus reveals why accumulation and differentiation undo one another. The second half of the unit develops the standard computational techniques used in Calculus II: substitution, integration by parts, trigonometric methods, partial fractions, numerical integration, and improper integrals."
+        },
+        {
+          "type": "concept",
+          "title": "The two central meanings of an integral",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={The two central meanings of an integral}] The symbol"
+            },
+            {
+              "type": "math",
+              "tex": "\\int_a^b f(x)\\,dx"
+            },
+            {
+              "type": "paragraph",
+              "text": "can be read in two compatible ways:"
+            },
+            {
+              "type": "paragraph",
+              "text": "\\item as a limit of sums of small contributions \\(f(x_i^*)\\Delta x\\); and \\item as the net accumulated change produced by the rate or density \\(f\\) from \\(a\\) to \\(b\\)."
+            },
+            {
+              "type": "paragraph",
+              "text": "The first meaning explains what the integral is. The Fundamental Theorem explains how antiderivatives compute it."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Unit map"
+        },
+        {
+          "type": "paragraph",
+          "text": "\\item Antiderivatives and initial-value problems \\item Rates, accumulated change, and displacement \\item Partitions, sigma notation, and Riemann sums \\item The definite integral and its properties \\item The Fundamental Theorem of Calculus \\item Basic antiderivative formulas and substitution \\item Integration by parts, trigonometric methods, and partial fractions \\item Numerical and improper integration \\item Reviews, cumulative practice, and two practice exams"
+        },
+        {
+          "type": "advanced-note",
+          "title": "Why this is more than an area unit",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Why this is more than an area unit}] Area is the most visible interpretation of a definite integral, but it is only one case. The same limiting process computes change from a rate, mass from density, work from variable force, probability from a density function, and many other totals. The common structure is not ``find an area.'' It is ``add continuously distributed contributions.''"
+            }
+          ]
+        }
+      ],
+      "sectionId": "orientation",
+      "sectionTitle": "Orientation and integral roadmap",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integrals/antiderivatives",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Recognize an antiderivative, verify one by differentiating, and explain why an entire family of antiderivatives differs by constants."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Antiderivatives: Reversing a Derivative"
+        },
+        {
+          "type": "exposition",
+          "title": "Why reversing a derivative is a new kind of problem",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Why reversing a derivative is a new kind of problem}] A derivative tells us how a function changes, but it deliberately forgets one piece of information: vertical position. Every function in the family \\(F(x)+C\\) has the same derivative because adding a constant shifts a graph without changing any of its slopes. Finding an antiderivative is therefore not the same as solving an ordinary algebra equation. We are recovering a whole family of possible original functions from their shared rate of change."
+            },
+            {
+              "type": "paragraph",
+              "text": "This reversal is the basic computational idea behind integral calculus. The fastest way to test an antiderivative is not to stare at it and hope; differentiate it. That verification habit matters because integration formulas are easier to misremember than derivative rules, and a thirty-second derivative check catches most errors immediately. Throughout this unit, every proposed antiderivative should be treated as a claim that can be verified rather than an answer that must be trusted."
+            }
+          ]
+        },
+        {
+          "type": "exposition",
+          "title": "Start with a question you already know how to answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Start with a question you already know how to answer}] Differentiation takes a function and produces its rate of change. Integral calculus frequently asks us to reverse that process. If a velocity is \\(v(t)=6t-4\\), which position functions could have produced it? Since"
+            },
+            {
+              "type": "math",
+              "tex": "\\frac{d}{dt}(3t^2-4t)=6t-4,"
+            },
+            {
+              "type": "paragraph",
+              "text": "one answer is \\(3t^2-4t\\). But adding any constant leaves the derivative unchanged, so \\(3t^2-4t+17\\), \\(3t^2-4t-200\\), and infinitely many other functions work as well."
+            }
+          ]
+        },
+        {
+          "type": "definition",
+          "title": "Antiderivative",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Antiderivative}] A function \\(F\\) is an antiderivative of \\(f\\) on an interval when"
+            },
+            {
+              "type": "math",
+              "tex": "F'(x)=f(x)"
+            },
+            {
+              "type": "paragraph",
+              "text": "for every \\(x\\) in that interval."
+            }
+          ]
+        },
+        {
+          "type": "guided-walkthrough",
+          "title": "Find and verify an antiderivative",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Find and verify an antiderivative}] Find an antiderivative of \\(f(x)=4x^3-6x+5\\)."
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Reverse the power rule term by term:"
+                },
+                {
+                  "type": "math",
+                  "tex": "\\int 4x^3\\,dx=x^4,\\qquad\n\\int -6x\\,dx=-3x^2,\\qquad\n\\int 5\\,dx=5x."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "A candidate is"
+                },
+                {
+                  "type": "math",
+                  "tex": "F(x)=x^4-3x^2+5x."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Differentiate to verify:"
+                },
+                {
+                  "type": "math",
+                  "tex": "F'(x)=4x^3-6x+5=f(x)."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Therefore \\(F\\) is an antiderivative."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "concept",
+          "title": "Why the constant is unavoidable",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Why the constant is unavoidable}] If \\(F'(x)=f(x)\\), then \\((F(x)+C)'=f(x)\\) for every constant \\(C\\). Conversely, on a connected interval, any two antiderivatives of the same function differ by a constant. The derivative records slope, not vertical position."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u3a-antiderivative-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the general antiderivative of \\(6x^2-6x+4\\)."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Increase each power by one, divide by the new exponent, and include an arbitrary constant."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "\\int(6x^2-6x+4)\\,dx=2x^3-3x^2+4x+C."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Verify by differentiation that \\(x^5/5\\) is an antiderivative of \\(x^4\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the general antiderivative of \\(3x^{-2}+2\\sqrt{x}\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Give two different antiderivatives of \\(\\cos x\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Explain why no single number can be called ``the'' indefinite integral of a function without an initial condition."
+            }
+          ]
+        }
+      ],
+      "sectionId": "antiderivatives-change",
+      "sectionTitle": "Antiderivatives and accumulated change",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integrals/indefinite-integrals-and-c",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Use indefinite-integral notation correctly, distinguish an integrand from an antiderivative, and carry the constant of integration through calculations."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Indefinite Integrals and the Constant of Integration"
+        },
+        {
+          "type": "exposition",
+          "title": "Reading indefinite-integral notation correctly",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Reading indefinite-integral notation correctly}] An indefinite integral is not a number and it is not an unfinished definite integral. It is a compact way to name all functions whose derivative equals the integrand. The symbol \\(dx\\) identifies the variable with respect to which the reversal is being performed, which becomes important when formulas contain several letters. The constant \\(C\\) records the vertical information that differentiation erased."
+            },
+            {
+              "type": "paragraph",
+              "text": "A useful discipline is to read \\(\\int f(x)\\,dx\\) aloud as ``the family of antiderivatives of \\(f\\) with respect to \\(x\\).'' That sentence makes several common mistakes harder to commit. It reminds us that \\(+C\\) belongs in an indefinite integral, that constants involving other fixed parameters remain constants, and that a final answer should differentiate back to the original integrand on the interval where the formula is intended to hold."
+            }
+          ]
+        },
+        {
+          "type": "definition",
+          "title": "Indefinite integral",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Indefinite integral}] The notation"
+            },
+            {
+              "type": "math",
+              "tex": "\\int f(x)\\,dx=F(x)+C"
+            },
+            {
+              "type": "paragraph",
+              "text": "means that \\(F'(x)=f(x)\\). The function \\(f\\) is the \\emph{integrand}, \\(dx\\) names the variable of integration, and \\(C\\) represents an arbitrary constant."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The symbol \\(\\int\\) is not a decorative elongated letter. It instructs us to collect the entire family of antiderivatives. Omitting \\(+C\\) changes a family into one member and loses information."
+        },
+        {
+          "type": "worked-example",
+          "title": "A fractional power",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={A fractional power}]"
+            },
+            {
+              "type": "math",
+              "tex": "\\int \\sqrt[3]{x^2}\\,dx\n=\\int x^{2/3}\\,dx\n=\\frac{x^{5/3}}{5/3}+C\n=\\frac35x^{5/3}+C."
+            },
+            {
+              "type": "paragraph",
+              "text": "The derivative of \\(\\frac35x^{5/3}\\) is \\(x^{2/3}\\), so the result checks."
+            }
+          ]
+        },
+        {
+          "type": "common-mistake",
+          "title": "The exponent \\(-1\\) is the exception",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={The exponent \\(-1\\) is the exception}] The power rule for antiderivatives,"
+            },
+            {
+              "type": "math",
+              "tex": "\\int x^n\\,dx=\\frac{x^{n+1}}{n+1}+C,"
+            },
+            {
+              "type": "paragraph",
+              "text": "requires \\(n\\ne-1\\). When \\(n=-1\\), the denominator \\(n+1\\) is zero. Instead,"
+            },
+            {
+              "type": "math",
+              "tex": "\\int \\frac1x\\,dx=\\ln|x|+C."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u3a-c-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Evaluate \\(\\int(4x^{-2}+3x)\\,dx\\)."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "For \\(x^{-2}\\), raise the exponent to \\(-1\\) and divide by \\(-1\\)."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "\\int(4x^{-2}+3x)\\,dx=-4x^{-1}+\\frac32x^2+C."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find \\(\\int(7-2x^4)\\,dx\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find \\(\\int(5/x^3+e^x)\\,dx\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Explain why \\(\\int_0^1 f(x)\\,dx\\) does not require a \\(+C\\), while \\(\\int f(x)\\,dx\\) does."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Differentiate your answer to every computational exercise."
+            }
+          ]
+        }
+      ],
+      "sectionId": "antiderivatives-change",
+      "sectionTitle": "Antiderivatives and accumulated change",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integrals/initial-value-problems",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Use a derivative or rate together with one known value to recover a unique function."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Initial-Value Problems and Recovering a Function"
+        },
+        {
+          "type": "exposition",
+          "title": "How one measured value selects one function",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={How one measured value selects one function}] An antiderivative gives a family because a derivative cannot tell where the original graph sits vertically. An initial condition supplies exactly that missing information. Once a rate law has been integrated, substituting one known function value turns the arbitrary constant into a specific number and selects one member of the family. This is why a velocity law alone does not determine position, while velocity together with one known position does."
+            },
+            {
+              "type": "paragraph",
+              "text": "The same pattern appears far beyond motion. A growth rate plus one measured population, a cooling rate plus one measured temperature, or a marginal cost plus one known total cost can each determine a unique model. The practical workflow is always the same: integrate the rate, introduce the constant, apply the known value, and then verify both the derivative relation and the initial condition. Skipping either verification leaves room for a model that is algebraically tidy but physically wrong."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "An antiderivative family becomes one specific function after an initial condition fixes the vertical shift."
+        },
+        {
+          "type": "guided-walkthrough",
+          "title": "Recover a position function from velocity",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Recover a position function from velocity}] A particle has velocity \\(v(t)=6t-4\\) meters per second and position \\(s(2)=5\\) meters. Find \\(s(t)\\)."
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Since \\(s'(t)=v(t)\\), integrate:"
+                },
+                {
+                  "type": "math",
+                  "tex": "s(t)=3t^2-4t+C."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Use the known position:"
+                },
+                {
+                  "type": "math",
+                  "tex": "5=s(2)=3(2)^2-4(2)+C=12-8+C=4+C."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Therefore \\(C=1\\), and"
+                },
+                {
+                  "type": "math",
+                  "tex": "\\boxed{s(t)=3t^2-4t+1}."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Check: \\(s'(t)=6t-4\\), and \\(s(2)=5\\)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "application",
+          "title": "A temperature model from a measured cooling rate",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={A temperature model from a measured cooling rate}] Suppose a sensor records a temperature-change rate \\(T'(t)=-0.8e^{-0.2t}\\) degrees Celsius per minute and \\(T(0)=24\\). Integration gives"
+            },
+            {
+              "type": "math",
+              "tex": "T(t)=4e^{-0.2t}+C."
+            },
+            {
+              "type": "paragraph",
+              "text": "The initial value gives \\(24=4+C\\), so \\(T(t)=20+4e^{-0.2t}\\). The constant is not algebraic clutter; it identifies the ambient-temperature level approached by the model."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u3a-ivp-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "If \\(F'(x)=6x^2-1\\) and \\(F(0)=4\\), find \\(F(x)\\)."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Integrate first, then substitute \\(x=0\\) to determine \\(C\\)."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "F(x)=2x^3-x+C,\\quad F(0)=C=4."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "If \\(y'=3x^2+2\\) and \\(y(1)=7\\), find \\(y\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "A car has acceleration \\(a(t)=4t-2\\), velocity \\(v(0)=3\\), and position \\(s(0)=10\\). Find \\(v(t)\\) and \\(s(t)\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Explain why one initial value determines one antiderivative constant but a second-order problem generally requires two initial values."
+            }
+          ]
+        }
+      ],
+      "sectionId": "antiderivatives-change",
+      "sectionTitle": "Antiderivatives and accumulated change",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integrals/rates-to-total-change",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Approximate total change from a table or graph of rates and distinguish net change from total amount traveled."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "From a Rate to Total Change"
+        },
+        {
+          "type": "exposition",
+          "title": "Accumulation begins with many small changes",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Accumulation begins with many small changes}] When a rate varies, multiplying one rate by the entire time interval is usually wrong because the quantity is not changing uniformly. Instead, we break the interval into short pieces. On each piece the rate is approximately constant, so ``rate times width'' estimates the change contributed by that piece. Adding those contributions gives an approximation to the total change, and making the pieces finer leads to the definite integral."
+            },
+            {
+              "type": "paragraph",
+              "text": "Units make the construction transparent. If a flow rate is measured in liters per minute and a short interval is measured in minutes, their product is measured in liters. Each term in the sum is therefore a small amount of accumulated quantity, not another rate. This rate-times-width interpretation is the common engine behind displacement from velocity, charge from current, mass from density, and work from force."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "If a rate is constant, total change is simply"
+        },
+        {
+          "type": "math",
+          "tex": "\\text{rate}\\times\\text{time}."
+        },
+        {
+          "type": "paragraph",
+          "text": "When the rate varies, we divide time into short intervals, treat the rate as approximately constant on each interval, multiply, and add. This is the practical origin of the definite integral."
+        },
+        {
+          "type": "concept",
+          "title": "Small change is approximately rate times small input change",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Small change is approximately rate times small input change}] If \\(Q'(t)\\) is known, then over a short interval of width \\(\\Delta t\\),"
+            },
+            {
+              "type": "math",
+              "tex": "\\Delta Q\\approx Q'(t^*)\\Delta t."
+            },
+            {
+              "type": "paragraph",
+              "text": "Adding these estimates over many intervals approximates the total change in \\(Q\\)."
+            }
+          ]
+        },
+        {
+          "type": "guided-walkthrough",
+          "title": "Water entering a tank",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Water entering a tank}] A tank's net inflow rate, in liters per minute, is recorded every two minutes:"
+            },
+            {
+              "type": "math",
+              "tex": "\\begin{array}{c|ccccc}\nt&0&2&4&6&8\\\\\\hline\nr(t)&3&5&6&4&2\n\\end{array}"
+            },
+            {
+              "type": "paragraph",
+              "text": "Use left endpoints to estimate the change in volume from \\(t=0\\) to \\(t=8\\)."
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "There are four intervals, each of width \\(2\\). The left-endpoint rates are \\(3,5,6,4\\). Thus"
+                },
+                {
+                  "type": "math",
+                  "tex": "\\Delta V\\approx 2(3+5+6+4)=36\\text{ liters}."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "The units confirm the calculation: liters per minute times minutes gives liters."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u3a-rate-total-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "A pump delivers water at rates \\(4,5,3,2\\) liters/minute over four consecutive 2-minute intervals. Use those interval rates to estimate the total delivered volume."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Multiply each rate by the common interval width and add."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "2(4+5+3+2)=28\\text{ liters}."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "advanced-note",
+          "title": "Integral thinking appears before integral notation",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Integral thinking appears before integral notation}] The approximation \\(\\sum r(t_i^*)\\Delta t\\) is already an integral idea. The notation and limit come later. This matters pedagogically: a definite integral is not an antiderivative symbol that fell from the sky. It is the limiting total of small rate-times-width contributions."
+            }
+          ]
+        },
+        {
+          "type": "visual-reference",
+          "visualId": "u3a-v01",
+          "title": "Visual study"
+        }
+      ],
+      "sectionId": "antiderivatives-change",
+      "sectionTitle": "Antiderivatives and accumulated change",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integrals/displacement-and-distance",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Use the sign of velocity to distinguish displacement from total distance traveled."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Displacement, Distance, and Signed Accumulation"
+        },
+        {
+          "type": "exposition",
+          "title": "Why signed accumulation and total travel differ",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Why signed accumulation and total travel differ}] Velocity contains direction as well as speed. Positive velocity contributes positive displacement, while negative velocity contributes negative displacement. Consequently, \\(\\int_a^b v(t)\\,dt\\) records the net change in position: motion in opposite directions can cancel. A particle can travel a long way and still have zero displacement if it returns to its starting point."
+            },
+            {
+              "type": "paragraph",
+              "text": "Total distance asks a different question and therefore uses \\(|v(t)|\\). Before integrating for distance, locate every time at which velocity changes sign and split the interval there. This is not ceremonial bookkeeping. It prevents a segment traveled to the left from being subtracted from a segment traveled to the right, and it keeps the mathematical result aligned with the everyday meaning of distance traveled."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The integral of velocity gives displacement:"
+        },
+        {
+          "type": "math",
+          "tex": "\\int_a^b v(t)\\,dt=s(b)-s(a)."
+        },
+        {
+          "type": "paragraph",
+          "text": "If velocity is negative, the object moves in the negative direction and contributes negative displacement. Total distance ignores direction and instead uses speed:"
+        },
+        {
+          "type": "math",
+          "tex": "\\text{distance}=\\int_a^b |v(t)|\\,dt."
+        },
+        {
+          "type": "worked-example",
+          "title": "A particle changes direction",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={A particle changes direction}] Let \\(v(t)=t-2\\) on \\([0,5]\\). Then"
+            },
+            {
+              "type": "math",
+              "tex": "\\int_0^5(t-2)\\,dt=\\left[\\frac12t^2-2t\\right]_0^5=\\frac52."
+            },
+            {
+              "type": "paragraph",
+              "text": "The displacement is \\(2.5\\). Since velocity changes sign at \\(t=2\\), total distance is"
+            },
+            {
+              "type": "math",
+              "tex": "-\\int_0^2(t-2)\\,dt+\\int_2^5(t-2)\\,dt=2+\\frac92=\\frac{13}{2}."
+            },
+            {
+              "type": "paragraph",
+              "text": "The object ends \\(2.5\\) units to the right of its start after traveling \\(6.5\\) units in all."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u3a-displacement-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "If \\(v(t)=2t-4\\) on \\([0,4]\\), what is the displacement?"
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Integrate the velocity over the full interval."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "\\int_0^4(2t-4)\\,dt=[t^2-4t]_0^4=0."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "common-mistake",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "A negative definite integral does not mean negative distance. It means the net signed change points in the negative direction. Distance requires absolute value or interval-by-interval sign analysis."
+            }
+          ]
+        }
+      ],
+      "sectionId": "antiderivatives-change",
+      "sectionTitle": "Antiderivatives and accumulated change",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integrals/partitions-and-sigma-notation",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Divide an interval into subintervals, calculate \\(\\Delta x\\), and read or write finite sums in sigma notation."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Partitions and Sigma Notation"
+        },
+        {
+          "type": "exposition",
+          "title": "Turning an interval into organized data",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Turning an interval into organized data}] A partition is simply a list of points that cuts an interval into smaller subintervals. The widths need not be equal, although equal widths make many hand calculations easier. Once the pieces are named, sigma notation lets us describe repeated arithmetic without writing a page-long sum. The notation is compressed, but the underlying action is ordinary: evaluate, multiply by a width, and add."
+            },
+            {
+              "type": "paragraph",
+              "text": "Understanding the indices matters more than memorizing the symbol. The lower and upper limits of a sum tell us which terms are included, while the formula beside the sigma tells us how the \\(i\\)-th term is formed. In Riemann sums, the index connects each sample value to its corresponding subinterval width. A student who can expand a sigma expression into several concrete terms is far less likely to lose an endpoint or use the wrong number of rectangles."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "A partition divides \\([a,b]\\) into smaller intervals. For \\(n\\) equal pieces,"
+        },
+        {
+          "type": "math",
+          "tex": "\\Delta x=\\frac{b-a}n,\n\\qquad x_i=a+i\\Delta x."
+        },
+        {
+          "type": "paragraph",
+          "text": "The symbol \\(\\sum\\) compresses repeated addition:"
+        },
+        {
+          "type": "math",
+          "tex": "\\sum_{i=1}^n a_i=a_1+a_2+\\cdots+a_n."
+        },
+        {
+          "type": "guided-walkthrough",
+          "title": "Build a uniform partition",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Build a uniform partition}] Partition \\([1,5]\\) into \\(8\\) equal subintervals."
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "\\Delta x=\\frac{5-1}8=\\frac12."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "The endpoints are"
+                },
+                {
+                  "type": "math",
+                  "tex": "1,\\frac32,2,\\frac52,3,\\frac72,4,\\frac92,5."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "The right endpoint of subinterval \\(i\\) is \\(x_i=1+i/2\\)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u3a-partition-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "What is \\(\\Delta x\\) when \\([2,8]\\) is divided into \\(10\\) equal subintervals?"
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Use \\((b-a)/n\\)."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "\\Delta x=(8-2)/10=3/5."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Expand \\(\\sum_{i=1}^4(2i-1)\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Write \\(3^2+4^2+5^2+6^2\\) in sigma notation."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the left, right, and midpoint sample points for four equal subintervals of \\([0,2]\\)."
+            }
+          ]
+        }
+      ],
+      "sectionId": "riemann-definite",
+      "sectionTitle": "Riemann sums and the definite integral",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integrals/left-right-midpoint-riemann-sums",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Construct common Riemann sums, calculate them from formulas or tables, and reason about overestimates and underestimates."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Left, Right, and Midpoint Riemann Sums"
+        },
+        {
+          "type": "exposition",
+          "title": "Three reasonable approximations, three different biases",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Three reasonable approximations, three different biases}] Left, right, and midpoint sums use the same partition but choose different representative heights. On an increasing function, left rectangles tend to lie below the graph and right rectangles tend to lie above it; for a decreasing function, the pattern reverses. Midpoint rectangles often balance some of that error because each height is sampled from the center rather than from one edge."
+            },
+            {
+              "type": "paragraph",
+              "text": "The point is not that one rule is always magically correct. The shape of the function and the fineness of the partition control the quality of the estimate. Before calculating, predict whether a rule should overestimate or underestimate. After calculating, compare the result with the graph and units. Numerical integration is most useful when it combines computation with a reasoned expectation about error."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "On each subinterval, choose a sample point \\(x_i^*\\). The rectangle contribution is"
+        },
+        {
+          "type": "math",
+          "tex": "f(x_i^*)\\Delta x."
+        },
+        {
+          "type": "paragraph",
+          "text": "Adding gives"
+        },
+        {
+          "type": "math",
+          "tex": "\\sum_{i=1}^n f(x_i^*)\\Delta x."
+        },
+        {
+          "type": "paragraph",
+          "text": "Left sums use left endpoints, right sums use right endpoints, and midpoint sums use subinterval midpoints."
+        },
+        {
+          "type": "guided-walkthrough",
+          "title": "Three estimates for one integral",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Three estimates for one integral}] Estimate the area under \\(f(x)=x^2+1\\) on \\([0,2]\\) using four rectangles."
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Here \\(\\Delta x=1/2\\)."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Left endpoints: \\(0,1/2,1,3/2\\):"
+                },
+                {
+                  "type": "math",
+                  "tex": "L_4=\\frac12\\left(1+\\frac54+2+\\frac{13}4\\right)=\\frac{15}{4}."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Right endpoints: \\(1/2,1,3/2,2\\):"
+                },
+                {
+                  "type": "math",
+                  "tex": "R_4=\\frac12\\left(\\frac54+2+\\frac{13}4+5\\right)=\\frac{23}{4}."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Midpoints: \\(1/4,3/4,5/4,7/4\\):"
+                },
+                {
+                  "type": "math",
+                  "tex": "M_4=\\frac12\\left(\\frac{17}{16}+\\frac{25}{16}+\\frac{41}{16}+\\frac{65}{16}\\right)=\\frac{37}{8}."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Because \\(f\\) is increasing, the left sum underestimates and the right sum overestimates."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u3a-riemann-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Use two left-endpoint rectangles to approximate \\(\\int_0^2 (x+2)\\,dx\\)."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Each subinterval has width 1. Use heights \\(f(0)\\) and \\(f(1)\\)."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "L_2=1\\bigl(f(0)+f(1)\\bigr)=2+3=5."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "visual-reference",
+          "visualId": "u3a-v02",
+          "title": "Visual study"
+        }
+      ],
+      "sectionId": "riemann-definite",
+      "sectionTitle": "Riemann sums and the definite integral",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integrals/riemann-sum-limit",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Explain the definite integral as a limit and translate between sigma and integral notation."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "The Riemann-Sum Definition of the Definite Integral"
+        },
+        {
+          "type": "exposition",
+          "title": "From rectangles to an exact total",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={From rectangles to an exact total}] A single Riemann sum is an approximation because each rectangle replaces a varying function by one constant height. The definite integral is obtained by considering a sequence of finer partitions whose largest subinterval width approaches zero. If all valid choices of sample points lead to the same limiting value, that value is the integral. The exact total is therefore defined by the stability of increasingly detailed approximations."
+            },
+            {
+              "type": "paragraph",
+              "text": "This definition explains why the integral is more general than a geometric area formula. The terms may represent signed change, mass, probability, or any other continuously distributed contribution. It also explains why integrability is a mathematical condition rather than a drawing convention: the sums must settle toward one value. Continuous functions on closed intervals satisfy this requirement, giving us a large and reliable class of integrable functions."
+            }
+          ]
+        },
+        {
+          "type": "definition",
+          "title": "Definite integral",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Definite integral}] If the limit exists and is independent of the sample points,"
+            },
+            {
+              "type": "math",
+              "tex": "\\int_a^b f(x)\\,dx\n=\n\\lim_{n\\to\\infty}\n\\sum_{i=1}^n f(x_i^*)\\Delta x."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The integral is one number. The Riemann sums are approximations indexed by \\(n\\). As the largest subinterval width approaches zero, the approximations converge to the integral."
+        },
+        {
+          "type": "worked-example",
+          "title": "Evaluate \\(\\int_0^1 x\\,dx\\) from the definition",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Evaluate \\(\\int_0^1 x\\,dx\\) from the definition}] Use right endpoints with \\(\\Delta x=1/n\\) and \\(x_i=i/n\\):"
+            },
+            {
+              "type": "math",
+              "tex": "\\sum_{i=1}^n \\frac{i}{n}\\frac1n\n=\\frac1{n^2}\\sum_{i=1}^n i\n=\\frac1{n^2}\\frac{n(n+1)}2\n=\\frac{n+1}{2n}."
+            },
+            {
+              "type": "paragraph",
+              "text": "Taking the limit gives"
+            },
+            {
+              "type": "math",
+              "tex": "\\int_0^1x\\,dx=\\frac12."
+            }
+          ]
+        },
+        {
+          "type": "advanced-note",
+          "title": "Integrability is a theorem, not a visual promise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Integrability is a theorem, not a visual promise}] Continuous functions on closed intervals are Riemann integrable. Many discontinuous functions are also integrable, but not every bounded function is. A later analysis course makes precise how the set and severity of discontinuities control Riemann integrability."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u3a-riemann-limit-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Evaluate \\(\\lim_{n\\to\\infty}\\frac{n+1}{2n}\\)."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Divide numerator and denominator by \\(n\\)."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "\\frac{1+1/n}{2}\\to\\frac12."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "visual-reference",
+          "visualId": "u3a-v03",
+          "title": "Visual study"
+        }
+      ],
+      "sectionId": "riemann-definite",
+      "sectionTitle": "Riemann sums and the definite integral",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integrals/definite-integral-signed-area",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Interpret positive and negative contributions and distinguish net signed area from total geometric area."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "The Definite Integral as Signed Area"
+        },
+        {
+          "type": "exposition",
+          "title": "The x-axis determines the sign of contribution",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={The x-axis determines the sign of contribution}] For a graph above the \\(x\\)-axis, a definite integral agrees with ordinary geometric area. Below the axis, the function values are negative, so the corresponding contributions are negative. The integral therefore measures signed or net area, not total geometric area. Regions on opposite sides of the axis can cancel even though both occupy physical space on the page."
+            },
+            {
+              "type": "paragraph",
+              "text": "When a problem asks for total area, first find every crossing of the axis and split the interval. Either reverse the sign on below-axis pieces or integrate the absolute value. Keeping these two questions separate -- net accumulation versus total geometric area -- prevents a very common error in which a perfectly evaluated integral answers the wrong question."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "When \\(f(x)\\ge0\\), the definite integral equals ordinary area under the curve. When \\(f(x)<0\\), rectangle heights are negative, so those contributions subtract. Thus"
+        },
+        {
+          "type": "math",
+          "tex": "\\int_a^b f(x)\\,dx\n=\\text{area above the axis}-\\text{area below the axis}."
+        },
+        {
+          "type": "worked-example",
+          "title": "Use geometry rather than antiderivatives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Use geometry rather than antiderivatives}] Suppose \\(f\\) forms a triangle of area \\(6\\) above the axis on \\([0,3]\\) and a semicircle of area \\(2\\pi\\) below the axis on \\([3,5]\\). Then"
+            },
+            {
+              "type": "math",
+              "tex": "\\int_0^5 f(x)\\,dx=6-2\\pi."
+            },
+            {
+              "type": "paragraph",
+              "text": "The total geometric area is \\(6+2\\pi\\)."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u3a-signed-area-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "A graph encloses area 5 above the axis and area 7 below the axis. What is the definite integral?"
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Subtract the below-axis area from the above-axis area."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "5-7=-2."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Sketch a function with \\(\\int_0^4 f(x)\\,dx=0\\) but \\(f\\not\\equiv0\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Explain why \\(\\int_a^b|f(x)|\\,dx\\) represents total geometric area between the graph and the axis."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Use symmetry to evaluate \\(\\int_{-3}^3x^3\\,dx\\)."
+            }
+          ]
+        },
+        {
+          "type": "visual-reference",
+          "visualId": "u3a-v04",
+          "title": "Visual study"
+        }
+      ],
+      "sectionId": "riemann-definite",
+      "sectionTitle": "Riemann sums and the definite integral",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integrals/properties-of-definite-integrals",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Use linearity, interval additivity, comparison, and reversed limits without unnecessary computation."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Properties and Orientation of Definite Integrals"
+        },
+        {
+          "type": "exposition",
+          "title": "Integral properties reflect how accumulation behaves",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Integral properties reflect how accumulation behaves}] The algebraic properties of definite integrals are not arbitrary rules. Linearity says that scaling or combining rates scales or combines their accumulated effects. Additivity says that accumulating from \\(a\\) to \\(c\\) and then from \\(c\\) to \\(b\\) gives the same total as accumulating directly from \\(a\\) to \\(b\\). Reversing the bounds changes the sign because it reverses the orientation of the accumulation."
+            },
+            {
+              "type": "paragraph",
+              "text": "These properties are computational tools as well as conceptual checks. They let us reconstruct an unknown integral from known pieces, compare integrals without finding antiderivatives, and detect impossible answers. For example, if \\(f\\ge0\\) on an interval, its integral cannot be negative. A strong solution uses such facts before and after computation rather than treating the evaluation formula as the only source of truth."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "For integrable functions,"
+        },
+        {
+          "type": "math",
+          "tex": "\\int_a^a f=0,\n\\qquad\n\\int_b^a f=-\\int_a^b f,"
+        },
+        {
+          "type": "math",
+          "tex": "\\int_a^b(cf+g)=c\\int_a^bf+\\int_a^bg,"
+        },
+        {
+          "type": "paragraph",
+          "text": "and for \\(a<c<b\\),"
+        },
+        {
+          "type": "math",
+          "tex": "\\int_a^b f=\\int_a^c f+\\int_c^b f."
+        },
+        {
+          "type": "paragraph",
+          "text": "If \\(m\\le f(x)\\le M\\) on \\([a,b]\\), then"
+        },
+        {
+          "type": "math",
+          "tex": "m(b-a)\\le\\int_a^bf(x)\\,dx\\le M(b-a)."
+        },
+        {
+          "type": "guided-walkthrough",
+          "title": "Use known integrals",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Use known integrals}] Suppose \\(\\int_0^2 f=3\\) and \\(\\int_2^5f=-4\\). Find \\(\\int_5^0(2f+1)\\,dx\\)."
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "First,"
+                },
+                {
+                  "type": "math",
+                  "tex": "\\int_0^5f=3+(-4)=-1,\n\\qquad\n\\int_5^0f=1."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Therefore"
+                },
+                {
+                  "type": "math",
+                  "tex": "\\int_5^0(2f+1)\\,dx=2(1)+(0-5)=-3."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "The integral of \\(1\\) from \\(5\\) to \\(0\\) is \\(-5\\), because orientation matters."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u3a-properties-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "If \\(\\int_1^4 f=7\\), what is \\(\\int_4^1 f\\)?"
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Reversing limits changes the sign."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "\\int_4^1 f=-7."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sectionId": "riemann-definite",
+      "sectionTitle": "Riemann sums and the definite integral",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integrals/average-value-of-a-function",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Calculate and interpret the average value of a continuous function over an interval."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Average Value of a Function"
+        },
+        {
+          "type": "exposition",
+          "title": "A continuous average is total contribution divided by width",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={A continuous average is total contribution divided by width}] For finitely many numbers, an average is their sum divided by how many values were added. For a continuous function, the integral replaces the sum and the interval length replaces the count. Thus the average value \\(\\frac{1}{b-a}\\int_a^b f(x)\\,dx\\) is the constant height that would produce the same total accumulation over the interval."
+            },
+            {
+              "type": "paragraph",
+              "text": "This interpretation is often more useful than the formula alone. Average temperature over a day, average power over a time interval, and average density along a rod all use the same idea. For a continuous function, the average-value theorem guarantees that the function actually attains this average somewhere in the interval, although it may do so at more than one point and the theorem does not tell us where without further work."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The average of finitely many numbers is their sum divided by the count. For continuously distributed values, the integral plays the role of the sum and interval length plays the role of the count:"
+        },
+        {
+          "type": "math",
+          "tex": "f_{\\mathrm{avg}}=\\frac1{b-a}\\int_a^bf(x)\\,dx."
+        },
+        {
+          "type": "application",
+          "title": "Average electrical power",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Average electrical power}] If instantaneous power is \\(P(t)=100+20\\sin t\\) watts on \\([0,2\\pi]\\), then"
+            },
+            {
+              "type": "math",
+              "tex": "P_{\\mathrm{avg}}=\\frac1{2\\pi}\\int_0^{2\\pi}(100+20\\sin t)\\,dt=100\\text{ W}."
+            },
+            {
+              "type": "paragraph",
+              "text": "The oscillating part contributes zero net average over a full period."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u3a-average-value-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the average value of \\(f(x)=2x\\) on \\([1,3]\\)."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Integrate, then divide by interval length 2."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "f_{avg}=\\frac12[x^2]_1^3=\\frac12(8)=4."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "visual-reference",
+          "visualId": "u3a-v05",
+          "title": "Visual study"
+        }
+      ],
+      "sectionId": "riemann-definite",
+      "sectionTitle": "Riemann sums and the definite integral",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integrals/accumulation-functions",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Interpret a variable-upper-limit integral as a new function and reason about its increase, decrease, and units."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Accumulation Functions"
+        },
+        {
+          "type": "exposition",
+          "title": "An integral can define a new function",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={An integral can define a new function}] When the upper limit varies, \\(A(x)=\\int_a^x f(t)\\,dt\\) records how much signed accumulation has occurred by the time the input reaches \\(x\\). The dummy variable \\(t\\) is used inside the integral so that \\(x\\) can remain free to control the endpoint. As \\(x\\) moves, the accumulated region grows, shrinks, or gains negative contribution depending on the sign of \\(f\\)."
+            },
+            {
+              "type": "paragraph",
+              "text": "The graph of \\(A\\) can often be predicted directly from the graph of \\(f\\). Where \\(f\\) is positive, \\(A\\) increases; where \\(f\\) is negative, \\(A\\) decreases; where \\(f=0\\), \\(A\\) has a horizontal tangent. This makes accumulation functions a bridge between geometric area, net change, and derivative behavior, setting up the Fundamental Theorem rather than appearing as an isolated notation trick."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Fix a starting point \\(a\\) and define"
+        },
+        {
+          "type": "math",
+          "tex": "A(x)=\\int_a^x f(t)\\,dt."
+        },
+        {
+          "type": "paragraph",
+          "text": "The variable \\(t\\) is a dummy variable inside the integral; \\(x\\) determines where accumulation stops."
+        },
+        {
+          "type": "paragraph",
+          "text": "If \\(f>0\\), moving \\(x\\) to the right adds positive contributions and \\(A\\) increases. If \\(f<0\\), \\(A\\) decreases. The value \\(A(x)\\) is a total; the value \\(f(x)\\) is the local rate at which that total changes."
+        },
+        {
+          "type": "worked-example",
+          "title": "Build an accumulation function directly",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Build an accumulation function directly}] For \\(f(t)=2t\\) and \\(a=1\\),"
+            },
+            {
+              "type": "math",
+              "tex": "A(x)=\\int_1^x2t\\,dt=x^2-1."
+            },
+            {
+              "type": "paragraph",
+              "text": "Thus \\(A(1)=0\\), \\(A(2)=3\\), and \\(A'(x)=2x=f(x)\\)."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u3a-accumulation-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "For \\(A(x)=\\int_3^x f(t)\\,dt\\), what is \\(A(3)\\)?"
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "The interval has zero width."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "A(3)=\\int_3^3f(t)\\,dt=0."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "visual-reference",
+          "visualId": "u3a-v06",
+          "title": "Visual study"
+        }
+      ],
+      "sectionId": "fundamental-theorem",
+      "sectionTitle": "The Fundamental Theorem of Calculus",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integrals/fundamental-theorem-part-one",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Differentiate accumulation functions and explain why the derivative recovers the integrand."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Fundamental Theorem of Calculus, Part I"
+        },
+        {
+          "type": "exposition",
+          "title": "Why the derivative of accumulated area returns the integrand",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Why the derivative of accumulated area returns the integrand}] Suppose \\(A(x)=\\int_a^x f(t)\\,dt\\). Increasing \\(x\\) by a small amount \\(h\\) adds a thin strip whose width is \\(h\\) and whose height is close to \\(f(x)\\). The added accumulation is therefore approximately \\(f(x)h\\), so the quotient \\([A(x+h)-A(x)]/h\\) is approximately \\(f(x)\\). In the limit, the approximation becomes exact under the theorem's hypotheses."
+            },
+            {
+              "type": "paragraph",
+              "text": "This result is profound because it says accumulation has a local rate, and that rate is precisely the function being accumulated. It is the mathematical statement that a running total changes at the current input rate. The theorem turns area and accumulation functions into differentiable objects and explains why integration and differentiation are inverse processes rather than unrelated chapters placed next to each other by tradition."
+            }
+          ]
+        },
+        {
+          "type": "theorem",
+          "title": "FTC Part I",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={FTC Part I}] If \\(f\\) is continuous and"
+            },
+            {
+              "type": "math",
+              "tex": "A(x)=\\int_a^x f(t)\\,dt,"
+            },
+            {
+              "type": "paragraph",
+              "text": "then"
+            },
+            {
+              "type": "math",
+              "tex": "A'(x)=f(x)."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Why? Increasing \\(x\\) by a small amount \\(h\\) adds a thin strip whose width is \\(h\\) and whose height is approximately \\(f(x)\\). Thus"
+        },
+        {
+          "type": "math",
+          "tex": "\\frac{A(x+h)-A(x)}h\n=\\frac1h\\int_x^{x+h}f(t)\\,dt\n\\approx f(x)."
+        },
+        {
+          "type": "paragraph",
+          "text": "The approximation becomes exact in the limit."
+        },
+        {
+          "type": "guided-walkthrough",
+          "title": "Differentiate without evaluating the integral",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Differentiate without evaluating the integral}] If"
+            },
+            {
+              "type": "math",
+              "tex": "G(x)=\\int_2^x\\sqrt{1+t^4}\\,dt,"
+            },
+            {
+              "type": "paragraph",
+              "text": "then"
+            },
+            {
+              "type": "math",
+              "tex": "\\boxed{G'(x)=\\sqrt{1+x^4}}."
+            },
+            {
+              "type": "paragraph",
+              "text": "No elementary antiderivative is needed."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u3a-ftc1-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "If \\(F(x)=\\int_0^x\\cos(t^2)\\,dt\\), find \\(F'(x)\\)."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "FTC Part I returns the integrand evaluated at the upper bound."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "F'(x)=\\cos(x^2)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "advanced-note",
+          "title": "Continuity is sufficient, not the final word",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Continuity is sufficient, not the final word}] FTC Part I is commonly stated for continuous integrands because that hypothesis is easy to check and strong enough for a clean theorem. More advanced integration theories weaken the hypotheses and clarify exactly where the derivative of an accumulation function exists."
+            }
+          ]
+        }
+      ],
+      "sectionId": "fundamental-theorem",
+      "sectionTitle": "The Fundamental Theorem of Calculus",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integrals/fundamental-theorem-part-two",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Evaluate definite integrals with antiderivatives and connect the result to net accumulated change."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Fundamental Theorem of Calculus, Part II"
+        },
+        {
+          "type": "exposition",
+          "title": "Why antiderivatives evaluate exact accumulation",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Why antiderivatives evaluate exact accumulation}] Riemann sums define the definite integral, but evaluating a limit of sums directly would be unbearable for most functions. The second part of the Fundamental Theorem provides the computational shortcut: if \\(F'=f\\), then \\(\\int_a^b f(x)\\,dx=F(b)-F(a)\\). The endpoint difference captures all of the tiny accumulated contributions at once."
+            },
+            {
+              "type": "paragraph",
+              "text": "The notation \\([F(x)]_a^b\\) should be read as an instruction to substitute both endpoints and subtract in the correct order. The constant of integration cancels, which is why definite integrals do not need \\(+C\\). Even so, the theorem is not merely a formula to memorize. It depends on recognizing an antiderivative and on understanding that the result is net accumulation, with sign and units inherited from the original integrand and variable."
+            }
+          ]
+        },
+        {
+          "type": "theorem",
+          "title": "FTC Part II",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={FTC Part II}] If \\(f\\) is continuous on \\([a,b]\\) and \\(F'(x)=f(x)\\), then"
+            },
+            {
+              "type": "math",
+              "tex": "\\int_a^bf(x)\\,dx=F(b)-F(a)."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The theorem is astonishing because it turns a limit of many sums into two endpoint evaluations."
+        },
+        {
+          "type": "guided-walkthrough",
+          "title": "Evaluate a definite integral",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Evaluate a definite integral}]"
+            },
+            {
+              "type": "math",
+              "tex": "\\begin{aligned}\n\\int_1^3(2x+4)\\,dx\n&=[x^2+4x]_1^3\\\\\n&=(9+12)-(1+4)\\\\\n&=16.\n\\end{aligned}"
+            },
+            {
+              "type": "paragraph",
+              "text": "The bracket notation means evaluate the antiderivative at the upper endpoint and subtract its value at the lower endpoint."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u3a-ftc2-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Evaluate \\(\\int_0^3 2x\\,dx\\)."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "An antiderivative is \\(x^2\\)."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "[x^2]_0^3=9."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "common-mistake",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "The definite integral is not \\(F(b)+F(a)\\), and the lower endpoint is not optional. Write the bracket step explicitly until endpoint subtraction is automatic."
+            }
+          ]
+        }
+      ],
+      "sectionId": "fundamental-theorem",
+      "sectionTitle": "The Fundamental Theorem of Calculus",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integrals/net-change-theorem",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Translate a contextual rate integral into final amount minus initial amount."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "The Net Change Theorem"
+        },
+        {
+          "type": "exposition",
+          "title": "Rates become measurable changes",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Rates become measurable changes}] If \\(Q'(t)\\) is the rate at which a quantity changes, then \\(\\int_a^b Q'(t)\\,dt=Q(b)-Q(a)\\). This net-change statement is the Fundamental Theorem written in applied language. It tells us that integrating a rate over time recovers the actual change in the underlying quantity, whether that quantity is position, volume, charge, population, energy, or cost."
+            },
+            {
+              "type": "paragraph",
+              "text": "The word ``net'' matters whenever the rate can be negative. Inflow and outflow, charging and discharging, or forward and backward motion contribute with opposite signs. To recover the final amount, add the net change to the initial amount. To recover total activity without cancellation, a different model may be needed, often involving absolute value or separate positive and negative contributions."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "If \\(Q'(t)\\) is a rate of change, then"
+        },
+        {
+          "type": "math",
+          "tex": "\\int_a^bQ'(t)\\,dt=Q(b)-Q(a)."
+        },
+        {
+          "type": "paragraph",
+          "text": "This is FTC Part II interpreted in context."
+        },
+        {
+          "type": "application",
+          "title": "Charge flowing through a circuit",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Charge flowing through a circuit}] Current \\(I(t)\\), measured in amperes, is charge flow in coulombs per second. If"
+            },
+            {
+              "type": "math",
+              "tex": "I(t)=3e^{-t}+1"
+            },
+            {
+              "type": "paragraph",
+              "text": "for \\(0\\le t\\le4\\), then the net charge transferred is"
+            },
+            {
+              "type": "math",
+              "tex": "\\int_0^4I(t)\\,dt=[-3e^{-t}+t]_0^4=7-3e^{-4}\\text{ coulombs}."
+            },
+            {
+              "type": "paragraph",
+              "text": "The units make the interpretation unavoidable: amperes times seconds equals coulombs."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u3a-net-change-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "A population changes at rate \\(P'(t)=3t\\) people/year for \\(0\\le t\\le4\\). What is the net population change?"
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Integrate the rate over the time interval."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "\\int_0^4 3t\\,dt=\\frac32(16)=24."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sectionId": "fundamental-theorem",
+      "sectionTitle": "The Fundamental Theorem of Calculus",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integrals/variable-limits-and-chain-rule",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Differentiate integrals whose bounds are functions of the differentiation variable."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Variable Limits and the Chain Rule"
+        },
+        {
+          "type": "exposition",
+          "title": "An accumulation endpoint can itself be changing",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={An accumulation endpoint can itself be changing}] The Fundamental Theorem handles \\(\\int_a^x f(t)\\,dt\\), but many problems use an endpoint such as \\(g(x)\\). In that case the accumulated total changes for two reasons: the endpoint moves, and the speed of that movement is \\(g'(x)\\). The derivative is therefore \\(f(g(x))g'(x)\\), which is the ordinary chain rule applied to an accumulation function."
+            },
+            {
+              "type": "paragraph",
+              "text": "Lower limits contribute a minus sign because moving the lower endpoint to the right removes accumulation rather than adding it. With both endpoints variable, differentiate the upper contribution and subtract the lower contribution. A reliable approach is to name the accumulation function first, apply the Fundamental Theorem, and then apply the chain rule visibly rather than attempting to remember a pile of signs from memory."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "If"
+        },
+        {
+          "type": "math",
+          "tex": "G(x)=\\int_a^{g(x)}f(t)\\,dt,"
+        },
+        {
+          "type": "paragraph",
+          "text": "then"
+        },
+        {
+          "type": "math",
+          "tex": "G'(x)=f(g(x))g'(x)."
+        },
+        {
+          "type": "paragraph",
+          "text": "The FTC supplies the outer derivative; the chain rule supplies the factor \\(g'(x)\\)."
+        },
+        {
+          "type": "paragraph",
+          "text": "If both limits vary,"
+        },
+        {
+          "type": "math",
+          "tex": "\\frac{d}{dx}\\int_{u(x)}^{v(x)}f(t)\\,dt\n=f(v(x))v'(x)-f(u(x))u'(x)."
+        },
+        {
+          "type": "worked-example",
+          "title": "Two moving boundaries",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Two moving boundaries}] For"
+            },
+            {
+              "type": "math",
+              "tex": "H(x)=\\int_{x^2}^{\\sin x}e^{t^2}\\,dt,"
+            },
+            {
+              "type": "math",
+              "tex": "H'(x)=e^{\\sin^2x}\\cos x-e^{x^4}(2x)."
+            },
+            {
+              "type": "paragraph",
+              "text": "No elementary antiderivative of \\(e^{t^2}\\) is required."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u3a-variable-limits-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find \\(\\frac{d}{dx}\\int_0^{x^2}\\sin t\\,dt\\)."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Evaluate the integrand at \\(x^2\\), then multiply by \\(2x\\)."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "2x\\sin(x^2)."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sectionId": "fundamental-theorem",
+      "sectionTitle": "The Fundamental Theorem of Calculus",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integrals/basic-antiderivative-rules",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Use the standard power, exponential, logarithmic, and trigonometric antiderivative formulas."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Basic Antiderivative Rules"
+        },
+        {
+          "type": "exposition",
+          "title": "Integration rules are derivative rules read backward",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Integration rules are derivative rules read backward}] The basic antiderivative table is built from familiar derivatives. Powers, exponentials, logarithms, and trigonometric functions are integrated by asking which function differentiates to the given integrand. This reverse-recognition viewpoint is more durable than treating the table as a disconnected list. It also makes verification immediate: differentiate the proposed answer."
+            },
+            {
+              "type": "paragraph",
+              "text": "Reverse rules require attention to constants and domains. A coefficient may need to be divided out, the power rule excludes exponent \\(-1\\), and \\(\\int 1/x\\,dx\\) requires \\(\\ln|x|\\). No basic table can replace algebraic simplification. Rewriting radicals and reciprocals as powers often reveals that a seemingly new integral is simply an old rule in less cooperative clothing."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "For \\(n\\ne-1\\),"
+        },
+        {
+          "type": "math",
+          "tex": "\\int x^n\\,dx=\\frac{x^{n+1}}{n+1}+C."
+        },
+        {
+          "type": "paragraph",
+          "text": "Other central formulas include"
+        },
+        {
+          "type": "math",
+          "tex": "\\int e^x\\,dx=e^x+C,\n\\qquad\n\\int\\frac1x\\,dx=\\ln|x|+C,"
+        },
+        {
+          "type": "math",
+          "tex": "\\int\\cos x\\,dx=\\sin x+C,\n\\qquad\n\\int\\sin x\\,dx=-\\cos x+C,"
+        },
+        {
+          "type": "math",
+          "tex": "\\int\\sec^2x\\,dx=\\tan x+C,\n\\qquad\n\\int\\frac1{1+x^2}\\,dx=\\arctan x+C."
+        },
+        {
+          "type": "decision",
+          "title": "Normalize before integrating",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Normalize before integrating}] Rewrite roots as fractional powers, move denominator powers into negative exponents when helpful, split sums, and factor out constants. Integration is often easy after the algebra stops wearing a disguise."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u3a-basic-rules-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Evaluate \\(\\int(x^3+2\\sin x)\\,dx\\)."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Integrate each term and remember that the antiderivative of sine is negative cosine."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "x^4/4-2\\cos x+C."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sectionId": "techniques",
+      "sectionTitle": "Computing integrals",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integrals/substitution",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Recognize chain-rule structure, choose a useful substitution, transform the differential, and return to the original variable."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Substitution: Reversing the Chain Rule"
+        },
+        {
+          "type": "exposition",
+          "title": "Substitution reverses the chain rule",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Substitution reverses the chain rule}] A composite derivative has the pattern \\(F'(g(x))g'(x)\\). Substitution recognizes that pattern inside an integral, names the inner expression \\(u=g(x)\\), and replaces the accompanying derivative factor with \\(du\\). The purpose is not to change letters for entertainment; it is to turn a complicated composite integrand into a basic antiderivative in one variable."
+            },
+            {
+              "type": "paragraph",
+              "text": "A good substitution accounts for every factor, including the differential. After choosing \\(u\\), compute \\(du\\) explicitly and compare it with what remains in the integrand. Constant multiples can be adjusted, but missing variable factors cannot be wished into existence. For an indefinite integral, return to the original variable at the end and verify by differentiating through the chain rule."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The chain rule says"
+        },
+        {
+          "type": "math",
+          "tex": "\\frac{d}{dx}F(g(x))=F'(g(x))g'(x)."
+        },
+        {
+          "type": "paragraph",
+          "text": "Reversing it gives"
+        },
+        {
+          "type": "math",
+          "tex": "\\int F'(g(x))g'(x)\\,dx=F(g(x))+C."
+        },
+        {
+          "type": "paragraph",
+          "text": "The notation \\(u=g(x)\\), \\(du=g'(x)\\,dx\\) organizes this reversal."
+        },
+        {
+          "type": "guided-walkthrough",
+          "title": "A complete substitution",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={A complete substitution}] Evaluate"
+            },
+            {
+              "type": "math",
+              "tex": "\\int 2x(x^2+5)^7\\,dx."
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Choose the inner expression:"
+                },
+                {
+                  "type": "math",
+                  "tex": "u=x^2+5,\n\\qquad du=2x\\,dx."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Then"
+                },
+                {
+                  "type": "math",
+                  "tex": "\\int 2x(x^2+5)^7\\,dx=\\int u^7\\,du=\\frac{u^8}8+C."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Return to \\(x\\):"
+                },
+                {
+                  "type": "math",
+                  "tex": "\\boxed{\\frac{(x^2+5)^8}8+C}."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Differentiate to check; the chain rule restores the missing \\(2x\\)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u3a-substitution-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Evaluate \\(\\int(3x+1)^4\\,dx\\)."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Let \\(u=3x+1\\), so \\(du=3dx\\)."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "\\frac13\\int u^4du=\\frac{u^5}{15}+C."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "common-mistake",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "A substitution is incomplete if both \\(x\\) and \\(u\\) remain in the transformed integral. Every factor must be rewritten or accounted for before integration."
+            }
+          ]
+        },
+        {
+          "type": "visual-reference",
+          "visualId": "u3a-v07",
+          "title": "Visual study"
+        }
+      ],
+      "sectionId": "techniques",
+      "sectionTitle": "Computing integrals",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integrals/definite-integrals-by-substitution",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Change bounds consistently or back-substitute before applying original bounds."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Definite Integrals by Substitution"
+        },
+        {
+          "type": "exposition",
+          "title": "Change the variable and the bounds together",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Change the variable and the bounds together}] In a definite integral, substitution changes not only the integrand but also the coordinate used to describe the interval. If \\(u=g(x)\\), convert the original \\(x\\)-bounds into \\(u\\)-bounds immediately. Then the entire calculation can remain in \\(u\\), avoiding a needless back-substitution before evaluating endpoints."
+            },
+            {
+              "type": "paragraph",
+              "text": "Mixing an integrand in \\(u\\) with bounds in \\(x\\) is a category error, not a minor notation blemish. The bounds must describe values of the current integration variable. After evaluation, interpret the answer in the original problem's units and context; the temporary variable is a computational device, while the definite integral still represents the same accumulated quantity."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "For definite integrals, two valid methods exist:"
+        },
+        {
+          "type": "paragraph",
+          "text": "\\item transform the integrand and change the bounds into \\(u\\)-values; or \\item find an antiderivative in \\(u\\), return to \\(x\\), and use the original bounds."
+        },
+        {
+          "type": "paragraph",
+          "text": "Do not transform the integrand into \\(u\\) while leaving \\(x\\)-bounds attached."
+        },
+        {
+          "type": "worked-example",
+          "title": "Change the bounds",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Change the bounds}]"
+            },
+            {
+              "type": "math",
+              "tex": "\\int_0^1 2x(x^2+1)^3\\,dx."
+            },
+            {
+              "type": "paragraph",
+              "text": "Let \\(u=x^2+1\\), \\(du=2x\\,dx\\). When \\(x=0\\), \\(u=1\\); when \\(x=1\\), \\(u=2\\). Therefore"
+            },
+            {
+              "type": "math",
+              "tex": "\\int_1^2u^3\\,du=\\left[\\frac{u^4}4\\right]_1^2=\\frac{15}{4}."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u3a-def-sub-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Evaluate \\(\\int_0^1 x e^{x^2}\\,dx\\)."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Let \\(u=x^2\\), so \\(du=2x\\,dx\\), and change the bounds to 0 and 1."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "\\frac12\\int_0^1e^u\\,du=\\frac{e-1}{2}."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sectionId": "techniques",
+      "sectionTitle": "Computing integrals",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integrals/integration-by-parts",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Derive the formula from the product rule, choose \\(u\\) and \\(dv\\), and use the method on products and disguised products."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Integration by Parts"
+        },
+        {
+          "type": "exposition",
+          "title": "Integration by parts redistributes a product",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Integration by parts redistributes a product}] Integration by parts comes from integrating the product rule. It is useful when an integrand is a product whose factors become easier in different directions: one factor simplifies when differentiated, while the other can be integrated. The formula \\(\\int u\\,dv=uv-\\int v\\,du\\) does not eliminate work automatically; it trades the original integral for a hopefully simpler one."
+            },
+            {
+              "type": "paragraph",
+              "text": "Choosing \\(u\\) and \\(dv\\) is therefore the central judgment. Logarithmic and inverse-trigonometric factors are usually chosen as \\(u\\) because they are difficult to integrate directly but manageable to differentiate. Polynomial factors often improve when differentiated. After applying the formula, compare the new integral with the old one. If it is more complicated, reconsider the choice rather than marching deeper into algebraic wilderness out of loyalty to the first idea."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "From the product rule,"
+        },
+        {
+          "type": "math",
+          "tex": "(uv)'=u'v+uv'."
+        },
+        {
+          "type": "paragraph",
+          "text": "Integrating and rearranging gives"
+        },
+        {
+          "type": "math",
+          "tex": "\\boxed{\\int u\\,dv=uv-\\int v\\,du}."
+        },
+        {
+          "type": "guided-walkthrough",
+          "title": "Polynomial times exponential",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Polynomial times exponential}] Evaluate \\(\\int xe^x\\,dx\\)."
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Choose \\(u=x\\), so \\(du=dx\\). Choose \\(dv=e^x dx\\), so \\(v=e^x\\). Then"
+                },
+                {
+                  "type": "math",
+                  "tex": "\\int xe^x\\,dx=xe^x-\\int e^x\\,dx=xe^x-e^x+C."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Factor if desired:"
+                },
+                {
+                  "type": "math",
+                  "tex": "e^x(x-1)+C."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "worked-example",
+          "title": "A disguised product",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={A disguised product}] To integrate \\(\\ln x\\), write \\(\\ln x\\cdot1\\). Let \\(u=\\ln x\\) and \\(dv=dx\\). Then"
+            },
+            {
+              "type": "math",
+              "tex": "\\int\\ln x\\,dx=x\\ln x-\\int1\\,dx=x\\ln x-x+C."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u3a-parts-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Evaluate \\(\\int xe^x\\,dx\\)."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Let \\(u=x\\) and \\(dv=e^x dx\\)."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "xe^x-e^x+C."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "visual-reference",
+          "visualId": "u3a-v08",
+          "title": "Visual study"
+        }
+      ],
+      "sectionId": "techniques",
+      "sectionTitle": "Computing integrals",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integrals/trigonometric-integrals",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Use parity and identities to integrate powers and products of sine, cosine, tangent, and secant."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Trigonometric Integrals"
+        },
+        {
+          "type": "exposition",
+          "title": "Parity determines the useful identity",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Parity determines the useful identity}] Integrals involving powers of sine, cosine, secant, or tangent are solved by exposing a derivative-compatible factor. For products of sine and cosine powers, an odd power often lets us save one factor and convert the rest using \\(\\sin^2x+\\cos^2x=1\\). When both powers are even, half-angle identities usually reduce the exponents."
+            },
+            {
+              "type": "paragraph",
+              "text": "The same pattern governs tangent and secant. A secant-squared factor pairs with the derivative of tangent, while a secant-tangent factor pairs with the derivative of secant. The identities are not random decorations; they reorganize the integrand into a substitution pattern. Before calculating, classify the powers and state which derivative pair you are trying to create."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "For \\(\\sin^m x\\cos^n x\\):"
+        },
+        {
+          "type": "paragraph",
+          "text": "\\item if one exponent is odd, save one factor of that function and convert the rest using \\(\\sin^2x+\\cos^2x=1\\); \\item if both exponents are even, use power-reduction identities."
+        },
+        {
+          "type": "paragraph",
+          "text": "For powers of tangent and secant, preserve a \\(\\sec^2x\\) factor for \\(u=\\tan x\\) or a \\(\\sec x\\tan x\\) factor for \\(u=\\sec x\\) when possible."
+        },
+        {
+          "type": "worked-example",
+          "title": "Odd sine power",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Odd sine power}]"
+            },
+            {
+              "type": "math",
+              "tex": "\\int\\sin^3x\\cos^2x\\,dx\n=\\int(1-\\cos^2x)\\cos^2x\\sin x\\,dx."
+            },
+            {
+              "type": "paragraph",
+              "text": "Let \\(u=\\cos x\\), \\(du=-\\sin x\\,dx\\):"
+            },
+            {
+              "type": "math",
+              "tex": "-\\int(u^2-u^4)\\,du=-\\frac{u^3}{3}+\\frac{u^5}{5}+C."
+            },
+            {
+              "type": "paragraph",
+              "text": "Thus"
+            },
+            {
+              "type": "math",
+              "tex": "-\\frac{\\cos^3x}{3}+\\frac{\\cos^5x}{5}+C."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u3a-trig-int-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Evaluate \\(\\int\\sin^2x\\cos x\\,dx\\)."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Let \\(u=\\sin x\\)."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "\\int u^2du=u^3/3+C."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sectionId": "techniques",
+      "sectionTitle": "Computing integrals",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integrals/trigonometric-substitution",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Match radical patterns to trigonometric identities and return to the original variable using a reference triangle."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Trigonometric Substitution"
+        },
+        {
+          "type": "exposition",
+          "title": "Use a trigonometric identity to simplify a radical",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Use a trigonometric identity to simplify a radical}] Expressions such as \\(\\sqrt{a^2-x^2}\\), \\(\\sqrt{a^2+x^2}\\), and \\(\\sqrt{x^2-a^2}\\) resemble the Pythagorean identities for sine, tangent, and secant. Trigonometric substitution chooses a new variable so that the radical collapses to a simpler trigonometric expression. The method is less about trigonometry itself than about replacing a difficult algebraic geometry with a familiar right-triangle identity."
+            },
+            {
+              "type": "paragraph",
+              "text": "The substitution must respect the domain and the sign of the square root. Drawing a reference triangle makes the return to \\(x\\) concrete and prevents inverse-trigonometric confusion. Because this method can create substantial algebra, it should not be the first reflex for every radical. Simplify first and check whether an ordinary substitution is available before deploying the full trigonometric apparatus."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Standard patterns are:"
+        },
+        {
+          "type": "math",
+          "tex": "\\sqrt{a^2-x^2}:\\ x=a\\sin\\theta,\n\\qquad\n\\sqrt{a^2+x^2}:\\ x=a\\tan\\theta,\n\\qquad\n\\sqrt{x^2-a^2}:\\ x=a\\sec\\theta."
+        },
+        {
+          "type": "paragraph",
+          "text": "The substitutions are chosen because \\(1-\\sin^2\\theta=\\cos^2\\theta\\), \\(1+\\tan^2\\theta=\\sec^2\\theta\\), and \\(\\sec^2\\theta-1=\\tan^2\\theta\\)."
+        },
+        {
+          "type": "worked-example",
+          "title": "A circular radical",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={A circular radical}] Evaluate"
+            },
+            {
+              "type": "math",
+              "tex": "\\int\\frac{dx}{\\sqrt{9-x^2}}."
+            },
+            {
+              "type": "paragraph",
+              "text": "Let \\(x=3\\sin\\theta\\), so \\(dx=3\\cos\\theta\\,d\\theta\\) and \\(\\sqrt{9-x^2}=3\\cos\\theta\\) on the chosen interval. Then"
+            },
+            {
+              "type": "math",
+              "tex": "\\int d\\theta=\\theta+C=\\arcsin(x/3)+C."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u3a-trig-sub-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Which substitution is natural for \\(\\sqrt{x^2+25}\\)?"
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Match \\(x^2+a^2\\) to \\(1+\\tan^2\\theta\\)."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Use \\(x=5\\tan\\theta\\)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "visual-reference",
+          "visualId": "u3a-v09",
+          "title": "Visual study"
+        }
+      ],
+      "sectionId": "techniques",
+      "sectionTitle": "Computing integrals",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integrals/partial-fractions",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Decompose proper rational functions and integrate linear and repeated-linear terms."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Partial Fractions"
+        },
+        {
+          "type": "exposition",
+          "title": "Turn one rational function into several familiar ones",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Turn one rational function into several familiar ones}] Partial fractions is an algebraic decomposition used before integration. A proper rational function with a factorable denominator can often be written as a sum of simpler fractions whose antiderivatives are logarithmic or arctangent forms. The calculus step is usually easy once the decomposition is correct; most errors originate in incomplete factoring or an incorrect template."
+            },
+            {
+              "type": "paragraph",
+              "text": "Begin by performing polynomial division if the numerator's degree is not smaller than the denominator's. Then factor over the real numbers and include the correct terms for repeated linear factors and irreducible quadratics. Solve for the coefficients, integrate term by term, and differentiate or recombine the result as a check. Treating the algebra as part of the method, rather than as preliminary clutter, makes the procedure far more reliable."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "When a rational function is proper and the denominator factors, rewrite it as a sum of simpler fractions."
+        },
+        {
+          "type": "guided-walkthrough",
+          "title": "Two distinct linear factors",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Two distinct linear factors}] Evaluate"
+            },
+            {
+              "type": "math",
+              "tex": "\\int\\frac{5x+1}{(x-1)(x+2)}\\,dx."
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Write"
+                },
+                {
+                  "type": "math",
+                  "tex": "\\frac{5x+1}{(x-1)(x+2)}=\\frac{A}{x-1}+\\frac{B}{x+2}."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Then"
+                },
+                {
+                  "type": "math",
+                  "tex": "5x+1=A(x+2)+B(x-1)."
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Setting \\(x=1\\) gives \\(6=3A\\), so \\(A=2\\). Setting \\(x=-2\\) gives \\(-9=-3B\\), so \\(B=3\\). Therefore"
+                },
+                {
+                  "type": "math",
+                  "tex": "\\int\\left(\\frac2{x-1}+\\frac3{x+2}\\right)dx\n=2\\ln|x-1|+3\\ln|x+2|+C."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "method",
+          "title": "Before decomposing",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Before decomposing}] If the numerator degree is at least the denominator degree, perform polynomial division first. Then factor the denominator completely over the real numbers and include the correct form for repeated or irreducible quadratic factors."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u3a-pf-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Evaluate \\(\\int \\frac{1}{x(x+1)}\\,dx\\)."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Decompose as \\(1/x-1/(x+1)\\)."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "\\ln|x|-\\ln|x+1|+C."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sectionId": "techniques",
+      "sectionTitle": "Computing integrals",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integrals/integration-strategy",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Choose an efficient method, recognize when no elementary antiderivative is likely, and verify results by differentiation."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Choosing an Integration Strategy"
+        },
+        {
+          "type": "exposition",
+          "title": "Integration is a recognition problem",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Integration is a recognition problem}] Unlike differentiation, integration has no single rule that mechanically handles every expression. The same-looking integral may yield to simplification, substitution, integration by parts, a trigonometric identity, trigonometric substitution, or partial fractions. Strategy begins by classifying the structure of the integrand rather than applying the most recently learned technique to everything in sight."
+            },
+            {
+              "type": "paragraph",
+              "text": "A useful order is: simplify algebraically, check the basic table, look for a composite derivative, inspect products, classify rational functions, and then consider specialized trigonometric methods. After each transformation, ask whether the new integral is simpler. Verification by differentiation remains the final referee. An efficient integrator is not the person who remembers the most tricks, but the person who chooses the cheapest appropriate one."
+            }
+          ]
+        },
+        {
+          "type": "decision",
+          "title": "A practical order of attack",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={A practical order of attack}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "\\item Simplify algebraically. \\item Look for a direct formula. \\item Look for substitution structure. \\item If the integrand is a product involving polynomial, logarithmic, inverse-trig, or exponential factors, consider integration by parts. \\item For trigonometric powers, use identities. \\item For radicals involving quadratic sums or differences, consider trigonometric substitution. \\item For rational functions, divide and use partial fractions. \\item If no elementary method fits, use numerical integration or retain a defined accumulation function."
+            }
+          ]
+        },
+        {
+          "type": "advanced-note",
+          "title": "Not every elementary-looking function has an elementary antiderivative",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Not every elementary-looking function has an elementary antiderivative}] Functions such as \\(e^{-x^2}\\), \\(\\sin(x^2)\\), and \\(1/\\ln x\\) are perfectly integrable on many intervals but do not have elementary antiderivatives. Integral notation can define useful functions even when algebraic antiderivative notation cannot simplify them."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u3a-strategy-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Which method is the natural first choice for \\(\\int x\\ln x\\,dx\\)?"
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "The product contains a logarithm that becomes simpler when differentiated."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Integration by parts is the natural choice."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sectionId": "techniques",
+      "sectionTitle": "Computing integrals",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integrals/numerical-integration",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Compute numerical estimates from formulas or tables and reason from concavity about likely error direction."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Midpoint and Trapezoidal Rules"
+        },
+        {
+          "type": "exposition",
+          "title": "Approximation is often the only honest option",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Approximation is often the only honest option}] Many definite integrals have no elementary antiderivative, and real data may be available only in a table. Numerical integration estimates the accumulated total directly from sampled values. The midpoint and trapezoidal rules both use local geometric approximations, but they model each subinterval differently: one uses a constant midpoint height, while the other uses a straight-line connection between endpoint values."
+            },
+            {
+              "type": "paragraph",
+              "text": "Error depends on interval width and curvature. A finer partition usually improves the estimate, but the direction of error can often be predicted from concavity. Trapezoids lie above a concave-up graph and below a concave-down graph; midpoint behavior is typically opposite. A complete numerical answer should state the rule, the partition, the units, and a sensible precision rather than presenting a long decimal as though a calculator had discovered exact truth."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The midpoint rule uses midpoint rectangles. The trapezoidal rule replaces each curve segment by a line segment:"
+        },
+        {
+          "type": "math",
+          "tex": "T_n=\\frac{\\Delta x}{2}\\left[f(x_0)+2f(x_1)+\\cdots+2f(x_{n-1})+f(x_n)\\right]."
+        },
+        {
+          "type": "worked-example",
+          "title": "Trapezoidal estimate from data",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Trapezoidal estimate from data}] Suppose"
+            },
+            {
+              "type": "math",
+              "tex": "\\begin{array}{c|cccc}\nx&0&1&2&3\\\\\\hline\nf(x)&1&2&5&10\n\\end{array}"
+            },
+            {
+              "type": "paragraph",
+              "text": "With \\(\\Delta x=1\\),"
+            },
+            {
+              "type": "math",
+              "tex": "T_3=\\frac12[1+2(2)+2(5)+10]=\\frac{25}{2}."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u3a-trap-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Using one trapezoid, estimate \\(\\int_0^2 x^2\\,dx\\)."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Average the endpoint heights 0 and 4, then multiply by width 2."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "T_1=2(0+4)/2=4."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "visual-reference",
+          "visualId": "u3a-v10",
+          "title": "Visual study"
+        }
+      ],
+      "sectionId": "numerical-improper",
+      "sectionTitle": "Numerical and improper integration",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integrals/simpsons-rule",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Apply Simpson’s Rule with an even number of subintervals and understand why parabolic approximation is unusually accurate."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Simpson's Rule"
+        },
+        {
+          "type": "exposition",
+          "title": "Parabolas can approximate curvature better than lines",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Parabolas can approximate curvature better than lines}] Simpson's Rule improves on straight-line approximation by fitting quadratic behavior across pairs of subintervals. This produces the characteristic weights \\(1,4,2,4,\\ldots,2,4,1\\) and usually gives high accuracy for smooth functions. The method requires an even number of equal subintervals because each quadratic panel spans two of them."
+            },
+            {
+              "type": "paragraph",
+              "text": "The formula is easy to misuse if the data spacing or weight pattern is not checked first. Write the table of \\(x\\)-values and weights before multiplying, and verify that the endpoints receive weight one. Simpson's Rule is still an approximation, not a symbolic antiderivative. Its strength is that it captures curvature efficiently, making it useful when function evaluations are available but exact integration is not."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "For even \\(n\\),"
+        },
+        {
+          "type": "math",
+          "tex": "S_n=\\frac{\\Delta x}{3}\\left[f(x_0)+4f(x_1)+2f(x_2)+\\cdots+4f(x_{n-1})+f(x_n)\\right]."
+        },
+        {
+          "type": "paragraph",
+          "text": "The alternating \\(4,2,4,2,\\ldots,4\\) pattern is not optional bookkeeping; it comes from fitting quadratic pieces across pairs of subintervals."
+        },
+        {
+          "type": "worked-example",
+          "title": "Simpson’s Rule is exact for cubics",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Simpson’s Rule is exact for cubics}] For \\(f(x)=x^3\\) on \\([0,2]\\) with \\(n=2\\), \\(\\Delta x=1\\):"
+            },
+            {
+              "type": "math",
+              "tex": "S_2=\\frac13[f(0)+4f(1)+f(2)]=\\frac13(0+4+8)=4."
+            },
+            {
+              "type": "paragraph",
+              "text": "The exact integral is also \\([x^4/4]_0^2=4\\)."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u3a-simpson-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Use Simpson’s Rule with \\(n=2\\) to estimate \\(\\int_0^2 x^3\\,dx\\)."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Use values at 0, 1, and 2 with weights 1, 4, 1."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "(1/3)(0+4+8)=4."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sectionId": "numerical-improper",
+      "sectionTitle": "Numerical and improper integration",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integrals/improper-integrals-infinite-intervals",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Replace an infinite bound by a limit and determine convergence or divergence."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Improper Integrals over Infinite Intervals"
+        },
+        {
+          "type": "exposition",
+          "title": "Infinity enters through a limit, not as an endpoint number",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Infinity enters through a limit, not as an endpoint number}] An integral such as \\(\\int_a^\\infty f(x)\\,dx\\) is defined by replacing infinity with a finite boundary \\(b\\), evaluating \\(\\int_a^b f(x)\\,dx\\), and then taking the limit as \\(b\\to\\infty\\). The integral converges only if that limit exists and is finite. We never substitute infinity into an antiderivative as though it were an oversized real number."
+            },
+            {
+              "type": "paragraph",
+              "text": "Convergence depends on the long-run balance between interval length and function decay. A positive function may approach zero and still have an infinite total area if it decays too slowly. The classic \\(p\\)-integrals show the threshold clearly. This distinction becomes important in probability, physics, and series theory, where an infinite domain can still carry a finite total mass or energy."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Define"
+        },
+        {
+          "type": "math",
+          "tex": "\\int_a^\\infty f(x)\\,dx\n=\\lim_{b\\to\\infty}\\int_a^bf(x)\\,dx,"
+        },
+        {
+          "type": "paragraph",
+          "text": "provided the limit exists and is finite."
+        },
+        {
+          "type": "worked-example",
+          "title": "A convergent tail",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={A convergent tail}]"
+            },
+            {
+              "type": "math",
+              "tex": "\\int_1^\\infty\\frac1{x^2}\\,dx\n=\\lim_{b\\to\\infty}\\left[-\\frac1x\\right]_1^b\n=\\lim_{b\\to\\infty}\\left(1-\\frac1b\\right)=1."
+            },
+            {
+              "type": "paragraph",
+              "text": "Although the interval is infinite, the tail contributions shrink fast enough to produce a finite total."
+            }
+          ]
+        },
+        {
+          "type": "worked-example",
+          "title": "A divergent tail",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={A divergent tail}]"
+            },
+            {
+              "type": "math",
+              "tex": "\\int_1^\\infty\\frac1x\\,dx\n=\\lim_{b\\to\\infty}\\ln b=\\infty."
+            },
+            {
+              "type": "paragraph",
+              "text": "The integral diverges."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u3a-improper-inf-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Does \\(\\int_1^\\infty x^{-3}\\,dx\\) converge or diverge?"
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Use the p-integral threshold: \\(p>1\\) converges."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "It converges, with value \\(1/2\\)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "visual-reference",
+          "visualId": "u3a-v11",
+          "title": "Visual study"
+        }
+      ],
+      "sectionId": "numerical-improper",
+      "sectionTitle": "Numerical and improper integration",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integrals/improper-integrals-unbounded-functions",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Split at singularities, use one-sided limits, and require every piece to converge."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Improper Integrals with Unbounded Integrands"
+        },
+        {
+          "type": "exposition",
+          "title": "An infinite spike may or may not have finite accumulation",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={An infinite spike may or may not have finite accumulation}] When an integrand becomes unbounded at an endpoint or inside the interval, the ordinary definite-integral notation hides a limit. Replace the problematic boundary by a nearby finite value and approach it from the correct side. If the singularity lies inside the interval, split the integral there and require both one-sided improper integrals to converge."
+            },
+            {
+              "type": "paragraph",
+              "text": "A graph can look alarming without determining the answer. A very tall but sufficiently narrow spike may have finite area, while a milder-looking singularity may diverge. The decision comes from the limiting calculation. Never cancel divergences from opposite sides unless a different concept, such as a principal value, has been explicitly introduced; ordinary improper-integral convergence requires each piece to exist independently."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "If \\(f\\) is unbounded at \\(c\\in[a,b]\\), define"
+        },
+        {
+          "type": "math",
+          "tex": "\\int_a^bf(x)\\,dx\n=\\lim_{t\\to c^-}\\int_a^tf(x)\\,dx\n+\\lim_{s\\to c^+}\\int_s^bf(x)\\,dx,"
+        },
+        {
+          "type": "paragraph",
+          "text": "provided both one-sided integrals converge."
+        },
+        {
+          "type": "worked-example",
+          "title": "Integrable vertical blow-up",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Integrable vertical blow-up}]"
+            },
+            {
+              "type": "math",
+              "tex": "\\int_0^1\\frac1{\\sqrt{x}}\\,dx\n=\\lim_{a\\to0^+}[2\\sqrt{x}]_a^1=2."
+            },
+            {
+              "type": "paragraph",
+              "text": "The function becomes unbounded at \\(0\\), but the area remains finite."
+            }
+          ]
+        },
+        {
+          "type": "common-mistake",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Never evaluate across a singularity with a single antiderivative subtraction. Split the interval first. Cancellation between two divergent sides does not make the ordinary improper integral converge."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u3a-improper-sing-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Does \\(\\int_0^1x^{-1/2}\\,dx\\) converge?"
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "The exponent corresponds to a p-integral near zero with \\(p=1/2<1\\)."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "It converges to 2."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sectionId": "numerical-improper",
+      "sectionTitle": "Numerical and improper integration",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integrals/review",
+      "nodes": [
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Unit 3A Review"
+        },
+        {
+          "type": "summary",
+          "title": "Core ideas",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Core ideas}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "\\item Antiderivatives reverse differentiation and form families differing by constants. \\item Riemann sums approximate continuously distributed totals. \\item Definite integrals are signed accumulations and limits of Riemann sums. \\item The Fundamental Theorem links differentiation and integration. \\item Substitution reverses the chain rule; integration by parts reverses the product rule. \\item Numerical methods estimate integrals when exact antiderivatives are unavailable. \\item Improper integrals are defined by limits and may converge or diverge."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find \\(\\int(3x^2-4/x+\\cos x)dx\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Approximate \\(\\int_0^2e^{-x^2}dx\\) using four midpoint rectangles."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Differentiate \\(F(x)=\\int_1^{x^3}\\ln(1+t^2)dt\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Evaluate \\(\\int_0^1x(1+x^2)^5dx\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Evaluate \\(\\int x\\cos x\\,dx\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Evaluate \\(\\int\\frac{3x+5}{x^2+5x+6}dx\\) by partial fractions."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Determine convergence of \\(\\int_2^\\infty x^{-3/2}dx\\)."
+            }
+          ]
+        }
+      ],
+      "sectionId": "review",
+      "sectionTitle": "Review, practice, exams, and answer keys",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integrals/common-errors",
+      "nodes": [
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Common Integral Errors"
+        },
+        {
+          "type": "paragraph",
+          "text": "\\item Forgetting \\(+C\\) on indefinite integrals. \\item Adding \\(+C\\) to a definite integral. \\item Treating signed area as total geometric area. \\item Using \\(u\\)-integrands with unchanged \\(x\\)-bounds. \\item Applying the power rule to \\(x^{-1}\\). \\item Choosing integration by parts when simple algebra or substitution works first. \\item Crossing a singularity without splitting an improper integral. \\item Trusting an antiderivative without differentiating it."
+        }
+      ],
+      "sectionId": "review",
+      "sectionTitle": "Review, practice, exams, and answer keys",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integrals/cumulative-practice",
+      "nodes": [
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Cumulative Practice"
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the antiderivative family for \\(5x^4-3x^{-2}+2e^x\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 1 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Rewrite the negative power before integrating term by term: \\(\\int(5x^4-3x^{-2}+2e^x)\\,dx=x^5+3x^{-1}+2e^x+C\\). Differentiate the result to check that \\(3x^{-1}\\) returns \\(-3x^{-2}\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Recover \\(F\\) if \\(F'(x)=\\sin x+x^2\\) and \\(F(0)=5\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 2 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "First integrate: \\(F(x)=-\\cos x+\\frac{x^3}{3}+C\\). The condition gives \\(F(0)=-1+C=5\\), so \\(C=6\\). Therefore \\(F(x)=-\\cos x+\\frac{x^3}{3}+6\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Construct \\(L_4,R_4,M_4\\) for \\(f(x)=1/x\\) on \\([1,3]\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 3 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "The width is \\(\\Delta x=\\frac12\\). Thus \\(L_4=\\frac12(1+\\frac23+\\frac12+\\frac25)=\\frac{77}{60}\\), \\(R_4=\\frac12(\\frac23+\\frac12+\\frac25+\\frac13)=\\frac{19}{20}\\), and \\(M_4=\\frac12(\\frac45+\\frac47+\\frac49+\\frac4{11})=\\frac{3776}{3465}\\). Because \\(1/x\\) is decreasing, the left sum is high and the right sum is low."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Evaluate \\(\\int_{-2}^2(x^3+4)dx\\) by symmetry and FTC."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 4 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "The odd term \\(x^3\\) integrates to zero on the symmetric interval. The constant contributes the rectangle area \\(4\\cdot(2-(-2))=16\\). Therefore \\(\\int_{-2}^{2}(x^3+4)\\,dx=16\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the average value of \\(x^2\\) on \\([0,3]\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 5 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Average value is area divided by interval length: \\(f_{\\mathrm{avg}}=\\frac13\\int_0^3x^2\\,dx=\\frac13[\\frac{x^3}{3}]_0^3=3\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Differentiate \\(\\int_{\\cos x}^{x^2}\\sqrt{1+t^4}dt\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 6 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Apply the Fundamental Theorem to both variable bounds. The upper bound contributes \\(2x\\sqrt{1+x^8}\\). Subtracting the lower-bound contribution gives \\(-\\sqrt{1+\\cos^4x}(-\\sin x)\\). Hence the derivative is \\(2x\\sqrt{1+x^8}+\\sin x\\sqrt{1+\\cos^4x}\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Evaluate \\(\\int 4x e^{2x^2}dx\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 7 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "The exponent has derivative \\(4x\\), exactly the remaining factor. With \\(u=2x^2\\) and \\(du=4x\\,dx\\), the integral is \\(e^u+C=e^{2x^2}+C\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Evaluate \\(\\int x^2\\ln x\\,dx\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 8 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Use integration by parts with \\(u=\\ln x\\) and \\(dv=x^2\\,dx\\). Then \\(du=dx/x\\) and \\(v=x^3/3\\), so \\(\\int x^2\\ln x\\,dx=\\frac{x^3}{3}\\ln x-\\frac13\\int x^2\\,dx=\\frac{x^3}{3}\\ln x-\\frac{x^3}{9}+C\\), for \\(x>0\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Evaluate \\(\\int\\sin^3x\\cos^4x\\,dx\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 9 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Save one sine factor and use \\(\\sin^2x=1-\\cos^2x\\): \\(\\sin^3x\\cos^4x=\\sin x(1-\\cos^2x)\\cos^4x\\). With \\(u=\\cos x\\), the integral becomes \\(-\\int(u^4-u^6)\\,du=-\\frac{u^5}{5}+\\frac{u^7}{7}+C\\). Therefore the answer is \\(-\\frac{\\cos^5x}{5}+\\frac{\\cos^7x}{7}+C\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Evaluate \\(\\int dx/(x^2-1)\\) on an interval avoiding the singularities."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 10 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Decompose \\(1/(x^2-1)=\\frac12/(x-1)-\\frac12/(x+1)\\). On any interval that does not cross \\(x=\\pm1\\), \\(\\int\\frac{dx}{x^2-1}=\\frac12\\ln|x-1|-\\frac12\\ln|x+1|+C=\\frac12\\ln|\\frac{x-1}{x+1}|+C\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Approximate \\(\\int_0^2\\sqrt{1+x^3}dx\\) by the trapezoidal rule with \\(n=4\\)."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 11 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "With \\(n=4\\), \\(h=1/2\\), and nodes \\(0,1/2,1,3/2,2\\), \\(T_4=\\frac{h}{2}[f(0)+2f(1/2)+2f(1)+2f(3/2)+f(2)]\\). Substitution gives \\(T_4\\approx3.283\\). The value is positive and lies below the crude upper rectangle bound of \\(6\\), so its scale is reasonable."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Determine whether \\(\\int_0^1x^{-4/5}dx\\) converges."
+            }
+          ]
+        },
+        {
+          "type": "solution",
+          "title": "Exercise 12 answer",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Treat the endpoint as improper: \\(\\int_0^1x^{-4/5}\\,dx=\\lim_{a\\to0^+}[5x^{1/5}]_a^1=5\\). The finite limit shows that the integral converges."
+            }
+          ]
+        }
+      ],
+      "sectionId": "review",
+      "sectionTitle": "Review, practice, exams, and answer keys",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integrals/practice-exam-a",
+      "nodes": [
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Practice Exam A"
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Evaluate"
+            },
+            {
+              "type": "math",
+              "tex": "\\int\\left(4x^3-\\frac{2}{x}+\\sec^2x\\right)\\,dx."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Use four midpoint rectangles to estimate"
+            },
+            {
+              "type": "math",
+              "tex": "\\int_0^2(x^2+1)\\,dx."
+            },
+            {
+              "type": "paragraph",
+              "text": "Show the subinterval width and the four midpoint sample values."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Explain the difference between an indefinite integral and a definite integral. Your answer must mention both the type of output and the role of the constant of integration."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Differentiate"
+            },
+            {
+              "type": "math",
+              "tex": "G(x)=\\int_1^{\\sin x}e^{t^2}\\,dt."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Evaluate"
+            },
+            {
+              "type": "math",
+              "tex": "\\int_0^1 2x(1+x^2)^4\\,dx."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Evaluate"
+            },
+            {
+              "type": "math",
+              "tex": "\\int xe^{2x}\\,dx."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Evaluate by partial fractions:"
+            },
+            {
+              "type": "math",
+              "tex": "\\int\\frac{3x+5}{x^2+3x+2}\\,dx."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Determine whether"
+            },
+            {
+              "type": "math",
+              "tex": "\\int_1^\\infty\\frac{1}{x^2}\\,dx"
+            },
+            {
+              "type": "paragraph",
+              "text": "converges. If it converges, find its value. Show the limit that defines the improper integral."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "A tank's net inflow rate is \\(r(t)\\) liters per minute. Explain the meaning and units of"
+            },
+            {
+              "type": "math",
+              "tex": "\\int_0^5r(t)\\,dt."
+            },
+            {
+              "type": "paragraph",
+              "text": "State how a negative value should be interpreted."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Compare midpoint, trapezoidal, and Simpson estimates. State one reason Simpson's Rule is often more accurate for a smooth function and one reason no numerical estimate should be accepted without a reasonableness check."
+            }
+          ]
+        }
+      ],
+      "sectionId": "review",
+      "sectionTitle": "Review, practice, exams, and answer keys",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integrals/practice-exam-a-answer-key",
+      "nodes": [
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Unit 3A Practice Exam A Answer Key"
+        },
+        {
+          "type": "paragraph",
+          "text": "Finish an honest attempt first. Then compare one numbered response at a time, locate the first line where your reasoning diverged, and retry without the key open."
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 1",
+          "answerNumber": 1,
+          "children": [
+            {
+              "type": "math",
+              "tex": "\\int\\left(4x^3-\\frac2x+\\sec^2x\\right)dx\n=x^4-2\\ln|x|+\\tan x+C."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 2",
+          "answerNumber": 2,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Here \\(\\Delta x=\\tfrac12\\) and the midpoints are \\(\\tfrac14,\\tfrac34,\\tfrac54,\\tfrac74\\). Thus"
+            },
+            {
+              "type": "math",
+              "tex": "M_4=\\frac12\\left[\\left(\\frac1{16}+1\\right)+\\left(\\frac9{16}+1\\right)+\\left(\\frac{25}{16}+1\\right)+\\left(\\frac{49}{16}+1\\right)\\right]\n=\\frac{37}{8}."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 3",
+          "answerNumber": 3,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "An indefinite integral is a family of antiderivatives and therefore includes \\(+C\\). A definite integral is a number defined by a limit of sums; it has fixed bounds and no arbitrary \\(+C\\) in the final value."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 4",
+          "answerNumber": 4,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "By the Fundamental Theorem and chain rule,"
+            },
+            {
+              "type": "math",
+              "tex": "G'(x)=e^{\\sin^2x}\\cos x."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 5",
+          "answerNumber": 5,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Let \\(u=1+x^2\\), so \\(du=2x\\,dx\\), and change the bounds from \\(x=0,1\\) to \\(u=1,2\\):"
+            },
+            {
+              "type": "math",
+              "tex": "\\int_1^2u^4du=\\left[\\frac{u^5}{5}\\right]_1^2=\\frac{31}{5}."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 6",
+          "answerNumber": 6,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "With \\(u=x\\), \\(dv=e^{2x}dx\\), and \\(v=\\tfrac12e^{2x}\\),"
+            },
+            {
+              "type": "math",
+              "tex": "\\int xe^{2x}dx=\\frac{x e^{2x}}2-\\frac{e^{2x}}4+C."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 7",
+          "answerNumber": 7,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Since"
+            },
+            {
+              "type": "math",
+              "tex": "\\frac{3x+5}{(x+1)(x+2)}=\\frac2{x+1}+\\frac1{x+2},"
+            },
+            {
+              "type": "paragraph",
+              "text": "we get"
+            },
+            {
+              "type": "math",
+              "tex": "2\\ln|x+1|+\\ln|x+2|+C."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 8",
+          "answerNumber": 8,
+          "children": [
+            {
+              "type": "math",
+              "tex": "\\int_1^\\infty\\frac1{x^2}dx\n=\\lim_{b\\to\\infty}\\left[-\\frac1x\\right]_1^b\n=\\lim_{b\\to\\infty}\\left(1-\\frac1b\\right)=1."
+            },
+            {
+              "type": "paragraph",
+              "text": "The integral converges."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 9",
+          "answerNumber": 9,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "The integral is the net change in the amount of water from time 0 to 5 minutes, measured in liters. A negative value means the tank lost more water than it gained over the interval."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 10",
+          "answerNumber": 10,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Midpoint and trapezoidal rules use constant or linear local approximations; Simpson's Rule uses quadratic pieces and is often more accurate for smooth functions. Every estimate must still be checked against sign, rough area, monotonicity, and a reasonable magnitude."
+            }
+          ]
+        }
+      ],
+      "sectionId": "review",
+      "sectionTitle": "Review, practice, exams, and answer keys",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integrals/practice-exam-b",
+      "nodes": [
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Practice Exam B"
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Evaluate"
+            },
+            {
+              "type": "math",
+              "tex": "\\int\\left(3x^{-1/2}+4e^x-5\\cos x\\right)\\,dx."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Use four right-endpoint rectangles to estimate"
+            },
+            {
+              "type": "math",
+              "tex": "\\int_0^2x^2\\,dx."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the average value of \\(f(x)=x^2+1\\) on \\([0,3]\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Differentiate"
+            },
+            {
+              "type": "math",
+              "tex": "H(x)=\\int_{x^2}^{2x+1}\\sqrt{1+t^4}\\,dt."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Evaluate"
+            },
+            {
+              "type": "math",
+              "tex": "\\int\\frac{x}{(1+x^2)^3}\\,dx."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Evaluate"
+            },
+            {
+              "type": "math",
+              "tex": "\\int x^2\\ln x\\,dx."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Evaluate"
+            },
+            {
+              "type": "math",
+              "tex": "\\int\\sin^3x\\cos^2x\\,dx."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Evaluate"
+            },
+            {
+              "type": "math",
+              "tex": "\\int\\frac{dx}{x^2+9}."
+            },
+            {
+              "type": "paragraph",
+              "text": "State the substitution or standard form you use."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Use the trapezoidal rule with \\(n=4\\) to estimate"
+            },
+            {
+              "type": "math",
+              "tex": "\\int_0^2x^3\\,dx."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Determine whether"
+            },
+            {
+              "type": "math",
+              "tex": "\\int_0^1x^{-2/3}\\,dx"
+            },
+            {
+              "type": "paragraph",
+              "text": "converges. If it converges, find its value."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Explain why \\(+C\\) belongs on an indefinite integral but not on a completed definite-integral evaluation."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "For each integral, name the best first method and justify the choice in one sentence:"
+            },
+            {
+              "type": "math",
+              "tex": "\\int x\\ln x\\,dx,\n\\qquad\n\\int\\frac{2x}{x^2+7}\\,dx,\n\\qquad\n\\int\\frac{dx}{x^2-4}."
+            }
+          ]
+        }
+      ],
+      "sectionId": "review",
+      "sectionTitle": "Review, practice, exams, and answer keys",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/integrals/practice-exam-b-answer-key",
+      "nodes": [
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Unit 3A Practice Exam B Answer Key"
+        },
+        {
+          "type": "paragraph",
+          "text": "Finish an honest attempt first. Then compare one numbered response at a time, locate the first line where your reasoning diverged, and retry without the key open."
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 1",
+          "answerNumber": 1,
+          "children": [
+            {
+              "type": "math",
+              "tex": "6\\sqrt{x}+4e^x-5\\sin x+C."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 2",
+          "answerNumber": 2,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "\\(\\Delta x=\\tfrac12\\), with right endpoints \\(\\tfrac12,1,\\tfrac32,2\\):"
+            },
+            {
+              "type": "math",
+              "tex": "R_4=\\frac12\\left(\\frac14+1+\\frac94+4\\right)=\\frac{15}{4}."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 3",
+          "answerNumber": 3,
+          "children": [
+            {
+              "type": "math",
+              "tex": "f_{\\mathrm{avg}}=\\frac13\\int_0^3(x^2+1)dx\n=\\frac13\\left[\\frac{x^3}{3}+x\\right]_0^3=4."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 4",
+          "answerNumber": 4,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Apply FTC to both bounds:"
+            },
+            {
+              "type": "math",
+              "tex": "H'(x)=2\\sqrt{1+(2x+1)^4}-2x\\sqrt{1+x^8}."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 5",
+          "answerNumber": 5,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Let \\(u=1+x^2\\):"
+            },
+            {
+              "type": "math",
+              "tex": "\\int\\frac{x}{(1+x^2)^3}dx\n=\\frac12\\int u^{-3}du\n=-\\frac{1}{4(1+x^2)^2}+C."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 6",
+          "answerNumber": 6,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Integration by parts gives"
+            },
+            {
+              "type": "math",
+              "tex": "\\int x^2\\ln x\\,dx\n=\\frac{x^3}{3}\\ln x-\\frac{x^3}{9}+C."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 7",
+          "answerNumber": 7,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Write \\(\\sin^3x=(1-\\cos^2x)\\sin x\\) and use \\(u=\\cos x\\):"
+            },
+            {
+              "type": "math",
+              "tex": "-\\frac{\\cos^3x}{3}+\\frac{\\cos^5x}{5}+C."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 8",
+          "answerNumber": 8,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Using \\(x=3\\tan\\theta\\), or the standard arctangent form,"
+            },
+            {
+              "type": "math",
+              "tex": "\\int\\frac{dx}{x^2+9}=\\frac13\\arctan\\left(\\frac{x}{3}\\right)+C."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 9",
+          "answerNumber": 9,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "With \\(h=\\tfrac12\\),"
+            },
+            {
+              "type": "math",
+              "tex": "T_4=\\frac{h}{2}\\left[f(0)+2f(0.5)+2f(1)+2f(1.5)+f(2)\\right]\n=\\frac{17}{4}."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 10",
+          "answerNumber": 10,
+          "children": [
+            {
+              "type": "math",
+              "tex": "\\int_0^1x^{-2/3}dx\n=\\lim_{a\\to0^+}\\left[3x^{1/3}\\right]_a^1=3."
+            },
+            {
+              "type": "paragraph",
+              "text": "The integral converges."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 11",
+          "answerNumber": 11,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Indefinite integration reverses differentiation and therefore determines a family differing by constants. Definite integration subtracts endpoint values, so any antiderivative constant cancels."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 12",
+          "answerNumber": 12,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Use integration by parts for \\(\\int x\\ln x\\,dx\\); substitution \\(u=x^2+7\\) for \\(\\int 2x/(x^2+7)dx\\); and partial fractions after factoring \\(x^2-4\\) for \\(\\int dx/(x^2-4)\\)."
+            }
+          ]
+        }
+      ],
+      "sectionId": "review",
+      "sectionTitle": "Review, practice, exams, and answer keys",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    }
+  ]
+}

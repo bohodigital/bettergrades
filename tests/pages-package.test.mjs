@@ -90,7 +90,7 @@ test("Pages package contains the advanced Worker and static assets", async () =>
   }
 });
 
-test("Pages package preserves the exact Limits, Unit 2A, and Unit 2B visual inventories", async () => {
+test("Pages package preserves the exact Limits, Unit 2A, Unit 2B, and Unit 3A visual inventories", async () => {
   const limitsManifest = JSON.parse(
     await readFile(new URL("../content/visualizations/limits-continuity/compiled-scenes.v1.json", import.meta.url), "utf8"),
   );
@@ -99,6 +99,9 @@ test("Pages package preserves the exact Limits, Unit 2A, and Unit 2B visual inve
   );
   const unit2bManifest = JSON.parse(
     await readFile(new URL("../content/calculus/units/unit-2b/compiled-scenes.v1.json", import.meta.url), "utf8"),
+  );
+  const unit3aManifest = JSON.parse(
+    await readFile(new URL("../content/calculus/units/unit-3a/compiled-scenes.v1.json", import.meta.url), "utf8"),
   );
   assert.equal(limitsManifest.manifestVersion, 1);
   assert.equal(limitsManifest.sceneCount, 13);
@@ -113,7 +116,10 @@ test("Pages package preserves the exact Limits, Unit 2A, and Unit 2B visual inve
   assert.equal(unit2bManifest.manifestVersion, 1);
   assert.equal(unit2bManifest.sceneCount, 34);
   assert.equal(unit2bManifest.scenes.length, 34);
-  const manifests = [limitsManifest, unitManifest, unit2bManifest];
+  assert.equal(unit3aManifest.manifestVersion, 1);
+  assert.equal(unit3aManifest.sceneCount, 11);
+  assert.equal(unit3aManifest.scenes.length, 11);
+  const manifests = [limitsManifest, unitManifest, unit2bManifest, unit3aManifest];
   const expectedAssetNames = manifests.flatMap(({ scenes }) => scenes.map(({ staticAsset }) => staticAsset.path.split("/").at(-1))).sort();
   const publicAssetNames = (await readdir(new URL("../public/visuals/v1/", import.meta.url)))
     .filter((name) => name.endsWith(".svg"))

@@ -7,28 +7,41 @@ import { parseCalculusUnitPage } from "../lib/calculus/calculus-unit-core.mjs";
 const root = resolve(import.meta.dirname, "..");
 const requested = process.argv.find((argument) => argument.startsWith("--unit="))?.split("=")[1] ?? "unit-2a";
 const checkOnly = process.argv.includes("--check");
-const expectations = {
-  "unit-2a": { routes: 67, core: 49, problems: 34, sets: 7, visuals: 27 },
-  "unit-2b": { routes: 76, core: 57, problems: 22, sets: 8, visuals: 34 },
+const definitions = {
+  "unit-2a": { routes: 67, core: 49, problems: 34, sets: 7, visuals: 27, format: "legacy" },
+  "unit-2b": { routes: 76, core: 57, problems: 22, sets: 8, visuals: 34, format: "legacy" },
+  "unit-3a": {
+    routes: 36, core: 30, problems: 28, sets: 2, visuals: 11, format: "normalized-handoff",
+    shortTitle: "Integral Foundations and Techniques",
+    prerequisiteUnit: "calc-1-unit-2b-derivative-applications",
+    nextUnit: { unit_id: "calc-1-unit-3b-integration-applications", title: "Unit 3B: Applications of Integration", route: "/subjects/math/calculus/integration-applications/", link_when_public_only: true },
+  },
+  "unit-3b": {
+    routes: 25, core: 18, problems: 16, sets: 2, visuals: 9, format: "normalized-handoff",
+    shortTitle: "Applications of Integration",
+    prerequisiteUnit: "calc-1-unit-3a-integral-foundations-techniques",
+    nextUnit: null,
+  },
 };
-const expected = expectations[requested];
+const expected = definitions[requested];
 if (!expected) throw new Error(`Unknown calculus unit ${requested}.`);
 const directory = resolve(root, "content/calculus/units", requested);
+const sourceDirectory = expected.format === "normalized-handoff" ? resolve(directory, "handoff") : directory;
 
-async function json(name) {
-  return JSON.parse((await readFile(resolve(directory, name), "utf8")).replace(/^\uFEFF/, ""));
+async function json(name, base = sourceDirectory) {
+  return JSON.parse((await readFile(resolve(base, name), "utf8")).replace(/^\uFEFF/, ""));
 }
 
-async function optionalJson(name, fallback) {
+async function optionalJson(name, fallback, base = directory) {
   try {
-    return await json(name);
+    return await json(name, base);
   } catch (error) {
     if (error && typeof error === "object" && error.code === "ENOENT") return fallback;
     throw error;
   }
 }
 
-const [index, pages, publicProblems, serverProblems, publicSets, serverSets, visuals, provenance, exerciseAnswers] = await Promise.all([
+const [index, pages, publicInput, serverInput, publicSetInput, serverSetInput, visuals, provenance, exerciseAnswers] = await Promise.all([
   json("unit-index.public.json"),
   json("pages.server.json"),
   json("assessments.public.json"),
@@ -40,34 +53,69 @@ const [index, pages, publicProblems, serverProblems, publicSets, serverSets, vis
   optionalJson("exercise-answers.server.json", { schemaVersion: 1, unitId: null, routes: [] }),
 ]);
 
+const handoff = expected.format === "normalized-handoff";
+const sourceRoutes = index.routes;
+const sourcePages = pages.pages;
+const sourceProblemsPublic = publicInput.problems ?? publicInput.assessments;
+const sourceProblemsServer = serverInput.problems ?? serverInput.assessments;
+const sourceSetsPublic = publicSetInput.assessments ?? publicSetInput.assessment_sets;
+const sourceSetsServer = serverSetInput.assessments ?? serverSetInput.assessment_sets;
+const sourceVisuals = visuals.visuals ?? visuals.visual_briefs;
+const sourceProvenance = provenance.routes ?? provenance.records;
+const unitId = index.unit_id;
+const unitCode = index.unit_code ?? index.display_code;
+const canonicalRoot = index.canonical_root;
+
+const visualIdsByRouteId = new Map();
+if (handoff) {
+  for (const visual of sourceVisuals) {
+    const routeId = visual.route_id;
+    if (!routeId) throw new Error(`${requested} visual ${visual.visual_id ?? "without ID"} has no route ID.`);
+    const visualId = String(visual.visual_id).toLowerCase();
+    const routeVisuals = visualIdsByRouteId.get(routeId) ?? [];
+    if (routeVisuals.includes(visualId)) throw new Error(`${requested} route ${routeId} repeats visual ${visualId}.`);
+    routeVisuals.push(visualId);
+    visualIdsByRouteId.set(routeId, routeVisuals);
+  }
+}
+
+function visualIdsFor(route) {
+  if (!handoff) return Array.isArray(route.visual_ids) ? route.visual_ids : [];
+  const declared = Array.isArray(route.visual_ids) ? route.visual_ids.map((visualId) => String(visualId).toLowerCase()) : [];
+  const authored = visualIdsByRouteId.get(route.route_id) ?? [];
+  return [...new Set([...declared, ...authored])];
+}
+
 function assertCount(label, actual, wanted) {
   if (actual !== wanted) throw new Error(`${requested} ${label}: expected ${wanted}; received ${actual}.`);
 }
-assertCount("routes", index.routes.length, expected.routes);
-assertCount("page bodies", pages.pages.length, expected.routes);
-assertCount("core routes", index.routes.filter((route) => route.is_core).length, expected.core);
-assertCount("public checks", publicProblems.problems.length, expected.problems);
-assertCount("server checks", serverProblems.problems.length, expected.problems);
-assertCount("assessment sets", publicSets.assessments.length, expected.sets);
-assertCount("server assessment sets", serverSets.assessments.length, expected.sets);
-assertCount("visual briefs", visuals.visuals.length, expected.visuals);
-assertCount("route provenance records", provenance.routes.length, expected.routes);
+assertCount("routes", sourceRoutes.length, expected.routes);
+assertCount("page bodies", sourcePages.length, expected.routes);
+assertCount("core routes", sourceRoutes.filter((route) => route.is_core).length, expected.core);
+assertCount("public checks", sourceProblemsPublic.length, expected.problems);
+assertCount("server checks", sourceProblemsServer.length, expected.problems);
+assertCount("assessment sets", sourceSetsPublic.length, expected.sets);
+assertCount("server assessment sets", sourceSetsServer.length, expected.sets);
+assertCount("visual briefs", sourceVisuals.length, expected.visuals);
+if (handoff) assertCount("provenance records", sourceProvenance.length, expected.routes + expected.problems + expected.visuals);
+else assertCount("route provenance records", sourceProvenance.length, expected.routes);
+
 if (exerciseAnswers.routes.length) {
-  if (exerciseAnswers.unitId !== index.unit_id) throw new Error(`${requested} exercise-answer unit ID does not match the normalized unit.`);
+  if (exerciseAnswers.unitId !== unitId) throw new Error(`${requested} exercise-answer unit ID does not match the normalized unit.`);
   if (new Set(exerciseAnswers.routes.map((route) => route.routeId)).size !== exerciseAnswers.routes.length) throw new Error(`${requested} has duplicate exercise-answer route IDs.`);
   for (const answerRoute of exerciseAnswers.routes) {
-    if (!index.routes.some((route) => route.route_id === answerRoute.routeId)) throw new Error(`${requested} exercise answers reference unknown route ${answerRoute.routeId}.`);
+    if (!sourceRoutes.some((route) => route.route_id === answerRoute.routeId)) throw new Error(`${requested} exercise answers reference unknown route ${answerRoute.routeId}.`);
     if (!Array.isArray(answerRoute.answers) || !answerRoute.answers.length || answerRoute.answers.some((answer) => !String(answer.response ?? "").trim())) throw new Error(`${answerRoute.routeId} has an empty exercise answer.`);
   }
 }
 
 const pathForSlug = (slug) => `/${String(slug).replace(/^\/+|\/+$/g, "")}/`;
-const pageByRouteId = new Map(pages.pages.map((page) => [page.route_id, page]));
-const routeBySlug = new Map(index.routes.map((route) => [route.slug, route]));
-const coreRoutes = index.routes.filter((route) => route.is_core).sort((a, b) => a.sequence_index - b.sequence_index);
+const routeBySlug = new Map(sourceRoutes.map((route) => [route.slug, route]));
+const pageByRouteId = new Map(sourcePages.map((page) => [page.route_id ?? page.slug, page]));
+const coreRoutes = sourceRoutes.filter((route) => route.is_core).sort((a, b) => a.sequence_index - b.sequence_index);
 const coreIndex = new Map(coreRoutes.map((route, position) => [route.route_id, position + 1]));
 
-const sectionLabels = {
+const legacySections = {
   "unit-2a": {
     "chapters/hub.tex": ["orientation", "Orientation and prerequisites"],
     "chapters/m01_foundations.tex": ["foundations", "Derivative meaning and foundations"],
@@ -93,32 +141,56 @@ const sectionLabels = {
   },
 };
 
-function parseAnswerKey(markdown, title) {
-  const source = String(markdown ?? "").replace(/\r\n?/g, "\n");
-  const parts = source.split(/^##\s+(\d+)\s*$/gm);
-  const sections = [];
-  for (let index = 1; index < parts.length; index += 2) sections.push({ number: Number(parts[index]), body: String(parts[index + 1] ?? "").trim() });
-  if (!sections.length || sections.some((section) => !section.body)) throw new Error(`Answer key ${title} has missing numbered answers.`);
-  return [
-    { type: "heading", level: 2, text: title },
-    { type: "paragraph", text: "Finish an honest attempt first, then compare one numbered response at a time and identify the first decision that changed your work." },
-    ...sections.map((section) => ({
-      type: "answer-key-item",
-      title: `Problem ${section.number}`,
-      answerNumber: section.number,
-      children: [{ type: "paragraph", text: section.body }],
-    })),
-  ];
+function sectionFor(route, page) {
+  if (!handoff) return legacySections[requested][page.source_file] ?? ["support", "Supporting material"];
+  const sequence = route.sequence_index;
+  if (requested === "unit-3a") {
+    if (sequence === 1) return ["orientation", "Orientation and integral roadmap"];
+    if (sequence <= 6) return ["antiderivatives-change", "Antiderivatives and accumulated change"];
+    if (sequence <= 12) return ["riemann-definite", "Riemann sums and the definite integral"];
+    if (sequence <= 17) return ["fundamental-theorem", "The Fundamental Theorem of Calculus"];
+    if (sequence <= 25) return ["techniques", "Computing integrals"];
+    if (sequence <= 29) return ["numerical-improper", "Numerical and improper integration"];
+    return ["review", "Review, practice, exams, and answer keys"];
+  }
+  if (sequence === 1) return ["orientation", "Orientation and applications roadmap"];
+  if (sequence <= 7) return ["area-volume", "Area and volume"];
+  if (sequence <= 11) return ["length-mass", "Length, surface, mass, and balance"];
+  if (sequence <= 18) return ["quantitative-applications", "Physics and quantitative applications"];
+  return ["review", "Review, practice, exams, and answer keys"];
 }
 
 function normalizeRouteText(value) {
-  return String(value)
+  return String(value ?? "")
     .replace(/``([^']+?)''/g, "“$1”")
     .replace(/``/g, "“")
     .replace(/''/g, "”")
-    .replace(/\bChapter\b/gi, "Unit")
+    .replace(/\bChapter\b/gi, "Section")
     .replace(/\s+/g, " ")
     .trim();
+}
+
+function descriptionFor(route) {
+  const raw = normalizeRouteText(route.seo?.meta_description ?? route.meta_description).replace(/\.{3,}|…/g, ".");
+  if (!handoff || route.page_type === "hub") return raw;
+  if (route.page_type === "lesson" || /\b(?:BetterGrad|calcul|calcu|pract|practi|integ|applic|displac)\.$/i.test(raw)) {
+    return `Learn ${normalizeRouteText(route.title)} through clear explanation, worked examples, visual reasoning, checks, and connected integral-calculus practice.`;
+  }
+  const finalWord = raw.match(/([A-Za-z]+)\.$/)?.[1] ?? "";
+  if (raw.length < 150 || finalWord.length >= 6) return raw;
+  return `Learn ${normalizeRouteText(route.title)} through clear explanation, worked examples, visual reasoning, checks, and connected integral-calculus practice.`;
+}
+
+function breadcrumbsFor(route) {
+  if (Array.isArray(route.breadcrumbs)) return route.breadcrumbs.map((crumb) => ({ name: normalizeRouteText(crumb.name), path: crumb.url }));
+  const unitName = normalizeRouteText(index.title);
+  const crumbs = [
+    { name: "Mathematics", path: "/subjects/math/" },
+    { name: "Calculus", path: "/subjects/math/calculus/" },
+    { name: unitName, path: canonicalRoot },
+  ];
+  if (route.url !== canonicalRoot) crumbs.push({ name: normalizeRouteText(route.title), path: route.url });
+  return crumbs;
 }
 
 function injectExerciseSolutions(nodes, answerRoute) {
@@ -131,116 +203,230 @@ function injectExerciseSolutions(nodes, answerRoute) {
       if (node.type !== "exercise") continue;
       const answer = answerRoute.answers[cursor.value++];
       if (!answer) throw new Error(`${answerRoute.routeId} has fewer supplied answers than exercises.`);
-      result.push({
-        type: "solution",
-        title: `Exercise ${cursor.value} answer`,
-        children: [{ type: "paragraph", text: answer.response }],
-      });
+      result.push({ type: "solution", title: `Exercise ${cursor.value} answer`, children: parseCalculusUnitPage(answer.response) });
     }
     return result;
   }
   const result = visit(nodes);
-  if (cursor.value !== answerRoute.answers.length) {
-    throw new Error(`${answerRoute.routeId} has ${cursor.value} exercises but ${answerRoute.answers.length} supplied answers.`);
-  }
+  if (cursor.value !== answerRoute.answers.length) throw new Error(`${answerRoute.routeId} has ${cursor.value} exercises but ${answerRoute.answers.length} supplied answers.`);
   return result;
 }
 
-const compiledPages = pages.pages.map((page) => {
-  const route = index.routes.find((candidate) => candidate.route_id === page.route_id);
-  if (!route) throw new Error(`Page ${page.route_id} has no route.`);
+function parseMarkdownAnswerKey(markdown, title) {
+  const source = String(markdown ?? "").replace(/\r\n?/g, "\n");
+  const parts = source.split(/^##\s+(\d+)\s*$/gm);
+  const sections = [];
+  for (let index = 1; index < parts.length; index += 2) sections.push({ number: Number(parts[index]), body: String(parts[index + 1] ?? "").trim() });
+  if (!sections.length || sections.some((section) => !section.body)) throw new Error(`Answer key ${title} has missing numbered answers.`);
+  return [
+    { type: "heading", level: 2, text: title },
+    { type: "paragraph", text: "Finish an honest attempt first, then compare one numbered response at a time and identify the first decision that changed your work." },
+    ...sections.map((section) => ({ type: "answer-key-item", title: `Problem ${section.number}`, answerNumber: section.number, children: [{ type: "paragraph", text: section.body }] })),
+  ];
+}
+
+function answerKeyNodes(route, title) {
+  const publicSet = sourceSetsPublic.find((set) => set.answer_key_route === route.slug);
+  const serverSet = sourceSetsServer.find((set) => set.assessment_set_id === publicSet?.assessment_set_id);
+  if (!publicSet || !serverSet || publicSet.items.length !== serverSet.items.length) throw new Error(`${route.url} has no complete server-only answer-key set.`);
+  return [
+    { type: "heading", level: 2, text: title },
+    { type: "paragraph", text: "Finish an honest attempt first. Then compare one numbered response at a time, locate the first line where your reasoning diverged, and retry without the key open." },
+    ...serverSet.items.map((item, index) => ({
+      type: "answer-key-item",
+      title: `Problem ${index + 1}`,
+      answerNumber: index + 1,
+      children: parseCalculusUnitPage(item.model_solution_latex),
+    })),
+  ];
+}
+
+const compiledPages = sourcePages.map((page) => {
+  const route = routeBySlug.get(page.slug) ?? sourceRoutes.find((candidate) => candidate.route_id === page.route_id);
+  if (!route) throw new Error(`Page ${page.route_id ?? page.slug} has no route.`);
+  const exerciseAnswerRoute = exerciseAnswers.routes.find((candidate) => candidate.routeId === route.route_id);
   let nodes;
-  const exerciseAnswerRoute = exerciseAnswers.routes.find((candidate) => candidate.routeId === page.route_id);
   try {
-    nodes = page.source_format === "markdown"
-      ? parseAnswerKey(page.source_markdown, page.title)
-      : parseCalculusUnitPage(page.source_latex, {
-        visualIds: route.visual_ids,
+    if (handoff && route.page_type === "answer-key") nodes = answerKeyNodes(route, page.title);
+    else if (!handoff && page.source_format === "markdown") nodes = parseMarkdownAnswerKey(page.source_markdown, page.title);
+    else {
+      nodes = parseCalculusUnitPage(page.source_latex ?? page.body_latex, {
+        visualIds: visualIdsFor(route),
         enumerateAsExercises: Boolean(exerciseAnswerRoute) || ["diagnostic", "exam", "practice"].includes(route.page_type),
       });
-    if (exerciseAnswerRoute) nodes = injectExerciseSolutions(nodes, exerciseAnswerRoute);
+      if (exerciseAnswerRoute) nodes = injectExerciseSolutions(nodes, exerciseAnswerRoute);
+    }
   } catch (error) {
-    throw new Error(`${requested} ${route.url} (${page.source_file}): ${error instanceof Error ? error.message : String(error)}`);
+    throw new Error(`${requested} ${route.url} (${page.source_file ?? page.slug}): ${error instanceof Error ? error.message : String(error)}`);
   }
-  const section = sectionLabels[requested][page.source_file] ?? ["support", "Supporting material"];
+  const section = sectionFor(route, page);
+  const provenanceRecord = sourceProvenance.find((record) => record.route_id === route.route_id || (record.object_type === "route" && record.object_id === route.route_id));
   return {
-    routeId: page.route_id,
+    routeId: route.route_id,
     nodes,
     sectionId: section[0],
     sectionTitle: section[1],
-    compositionStatus: page.provenance.composition_status,
+    compositionStatus: page.provenance?.composition_status ?? `${provenanceRecord?.status ?? "BetterGrades-original"}; no direct adaptation declared in the verified handoff.`,
   };
 });
 
-const routes = index.routes.map((route) => {
-  const page = pageByRouteId.get(route.route_id);
+const routes = sourceRoutes.map((route) => {
+  const page = pageByRouteId.get(route.route_id) ?? pageByRouteId.get(route.slug);
   if (!page) throw new Error(`Route ${route.route_id} has no server page.`);
-  const section = sectionLabels[requested][page.source_file] ?? ["support", "Supporting material"];
-  const description = normalizeRouteText(String(route.seo.meta_description).replace(/\.{3,}|…/g, "."));
-  const related = [route.previous_core, route.next_core]
-    .filter(Boolean)
-    .map((slug) => routeBySlug.get(slug)?.url)
-    .filter(Boolean);
+  const section = sectionFor(route, page);
+  const related = [route.previous_core, route.next_core].filter(Boolean).map((slug) => routeBySlug.get(slug)?.url).filter(Boolean);
   return {
     id: route.route_id,
-    unitId: index.unit_id,
+    unitId,
     path: route.url,
     slug: route.slug,
     title: normalizeRouteText(route.title),
-    description,
+    description: descriptionFor(route),
     pageType: route.page_type.replaceAll("_", "-"),
     sequenceIndex: route.sequence_index,
     isCore: route.is_core,
     coreSequenceIndex: coreIndex.get(route.route_id) ?? null,
     sectionId: section[0],
     sectionTitle: section[1],
-    breadcrumbs: route.breadcrumbs.map((crumb) => ({ name: normalizeRouteText(crumb.name), path: crumb.url })),
+    breadcrumbs: breadcrumbsFor(route),
     previousPath: route.previous ? pathForSlug(route.previous) : null,
     nextPath: route.next ? pathForSlug(route.next) : null,
     previousCorePath: route.previous_core ? pathForSlug(route.previous_core) : null,
     nextCorePath: route.next_core ? pathForSlug(route.next_core) : null,
-    visualIds: route.visual_ids,
-    searchTerms: [normalizeRouteText(route.seo.primary_intent), normalizeRouteText(route.title), section[1], normalizeRouteText(index.short_title)],
+    visualIds: visualIdsFor(route),
+    searchTerms: [normalizeRouteText(route.seo?.primary_intent ?? route.primary_query), normalizeRouteText(route.title), section[1], expected.shortTitle ?? normalizeRouteText(index.short_title)],
     relatedPaths: related,
-    indexable: route.seo.robots === "index, follow" && route.seo.sitemap === true,
+    indexable: handoff ? true : route.seo.robots === "index, follow" && route.seo.sitemap === true,
     releaseState: "public",
   };
 });
 
+const validatorToAnswerType = {
+  "decimal-tolerance": "decimal",
+  "exact-integer": "integer",
+  "exact-rational": "rational",
+  "multiple-choice": "multiple_choice",
+  "required-integral-setup": "integral_setup",
+  "symbolic-equivalence": "symbolic_expression",
+};
+
+function normalizedAssessments() {
+  if (!handoff) return { publicProblems: publicInput, serverProblems: serverInput, publicSets: publicSetInput, serverSets: serverSetInput };
+  const serverById = new Map(sourceProblemsServer.map((problem) => [problem.assessment_id, problem]));
+  const publicProblems = {
+    schema_version: index.schema_version,
+    unit_id: unitId,
+    problem_count: sourceProblemsPublic.length,
+    problems: sourceProblemsPublic.map((problem) => {
+      const secret = serverById.get(problem.assessment_id);
+      if (!secret) throw new Error(`${problem.assessment_id} has no server assessment.`);
+      return {
+        problem_id: problem.assessment_id,
+        unit_id: unitId,
+        page_slug: problem.route_id,
+        prompt_latex: problem.prompt_latex,
+        answer_type: validatorToAnswerType[secret.validator] ?? problem.input_type.replaceAll("-", "_"),
+        choices: problem.choices ?? [],
+        hints: problem.has_hint && secret.hint_latex ? [secret.hint_latex] : [],
+        difficulty: "course-practice",
+        topics: [problem.route_id.split("/").at(-1)],
+        skills: [secret.equivalence_policy],
+        provenance: { composition_status: "BetterGrades-original verified handoff composition; source references remain rights-separated." },
+      };
+    }),
+  };
+  const serverProblems = {
+    schema_version: index.schema_version,
+    unit_id: unitId,
+    problem_count: sourceProblemsServer.length,
+    problems: sourceProblemsServer.map((problem) => ({
+      problem_id: problem.assessment_id,
+      canonical_answer: problem.canonical_answer,
+      accepted_answers: problem.accepted_answers,
+      normalization: problem.validator,
+      validator: problem.validator,
+      equivalence_policy: problem.equivalence_policy,
+      tolerance: problem.tolerance,
+      worked_solution_latex: problem.solution_latex,
+      feedback: {
+        correct: "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        incorrect: "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        uncertain: "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution.",
+      },
+    })),
+  };
+  const serverSetsById = new Map(sourceSetsServer.map((set) => [set.assessment_set_id, set]));
+  const publicSets = {
+    schema_version: index.schema_version,
+    unit_id: unitId,
+    assessments: sourceSetsPublic.map((set) => ({
+      assessment_id: `${unitId}:${set.assessment_set_id}`,
+      unit_id: unitId,
+      route: set.route_id,
+      kind: "practice_exam",
+      title: set.title,
+      grading_mode: "attempt_then_reveal",
+      answer_key_route: set.answer_key_route,
+      items: set.items.map((item) => ({ item_id: item.item_id, prompt_latex: item.prompt_latex, answer_type: "manual_rubric" })),
+    })),
+  };
+  const serverSets = {
+    schema_version: index.schema_version,
+    unit_id: unitId,
+    assessments: sourceSetsPublic.map((set) => {
+      const secret = serverSetsById.get(set.assessment_set_id);
+      if (!secret || secret.items.length !== set.items.length) throw new Error(`${set.assessment_set_id} has no complete server answer corpus.`);
+      return {
+        assessment_id: `${unitId}:${set.assessment_set_id}`,
+        items: secret.items.map((item) => ({ item_id: item.item_id, model_response: item.model_solution_latex, rubric: { required_concepts: [], model_response: item.model_solution_latex } })),
+      };
+    }),
+  };
+  return { publicProblems, serverProblems, publicSets, serverSets };
+}
+
+const normalized = normalizedAssessments();
 const output = {
   schemaVersion: 1,
   unit: {
-    id: index.unit_id,
-    code: index.unit_code,
+    id: unitId,
+    code: unitCode,
     title: normalizeRouteText(index.title),
-    shortTitle: normalizeRouteText(index.short_title),
-    root: index.canonical_root,
-    prerequisiteUnit: index.prerequisite_unit,
-    nextUnit: index.next_unit,
+    shortTitle: expected.shortTitle ?? normalizeRouteText(index.short_title),
+    root: canonicalRoot,
+    prerequisiteUnit: expected.prerequisiteUnit ?? index.prerequisite_unit,
+    nextUnit: expected.nextUnit ?? index.next_unit,
     routeCount: routes.length,
     coreRouteCount: coreRoutes.length,
-    problemCount: publicProblems.problems.length,
-    assessmentSetCount: publicSets.assessments.length,
-    visualCount: visuals.visuals.length,
+    problemCount: normalized.publicProblems.problems.length,
+    assessmentSetCount: normalized.publicSets.assessments.length,
+    visualCount: sourceVisuals.length,
   },
   routes,
 };
 
-const outputText = `${JSON.stringify(output, null, 2)}\n`;
-const compiledText = `${JSON.stringify({ schemaVersion: 1, unitId: index.unit_id, pageCount: compiledPages.length, pages: compiledPages }, null, 2)}\n`;
-const outputPath = resolve(directory, "routes.public.json");
-const compiledPath = resolve(directory, "pages.compiled.server.json");
+const files = new Map([
+  ["routes.public.json", `${JSON.stringify(output, null, 2)}\n`],
+  ["pages.compiled.server.json", `${JSON.stringify({ schemaVersion: 1, unitId, pageCount: compiledPages.length, pages: compiledPages }, null, 2)}\n`],
+]);
+if (handoff) {
+  files.set("assessments.public.json", `${JSON.stringify(normalized.publicProblems, null, 2)}\n`);
+  files.set("assessments.server.json", `${JSON.stringify(normalized.serverProblems, null, 2)}\n`);
+  files.set("assessment-sets.public.json", `${JSON.stringify(normalized.publicSets, null, 2)}\n`);
+  files.set("assessment-sets.server.json", `${JSON.stringify(normalized.serverSets, null, 2)}\n`);
+}
 
 if (checkOnly) {
-  const [currentOutput, currentCompiled] = await Promise.all([readFile(outputPath, "utf8"), readFile(compiledPath, "utf8")]);
-  if (currentOutput.replace(/\r\n?/g, "\n") !== outputText) throw new Error(`${requested} routes.public.json is stale.`);
-  if (currentCompiled.replace(/\r\n?/g, "\n") !== compiledText) throw new Error(`${requested} pages.compiled.server.json is stale.`);
+  for (const [name, wanted] of files) {
+    const current = (await readFile(resolve(directory, name), "utf8")).replace(/\r\n?/g, "\n");
+    if (current !== wanted) throw new Error(`${requested} ${name} is stale.`);
+  }
 } else {
-  await Promise.all([writeFile(outputPath, outputText), writeFile(compiledPath, compiledText)]);
+  await Promise.all([...files].map(([name, text]) => writeFile(resolve(directory, name), text, "utf8")));
 }
 
-const publicText = `${outputText}\n${await readFile(resolve(directory, "assessments.public.json"), "utf8")}\n${await readFile(resolve(directory, "assessment-sets.public.json"), "utf8")}`;
-for (const forbidden of ["canonical_answer", "worked_solution_latex", "source_file_server_only", "source_latex"]) {
+const publicText = `${files.get("routes.public.json")}\n${handoff ? files.get("assessments.public.json") : await readFile(resolve(directory, "assessments.public.json"), "utf8")}\n${handoff ? files.get("assessment-sets.public.json") : await readFile(resolve(directory, "assessment-sets.public.json"), "utf8")}`;
+for (const forbidden of ["canonical_answer", "worked_solution_latex", "model_solution_latex", "source_file_server_only", "source_latex"]) {
   if (publicText.includes(`\"${forbidden}\"`)) throw new Error(`${requested} public artifacts leak ${forbidden}.`);
 }
-console.log(`${checkOnly ? "Verified" : "Imported"} ${requested}: ${routes.length} routes, ${coreRoutes.length} core routes, ${publicProblems.problems.length} checks, ${publicSets.assessments.length} assessment sets, ${visuals.visuals.length} visuals; public route SHA-256 ${createHash("sha256").update(outputText).digest("hex")}.`);
+console.log(`${checkOnly ? "Verified" : "Imported"} ${requested}: ${routes.length} routes, ${coreRoutes.length} core routes, ${normalized.publicProblems.problems.length} checks, ${normalized.publicSets.assessments.length} assessment sets, ${sourceVisuals.length} visuals; public route SHA-256 ${createHash("sha256").update(files.get("routes.public.json")).digest("hex")}.`);
