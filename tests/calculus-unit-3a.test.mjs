@@ -50,7 +50,7 @@ test("Unit 3A owns one registry and search record per canonical path", () => {
 test("all Unit 3A pages compile semantically with no raw drawing source", () => {
   assert.equal(pagesArtifact.pageCount, 36);
   assert.equal(pagesArtifact.pages.length, 36);
-  const forbidden = /\\(?:begin\{(?:tikzpicture|axis|groupplot)|addplot|nextgroupplot|BGV[A-Za-z0-9]+)/;
+  const forbidden = /\\(?:begin\{(?:tikzpicture|axis|groupplot)|addplot|nextgroupplot|item\b|BGV[A-Za-z0-9]+)/;
   for (const page of pagesArtifact.pages) {
     assert.ok(page.nodes.length > 0, page.routeId);
     walk(page.nodes, (node) => {
@@ -98,13 +98,19 @@ test("Unit 3A checks grade bounded numeric, rational, and antiderivative answers
   assert.equal(publicProblems.problem_count, 28);
   assert.equal(publicSets.assessments.length, 2);
   assert.equal(new Set(publicProblems.problems.map((problem) => problem.problem_id)).size, 28);
-  assert.equal((await evaluateCalculusAnswer(UNIT_ID, "u3a-rate-total-01", "28")).status, "correct");
   assert.equal((await evaluateCalculusAnswer(UNIT_ID, "u3a-partition-01", "0.6")).status, "correct");
   assert.equal((await evaluateCalculusAnswer(UNIT_ID, "u3a-antiderivative-01", "4x - 3x^2 + 2x^3 + K")).status, "correct");
+  assert.equal((await evaluateCalculusAnswer(UNIT_ID, "u3a-antiderivative-01", "4x - 3x^2 + 2x^3 + c")).status, "correct");
+  assert.equal((await evaluateCalculusAnswer(UNIT_ID, "u3a-antiderivative-01", "4x - 3x^2 + 2x^3 + D")).status, "correct");
+  assert.equal((await evaluateCalculusAnswer(UNIT_ID, "u3a-antiderivative-01", "4x - 3x^2 + 2x^3 + 2C")).status, "correct");
   assert.equal((await evaluateCalculusAnswer(UNIT_ID, "u3a-antiderivative-01", "2x^3 - 3x^2 + 4x")).status, "incorrect");
+  assert.equal((await evaluateCalculusAnswer(UNIT_ID, "u3a-rate-total-01", String.raw`3\int_0^4 (t)dt`)).status, "correct");
+  assert.equal((await evaluateCalculusAnswer(UNIT_ID, "u3a-rate-total-01", String.raw`\int_0^4 (3t)dt`)).status, "correct");
+  assert.equal((await evaluateCalculusAnswer(UNIT_ID, "u3a-rate-total-01", String.raw`\int_0^5 (3t)dt`)).status, "incorrect");
+  assert.equal((await evaluateCalculusAnswer(UNIT_ID, "u3a-rate-total-01", "the area under the rate curve")).status, "uncertain");
   assert.equal((await evaluateCalculusAnswer(UNIT_ID, "u3a-antiderivative-01", "")).status, "empty");
   assert.equal(revealCalculusAnswer(UNIT_ID, "u3a-rate-total-01", "").status, 400);
-  assert.match(revealCalculusAnswer(UNIT_ID, "u3a-rate-total-01", "28").solutionLatex, /28/);
+  assert.match(revealCalculusAnswer(UNIT_ID, "u3a-rate-total-01", "integral setup").solutionLatex, /\\int_0\^4/);
 });
 
 test("both Unit 3A exam answer keys are complete, separate, and easy to resolve", () => {

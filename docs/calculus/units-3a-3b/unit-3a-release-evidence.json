@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "unit": "3A",
+  "status": "initial_release_live_verified_corrective_release_pending",
+  "reviewed_candidate": {
+    "commit": "c82ae15d64f46f6088983f73a03d5e50b6e1ec8d",
+    "tree": "bba38e6767835380ce18a78202ba360018710bf6"
+  },
+  "sites": {
+    "project_id": "appgprj_6a52d8b9848c81918fa5ff88a08eece0",
+    "version_number": 29,
+    "version_id": "appgprj_6a52d8b9848c81918fa5ff88a08eece0~appgver_e762d4052a4481918f01fcbdfce0bef0",
+    "deployment_id": "appgdep_6a5c21eac01c8191a96a83776d8a68ce",
+    "archive_sha256": "67807da4224da5823fb3cdeacdf6ff71328ca07c0eaeb7ae96f5234bbee95c6e",
+    "owner_count": 1,
+    "group_count": 0
+  },
+  "git": {
+    "pull_request": 30,
+    "merged_commit": "85e884278ebb2ce1c49c9849172efca9822b0bf0",
+    "merged_tree": "bba38e6767835380ce18a78202ba360018710bf6",
+    "repository_checks": "passed"
+  },
+  "cloudflare": {
+    "project": "bettergrades",
+    "immutable_url": "https://f9e1ec70.bettergrades-vhc.pages.dev",
+    "pages_url": "https://bettergrades-vhc.pages.dev",
+    "apex_url": "https://bettergrades.net",
+    "www_url": "https://www.bettergrades.net",
+    "seo_control_reference": "boho-digital-services.cloudflare.primary-management",
+    "seo_control_rule_current": true
+  },
+  "verification": {
+    "local_tests": { "passed": 202, "failed": 0 },
+    "pi_build": "passed",
+    "pi_suite": "passed_with_bounded_heap_rerun_for_rendered_html",
+    "origins": 4,
+    "unit_routes_per_origin": 36,
+    "visuals_per_origin": 11,
+    "semantic_crawl": "passed",
+    "desktop_browser": "passed",
+    "true_mobile_browser": "not_available",
+    "narrow_layout_regressions": "passed"
+  },
+  "rollback": {
+    "prior_commit": "8885939a6807e64a1758799733e7a3cf52e46b0d",
+    "prior_immutable_url": "https://64a6928b.bettergrades-vhc.pages.dev"
+  }
+}
