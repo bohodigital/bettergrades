@@ -12,4 +12,4 @@ Before rollback, capture the failing immutable URL, route, response headers, con
 
 Unit-specific accepted commits and immutable deployment targets are appended to the release reports.
 
-For the Unit 3A release, the immediate prior accepted point is commit `8885939a6807e64a1758799733e7a3cf52e46b0d` at `https://64a6928b.bettergrades-vhc.pages.dev`. The Unit 3A merged commit is `85e884278ebb2ce1c49c9849172efca9822b0bf0` and its immutable deployment is `https://f9e1ec70.bettergrades-vhc.pages.dev`.
+For the corrected Unit 3A release, the immediate prior accepted point is commit `85e884278ebb2ce1c49c9849172efca9822b0bf0` at `https://f9e1ec70.bettergrades-vhc.pages.dev`. The corrected merged commit is `3ab257ce311de70084c791800a45e55493d089f3` and its immutable deployment is `https://65e4d5ff.bettergrades-vhc.pages.dev`. The pre-Unit-3A fallback remains commit `8885939a6807e64a1758799733e7a3cf52e46b0d` at `https://64a6928b.bettergrades-vhc.pages.dev`.

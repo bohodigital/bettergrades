@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "unit": "3A",
-  "status": "initial_release_live_verified_corrective_release_pending",
+  "status": "corrected_release_live_verified",
   "reviewed_candidate": {
     "commit": "c82ae15d64f46f6088983f73a03d5e50b6e1ec8d",
     "tree": "bba38e6767835380ce18a78202ba360018710bf6"
@@ -45,5 +45,52 @@
   "rollback": {
     "prior_commit": "8885939a6807e64a1758799733e7a3cf52e46b0d",
     "prior_immutable_url": "https://64a6928b.bettergrades-vhc.pages.dev"
+  },
+  "corrective_release": {
+    "candidate": {
+      "commit": "7fb4df78a3825abdd88e361a78e4d505fbccf380",
+      "tree": "35dfc15535f6ceb1092238b9fd3ca2ddffa6aaeb"
+    },
+    "sites": {
+      "version_number": 30,
+      "version_id": "appgprj_6a52d8b9848c81918fa5ff88a08eece0~appgver_a3d5fbabf900819195354d029c70ba1a",
+      "deployment_id": "appgdep_6a5c304cc9b48191b1f5f884d5f31e36",
+      "archive_content_hash": "sha256:0db707065c00d148324ecf599ffd546ef5406d55819de0c24f022fff0c95cc77",
+      "archive_bytes": 41451520,
+      "archive_files": 448,
+      "local_archive_sha256": "9d6a44b1fa196442564d4c9a4c39dce1242b5992bab362b603bf55ff092f15f8",
+      "owner_count": 1,
+      "group_count": 0
+    },
+    "git": {
+      "pull_request": 31,
+      "merged_commit": "3ab257ce311de70084c791800a45e55493d089f3",
+      "merged_tree": "35dfc15535f6ceb1092238b9fd3ca2ddffa6aaeb",
+      "repository_checks": "passed"
+    },
+    "cloudflare": {
+      "immutable_url": "https://65e4d5ff.bettergrades-vhc.pages.dev",
+      "pages_url": "https://bettergrades-vhc.pages.dev",
+      "apex_url": "https://bettergrades.net",
+      "www_url": "https://www.bettergrades.net",
+      "seo_control_reference": "boho-digital-services.cloudflare.primary-management",
+      "seo_control_rule_current": true
+    },
+    "verification": {
+      "local_tests": { "passed": 202, "failed": 0 },
+      "pi_tests": { "passed": 202, "failed": 0, "node_heap_mb": 4096 },
+      "pi_visual_verifier": "passed",
+      "origins": 4,
+      "unit_routes_per_origin": 36,
+      "visuals_per_origin": 11,
+      "semantic_crawl": "passed",
+      "corrected_grader_probes": "passed_on_immutable_and_apex",
+      "desktop_browser": "passed",
+      "true_mobile_browser": "not_available"
+    },
+    "rollback": {
+      "prior_commit": "85e884278ebb2ce1c49c9849172efca9822b0bf0",
+      "prior_immutable_url": "https://f9e1ec70.bettergrades-vhc.pages.dev"
+    }
   }
 }

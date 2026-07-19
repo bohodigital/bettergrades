@@ -1,6 +1,6 @@
 # Unit 3A release
 
-Status: initial release completed and live-verified on 2026-07-18/19 UTC; adversarial-review corrective release is required before Unit 3B.
+Status: corrected release accepted and live-verified on 2026-07-19 UTC. Unit 3B may branch only after this closeout record is merged.
 
 ## Exact source lineage
 
@@ -59,8 +59,45 @@ Real-browser desktop QA at 1280 by 720 verified the map, light and dark themes, 
 
 ## Rollback
 
-Preserve the failing deployment evidence, revert the Unit 3A merge commit without rewriting history, rebuild, and redeploy the prior accepted source or immutable target `https://64a6928b.bettergrades-vhc.pages.dev`. Then reverify all four origins, Units 1 through 2B, sitemap, robots, search, analytics, answer keys, and visual assets.
+Preserve the failing deployment evidence, revert the corrective merge commit without rewriting history, rebuild, and redeploy the immediate prior Unit 3A source at `https://f9e1ec70.bettergrades-vhc.pages.dev`. The pre-Unit-3A fallback remains `https://64a6928b.bettergrades-vhc.pages.dev`. Then reverify all four origins, Units 1 through 2B, sitemap, robots, search, analytics, answer keys, and visual assets.
 
 ## Adversarial-review corrective release
 
-The independent review found narrow arbitrary-constant normalization, an unexercised integral-setup comparator, and residual list source in the common-errors compiled artifact. The corrective candidate fixes all three and passes the full local 202-test suite. Exact corrected Sites, Git, Cloudflare, Pi, crawl, and browser evidence is recorded here before this report is accepted and before Unit 3B begins.
+The independent review found narrow arbitrary-constant normalization, an unexercised integral-setup comparator, and residual list source in the common-errors compiled artifact. The corrective release fixed all three without replacing the accepted architecture.
+
+### Corrected source and review
+
+- Corrective candidate commit: `7fb4df78a3825abdd88e361a78e4d505fbccf380`
+- Corrective candidate tree: `35dfc15535f6ceb1092238b9fd3ca2ddffa6aaeb`
+- Pull request: `https://github.com/bohodigital/bettergrades/pull/31`
+- Repository validation: both required runs passed for the exact corrective head
+- Corrective merged main commit: `3ab257ce311de70084c791800a45e55493d089f3`
+- Corrective merged main tree: `35dfc15535f6ceb1092238b9fd3ca2ddffa6aaeb`
+
+The candidate and merged corrective trees are identical. Canonical Pi `main` was rebuilt after merge.
+
+### Corrected owner-only Sites candidate
+
+- Version: 30
+- Version ID: `appgprj_6a52d8b9848c81918fa5ff88a08eece0~appgver_a3d5fbabf900819195354d029c70ba1a`
+- Deployment ID: `appgdep_6a5c304cc9b48191b1f5f884d5f31e36`
+- Source commit: `7fb4df78a3825abdd88e361a78e4d505fbccf380`
+- Archive content hash: `sha256:0db707065c00d148324ecf599ffd546ef5406d55819de0c24f022fff0c95cc77`
+- Archive storage: 41,451,520 bytes and 448 files
+- Local archive SHA-256: `9d6a44b1fa196442564d4c9a4c39dce1242b5992bab362b603bf55ff092f15f8`
+- Access: the same custom one-owner allowlist with no workspace or tenant groups
+
+The owner-only URL remained sign-in gated in the in-app browser. The connector verified exact source, access, version, archive, and deployment; the identical local tree supplied the visual candidate review.
+
+### Corrected production and verification
+
+- Deployed commit: `3ab257ce311de70084c791800a45e55493d089f3`
+- Immutable URL: `https://65e4d5ff.bettergrades-vhc.pages.dev`
+- Immediate prior production: commit `85e884278ebb2ce1c49c9849172efca9822b0bf0` at `https://f9e1ec70.bettergrades-vhc.pages.dev`
+- Local suite: 202 passed, 0 failed
+- Pi suite with bounded 4 GB heap: 202 passed, 0 failed
+- Standalone Pi visual verifier: passed
+
+All 36 Unit 3A routes and 11 visual fallbacks passed on the new immutable URL, pages.dev, apex, and www. Each origin retained canonical/index-follow/analytics metadata, sitemap inclusion, robots access, security headers, answer keys, identity assets, and visible-source cleanliness. Live grader probes on immutable and apex verified lowercase and scaled arbitrary constants, missing-constant rejection, equivalent integral setup, wrong-bound rejection, and `uncertain` for unprovable prose.
+
+The live browser confirmed the common-errors page contains clean bullets rather than `\\item`, the Unit 3A map link and Lens block remain visible, and the corrected page renders without overflow or label collision at the available desktop viewport. The earlier browser matrix remains valid for unchanged visuals, light/dark themes, keyboard feedback, fallback retention, practice reveal gating, and answer keys. A true mobile viewport and separate physical print-dialog session remain explicitly unclaimed.

@@ -23,3 +23,4 @@
 - Activated the structural integral-setup grader through a route-mapped rate-to-total check with correct, incorrect, and uncertain outcomes.
 - Removed residual list commands from compiled normalized-handoff pages and added `\\item` to the forbidden-source regression.
 - Held Unit 3B until the corrected Unit 3A release and postmortem evidence are merged and live-verified.
+- Merged PR 31 as `3ab257ce311de70084c791800a45e55493d089f3`, published `https://65e4d5ff.bettergrades-vhc.pages.dev`, and passed the four-origin semantic crawl and corrected grader probes.
