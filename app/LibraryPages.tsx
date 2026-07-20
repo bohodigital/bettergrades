@@ -17,7 +17,8 @@ import { archetypes } from "../lib/library";
 import { getResourceRecord, tools } from "../lib/registry/catalog";
 import { assessments } from "../lib/registry/practice";
 import { LatexArticleDocument } from "./LatexArticle";
-import { CalculusUnitNavigation, UNIT_2A_ROOT, UNIT_2B_ROOT, UNIT_3A_ROOT } from "./CalculusUnitNavigation";
+import { CalculusCourseNavigation } from "./CalculusCourseNavigation";
+import { CalculusUnitNavigation, UNIT_3A_ROOT } from "./CalculusUnitNavigation";
 import { LimitsUnitMap } from "./LimitsUnitMap";
 
 export { libraryArticleHref };
@@ -115,15 +116,17 @@ export function LibraryArticleContent({ article }: { article: CourseArticle }) {
   const articleTools = (resource?.relatedToolIds ?? []).map((id) => tools.find((tool) => tool.id === id)).filter(Boolean);
   const articleAssessments = (resource?.relatedAssessmentIds ?? []).map((id) => assessments.find((assessment) => assessment.id === id)).filter(Boolean);
   const isUnit2aArticle = article.domainSlug === "calculus" && article.topicSlug === "derivatives";
+  const isUnit2bArticle = article.domainSlug === "calculus" && article.topicSlug === "derivative-applications";
   const isUnit3aArticle = article.domainSlug === "calculus" && article.topicSlug === "integration-techniques";
+  const isUnit3bArticle = article.domainSlug === "calculus" && article.topicSlug === "integration-applications";
+  const articleUnit = isUnit2aArticle ? "2A" : isUnit2bArticle ? "2B" : isUnit3aArticle ? "3A" : isUnit3bArticle ? "3B" : undefined;
 
   return (
     <article className="library-article">
       <header className="library-article-header">
         <nav className="breadcrumbs"><a href="/subjects/">Subjects</a><span>/</span><a href="/subjects/math/">Mathematics</a><span>/</span><a href={`/subjects/math/${course.slug}/`}>{course.name}</a><span>/</span><a href={`/subjects/math/${course.slug}/${topic.slug}/`}>{topic.shortName}</a><span>/</span><span>{article.shortTitle}</span></nav>
-        {isUnit2aArticle && <CalculusUnitNavigation currentUnit="2A" compact />}
-        {isUnit3aArticle && <CalculusUnitNavigation currentUnit="3A" compact />}
-        <p className="article-meta-line"><span>{archetype.label}</span><span>Calculus I · {isUnit2aArticle ? "Unit 2A" : isUnit3aArticle ? "Unit 3A" : article.course}</span><span>{article.difficulty}</span></p>
+        {articleUnit && <CalculusUnitNavigation currentUnit={articleUnit} compact />}
+        <p className="article-meta-line"><span>{archetype.label}</span><span>Calculus I · {articleUnit ? `Unit ${articleUnit}` : article.course}</span><span>{article.difficulty}</span></p>
         <h1>{article.title}</h1>
         <p>{article.deck}</p>
         <p className="article-source-line">LaTeX article <span aria-hidden="true">·</span> Updated {article.reviewed}</p>
@@ -165,11 +168,11 @@ export function CourseHubContent({ domainSlug }: { domainSlug: string }) {
   return (
     <>
       <section className="subject-hero section-pad"><div><p className="eyebrow">{course.eyebrow}</p><h1>{course.name}</h1><p>{course.description}</p><div className="subject-hero-actions"><a className="button button-ink" href={`/search/?q=${course.slug}`}>Search {course.name.toLowerCase()}</a><a className="button button-ghost" href="/practice/">Open practice</a></div></div><div className="subject-mark">{course.mark}<span>{course.slug}</span></div></section>
-      <section className="calculus-map section-pad">
+      {domainSlug === "calculus" ? <CalculusCourseNavigation currentPath="/subjects/math/calculus/" /> : <section className="calculus-map section-pad">
         <div className="section-heading"><div><p className="eyebrow">The course map</p><h2>One connected path.</h2></div><p>{course.promise}</p></div>
-        <div className="calculus-map-list">{course.topics.map((topic) => { const href = domainSlug === "calculus" && topic.slug === "integration-techniques" ? UNIT_3A_ROOT : `/subjects/math/${course.slug}/${topic.slug}/`; return <a href={href} key={topic.slug}><span aria-hidden="true">{course.mark}</span><div><b>{topic.name}</b><small>{topic.description}</small></div><em>Open topic</em><i>→</i></a>; })}</div>
-      </section>
-      <section className="calculus-tools section-pad"><div><p className="eyebrow">Put it to work</p><h2>Learn, calculate, practice.</h2></div>{domainSlug === "calculus" && <><a href={LIMITS_UNIT_PREFIX}><span>Unit 1</span><b>Limits and Continuity</b><small>Start with the ideas derivatives depend on →</small></a><a href={UNIT_2A_ROOT}><span>Unit 2A</span><b>Derivative Foundations</b><small>Build meaning, rules, and differentiation technique →</small></a><a href={UNIT_2B_ROOT}><span>Unit 2B</span><b>Derivative Applications</b><small>Use derivatives for analysis, approximation, and modeling →</small></a><a href={UNIT_3A_ROOT}><span>Unit 3A</span><b>Integral Foundations</b><small>Build accumulation, the Fundamental Theorem, and integration technique →</small></a><a href="/subjects/math/calculus/integration-applications/"><span>Unit 3B</span><b>Integration Applications</b><small>Use slices and accumulation for geometry, physics, and probability →</small></a></>}{startArticle && <a href={libraryArticleHref(startArticle)}><span>Start here</span><b>{startArticle.shortTitle}</b><small>Open the first guide →</small></a>}{courseTools.slice(0, 1).map((tool) => <a href={tool.path} key={tool.id}><span>Tool</span><b>{tool.title}</b><small>Open the interactive tool →</small></a>)}{courseAssessments.length ? courseAssessments.slice(0, 1).map((assessment) => <a href={assessment.path} key={assessment.id}><span>Practice</span><b>{assessment.title}</b><small>Open explained practice →</small></a>) : <a href={`/search/?q=${course.slug}`}><span>All content</span><b>Complete guides</b><small>Search this course →</small></a>}</section>
+        <div className="calculus-map-list">{course.topics.map((topic) => <a href={`/subjects/math/${course.slug}/${topic.slug}/`} key={topic.slug}><span aria-hidden="true">{course.mark}</span><div><b>{topic.name}</b><small>{topic.description}</small></div><em>Open topic</em><i>→</i></a>)}</div>
+      </section>}
+      <section className="calculus-tools section-pad"><div><p className="eyebrow">Put it to work</p><h2>{domainSlug === "calculus" ? "Practice, tools, and close readings." : "Learn, calculate, practice."}</h2></div>{startArticle && <a href={libraryArticleHref(startArticle)}><span>Start here</span><b>{startArticle.shortTitle}</b><small>Open the first guide →</small></a>}{courseTools.slice(0, 1).map((tool) => <a href={tool.path} key={tool.id}><span>Tool</span><b>{tool.title}</b><small>Open the interactive tool →</small></a>)}{courseAssessments.length ? courseAssessments.slice(0, 1).map((assessment) => <a href={assessment.path} key={assessment.id}><span>Practice</span><b>{assessment.title}</b><small>Open explained practice →</small></a>) : <a href={`/search/?q=${course.slug}`}><span>All content</span><b>Complete guides</b><small>Search this course →</small></a>}</section>
     </>
   );
 }
