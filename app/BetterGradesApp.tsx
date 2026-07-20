@@ -22,8 +22,14 @@ import { Formula, Math, MathOrText } from "./Math";
 import { PageGlossaryTerms } from "./PageGlossaryTerms";
 
 const nav = [
-  ["Find answers", "/search/"], ["Learn by topic", "/subjects/math/"],
   ["Practice", "/practice/"], ["Tools", "/tools/"], ["Glossary", "/glossary/math/"],
+];
+
+const calculusChapterLinks = [
+  ["Chapter 1", "Limits and Continuity", "/subjects/math/calculus/limits-continuity/"],
+  ["Chapter 2", "Derivatives · Units 2A and 2B", "/subjects/math/calculus/derivatives/"],
+  ["Chapter 3", "Integrals · Units 3A and 3B", "/subjects/math/calculus/integrals/"],
+  ["Chapter 4", "Sequences and Series", "/subjects/math/calculus/sequences-series/"],
 ];
 
 const GlossaryHubPage = lazy(() => import("./GlossaryPages").then((module) => ({ default: module.GlossaryHubPage })));
@@ -101,15 +107,47 @@ function ThemeControl() {
 }
 
 function Header() {
+  const path = useContext(PathContext);
+  const isActive = (href: string) => href === "/" ? path === href : path.startsWith(href);
   return (
     <header className="site-header">
       <div className="header-inner">
         <Link href="/" className="brand" aria-label="Better Grades home"><span className="brand-mark">≥</span><span>Better Grades</span></Link>
-        <nav className="desktop-nav" aria-label="Primary">{nav.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}</nav>
+        <nav className="desktop-nav" aria-label="Primary">
+          <details className="desktop-learn-menu">
+            <summary>Learn <span aria-hidden="true">⌄</span></summary>
+            <div className="desktop-learn-panel">
+              <section>
+                <span>Courses</span>
+                <Link href="/subjects/math/algebra/"><b>Algebra</b><small>Foundations through functions</small></Link>
+                <Link href="/subjects/math/calculus/"><b>Calculus</b><small>The complete course navigator</small></Link>
+                <Link href="/subjects/math/"><b>All mathematics</b><small>Browse every course and resource</small></Link>
+              </section>
+              <section className="desktop-calculus-chapters">
+                <span>Calculus chapters</span>
+                {calculusChapterLinks.map(([chapter, label, href]) => <Link href={href} key={href}><small>{chapter}</small><b>{label}</b></Link>)}
+              </section>
+              <section className="desktop-learn-shortcuts">
+                <span>Get somewhere fast</span>
+                <Link href="/search/"><b>Find an answer</b><small>Search lessons, methods, and examples</small></Link>
+                <Link href="/practice/math/calculus/"><b>Calculus practice</b><small>Quizzes, reviews, and exams</small></Link>
+              </section>
+            </div>
+          </details>
+          {nav.map(([label, href]) => <Link key={href} href={href} aria-current={isActive(href) ? "page" : undefined}>{label}</Link>)}
+        </nav>
         <div className="header-actions">
           <Link href="/search/" className="header-search" aria-label="Search"><span>⌕</span><b>Search</b></Link>
           <ThemeControl />
-          <details className="mobile-menu"><summary aria-label="Open menu">Menu</summary><nav>{nav.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}</nav></details>
+          <details className="mobile-menu"><summary aria-label="Open menu">Menu</summary><nav aria-label="Mobile navigation">
+            <Link href="/search/"><b>Search</b><small>Find a lesson or answer</small></Link>
+            <details className="mobile-course-menu"><summary>Learn</summary><div>
+              <Link href="/subjects/math/algebra/"><b>Algebra</b><small>Open the course</small></Link>
+              <Link href="/subjects/math/calculus/"><b>Calculus</b><small>Open the full course map</small></Link>
+              {calculusChapterLinks.map(([chapter, label, href]) => <Link href={href} key={href}><small>{chapter}</small><b>{label}</b></Link>)}
+            </div></details>
+            {nav.map(([label, href]) => <Link key={href} href={href} aria-current={isActive(href) ? "page" : undefined}><b>{label}</b></Link>)}
+          </nav></details>
         </div>
       </div>
     </header>

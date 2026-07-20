@@ -47,6 +47,14 @@ function visibleText(html) {
     .trim();
 }
 
+function instructionalVisibleText(html) {
+  return visibleText(
+    html
+      .replace(/<header class="site-header">[\s\S]*?<\/header>/i, " ")
+      .replace(/<footer class="site-footer">[\s\S]*?<\/footer>/i, " "),
+  );
+}
+
 test("server-renders the Better Grades homepage", async () => {
   const response = await render();
   assert.equal(response.status, 200);
@@ -88,9 +96,14 @@ test("subject and course hubs expose the organized math library", async () => {
   const response = await render("/subjects/math/calculus/");
   assert.equal(response.status, 200);
   const html = await response.text();
-  assert.match(html, /One connected path/);
-  assert.match(html, /Limits &amp; Continuity/);
-  assert.match(html, /Sequences &amp; Series/);
+  assert.match(html, /Calculus course navigator/);
+  assert.match(html, /One course\. Clear chapters\./);
+  assert.match(html, /data-chapter="1"/);
+  assert.match(html, /data-chapter="2"[\s\S]*Unit 2A[\s\S]*Unit 2B/);
+  assert.match(html, /data-chapter="3"[\s\S]*Unit 3A[\s\S]*Unit 3B/);
+  assert.match(html, /data-chapter="4"[\s\S]*Sequences and Series/);
+  assert.match(html, /Browse every course and resource/);
+  assert.doesNotMatch(html, /Applications of Derivatives[\s\S]*Open topic/);
 
   const algebra = await render("/subjects/math/algebra/");
   assert.equal(algebra.status, 200);
@@ -99,6 +112,38 @@ test("subject and course hubs expose the organized math library", async () => {
   assert.match(algebraHtml, /Expressions &amp; Equations/);
   assert.match(algebraHtml, /Polynomials &amp; Factoring/);
   assert.match(algebraHtml, /Complete guides/);
+});
+
+test("sitewide navigation exposes the calculus hierarchy on desktop and mobile", async () => {
+  const response = await render("/subjects/math/calculus/derivative-applications/");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /class="desktop-learn-menu"/);
+  assert.match(html, /class="mobile-course-menu"/);
+  assert.match(html, /Chapter 2[\s\S]*Derivatives · Units 2A and 2B/);
+  assert.match(html, /Chapter 3[\s\S]*Integrals · Units 3A and 3B/);
+  assert.match(html, /Calculus I · Chapter 2/);
+  assert.match(visibleText(html), /Browse Chapter 2 sections/);
+  assert.match(html, /Unit 2A sections/);
+  assert.match(html, /Unit 2B sections/);
+});
+
+test("derivative and integral parts remain one labeled, inter-navigable chapter", async () => {
+  for (const [path, chapter, unitA, unitB] of [
+    ["/subjects/math/calculus/derivatives/", "2", "Unit 2A", "Unit 2B"],
+    ["/subjects/math/calculus/derivative-applications/", "2", "Unit 2A", "Unit 2B"],
+    ["/subjects/math/calculus/integrals/", "3", "Unit 3A", "Unit 3B"],
+    ["/subjects/math/calculus/integration-applications/", "3", "Unit 3A", "Unit 3B"],
+  ]) {
+    const response = await render(path);
+    assert.equal(response.status, 200, path);
+    const html = await response.text();
+    assert.match(html, new RegExp(`Calculus I · Chapter ${chapter}`), path);
+    assert.match(html, new RegExp(unitA), path);
+    assert.match(html, new RegExp(unitB), path);
+    assert.match(visibleText(html), new RegExp(`Browse Chapter ${chapter} sections`), path);
+    assert.match(html, /All calculus chapters/, path);
+  }
 });
 
 test("library archetype renders a full worked article", async () => {
@@ -265,7 +310,7 @@ test("every Limits unit route renders without visible source commands or math er
     assert.equal(response.status, 200, route.path);
     const html = await response.text();
     assert.doesNotMatch(visibleText(html), sourceCommand, route.path);
-    assert.doesNotMatch(visibleText(html), /\bChapter(?:s)?\b|\bchapter(?:s)?\b/, route.path);
+    assert.doesNotMatch(instructionalVisibleText(html), /\bChapter(?:s)?\b|\bchapter(?:s)?\b/, route.path);
     assert.doesNotMatch(html, /class="katex-error"/, route.path);
   }
 });
@@ -298,7 +343,7 @@ test("the Limits topic leads with the complete textbook map before extra article
   assert.match(html, /Exam answer keys/);
   assert.match(html, /Practice Exam A Answer Key/);
   assert.match(html, /Practice Exam B Answer Key/);
-  assert.doesNotMatch(visibleText(html), /\bChapter(?:s)?\b|\bchapter(?:s)?\b/);
+  assert.doesNotMatch(instructionalVisibleText(html), /\bChapter(?:s)?\b|\bchapter(?:s)?\b/);
   assert.match(html, /Deep dives and extra articles/);
   assert.ok(html.indexOf("The complete textbook path") < html.indexOf("Deep dives and extra articles"));
   assert.match(html, /Why is the limit of sin x over x equal to 1/);
