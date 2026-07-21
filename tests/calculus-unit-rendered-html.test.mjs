@@ -223,6 +223,7 @@ test("all Unit 4A pages render as clean Calculus II sequence-and-series pages", 
     assert.equal(response.status, 200, route.path);
     const html = await response.text();
     const text = visibleText(html);
+    assert.doesNotMatch(html, /Loading lesson/, `${route.path} must remain usable without client-side JavaScript`);
     assert.match(html, /data-unit-id="calc-2-unit-4a-sequences-infinite-series"/, route.path);
     assert.match(text, /Calculus II.*Unit 4A/, route.path);
     assert.match(html, /aria-label="Calculus Unit 4 course navigation"/, route.path);

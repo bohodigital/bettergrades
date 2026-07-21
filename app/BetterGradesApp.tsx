@@ -3,6 +3,8 @@
 /* eslint-disable @next/next/no-html-link-for-pages -- this route shell uses deliberate document navigation */
 
 import { createContext, FormEvent, lazy, ReactNode, Suspense, useContext, useEffect, useMemo, useState } from "react";
+import { CalculusUnitPageContent } from "./CalculusUnitPages";
+import { LimitsUnitPageContent } from "./LimitsUnitPages";
 import type { Question } from "../lib/activities";
 import { algebraCheckerHref } from "../lib/algebra-practice.mjs";
 import { isLimitsUnitPath, limitsUnitPracticeRoutes } from "../lib/calculus/limits-unit-index.mjs";
@@ -35,8 +37,6 @@ const calculusChapterLinks = [
 const GlossaryHubPage = lazy(() => import("./GlossaryPages").then((module) => ({ default: module.GlossaryHubPage })));
 const MathGlossaryPage = lazy(() => import("./GlossaryPages").then((module) => ({ default: module.MathGlossaryPage })));
 const MathConventionsPage = lazy(() => import("./GlossaryPages").then((module) => ({ default: module.MathConventionsPage })));
-const LimitsUnitPageContent = lazy(() => import("./LimitsUnitPages").then((module) => ({ default: module.LimitsUnitPageContent })));
-const CalculusUnitPageContent = lazy(() => import("./CalculusUnitPages").then((module) => ({ default: module.CalculusUnitPageContent })));
 
 function GlossaryBoundary({ children }: { children: ReactNode }) {
   return <Suspense fallback={<section className="glossary-loading section-pad"><span>Loading glossary…</span></section>}>{children}</Suspense>;
@@ -457,13 +457,13 @@ function BetterGradesRoute({ path, glossaryData, limitsUnitPage, calculusUnitPag
   if (courseMatch && courseLibraries.some((course) => course.slug === courseMatch[1])) return <Shell><CourseHubContent domainSlug={courseMatch[1]} /></Shell>;
   if (isCalculusUnitPath(path)) {
     if (!calculusUnitPage) return <NotFound />;
-    return <Shell><Suspense fallback={<section className="section-pad">Loading lesson…</section>}><CalculusUnitPageContent page={calculusUnitPage} /></Suspense></Shell>;
+    return <Shell><CalculusUnitPageContent page={calculusUnitPage} /></Shell>;
   }
   const topicMatch = path.match(/^\/subjects\/math\/([^/]+)\/([^/]+)\/$/);
   if (topicMatch) return <Shell><TopicContent domainSlug={topicMatch[1]} topicSlug={topicMatch[2]} /></Shell>;
   if (isLimitsUnitPath(path)) {
     if (!limitsUnitPage) return <NotFound />;
-    return <Shell><Suspense fallback={<section className="section-pad">Loading lesson…</section>}><LimitsUnitPageContent page={limitsUnitPage} /></Suspense></Shell>;
+    return <Shell><LimitsUnitPageContent page={limitsUnitPage} /></Shell>;
   }
   const articleMatch = path.match(/^\/subjects\/math\/([^/]+)\/([^/]+)\/([^/]+)\/$/);
   if (articleMatch) {
