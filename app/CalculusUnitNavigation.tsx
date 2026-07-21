@@ -6,14 +6,16 @@ export const UNIT_2A_ROOT = "/subjects/math/calculus/derivatives/";
 export const UNIT_2B_ROOT = "/subjects/math/calculus/derivative-applications/";
 export const UNIT_3A_ROOT = "/subjects/math/calculus/integrals/";
 export const UNIT_3B_ROOT = "/subjects/math/calculus/integration-applications/";
+export const UNIT_4A_ROOT = "/subjects/math/calculus/sequences-and-series/";
 
-type UnitCode = "2A" | "2B" | "3A" | "3B";
+type UnitCode = "2A" | "2B" | "3A" | "3B" | "4A";
 
 const unitIds: Record<UnitCode, string> = {
   "2A": "calc-1-unit-2a-derivative-foundations-techniques",
   "2B": "calc-1-unit-2b-derivative-applications",
   "3A": "calc-1-unit-3a-integral-foundations-techniques",
   "3B": "calc-1-unit-3b-integration-applications",
+  "4A": "calc-2-unit-4a-sequences-infinite-series",
 };
 
 function sectionLinks(code: UnitCode) {
@@ -53,6 +55,14 @@ const groups: Record<UnitCode, {
     ],
   },
   "3B": undefined as never,
+  "4A": {
+    label: "Calculus II · Chapter 4",
+    title: "Sequences and infinite series",
+    description: "Build sequence limits, partial sums, convergence tests, error bounds, and a reliable strategy for deciding which test fits.",
+    links: [
+      { code: "4A", root: UNIT_4A_ROOT, title: "Sequences and infinite series", current: "You are here · Open the unit map", other: "Build sequence and convergence foundations" },
+    ],
+  },
 };
 groups["2B"] = groups["2A"];
 groups["3B"] = {
@@ -67,7 +77,7 @@ groups["3B"] = {
 
 export function CalculusUnitNavigation({ currentUnit, compact = false }: { currentUnit: UnitCode; compact?: boolean }) {
   const group = groups[currentUnit];
-  const family = currentUnit.startsWith("2") ? "2" : "3";
+  const family = currentUnit.startsWith("2") ? "2" : currentUnit.startsWith("3") ? "3" : "4";
   return <nav className={`calculus-unit-switcher${compact ? " is-compact" : ""}`} aria-label={`Calculus Unit ${family} course navigation`}>
     <div className="calculus-unit-switcher-intro">
       <span>{group.label}</span>

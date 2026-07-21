@@ -102,7 +102,7 @@ test("Pages package contains the advanced Worker and static assets", async () =>
   }
 });
 
-test("Pages package preserves the exact Limits, Unit 2A, Unit 2B, Unit 3A, and Unit 3B visual inventories", async () => {
+test("Pages package preserves the exact Limits and Units 2A through 4A visual inventories", async () => {
   const limitsManifest = JSON.parse(
     await readFile(new URL("../content/visualizations/limits-continuity/compiled-scenes.v1.json", import.meta.url), "utf8"),
   );
@@ -118,8 +118,11 @@ test("Pages package preserves the exact Limits, Unit 2A, Unit 2B, Unit 3A, and U
   const unit3bManifest = JSON.parse(
     await readFile(new URL("../content/calculus/units/unit-3b/compiled-scenes.v1.json", import.meta.url), "utf8"),
   );
+  const unit4aManifest = JSON.parse(
+    await readFile(new URL("../content/calculus/units/unit-4a/compiled-scenes.v1.json", import.meta.url), "utf8"),
+  );
   const runtimeManifests = await Promise.all(
-    ["unit-2a", "unit-2b", "unit-3a", "unit-3b"].map(async (unit) => JSON.parse(
+    ["unit-2a", "unit-2b", "unit-3a", "unit-3b", "unit-4a"].map(async (unit) => JSON.parse(
       await readFile(new URL(`../content/calculus/units/${unit}/public-runtime-scenes.server.json`, import.meta.url), "utf8"),
     )),
   );
@@ -142,7 +145,10 @@ test("Pages package preserves the exact Limits, Unit 2A, Unit 2B, Unit 3A, and U
   assert.equal(unit3bManifest.manifestVersion, 1);
   assert.equal(unit3bManifest.sceneCount, 9);
   assert.equal(unit3bManifest.scenes.length, 9);
-  const calculusManifests = [unitManifest, unit2bManifest, unit3aManifest, unit3bManifest];
+  assert.equal(unit4aManifest.manifestVersion, 1);
+  assert.equal(unit4aManifest.sceneCount, 18);
+  assert.equal(unit4aManifest.scenes.length, 18);
+  const calculusManifests = [unitManifest, unit2bManifest, unit3aManifest, unit3bManifest, unit4aManifest];
   for (let index = 0; index < runtimeManifests.length; index += 1) {
     const sourceManifest = calculusManifests[index];
     const runtimeManifest = runtimeManifests[index];
@@ -159,7 +165,7 @@ test("Pages package preserves the exact Limits, Unit 2A, Unit 2B, Unit 3A, and U
       assert.equal(Object.hasOwn(runtimeScene, "interactiveScene"), runtimeScene.hydration !== "none");
     }
   }
-  const manifests = [limitsManifest, unitManifest, unit2bManifest, unit3aManifest, unit3bManifest];
+  const manifests = [limitsManifest, unitManifest, unit2bManifest, unit3aManifest, unit3bManifest, unit4aManifest];
   const expectedAssetNames = manifests.flatMap(({ scenes }) => scenes.map(({ staticAsset }) => staticAsset.path.split("/").at(-1))).sort();
   const publicAssetNames = (await readdir(new URL("../public/visuals/v1/", import.meta.url)))
     .filter((name) => name.endsWith(".svg"))
@@ -215,6 +221,8 @@ test("limits tables and generated visual fallbacks remain bounded on narrow scre
   assert.match(css, /\.bvlp-interactive__toolbar button, \.bvlp-interactive__control button \{[^}]*background: var\(--paper\);[^}]*color: var\(--ink\)/);
   assert.match(css, /\.bvlp-long-description summary \{[^}]*min-height: 44px/);
   assert.match(css, /\.limits-graph-exposition \{[^}]*margin-top: 12px;[^}]*border-top:/);
+  assert.match(css, /@media print \{[\s\S]*\.site-footer \{[^}]*display: none !important/, "print output must not create navigation-only footer pages");
+  assert.match(css, /@media print \{[\s\S]*\.site-header \{[^}]*position: static !important/, "print output must not repeat the sticky site header across pages");
   assert.match(css, /@media print \{[\s\S]*\.bvlp-visual\.is-interactive-ready \.bvlp-static-visual \{[^}]*display: block !important/);
   assert.match(css, /@media print \{[\s\S]*\.bvlp-interactive-slot \{[^}]*display: none !important/);
   assert.doesNotMatch(css, /\.limits-graph-(?:canvas|spec)\b/);

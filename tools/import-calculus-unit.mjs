@@ -22,6 +22,12 @@ const definitions = {
     prerequisiteUnit: "calc-1-unit-3a-integral-foundations-techniques",
     nextUnit: null,
   },
+  "unit-4a": {
+    routes: 34, core: 23, problems: 22, sets: 3, visuals: 18, provenance: 104, format: "normalized-handoff",
+    shortTitle: "Sequences and Infinite Series",
+    prerequisiteUnit: "calc-1-unit-3b-integration-applications",
+    nextUnit: null,
+  },
 };
 const expected = definitions[requested];
 if (!expected) throw new Error(`Unknown calculus unit ${requested}.`);
@@ -97,7 +103,7 @@ assertCount("server checks", sourceProblemsServer.length, expected.problems);
 assertCount("assessment sets", sourceSetsPublic.length, expected.sets);
 assertCount("server assessment sets", sourceSetsServer.length, expected.sets);
 assertCount("visual briefs", sourceVisuals.length, expected.visuals);
-if (handoff) assertCount("provenance records", sourceProvenance.length, expected.routes + expected.problems + expected.visuals);
+if (handoff) assertCount("provenance records", sourceProvenance.length, expected.provenance ?? expected.routes + expected.problems + expected.visuals);
 else assertCount("route provenance records", sourceProvenance.length, expected.routes);
 
 if (exerciseAnswers.routes.length) {
@@ -153,6 +159,15 @@ function sectionFor(route, page) {
     if (sequence <= 29) return ["numerical-improper", "Numerical and improper integration"];
     return ["review", "Review, practice, exams, and answer keys"];
   }
+  if (requested === "unit-4a") {
+    if (sequence === 1) return ["orientation", "Orientation and the convergence roadmap"];
+    if (sequence <= 7) return ["sequences", "Sequences and their limits"];
+    if (sequence <= 12) return ["series-foundations", "Infinite series and foundational examples"];
+    if (sequence <= 16) return ["positive-series-tests", "Positive-series tests and error estimates"];
+    if (sequence <= 21) return ["signed-and-absolute-tests", "Alternating, absolute, ratio, and root tests"];
+    if (sequence <= 23) return ["strategy-and-tails", "Test selection and the Cauchy tail idea"];
+    return ["review", "Review, practice, exams, and answer keys"];
+  }
   if (sequence === 1) return ["orientation", "Orientation and applications roadmap"];
   if (sequence <= 7) return ["area-volume", "Area and volume"];
   if (sequence <= 11) return ["length-mass", "Length, surface, mass, and balance"];
@@ -172,6 +187,7 @@ function normalizeRouteText(value) {
 
 function descriptionFor(route) {
   const raw = normalizeRouteText(route.seo?.meta_description ?? route.meta_description).replace(/\.{3,}|…/g, ".");
+  if (requested === "unit-4a") return raw;
   if (requested === "unit-3b" && route.page_type === "hub") return "Learn applications of integration through area, volume, length, mass, work, fluids, marginal quantities, probability, worked examples, visual reasoning, practice, and published exam keys.";
   if (requested === "unit-3b" && route.route_id.endsWith("/common-errors")) return "Identify and repair common integration-application errors involving slice orientation, radii, bounds, density, depth, units, and interpretation.";
   if (!handoff || route.page_type === "hub") return raw;
@@ -184,7 +200,9 @@ function descriptionFor(route) {
 }
 
 function breadcrumbsFor(route) {
-  if (Array.isArray(route.breadcrumbs)) return route.breadcrumbs.map((crumb) => ({ name: normalizeRouteText(crumb.name), path: crumb.url }));
+  if (Array.isArray(route.breadcrumbs) && route.breadcrumbs.every((crumb) => crumb && typeof crumb === "object")) {
+    return route.breadcrumbs.map((crumb) => ({ name: normalizeRouteText(crumb.name), path: crumb.url }));
+  }
   const unitName = normalizeRouteText(index.title);
   const crumbs = [
     { name: "Mathematics", path: "/subjects/math/" },
@@ -446,7 +464,9 @@ function normalizedAssessments() {
       worked_solution_latex: problem.solution_latex,
       feedback: {
         correct: "Correct. Verify the structure, notation, units, and interpretation before moving on.",
-        incorrect: "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        incorrect: requested === "unit-4a"
+          ? "Recheck the sequence or series structure, theorem hypotheses, convergence logic, and algebra."
+          : "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
         uncertain: "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution.",
       },
     };

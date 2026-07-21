@@ -1,0 +1,4553 @@
+{
+  "manifestVersion": 1,
+  "collectionId": "unit-4a-calculus-visuals",
+  "sourceSha256": "00e4067ee6c86e3edfaf3381e20421c7db55887a5e517c4e885f107219988a3d",
+  "compilerVersion": "bvlp-compiler-v1",
+  "sceneCount": 18,
+  "interactiveCount": 7,
+  "scenes": [
+    {
+      "id": "unit-4a-u4a-sequence-index-machine",
+      "sourceVisualId": "unit-4a-u4a-sequence-index-machine",
+      "selectedRenderer": "bg-interactive-2d",
+      "hydration": "near-viewport",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-4a-u4a-sequence-index-machine.f578215b89ea6460.svg",
+        "sha256": "f578215b89ea64607096e425663515da982e11535082527fdab8828d5beea3f1",
+        "bytes": 8155,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "The index selects one term at a time"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "The index selects one term at a time. Index-to-term machine plus discrete point graph."
+          }
+        ]
+      },
+      "learningPurpose": "Index-to-term machine plus discrete point graph.",
+      "longDescription": "A sequence is a function whose allowed inputs are integers. Each input selects one ordered term. Index-to-term machine plus discrete point graph. Preserve the misconception control described in the lesson and storyboard.",
+      "accessibility": {
+        "ariaLabel": "The index selects one term at a time. Index-to-term machine plus discrete point graph.",
+        "summary": "A sequence is a function whose allowed inputs are integers. Each input selects one ordered term. Index-to-term machine plus discrete point graph. Preserve the misconception control described in the lesson and storyboard.",
+        "readingOrder": [
+          "input-box",
+          "rule-box",
+          "term-box",
+          "input-arrow",
+          "output-arrow",
+          "input-label",
+          "rule-label",
+          "term-label",
+          "domain-note",
+          "index-control"
+        ],
+        "colorIndependentDescription": "Written labels, distinct line styles, markers, and fill patterns communicate every relationship in the index selects one term at a time; color is never the only cue.",
+        "keyboardInstructions": "Use Tab to reach the bounded control, then use arrow keys to change one value at a time.",
+        "controlInstructions": [
+          "Sequence index n"
+        ],
+        "reducedMotion": "disable-animation",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-9462fdc9",
+      "visibility": "public",
+      "interactiveScene": {
+        "compiledSceneVersion": 1,
+        "sourceSpecVersion": 1,
+        "id": "unit-4a-u4a-sequence-index-machine",
+        "kind": "geometry-2d",
+        "title": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "The index selects one term at a time"
+            }
+          ]
+        },
+        "caption": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "The index selects one term at a time. Index-to-term machine plus discrete point graph."
+            }
+          ]
+        },
+        "learningPurpose": "Index-to-term machine plus discrete point graph.",
+        "longDescription": "A sequence is a function whose allowed inputs are integers. Each input selects one ordered term. Index-to-term machine plus discrete point graph. Preserve the misconception control described in the lesson and storyboard.",
+        "coordinateSpace": {
+          "type": "diagram-2d",
+          "variables": [
+            "x",
+            "y"
+          ],
+          "unitsRequired": false
+        },
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.07
+        },
+        "axes": {
+          "mode": "none",
+          "reason": "The labeled diagram carries the instructional structure."
+        },
+        "panels": [],
+        "layers": [
+          {
+            "id": "input-box",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-secondary",
+              "fillToken": "visual-secondary",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "dots",
+              "colorIndependentCue": "Integer input box."
+            },
+            "references": [],
+            "kind": "polygon",
+            "geometry": {
+              "points": [
+                {
+                  "x": 0.8,
+                  "y": 2.6
+                },
+                {
+                  "x": 3,
+                  "y": 2.6
+                },
+                {
+                  "x": 3,
+                  "y": 4.4
+                },
+                {
+                  "x": 0.8,
+                  "y": 4.4
+                }
+              ],
+              "closed": true
+            }
+          },
+          {
+            "id": "rule-box",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "fillToken": "visual-primary",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "diagonal",
+              "colorIndependentCue": "Sequence rule box."
+            },
+            "references": [],
+            "kind": "polygon",
+            "geometry": {
+              "points": [
+                {
+                  "x": 4.4,
+                  "y": 2.15
+                },
+                {
+                  "x": 7.7,
+                  "y": 2.15
+                },
+                {
+                  "x": 7.7,
+                  "y": 4.85
+                },
+                {
+                  "x": 4.4,
+                  "y": 4.85
+                }
+              ],
+              "closed": true
+            }
+          },
+          {
+            "id": "term-box",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "fillToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "crosshatch",
+              "colorIndependentCue": "Selected term output box."
+            },
+            "references": [],
+            "kind": "polygon",
+            "geometry": {
+              "points": [
+                {
+                  "x": 9.1,
+                  "y": 2.6
+                },
+                {
+                  "x": 11.3,
+                  "y": 2.6
+                },
+                {
+                  "x": 11.3,
+                  "y": 4.4
+                },
+                {
+                  "x": 9.1,
+                  "y": 4.4
+                }
+              ],
+              "closed": true
+            }
+          },
+          {
+            "id": "input-arrow",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "double",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Arrow sends an integer index into the rule."
+            },
+            "references": [],
+            "kind": "segment",
+            "geometry": {
+              "start": {
+                "x": 3,
+                "y": 3.5
+              },
+              "end": {
+                "x": 4.4,
+                "y": 3.5
+              }
+            }
+          },
+          {
+            "id": "output-arrow",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "double",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Arrow sends one term out of the rule."
+            },
+            "references": [],
+            "kind": "segment",
+            "geometry": {
+              "start": {
+                "x": 7.7,
+                "y": 3.5
+              },
+              "end": {
+                "x": 9.1,
+                "y": 3.5
+              }
+            }
+          },
+          {
+            "id": "input-label",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Label: integer n."
+            },
+            "references": [],
+            "kind": "label",
+            "geometry": {
+              "position": {
+                "x": 1.9,
+                "y": 3.5
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "integer n"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "rule-label",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Label: a_n = 1/n."
+            },
+            "references": [],
+            "kind": "label",
+            "geometry": {
+              "position": {
+                "x": 6.05,
+                "y": 3.5
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "a n = 1/n"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "term-label",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Label: term a_n."
+            },
+            "references": [],
+            "kind": "label",
+            "geometry": {
+              "position": {
+                "x": 10.2,
+                "y": 3.5
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "term a n"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "domain-note",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Annotation: Only integer inputs select sequence terms; the slider steps one index at a time.."
+            },
+            "references": [],
+            "kind": "annotation",
+            "geometry": {
+              "anchor": {
+                "x": 6,
+                "y": 6.1
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "Only integer inputs select sequence terms; the slider steps one index at a time."
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "controls": [
+          {
+            "id": "index-control",
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "Sequence index n"
+                }
+              ]
+            },
+            "announcementTemplate": "The selected integer index is {value}; the rule returns exactly one ordered term.",
+            "kind": "slider",
+            "parameter": "p",
+            "min": 1,
+            "max": 10,
+            "step": 1,
+            "initial": 4
+          }
+        ],
+        "accessibility": {
+          "ariaLabel": "The index selects one term at a time. Index-to-term machine plus discrete point graph.",
+          "summary": "A sequence is a function whose allowed inputs are integers. Each input selects one ordered term. Index-to-term machine plus discrete point graph. Preserve the misconception control described in the lesson and storyboard.",
+          "readingOrder": [
+            "input-box",
+            "rule-box",
+            "term-box",
+            "input-arrow",
+            "output-arrow",
+            "input-label",
+            "rule-label",
+            "term-label",
+            "domain-note",
+            "index-control"
+          ],
+          "colorIndependentDescription": "Written labels, distinct line styles, markers, and fill patterns communicate every relationship in the index selects one term at a time; color is never the only cue.",
+          "keyboardInstructions": "Use Tab to reach the bounded control, then use arrow keys to change one value at a time.",
+          "controlInstructions": [
+            "Sequence index n"
+          ],
+          "reducedMotion": "disable-animation",
+          "staticFallbackEquivalent": true
+        },
+        "print": {
+          "representation": "generated-svg",
+          "caption": {
+            "segments": [
+              {
+                "kind": "text",
+                "text": "The index selects one term at a time. Index-to-term machine plus discrete point graph."
+              }
+            ]
+          },
+          "grayscaleSafe": true,
+          "pageBreak": "avoid",
+          "widthInches": 7.1
+        },
+        "performance": {
+          "maxSamples": 2048,
+          "maxAdaptiveDepth": 12,
+          "maxAstNodes": 192,
+          "maxAstDepth": 24,
+          "maxOperationsPerEvaluation": 2048,
+          "maxPayloadBytes": 65536,
+          "maxAnimationFps": 30,
+          "activation": "near-viewport"
+        },
+        "requiredCapabilities": [
+          "annotations",
+          "geometry-primitives",
+          "parameter-controls",
+          "static-fallback"
+        ],
+        "selectedRenderer": "bg-interactive-2d",
+        "staticFallback": {
+          "required": true,
+          "rendererId": "static-svg"
+        },
+        "delivery": {
+          "hydration": "near-viewport",
+          "publicFieldsOnly": true
+        },
+        "provenance": {
+          "route": "/subjects/math/calculus/sequences-and-series/sequences-as-functions/",
+          "sourceVisualId": "unit-4a-u4a-sequence-index-machine",
+          "sourceFingerprint": "bvlp1-9462fdc9",
+          "compilerVersion": "bvlp-compiler-v1",
+          "visibility": "public"
+        }
+      }
+    },
+    {
+      "id": "unit-4a-u4a-sequence-points",
+      "sourceVisualId": "unit-4a-u4a-sequence-points",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-4a-u4a-sequence-points.59f9a68c9a581ca8.svg",
+        "sha256": "59f9a68c9a581ca83b8e3dba31afef2159c4f099365435e037532fb02bc0a4eb",
+        "bytes": 14807,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "A sequence is discrete, not a continuous curve"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "A sequence is discrete, not a continuous curve. Index-to-term machine plus discrete point graph."
+          }
+        ]
+      },
+      "learningPurpose": "Index-to-term machine plus discrete point graph.",
+      "longDescription": "The points of a sequence occur only at positive integer inputs. A faint guide curve may reveal a pattern, but the curve is not part of the sequence. Index-to-term machine plus discrete point graph. Preserve the misconception control described in the lesson and storyboard.",
+      "accessibility": {
+        "ariaLabel": "A sequence is discrete, not a continuous curve. Index-to-term machine plus discrete point graph.",
+        "summary": "The points of a sequence occur only at positive integer inputs. A faint guide curve may reveal a pattern, but the curve is not part of the sequence. Index-to-term machine plus discrete point graph. Preserve the misconception control described in the lesson and storyboard.",
+        "readingOrder": [
+          "guide-curve",
+          "sequence-1",
+          "sequence-2",
+          "sequence-3",
+          "sequence-4",
+          "sequence-5",
+          "sequence-6",
+          "sequence-7",
+          "sequence-8",
+          "sequence-9",
+          "sequence-10",
+          "discrete-note"
+        ],
+        "colorIndependentDescription": "Written labels, distinct line styles, markers, and fill patterns communicate every relationship in a sequence is discrete, not a continuous curve; color is never the only cue.",
+        "controlInstructions": [],
+        "reducedMotion": "not-applicable",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-4b7f955f",
+      "visibility": "public"
+    },
+    {
+      "id": "unit-4a-u4a-explicit-recursive-bridge",
+      "sourceVisualId": "unit-4a-u4a-explicit-recursive-bridge",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-4a-u4a-explicit-recursive-bridge.fed5edfa131d22f1.svg",
+        "sha256": "fed5edfa131d22f1d6c8ccddb99de3a3aa9963941510912c2595162e527a08c3",
+        "bytes": 9599,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "One sequence, two descriptions"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "One sequence, two descriptions. Side-by-side recurrence chain and direct formula."
+          }
+        ]
+      },
+      "learningPurpose": "Side-by-side recurrence chain and direct formula.",
+      "longDescription": "The same arithmetic sequence can be generated step by step or evaluated directly. Side-by-side recurrence chain and direct formula. Preserve the misconception control described in the lesson and storyboard.",
+      "accessibility": {
+        "ariaLabel": "One sequence, two descriptions. Side-by-side recurrence chain and direct formula.",
+        "summary": "The same arithmetic sequence can be generated step by step or evaluated directly. Side-by-side recurrence chain and direct formula. Preserve the misconception control described in the lesson and storyboard.",
+        "readingOrder": [
+          "recursive-title",
+          "recursive-box-0",
+          "recursive-label-0",
+          "recursive-box-1",
+          "recursive-label-1",
+          "recursive-box-2",
+          "recursive-label-2",
+          "recursive-box-3",
+          "recursive-label-3",
+          "explicit-title",
+          "explicit-box",
+          "explicit-label",
+          "same-sequence"
+        ],
+        "colorIndependentDescription": "Written labels, distinct line styles, markers, and fill patterns communicate every relationship in one sequence, two descriptions; color is never the only cue.",
+        "controlInstructions": [],
+        "reducedMotion": "not-applicable",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-a27ec8ac",
+      "visibility": "public"
+    },
+    {
+      "id": "unit-4a-u4a-epsilon-n-band",
+      "sourceVisualId": "unit-4a-u4a-epsilon-n-band",
+      "selectedRenderer": "bg-interactive-2d",
+      "hydration": "near-viewport",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-4a-u4a-epsilon-n-band.51af63107445dd04.svg",
+        "sha256": "51af63107445dd0476639e9fbb17ef147026c8b916b84c40355030580e451be4",
+        "bytes": 15169,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Convergence is eventual trapping"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Convergence is eventual trapping. Tolerance band around L with a visible cutoff N."
+          }
+        ]
+      },
+      "learningPurpose": "Tolerance band around L with a visible cutoff N.",
+      "longDescription": "After a cutoff N, all sequence points lie inside an epsilon-band around L. Tolerance band around L with a visible cutoff N. Preserve the misconception control described in the lesson and storyboard.",
+      "accessibility": {
+        "ariaLabel": "Convergence is eventual trapping. Tolerance band around L with a visible cutoff N.",
+        "summary": "After a cutoff N, all sequence points lie inside an epsilon-band around L. Tolerance band around L with a visible cutoff N. Preserve the misconception control described in the lesson and storyboard.",
+        "readingOrder": [
+          "epsilon-band",
+          "limit-line",
+          "epsilon-sequence-1",
+          "epsilon-sequence-2",
+          "epsilon-sequence-3",
+          "epsilon-sequence-4",
+          "epsilon-sequence-5",
+          "epsilon-sequence-6",
+          "epsilon-sequence-7",
+          "epsilon-sequence-8",
+          "epsilon-sequence-9",
+          "epsilon-sequence-10",
+          "epsilon-sequence-11",
+          "epsilon-sequence-12",
+          "cutoff",
+          "epsilon-meaning",
+          "epsilon-control"
+        ],
+        "colorIndependentDescription": "Written labels, distinct line styles, markers, and fill patterns communicate every relationship in convergence is eventual trapping; color is never the only cue.",
+        "keyboardInstructions": "Use Tab to reach the bounded control, then use arrow keys to change one value at a time.",
+        "controlInstructions": [
+          "Tolerance epsilon"
+        ],
+        "reducedMotion": "disable-animation",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-f23aa57e",
+      "visibility": "public",
+      "interactiveScene": {
+        "compiledSceneVersion": 1,
+        "sourceSpecVersion": 1,
+        "id": "unit-4a-u4a-epsilon-n-band",
+        "kind": "cartesian-2d",
+        "title": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "Convergence is eventual trapping"
+            }
+          ]
+        },
+        "caption": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "Convergence is eventual trapping. Tolerance band around L with a visible cutoff N."
+            }
+          ]
+        },
+        "learningPurpose": "Tolerance band around L with a visible cutoff N.",
+        "longDescription": "After a cutoff N, all sequence points lie inside an epsilon-band around L. Tolerance band around L with a visible cutoff N. Preserve the misconception control described in the lesson and storyboard.",
+        "coordinateSpace": {
+          "type": "cartesian-2d",
+          "variables": [
+            "x",
+            "y"
+          ],
+          "unitsRequired": false
+        },
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12.5,
+          "yMin": 0.2,
+          "yMax": 1.8,
+          "aspectRatio": 1.72,
+          "padding": 0.07
+        },
+        "axes": {
+          "mode": "explicit",
+          "axes": [
+            {
+              "id": "x-axis",
+              "orientation": "x",
+              "label": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "n"
+                  }
+                ]
+              },
+              "scale": "linear",
+              "tickMode": "fixed-step",
+              "tickStep": 1,
+              "showGrid": true
+            },
+            {
+              "id": "y-axis",
+              "orientation": "y",
+              "label": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "a n"
+                  }
+                ]
+              },
+              "scale": "linear",
+              "tickMode": "fixed-step",
+              "tickStep": 0.4,
+              "showGrid": true
+            }
+          ]
+        },
+        "panels": [],
+        "layers": [
+          {
+            "id": "epsilon-band",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-secondary",
+              "fillToken": "visual-secondary",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "dots",
+              "colorIndependentCue": "Tolerance band from L minus epsilon to L plus epsilon."
+            },
+            "references": [],
+            "kind": "polygon",
+            "geometry": {
+              "points": [
+                {
+                  "x": 0,
+                  "y": {
+                    "type": "add",
+                    "left": {
+                      "type": "negate",
+                      "operand": {
+                        "type": "variable",
+                        "name": "p"
+                      }
+                    },
+                    "right": {
+                      "type": "number",
+                      "value": 1
+                    }
+                  }
+                },
+                {
+                  "x": 12.5,
+                  "y": {
+                    "type": "add",
+                    "left": {
+                      "type": "negate",
+                      "operand": {
+                        "type": "variable",
+                        "name": "p"
+                      }
+                    },
+                    "right": {
+                      "type": "number",
+                      "value": 1
+                    }
+                  }
+                },
+                {
+                  "x": 12.5,
+                  "y": {
+                    "type": "add",
+                    "left": {
+                      "type": "variable",
+                      "name": "p"
+                    },
+                    "right": {
+                      "type": "number",
+                      "value": 1
+                    }
+                  }
+                },
+                {
+                  "x": 0,
+                  "y": {
+                    "type": "add",
+                    "left": {
+                      "type": "variable",
+                      "name": "p"
+                    },
+                    "right": {
+                      "type": "number",
+                      "value": 1
+                    }
+                  }
+                }
+              ],
+              "closed": true
+            }
+          },
+          {
+            "id": "limit-line",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "double",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Limit line L equals 1."
+            },
+            "references": [],
+            "kind": "segment",
+            "geometry": {
+              "start": {
+                "x": 0,
+                "y": 1
+              },
+              "end": {
+                "x": 12.5,
+                "y": 1
+              }
+            }
+          },
+          {
+            "id": "epsilon-sequence-1",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "fillToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "none",
+              "colorIndependentCue": "epsilon-sequence point 1."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 1,
+                "y": 2
+              }
+            }
+          },
+          {
+            "id": "epsilon-sequence-2",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "fillToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "none",
+              "colorIndependentCue": "epsilon-sequence point 2."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 2,
+                "y": 0.5
+              }
+            }
+          },
+          {
+            "id": "epsilon-sequence-3",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "fillToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "none",
+              "colorIndependentCue": "epsilon-sequence point 3."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 3,
+                "y": 1.3333333333333333
+              }
+            }
+          },
+          {
+            "id": "epsilon-sequence-4",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "fillToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "none",
+              "colorIndependentCue": "epsilon-sequence point 4."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 4,
+                "y": 0.75
+              }
+            }
+          },
+          {
+            "id": "epsilon-sequence-5",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "fillToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "none",
+              "colorIndependentCue": "epsilon-sequence point 5."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 5,
+                "y": 1.2
+              }
+            }
+          },
+          {
+            "id": "epsilon-sequence-6",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "fillToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "none",
+              "colorIndependentCue": "epsilon-sequence point 6."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 6,
+                "y": 0.8333333333333334
+              }
+            }
+          },
+          {
+            "id": "epsilon-sequence-7",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "fillToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "none",
+              "colorIndependentCue": "epsilon-sequence point 7."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 7,
+                "y": 1.1428571428571428
+              }
+            }
+          },
+          {
+            "id": "epsilon-sequence-8",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "fillToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "none",
+              "colorIndependentCue": "epsilon-sequence point 8."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 8,
+                "y": 0.875
+              }
+            }
+          },
+          {
+            "id": "epsilon-sequence-9",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "fillToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "none",
+              "colorIndependentCue": "epsilon-sequence point 9."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 9,
+                "y": 1.1111111111111112
+              }
+            }
+          },
+          {
+            "id": "epsilon-sequence-10",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "fillToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "none",
+              "colorIndependentCue": "epsilon-sequence point 10."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 10,
+                "y": 0.9
+              }
+            }
+          },
+          {
+            "id": "epsilon-sequence-11",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "fillToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "none",
+              "colorIndependentCue": "epsilon-sequence point 11."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 11,
+                "y": 1.0909090909090908
+              }
+            }
+          },
+          {
+            "id": "epsilon-sequence-12",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "fillToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "none",
+              "colorIndependentCue": "epsilon-sequence point 12."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 12,
+                "y": 0.9166666666666666
+              }
+            }
+          },
+          {
+            "id": "cutoff",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "dashed",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "A valid cutoff N; every later point remains in the band."
+            },
+            "references": [],
+            "kind": "segment",
+            "geometry": {
+              "start": {
+                "x": {
+                  "type": "divide",
+                  "left": {
+                    "type": "number",
+                    "value": 2
+                  },
+                  "right": {
+                    "type": "variable",
+                    "name": "p"
+                  }
+                },
+                "y": 0.2
+              },
+              "end": {
+                "x": {
+                  "type": "divide",
+                  "left": {
+                    "type": "number",
+                    "value": 2
+                  },
+                  "right": {
+                    "type": "variable",
+                    "name": "p"
+                  }
+                },
+                "y": 1.8
+              }
+            }
+          },
+          {
+            "id": "epsilon-meaning",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Annotation: Evidence before N is irrelevant; the definition controls every term after N.."
+            },
+            "references": [],
+            "kind": "annotation",
+            "geometry": {
+              "anchor": {
+                "x": 6.2,
+                "y": 1.68
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "Evidence before N is irrelevant; the definition controls every term after N."
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "controls": [
+          {
+            "id": "epsilon-control",
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "Tolerance epsilon"
+                }
+              ]
+            },
+            "announcementTemplate": "Epsilon is {value}; the displayed cutoff moves so all later points are trapped.",
+            "kind": "slider",
+            "parameter": "p",
+            "min": 0.2,
+            "max": 0.8,
+            "step": 0.1,
+            "initial": 0.4
+          }
+        ],
+        "accessibility": {
+          "ariaLabel": "Convergence is eventual trapping. Tolerance band around L with a visible cutoff N.",
+          "summary": "After a cutoff N, all sequence points lie inside an epsilon-band around L. Tolerance band around L with a visible cutoff N. Preserve the misconception control described in the lesson and storyboard.",
+          "readingOrder": [
+            "epsilon-band",
+            "limit-line",
+            "epsilon-sequence-1",
+            "epsilon-sequence-2",
+            "epsilon-sequence-3",
+            "epsilon-sequence-4",
+            "epsilon-sequence-5",
+            "epsilon-sequence-6",
+            "epsilon-sequence-7",
+            "epsilon-sequence-8",
+            "epsilon-sequence-9",
+            "epsilon-sequence-10",
+            "epsilon-sequence-11",
+            "epsilon-sequence-12",
+            "cutoff",
+            "epsilon-meaning",
+            "epsilon-control"
+          ],
+          "colorIndependentDescription": "Written labels, distinct line styles, markers, and fill patterns communicate every relationship in convergence is eventual trapping; color is never the only cue.",
+          "keyboardInstructions": "Use Tab to reach the bounded control, then use arrow keys to change one value at a time.",
+          "controlInstructions": [
+            "Tolerance epsilon"
+          ],
+          "reducedMotion": "disable-animation",
+          "staticFallbackEquivalent": true
+        },
+        "print": {
+          "representation": "generated-svg",
+          "caption": {
+            "segments": [
+              {
+                "kind": "text",
+                "text": "Convergence is eventual trapping. Tolerance band around L with a visible cutoff N."
+              }
+            ]
+          },
+          "grayscaleSafe": true,
+          "pageBreak": "avoid",
+          "widthInches": 7.1
+        },
+        "performance": {
+          "maxSamples": 2048,
+          "maxAdaptiveDepth": 12,
+          "maxAstNodes": 192,
+          "maxAstDepth": 24,
+          "maxOperationsPerEvaluation": 2048,
+          "maxPayloadBytes": 65536,
+          "maxAnimationFps": 30,
+          "activation": "near-viewport"
+        },
+        "requiredCapabilities": [
+          "annotations",
+          "cartesian-axes",
+          "open-closed-points",
+          "parameter-controls",
+          "static-fallback"
+        ],
+        "selectedRenderer": "bg-interactive-2d",
+        "staticFallback": {
+          "required": true,
+          "rendererId": "static-svg"
+        },
+        "delivery": {
+          "hydration": "near-viewport",
+          "publicFieldsOnly": true
+        },
+        "provenance": {
+          "route": "/subjects/math/calculus/sequences-and-series/limits-of-sequences/",
+          "sourceVisualId": "unit-4a-u4a-epsilon-n-band",
+          "sourceFingerprint": "bvlp1-f23aa57e",
+          "compilerVersion": "bvlp-compiler-v1",
+          "visibility": "public"
+        }
+      }
+    },
+    {
+      "id": "unit-4a-u4a-convergence-gallery",
+      "sourceVisualId": "unit-4a-u4a-convergence-gallery",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-4a-u4a-convergence-gallery.c8d403e64d039589.svg",
+        "sha256": "c8d403e64d039589283526c2edc1defc24bad3ae9f6c181083c16598feb94022",
+        "bytes": 20270,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Three ways a sequence can fail to settle"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Three ways a sequence can fail to settle. Tolerance band around L with a visible cutoff N."
+          }
+        ]
+      },
+      "learningPurpose": "Tolerance band around L with a visible cutoff N.",
+      "longDescription": "A convergent sequence approaches one height. Divergent sequences may oscillate, grow without bound, or wander without approaching one value. Tolerance band around L with a visible cutoff N. Preserve the misconception control described in the lesson and storyboard.",
+      "accessibility": {
+        "ariaLabel": "Three ways a sequence can fail to settle. Tolerance band around L with a visible cutoff N.",
+        "summary": "A convergent sequence approaches one height. Divergent sequences may oscillate, grow without bound, or wander without approaching one value. Tolerance band around L with a visible cutoff N. Preserve the misconception control described in the lesson and storyboard.",
+        "readingOrder": [
+          "oscillation-1",
+          "oscillation-2",
+          "oscillation-3",
+          "oscillation-4",
+          "oscillation-5",
+          "oscillation-6",
+          "oscillation-7",
+          "oscillation-8",
+          "oscillation-9",
+          "oscillation-10",
+          "unbounded-1",
+          "unbounded-2",
+          "unbounded-3",
+          "unbounded-4",
+          "unbounded-5",
+          "unbounded-6",
+          "unbounded-7",
+          "unbounded-8",
+          "unbounded-9",
+          "unbounded-10",
+          "wandering-1",
+          "wandering-2",
+          "wandering-3",
+          "wandering-4",
+          "wandering-5",
+          "wandering-6",
+          "wandering-7",
+          "wandering-8",
+          "wandering-9",
+          "wandering-10",
+          "oscillation-label",
+          "growth-label",
+          "wander-label"
+        ],
+        "colorIndependentDescription": "Written labels, distinct line styles, markers, and fill patterns communicate every relationship in three ways a sequence can fail to settle; color is never the only cue.",
+        "controlInstructions": [],
+        "reducedMotion": "not-applicable",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-8aa5f891",
+      "visibility": "public"
+    },
+    {
+      "id": "unit-4a-u4a-monotone-bounded",
+      "sourceVisualId": "unit-4a-u4a-monotone-bounded",
+      "selectedRenderer": "bg-interactive-2d",
+      "hydration": "near-viewport",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-4a-u4a-monotone-bounded.5deff91388ddea1d.svg",
+        "sha256": "5deff91388ddea1da41dbab483e978d6ad900d7c906a1fa903f60d9e2a4171eb",
+        "bytes": 15390,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Monotone plus bounded forces convergence"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Monotone plus bounded forces convergence. Increasing staircase beneath a least upper bound."
+          }
+        ]
+      },
+      "learningPurpose": "Increasing staircase beneath a least upper bound.",
+      "longDescription": "The increasing sequence a n=1-1/n can never cross its upper bound 1, so its terms are squeezed into a narrowing vertical range. Increasing staircase beneath a least upper bound. Preserve the misconception control described in the lesson and storyboard.",
+      "accessibility": {
+        "ariaLabel": "Monotone plus bounded forces convergence. Increasing staircase beneath a least upper bound.",
+        "summary": "The increasing sequence a n=1-1/n can never cross its upper bound 1, so its terms are squeezed into a narrowing vertical range. Increasing staircase beneath a least upper bound. Preserve the misconception control described in the lesson and storyboard.",
+        "readingOrder": [
+          "upper-bound",
+          "monotone-sequence-1",
+          "monotone-sequence-2",
+          "monotone-sequence-3",
+          "monotone-sequence-4",
+          "monotone-sequence-5",
+          "monotone-sequence-6",
+          "monotone-sequence-7",
+          "monotone-sequence-8",
+          "monotone-sequence-9",
+          "monotone-sequence-10",
+          "monotone-sequence-11",
+          "monotone-sequence-12",
+          "current-index",
+          "monotone-note",
+          "term-control"
+        ],
+        "colorIndependentDescription": "Written labels, distinct line styles, markers, and fill patterns communicate every relationship in monotone plus bounded forces convergence; color is never the only cue.",
+        "keyboardInstructions": "Use Tab to reach the bounded control, then use arrow keys to change one value at a time.",
+        "controlInstructions": [
+          "Current term index"
+        ],
+        "reducedMotion": "disable-animation",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-9a79fd42",
+      "visibility": "public",
+      "interactiveScene": {
+        "compiledSceneVersion": 1,
+        "sourceSpecVersion": 1,
+        "id": "unit-4a-u4a-monotone-bounded",
+        "kind": "cartesian-2d",
+        "title": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "Monotone plus bounded forces convergence"
+            }
+          ]
+        },
+        "caption": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "Monotone plus bounded forces convergence. Increasing staircase beneath a least upper bound."
+            }
+          ]
+        },
+        "learningPurpose": "Increasing staircase beneath a least upper bound.",
+        "longDescription": "The increasing sequence a n=1-1/n can never cross its upper bound 1, so its terms are squeezed into a narrowing vertical range. Increasing staircase beneath a least upper bound. Preserve the misconception control described in the lesson and storyboard.",
+        "coordinateSpace": {
+          "type": "cartesian-2d",
+          "variables": [
+            "x",
+            "y"
+          ],
+          "unitsRequired": false
+        },
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12.5,
+          "yMin": -0.05,
+          "yMax": 1.15,
+          "aspectRatio": 1.72,
+          "padding": 0.07
+        },
+        "axes": {
+          "mode": "explicit",
+          "axes": [
+            {
+              "id": "x-axis",
+              "orientation": "x",
+              "label": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "n"
+                  }
+                ]
+              },
+              "scale": "linear",
+              "tickMode": "fixed-step",
+              "tickStep": 1,
+              "showGrid": true
+            },
+            {
+              "id": "y-axis",
+              "orientation": "y",
+              "label": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "a n"
+                  }
+                ]
+              },
+              "scale": "linear",
+              "tickMode": "fixed-step",
+              "tickStep": 0.25,
+              "showGrid": true
+            }
+          ]
+        },
+        "panels": [],
+        "layers": [
+          {
+            "id": "upper-bound",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "double",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Least upper bound at 1."
+            },
+            "references": [],
+            "kind": "segment",
+            "geometry": {
+              "start": {
+                "x": 0,
+                "y": 1
+              },
+              "end": {
+                "x": 12.5,
+                "y": 1
+              }
+            }
+          },
+          {
+            "id": "monotone-sequence-1",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "fillToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "none",
+              "colorIndependentCue": "monotone-sequence point 1."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 1,
+                "y": 0
+              }
+            }
+          },
+          {
+            "id": "monotone-sequence-2",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "fillToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "none",
+              "colorIndependentCue": "monotone-sequence point 2."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 2,
+                "y": 0.5
+              }
+            }
+          },
+          {
+            "id": "monotone-sequence-3",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "fillToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "none",
+              "colorIndependentCue": "monotone-sequence point 3."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 3,
+                "y": 0.6666666666666667
+              }
+            }
+          },
+          {
+            "id": "monotone-sequence-4",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "fillToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "none",
+              "colorIndependentCue": "monotone-sequence point 4."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 4,
+                "y": 0.75
+              }
+            }
+          },
+          {
+            "id": "monotone-sequence-5",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "fillToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "none",
+              "colorIndependentCue": "monotone-sequence point 5."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 5,
+                "y": 0.8
+              }
+            }
+          },
+          {
+            "id": "monotone-sequence-6",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "fillToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "none",
+              "colorIndependentCue": "monotone-sequence point 6."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 6,
+                "y": 0.8333333333333334
+              }
+            }
+          },
+          {
+            "id": "monotone-sequence-7",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "fillToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "none",
+              "colorIndependentCue": "monotone-sequence point 7."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 7,
+                "y": 0.8571428571428572
+              }
+            }
+          },
+          {
+            "id": "monotone-sequence-8",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "fillToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "none",
+              "colorIndependentCue": "monotone-sequence point 8."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 8,
+                "y": 0.875
+              }
+            }
+          },
+          {
+            "id": "monotone-sequence-9",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "fillToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "none",
+              "colorIndependentCue": "monotone-sequence point 9."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 9,
+                "y": 0.8888888888888888
+              }
+            }
+          },
+          {
+            "id": "monotone-sequence-10",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "fillToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "none",
+              "colorIndependentCue": "monotone-sequence point 10."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 10,
+                "y": 0.9
+              }
+            }
+          },
+          {
+            "id": "monotone-sequence-11",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "fillToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "none",
+              "colorIndependentCue": "monotone-sequence point 11."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 11,
+                "y": 0.9090909090909091
+              }
+            }
+          },
+          {
+            "id": "monotone-sequence-12",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "fillToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "none",
+              "colorIndependentCue": "monotone-sequence point 12."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 12,
+                "y": 0.9166666666666666
+              }
+            }
+          },
+          {
+            "id": "current-index",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "dashed",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Current recurrence step remains below the bound."
+            },
+            "references": [],
+            "kind": "segment",
+            "geometry": {
+              "start": {
+                "x": {
+                  "type": "variable",
+                  "name": "p"
+                },
+                "y": -0.05
+              },
+              "end": {
+                "x": {
+                  "type": "variable",
+                  "name": "p"
+                },
+                "y": {
+                  "type": "add",
+                  "left": {
+                    "type": "divide",
+                    "left": {
+                      "type": "number",
+                      "value": -1
+                    },
+                    "right": {
+                      "type": "variable",
+                      "name": "p"
+                    }
+                  },
+                  "right": {
+                    "type": "number",
+                    "value": 1
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": "monotone-note",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Annotation: The terms rise and never cross 1; the theorem guarantees convergence.."
+            },
+            "references": [],
+            "kind": "annotation",
+            "geometry": {
+              "anchor": {
+                "x": 6.2,
+                "y": 1.1
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "The terms rise and never cross 1; the theorem guarantees convergence."
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "controls": [
+          {
+            "id": "term-control",
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "Current term index"
+                }
+              ]
+            },
+            "announcementTemplate": "The current term is a sub {value}; every displayed term is increasing and below 1.",
+            "kind": "slider",
+            "parameter": "p",
+            "min": 2,
+            "max": 12,
+            "step": 1,
+            "initial": 6
+          }
+        ],
+        "accessibility": {
+          "ariaLabel": "Monotone plus bounded forces convergence. Increasing staircase beneath a least upper bound.",
+          "summary": "The increasing sequence a n=1-1/n can never cross its upper bound 1, so its terms are squeezed into a narrowing vertical range. Increasing staircase beneath a least upper bound. Preserve the misconception control described in the lesson and storyboard.",
+          "readingOrder": [
+            "upper-bound",
+            "monotone-sequence-1",
+            "monotone-sequence-2",
+            "monotone-sequence-3",
+            "monotone-sequence-4",
+            "monotone-sequence-5",
+            "monotone-sequence-6",
+            "monotone-sequence-7",
+            "monotone-sequence-8",
+            "monotone-sequence-9",
+            "monotone-sequence-10",
+            "monotone-sequence-11",
+            "monotone-sequence-12",
+            "current-index",
+            "monotone-note",
+            "term-control"
+          ],
+          "colorIndependentDescription": "Written labels, distinct line styles, markers, and fill patterns communicate every relationship in monotone plus bounded forces convergence; color is never the only cue.",
+          "keyboardInstructions": "Use Tab to reach the bounded control, then use arrow keys to change one value at a time.",
+          "controlInstructions": [
+            "Current term index"
+          ],
+          "reducedMotion": "disable-animation",
+          "staticFallbackEquivalent": true
+        },
+        "print": {
+          "representation": "generated-svg",
+          "caption": {
+            "segments": [
+              {
+                "kind": "text",
+                "text": "Monotone plus bounded forces convergence. Increasing staircase beneath a least upper bound."
+              }
+            ]
+          },
+          "grayscaleSafe": true,
+          "pageBreak": "avoid",
+          "widthInches": 7.1
+        },
+        "performance": {
+          "maxSamples": 2048,
+          "maxAdaptiveDepth": 12,
+          "maxAstNodes": 192,
+          "maxAstDepth": 24,
+          "maxOperationsPerEvaluation": 2048,
+          "maxPayloadBytes": 65536,
+          "maxAnimationFps": 30,
+          "activation": "near-viewport"
+        },
+        "requiredCapabilities": [
+          "annotations",
+          "cartesian-axes",
+          "open-closed-points",
+          "parameter-controls",
+          "static-fallback"
+        ],
+        "selectedRenderer": "bg-interactive-2d",
+        "staticFallback": {
+          "required": true,
+          "rendererId": "static-svg"
+        },
+        "delivery": {
+          "hydration": "near-viewport",
+          "publicFieldsOnly": true
+        },
+        "provenance": {
+          "route": "/subjects/math/calculus/sequences-and-series/monotone-and-bounded-sequences/",
+          "sourceVisualId": "unit-4a-u4a-monotone-bounded",
+          "sourceFingerprint": "bvlp1-9a79fd42",
+          "compilerVersion": "bvlp-compiler-v1",
+          "visibility": "public"
+        }
+      }
+    },
+    {
+      "id": "unit-4a-u4a-partial-sums",
+      "sourceVisualId": "unit-4a-u4a-partial-sums",
+      "selectedRenderer": "bg-interactive-2d",
+      "hydration": "near-viewport",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-4a-u4a-partial-sums.ddfc703e27013f6f.svg",
+        "sha256": "ddfc703e27013f6f27f3acbc45685b4d62bd96681aa3ceaa92c93ad7d7740002",
+        "bytes": 16712,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "A series is understood through its partial sums"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "A series is understood through its partial sums. Term plot paired with running-total plot."
+          }
+        ]
+      },
+      "learningPurpose": "Term plot paired with running-total plot.",
+      "longDescription": "The terms of a geometric series shrink, while the partial sums climb toward the finite total 2. Term plot paired with running-total plot. Preserve the misconception control described in the lesson and storyboard.",
+      "accessibility": {
+        "ariaLabel": "A series is understood through its partial sums. Term plot paired with running-total plot.",
+        "summary": "The terms of a geometric series shrink, while the partial sums climb toward the finite total 2. Term plot paired with running-total plot. Preserve the misconception control described in the lesson and storyboard.",
+        "readingOrder": [
+          "terms-1",
+          "terms-2",
+          "terms-3",
+          "terms-4",
+          "terms-5",
+          "terms-6",
+          "terms-7",
+          "terms-8",
+          "terms-9",
+          "terms-10",
+          "partial-sums-1",
+          "partial-sums-2",
+          "partial-sums-3",
+          "partial-sums-4",
+          "partial-sums-5",
+          "partial-sums-6",
+          "partial-sums-7",
+          "partial-sums-8",
+          "partial-sums-9",
+          "partial-sums-10",
+          "sum-limit",
+          "selected-index",
+          "term-label",
+          "sum-label",
+          "partial-sum-control"
+        ],
+        "colorIndependentDescription": "Written labels, distinct line styles, markers, and fill patterns communicate every relationship in a series is understood through its partial sums; color is never the only cue.",
+        "keyboardInstructions": "Use Tab to reach the bounded control, then use arrow keys to change one value at a time.",
+        "controlInstructions": [
+          "Number of terms"
+        ],
+        "reducedMotion": "disable-animation",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-a197f514",
+      "visibility": "public",
+      "interactiveScene": {
+        "compiledSceneVersion": 1,
+        "sourceSpecVersion": 1,
+        "id": "unit-4a-u4a-partial-sums",
+        "kind": "cartesian-2d",
+        "title": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "A series is understood through its partial sums"
+            }
+          ]
+        },
+        "caption": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "A series is understood through its partial sums. Term plot paired with running-total plot."
+            }
+          ]
+        },
+        "learningPurpose": "Term plot paired with running-total plot.",
+        "longDescription": "The terms of a geometric series shrink, while the partial sums climb toward the finite total 2. Term plot paired with running-total plot. Preserve the misconception control described in the lesson and storyboard.",
+        "coordinateSpace": {
+          "type": "cartesian-2d",
+          "variables": [
+            "x",
+            "y"
+          ],
+          "unitsRequired": false
+        },
+        "viewport": {
+          "xMin": 0,
+          "xMax": 10.5,
+          "yMin": 0,
+          "yMax": 2.2,
+          "aspectRatio": 1.72,
+          "padding": 0.07
+        },
+        "axes": {
+          "mode": "explicit",
+          "axes": [
+            {
+              "id": "x-axis",
+              "orientation": "x",
+              "label": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "n"
+                  }
+                ]
+              },
+              "scale": "linear",
+              "tickMode": "fixed-step",
+              "tickStep": 1,
+              "showGrid": true
+            },
+            {
+              "id": "y-axis",
+              "orientation": "y",
+              "label": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "term or running total"
+                  }
+                ]
+              },
+              "scale": "linear",
+              "tickMode": "fixed-step",
+              "tickStep": 0.5,
+              "showGrid": true
+            }
+          ]
+        },
+        "panels": [],
+        "layers": [
+          {
+            "id": "terms-1",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-secondary",
+              "fillToken": "visual-secondary",
+              "lineStyle": "solid",
+              "markerShape": "circle",
+              "pattern": "none",
+              "colorIndependentCue": "terms point 1."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 1,
+                "y": 1
+              }
+            }
+          },
+          {
+            "id": "terms-2",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-secondary",
+              "fillToken": "visual-secondary",
+              "lineStyle": "solid",
+              "markerShape": "circle",
+              "pattern": "none",
+              "colorIndependentCue": "terms point 2."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 2,
+                "y": 0.5
+              }
+            }
+          },
+          {
+            "id": "terms-3",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-secondary",
+              "fillToken": "visual-secondary",
+              "lineStyle": "solid",
+              "markerShape": "circle",
+              "pattern": "none",
+              "colorIndependentCue": "terms point 3."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 3,
+                "y": 0.25
+              }
+            }
+          },
+          {
+            "id": "terms-4",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-secondary",
+              "fillToken": "visual-secondary",
+              "lineStyle": "solid",
+              "markerShape": "circle",
+              "pattern": "none",
+              "colorIndependentCue": "terms point 4."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 4,
+                "y": 0.125
+              }
+            }
+          },
+          {
+            "id": "terms-5",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-secondary",
+              "fillToken": "visual-secondary",
+              "lineStyle": "solid",
+              "markerShape": "circle",
+              "pattern": "none",
+              "colorIndependentCue": "terms point 5."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 5,
+                "y": 0.0625
+              }
+            }
+          },
+          {
+            "id": "terms-6",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-secondary",
+              "fillToken": "visual-secondary",
+              "lineStyle": "solid",
+              "markerShape": "circle",
+              "pattern": "none",
+              "colorIndependentCue": "terms point 6."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 6,
+                "y": 0.03125
+              }
+            }
+          },
+          {
+            "id": "terms-7",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-secondary",
+              "fillToken": "visual-secondary",
+              "lineStyle": "solid",
+              "markerShape": "circle",
+              "pattern": "none",
+              "colorIndependentCue": "terms point 7."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 7,
+                "y": 0.015625
+              }
+            }
+          },
+          {
+            "id": "terms-8",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-secondary",
+              "fillToken": "visual-secondary",
+              "lineStyle": "solid",
+              "markerShape": "circle",
+              "pattern": "none",
+              "colorIndependentCue": "terms point 8."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 8,
+                "y": 0.0078125
+              }
+            }
+          },
+          {
+            "id": "terms-9",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-secondary",
+              "fillToken": "visual-secondary",
+              "lineStyle": "solid",
+              "markerShape": "circle",
+              "pattern": "none",
+              "colorIndependentCue": "terms point 9."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 9,
+                "y": 0.00390625
+              }
+            }
+          },
+          {
+            "id": "terms-10",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-secondary",
+              "fillToken": "visual-secondary",
+              "lineStyle": "solid",
+              "markerShape": "circle",
+              "pattern": "none",
+              "colorIndependentCue": "terms point 10."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 10,
+                "y": 0.001953125
+              }
+            }
+          },
+          {
+            "id": "partial-sums-1",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "fillToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "none",
+              "colorIndependentCue": "partial-sums point 1."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 1,
+                "y": 1
+              }
+            }
+          },
+          {
+            "id": "partial-sums-2",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "fillToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "none",
+              "colorIndependentCue": "partial-sums point 2."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 2,
+                "y": 1.5
+              }
+            }
+          },
+          {
+            "id": "partial-sums-3",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "fillToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "none",
+              "colorIndependentCue": "partial-sums point 3."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 3,
+                "y": 1.75
+              }
+            }
+          },
+          {
+            "id": "partial-sums-4",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "fillToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "none",
+              "colorIndependentCue": "partial-sums point 4."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 4,
+                "y": 1.875
+              }
+            }
+          },
+          {
+            "id": "partial-sums-5",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "fillToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "none",
+              "colorIndependentCue": "partial-sums point 5."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 5,
+                "y": 1.9375
+              }
+            }
+          },
+          {
+            "id": "partial-sums-6",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "fillToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "none",
+              "colorIndependentCue": "partial-sums point 6."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 6,
+                "y": 1.96875
+              }
+            }
+          },
+          {
+            "id": "partial-sums-7",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "fillToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "none",
+              "colorIndependentCue": "partial-sums point 7."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 7,
+                "y": 1.984375
+              }
+            }
+          },
+          {
+            "id": "partial-sums-8",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "fillToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "none",
+              "colorIndependentCue": "partial-sums point 8."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 8,
+                "y": 1.9921875
+              }
+            }
+          },
+          {
+            "id": "partial-sums-9",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "fillToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "none",
+              "colorIndependentCue": "partial-sums point 9."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 9,
+                "y": 1.99609375
+              }
+            }
+          },
+          {
+            "id": "partial-sums-10",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "fillToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "none",
+              "colorIndependentCue": "partial-sums point 10."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 10,
+                "y": 1.998046875
+              }
+            }
+          },
+          {
+            "id": "sum-limit",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "double",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Partial-sum limit equals 2."
+            },
+            "references": [],
+            "kind": "segment",
+            "geometry": {
+              "start": {
+                "x": 0,
+                "y": 2
+              },
+              "end": {
+                "x": 10.5,
+                "y": 2
+              }
+            }
+          },
+          {
+            "id": "selected-index",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "dashed",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Selected index compares a term with its running total."
+            },
+            "references": [],
+            "kind": "segment",
+            "geometry": {
+              "start": {
+                "x": {
+                  "type": "variable",
+                  "name": "p"
+                },
+                "y": 0
+              },
+              "end": {
+                "x": {
+                  "type": "variable",
+                  "name": "p"
+                },
+                "y": 2.2
+              }
+            }
+          },
+          {
+            "id": "term-label",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Label: terms a_n."
+            },
+            "references": [],
+            "kind": "label",
+            "geometry": {
+              "position": {
+                "x": 7.5,
+                "y": 0.35
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "terms a n"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "sum-label",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Label: partial sums S_n."
+            },
+            "references": [],
+            "kind": "label",
+            "geometry": {
+              "position": {
+                "x": 7.5,
+                "y": 1.7
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "partial sums S n"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "controls": [
+          {
+            "id": "partial-sum-control",
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "Number of terms"
+                }
+              ]
+            },
+            "announcementTemplate": "At n equals {value}, compare the shrinking term with the accumulating partial sum.",
+            "kind": "slider",
+            "parameter": "p",
+            "min": 1,
+            "max": 10,
+            "step": 1,
+            "initial": 5
+          }
+        ],
+        "accessibility": {
+          "ariaLabel": "A series is understood through its partial sums. Term plot paired with running-total plot.",
+          "summary": "The terms of a geometric series shrink, while the partial sums climb toward the finite total 2. Term plot paired with running-total plot. Preserve the misconception control described in the lesson and storyboard.",
+          "readingOrder": [
+            "terms-1",
+            "terms-2",
+            "terms-3",
+            "terms-4",
+            "terms-5",
+            "terms-6",
+            "terms-7",
+            "terms-8",
+            "terms-9",
+            "terms-10",
+            "partial-sums-1",
+            "partial-sums-2",
+            "partial-sums-3",
+            "partial-sums-4",
+            "partial-sums-5",
+            "partial-sums-6",
+            "partial-sums-7",
+            "partial-sums-8",
+            "partial-sums-9",
+            "partial-sums-10",
+            "sum-limit",
+            "selected-index",
+            "term-label",
+            "sum-label",
+            "partial-sum-control"
+          ],
+          "colorIndependentDescription": "Written labels, distinct line styles, markers, and fill patterns communicate every relationship in a series is understood through its partial sums; color is never the only cue.",
+          "keyboardInstructions": "Use Tab to reach the bounded control, then use arrow keys to change one value at a time.",
+          "controlInstructions": [
+            "Number of terms"
+          ],
+          "reducedMotion": "disable-animation",
+          "staticFallbackEquivalent": true
+        },
+        "print": {
+          "representation": "generated-svg",
+          "caption": {
+            "segments": [
+              {
+                "kind": "text",
+                "text": "A series is understood through its partial sums. Term plot paired with running-total plot."
+              }
+            ]
+          },
+          "grayscaleSafe": true,
+          "pageBreak": "avoid",
+          "widthInches": 7.1
+        },
+        "performance": {
+          "maxSamples": 2048,
+          "maxAdaptiveDepth": 12,
+          "maxAstNodes": 192,
+          "maxAstDepth": 24,
+          "maxOperationsPerEvaluation": 2048,
+          "maxPayloadBytes": 65536,
+          "maxAnimationFps": 30,
+          "activation": "near-viewport"
+        },
+        "requiredCapabilities": [
+          "annotations",
+          "cartesian-axes",
+          "open-closed-points",
+          "parameter-controls",
+          "static-fallback"
+        ],
+        "selectedRenderer": "bg-interactive-2d",
+        "staticFallback": {
+          "required": true,
+          "rendererId": "static-svg"
+        },
+        "delivery": {
+          "hydration": "near-viewport",
+          "publicFieldsOnly": true
+        },
+        "provenance": {
+          "route": "/subjects/math/calculus/sequences-and-series/infinite-series-and-partial-sums/",
+          "sourceVisualId": "unit-4a-u4a-partial-sums",
+          "sourceFingerprint": "bvlp1-a197f514",
+          "compilerVersion": "bvlp-compiler-v1",
+          "visibility": "public"
+        }
+      }
+    },
+    {
+      "id": "unit-4a-u4a-geometric-self-similarity",
+      "sourceVisualId": "unit-4a-u4a-geometric-self-similarity",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-4a-u4a-geometric-self-similarity.7fba53d0ea772da7.svg",
+        "sha256": "7fba53d0ea772da77b35ff837e2651c12021ca126ba89faeb69718b73cd40401",
+        "bytes": 8064,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "The remaining tail is a scaled copy"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "The remaining tail is a scaled copy. Self-similar interval filling and a shrinking tail."
+          }
+        ]
+      },
+      "learningPurpose": "Self-similar interval filling and a shrinking tail.",
+      "longDescription": "Lengths one-half, one-quarter, one-eighth, and so on fill a unit interval. Self-similar interval filling and a shrinking tail. Preserve the misconception control described in the lesson and storyboard.",
+      "accessibility": {
+        "ariaLabel": "The remaining tail is a scaled copy. Self-similar interval filling and a shrinking tail.",
+        "summary": "Lengths one-half, one-quarter, one-eighth, and so on fill a unit interval. Self-similar interval filling and a shrinking tail. Preserve the misconception control described in the lesson and storyboard.",
+        "readingOrder": [
+          "unit-interval",
+          "piece-1",
+          "piece-2",
+          "piece-3",
+          "piece-4",
+          "half",
+          "quarter",
+          "eighth",
+          "tail",
+          "self-similar"
+        ],
+        "colorIndependentDescription": "Written labels, distinct line styles, markers, and fill patterns communicate every relationship in the remaining tail is a scaled copy; color is never the only cue.",
+        "controlInstructions": [],
+        "reducedMotion": "not-applicable",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-fa36f78f",
+      "visibility": "public"
+    },
+    {
+      "id": "unit-4a-u4a-geometric-areas",
+      "sourceVisualId": "unit-4a-u4a-geometric-areas",
+      "selectedRenderer": "bg-interactive-2d",
+      "hydration": "near-viewport",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-4a-u4a-geometric-areas.1be547f604e1a2ff.svg",
+        "sha256": "1be547f604e1a2ff9564fb044da74fa96bc2a0602b651af5d8150ce7deee843f",
+        "bytes": 6393,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "A geometric series repeatedly takes the same fraction"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "A geometric series repeatedly takes the same fraction. Self-similar interval filling and a shrinking tail."
+          }
+        ]
+      },
+      "learningPurpose": "Self-similar interval filling and a shrinking tail.",
+      "longDescription": "Successive pieces occupy one half of what remains, producing areas 1/2,1/4,1/8, whose total fills one whole square. Self-similar interval filling and a shrinking tail. Preserve the misconception control described in the lesson and storyboard.",
+      "accessibility": {
+        "ariaLabel": "A geometric series repeatedly takes the same fraction. Self-similar interval filling and a shrinking tail.",
+        "summary": "Successive pieces occupy one half of what remains, producing areas 1/2,1/4,1/8, whose total fills one whole square. Self-similar interval filling and a shrinking tail. Preserve the misconception control described in the lesson and storyboard.",
+        "readingOrder": [
+          "whole",
+          "first-piece",
+          "second-piece",
+          "ratio-label",
+          "ratio-condition",
+          "ratio-control"
+        ],
+        "colorIndependentDescription": "Written labels, distinct line styles, markers, and fill patterns communicate every relationship in a geometric series repeatedly takes the same fraction; color is never the only cue.",
+        "keyboardInstructions": "Use Tab to reach the bounded control, then use arrow keys to change one value at a time.",
+        "controlInstructions": [
+          "Common ratio r"
+        ],
+        "reducedMotion": "disable-animation",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-05e4cb50",
+      "visibility": "public",
+      "interactiveScene": {
+        "compiledSceneVersion": 1,
+        "sourceSpecVersion": 1,
+        "id": "unit-4a-u4a-geometric-areas",
+        "kind": "geometry-2d",
+        "title": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "A geometric series repeatedly takes the same fraction"
+            }
+          ]
+        },
+        "caption": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "A geometric series repeatedly takes the same fraction. Self-similar interval filling and a shrinking tail."
+            }
+          ]
+        },
+        "learningPurpose": "Self-similar interval filling and a shrinking tail.",
+        "longDescription": "Successive pieces occupy one half of what remains, producing areas 1/2,1/4,1/8, whose total fills one whole square. Self-similar interval filling and a shrinking tail. Preserve the misconception control described in the lesson and storyboard.",
+        "coordinateSpace": {
+          "type": "diagram-2d",
+          "variables": [
+            "x",
+            "y"
+          ],
+          "unitsRequired": false
+        },
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.07
+        },
+        "axes": {
+          "mode": "none",
+          "reason": "The labeled diagram carries the instructional structure."
+        },
+        "panels": [],
+        "layers": [
+          {
+            "id": "whole",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-secondary",
+              "fillToken": "visual-secondary",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "dots",
+              "colorIndependentCue": "One whole area."
+            },
+            "references": [],
+            "kind": "polygon",
+            "geometry": {
+              "points": [
+                {
+                  "x": 1,
+                  "y": 1
+                },
+                {
+                  "x": 7,
+                  "y": 1
+                },
+                {
+                  "x": 7,
+                  "y": 6
+                },
+                {
+                  "x": 1,
+                  "y": 6
+                }
+              ],
+              "closed": true
+            }
+          },
+          {
+            "id": "first-piece",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "fillToken": "visual-primary",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "diagonal",
+              "colorIndependentCue": "First geometric fraction r of the whole."
+            },
+            "references": [],
+            "kind": "polygon",
+            "geometry": {
+              "points": [
+                {
+                  "x": 1,
+                  "y": 1
+                },
+                {
+                  "x": {
+                    "type": "add",
+                    "left": {
+                      "type": "multiply",
+                      "left": {
+                        "type": "number",
+                        "value": 6
+                      },
+                      "right": {
+                        "type": "variable",
+                        "name": "p"
+                      }
+                    },
+                    "right": {
+                      "type": "number",
+                      "value": 1
+                    }
+                  },
+                  "y": 1
+                },
+                {
+                  "x": {
+                    "type": "add",
+                    "left": {
+                      "type": "multiply",
+                      "left": {
+                        "type": "number",
+                        "value": 6
+                      },
+                      "right": {
+                        "type": "variable",
+                        "name": "p"
+                      }
+                    },
+                    "right": {
+                      "type": "number",
+                      "value": 1
+                    }
+                  },
+                  "y": 6
+                },
+                {
+                  "x": 1,
+                  "y": 6
+                }
+              ],
+              "closed": true
+            }
+          },
+          {
+            "id": "second-piece",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "fillToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "crosshatch",
+              "colorIndependentCue": "Second piece is r times what remains."
+            },
+            "references": [],
+            "kind": "polygon",
+            "geometry": {
+              "points": [
+                {
+                  "x": {
+                    "type": "add",
+                    "left": {
+                      "type": "multiply",
+                      "left": {
+                        "type": "number",
+                        "value": 6
+                      },
+                      "right": {
+                        "type": "variable",
+                        "name": "p"
+                      }
+                    },
+                    "right": {
+                      "type": "number",
+                      "value": 1
+                    }
+                  },
+                  "y": 1
+                },
+                {
+                  "x": {
+                    "type": "add",
+                    "left": {
+                      "type": "add",
+                      "left": {
+                        "type": "multiply",
+                        "left": {
+                          "type": "multiply",
+                          "left": {
+                            "type": "number",
+                            "value": 6
+                          },
+                          "right": {
+                            "type": "variable",
+                            "name": "p"
+                          }
+                        },
+                        "right": {
+                          "type": "add",
+                          "left": {
+                            "type": "negate",
+                            "operand": {
+                              "type": "variable",
+                              "name": "p"
+                            }
+                          },
+                          "right": {
+                            "type": "number",
+                            "value": 1
+                          }
+                        }
+                      },
+                      "right": {
+                        "type": "multiply",
+                        "left": {
+                          "type": "number",
+                          "value": 6
+                        },
+                        "right": {
+                          "type": "variable",
+                          "name": "p"
+                        }
+                      }
+                    },
+                    "right": {
+                      "type": "number",
+                      "value": 1
+                    }
+                  },
+                  "y": 1
+                },
+                {
+                  "x": {
+                    "type": "add",
+                    "left": {
+                      "type": "add",
+                      "left": {
+                        "type": "multiply",
+                        "left": {
+                          "type": "multiply",
+                          "left": {
+                            "type": "number",
+                            "value": 6
+                          },
+                          "right": {
+                            "type": "variable",
+                            "name": "p"
+                          }
+                        },
+                        "right": {
+                          "type": "add",
+                          "left": {
+                            "type": "negate",
+                            "operand": {
+                              "type": "variable",
+                              "name": "p"
+                            }
+                          },
+                          "right": {
+                            "type": "number",
+                            "value": 1
+                          }
+                        }
+                      },
+                      "right": {
+                        "type": "multiply",
+                        "left": {
+                          "type": "number",
+                          "value": 6
+                        },
+                        "right": {
+                          "type": "variable",
+                          "name": "p"
+                        }
+                      }
+                    },
+                    "right": {
+                      "type": "number",
+                      "value": 1
+                    }
+                  },
+                  "y": 6
+                },
+                {
+                  "x": {
+                    "type": "add",
+                    "left": {
+                      "type": "multiply",
+                      "left": {
+                        "type": "number",
+                        "value": 6
+                      },
+                      "right": {
+                        "type": "variable",
+                        "name": "p"
+                      }
+                    },
+                    "right": {
+                      "type": "number",
+                      "value": 1
+                    }
+                  },
+                  "y": 6
+                }
+              ],
+              "closed": true
+            }
+          },
+          {
+            "id": "ratio-label",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Label: Repeatedly take fraction r of what remains."
+            },
+            "references": [],
+            "kind": "label",
+            "geometry": {
+              "position": {
+                "x": 4,
+                "y": 6.55
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "Repeatedly take fraction r of what remains"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "ratio-condition",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Annotation: For |r|<1, the leftover tail shrinks toward zero.."
+            },
+            "references": [],
+            "kind": "annotation",
+            "geometry": {
+              "anchor": {
+                "x": 9.3,
+                "y": 3.5
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "For |r|<1, the leftover tail shrinks toward zero."
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "controls": [
+          {
+            "id": "ratio-control",
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "Common ratio r"
+                }
+              ]
+            },
+            "announcementTemplate": "The common ratio is {value}; each new piece is that fraction of the remaining area.",
+            "kind": "slider",
+            "parameter": "p",
+            "min": 0.2,
+            "max": 0.8,
+            "step": 0.1,
+            "initial": 0.5
+          }
+        ],
+        "accessibility": {
+          "ariaLabel": "A geometric series repeatedly takes the same fraction. Self-similar interval filling and a shrinking tail.",
+          "summary": "Successive pieces occupy one half of what remains, producing areas 1/2,1/4,1/8, whose total fills one whole square. Self-similar interval filling and a shrinking tail. Preserve the misconception control described in the lesson and storyboard.",
+          "readingOrder": [
+            "whole",
+            "first-piece",
+            "second-piece",
+            "ratio-label",
+            "ratio-condition",
+            "ratio-control"
+          ],
+          "colorIndependentDescription": "Written labels, distinct line styles, markers, and fill patterns communicate every relationship in a geometric series repeatedly takes the same fraction; color is never the only cue.",
+          "keyboardInstructions": "Use Tab to reach the bounded control, then use arrow keys to change one value at a time.",
+          "controlInstructions": [
+            "Common ratio r"
+          ],
+          "reducedMotion": "disable-animation",
+          "staticFallbackEquivalent": true
+        },
+        "print": {
+          "representation": "generated-svg",
+          "caption": {
+            "segments": [
+              {
+                "kind": "text",
+                "text": "A geometric series repeatedly takes the same fraction. Self-similar interval filling and a shrinking tail."
+              }
+            ]
+          },
+          "grayscaleSafe": true,
+          "pageBreak": "avoid",
+          "widthInches": 7.1
+        },
+        "performance": {
+          "maxSamples": 2048,
+          "maxAdaptiveDepth": 12,
+          "maxAstNodes": 192,
+          "maxAstDepth": 24,
+          "maxOperationsPerEvaluation": 2048,
+          "maxPayloadBytes": 65536,
+          "maxAnimationFps": 30,
+          "activation": "near-viewport"
+        },
+        "requiredCapabilities": [
+          "annotations",
+          "geometry-primitives",
+          "parameter-controls",
+          "static-fallback"
+        ],
+        "selectedRenderer": "bg-interactive-2d",
+        "staticFallback": {
+          "required": true,
+          "rendererId": "static-svg"
+        },
+        "delivery": {
+          "hydration": "near-viewport",
+          "publicFieldsOnly": true
+        },
+        "provenance": {
+          "route": "/subjects/math/calculus/sequences-and-series/geometric-series/",
+          "sourceVisualId": "unit-4a-u4a-geometric-areas",
+          "sourceFingerprint": "bvlp1-05e4cb50",
+          "compilerVersion": "bvlp-compiler-v1",
+          "visibility": "public"
+        }
+      }
+    },
+    {
+      "id": "unit-4a-u4a-telescoping-cancellation",
+      "sourceVisualId": "unit-4a-u4a-telescoping-cancellation",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-4a-u4a-telescoping-cancellation.086a731285a883d0.svg",
+        "sha256": "086a731285a883d095fb0d4c0bdbd2167b00304ad653120a88f53c1456ebd53e",
+        "bytes": 8781,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Interior terms cancel; boundary terms survive"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Interior terms cancel; boundary terms survive. A cancellation chain showing interior terms disappearing while boundary terms remain."
+          }
+        ]
+      },
+      "learningPurpose": "A cancellation chain showing interior terms disappearing while boundary terms remain.",
+      "longDescription": "A finite telescoping partial sum is displayed as shifted positive and negative rows. Matching interior terms cancel, leaving only terms at the two ends. A cancellation chain showing interior terms disappearing while boundary terms remain. Preserve the misconception control described in the lesson and storyboard.",
+      "accessibility": {
+        "ariaLabel": "Interior terms cancel; boundary terms survive. A cancellation chain showing interior terms disappearing while boundary terms remain.",
+        "summary": "A finite telescoping partial sum is displayed as shifted positive and negative rows. Matching interior terms cancel, leaving only terms at the two ends. A cancellation chain showing interior terms disappearing while boundary terms remain. Preserve the misconception control described in the lesson and storyboard.",
+        "readingOrder": [
+          "positive-row",
+          "negative-row",
+          "cancel-0",
+          "cancel-1",
+          "cancel-2",
+          "cancel-3",
+          "cancel-4",
+          "left-boundary",
+          "right-boundary",
+          "finite-first"
+        ],
+        "colorIndependentDescription": "Written labels, distinct line styles, markers, and fill patterns communicate every relationship in interior terms cancel; boundary terms survive; color is never the only cue.",
+        "controlInstructions": [],
+        "reducedMotion": "not-applicable",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-a95de16a",
+      "visibility": "public"
+    },
+    {
+      "id": "unit-4a-u4a-terms-versus-partial-sums",
+      "sourceVisualId": "unit-4a-u4a-terms-versus-partial-sums",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-4a-u4a-terms-versus-partial-sums.5a29a5d52ead75e8.svg",
+        "sha256": "5a29a5d52ead75e8acf415911de4f725cf3dfe20c274836d6bbe8251a7a071e1",
+        "bytes": 23182,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Small terms can still build an unbounded total"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Small terms can still build an unbounded total. Compare shrinking harmonic terms with growing harmonic partial sums."
+          }
+        ]
+      },
+      "learningPurpose": "Compare shrinking harmonic terms with growing harmonic partial sums.",
+      "longDescription": "The terms 1/n decrease toward zero while the corresponding harmonic partial sums continue to rise. Compare shrinking harmonic terms with growing harmonic partial sums. Preserve the misconception control described in the lesson and storyboard.",
+      "accessibility": {
+        "ariaLabel": "Small terms can still build an unbounded total. Compare shrinking harmonic terms with growing harmonic partial sums.",
+        "summary": "The terms 1/n decrease toward zero while the corresponding harmonic partial sums continue to rise. Compare shrinking harmonic terms with growing harmonic partial sums. Preserve the misconception control described in the lesson and storyboard.",
+        "readingOrder": [
+          "harmonic-terms-1",
+          "harmonic-terms-2",
+          "harmonic-terms-3",
+          "harmonic-terms-4",
+          "harmonic-terms-5",
+          "harmonic-terms-6",
+          "harmonic-terms-7",
+          "harmonic-terms-8",
+          "harmonic-terms-9",
+          "harmonic-terms-10",
+          "harmonic-terms-11",
+          "harmonic-terms-12",
+          "harmonic-terms-13",
+          "harmonic-terms-14",
+          "harmonic-terms-15",
+          "harmonic-terms-16",
+          "harmonic-terms-17",
+          "harmonic-terms-18",
+          "harmonic-terms-19",
+          "harmonic-terms-20",
+          "harmonic-sums-1",
+          "harmonic-sums-2",
+          "harmonic-sums-3",
+          "harmonic-sums-4",
+          "harmonic-sums-5",
+          "harmonic-sums-6",
+          "harmonic-sums-7",
+          "harmonic-sums-8",
+          "harmonic-sums-9",
+          "harmonic-sums-10",
+          "harmonic-sums-11",
+          "harmonic-sums-12",
+          "harmonic-sums-13",
+          "harmonic-sums-14",
+          "harmonic-sums-15",
+          "harmonic-sums-16",
+          "harmonic-sums-17",
+          "harmonic-sums-18",
+          "harmonic-sums-19",
+          "harmonic-sums-20",
+          "shrinking-label",
+          "growing-label"
+        ],
+        "colorIndependentDescription": "Written labels, distinct line styles, markers, and fill patterns communicate every relationship in small terms can still build an unbounded total; color is never the only cue.",
+        "controlInstructions": [],
+        "reducedMotion": "not-applicable",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-8681c3ad",
+      "visibility": "public"
+    },
+    {
+      "id": "unit-4a-u4a-p-series-threshold",
+      "sourceVisualId": "unit-4a-u4a-p-series-threshold",
+      "selectedRenderer": "bg-interactive-2d",
+      "hydration": "near-viewport",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-4a-u4a-p-series-threshold.79df387b98812108.svg",
+        "sha256": "79df387b9881210877052f175cc87f2627528d9dd020edf88a311482a04da926",
+        "bytes": 7038,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "The p-series threshold occurs at p equals 1"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "The p-series threshold occurs at p equals 1. Partial sums for p=1/2, p=1, and p=2 on matched axes."
+          }
+        ]
+      },
+      "learningPurpose": "Partial sums for p=1/2, p=1, and p=2 on matched axes.",
+      "longDescription": "Three partial-sum curves show rapid growth for p=1/2, slow unbounded growth for p=1, and leveling for p=2. Partial sums for p=1/2, p=1, and p=2 on matched axes. Preserve the misconception control described in the lesson and storyboard.",
+      "accessibility": {
+        "ariaLabel": "The p-series threshold occurs at p equals 1. Partial sums for p=1/2, p=1, and p=2 on matched axes.",
+        "summary": "Three partial-sum curves show rapid growth for p=1/2, slow unbounded growth for p=1, and leveling for p=2. Partial sums for p=1/2, p=1, and p=2 on matched axes. Preserve the misconception control described in the lesson and storyboard.",
+        "readingOrder": [
+          "p-axis",
+          "threshold",
+          "divergent-zone",
+          "convergent-zone",
+          "selected-p",
+          "diverges",
+          "converges",
+          "p-control"
+        ],
+        "colorIndependentDescription": "Written labels, distinct line styles, markers, and fill patterns communicate every relationship in the p-series threshold occurs at p equals 1; color is never the only cue.",
+        "keyboardInstructions": "Use Tab to reach the bounded control, then use arrow keys to change one value at a time.",
+        "controlInstructions": [
+          "Exponent p"
+        ],
+        "reducedMotion": "disable-animation",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-f48dc50d",
+      "visibility": "public",
+      "interactiveScene": {
+        "compiledSceneVersion": 1,
+        "sourceSpecVersion": 1,
+        "id": "unit-4a-u4a-p-series-threshold",
+        "kind": "geometry-2d",
+        "title": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "The p-series threshold occurs at p equals 1"
+            }
+          ]
+        },
+        "caption": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "The p-series threshold occurs at p equals 1. Partial sums for p=1/2, p=1, and p=2 on matched axes."
+            }
+          ]
+        },
+        "learningPurpose": "Partial sums for p=1/2, p=1, and p=2 on matched axes.",
+        "longDescription": "Three partial-sum curves show rapid growth for p=1/2, slow unbounded growth for p=1, and leveling for p=2. Partial sums for p=1/2, p=1, and p=2 on matched axes. Preserve the misconception control described in the lesson and storyboard.",
+        "coordinateSpace": {
+          "type": "diagram-2d",
+          "variables": [
+            "x",
+            "y"
+          ],
+          "unitsRequired": false
+        },
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.07
+        },
+        "axes": {
+          "mode": "none",
+          "reason": "The labeled diagram carries the instructional structure."
+        },
+        "panels": [],
+        "layers": [
+          {
+            "id": "p-axis",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "double",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Parameter axis for p."
+            },
+            "references": [],
+            "kind": "segment",
+            "geometry": {
+              "start": {
+                "x": 1,
+                "y": 2.5
+              },
+              "end": {
+                "x": 11,
+                "y": 2.5
+              }
+            }
+          },
+          {
+            "id": "threshold",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "double",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Threshold p equals 1."
+            },
+            "references": [],
+            "kind": "segment",
+            "geometry": {
+              "start": {
+                "x": 6,
+                "y": 1.2
+              },
+              "end": {
+                "x": 6,
+                "y": 5.6
+              }
+            }
+          },
+          {
+            "id": "divergent-zone",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-secondary",
+              "fillToken": "visual-secondary",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "dots",
+              "colorIndependentCue": "For p at most 1, the positive p-series diverges."
+            },
+            "references": [],
+            "kind": "polygon",
+            "geometry": {
+              "points": [
+                {
+                  "x": 1,
+                  "y": 1.5
+                },
+                {
+                  "x": 6,
+                  "y": 1.5
+                },
+                {
+                  "x": 6,
+                  "y": 3.5
+                },
+                {
+                  "x": 1,
+                  "y": 3.5
+                }
+              ],
+              "closed": true
+            }
+          },
+          {
+            "id": "convergent-zone",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "fillToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "crosshatch",
+              "colorIndependentCue": "For p greater than 1, the p-series converges."
+            },
+            "references": [],
+            "kind": "polygon",
+            "geometry": {
+              "points": [
+                {
+                  "x": 6,
+                  "y": 1.5
+                },
+                {
+                  "x": 11,
+                  "y": 1.5
+                },
+                {
+                  "x": 11,
+                  "y": 3.5
+                },
+                {
+                  "x": 6,
+                  "y": 3.5
+                }
+              ],
+              "closed": true
+            }
+          },
+          {
+            "id": "selected-p",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "fillToken": "visual-primary",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "none",
+              "colorIndependentCue": "Selected p moves across the threshold."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": {
+                  "type": "add",
+                  "left": {
+                    "type": "multiply",
+                    "left": {
+                      "type": "number",
+                      "value": 2
+                    },
+                    "right": {
+                      "type": "add",
+                      "left": {
+                        "type": "variable",
+                        "name": "p"
+                      },
+                      "right": {
+                        "type": "number",
+                        "value": -1
+                      }
+                    }
+                  },
+                  "right": {
+                    "type": "number",
+                    "value": 1
+                  }
+                },
+                "y": 2.5
+              }
+            }
+          },
+          {
+            "id": "diverges",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Label: p <= 1: diverges."
+            },
+            "references": [],
+            "kind": "label",
+            "geometry": {
+              "position": {
+                "x": 3.5,
+                "y": 4.3
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "p <= 1: diverges"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "converges",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Label: p > 1: converges."
+            },
+            "references": [],
+            "kind": "label",
+            "geometry": {
+              "position": {
+                "x": 8.5,
+                "y": 4.3
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "p > 1: converges"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "controls": [
+          {
+            "id": "p-control",
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "Exponent p"
+                }
+              ]
+            },
+            "announcementTemplate": "The exponent p is {value}; compare its position with the threshold p equals 1.",
+            "kind": "slider",
+            "parameter": "p",
+            "min": 0.5,
+            "max": 2.5,
+            "step": 0.25,
+            "initial": 1
+          }
+        ],
+        "accessibility": {
+          "ariaLabel": "The p-series threshold occurs at p equals 1. Partial sums for p=1/2, p=1, and p=2 on matched axes.",
+          "summary": "Three partial-sum curves show rapid growth for p=1/2, slow unbounded growth for p=1, and leveling for p=2. Partial sums for p=1/2, p=1, and p=2 on matched axes. Preserve the misconception control described in the lesson and storyboard.",
+          "readingOrder": [
+            "p-axis",
+            "threshold",
+            "divergent-zone",
+            "convergent-zone",
+            "selected-p",
+            "diverges",
+            "converges",
+            "p-control"
+          ],
+          "colorIndependentDescription": "Written labels, distinct line styles, markers, and fill patterns communicate every relationship in the p-series threshold occurs at p equals 1; color is never the only cue.",
+          "keyboardInstructions": "Use Tab to reach the bounded control, then use arrow keys to change one value at a time.",
+          "controlInstructions": [
+            "Exponent p"
+          ],
+          "reducedMotion": "disable-animation",
+          "staticFallbackEquivalent": true
+        },
+        "print": {
+          "representation": "generated-svg",
+          "caption": {
+            "segments": [
+              {
+                "kind": "text",
+                "text": "The p-series threshold occurs at p equals 1. Partial sums for p=1/2, p=1, and p=2 on matched axes."
+              }
+            ]
+          },
+          "grayscaleSafe": true,
+          "pageBreak": "avoid",
+          "widthInches": 7.1
+        },
+        "performance": {
+          "maxSamples": 2048,
+          "maxAdaptiveDepth": 12,
+          "maxAstNodes": 192,
+          "maxAstDepth": 24,
+          "maxOperationsPerEvaluation": 2048,
+          "maxPayloadBytes": 65536,
+          "maxAnimationFps": 30,
+          "activation": "near-viewport"
+        },
+        "requiredCapabilities": [
+          "annotations",
+          "geometry-primitives",
+          "open-closed-points",
+          "parameter-controls",
+          "static-fallback"
+        ],
+        "selectedRenderer": "bg-interactive-2d",
+        "staticFallback": {
+          "required": true,
+          "rendererId": "static-svg"
+        },
+        "delivery": {
+          "hydration": "near-viewport",
+          "publicFieldsOnly": true
+        },
+        "provenance": {
+          "route": "/subjects/math/calculus/sequences-and-series/harmonic-and-p-series/",
+          "sourceVisualId": "unit-4a-u4a-p-series-threshold",
+          "sourceFingerprint": "bvlp1-f48dc50d",
+          "compilerVersion": "bvlp-compiler-v1",
+          "visibility": "public"
+        }
+      }
+    },
+    {
+      "id": "unit-4a-u4a-integral-test-rectangles",
+      "sourceVisualId": "unit-4a-u4a-integral-test-rectangles",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-4a-u4a-integral-test-rectangles.4ab744fb97494d4c.svg",
+        "sha256": "4ab744fb97494d4c9e0dae18d98d1504a90070c3264ac15674da4c31e60397f6",
+        "bytes": 14870,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Decreasing rectangles trap the integral tail"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Decreasing rectangles trap the integral tail. Decreasing curve with left and right rectangles bracketing the tail."
+          }
+        ]
+      },
+      "learningPurpose": "Decreasing curve with left and right rectangles bracketing the tail.",
+      "longDescription": "A positive decreasing curve is shown with unit-width rectangles. Right-endpoint rectangles lie below the curve and left-endpoint rectangles lie above it. Decreasing curve with left and right rectangles bracketing the tail. Preserve the misconception control described in the lesson and storyboard.",
+      "accessibility": {
+        "ariaLabel": "Decreasing rectangles trap the integral tail. Decreasing curve with left and right rectangles bracketing the tail.",
+        "summary": "A positive decreasing curve is shown with unit-width rectangles. Right-endpoint rectangles lie below the curve and left-endpoint rectangles lie above it. Decreasing curve with left and right rectangles bracketing the tail. Preserve the misconception control described in the lesson and storyboard.",
+        "readingOrder": [
+          "decreasing-curve",
+          "right-rectangle-1",
+          "right-rectangle-2",
+          "right-rectangle-3",
+          "right-rectangle-4",
+          "right-rectangle-5",
+          "right-rectangle-6",
+          "rectangle-trap"
+        ],
+        "colorIndependentDescription": "Written labels, distinct line styles, markers, and fill patterns communicate every relationship in decreasing rectangles trap the integral tail; color is never the only cue.",
+        "controlInstructions": [],
+        "reducedMotion": "not-applicable",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-5099ec7d",
+      "visibility": "public"
+    },
+    {
+      "id": "unit-4a-u4a-integral-test",
+      "sourceVisualId": "unit-4a-u4a-integral-test",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-4a-u4a-integral-test.6c10a6c16d608a1e.svg",
+        "sha256": "6c10a6c16d608a1ee54f1d97167a954c502e4ee33d500a98ea4e5c70d1da8b57",
+        "bytes": 16526,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Series terms and areas under a decreasing curve"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Series terms and areas under a decreasing curve. Decreasing curve with left and right rectangles bracketing the tail."
+          }
+        ]
+      },
+      "learningPurpose": "Decreasing curve with left and right rectangles bracketing the tail.",
+      "longDescription": "For a positive decreasing function, the rectangles associated with f(n) can be compared directly with the improper integral under f(x). Decreasing curve with left and right rectangles bracketing the tail. Preserve the misconception control described in the lesson and storyboard.",
+      "accessibility": {
+        "ariaLabel": "Series terms and areas under a decreasing curve. Decreasing curve with left and right rectangles bracketing the tail.",
+        "summary": "For a positive decreasing function, the rectangles associated with f(n) can be compared directly with the improper integral under f(x). Decreasing curve with left and right rectangles bracketing the tail. Preserve the misconception control described in the lesson and storyboard.",
+        "readingOrder": [
+          "tail-area",
+          "integral-curve",
+          "series-terms-1",
+          "series-terms-2",
+          "series-terms-3",
+          "series-terms-4",
+          "series-terms-5",
+          "series-terms-6",
+          "series-terms-7",
+          "series-terms-8",
+          "tail-start",
+          "same-tail"
+        ],
+        "colorIndependentDescription": "Written labels, distinct line styles, markers, and fill patterns communicate every relationship in series terms and areas under a decreasing curve; color is never the only cue.",
+        "controlInstructions": [],
+        "reducedMotion": "not-applicable",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-1f0a806e",
+      "visibility": "public"
+    },
+    {
+      "id": "unit-4a-u4a-alternating-brackets",
+      "sourceVisualId": "unit-4a-u4a-alternating-brackets",
+      "selectedRenderer": "bg-interactive-2d",
+      "hydration": "near-viewport",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-4a-u4a-alternating-brackets.9e67fda769a91ea3.svg",
+        "sha256": "9e67fda769a91ea33fa8e7879634175ab8f3553697204e04acb12be41b3dc1a1",
+        "bytes": 7679,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Alternating partial sums form shrinking brackets"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Alternating partial sums form shrinking brackets. Odd and even partial sums nesting around a common limit."
+          }
+        ]
+      },
+      "learningPurpose": "Odd and even partial sums nesting around a common limit.",
+      "longDescription": "Odd and even partial sums lie on opposite sides of the limit and the distance between them equals the next term magnitude. Odd and even partial sums nesting around a common limit. Preserve the misconception control described in the lesson and storyboard.",
+      "accessibility": {
+        "ariaLabel": "Alternating partial sums form shrinking brackets. Odd and even partial sums nesting around a common limit.",
+        "summary": "Odd and even partial sums lie on opposite sides of the limit and the distance between them equals the next term magnitude. Odd and even partial sums nesting around a common limit. Preserve the misconception control described in the lesson and storyboard.",
+        "readingOrder": [
+          "number-line",
+          "limit",
+          "odd-bracket",
+          "even-bracket",
+          "bracket",
+          "odd-label",
+          "even-label",
+          "next-term",
+          "alternating-control"
+        ],
+        "colorIndependentDescription": "Written labels, distinct line styles, markers, and fill patterns communicate every relationship in alternating partial sums form shrinking brackets; color is never the only cue.",
+        "keyboardInstructions": "Use Tab to reach the bounded control, then use arrow keys to change one value at a time.",
+        "controlInstructions": [
+          "Number of alternating terms"
+        ],
+        "reducedMotion": "disable-animation",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-372834eb",
+      "visibility": "public",
+      "interactiveScene": {
+        "compiledSceneVersion": 1,
+        "sourceSpecVersion": 1,
+        "id": "unit-4a-u4a-alternating-brackets",
+        "kind": "geometry-2d",
+        "title": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "Alternating partial sums form shrinking brackets"
+            }
+          ]
+        },
+        "caption": {
+          "segments": [
+            {
+              "kind": "text",
+              "text": "Alternating partial sums form shrinking brackets. Odd and even partial sums nesting around a common limit."
+            }
+          ]
+        },
+        "learningPurpose": "Odd and even partial sums nesting around a common limit.",
+        "longDescription": "Odd and even partial sums lie on opposite sides of the limit and the distance between them equals the next term magnitude. Odd and even partial sums nesting around a common limit. Preserve the misconception control described in the lesson and storyboard.",
+        "coordinateSpace": {
+          "type": "diagram-2d",
+          "variables": [
+            "x",
+            "y"
+          ],
+          "unitsRequired": false
+        },
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 6,
+          "aspectRatio": 1.72,
+          "padding": 0.07
+        },
+        "axes": {
+          "mode": "none",
+          "reason": "The labeled diagram carries the instructional structure."
+        },
+        "panels": [],
+        "layers": [
+          {
+            "id": "number-line",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "double",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Number line for partial sums."
+            },
+            "references": [],
+            "kind": "segment",
+            "geometry": {
+              "start": {
+                "x": 1,
+                "y": 2.7
+              },
+              "end": {
+                "x": 11,
+                "y": 2.7
+              }
+            }
+          },
+          {
+            "id": "limit",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "fillToken": "visual-primary",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "none",
+              "colorIndependentCue": "The limit lies between odd and even partial sums."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 6,
+                "y": 2.7
+              }
+            }
+          },
+          {
+            "id": "odd-bracket",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-emphasis",
+              "fillToken": "visual-emphasis",
+              "lineStyle": "solid",
+              "markerShape": "circle",
+              "pattern": "none",
+              "colorIndependentCue": "Odd partial sum endpoint."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": {
+                  "type": "add",
+                  "left": {
+                    "type": "divide",
+                    "left": {
+                      "type": "number",
+                      "value": -4
+                    },
+                    "right": {
+                      "type": "variable",
+                      "name": "p"
+                    }
+                  },
+                  "right": {
+                    "type": "number",
+                    "value": 6
+                  }
+                },
+                "y": 2.7
+              }
+            }
+          },
+          {
+            "id": "even-bracket",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-secondary",
+              "fillToken": "visual-secondary",
+              "lineStyle": "solid",
+              "markerShape": "square",
+              "pattern": "none",
+              "colorIndependentCue": "Even partial sum endpoint."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": {
+                  "type": "add",
+                  "left": {
+                    "type": "divide",
+                    "left": {
+                      "type": "number",
+                      "value": 4
+                    },
+                    "right": {
+                      "type": "variable",
+                      "name": "p"
+                    }
+                  },
+                  "right": {
+                    "type": "number",
+                    "value": 6
+                  }
+                },
+                "y": 2.7
+              }
+            }
+          },
+          {
+            "id": "bracket",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-primary",
+              "lineStyle": "double",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "The bracket width shrinks with the next term magnitude."
+            },
+            "references": [],
+            "kind": "segment",
+            "geometry": {
+              "start": {
+                "x": {
+                  "type": "add",
+                  "left": {
+                    "type": "divide",
+                    "left": {
+                      "type": "number",
+                      "value": -4
+                    },
+                    "right": {
+                      "type": "variable",
+                      "name": "p"
+                    }
+                  },
+                  "right": {
+                    "type": "number",
+                    "value": 6
+                  }
+                },
+                "y": 1.8
+              },
+              "end": {
+                "x": {
+                  "type": "add",
+                  "left": {
+                    "type": "divide",
+                    "left": {
+                      "type": "number",
+                      "value": 4
+                    },
+                    "right": {
+                      "type": "variable",
+                      "name": "p"
+                    }
+                  },
+                  "right": {
+                    "type": "number",
+                    "value": 6
+                  }
+                },
+                "y": 1.8
+              }
+            }
+          },
+          {
+            "id": "odd-label",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Label: odd partial sums."
+            },
+            "references": [],
+            "kind": "label",
+            "geometry": {
+              "position": {
+                "x": 2.8,
+                "y": 3.6
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "odd partial sums"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "even-label",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Label: even partial sums."
+            },
+            "references": [],
+            "kind": "label",
+            "geometry": {
+              "position": {
+                "x": 9.2,
+                "y": 3.6
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "even partial sums"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "next-term",
+            "visible": true,
+            "zIndex": 0,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Annotation: Adding terms tightens a certified bracket around the limit.."
+            },
+            "references": [],
+            "kind": "annotation",
+            "geometry": {
+              "anchor": {
+                "x": 6,
+                "y": 5.1
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "Adding terms tightens a certified bracket around the limit."
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "controls": [
+          {
+            "id": "alternating-control",
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "Number of alternating terms"
+                }
+              ]
+            },
+            "announcementTemplate": "After {value} terms, the odd and even partial sums form a narrower bracket.",
+            "kind": "slider",
+            "parameter": "p",
+            "min": 2,
+            "max": 10,
+            "step": 1,
+            "initial": 4
+          }
+        ],
+        "accessibility": {
+          "ariaLabel": "Alternating partial sums form shrinking brackets. Odd and even partial sums nesting around a common limit.",
+          "summary": "Odd and even partial sums lie on opposite sides of the limit and the distance between them equals the next term magnitude. Odd and even partial sums nesting around a common limit. Preserve the misconception control described in the lesson and storyboard.",
+          "readingOrder": [
+            "number-line",
+            "limit",
+            "odd-bracket",
+            "even-bracket",
+            "bracket",
+            "odd-label",
+            "even-label",
+            "next-term",
+            "alternating-control"
+          ],
+          "colorIndependentDescription": "Written labels, distinct line styles, markers, and fill patterns communicate every relationship in alternating partial sums form shrinking brackets; color is never the only cue.",
+          "keyboardInstructions": "Use Tab to reach the bounded control, then use arrow keys to change one value at a time.",
+          "controlInstructions": [
+            "Number of alternating terms"
+          ],
+          "reducedMotion": "disable-animation",
+          "staticFallbackEquivalent": true
+        },
+        "print": {
+          "representation": "generated-svg",
+          "caption": {
+            "segments": [
+              {
+                "kind": "text",
+                "text": "Alternating partial sums form shrinking brackets. Odd and even partial sums nesting around a common limit."
+              }
+            ]
+          },
+          "grayscaleSafe": true,
+          "pageBreak": "avoid",
+          "widthInches": 7.1
+        },
+        "performance": {
+          "maxSamples": 2048,
+          "maxAdaptiveDepth": 12,
+          "maxAstNodes": 192,
+          "maxAstDepth": 24,
+          "maxOperationsPerEvaluation": 2048,
+          "maxPayloadBytes": 65536,
+          "maxAnimationFps": 30,
+          "activation": "near-viewport"
+        },
+        "requiredCapabilities": [
+          "annotations",
+          "geometry-primitives",
+          "open-closed-points",
+          "parameter-controls",
+          "static-fallback"
+        ],
+        "selectedRenderer": "bg-interactive-2d",
+        "staticFallback": {
+          "required": true,
+          "rendererId": "static-svg"
+        },
+        "delivery": {
+          "hydration": "near-viewport",
+          "publicFieldsOnly": true
+        },
+        "provenance": {
+          "route": "/subjects/math/calculus/sequences-and-series/alternating-series-test/",
+          "sourceVisualId": "unit-4a-u4a-alternating-brackets",
+          "sourceFingerprint": "bvlp1-372834eb",
+          "compilerVersion": "bvlp-compiler-v1",
+          "visibility": "public"
+        }
+      }
+    },
+    {
+      "id": "unit-4a-u4a-alternating-partial-sums",
+      "sourceVisualId": "unit-4a-u4a-alternating-partial-sums",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-4a-u4a-alternating-partial-sums.48fe62afdf4d54b1.svg",
+        "sha256": "48fe62afdf4d54b155a2ad7a805e96546985affcca06d2965b1f52aef7aa0343",
+        "bytes": 15512,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Alternating partial sums bracket the limit"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Alternating partial sums bracket the limit. Odd and even partial sums nesting around a common limit."
+          }
+        ]
+      },
+      "learningPurpose": "Odd and even partial sums nesting around a common limit.",
+      "longDescription": "When alternating term magnitudes decrease to zero, odd and even partial sums approach the same value from opposite sides. Odd and even partial sums nesting around a common limit. Preserve the misconception control described in the lesson and storyboard.",
+      "accessibility": {
+        "ariaLabel": "Alternating partial sums bracket the limit. Odd and even partial sums nesting around a common limit.",
+        "summary": "When alternating term magnitudes decrease to zero, odd and even partial sums approach the same value from opposite sides. Odd and even partial sums nesting around a common limit. Preserve the misconception control described in the lesson and storyboard.",
+        "readingOrder": [
+          "alternating-sums-1",
+          "alternating-sums-2",
+          "alternating-sums-3",
+          "alternating-sums-4",
+          "alternating-sums-5",
+          "alternating-sums-6",
+          "alternating-sums-7",
+          "alternating-sums-8",
+          "alternating-sums-9",
+          "alternating-sums-10",
+          "alternating-sums-11",
+          "alternating-sums-12",
+          "alternating-limit",
+          "opposite-sides"
+        ],
+        "colorIndependentDescription": "Written labels, distinct line styles, markers, and fill patterns communicate every relationship in alternating partial sums bracket the limit; color is never the only cue.",
+        "controlInstructions": [],
+        "reducedMotion": "not-applicable",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-3f00f524",
+      "visibility": "public"
+    },
+    {
+      "id": "unit-4a-u4a-ratio-geometric-decay",
+      "sourceVisualId": "unit-4a-u4a-ratio-geometric-decay",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-4a-u4a-ratio-geometric-decay.c9dc139e1124dc90.svg",
+        "sha256": "c9dc139e1124dc90109d488259bad4004bae061a6817b0eaa01f55b7fa989343",
+        "bytes": 15991,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "A ratio below one creates geometric domination"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "A ratio below one creates geometric domination. Successive term bars shrinking by an approximately fixed factor."
+          }
+        ]
+      },
+      "learningPurpose": "Successive term bars shrinking by an approximately fixed factor.",
+      "longDescription": "Successive term magnitudes are shown decreasing by a factor bounded above by a fixed number r less than one. Successive term bars shrinking by an approximately fixed factor. Preserve the misconception control described in the lesson and storyboard.",
+      "accessibility": {
+        "ariaLabel": "A ratio below one creates geometric domination. Successive term bars shrinking by an approximately fixed factor.",
+        "summary": "Successive term magnitudes are shown decreasing by a factor bounded above by a fixed number r less than one. Successive term bars shrinking by an approximately fixed factor. Preserve the misconception control described in the lesson and storyboard.",
+        "readingOrder": [
+          "ratio-terms-1",
+          "ratio-terms-2",
+          "ratio-terms-3",
+          "ratio-terms-4",
+          "ratio-terms-5",
+          "ratio-terms-6",
+          "ratio-terms-7",
+          "ratio-terms-8",
+          "ratio-terms-9",
+          "ratio-terms-10",
+          "ratio-terms-11",
+          "ratio-terms-12",
+          "geometric-envelope",
+          "ratio-domination"
+        ],
+        "colorIndependentDescription": "Written labels, distinct line styles, markers, and fill patterns communicate every relationship in a ratio below one creates geometric domination; color is never the only cue.",
+        "controlInstructions": [],
+        "reducedMotion": "not-applicable",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-ed32588a",
+      "visibility": "public"
+    },
+    {
+      "id": "unit-4a-u4a-test-selection-tree",
+      "sourceVisualId": "unit-4a-u4a-test-selection-tree",
+      "selectedRenderer": "static-svg",
+      "hydration": "none",
+      "staticAsset": {
+        "path": "/visuals/v1/unit-4a-u4a-test-selection-tree.41164baefdc7070a.svg",
+        "sha256": "41164baefdc7070ac19755b2b05f99d6f5ee1768c93081a4d50f581204c6fb7e",
+        "bytes": 13233,
+        "width": 960,
+        "height": 558
+      },
+      "title": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Choose a convergence test from the series structure"
+          }
+        ]
+      },
+      "caption": {
+        "segments": [
+          {
+            "kind": "text",
+            "text": "Choose a convergence test from the series structure. A decision tree beginning with the term test and branching by structure."
+          }
+        ]
+      },
+      "learningPurpose": "A decision tree beginning with the term test and branching by structure.",
+      "longDescription": "A flowchart begins with the term limit, then branches to geometric, telescoping, positive-term comparison, alternating, factorial, and nth-power structures. A decision tree beginning with the term test and branching by structure. Preserve the misconception control described in the lesson and storyboard.",
+      "accessibility": {
+        "ariaLabel": "Choose a convergence test from the series structure. A decision tree beginning with the term test and branching by structure.",
+        "summary": "A flowchart begins with the term limit, then branches to geometric, telescoping, positive-term comparison, alternating, factorial, and nth-power structures. A decision tree beginning with the term test and branching by structure. Preserve the misconception control described in the lesson and storyboard.",
+        "readingOrder": [
+          "start",
+          "start-label",
+          "branch-0",
+          "branch-label-0",
+          "branch-line-0",
+          "branch-1",
+          "branch-label-1",
+          "branch-line-1",
+          "branch-2",
+          "branch-label-2",
+          "branch-line-2",
+          "method-0",
+          "method-label-0",
+          "method-line-0",
+          "method-1",
+          "method-label-1",
+          "method-line-1",
+          "method-2",
+          "method-label-2",
+          "method-line-2",
+          "decision-warning"
+        ],
+        "colorIndependentDescription": "Written labels, distinct line styles, markers, and fill patterns communicate every relationship in choose a convergence test from the series structure; color is never the only cue.",
+        "controlInstructions": [],
+        "reducedMotion": "not-applicable",
+        "staticFallbackEquivalent": true
+      },
+      "sourceFingerprint": "bvlp1-32b288fe",
+      "visibility": "public"
+    }
+  ]
+}

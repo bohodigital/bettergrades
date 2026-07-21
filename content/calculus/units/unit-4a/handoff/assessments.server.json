@@ -1,0 +1,424 @@
+{
+  "schema_version": "3.0.0",
+  "unit_id": "calc-2-unit-4a-sequences-infinite-series",
+  "assessments": [
+    {
+      "assessment_id": "u4a-sequences_as_functions-01",
+      "canonical_answer": "5/6",
+      "accepted_answers": [
+        "5/6"
+      ],
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "hint_latex": "Substitute \\(n=5\\) into the rule.",
+      "solution_latex": "\\[a_5=\\frac{5}{5+1}=\\frac56.\\]",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u4a-sequences_as_functions-01"
+    },
+    {
+      "assessment_id": "u4a-explicit_and_recursive_sequences-01",
+      "canonical_answer": "19",
+      "accepted_answers": [
+        "19"
+      ],
+      "validator": "exact-integer",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "hint_latex": "Apply the update four times or use the explicit formula.",
+      "solution_latex": "\\[a_5=3+4(4)=19.\\]",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u4a-explicit_and_recursive_sequences-01"
+    },
+    {
+      "assessment_id": "u4a-limits_of_sequences-01",
+      "canonical_answer": "1",
+      "accepted_answers": [
+        "1"
+      ],
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "hint_latex": "Divide numerator and denominator by \\(n\\).",
+      "solution_latex": "\\[\\frac{n}{n+1}=\\frac{1}{1+1/n}\\to1.\\]",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u4a-limits_of_sequences-01"
+    },
+    {
+      "assessment_id": "u4a-sequence_limit_laws-01",
+      "canonical_answer": "3",
+      "accepted_answers": [
+        "3"
+      ],
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "hint_latex": "Divide by \\(n^2\\).",
+      "solution_latex": "\\[\\frac{3-1/n^2}{1+5/n^2}\\to3.\\]",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u4a-sequence_limit_laws-01"
+    },
+    {
+      "assessment_id": "u4a-squeeze_theorem_for_sequences-01",
+      "canonical_answer": "0",
+      "accepted_answers": [
+        "0"
+      ],
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "hint_latex": "Use \\(|\\sin n|\\le1\\).",
+      "solution_latex": "\\[\\left|\\frac{\\sin n}{n}\\right|\\le\\frac1n\\to0,\\quad\\text{so the limit is }0.\\]",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u4a-squeeze_theorem_for_sequences-01"
+    },
+    {
+      "assessment_id": "u4a-monotone_and_bounded_sequences-01",
+      "canonical_answer": "1",
+      "accepted_answers": [
+        "1"
+      ],
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "hint_latex": "The sequence is increasing and bounded above by \\(1\\); direct algebra also reveals the value.",
+      "solution_latex": "\\[1-\\frac1n\\to1.\\]",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u4a-monotone_and_bounded_sequences-01"
+    },
+    {
+      "assessment_id": "u4a-infinite_series_and_partial_sums-01",
+      "canonical_answer": "7/8",
+      "accepted_answers": [
+        "7/8"
+      ],
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "hint_latex": "Add the first three terms.",
+      "solution_latex": "\\[s_3=\\frac12+\\frac14+\\frac18=\\frac78.\\]",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u4a-infinite_series_and_partial_sums-01"
+    },
+    {
+      "assessment_id": "u4a-geometric_series-01",
+      "canonical_answer": "6",
+      "accepted_answers": [
+        "6"
+      ],
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "hint_latex": "Use \\(a/(1-r)\\).",
+      "solution_latex": "\\[\\frac{3}{1-1/2}=6.\\]",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u4a-geometric_series-01"
+    },
+    {
+      "assessment_id": "u4a-telescoping_series-01",
+      "canonical_answer": "1",
+      "accepted_answers": [
+        "1"
+      ],
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "hint_latex": "Use \\(1/[n(n+1)]=1/n-1/(n+1)\\).",
+      "solution_latex": "The partial sum is \\(1-1/(N+1)\\), which approaches \\(1\\).",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u4a-telescoping_series-01"
+    },
+    {
+      "assessment_id": "u4a-nth_term_divergence_test-01",
+      "canonical_answer": "diverges",
+      "accepted_answers": [
+        "diverges"
+      ],
+      "validator": "exact-choice",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "hint_latex": "First examine the limit of the term.",
+      "solution_latex": "Because \\(n/(n+1)\\to1\\ne0\\), the series diverges.",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u4a-nth_term_divergence_test-01"
+    },
+    {
+      "assessment_id": "u4a-harmonic_and_p_series-01",
+      "canonical_answer": "converges",
+      "accepted_answers": [
+        "converges"
+      ],
+      "validator": "exact-choice",
+      "equivalence_policy": "symbolic-with-declared-variables",
+      "tolerance": null,
+      "hint_latex": "Identify the exponent \\(p\\).",
+      "solution_latex": "Here \\(p=3/2>1\\), so the series converges.",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u4a-harmonic_and_p_series-01"
+    },
+    {
+      "assessment_id": "u4a-integral_test-01",
+      "canonical_answer": "converges",
+      "accepted_answers": [
+        "converges"
+      ],
+      "validator": "exact-choice",
+      "equivalence_policy": "symbolic-with-declared-variables",
+      "tolerance": null,
+      "hint_latex": "Compare with \\(\\int_1^{\\infty}x^{-2}\\,dx\\).",
+      "solution_latex": "The improper integral equals \\(1\\), so the series converges.",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u4a-integral_test-01"
+    },
+    {
+      "assessment_id": "u4a-integral_test_remainder_estimates-01",
+      "canonical_answer": "1/(2*N^2)",
+      "accepted_answers": [
+        "1/(2*N^2)"
+      ],
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "symbolic-with-declared-variables",
+      "tolerance": null,
+      "hint_latex": "Integrate \\(x^{-3}\\) from \\(N\\) to infinity.",
+      "solution_latex": "\\[R_N\\le\\int_N^{\\infty}x^{-3}\\,dx=\\frac1{2N^2}.\\]",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u4a-integral_test_remainder_estimates-01"
+    },
+    {
+      "assessment_id": "u4a-direct_comparison_test-01",
+      "canonical_answer": "converges",
+      "accepted_answers": [
+        "converges"
+      ],
+      "validator": "exact-choice",
+      "equivalence_policy": "symbolic-with-declared-variables",
+      "tolerance": null,
+      "hint_latex": "Compare termwise with \\(1/n^2\\).",
+      "solution_latex": "The terms are smaller than those of the convergent \\(p=2\\) series, so it converges.",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u4a-direct_comparison_test-01"
+    },
+    {
+      "assessment_id": "u4a-limit_comparison_test-01",
+      "canonical_answer": "3",
+      "accepted_answers": [
+        "3"
+      ],
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "hint_latex": "Multiply \\(a_n\\) by \\(n^2\\) and compare highest powers.",
+      "solution_latex": "The ratio approaches \\(3\\).",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u4a-limit_comparison_test-01"
+    },
+    {
+      "assessment_id": "u4a-alternating_series_test-01",
+      "canonical_answer": "converges",
+      "accepted_answers": [
+        "converges"
+      ],
+      "validator": "exact-choice",
+      "equivalence_policy": "symbolic-with-declared-variables",
+      "tolerance": null,
+      "hint_latex": "Check decreasing magnitudes and the limit of \\(1/n\\).",
+      "solution_latex": "Yes. The magnitudes decrease to zero, so the Alternating Series Test applies.",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u4a-alternating_series_test-01"
+    },
+    {
+      "assessment_id": "u4a-alternating_series_error-01",
+      "canonical_answer": "1/(N+1)",
+      "accepted_answers": [
+        "1/(N+1)"
+      ],
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "symbolic-with-declared-variables",
+      "tolerance": null,
+      "hint_latex": "Use the magnitude of the first omitted term.",
+      "solution_latex": "\\[|S-s_N|\\le\\frac1{N+1}.\\]",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u4a-alternating_series_error-01"
+    },
+    {
+      "assessment_id": "u4a-absolute_and_conditional_convergence-01",
+      "canonical_answer": "conditional",
+      "accepted_answers": [
+        "conditional"
+      ],
+      "validator": "exact-choice",
+      "equivalence_policy": "symbolic-with-declared-variables",
+      "tolerance": null,
+      "hint_latex": "First test the alternating series, then test the absolute-value series.",
+      "solution_latex": "It converges by alternation, but \\(\\sum1/n\\) diverges, so convergence is conditional.",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u4a-absolute_and_conditional_convergence-01"
+    },
+    {
+      "assessment_id": "u4a-ratio_test-01",
+      "canonical_answer": "0",
+      "accepted_answers": [
+        "0"
+      ],
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "hint_latex": "Cancel \\(3^n\\) and \\(n!\\).",
+      "solution_latex": "\\[\\frac3{n+1}\\to0.\\]",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u4a-ratio_test-01"
+    },
+    {
+      "assessment_id": "u4a-root_test-01",
+      "canonical_answer": "2/3",
+      "accepted_answers": [
+        "2/3"
+      ],
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "hint_latex": "The nth root cancels the outer power.",
+      "solution_latex": "\\[\\sqrt[n]{a_n}=\\frac{2n+1}{3n+2}\\to\\frac23.\\]",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u4a-root_test-01"
+    },
+    {
+      "assessment_id": "u4a-choosing_a_convergence_test-01",
+      "canonical_answer": "ratio",
+      "accepted_answers": [
+        "ratio"
+      ],
+      "validator": "exact-choice",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "hint_latex": "Look for factorials and consecutive-term cancellation.",
+      "solution_latex": "The Ratio Test is the natural choice.",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u4a-choosing_a_convergence_test-01"
+    },
+    {
+      "assessment_id": "u4a-cauchy_criterion_preview-01",
+      "canonical_answer": "r^m/(1-r)",
+      "accepted_answers": [
+        "r^m/(1-r)"
+      ],
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "hint_latex": "Use the first-term-over-one-minus-ratio formula.",
+      "solution_latex": "\\[r^m+r^{m+1}+\\cdots=\\frac{r^m}{1-r}.\\]",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u4a-cauchy_criterion_preview-01"
+    }
+  ]
+}
