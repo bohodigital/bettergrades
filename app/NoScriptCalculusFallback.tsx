@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element -- immutable BVLP SVGs are the no-script fallback assets */
 
-import katex from "katex";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
@@ -81,16 +80,47 @@ function normalizeTex(value: string): string {
     .trim();
 }
 
-function StaticMath({ value, display = false }: { value: string; display?: boolean }) {
-  let rendered: string | undefined;
-  try {
-    rendered = katex.renderToString(normalizeTex(value), { displayMode: display, throwOnError: true, strict: "error", trust: false });
-  } catch {
-    rendered = undefined;
+function readableMath(value: string): string {
+  let result = normalizeTex(value)
+    .replace(/\\begin\{[^}]+\}/g, " ")
+    .replace(/\\end\{[^}]+\}/g, " ");
+  for (let index = 0; index < 12; index += 1) {
+    const previous = result;
+    result = result
+      .replace(/\\frac\{([^{}]*)\}\{([^{}]*)\}/g, "($1) / ($2)")
+      .replace(/\\sqrt\[([^\]]+)\]\{([^{}]*)\}/g, "root[$1]($2)")
+      .replace(/\\sqrt\{([^{}]*)\}/g, "√($1)")
+      .replace(/\\(?:text|textrm|textsf|mathrm|mathbf|mathit|operatorname)\{([^{}]*)\}/g, "$1")
+      .replace(/\^\{([^{}]*)\}/g, "^($1)")
+      .replace(/_\{([^{}]*)\}/g, "_($1)");
+    if (result === previous) break;
   }
-  return rendered
-    ? <span className={display ? "latex latex-display" : "latex latex-inline"} dangerouslySetInnerHTML={{ __html: rendered }} />
-    : <span className="no-script-math-text">{cleanText(value).replace(/\\[A-Za-z]+/g, "").replace(/[{}]/g, "")}</span>;
+  const symbols: Record<string, string> = {
+    alpha: "α", beta: "β", gamma: "γ", delta: "δ", epsilon: "ε", varepsilon: "ε",
+    theta: "θ", lambda: "λ", mu: "μ", pi: "π", sigma: "σ", phi: "φ", omega: "ω",
+    Gamma: "Γ", Delta: "Δ", Sigma: "Σ", Pi: "Π", infinity: "∞", infty: "∞",
+    sum: "Σ", prod: "Π", int: "∫", oint: "∮", partial: "∂", nabla: "∇",
+    to: "→", rightarrow: "→", longrightarrow: "→", leftarrow: "←", leftrightarrow: "↔",
+    implies: "⇒", Rightarrow: "⇒", iff: "⇔", Leftrightarrow: "⇔",
+    le: "≤", leq: "≤", ge: "≥", geq: "≥", neq: "≠", approx: "≈", sim: "∼",
+    cdot: "·", times: "×", div: "÷", pm: "±", mp: "∓", circ: "°",
+    cup: "∪", cap: "∩", in: "∈", notin: "∉", subset: "⊂", subseteq: "⊆",
+    forall: "∀", exists: "∃", therefore: "∴", because: "∵", DNE: "DNE",
+  };
+  result = result
+    .replace(/\\(?:left|right|big|Big|bigg|Bigg)\b/g, "")
+    .replace(/\\(?:quad|qquad|enspace|medspace|thinspace)\b/g, " ")
+    .replace(/\\[,;:!]/g, " ")
+    .replace(/\\([A-Za-z]+)/g, (_, command: string) => symbols[command] ?? command)
+    .replace(/\\\\/g, "; ")
+    .replace(/[{}]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+  return result || "Mathematical expression";
+}
+
+function StaticMath({ value, display = false }: { value: string; display?: boolean }) {
+  return <span className={display ? "no-script-math-text no-script-math-display" : "no-script-math-text"}>{readableMath(value)}</span>;
 }
 
 function RichText({ value }: { value: string }) {
