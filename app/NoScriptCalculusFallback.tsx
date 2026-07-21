@@ -61,6 +61,10 @@ function cleanText(value: string): string {
     .replace(/\\(?:centering|newpage|clearpage)\b/g, "")
     .replace(/\\(?:cref|Cref|ref|eqref|pageref)\{[^}]*\}/g, "the referenced section")
     .replace(/\\label\{[^}]*\}/g, "")
+    .replace(/\bChapters\b/g, "Units")
+    .replace(/\bChapter\b/g, "Unit")
+    .replace(/\bchapters\b/g, "units")
+    .replace(/\bchapter\b/g, "unit")
     .replace(/\s+/g, " ")
     .trim();
 }
@@ -92,12 +96,13 @@ function StaticMath({ value, display = false }: { value: string; display?: boole
 function RichText({ value }: { value: string }) {
   const cleaned = cleanText(value);
   const pieces: ReactNode[] = [];
-  const expression = /\\\((.+?)\\\)/gs;
+  const expression = /\\\((.+?)\\\)|\\\[([\s\S]*?)\\\]|(?<!\\)\$(?!\$)(.+?)(?<!\\)\$/gs;
   let cursor = 0;
   for (const match of cleaned.matchAll(expression)) {
     const start = match.index ?? 0;
     if (start > cursor) pieces.push(cleaned.slice(cursor, start));
-    pieces.push(<StaticMath value={match[1]} key={`${start}-${match[1]}`} />);
+    const tex = match[1] ?? match[2] ?? match[3];
+    pieces.push(<StaticMath value={tex} display={Boolean(match[2])} key={`${start}-${tex}`} />);
     cursor = start + match[0].length;
   }
   if (cursor < cleaned.length) pieces.push(cleaned.slice(cursor));

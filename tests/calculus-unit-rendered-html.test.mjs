@@ -258,7 +258,7 @@ test("the Unit 4A map leads with the canonical textbook and keeps Unit 4B unpubl
 
 test("calculus lessons include a complete server-only fallback when JavaScript is unavailable", async () => {
   for (const [path, titlePattern] of [
-    ["/subjects/math/calculus/limits-continuity/introduction-to-limits/", /Introduction to limits/i],
+    ["/subjects/math/calculus/limits-continuity/unit/limits/what-a-limit-means/", /What a Limit Means/i],
     ["/subjects/math/calculus/sequences-and-series/geometric-series/", /Geometric series/i],
   ]) {
     const response = await render(path);
