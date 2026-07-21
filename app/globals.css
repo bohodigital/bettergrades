@@ -1331,6 +1331,7 @@ h1 em, h2 em { color: var(--brand); font-family: var(--serif); font-weight: 500;
 }
 
 @media print {
+  .site-footer { display: none !important; }
   .calculus-unit-switcher { display: none !important; }
   .bvlp-visual.is-interactive-ready .bvlp-static-visual { display: block !important; }
   .bvlp-interactive-slot { display: none !important; }
