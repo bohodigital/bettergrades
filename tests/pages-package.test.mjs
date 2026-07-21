@@ -222,6 +222,7 @@ test("limits tables and generated visual fallbacks remain bounded on narrow scre
   assert.match(css, /\.bvlp-long-description summary \{[^}]*min-height: 44px/);
   assert.match(css, /\.limits-graph-exposition \{[^}]*margin-top: 12px;[^}]*border-top:/);
   assert.match(css, /@media print \{[\s\S]*\.site-footer \{[^}]*display: none !important/, "print output must not create navigation-only footer pages");
+  assert.match(css, /@media print \{[\s\S]*\.site-header \{[^}]*position: static !important/, "print output must not repeat the sticky site header across pages");
   assert.match(css, /@media print \{[\s\S]*\.bvlp-visual\.is-interactive-ready \.bvlp-static-visual \{[^}]*display: block !important/);
   assert.match(css, /@media print \{[\s\S]*\.bvlp-interactive-slot \{[^}]*display: none !important/);
   assert.doesNotMatch(css, /\.limits-graph-(?:canvas|spec)\b/);
