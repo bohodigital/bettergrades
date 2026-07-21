@@ -256,6 +256,28 @@ test("the Unit 4A map leads with the canonical textbook and keeps Unit 4B unpubl
   assert.doesNotMatch(html, /power-series-and-taylor-series/);
 });
 
+test("calculus lessons include a complete server-only fallback when JavaScript is unavailable", async () => {
+  for (const [path, titlePattern] of [
+    ["/subjects/math/calculus/limits-continuity/introduction-to-limits/", /Introduction to limits/i],
+    ["/subjects/math/calculus/sequences-and-series/geometric-series/", /Geometric series/i],
+  ]) {
+    const response = await render(path);
+    assert.equal(response.status, 200, path);
+    const html = await response.text();
+    const fallback = html.match(/<noscript>([\s\S]*?)<\/noscript>/)?.[1] ?? "";
+    assert.match(fallback, /data-noscript-calculus-fallback=/, path);
+    assert.match(fallback, titlePattern, path);
+    assert.match(fallback, /JavaScript is off/, path);
+    assert.match(fallback, /class="no-script-lesson"/, path);
+    assert.doesNotMatch(fallback, /canonicalAnswer|acceptedAnswers|sourceFile|type="range"|is-interactive-ready/, path);
+  }
+  const visualResponse = await render("/subjects/math/calculus/sequences-and-series/sequences-as-functions/");
+  const visualHtml = await visualResponse.text();
+  const visualFallback = visualHtml.match(/<noscript>([\s\S]*?)<\/noscript>/)?.[1] ?? "";
+  assert.match(visualFallback, /data-noscript-visual=/);
+  assert.match(visualFallback, /\/visuals\/v1\/[^"']+\.svg/);
+});
+
 test("superseded Chapter 4 duplicate intents redirect to Unit 4A canonical routes", async () => {
   const redirects = new Map([
     ["/subjects/math/calculus/sequences-series/", "/subjects/math/calculus/sequences-and-series/"],
