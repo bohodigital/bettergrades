@@ -1,0 +1,373 @@
+{
+  "schema_version": "3.0.0",
+  "unit_id": "calc-2-unit-4a-sequences-infinite-series",
+  "visual_briefs": [
+    {
+      "title": "The index selects one term at a time",
+      "learning_purpose": "Index-to-term machine plus discrete point graph.",
+      "recommended_renderer": "interactive-2d",
+      "visual_kind": "geometry-2d",
+      "composition": "Index-to-term machine plus discrete point graph.",
+      "interaction": "Step through integer inputs; noninteger inputs visibly produce no term.",
+      "long_description": "A sequence is a function whose allowed inputs are integers. Each input selects one ordered term.",
+      "misconception_control": "Preserve the misconception control described in the lesson and storyboard.",
+      "schema_version": "3.0.0",
+      "visual_id": "u4a-sequence-index-machine",
+      "route_id": "subjects/math/calculus/sequences-and-series/sequences-as-functions",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "interactive-2d",
+        "static-svg-fallback",
+        "keyboard-controls",
+        "reduced-motion"
+      ],
+      "provenance_id": "prov-visual-u4a-sequence-index-machine"
+    },
+    {
+      "title": "A sequence is discrete, not a continuous curve",
+      "learning_purpose": "Index-to-term machine plus discrete point graph.",
+      "recommended_renderer": "static-svg",
+      "visual_kind": "cartesian-2d",
+      "composition": "Index-to-term machine plus discrete point graph.",
+      "interaction": "No runtime interaction required in the first pass.",
+      "long_description": "The points of a sequence occur only at positive integer inputs. A faint guide curve may reveal a pattern, but the curve is not part of the sequence.",
+      "misconception_control": "Preserve the misconception control described in the lesson and storyboard.",
+      "schema_version": "3.0.0",
+      "visual_id": "u4a-sequence-points",
+      "route_id": "subjects/math/calculus/sequences-and-series/sequences-as-functions",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "static-svg",
+        "print-fallback",
+        "long-description"
+      ],
+      "provenance_id": "prov-visual-u4a-sequence-points"
+    },
+    {
+      "title": "One sequence, two descriptions",
+      "learning_purpose": "Side-by-side recurrence chain and direct formula.",
+      "recommended_renderer": "static-svg",
+      "visual_kind": "geometry-2d",
+      "composition": "Side-by-side recurrence chain and direct formula.",
+      "interaction": "No runtime interaction required in the first pass.",
+      "long_description": "The same arithmetic sequence can be generated step by step or evaluated directly.",
+      "misconception_control": "Preserve the misconception control described in the lesson and storyboard.",
+      "schema_version": "3.0.0",
+      "visual_id": "u4a-explicit-recursive-bridge",
+      "route_id": "subjects/math/calculus/sequences-and-series/explicit-and-recursive-sequences",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "static-svg",
+        "print-fallback",
+        "long-description"
+      ],
+      "provenance_id": "prov-visual-u4a-explicit-recursive-bridge"
+    },
+    {
+      "title": "Convergence is eventual trapping",
+      "learning_purpose": "Tolerance band around L with a visible cutoff N.",
+      "recommended_renderer": "interactive-2d",
+      "visual_kind": "cartesian-2d",
+      "composition": "Tolerance band around L with a visible cutoff N.",
+      "interaction": "Adjust epsilon and display a valid cutoff N.",
+      "long_description": "After a cutoff N, all sequence points lie inside an epsilon-band around L.",
+      "misconception_control": "Preserve the misconception control described in the lesson and storyboard.",
+      "schema_version": "3.0.0",
+      "visual_id": "u4a-epsilon-n-band",
+      "route_id": "subjects/math/calculus/sequences-and-series/limits-of-sequences",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "interactive-2d",
+        "static-svg-fallback",
+        "keyboard-controls",
+        "reduced-motion"
+      ],
+      "provenance_id": "prov-visual-u4a-epsilon-n-band"
+    },
+    {
+      "title": "Three ways a sequence can fail to settle",
+      "learning_purpose": "Tolerance band around L with a visible cutoff N.",
+      "recommended_renderer": "static-svg",
+      "visual_kind": "cartesian-2d",
+      "composition": "Tolerance band around L with a visible cutoff N.",
+      "interaction": "No runtime interaction required in the first pass.",
+      "long_description": "A convergent sequence approaches one height. Divergent sequences may oscillate, grow without bound, or wander without approaching one value.",
+      "misconception_control": "Preserve the misconception control described in the lesson and storyboard.",
+      "schema_version": "3.0.0",
+      "visual_id": "u4a-convergence-gallery",
+      "route_id": "subjects/math/calculus/sequences-and-series/limits-of-sequences",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "static-svg",
+        "print-fallback",
+        "long-description"
+      ],
+      "provenance_id": "prov-visual-u4a-convergence-gallery"
+    },
+    {
+      "title": "Monotone plus bounded forces convergence",
+      "learning_purpose": "Increasing staircase beneath a least upper bound.",
+      "recommended_renderer": "interactive-2d",
+      "visual_kind": "cartesian-2d",
+      "composition": "Increasing staircase beneath a least upper bound.",
+      "interaction": "Iterate a recurrence while showing current bound and monotonicity status.",
+      "long_description": "The increasing sequence \\(a_n=1-1/n\\) can never cross its upper bound \\(1\\), so its terms are squeezed into a narrowing vertical range.",
+      "misconception_control": "Preserve the misconception control described in the lesson and storyboard.",
+      "schema_version": "3.0.0",
+      "visual_id": "u4a-monotone-bounded",
+      "route_id": "subjects/math/calculus/sequences-and-series/monotone-and-bounded-sequences",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "interactive-2d",
+        "static-svg-fallback",
+        "keyboard-controls",
+        "reduced-motion"
+      ],
+      "provenance_id": "prov-visual-u4a-monotone-bounded"
+    },
+    {
+      "title": "A series is understood through its partial sums",
+      "learning_purpose": "Term plot paired with running-total plot.",
+      "recommended_renderer": "interactive-2d",
+      "visual_kind": "cartesian-2d",
+      "composition": "Term plot paired with running-total plot.",
+      "interaction": "Toggle between terms and partial sums for the same series.",
+      "long_description": "The terms of a geometric series shrink, while the partial sums climb toward the finite total \\(2\\).",
+      "misconception_control": "Preserve the misconception control described in the lesson and storyboard.",
+      "schema_version": "3.0.0",
+      "visual_id": "u4a-partial-sums",
+      "route_id": "subjects/math/calculus/sequences-and-series/infinite-series-and-partial-sums",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "interactive-2d",
+        "static-svg-fallback",
+        "keyboard-controls",
+        "reduced-motion"
+      ],
+      "provenance_id": "prov-visual-u4a-partial-sums"
+    },
+    {
+      "title": "The remaining tail is a scaled copy",
+      "learning_purpose": "Self-similar interval filling and a shrinking tail.",
+      "recommended_renderer": "static-svg",
+      "visual_kind": "geometry-2d",
+      "composition": "Self-similar interval filling and a shrinking tail.",
+      "interaction": "No runtime interaction required in the first pass.",
+      "long_description": "Lengths one-half, one-quarter, one-eighth, and so on fill a unit interval.",
+      "misconception_control": "Preserve the misconception control described in the lesson and storyboard.",
+      "schema_version": "3.0.0",
+      "visual_id": "u4a-geometric-self-similarity",
+      "route_id": "subjects/math/calculus/sequences-and-series/geometric-series",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "static-svg",
+        "print-fallback",
+        "long-description"
+      ],
+      "provenance_id": "prov-visual-u4a-geometric-self-similarity"
+    },
+    {
+      "title": "A geometric series repeatedly takes the same fraction",
+      "learning_purpose": "Self-similar interval filling and a shrinking tail.",
+      "recommended_renderer": "interactive-2d",
+      "visual_kind": "geometry-2d",
+      "composition": "Self-similar interval filling and a shrinking tail.",
+      "interaction": "Adjust r and show convergence, oscillation, or term growth.",
+      "long_description": "Successive pieces occupy one half of what remains, producing areas \\(1/2,1/4,1/8,\\ldots\\) whose total fills one whole square.",
+      "misconception_control": "Preserve the misconception control described in the lesson and storyboard.",
+      "schema_version": "3.0.0",
+      "visual_id": "u4a-geometric-areas",
+      "route_id": "subjects/math/calculus/sequences-and-series/geometric-series",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "interactive-2d",
+        "static-svg-fallback",
+        "keyboard-controls",
+        "reduced-motion"
+      ],
+      "provenance_id": "prov-visual-u4a-geometric-areas"
+    },
+    {
+      "title": "Interior terms cancel; boundary terms survive",
+      "learning_purpose": "A cancellation chain showing interior terms disappearing while boundary terms remain.",
+      "recommended_renderer": "static-svg",
+      "visual_kind": "geometry-2d",
+      "composition": "A cancellation chain showing interior terms disappearing while boundary terms remain.",
+      "interaction": "No runtime interaction required in the first pass.",
+      "long_description": "A finite telescoping partial sum is displayed as shifted positive and negative rows. Matching interior terms cancel, leaving only terms at the two ends.",
+      "misconception_control": "Preserve the misconception control described in the lesson and storyboard.",
+      "schema_version": "3.0.0",
+      "visual_id": "u4a-telescoping-cancellation",
+      "route_id": "subjects/math/calculus/sequences-and-series/telescoping-series",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "static-svg",
+        "print-fallback",
+        "long-description"
+      ],
+      "provenance_id": "prov-visual-u4a-telescoping-cancellation"
+    },
+    {
+      "title": "Small terms can still build an unbounded total",
+      "learning_purpose": "Compare shrinking harmonic terms with growing harmonic partial sums.",
+      "recommended_renderer": "static-svg",
+      "visual_kind": "cartesian-2d",
+      "composition": "Compare shrinking harmonic terms with growing harmonic partial sums.",
+      "interaction": "No runtime interaction required in the first pass.",
+      "long_description": "The terms 1/n decrease toward zero while the corresponding harmonic partial sums continue to rise.",
+      "misconception_control": "Preserve the misconception control described in the lesson and storyboard.",
+      "schema_version": "3.0.0",
+      "visual_id": "u4a-terms-versus-partial-sums",
+      "route_id": "subjects/math/calculus/sequences-and-series/nth-term-divergence-test",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "static-svg",
+        "print-fallback",
+        "long-description"
+      ],
+      "provenance_id": "prov-visual-u4a-terms-versus-partial-sums"
+    },
+    {
+      "title": "The p-series threshold occurs at p equals 1",
+      "learning_purpose": "Partial sums for p=1/2, p=1, and p=2 on matched axes.",
+      "recommended_renderer": "interactive-2d",
+      "visual_kind": "geometry-2d",
+      "composition": "Partial sums for p=1/2, p=1, and p=2 on matched axes.",
+      "interaction": "Move p across 1 and compare term decay and partial sums.",
+      "long_description": "Three partial-sum curves show rapid growth for p=1/2, slow unbounded growth for p=1, and leveling for p=2.",
+      "misconception_control": "Preserve the misconception control described in the lesson and storyboard.",
+      "schema_version": "3.0.0",
+      "visual_id": "u4a-p-series-threshold",
+      "route_id": "subjects/math/calculus/sequences-and-series/harmonic-and-p-series",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "interactive-2d",
+        "static-svg-fallback",
+        "keyboard-controls",
+        "reduced-motion"
+      ],
+      "provenance_id": "prov-visual-u4a-p-series-threshold"
+    },
+    {
+      "title": "Decreasing rectangles trap the integral tail",
+      "learning_purpose": "Decreasing curve with left and right rectangles bracketing the tail.",
+      "recommended_renderer": "static-svg",
+      "visual_kind": "cartesian-2d",
+      "composition": "Decreasing curve with left and right rectangles bracketing the tail.",
+      "interaction": "No runtime interaction required in the first pass.",
+      "long_description": "A positive decreasing curve is shown with unit-width rectangles. Right-endpoint rectangles lie below the curve and left-endpoint rectangles lie above it.",
+      "misconception_control": "Preserve the misconception control described in the lesson and storyboard.",
+      "schema_version": "3.0.0",
+      "visual_id": "u4a-integral-test-rectangles",
+      "route_id": "subjects/math/calculus/sequences-and-series/integral-test",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "static-svg",
+        "print-fallback",
+        "long-description"
+      ],
+      "provenance_id": "prov-visual-u4a-integral-test-rectangles"
+    },
+    {
+      "title": "Series terms and areas under a decreasing curve",
+      "learning_purpose": "Decreasing curve with left and right rectangles bracketing the tail.",
+      "recommended_renderer": "static-svg",
+      "visual_kind": "cartesian-2d",
+      "composition": "Decreasing curve with left and right rectangles bracketing the tail.",
+      "interaction": "No runtime interaction required in the first pass.",
+      "long_description": "For a positive decreasing function, the rectangles associated with \\(f(n)\\) can be compared directly with the improper integral under \\(f(x)\\).",
+      "misconception_control": "Preserve the misconception control described in the lesson and storyboard.",
+      "schema_version": "3.0.0",
+      "visual_id": "u4a-integral-test",
+      "route_id": "subjects/math/calculus/sequences-and-series/integral-test",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "static-svg",
+        "print-fallback",
+        "long-description"
+      ],
+      "provenance_id": "prov-visual-u4a-integral-test"
+    },
+    {
+      "title": "Alternating partial sums form shrinking brackets",
+      "learning_purpose": "Odd and even partial sums nesting around a common limit.",
+      "recommended_renderer": "interactive-2d",
+      "visual_kind": "geometry-2d",
+      "composition": "Odd and even partial sums nesting around a common limit.",
+      "interaction": "Add terms and watch the bracketing interval shrink.",
+      "long_description": "Odd and even partial sums lie on opposite sides of the limit and the distance between them equals the next term magnitude.",
+      "misconception_control": "Preserve the misconception control described in the lesson and storyboard.",
+      "schema_version": "3.0.0",
+      "visual_id": "u4a-alternating-brackets",
+      "route_id": "subjects/math/calculus/sequences-and-series/alternating-series-test",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "interactive-2d",
+        "static-svg-fallback",
+        "keyboard-controls",
+        "reduced-motion"
+      ],
+      "provenance_id": "prov-visual-u4a-alternating-brackets"
+    },
+    {
+      "title": "Alternating partial sums bracket the limit",
+      "learning_purpose": "Odd and even partial sums nesting around a common limit.",
+      "recommended_renderer": "static-svg",
+      "visual_kind": "cartesian-2d",
+      "composition": "Odd and even partial sums nesting around a common limit.",
+      "interaction": "No runtime interaction required in the first pass.",
+      "long_description": "When alternating term magnitudes decrease to zero, odd and even partial sums approach the same value from opposite sides.",
+      "misconception_control": "Preserve the misconception control described in the lesson and storyboard.",
+      "schema_version": "3.0.0",
+      "visual_id": "u4a-alternating-partial-sums",
+      "route_id": "subjects/math/calculus/sequences-and-series/alternating-series-test",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "static-svg",
+        "print-fallback",
+        "long-description"
+      ],
+      "provenance_id": "prov-visual-u4a-alternating-partial-sums"
+    },
+    {
+      "title": "A ratio below one creates geometric domination",
+      "learning_purpose": "Successive term bars shrinking by an approximately fixed factor.",
+      "recommended_renderer": "static-svg",
+      "visual_kind": "cartesian-2d",
+      "composition": "Successive term bars shrinking by an approximately fixed factor.",
+      "interaction": "No runtime interaction required in the first pass.",
+      "long_description": "Successive term magnitudes are shown decreasing by a factor bounded above by a fixed number r less than one.",
+      "misconception_control": "Preserve the misconception control described in the lesson and storyboard.",
+      "schema_version": "3.0.0",
+      "visual_id": "u4a-ratio-geometric-decay",
+      "route_id": "subjects/math/calculus/sequences-and-series/ratio-test",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "static-svg",
+        "print-fallback",
+        "long-description"
+      ],
+      "provenance_id": "prov-visual-u4a-ratio-geometric-decay"
+    },
+    {
+      "title": "Choose a convergence test from the series structure",
+      "learning_purpose": "A decision tree beginning with the term test and branching by structure.",
+      "recommended_renderer": "static-svg",
+      "visual_kind": "geometry-2d",
+      "composition": "A decision tree beginning with the term test and branching by structure.",
+      "interaction": "No runtime interaction required in the first pass.",
+      "long_description": "A flowchart begins with the term limit, then branches to geometric, telescoping, positive-term comparison, alternating, factorial, and nth-power structures.",
+      "misconception_control": "Preserve the misconception control described in the lesson and storyboard.",
+      "schema_version": "3.0.0",
+      "visual_id": "u4a-test-selection-tree",
+      "route_id": "subjects/math/calculus/sequences-and-series/choosing-a-convergence-test",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "static-svg",
+        "print-fallback",
+        "long-description"
+      ],
+      "provenance_id": "prov-visual-u4a-test-selection-tree"
+    }
+  ]
+}

@@ -214,3 +214,63 @@ test("the Unit 3B map leads with its textbook, published keys, application studi
   assert.match(html, /href="\/subjects\/math\/calculus\/integration-applications\/practice-exam-a-answer-key\/"/);
   assert.match(html, /href="\/subjects\/math\/calculus\/integration-applications\/physics-application-studio\/"/);
 });
+
+test("all Unit 4A pages render as clean Calculus II sequence-and-series pages", async () => {
+  const unitRoutes = calculusUnitRoutes.filter((route) => route.unitId === "calc-2-unit-4a-sequences-infinite-series");
+  assert.equal(unitRoutes.length, 34);
+  for (const route of unitRoutes) {
+    const response = await render(route.path);
+    assert.equal(response.status, 200, route.path);
+    const html = await response.text();
+    const text = visibleText(html);
+    assert.match(html, /data-unit-id="calc-2-unit-4a-sequences-infinite-series"/, route.path);
+    assert.match(text, /Calculus II.*Unit 4A/, route.path);
+    assert.match(html, /aria-label="Calculus Unit 4 course navigation"/, route.path);
+    assert.match(html, /href="\/subjects\/math\/calculus\/sequences-and-series\/"[^>]+aria-current="location"/, route.path);
+    assert.match(html, /href="\/subjects\/math\/calculus\/integration-applications\/"/, route.path);
+    const renderedTitle = route.title.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("'", "&#x27;").replaceAll('"', "&quot;");
+    assert.match(html, new RegExp(`<h1>${escapeRegExp(renderedTitle)}</h1>`), route.path);
+    if (route.pageType !== "hub" && !/Unit 4A/.test(route.title)) assert.match(html, /<title>[^<]+\| Unit 4A \| Better Grades<\/title>/, route.path);
+    assert.doesNotMatch(text, /\\(?:begin|end|frac|varepsilon|textbf|emph|section|chapter|addplot|draw|node)\b|\$\$|\\[()[\]]/, route.path);
+    assert.doesNotMatch(html, /This equation could not be rendered safely|This visual is temporarily unavailable|class="katex-error"/, route.path);
+    const renderedCheckIds = [...html.matchAll(/data-check-id="([^"]+)"/g)].map((match) => match[1]);
+    assert.equal(renderedCheckIds.length, new Set(renderedCheckIds).size, `${route.path} renders each interactive check once`);
+    if (route.pageType !== "hub") {
+      assert.match(html, /Section overview/, route.path);
+      assert.match(html, /Reading lens/, route.path);
+    }
+    if (route.pageType === "exam") assert.match(html, /View the complete answer key/, route.path);
+  }
+});
+
+test("the Unit 4A map leads with the canonical textbook and keeps Unit 4B unpublished", async () => {
+  const response = await render("/subjects/math/calculus/sequences-and-series/");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  const text = visibleText(html);
+  assert.match(text, /The complete Unit 4A path/);
+  assert.match(text, /Turn infinite processes into precise convergence decisions/);
+  assert.match(text, /Focused convergence explorations/);
+  assert.match(text, /Published exam answer keys/);
+  assert.match(text, /Return easily to Unit 3B/);
+  assert.doesNotMatch(html, /power-series-and-taylor-series/);
+});
+
+test("superseded Chapter 4 duplicate intents redirect to Unit 4A canonical routes", async () => {
+  const redirects = new Map([
+    ["/subjects/math/calculus/sequences-series/", "/subjects/math/calculus/sequences-and-series/"],
+    ["/subjects/math/calculus/sequences-series/geometric-series/", "/subjects/math/calculus/sequences-and-series/geometric-series/"],
+    ["/subjects/math/calculus/sequences-series/choosing-convergence-test/", "/subjects/math/calculus/sequences-and-series/choosing-a-convergence-test/"],
+  ]);
+  for (const [from, to] of redirects) {
+    const response = await render(from);
+    assert.equal(response.status, 308, from);
+    assert.equal(new URL(response.headers.get("location"), "http://localhost").pathname, to, from);
+  }
+  for (const path of [
+    "/subjects/math/calculus/sequences-series/harmonic-series-diverges/",
+    "/subjects/math/calculus/sequences-series/ratio-test-vs-root-test/",
+    "/subjects/math/calculus/sequences-series/power-series-interval-of-convergence/",
+    "/subjects/math/calculus/sequences-series/taylor-series-remainder/",
+  ]) assert.equal((await render(path)).status, 200, path);
+});

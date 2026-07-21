@@ -1,5 +1,5 @@
 import { limitsUnitSearchRecords } from "./calculus/limits-unit-index.mjs";
-import { calculusUnitRoutes, calculusUnitSearchRecords } from "./calculus/calculus-units-index.mjs";
+import { calculusUnitRoutes, calculusUnitSearchRecords, supersededCalculusPaths } from "./calculus/calculus-units-index.mjs";
 import { problems } from "./content";
 import { domains, resourceFormatLabel, resources, tools, topics } from "./registry/catalog";
 import { assessments } from "./registry/practice";
@@ -42,7 +42,8 @@ const domainFor = (domainId: string) => domains.find((domain) => domain.id === d
 const topicFor = (topicId: string) => topics.find((topic) => topic.id === topicId);
 
 const calculusUnitPaths = new Set(calculusUnitRoutes.map((route) => route.path));
-const guideRecords: SiteSearchRecord[] = resources.filter((resource) => !calculusUnitPaths.has(resource.path)).map((resource) => {
+const supersededCalculusRoutePaths = new Set(supersededCalculusPaths);
+const guideRecords: SiteSearchRecord[] = resources.filter((resource) => !calculusUnitPaths.has(resource.path) && !supersededCalculusRoutePaths.has(resource.path)).map((resource) => {
   const domain = domainFor(resource.domainId)!;
   const topic = topicFor(resource.topicId)!;
   return {
@@ -73,7 +74,7 @@ const topicRecords: SiteSearchRecord[] = [
     keywords: [domain.name, "course", "syllabus", "topics", "learn"],
     priority: 82,
   })),
-  ...topics.filter((topic) => !calculusUnitPaths.has(topic.path)).map((topic) => {
+  ...topics.filter((topic) => !calculusUnitPaths.has(topic.path) && !supersededCalculusRoutePaths.has(topic.path)).map((topic) => {
     const domain = domainFor(topic.domainId)!;
     return {
       id: topic.id,

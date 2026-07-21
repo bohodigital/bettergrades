@@ -1,5 +1,5 @@
 import { limitsUnitRoutes } from "../calculus/limits-unit-index.mjs";
-import { calculusUnitRoutes } from "../calculus/calculus-units-index.mjs";
+import { calculusUnitRoutes, supersededCalculusPaths } from "../calculus/calculus-units-index.mjs";
 import { domains, resources, subjects, tools, topics } from "./catalog";
 import { assessments } from "./practice";
 import type { RedirectRecord, RegistryRoute } from "./schema";
@@ -20,14 +20,20 @@ const fixedRoutes: RegistryRoute[] = [
   ...["about", "how-we-verify", "editorial-policy", "source-policy", "corrections", "privacy", "accessibility"].map((slug) => ({ path: `/${slug}/`, title: "Better Grades", description: "Better Grades publishing and product standards.", indexable: true })),
 ];
 const calculusUnitRoutePaths = new Set(calculusUnitRoutes.map((route) => route.path));
+const supersededCalculusRoutePaths = new Set(supersededCalculusPaths);
+const supersededCalculusTargets = new Map([
+  ["/subjects/math/calculus/sequences-series/", "/subjects/math/calculus/sequences-and-series/"],
+  ["/subjects/math/calculus/sequences-series/geometric-series/", "/subjects/math/calculus/sequences-and-series/geometric-series/"],
+  ["/subjects/math/calculus/sequences-series/choosing-convergence-test/", "/subjects/math/calculus/sequences-and-series/choosing-a-convergence-test/"],
+]);
 
 export const registryRoutes: RegistryRoute[] = [
   ...fixedRoutes,
   ...subjects.map((item) => ({ path: item.path, title: item.name, description: item.description, indexable: true })),
   ...domains.map((item) => ({ path: item.path, title: `${item.name} resources`, description: item.description, indexable: true })),
   ...calculusUnitRoutes.map((item) => ({ path: item.path, title: item.title, description: item.description, indexable: item.indexable })),
-  ...topics.filter((item) => !calculusUnitRoutePaths.has(item.path)).map((item) => ({ path: item.path, title: `${item.name} ${domains.find((domain) => domain.id === item.domainId)?.name ?? "mathematics"} resources`, description: item.description, indexable: true })),
-  ...resources.filter((item) => !calculusUnitRoutePaths.has(item.path)).map((item) => ({ path: item.path, title: item.title, description: item.description, indexable: true })),
+  ...topics.filter((item) => !calculusUnitRoutePaths.has(item.path) && !supersededCalculusRoutePaths.has(item.path)).map((item) => ({ path: item.path, title: `${item.name} ${domains.find((domain) => domain.id === item.domainId)?.name ?? "mathematics"} resources`, description: item.description, indexable: true })),
+  ...resources.filter((item) => !calculusUnitRoutePaths.has(item.path) && !supersededCalculusRoutePaths.has(item.path)).map((item) => ({ path: item.path, title: item.title, description: item.description, indexable: true })),
   ...limitsUnitRoutes.map((item) => ({ path: item.path, title: item.metadataTitle, description: item.description, indexable: item.indexable })),
   ...assessments.map((item) => ({ path: item.path, title: item.title, description: item.description, indexable: true })),
   ...tools.map((item) => ({ path: item.path, title: item.title, description: item.description, indexable: true })),
@@ -36,13 +42,16 @@ export const registryRoutes: RegistryRoute[] = [
 export const publicRoutes = Array.from(new Set(registryRoutes.map((route) => route.path)));
 
 export const redirects: RedirectRecord[] = [
+  { from: "/subjects/math/calculus/sequences-series/", to: "/subjects/math/calculus/sequences-and-series/", status: 308 },
+  { from: "/subjects/math/calculus/sequences-series/geometric-series/", to: "/subjects/math/calculus/sequences-and-series/geometric-series/", status: 308 },
+  { from: "/subjects/math/calculus/sequences-series/choosing-convergence-test/", to: "/subjects/math/calculus/sequences-and-series/choosing-a-convergence-test/", status: 308 },
   { from: "/topics/", to: "/subjects/math/calculus/", status: 308 },
   { from: "/library/", to: "/subjects/math/calculus/", status: 308 },
   { from: "/exams/", to: "/practice/", status: 308 },
   { from: "/calculators/", to: "/tools/", status: 308 },
-  ...topics.map((item) => ({ from: `/topics/calculus/${item.slug}/`, to: item.path, status: 308 as const })),
+  ...topics.map((item) => ({ from: `/topics/calculus/${item.slug}/`, to: supersededCalculusTargets.get(item.path) ?? item.path, status: 308 as const })),
   ...limitsUnitRoutes.map((item) => ({ from: item.sourceCanonicalPath, to: item.path, status: 308 as const })),
-  ...resources.flatMap((item) => item.aliases.map((from) => ({ from, to: item.path, status: 308 as const }))),
+  ...resources.flatMap((item) => item.aliases.map((from) => ({ from, to: supersededCalculusTargets.get(item.path) ?? item.path, status: 308 as const }))),
   ...assessments.flatMap((item) => item.aliases.map((from) => ({ from, to: item.path, status: 308 as const }))),
   ...tools.flatMap((item) => item.aliases.map((from) => ({ from, to: item.path, status: 308 as const }))),
 ];

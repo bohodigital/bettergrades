@@ -1,0 +1,381 @@
+{
+  "schema_version": "3.0.0",
+  "unit_id": "calc-2-unit-4a-sequences-infinite-series",
+  "problem_count": 22,
+  "problems": [
+    {
+      "problem_id": "u4a-sequences_as_functions-01",
+      "canonical_answer": "5/6",
+      "accepted_answers": [
+        "5/6"
+      ],
+      "normalization": "symbolic-equivalence",
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "\\[a_5=\\frac{5}{5+1}=\\frac56.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the sequence or series structure, theorem hypotheses, convergence logic, and algebra.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u4a-explicit_and_recursive_sequences-01",
+      "canonical_answer": "19",
+      "accepted_answers": [
+        "19"
+      ],
+      "normalization": "exact-integer",
+      "validator": "exact-integer",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "\\[a_5=3+4(4)=19.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the sequence or series structure, theorem hypotheses, convergence logic, and algebra.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u4a-limits_of_sequences-01",
+      "canonical_answer": "1",
+      "accepted_answers": [
+        "1"
+      ],
+      "normalization": "symbolic-equivalence",
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "\\[\\frac{n}{n+1}=\\frac{1}{1+1/n}\\to1.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the sequence or series structure, theorem hypotheses, convergence logic, and algebra.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u4a-sequence_limit_laws-01",
+      "canonical_answer": "3",
+      "accepted_answers": [
+        "3"
+      ],
+      "normalization": "symbolic-equivalence",
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "\\[\\frac{3-1/n^2}{1+5/n^2}\\to3.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the sequence or series structure, theorem hypotheses, convergence logic, and algebra.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u4a-squeeze_theorem_for_sequences-01",
+      "canonical_answer": "0",
+      "accepted_answers": [
+        "0"
+      ],
+      "normalization": "symbolic-equivalence",
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "\\[\\left|\\frac{\\sin n}{n}\\right|\\le\\frac1n\\to0,\\quad\\text{so the limit is }0.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the sequence or series structure, theorem hypotheses, convergence logic, and algebra.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u4a-monotone_and_bounded_sequences-01",
+      "canonical_answer": "1",
+      "accepted_answers": [
+        "1"
+      ],
+      "normalization": "symbolic-equivalence",
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "\\[1-\\frac1n\\to1.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the sequence or series structure, theorem hypotheses, convergence logic, and algebra.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u4a-infinite_series_and_partial_sums-01",
+      "canonical_answer": "7/8",
+      "accepted_answers": [
+        "7/8"
+      ],
+      "normalization": "symbolic-equivalence",
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "\\[s_3=\\frac12+\\frac14+\\frac18=\\frac78.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the sequence or series structure, theorem hypotheses, convergence logic, and algebra.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u4a-geometric_series-01",
+      "canonical_answer": "6",
+      "accepted_answers": [
+        "6"
+      ],
+      "normalization": "symbolic-equivalence",
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "\\[\\frac{3}{1-1/2}=6.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the sequence or series structure, theorem hypotheses, convergence logic, and algebra.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u4a-telescoping_series-01",
+      "canonical_answer": "1",
+      "accepted_answers": [
+        "1"
+      ],
+      "normalization": "symbolic-equivalence",
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "The partial sum is \\(1-1/(N+1)\\), which approaches \\(1\\).",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the sequence or series structure, theorem hypotheses, convergence logic, and algebra.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u4a-nth_term_divergence_test-01",
+      "canonical_answer": "diverges",
+      "accepted_answers": [
+        "diverges"
+      ],
+      "normalization": "exact-choice",
+      "validator": "exact-choice",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "Because \\(n/(n+1)\\to1\\ne0\\), the series diverges.",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the sequence or series structure, theorem hypotheses, convergence logic, and algebra.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u4a-harmonic_and_p_series-01",
+      "canonical_answer": "converges",
+      "accepted_answers": [
+        "converges"
+      ],
+      "normalization": "exact-choice",
+      "validator": "exact-choice",
+      "equivalence_policy": "symbolic-with-declared-variables",
+      "tolerance": null,
+      "worked_solution_latex": "Here \\(p=3/2>1\\), so the series converges.",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the sequence or series structure, theorem hypotheses, convergence logic, and algebra.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u4a-integral_test-01",
+      "canonical_answer": "converges",
+      "accepted_answers": [
+        "converges"
+      ],
+      "normalization": "exact-choice",
+      "validator": "exact-choice",
+      "equivalence_policy": "symbolic-with-declared-variables",
+      "tolerance": null,
+      "worked_solution_latex": "The improper integral equals \\(1\\), so the series converges.",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the sequence or series structure, theorem hypotheses, convergence logic, and algebra.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u4a-integral_test_remainder_estimates-01",
+      "canonical_answer": "1/(2*N^2)",
+      "accepted_answers": [
+        "1/(2*N^2)"
+      ],
+      "normalization": "symbolic-equivalence",
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "symbolic-with-declared-variables",
+      "tolerance": null,
+      "worked_solution_latex": "\\[R_N\\le\\int_N^{\\infty}x^{-3}\\,dx=\\frac1{2N^2}.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the sequence or series structure, theorem hypotheses, convergence logic, and algebra.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u4a-direct_comparison_test-01",
+      "canonical_answer": "converges",
+      "accepted_answers": [
+        "converges"
+      ],
+      "normalization": "exact-choice",
+      "validator": "exact-choice",
+      "equivalence_policy": "symbolic-with-declared-variables",
+      "tolerance": null,
+      "worked_solution_latex": "The terms are smaller than those of the convergent \\(p=2\\) series, so it converges.",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the sequence or series structure, theorem hypotheses, convergence logic, and algebra.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u4a-limit_comparison_test-01",
+      "canonical_answer": "3",
+      "accepted_answers": [
+        "3"
+      ],
+      "normalization": "symbolic-equivalence",
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "The ratio approaches \\(3\\).",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the sequence or series structure, theorem hypotheses, convergence logic, and algebra.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u4a-alternating_series_test-01",
+      "canonical_answer": "converges",
+      "accepted_answers": [
+        "converges"
+      ],
+      "normalization": "exact-choice",
+      "validator": "exact-choice",
+      "equivalence_policy": "symbolic-with-declared-variables",
+      "tolerance": null,
+      "worked_solution_latex": "Yes. The magnitudes decrease to zero, so the Alternating Series Test applies.",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the sequence or series structure, theorem hypotheses, convergence logic, and algebra.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u4a-alternating_series_error-01",
+      "canonical_answer": "1/(N+1)",
+      "accepted_answers": [
+        "1/(N+1)"
+      ],
+      "normalization": "symbolic-equivalence",
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "symbolic-with-declared-variables",
+      "tolerance": null,
+      "worked_solution_latex": "\\[|S-s_N|\\le\\frac1{N+1}.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the sequence or series structure, theorem hypotheses, convergence logic, and algebra.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u4a-absolute_and_conditional_convergence-01",
+      "canonical_answer": "conditional",
+      "accepted_answers": [
+        "conditional"
+      ],
+      "normalization": "exact-choice",
+      "validator": "exact-choice",
+      "equivalence_policy": "symbolic-with-declared-variables",
+      "tolerance": null,
+      "worked_solution_latex": "It converges by alternation, but \\(\\sum1/n\\) diverges, so convergence is conditional.",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the sequence or series structure, theorem hypotheses, convergence logic, and algebra.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u4a-ratio_test-01",
+      "canonical_answer": "0",
+      "accepted_answers": [
+        "0"
+      ],
+      "normalization": "symbolic-equivalence",
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "\\[\\frac3{n+1}\\to0.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the sequence or series structure, theorem hypotheses, convergence logic, and algebra.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u4a-root_test-01",
+      "canonical_answer": "2/3",
+      "accepted_answers": [
+        "2/3"
+      ],
+      "normalization": "symbolic-equivalence",
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "\\[\\sqrt[n]{a_n}=\\frac{2n+1}{3n+2}\\to\\frac23.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the sequence or series structure, theorem hypotheses, convergence logic, and algebra.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u4a-choosing_a_convergence_test-01",
+      "canonical_answer": "ratio",
+      "accepted_answers": [
+        "ratio"
+      ],
+      "normalization": "exact-choice",
+      "validator": "exact-choice",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "The Ratio Test is the natural choice.",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the sequence or series structure, theorem hypotheses, convergence logic, and algebra.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    },
+    {
+      "problem_id": "u4a-cauchy_criterion_preview-01",
+      "canonical_answer": "r^m/(1-r)",
+      "accepted_answers": [
+        "r^m/(1-r)"
+      ],
+      "normalization": "symbolic-equivalence",
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "worked_solution_latex": "\\[r^m+r^{m+1}+\\cdots=\\frac{r^m}{1-r}.\\]",
+      "feedback": {
+        "correct": "Correct. Verify the structure, notation, units, and interpretation before moving on.",
+        "incorrect": "Recheck the sequence or series structure, theorem hypotheses, convergence logic, and algebra.",
+        "uncertain": "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution."
+      }
+    }
+  ]
+}

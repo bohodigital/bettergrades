@@ -12,6 +12,7 @@ function getPath(slug: string[] = []) {
 }
 
 function getCalculusUnitSeo(path: string) {
+  if (path.startsWith("/subjects/math/calculus/sequences-and-series/")) return { code: "4A", name: "Sequences and Infinite Series", topic: "sequences and series", course: "Calculus II" };
   if (path.startsWith("/subjects/math/calculus/integration-applications/")) return { code: "3B", name: "Applications of Integration", topic: "integration applications" };
   if (path.startsWith("/subjects/math/calculus/integrals/")) return { code: "3A", name: "Integral Foundations and Techniques", topic: "integrals" };
   if (path.startsWith("/subjects/math/calculus/derivative-applications/")) return { code: "2B", name: "Applications of Derivatives" };
@@ -25,14 +26,15 @@ export async function generateMetadata({ params }: { params: Promise<{ slug?: st
   const meta = getRoute(path) || { title: "Better Grades", description: "Free academic answers, complete explanations, useful tools, and better practice.", indexable: true };
   const unit = getCalculusUnitSeo(path);
   const title = unit && !new RegExp(`\\bUnit ${unit.code}\\b`).test(meta.title) ? `${meta.title} | Unit ${unit.code}` : meta.title;
-  const description = unit && !new RegExp(`\\bUnit ${unit.code}\\b`).test(meta.description) ? `${meta.description} Part of Calculus I Unit ${unit.code}: ${unit.name}.` : meta.description;
+  const course = unit?.code === "4A" ? "Calculus II" : "Calculus I";
+  const description = unit && !new RegExp(`\\bUnit ${unit.code}\\b`).test(meta.description) ? `${meta.description} Part of ${course} Unit ${unit.code}: ${unit.name}.` : meta.description;
   return {
     title: path === "/" ? { absolute: title } : title,
     description,
     alternates: { canonical: path },
     robots: { index: true, follow: true },
     ...(unit ? {
-      keywords: [`Calculus Unit ${unit.code}`, unit.name, unit.topic ?? "derivatives", "Calculus I"],
+      keywords: [`Calculus Unit ${unit.code}`, unit.name, unit.topic ?? "derivatives", course],
       openGraph: { type: "article" as const, title, description, url: path, siteName: "Better Grades" },
       twitter: { card: "summary_large_image" as const, title, description },
     } : {}),

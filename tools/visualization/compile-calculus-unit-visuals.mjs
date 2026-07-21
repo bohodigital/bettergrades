@@ -9,7 +9,7 @@ import { renderStaticSvg } from "../../lib/visualization/renderers/static-svg/in
 const root = resolve(import.meta.dirname, "../..");
 const requested = process.argv.find((argument) => argument.startsWith("--unit="))?.split("=")[1] ?? "unit-2a";
 const checkOnly = process.argv.includes("--check");
-const expectations = { "unit-2a": { count: 27, interactive: 1, jsxgraph: 0 }, "unit-2b": { count: 34, interactive: 7, jsxgraph: 1 }, "unit-3a": { count: 11, interactive: 4, jsxgraph: 0 }, "unit-3b": { count: 9, interactive: 4, jsxgraph: 0 } };
+const expectations = { "unit-2a": { count: 27, interactive: 1, jsxgraph: 0 }, "unit-2b": { count: 34, interactive: 7, jsxgraph: 1 }, "unit-3a": { count: 11, interactive: 4, jsxgraph: 0 }, "unit-3b": { count: 9, interactive: 4, jsxgraph: 0 }, "unit-4a": { count: 18, interactive: 7, jsxgraph: 0 } };
 const expected = expectations[requested];
 if (!expected) throw new Error(`Unknown calculus unit ${requested}.`);
 const directory = resolve(root, "content/calculus/units", requested);

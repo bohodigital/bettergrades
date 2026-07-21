@@ -7,11 +7,12 @@ import {
   UNIT_2B_ROOT,
   UNIT_3A_ROOT,
   UNIT_3B_ROOT,
+  UNIT_4A_ROOT,
 } from "./CalculusUnitNavigation";
 
 export const CALCULUS_ROOT = "/subjects/math/calculus/";
 export const UNIT_1_ROOT = "/subjects/math/calculus/limits-continuity/";
-export const CHAPTER_4_ROOT = "/subjects/math/calculus/sequences-series/";
+export const CHAPTER_4_ROOT = UNIT_4A_ROOT;
 
 type SectionLink = { id: string; title: string; href: string };
 type UnitLink = {
@@ -27,6 +28,7 @@ const unitIds = {
   "2B": "calc-1-unit-2b-derivative-applications",
   "3A": "calc-1-unit-3a-integral-foundations-techniques",
   "3B": "calc-1-unit-3b-integration-applications",
+  "4A": "calc-2-unit-4a-sequences-infinite-series",
 } as const;
 
 function sectionsForUnit(code: keyof typeof unitIds): SectionLink[] {
@@ -120,17 +122,11 @@ const chapters: {
     description: "Move from finite accumulation to convergence, infinite series, power series, and controlled approximation.",
     course: "Calculus II",
     units: [{
-      code: "Chapter guide",
-      title: "Sequences, series, and approximation",
-      description: "A connected collection of concept guides, method lessons, and convergence decisions.",
-      root: CHAPTER_4_ROOT,
-      sections: [
-        { id: "overview", title: "Chapter overview", href: CHAPTER_4_ROOT },
-        { id: "geometric", title: "Geometric series", href: `${CHAPTER_4_ROOT}geometric-series/` },
-        { id: "convergence", title: "Choosing a convergence test", href: `${CHAPTER_4_ROOT}choosing-convergence-test/` },
-        { id: "power-series", title: "Power-series intervals", href: `${CHAPTER_4_ROOT}power-series-interval-of-convergence/` },
-        { id: "taylor", title: "Taylor approximation and error", href: `${CHAPTER_4_ROOT}taylor-series-remainder/` },
-      ],
+      code: "4A",
+      title: "Sequences and infinite series",
+      description: "Sequences, partial sums, convergence tests, absolute and conditional convergence, and error control.",
+      root: UNIT_4A_ROOT,
+      sections: sectionsForUnit("4A"),
     }],
   },
 ];
@@ -139,7 +135,7 @@ function currentChapterForPath(path: string) {
   if (path.startsWith(UNIT_1_ROOT)) return "1";
   if (path.startsWith(UNIT_2A_ROOT) || path.startsWith(UNIT_2B_ROOT)) return "2";
   if (path.startsWith(UNIT_3A_ROOT) || path.startsWith(UNIT_3B_ROOT)) return "3";
-  if (path.startsWith(CHAPTER_4_ROOT)) return "4";
+  if (path.startsWith(CHAPTER_4_ROOT) || path.startsWith("/subjects/math/calculus/sequences-series/")) return "4";
   return undefined;
 }
 

@@ -28,6 +28,7 @@ export type CalculusUnitCollection = {
 };
 export const calculusUnits: ReadonlyArray<Record<string, unknown>>;
 export const calculusUnitRoutes: ReadonlyArray<CalculusUnitRoute>;
+export const supersededCalculusPaths: ReadonlyArray<string>;
 export const calculusUnitSearchRecords: Array<Record<string, unknown>>;
 export const calculusUnitPracticeRoutes: ReadonlyArray<CalculusUnitRoute>;
 export const calculusUnitSectionGuidance: Readonly<Record<string, { lens: string; mentalModel: string; decision: string; commonTrap: string; checkpoint: string }>>;
