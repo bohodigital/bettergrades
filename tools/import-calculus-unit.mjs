@@ -28,6 +28,12 @@ const definitions = {
     prerequisiteUnit: "calc-1-unit-3b-integration-applications",
     nextUnit: null,
   },
+  "unit-4b": {
+    routes: 31, core: 21, problems: 20, sets: 3, visuals: 20, provenance: 101, format: "normalized-handoff",
+    shortTitle: "Power Series and Taylor Series",
+    prerequisiteUnit: "calc-2-unit-4a-sequences-infinite-series",
+    nextUnit: null,
+  },
 };
 const expected = definitions[requested];
 if (!expected) throw new Error(`Unknown calculus unit ${requested}.`);
@@ -168,6 +174,16 @@ function sectionFor(route, page) {
     if (sequence <= 23) return ["strategy-and-tails", "Test selection and the Cauchy tail idea"];
     return ["review", "Review, practice, exams, and answer keys"];
   }
+  if (requested === "unit-4b") {
+    if (sequence === 1) return ["orientation", "Orientation and the power-series roadmap"];
+    if (sequence <= 5) return ["convergence", "Power-series convergence and endpoints"];
+    if (sequence <= 8) return ["operations", "Algebra and calculus with power series"];
+    if (sequence <= 13) return ["taylor-construction", "Constructing Taylor and Maclaurin series"];
+    if (sequence <= 16) return ["series-library", "Standard series and new expansions"];
+    if (sequence <= 20) return ["approximation", "Taylor bounds and approximation"];
+    if (sequence <= 21) return ["advanced", "Optional advanced explorations"];
+    return ["review", "Review, practice, exams, and answer keys"];
+  }
   if (sequence === 1) return ["orientation", "Orientation and applications roadmap"];
   if (sequence <= 7) return ["area-volume", "Area and volume"];
   if (sequence <= 11) return ["length-mass", "Length, surface, mass, and balance"];
@@ -187,7 +203,7 @@ function normalizeRouteText(value) {
 
 function descriptionFor(route) {
   const raw = normalizeRouteText(route.seo?.meta_description ?? route.meta_description).replace(/\.{3,}|…/g, ".");
-  if (requested === "unit-4a") return raw;
+  if (requested === "unit-4a" || requested === "unit-4b") return raw;
   if (requested === "unit-3b" && route.page_type === "hub") return "Learn applications of integration through area, volume, length, mass, work, fluids, marginal quantities, probability, worked examples, visual reasoning, practice, and published exam keys.";
   if (requested === "unit-3b" && route.route_id.endsWith("/common-errors")) return "Identify and repair common integration-application errors involving slice orientation, radii, bounds, density, depth, units, and interpretation.";
   if (!handoff || route.page_type === "hub") return raw;
@@ -464,9 +480,11 @@ function normalizedAssessments() {
       worked_solution_latex: problem.solution_latex,
       feedback: {
         correct: "Correct. Verify the structure, notation, units, and interpretation before moving on.",
-        incorrect: requested === "unit-4a"
-          ? "Recheck the sequence or series structure, theorem hypotheses, convergence logic, and algebra."
-          : "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
+        incorrect: requested === "unit-4b"
+          ? "Recheck the power-series structure, convergence interval or radius, endpoint logic, approximation bound, and algebra."
+          : requested === "unit-4a"
+            ? "Recheck the sequence or series structure, theorem hypotheses, convergence logic, and algebra."
+            : "Recheck the integral model, method, algebra, bounds, constant of integration, and units.",
         uncertain: "The bounded checker could not prove equivalence. Compare the mathematical structure or reveal the worked solution.",
       },
     };

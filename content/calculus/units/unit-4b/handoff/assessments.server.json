@@ -1,0 +1,386 @@
+{
+  "schema_version": "3.0.0",
+  "unit_id": "calc-2-unit-4b-power-taylor-series",
+  "assessments": [
+    {
+      "assessment_id": "u4b-power_series_as_functions-01",
+      "canonical_answer": "2",
+      "accepted_answers": [
+        "2"
+      ],
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "hint_latex": "It is geometric with first term \\(1\\) and ratio \\(1/2\\).",
+      "solution_latex": "\\[\\frac1{1-1/2}=2.\\]",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u4b-power_series_as_functions-01"
+    },
+    {
+      "assessment_id": "u4b-radius_and_interval_of_convergence-01",
+      "canonical_answer": "3",
+      "accepted_answers": [
+        "3"
+      ],
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "hint_latex": "Require the geometric ratio magnitude to be below one.",
+      "solution_latex": "\\[|(x-2)/3|<1\\Rightarrow |x-2|<3,\\quad R=3.\\]",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u4b-radius_and_interval_of_convergence-01"
+    },
+    {
+      "assessment_id": "u4b-ratio_test_for_power_series-01",
+      "canonical_answer": "infinity",
+      "accepted_answers": [
+        "infinity"
+      ],
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "extended-real",
+      "tolerance": null,
+      "hint_latex": "The ratio includes a factor \\(1/(n+1)\\).",
+      "solution_latex": "The ratio limit is zero for every fixed \\(x\\), so \\(R=\\infty\\).",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u4b-ratio_test_for_power_series-01"
+    },
+    {
+      "assessment_id": "u4b-endpoint_testing-01",
+      "canonical_answer": "[0,2)",
+      "accepted_answers": [
+        "[0,2)"
+      ],
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "interval-equivalence",
+      "tolerance": null,
+      "hint_latex": "Radius one; test \\(x=0\\) and \\(x=2\\) separately.",
+      "solution_latex": "The left endpoint is alternating and convergent; the right endpoint is harmonic and divergent. Interval: \\([0,2)\\).",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u4b-endpoint_testing-01"
+    },
+    {
+      "assessment_id": "u4b-algebra_with_power_series-01",
+      "canonical_answer": "n+1",
+      "accepted_answers": [
+        "n+1"
+      ],
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "symbolic-with-declared-variables",
+      "tolerance": null,
+      "hint_latex": "Count pairs \\((k,n-k)\\) with nonnegative indices.",
+      "solution_latex": "There are \\(n+1\\) such pairs, so the coefficient is \\(n+1\\).",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u4b-algebra_with_power_series-01"
+    },
+    {
+      "assessment_id": "u4b-differentiating_and_integrating_power_series-01",
+      "canonical_answer": "sum n*x^(n-1)",
+      "accepted_answers": [
+        "sum n*x^(n-1)"
+      ],
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "series-expression-equivalence-or-uncertain",
+      "tolerance": null,
+      "hint_latex": "The constant term vanishes and \\(d(x^n)/dx=nx^{n-1}\\).",
+      "solution_latex": "\\[\\sum_{n=1}^{\\infty}n x^{n-1}=\\frac1{(1-x)^2},\\qquad |x|<1.\\]",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u4b-differentiating_and_integrating_power_series-01"
+    },
+    {
+      "assessment_id": "u4b-geometric_series_library-01",
+      "canonical_answer": "sum x^n/3^(n+1)",
+      "accepted_answers": [
+        "sum x^n/3^(n+1)"
+      ],
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "series-expression-equivalence-or-uncertain",
+      "tolerance": null,
+      "hint_latex": "Factor out \\(3\\) and match \\(1/(1-r)\\).",
+      "solution_latex": "\\[\\frac1{3-x}=\\sum_{n=0}^{\\infty}\\frac{x^n}{3^{n+1}},\\quad |x|<3.\\]",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u4b-geometric_series_library-01"
+    },
+    {
+      "assessment_id": "u4b-taylor_polynomials-01",
+      "canonical_answer": "1+x+x^2/2+x^3/6",
+      "accepted_answers": [
+        "1+x+x^2/2+x^3/6"
+      ],
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "hint_latex": "All derivatives at zero equal one.",
+      "solution_latex": "\\[P_3(x)=1+x+\\frac{x^2}{2}+\\frac{x^3}{6}.\\]",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u4b-taylor_polynomials-01"
+    },
+    {
+      "assessment_id": "u4b-maclaurin_series-01",
+      "canonical_answer": "x-x^3/6+x^5/120",
+      "accepted_answers": [
+        "x-x^3/6+x^5/120"
+      ],
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "hint_latex": "Use odd powers and alternating signs.",
+      "solution_latex": "\\[x-\\frac{x^3}{3!}+\\frac{x^5}{5!}.\\]",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u4b-maclaurin_series-01"
+    },
+    {
+      "assessment_id": "u4b-taylor_series_centered_at_a-01",
+      "canonical_answer": "1",
+      "accepted_answers": [
+        "1"
+      ],
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "hint_latex": "The center makes the power factor zero.",
+      "solution_latex": "The center is \\(a=1\\).",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u4b-taylor_series_centered_at_a-01"
+    },
+    {
+      "assessment_id": "u4b-standard_maclaurin_series-01",
+      "canonical_answer": "1-x^2/2+x^4/24",
+      "accepted_answers": [
+        "1-x^2/2+x^4/24"
+      ],
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "hint_latex": "Use even powers with alternating signs.",
+      "solution_latex": "\\[1-\\frac{x^2}{2!}+\\frac{x^4}{4!}.\\]",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u4b-standard_maclaurin_series-01"
+    },
+    {
+      "assessment_id": "u4b-logarithm_and_arctangent_series-01",
+      "canonical_answer": "pi/4",
+      "accepted_answers": [
+        "pi/4"
+      ],
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "hint_latex": "Use \\(\\arctan(1)\\).",
+      "solution_latex": "\\[1-\\frac13+\\frac15-\\cdots=\\arctan(1)=\\frac\\pi4.\\]",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u4b-logarithm_and_arctangent_series-01"
+    },
+    {
+      "assessment_id": "u4b-building_new_series-01",
+      "canonical_answer": "sum (-1)^n*x^(2n+1)/n!",
+      "accepted_answers": [
+        "sum (-1)^n*x^(2n+1)/n!"
+      ],
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "series-expression-equivalence-or-uncertain",
+      "tolerance": null,
+      "hint_latex": "Substitute \\(-x^2\\) into the exponential series, then multiply by \\(x\\).",
+      "solution_latex": "\\[xe^{-x^2}=\\sum_{n=0}^{\\infty}(-1)^n\\frac{x^{2n+1}}{n!}.\\]",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u4b-building_new_series-01"
+    },
+    {
+      "assessment_id": "u4b-binomial_series-01",
+      "canonical_answer": "1+x/2-x^2/8",
+      "accepted_answers": [
+        "1+x/2-x^2/8"
+      ],
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "hint_latex": "Use \\(\\alpha=1/2\\).",
+      "solution_latex": "\\[\\sqrt{1+x}\\approx1+\\frac{x}{2}-\\frac{x^2}{8}.\\]",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u4b-binomial_series-01"
+    },
+    {
+      "assessment_id": "u4b-taylor_remainder_theorem-01",
+      "canonical_answer": "M*|x-a|^(n+1)/(n+1)!",
+      "accepted_answers": [
+        "M*|x-a|^(n+1)/(n+1)!"
+      ],
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "symbolic-with-declared-variables",
+      "tolerance": null,
+      "hint_latex": "Use a bound \\(M\\) on the \\((n+1)\\)st derivative.",
+      "solution_latex": "\\[|R_n(x)|\\le\\frac{M|x-a|^{n+1}}{(n+1)!}.\\]",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u4b-taylor_remainder_theorem-01"
+    },
+    {
+      "assessment_id": "u4b-alternating_series_approximation-01",
+      "canonical_answer": "0.3^6/720",
+      "accepted_answers": [
+        "0.3^6/720"
+      ],
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "hint_latex": "Use the first omitted \\(x^6/6!\\) term.",
+      "solution_latex": "\\[|R|\\le\\frac{0.3^6}{6!}=\\frac{0.3^6}{720}.\\]",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u4b-alternating_series_approximation-01"
+    },
+    {
+      "assessment_id": "u4b-series_for_definite_integrals-01",
+      "canonical_answer": "0.5-0.5^3/3+0.5^5/10",
+      "accepted_answers": [
+        "0.5-0.5^3/3+0.5^5/10"
+      ],
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "hint_latex": "Integrate \\(1-x^2+x^4/2\\) term by term.",
+      "solution_latex": "\\[0.5-\\frac{0.5^3}{3}+\\frac{0.5^5}{10}.\\]",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u4b-series_for_definite_integrals-01"
+    },
+    {
+      "assessment_id": "u4b-small_angle_physics-01",
+      "canonical_answer": "0.1^3/6",
+      "accepted_answers": [
+        "0.1^3/6"
+      ],
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "standard-symbolic",
+      "tolerance": null,
+      "hint_latex": "The first omitted sine term is \\(x^3/3!\\).",
+      "solution_latex": "\\[|R|\\le0.1^3/6.\\]",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u4b-small_angle_physics-01"
+    },
+    {
+      "assessment_id": "u4b-series_solutions_preview-01",
+      "canonical_answer": "c_0/n!",
+      "accepted_answers": [
+        "c_0/n!"
+      ],
+      "validator": "symbolic-equivalence",
+      "equivalence_policy": "symbolic-with-declared-variables",
+      "tolerance": null,
+      "hint_latex": "Compute the first few coefficients.",
+      "solution_latex": "\\[c_n=\\frac{c_0}{n!}.\\]",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u4b-series_solutions_preview-01"
+    },
+    {
+      "assessment_id": "u4b-uniform_convergence_preview-01",
+      "canonical_answer": "uniform",
+      "accepted_answers": [
+        "uniform"
+      ],
+      "validator": "exact-choice",
+      "equivalence_policy": "symbolic-with-declared-variables",
+      "tolerance": null,
+      "hint_latex": "Look for the word ``simultaneously.",
+      "solution_latex": "Uniform convergence uses one common index for the whole domain.",
+      "grading_outcomes": [
+        "correct",
+        "incorrect",
+        "uncertain",
+        "invalid"
+      ],
+      "provenance_id": "prov-check-u4b-uniform_convergence_preview-01"
+    }
+  ]
+}

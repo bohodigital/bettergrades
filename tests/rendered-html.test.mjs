@@ -377,7 +377,8 @@ test("robots and sitemap metadata routes are indexable and complete", async () =
   const sitemapBody = await sitemap.text();
   assert.match(sitemapBody, /<urlset\b/);
   assert.match(sitemapBody, /\/subjects\/math\/calculus\/limits-continuity\/limit-of-sin-x-over-x\//);
-  assert.match(sitemapBody, /\/subjects\/math\/calculus\/sequences-series\/taylor-series-remainder\//);
+  assert.match(sitemapBody, /\/subjects\/math\/calculus\/power-series-and-taylor-series\/taylor-remainder-theorem\//);
+  assert.doesNotMatch(sitemapBody, /\/subjects\/math\/calculus\/sequences-series\/taylor-series-remainder\//);
   assert.match(sitemapBody, /\/subjects\/math\/algebra\/polynomials-factoring\/factoring-trinomials\//);
   assert.match(sitemapBody, /\/subjects\/math\/algebra\/radicals-exponents-functions\/inverse-functions-vs-reciprocals\//);
   assert.match(sitemapBody, /\/subjects\/math\/algebra\/expressions-equations\/evaluating-expressions-by-substitution\//);

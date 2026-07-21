@@ -6,7 +6,7 @@ const root = resolve(import.meta.dirname, "..");
 const requested = process.argv.find((argument) => argument.startsWith("--unit="))?.split("=")[1];
 const sourceArgument = process.argv.find((argument) => argument.startsWith("--source="))?.slice("--source=".length);
 const checkOnly = process.argv.includes("--check");
-if (!requested || !["unit-3a", "unit-3b", "unit-4a"].includes(requested)) throw new Error("Pass --unit=unit-3a, --unit=unit-3b, or --unit=unit-4a.");
+if (!requested || !["unit-3a", "unit-3b", "unit-4a", "unit-4b"].includes(requested)) throw new Error("Pass --unit=unit-3a, --unit=unit-3b, --unit=unit-4a, or --unit=unit-4b.");
 if (!sourceArgument) throw new Error("Pass --source=<absolute handoff unit directory>.");
 
 const source = resolve(sourceArgument);

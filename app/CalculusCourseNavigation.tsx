@@ -8,6 +8,7 @@ import {
   UNIT_3A_ROOT,
   UNIT_3B_ROOT,
   UNIT_4A_ROOT,
+  UNIT_4B_ROOT,
 } from "./CalculusUnitNavigation";
 
 export const CALCULUS_ROOT = "/subjects/math/calculus/";
@@ -29,6 +30,7 @@ const unitIds = {
   "3A": "calc-1-unit-3a-integral-foundations-techniques",
   "3B": "calc-1-unit-3b-integration-applications",
   "4A": "calc-2-unit-4a-sequences-infinite-series",
+  "4B": "calc-2-unit-4b-power-taylor-series",
 } as const;
 
 function sectionsForUnit(code: keyof typeof unitIds): SectionLink[] {
@@ -127,6 +129,12 @@ const chapters: {
       description: "Sequences, partial sums, convergence tests, absolute and conditional convergence, and error control.",
       root: UNIT_4A_ROOT,
       sections: sectionsForUnit("4A"),
+    }, {
+      code: "4B",
+      title: "Power and Taylor series",
+      description: "Power-series intervals, Taylor construction, standard expansions, error bounds, and approximation.",
+      root: UNIT_4B_ROOT,
+      sections: sectionsForUnit("4B"),
     }],
   },
 ];
@@ -135,7 +143,7 @@ function currentChapterForPath(path: string) {
   if (path.startsWith(UNIT_1_ROOT)) return "1";
   if (path.startsWith(UNIT_2A_ROOT) || path.startsWith(UNIT_2B_ROOT)) return "2";
   if (path.startsWith(UNIT_3A_ROOT) || path.startsWith(UNIT_3B_ROOT)) return "3";
-  if (path.startsWith(CHAPTER_4_ROOT) || path.startsWith("/subjects/math/calculus/sequences-series/")) return "4";
+  if (path.startsWith(CHAPTER_4_ROOT) || path.startsWith(UNIT_4B_ROOT) || path.startsWith("/subjects/math/calculus/sequences-series/")) return "4";
   return undefined;
 }
 

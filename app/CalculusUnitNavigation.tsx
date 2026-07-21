@@ -7,8 +7,9 @@ export const UNIT_2B_ROOT = "/subjects/math/calculus/derivative-applications/";
 export const UNIT_3A_ROOT = "/subjects/math/calculus/integrals/";
 export const UNIT_3B_ROOT = "/subjects/math/calculus/integration-applications/";
 export const UNIT_4A_ROOT = "/subjects/math/calculus/sequences-and-series/";
+export const UNIT_4B_ROOT = "/subjects/math/calculus/power-series-and-taylor-series/";
 
-type UnitCode = "2A" | "2B" | "3A" | "3B" | "4A";
+type UnitCode = "2A" | "2B" | "3A" | "3B" | "4A" | "4B";
 
 const unitIds: Record<UnitCode, string> = {
   "2A": "calc-1-unit-2a-derivative-foundations-techniques",
@@ -16,6 +17,7 @@ const unitIds: Record<UnitCode, string> = {
   "3A": "calc-1-unit-3a-integral-foundations-techniques",
   "3B": "calc-1-unit-3b-integration-applications",
   "4A": "calc-2-unit-4a-sequences-infinite-series",
+  "4B": "calc-2-unit-4b-power-taylor-series",
 };
 
 function sectionLinks(code: UnitCode) {
@@ -61,8 +63,10 @@ const groups: Record<UnitCode, {
     description: "Build sequence limits, partial sums, convergence tests, error bounds, and a reliable strategy for deciding which test fits.",
     links: [
       { code: "4A", root: UNIT_4A_ROOT, title: "Sequences and infinite series", current: "You are here · Open the unit map", other: "Build sequence and convergence foundations" },
+      { code: "4B", root: UNIT_4B_ROOT, title: "Power and Taylor series", current: "You are here · Open the unit map", other: "Continue to series functions and approximation" },
     ],
   },
+  "4B": undefined as never,
 };
 groups["2B"] = groups["2A"];
 groups["3B"] = {
@@ -74,6 +78,7 @@ groups["3B"] = {
     { code: "3B", root: UNIT_3B_ROOT, title: "Integration applications", current: "You are here · Open the unit map", other: "Continue to geometry and modeling" },
   ],
 };
+groups["4B"] = groups["4A"];
 
 export function CalculusUnitNavigation({ currentUnit, compact = false }: { currentUnit: UnitCode; compact?: boolean }) {
   const group = groups[currentUnit];

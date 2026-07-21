@@ -9,6 +9,11 @@ if (requested === "unit-4a") {
   await authorUnit4aVisuals({ root, checkOnly });
   process.exit(0);
 }
+if (requested === "unit-4b") {
+  const { authorUnit4bVisuals } = await import("./unit-4b-visual-definitions.mjs");
+  await authorUnit4bVisuals({ root, checkOnly });
+  process.exit(0);
+}
 if (requested === "unit-3b") {
   const { authorUnit3bVisuals } = await import("./unit-3b-visual-definitions.mjs");
   await authorUnit3bVisuals({ root, checkOnly });

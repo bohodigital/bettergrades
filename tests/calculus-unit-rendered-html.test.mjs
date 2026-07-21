@@ -227,7 +227,7 @@ test("all Unit 4A pages render as clean Calculus II sequence-and-series pages", 
     assert.match(text, /Calculus II.*Unit 4A/, route.path);
     assert.match(html, /aria-label="Calculus Unit 4 course navigation"/, route.path);
     assert.match(html, /href="\/subjects\/math\/calculus\/sequences-and-series\/"[^>]+aria-current="location"/, route.path);
-    assert.match(html, /href="\/subjects\/math\/calculus\/integration-applications\/"/, route.path);
+    assert.match(html, /href="\/subjects\/math\/calculus\/power-series-and-taylor-series\/"/, route.path);
     const renderedTitle = route.title.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("'", "&#x27;").replaceAll('"', "&quot;");
     assert.match(html, new RegExp(`<h1>${escapeRegExp(renderedTitle)}</h1>`), route.path);
     if (route.pageType !== "hub" && !/Unit 4A/.test(route.title)) assert.match(html, /<title>[^<]+\| Unit 4A \| Better Grades<\/title>/, route.path);
@@ -243,23 +243,49 @@ test("all Unit 4A pages render as clean Calculus II sequence-and-series pages", 
   }
 });
 
-test("the Unit 4A map leads with the canonical textbook and keeps Unit 4B unpublished", async () => {
+test("the Unit 4A map leads with the canonical textbook and links the separate Unit 4B map", async () => {
   const response = await render("/subjects/math/calculus/sequences-and-series/");
   assert.equal(response.status, 200);
   const html = await response.text();
   const text = visibleText(html);
   assert.match(text, /The complete Unit 4A path/);
   assert.match(text, /Turn infinite processes into precise convergence decisions/);
-  assert.match(text, /Focused convergence explorations/);
+  assert.match(text, /Focused series explorations/);
   assert.match(text, /Published exam answer keys/);
-  assert.match(text, /Return easily to Unit 3B/);
-  assert.doesNotMatch(html, /power-series-and-taylor-series/);
+  assert.match(text, /Unit 4B: Power Series and Taylor Series/);
+  assert.match(html, /href="\/subjects\/math\/calculus\/power-series-and-taylor-series\/"/);
+});
+
+test("all Unit 4B pages render as clean Calculus II power-and-Taylor-series pages", async () => {
+  const unitRoutes = calculusUnitRoutes.filter((route) => route.unitId === "calc-2-unit-4b-power-taylor-series");
+  assert.equal(unitRoutes.length, 31);
+  for (const route of unitRoutes) {
+    const response = await render(route.path);
+    assert.equal(response.status, 200, route.path);
+    const html = await response.text();
+    const text = visibleText(html);
+    assert.match(html, /data-unit-id="calc-2-unit-4b-power-taylor-series"/, route.path);
+    assert.match(text, /Calculus II.*Unit 4B/, route.path);
+    assert.match(html, /aria-label="Calculus Unit 4 course navigation"/, route.path);
+    assert.match(html, /href="\/subjects\/math\/calculus\/power-series-and-taylor-series\/"[^>]+aria-current="location"/, route.path);
+    assert.match(html, /href="\/subjects\/math\/calculus\/sequences-and-series\/"/, route.path);
+    const renderedTitle = route.title.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("'", "&#x27;").replaceAll('"', "&quot;");
+    assert.match(html, new RegExp(`<h1>${escapeRegExp(renderedTitle)}</h1>`), route.path);
+    if (route.pageType !== "hub" && !/Unit 4B/.test(route.title)) assert.match(html, /<title>[^<]+\| Unit 4B \| Better Grades<\/title>/, route.path);
+    assert.doesNotMatch(text, /\\(?:begin|end|frac|varepsilon|textbf|emph|section|chapter|addplot|draw|node)\b|\$\$|\\[()[\]]/, route.path);
+    assert.doesNotMatch(html, /This equation could not be rendered safely|This visual is temporarily unavailable|class="katex-error"/, route.path);
+    const renderedCheckIds = [...html.matchAll(/data-check-id="([^"]+)"/g)].map((match) => match[1]);
+    assert.equal(renderedCheckIds.length, new Set(renderedCheckIds).size, `${route.path} renders each interactive check once`);
+    if (route.pageType !== "hub") { assert.match(html, /Section overview/, route.path); assert.match(html, /Reading lens/, route.path); }
+    if (route.pageType === "exam") assert.match(html, /View the complete answer key/, route.path);
+  }
 });
 
 test("calculus lessons include a complete server-only fallback when JavaScript is unavailable", async () => {
   for (const [path, titlePattern] of [
     ["/subjects/math/calculus/limits-continuity/unit/limits/what-a-limit-means/", /What a Limit Means/i],
     ["/subjects/math/calculus/sequences-and-series/geometric-series/", /Geometric series/i],
+    ["/subjects/math/calculus/power-series-and-taylor-series/taylor-remainder-theorem/", /Theorem and the Remainder/i],
   ]) {
     const response = await render(path);
     assert.equal(response.status, 200, path);
@@ -276,13 +302,20 @@ test("calculus lessons include a complete server-only fallback when JavaScript i
   const visualFallback = visualHtml.match(/<noscript>([\s\S]*?)<\/noscript>/)?.[1] ?? "";
   assert.match(visualFallback, /data-noscript-visual=/);
   assert.match(visualFallback, /\/visuals\/v1\/[^"']+\.svg/);
+  const unit4bVisualResponse = await render("/subjects/math/calculus/power-series-and-taylor-series/power-series-as-functions/");
+  const unit4bVisualHtml = await unit4bVisualResponse.text();
+  const unit4bVisualFallback = unit4bVisualHtml.match(/<noscript>([\s\S]*?)<\/noscript>/)?.[1] ?? "";
+  assert.match(unit4bVisualFallback, /data-noscript-visual=/);
+  assert.match(unit4bVisualFallback, /\/visuals\/v1\/unit-4b-[^"']+\.svg/);
 });
 
-test("superseded Chapter 4 duplicate intents redirect to Unit 4A canonical routes", async () => {
+test("superseded Chapter 4 duplicate intents redirect to Unit 4 canonical routes", async () => {
   const redirects = new Map([
     ["/subjects/math/calculus/sequences-series/", "/subjects/math/calculus/sequences-and-series/"],
     ["/subjects/math/calculus/sequences-series/geometric-series/", "/subjects/math/calculus/sequences-and-series/geometric-series/"],
     ["/subjects/math/calculus/sequences-series/choosing-convergence-test/", "/subjects/math/calculus/sequences-and-series/choosing-a-convergence-test/"],
+    ["/subjects/math/calculus/sequences-series/power-series-interval-of-convergence/", "/subjects/math/calculus/power-series-and-taylor-series/radius-and-interval-of-convergence/"],
+    ["/subjects/math/calculus/sequences-series/taylor-series-remainder/", "/subjects/math/calculus/power-series-and-taylor-series/taylor-remainder-theorem/"],
   ]);
   for (const [from, to] of redirects) {
     const response = await render(from);
@@ -292,7 +325,5 @@ test("superseded Chapter 4 duplicate intents redirect to Unit 4A canonical route
   for (const path of [
     "/subjects/math/calculus/sequences-series/harmonic-series-diverges/",
     "/subjects/math/calculus/sequences-series/ratio-test-vs-root-test/",
-    "/subjects/math/calculus/sequences-series/power-series-interval-of-convergence/",
-    "/subjects/math/calculus/sequences-series/taylor-series-remainder/",
   ]) assert.equal((await render(path)).status, 200, path);
 });

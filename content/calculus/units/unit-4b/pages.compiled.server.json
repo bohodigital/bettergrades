@@ -1,0 +1,5302 @@
+{
+  "schemaVersion": 1,
+  "unitId": "calc-2-unit-4b-power-taylor-series",
+  "pageCount": 31,
+  "pages": [
+    {
+      "routeId": "subjects/math/calculus/power-series-and-taylor-series",
+      "nodes": [
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Unit 4B: Power Series and Taylor Series"
+        },
+        {
+          "type": "paragraph",
+          "text": "A numerical series produces one number. A power series contains a variable and therefore produces a function wherever the series converges. This change turns convergence testing into a form of function construction: a single infinite expression may represent a familiar function on one interval and diverge outside it."
+        },
+        {
+          "type": "paragraph",
+          "text": "Taylor series take the idea further. Derivatives at one center encode local behavior, and a polynomial built from that derivative data can approximate the function. Under suitable control of the remainder, increasing-degree polynomials converge to the function itself. The unit develops the standard series library, interval and radius calculations, termwise calculus, Taylor error bounds, and practical approximation examples."
+        },
+        {
+          "type": "concept",
+          "title": "From coefficients to a function",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={From coefficients to a function}] A power series centered at \\(a\\) has the form"
+            },
+            {
+              "type": "math",
+              "tex": "\\sum_{n=0}^{\\infty}c_n(x-a)^n."
+            },
+            {
+              "type": "paragraph",
+              "text": "Its convergence set is an interval centered at \\(a\\), possibly including neither, one, or both endpoints."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Unit map"
+        },
+        {
+          "type": "paragraph",
+          "text": "• Power series, radius, interval, and endpoint testing • Algebra and calculus with power series • Geometric-series transformations • Taylor and Maclaurin polynomials • Standard series and construction techniques • Binomial series • Remainders, error bounds, and numerical applications • A preview of series in physics and differential equations"
+        }
+      ],
+      "sectionId": "orientation",
+      "sectionTitle": "Orientation and the power-series roadmap",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/power-series-and-taylor-series/power-series-as-functions",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "interpret a power series as a function and evaluate it at specific inputs."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Power Series as Functions"
+        },
+        {
+          "type": "exposition",
+          "title": "An infinite polynomial is still only meaningful where it converges",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={An infinite polynomial is still only meaningful where it converges}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "A power series resembles a polynomial with infinitely many terms. For each fixed input \\(x\\), however, it becomes an ordinary numerical series. Its value exists only if that numerical series converges. The same symbolic expression may therefore define a function on an interval and fail completely outside it."
+            },
+            {
+              "type": "paragraph",
+              "text": "The center \\(a\\) organizes the powers \\((x-a)^n\\). Near the center, these powers are small and convergence is favored. Farther away, they grow and can overwhelm the coefficients. Evaluating a power series begins by substituting the input, simplifying the resulting numerical series, and then using the convergence tools from Unit 4A."
+            }
+          ]
+        },
+        {
+          "type": "bridge",
+          "title": "One infinite formula can define an entire function",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={One infinite formula can define an entire function}] A numerical series asks whether one fixed list of numbers has a finite total. A power series inserts a variable into the terms, so convergence can change when \\(x\\) changes. The same expression may converge rapidly at one input, converge delicately at another, and diverge immediately elsewhere."
+            },
+            {
+              "type": "paragraph",
+              "text": "This is why a power series should be viewed as both an infinite series and a function. First choose an input \\(x\\); then the power series becomes an ordinary numerical series. The set of inputs where that numerical series converges is the function's domain of representation."
+            }
+          ]
+        },
+        {
+          "type": "visual-reference",
+          "visualId": "u4b-power-series-three-inputs",
+          "title": "A power series changes character when x changes",
+          "text": "Three panels show geometric partial sums for x=1/2 approaching 2, for x=-1 oscillating, and for x=2 growing rapidly."
+        },
+        {
+          "type": "definition",
+          "title": "Power series centered at a",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Power series centered at a}] A power series has the form"
+            },
+            {
+              "type": "math",
+              "tex": "\\sum_{n=0}^{\\infty}c_n(x-a)^n."
+            },
+            {
+              "type": "paragraph",
+              "text": "For each fixed \\(x\\), this becomes a numerical series whose convergence must be determined."
+            }
+          ]
+        },
+        {
+          "type": "concept",
+          "title": "Power-series form",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Power-series form}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "A power series centered at \\(a\\) is"
+            },
+            {
+              "type": "math",
+              "tex": "\\sum_{n=0}^{\\infty}c_n(x-a)^n."
+            },
+            {
+              "type": "paragraph",
+              "text": "At \\(x=a\\), every positive-power term vanishes, so the value is \\(c_0\\)."
+            }
+          ]
+        },
+        {
+          "type": "guided-walkthrough",
+          "title": "Evaluate at several inputs",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Evaluate at several inputs}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "For"
+            },
+            {
+              "type": "math",
+              "tex": "F(x)=\\sum_{n=0}^{\\infty}\\left(\\frac{x}{2}\\right)^n,"
+            },
+            {
+              "type": "paragraph",
+              "text": "we have \\(F(0)=1\\), \\(F(1)=\\sum(1/2)^n=2\\), and at \\(x=3\\) the terms \\((3/2)^n\\) do not approach zero, so the series diverges."
+            }
+          ]
+        },
+        {
+          "type": "worked-example",
+          "title": "The same power series behaves three different ways",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={The same power series behaves three different ways}] Consider"
+            },
+            {
+              "type": "math",
+              "tex": "\\sum_{n=0}^{\\infty}x^n."
+            },
+            {
+              "type": "paragraph",
+              "text": "At \\(x=1/2\\), it is geometric with ratio \\(1/2\\) and sums to \\(2\\). At \\(x=-1\\), the terms alternate between \\(1\\) and \\(-1\\), so they do not approach zero and the series diverges. At \\(x=2\\), the terms grow and the series diverges even more plainly. The expression therefore defines \\(1/(1-x)\\) only for \\(|x|<1\\)."
+            }
+          ]
+        },
+        {
+          "type": "common-mistake",
+          "title": "An algebraic formula does not erase the convergence domain",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={An algebraic formula does not erase the convergence domain}] The identity \\(\\sum x^n=1/(1-x)\\) is valid where the geometric series converges, not at every point where the rational function itself exists."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u4b-power_series_as_functions-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Evaluate \\(\\sum_{n=0}^{\\infty}(1/2)^n\\)."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "It is geometric with first term \\(1\\) and ratio \\(1/2\\)."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "\\frac1{1-1/2}=2."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Evaluate \\(\\sum(x/3)^n\\) at \\(x=0,1,4\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Identify the center of \\(\\sum c_n(x+2)^n\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Explain why a power series is not automatically defined for every real \\(x\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the value at the center without summing."
+            }
+          ]
+        }
+      ],
+      "sectionId": "convergence",
+      "sectionTitle": "Power-series convergence and endpoints",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/power-series-and-taylor-series/radius-and-interval-of-convergence",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "find the radius of convergence and describe the automatic convergence and divergence regions."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Radius and Interval of Convergence"
+        },
+        {
+          "type": "exposition",
+          "title": "Power-series convergence has a rigid geometry",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Power-series convergence has a rigid geometry}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "A power series has a remarkable all-or-nothing structure around its center. If it converges at a point some distance from the center, it converges absolutely at every closer point. If it diverges at one point, it diverges at every farther point. The result is a radius \\(R\\) separating automatic convergence from automatic divergence."
+            },
+            {
+              "type": "paragraph",
+              "text": "The radius does not decide endpoint inclusion. At \\(|x-a|=R\\), the ratio or root calculation usually becomes exactly one and loses power. Each endpoint must be substituted into the original series and tested independently. The final interval may be open, closed, or half-open."
+            }
+          ]
+        },
+        {
+          "type": "bridge",
+          "title": "Convergence spreads inward from the center",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Convergence spreads inward from the center}] Power-series convergence is organized by distance from the center \\(a\\). If the series converges at a point \\(x_0\\ne a\\), then it converges absolutely at every point closer to \\(a\\). If it diverges at one point, it diverges at every point farther away. This produces a radius \\(R\\) and an interval centered at \\(a\\)."
+            },
+            {
+              "type": "paragraph",
+              "text": "The radius settles only the interior and exterior. At the boundary points \\(a-R\\) and \\(a+R\\), the geometric domination used inside has ratio one and stops deciding the question. Each endpoint must be tested separately as an ordinary numerical series."
+            }
+          ]
+        },
+        {
+          "type": "visual-reference",
+          "visualId": "u4b-radius-number-line",
+          "title": "The radius organizes convergence by distance from the center",
+          "text": "A number line centered at a shows an interior interval of absolute convergence, two separately marked endpoints, and exterior divergence regions."
+        },
+        {
+          "type": "decision",
+          "title": "Interval-of-convergence workflow",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Interval-of-convergence workflow}] First find the center and radius by testing absolute convergence for a generic \\(x\\). Record the open interior interval. Then substitute the left endpoint into the original series and test it; repeat independently at the right endpoint. Only after both decisions should interval notation be written."
+            }
+          ]
+        },
+        {
+          "type": "proof-idea",
+          "title": "A closer point introduces a geometric factor",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={A closer point introduces a geometric factor}] If \\(\\sum c_n(x_0-a)^n\\) converges, its terms are bounded. For \\(|x-a|<|x_0-a|\\), write"
+            },
+            {
+              "type": "math",
+              "tex": "|c_n(x-a)^n|=|c_n(x_0-a)^n|\\left|\\frac{x-a}{x_0-a}\\right|^n."
+            },
+            {
+              "type": "paragraph",
+              "text": "The bounded first factor times a geometric factor with ratio below one proves absolute convergence."
+            }
+          ]
+        },
+        {
+          "type": "visual-reference",
+          "visualId": "u4b-power-series-interval",
+          "title": "A power series converges on an interval centered at its expansion point",
+          "text": "Inside the radius \\(R\\), convergence is automatic; outside, divergence is automatic; each endpoint must be checked separately."
+        },
+        {
+          "type": "visual-reading",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "The open left endpoint and closed right endpoint are only an example. Endpoint inclusion depends on separate one-variable series tests."
+            }
+          ]
+        },
+        {
+          "type": "concept",
+          "title": "Radius structure",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Radius structure}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "For some \\(R\\in[0,\\infty]\\), a power series centered at \\(a\\) converges absolutely when \\(|x-a|<R\\) and diverges when \\(|x-a|>R\\)."
+            }
+          ]
+        },
+        {
+          "type": "guided-walkthrough",
+          "title": "A basic radius",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={A basic radius}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "For"
+            },
+            {
+              "type": "math",
+              "tex": "\\sum_{n=0}^{\\infty}\\frac{(x-2)^n}{3^n},"
+            },
+            {
+              "type": "paragraph",
+              "text": "the geometric ratio is \\((x-2)/3\\). Thus \\(|x-2|<3\\), so the radius is \\(R=3\\) and the open convergence interval is \\((-1,5)\\). Endpoints still require tests."
+            }
+          ]
+        },
+        {
+          "type": "worked-example",
+          "title": "Read the interval from the center and radius",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Read the interval from the center and radius}] Suppose a power series centered at \\(3\\) has radius \\(5\\). It converges absolutely whenever"
+            },
+            {
+              "type": "math",
+              "tex": "|x-3|<5,"
+            },
+            {
+              "type": "paragraph",
+              "text": "which is the open interval \\((-2,8)\\). It diverges for \\(x<-2\\) or \\(x>8\\). The points \\(x=-2\\) and \\(x=8\\) remain unresolved until they are substituted into the original series."
+            }
+          ]
+        },
+        {
+          "type": "common-mistake",
+          "title": "Radius and interval are not the same object",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Radius and interval are not the same object}] The radius is the nonnegative number \\(R\\). The interval includes the center and records endpoint behavior, such as \\([-2,8)\\)."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u4b-radius_and_interval_of_convergence-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the radius of convergence of \\(\\sum (x-2)^n/3^n\\)."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Require the geometric ratio magnitude to be below one."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "|(x-2)/3|<1\\Rightarrow |x-2|<3,\\quad R=3."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the radius of \\(\\sum x^n/5^n\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the center and radius of \\(\\sum n(x+1)^n/4^n\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Explain what \\(R=0\\) and \\(R=\\infty\\) mean."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Why does radius alone not settle endpoints?"
+            }
+          ]
+        }
+      ],
+      "sectionId": "convergence",
+      "sectionTitle": "Power-series convergence and endpoints",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/power-series-and-taylor-series/ratio-test-for-power-series",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "derive an inequality in \\(x\\) from the Ratio Test and identify the radius."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Using the Ratio Test on Power Series"
+        },
+        {
+          "type": "exposition",
+          "title": "The Ratio Test turns coefficient growth into a distance condition",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={The Ratio Test turns coefficient growth into a distance condition}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "For many power series, the ratio of consecutive terms simplifies to a constant multiple of \\(|x-a|\\). The inequality \\(L<1\\) then becomes the interior convergence condition. This is one of the most reusable calculations in Calculus II."
+            },
+            {
+              "type": "paragraph",
+              "text": "The ratio test is applied to the whole term, not only to coefficients. After solving the inequality, record the radius and open interval before touching endpoints. Keeping those stages separate prevents endpoint conclusions from being smuggled out of a test that is explicitly inconclusive there."
+            }
+          ]
+        },
+        {
+          "type": "bridge",
+          "title": "The Ratio Test turns x into a distance inequality",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={The Ratio Test turns x into a distance inequality}] When a power series contains factorials or complicated coefficients, the Ratio Test usually isolates a factor of \\(|x-a|\\). The resulting inequality \\(L(x)<1\\) describes the open interval of absolute convergence."
+            },
+            {
+              "type": "paragraph",
+              "text": "The calculation finds the radius, not the complete interval. After solving the inequality, return to the original series at both endpoints. The ratio test often becomes inconclusive there precisely because its limiting ratio equals one."
+            }
+          ]
+        },
+        {
+          "type": "proof-idea",
+          "title": "Coefficient growth and distance multiply",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Coefficient growth and distance multiply}] The neighboring-term ratio often separates as"
+            },
+            {
+              "type": "math",
+              "tex": "\\left|\\frac{c_{n+1}}{c_n}\\right||x-a|."
+            },
+            {
+              "type": "paragraph",
+              "text": "The coefficient limit sets the allowable size of \\(|x-a|\\). This is the series analogue of balancing coefficient growth against powers of distance."
+            }
+          ]
+        },
+        {
+          "type": "concept",
+          "title": "Generic ratio pattern",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Generic ratio pattern}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "For \\(a_n=c_n(x-a)^n\\), compute"
+            },
+            {
+              "type": "math",
+              "tex": "\\left|\\frac{a_{n+1}}{a_n}\\right|\n=\\left|\\frac{c_{n+1}}{c_n}\\right||x-a|."
+            }
+          ]
+        },
+        {
+          "type": "guided-walkthrough",
+          "title": "A factorial coefficient",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={A factorial coefficient}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "For"
+            },
+            {
+              "type": "math",
+              "tex": "\\sum_{n=0}^{\\infty}\\frac{(x-1)^n}{n!},"
+            },
+            {
+              "type": "paragraph",
+              "text": "the ratio is \\(|x-1|/(n+1)\\to0\\) for every real \\(x\\). Therefore \\(R=\\infty\\)."
+            }
+          ]
+        },
+        {
+          "type": "worked-example",
+          "title": "A factorial produces infinite radius",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={A factorial produces infinite radius}] Find the radius of convergence of"
+            },
+            {
+              "type": "math",
+              "tex": "\\sum_{n=0}^{\\infty}\\frac{(x-2)^n}{n!}."
+            },
+            {
+              "type": "paragraph",
+              "text": "For \\(a_n=(x-2)^n/n!\\),"
+            },
+            {
+              "type": "math",
+              "tex": "\\left|\\frac{a_{n+1}}{a_n}\\right|=\\frac{|x-2|}{n+1}\\to0"
+            },
+            {
+              "type": "paragraph",
+              "text": "for every real \\(x\\). Since the ratio limit is always below one, the series converges absolutely for all \\(x\\), so \\(R=\\infty\\)."
+            }
+          ]
+        },
+        {
+          "type": "common-mistake",
+          "title": "Do not replace endpoint tests with the ratio limit",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Do not replace endpoint tests with the ratio limit}] If solving \\(L(x)<1\\) gives \\(|x-a|<R\\), the points where \\(|x-a|=R\\) still require direct substitution into the original series."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u4b-ratio_test_for_power_series-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the radius of \\(\\sum (x-1)^n/n!\\)."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "The ratio includes a factor \\(1/(n+1)\\)."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "The ratio limit is zero for every fixed \\(x\\), so \\(R=\\infty\\)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the radius of \\(\\sum n!(x+2)^n\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the radius of \\(\\sum (x-3)^n/[n2^n]\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Explain why the test is inconclusive at \\(|x-a|=R\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Derive a radius formula when \\(|c_{n+1}/c_n|\\to L\\)."
+            }
+          ]
+        }
+      ],
+      "sectionId": "convergence",
+      "sectionTitle": "Power-series convergence and endpoints",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/power-series-and-taylor-series/endpoint-testing",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "test each endpoint using numerical-series methods and state the complete interval of convergence."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Endpoint Testing for Power Series"
+        },
+        {
+          "type": "exposition",
+          "title": "Endpoints are separate problems, not decorative brackets",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Endpoints are separate problems, not decorative brackets}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "After the radius is known, substituting an endpoint removes the variable and produces a numerical series. The left and right endpoints may behave differently because signs change. One may yield a harmonic series, the other an alternating harmonic series. Therefore endpoint inclusion must be recorded one endpoint at a time."
+            },
+            {
+              "type": "paragraph",
+              "text": "A complete interval answer shows the center, radius, and bracket choices. It also states why each endpoint is included or excluded. Merely writing an interval without tests hides the most interesting part of many power-series problems."
+            }
+          ]
+        },
+        {
+          "type": "decision",
+          "title": "Do not reuse the radius calculation at an endpoint",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Do not reuse the radius calculation at an endpoint}] The ratio or root limit usually equals one at the boundary and therefore says nothing. Substitute the endpoint into the original series, simplify the resulting numerical series, and choose a fresh convergence test. The two endpoints may have different outcomes."
+            }
+          ]
+        },
+        {
+          "type": "bridge",
+          "title": "Each endpoint becomes its own numerical-series problem",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Each endpoint becomes its own numerical-series problem}] Inside the radius, convergence is absolute; outside, divergence is guaranteed. At an endpoint, the power factor usually becomes \\(1\\) or \\((-1)^n\\), exposing a familiar numerical series. One endpoint may converge while the other diverges."
+            },
+            {
+              "type": "paragraph",
+              "text": "Endpoint work is therefore not a minor final checkbox. It can distinguish open, closed, and half-open intervals, and often changes absolute convergence into conditional convergence. Substitute each endpoint into the original series, simplify completely, and name the test used."
+            }
+          ]
+        },
+        {
+          "type": "visual-reference",
+          "visualId": "u4b-endpoint-zones",
+          "title": "Interior, endpoints, and exterior require different reasoning",
+          "text": "A number line shows an interior region decided by the radius, two endpoint test boxes, and exterior divergence."
+        },
+        {
+          "type": "concept",
+          "title": "Endpoint workflow",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Endpoint workflow}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "Solve \\(|x-a|<R\\), then substitute \\(x=a-R\\) and \\(x=a+R\\) into the original series. Use ordinary convergence tests on the resulting numerical series."
+            }
+          ]
+        },
+        {
+          "type": "guided-walkthrough",
+          "title": "A half-open interval",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={A half-open interval}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "For"
+            },
+            {
+              "type": "math",
+              "tex": "\\sum_{n=1}^{\\infty}\\frac{(x-1)^n}{n},"
+            },
+            {
+              "type": "paragraph",
+              "text": "we have \\(|x-1|<1\\). At \\(x=2\\), the series is harmonic and diverges. At \\(x=0\\), it becomes \\(\\sum(-1)^n/n\\), which converges. The interval is \\([0,2)\\)."
+            }
+          ]
+        },
+        {
+          "type": "worked-example",
+          "title": "One endpoint closes and the other does not",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={One endpoint closes and the other does not}] Find the interval of convergence of"
+            },
+            {
+              "type": "math",
+              "tex": "\\sum_{n=1}^{\\infty}\\frac{(x-2)^n}{n}."
+            },
+            {
+              "type": "paragraph",
+              "text": "The ratio test gives \\(|x-2|<1\\), so the candidate interval is \\((1,3)\\). At \\(x=3\\), the series becomes \\(\\sum1/n\\), which diverges. At \\(x=1\\), it becomes \\(\\sum(-1)^n/n\\), which converges conditionally. Therefore the interval is \\([1,3)\\)."
+            }
+          ]
+        },
+        {
+          "type": "common-mistake",
+          "title": "Do not test endpoints in the simplified ratio expression",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Do not test endpoints in the simplified ratio expression}] Endpoint behavior belongs to the original power series. Substituting endpoints into the ratio-test limit can only reproduce the inconclusive value one."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u4b-endpoint_testing-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the interval of convergence of \\(\\sum_{n=1}^{\\infty}(x-1)^n/n\\)."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Radius one; test \\(x=0\\) and \\(x=2\\) separately."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "The left endpoint is alternating and convergent; the right endpoint is harmonic and divergent. Interval: \\([0,2)\\)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the interval of \\(\\sum x^n/n^2\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the interval of \\(\\sum (x+3)^n/[n4^n]\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Give a power series with both endpoints included."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Explain why convergence inside the radius is absolute."
+            }
+          ]
+        }
+      ],
+      "sectionId": "convergence",
+      "sectionTitle": "Power-series convergence and endpoints",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/power-series-and-taylor-series/algebra-with-power-series",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "add, subtract, shift, and multiply power series while tracking coefficients and convergence intervals."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Algebra with Power Series"
+        },
+        {
+          "type": "exposition",
+          "title": "Infinite algebra must be performed coefficient by coefficient",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Infinite algebra must be performed coefficient by coefficient}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "Power series can be added and subtracted like polynomials on a common interval of convergence. Multiplication uses a convolution: the coefficient of \\(x^n\\) receives contributions from every pair of powers whose exponents add to \\(n\\). Writing several low-degree terms before using sigma notation keeps the index structure visible."
+            },
+            {
+              "type": "paragraph",
+              "text": "The resulting identity is valid at least where both original series converge absolutely. Endpoints may require fresh analysis. Algebraic manipulation can create useful representations, but it does not erase convergence conditions. An identity copied without its interval is incomplete."
+            }
+          ]
+        },
+        {
+          "type": "bridge",
+          "title": "Infinite polynomials follow familiar algebra, with convergence conditions",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Infinite polynomials follow familiar algebra, with convergence conditions}] Power series can be added, subtracted, shifted, substituted, and multiplied much like polynomials inside a common interval of convergence. Addition combines matching powers. Multiplication uses a convolution: the coefficient of \\(x^n\\) receives contributions from every pair of exponents adding to \\(n\\)."
+            },
+            {
+              "type": "paragraph",
+              "text": "The bookkeeping matters. Multiplying only matching-index terms misses most products. For approximation, one often needs only coefficients through a specified degree, so a diagonal coefficient table can prevent unnecessary expansion."
+            }
+          ]
+        },
+        {
+          "type": "visual-reference",
+          "visualId": "u4b-cauchy-product-grid",
+          "title": "Product coefficients come from diagonals",
+          "text": "A grid of coefficient products is organized by total exponent. Entries on the same diagonal all contribute to one power of x."
+        },
+        {
+          "type": "proof-idea",
+          "title": "Diagonals collect equal total degree",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Diagonals collect equal total degree}] In"
+            },
+            {
+              "type": "math",
+              "tex": "\\left(\\sum_{j\\ge0}a_jx^j\\right)\\left(\\sum_{k\\ge0}b_kx^k\\right),"
+            },
+            {
+              "type": "paragraph",
+              "text": "terms with \\(j+k=n\\) all contribute to \\(x^n\\). Their sum is the convolution coefficient \\(c_n=\\sum_{k=0}^{n}a_kb_{n-k}\\)."
+            }
+          ]
+        },
+        {
+          "type": "concept",
+          "title": "Cauchy product",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Cauchy product}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "If \\(A(x)=\\sum a_nx^n\\) and \\(B(x)=\\sum b_nx^n\\), then formally"
+            },
+            {
+              "type": "math",
+              "tex": "A(x)B(x)=\\sum_{n=0}^{\\infty}\\left(\\sum_{k=0}^{n}a_kb_{n-k}\\right)x^n."
+            }
+          ]
+        },
+        {
+          "type": "guided-walkthrough",
+          "title": "Square the geometric series",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Square the geometric series}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "Since"
+            },
+            {
+              "type": "math",
+              "tex": "\\frac1{1-x}=1+x+x^2+\\cdots,"
+            },
+            {
+              "type": "paragraph",
+              "text": "squaring gives"
+            },
+            {
+              "type": "math",
+              "tex": "\\frac1{(1-x)^2}=1+2x+3x^2+4x^3+\\cdots\n=\\sum_{n=0}^{\\infty}(n+1)x^n,"
+            },
+            {
+              "type": "paragraph",
+              "text": "valid for \\(|x|<1\\)."
+            }
+          ]
+        },
+        {
+          "type": "worked-example",
+          "title": "Multiply only as far as the requested degree",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Multiply only as far as the requested degree}] Suppose"
+            },
+            {
+              "type": "math",
+              "tex": "f(x)=1+x+x^2+O(x^3),\\qquad g(x)=1-x+2x^2+O(x^3)."
+            },
+            {
+              "type": "paragraph",
+              "text": "Then"
+            },
+            {
+              "type": "math",
+              "tex": "f(x)g(x)=1+(1-1)x+(2-1+1)x^2+O(x^3)\n=1+2x^2+O(x^3)."
+            },
+            {
+              "type": "paragraph",
+              "text": "The \\(x^2\\) coefficient collects \\(1\\cdot2x^2\\), \\(x\\cdot(-x)\\), and \\(x^2\\cdot1\\)."
+            }
+          ]
+        },
+        {
+          "type": "common-mistake",
+          "title": "Series multiplication is not term-by-term multiplication",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Series multiplication is not term-by-term multiplication}] The coefficient of \\(x^n\\) is \\(\\sum_{k=0}^{n}a_kb_{n-k}\\), not simply \\(a_nb_n\\)."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u4b-algebra_with_power_series-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "What is the coefficient of \\(x^n\\) in \\((1+x+x^2+\\cdots)^2\\)?"
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Count pairs \\((k,n-k)\\) with nonnegative indices."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "There are \\(n+1\\) such pairs, so the coefficient is \\(n+1\\)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Add the series for \\(e^x\\) and \\(e^{-x}\\) to identify even powers."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Multiply \\((1+x+x^2+\\cdots)(1-x)\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the first five terms of the product of \\(\\sum x^n\\) and \\(\\sum(-x)^n\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Explain why endpoint behavior may change after algebraic combination."
+            }
+          ]
+        }
+      ],
+      "sectionId": "operations",
+      "sectionTitle": "Algebra and calculus with power series",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/power-series-and-taylor-series/differentiating-and-integrating-power-series",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "differentiate and integrate a power series term by term inside its radius of convergence."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Differentiating and Integrating Power Series"
+        },
+        {
+          "type": "exposition",
+          "title": "Power series behave like polynomials inside their radius",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Power series behave like polynomials inside their radius}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "Within the open interval of convergence, a power series may be differentiated or integrated term by term. The resulting series has the same radius of convergence, although endpoint behavior can change. This theorem turns one known series into a library of new identities."
+            },
+            {
+              "type": "paragraph",
+              "text": "Termwise operations are powerful because differentiation and integration act simply on monomials. They are also the first place where an infinite limiting process is exchanged with another operation. The radius condition supplies the uniform control needed for that exchange on smaller closed intervals, a fact explored more carefully in analysis."
+            }
+          ]
+        },
+        {
+          "type": "bridge",
+          "title": "Inside the radius, a power series behaves like a polynomial",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Inside the radius, a power series behaves like a polynomial}] Within its radius of convergence, a power series may be differentiated or integrated term by term. Differentiation multiplies coefficients by the exponent and shifts powers downward; integration divides by the new exponent and shifts upward."
+            },
+            {
+              "type": "paragraph",
+              "text": "The radius remains the same, but endpoint behavior may change. Termwise operations are justified because convergence is uniformly controlled on every smaller closed interval strictly inside the radius. This prevents infinitely many small termwise errors from behaving badly when combined."
+            }
+          ]
+        },
+        {
+          "type": "visual-reference",
+          "visualId": "u4b-coefficient-shift",
+          "title": "Differentiation and integration shift coefficients and powers",
+          "text": "A row of terms maps downward under differentiation and upward under integration, with exponent multipliers or divisors displayed."
+        },
+        {
+          "type": "proof-idea",
+          "title": "Uniform control keeps termwise operations honest",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Uniform control keeps termwise operations honest}] On \\(|x-a|\\le r<R\\), the power-series terms are dominated by a convergent numerical series. This uniform bound allows limits, sums, derivatives, and integrals to interact safely. The full theorem belongs to analysis, but the key is control shared by every point in the smaller interval."
+            }
+          ]
+        },
+        {
+          "type": "concept",
+          "title": "Termwise calculus",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Termwise calculus}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "If \\(\\sum c_n(x-a)^n\\) has radius \\(R\\), then for \\(|x-a|<R\\),"
+            },
+            {
+              "type": "math",
+              "tex": "\\frac{d}{dx}\\sum c_n(x-a)^n=\\sum_{n=1}^{\\infty}nc_n(x-a)^{n-1},"
+            },
+            {
+              "type": "paragraph",
+              "text": "and integration is also termwise."
+            }
+          ]
+        },
+        {
+          "type": "guided-walkthrough",
+          "title": "Derive a logarithm series",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Derive a logarithm series}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "Start from"
+            },
+            {
+              "type": "math",
+              "tex": "\\frac1{1+x}=1-x+x^2-x^3+\\cdots,\\qquad |x|<1."
+            },
+            {
+              "type": "paragraph",
+              "text": "Integrate from \\(0\\) to \\(x\\):"
+            },
+            {
+              "type": "math",
+              "tex": "\\ln(1+x)=x-\\frac{x^2}{2}+\\frac{x^3}{3}-\\frac{x^4}{4}+\\cdots."
+            }
+          ]
+        },
+        {
+          "type": "worked-example",
+          "title": "Derive the arctangent series from geometry's favorite series",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Derive the arctangent series from geometry's favorite series}] From"
+            },
+            {
+              "type": "math",
+              "tex": "\\frac1{1+t^2}=1-t^2+t^4-t^6+\\cdots\\qquad(|t|<1),"
+            },
+            {
+              "type": "paragraph",
+              "text": "integrate from \\(0\\) to \\(x\\):"
+            },
+            {
+              "type": "math",
+              "tex": "\\arctan x=x-\\frac{x^3}{3}+\\frac{x^5}{5}-\\frac{x^7}{7}+\\cdots."
+            },
+            {
+              "type": "paragraph",
+              "text": "The radius remains \\(1\\). Endpoint behavior must then be checked separately; at \\(x=1\\), the alternating series converges to \\(\\pi/4\\)."
+            }
+          ]
+        },
+        {
+          "type": "advanced-note",
+          "title": "Why this needs a theorem",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Why this needs a theorem}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "Pointwise convergence alone does not justify interchanging a limit with differentiation. Power series possess stronger local control: on every closed interval strictly inside the radius, they converge uniformly. Uniform convergence is the analysis concept that keeps infinitely many small errors under control at once."
+            }
+          ]
+        },
+        {
+          "type": "common-mistake",
+          "title": "The radius stays, but endpoints may change",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={The radius stays, but endpoints may change}] Do not copy the original interval of convergence mechanically. After differentiating or integrating, retest any finite endpoints."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u4b-differentiating_and_integrating_power_series-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Differentiate \\(\\sum_{n=0}^{\\infty}x^n\\) term by term."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "The constant term vanishes and \\(d(x^n)/dx=nx^{n-1}\\)."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "\\sum_{n=1}^{\\infty}n x^{n-1}=\\frac1{(1-x)^2},\\qquad |x|<1."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Integrate \\(\\sum x^n\\) from \\(0\\) to \\(x\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Differentiate the series for \\(\\ln(1+x)\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Explain why radius stays the same while endpoints may change."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Use termwise differentiation to find a series for \\(1/(1-x)^3\\)."
+            }
+          ]
+        }
+      ],
+      "sectionId": "operations",
+      "sectionTitle": "Algebra and calculus with power series",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/power-series-and-taylor-series/geometric-series-library",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "produce new power-series identities by substitution, differentiation, integration, and algebra."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "The Geometric Series as a Function Library"
+        },
+        {
+          "type": "exposition",
+          "title": "One formula generates a surprising amount of calculus",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={One formula generates a surprising amount of calculus}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "The identity \\(1/(1-x)=\\sum x^n\\) is the seed from which many useful power series grow. Replacing \\(x\\) by another expression shifts or rescales the center. Differentiation creates coefficients involving \\(n\\). Integration creates denominators involving \\(n+1\\). Algebra combines these into rational-function expansions."
+            },
+            {
+              "type": "paragraph",
+              "text": "Every transformation carries a convergence condition. If \\(x\\) is replaced by \\(u(x)\\), require \\(|u(x)|<1\\) before endpoint analysis. The best workflow is to write the starting identity and interval, perform one transformation at a time, and update the condition explicitly."
+            }
+          ]
+        },
+        {
+          "type": "bridge",
+          "title": "One identity generates a library of functions",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={One identity generates a library of functions}] The geometric identity"
+            },
+            {
+              "type": "math",
+              "tex": "\\frac1{1-x}=\\sum_{n=0}^{\\infty}x^n"
+            },
+            {
+              "type": "paragraph",
+              "text": "is the seed from which many power series can be built. Replacing \\(x\\), multiplying by a factor, differentiating, or integrating transforms the known series into new ones."
+            },
+            {
+              "type": "paragraph",
+              "text": "The transformation must be applied consistently to the function, every term, and the convergence condition. A substitution such as \\(x\\mapsto -x^2\\) changes both powers and the domain \\(|x|<1\\). Keeping a visible operation pipeline prevents dropped signs and incorrect intervals."
+            }
+          ]
+        },
+        {
+          "type": "visual-reference",
+          "visualId": "u4b-geometric-transformation-tree",
+          "title": "The geometric series generates a family of expansions",
+          "text": "A central geometric-series identity branches through substitution, scaling, differentiation, and integration to several new function series."
+        },
+        {
+          "type": "concept",
+          "title": "Geometric seed",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Geometric seed}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "For \\(|x|<1\\),"
+            },
+            {
+              "type": "math",
+              "tex": "\\frac1{1-x}=\\sum_{n=0}^{\\infty}x^n."
+            }
+          ]
+        },
+        {
+          "type": "guided-walkthrough",
+          "title": "Expand a shifted rational function",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Expand a shifted rational function}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "Write"
+            },
+            {
+              "type": "math",
+              "tex": "\\frac1{3-x}=\\frac13\\frac1{1-x/3}\n=\\frac13\\sum_{n=0}^{\\infty}\\left(\\frac{x}{3}\\right)^n\n=\\sum_{n=0}^{\\infty}\\frac{x^n}{3^{n+1}},"
+            },
+            {
+              "type": "paragraph",
+              "text": "valid for \\(|x|<3\\)."
+            }
+          ]
+        },
+        {
+          "type": "worked-example",
+          "title": "Transform the geometric series systematically",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Transform the geometric series systematically}] Find a series for"
+            },
+            {
+              "type": "math",
+              "tex": "\\frac{3}{2+x}."
+            },
+            {
+              "type": "paragraph",
+              "text": "Rewrite"
+            },
+            {
+              "type": "math",
+              "tex": "\\frac{3}{2+x}=\\frac32\\frac1{1+x/2}\n=\\frac32\\frac1{1-(-x/2)}."
+            },
+            {
+              "type": "paragraph",
+              "text": "Therefore"
+            },
+            {
+              "type": "math",
+              "tex": "\\frac{3}{2+x}=\\frac32\\sum_{n=0}^{\\infty}\\left(-\\frac{x}{2}\\right)^n,\n\\qquad |x|<2."
+            },
+            {
+              "type": "paragraph",
+              "text": "The interval follows from \\(|-x/2|<1\\)."
+            }
+          ]
+        },
+        {
+          "type": "common-mistake",
+          "title": "Rewrite into 1 over 1 minus u before expanding",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Rewrite into 1 over 1 minus u before expanding}] Guessing signs from the denominator is unreliable. Explicitly identify \\(u\\) in \\(1/(1-u)=\\sum u^n\\), then transform the convergence condition \\(|u|<1\\)."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u4b-geometric_series_library-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find a power series for \\(1/(3-x)\\) centered at zero."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Factor out \\(3\\) and match \\(1/(1-r)\\)."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "\\frac1{3-x}=\\sum_{n=0}^{\\infty}\\frac{x^n}{3^{n+1}},\\quad |x|<3."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Expand \\(1/(1+x^2)\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Expand \\(1/(2+x)\\) around zero."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Differentiate to expand \\(1/(1-x)^2\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "State the convergence condition after substituting \\(x^2\\) for \\(x\\)."
+            }
+          ]
+        }
+      ],
+      "sectionId": "operations",
+      "sectionTitle": "Algebra and calculus with power series",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/power-series-and-taylor-series/taylor-polynomials",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "construct a Taylor polynomial from derivative data and explain derivative matching at the center."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Taylor Polynomials"
+        },
+        {
+          "type": "exposition",
+          "title": "A polynomial can be forced to imitate local behavior",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={A polynomial can be forced to imitate local behavior}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "A tangent line matches a function value and first derivative at one point. A quadratic Taylor polynomial also matches the second derivative. A degree-\\(n\\) Taylor polynomial matches every derivative through order \\(n\\) at the center. The coefficients are therefore determined, not guessed."
+            },
+            {
+              "type": "paragraph",
+              "text": "Derivative matching explains why Taylor polynomials are locally accurate. Near the center, the first unmatched derivative controls the leading error. Increasing degree does not automatically guarantee good behavior far away, but it incorporates more local information and often enlarges the useful interval."
+            }
+          ]
+        },
+        {
+          "type": "bridge",
+          "title": "Match local derivative data one layer at a time",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Match local derivative data one layer at a time}] A Taylor polynomial is built to share a function's value, slope, curvature, and higher derivatives at one center. The constant term matches the value; the linear term matches the slope; the quadratic term repairs curvature; each additional degree matches one more derivative."
+            },
+            {
+              "type": "paragraph",
+              "text": "The factorial denominator is not an arbitrary convention. Differentiating \\((x-a)^n\\) exactly \\(n\\) times produces \\(n!\\), so dividing by \\(n!\\) makes the coefficient reproduce \\(f^{(n)}(a)\\). The polynomial is a local model whose useful range depends on the remainder, not merely on its degree."
+            }
+          ]
+        },
+        {
+          "type": "visual-reference",
+          "visualId": "u4b-taylor-degree-ladder",
+          "title": "Higher Taylor degree matches more local shape",
+          "text": "A function near the center is compared with constant, tangent-line, quadratic, and cubic Taylor approximations. Each added degree follows the function farther from the center."
+        },
+        {
+          "type": "proof-idea",
+          "title": "The factorial makes derivative matching exact",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={The factorial makes derivative matching exact}] The term"
+            },
+            {
+              "type": "math",
+              "tex": "\\frac{f^{(n)}(a)}{n!}(x-a)^n"
+            },
+            {
+              "type": "paragraph",
+              "text": "vanishes under fewer than \\(n\\) derivatives at \\(x=a\\), and after \\(n\\) derivatives contributes exactly \\(f^{(n)}(a)\\). This triangular structure determines every coefficient."
+            }
+          ]
+        },
+        {
+          "type": "visual-reference",
+          "visualId": "u4b-taylor-polynomials",
+          "title": "Taylor polynomial approximations",
+          "text": "Increasing the degree makes the polynomial agree with more local derivative data and typically follow the target function over a wider interval."
+        },
+        {
+          "type": "visual-reading",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "All approximations agree at \\(x=0\\). The higher-degree polynomials bend with the sine curve longer before the omitted terms become noticeable."
+            }
+          ]
+        },
+        {
+          "type": "concept",
+          "title": "Taylor polynomial",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Taylor polynomial}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "The degree-\\(n\\) Taylor polynomial for \\(f\\) centered at \\(a\\) is"
+            },
+            {
+              "type": "math",
+              "tex": "P_n(x)=\\sum_{k=0}^{n}\\frac{f^{(k)}(a)}{k!}(x-a)^k."
+            }
+          ]
+        },
+        {
+          "type": "guided-walkthrough",
+          "title": "A cubic approximation for \\(e^x\\)",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={A cubic approximation for \\(e^x\\)}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "Every derivative of \\(e^x\\) equals \\(e^x\\), so at \\(a=0\\) each derivative value is \\(1\\). Thus"
+            },
+            {
+              "type": "math",
+              "tex": "P_3(x)=1+x+\\frac{x^2}{2}+\\frac{x^3}{6}."
+            },
+            {
+              "type": "paragraph",
+              "text": "At zero, this polynomial matches \\(e^x\\) and its first three derivatives."
+            }
+          ]
+        },
+        {
+          "type": "worked-example",
+          "title": "Build a polynomial directly from derivative data",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Build a polynomial directly from derivative data}] Suppose"
+            },
+            {
+              "type": "math",
+              "tex": "f(1)=2,\\quad f'(1)=-3,\\quad f''(1)=4,\\quad f^{(3)}(1)=6."
+            },
+            {
+              "type": "paragraph",
+              "text": "The degree-three Taylor polynomial centered at \\(1\\) is"
+            },
+            {
+              "type": "math",
+              "tex": "T_3(x)=2-3(x-1)+\\frac{4}{2!}(x-1)^2+\\frac{6}{3!}(x-1)^3."
+            },
+            {
+              "type": "paragraph",
+              "text": "Thus"
+            },
+            {
+              "type": "math",
+              "tex": "T_3(x)=2-3(x-1)+2(x-1)^2+(x-1)^3."
+            },
+            {
+              "type": "paragraph",
+              "text": "Each derivative condition can be checked by differentiating this polynomial."
+            }
+          ]
+        },
+        {
+          "type": "common-mistake",
+          "title": "Center the powers at a, not at zero unless a is zero",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Center the powers at a, not at zero unless a is zero}] A Taylor polynomial about \\(a\\) uses \\((x-a)^n\\). Using \\(x^n\\) instead generally matches derivatives at the wrong point."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u4b-taylor_polynomials-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the cubic Maclaurin polynomial for \\(e^x\\)."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "All derivatives at zero equal one."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "P_3(x)=1+x+\\frac{x^2}{2}+\\frac{x^3}{6}."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the quadratic Taylor polynomial for \\(\\ln x\\) at \\(a=1\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the fourth-degree Maclaurin polynomial for \\(\\cos x\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Verify derivative matching for the cubic exponential polynomial."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Explain why factorials appear in the coefficients."
+            }
+          ]
+        }
+      ],
+      "sectionId": "taylor-construction",
+      "sectionTitle": "Constructing Taylor and Maclaurin series",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/power-series-and-taylor-series/maclaurin-series",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "construct a Maclaurin series formally and distinguish a Taylor series from the function it may represent."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Maclaurin Series"
+        },
+        {
+          "type": "exposition",
+          "title": "An infinite Taylor polynomial is a candidate representation",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={An infinite Taylor polynomial is a candidate representation}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "Letting the degree grow without bound produces the formal Maclaurin series \\(\\sum f^{(n)}(0)x^n/n!\\). The series is built from the function, but it need not equal the function automatically. Equality requires the remainder to approach zero."
+            },
+            {
+              "type": "paragraph",
+              "text": "This distinction separates algebraic construction from analytic justification. Some smooth functions have all derivatives and still are not represented by their Taylor series away from the center. In ordinary calculus examples such as exponential and trigonometric functions, remainder estimates establish equality on large domains."
+            }
+          ]
+        },
+        {
+          "type": "bridge",
+          "title": "A Maclaurin series records every derivative at zero",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={A Maclaurin series records every derivative at zero}] A Maclaurin series is a Taylor series centered at \\(0\\). Its coefficients form a derivative fingerprint:"
+            },
+            {
+              "type": "math",
+              "tex": "f(x)\\sim \\sum_{n=0}^{\\infty}\\frac{f^{(n)}(0)}{n!}x^n."
+            },
+            {
+              "type": "paragraph",
+              "text": "For functions with repeating derivative patterns, this produces memorable series efficiently."
+            },
+            {
+              "type": "paragraph",
+              "text": "The symbol “equals” requires justification. Derivative matching constructs the formal candidate series, but the function equals that infinite series only where the Taylor remainder tends to zero. This distinction separates calculating coefficients from proving representation."
+            }
+          ]
+        },
+        {
+          "type": "visual-reference",
+          "visualId": "u4b-derivative-cycle",
+          "title": "Derivative cycles generate coefficient patterns",
+          "text": "A four-step cycle shows cosine, negative sine, negative cosine, and sine, with their values at zero determining alternating even-power coefficients."
+        },
+        {
+          "type": "proof-idea",
+          "title": "Coefficient construction and function representation are separate theorems",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Coefficient construction and function representation are separate theorems}] The derivative data uniquely determine the Taylor coefficients. Taylor's Theorem later shows that"
+            },
+            {
+              "type": "math",
+              "tex": "f(x)=T_n(x)+R_n(x)."
+            },
+            {
+              "type": "paragraph",
+              "text": "Only when \\(R_n(x)\\to0\\) does the infinite series actually equal \\(f(x)\\)."
+            }
+          ]
+        },
+        {
+          "type": "concept",
+          "title": "Maclaurin series",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Maclaurin series}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "The Maclaurin series of \\(f\\) is"
+            },
+            {
+              "type": "math",
+              "tex": "\\sum_{n=0}^{\\infty}\\frac{f^{(n)}(0)}{n!}x^n."
+            }
+          ]
+        },
+        {
+          "type": "guided-walkthrough",
+          "title": "The sine pattern",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={The sine pattern}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "The derivatives of \\(\\sin x\\) cycle:"
+            },
+            {
+              "type": "math",
+              "tex": "\\sin x,\\ \\cos x,\\ -\\sin x,\\ -\\cos x,\\ldots"
+            },
+            {
+              "type": "paragraph",
+              "text": "At zero the nonzero values occur at odd orders with alternating signs, giving"
+            },
+            {
+              "type": "math",
+              "tex": "\\sin x=x-\\frac{x^3}{3!}+\\frac{x^5}{5!}-\\cdots."
+            }
+          ]
+        },
+        {
+          "type": "worked-example",
+          "title": "The cosine derivative cycle chooses the even powers",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={The cosine derivative cycle chooses the even powers}] The derivatives of \\(\\cos x\\) cycle:"
+            },
+            {
+              "type": "math",
+              "tex": "\\cos x,-\\sin x,-\\cos x,\\sin x,\\ldots"
+            },
+            {
+              "type": "paragraph",
+              "text": "At \\(x=0\\), their values are \\(1,0,-1,0,\\ldots\\). Therefore"
+            },
+            {
+              "type": "math",
+              "tex": "\\cos x=1-\\frac{x^2}{2!}+\\frac{x^4}{4!}-\\frac{x^6}{6!}+\\cdots."
+            },
+            {
+              "type": "paragraph",
+              "text": "Odd powers vanish because every odd derivative is zero at the center."
+            }
+          ]
+        },
+        {
+          "type": "common-mistake",
+          "title": "Derivative matching creates a candidate, not automatically an identity",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Derivative matching creates a candidate, not automatically an identity}] A smooth function can have all derivatives at zero and still fail to equal its Taylor series away from zero. Equality requires a remainder argument."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u4b-maclaurin_series-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Write the first three nonzero Maclaurin terms of \\(\\sin x\\)."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Use odd powers and alternating signs."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "x-\\frac{x^3}{3!}+\\frac{x^5}{5!}."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Write the first four nonzero terms of \\(\\cos x\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the Maclaurin coefficients of \\(1/(1-x)\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Explain why a formal Taylor series may fail to equal its source function."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Identify the parity pattern of sine and cosine series."
+            }
+          ]
+        }
+      ],
+      "sectionId": "taylor-construction",
+      "sectionTitle": "Constructing Taylor and Maclaurin series",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/power-series-and-taylor-series/taylor-series-centered-at-a",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "construct Taylor series about a nonzero center and interpret the variable \\(x-a\\)."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Taylor Series Centered at a"
+        },
+        {
+          "type": "exposition",
+          "title": "The center is the point where information is measured",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={The center is the point where information is measured}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "A Taylor series centered at \\(a\\) uses powers of \\(x-a\\), because approximation quality is organized by distance from \\(a\\). The coefficients encode derivative data at that center. Changing centers changes every coefficient even though the underlying function remains the same."
+            },
+            {
+              "type": "paragraph",
+              "text": "Nonzero centers are useful when approximating near a specific input or when a Maclaurin series converges too slowly for the desired calculation. Translating the variable with \\(h=x-a\\) often makes the pattern clearer. The final series should state both its center and its convergence interval."
+            }
+          ]
+        },
+        {
+          "type": "bridge",
+          "title": "Move the center to where the approximation is needed",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Move the center to where the approximation is needed}] A Taylor series centered at \\(a\\) uses powers of \\(x-a\\), so its accuracy is organized by distance from \\(a\\). Choosing the center near the target input often makes the expansion variable small and the approximation efficient."
+            },
+            {
+              "type": "paragraph",
+              "text": "The center also changes which derivative values are convenient. A logarithm near \\(1\\), for example, is naturally expanded in powers of \\(x-1\\), while trigonometric functions near zero favor Maclaurin series. Center choice is a modeling decision, not merely notation."
+            }
+          ]
+        },
+        {
+          "type": "visual-reference",
+          "visualId": "u4b-two-taylor-centers",
+          "title": "Taylor accuracy is local to the chosen center",
+          "text": "The same curve is shown with two local polynomial approximations, each closely matching near its own center and separating farther away."
+        },
+        {
+          "type": "concept",
+          "title": "Taylor series",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Taylor series}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "The Taylor series of \\(f\\) centered at \\(a\\) is"
+            },
+            {
+              "type": "math",
+              "tex": "\\sum_{n=0}^{\\infty}\\frac{f^{(n)}(a)}{n!}(x-a)^n."
+            }
+          ]
+        },
+        {
+          "type": "guided-walkthrough",
+          "title": "Expand \\(\\ln x\\) around \\(1\\)",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Expand \\(\\ln x\\) around \\(1\\)}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "For \\(f(x)=\\ln x\\),"
+            },
+            {
+              "type": "math",
+              "tex": "f(1)=0,\\quad f'(1)=1,\\quad f''(1)=-1,\\quad f^{(3)}(1)=2."
+            },
+            {
+              "type": "paragraph",
+              "text": "Thus"
+            },
+            {
+              "type": "math",
+              "tex": "\\ln x=(x-1)-\\frac{(x-1)^2}{2}+\\frac{(x-1)^3}{3}-\\cdots,"
+            },
+            {
+              "type": "paragraph",
+              "text": "for the appropriate interval around \\(1\\)."
+            }
+          ]
+        },
+        {
+          "type": "worked-example",
+          "title": "Approximate ln(1.1) from a center at 1",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Approximate ln(1.1) from a center at 1}] Let \\(f(x)=\\ln x\\) and center at \\(a=1\\). Since"
+            },
+            {
+              "type": "math",
+              "tex": "f^{(n)}(1)=(-1)^{n-1}(n-1)!\\quad(n\\ge1),"
+            },
+            {
+              "type": "paragraph",
+              "text": "we obtain"
+            },
+            {
+              "type": "math",
+              "tex": "\\ln x=(x-1)-\\frac{(x-1)^2}{2}+\\frac{(x-1)^3}{3}-\\cdots."
+            },
+            {
+              "type": "paragraph",
+              "text": "At \\(x=1.1\\), using three terms gives"
+            },
+            {
+              "type": "math",
+              "tex": "0.1-\\frac{0.1^2}{2}+\\frac{0.1^3}{3}=0.095333\\ldots,"
+            },
+            {
+              "type": "paragraph",
+              "text": "close to the true value because \\(x-1=0.1\\) is small."
+            }
+          ]
+        },
+        {
+          "type": "common-mistake",
+          "title": "Keep the expansion variable visible",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Keep the expansion variable visible}] When centered at \\(a\\), write and manipulate powers of \\(x-a\\). Expanding them too early often hides the center and creates coefficient errors."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u4b-taylor_series_centered_at_a-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "What is the center of a series written in powers of \\((x-1)\\)?"
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "The center makes the power factor zero."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "The center is \\(a=1\\)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the quadratic Taylor polynomial for \\(e^x\\) at \\(a=1\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Rewrite the geometric series around \\(x=2\\) for \\(1/(3-x)\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Explain why powers of \\(x-a\\) measure distance from the center."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Compare Maclaurin and Taylor terminology."
+            }
+          ]
+        }
+      ],
+      "sectionId": "taylor-construction",
+      "sectionTitle": "Constructing Taylor and Maclaurin series",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/power-series-and-taylor-series/standard-maclaurin-series",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "recall and use the standard series for exponential, sine, cosine, and geometric functions."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Standard Maclaurin Series"
+        },
+        {
+          "type": "exposition",
+          "title": "A small library prevents repeated derivative work",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={A small library prevents repeated derivative work}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "Several series occur so frequently that they should become as familiar as derivative rules. The geometric, exponential, sine, and cosine series form a basic library. Their coefficient patterns reflect structural properties: factorial decay for exponential and trigonometric functions, parity for sine and cosine, and constant coefficients for the geometric series."
+            },
+            {
+              "type": "paragraph",
+              "text": "Memorization should be supported by reconstruction. If a sign or factorial is forgotten, derivative patterns recover the series. Each identity also includes a convergence domain. The exponential, sine, and cosine series converge for every real input; the geometric series requires \\(|x|<1\\)."
+            }
+          ]
+        },
+        {
+          "type": "bridge",
+          "title": "A small library prevents repeated reinvention",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={A small library prevents repeated reinvention}] Several Maclaurin series appear so often that they function like a table of derivatives or antiderivatives. The exponential series uses every power with factorial denominators; sine uses alternating odd powers; cosine uses alternating even powers. Their patterns come directly from derivative cycles."
+            },
+            {
+              "type": "paragraph",
+              "text": "Memorization is useful only when paired with structure. A student should know the center, the first several terms, the general term, and the interval of convergence. From there, substitution and scaling can generate many new series without differentiating a complicated composition repeatedly."
+            }
+          ]
+        },
+        {
+          "type": "visual-reference",
+          "visualId": "u4b-standard-series-patterns",
+          "title": "Standard Maclaurin series have visible coefficient patterns",
+          "text": "Aligned rows show e to the x using all powers, sine using alternating odd powers, and cosine using alternating even powers."
+        },
+        {
+          "type": "concept",
+          "title": "Standard library",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Standard library}]"
+            },
+            {
+              "type": "math",
+              "tex": "\\frac1{1-x}=\\sum_{n=0}^{\\infty}x^n,\\quad |x|<1,"
+            },
+            {
+              "type": "math",
+              "tex": "e^x=\\sum_{n=0}^{\\infty}\\frac{x^n}{n!},\\quad\n\\sin x=\\sum_{n=0}^{\\infty}(-1)^n\\frac{x^{2n+1}}{(2n+1)!},"
+            },
+            {
+              "type": "math",
+              "tex": "\\cos x=\\sum_{n=0}^{\\infty}(-1)^n\\frac{x^{2n}}{(2n)!}."
+            }
+          ]
+        },
+        {
+          "type": "guided-walkthrough",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Approximate \\(e^{0.1}\\)}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "Using four terms,"
+            },
+            {
+              "type": "math",
+              "tex": "e^{0.1}\\approx1+0.1+\\frac{0.1^2}{2}+\\frac{0.1^3}{6}=1.105166\\ldots"
+            },
+            {
+              "type": "paragraph",
+              "text": "The next terms are already small because factorials grow rapidly."
+            }
+          ]
+        },
+        {
+          "type": "worked-example",
+          "title": "Substitute into a standard series without losing the pattern",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Substitute into a standard series without losing the pattern}] From"
+            },
+            {
+              "type": "math",
+              "tex": "\\sin u=u-\\frac{u^3}{3!}+\\frac{u^5}{5!}-\\cdots,"
+            },
+            {
+              "type": "paragraph",
+              "text": "set \\(u=2x\\). Then"
+            },
+            {
+              "type": "math",
+              "tex": "\\sin(2x)=2x-\\frac{(2x)^3}{3!}+\\frac{(2x)^5}{5!}-\\cdots\n=2x-\\frac{4}{3}x^3+\\frac{4}{15}x^5-\\cdots."
+            },
+            {
+              "type": "paragraph",
+              "text": "The powers remain odd and the signs still alternate. Because the sine series converges for every real input, the transformed series also converges for every real \\(x\\)."
+            }
+          ]
+        },
+        {
+          "type": "common-mistake",
+          "title": "Transform the entire term, not only the first power",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Transform the entire term, not only the first power}] When replacing \\(u\\) by \\(2x\\), every occurrence becomes \\((2x)^{2n+1}\\). Writing \\(2x^{2n+1}\\) loses powers of two."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u4b-standard_maclaurin_series-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Write the first three nonzero Maclaurin terms of \\(\\cos x\\)."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Use even powers with alternating signs."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "1-\\frac{x^2}{2!}+\\frac{x^4}{4!}."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Write five terms of \\(e^{-x}\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Use the sine series to approximate \\(\\sin(0.2)\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Explain why cosine contains only even powers."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Compare coefficient decay in geometric and exponential series."
+            }
+          ]
+        }
+      ],
+      "sectionId": "taylor-construction",
+      "sectionTitle": "Constructing Taylor and Maclaurin series",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/power-series-and-taylor-series/logarithm-and-arctangent-series",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "derive and use the standard series for \\(\\ln(1+x)\\) and \\(\\arctan x\\)."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Logarithm and Arctangent Series"
+        },
+        {
+          "type": "exposition",
+          "title": "Integration turns rational geometric forms into inverse functions",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Integration turns rational geometric forms into inverse functions}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "The derivatives of \\(\\ln(1+x)\\) and \\(\\arctan x\\) are rational functions that can be expanded geometrically. Integrating those expansions produces denominators \\(n\\) or \\(2n+1\\). This is often easier and more revealing than differentiating the original functions repeatedly."
+            },
+            {
+              "type": "paragraph",
+              "text": "Endpoint behavior becomes especially important. The logarithm series converges conditionally at \\(x=1\\) and diverges at \\(x=-1\\). The arctangent series converges at both \\(x=\\pm1\\), producing formulas for \\(\\pi/4\\). These endpoint values connect power series with famous numerical constants."
+            }
+          ]
+        },
+        {
+          "type": "bridge",
+          "title": "Integration creates series that derivative cycles do not reveal easily",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Integration creates series that derivative cycles do not reveal easily}] The series for logarithm and arctangent are most naturally derived by integrating geometric-series variants. This shows why power-series algebra is more than a catalog: a known representation can be transformed into a new function whose derivatives would otherwise be cumbersome to organize."
+            },
+            {
+              "type": "paragraph",
+              "text": "Endpoint behavior becomes mathematically interesting. The interior representation follows from termwise integration, while values such as \\(x=1\\) may converge only conditionally. That boundary evaluation connects power series back to alternating-series theory."
+            }
+          ]
+        },
+        {
+          "type": "proof-idea",
+          "title": "A kernel identity becomes a new function identity",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={A kernel identity becomes a new function identity}] Inside \\(|x|<1\\), integrate"
+            },
+            {
+              "type": "math",
+              "tex": "\\frac1{1+t}=1-t+t^2-t^3+\\cdots"
+            },
+            {
+              "type": "paragraph",
+              "text": "from \\(0\\) to \\(x\\). Uniform convergence on smaller closed intervals justifies the termwise integral and yields the logarithm series with its constant fixed automatically."
+            }
+          ]
+        },
+        {
+          "type": "concept",
+          "title": "Two derived series",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Two derived series}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "For \\(-1<x\\le1\\),"
+            },
+            {
+              "type": "math",
+              "tex": "\\ln(1+x)=\\sum_{n=1}^{\\infty}(-1)^{n-1}\\frac{x^n}{n}."
+            },
+            {
+              "type": "paragraph",
+              "text": "For \\(|x|\\le1\\),"
+            },
+            {
+              "type": "math",
+              "tex": "\\arctan x=\\sum_{n=0}^{\\infty}(-1)^n\\frac{x^{2n+1}}{2n+1}."
+            }
+          ]
+        },
+        {
+          "type": "guided-walkthrough",
+          "title": "Approximate \\(\\pi\\)",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Approximate \\(\\pi\\)}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "At \\(x=1\\),"
+            },
+            {
+              "type": "math",
+              "tex": "\\frac\\pi4=1-\\frac13+\\frac15-\\frac17+\\cdots."
+            },
+            {
+              "type": "paragraph",
+              "text": "The formula is elegant but converges slowly, so it is historically important and computationally inefficient without acceleration."
+            }
+          ]
+        },
+        {
+          "type": "worked-example",
+          "title": "Approximate ln(1.2) with a certified alternating series",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Approximate ln(1.2) with a certified alternating series}] Using"
+            },
+            {
+              "type": "math",
+              "tex": "\\ln(1+x)=x-\\frac{x^2}{2}+\\frac{x^3}{3}-\\frac{x^4}{4}+\\cdots,"
+            },
+            {
+              "type": "paragraph",
+              "text": "set \\(x=0.2\\). Four terms give"
+            },
+            {
+              "type": "math",
+              "tex": "0.2-0.02+\\frac{0.008}{3}-\\frac{0.0016}{4}\n=0.182266\\ldots."
+            },
+            {
+              "type": "paragraph",
+              "text": "The next term has magnitude \\(0.2^5/5=0.000064\\), so the true value differs from this approximation by at most \\(0.000064\\)."
+            }
+          ]
+        },
+        {
+          "type": "common-mistake",
+          "title": "Track the constant of integration with an initial value",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Track the constant of integration with an initial value}] Termwise integration produces an arbitrary constant. Use a known value such as \\(\\ln(1)=0\\) or \\(\\arctan(0)=0\\) to determine it."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u4b-logarithm_and_arctangent_series-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Evaluate the arctangent series at \\(x=1\\)."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Use \\(\\arctan(1)\\)."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "1-\\frac13+\\frac15-\\cdots=\\arctan(1)=\\frac\\pi4."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Derive the logarithm series from \\(1/(1+x)\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Use four terms to approximate \\(\\ln(1.5)\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "State endpoint behavior of \\(\\ln(1+x)\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Explain why the arctangent approximation to \\(\\pi\\) is slow."
+            }
+          ]
+        }
+      ],
+      "sectionId": "taylor-construction",
+      "sectionTitle": "Constructing Taylor and Maclaurin series",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/power-series-and-taylor-series/building-new-series",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "use substitution, scaling, multiplication, differentiation, and integration to construct new power-series representations."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Building New Series from Known Ones"
+        },
+        {
+          "type": "exposition",
+          "title": "Transformation is usually faster than repeated derivatives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Transformation is usually faster than repeated derivatives}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "Once a standard series is known, many new series can be generated by replacing the variable, multiplying by a power, rescaling, or combining identities. This approach exposes structure and reduces computational error. It also mirrors how power series are used in differential equations and special functions."
+            },
+            {
+              "type": "paragraph",
+              "text": "Every transformation must update the convergence condition. Substituting \\(x^2\\) for \\(x\\) changes \\(|x|<1\\) to \\(|x^2|<1\\), which is still \\(|x|<1\\). Substituting \\(3x\\) changes it to \\(|x|<1/3\\). Multiplication by a polynomial does not change the radius, but endpoints should still be checked when the representation is used there."
+            }
+          ]
+        },
+        {
+          "type": "bridge",
+          "title": "Plan the operation before moving symbols",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Plan the operation before moving symbols}] New series are often built by a short sequence of transformations: substitute, multiply, differentiate, integrate, or combine. The challenge is not any single operation but keeping coefficients, powers, centers, and convergence conditions synchronized through several steps."
+            },
+            {
+              "type": "paragraph",
+              "text": "A written transformation pipeline makes the reasoning auditable. Begin with a trusted parent series, label each operation, perform it on both sides, and update the interval. When only a finite number of terms is required, truncate only after the necessary operations have been completed."
+            }
+          ]
+        },
+        {
+          "type": "visual-reference",
+          "visualId": "u4b-series-operation-pipeline",
+          "title": "New series are built through explicit transformations",
+          "text": "A left-to-right pipeline shows a parent geometric series, differentiation, substitution, and multiplication, with the convergence condition carried below each stage."
+        },
+        {
+          "type": "concept",
+          "title": "Transformation rule of thumb",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Transformation rule of thumb}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "Start from a named series with its domain, perform one algebraic operation, rewrite the coefficient pattern, and translate the domain before simplifying."
+            }
+          ]
+        },
+        {
+          "type": "guided-walkthrough",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Expand \\(xe^{-x^2}\\)}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "From"
+            },
+            {
+              "type": "math",
+              "tex": "e^u=\\sum_{n=0}^{\\infty}\\frac{u^n}{n!},"
+            },
+            {
+              "type": "paragraph",
+              "text": "set \\(u=-x^2\\) and multiply by \\(x\\):"
+            },
+            {
+              "type": "math",
+              "tex": "xe^{-x^2}=\\sum_{n=0}^{\\infty}(-1)^n\\frac{x^{2n+1}}{n!},"
+            },
+            {
+              "type": "paragraph",
+              "text": "valid for every real \\(x\\)."
+            }
+          ]
+        },
+        {
+          "type": "worked-example",
+          "title": "Differentiate after a substitution",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Differentiate after a substitution}] Find a power series for"
+            },
+            {
+              "type": "math",
+              "tex": "\\frac{x}{(1-x^2)^2}."
+            },
+            {
+              "type": "paragraph",
+              "text": "Start with"
+            },
+            {
+              "type": "math",
+              "tex": "\\frac1{1-u}=\\sum_{n=0}^{\\infty}u^n."
+            },
+            {
+              "type": "paragraph",
+              "text": "Differentiate with respect to \\(u\\):"
+            },
+            {
+              "type": "math",
+              "tex": "\\frac1{(1-u)^2}=\\sum_{n=0}^{\\infty}(n+1)u^n."
+            },
+            {
+              "type": "paragraph",
+              "text": "Set \\(u=x^2\\) and multiply by \\(x\\):"
+            },
+            {
+              "type": "math",
+              "tex": "\\frac{x}{(1-x^2)^2}=\\sum_{n=0}^{\\infty}(n+1)x^{2n+1},\n\\qquad |x|<1."
+            }
+          ]
+        },
+        {
+          "type": "common-mistake",
+          "title": "The order of operations matters",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={The order of operations matters}] Differentiating with respect to \\(x\\) before or after substituting \\(u=x^2\\) produces different chain-rule factors. State which variable each derivative uses."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u4b-building_new_series-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find a series for \\(xe^{-x^2}\\)."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Substitute \\(-x^2\\) into the exponential series, then multiply by \\(x\\)."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "xe^{-x^2}=\\sum_{n=0}^{\\infty}(-1)^n\\frac{x^{2n+1}}{n!}."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find a series for \\(\\cos(2x)\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find a series for \\(x^2/(1-x)\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find a series for \\(1/(1+4x^2)\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Track the convergence interval in every transformation."
+            }
+          ]
+        }
+      ],
+      "sectionId": "series-library",
+      "sectionTitle": "Standard series and new expansions",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/power-series-and-taylor-series/binomial-series",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "use the generalized binomial expansion for noninteger powers and determine its convergence interval."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "The Binomial Series"
+        },
+        {
+          "type": "exposition",
+          "title": "The finite binomial theorem has an infinite extension",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={The finite binomial theorem has an infinite extension}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "For a nonnegative integer exponent, \\((1+x)^m\\) is a finite polynomial. For an arbitrary real exponent \\(\\alpha\\), the same coefficient pattern continues indefinitely using generalized binomial coefficients. The resulting power series represents \\((1+x)^\\alpha\\) for \\(|x|<1\\)."
+            },
+            {
+              "type": "paragraph",
+              "text": "The expansion unifies many useful approximations, including square roots and reciprocal powers. Coefficients are best generated recursively rather than memorized. Endpoint behavior depends on \\(\\alpha\\) and requires separate analysis, so the standard statement emphasizes the open interval."
+            }
+          ]
+        },
+        {
+          "type": "bridge",
+          "title": "The binomial theorem continues beyond integer powers",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={The binomial theorem continues beyond integer powers}] For a nonnegative integer exponent, the binomial expansion terminates. For a general real exponent \\(\\alpha\\), the same coefficient pattern continues indefinitely and produces a power series for \\((1+x)^\\alpha\\) when \\(|x|<1\\)."
+            },
+            {
+              "type": "paragraph",
+              "text": "The generalized coefficients"
+            },
+            {
+              "type": "math",
+              "tex": "\\binom{\\alpha}{n}=\\frac{\\alpha(\\alpha-1)\\cdots(\\alpha-n+1)}{n!}"
+            },
+            {
+              "type": "paragraph",
+              "text": "encode the changing numerator factors. When \\(\\alpha\\) is a nonnegative integer, one factor eventually becomes zero and the familiar finite theorem is recovered."
+            }
+          ]
+        },
+        {
+          "type": "visual-reference",
+          "visualId": "u4b-binomial-partial-sums",
+          "title": "Binomial partial sums approximate nonpolynomial powers",
+          "text": "The curve y equals square root of 1+x is compared with several binomial partial sums on an interval inside the radius of convergence."
+        },
+        {
+          "type": "proof-idea",
+          "title": "The ratio test fixes the natural radius",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={The ratio test fixes the natural radius}] For consecutive binomial terms, the magnitude ratio approaches \\(|x|\\). Thus the series converges absolutely for \\(|x|<1\\) and diverges for \\(|x|>1\\); endpoints require separate analysis depending on \\(\\alpha\\)."
+            }
+          ]
+        },
+        {
+          "type": "concept",
+          "title": "Generalized binomial series",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Generalized binomial series}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "For \\(|x|<1\\),"
+            },
+            {
+              "type": "math",
+              "tex": "(1+x)^\\alpha=\\sum_{n=0}^{\\infty}\\binom{\\alpha}{n}x^n,\n\\quad\n\\binom{\\alpha}{n}=\\frac{\\alpha(\\alpha-1)\\cdots(\\alpha-n+1)}{n!}."
+            }
+          ]
+        },
+        {
+          "type": "guided-walkthrough",
+          "title": "Square-root approximation",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Square-root approximation}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "With \\(\\alpha=1/2\\),"
+            },
+            {
+              "type": "math",
+              "tex": "\\sqrt{1+x}=1+\\frac12x-\\frac18x^2+\\frac1{16}x^3-\\cdots."
+            },
+            {
+              "type": "paragraph",
+              "text": "At \\(x=0.04\\), the quadratic approximation gives \\(1.0198\\), close to \\(\\sqrt{1.04}\\)."
+            }
+          ]
+        },
+        {
+          "type": "worked-example",
+          "title": "Expand a reciprocal square root",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Expand a reciprocal square root}] For \\(\\alpha=-1/2\\),"
+            },
+            {
+              "type": "math",
+              "tex": "(1+x)^{-1/2}=1-\\frac12x+\\frac38x^2-\\frac5{16}x^3+\\cdots,\n\\qquad |x|<1."
+            },
+            {
+              "type": "paragraph",
+              "text": "The coefficients come from"
+            },
+            {
+              "type": "math",
+              "tex": "\\binom{-1/2}{2}=\\frac{(-1/2)(-3/2)}{2!}=\\frac38,"
+            },
+            {
+              "type": "paragraph",
+              "text": "and"
+            },
+            {
+              "type": "math",
+              "tex": "\\binom{-1/2}{3}=\\frac{(-1/2)(-3/2)(-5/2)}{3!}=-\\frac5{16}."
+            }
+          ]
+        },
+        {
+          "type": "common-mistake",
+          "title": "The generalized coefficient is a falling product",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={The generalized coefficient is a falling product}] The numerator uses \\(\\alpha,\\alpha-1,\\alpha-2,\\ldots\\), not repeated powers of \\(\\alpha\\)."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u4b-binomial_series-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Write the quadratic binomial approximation for \\(\\sqrt{1+x}\\)."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Use \\(\\alpha=1/2\\)."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "\\sqrt{1+x}\\approx1+\\frac{x}{2}-\\frac{x^2}{8}."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the first four terms of \\((1+x)^{-1/2}\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Approximate \\(\\sqrt{0.99}\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Show that \\(\\alpha=-1\\) recovers the geometric series for \\(1/(1+x)\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Discuss endpoint testing for one chosen value of \\(\\alpha\\)."
+            }
+          ]
+        }
+      ],
+      "sectionId": "series-library",
+      "sectionTitle": "Standard series and new expansions",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/power-series-and-taylor-series/taylor-remainder-theorem",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "use Taylor's theorem to express approximation error and identify a derivative bound."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Taylor's Theorem and the Remainder"
+        },
+        {
+          "type": "exposition",
+          "title": "Approximation becomes mathematics only when error is controlled",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Approximation becomes mathematics only when error is controlled}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "A Taylor polynomial matches derivatives at the center, but matching alone does not say how far away the approximation remains accurate. Taylor's theorem represents the difference \\(f(x)-P_n(x)\\) using the next derivative evaluated at an unknown intermediate point. Bounding that derivative produces a usable error guarantee."
+            },
+            {
+              "type": "paragraph",
+              "text": "The unknown point \\(c\\) lies between the center and the target input. We do not need to find it; we need a bound \\(M\\) valid throughout that interval. Then factorial growth in the denominator often drives the error rapidly toward zero. The theorem is the bridge from formal Taylor coefficients to a proven representation."
+            }
+          ]
+        },
+        {
+          "type": "bridge",
+          "title": "Approximation becomes mathematics when the error is bounded",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Approximation becomes mathematics when the error is bounded}] A Taylor polynomial may look accurate on a graph, but a graph cannot certify digits. Taylor's Theorem expresses the exact error after degree \\(n\\) as"
+            },
+            {
+              "type": "math",
+              "tex": "R_n(x)=\\frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1}"
+            },
+            {
+              "type": "paragraph",
+              "text": "for some point \\(c\\) between \\(a\\) and \\(x\\)."
+            },
+            {
+              "type": "paragraph",
+              "text": "We usually do not know \\(c\\). Instead, bound \\(|f^{(n+1)}(t)|\\le M\\) throughout the interval and obtain"
+            },
+            {
+              "type": "math",
+              "tex": "|R_n(x)|\\le \\frac{M|x-a|^{n+1}}{(n+1)!}."
+            },
+            {
+              "type": "paragraph",
+              "text": "The factorial in the denominator explains why many Taylor approximations improve rapidly near the center."
+            }
+          ]
+        },
+        {
+          "type": "visual-reference",
+          "visualId": "u4b-taylor-error-envelope",
+          "title": "A Taylor polynomial comes with an error envelope",
+          "text": "A function and its Taylor polynomial meet at the center, while symmetric upper and lower error bounds widen with distance from the center."
+        },
+        {
+          "type": "decision",
+          "title": "Taylor error-bound checklist",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Taylor error-bound checklist}] Identify the center \\(a\\), degree \\(n\\), and target \\(x\\). Find a bound \\(M\\) for \\(|f^{(n+1)}(t)|\\) on the entire interval between \\(a\\) and \\(x\\). Substitute into the Lagrange bound, preserve enough precision until the end, and compare the result with the requested tolerance."
+            }
+          ]
+        },
+        {
+          "type": "proof-idea",
+          "title": "The remainder theorem is a high-order Mean Value Theorem",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={The remainder theorem is a high-order Mean Value Theorem}] The proof constructs an auxiliary function whose zeros force repeated applications of Rolle's Theorem. The resulting point \\(c\\) converts unmatched higher-order behavior into the exact remainder formula. The full proof is longer, but the mechanism is the same idea that converts average change into a derivative value somewhere inside an interval."
+            }
+          ]
+        },
+        {
+          "type": "visual-reference",
+          "visualId": "u4b-remainder-band",
+          "title": "A remainder bound encloses the unknown error",
+          "text": "Taylor's theorem does not merely offer a polynomial; it gives an explicit envelope within which the true function must lie."
+        },
+        {
+          "type": "visual-reading",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "The dashed polynomial is the approximation. The shaded band represents a deliberately simple error allowance, and the true exponential curve stays inside it on the displayed interval."
+            }
+          ]
+        },
+        {
+          "type": "concept",
+          "title": "Lagrange remainder",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Lagrange remainder}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "For some \\(c\\) between \\(a\\) and \\(x\\),"
+            },
+            {
+              "type": "math",
+              "tex": "R_n(x)=f(x)-P_n(x)=\\frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1}."
+            },
+            {
+              "type": "paragraph",
+              "text": "Hence if \\(|f^{(n+1)}(t)|\\le M\\), then"
+            },
+            {
+              "type": "math",
+              "tex": "|R_n(x)|\\le\\frac{M|x-a|^{n+1}}{(n+1)!}."
+            }
+          ]
+        },
+        {
+          "type": "guided-walkthrough",
+          "title": "Bound exponential error",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Bound exponential error}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "Approximate \\(e^{0.5}\\) with \\(P_3\\). On \\([0,0.5]\\), the fourth derivative is \\(e^t\\le e^{0.5}\\). Therefore"
+            },
+            {
+              "type": "math",
+              "tex": "|R_3(0.5)|\\le\\frac{e^{0.5}(0.5)^4}{4!}<0.0043."
+            }
+          ]
+        },
+        {
+          "type": "worked-example",
+          "title": "Certify a sine approximation",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Certify a sine approximation}] Approximate \\(\\sin(0.2)\\) by \\(T_3(x)=x-x^3/6\\). The next derivative after degree three is \\(\\sin x\\), whose absolute value is at most \\(1\\). Therefore"
+            },
+            {
+              "type": "math",
+              "tex": "|R_3(0.2)|\\le\\frac{0.2^4}{4!}\n=\\frac{0.0016}{24}<0.000067."
+            },
+            {
+              "type": "paragraph",
+              "text": "Thus the cubic approximation is guaranteed accurate to within about \\(6.7\\times10^{-5}\\)."
+            }
+          ]
+        },
+        {
+          "type": "common-mistake",
+          "title": "M must bound the derivative on the entire interval",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={M must bound the derivative on the entire interval}] Using only \\(|f^{(n+1)}(a)|\\) is not generally enough. The bound must hold between the center and the target input."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u4b-taylor_remainder_theorem-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "State the standard Lagrange upper bound for \\(|R_n(x)|\\)."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Use a bound \\(M\\) on the \\((n+1)\\)st derivative."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "|R_n(x)|\\le\\frac{M|x-a|^{n+1}}{(n+1)!}."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Bound the error in approximating \\(\\sin(0.2)\\) by \\(x-x^3/6\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find a derivative bound for \\(\\ln x\\) near \\(x=1\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Explain why the intermediate point need not be known."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Use a bound to prove the exponential Taylor series converges to \\(e^x\\)."
+            }
+          ]
+        }
+      ],
+      "sectionId": "series-library",
+      "sectionTitle": "Standard series and new expansions",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/power-series-and-taylor-series/alternating-series-approximation",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "use alternating-series error when it gives a simpler bound than Taylor's theorem."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Alternating-Series Approximation for Taylor Series"
+        },
+        {
+          "type": "exposition",
+          "title": "Sometimes the coefficient pattern already contains the error estimate",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Sometimes the coefficient pattern already contains the error estimate}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "Many Maclaurin series alternate with decreasing term magnitudes for the input being used. In that setting, the alternating-series remainder estimate bounds the error by the first omitted term. No global derivative bound is required, and the computation is often sharper and simpler."
+            },
+            {
+              "type": "paragraph",
+              "text": "The magnitudes must actually decrease at the chosen input. A series that is alternating symbolically may have early terms that grow before factorials take over. One can begin the estimate after monotonic decrease is established. As always, the first omitted term depends on the truncation, not merely on the polynomial degree label."
+            }
+          ]
+        },
+        {
+          "type": "bridge",
+          "title": "Some Taylor errors are controlled by the next omitted term",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Some Taylor errors are controlled by the next omitted term}] When a Taylor series alternates with decreasing term magnitudes, the Alternating Series Estimation Theorem gives a sharper and simpler bound than the general Taylor remainder. The error is no larger than the first omitted term."
+            },
+            {
+              "type": "paragraph",
+              "text": "The conditions must be checked at the chosen input. A series may alternate symbolically while term magnitudes fail to decrease for a large input. Once the conditions hold, consecutive Taylor partial sums bracket the true value and even reveal whether the current approximation is above or below it."
+            }
+          ]
+        },
+        {
+          "type": "proof-idea",
+          "title": "This is the same shrinking-bracket theorem from Unit 4A",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={This is the same shrinking-bracket theorem from Unit 4A}] At a fixed input, the Taylor expansion becomes a numerical alternating series. Once magnitudes decrease to zero, its partial sums bracket the function value and the first omitted term bounds the error."
+            }
+          ]
+        },
+        {
+          "type": "concept",
+          "title": "Alternating approximation error",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Alternating approximation error}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "If an alternating series has decreasing term magnitudes, then truncation error is at most the magnitude of the first omitted term."
+            }
+          ]
+        },
+        {
+          "type": "guided-walkthrough",
+          "title": "Approximate cosine",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Approximate cosine}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "Using"
+            },
+            {
+              "type": "math",
+              "tex": "\\cos x=1-\\frac{x^2}{2!}+\\frac{x^4}{4!}-\\frac{x^6}{6!}+\\cdots,"
+            },
+            {
+              "type": "paragraph",
+              "text": "approximating \\(\\cos(0.3)\\) through the \\(x^4\\) term has error at most"
+            },
+            {
+              "type": "math",
+              "tex": "\\frac{0.3^6}{6!}<1.02\\times10^{-6}."
+            }
+          ]
+        },
+        {
+          "type": "worked-example",
+          "title": "Approximate cosine with a next-term guarantee",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Approximate cosine with a next-term guarantee}] Use"
+            },
+            {
+              "type": "math",
+              "tex": "\\cos x=1-\\frac{x^2}{2!}+\\frac{x^4}{4!}-\\cdots"
+            },
+            {
+              "type": "paragraph",
+              "text": "to approximate \\(\\cos(0.5)\\) with three terms:"
+            },
+            {
+              "type": "math",
+              "tex": "1-\\frac{0.5^2}{2}+\\frac{0.5^4}{24}=0.877604\\ldots."
+            },
+            {
+              "type": "paragraph",
+              "text": "The first omitted term has magnitude"
+            },
+            {
+              "type": "math",
+              "tex": "\\frac{0.5^6}{6!}<0.000022."
+            },
+            {
+              "type": "paragraph",
+              "text": "Therefore the approximation error is below \\(2.2\\times10^{-5}\\)."
+            }
+          ]
+        },
+        {
+          "type": "common-mistake",
+          "title": "The next-term bound needs decreasing magnitudes",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={The next-term bound needs decreasing magnitudes}] Do not quote the alternating bound from signs alone. Verify that the term magnitudes decrease toward zero at the selected input."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u4b-alternating_series_approximation-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "What bounds the error after the \\(x^4\\) term in \\(\\cos(0.3)\\)?"
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Use the first omitted \\(x^6/6!\\) term."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "|R|\\le\\frac{0.3^6}{6!}=\\frac{0.3^6}{720}."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Approximate \\(\\sin(0.4)\\) with three nonzero terms and bound the error."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Compare alternating and Lagrange bounds for cosine."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Explain when early term magnitudes might not decrease."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Choose a truncation guaranteeing six decimal places."
+            }
+          ]
+        }
+      ],
+      "sectionId": "approximation",
+      "sectionTitle": "Taylor bounds and approximation",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/power-series-and-taylor-series/series-for-definite-integrals",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "integrate a power series to approximate a definite integral lacking an elementary antiderivative."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Using Series to Approximate Definite Integrals"
+        },
+        {
+          "type": "exposition",
+          "title": "Power series can replace an unavailable antiderivative",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Power series can replace an unavailable antiderivative}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "Some important integrals cannot be expressed with elementary functions. A power series for the integrand can still be integrated term by term, producing a rapidly computable numerical approximation. The method is especially effective on a small interval where powers shrink quickly."
+            },
+            {
+              "type": "paragraph",
+              "text": "The approximation must include an error argument. This may come from alternating-series error, a remainder bound for the integrand series, or a bound on the integrated tail. The method is not numerical guesswork; it is exact symbolic transformation followed by controlled truncation."
+            }
+          ]
+        },
+        {
+          "type": "bridge",
+          "title": "Integrate the polynomial approximation when no elementary antiderivative exists",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Integrate the polynomial approximation when no elementary antiderivative exists}] Some important functions, such as \\(e^{-x^2}\\), have no elementary antiderivative. A power series turns the integrand into an infinite polynomial, which can be integrated term by term on a suitable interval."
+            },
+            {
+              "type": "paragraph",
+              "text": "The method has three distinct stages: expand the integrand, integrate the series, and control the truncation error. The result is not merely a numerical trick; it creates a convergent representation of a genuinely new function."
+            }
+          ]
+        },
+        {
+          "type": "visual-reference",
+          "visualId": "u4b-gaussian-series-integral",
+          "title": "Polynomial approximations make a nonelementary integral computable",
+          "text": "The curve e to the negative x squared is compared with two truncated series on the interval from zero to one half, with the area under each shown."
+        },
+        {
+          "type": "concept",
+          "title": "Integrate the series, not the impossible antiderivative",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Integrate the series, not the impossible antiderivative}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "If \\(f(x)=\\sum c_nx^n\\) on the interval of integration, then"
+            },
+            {
+              "type": "math",
+              "tex": "\\int_0^b f(x)\\,dx=\\sum_{n=0}^{\\infty}\\frac{c_n b^{n+1}}{n+1},"
+            },
+            {
+              "type": "paragraph",
+              "text": "provided termwise integration is justified."
+            }
+          ]
+        },
+        {
+          "type": "guided-walkthrough",
+          "title": "Approximate a Gaussian-type integral",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Approximate a Gaussian-type integral}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "Since"
+            },
+            {
+              "type": "math",
+              "tex": "e^{-x^2}=1-x^2+\\frac{x^4}{2!}-\\frac{x^6}{3!}+\\cdots,"
+            },
+            {
+              "type": "paragraph",
+              "text": "we obtain"
+            },
+            {
+              "type": "math",
+              "tex": "\\int_0^{0.5}e^{-x^2}\\,dx\n=0.5-\\frac{0.5^3}{3}+\\frac{0.5^5}{10}-\\frac{0.5^7}{42}+\\cdots."
+            },
+            {
+              "type": "paragraph",
+              "text": "The series alternates with rapidly shrinking terms."
+            }
+          ]
+        },
+        {
+          "type": "worked-example",
+          "title": "Approximate a Gaussian integral on a short interval",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Approximate a Gaussian integral on a short interval}] Since"
+            },
+            {
+              "type": "math",
+              "tex": "e^{-x^2}=1-x^2+\\frac{x^4}{2!}-\\frac{x^6}{3!}+\\cdots,"
+            },
+            {
+              "type": "paragraph",
+              "text": "we have"
+            },
+            {
+              "type": "math",
+              "tex": "\\int_0^{1/2}e^{-x^2}\\,dx\n=\\left[x-\\frac{x^3}{3}+\\frac{x^5}{10}-\\frac{x^7}{42}+\\cdots\\right]_0^{1/2}."
+            },
+            {
+              "type": "paragraph",
+              "text": "Using the first three integrated terms gives"
+            },
+            {
+              "type": "math",
+              "tex": "\\frac12-\\frac{1}{24}+\\frac{1}{320}=0.461458\\ldots."
+            },
+            {
+              "type": "paragraph",
+              "text": "The next integrated term has magnitude \\(1/(42\\cdot2^7)<0.000187\\), which supplies an alternating error bound."
+            }
+          ]
+        },
+        {
+          "type": "common-mistake",
+          "title": "Integrate the coefficients as well as the powers",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Integrate the coefficients as well as the powers}] The term \\(c_nx^n\\) integrates to \\(c_nx^{n+1}/(n+1)\\). Forgetting the new denominator changes every approximation after the first term."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u4b-series_for_definite_integrals-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Use three terms to approximate \\(\\int_0^{0.5}e^{-x^2}\\,dx\\)."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Integrate \\(1-x^2+x^4/2\\) term by term."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "0.5-\\frac{0.5^3}{3}+\\frac{0.5^5}{10}."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Approximate \\(\\int_0^{0.2}\\cos(x^2)dx\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Bound the first omitted term in the Gaussian example."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Explain why the method works even without an elementary antiderivative."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Compare with Simpson's rule conceptually."
+            }
+          ]
+        }
+      ],
+      "sectionId": "approximation",
+      "sectionTitle": "Taylor bounds and approximation",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/power-series-and-taylor-series/small-angle-physics",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "use Taylor polynomials to justify common small-angle approximations and estimate their errors."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Small-Angle Approximations in Physics"
+        },
+        {
+          "type": "exposition",
+          "title": "Physical models often simplify because a variable is small",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Physical models often simplify because a variable is small}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "Near zero, \\(\\sin\\theta\\approx\\theta\\) and \\(\\cos\\theta\\approx1-\\theta^2/2\\) when angles are measured in radians. These are not arbitrary engineering tricks. They are low-degree Maclaurin polynomials whose errors can be bounded."
+            },
+            {
+              "type": "paragraph",
+              "text": "The approximations linearize otherwise nonlinear models. A pendulum equation involving \\(\\sin\\theta\\) becomes a linear differential equation when angular displacement is small. Optics, wave motion, and rotational mechanics use similar simplifications. The phrase ``small angle'' must be tied to a tolerance, not merely intuition."
+            }
+          ]
+        },
+        {
+          "type": "bridge",
+          "title": "A local approximation can simplify a physical law",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={A local approximation can simplify a physical law}] For angles near zero measured in radians,"
+            },
+            {
+              "type": "math",
+              "tex": "\\sin\\theta=\\theta-\\frac{\\theta^3}{6}+\\cdots,"
+            },
+            {
+              "type": "paragraph",
+              "text": "so \\(\\sin\\theta\\approx\\theta\\). This replacement turns nonlinear equations into linear ones and explains why many small-oscillation systems behave approximately like simple harmonic motion."
+            },
+            {
+              "type": "paragraph",
+              "text": "The approximation has a domain of usefulness, not universal authority. The cubic correction estimates the error and shows how accuracy deteriorates as the angle grows. Units matter: the derivative-based series is built for radians, so degree input destroys the approximation scale."
+            }
+          ]
+        },
+        {
+          "type": "visual-reference",
+          "visualId": "u4b-small-angle-comparison",
+          "title": "Sine and angle agree locally but separate farther away",
+          "text": "The curves y equals sine theta and y equals theta nearly overlap near zero, while a magnified error panel shows their cubic separation."
+        },
+        {
+          "type": "concept",
+          "title": "Two standard approximations",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Two standard approximations}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "For small \\(|\\theta|\\),"
+            },
+            {
+              "type": "math",
+              "tex": "\\sin\\theta=\\theta+O(\\theta^3),\\qquad\n\\cos\\theta=1-\\frac{\\theta^2}{2}+O(\\theta^4)."
+            }
+          ]
+        },
+        {
+          "type": "guided-walkthrough",
+          "title": "Quantify the sine approximation",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Quantify the sine approximation}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "At \\(\\theta=0.1\\),"
+            },
+            {
+              "type": "math",
+              "tex": "|\\sin\\theta-\\theta|\\le\\frac{0.1^3}{3!}\\approx1.67\\times10^{-4}."
+            },
+            {
+              "type": "paragraph",
+              "text": "Thus the linear approximation is accurate to better than two ten-thousandths."
+            }
+          ]
+        },
+        {
+          "type": "worked-example",
+          "title": "Estimate the pendulum-model error at ten degrees",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Estimate the pendulum-model error at ten degrees}] Ten degrees is \\(\\theta=\\pi/18\\approx0.1745\\) radians. The leading difference between \\(\\theta\\) and \\(\\sin\\theta\\) is approximately"
+            },
+            {
+              "type": "math",
+              "tex": "\\frac{\\theta^3}{6}\\approx\\frac{(0.1745)^3}{6}\\approx0.000886."
+            },
+            {
+              "type": "paragraph",
+              "text": "Relative to \\(\\theta\\), this is about \\(0.51\\%\\). Thus the small-angle replacement is quite accurate at ten degrees, while the calculation also quantifies what “small” means."
+            }
+          ]
+        },
+        {
+          "type": "common-mistake",
+          "title": "Small-angle formulas require radians",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Small-angle formulas require radians}] The approximation \\(\\sin\\theta\\approx\\theta\\) compares dimensionless radian measure with sine. Substituting degrees directly can produce nonsense."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u4b-small_angle_physics-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Bound the error in \\(\\sin(0.1)\\approx0.1\\) using the first omitted term."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "The first omitted sine term is \\(x^3/3!\\)."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "|R|\\le0.1^3/6."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find an error bound for \\(\\cos(0.2)\\approx1-0.2^2/2\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Determine the largest angle making the sine linearization error below \\(10^{-3}\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Explain why radians are required."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Describe how the approximation changes the pendulum equation."
+            }
+          ]
+        }
+      ],
+      "sectionId": "approximation",
+      "sectionTitle": "Taylor bounds and approximation",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/power-series-and-taylor-series/series-solutions-preview",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "use coefficient matching to see how a differential equation can determine a power series recursively."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "A Preview of Series Solutions to Differential Equations"
+        },
+        {
+          "type": "exposition",
+          "title": "A differential equation can solve for coefficients one at a time",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={A differential equation can solve for coefficients one at a time}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "Suppose a solution is represented by \\(y=\\sum c_nx^n\\). Differentiating the series and substituting into a differential equation turns the equation into an identity between power series. Equal power series have equal coefficients, so the differential equation generates recurrence relations among the \\(c_n\\)."
+            },
+            {
+              "type": "paragraph",
+              "text": "This method extends beyond equations with elementary closed forms and leads to special functions. In this unit we use it only as a preview, because a full treatment belongs with differential equations. The important idea is that an infinite function problem becomes a systematic algebra problem in coefficients."
+            }
+          ]
+        },
+        {
+          "type": "bridge",
+          "title": "An unknown function can be replaced by unknown coefficients",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={An unknown function can be replaced by unknown coefficients}] To solve a differential equation by power series, assume the solution has the form \\(y=\\sum a_nx^n\\). Differentiate term by term, substitute the series into the equation, align powers, and compare coefficients. The differential equation becomes a recurrence for the numbers \\(a_n\\)."
+            },
+            {
+              "type": "paragraph",
+              "text": "This method extends polynomial reasoning rather than introducing magic. Initial conditions determine starting coefficients, and the recurrence determines the rest. A full theory must also prove convergence, but the coefficient mechanism already previews why power series are central in differential equations and mathematical physics."
+            }
+          ]
+        },
+        {
+          "type": "visual-reference",
+          "visualId": "u4b-ode-coefficient-machine",
+          "title": "A differential equation becomes a recurrence",
+          "text": "A flow diagram starts with the initial coefficient a0 and repeatedly applies the next-coefficient recurrence, producing factorial denominators in succession."
+        },
+        {
+          "type": "proof-idea",
+          "title": "Equal power series have equal coefficients",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Equal power series have equal coefficients}] Inside a common convergence interval, if two power series represent the same function, differentiating repeatedly at the center isolates each coefficient. This uniqueness lets the differential equation determine a recurrence term by term."
+            }
+          ]
+        },
+        {
+          "type": "concept",
+          "title": "Coefficient matching",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Coefficient matching}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "If two power series agree on an interval,"
+            },
+            {
+              "type": "math",
+              "tex": "\\sum a_nx^n=\\sum b_nx^n,"
+            },
+            {
+              "type": "paragraph",
+              "text": "then \\(a_n=b_n\\) for every \\(n\\)."
+            }
+          ]
+        },
+        {
+          "type": "guided-walkthrough",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Solve \\(y^{\\prime}=y\\) formally}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "Let \\(y=\\sum_{n=0}^{\\infty}c_nx^n\\). Then"
+            },
+            {
+              "type": "math",
+              "tex": "y'=\\sum_{n=0}^{\\infty}(n+1)c_{n+1}x^n."
+            },
+            {
+              "type": "paragraph",
+              "text": "The equation \\(y'=y\\) gives \\((n+1)c_{n+1}=c_n\\), so \\(c_n=c_0/n!\\). Therefore"
+            },
+            {
+              "type": "math",
+              "tex": "y=c_0\\sum_{n=0}^{\\infty}\\frac{x^n}{n!}=c_0e^x."
+            }
+          ]
+        },
+        {
+          "type": "worked-example",
+          "title": "Recover the exponential from y prime equals y",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Recover the exponential from y prime equals y}] Assume"
+            },
+            {
+              "type": "math",
+              "tex": "y=\\sum_{n=0}^{\\infty}a_nx^n."
+            },
+            {
+              "type": "paragraph",
+              "text": "Then"
+            },
+            {
+              "type": "math",
+              "tex": "y'=\\sum_{n=0}^{\\infty}(n+1)a_{n+1}x^n."
+            },
+            {
+              "type": "paragraph",
+              "text": "The equation \\(y'=y\\) gives"
+            },
+            {
+              "type": "math",
+              "tex": "(n+1)a_{n+1}=a_n,\n\\qquad a_{n+1}=\\frac{a_n}{n+1}."
+            },
+            {
+              "type": "paragraph",
+              "text": "If \\(y(0)=1\\), then \\(a_0=1\\), so \\(a_n=1/n!\\) and"
+            },
+            {
+              "type": "math",
+              "tex": "y=\\sum_{n=0}^{\\infty}\\frac{x^n}{n!}=e^x."
+            }
+          ]
+        },
+        {
+          "type": "common-mistake",
+          "title": "Align the index before comparing coefficients",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Align the index before comparing coefficients}] The series for \\(y'\\) initially begins with \\(x^{n-1}\\). Reindex it so both sides use the same power \\(x^n\\) before equating coefficients."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u4b-series_solutions_preview-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "If \\((n+1)c_{n+1}=c_n\\), express \\(c_n\\) in terms of \\(c_0\\)."
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Compute the first few coefficients."
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "math",
+                  "tex": "c_n=\\frac{c_0}{n!}."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Use a series to analyze \\(y^{\\prime\\prime}+y=0\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Explain how initial conditions determine free coefficients."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Why must indices be shifted before coefficient matching?"
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Name one reason series solutions are useful."
+            }
+          ]
+        }
+      ],
+      "sectionId": "approximation",
+      "sectionTitle": "Taylor bounds and approximation",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/power-series-and-taylor-series/uniform-convergence-preview",
+      "nodes": [
+        {
+          "type": "concept",
+          "title": "Learning objectives",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "explain informally why pointwise convergence is weaker than the control needed for calculus operations."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Why Termwise Operations Need Uniform Control"
+        },
+        {
+          "type": "exposition",
+          "title": "Converging at every point does not mean converging evenly",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Converging at every point does not mean converging evenly}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "A sequence of functions may converge at each individual point while developing increasingly sharp behavior that moves across the domain. Pointwise convergence permits the required index to depend strongly on the point. Differentiation and integration can fail to pass through such a limit without additional control."
+            },
+            {
+              "type": "paragraph",
+              "text": "Power series behave better inside their radius. On every closed interval strictly inside that radius, their tails can be bounded uniformly by a convergent geometric series. This uniform convergence is why integration is safe and why differentiated series behave predictably. The topic becomes a central organizing idea in real analysis."
+            }
+          ]
+        },
+        {
+          "type": "bridge",
+          "title": "Pointwise success may still fail to control a whole interval",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Pointwise success may still fail to control a whole interval}] Pointwise convergence allows the cutoff \\(N\\) to depend on the input \\(x\\). Uniform convergence requires one cutoff that works for every point in the domain at once. That shared control is what makes exchanging limits with integrals, derivatives, and continuity reliable."
+            },
+            {
+              "type": "paragraph",
+              "text": "The sequence \\(f_n(x)=x^n\\) on \\([0,1]\\) reveals the distinction. For each fixed \\(x<1\\), the values approach zero, while at \\(x=1\\) they remain one. Even on \\([0,1)\\), convergence is not uniform because points arbitrarily close to one require arbitrarily large cutoffs."
+            }
+          ]
+        },
+        {
+          "type": "visual-reference",
+          "visualId": "u4b-uniform-error-envelope",
+          "title": "Pointwise error can move instead of disappearing uniformly",
+          "text": "Successive power curves on the interval from zero to one become small at each fixed interior point, but their maximum remains near one close to the endpoint."
+        },
+        {
+          "type": "advanced-note",
+          "title": "What is required now and what belongs to analysis",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={What is required now and what belongs to analysis}] For Calculus II, the essential distinction is operational: pointwise convergence may use a different cutoff at each input, while uniform convergence supplies one cutoff for the entire set. A later analysis course proves the theorems that let uniform limits preserve continuity and interact safely with integrals. Here, the goal is to recognize why power series are well controlled on closed intervals strictly inside their radius."
+            }
+          ]
+        },
+        {
+          "type": "definition",
+          "title": "Uniform convergence",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Uniform convergence}] A sequence \\(f_n\\) converges uniformly to \\(f\\) on a set \\(E\\) if"
+            },
+            {
+              "type": "math",
+              "tex": "\\forall\\varepsilon>0\\;\\exists N\\;\\forall n\\ge N\\;\\forall x\\in E,\n\\qquad |f_n(x)-f(x)|<\\varepsilon."
+            },
+            {
+              "type": "paragraph",
+              "text": "The same \\(N\\) must work for every \\(x\\in E\\)."
+            }
+          ]
+        },
+        {
+          "type": "proof-idea",
+          "title": "Power series gain uniform control away from the boundary",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Power series gain uniform control away from the boundary}] On \\(|x-a|\\le r<R\\), choose \\(\\rho\\) with \\(r<\\rho<R\\). Coefficients are controlled at distance \\(\\rho\\), leaving a geometric factor \\((r/\\rho)^n\\). This common bound works for all \\(x\\) in the smaller interval."
+            }
+          ]
+        },
+        {
+          "type": "concept",
+          "title": "Uniform convergence in working language",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Uniform convergence in working language}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "Uniform convergence means that one sufficiently large index works simultaneously for every point in the domain, rather than choosing a different index for each point."
+            }
+          ]
+        },
+        {
+          "type": "guided-walkthrough",
+          "title": "A geometric tail controls all points in a smaller interval",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={A geometric tail controls all points in a smaller interval}]"
+            },
+            {
+              "type": "paragraph",
+              "text": "If \\(|x|\\le r<R\\), coefficient estimates for a power series produce a common geometric bound involving \\((r/R)^n\\). Because that bound is independent of the particular \\(x\\), the entire tail is controlled at once."
+            }
+          ]
+        },
+        {
+          "type": "worked-example",
+          "title": "Pointwise convergence without uniform convergence",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Pointwise convergence without uniform convergence}] On \\([0,1)\\), let \\(f_n(x)=x^n\\). For every fixed \\(x<1\\), \\(x^n\\to0\\). But"
+            },
+            {
+              "type": "math",
+              "tex": "\\sup_{0\\le x<1}|x^n-0|=1"
+            },
+            {
+              "type": "paragraph",
+              "text": "for every \\(n\\), because values of \\(x\\) can be chosen arbitrarily close to \\(1\\). The maximum error never becomes uniformly small, so convergence is not uniform."
+            }
+          ]
+        },
+        {
+          "type": "common-mistake",
+          "title": "Do not let the uniform cutoff depend on x",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Do not let the uniform cutoff depend on x}] In uniform convergence, \\(N\\) may depend on \\(\\varepsilon\\) but not on the point \\(x\\). Allowing \\(N=N(x,\\varepsilon)\\) gives only pointwise convergence."
+            }
+          ]
+        },
+        {
+          "type": "quick-check",
+          "checkId": "u4b-uniform_convergence_preview-01",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Which mode of convergence uses one index that works for every point: pointwise or uniform?"
+            },
+            {
+              "type": "hint",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Look for the word ``simultaneously.''"
+                }
+              ]
+            },
+            {
+              "type": "solution",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Uniform convergence uses one common index for the whole domain."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Describe pointwise convergence in your own words."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Explain why a closed interval inside the radius is easier than the full open interval."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Give a conceptual reason uniform convergence preserves integrals."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "State one operation that pointwise convergence alone may not preserve."
+            }
+          ]
+        }
+      ],
+      "sectionId": "advanced",
+      "sectionTitle": "Optional advanced explorations",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/power-series-and-taylor-series/power-series-review",
+      "nodes": [
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Power Series Review"
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the radius and interval of \\(\\sum (x-2)^n/[n3^n]\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Expand \\(1/(2-x)\\) around zero."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Differentiate \\(\\sum x^n\\) and identify the resulting rational function."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Explain why endpoints must be tested separately."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the first four terms of \\(xe^{-x^2}\\)."
+            }
+          ]
+        }
+      ],
+      "sectionId": "review",
+      "sectionTitle": "Review, practice, exams, and answer keys",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/power-series-and-taylor-series/taylor-series-review",
+      "nodes": [
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Taylor Series Review"
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find \\(P_4\\) for \\(\\cos x\\) at zero."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find \\(P_3\\) for \\(\\ln x\\) at \\(a=1\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Use a Taylor polynomial to approximate \\(e^{0.2}\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Bound the approximation error."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Derive the series for \\(\\arctan x\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Explain the distinction between a Taylor series and the function it is built from."
+            }
+          ]
+        }
+      ],
+      "sectionId": "review",
+      "sectionTitle": "Review, practice, exams, and answer keys",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/power-series-and-taylor-series/concept-quiz",
+      "nodes": [
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Unit 4B Concept Quiz"
+        },
+        {
+          "type": "paragraph",
+          "text": "• What does the radius of convergence decide automatically? • Why are endpoints separate? • State the general Taylor coefficient. • What does the remainder measure? • Which standard series produces \\(\\ln(1+x)\\) after integration? • What mode of convergence supports termwise calculus on closed subintervals?"
+        }
+      ],
+      "sectionId": "review",
+      "sectionTitle": "Review, practice, exams, and answer keys",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/power-series-and-taylor-series/mixed-practice",
+      "nodes": [
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Unit 4B Mixed Practice"
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the interval of convergence of \\(\\sum n(x+1)^n/4^n\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find a series for \\(1/(1+9x^2)\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the Maclaurin series for \\(x\\sin x\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Approximate \\(\\int_0^{0.3}e^{-x^2}dx\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Bound the error in \\(\\cos(0.5)\\approx1-0.5^2/2\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Use coefficient matching for \\(y''=xy\\) through four coefficients."
+            }
+          ]
+        }
+      ],
+      "sectionId": "review",
+      "sectionTitle": "Review, practice, exams, and answer keys",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/power-series-and-taylor-series/practice-exam-a",
+      "nodes": [
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Unit 4B Practice Exam A"
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the radius and interval of \\(\\sum (x-1)^n/[n2^n]\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find a series for \\(1/(4-x)\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Differentiate \\(\\sum x^n\\) and identify its sum."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the degree-four Maclaurin polynomial for \\(e^x\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Write the first four nonzero terms of \\(\\sin x\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Derive the series for \\(\\ln(1+x)\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the first four terms of \\(e^{-x^2}\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Use three nonzero terms to approximate \\(\\cos(0.4)\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Give an alternating-series error bound for the approximation."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Use Taylor's theorem to bound the error in approximating \\(e^{0.5}\\) with \\(P_3\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Approximate \\(\\int_0^{0.5}e^{-x^2}dx\\) using three integrated terms."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "State why a Taylor series need not equal its source function automatically."
+            }
+          ]
+        }
+      ],
+      "sectionId": "review",
+      "sectionTitle": "Review, practice, exams, and answer keys",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/power-series-and-taylor-series/practice-exam-a-answer-key",
+      "nodes": [
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Unit 4B Practice Exam A Answer Key"
+        },
+        {
+          "type": "paragraph",
+          "text": "Finish an honest attempt first. Then compare one numbered response at a time, locate the first line where your reasoning diverged, and retry without the key open."
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 1",
+          "answerNumber": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Radius \\(2\\); endpoints produce an alternating harmonic series at \\(x=-1\\) and harmonic series at \\(x=3\\), so interval \\([-1,3)\\)."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 2",
+          "answerNumber": 2,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "\\(\\sum x^n/4^{n+1}\\), \\(|x|<4\\)."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 3",
+          "answerNumber": 3,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "\\(\\sum_{n=1}^\\infty nx^{n-1}=1/(1-x)^2\\)."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 4",
+          "answerNumber": 4,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "\\(1+x+x^2/2+x^3/6+x^4/24\\)."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 5",
+          "answerNumber": 5,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "\\(x-x^3/6+x^5/120-x^7/5040\\)."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 6",
+          "answerNumber": 6,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Integrate \\(1-x+x^2-\\cdots\\) from \\(0\\) to \\(x\\): \\(\\ln(1+x)=x-x^2/2+x^3/3-\\cdots\\), valid for \\(-1<x\\le1\\)."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 7",
+          "answerNumber": 7,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "\\(1-x^2+x^4/2-x^6/6\\)."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 8",
+          "answerNumber": 8,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "\\(1-0.4^2/2+0.4^4/24\\)."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 9",
+          "answerNumber": 9,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "At most \\(0.4^6/720\\)."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 10",
+          "answerNumber": 10,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "At most \\(e^{0.5}(0.5)^4/24\\)."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 11",
+          "answerNumber": 11,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "\\(0.5-0.5^3/3+0.5^5/10\\)."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 12",
+          "answerNumber": 12,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Equality requires the remainder to approach zero."
+            }
+          ]
+        }
+      ],
+      "sectionId": "review",
+      "sectionTitle": "Review, practice, exams, and answer keys",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/power-series-and-taylor-series/practice-exam-b",
+      "nodes": [
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Unit 4B Practice Exam B"
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the interval of convergence of \\(\\sum n(x+2)^n/5^n\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find a power series for \\(x^2/(1-x)\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Use the geometric series to derive \\(1/(1+x)^2\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Find the Taylor polynomial of degree three for \\(\\ln x\\) at \\(a=1\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Write the Maclaurin series for \\(\\arctan x\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Use the binomial series to approximate \\(\\sqrt{1.02}\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Determine how many sine-series terms guarantee error below \\(10^{-8}\\) at \\(x=0.5\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Approximate \\(\\int_0^{0.25}\\cos(x^2)dx\\) with three nonzero terms."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Use power series to solve \\(y'=y\\), \\(y(0)=2\\)."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Explain how uniform convergence differs from pointwise convergence."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Give a physics example where a Taylor approximation linearizes a model."
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "State a complete error argument for one approximation above."
+            }
+          ]
+        }
+      ],
+      "sectionId": "review",
+      "sectionTitle": "Review, practice, exams, and answer keys",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/power-series-and-taylor-series/practice-exam-b-answer-key",
+      "nodes": [
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Unit 4B Practice Exam B Answer Key"
+        },
+        {
+          "type": "paragraph",
+          "text": "Finish an honest attempt first. Then compare one numbered response at a time, locate the first line where your reasoning diverged, and retry without the key open."
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 1",
+          "answerNumber": 1,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Radius \\(5\\); at \\(x=3\\), terms are \\(n\\) and diverge; at \\(x=-7\\), terms are \\(n(-1)^n\\) and do not approach zero. Interval \\((-7,3)\\)."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 2",
+          "answerNumber": 2,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "\\(x^2+x^3+x^4+\\cdots\\), \\(|x|<1\\)."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 3",
+          "answerNumber": 3,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Substitute \\(-x\\), differentiate, and obtain \\(1/(1+x)^2=\\sum_{n=0}^\\infty(-1)^n(n+1)x^n\\)."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 4",
+          "answerNumber": 4,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "\\((x-1)-(x-1)^2/2+(x-1)^3/3\\)."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 5",
+          "answerNumber": 5,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "\\(\\sum(-1)^n x^{2n+1}/(2n+1)\\)."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 6",
+          "answerNumber": 6,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "\\(1+0.02/2-(0.02)^2/8\\)."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 7",
+          "answerNumber": 7,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Four nonzero terms suffice: through \\(-x^7/7!\\). The first omitted magnitude is \\(0.5^9/9!\\approx5.38\\times10^{-9}<10^{-8}\\), and the terms decrease."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 8",
+          "answerNumber": 8,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Using three nonzero terms,"
+            },
+            {
+              "type": "math",
+              "tex": "\\int_0^{0.25}\\cos(x^2)\\,dx\\approx 0.25-\\frac{0.25^5}{10}+\\frac{0.25^9}{216}\\approx0.2499023614."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 9",
+          "answerNumber": 9,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Recurrence gives \\(c_n=2/n!\\), so \\(y=2e^x\\)."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 10",
+          "answerNumber": 10,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Uniform convergence uses one index working simultaneously for all points."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 11",
+          "answerNumber": 11,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Small-angle pendulum: replace \\(\\sin\\theta\\) by \\(\\theta\\)."
+            }
+          ]
+        },
+        {
+          "type": "answer-key-item",
+          "title": "Problem 12",
+          "answerNumber": 12,
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "Answers vary but must name a valid remainder estimate and verify its hypotheses."
+            }
+          ]
+        }
+      ],
+      "sectionId": "review",
+      "sectionTitle": "Review, practice, exams, and answer keys",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/power-series-and-taylor-series/reference-sheet",
+      "nodes": [
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Unit 4B Reference Sheet"
+        },
+        {
+          "type": "math",
+          "tex": "\\frac1{1-x}=\\sum_{n=0}^\\infty x^n,\\quad |x|<1"
+        },
+        {
+          "type": "math",
+          "tex": "e^x=\\sum_{n=0}^\\infty\\frac{x^n}{n!},\\quad\n\\sin x=\\sum_{n=0}^\\infty(-1)^n\\frac{x^{2n+1}}{(2n+1)!},"
+        },
+        {
+          "type": "math",
+          "tex": "\\cos x=\\sum_{n=0}^\\infty(-1)^n\\frac{x^{2n}}{(2n)!},\n\\quad\n\\ln(1+x)=\\sum_{n=1}^\\infty(-1)^{n-1}\\frac{x^n}{n}."
+        },
+        {
+          "type": "math",
+          "tex": "P_n(x)=\\sum_{k=0}^n\\frac{f^{(k)}(a)}{k!}(x-a)^k,\n\\qquad\n|R_n(x)|\\le\\frac{M|x-a|^{n+1}}{(n+1)!}."
+        }
+      ],
+      "sectionId": "review",
+      "sectionTitle": "Review, practice, exams, and answer keys",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    },
+    {
+      "routeId": "subjects/math/calculus/power-series-and-taylor-series/common-errors",
+      "nodes": [
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Common Errors in Power and Taylor Series"
+        },
+        {
+          "type": "common-mistake",
+          "title": "Forgetting endpoints",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Forgetting endpoints}]The Ratio Test determines the open interval but is generally inconclusive at its endpoints."
+            }
+          ]
+        },
+        {
+          "type": "common-mistake",
+          "title": "Dropping the center",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Dropping the center}]A Taylor series about \\(a\\) uses powers of \\(x-a\\), not powers of \\(x\\)."
+            }
+          ]
+        },
+        {
+          "type": "common-mistake",
+          "title": "Claiming equality without controlling the remainder",
+          "children": [
+            {
+              "type": "paragraph",
+              "text": "[title={Claiming equality without controlling the remainder}]A formal Taylor series is not automatically the original function."
+            }
+          ]
+        }
+      ],
+      "sectionId": "review",
+      "sectionTitle": "Review, practice, exams, and answer keys",
+      "compositionStatus": "BetterGrades-original; no direct adaptation declared in the verified handoff."
+    }
+  ]
+}

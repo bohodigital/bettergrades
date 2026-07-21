@@ -1,0 +1,430 @@
+{
+  "schema_version": "3.0.0",
+  "unit_id": "calc-2-unit-4b-power-taylor-series",
+  "problem_count": 20,
+  "problems": [
+    {
+      "problem_id": "u4b-power_series_as_functions-01",
+      "unit_id": "calc-2-unit-4b-power-taylor-series",
+      "page_slug": "subjects/math/calculus/power-series-and-taylor-series/power-series-as-functions",
+      "prompt_latex": "Evaluate \\(\\sum_{n=0}^{\\infty}(1/2)^n\\).",
+      "answer_type": "symbolic_expression",
+      "choices": [],
+      "hints": [
+        "It is geometric with first term \\(1\\) and ratio \\(1/2\\)."
+      ],
+      "difficulty": "course-practice",
+      "topics": [
+        "power-series-as-functions"
+      ],
+      "skills": [
+        "standard-symbolic"
+      ],
+      "provenance": {
+        "composition_status": "BetterGrades-original verified handoff composition; source references remain rights-separated."
+      }
+    },
+    {
+      "problem_id": "u4b-radius_and_interval_of_convergence-01",
+      "unit_id": "calc-2-unit-4b-power-taylor-series",
+      "page_slug": "subjects/math/calculus/power-series-and-taylor-series/radius-and-interval-of-convergence",
+      "prompt_latex": "Find the radius of convergence of \\(\\sum (x-2)^n/3^n\\).",
+      "answer_type": "symbolic_expression",
+      "choices": [],
+      "hints": [
+        "Require the geometric ratio magnitude to be below one."
+      ],
+      "difficulty": "course-practice",
+      "topics": [
+        "radius-and-interval-of-convergence"
+      ],
+      "skills": [
+        "standard-symbolic"
+      ],
+      "provenance": {
+        "composition_status": "BetterGrades-original verified handoff composition; source references remain rights-separated."
+      }
+    },
+    {
+      "problem_id": "u4b-ratio_test_for_power_series-01",
+      "unit_id": "calc-2-unit-4b-power-taylor-series",
+      "page_slug": "subjects/math/calculus/power-series-and-taylor-series/ratio-test-for-power-series",
+      "prompt_latex": "Find the radius of \\(\\sum (x-1)^n/n!\\).",
+      "answer_type": "symbolic_expression",
+      "choices": [],
+      "hints": [
+        "The ratio includes a factor \\(1/(n+1)\\)."
+      ],
+      "difficulty": "course-practice",
+      "topics": [
+        "ratio-test-for-power-series"
+      ],
+      "skills": [
+        "extended-real"
+      ],
+      "provenance": {
+        "composition_status": "BetterGrades-original verified handoff composition; source references remain rights-separated."
+      }
+    },
+    {
+      "problem_id": "u4b-endpoint_testing-01",
+      "unit_id": "calc-2-unit-4b-power-taylor-series",
+      "page_slug": "subjects/math/calculus/power-series-and-taylor-series/endpoint-testing",
+      "prompt_latex": "Find the interval of convergence of \\(\\sum_{n=1}^{\\infty}(x-1)^n/n\\).",
+      "answer_type": "symbolic_expression",
+      "choices": [],
+      "hints": [
+        "Radius one; test \\(x=0\\) and \\(x=2\\) separately."
+      ],
+      "difficulty": "course-practice",
+      "topics": [
+        "endpoint-testing"
+      ],
+      "skills": [
+        "interval-equivalence"
+      ],
+      "provenance": {
+        "composition_status": "BetterGrades-original verified handoff composition; source references remain rights-separated."
+      }
+    },
+    {
+      "problem_id": "u4b-algebra_with_power_series-01",
+      "unit_id": "calc-2-unit-4b-power-taylor-series",
+      "page_slug": "subjects/math/calculus/power-series-and-taylor-series/algebra-with-power-series",
+      "prompt_latex": "What is the coefficient of \\(x^n\\) in \\((1+x+x^2+\\cdots)^2\\)?",
+      "answer_type": "symbolic_expression",
+      "choices": [],
+      "hints": [
+        "Count pairs \\((k,n-k)\\) with nonnegative indices."
+      ],
+      "difficulty": "course-practice",
+      "topics": [
+        "algebra-with-power-series"
+      ],
+      "skills": [
+        "symbolic-with-declared-variables"
+      ],
+      "provenance": {
+        "composition_status": "BetterGrades-original verified handoff composition; source references remain rights-separated."
+      }
+    },
+    {
+      "problem_id": "u4b-differentiating_and_integrating_power_series-01",
+      "unit_id": "calc-2-unit-4b-power-taylor-series",
+      "page_slug": "subjects/math/calculus/power-series-and-taylor-series/differentiating-and-integrating-power-series",
+      "prompt_latex": "Differentiate \\(\\sum_{n=0}^{\\infty}x^n\\) term by term.",
+      "answer_type": "symbolic_expression",
+      "choices": [],
+      "hints": [
+        "The constant term vanishes and \\(d(x^n)/dx=nx^{n-1}\\)."
+      ],
+      "difficulty": "course-practice",
+      "topics": [
+        "differentiating-and-integrating-power-series"
+      ],
+      "skills": [
+        "series-expression-equivalence-or-uncertain"
+      ],
+      "provenance": {
+        "composition_status": "BetterGrades-original verified handoff composition; source references remain rights-separated."
+      }
+    },
+    {
+      "problem_id": "u4b-geometric_series_library-01",
+      "unit_id": "calc-2-unit-4b-power-taylor-series",
+      "page_slug": "subjects/math/calculus/power-series-and-taylor-series/geometric-series-library",
+      "prompt_latex": "Find a power series for \\(1/(3-x)\\) centered at zero.",
+      "answer_type": "symbolic_expression",
+      "choices": [],
+      "hints": [
+        "Factor out \\(3\\) and match \\(1/(1-r)\\)."
+      ],
+      "difficulty": "course-practice",
+      "topics": [
+        "geometric-series-library"
+      ],
+      "skills": [
+        "series-expression-equivalence-or-uncertain"
+      ],
+      "provenance": {
+        "composition_status": "BetterGrades-original verified handoff composition; source references remain rights-separated."
+      }
+    },
+    {
+      "problem_id": "u4b-taylor_polynomials-01",
+      "unit_id": "calc-2-unit-4b-power-taylor-series",
+      "page_slug": "subjects/math/calculus/power-series-and-taylor-series/taylor-polynomials",
+      "prompt_latex": "Find the cubic Maclaurin polynomial for \\(e^x\\).",
+      "answer_type": "symbolic_expression",
+      "choices": [],
+      "hints": [
+        "All derivatives at zero equal one."
+      ],
+      "difficulty": "course-practice",
+      "topics": [
+        "taylor-polynomials"
+      ],
+      "skills": [
+        "standard-symbolic"
+      ],
+      "provenance": {
+        "composition_status": "BetterGrades-original verified handoff composition; source references remain rights-separated."
+      }
+    },
+    {
+      "problem_id": "u4b-maclaurin_series-01",
+      "unit_id": "calc-2-unit-4b-power-taylor-series",
+      "page_slug": "subjects/math/calculus/power-series-and-taylor-series/maclaurin-series",
+      "prompt_latex": "Write the first three nonzero Maclaurin terms of \\(\\sin x\\).",
+      "answer_type": "symbolic_expression",
+      "choices": [],
+      "hints": [
+        "Use odd powers and alternating signs."
+      ],
+      "difficulty": "course-practice",
+      "topics": [
+        "maclaurin-series"
+      ],
+      "skills": [
+        "standard-symbolic"
+      ],
+      "provenance": {
+        "composition_status": "BetterGrades-original verified handoff composition; source references remain rights-separated."
+      }
+    },
+    {
+      "problem_id": "u4b-taylor_series_centered_at_a-01",
+      "unit_id": "calc-2-unit-4b-power-taylor-series",
+      "page_slug": "subjects/math/calculus/power-series-and-taylor-series/taylor-series-centered-at-a",
+      "prompt_latex": "What is the center of a series written in powers of \\((x-1)\\)?",
+      "answer_type": "symbolic_expression",
+      "choices": [],
+      "hints": [
+        "The center makes the power factor zero."
+      ],
+      "difficulty": "course-practice",
+      "topics": [
+        "taylor-series-centered-at-a"
+      ],
+      "skills": [
+        "standard-symbolic"
+      ],
+      "provenance": {
+        "composition_status": "BetterGrades-original verified handoff composition; source references remain rights-separated."
+      }
+    },
+    {
+      "problem_id": "u4b-standard_maclaurin_series-01",
+      "unit_id": "calc-2-unit-4b-power-taylor-series",
+      "page_slug": "subjects/math/calculus/power-series-and-taylor-series/standard-maclaurin-series",
+      "prompt_latex": "Write the first three nonzero Maclaurin terms of \\(\\cos x\\).",
+      "answer_type": "symbolic_expression",
+      "choices": [],
+      "hints": [
+        "Use even powers with alternating signs."
+      ],
+      "difficulty": "course-practice",
+      "topics": [
+        "standard-maclaurin-series"
+      ],
+      "skills": [
+        "standard-symbolic"
+      ],
+      "provenance": {
+        "composition_status": "BetterGrades-original verified handoff composition; source references remain rights-separated."
+      }
+    },
+    {
+      "problem_id": "u4b-logarithm_and_arctangent_series-01",
+      "unit_id": "calc-2-unit-4b-power-taylor-series",
+      "page_slug": "subjects/math/calculus/power-series-and-taylor-series/logarithm-and-arctangent-series",
+      "prompt_latex": "Evaluate the arctangent series at \\(x=1\\).",
+      "answer_type": "symbolic_expression",
+      "choices": [],
+      "hints": [
+        "Use \\(\\arctan(1)\\)."
+      ],
+      "difficulty": "course-practice",
+      "topics": [
+        "logarithm-and-arctangent-series"
+      ],
+      "skills": [
+        "standard-symbolic"
+      ],
+      "provenance": {
+        "composition_status": "BetterGrades-original verified handoff composition; source references remain rights-separated."
+      }
+    },
+    {
+      "problem_id": "u4b-building_new_series-01",
+      "unit_id": "calc-2-unit-4b-power-taylor-series",
+      "page_slug": "subjects/math/calculus/power-series-and-taylor-series/building-new-series",
+      "prompt_latex": "Find a series for \\(xe^{-x^2}\\).",
+      "answer_type": "symbolic_expression",
+      "choices": [],
+      "hints": [
+        "Substitute \\(-x^2\\) into the exponential series, then multiply by \\(x\\)."
+      ],
+      "difficulty": "course-practice",
+      "topics": [
+        "building-new-series"
+      ],
+      "skills": [
+        "series-expression-equivalence-or-uncertain"
+      ],
+      "provenance": {
+        "composition_status": "BetterGrades-original verified handoff composition; source references remain rights-separated."
+      }
+    },
+    {
+      "problem_id": "u4b-binomial_series-01",
+      "unit_id": "calc-2-unit-4b-power-taylor-series",
+      "page_slug": "subjects/math/calculus/power-series-and-taylor-series/binomial-series",
+      "prompt_latex": "Write the quadratic binomial approximation for \\(\\sqrt{1+x}\\).",
+      "answer_type": "symbolic_expression",
+      "choices": [],
+      "hints": [
+        "Use \\(\\alpha=1/2\\)."
+      ],
+      "difficulty": "course-practice",
+      "topics": [
+        "binomial-series"
+      ],
+      "skills": [
+        "standard-symbolic"
+      ],
+      "provenance": {
+        "composition_status": "BetterGrades-original verified handoff composition; source references remain rights-separated."
+      }
+    },
+    {
+      "problem_id": "u4b-taylor_remainder_theorem-01",
+      "unit_id": "calc-2-unit-4b-power-taylor-series",
+      "page_slug": "subjects/math/calculus/power-series-and-taylor-series/taylor-remainder-theorem",
+      "prompt_latex": "State the standard Lagrange upper bound for \\(|R_n(x)|\\).",
+      "answer_type": "symbolic_expression",
+      "choices": [],
+      "hints": [
+        "Use a bound \\(M\\) on the \\((n+1)\\)st derivative."
+      ],
+      "difficulty": "course-practice",
+      "topics": [
+        "taylor-remainder-theorem"
+      ],
+      "skills": [
+        "symbolic-with-declared-variables"
+      ],
+      "provenance": {
+        "composition_status": "BetterGrades-original verified handoff composition; source references remain rights-separated."
+      }
+    },
+    {
+      "problem_id": "u4b-alternating_series_approximation-01",
+      "unit_id": "calc-2-unit-4b-power-taylor-series",
+      "page_slug": "subjects/math/calculus/power-series-and-taylor-series/alternating-series-approximation",
+      "prompt_latex": "What bounds the error after the \\(x^4\\) term in \\(\\cos(0.3)\\)?",
+      "answer_type": "symbolic_expression",
+      "choices": [],
+      "hints": [
+        "Use the first omitted \\(x^6/6!\\) term."
+      ],
+      "difficulty": "course-practice",
+      "topics": [
+        "alternating-series-approximation"
+      ],
+      "skills": [
+        "standard-symbolic"
+      ],
+      "provenance": {
+        "composition_status": "BetterGrades-original verified handoff composition; source references remain rights-separated."
+      }
+    },
+    {
+      "problem_id": "u4b-series_for_definite_integrals-01",
+      "unit_id": "calc-2-unit-4b-power-taylor-series",
+      "page_slug": "subjects/math/calculus/power-series-and-taylor-series/series-for-definite-integrals",
+      "prompt_latex": "Use three terms to approximate \\(\\int_0^{0.5}e^{-x^2}\\,dx\\).",
+      "answer_type": "symbolic_expression",
+      "choices": [],
+      "hints": [
+        "Integrate \\(1-x^2+x^4/2\\) term by term."
+      ],
+      "difficulty": "course-practice",
+      "topics": [
+        "series-for-definite-integrals"
+      ],
+      "skills": [
+        "standard-symbolic"
+      ],
+      "provenance": {
+        "composition_status": "BetterGrades-original verified handoff composition; source references remain rights-separated."
+      }
+    },
+    {
+      "problem_id": "u4b-small_angle_physics-01",
+      "unit_id": "calc-2-unit-4b-power-taylor-series",
+      "page_slug": "subjects/math/calculus/power-series-and-taylor-series/small-angle-physics",
+      "prompt_latex": "Bound the error in \\(\\sin(0.1)\\approx0.1\\) using the first omitted term.",
+      "answer_type": "symbolic_expression",
+      "choices": [],
+      "hints": [
+        "The first omitted sine term is \\(x^3/3!\\)."
+      ],
+      "difficulty": "course-practice",
+      "topics": [
+        "small-angle-physics"
+      ],
+      "skills": [
+        "standard-symbolic"
+      ],
+      "provenance": {
+        "composition_status": "BetterGrades-original verified handoff composition; source references remain rights-separated."
+      }
+    },
+    {
+      "problem_id": "u4b-series_solutions_preview-01",
+      "unit_id": "calc-2-unit-4b-power-taylor-series",
+      "page_slug": "subjects/math/calculus/power-series-and-taylor-series/series-solutions-preview",
+      "prompt_latex": "If \\((n+1)c_{n+1}=c_n\\), express \\(c_n\\) in terms of \\(c_0\\).",
+      "answer_type": "symbolic_expression",
+      "choices": [],
+      "hints": [
+        "Compute the first few coefficients."
+      ],
+      "difficulty": "course-practice",
+      "topics": [
+        "series-solutions-preview"
+      ],
+      "skills": [
+        "symbolic-with-declared-variables"
+      ],
+      "provenance": {
+        "composition_status": "BetterGrades-original verified handoff composition; source references remain rights-separated."
+      }
+    },
+    {
+      "problem_id": "u4b-uniform_convergence_preview-01",
+      "unit_id": "calc-2-unit-4b-power-taylor-series",
+      "page_slug": "subjects/math/calculus/power-series-and-taylor-series/uniform-convergence-preview",
+      "prompt_latex": "Which mode of convergence uses one index that works for every point: pointwise or uniform?",
+      "answer_type": "multiple_choice",
+      "choices": [
+        "pointwise",
+        "uniform"
+      ],
+      "hints": [
+        "Look for the word ``simultaneously."
+      ],
+      "difficulty": "course-practice",
+      "topics": [
+        "uniform-convergence-preview"
+      ],
+      "skills": [
+        "symbolic-with-declared-variables"
+      ],
+      "provenance": {
+        "composition_status": "BetterGrades-original verified handoff composition; source references remain rights-separated."
+      }
+    }
+  ]
+}
