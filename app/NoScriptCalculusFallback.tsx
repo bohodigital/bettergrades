@@ -124,7 +124,7 @@ function visualFigure(node: UnknownRecord, key: string): ReactNode {
       height={typeof asset?.height === "number" ? asset.height : 558}
       alt={text(accessibility?.ariaLabel) || caption}
     />
-    <figcaption><strong>{title}</strong><span>{caption}</span></figcaption>
+    <figcaption><strong><RichText value={title} /></strong><span><RichText value={caption} /></span></figcaption>
     {text(visual?.longDescription) ? <details><summary>Read this visual as text</summary><p>{text(visual?.longDescription)}</p></details> : null}
   </figure>;
 }
@@ -147,20 +147,20 @@ function StaticNode({ node, keyPath, checks }: { node: UnknownRecord; keyPath: s
   if (type === "visual-reference" || type === "graph-specification") {
     const figure = visualFigure(node, keyPath);
     if (figure) return figure;
-    return text(node.text) ? <aside className="no-script-card" key={keyPath}><strong>{title || "Visual explanation"}</strong><p><RichText value={text(node.text)} /></p></aside> : null;
+    return text(node.text) ? <aside className="no-script-card" key={keyPath}><strong><RichText value={title || "Visual explanation"} /></strong><p><RichText value={text(node.text)} /></p></aside> : null;
   }
   if (type === "quick-check") {
     const check = checks.get(text(node.checkId));
     const prompt = text(check?.promptLatex);
     return <section className="no-script-card no-script-check" key={keyPath}><span>Quick check</span>{prompt ? <p><RichText value={prompt} /></p> : null}<p className="no-script-note">Interactive grading requires JavaScript. Work the problem on paper, then return with scripting enabled to check your answer.</p></section>;
   }
-  if (type === "solution-reveal") return <aside className="no-script-card" key={keyPath}><strong>{title || "Worked solution"}</strong><p>The complete worked solution is attempt-gated and available when JavaScript is enabled.</p></aside>;
+  if (type === "solution-reveal") return <aside className="no-script-card" key={keyPath}><strong><RichText value={title || "Worked solution"} /></strong><p>The complete worked solution is attempt-gated and available when JavaScript is enabled.</p></aside>;
 
   if (children.length || title) {
     const label = blockLabels[type] || type.replaceAll("-", " ");
     return <section className={`no-script-card no-script-${type || "section"}`} key={keyPath}>
       {label ? <span>{label}</span> : null}
-      {title ? <h3>{title}</h3> : null}
+      {title ? <h3><RichText value={title} /></h3> : null}
       {children.map((child, index) => <StaticNode node={child} checks={checks} keyPath={`${keyPath}-${index}`} key={`${keyPath}-${index}`} />)}
     </section>;
   }
