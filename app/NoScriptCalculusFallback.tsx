@@ -73,7 +73,7 @@ function normalizeTex(value: string): string {
     .replace(/^\$|\$$/g, "")
     .replace(/\\eps(?=[^A-Za-z]|$)/g, String.raw`\varepsilon`)
     .replace(/\\DNE(?=[^A-Za-z]|$)/g, String.raw`\mathrm{DNE}`)
-    .replace(/\\tfrac/g, String.raw`\frac`)
+    .replace(/\\(?:dfrac|tfrac)/g, String.raw`\frac`)
     .replace(/\\begin\{align\*?\}/g, String.raw`\begin{aligned}`)
     .replace(/\\end\{align\*?\}/g, String.raw`\end{aligned}`)
     .replace(/\\hline/g, "")
@@ -102,17 +102,17 @@ function readableMath(value: string): string {
     sum: "Σ", prod: "Π", int: "∫", oint: "∮", partial: "∂", nabla: "∇",
     to: "→", rightarrow: "→", longrightarrow: "→", leftarrow: "←", leftrightarrow: "↔",
     implies: "⇒", Rightarrow: "⇒", iff: "⇔", Leftrightarrow: "⇔",
-    le: "≤", leq: "≤", ge: "≥", geq: "≥", neq: "≠", approx: "≈", sim: "∼",
+    le: "≤", leq: "≤", ge: "≥", geq: "≥", ne: "≠", neq: "≠", lt: "<", gt: ">", approx: "≈", sim: "∼",
     cdot: "·", times: "×", div: "÷", pm: "±", mp: "∓", circ: "°",
     cup: "∪", cap: "∩", in: "∈", notin: "∉", subset: "⊂", subseteq: "⊆",
     forall: "∀", exists: "∃", therefore: "∴", because: "∵", DNE: "DNE",
   };
   result = result
+    .replace(/\\\\/g, "; ")
     .replace(/\\(?:left|right|big|Big|bigg|Bigg)\b/g, "")
     .replace(/\\(?:quad|qquad|enspace|medspace|thinspace)\b/g, " ")
     .replace(/\\[,;:!]/g, " ")
     .replace(/\\([A-Za-z]+)/g, (_, command: string) => symbols[command] ?? command)
-    .replace(/\\\\/g, "; ")
     .replace(/[{}]/g, "")
     .replace(/\s+/g, " ")
     .trim();
