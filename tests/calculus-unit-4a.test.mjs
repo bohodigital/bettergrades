@@ -91,5 +91,7 @@ test("the explicit collision inventory contains only the superseded Chapter 4 in
     "/subjects/math/calculus/sequences-series/",
     "/subjects/math/calculus/sequences-series/geometric-series/",
     "/subjects/math/calculus/sequences-series/choosing-convergence-test/",
+    "/subjects/math/calculus/sequences-series/power-series-interval-of-convergence/",
+    "/subjects/math/calculus/sequences-series/taylor-series-remainder/",
   ]);
 });

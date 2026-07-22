@@ -1,0 +1,412 @@
+{
+  "schema_version": "3.0.0",
+  "unit_id": "calc-2-unit-4b-power-taylor-series",
+  "visual_briefs": [
+    {
+      "title": "A power series changes character when x changes",
+      "learning_purpose": "Partial sums of the geometric series at an interior, endpoint, and exterior input.",
+      "recommended_renderer": "interactive-2d",
+      "visual_kind": "cartesian-2d",
+      "composition": "Partial sums of the geometric series at an interior, endpoint, and exterior input.",
+      "interaction": "Move x and watch terms, partial sums, and convergence status change.",
+      "long_description": "Three panels show geometric partial sums for x=1/2 approaching 2, for x=-1 oscillating, and for x=2 growing rapidly.",
+      "misconception_control": "Preserve the misconception control described in the lesson and storyboard.",
+      "schema_version": "3.0.0",
+      "visual_id": "u4b-power-series-three-inputs",
+      "route_id": "subjects/math/calculus/power-series-and-taylor-series/power-series-as-functions",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "interactive-2d",
+        "static-svg-fallback",
+        "keyboard-controls",
+        "reduced-motion"
+      ],
+      "provenance_id": "prov-visual-u4b-power-series-three-inputs"
+    },
+    {
+      "title": "The radius organizes convergence by distance from the center",
+      "learning_purpose": "A number line with an absolute-convergence interior, undecided endpoints, and divergence exterior.",
+      "recommended_renderer": "interactive-2d",
+      "visual_kind": "geometry-2d",
+      "composition": "A number line with an absolute-convergence interior, undecided endpoints, and divergence exterior.",
+      "interaction": "Drag the center and radius while endpoint markers remain separately testable.",
+      "long_description": "A number line centered at a shows an interior interval of absolute convergence, two separately marked endpoints, and exterior divergence regions.",
+      "misconception_control": "Preserve the misconception control described in the lesson and storyboard.",
+      "schema_version": "3.0.0",
+      "visual_id": "u4b-radius-number-line",
+      "route_id": "subjects/math/calculus/power-series-and-taylor-series/radius-and-interval-of-convergence",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "interactive-2d",
+        "static-svg-fallback",
+        "keyboard-controls",
+        "reduced-motion"
+      ],
+      "provenance_id": "prov-visual-u4b-radius-number-line"
+    },
+    {
+      "title": "A power series converges on an interval centered at its expansion point",
+      "learning_purpose": "A number line with an absolute-convergence interior, undecided endpoints, and divergence exterior.",
+      "recommended_renderer": "static-svg",
+      "visual_kind": "geometry-2d",
+      "composition": "A number line with an absolute-convergence interior, undecided endpoints, and divergence exterior.",
+      "interaction": "No runtime interaction required in the first pass.",
+      "long_description": "Inside the radius \\(R\\), convergence is automatic; outside, divergence is automatic; each endpoint must be checked separately.",
+      "misconception_control": "Preserve the misconception control described in the lesson and storyboard.",
+      "schema_version": "3.0.0",
+      "visual_id": "u4b-power-series-interval",
+      "route_id": "subjects/math/calculus/power-series-and-taylor-series/radius-and-interval-of-convergence",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "static-svg",
+        "print-fallback",
+        "long-description"
+      ],
+      "provenance_id": "prov-visual-u4b-power-series-interval"
+    },
+    {
+      "title": "Interior, endpoints, and exterior require different reasoning",
+      "learning_purpose": "Three-zone interval with separate endpoint result cards.",
+      "recommended_renderer": "static-svg",
+      "visual_kind": "geometry-2d",
+      "composition": "Three-zone interval with separate endpoint result cards.",
+      "interaction": "No runtime interaction required in the first pass.",
+      "long_description": "A number line shows an interior region decided by the radius, two endpoint test boxes, and exterior divergence.",
+      "misconception_control": "Preserve the misconception control described in the lesson and storyboard.",
+      "schema_version": "3.0.0",
+      "visual_id": "u4b-endpoint-zones",
+      "route_id": "subjects/math/calculus/power-series-and-taylor-series/endpoint-testing",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "static-svg",
+        "print-fallback",
+        "long-description"
+      ],
+      "provenance_id": "prov-visual-u4b-endpoint-zones"
+    },
+    {
+      "title": "Product coefficients come from diagonals",
+      "learning_purpose": "A coefficient grid whose diagonals feed successive powers.",
+      "recommended_renderer": "static-svg",
+      "visual_kind": "geometry-2d",
+      "composition": "A coefficient grid whose diagonals feed successive powers.",
+      "interaction": "No runtime interaction required in the first pass.",
+      "long_description": "A grid of coefficient products is organized by total exponent. Entries on the same diagonal all contribute to one power of x.",
+      "misconception_control": "Preserve the misconception control described in the lesson and storyboard.",
+      "schema_version": "3.0.0",
+      "visual_id": "u4b-cauchy-product-grid",
+      "route_id": "subjects/math/calculus/power-series-and-taylor-series/algebra-with-power-series",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "static-svg",
+        "print-fallback",
+        "long-description"
+      ],
+      "provenance_id": "prov-visual-u4b-cauchy-product-grid"
+    },
+    {
+      "title": "Differentiation and integration shift coefficients and powers",
+      "learning_purpose": "Coefficient-and-exponent shifts under differentiation and integration.",
+      "recommended_renderer": "static-svg",
+      "visual_kind": "geometry-2d",
+      "composition": "Coefficient-and-exponent shifts under differentiation and integration.",
+      "interaction": "No runtime interaction required in the first pass.",
+      "long_description": "A row of terms maps downward under differentiation and upward under integration, with exponent multipliers or divisors displayed.",
+      "misconception_control": "Preserve the misconception control described in the lesson and storyboard.",
+      "schema_version": "3.0.0",
+      "visual_id": "u4b-coefficient-shift",
+      "route_id": "subjects/math/calculus/power-series-and-taylor-series/differentiating-and-integrating-power-series",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "static-svg",
+        "print-fallback",
+        "long-description"
+      ],
+      "provenance_id": "prov-visual-u4b-coefficient-shift"
+    },
+    {
+      "title": "The geometric series generates a family of expansions",
+      "learning_purpose": "A transformation tree branching from the geometric series.",
+      "recommended_renderer": "static-svg",
+      "visual_kind": "geometry-2d",
+      "composition": "A transformation tree branching from the geometric series.",
+      "interaction": "No runtime interaction required in the first pass.",
+      "long_description": "A central geometric-series identity branches through substitution, scaling, differentiation, and integration to several new function series.",
+      "misconception_control": "Preserve the misconception control described in the lesson and storyboard.",
+      "schema_version": "3.0.0",
+      "visual_id": "u4b-geometric-transformation-tree",
+      "route_id": "subjects/math/calculus/power-series-and-taylor-series/geometric-series-library",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "static-svg",
+        "print-fallback",
+        "long-description"
+      ],
+      "provenance_id": "prov-visual-u4b-geometric-transformation-tree"
+    },
+    {
+      "title": "Higher Taylor degree matches more local shape",
+      "learning_purpose": "Function and degree 0, 1, 2, and 3 Taylor models near a common center.",
+      "recommended_renderer": "interactive-2d",
+      "visual_kind": "cartesian-2d",
+      "composition": "Function and degree 0, 1, 2, and 3 Taylor models near a common center.",
+      "interaction": "Increase degree and watch successive derivatives match.",
+      "long_description": "A function near the center is compared with constant, tangent-line, quadratic, and cubic Taylor approximations. Each added degree follows the function farther from the center.",
+      "misconception_control": "Preserve the misconception control described in the lesson and storyboard.",
+      "schema_version": "3.0.0",
+      "visual_id": "u4b-taylor-degree-ladder",
+      "route_id": "subjects/math/calculus/power-series-and-taylor-series/taylor-polynomials",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "interactive-2d",
+        "static-svg-fallback",
+        "keyboard-controls",
+        "reduced-motion"
+      ],
+      "provenance_id": "prov-visual-u4b-taylor-degree-ladder"
+    },
+    {
+      "title": "Taylor polynomial approximations",
+      "learning_purpose": "Function and degree 0, 1, 2, and 3 Taylor models near a common center.",
+      "recommended_renderer": "static-svg",
+      "visual_kind": "cartesian-2d",
+      "composition": "Function and degree 0, 1, 2, and 3 Taylor models near a common center.",
+      "interaction": "No runtime interaction required in the first pass.",
+      "long_description": "Increasing the degree makes the polynomial agree with more local derivative data and typically follow the target function over a wider interval.",
+      "misconception_control": "Preserve the misconception control described in the lesson and storyboard.",
+      "schema_version": "3.0.0",
+      "visual_id": "u4b-taylor-polynomials",
+      "route_id": "subjects/math/calculus/power-series-and-taylor-series/taylor-polynomials",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "static-svg",
+        "print-fallback",
+        "long-description"
+      ],
+      "provenance_id": "prov-visual-u4b-taylor-polynomials"
+    },
+    {
+      "title": "Derivative cycles generate coefficient patterns",
+      "learning_purpose": "Derivative cycles for sine, cosine, and exponential functions.",
+      "recommended_renderer": "static-svg",
+      "visual_kind": "geometry-2d",
+      "composition": "Derivative cycles for sine, cosine, and exponential functions.",
+      "interaction": "No runtime interaction required in the first pass.",
+      "long_description": "A four-step cycle shows cosine, negative sine, negative cosine, and sine, with their values at zero determining alternating even-power coefficients.",
+      "misconception_control": "Preserve the misconception control described in the lesson and storyboard.",
+      "schema_version": "3.0.0",
+      "visual_id": "u4b-derivative-cycle",
+      "route_id": "subjects/math/calculus/power-series-and-taylor-series/maclaurin-series",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "static-svg",
+        "print-fallback",
+        "long-description"
+      ],
+      "provenance_id": "prov-visual-u4b-derivative-cycle"
+    },
+    {
+      "title": "Taylor accuracy is local to the chosen center",
+      "learning_purpose": "The same function with Taylor models centered at two different points.",
+      "recommended_renderer": "interactive-2d",
+      "visual_kind": "cartesian-2d",
+      "composition": "The same function with Taylor models centered at two different points.",
+      "interaction": "Move the center and compare local approximation error.",
+      "long_description": "The same curve is shown with two local polynomial approximations, each closely matching near its own center and separating farther away.",
+      "misconception_control": "Preserve the misconception control described in the lesson and storyboard.",
+      "schema_version": "3.0.0",
+      "visual_id": "u4b-two-taylor-centers",
+      "route_id": "subjects/math/calculus/power-series-and-taylor-series/taylor-series-centered-at-a",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "interactive-2d",
+        "static-svg-fallback",
+        "keyboard-controls",
+        "reduced-motion"
+      ],
+      "provenance_id": "prov-visual-u4b-two-taylor-centers"
+    },
+    {
+      "title": "Standard Maclaurin series have visible coefficient patterns",
+      "learning_purpose": "Aligned pattern rows for exponential, sine, and cosine series.",
+      "recommended_renderer": "static-svg",
+      "visual_kind": "geometry-2d",
+      "composition": "Aligned pattern rows for exponential, sine, and cosine series.",
+      "interaction": "No runtime interaction required in the first pass.",
+      "long_description": "Aligned rows show e to the x using all powers, sine using alternating odd powers, and cosine using alternating even powers.",
+      "misconception_control": "Preserve the misconception control described in the lesson and storyboard.",
+      "schema_version": "3.0.0",
+      "visual_id": "u4b-standard-series-patterns",
+      "route_id": "subjects/math/calculus/power-series-and-taylor-series/standard-maclaurin-series",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "static-svg",
+        "print-fallback",
+        "long-description"
+      ],
+      "provenance_id": "prov-visual-u4b-standard-series-patterns"
+    },
+    {
+      "title": "New series are built through explicit transformations",
+      "learning_purpose": "An operation pipeline with function and series sides updated in parallel.",
+      "recommended_renderer": "static-svg",
+      "visual_kind": "cartesian-2d",
+      "composition": "An operation pipeline with function and series sides updated in parallel.",
+      "interaction": "No runtime interaction required in the first pass.",
+      "long_description": "A left-to-right pipeline shows a parent geometric series, differentiation, substitution, and multiplication, with the convergence condition carried below each stage.",
+      "misconception_control": "Preserve the misconception control described in the lesson and storyboard.",
+      "schema_version": "3.0.0",
+      "visual_id": "u4b-series-operation-pipeline",
+      "route_id": "subjects/math/calculus/power-series-and-taylor-series/building-new-series",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "static-svg",
+        "print-fallback",
+        "long-description"
+      ],
+      "provenance_id": "prov-visual-u4b-series-operation-pipeline"
+    },
+    {
+      "title": "Binomial partial sums approximate nonpolynomial powers",
+      "learning_purpose": "Partial sums approaching sqrt(1+x) or its reciprocal inside the radius.",
+      "recommended_renderer": "static-svg",
+      "visual_kind": "cartesian-2d",
+      "composition": "Partial sums approaching sqrt(1+x) or its reciprocal inside the radius.",
+      "interaction": "No runtime interaction required in the first pass.",
+      "long_description": "The curve y equals square root of 1+x is compared with several binomial partial sums on an interval inside the radius of convergence.",
+      "misconception_control": "Preserve the misconception control described in the lesson and storyboard.",
+      "schema_version": "3.0.0",
+      "visual_id": "u4b-binomial-partial-sums",
+      "route_id": "subjects/math/calculus/power-series-and-taylor-series/binomial-series",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "static-svg",
+        "print-fallback",
+        "long-description"
+      ],
+      "provenance_id": "prov-visual-u4b-binomial-partial-sums"
+    },
+    {
+      "title": "A Taylor polynomial comes with an error envelope",
+      "learning_purpose": "Function, Taylor polynomial, and an error envelope widening away from the center.",
+      "recommended_renderer": "interactive-2d",
+      "visual_kind": "cartesian-2d",
+      "composition": "Function, Taylor polynomial, and an error envelope widening away from the center.",
+      "interaction": "Change degree and target point while displaying the certified bound.",
+      "long_description": "A function and its Taylor polynomial meet at the center, while symmetric upper and lower error bounds widen with distance from the center.",
+      "misconception_control": "Preserve the misconception control described in the lesson and storyboard.",
+      "schema_version": "3.0.0",
+      "visual_id": "u4b-taylor-error-envelope",
+      "route_id": "subjects/math/calculus/power-series-and-taylor-series/taylor-remainder-theorem",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "interactive-2d",
+        "static-svg-fallback",
+        "keyboard-controls",
+        "reduced-motion"
+      ],
+      "provenance_id": "prov-visual-u4b-taylor-error-envelope"
+    },
+    {
+      "title": "A remainder bound encloses the unknown error",
+      "learning_purpose": "Function, Taylor polynomial, and an error envelope widening away from the center.",
+      "recommended_renderer": "static-svg",
+      "visual_kind": "cartesian-2d",
+      "composition": "Function, Taylor polynomial, and an error envelope widening away from the center.",
+      "interaction": "No runtime interaction required in the first pass.",
+      "long_description": "Taylor's theorem does not merely offer a polynomial; it gives an explicit envelope within which the true function must lie.",
+      "misconception_control": "Preserve the misconception control described in the lesson and storyboard.",
+      "schema_version": "3.0.0",
+      "visual_id": "u4b-remainder-band",
+      "route_id": "subjects/math/calculus/power-series-and-taylor-series/taylor-remainder-theorem",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "static-svg",
+        "print-fallback",
+        "long-description"
+      ],
+      "provenance_id": "prov-visual-u4b-remainder-band"
+    },
+    {
+      "title": "Polynomial approximations make a nonelementary integral computable",
+      "learning_purpose": "The integrand and successive polynomial approximations over the integration interval.",
+      "recommended_renderer": "static-svg",
+      "visual_kind": "cartesian-2d",
+      "composition": "The integrand and successive polynomial approximations over the integration interval.",
+      "interaction": "No runtime interaction required in the first pass.",
+      "long_description": "The curve e to the negative x squared is compared with two truncated series on the interval from zero to one half, with the area under each shown.",
+      "misconception_control": "Preserve the misconception control described in the lesson and storyboard.",
+      "schema_version": "3.0.0",
+      "visual_id": "u4b-gaussian-series-integral",
+      "route_id": "subjects/math/calculus/power-series-and-taylor-series/series-for-definite-integrals",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "static-svg",
+        "print-fallback",
+        "long-description"
+      ],
+      "provenance_id": "prov-visual-u4b-gaussian-series-integral"
+    },
+    {
+      "title": "Sine and angle agree locally but separate farther away",
+      "learning_purpose": "Sine and the line y=theta near zero, with their separation enlarged.",
+      "recommended_renderer": "static-svg",
+      "visual_kind": "cartesian-2d",
+      "composition": "Sine and the line y=theta near zero, with their separation enlarged.",
+      "interaction": "No runtime interaction required in the first pass.",
+      "long_description": "The curves y equals sine theta and y equals theta nearly overlap near zero, while a magnified error panel shows their cubic separation.",
+      "misconception_control": "Preserve the misconception control described in the lesson and storyboard.",
+      "schema_version": "3.0.0",
+      "visual_id": "u4b-small-angle-comparison",
+      "route_id": "subjects/math/calculus/power-series-and-taylor-series/small-angle-physics",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "static-svg",
+        "print-fallback",
+        "long-description"
+      ],
+      "provenance_id": "prov-visual-u4b-small-angle-comparison"
+    },
+    {
+      "title": "A differential equation becomes a recurrence",
+      "learning_purpose": "A coefficient machine mapping a_n to a_{n+1}.",
+      "recommended_renderer": "static-svg",
+      "visual_kind": "geometry-2d",
+      "composition": "A coefficient machine mapping a_n to a_{n+1}.",
+      "interaction": "No runtime interaction required in the first pass.",
+      "long_description": "A flow diagram starts with the initial coefficient a0 and repeatedly applies a_{n+1",
+      "misconception_control": "Preserve the misconception control described in the lesson and storyboard.",
+      "schema_version": "3.0.0",
+      "visual_id": "u4b-ode-coefficient-machine",
+      "route_id": "subjects/math/calculus/power-series-and-taylor-series/series-solutions-preview",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "static-svg",
+        "print-fallback",
+        "long-description"
+      ],
+      "provenance_id": "prov-visual-u4b-ode-coefficient-machine"
+    },
+    {
+      "title": "Pointwise error can move instead of disappearing uniformly",
+      "learning_purpose": "Error envelopes for x^n whose peak remains near one.",
+      "recommended_renderer": "interactive-2d",
+      "visual_kind": "cartesian-2d",
+      "composition": "Error envelopes for x^n whose peak remains near one.",
+      "interaction": "Increase n and track both pointwise values and the supremum error.",
+      "long_description": "Curves x^n on the interval from zero to one become small at each fixed interior point, but their maximum remains near one close to the endpoint.",
+      "misconception_control": "Preserve the misconception control described in the lesson and storyboard.",
+      "schema_version": "3.0.0",
+      "visual_id": "u4b-uniform-error-envelope",
+      "route_id": "subjects/math/calculus/power-series-and-taylor-series/uniform-convergence-preview",
+      "status": "authoring-brief-requires-current-VisualSpec-compilation",
+      "required_capabilities": [
+        "interactive-2d",
+        "static-svg-fallback",
+        "keyboard-controls",
+        "reduced-motion"
+      ],
+      "provenance_id": "prov-visual-u4b-uniform-error-envelope"
+    }
+  ]
+}

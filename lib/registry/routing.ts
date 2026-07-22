@@ -25,6 +25,8 @@ const supersededCalculusTargets = new Map([
   ["/subjects/math/calculus/sequences-series/", "/subjects/math/calculus/sequences-and-series/"],
   ["/subjects/math/calculus/sequences-series/geometric-series/", "/subjects/math/calculus/sequences-and-series/geometric-series/"],
   ["/subjects/math/calculus/sequences-series/choosing-convergence-test/", "/subjects/math/calculus/sequences-and-series/choosing-a-convergence-test/"],
+  ["/subjects/math/calculus/sequences-series/power-series-interval-of-convergence/", "/subjects/math/calculus/power-series-and-taylor-series/radius-and-interval-of-convergence/"],
+  ["/subjects/math/calculus/sequences-series/taylor-series-remainder/", "/subjects/math/calculus/power-series-and-taylor-series/taylor-remainder-theorem/"],
 ]);
 
 export const registryRoutes: RegistryRoute[] = [
@@ -45,6 +47,8 @@ export const redirects: RedirectRecord[] = [
   { from: "/subjects/math/calculus/sequences-series/", to: "/subjects/math/calculus/sequences-and-series/", status: 308 },
   { from: "/subjects/math/calculus/sequences-series/geometric-series/", to: "/subjects/math/calculus/sequences-and-series/geometric-series/", status: 308 },
   { from: "/subjects/math/calculus/sequences-series/choosing-convergence-test/", to: "/subjects/math/calculus/sequences-and-series/choosing-a-convergence-test/", status: 308 },
+  { from: "/subjects/math/calculus/sequences-series/power-series-interval-of-convergence/", to: "/subjects/math/calculus/power-series-and-taylor-series/radius-and-interval-of-convergence/", status: 308 },
+  { from: "/subjects/math/calculus/sequences-series/taylor-series-remainder/", to: "/subjects/math/calculus/power-series-and-taylor-series/taylor-remainder-theorem/", status: 308 },
   { from: "/topics/", to: "/subjects/math/calculus/", status: 308 },
   { from: "/library/", to: "/subjects/math/calculus/", status: 308 },
   { from: "/exams/", to: "/practice/", status: 308 },

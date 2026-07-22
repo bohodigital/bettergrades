@@ -102,7 +102,7 @@ test("Pages package contains the advanced Worker and static assets", async () =>
   }
 });
 
-test("Pages package preserves the exact Limits and Units 2A through 4A visual inventories", async () => {
+test("Pages package preserves the exact Limits and Units 2A through 4B visual inventories", async () => {
   const limitsManifest = JSON.parse(
     await readFile(new URL("../content/visualizations/limits-continuity/compiled-scenes.v1.json", import.meta.url), "utf8"),
   );
@@ -121,8 +121,11 @@ test("Pages package preserves the exact Limits and Units 2A through 4A visual in
   const unit4aManifest = JSON.parse(
     await readFile(new URL("../content/calculus/units/unit-4a/compiled-scenes.v1.json", import.meta.url), "utf8"),
   );
+  const unit4bManifest = JSON.parse(
+    await readFile(new URL("../content/calculus/units/unit-4b/compiled-scenes.v1.json", import.meta.url), "utf8"),
+  );
   const runtimeManifests = await Promise.all(
-    ["unit-2a", "unit-2b", "unit-3a", "unit-3b", "unit-4a"].map(async (unit) => JSON.parse(
+    ["unit-2a", "unit-2b", "unit-3a", "unit-3b", "unit-4a", "unit-4b"].map(async (unit) => JSON.parse(
       await readFile(new URL(`../content/calculus/units/${unit}/public-runtime-scenes.server.json`, import.meta.url), "utf8"),
     )),
   );
@@ -148,7 +151,10 @@ test("Pages package preserves the exact Limits and Units 2A through 4A visual in
   assert.equal(unit4aManifest.manifestVersion, 1);
   assert.equal(unit4aManifest.sceneCount, 18);
   assert.equal(unit4aManifest.scenes.length, 18);
-  const calculusManifests = [unitManifest, unit2bManifest, unit3aManifest, unit3bManifest, unit4aManifest];
+  assert.equal(unit4bManifest.manifestVersion, 1);
+  assert.equal(unit4bManifest.sceneCount, 20);
+  assert.equal(unit4bManifest.scenes.length, 20);
+  const calculusManifests = [unitManifest, unit2bManifest, unit3aManifest, unit3bManifest, unit4aManifest, unit4bManifest];
   for (let index = 0; index < runtimeManifests.length; index += 1) {
     const sourceManifest = calculusManifests[index];
     const runtimeManifest = runtimeManifests[index];
@@ -165,7 +171,7 @@ test("Pages package preserves the exact Limits and Units 2A through 4A visual in
       assert.equal(Object.hasOwn(runtimeScene, "interactiveScene"), runtimeScene.hydration !== "none");
     }
   }
-  const manifests = [limitsManifest, unitManifest, unit2bManifest, unit3aManifest, unit3bManifest, unit4aManifest];
+  const manifests = [limitsManifest, unitManifest, unit2bManifest, unit3aManifest, unit3bManifest, unit4aManifest, unit4bManifest];
   const expectedAssetNames = manifests.flatMap(({ scenes }) => scenes.map(({ staticAsset }) => staticAsset.path.split("/").at(-1))).sort();
   const publicAssetNames = (await readdir(new URL("../public/visuals/v1/", import.meta.url)))
     .filter((name) => name.endsWith(".svg"))

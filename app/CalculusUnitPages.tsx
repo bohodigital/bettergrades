@@ -6,7 +6,7 @@ import { FormEvent, ReactNode, useState } from "react";
 import { getCalculusUnitCollection, getCalculusUnitSectionGuidance } from "../lib/calculus/calculus-units-index.mjs";
 import type { CalculusPublicProblem, CalculusUnitNode, CalculusUnitPublicPage } from "../lib/calculus/calculus-unit.mjs";
 import { BetterGradesVisual } from "./BetterGradesVisual";
-import { CalculusUnitNavigation, UNIT_2A_ROOT, UNIT_2B_ROOT, UNIT_3A_ROOT, UNIT_3B_ROOT } from "./CalculusUnitNavigation";
+import { CalculusUnitNavigation, UNIT_2A_ROOT, UNIT_2B_ROOT, UNIT_3A_ROOT, UNIT_3B_ROOT, UNIT_4A_ROOT, UNIT_4B_ROOT } from "./CalculusUnitNavigation";
 import { Math } from "./Math";
 
 const labels: Record<string, string> = {
@@ -287,6 +287,14 @@ const unitMapProfiles = {
     prerequisites: "You should evaluate limits, manipulate powers and factorials, compare functions, differentiate logarithms, and evaluate basic improper integrals. Return to the published Unit 3 maps whenever a prerequisite needs repair.",
     focus: "one convergence decision, proof idea, or approximation bound",
   },
+  "calc-2-unit-4b-power-taylor-series": {
+    pathIntro: "Begin by treating power series as functions, determine exact convergence intervals, build Taylor expansions from derivative data, and finish with certified approximation bounds.",
+    teachesTitle: "Turn infinite series into controlled function models.",
+    teaches: "Find power-series radii and endpoints; differentiate, integrate, and combine series; construct Taylor and Maclaurin expansions; transform standard series; and certify approximation error with remainder bounds.",
+    prerequisitesTitle: "Unit 4A convergence tests plus derivative and integral fluency.",
+    prerequisites: "You should classify numerical series, apply ratio and alternating-series tests, manipulate factorials and powers, compute repeated derivatives, and use basic definite integrals. Return to Unit 4A whenever endpoint testing exposes a convergence gap.",
+    focus: "one interval decision, Taylor construction, or certified approximation",
+  },
 } as const;
 
 function UnitMap({ page }: { page: CalculusUnitPublicPage }) {
@@ -294,6 +302,7 @@ function UnitMap({ page }: { page: CalculusUnitPublicPage }) {
   const integralFoundationsUnit = page.unit.id === "calc-1-unit-3a-integral-foundations-techniques";
   const integrationApplicationsUnit = page.unit.id === "calc-1-unit-3b-integration-applications";
   const sequencesSeriesUnit = page.unit.id === "calc-2-unit-4a-sequences-infinite-series";
+  const powerTaylorUnit = page.unit.id === "calc-2-unit-4b-power-taylor-series";
   const profile = unitMapProfiles[page.unit.id as keyof typeof unitMapProfiles] ?? unitMapProfiles["calc-1-unit-2a-derivative-foundations-techniques"];
   const unitRoutes = getCalculusUnitCollection(page.route.unitId)?.routes ?? [];
   const core = unitRoutes.filter((route) => route.isCore).sort((a, b) => (a.coreSequenceIndex ?? 0) - (b.coreSequenceIndex ?? 0));
@@ -301,7 +310,7 @@ function UnitMap({ page }: { page: CalculusUnitPublicPage }) {
   const assessments = unitRoutes.filter((route) => ["diagnostic", "review", "quiz", "practice", "exam", "reference"].includes(route.pageType));
   const answerKeys = unitRoutes.filter((route) => route.pageType === "answer-key");
   const explorations = unitRoutes.filter((route) => route.pageType === "exploration");
-  const focusedArticles = sequencesSeriesUnit ? [] : integralFoundationsUnit ? integralDeepDives : integrationApplicationsUnit ? integrationApplicationDeepDives : applicationsUnit ? [] : derivativeDeepDives;
+  const focusedArticles = sequencesSeriesUnit || powerTaylorUnit ? [] : integralFoundationsUnit ? integralDeepDives : integrationApplicationsUnit ? integrationApplicationDeepDives : applicationsUnit ? [] : derivativeDeepDives;
   return <section className="limits-unit-map calculus-unit-map" aria-label={`${page.unit.shortTitle} textbook map`}>
     <header className="limits-map-intro"><div><p className="eyebrow">Core textbook</p><h2>The complete Unit {page.unit.code} path</h2></div><p>{profile.pathIntro}</p></header>
     <section className="calculus-prerequisites"><div><p className="eyebrow">What this unit teaches</p><h3>{profile.teachesTitle}</h3><p>{profile.teaches}</p></div><div><p className="eyebrow">Prerequisites</p><h3>{profile.prerequisitesTitle}</h3><p>{profile.prerequisites}</p></div></section>
@@ -309,9 +318,9 @@ function UnitMap({ page }: { page: CalculusUnitPublicPage }) {
     <header className="limits-map-intro limits-map-support-heading"><div><p className="eyebrow">Practice around the path</p><h2>Reviews, quizzes, diagnostics, and exams</h2></div><p>Use these after a section or whenever a worked example reveals a specific gap. The answer keys are separated so an honest first attempt stays easy.</p></header>
     <div className="limits-support-grid">{assessments.map((route) => <a href={route.path} key={route.path}><span>{route.pageType.replaceAll("-", " ")}</span><b>{route.title}</b><small>{route.description}</small></a>)}</div>
     <section className="limits-answer-key-map" aria-labelledby="calculus-answer-key-heading"><div><p className="eyebrow">Check your work</p><h2 id="calculus-answer-key-heading">Published exam answer keys</h2><p>Every exam has a separately routed, numbered key. Finish the exam first, then compare one item at a time.</p></div><div>{answerKeys.map((route) => <a href={route.path} key={route.path}><span>Complete key</span><b>{route.title}</b><small>{route.description}</small><strong>Open answer key →</strong></a>)}</div></section>
-    <header className="limits-map-intro limits-map-support-heading"><div><p className="eyebrow">Go deeper</p><h2>{sequencesSeriesUnit ? "Focused convergence explorations" : "Focused integral explorations"}</h2></div><p>These articles zoom in on {profile.focus}. They are enrichment around the textbook path, not a replacement for it.</p></header>
+    <header className="limits-map-intro limits-map-support-heading"><div><p className="eyebrow">Go deeper</p><h2>{sequencesSeriesUnit || powerTaylorUnit ? "Focused series explorations" : "Focused integral explorations"}</h2></div><p>These articles zoom in on {profile.focus}. They are enrichment around the textbook path, not a replacement for it.</p></header>
     <div className="limits-support-grid">{explorations.map((route) => <a href={route.path} key={route.path}><span>Advanced exploration</span><b>{route.title}</b><small>{route.description}</small></a>)}{focusedArticles.map(([href, title]) => <a href={href} key={href}><span>Focused article</span><b>{title}</b><small>A concise in-depth exploration connected to the main unit.</small></a>)}</div>
-    {sequencesSeriesUnit ? <section className="limits-exam-key-callout"><div><p className="eyebrow">Repair prerequisite gaps</p><h2>Return easily to Unit 3B and the integration toolkit</h2><p>When a comparison, improper integral, or modeling step is the obstacle, review the matching Unit 3 lesson, then return here to finish the convergence argument.</p></div><a className="button button-ink" href={UNIT_3B_ROOT}>Review Unit 3B applications →</a></section> : applicationsUnit ? <section className="limits-exam-key-callout"><div><p className="eyebrow">Finish the derivative sequence</p><h2>Connect applications back to derivative foundations</h2><p>Use Unit 2A whenever an application reveals a differentiation gap, then return here and complete the model with units, assumptions, interpretation, and a reasonableness check.</p></div><a className="button button-ink" href={UNIT_2A_ROOT}>Review Unit 2A foundations →</a></section> : integralFoundationsUnit ? <section className="limits-exam-key-callout"><div><p className="eyebrow">Continue the integral story</p><h2>Unit 3B: Applications of Integration</h2><p>Carry accumulated contributions into area, volume, length, mass, work, fluid force, marginal quantities, and probability in the complete published applications unit.</p></div><a className="button button-ink" href={UNIT_3B_ROOT}>Continue to Unit 3B →</a></section> : integrationApplicationsUnit ? <section className="limits-exam-key-callout"><div><p className="eyebrow">Repair the integration toolkit</p><h2>Return easily to Unit 3A foundations</h2><p>When the model is clear but the antiderivative or numerical method is not, review the matching Unit 3A technique, then return here to finish the setup, units, and interpretation.</p></div><a className="button button-ink" href={UNIT_3A_ROOT}>Review Unit 3A foundations →</a></section> : <section className="limits-exam-key-callout"><div><p className="eyebrow">Next in the textbook</p><h2>Unit 2B: Applications of Derivatives</h2><p>Put derivative calculations to work in motion, approximation, related rates, curve analysis, optimization, indeterminate limits, and applied modeling.</p></div><a className="button button-ink" href={UNIT_2B_ROOT}>Continue to Unit 2B →</a></section>}
+    {powerTaylorUnit ? <section className="limits-exam-key-callout"><div><p className="eyebrow">Repair prerequisite gaps</p><h2>Return easily to Unit 4A convergence foundations</h2><p>When endpoint testing or a numerical-series argument is the obstacle, review the matching Unit 4A lesson, then return here to finish the power-series claim.</p></div><a className="button button-ink" href={UNIT_4A_ROOT}>Review Unit 4A convergence →</a></section> : sequencesSeriesUnit ? <section className="limits-exam-key-callout"><div><p className="eyebrow">Continue the series sequence</p><h2>Unit 4B: Power Series and Taylor Series</h2><p>Use convergence foundations to build series functions, Taylor models, and certified approximations.</p></div><a className="button button-ink" href={UNIT_4B_ROOT}>Continue to Unit 4B →</a></section> : applicationsUnit ? <section className="limits-exam-key-callout"><div><p className="eyebrow">Finish the derivative sequence</p><h2>Connect applications back to derivative foundations</h2><p>Use Unit 2A whenever an application reveals a differentiation gap, then return here and complete the model with units, assumptions, interpretation, and a reasonableness check.</p></div><a className="button button-ink" href={UNIT_2A_ROOT}>Review Unit 2A foundations →</a></section> : integralFoundationsUnit ? <section className="limits-exam-key-callout"><div><p className="eyebrow">Continue the integral story</p><h2>Unit 3B: Applications of Integration</h2><p>Carry accumulated contributions into area, volume, length, mass, work, fluid force, marginal quantities, and probability in the complete published applications unit.</p></div><a className="button button-ink" href={UNIT_3B_ROOT}>Continue to Unit 3B →</a></section> : integrationApplicationsUnit ? <section className="limits-exam-key-callout"><div><p className="eyebrow">Repair the integration toolkit</p><h2>Return easily to Unit 3A foundations</h2><p>When the model is clear but the antiderivative or numerical method is not, review the matching Unit 3A technique, then return here to finish the setup, units, and interpretation.</p></div><a className="button button-ink" href={UNIT_3A_ROOT}>Review Unit 3A foundations →</a></section> : <section className="limits-exam-key-callout"><div><p className="eyebrow">Next in the textbook</p><h2>Unit 2B: Applications of Derivatives</h2><p>Put derivative calculations to work in motion, approximation, related rates, curve analysis, optimization, indeterminate limits, and applied modeling.</p></div><a className="button button-ink" href={UNIT_2B_ROOT}>Continue to Unit 2B →</a></section>}
   </section>;
 }
 
@@ -324,7 +333,7 @@ export function CalculusUnitPageContent({ page }: { page: CalculusUnitPublicPage
   const renderedChecks = new Set<string>();
   const embeddedCheckIds = collectEmbeddedCheckIds(page.page.nodes);
   const answerKey = page.related.find((route) => route.pageType === "answer-key");
-  const currentUnit = page.unit.code === "2B" ? "2B" : page.unit.code === "3A" ? "3A" : page.unit.code === "3B" ? "3B" : page.unit.code === "4A" ? "4A" : "2A";
+  const currentUnit = page.unit.code === "2B" ? "2B" : page.unit.code === "3A" ? "3A" : page.unit.code === "3B" ? "3B" : page.unit.code === "4A" ? "4A" : page.unit.code === "4B" ? "4B" : "2A";
   const companion = currentUnit === "2A"
     ? { root: UNIT_2B_ROOT, label: "Continue to Unit 2B →" }
     : currentUnit === "2B"
@@ -333,7 +342,9 @@ export function CalculusUnitPageContent({ page }: { page: CalculusUnitPublicPage
         ? { root: UNIT_3B_ROOT, label: "Continue to Unit 3B applications →" }
         : currentUnit === "3B"
           ? { root: UNIT_3A_ROOT, label: "Review Unit 3A foundations →" }
-          : { root: UNIT_3B_ROOT, label: "Review Unit 3B applications →" };
+          : currentUnit === "4A"
+            ? { root: UNIT_4B_ROOT, label: "Continue to Unit 4B →" }
+            : { root: UNIT_4A_ROOT, label: "Review Unit 4A convergence →" };
   const integralUnit = currentUnit.startsWith("3");
   const calculusCourse = currentUnit.startsWith("4") ? "Calculus II" : "Calculus I";
   const routeUrl = `https://bettergrades.net${page.route.path}`;
