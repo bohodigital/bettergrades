@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "katex/dist/katex.min.css";
 import "./globals.css";
 
+const GOOGLE_ANALYTICS_ID = "G-9X96S9GZQ2";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://bettergrades.net"),
   title: {
@@ -77,6 +79,28 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(){try{var t=localStorage.getItem('bg-theme')||'auto';var d=t==='dark'||(t==='auto'&&matchMedia('(prefers-color-scheme:dark)').matches);document.documentElement.dataset.theme=d?'dark':'light';document.documentElement.dataset.themeChoice=t}catch(e){}})()`,
+          }}
+        />
+        <script
+          data-bettergrades-ga4={GOOGLE_ANALYTICS_ID}
+          dangerouslySetInnerHTML={{
+            __html: `(function(){
+  var publicHosts={"bettergrades.net":true,"www.bettergrades.net":true};
+  if(!publicHosts[window.location.hostname.toLowerCase()])return;
+  if(navigator.doNotTrack==='1'||window.doNotTrack==='1')return;
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){window.dataLayer.push(arguments);}
+  gtag('js',new Date());
+  gtag('config','${GOOGLE_ANALYTICS_ID}',{
+    anonymize_ip:true,
+    allow_google_signals:false,
+    allow_ad_personalization_signals:false
+  });
+  var loader=document.createElement('script');
+  loader.async=true;
+  loader.src='https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_ID}';
+  document.head.appendChild(loader);
+})();`,
           }}
         />
         <script

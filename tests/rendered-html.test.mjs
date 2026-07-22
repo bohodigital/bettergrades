@@ -35,6 +35,17 @@ async function render(path = "/") {
   );
 }
 
+async function createRenderer() {
+  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
+  workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}-route-audit`);
+  const { default: worker } = await import(workerUrl.href);
+  return (path = "/") => worker.fetch(
+    new Request(`http://localhost${path}`, { headers: { accept: "text/html" } }),
+    { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
+    { waitUntil() {}, passThroughOnException() {} },
+  );
+}
+
 function visibleText(html) {
   return html
     .replace(/<script\b[\s\S]*?<\/script>/gi, " ")
@@ -396,8 +407,18 @@ test("robots and sitemap metadata routes are indexable and complete", async () =
 test("all registered pages are indexable and inherit search, canonical, and analytics tags", async () => {
   const routingSource = await readFile(new URL("../lib/registry/routing.ts", import.meta.url), "utf8");
   assert.doesNotMatch(routingSource, /indexable:\s*false/);
-  for (const path of ["/", "/search/", "/subjects/math/calculus/limits-continuity/unit/limits/practice-exam-a/answer-key/"]) {
-    const response = await render(path);
+  const renderRoute = await createRenderer();
+  const sitemapResponse = await renderRoute("/sitemap.xml");
+  const sitemap = await sitemapResponse.text();
+  assert.equal(sitemapResponse.status, 200);
+  const paths = Array.from(
+    sitemap.matchAll(/<loc>https:\/\/bettergrades\.net([^<]+)<\/loc>/g),
+    (match) => match[1],
+  );
+  assert.ok(paths.length >= 300, `expected the complete public route inventory, received ${paths.length}`);
+  assert.equal(new Set(paths).size, paths.length, "sitemap paths must be unique");
+  for (const path of paths) {
+    const response = await renderRoute(path);
     const html = await response.text();
     assert.equal(response.status, 200, path);
     assert.doesNotMatch(html, /noindex/i, path);
@@ -405,9 +426,28 @@ test("all registered pages are indexable and inherit search, canonical, and anal
     assert.match(html, new RegExp(`<link[^>]+rel="canonical"[^>]+href="https://bettergrades\\.net${path.replaceAll("/", "\\/")}"`, "i"), path);
     assert.match(html, /analytics\.bohodigitalservices\.com\/script\.js/, path);
     assert.match(html, /data-website-id="7810f828-f3f0-4296-95e3-e01e8c37f234"/, path);
+    const gaScripts = html.match(/<script[^>]+data-bettergrades-ga4="G-9X96S9GZQ2"[^>]*>[\s\S]*?<\/script>/g) ?? [];
+    assert.equal(gaScripts.length, 1, path);
+    const gaScript = gaScripts[0];
+    assert.equal((gaScript.match(/googletagmanager\.com\/gtag\/js\?id=G-9X96S9GZQ2/g) ?? []).length, 1, path);
+    assert.equal((gaScript.match(/gtag\('config','G-9X96S9GZQ2'/g) ?? []).length, 1, path);
+    assert.match(gaScript, /"bettergrades\.net":true,"www\.bettergrades\.net":true/, path);
+    assert.match(gaScript, /navigator\.doNotTrack==='1'/, path);
+    assert.match(gaScript, /allow_google_signals:false/, path);
+    assert.match(gaScript, /allow_ad_personalization_signals:false/, path);
     assert.match(html, /<title>[^<]+<\/title>/, path);
     assert.match(html, /<meta[^>]+name="description"[^>]+content="[^"]+"/i, path);
   }
+});
+
+test("privacy notice accurately discloses both analytics systems and their limits", async () => {
+  const response = await render("/privacy/");
+  const html = await response.text();
+  assert.equal(response.status, 200);
+  assert.match(html, /self-hosted Umami and Google Analytics 4/);
+  assert.match(html, /Google signals and advertising-personalization signals are disabled/);
+  assert.match(html, /Browser Do Not Track settings and content blockers may limit collection/);
+  assert.doesNotMatch(html, /no accounts, public results, comments, tracking pixels/i);
 });
 
 test("the greater-or-equal brand mark supplies Google search identity signals", async () => {
