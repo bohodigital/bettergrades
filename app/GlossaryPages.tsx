@@ -4,6 +4,7 @@
 
 import { useMemo, useState } from "react";
 import type { MathGlossaryTerm } from "../lib/glossary/math/registry.mjs";
+import { enrichedGlossaryResources } from "../lib/resources/catalog.mjs";
 import { Math } from "./Math";
 
 const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
@@ -64,7 +65,7 @@ export function MathGlossaryPage({ terms: allTerms, categories }: { terms: reado
         {terms.length ? alphabet.map((letter) => {
           const group = terms.filter((term) => glossaryLetter(term) === letter);
           if (!group.length) return null;
-          return <section className="glossary-letter-group" id={`letter-${letter}`} key={letter}><header><span>{letter}</span><small>{group.length}</small></header><div>{group.map((term) => <article className="glossary-entry" id={term.id} key={term.id}><div className="glossary-entry-name"><h2>{term.term}</h2>{term.aliases.length > 0 && <p>Also: {term.aliases.slice(0, 4).join(" · ")}</p>}</div><div className="glossary-entry-visuals">{term.visuals.map((visual) => <figure key={`${term.id}-${visual.label}`}><Math tex={visual.tex} display label={visual.label} /><figcaption>{visual.label}</figcaption></figure>)}</div><div className="glossary-entry-definition"><p>{term.definition}</p>{term.externalLinks.length > 0 && <div>{term.externalLinks.map((link) => <a href={link.url} key={link.url} rel="noreferrer">{link.label} ↗</a>)}</div>}</div></article>)}</div></section>;
+          return <section className="glossary-letter-group" id={`letter-${letter}`} key={letter}><header><span>{letter}</span><small>{group.length}</small></header><div>{group.map((term) => <article className="glossary-entry" id={term.id} key={term.id}><div className="glossary-entry-name"><h2>{term.term}</h2>{term.aliases.length > 0 && <p>Also: {term.aliases.slice(0, 4).join(" · ")}</p>}</div><div className="glossary-entry-visuals">{term.visuals.map((visual) => <figure key={`${term.id}-${visual.label}`}><Math tex={visual.tex} display label={visual.label} /><figcaption>{visual.label}</figcaption></figure>)}</div><div className="glossary-entry-definition"><p>{term.definition}</p>{enrichedGlossaryResources.some((resource) => resource.glossaryTermId === term.id) && <a className="glossary-enriched-link" href={`/glossary/math/${term.id}/`}>Full explanation, notation, and worked example →</a>}{term.externalLinks.length > 0 && <div>{term.externalLinks.map((link) => <a href={link.url} key={link.url} rel="noreferrer">{link.label} ↗</a>)}</div>}</div></article>)}</div></section>;
         }) : <div className="glossary-empty"><span>∅</span><h2>No glossary match yet.</h2><p>Try the ordinary name, a symbol, or a related phrase.</p></div>}
       </section>
     </>

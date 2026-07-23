@@ -6,6 +6,7 @@ import { assessments } from "./practice";
 import { allLibraryArticles } from "../course-library";
 import { validateMathGlossary, validateMathNotation } from "../glossary/math/registry.mjs";
 import { publicRoutes, redirects, registryRoutes } from "./routing";
+import { publishedResourcePages, resourceHubs } from "../resources/catalog.mjs";
 
 export function validateRegistry() {
   const errors: string[] = [];
@@ -58,5 +59,19 @@ export function validateRegistry() {
   const duplicateRedirects = redirectSources.filter((path, index) => redirectSources.indexOf(path) !== index);
   if (duplicateRedirects.length) errors.push(`Duplicate redirects: ${Array.from(new Set(duplicateRedirects)).join(", ")}`);
   for (const redirect of redirects) if (!publicRoutes.includes(redirect.to)) errors.push(`Redirect target is not public: ${redirect.to}`);
+  const publishingIds = new Set(publishedResourcePages.map((item) => item.id));
+  const publishingPaths = new Set(publishedResourcePages.map((item) => item.canonicalPath));
+  if (publishingIds.size !== publishedResourcePages.length) errors.push("Publishing resources contain duplicate ids");
+  if (publishingPaths.size !== publishedResourcePages.length) errors.push("Publishing resources contain duplicate canonical paths");
+  for (const resource of publishedResourcePages) {
+    if (resource.status !== "published") continue;
+    if (!resource.relatedLessons.length) errors.push(`Missing related lesson for ${resource.id}`);
+    if (!resource.relatedResources.length) errors.push(`Missing related resource for ${resource.id}`);
+    if (!resource.relatedGlossaryTerms.length) errors.push(`Missing glossary relationship for ${resource.id}`);
+    if (!resource.revisionDate.match(/^\d{4}-\d{2}-\d{2}$/)) errors.push(`Invalid revision date for ${resource.id}`);
+    for (const relatedId of resource.relatedResources) if (!publishingIds.has(relatedId)) errors.push(`Missing publishing resource ${relatedId} for ${resource.id}`);
+    for (const route of [...resource.relatedLessons, ...resource.relatedArticles]) if (!publicRoutes.includes(route)) errors.push(`Missing related route ${route} for ${resource.id}`);
+  }
+  for (const hub of resourceHubs) if (!publishedResourcePages.some((resource) => resource.resourceType === hub.resourceType)) errors.push(`Empty resource hub ${hub.id}`);
   return errors;
 }

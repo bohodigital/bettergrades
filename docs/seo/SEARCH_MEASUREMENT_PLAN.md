@@ -24,3 +24,13 @@ Segment by page type: legacy concise article, course lesson, unit map, practice/
 Do not infer causation from a single short window. Treat redirect migration separately from retained-page performance. Annotate every release and deployment. Compare page/query pairs, not only site totals. Escalate if canonical conflicts, unexplained `5xx`, or indexed-page loss rises after release.
 
 The repository currently lacks the needed exports. The schema-only CSV artifacts define the exact Search Console handoff; populate them without changing column names when access is supplied.
+
+## Release B reporting
+
+Report weekly by lessons, articles, unit hubs, worksheets, practice exams, formula sheets, worked problems, visuals, enriched glossary pages, and image-search landing pages.
+
+Include impressions, clicks, CTR, position, queries, indexed URLs, canonical conflicts, downloads, practice/exam starts and completions, Image Search performance, referring domains, crawl failures, orphans, and redirect hits.
+
+Resource events use only `resource_id`, `resource_type`, `course`, `unit`, `topic`, `difficulty`, `file_type`, and `source_lesson`. They never include identity, contact details, full responses, or raw work.
+
+The local `boho-analytics-platform` mirror contains no BetterGrades measurement id or site binding. Bounded, human-approved follow-up `CR-2026-07-23-BOHO-ANALYTICS-BETTERGRADES-GA4-BINDING-001` records the exact read-only cross-repository change. Dashboard ingestion does not block this release.

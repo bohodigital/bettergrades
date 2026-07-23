@@ -3,6 +3,7 @@ import { calculusUnitRoutes, supersededCalculusPaths } from "../calculus/calculu
 import { domains, resources, subjects, tools, topics } from "./catalog";
 import { assessments } from "./practice";
 import type { RedirectRecord, RegistryRoute } from "./schema";
+import { publishedResourcePages, resourceHubs } from "../resources/catalog.mjs";
 
 const fixedRoutes: RegistryRoute[] = [
   { path: "/", title: "Better Grades — Free answers, full explanations", description: "Find free academic answers, complete explanations, practical tools, and focused practice.", indexable: true },
@@ -39,6 +40,13 @@ export const registryRoutes: RegistryRoute[] = [
   ...limitsUnitRoutes.map((item) => ({ path: item.path, title: item.metadataTitle, description: item.description, indexable: item.indexable })),
   ...assessments.map((item) => ({ path: item.path, title: item.title, description: item.description, indexable: true })),
   ...tools.map((item) => ({ path: item.path, title: item.title, description: item.description, indexable: true })),
+  ...resourceHubs.map((item) => ({ path: item.path, title: item.title, description: item.description, indexable: true })),
+  ...publishedResourcePages.map((item) => ({
+    path: item.canonicalPath,
+    title: item.title,
+    description: item.description,
+    indexable: item.status === "published" && item.indexPolicy === "index",
+  })),
 ];
 
 export const publicRoutes = Array.from(new Set(registryRoutes.map((route) => route.path)));

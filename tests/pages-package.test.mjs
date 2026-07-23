@@ -45,6 +45,8 @@ test("Pages package contains the advanced Worker and static assets", async () =>
     "utf8",
   );
   assert.match(worker, /ASSETS/);
+  assert.match(worker, /\/api\/calculus-check/);
+  assert.doesNotMatch(worker, /Evaluating Limits Worksheet with Complete Solutions/, "static educational content must not enter the API-only Worker");
   assert.doesNotMatch(
     worker,
     /(?:from\s*|import\s*\()\s*["']\.\.?\//,

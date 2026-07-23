@@ -17,6 +17,8 @@ import { assessments, getAssessment } from "../lib/registry/practice";
 import { isExpressionOnlyQuery, searchKindLabels, searchSite, type SearchKind, type SiteSearchRecord } from "../lib/site-search";
 import { CourseHubContent, getArticle, LibraryArticleContent, LibraryHomeSection, LibrarySearchResults, searchLibrary, TopicContent } from "./LibraryPages";
 import { AlgebraExpressionChecker } from "./AlgebraExpressionChecker";
+import type { PublishingResource, ResourceHub } from "../lib/resources/catalog.mjs";
+import type { ResourceCardSummary, ResourceLinkSummary } from "./ResourcePages";
 
 import { Formula, Math, MathOrText } from "./Math";
 import { PageGlossaryTerms } from "./PageGlossaryTerms";
@@ -37,6 +39,8 @@ const MathGlossaryPage = lazy(() => import("./GlossaryPages").then((module) => (
 const MathConventionsPage = lazy(() => import("./GlossaryPages").then((module) => ({ default: module.MathConventionsPage })));
 const LimitsUnitPageContent = lazy(() => import("./LimitsUnitPages").then((module) => ({ default: module.LimitsUnitPageContent })));
 const CalculusUnitPageContent = lazy(() => import("./CalculusUnitPages").then((module) => ({ default: module.CalculusUnitPageContent })));
+const ResourcePage = lazy(() => import("./ResourcePages").then((module) => ({ default: module.ResourcePage })));
+const ResourceHubPage = lazy(() => import("./ResourcePages").then((module) => ({ default: module.ResourceHubPage })));
 
 function GlossaryBoundary({ children }: { children: ReactNode }) {
   return <Suspense fallback={<section className="glossary-loading section-pad"><span>Loading glossary…</span></section>}>{children}</Suspense>;
@@ -449,10 +453,12 @@ function PolicyPage({ path }: { path: string }) { const data = policyContent[pat
 
 function NotFound() { return <Shell><section className="not-found section-pad"><span>4≥4</span><Eyebrow>That page did not make the grade</Eyebrow><h1>Wrong turn. Useful recovery.</h1><p>The page may have moved, or the expression may need a different phrasing. Search the answer bank or return to calculus.</p><SearchBox large /><div className="button-row"><Link href="/" className="button button-ghost">Back home</Link><Link href="/subjects/math/calculus/" className="text-link">Browse calculus →</Link></div></section></Shell>; }
 
-function BetterGradesRoute({ path, glossaryData, limitsUnitPage, calculusUnitPage }: { path: string; glossaryData?: GlossaryData; limitsUnitPage?: LimitsUnitPublicPage; calculusUnitPage?: CalculusUnitPublicPage }) {
+function BetterGradesRoute({ path, glossaryData, limitsUnitPage, calculusUnitPage, resourcePage, resourceHub, hubResources = [], relatedResources = [], enrichedGlossaryTermIds = [] }: { path: string; glossaryData?: GlossaryData; limitsUnitPage?: LimitsUnitPublicPage; calculusUnitPage?: CalculusUnitPublicPage; resourcePage?: PublishingResource; resourceHub?: ResourceHub; hubResources?: readonly ResourceCardSummary[]; relatedResources?: readonly ResourceLinkSummary[]; enrichedGlossaryTermIds?: readonly string[] }) {
   if (path === "/") return <HomePage />;
   if (path === "/subjects/") return <SubjectsPage />;
   if (path === "/subjects/math/") return <MathSubjectPage />;
+  if (resourceHub) return <Shell><Suspense fallback={<section className="section-pad">Loading resource library…</section>}><ResourceHubPage hub={resourceHub} resources={hubResources} /></Suspense></Shell>;
+  if (resourcePage) return <Shell><Suspense fallback={<section className="section-pad">Loading resource…</section>}><ResourcePage resource={resourcePage} glossaryTerms={glossaryData?.terms} relatedResources={relatedResources} enrichedGlossaryTermIds={enrichedGlossaryTermIds} /></Suspense></Shell>;
   const courseMatch = path.match(/^\/subjects\/math\/([^/]+)\/$/);
   if (courseMatch && courseLibraries.some((course) => course.slug === courseMatch[1])) return <Shell><CourseHubContent domainSlug={courseMatch[1]} /></Shell>;
   if (isCalculusUnitPath(path)) {
@@ -491,6 +497,6 @@ function BetterGradesRoute({ path, glossaryData, limitsUnitPage, calculusUnitPag
   return <NotFound />;
 }
 
-export function BetterGradesApp({ path, glossaryData, limitsUnitPage, calculusUnitPage }: { path: string; glossaryData?: GlossaryData; limitsUnitPage?: LimitsUnitPublicPage; calculusUnitPage?: CalculusUnitPublicPage }) {
-  return <PathContext.Provider value={path}><BetterGradesRoute path={path} glossaryData={glossaryData} limitsUnitPage={limitsUnitPage} calculusUnitPage={calculusUnitPage} /></PathContext.Provider>;
+export function BetterGradesApp({ path, glossaryData, limitsUnitPage, calculusUnitPage, resourcePage, resourceHub, hubResources, relatedResources, enrichedGlossaryTermIds }: { path: string; glossaryData?: GlossaryData; limitsUnitPage?: LimitsUnitPublicPage; calculusUnitPage?: CalculusUnitPublicPage; resourcePage?: PublishingResource; resourceHub?: ResourceHub; hubResources?: readonly ResourceCardSummary[]; relatedResources?: readonly ResourceLinkSummary[]; enrichedGlossaryTermIds?: readonly string[] }) {
+  return <PathContext.Provider value={path}><BetterGradesRoute path={path} glossaryData={glossaryData} limitsUnitPage={limitsUnitPage} calculusUnitPage={calculusUnitPage} resourcePage={resourcePage} resourceHub={resourceHub} hubResources={hubResources} relatedResources={relatedResources} enrichedGlossaryTermIds={enrichedGlossaryTermIds} /></PathContext.Provider>;
 }

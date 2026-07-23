@@ -5,9 +5,11 @@
 import { FormEvent, ReactNode, useState } from "react";
 import { getLimitsUnitChapter, limitsUnitChapters, limitsUnitRoutes } from "../lib/calculus/limits-unit-index.mjs";
 import type { LimitsUnitNode, LimitsUnitPublicCheck, LimitsUnitPublicPage } from "../lib/calculus/limits-unit.mjs";
+import { publishedResourcePages } from "../lib/resources/catalog.mjs";
 import { BetterGradesVisual } from "./BetterGradesVisual";
 import { LimitsUnitMap } from "./LimitsUnitMap";
 import { Math } from "./Math";
+import { trackPublishingResourceEvent } from "./ResourcePages";
 
 const labels: Record<string, string> = {
   concept: "Concept", definition: "Definition", method: "Method", theorem: "Theorem",
@@ -221,6 +223,7 @@ function CourseNavigation({ page }: { page: LimitsUnitPublicPage }) {
 }
 
 export function LimitsUnitPageContent({ page }: { page: LimitsUnitPublicPage }) {
+  const companionResources = publishedResourcePages.filter((resource) => resource.sourceLessons.includes(page.route.path)).slice(0, 4);
   const { route } = page;
   const checks = new Map(page.checks.map((check) => [check.id, check]));
   const renderedCheckIds = new Set<string>();
@@ -240,6 +243,7 @@ export function LimitsUnitPageContent({ page }: { page: LimitsUnitPublicPage }) 
       <NodeChildren nodes={page.page.nodes} keyPrefix={route.sourceSlug} checks={checks} renderedCheckIds={renderedCheckIds} exerciseAnswers={page.exerciseAnswers} />
       <ExamAnswerKey page={page} />
       {page.related.length > 0 && <section className="limits-related"><p className="eyebrow">Keep working</p><h2>Related resources</h2>{page.related.map((related) => <a href={related.path} key={related.path}><span>{labels[related.pageType] ?? related.pageType}</span><b>{related.h1}</b></a>)}</section>}
+      {companionResources.length > 0 && <section className="limits-related contextual-resource-links"><p className="eyebrow">Practice this lesson</p><h2>Companion worksheets and exams</h2>{companionResources.map((resource) => <a href={resource.canonicalPath} onClick={() => trackPublishingResourceEvent("lesson_to_resource_click", resource, { source_lesson: page.route.path })} key={resource.id}><span>{resource.resourceType.replaceAll("-", " ")}</span><b>{resource.shortTitle}</b></a>)}</section>}
       <section className="limits-rights"><p className="eyebrow">Source &amp; rights</p><h2>Original instruction with traceable references.</h2><p>{page.provenanceNote}</p><p>The verified handoff declares original composition and requires owner provenance review. BetterGrades-original material remains separate from public-domain references; no source textbook PDF is published here.</p></section>
     </div></div>
     <CourseNavigation page={page} />
