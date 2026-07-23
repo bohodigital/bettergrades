@@ -1,6 +1,7 @@
 import { access, cp, mkdir, readFile, readdir, rename, rm, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
-import { build } from "esbuild";
+import { pathToFileURL } from "node:url";
+import { build as esbuildBuild } from "esbuild";
 
 const root = process.cwd();
 const client = resolve(root, "dist", "client");
@@ -9,6 +10,7 @@ const output = resolve(root, "dist", "pages");
 const serverEntry = resolve(server, "index.js");
 const workerEntry = resolve(output, "_worker.js");
 const bundledWorkerEntry = resolve(output, "_worker.prebundle.js");
+const registryEntry = resolve(root, "dist", ".registry-build.mjs");
 
 async function requirePath(path, label) {
   try {
@@ -20,6 +22,24 @@ async function requirePath(path, label) {
 
 await requirePath(client, "vinext client output");
 await requirePath(serverEntry, "vinext Worker entry");
+
+await esbuildBuild({
+  stdin: {
+    contents: 'export { publicRoutes, redirects } from "./lib/registry/routing.ts";',
+    resolveDir: root,
+    sourcefile: "registry-build-entry.mts",
+  },
+  outfile: registryEntry,
+  bundle: true,
+  format: "esm",
+  platform: "node",
+  target: "node22",
+  logLevel: "warning",
+});
+const registry = await import(`${pathToFileURL(registryEntry).href}?build=${Date.now()}`);
+const publicRoutes = registry.publicRoutes;
+const redirects = registry.redirects;
+await rm(registryEntry, { force: true });
 
 // The Cloudflare Vite plugin writes a local deploy redirect to the Worker
 // configuration. Pages must discover the root wrangler.jsonc instead.
@@ -35,7 +55,7 @@ await rm(resolve(output, "wrangler.json"), { force: true });
 // vinext intentionally emits a module graph (the RSC assets manifest plus the
 // SSR renderer), so prebundle that graph here instead of asking Wrangler to
 // rebuild it with different defaults during production upload.
-await build({
+await esbuildBuild({
   entryPoints: [workerEntry],
   outfile: bundledWorkerEntry,
   bundle: true,
@@ -59,6 +79,42 @@ for (const localImport of [
 }
 await rename(bundledWorkerEntry, workerEntry);
 
+// Pre-render every indexable educational document once at build time. These
+// files bypass the Worker in production, so ordinary crawling is static,
+// constant-time delivery rather than repeated course-registry evaluation.
+const serverWorkerUrl = pathToFileURL(serverEntry);
+serverWorkerUrl.searchParams.set("static-render", `${Date.now()}`);
+const { default: serverWorker } = await import(serverWorkerUrl.href);
+const renderEnv = { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } };
+const renderContext = { waitUntil() {}, passThroughOnException() {} };
+async function render(path) {
+  return serverWorker.fetch(
+    new Request(`http://localhost${path}`, { headers: { accept: "text/html" } }),
+    renderEnv,
+    renderContext,
+  );
+}
+for (const route of publicRoutes) {
+  const response = await render(route);
+  if (response.status !== 200) throw new Error(`Static render failed for ${route}: ${response.status}`);
+  const destination = route === "/" ? resolve(output, "index.html") : resolve(output, route.slice(1), "index.html");
+  await mkdir(resolve(destination, ".."), { recursive: true });
+  await writeFile(destination, await response.text(), "utf8");
+}
+for (const route of ["/robots.txt", "/sitemap.xml"]) {
+  const response = await render(route);
+  if (response.status !== 200) throw new Error(`Static metadata render failed for ${route}: ${response.status}`);
+  await writeFile(resolve(output, route.slice(1)), await response.text(), "utf8");
+}
+const notFoundResponse = await render("/definitely-not-a-page/");
+if (notFoundResponse.status !== 404) throw new Error(`Static 404 render returned ${notFoundResponse.status}`);
+await writeFile(resolve(output, "404.html"), await notFoundResponse.text(), "utf8");
+await writeFile(
+  resolve(output, "_redirects"),
+  `${redirects.map(({ from, to, status }) => `${from} ${to} ${status}`).join("\n")}\n`,
+  "utf8",
+);
+
 await writeFile(
   resolve(output, ".assetsignore"),
   [
@@ -80,7 +136,7 @@ await writeFile(
   `${JSON.stringify(
     {
       version: 1,
-      include: ["/*"],
+      include: ["/api/*", "/_vinext/image"],
       exclude: [
         "/assets/*",
         "/visuals/*",
@@ -110,3 +166,4 @@ if (!entries.includes("assets") || !entries.includes("_worker.js")) {
 }
 
 console.log(`Prepared Cloudflare Pages advanced-worker package at ${output}`);
+console.log(`Pre-rendered ${publicRoutes.length} canonical HTML routes and ${redirects.length} one-hop redirects.`);

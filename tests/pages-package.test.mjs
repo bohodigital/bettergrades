@@ -36,7 +36,7 @@ test("Pages package contains the advanced Worker and static assets", async () =>
   const routes = JSON.parse(
     await readFile(new URL("../dist/pages/_routes.json", import.meta.url), "utf8"),
   );
-  assert.deepEqual(routes.include, ["/*"]);
+  assert.deepEqual(routes.include, ["/api/*", "/_vinext/image"]);
   assert.ok(routes.exclude.includes("/assets/*"));
   assert.ok(routes.exclude.includes("/visuals/*"), "immutable generated visuals must use the Pages static asset lane");
 
@@ -100,6 +100,21 @@ test("Pages package contains the advanced Worker and static assets", async () =>
   for (const path of ["/favicon.ico", "/favicon.svg", "/icon-192.png", "/icon-512.png", "/apple-touch-icon.png", "/site.webmanifest"]) {
     assert.ok(routes.exclude.includes(path), `${path} must bypass the Worker and use the Pages static asset lane`);
   }
+
+  const geometricSeries = await readFile(
+    new URL("../dist/pages/subjects/math/calculus/sequences-and-series/geometric-series/index.html", import.meta.url),
+    "utf8",
+  );
+  assert.equal((geometricSeries.match(/<h1\b/g) ?? []).length, 1);
+  assert.equal((geometricSeries.match(/<main\b/g) ?? []).length, 1);
+  assert.doesNotMatch(geometricSeries, /<noscript>|data-noscript-calculus-fallback=/);
+  await access(new URL("../dist/pages/robots.txt", import.meta.url));
+  await access(new URL("../dist/pages/sitemap.xml", import.meta.url));
+  const redirects = await readFile(new URL("../dist/pages/_redirects", import.meta.url), "utf8");
+  assert.match(
+    redirects,
+    /^\/subjects\/math\/calculus\/sequences-series\/geometric-series\/ \/subjects\/math\/calculus\/sequences-and-series\/geometric-series\/ 308$/m,
+  );
 });
 
 test("Pages package preserves the exact Limits and Units 2A through 4B visual inventories", async () => {

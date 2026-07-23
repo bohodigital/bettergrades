@@ -1,5 +1,4 @@
 import { BetterGradesApp } from "../BetterGradesApp";
-import { NoScriptCalculusFallback } from "../NoScriptCalculusFallback";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getRoute, publicRoutes } from "../../lib/registry";
@@ -60,14 +59,10 @@ export default async function CatchAllPage({
     : undefined;
   const limitsUnitPage = isLimitsUnitPath(path) ? getPublicLimitsUnitPage(path) : undefined;
   const calculusUnitPage = isCalculusUnitPath(path) ? getPublicCalculusUnitPage(path) : undefined;
-  const noScriptPage = calculusUnitPage ?? limitsUnitPage;
-  return <>
-    {noScriptPage ? <noscript>
-      <style>{`.js-app-shell{display:none!important}`}</style>
-      <NoScriptCalculusFallback publicPage={noScriptPage} />
-    </noscript> : null}
-    <div className="js-app-shell">
-      <BetterGradesApp path={path} glossaryData={glossaryData} limitsUnitPage={limitsUnitPage} calculusUnitPage={calculusUnitPage} />
-    </div>
-  </>;
+  return <BetterGradesApp
+    path={path}
+    glossaryData={glossaryData}
+    limitsUnitPage={limitsUnitPage}
+    calculusUnitPage={calculusUnitPage}
+  />;
 }

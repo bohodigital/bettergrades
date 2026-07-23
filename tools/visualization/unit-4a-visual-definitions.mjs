@@ -248,7 +248,9 @@ function makeSpec(brief) {
   const scene = factory();
   if (scene.kind !== brief.visual_kind) throw new Error(`Unit 4A visual ${brief.visual_id} expected ${brief.visual_kind}; received ${scene.kind}.`);
   const interactive = brief.recommended_renderer === INTERACTIVE;
-  const longDescription = `${plain(brief.long_description)} ${plain(brief.learning_purpose)} ${plain(brief.misconception_control)}`;
+  // Authoring controls guide the visual editor. They are not learner-facing
+  // description copy and must never cross the public VisualSpec boundary.
+  const longDescription = `${plain(brief.long_description)} ${plain(brief.learning_purpose)}`;
   const caption = `${brief.title}. ${brief.learning_purpose}`;
   return {
     schemaVersion: 1,
