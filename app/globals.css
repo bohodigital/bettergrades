@@ -532,6 +532,9 @@ h1 em, h2 em { color: var(--brand); font-family: var(--serif); font-weight: 500;
 .activity-row { box-shadow: none; }
 .activity-row > span { width: 70px; height: 70px; display: grid; place-items: center; border-radius: 50%; background: var(--brand-soft); color: var(--brand); font-weight: 900; }
 .quiz-page, .bee-page { min-height: 760px; padding-top: 70px; padding-bottom: 100px; }
+.quiz-page-heading { max-width: 760px; margin: 0 auto 32px; }
+.quiz-page-heading h1 { margin: 10px 0 12px; font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1; }
+.quiz-page-heading p { max-width: 660px; color: var(--muted); }
 .quiz-shell { max-width: 850px; margin: 0 auto; border: 1px solid var(--line); border-radius: 8px 8px 28px 8px; background: var(--surface); box-shadow: var(--shadow); overflow: hidden; }
 .quiz-top { padding: 14px 22px; display: flex; justify-content: space-between; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 10px; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
 .quiz-top b { color: var(--warm); font-variant-numeric: tabular-nums; }

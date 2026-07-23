@@ -281,7 +281,7 @@ test("all Unit 4B pages render as clean Calculus II power-and-Taylor-series page
   }
 });
 
-test("calculus lessons include a complete server-only fallback when JavaScript is unavailable", async () => {
+test("calculus lessons render one complete crawl-visible lesson without a duplicate noscript body", async () => {
   for (const [path, titlePattern] of [
     ["/subjects/math/calculus/limits-continuity/unit/limits/what-a-limit-means/", /What a Limit Means/i],
     ["/subjects/math/calculus/sequences-and-series/geometric-series/", /Geometric series/i],
@@ -290,23 +290,16 @@ test("calculus lessons include a complete server-only fallback when JavaScript i
     const response = await render(path);
     assert.equal(response.status, 200, path);
     const html = await response.text();
-    const fallback = html.match(/<noscript>([\s\S]*?)<\/noscript>/)?.[1] ?? "";
-    assert.match(fallback, /data-noscript-calculus-fallback=/, path);
-    assert.match(fallback, titlePattern, path);
-    assert.match(fallback, /JavaScript is off/, path);
-    assert.match(fallback, /class="no-script-lesson"/, path);
-    assert.doesNotMatch(fallback, /canonicalAnswer|acceptedAnswers|sourceFile|type="range"|is-interactive-ready/, path);
+    assert.equal((html.match(/<h1\b/g) ?? []).length, 1, `${path} has one crawl-visible H1`);
+    assert.equal((html.match(/<main\b/g) ?? []).length, 1, `${path} has one crawl-visible main`);
+    assert.doesNotMatch(html, /<noscript>|data-noscript-calculus-fallback=|class="no-script-lesson"/, path);
+    assert.match(html, titlePattern, path);
+    assert.match(html, /Section overview/, path);
+    const visibleText = html
+      .replace(/<(?:script|style|annotation)\b[^>]*>[\s\S]*?<\/(?:script|style|annotation)>/gi, " ")
+      .replace(/<[^>]+>/g, " ");
+    assert.doesNotMatch(visibleText, /canonicalAnswer|acceptedAnswers|sourceFile|type="range"/, path);
   }
-  const visualResponse = await render("/subjects/math/calculus/sequences-and-series/sequences-as-functions/");
-  const visualHtml = await visualResponse.text();
-  const visualFallback = visualHtml.match(/<noscript>([\s\S]*?)<\/noscript>/)?.[1] ?? "";
-  assert.match(visualFallback, /data-noscript-visual=/);
-  assert.match(visualFallback, /\/visuals\/v1\/[^"']+\.svg/);
-  const unit4bVisualResponse = await render("/subjects/math/calculus/power-series-and-taylor-series/power-series-as-functions/");
-  const unit4bVisualHtml = await unit4bVisualResponse.text();
-  const unit4bVisualFallback = unit4bVisualHtml.match(/<noscript>([\s\S]*?)<\/noscript>/)?.[1] ?? "";
-  assert.match(unit4bVisualFallback, /data-noscript-visual=/);
-  assert.match(unit4bVisualFallback, /\/visuals\/v1\/unit-4b-[^"']+\.svg/);
 });
 
 test("superseded Chapter 4 duplicate intents redirect to Unit 4 canonical routes", async () => {
