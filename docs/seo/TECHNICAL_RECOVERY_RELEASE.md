@@ -32,3 +32,7 @@ Local candidate:
 The historical all-unit render suite requires an 8 GB Node heap on this machine. With that established gate it passed all pre-existing test groups; the newly tightened single-document assertion was corrected and rerun green. The final full-suite run and private-preview browser matrix remain release-gate tasks before approval.
 
 Release B is intentionally not started here. Governance requires it to branch from accepted Release A production main.
+
+## Private-preview packaging
+
+The Sites source-build path can exceed its remote build-stream window while installing the locked dependency graph. The governed fallback is the Sites packaging helper: package the already validated `dist/` output with hosting metadata from the same committed source, save that archive against the exact pushed commit, and deploy it only under verified owner-only access. This changes neither the application tree nor the Cloudflare production release process.
