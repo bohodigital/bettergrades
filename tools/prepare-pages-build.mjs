@@ -2,6 +2,7 @@ import { access, cp, mkdir, readFile, readdir, rename, rm, writeFile } from "nod
 import { resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import { build as esbuildBuild } from "esbuild";
+import resourceCatalog from "../content/calculus/resources/catalog.json" with { type: "json" };
 
 const root = process.cwd();
 const client = resolve(root, "dist", "client");
@@ -10,6 +11,7 @@ const output = resolve(root, "dist", "pages");
 const serverEntry = resolve(server, "index.js");
 const workerEntry = resolve(output, "_worker.js");
 const bundledWorkerEntry = resolve(output, "_worker.prebundle.js");
+const productionWorkerEntry = resolve(root, "tools", "pages-worker-entry.ts");
 const registryEntry = resolve(root, "dist", ".registry-build.mjs");
 
 async function requirePath(path, label) {
@@ -25,7 +27,7 @@ await requirePath(serverEntry, "vinext Worker entry");
 
 await esbuildBuild({
   stdin: {
-    contents: 'export { publicRoutes, redirects } from "./lib/registry/routing.ts";',
+    contents: 'export { publicRoutes, redirects, registryRoutes } from "./lib/registry/routing.ts";',
     resolveDir: root,
     sourcefile: "registry-build-entry.mts",
   },
@@ -39,6 +41,7 @@ await esbuildBuild({
 const registry = await import(`${pathToFileURL(registryEntry).href}?build=${Date.now()}`);
 const publicRoutes = registry.publicRoutes;
 const redirects = registry.redirects;
+const indexableRoutes = registry.registryRoutes.filter((route) => route.indexable).map((route) => route.path);
 await rm(registryEntry, { force: true });
 
 // The Cloudflare Vite plugin writes a local deploy redirect to the Worker
@@ -48,15 +51,13 @@ await rm(output, { recursive: true, force: true });
 await mkdir(output, { recursive: true });
 await cp(client, output, { recursive: true });
 await cp(server, output, { recursive: true });
-await cp(serverEntry, workerEntry);
 await rm(resolve(output, "wrangler.json"), { force: true });
 
-// Pages' `no_bundle` release mode must receive one self-contained Worker.
-// vinext intentionally emits a module graph (the RSC assets manifest plus the
-// SSR renderer), so prebundle that graph here instead of asking Wrangler to
-// rebuild it with different defaults during production upload.
+// Every educational route is pre-rendered below and bypasses the Worker in
+// production. Bundle only the four bounded APIs and the image-asset pass-through
+// so the release package cannot pay the size or runtime cost of the page corpus.
 await esbuildBuild({
-  entryPoints: [workerEntry],
+  entryPoints: [productionWorkerEntry],
   outfile: bundledWorkerEntry,
   bundle: true,
   format: "esm",
@@ -106,6 +107,53 @@ for (const route of ["/robots.txt", "/sitemap.xml"]) {
   if (response.status !== 200) throw new Error(`Static metadata render failed for ${route}: ${response.status}`);
   await writeFile(resolve(output, route.slice(1)), await response.text(), "utf8");
 }
+
+const canonicalHost = "https://bettergrades.net";
+const xmlEscape = (value) => value.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+const unitRoots = [
+  "/subjects/math/calculus/limits-continuity/",
+  "/subjects/math/calculus/limits-continuity/unit/",
+  "/subjects/math/calculus/derivatives/",
+  "/subjects/math/calculus/derivative-applications/",
+  "/subjects/math/calculus/integrals/",
+  "/subjects/math/calculus/integration-applications/",
+  "/subjects/math/calculus/sequences-and-series/",
+  "/subjects/math/calculus/power-series-and-taylor-series/",
+];
+const groups = {
+  "sitemap-lessons.xml": [],
+  "sitemap-articles.xml": [],
+  "sitemap-unit-hubs.xml": [],
+  "sitemap-worksheets.xml": [],
+  "sitemap-practice-exams.xml": [],
+  "sitemap-formula-sheets.xml": [],
+  "sitemap-worked-problems.xml": [],
+  "sitemap-visuals.xml": [],
+  "sitemap-glossary.xml": [],
+  "sitemap-pages.xml": [],
+};
+for (const route of indexableRoutes) {
+  if (route.startsWith("/subjects/math/calculus/worksheets/") && route !== "/subjects/math/calculus/worksheets/") groups["sitemap-worksheets.xml"].push(route);
+  else if (route.startsWith("/subjects/math/calculus/practice-exams/") && route !== "/subjects/math/calculus/practice-exams/") groups["sitemap-practice-exams.xml"].push(route);
+  else if (route.startsWith("/subjects/math/calculus/formula-sheets/") && route !== "/subjects/math/calculus/formula-sheets/") groups["sitemap-formula-sheets.xml"].push(route);
+  else if (route.startsWith("/subjects/math/calculus/worked-problems/") && route !== "/subjects/math/calculus/worked-problems/") groups["sitemap-worked-problems.xml"].push(route);
+  else if (route.startsWith("/subjects/math/calculus/visuals/") && route !== "/subjects/math/calculus/visuals/") groups["sitemap-visuals.xml"].push(route);
+  else if (route.startsWith("/glossary/")) groups["sitemap-glossary.xml"].push(route);
+  else if (unitRoots.includes(route) || route === "/subjects/math/calculus/") groups["sitemap-unit-hubs.xml"].push(route);
+  else if (unitRoots.some((rootPath) => route.startsWith(rootPath))) groups["sitemap-lessons.xml"].push(route);
+  else if (route.startsWith("/subjects/math/") || route.startsWith("/learn/") || route.startsWith("/answers/")) groups["sitemap-articles.xml"].push(route);
+  else groups["sitemap-pages.xml"].push(route);
+}
+const urlset = (routes) => `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${routes.map((route) => `  <url><loc>${xmlEscape(`${canonicalHost}${route}`)}</loc><lastmod>2026-07-23</lastmod></url>`).join("\n")}\n</urlset>\n`;
+for (const [file, routes] of Object.entries(groups)) {
+  await writeFile(resolve(output, file), urlset(routes), "utf8");
+}
+const visualPages = [...resourceCatalog.resources, ...resourceCatalog.promotedVisualPages].filter((resource) => resource.primaryVisual);
+const imageSitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${visualPages.map((resource) => `  <url><loc>${xmlEscape(`${canonicalHost}${resource.canonicalPath}`)}</loc><image:image><image:loc>${xmlEscape(`${canonicalHost}/visuals/resources/${resource.primaryVisual}.png`)}</image:loc><image:title>${xmlEscape(resource.shortTitle)}</image:title><image:caption>${xmlEscape(resource.summary)}</image:caption></image:image></url>`).join("\n")}\n</urlset>\n`;
+await writeFile(resolve(output, "sitemap-images.xml"), imageSitemap, "utf8");
+const sitemapFiles = [...Object.keys(groups), "sitemap-images.xml"];
+const sitemapIndex = `<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapFiles.map((file) => `  <sitemap><loc>${canonicalHost}/${file}</loc><lastmod>2026-07-23</lastmod></sitemap>`).join("\n")}\n</sitemapindex>\n`;
+await writeFile(resolve(output, "sitemap.xml"), sitemapIndex, "utf8");
 const notFoundResponse = await render("/definitely-not-a-page/");
 if (notFoundResponse.status !== 404) throw new Error(`Static 404 render returned ${notFoundResponse.status}`);
 await writeFile(resolve(output, "404.html"), await notFoundResponse.text(), "utf8");

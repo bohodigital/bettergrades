@@ -16,4 +16,11 @@ Rollback triggers include an unexplained production `5xx`, missing canonical rou
 
 ## Release B
 
-Release B must remain a separate commit, PR, and production deployment based on accepted Release A. Its future rollback must remove only resource-engine routes/assets while retaining Release A technical recovery.
+Release B remains a separate commit, PR, and production deployment based on accepted Release A merge `b88496d53f73c0d23f5a890d07e1acfc38966b72`.
+
+1. Reassign production to the accepted Release A immutable deployment `https://2cf44708.bettergrades-vhc.pages.dev` through the governed wrapper.
+2. Verify immutable, stable Pages, apex, WWW, representative lessons, graders, analytics, robots, and the Release A sitemap behavior.
+3. Revert the Release B merge with a new reviewed commit; do not rewrite shared history.
+4. Confirm that resource HTML, PDFs, visual downloads, and segmented sitemaps no longer appear while every Release A route remains healthy.
+
+Release B has no runtime data or schema migration. Rollback removes only static resource-engine routes and assets while retaining the Release A technical recovery.

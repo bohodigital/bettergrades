@@ -5,9 +5,11 @@
 import { FormEvent, ReactNode, useState } from "react";
 import { getCalculusUnitCollection, getCalculusUnitSectionGuidance } from "../lib/calculus/calculus-units-index.mjs";
 import type { CalculusPublicProblem, CalculusUnitNode, CalculusUnitPublicPage } from "../lib/calculus/calculus-unit.mjs";
+import { publishedResourcePages } from "../lib/resources/catalog.mjs";
 import { BetterGradesVisual } from "./BetterGradesVisual";
 import { CalculusUnitNavigation, UNIT_2A_ROOT, UNIT_2B_ROOT, UNIT_3A_ROOT, UNIT_3B_ROOT, UNIT_4A_ROOT, UNIT_4B_ROOT } from "./CalculusUnitNavigation";
 import { Math } from "./Math";
+import { trackPublishingResourceEvent } from "./ResourcePages";
 
 const labels: Record<string, string> = {
   "advanced-note": "Optional advanced note",
@@ -349,6 +351,7 @@ export function CalculusUnitPageContent({ page }: { page: CalculusUnitPublicPage
   const calculusCourse = currentUnit.startsWith("4") ? "Calculus II" : "Calculus I";
   const routeUrl = `https://bettergrades.net${page.route.path}`;
   const courseUrl = `https://bettergrades.net${page.unit.root}`;
+  const companionResources = publishedResourcePages.filter((resource) => resource.sourceLessons.includes(page.route.path)).slice(0, 4);
   const schema = { "@context": "https://schema.org", "@graph": [
     { "@type": page.route.pageType === "quiz" || page.route.pageType === "exam" ? "Quiz" : "LearningResource", "@id": `${routeUrl}#learning-resource`, name: page.route.title, description: page.route.description, url: routeUrl, educationalLevel: calculusCourse, learningResourceType: labels[page.route.pageType] ?? page.route.pageType.replaceAll("-", " "), about: [`Calculus Unit ${page.unit.code}`, page.unit.shortTitle, currentUnit.startsWith("4") ? "sequences and series" : integralUnit ? "integrals" : "derivatives"], isPartOf: { "@type": "Course", "@id": `${courseUrl}#course`, name: page.unit.title, courseCode: `${calculusCourse} Unit ${page.unit.code}`, url: courseUrl, provider: { "@id": "https://bettergrades.net/#organization" } } },
     { "@type": "BreadcrumbList", "@id": `${routeUrl}#breadcrumbs`, itemListElement: page.route.breadcrumbs.map((crumb, index) => ({ "@type": "ListItem", position: index + 1, name: crumb.name, item: `https://bettergrades.net${crumb.path}` })) },
@@ -363,6 +366,7 @@ export function CalculusUnitPageContent({ page }: { page: CalculusUnitPublicPage
       {page.assessmentSet && <section className="calculus-assessment-set"><header><p className="eyebrow">Structured concept quiz</p><h2>{page.assessmentSet.title}</h2><p>Write a response before revealing the model. These conceptual items use an honest attempt-and-reveal rubric rather than pretending an open response has one machine-provable wording.</p></header>{page.assessmentSet.items.map((item) => <InteractiveProblem key={item.id} problem={{ id: item.id, unitId: page.unit.id, pageSlug: page.route.slug, promptLatex: item.promptLatex, answerType: item.answerType, choices: [], hints: [], difficulty: "conceptual", topics: [], skills: [], attemptRequiredBeforeReveal: true }} />)}</section>}
       {[...checks.values()].filter((check) => !embeddedCheckIds.has(check.id)).map((check) => <InteractiveProblem problem={check} key={check.id} />)}
       {page.related.length > 0 && <section className="limits-related"><p className="eyebrow">Keep working</p><h2>Related resources</h2>{page.related.map((route) => <a href={route.path} key={route.path}><span>{route.pageType.replaceAll("-", " ")}</span><b>{route.title}</b></a>)}</section>}
+      {companionResources.length > 0 && <section className="limits-related contextual-resource-links"><p className="eyebrow">Practice this lesson</p><h2>Companion worksheets and references</h2>{companionResources.map((resource) => <a href={resource.canonicalPath} onClick={() => trackPublishingResourceEvent("lesson_to_resource_click", resource, { source_lesson: page.route.path })} key={resource.id}><span>{resource.resourceType.replaceAll("-", " ")}</span><b>{resource.shortTitle}</b></a>)}</section>}
       <section className="limits-rights"><p className="eyebrow">Source &amp; rights</p><h2>Original instruction with traceable references.</h2><p>{page.page.compositionStatus}</p><p>Reference textbooks remain rights-separated and are not published as application assets. Any direct adaptation requires separate identification and attribution.</p></section>
     </div></div>
     <CourseNavigation page={page} />

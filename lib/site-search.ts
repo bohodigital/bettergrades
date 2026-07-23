@@ -5,6 +5,7 @@ import { domains, resourceFormatLabel, resources, tools, topics } from "./regist
 import { assessments } from "./registry/practice";
 import { isExpressionOnlyQuery, normalizeSearchText, rankSearchRecords } from "./site-search-core.mjs";
 import { mathGlossarySearchTerms } from "./glossary/math/search-artifact.mjs";
+import { enrichedGlossaryResources, publishedResourcePages } from "./resources/catalog.mjs";
 
 export { isExpressionOnlyQuery, normalizeSearchText };
 
@@ -145,7 +146,7 @@ const glossaryRecords: SiteSearchRecord[] = mathGlossarySearchTerms.map((term) =
   kind: "glossary",
   title: term.term,
   description: term.shortDefinition,
-  path: `/glossary/math/#${term.id}`,
+  path: enrichedGlossaryResources.find((resource) => resource.glossaryTermId === term.id)?.canonicalPath ?? `/glossary/math/#${term.id}`,
   domainSlug: "math",
   domainName: "Mathematics",
   topicName: term.categoryLabel,
@@ -153,6 +154,26 @@ const glossaryRecords: SiteSearchRecord[] = mathGlossarySearchTerms.map((term) =
   keywords: [...term.aliases, ...term.keywords, ...term.visualText],
   priority: 68,
 }));
+
+const publishingRecords: SiteSearchRecord[] = publishedResourcePages
+  .filter((resource) => resource.resourceType !== "glossary-term")
+  .map((resource) => ({
+    id: resource.id,
+    kind: resource.resourceType === "practice-exam" || resource.resourceType === "worksheet"
+      ? "practice" as const
+      : resource.resourceType === "worked-problem"
+        ? "answer" as const
+        : "guide" as const,
+    title: resource.title,
+    description: resource.description,
+    path: resource.canonicalPath,
+    domainSlug: "calculus",
+    domainName: "Calculus",
+    topicName: resource.topics.join(" · "),
+    label: resource.resourceType.replaceAll("-", " ").replace(/\b\w/g, (letter) => letter.toUpperCase()),
+    keywords: [...resource.searchIntent, ...resource.skills, ...resource.topics, resource.course, resource.unit],
+    priority: resource.resourceType === "practice-exam" ? 96 : resource.resourceType === "worksheet" ? 92 : 86,
+  }));
 
 export const siteSearchRecords: SiteSearchRecord[] = [
   ...limitsUnitSearchRecords,
@@ -163,6 +184,7 @@ export const siteSearchRecords: SiteSearchRecord[] = [
   ...practiceRecords,
   ...answerRecords,
   ...glossaryRecords,
+  ...publishingRecords,
 ];
 
 export function searchSite(query: string, options: SiteSearchOptions = {}): SiteSearchRecord[] {

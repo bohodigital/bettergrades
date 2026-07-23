@@ -2,6 +2,18 @@ import type { Question } from "../activities";
 
 export type ResourceKind = "answer" | "concept" | "method" | "decision-guide" | "tool";
 export type AssessmentKind = "quiz" | "diagnostic" | "practice-exam" | "challenge";
+export type PublishingResourceType =
+  | "worksheet"
+  | "practice-exam"
+  | "formula-sheet"
+  | "worked-problem"
+  | "visual-guide"
+  | "interactive-practice"
+  | "answer-key"
+  | "download"
+  | "glossary-term";
+export type PublishingResourceStatus = "draft" | "review" | "published" | "retired";
+export type ResourceIndexPolicy = "index" | "noindex" | "canonicalize";
 
 export type SubjectRecord = {
   id: string;
@@ -45,6 +57,43 @@ export type ResourceRecord = {
   searchTerms: string[];
   relatedToolIds: string[];
   relatedAssessmentIds: string[];
+};
+
+export type PublishingResourceRecord = {
+  id: string;
+  resourceType: PublishingResourceType;
+  subject: string;
+  course: string;
+  unit: string;
+  topics: string[];
+  sourceLessons: string[];
+  sourceAssessments: string[];
+  title: string;
+  shortTitle: string;
+  slug: string;
+  canonicalPath: string;
+  summary: string;
+  description: string;
+  searchIntent: string[];
+  skills: string[];
+  prerequisites: string[];
+  difficulty: string;
+  estimatedTime: number;
+  problemCount: number;
+  audience: string;
+  studentPdf: string | null;
+  answerKeyPdf: string | null;
+  workedHtmlSolutions: boolean;
+  primaryVisual: string | null;
+  downloadFormats: string[];
+  relatedLessons: string[];
+  relatedArticles: string[];
+  relatedResources: string[];
+  relatedGlossaryTerms: string[];
+  license: string;
+  revisionDate: string;
+  indexPolicy: ResourceIndexPolicy;
+  status: PublishingResourceStatus;
 };
 
 export type RegistryQuestion = Question & {

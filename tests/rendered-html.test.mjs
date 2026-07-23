@@ -3,6 +3,7 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 import { limitsUnitRoutes } from "../lib/calculus/limits-unit-index.mjs";
 import { calculusUnitRoutes } from "../lib/calculus/calculus-units-index.mjs";
+import { publishedResourcePages } from "../lib/resources/catalog.mjs";
 
 const expectedLimitsVisuals = [
   ["secant-tangent", "/subjects/math/calculus/limits-continuity/unit/limits/why-limits-matter/"],
@@ -485,9 +486,10 @@ test("all registry articles not superseded by a released unit render in their or
   const sitemap = await render("/sitemap.xml");
   const sitemapBody = await sitemap.text();
   const unitPaths = new Set(calculusUnitRoutes.map((route) => route.path));
+  const resourcePaths = new Set(publishedResourcePages.map((resource) => resource.canonicalPath));
   const paths = [...sitemapBody.matchAll(/<loc>https:\/\/bettergrades\.net(\/subjects\/math\/(?:algebra|calculus)\/[^<]+\/[^<]+\/)<\/loc>/g)]
     .map((match) => match[1])
-    .filter((path) => path.split("/").filter(Boolean).length === 5 && !path.includes("/unit/") && !unitPaths.has(path));
+    .filter((path) => path.split("/").filter(Boolean).length === 5 && !path.includes("/unit/") && !unitPaths.has(path) && !resourcePaths.has(path));
   assert.equal(paths.length, new Set(paths).size);
   assert.ok(paths.length > 50, "the existing library must remain substantially intact");
 

@@ -1,6 +1,8 @@
 import { allLibraryArticles, courseLibraries, getCourseTopicArticles } from "../course-library";
 import { archetypes } from "../library";
 import type { DomainRecord, ResourceRecord, SubjectRecord, TopicRecord, ToolRecord } from "./schema";
+import { publishedResourcePages } from "../resources/catalog.mjs";
+import type { PublishingResourceRecord } from "./schema";
 
 export const subjects: SubjectRecord[] = [{
   id: "subject-math",
@@ -94,6 +96,8 @@ export const tools: ToolRecord[] = [
     aliases: ["/calculators/integration-method-finder/"],
   },
 ];
+
+export const publishingResources: PublishingResourceRecord[] = [...publishedResourcePages];
 
 export const getTopicRecord = (domainSlug: string, slug: string) => topics.find((topic) => topic.domainId === `domain-math-${domainSlug}` && topic.slug === slug);
 export const getResourceRecord = (domainSlug: string, topicSlug: string, slug: string) => resources.find((resource) => resource.topicId === `topic-math-${domainSlug}-${topicSlug}` && resource.slug === slug);
