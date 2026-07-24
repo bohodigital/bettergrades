@@ -8,6 +8,7 @@ import { publishedResourcePages, resourceHubs } from "../resources/catalog.mjs";
 const fixedRoutes: RegistryRoute[] = [
   { path: "/", title: "Better Grades — Free answers, full explanations", description: "Find free academic answers, complete explanations, practical tools, and focused practice.", indexable: true },
   { path: "/subjects/", title: "Browse subjects", description: "Explore Better Grades resources by subject and course.", indexable: true },
+  { path: "/resources/", title: "Free Math Resources | Worksheets, Practice Exams, Guides, and More", description: "Browse every published Better Grades worksheet, practice exam, formula sheet, visual guide, worked problem, and glossary reference.", indexable: true },
   { path: "/practice/", title: "Free quizzes and practice exams", description: "Use focused quizzes, diagnostics, practice exams, and challenges with explanations.", indexable: true },
   { path: "/practice/math/", title: "Mathematics practice", description: "Browse free mathematics quizzes, diagnostics, practice exams, and challenges.", indexable: true },
   { path: "/practice/math/calculus/", title: "Calculus practice", description: "Choose a calculus quiz, diagnostic, practice exam, or challenge.", indexable: true },

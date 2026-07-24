@@ -12,7 +12,7 @@ import { getPublicCalculusUnitPage } from "../../lib/calculus/calculus-unit.mjs"
 import { GlossaryHubPage, MathConventionsPage, MathGlossaryPage } from "../GlossaryPages";
 import { LimitsUnitPageContent } from "../LimitsUnitPages";
 import { CalculusUnitPageContent } from "../CalculusUnitPages";
-import { ResourceHubPage, ResourcePage } from "../ResourcePages";
+import { ResourceHubPage, ResourceLibraryPage, ResourcePage } from "../ResourcePages";
 function getPath(slug: string[] = []) {
   return `/${slug.join("/")}${slug.length ? "/" : ""}`;
 }
@@ -80,6 +80,13 @@ export default async function CatchAllPage({
   const calculusUnitPage = isCalculusUnitPath(path) ? getPublicCalculusUnitPage(path) : undefined;
   const resourcePage = getPublishedResourcePage(path);
   const resourceHub = getResourceHub(path);
+  const libraryResources = path === "/resources/"
+    ? publishedResourcePages
+      .filter((resource) => resource.status === "published" && resource.indexPolicy === "index")
+      .map(({ id, canonicalPath, shortTitle, summary, resourceType, difficulty, course, unit, problemCount, estimatedTime, studentPdf, answerKeyPdf, primaryVisual }) => ({
+        id, canonicalPath, shortTitle, summary, resourceType, difficulty, course, unit, problemCount, estimatedTime, studentPdf, answerKeyPdf, primaryVisual,
+      }))
+    : undefined;
   const hubResources = resourceHub
     ? getResourcesForHub(resourceHub.resourceType).map(({ id, canonicalPath, shortTitle, summary, resourceType, difficulty, course, problemCount, estimatedTime }) => ({ id, canonicalPath, shortTitle, summary, resourceType, difficulty, course, problemCount, estimatedTime }))
     : undefined;
@@ -90,7 +97,8 @@ export default async function CatchAllPage({
     ? resourcePage.relatedGlossaryTerms.filter((id) => enrichedGlossaryResources.some((resource) => resource.glossaryTermId === id))
     : undefined;
   let routeContent: ReactNode;
-  if (resourceHub) routeContent = <ResourceHubPage hub={resourceHub} resources={hubResources ?? []} />;
+  if (libraryResources) routeContent = <ResourceLibraryPage resources={libraryResources} />;
+  else if (resourceHub) routeContent = <ResourceHubPage hub={resourceHub} resources={hubResources ?? []} />;
   else if (resourcePage) routeContent = <ResourcePage resource={resourcePage} glossaryTerms={glossaryData?.terms} relatedResources={relatedResources ?? []} enrichedGlossaryTermIds={enrichedGlossaryTermIds ?? []} />;
   else if (calculusUnitPage) routeContent = <CalculusUnitPageContent page={calculusUnitPage} />;
   else if (limitsUnitPage) routeContent = <LimitsUnitPageContent page={limitsUnitPage} />;

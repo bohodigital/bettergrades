@@ -3,6 +3,7 @@ import { expect, test } from "@playwright/test";
 const routes = [
   ["/", "homepage"],
   ["/subjects/math/calculus/", "calculus landing"],
+  ["/resources/", "resource library"],
   ["/subjects/math/calculus/limits-continuity/", "unit hub"],
   ["/subjects/math/calculus/limits-continuity/unit/limits/what-a-limit-means/", "long lesson"],
   ["/subjects/math/calculus/limits-continuity/limit-of-sin-x-over-x/", "concise article"],
@@ -16,6 +17,19 @@ const routes = [
   ["/subjects/math/calculus/visuals/convergence-tests-flowchart/", "visual page"],
   ["/glossary/math/derivative/", "enriched glossary"],
 ];
+
+test("calculus starts collapsed and the top-level Resources tab exposes the complete library", async ({ page }) => {
+  await page.goto("/subjects/math/calculus/");
+  await expect(page.locator('.calculus-chapter[open]')).toHaveCount(0);
+  await expect(page.locator('.desktop-nav > a[href="/resources/"]')).toHaveCount(1);
+  await expect(page.locator('.mobile-menu nav > a[href="/resources/"]')).toHaveCount(1);
+
+  await page.goto("/resources/");
+  await expect(page.getByRole("heading", { level: 1, name: "Everything printable, visual, and worked through." })).toBeVisible();
+  await expect(page.locator(".resource-library-card")).toHaveCount(63);
+  await expect(page.locator(".resource-library-categories a")).toHaveCount(6);
+  await expect(page.locator('.resource-library-downloads a[href$=".pdf"]')).toHaveCount(21);
+});
 const viewports = [
   ["desktop", { width: 1440, height: 900 }],
   ["tablet", { width: 768, height: 1024 }],

@@ -160,7 +160,7 @@ export function CalculusCourseNavigation({ currentPath = CALCULUS_ROOT }: { curr
     <div className="calculus-chapter-list">
       {chapters.map((chapter) => {
         const current = currentChapter === chapter.id;
-        return <details className="calculus-chapter" data-chapter={chapter.id} open={current || (!currentChapter && chapter.id === "1")} key={chapter.id}>
+        return <details className="calculus-chapter" data-chapter={chapter.id} open={current} key={chapter.id}>
           <summary>
             <span className="calculus-chapter-number">Chapter {chapter.id}</span>
             <span className="calculus-chapter-title"><b>{chapter.title}</b><small>{chapter.description}</small></span>

@@ -33,7 +33,7 @@ const report = {
     { name: "mobile", width: 390, height: 844 },
   ],
   modes: ["JavaScript enabled", "JavaScript disabled", "dark mode", "keyboard-only focus", "print CSS"],
-  pageTypeCount: 14,
+  pageTypeCount: 15,
   analyticsEventsExercised: [
     "resource_view", "resource_download", "worksheet_download", "answer_key_download",
     "practice_exam_download", "formula_sheet_download", "visual_download", "worksheet_print",
@@ -53,7 +53,7 @@ const report = {
   },
   tests,
   failures,
-  pass: failures.length === 0 && tests.length === 7,
+  pass: failures.length === 0 && tests.length === 8,
 };
 await writeFile(outputPath, `${JSON.stringify(report, null, 2)}\n`);
 console.log(JSON.stringify({ testCount: report.testCount, passedCount: report.passedCount, failedCount: report.failedCount, pass: report.pass }, null, 2));
