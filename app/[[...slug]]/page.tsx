@@ -1,5 +1,6 @@
 import { BetterGradesApp } from "../BetterGradesApp";
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import { notFound } from "next/navigation";
 import { getRoute, publicRoutes } from "../../lib/registry";
 import { enrichedGlossaryResources, getPublishedResourcePage, getResourceHub, getResourcesForHub, publishedResourcePages } from "../../lib/resources/catalog.mjs";
@@ -8,6 +9,10 @@ import { isLimitsUnitPath } from "../../lib/calculus/limits-unit-index.mjs";
 import { getPublicLimitsUnitPage } from "../../lib/calculus/limits-unit.mjs";
 import { isCalculusUnitPath } from "../../lib/calculus/calculus-units-index.mjs";
 import { getPublicCalculusUnitPage } from "../../lib/calculus/calculus-unit.mjs";
+import { GlossaryHubPage, MathConventionsPage, MathGlossaryPage } from "../GlossaryPages";
+import { LimitsUnitPageContent } from "../LimitsUnitPages";
+import { CalculusUnitPageContent } from "../CalculusUnitPages";
+import { ResourceHubPage, ResourcePage } from "../ResourcePages";
 function getPath(slug: string[] = []) {
   return `/${slug.join("/")}${slug.length ? "/" : ""}`;
 }
@@ -84,15 +89,16 @@ export default async function CatchAllPage({
   const enrichedGlossaryTermIds = resourcePage
     ? resourcePage.relatedGlossaryTerms.filter((id) => enrichedGlossaryResources.some((resource) => resource.glossaryTermId === id))
     : undefined;
+  let routeContent: ReactNode;
+  if (resourceHub) routeContent = <ResourceHubPage hub={resourceHub} resources={hubResources ?? []} />;
+  else if (resourcePage) routeContent = <ResourcePage resource={resourcePage} glossaryTerms={glossaryData?.terms} relatedResources={relatedResources ?? []} enrichedGlossaryTermIds={enrichedGlossaryTermIds ?? []} />;
+  else if (calculusUnitPage) routeContent = <CalculusUnitPageContent page={calculusUnitPage} />;
+  else if (limitsUnitPage) routeContent = <LimitsUnitPageContent page={limitsUnitPage} />;
+  else if (path === "/glossary/" && glossaryData) routeContent = <GlossaryHubPage terms={glossaryData.terms} />;
+  else if (path === "/glossary/math/" && glossaryData) routeContent = <MathGlossaryPage terms={glossaryData.terms} categories={glossaryData.categories} />;
+  else if (path === "/glossary/math/conventions/" && glossaryData) routeContent = <MathConventionsPage uppercaseConventions={glossaryData.uppercaseConventions} />;
   return <BetterGradesApp
     path={path}
-    glossaryData={glossaryData}
-    limitsUnitPage={limitsUnitPage}
-    calculusUnitPage={calculusUnitPage}
-    resourcePage={resourcePage}
-    resourceHub={resourceHub}
-    hubResources={hubResources}
-    relatedResources={relatedResources}
-    enrichedGlossaryTermIds={enrichedGlossaryTermIds}
+    routeContent={routeContent}
   />;
 }
