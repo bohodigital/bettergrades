@@ -131,6 +131,75 @@ test("downloads, redirect, answer reveal, and practice controls work", async ({ 
   await expect(page.getByText("Answer:", { exact: true })).toBeVisible();
 });
 
+test("PDF links use native accessible new tabs and preserve one analytics event pair", async ({ browser }) => {
+  const context = await browser.newContext();
+  await context.addInitScript(() => {
+    window.__events = [];
+    window.gtag = (...args) => window.__events.push({ sink: "ga4", args });
+    window.umami = { track: (event, data) => window.__events.push({ sink: "umami", args: ["event", event, data] }) };
+  });
+  const page = await context.newPage();
+  const originalRoute = "/subjects/math/calculus/worksheets/evaluating-limits/";
+  await page.goto(originalRoute);
+  const studentPdf = page.getByRole("link", { name: /Student PDF.*opens in a new tab/ });
+  await expect(studentPdf).toHaveAttribute("target", "_blank");
+  await expect(studentPdf).toHaveAttribute("rel", "noopener");
+  await expect(studentPdf).not.toHaveAttribute("download", /.*/);
+  const href = await studentPdf.getAttribute("href");
+  const [pdfPage] = await Promise.all([
+    context.waitForEvent("page"),
+    studentPdf.press("Enter"),
+  ]);
+  expect(new URL(page.url()).pathname).toBe(originalRoute);
+  expect(pdfPage).not.toBe(page);
+  expect(context.pages()).toContain(pdfPage);
+  expect(await pdfPage.evaluate(() => window.opener === null)).toBe(true);
+  const response = await context.request.get(href);
+  expect(response.status()).toBe(200);
+  expect(response.headers()["content-type"]).toBe("application/pdf");
+  const events = await page.evaluate(() => window.__events);
+  for (const eventName of ["resource_download", "worksheet_download"]) {
+    expect(events.filter((item) => item.sink === "ga4" && item.args[1] === eventName)).toHaveLength(1);
+    expect(events.filter((item) => item.sink === "umami" && item.args[1] === eventName)).toHaveLength(1);
+  }
+  const download = events.find((item) => item.sink === "ga4" && item.args[1] === "resource_download");
+  expect(download.args[2]).toMatchObject({ file_type: "pdf", variant: "student" });
+  await pdfPage.close();
+
+  for (const [route, linkName] of [
+    ["/subjects/math/calculus/worksheets/evaluating-limits/", /Worked answer key PDF.*opens in a new tab/],
+    ["/subjects/math/calculus/practice-exams/calculus-1-final/", /Student PDF.*opens in a new tab/],
+    ["/subjects/math/calculus/formula-sheets/derivative-rules/", /Student PDF.*opens in a new tab/],
+    ["/subjects/math/calculus/visuals/convergence-tests-flowchart/", /Student PDF.*opens in a new tab/],
+  ]) {
+    await page.goto(route);
+    const link = page.getByRole("link", { name: linkName });
+    await expect(link).toHaveAttribute("target", "_blank");
+    await expect(link).toHaveAttribute("rel", "noopener");
+    expect(await link.getAttribute("href")).toMatch(/\.pdf$/i);
+  }
+  await context.close();
+});
+
+test("PDF links remain native new-tab anchors when JavaScript is disabled", async ({ browser }) => {
+  const context = await browser.newContext({ javaScriptEnabled: false });
+  const page = await context.newPage();
+  await page.goto("/subjects/math/calculus/worksheets/evaluating-limits/");
+  const link = page.getByRole("link", { name: /Student PDF.*opens in a new tab/ });
+  await expect(link).toHaveAttribute("target", "_blank");
+  await expect(link).toHaveAttribute("rel", "noopener");
+  const href = await link.getAttribute("href");
+  expect(href).toMatch(/\.pdf$/i);
+  const [pdfPage] = await Promise.all([context.waitForEvent("page"), link.click()]);
+  expect(pdfPage).not.toBe(page);
+  expect(context.pages()).toContain(pdfPage);
+  expect(await pdfPage.evaluate(() => window.opener === null)).toBe(true);
+  const response = await context.request.get(href);
+  expect(response.status()).toBe(200);
+  expect(response.headers()["content-type"]).toBe("application/pdf");
+  await context.close();
+});
+
 test("every resource analytics event fires through both sinks with safe dimensions and respects Do Not Track", async ({ browser }) => {
   test.setTimeout(75_000);
   const context = await browser.newContext();
@@ -204,7 +273,7 @@ test("every resource analytics event fires through both sinks with safe dimensio
   }
   const data = allEvents.find((item) => item.args[1] === "resource_view").args[2];
   expect(data).toMatchObject({ resource_id: "calculus-resource-evaluating-limits", resource_type: "worksheet" });
-  const allowedDimensions = new Set(["resource_id", "resource_type", "course", "unit", "topic", "difficulty", "file_type", "source_lesson"]);
+  const allowedDimensions = new Set(["resource_id", "resource_type", "course", "unit", "topic", "difficulty", "file_type", "source_lesson", "variant"]);
   for (const event of allEvents.filter((item) => item.sink === "ga4")) {
     expect(Object.keys(event.args[2]).every((key) => allowedDimensions.has(key)), `${event.args[1]}: safe dimension names`).toBe(true);
   }

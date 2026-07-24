@@ -1,7 +1,9 @@
 import { createHash } from "node:crypto";
-import { readFile, writeFile } from "node:fs/promises";
+import { execFileSync } from "node:child_process";
+import { access, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { ComputeEngine } from "@cortex-js/compute-engine";
+import { pagesPackageHash } from "../lib/seo/build-hash.mjs";
 
 const root = process.cwd();
 const checkOnly = process.argv.includes("--check");
@@ -299,9 +301,17 @@ for (const worked of catalog.workedProblems) {
 }
 
 if (entries.length !== review.scope.totalTargets) fail(`expected ${review.scope.totalTargets} total entries, found ${entries.length}`);
+const sourceCommit = execFileSync("git", ["rev-parse", "HEAD"], { cwd: root, encoding: "utf8" }).trim();
+const sourceTree = execFileSync("git", ["rev-parse", "HEAD^{tree}"], { cwd: root, encoding: "utf8" }).trim();
+const pagesDirectory = resolve(root, "dist", "pages");
+const buildHash = await access(pagesDirectory).then(() => pagesPackageHash(pagesDirectory), () => null);
 const artifact = {
   schemaVersion: 2,
   generatedAt: review.reviewedAt,
+  environment: "local-candidate",
+  sourceCommit,
+  sourceTree,
+  buildHash,
   catalogSha256: review.catalogSha256,
   summary: {
     flagshipProblems: flagshipProblems.length,
@@ -317,8 +327,11 @@ const artifact = {
 };
 const serialized = `${JSON.stringify(artifact, null, 2)}\n`;
 if (checkOnly) {
-  const existing = await readFile(outputPath, "utf8");
-  if (existing !== serialized) fail("mathematical verification artifact is stale; run resources:generate");
+  const existing = JSON.parse(await readFile(outputPath, "utf8"));
+  const withoutExecutionProvenance = ({ sourceCommit: _commit, sourceTree: _tree, buildHash: _build, ...value }) => value;
+  if (JSON.stringify(withoutExecutionProvenance(existing)) !== JSON.stringify(withoutExecutionProvenance(artifact))) {
+    fail("mathematical verification artifact is stale; run resources:generate");
+  }
 } else {
   await writeFile(outputPath, serialized, "utf8");
 }

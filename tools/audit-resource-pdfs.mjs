@@ -3,10 +3,12 @@ import { execFileSync } from "node:child_process";
 import { mkdtemp, mkdir, readdir, readFile, rm, stat, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { dirname, join, relative, resolve } from "node:path";
+import { pagesPackageHash } from "../lib/seo/build-hash.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const downloadsRoot = resolve(root, "public", "downloads", "calculus");
 const artifactPath = resolve(root, "artifacts", "seo", "pdf-visual-audit.json");
+const verificationPath = resolve(root, "artifacts", "seo", "pdf-verification.json");
 const renderRoot = await mkdtemp(join(tmpdir(), "bettergrades-pdf-audit-"));
 
 async function walk(directory) {
@@ -68,12 +70,17 @@ try {
     });
   }
   const failures = reports.flatMap((pdf) => pdf.failures.map((failure) => ({ path: pdf.path, failure })));
+  const sourceCommit = run("git", ["-C", root, "rev-parse", "HEAD"]);
+  const sourceTree = run("git", ["-C", root, "rev-parse", "HEAD^{tree}"]);
+  const buildHash = await pagesPackageHash(resolve(root, "dist", "pages"));
+  const generatedAt = new Date().toISOString();
   const report = {
     schemaVersion: 1,
-    generatedAt: new Date().toISOString(),
+    generatedAt,
     environment: "local-candidate",
-    sourceCommit: run("git", ["-C", root, "rev-parse", "HEAD"]),
-    sourceTree: run("git", ["-C", root, "rev-parse", "HEAD^{tree}"]),
+    sourceCommit,
+    sourceTree,
+    buildHash,
     pdfCount: reports.length,
     renderedPageCount: reports.reduce((sum, pdf) => sum + pdf.renderedPageCount, 0),
     failureCount: failures.length,
@@ -82,7 +89,28 @@ try {
     pass: failures.length === 0,
   };
   await mkdir(dirname(artifactPath), { recursive: true });
-  await writeFile(artifactPath, `${JSON.stringify(report, null, 2)}\n`);
+  const existingVerification = JSON.parse(await readFile(verificationPath, "utf8"));
+  const verificationFiles = existingVerification.files ?? [];
+  const verificationFailures = verificationFiles
+    .filter((file) => file.status !== "verified")
+    .map((file) => ({ path: file.path, failure: `status-${file.status ?? "missing"}` }));
+  const verification = {
+    schemaVersion: 2,
+    generatedAt,
+    environment: "local-candidate",
+    sourceCommit,
+    sourceTree,
+    buildHash,
+    pdfCount: verificationFiles.length,
+    failureCount: verificationFailures.length,
+    failures: verificationFailures,
+    files: verificationFiles,
+    pass: verificationFailures.length === 0,
+  };
+  await Promise.all([
+    writeFile(artifactPath, `${JSON.stringify(report, null, 2)}\n`),
+    writeFile(verificationPath, `${JSON.stringify(verification, null, 2)}\n`),
+  ]);
   console.log(JSON.stringify({
     pdfCount: report.pdfCount,
     renderedPageCount: report.renderedPageCount,

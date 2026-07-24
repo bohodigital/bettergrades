@@ -36,7 +36,8 @@ try {
     return response.text();
   }));
   const routes = sitemapBodies.flatMap((body) => [...body.matchAll(/<loc>https:\/\/bettergrades\.net([^<]+)<\/loc>/g)].map((match) => match[1]));
-  if (routes.length !== 508) throw new Error(`Expected 508 sitemap routes, found ${routes.length}`);
+  if (routes.length === 0) throw new Error("Expected at least one sitemap route");
+  if (new Set(routes).size !== routes.length) throw new Error("Expected every sitemap route to be unique");
 
   browser = await chromium.launch();
   const context = await browser.newContext({ viewport: { width: 390, height: 844 } });

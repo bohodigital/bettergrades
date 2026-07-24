@@ -246,6 +246,21 @@ const sourceCommit = execFileSync("git", ["rev-parse", "HEAD"], { cwd: root, enc
 const sourceTree = execFileSync("git", ["rev-parse", "HEAD^{tree}"], { cwd: root, encoding: "utf8" }).trim();
 const buildHash = await pagesPackageHash(resolve(root, "dist", "pages"));
 const generatedAt = new Date().toISOString();
+const rawFailureCounts = {
+  unexpectedStatus: inventory.filter((entry) => entry.status !== 200).length,
+  canonicalMismatch: inventory.filter((entry) => entry.canonical !== `https://bettergrades.net${entry.path}`).length,
+  h1: inventory.filter((entry) => entry.h1Count !== 1).length,
+  main: inventory.filter((entry) => entry.mainCount !== 1).length,
+  duplicateLesson: rawAudit.filter((entry) => entry.substantiveLessonBodies > 1).length,
+  leak: rawAudit.filter((entry) => entry.leakFindings.length).length,
+  malformedMath: rawAudit.filter((entry) => entry.malformedMathFindings.length).length,
+};
+const rawFailureCount = Object.values(rawFailureCounts).reduce((sum, count) => sum + count, 0)
+  + duplicateGroups.exact.length
+  + duplicateGroups.near.length;
+const redirectFailureCount = redirectAudit.filter((entry) => !entry.oneHop).length;
+const crawlFailureCount = crawlRuns.reduce((sum, run) => sum + run.failures.length, 0);
+const failureCount = rawFailureCount + redirectFailureCount + crawlFailureCount;
 const report = {
   schemaVersion: 2,
   label,
@@ -265,6 +280,8 @@ const report = {
   malformedMathRouteCount: rawAudit.filter((entry) => entry.malformedMathFindings.length).length,
   duplicateGroups,
   workerBytes,
+  failureCount,
+  pass: failureCount === 0,
   routes: inventory,
 };
 
@@ -287,19 +304,13 @@ await Promise.all([
     sourceTree,
     buildHash,
     routeCount: routes.length,
-    failureCounts: {
-      unexpectedStatus: inventory.filter((entry) => entry.status !== 200).length,
-      canonicalMismatch: inventory.filter((entry) => entry.canonical !== `https://bettergrades.net${entry.path}`).length,
-      h1: inventory.filter((entry) => entry.h1Count !== 1).length,
-      main: inventory.filter((entry) => entry.mainCount !== 1).length,
-      duplicateLesson: rawAudit.filter((entry) => entry.substantiveLessonBodies > 1).length,
-      leak: rawAudit.filter((entry) => entry.leakFindings.length).length,
-      malformedMath: rawAudit.filter((entry) => entry.malformedMathFindings.length).length,
-    },
+    failureCount: rawFailureCount,
+    failureCounts: rawFailureCounts,
+    pass: rawFailureCount === 0,
     routes: rawAudit,
   }, null, 2)}\n`),
-  writeFile(resolve(artifactDirectory, `${label}-redirect-audit.json`), `${JSON.stringify({ schemaVersion: 2, label, generatedAt, sourceCommit, sourceTree, buildHash, redirectCount: redirectAudit.length, failureCount: redirectAudit.filter((entry) => !entry.oneHop).length, redirects: redirectAudit }, null, 2)}\n`),
-  writeFile(resolve(artifactDirectory, `crawl-load-${label === "baseline" ? "before" : "after"}.json`), `${JSON.stringify({ schemaVersion: 2, label, generatedAt, sourceCommit, sourceTree, buildHash, runs: crawlRuns }, null, 2)}\n`),
+  writeFile(resolve(artifactDirectory, `${label}-redirect-audit.json`), `${JSON.stringify({ schemaVersion: 2, label, generatedAt, sourceCommit, sourceTree, buildHash, redirectCount: redirectAudit.length, failureCount: redirectFailureCount, pass: redirectFailureCount === 0, redirects: redirectAudit }, null, 2)}\n`),
+  writeFile(resolve(artifactDirectory, `crawl-load-${label === "baseline" ? "before" : "after"}.json`), `${JSON.stringify({ schemaVersion: 2, label, generatedAt, sourceCommit, sourceTree, buildHash, failureCount: crawlFailureCount, pass: crawlFailureCount === 0, runs: crawlRuns }, null, 2)}\n`),
 ]);
 
 console.log(JSON.stringify({
@@ -310,20 +321,9 @@ console.log(JSON.stringify({
   duplicateLessonRouteCount: report.duplicateLessonRouteCount,
   leakRouteCount: report.leakRouteCount,
   malformedMathRouteCount: report.malformedMathRouteCount,
-  redirectFailureCount: redirectAudit.filter((entry) => !entry.oneHop).length,
-  crawlFailureCount: crawlRuns.reduce((sum, run) => sum + run.failures.length, 0),
+  redirectFailureCount,
+  crawlFailureCount,
   workerBytes,
 }, null, 2));
 
-const failureCount = report.unexpectedStatusCount
-  + report.canonicalMismatchCount
-  + report.h1ViolationCount
-  + report.mainViolationCount
-  + report.duplicateLessonRouteCount
-  + report.leakRouteCount
-  + report.malformedMathRouteCount
-  + duplicateGroups.exact.length
-  + duplicateGroups.near.length
-  + redirectAudit.filter((entry) => !entry.oneHop).length
-  + crawlRuns.reduce((sum, run) => sum + run.failures.length, 0);
 if (failureCount > 0) throw new Error(`SEO audit failed with ${failureCount} finding(s); inspect artifacts/seo/${label}-*.json`);

@@ -2,9 +2,10 @@
 
 /* eslint-disable @next/next/no-html-link-for-pages, @next/next/no-img-element -- canonical static routes and versioned instructional assets intentionally use document navigation */
 
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useState, type AnchorHTMLAttributes, type ReactNode } from "react";
 import type { MathGlossaryTerm } from "../lib/glossary/math/registry.mjs";
 import type { PublishingResource, ResourceHub, ResourceProblem } from "../lib/resources/catalog.mjs";
+import { isPdfHref, pdfLinkAttributes } from "../lib/resources/pdf-links.mjs";
 import { Math } from "./Math";
 
 declare global {
@@ -26,7 +27,8 @@ const typeLabels: Record<string, string> = {
 
 export type ResourceLinkSummary = Pick<PublishingResource, "id" | "canonicalPath" | "shortTitle">;
 export type ResourceCardSummary = Pick<PublishingResource, "id" | "canonicalPath" | "shortTitle" | "summary" | "resourceType" | "difficulty" | "course" | "problemCount" | "estimatedTime">;
-export type ResourceLibrarySummary = Pick<PublishingResource, "id" | "canonicalPath" | "shortTitle" | "summary" | "resourceType" | "difficulty" | "course" | "unit" | "problemCount" | "estimatedTime" | "studentPdf" | "answerKeyPdf" | "primaryVisual">;
+type AnalyticsResource = Pick<PublishingResource, "id" | "resourceType" | "course" | "unit" | "topics" | "difficulty">;
+export type ResourceLibrarySummary = Pick<PublishingResource, "id" | "canonicalPath" | "shortTitle" | "summary" | "resourceType" | "difficulty" | "course" | "unit" | "topics" | "problemCount" | "estimatedTime" | "studentPdf" | "answerKeyPdf" | "primaryVisual">;
 
 const hubLinks = [
   ["/subjects/math/calculus/worksheets/", "Worksheets"],
@@ -45,7 +47,7 @@ const libraryGroups = [
   ["glossary-term", "Glossary references", "Definitions, notation, examples, and common points of confusion."],
 ] as const;
 
-function eventDimensions(resource: PublishingResource) {
+function eventDimensions(resource: AnalyticsResource) {
   return {
     resource_id: resource.id,
     resource_type: resource.resourceType,
@@ -56,7 +58,7 @@ function eventDimensions(resource: PublishingResource) {
   };
 }
 
-function trackResource(event: string, resource: PublishingResource, extra: Record<string, string | number> = {}, onceKey?: string) {
+function trackResource(event: string, resource: AnalyticsResource, extra: Record<string, string | number> = {}, onceKey?: string) {
   if (typeof window === "undefined" || navigator.doNotTrack === "1") return;
   if (onceKey) {
     window.__bgResourceEvents ??= new Set();
@@ -70,6 +72,46 @@ function trackResource(event: string, resource: PublishingResource, extra: Recor
 
 export function trackPublishingResourceEvent(event: string, resource: PublishingResource, extra: Record<string, string | number> = {}) {
   trackResource(event, resource, extra);
+}
+
+type ResourceFileLinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href" | "resource"> & {
+  href: string;
+  resource: AnalyticsResource;
+  event: string;
+  fileType: string;
+  variant: string;
+};
+
+function ResourceFileLink({ href, resource, event, fileType, variant, children, onClick, ...props }: ResourceFileLinkProps) {
+  const pdf = isPdfHref(href);
+  return (
+    <a
+      {...props}
+      {...pdfLinkAttributes(href)}
+      href={href}
+      onClick={(clickEvent) => {
+        trackResource("resource_download", resource, { file_type: fileType, variant });
+        trackResource(event, resource, { file_type: fileType, variant });
+        onClick?.(clickEvent);
+      }}
+    >
+      {children}
+      {pdf && <span className="sr-only"> (opens in a new tab)</span>}
+    </a>
+  );
+}
+
+function primaryPdfEvent(resource: AnalyticsResource) {
+  if (resource.resourceType === "practice-exam") return "practice_exam_download";
+  if (resource.resourceType === "formula-sheet") return "formula_sheet_download";
+  if (resource.resourceType === "visual-guide") return "visual_download";
+  return "worksheet_download";
+}
+
+function primaryPdfVariant(resource: AnalyticsResource) {
+  if (resource.resourceType === "formula-sheet") return "reference";
+  if (resource.resourceType === "visual-guide") return "visual";
+  return "student";
 }
 
 function InlineMathText({ value }: { value: string }) {
@@ -151,10 +193,10 @@ function Breadcrumbs({ resource }: { resource?: PublishingResource }) {
 function LibraryDownloads({ resource }: { resource: ResourceLibrarySummary }) {
   if (!resource.studentPdf && !resource.answerKeyPdf && !resource.primaryVisual) return null;
   return <div className="resource-library-downloads" aria-label={`${resource.shortTitle} downloads`}>
-    {resource.studentPdf && <a href={resource.studentPdf}>Student PDF</a>}
-    {resource.answerKeyPdf && <a href={resource.answerKeyPdf}>Answer key</a>}
-    {resource.primaryVisual && <a href={`/visuals/resources/${resource.primaryVisual}.svg`}>SVG</a>}
-    {resource.primaryVisual && <a href={`/visuals/resources/${resource.primaryVisual}.png`}>PNG</a>}
+    {resource.studentPdf && <ResourceFileLink href={resource.studentPdf} resource={resource} event={primaryPdfEvent(resource)} fileType="pdf" variant={primaryPdfVariant(resource)}>Student PDF</ResourceFileLink>}
+    {resource.answerKeyPdf && <ResourceFileLink href={resource.answerKeyPdf} resource={resource} event="answer_key_download" fileType="pdf" variant="answer-key">Answer key</ResourceFileLink>}
+    {resource.primaryVisual && <ResourceFileLink href={`/visuals/resources/${resource.primaryVisual}.svg`} resource={resource} event="visual_download" fileType="svg" variant="visual">SVG</ResourceFileLink>}
+    {resource.primaryVisual && <ResourceFileLink href={`/visuals/resources/${resource.primaryVisual}.png`} resource={resource} event="visual_download" fileType="png" variant="visual">PNG</ResourceFileLink>}
   </div>;
 }
 
@@ -173,17 +215,13 @@ function RelatedLinks({ resource, relatedResources, enrichedGlossaryTermIds }: {
 
 function DownloadPanel({ resource }: { resource: PublishingResource }) {
   if (!resource.studentPdf && !resource.answerKeyPdf && !resource.primaryVisual) return null;
-  const download = (event: string, fileType: string) => {
-    trackResource("resource_download", resource, { file_type: fileType });
-    trackResource(event, resource, { file_type: fileType });
-  };
   return (
     <section className="resource-downloads" aria-labelledby="downloads-title">
       <div><span>Printable and accessible</span><h2 id="downloads-title">Download this resource</h2><p>No email address or account is required.</p></div>
       <div className="resource-download-actions">
-        {resource.studentPdf && <a className="button button-ink" href={resource.studentPdf} onClick={() => download(resource.resourceType === "practice-exam" ? "practice_exam_download" : resource.resourceType === "formula-sheet" ? "formula_sheet_download" : "worksheet_download", "pdf")}>Student PDF</a>}
-        {resource.answerKeyPdf && <a className="button button-ghost" href={resource.answerKeyPdf} onClick={() => download("answer_key_download", "pdf")}>Worked answer key PDF</a>}
-        {resource.primaryVisual && <><a className="button button-ghost" href={`/visuals/resources/${resource.primaryVisual}.svg`} onClick={() => download("visual_download", "svg")}>SVG</a><a className="button button-ghost" href={`/visuals/resources/${resource.primaryVisual}.png`} onClick={() => download("visual_download", "png")}>PNG</a></>}
+        {resource.studentPdf && <ResourceFileLink className="button button-ink" href={resource.studentPdf} resource={resource} event={primaryPdfEvent(resource)} fileType="pdf" variant={primaryPdfVariant(resource)}>Student PDF</ResourceFileLink>}
+        {resource.answerKeyPdf && <ResourceFileLink className="button button-ghost" href={resource.answerKeyPdf} resource={resource} event="answer_key_download" fileType="pdf" variant="answer-key">Worked answer key PDF</ResourceFileLink>}
+        {resource.primaryVisual && <><ResourceFileLink className="button button-ghost" href={`/visuals/resources/${resource.primaryVisual}.svg`} resource={resource} event="visual_download" fileType="svg" variant="visual">SVG</ResourceFileLink><ResourceFileLink className="button button-ghost" href={`/visuals/resources/${resource.primaryVisual}.png`} resource={resource} event="visual_download" fileType="png" variant="visual">PNG</ResourceFileLink></>}
         {resource.resourceType === "worksheet" && <button className="button button-ghost" type="button" onClick={() => { trackResource("worksheet_print", resource); window.print(); }}>Print HTML</button>}
       </div>
     </section>

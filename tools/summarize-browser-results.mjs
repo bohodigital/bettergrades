@@ -53,7 +53,7 @@ const report = {
   },
   tests,
   failures,
-  pass: failures.length === 0 && tests.length === 8,
+  pass: failures.length === 0 && tests.length === 10,
 };
 await writeFile(outputPath, `${JSON.stringify(report, null, 2)}\n`);
 console.log(JSON.stringify({ testCount: report.testCount, passedCount: report.passedCount, failedCount: report.failedCount, pass: report.pass }, null, 2));
