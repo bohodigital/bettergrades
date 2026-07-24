@@ -1,13 +1,13 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-24T01:19:41.354Z",
+  "generatedAt": "2026-07-24T02:05:15.138Z",
   "environment": "local-candidate",
   "browser": "Playwright Chromium",
-  "sourceCommit": "aa047e5f2cda36a8a3ddadf008aa6a7551ebf240",
-  "sourceTree": "6352d8d51640f4d33d650efd2ebb2e259ecead77",
-  "buildHash": "7f42bca29033780de1006162ee5c4954bc8142ef52e347afaa3ac16cd4c3fda2",
-  "testCount": 7,
-  "passedCount": 7,
+  "sourceCommit": "20c9db1101ae243cd1e2c2ee9466378c47f9bdd1",
+  "sourceTree": "318fb0a03d1db6506a40133be2bad1ccb06e9c01",
+  "buildHash": "97acede4dec5341eed55ce7c4a692da8a7ff1459f7e300dbc85347978239347a",
+  "testCount": 8,
+  "passedCount": 8,
   "failedCount": 0,
   "viewportMatrix": [
     {
@@ -33,7 +33,7 @@
     "keyboard-only focus",
     "print CSS"
   ],
-  "pageTypeCount": 14,
+  "pageTypeCount": 15,
   "analyticsEventsExercised": [
     "resource_view",
     "resource_download",
@@ -64,52 +64,59 @@
   },
   "tests": [
     {
+      "title": "calculus starts collapsed and the top-level Resources tab exposes the complete library",
+      "expectedStatus": "passed",
+      "status": "passed",
+      "durationMs": 666,
+      "errors": []
+    },
+    {
       "title": "desktop route matrix renders one complete document without overflow",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 9453,
+      "durationMs": 10068,
       "errors": []
     },
     {
       "title": "tablet route matrix renders one complete document without overflow",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 9360,
+      "durationMs": 9976,
       "errors": []
     },
     {
       "title": "mobile route matrix renders one complete document without overflow",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 9612,
+      "durationMs": 10440,
       "errors": []
     },
     {
       "title": "JavaScript-disabled educational pages preserve static content and suppress controls",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 583,
+      "durationMs": 610,
       "errors": []
     },
     {
       "title": "keyboard focus, dark mode, and print CSS remain usable",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 1292,
+      "durationMs": 1396,
       "errors": []
     },
     {
       "title": "downloads, redirect, answer reveal, and practice controls work",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 982,
+      "durationMs": 1109,
       "errors": []
     },
     {
       "title": "every resource analytics event fires through both sinks with safe dimensions and respects Do Not Track",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 3295,
+      "durationMs": 3580,
       "errors": []
     }
   ],

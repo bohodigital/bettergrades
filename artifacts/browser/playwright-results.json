@@ -1,7 +1,7 @@
 {
   "config": {
-    "configFile": "/Users/darksmarskin/Documents/local2/worktrees/bettergrades-release-b-qa-closeout-20260723/playwright.config.mjs",
-    "rootDir": "/Users/darksmarskin/Documents/local2/worktrees/bettergrades-release-b-qa-closeout-20260723/tests/browser",
+    "configFile": "/Users/darksmarskin/Documents/local2/worktrees/bettergrades-resources-nav-20260723/playwright.config.mjs",
+    "rootDir": "/Users/darksmarskin/Documents/local2/worktrees/bettergrades-resources-nav-20260723/tests/browser",
     "forbidOnly": false,
     "fullyParallel": false,
     "globalSetup": null,
@@ -16,7 +16,7 @@
     "preserveOutput": "always",
     "projects": [
       {
-        "outputDir": "/Users/darksmarskin/Documents/local2/worktrees/bettergrades-release-b-qa-closeout-20260723/artifacts/browser/playwright-output",
+        "outputDir": "/Users/darksmarskin/Documents/local2/worktrees/bettergrades-resources-nav-20260723/artifacts/browser/playwright-output",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
@@ -24,7 +24,7 @@
         },
         "id": "",
         "name": "",
-        "testDir": "/Users/darksmarskin/Documents/local2/worktrees/bettergrades-release-b-qa-closeout-20260723/tests/browser",
+        "testDir": "/Users/darksmarskin/Documents/local2/worktrees/bettergrades-resources-nav-20260723/tests/browser",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -71,6 +71,40 @@
       "line": 0,
       "specs": [
         {
+          "title": "calculus starts collapsed and the top-level Resources tab exposes the complete library",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 666,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-07-24T02:05:16.092Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "105d5dd910e5ce979523-55f15433c08397db3b6c",
+          "file": "release-b.spec.mjs",
+          "line": 21,
+          "column": 1
+        },
+        {
           "title": "desktop route matrix renders one complete document without overflow",
           "ok": true,
           "tags": [],
@@ -86,12 +120,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 9453,
+                  "duration": 10068,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-24T01:19:42.284Z",
+                  "startTime": "2026-07-24T02:05:17.500Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -101,7 +135,7 @@
           ],
           "id": "105d5dd910e5ce979523-dff9e5fcc0f0e72af9fc",
           "file": "release-b.spec.mjs",
-          "line": 26,
+          "line": 40,
           "column": 3
         },
         {
@@ -120,12 +154,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 9360,
+                  "duration": 9976,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-24T01:19:52.291Z",
+                  "startTime": "2026-07-24T02:05:27.576Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -135,7 +169,7 @@
           ],
           "id": "105d5dd910e5ce979523-170ce566e5d6411a9d57",
           "file": "release-b.spec.mjs",
-          "line": 26,
+          "line": 40,
           "column": 3
         },
         {
@@ -154,12 +188,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 9612,
+                  "duration": 10440,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-24T01:20:01.658Z",
+                  "startTime": "2026-07-24T02:05:37.560Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -169,7 +203,7 @@
           ],
           "id": "105d5dd910e5ce979523-1881deeaf7679cc8eba8",
           "file": "release-b.spec.mjs",
-          "line": 26,
+          "line": 40,
           "column": 3
         },
         {
@@ -188,12 +222,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 583,
+                  "duration": 610,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-24T01:20:11.279Z",
+                  "startTime": "2026-07-24T02:05:48.009Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -203,7 +237,7 @@
           ],
           "id": "105d5dd910e5ce979523-de6ff505dfdf7ce57464",
           "file": "release-b.spec.mjs",
-          "line": 57,
+          "line": 71,
           "column": 1
         },
         {
@@ -222,12 +256,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1292,
+                  "duration": 1396,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-24T01:20:11.873Z",
+                  "startTime": "2026-07-24T02:05:48.627Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -237,7 +271,7 @@
           ],
           "id": "105d5dd910e5ce979523-813b3547905695e61af8",
           "file": "release-b.spec.mjs",
-          "line": 74,
+          "line": 88,
           "column": 1
         },
         {
@@ -256,12 +290,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 982,
+                  "duration": 1109,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-24T01:20:13.173Z",
+                  "startTime": "2026-07-24T02:05:50.035Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -271,7 +305,7 @@
           ],
           "id": "105d5dd910e5ce979523-d558b9d6979ad3a6c1d3",
           "file": "release-b.spec.mjs",
-          "line": 99,
+          "line": 113,
           "column": 1
         },
         {
@@ -290,12 +324,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3295,
+                  "duration": 3580,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-24T01:20:14.162Z",
+                  "startTime": "2026-07-24T02:05:51.155Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -305,7 +339,7 @@
           ],
           "id": "105d5dd910e5ce979523-f9b3d8ddcf0a917373f5",
           "file": "release-b.spec.mjs",
-          "line": 120,
+          "line": 134,
           "column": 1
         }
       ]
@@ -313,9 +347,9 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-07-24T01:19:41.354Z",
-    "duration": 36176.128,
-    "expected": 7,
+    "startTime": "2026-07-24T02:05:15.138Z",
+    "duration": 39687.322,
+    "expected": 8,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0
