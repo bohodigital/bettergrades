@@ -83,8 +83,8 @@ export default async function CatchAllPage({
   const libraryResources = path === "/resources/"
     ? publishedResourcePages
       .filter((resource) => resource.status === "published" && resource.indexPolicy === "index")
-      .map(({ id, canonicalPath, shortTitle, summary, resourceType, difficulty, course, unit, problemCount, estimatedTime, studentPdf, answerKeyPdf, primaryVisual }) => ({
-        id, canonicalPath, shortTitle, summary, resourceType, difficulty, course, unit, problemCount, estimatedTime, studentPdf, answerKeyPdf, primaryVisual,
+      .map(({ id, canonicalPath, shortTitle, summary, resourceType, difficulty, course, unit, topics, problemCount, estimatedTime, studentPdf, answerKeyPdf, primaryVisual }) => ({
+        id, canonicalPath, shortTitle, summary, resourceType, difficulty, course, unit, topics, problemCount, estimatedTime, studentPdf, answerKeyPdf, primaryVisual,
       }))
     : undefined;
   const hubResources = resourceHub

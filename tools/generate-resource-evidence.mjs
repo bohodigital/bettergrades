@@ -1,5 +1,7 @@
+import { execFileSync } from "node:child_process";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { pagesPackageHash } from "../lib/seo/build-hash.mjs";
 import {
   flagshipResources,
   enrichedGlossaryResources,
@@ -13,6 +15,10 @@ const artifactRoot = resolve(root, "artifacts/seo");
 const dataRoot = resolve(root, "data/seo");
 const docsRoot = resolve(root, "docs/seo");
 await Promise.all([mkdir(artifactRoot, { recursive: true }), mkdir(dataRoot, { recursive: true }), mkdir(docsRoot, { recursive: true })]);
+const sourceCommit = execFileSync("git", ["rev-parse", "HEAD"], { cwd: root, encoding: "utf8" }).trim();
+const sourceTree = execFileSync("git", ["rev-parse", "HEAD^{tree}"], { cwd: root, encoding: "utf8" }).trim();
+const buildHash = await pagesPackageHash(resolve(root, "dist", "pages"));
+const generatedAt = new Date().toISOString();
 
 const hubFor = (resource) => resource.resourceType === "worked-problem"
   ? "/subjects/math/calculus/worked-problems/"
@@ -54,13 +60,20 @@ const orphanResources = [...indexable].filter((path) => (incoming.get(path) ?? 0
 if (orphanResources.length) throw new Error(`Indexable resource orphans: ${orphanResources.join(", ")}`);
 
 const graph = {
-  generatedAt: "2026-07-23T00:00:00Z",
+  schemaVersion: 2,
+  generatedAt,
+  environment: "local-candidate",
+  sourceCommit,
+  sourceTree,
+  buildHash,
   nodeCount: nodes.length,
   edgeCount: edges.length,
   contextualEdgeCount: edges.filter((edge) => edge.contextual).length,
+  failureCount: orphanResources.length,
   orphanIndexableResources: orphanResources,
   nodes: nodes.map((path) => ({ path, incoming: incoming.get(path) ?? 0, outgoing: edges.filter((edge) => edge.from === path).length, indexableResource: indexable.has(path) })),
   edges,
+  pass: orphanResources.length === 0,
 };
 await writeFile(resolve(artifactRoot, "internal-link-graph.json"), `${JSON.stringify(graph, null, 2)}\n`, "utf8");
 await writeFile(resolve(artifactRoot, "internal-link-graph.csv"), `from,to,link_type,contextual\n${edges.map((edge) => [edge.from, edge.to, edge.linkType, edge.contextual].map((value) => `"${String(value).replaceAll('"', '""')}"`).join(",")).join("\n")}\n`, "utf8");
@@ -92,7 +105,26 @@ for (const file of sitemapFiles) {
     validRoot: file === "sitemap-images.xml" ? /<urlset[^>]+xmlns:image=/.test(xml) : /<urlset /.test(xml),
   });
 }
-await writeFile(resolve(artifactRoot, "sitemap-verification.json"), `${JSON.stringify({ generatedAt: "2026-07-23T00:00:00Z", sitemaps: sitemapEvidence }, null, 2)}\n`, "utf8");
+const sitemapFailures = sitemapEvidence.flatMap((sitemap) => [
+  ...(!sitemap.canonicalHostOnly ? [`${sitemap.file}: noncanonical-host`] : []),
+  ...(!sitemap.unique ? [`${sitemap.file}: duplicate-url`] : []),
+  ...(sitemap.hasPreviewHost ? [`${sitemap.file}: preview-host`] : []),
+  ...(!sitemap.validRoot ? [`${sitemap.file}: invalid-root`] : []),
+]);
+await writeFile(resolve(artifactRoot, "sitemap-verification.json"), `${JSON.stringify({
+  schemaVersion: 2,
+  generatedAt,
+  environment: "local-candidate",
+  sourceCommit,
+  sourceTree,
+  buildHash,
+  sitemapCount: sitemapEvidence.length,
+  urlCount: sitemapEvidence.reduce((sum, sitemap) => sum + sitemap.urlCount, 0),
+  failureCount: sitemapFailures.length,
+  failures: sitemapFailures,
+  sitemaps: sitemapEvidence,
+  pass: sitemapFailures.length === 0,
+}, null, 2)}\n`, "utf8");
 
 await writeFile(resolve(docsRoot, "INTERNAL_LINKING_REPORT.md"), `# BetterGrades Internal Linking Report
 
