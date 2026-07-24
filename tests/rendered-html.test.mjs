@@ -114,7 +114,9 @@ test("subject and course hubs expose the organized math library", async () => {
   assert.match(html, /data-chapter="2"[\s\S]*Unit 2A[\s\S]*Unit 2B/);
   assert.match(html, /data-chapter="3"[\s\S]*Unit 3A[\s\S]*Unit 3B/);
   assert.match(html, /data-chapter="4"[\s\S]*Sequences and Series/);
+  assert.doesNotMatch(html, /data-chapter="1" open/);
   assert.match(html, /Browse every course and resource/);
+  assert.match(html, /href="\/resources\/"[\s\S]*Open the resource library/);
   assert.doesNotMatch(html, /Applications of Derivatives[\s\S]*Open topic/);
 
   const algebra = await render("/subjects/math/algebra/");
@@ -132,12 +134,30 @@ test("sitewide navigation exposes the calculus hierarchy on desktop and mobile",
   const html = await response.text();
   assert.match(html, /class="desktop-learn-menu"/);
   assert.match(html, /class="mobile-course-menu"/);
+  assert.match(html, /href="\/resources\/"[^>]*>Resources/);
   assert.match(html, /Chapter 2[\s\S]*Derivatives · Units 2A and 2B/);
   assert.match(html, /Chapter 3[\s\S]*Integrals · Units 3A and 3B/);
   assert.match(html, /Calculus I · Chapter 2/);
   assert.match(visibleText(html), /Browse Chapter 2 sections/);
   assert.match(html, /Unit 2A sections/);
   assert.match(html, /Unit 2B sections/);
+});
+
+test("the top-level resource library links every published resource and document", async () => {
+  const response = await render("/resources/");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /Everything printable, visual, and worked through/);
+  assert.match(html, /63<\/b> published resources/);
+  for (const resource of publishedResourcePages) {
+    assert.match(html, new RegExp(`href="${resource.canonicalPath.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"`), resource.id);
+    if (resource.studentPdf) assert.match(html, new RegExp(`href="${resource.studentPdf.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"`), `${resource.id}: student PDF`);
+    if (resource.answerKeyPdf) assert.match(html, new RegExp(`href="${resource.answerKeyPdf.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"`), `${resource.id}: answer key`);
+    if (resource.primaryVisual) {
+      assert.match(html, new RegExp(`href="\\/visuals\\/resources\\/${resource.primaryVisual}\\.svg"`), `${resource.id}: SVG`);
+      assert.match(html, new RegExp(`href="\\/visuals\\/resources\\/${resource.primaryVisual}\\.png"`), `${resource.id}: PNG`);
+    }
+  }
 });
 
 test("derivative and integral parts remain one labeled, inter-navigable chapter", async () => {

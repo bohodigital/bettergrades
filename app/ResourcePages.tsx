@@ -26,6 +26,7 @@ const typeLabels: Record<string, string> = {
 
 export type ResourceLinkSummary = Pick<PublishingResource, "id" | "canonicalPath" | "shortTitle">;
 export type ResourceCardSummary = Pick<PublishingResource, "id" | "canonicalPath" | "shortTitle" | "summary" | "resourceType" | "difficulty" | "course" | "problemCount" | "estimatedTime">;
+export type ResourceLibrarySummary = Pick<PublishingResource, "id" | "canonicalPath" | "shortTitle" | "summary" | "resourceType" | "difficulty" | "course" | "unit" | "problemCount" | "estimatedTime" | "studentPdf" | "answerKeyPdf" | "primaryVisual">;
 
 const hubLinks = [
   ["/subjects/math/calculus/worksheets/", "Worksheets"],
@@ -33,6 +34,15 @@ const hubLinks = [
   ["/subjects/math/calculus/formula-sheets/", "Formula Sheets"],
   ["/subjects/math/calculus/worked-problems/", "Worked Problems"],
   ["/subjects/math/calculus/visuals/", "Visual Guides"],
+] as const;
+
+const libraryGroups = [
+  ["worksheet", "Worksheets", "Focused printable practice with complete worked solutions."],
+  ["practice-exam", "Practice exams", "Timed cumulative exams, student copies, and complete answer keys."],
+  ["formula-sheet", "Formula sheets", "Compact references that explain when each rule applies."],
+  ["visual-guide", "Visual guides", "Downloadable diagrams for geometric and conceptual reasoning."],
+  ["worked-problem", "Worked problems", "One carefully chosen problem with an explicit method and derivation."],
+  ["glossary-term", "Glossary references", "Definitions, notation, examples, and common points of confusion."],
 ] as const;
 
 function eventDimensions(resource: PublishingResource) {
@@ -136,6 +146,16 @@ function Breadcrumbs({ resource }: { resource?: PublishingResource }) {
       {resource ? <><a href={`/subjects/math/calculus/${resource.resourceType === "worked-problem" ? "worked-problems" : resource.resourceType === "visual-guide" ? "visuals" : resource.resourceType === "practice-exam" ? "practice-exams" : resource.resourceType === "formula-sheet" ? "formula-sheets" : "worksheets"}/`}>{typeLabels[resource.resourceType]}</a><span>/</span><span aria-current="page">{resource.shortTitle}</span></> : <span aria-current="page">Resource library</span>}
     </nav>
   );
+}
+
+function LibraryDownloads({ resource }: { resource: ResourceLibrarySummary }) {
+  if (!resource.studentPdf && !resource.answerKeyPdf && !resource.primaryVisual) return null;
+  return <div className="resource-library-downloads" aria-label={`${resource.shortTitle} downloads`}>
+    {resource.studentPdf && <a href={resource.studentPdf}>Student PDF</a>}
+    {resource.answerKeyPdf && <a href={resource.answerKeyPdf}>Answer key</a>}
+    {resource.primaryVisual && <a href={`/visuals/resources/${resource.primaryVisual}.svg`}>SVG</a>}
+    {resource.primaryVisual && <a href={`/visuals/resources/${resource.primaryVisual}.png`}>PNG</a>}
+  </div>;
 }
 
 function RelatedLinks({ resource, relatedResources, enrichedGlossaryTermIds }: { resource: PublishingResource; relatedResources: readonly ResourceLinkSummary[]; enrichedGlossaryTermIds: readonly string[] }) {
@@ -289,6 +309,42 @@ export function ResourceHubPage({ hub, resources }: { hub: ResourceHub; resource
       <section className="resource-hub-intro"><h2>Choose by course and purpose</h2><p>The sequential calculus course remains the best path for first learning. Use this library for focused practice, exam preparation, printable reference, or a second explanation of one method.</p></section>
       {groups.map((group) => <section className="resource-hub-group" key={group.course}><h2>{group.course}</h2><div className="resource-card-grid">{group.resources.map((resource) => <a href={resource.canonicalPath} className="resource-card" key={resource.id}><span>{typeLabels[resource.resourceType]} · {resource.difficulty}</span><h3>{resource.shortTitle}</h3><p>{resource.summary}</p><b>{resource.problemCount ? `${resource.problemCount} problems` : `${resource.estimatedTime}-minute guide`} →</b></a>)}</div></section>)}
       <section className="resource-course-return"><h2>Following the full course?</h2><p>Return to the calculus course map for the complete sequence of lessons, concept checks, practice, and exams.</p><a className="button button-ink" href="/subjects/math/calculus/">Open the calculus course map</a></section>
+    </div>
+  );
+}
+
+export function ResourceLibraryPage({ resources }: { resources: readonly ResourceLibrarySummary[] }) {
+  const downloadableCount = resources.reduce((count, resource) => count + Number(Boolean(resource.studentPdf)) + Number(Boolean(resource.answerKeyPdf)) + (resource.primaryVisual ? 2 : 0), 0);
+  return (
+    <div className="resource-hub resource-library">
+      <nav className="resource-breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><span aria-current="page">Resources</span></nav>
+      <header className="resource-hero">
+        <span>Better Grades resource library</span>
+        <h1>Everything printable, visual, and worked through.</h1>
+        <p>Browse every published worksheet, practice exam, formula sheet, visual guide, worked problem, and glossary reference. Open the web version or go straight to the available document download.</p>
+        <div className="resource-facts"><span><b>{resources.length}</b> published resources</span><span><b>{downloadableCount}</b> direct downloads</span><span><b>Free</b> complete access</span></div>
+      </header>
+      <nav className="resource-library-categories" aria-label="Resource categories">
+        {libraryGroups.map(([type, title]) => <a href={`#${type}`} key={type}>{title}<span>{resources.filter((resource) => resource.resourceType === type).length}</span></a>)}
+      </nav>
+      <section className="resource-hub-intro"><h2>Choose the format that fits the job</h2><p>Use worksheets and exams when you need practice, formula sheets and visuals when you need a reference, and worked problems or glossary entries when one specific idea is slowing you down.</p></section>
+      {libraryGroups.map(([type, title, description]) => {
+        const group = resources.filter((resource) => resource.resourceType === type);
+        return <section className="resource-library-group" id={type} key={type}>
+          <header><div><span>{String(group.length).padStart(2, "0")} resources</span><h2>{title}</h2></div><p>{description}</p></header>
+          <div className="resource-library-grid">
+            {group.map((resource) => <article className="resource-library-card" key={resource.id}>
+              <div><span>{resource.course} · {resource.unit}</span><h3><a href={resource.canonicalPath}>{resource.shortTitle}</a></h3><p>{resource.summary}</p></div>
+              <div className="resource-library-card-footer">
+                <small>{resource.problemCount ? `${resource.problemCount} problems` : `${resource.estimatedTime}-minute reference`} · {resource.difficulty}</small>
+                <a className="resource-library-open" href={resource.canonicalPath}>Open resource <span aria-hidden="true">→</span></a>
+                <LibraryDownloads resource={resource} />
+              </div>
+            </article>)}
+          </div>
+        </section>;
+      })}
+      <section className="resource-course-return"><h2>Learning calculus in order?</h2><p>The resource library is organized by format. The calculus course map remains the better route when you want a complete lesson sequence.</p><a className="button button-ink" href="/subjects/math/calculus/">Open the calculus course map</a></section>
     </div>
   );
 }

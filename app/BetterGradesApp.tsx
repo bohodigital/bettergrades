@@ -19,7 +19,7 @@ import { Formula, Math, MathOrText } from "./Math";
 import { PageGlossaryTerms } from "./PageGlossaryTerms";
 
 const nav = [
-  ["Practice", "/practice/"], ["Tools", "/tools/"], ["Glossary", "/glossary/math/"],
+  ["Resources", "/resources/"], ["Practice", "/practice/"], ["Tools", "/tools/"], ["Glossary", "/glossary/math/"],
 ];
 
 const calculusChapterLinks = [
@@ -141,7 +141,7 @@ function Footer() {
     <footer className="site-footer">
       <div className="footer-grid">
         <div><Link href="/" className="brand footer-brand"><span className="brand-mark">≥</span><span>Better Grades</span></Link><p>The answer is free.<br />Understanding it is the point.</p></div>
-        <div><strong>Explore</strong><Link href="/subjects/">Subjects</Link><Link href="/answers/">Answers</Link><Link href="/tools/">Tools</Link><Link href="/practice/">Practice</Link><Link href="/glossary/math/">Math glossary</Link></div>
+        <div><strong>Explore</strong><Link href="/subjects/">Subjects</Link><Link href="/resources/">Resources</Link><Link href="/answers/">Answers</Link><Link href="/tools/">Tools</Link><Link href="/practice/">Practice</Link><Link href="/glossary/math/">Math glossary</Link></div>
         <div><strong>Standards</strong><Link href="/glossary/math/conventions/">Math conventions</Link><Link href="/how-we-verify/">How we verify</Link><Link href="/editorial-policy/">Editorial policy</Link><Link href="/source-policy/">Sources & licensing</Link><Link href="/corrections/">Corrections</Link></div>
         <div><strong>About</strong><Link href="/about/">Why Better Grades</Link><Link href="/privacy/">Privacy</Link><Link href="/accessibility/">Accessibility</Link></div>
       </div>
