@@ -1,6 +1,6 @@
 # BetterGrades Calculus Traffic Engine — Release B
 
-Release B is live and accepted at the engineering gates described below. It adds the resource contract, templates, static PDF pipeline, hubs, ten flagship clusters, worked problems, enriched glossary pages, promoted visuals, segmented sitemaps, internal-link graph, privacy-respecting resource events, complete top-level Resources navigation, and safe accessible new-tab behavior for every public PDF.
+Release B is live and has passed the engineering gates described below. It adds the resource contract, templates, static PDF pipeline, hubs, ten flagship clusters, worked problems, enriched glossary pages, promoted visuals, segmented sitemaps, internal-link graph, privacy-respecting resource events, complete top-level Resources navigation, and safe accessible new-tab behavior for every public PDF.
 
 ## Source history
 
@@ -68,5 +68,14 @@ The 11 segmented sitemap files contain 518 URL or image-location entries:
 - Redirect, sitemap, canonical, robots, duplicate-body, leak, malformed-math, crawl-load, mobile, print, JavaScript-disabled, console, required-network, event-duplication, and Do Not Track findings: 0
 - Live apex analytics installation: one GA4 loader, one GA4 bootstrap/config, and one Umami loader
 - Live Resources library: 21 PDF links, all 21 native, new-tab, `noopener`, screen-reader disclosed, and without `download`
+
+The timestamped, machine-readable production evidence is preserved in:
+
+- `artifacts/production/live-release-binding.json`
+- `artifacts/production/live-http-verification.json`
+- `artifacts/production/live-browser-verification.json`
+- `artifacts/production/live-browser-results.json`
+
+The release-binding artifact ties the immutable production deployment and both raw verification records to the final merge commit, matching merge tree, exact Pages package hash, and Worker hash.
 
 Release B has no database migration, runtime-data migration, DNS change, binding change, project replacement, credential rotation, ownership change, or billing change.

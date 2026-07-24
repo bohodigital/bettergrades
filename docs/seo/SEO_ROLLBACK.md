@@ -4,7 +4,7 @@
 
 | State | Source | Immutable deployment |
 |---|---|---|
-| Final accepted Release B | `40d9aa4de5122c75bff7ec519b393be9042e242f` | `https://7029f1e2.bettergrades-vhc.pages.dev` |
+| Final deployed Release B | `40d9aa4de5122c75bff7ec519b393be9042e242f` | `https://7029f1e2.bettergrades-vhc.pages.dev` |
 | Previous corrected Release B | `552e5041a0e5ba31829cb017337b1a92a077f27b` | `https://10ace1bb.bettergrades-vhc.pages.dev` |
 | Original Release B | PR 43-era source | `https://4c145136.bettergrades-vhc.pages.dev` |
 | Accepted Release A recovery | `b88496d53f73c0d23f5a890d07e1acfc38966b72` | `https://2cf44708.bettergrades-vhc.pages.dev` |

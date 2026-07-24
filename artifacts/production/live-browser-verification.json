@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-24T17:53:28.737Z",
+  "environment": "live-production",
+  "immutableBaseURL": "https://7029f1e2.bettergrades-vhc.pages.dev",
+  "sourceCommit": "40d9aa4de5122c75bff7ec519b393be9042e242f",
+  "sourceTree": "f41713fb9565f29cd7a2cd4fe3b4a8c1a81d5e6c",
+  "pagesPackageSha256": "aeb370da44b26c4c413fba71a487b5b9378e6f2fd34a7dd64994c71c532c67c4",
+  "rawResultArtifact": "artifacts/production/live-browser-results.json",
+  "rawResultSha256": "41fb94295b2e332d60de441289a13ffc768e6fd2b6404d5c94ee8e456af85e48",
+  "startedAt": "2026-07-24T17:52:35.062Z",
+  "durationMs": 53675.548,
+  "expected": 10,
+  "skipped": 0,
+  "unexpected": 0,
+  "flaky": 0,
+  "pass": true,
+  "assertions": [
+    "calculus continuity overview starts collapsed",
+    "top-level Resources navigation exposes the complete library",
+    "desktop, tablet, and mobile route matrices render without overflow",
+    "JavaScript-disabled educational content and PDF anchors remain available",
+    "keyboard focus, dark mode, and print CSS remain usable",
+    "downloads, redirect, answer reveal, and practice controls work",
+    "PDF anchors open a new tab, prevent opener access, and retain accessible disclosure",
+    "resource events reach GA4 and Umami exactly once with safe dimensions",
+    "Do Not Track suppresses resource-event analytics",
+    "no required-network or console failures occurred"
+  ],
+  "tests": [
+    {
+      "title": "release-b.spec.mjs > calculus starts collapsed and the top-level Resources tab exposes the complete library",
+      "status": "passed",
+      "durationMs": 1016,
+      "errors": []
+    },
+    {
+      "title": "release-b.spec.mjs > desktop route matrix renders one complete document without overflow",
+      "status": "passed",
+      "durationMs": 12873,
+      "errors": []
+    },
+    {
+      "title": "release-b.spec.mjs > tablet route matrix renders one complete document without overflow",
+      "status": "passed",
+      "durationMs": 11154,
+      "errors": []
+    },
+    {
+      "title": "release-b.spec.mjs > mobile route matrix renders one complete document without overflow",
+      "status": "passed",
+      "durationMs": 11595,
+      "errors": []
+    },
+    {
+      "title": "release-b.spec.mjs > JavaScript-disabled educational pages preserve static content and suppress controls",
+      "status": "passed",
+      "durationMs": 870,
+      "errors": []
+    },
+    {
+      "title": "release-b.spec.mjs > keyboard focus, dark mode, and print CSS remain usable",
+      "status": "passed",
+      "durationMs": 1564,
+      "errors": []
+    },
+    {
+      "title": "release-b.spec.mjs > downloads, redirect, answer reveal, and practice controls work",
+      "status": "passed",
+      "durationMs": 1355,
+      "errors": []
+    },
+    {
+      "title": "release-b.spec.mjs > PDF links use native accessible new tabs and preserve one analytics event pair",
+      "status": "passed",
+      "durationMs": 1982,
+      "errors": []
+    },
+    {
+      "title": "release-b.spec.mjs > PDF links remain native new-tab anchors when JavaScript is disabled",
+      "status": "passed",
+      "durationMs": 5626,
+      "errors": []
+    },
+    {
+      "title": "release-b.spec.mjs > every resource analytics event fires through both sinks with safe dimensions and respects Do Not Track",
+      "status": "passed",
+      "durationMs": 4175,
+      "errors": []
+    }
+  ]
+}
