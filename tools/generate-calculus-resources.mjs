@@ -2,31 +2,48 @@ import { createHash } from "node:crypto";
 import { access, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { spawnSync } from "node:child_process";
 import { dirname, resolve } from "node:path";
+import { readableMath } from "../lib/math-readable.mjs";
 
 const root = process.cwd();
 const check = process.argv.includes("--check");
 const revisionDate = "2026-07-23";
 const canonicalHost = "https://bettergrades.net";
 const catalogPath = resolve(root, "content/calculus/resources/catalog.json");
-const verificationPath = resolve(root, "artifacts/seo/mathematical-verification.json");
 const pdfVerificationPath = resolve(root, "artifacts/seo/pdf-verification.json");
 const headersPath = resolve(root, "public/_headers");
 const assetRoot = resolve(root, "public/downloads/calculus");
 const visualRoot = resolve(root, "public/visuals/resources");
+const deterministicEnvironment = {
+  ...process.env,
+  SOURCE_DATE_EPOCH: String(Date.UTC(2026, 6, 23, 0, 0, 0) / 1000),
+  TZ: "UTC",
+};
 
 const sha256 = (value) => createHash("sha256").update(value).digest("hex");
+const readablePrompt = (value) => value
+  .replace(/\\\(([\s\S]*?)\\\)/g, (_, tex) => readableMath(tex))
+  .replace(/\s+/g, " ")
+  .trim();
 const p = (id, prompt, answer, steps, method, commonError, verificationMethod = "symbolic-recomputation") => ({
-  id, prompt, answer, steps, method, commonError, verificationMethod,
+  id,
+  prompt,
+  answer,
+  steps: steps.some((step) => step.includes(answer))
+    ? steps
+    : [...steps, `Therefore the result is ${answer}.`],
+  method,
+  commonError,
+  verificationMethod,
 });
 
 function limitProblems() {
   const direct = [
-    [1, "lim_{x\\to2}(3x^2-5x+4)", "6"],
-    [-2, "lim_{x\\to-2}(x^3+4x)", "-16"],
-    [3, "lim_{t\\to3}\\frac{t^2+1}{t+2}", "2"],
-    [0, "lim_{h\\to0}(7-4h+h^2)", "7"],
-    [1, "lim_{u\\to1}\\sqrt{u+8}", "3"],
-    [4, "lim_{x\\to4}\\frac{x+5}{\\sqrt{x}}", "\\frac92"],
+    [2, "\\lim_{x\\to2}(3x^2-5x+4)", "6"],
+    [-2, "\\lim_{x\\to-2}(x^3+4x)", "-16"],
+    [3, "\\lim_{t\\to3}\\frac{t^2+1}{t+2}", "2"],
+    [0, "\\lim_{h\\to0}(7-4h+h^2)", "7"],
+    [1, "\\lim_{u\\to1}\\sqrt{u+8}", "3"],
+    [4, "\\lim_{x\\to4}\\frac{x+5}{\\sqrt{x}}", "\\frac92"],
   ].map(([x, tex, answer], i) => p(`limits-direct-${i + 1}`, `Evaluate \\(${tex}\\).`, `\\(${answer}\\)`, [
     `The expression is continuous at the target input \\(${x}\\).`,
     `Substitute the target and simplify to obtain \\(${answer}\\).`,
@@ -54,15 +71,26 @@ function limitProblems() {
     `Substitution in the simplified expression gives \\(${answer}\\).`,
   ], "Rationalization", "Multiplying by a conjugate without applying it to both numerator and denominator.", "symbolic-rationalization"));
   const oneSided = [
-    ["f(x)=\\begin{cases}x+2,&x<1\\\\4-x,&x\\ge1\\end{cases}", "x\\to1^-", "3"],
-    ["f(x)=\\begin{cases}2x,&x<0\\\\x^2+1,&x\\ge0\\end{cases}", "x\\to0^+", "1"],
-    ["g(x)=\\frac{|x|}{x}", "x\\to0^-", "-1"],
-    ["h(x)=\\begin{cases}x^2,&x\\le2\\\\6-x,&x>2\\end{cases}", "x\\to2", "4"],
-  ].map(([definition, approach, answer], i) => p(`limits-sided-${i + 1}`, `For \\(${definition}\\), evaluate the limit as \\(${approach}\\).`, `\\(${answer}\\)`, [
-    "Select the branch determined by the direction of approach.",
-    "Evaluate nearby behavior on that branch; the value assigned at the endpoint does not control the limit.",
-    `The required approach gives \\(${answer}\\).`,
-  ], "One-sided branch analysis", "Using the branch selected by the endpoint equality instead of the approach direction.", "endpoint-and-branch-check"));
+    ["f(x)=\\begin{cases}x+2,&x<1\\\\4-x,&x\\ge1\\end{cases}", "x\\to1^-", "3", [
+      "Approaching from the left selects the branch \\(f(x)=x+2\\).",
+      "As \\(x\\to1^-\\), \\(x+2\\to3\\); the value assigned by the other branch at the endpoint does not control this one-sided limit.",
+    ]],
+    ["f(x)=\\begin{cases}2x,&x<0\\\\x^2+1,&x\\ge0\\end{cases}", "x\\to0^+", "1", [
+      "Approaching from the right selects the branch \\(f(x)=x^2+1\\).",
+      "As \\(x\\to0^+\\), \\(x^2+1\\to1\\).",
+    ]],
+    ["g(x)=\\frac{|x|}{x}", "x\\to0^-", "-1", [
+      "For \\(x<0\\), \\(|x|=-x\\), so \\(g(x)=(-x)/x=-1\\).",
+      "Therefore the values remain \\(-1\\) as \\(x\\to0^-\\).",
+    ]],
+    ["h(x)=\\begin{cases}x^2,&x\\le2\\\\6-x,&x>2\\end{cases}", "x\\to2", "4", [
+      "As \\(x\\to2^-\\), the branch \\(x^2\\) approaches \\(4\\).",
+      "As \\(x\\to2^+\\), the branch \\(6-x\\) approaches \\(4\\).",
+      "Because both one-sided limits equal \\(4\\), the two-sided limit is \\(4\\).",
+    ]],
+  ].map(([definition, approach, answer, steps], i) => p(`limits-sided-${i + 1}`, `For \\(${definition}\\), evaluate the limit as \\(${approach}\\).`, `\\(${answer}\\)`, [
+    ...steps,
+  ], i === 3 ? "Two-sided branch comparison" : "One-sided branch analysis", "Using the branch selected by the endpoint equality instead of the approach direction.", "endpoint-and-branch-check"));
   const infinity = [
     ["\\lim_{x\\to\\infty}\\frac{5x^2-1}{2x^2+3}", "\\frac52", "equal degrees"],
     ["\\lim_{x\\to\\infty}\\frac{3x+7}{x^2+1}", "0", "denominator degree is larger"],
@@ -140,7 +168,7 @@ function optimizationProblems() {
     ["revenue", "Demand is p=80-2q. Maximize revenue.", "q=20,\\ p=40,\\ R=800", "R=q(80-2q); R'=80-4q=0 and R''<0."],
     ["cost", "Minimize average cost C(q)/q when C(q)=q²+100q+2500.", "q=50", "Average cost is q+100+2500/q. Set 1-2500/q²=0."],
     ["ladder", "A 10 ft ladder rests against a wall. Maximize the area of the right triangle it forms.", "x=y=5\\sqrt2,\\ A=25", "With x²+y²=100, maximize A=xy/2; symmetry or differentiation gives x=y."],
-    ["cone", "A cone has volume 72\\pi. Minimize slant-independent material S=\\pi r²+\\pi rh.", "r=\\sqrt[3]{72},\\ h=3\\sqrt[3]{72}", "Use h=216/r², then minimize S=\\pi r²+216\\pi/r."],
+    ["cone", "A cone has volume 72\\pi. Under the material model S=\\pi r²+\\pi rh, minimize S.", "r=\\sqrt[3]{108}=3\\sqrt[3]{4},\\ h=2\\sqrt[3]{108}=6\\sqrt[3]{4}", "Use h=216/r², so S=\\pi r²+216\\pi/r. Then S'=2\\pi r-216\\pi/r²=0 gives r³=108 and h=216/r²=2r."],
     ["window", "A Norman window has perimeter 20. Maximize area.", "r=\\frac{20}{4+\\pi}", "Use width 2r and rectangular height h. The perimeter gives h=(20-(2+\\pi)r)/2; maximize 2rh+\\pi r²/2."],
     ["boat", "A boat 3 km offshore must reach a town 8 km downshore. Row at 3 km/h and walk at 5 km/h. Minimize time.", "land\\ about\\ 5.75\\ km\\ before\\ town", "Let x be the downshore rowing distance. T=\\sqrt{x²+9}/3+(8-x)/5; solve T'=0."],
     ["endpoint", "Maximize f(x)=x(6-x) on the closed interval [1,5].", "x=3,\\ f(3)=9", "Check the critical point x=3 and both endpoints; the largest listed value is 9."],
@@ -153,61 +181,58 @@ function optimizationProblems() {
 
 function ibpProblems() {
   const items = [
-    ["xe^x", "\\int xe^x\\,dx", "e^x(x-1)+C"],
-    ["x^2e^x", "\\int x^2e^x\\,dx", "e^x(x^2-2x+2)+C"],
-    ["x^3e^x", "\\int x^3e^x\\,dx", "e^x(x^3-3x^2+6x-6)+C"],
-    ["xe^{2x}", "\\int xe^{2x}\\,dx", "e^{2x}(2x-1)/4+C"],
-    ["x\\sin x", "\\int x\\sin x\\,dx", "-x\\cos x+\\sin x+C"],
-    ["x\\cos x", "\\int x\\cos x\\,dx", "x\\sin x+\\cos x+C"],
-    ["x^2\\sin x", "\\int x^2\\sin x\\,dx", "-x^2\\cos x+2x\\sin x+2\\cos x+C"],
-    ["x^2\\cos x", "\\int x^2\\cos x\\,dx", "x^2\\sin x+2x\\cos x-2\\sin x+C"],
-    ["lnx", "\\int\\ln x\\,dx", "x\\ln x-x+C"],
-    ["xlnx", "\\int x\\ln x\\,dx", "\\frac{x^2}{2}\\ln x-\\frac{x^2}{4}+C"],
-    ["lnsq", "\\int(\\ln x)^2\\,dx", "x[(\\ln x)^2-2\\ln x+2]+C"],
-    ["arctan", "\\int\\arctan x\\,dx", "x\\arctan x-\\frac12\\ln(1+x^2)+C"],
-    ["arcsin", "\\int\\arcsin x\\,dx", "x\\arcsin x+\\sqrt{1-x^2}+C"],
-    ["def-xexp", "\\int_0^1xe^x\\,dx", "1"],
-    ["def-xsin", "\\int_0^\\pi x\\sin x\\,dx", "\\pi"],
-    ["cyclic", "\\int e^x\\cos x\\,dx", "\\frac{e^x}{2}(\\sin x+\\cos x)+C"],
-    ["cyclic-sin", "\\int e^x\\sin x\\,dx", "\\frac{e^x}{2}(\\sin x-\\cos x)+C"],
-    ["reduction", "\\int x^4e^x\\,dx", "e^x(x^4-4x^3+12x^2-24x+24)+C"],
-    ["select", "\\int x^2\\ln x\\,dx", "\\frac{x^3}{3}\\ln x-\\frac{x^3}{9}+C"],
-    ["def-log", "\\int_1^e\\ln x\\,dx", "1"],
+    ["xe^x", "\\int xe^x\\,dx", "e^x(x-1)+C", ["Take \\(u=x\\) and \\(dv=e^x dx\\), so \\(du=dx\\) and \\(v=e^x\\).", "Then \\(\\int xe^x dx=xe^x-\\int e^x dx=xe^x-e^x+C=e^x(x-1)+C\\)."]],
+    ["x^2e^x", "\\int x^2e^x\\,dx", "e^x(x^2-2x+2)+C", ["Take \\(u=x^2\\) and \\(dv=e^x dx\\): \\(I=x^2e^x-2\\int xe^x dx\\).", "Using \\(\\int xe^x dx=e^x(x-1)\\), \\(I=e^x(x^2-2x+2)+C\\)."]],
+    ["x^3e^x", "\\int x^3e^x\\,dx", "e^x(x^3-3x^2+6x-6)+C", ["Take \\(u=x^3\\) and \\(dv=e^x dx\\): \\(I=x^3e^x-3\\int x^2e^x dx\\).", "Substitute \\(\\int x^2e^x dx=e^x(x^2-2x+2)\\) and collect terms to get \\(e^x(x^3-3x^2+6x-6)+C\\)."]],
+    ["xe^{2x}", "\\int xe^{2x}\\,dx", "e^{2x}(2x-1)/4+C", ["Take \\(u=x\\) and \\(dv=e^{2x}dx\\), so \\(du=dx\\) and \\(v=e^{2x}/2\\).", "Thus \\(I=xe^{2x}/2-\\int e^{2x}/2\\,dx=xe^{2x}/2-e^{2x}/4+C=e^{2x}(2x-1)/4+C\\)."]],
+    ["x\\sin x", "\\int x\\sin x\\,dx", "-x\\cos x+\\sin x+C", ["Take \\(u=x\\) and \\(dv=\\sin x\\,dx\\), so \\(du=dx\\) and \\(v=-\\cos x\\).", "Then \\(I=-x\\cos x+\\int\\cos x\\,dx=-x\\cos x+\\sin x+C\\)."]],
+    ["x\\cos x", "\\int x\\cos x\\,dx", "x\\sin x+\\cos x+C", ["Take \\(u=x\\) and \\(dv=\\cos x\\,dx\\), so \\(du=dx\\) and \\(v=\\sin x\\).", "Then \\(I=x\\sin x-\\int\\sin x\\,dx=x\\sin x+\\cos x+C\\)."]],
+    ["x^2\\sin x", "\\int x^2\\sin x\\,dx", "-x^2\\cos x+2x\\sin x+2\\cos x+C", ["Take \\(u=x^2\\) and \\(dv=\\sin x\\,dx\\): \\(I=-x^2\\cos x+2\\int x\\cos x\\,dx\\).", "Since \\(\\int x\\cos x\\,dx=x\\sin x+\\cos x\\), \\(I=-x^2\\cos x+2x\\sin x+2\\cos x+C\\)."]],
+    ["x^2\\cos x", "\\int x^2\\cos x\\,dx", "x^2\\sin x+2x\\cos x-2\\sin x+C", ["Take \\(u=x^2\\) and \\(dv=\\cos x\\,dx\\): \\(I=x^2\\sin x-2\\int x\\sin x\\,dx\\).", "Since \\(\\int x\\sin x\\,dx=-x\\cos x+\\sin x\\), \\(I=x^2\\sin x+2x\\cos x-2\\sin x+C\\)."]],
+    ["lnx", "\\int\\ln x\\,dx", "x\\ln x-x+C", ["Write the integrand as \\((\\ln x)(1)\\); take \\(u=\\ln x\\) and \\(dv=dx\\), so \\(du=dx/x\\) and \\(v=x\\).", "Then \\(I=x\\ln x-\\int1\\,dx=x\\ln x-x+C\\), for \\(x>0\\)."]],
+    ["xlnx", "\\int x\\ln x\\,dx", "\\frac{x^2}{2}\\ln x-\\frac{x^2}{4}+C", ["Take \\(u=\\ln x\\) and \\(dv=x\\,dx\\), so \\(du=dx/x\\) and \\(v=x^2/2\\).", "Then \\(I=(x^2/2)\\ln x-\\frac12\\int x\\,dx=(x^2/2)\\ln x-x^2/4+C\\), for \\(x>0\\)."]],
+    ["lnsq", "\\int(\\ln x)^2\\,dx", "x[(\\ln x)^2-2\\ln x+2]+C", ["Take \\(u=(\\ln x)^2\\) and \\(dv=dx\\): \\(I=x(\\ln x)^2-2\\int\\ln x\\,dx\\).", "Substitute \\(\\int\\ln x\\,dx=x\\ln x-x\\) to obtain \\(x[(\\ln x)^2-2\\ln x+2]+C\\), for \\(x>0\\)."]],
+    ["arctan", "\\int\\arctan x\\,dx", "x\\arctan x-\\frac12\\ln(1+x^2)+C", ["Take \\(u=\\arctan x\\) and \\(dv=dx\\), so \\(du=dx/(1+x^2)\\) and \\(v=x\\).", "Then \\(I=x\\arctan x-\\int x/(1+x^2)\\,dx=x\\arctan x-\\frac12\\ln(1+x^2)+C\\)."]],
+    ["arcsin", "\\int\\arcsin x\\,dx", "x\\arcsin x+\\sqrt{1-x^2}+C", ["Take \\(u=\\arcsin x\\) and \\(dv=dx\\), so \\(du=dx/\\sqrt{1-x^2}\\) and \\(v=x\\).", "Because \\(\\int x/\\sqrt{1-x^2}\\,dx=-\\sqrt{1-x^2}\\), \\(I=x\\arcsin x+\\sqrt{1-x^2}+C\\) on \\((-1,1)\\)."]],
+    ["def-xexp", "\\int_0^1xe^x\\,dx", "1", ["Using \\(u=x\\) and \\(dv=e^x dx\\), an antiderivative is \\(e^x(x-1)\\).", "Evaluate the bounds: \\([e^x(x-1)]_0^1=0-(-1)=1\\)."]],
+    ["def-xsin", "\\int_0^\\pi x\\sin x\\,dx", "\\pi", ["Using \\(u=x\\) and \\(dv=\\sin x\\,dx\\), an antiderivative is \\(-x\\cos x+\\sin x\\).", "Evaluate the bounds: \\([-x\\cos x+\\sin x]_0^\\pi=\\pi-0=\\pi\\)."]],
+    ["cyclic", "\\int e^x\\cos x\\,dx", "\\frac{e^x}{2}(\\sin x+\\cos x)+C", ["Let \\(I=\\int e^x\\cos x\\,dx\\). Two integrations by parts give \\(I=e^x\\cos x+e^x\\sin x-I\\).", "Therefore \\(2I=e^x(\\sin x+\\cos x)\\), so \\(I=\\frac{e^x}{2}(\\sin x+\\cos x)+C\\)."]],
+    ["cyclic-sin", "\\int e^x\\sin x\\,dx", "\\frac{e^x}{2}(\\sin x-\\cos x)+C", ["Let \\(I=\\int e^x\\sin x\\,dx\\). Two integrations by parts give \\(I=e^x\\sin x-e^x\\cos x-I\\).", "Therefore \\(2I=e^x(\\sin x-\\cos x)\\), so \\(I=\\frac{e^x}{2}(\\sin x-\\cos x)+C\\)."]],
+    ["reduction", "\\int x^4e^x\\,dx", "e^x(x^4-4x^3+12x^2-24x+24)+C", ["Repeatedly take the polynomial as \\(u\\): \\(I=x^4e^x-4\\int x^3e^x dx\\).", "Substituting the three prior reductions gives \\(I=e^x(x^4-4x^3+12x^2-24x+24)+C\\)."]],
+    ["select", "\\int x^2\\ln x\\,dx", "\\frac{x^3}{3}\\ln x-\\frac{x^3}{9}+C", ["Take \\(u=\\ln x\\) and \\(dv=x^2dx\\), so \\(du=dx/x\\) and \\(v=x^3/3\\).", "Then \\(I=(x^3/3)\\ln x-\\frac13\\int x^2dx=(x^3/3)\\ln x-x^3/9+C\\), for \\(x>0\\)."]],
+    ["def-log", "\\int_1^e\\ln x\\,dx", "1", ["Using \\(u=\\ln x\\) and \\(dv=dx\\), an antiderivative is \\(x\\ln x-x\\).", "Evaluate the bounds: \\([x\\ln x-x]_1^e=0-(-1)=1\\)."]],
   ];
-  return items.map(([id, tex, answer], i) => p(`ibp-${id}`, `Evaluate \\(${tex}\\).`, `\\(${answer}\\)`, [
-    "Choose u as the factor that simplifies when differentiated and integrate dv.",
-    "Apply \\(\\int u\\,dv=uv-\\int v\\,du\\); repeat when the remaining integral still has a polynomial factor.",
-    `Simplification${i >= 13 ? " and endpoint evaluation" : ""} gives \\(${answer}\\).`,
-  ], i === 15 || i === 16 ? "Cyclic integration by parts" : "Integration by parts", "Choosing dv that is harder to integrate or losing the minus sign in the formula.", "differentiate-antiderivative-and-endpoint-check"));
+  return items.map(([id, tex, answer, steps], i) => p(`ibp-${id}`, `Evaluate \\(${tex}\\).`, `\\(${answer}\\)`, steps,
+    i === 15 || i === 16 ? "Cyclic integration by parts" : "Integration by parts",
+    "Choosing dv that is harder to integrate or losing the minus sign in the formula.",
+    "differentiate-antiderivative-and-endpoint-check"));
 }
 
 function geometricProblems() {
   const items = [
-    ["ratio", "Find the common ratio of 3, 12, 48, …", "r=4"],
-    ["term", "Find a_8 when a_1=5 and r=2.", "a_8=640"],
-    ["finite", "Evaluate \\(\\sum_{k=0}^{5}3(2)^k\\).", "189"],
-    ["finite-half", "Evaluate \\(\\sum_{k=0}^{4}16(1/2)^k\\).", "31"],
-    ["infinite", "Evaluate \\(\\sum_{k=0}^{\\infty}12(1/3)^k\\).", "18"],
-    ["infinite-neg", "Evaluate \\(\\sum_{k=0}^{\\infty}8(-1/2)^k\\).", "16/3"],
-    ["diverge", "Decide whether \\(\\sum_{k=0}^{\\infty}5(1.02)^k\\) converges.", "diverges"],
-    ["shift", "Evaluate \\(\\sum_{n=3}^{\\infty}2(1/4)^n\\).", "1/24"],
-    ["rewrite", "Rewrite \\(\\sum_{n=1}^{\\infty}3^{1-n}\\) in \\(ar^k\\) form and sum it.", "3/2"],
-    ["decimal-third", "Write 0.333… as a fraction.", "1/3"],
-    ["decimal-27", "Write 0.272727… as a fraction.", "3/11"],
-    ["decimal-145", "Write 0.145145… as a fraction.", "145/999"],
-    ["bounce", "A ball rebounds 70% of each previous height after a 10 m drop. Find total vertical distance.", "170/3\\text{ m}"],
-    ["annuity", "Deposit 100 dollars at the end of each year for four years at 5 percent. Find the value immediately after the fourth deposit.", "431.01\\text{ dollars}"],
-    ["area", "A square has area 1; each stage shades one fourth of the remaining area. Find total shaded area.", "1"],
-    ["partial", "Find S_n for 7+7(0.8)+7(0.8)^2+…", "35(1-0.8^n)"],
-    ["solve-r", "An infinite geometric series has first term 6 and sum 15. Find r.", "3/5"],
-    ["solve-a", "An infinite geometric series has ratio -1/4 and sum 8. Find its first term.", "10"],
-    ["error", "A student uses a/(1-r) for r=2. Diagnose the error.", "|r|\\ge1,\\text{ so the infinite series diverges}"],
-    ["index", "Evaluate \\(\\sum_{n=2}^{6}5(3)^{n-2}\\).", "605"],
+    ["ratio", "Find the common ratio of 3, 12, 48, …", "r=4", ["Divide either term by its predecessor: \\(12/3=4\\) and \\(48/12=4\\).", "The constant quotient is \\(r=4\\)."]],
+    ["term", "Find a_8 when a_1=5 and r=2.", "a_8=640", ["Use \\(a_n=a_1r^{n-1}\\).", "Thus \\(a_8=5(2)^7=640\\)."]],
+    ["finite", "Evaluate \\(\\sum_{k=0}^{5}3(2)^k\\).", "189", ["There are six terms with first term \\(3\\) and ratio \\(2\\).", "Using \\(S_6=3(1-2^6)/(1-2)\\) gives \\(189\\)."]],
+    ["finite-half", "Evaluate \\(\\sum_{k=0}^{4}16(1/2)^k\\).", "31", ["There are five terms with first term \\(16\\) and ratio \\(1/2\\).", "Using \\(S_5=16(1-(1/2)^5)/(1-1/2)\\) gives \\(31\\)."]],
+    ["infinite", "Evaluate \\(\\sum_{k=0}^{\\infty}12(1/3)^k\\).", "18", ["Here \\(a=12\\), \\(r=1/3\\), and \\(|r|<1\\).", "Therefore \\(S=a/(1-r)=12/(1-1/3)=18\\)."]],
+    ["infinite-neg", "Evaluate \\(\\sum_{k=0}^{\\infty}8(-1/2)^k\\).", "16/3", ["Here \\(a=8\\), \\(r=-1/2\\), and \\(|r|<1\\).", "Therefore \\(S=8/(1+1/2)=16/3\\)."]],
+    ["diverge", "Decide whether \\(\\sum_{k=0}^{\\infty}5(1.02)^k\\) converges.", "\\text{diverges}", ["The common ratio is \\(r=1.02\\), so \\(|r|>1\\).", "Its terms do not approach zero, and the infinite geometric series diverges."]],
+    ["shift", "Evaluate \\(\\sum_{n=3}^{\\infty}2(1/4)^n\\).", "1/24", ["The first included term is \\(2(1/4)^3=1/32\\), not \\(2\\).", "With ratio \\(1/4\\), the sum is \\((1/32)/(1-1/4)=1/24\\)."]],
+    ["rewrite", "Rewrite \\(\\sum_{n=1}^{\\infty}3^{1-n}\\) in \\(ar^k\\) form and sum it.", "3/2", ["At \\(n=1\\) the first term is \\(1\\), and each next term is multiplied by \\(1/3\\).", "Thus the series is \\(\\sum_{k=0}^{\\infty}(1/3)^k\\), whose sum is \\(1/(1-1/3)=3/2\\)."]],
+    ["decimal-third", "Write 0.333… as a fraction.", "1/3", ["Write the decimal as \\(3/10+3/100+\\cdots\\).", "This has \\(a=3/10\\), \\(r=1/10\\), so its sum is \\((3/10)/(9/10)=1/3\\)."]],
+    ["decimal-27", "Write 0.272727… as a fraction.", "3/11", ["Write the decimal as \\(27/100+27/10000+\\cdots\\).", "This has \\(a=27/100\\), \\(r=1/100\\), so its sum is \\(27/99=3/11\\)."]],
+    ["decimal-145", "Write 0.145145… as a fraction.", "145/999", ["Write the decimal as \\(145/1000+145/1000000+\\cdots\\).", "This has ratio \\(1/1000\\), so its sum is \\(145/999\\)."]],
+    ["bounce", "A ball rebounds 70% of each previous height after a 10 m drop. Find total vertical distance.", "170/3\\text{ m}", ["The initial drop contributes \\(10\\) m; each rebound height is traveled once up and once down.", "Thus \\(D=10+2(7+7(0.7)+\\cdots)=10+14/(1-0.7)=170/3\\text{ m}\\)."]],
+    ["annuity", "Deposit 100 dollars at the end of each year for four years at 5 percent. Find the value immediately after the fourth deposit.", "431.01\\text{ dollars}", ["Immediately after the fourth deposit, the four deposits have grown for three, two, one, and zero years.", "The value is \\(100(1.05^3+1.05^2+1.05+1)=431.0125\\), or \\(431.01\\) dollars to the nearest cent."]],
+    ["area", "A square has area 1; each stage shades one fourth of the remaining area. Find total shaded area.", "1", ["The shaded areas are \\(1/4,(3/4)(1/4),(3/4)^2(1/4),\\ldots\\).", "Their sum is \\((1/4)/(1-3/4)=1\\)."]],
+    ["partial", "Find S_n for 7+7(0.8)+7(0.8)^2+…", "35(1-0.8^n)", ["The first term is \\(7\\), the ratio is \\(0.8\\), and the first \\(n\\) terms end at exponent \\(n-1\\).", "Therefore \\(S_n=7(1-0.8^n)/(1-0.8)=35(1-0.8^n)\\)."]],
+    ["solve-r", "An infinite geometric series has first term 6 and sum 15. Find r.", "3/5", ["Use \\(15=6/(1-r)\\).", "Then \\(1-r=2/5\\), so \\(r=3/5\\), which satisfies \\(|r|<1\\)."]],
+    ["solve-a", "An infinite geometric series has ratio -1/4 and sum 8. Find its first term.", "10", ["Use \\(8=a/(1-(-1/4))=a/(5/4)\\).", "Thus \\(a=10\\)."]],
+    ["error", "A student uses a/(1-r) for r=2. Diagnose the error.", "|r|\\ge1,\\text{ so the infinite series diverges}", ["The formula \\(a/(1-r)\\) requires \\(|r|<1\\).", "For \\(r=2\\), the terms do not approach zero, so the infinite series diverges."]],
+    ["index", "Evaluate \\(\\sum_{n=2}^{6}5(3)^{n-2}\\).", "605", ["At \\(n=2\\) the first term is \\(5\\); there are five terms through \\(n=6\\), with ratio \\(3\\).", "Thus \\(S_5=5(1-3^5)/(1-3)=605\\)."]],
   ];
-  return items.map(([id, prompt, answer]) => p(`geometric-${id}`, prompt, `\\(${answer}\\)`, [
-    "Identify the first included term, common ratio, and whether the sum is finite or infinite.",
-    "Use \\(S_n=a(1-r^n)/(1-r)\\) for a finite sum or \\(S=a/(1-r)\\) only when \\(|r|<1\\).",
-    `Substitution and simplification give \\(${answer}\\).`,
+  return items.map(([id, prompt, answer, steps]) => p(`geometric-${id}`, prompt, `\\(${answer}\\)`, [
+    ...steps,
   ], "Geometric-series structure", "Using the infinite-sum formula without checking the common-ratio condition or the starting index.", "independent-geometric-sum-check"));
 }
 
@@ -221,80 +246,100 @@ function taylorProblems() {
     ["sub-x2", "Expand 1/(1+x^2) as a power series.", "\\sum_{n=0}^{\\infty}(-1)^nx^{2n},\\ |x|<1"],
     ["sub-3x", "Expand 1/(1-3x) as a power series.", "\\sum_{n=0}^{\\infty}3^nx^n,\\ |x|<1/3"],
     ["diff", "Find a power series for 1/(1-x)^2.", "\\sum_{n=1}^{\\infty}nx^{n-1},\\ |x|<1"],
-    ["int", "Find a power series for arctan x by integrating 1/(1+x²).", "\\sum_{n=0}^{\\infty}(-1)^n x^{2n+1}/(2n+1)"],
+    ["int", "Find a power series for arctan x by integrating 1/(1+x²), and state its interval of convergence.", "\\sum_{n=0}^{\\infty}(-1)^n x^{2n+1}/(2n+1),\\ -1\\le x\\le1"],
     ["center2", "Find the degree-2 Taylor polynomial for ln x centered at 1.", "(x-1)-(x-1)^2/2"],
     ["center-a", "Write the Taylor series for e^x centered at a.", "e^a\\sum_{n=0}^{\\infty}(x-a)^n/n!"],
     ["coeff", "If f^(n)(0)=2^n, find the Maclaurin series.", "\\sum_{n=0}^{\\infty}2^nx^n/n!=e^{2x}"],
     ["approx-exp", "Use T_3 for e^x to approximate e^{0.1}.", "1.105166\\overline6"],
     ["approx-sin", "Use x-x³/6 to approximate sin(0.2).", "0.198666\\overline6"],
-    ["radius", "Find the radius of \\(\\sum n x^n/4^n\\).", "R=4"],
-    ["interval", "Find the interval of convergence of \\(\\sum x^n/n\\).", "[-1,1)"],
-    ["shifted", "Find the interval of convergence of \\(\\sum (x-2)^n/(n3^n)\\).", "[-1,5)"],
-    ["ratio", "Find R for \\(\\sum n!(x+1)^n/(2n)!\\).", "R=\\infty"],
+    ["radius", "Find the radius of \\(\\sum_{n=1}^{\\infty} n x^n/4^n\\).", "R=4"],
+    ["interval", "Find the interval of convergence of \\(\\sum_{n=1}^{\\infty} x^n/n\\).", "[-1,1)"],
+    ["shifted", "Find the interval of convergence of \\(\\sum_{n=1}^{\\infty} (x-2)^n/(n3^n)\\).", "[-1,5)"],
+    ["ratio", "Find R for \\(\\sum_{n=0}^{\\infty} n!(x+1)^n/(2n)!\\).", "R=\\infty"],
     ["error-exp", "Bound the error of the degree-3 Maclaurin approximation to e^{0.2}.", "|R_3|\\le e^{0.2}(0.2)^4/4!<0.000082"],
     ["error-alt", "How many terms of the alternating arctan series ensure error below 0.001 at x=1/2?", "4\\text{ terms}"],
   ];
+  const derivations = {
+    "exp-t3": ["Use \\(e^x=\\sum_{n=0}^{\\infty}x^n/n!\\).", "Retaining degrees 0 through 3 gives \\(1+x+x^2/2+x^3/6\\)."],
+    "sin-t5": ["Use \\(\\sin x=\\sum_{n=0}^{\\infty}(-1)^nx^{2n+1}/(2n+1)!\\).", "Retaining terms through degree 5 gives \\(x-x^3/6+x^5/120\\)."],
+    "cos-t4": ["Use \\(\\cos x=\\sum_{n=0}^{\\infty}(-1)^nx^{2n}/(2n)!\\).", "Retaining terms through degree 4 gives \\(1-x^2/2+x^4/24\\)."],
+    ln: ["Integrate the geometric series for \\(1/(1+x)\\) term by term.", "The first four nonzero terms are \\(x-x^2/2+x^3/3-x^4/4\\)."],
+    geo: ["The geometric identity \\(1/(1-r)=\\sum_{n=0}^{\\infty}r^n\\) requires \\(|r|<1\\).", "Set \\(r=x\\) to obtain \\(\\sum_{n=0}^{\\infty}x^n\\) for \\(|x|<1\\)."],
+    "sub-x2": ["Set \\(r=-x^2\\) in the geometric series.", "This gives \\(\\sum_{n=0}^{\\infty}(-1)^nx^{2n}\\), with \\(|x|<1\\)."],
+    "sub-3x": ["Set \\(r=3x\\) in the geometric series.", "The condition \\(|3x|<1\\) gives \\(|x|<1/3\\)."],
+    diff: ["Differentiate \\(1/(1-x)=\\sum_{n=0}^{\\infty}x^n\\) term by term.", "This gives \\(1/(1-x)^2=\\sum_{n=1}^{\\infty}nx^{n-1}\\) for \\(|x|<1\\)."],
+    int: ["Integrate \\(1/(1+x^2)=\\sum_{n=0}^{\\infty}(-1)^nx^{2n}\\) from 0 to \\(x\\).", "The result is \\(\\sum_{n=0}^{\\infty}(-1)^nx^{2n+1}/(2n+1)\\); direct endpoint tests include both \\(x=-1\\) and \\(x=1\\)."],
+    center2: ["For \\(f(x)=\\ln x\\), \\(f(1)=0\\), \\(f'(1)=1\\), and \\(f''(1)=-1\\).", "Substitution in the degree-2 Taylor formula gives \\((x-1)-(x-1)^2/2\\)."],
+    "center-a": ["Every derivative of \\(e^x\\) equals \\(e^x\\), so \\(f^{(n)}(a)=e^a\\).", "The Taylor formula gives \\(e^a\\sum_{n=0}^{\\infty}(x-a)^n/n!\\), convergent for every real \\(x\\)."],
+    coeff: ["The Maclaurin coefficient is \\(f^{(n)}(0)/n!=2^n/n!\\).", "Thus the series is \\(\\sum_{n=0}^{\\infty}2^nx^n/n!=e^{2x}\\)."],
+    "approx-exp": ["Evaluate \\(T_3(0.1)=1+0.1+0.1^2/2+0.1^3/6\\).", "The result is \\(1.105166\\overline6\\)."],
+    "approx-sin": ["Evaluate \\(0.2-(0.2)^3/6\\).", "The result is \\(0.198666\\overline6\\)."],
+    radius: ["The ratio of successive absolute terms approaches \\(|x|/4\\).", "Convergence requires \\(|x|<4\\), so \\(R=4\\)."],
+    interval: ["The radius is 1. At \\(x=1\\) the harmonic series diverges; at \\(x=-1\\) the alternating harmonic series converges.", "Therefore the interval is \\([-1,1)\\)."],
+    shifted: ["The ratio test gives \\(|x-2|<3\\), hence \\(-1<x<5\\).", "At \\(x=-1\\) the series is alternating harmonic and converges; at \\(x=5\\) it is harmonic and diverges, giving \\([-1,5)\\)."],
+    ratio: ["The coefficient ratio satisfies \\(|a_n/a_{n+1}|=(2n+2)(2n+1)/(n+1)=2(2n+1)\\).", "This tends to infinity, so \\(R=\\infty\\)."],
+    "error-exp": ["Taylor's theorem gives \\(|R_3|\\le e^{0.2}(0.2)^4/4!\\) on \\([0,0.2]\\).", "The bound is approximately \\(0.00008143<0.000082\\)."],
+    "error-alt": ["After \\(N\\) terms, the alternating-series error is at most \\((1/2)^{2N+1}/(2N+1)\\).", "Three terms give about \\(0.001116>0.001\\), while four give about \\(0.000217<0.001\\), so four terms are required."],
+  };
   return items.map(([id, prompt, answer]) => p(`taylor-${id}`, prompt, `\\(${answer}\\)`, [
-    "Start from derivatives at the center or a known convergent power series.",
-    "Apply substitution, differentiation, integration, or the ratio test while preserving the convergence condition.",
-    `The resulting expression is \\(${answer}\\).`,
+    ...derivations[id],
   ], "Taylor or power-series construction", "Transforming the formula but forgetting to transform the interval, endpoints, factorial, or remainder.", "series-coefficient-endpoint-and-error-check"));
 }
 
 function examProblems(course) {
   const calc1 = [
-    ["limit-poly", "Evaluate \\(\\lim_{x\\to2}(x^2+3x-1)\\).", "9", "Direct substitution applies."],
-    ["limit-factor", "Evaluate \\(\\lim_{x\\to4}(x^2-16)/(x-4)\\).", "8", "Factor and cancel x-4."],
-    ["continuity", "Choose k so \\(f(x)=kx+1\\) for x<2 and \\(f(x)=7\\) for x≥2 is continuous.", "k=3", "Match the left limit 2k+1 to 7."],
-    ["derivative-definition", "Use the limit definition to find the derivative of x².", "2x", "Expand (x+h)², cancel, divide by h, and let h→0."],
-    ["power", "Differentiate \\(4x^5-3x^2+7\\).", "20x^4-6x", "Apply linearity and the power rule."],
-    ["product", "Differentiate \\(x^2\\sin x\\).", "2x\\sin x+x^2\\cos x", "Use the product rule."],
-    ["quotient", "Differentiate \\((x+1)/(x-1)\\).", "-2/(x-1)^2", "Use the quotient rule and simplify."],
-    ["chain", "Differentiate \\((3x^2+1)^4\\).", "24x(3x^2+1)^3", "Outer power times inner derivative."],
-    ["implicit", "For x²+y²=25, find dy/dx.", "-x/y", "Differentiate both sides with respect to x."],
-    ["tangent", "Find the tangent line to y=x³ at x=2.", "y-8=12(x-2)", "Evaluate the point and derivative."],
-    ["mvt", "Find c guaranteed by MVT for f(x)=x² on [1,3].", "c=2", "Set 2c equal to the secant slope 4."],
-    ["critical", "Find critical numbers of x³-3x.", "x=\\pm1", "Solve 3x²-3=0."],
-    ["increase", "Where is x³-3x increasing?", "(-\\infty,-1)\\cup(1,\\infty)", "Use the sign of 3(x²-1)."],
-    ["concavity", "Find the inflection point of x³-6x².", "(2,-16)", "f''=6x-12 changes sign at 2."],
-    ["optimization", "A rectangle has perimeter 40. Find maximum area.", "100", "A=x(20-x) is maximal at x=10."],
-    ["related", "A circle radius grows at 2 cm/s. Find dA/dt at r=5.", "20\\pi\\text{ cm}^2/\\text{s}", "Differentiate A=πr² with respect to time."],
-    ["linearization", "Use linearization at 9 to approximate √9.2.", "3+0.2/6\\approx3.0333", "L(x)=3+(x-9)/6."],
-    ["antiderivative", "Find \\(\\int(6x^2-4)dx\\).", "2x^3-4x+C", "Integrate term by term."],
-    ["definite", "Evaluate \\(\\int_0^2 3x^2dx\\).", "8", "Use x³ at the endpoints."],
-    ["ftc", "Differentiate \\(F(x)=\\int_1^x\\cos(t^2)dt\\).", "\\cos(x^2)", "Apply FTC Part I."],
-    ["substitution", "Evaluate \\(\\int2x(x^2+1)^3dx\\).", "(x^2+1)^4/4+C", "Let u=x²+1."],
-    ["area", "Find the area under y=x on [0,3].", "9/2", "Integrate x or use triangle area."],
-    ["average", "Find the average value of x² on [0,3].", "3", "Divide the integral 9 by interval length 3."],
-    ["motion", "If v(t)=3t²-6t, find displacement from 0 to 3.", "0", "Integrate velocity over the interval."],
-    ["concept", "Explain why a differentiable function is continuous.", "The derivative limit forces f(x)-f(a) to approach 0.", "Factor f(x)-f(a) as a difference quotient times x-a."],
+    ["limit-poly", "Evaluate \\(\\lim_{x\\to2}(x^2+3x-1)\\).", "9", "The polynomial is continuous, so substitution gives \\(2^2+3(2)-1=4+6-1=9\\)."],
+    ["limit-factor", "Evaluate \\(\\lim_{x\\to4}(x^2-16)/(x-4)\\).", "8", "For \\(x\\ne4\\), \\((x^2-16)/(x-4)=x+4\\); therefore the limit is \\(4+4=8\\)."],
+    ["continuity", "Choose k so \\(f(x)=kx+1\\) for x<2 and \\(f(x)=7\\) for x≥2 is continuous.", "k=3", "Continuity requires \\(2k+1=7\\), so \\(2k=6\\) and \\(k=3\\)."],
+    ["derivative-definition", "Use the limit definition to find the derivative of x².", "2x", "\\(f'(x)=\\lim_{h\\to0}((x+h)^2-x^2)/h=\\lim_{h\\to0}(2x+h)=2x\\)."],
+    ["power", "Differentiate \\(4x^5-3x^2+7\\).", "20x^4-6x", "\\(d(4x^5)/dx=20x^4\\), \\(d(-3x^2)/dx=-6x\\), and the constant derivative is zero."],
+    ["product", "Differentiate \\(x^2\\sin x\\).", "2x\\sin x+x^2\\cos x", "The product rule gives \\((x^2)'\\sin x+x^2(\\sin x)'=2x\\sin x+x^2\\cos x\\)."],
+    ["quotient", "Differentiate \\((x+1)/(x-1)\\).", "-2/(x-1)^2", "The quotient rule gives \\(((x-1)-(x+1))/(x-1)^2=-2/(x-1)^2\\), for \\(x\\ne1\\)."],
+    ["chain", "Differentiate \\((3x^2+1)^4\\).", "24x(3x^2+1)^3", "With \\(u=3x^2+1\\), \\(d(u^4)/dx=4u^3(6x)=24x(3x^2+1)^3\\)."],
+    ["implicit", "For x²+y²=25, find dy/dx.", "-x/y", "Differentiating gives \\(2x+2y\\,dy/dx=0\\), hence \\(dy/dx=-x/y\\) where \\(y\\ne0\\)."],
+    ["tangent", "Find the tangent line to y=x³ at x=2.", "y-8=12(x-2)", "At \\(x=2\\), \\(y=8\\) and \\(y'=3x^2=12\\), so point-slope form is \\(y-8=12(x-2)\\)."],
+    ["mvt", "Find c guaranteed by MVT for f(x)=x² on [1,3].", "c=2", "The secant slope is \\((9-1)/(3-1)=4\\); solving \\(f'(c)=2c=4\\) gives \\(c=2\\in(1,3)\\)."],
+    ["critical", "Find critical numbers of x³-3x.", "x=\\pm1", "\\(f'(x)=3x^2-3=3(x-1)(x+1)\\), so the critical numbers are \\(x=-1,1\\)."],
+    ["increase", "Where is x³-3x increasing?", "(-\\infty,-1)\\cup(1,\\infty)", "Since \\(f'(x)=3(x^2-1)>0\\) exactly when \\(|x|>1\\), the function increases on \\(( -\\infty,-1)\\cup(1,\\infty)\\)."],
+    ["concavity", "Find the inflection point of x³-6x².", "(2,-16)", "\\(f''(x)=6x-12\\) changes from negative to positive at \\(x=2\\), and \\(f(2)=8-24=-16\\)."],
+    ["optimization", "A rectangle has perimeter 40. Find maximum area.", "100", "If the sides are \\(x\\) and \\(20-x\\), then \\(A=x(20-x)\\); \\(A'=20-2x=0\\) at \\(x=10\\), giving \\(A=100\\)."],
+    ["related", "A circle radius grows at 2 cm/s. Find dA/dt at r=5.", "20\\pi\\text{ cm}^2/\\text{s}", "From \\(A=\\pi r^2\\), \\(dA/dt=2\\pi r\\,dr/dt=2\\pi(5)(2)=20\\pi\\text{ cm}^2/\\text{s}\\)."],
+    ["linearization", "Use linearization at 9 to approximate √9.2.", "3+0.2/6\\approx3.0333", "For \\(f(x)=\\sqrt{x}\\), \\(f(9)=3\\) and \\(f'(9)=1/6\\), so \\(L(9.2)=3+0.2/6\\approx3.0333\\)."],
+    ["antiderivative", "Find \\(\\int(6x^2-4)dx\\).", "2x^3-4x+C", "Termwise integration gives \\(6x^3/3-4x+C=2x^3-4x+C\\)."],
+    ["definite", "Evaluate \\(\\int_0^2 3x^2dx\\).", "8", "An antiderivative is \\(x^3\\), so \\([x^3]_0^2=8-0=8\\)."],
+    ["ftc", "Differentiate \\(F(x)=\\int_1^x\\cos(t^2)dt\\).", "\\cos(x^2)", "FTC Part I evaluates the integrand at the variable upper bound: \\(F'(x)=\\cos(x^2)\\)."],
+    ["substitution", "Evaluate \\(\\int2x(x^2+1)^3dx\\).", "(x^2+1)^4/4+C", "Let \\(u=x^2+1\\), so \\(du=2x\\,dx\\); then \\(\\int u^3du=u^4/4+C=(x^2+1)^4/4+C\\)."],
+    ["area", "Find the area under y=x on [0,3].", "9/2", "\\(A=\\int_0^3x\\,dx=[x^2/2]_0^3=9/2\\)."],
+    ["average", "Find the average value of x² on [0,3].", "3", "\\(f_{\\rm avg}=\\frac1{3-0}\\int_0^3x^2dx=\\frac13[x^3/3]_0^3=3\\)."],
+    ["motion", "If v(t)=3t²-6t, find displacement from 0 to 3.", "0", "\\(\\int_0^3(3t^2-6t)dt=[t^3-3t^2]_0^3=(27-27)-0=0\\)."],
+    ["concept", "Explain why a differentiable function is continuous.", "\\text{The derivative limit forces }f(x)-f(a)\\text{ to approach }0.", "Write \\(f(x)-f(a)=((f(x)-f(a))/(x-a))(x-a)\\); differentiability makes the first factor approach \\(f'(a)\\) while the second approaches zero."],
   ];
   const calc2 = [
-    ["ibp", "Evaluate \\(\\int xe^x dx\\).", "e^x(x-1)+C", "Use integration by parts."],
-    ["trig", "Evaluate \\(\\int\\sin^3x\\cos xdx\\).", "\\sin^4x/4+C", "Use u=sin x."],
-    ["partial", "Evaluate \\(\\int1/(x^2-1)dx\\).", "\\frac12\\ln|\\frac{x-1}{x+1}|+C", "Use partial fractions."],
-    ["improper", "Determine convergence of \\(\\int_1^\\infty x^{-2}dx\\).", "converges to 1", "Evaluate the defining limit."],
-    ["area", "Find area between y=x and y=x² on [0,1].", "1/6", "Integrate top minus bottom."],
-    ["volume", "Rotate y=x on [0,2] about x-axis. Find volume.", "8\\pi/3", "Use disks: π∫x²dx."],
-    ["work", "A force F(x)=4x acts from x=0 to 3. Find work.", "18", "Integrate force over displacement."],
-    ["sequence", "Find \\(\\lim n/(n+1)\\).", "1", "Divide by n."],
-    ["geo", "Sum \\(\\sum_{n=0}^\\infty3(1/2)^n\\).", "6", "Use a/(1-r)."],
-    ["nth", "Test \\(\\sum n/(n+1)\\) for convergence.", "diverges", "Terms do not approach zero."],
-    ["pseries", "Test \\(\\sum1/n^{3/2}\\).", "converges", "It is a p-series with p>1."],
-    ["comparison", "Test \\(\\sum1/(n^2+4)\\).", "converges", "Compare with 1/n²."],
-    ["limitcomparison", "Test \\(\\sum(3n+1)/(n^2+2)\\).", "diverges", "Limit compare with 1/n."],
-    ["ratio", "Test \\(\\sum n!/4^n\\).", "diverges", "The ratio (n+1)/4 eventually exceeds 1."],
-    ["root", "Test \\(\\sum(2n/(3n+1))^n\\).", "converges", "Root-test limit is 2/3."],
-    ["alternating", "Test \\(\\sum(-1)^{n-1}/n\\).", "converges conditionally", "AST applies; harmonic absolute series diverges."],
-    ["absolute", "Classify \\(\\sum(-1)^n/n^2\\).", "converges absolutely", "The absolute series is a p-series with p=2."],
-    ["power-radius", "Find R for \\(\\sum x^n/5^n\\).", "R=5", "It is geometric with ratio x/5."],
-    ["power-interval", "Find interval for \\(\\sum(x-1)^n/n\\).", "[0,2)", "R=1, then test both endpoints."],
-    ["taylor", "Write the Maclaurin series for cos x.", "\\sum(-1)^nx^{2n}/(2n)!", "Use the derivative cycle."],
-    ["poly", "Find T_3 for e^x at 0.", "1+x+x^2/2+x^3/6", "Use derivatives of e^x."],
-    ["error", "Bound alternating-series error after four terms of \\(\\sum(-1)^{n-1}/n\\).", "\\le1/5", "Use the first omitted term."],
-    ["param", "For x=t²,y=t³ find dy/dx.", "3t/2", "Divide dy/dt by dx/dt."],
-    ["polar", "Convert r=2cosθ to Cartesian form.", "(x-1)^2+y^2=1", "Use r²=2r cosθ."],
-    ["concept", "Why must power-series endpoints be tested separately?", "The ratio/root test is inconclusive when |x-a|=R.", "At the boundary the limiting ratio equals 1."],
+    ["ibp", "Evaluate \\(\\int xe^x dx\\).", "e^x(x-1)+C", "With \\(u=x\\), \\(dv=e^x dx\\), \\(I=xe^x-\\int e^x dx=e^x(x-1)+C\\)."],
+    ["trig", "Evaluate \\(\\int\\sin^3x\\cos xdx\\).", "\\sin^4x/4+C", "Let \\(u=\\sin x\\), \\(du=\\cos xdx\\); then \\(\\int u^3du=u^4/4+C=\\sin^4x/4+C\\)."],
+    ["partial", "Evaluate \\(\\int1/(x^2-1)dx\\).", "\\frac12\\ln|\\frac{x-1}{x+1}|+C", "\\(1/(x^2-1)=\\frac12/(x-1)-\\frac12/(x+1)\\); integrating gives \\(\\frac12\\ln|x-1|-\\frac12\\ln|x+1|+C\\)."],
+    ["improper", "Determine convergence of \\(\\int_1^\\infty x^{-2}dx\\).", "\\text{converges to }1", "\\(\\lim_{b\\to\\infty}[-x^{-1}]_1^b=\\lim_{b\\to\\infty}(1-1/b)=1\\), so the improper integral converges."],
+    ["area", "Find area between y=x and y=x² on [0,1].", "1/6", "On \\([0,1]\\), \\(x\\ge x^2\\), so \\(A=\\int_0^1(x-x^2)dx=[x^2/2-x^3/3]_0^1=1/6\\)."],
+    ["volume", "Rotate y=x on [0,2] about x-axis. Find volume.", "8\\pi/3", "\\(V=\\pi\\int_0^2x^2dx=\\pi[x^3/3]_0^2=8\\pi/3\\)."],
+    ["work", "A force F(x)=4x acts from x=0 to 3. Find work.", "18", "\\(W=\\int_0^3 4x\\,dx=[2x^2]_0^3=18\\)."],
+    ["sequence", "Find \\(\\lim_{n\\to\\infty} n/(n+1)\\).", "1", "Divide by \\(n\\): \\(n/(n+1)=1/(1+1/n)\\to1\\)."],
+    ["geo", "Sum \\(\\sum_{n=0}^\\infty3(1/2)^n\\).", "6", "Here \\(a=3\\), \\(r=1/2\\), and \\(|r|<1\\), so \\(S=3/(1-1/2)=6\\)."],
+    ["nth", "Test \\(\\sum_{n=1}^{\\infty} n/(n+1)\\) for convergence.", "\\text{diverges}", "The terms satisfy \\(n/(n+1)\\to1\\ne0\\), so the nth-term test proves divergence."],
+    ["pseries", "Test \\(\\sum_{n=1}^{\\infty}1/n^{3/2}\\).", "\\text{converges}", "This is a p-series with \\(p=3/2>1\\), so it converges."],
+    ["comparison", "Test \\(\\sum_{n=1}^{\\infty}1/(n^2+4)\\).", "\\text{converges}", "For \\(n\\ge1\\), \\(0<1/(n^2+4)<1/n^2\\); comparison with the convergent p-series proves convergence."],
+    ["limitcomparison", "Test \\(\\sum_{n=1}^{\\infty}(3n+1)/(n^2+2)\\).", "\\text{diverges}", "With \\(b_n=1/n\\), \\(a_n/b_n=n(3n+1)/(n^2+2)\\to3\\); limit comparison with the harmonic series gives divergence."],
+    ["ratio", "Test \\(\\sum_{n=1}^{\\infty} n!/4^n\\).", "\\text{diverges}", "\\(a_{n+1}/a_n=(n+1)/4\\), which eventually exceeds 1, so the positive terms do not approach zero and the series diverges."],
+    ["root", "Test \\(\\sum_{n=1}^{\\infty}(2n/(3n+1))^n\\).", "\\text{converges}", "The root-test limit is \\(\\lim 2n/(3n+1)=2/3<1\\), so the series converges absolutely."],
+    ["alternating", "Test \\(\\sum_{n=1}^{\\infty}(-1)^{n-1}/n\\).", "\\text{converges conditionally}", "\\(1/n\\) decreases to zero, so the alternating-series test gives convergence; \\(\\sum1/n\\) diverges, hence convergence is conditional."],
+    ["absolute", "Classify \\(\\sum_{n=1}^{\\infty}(-1)^n/n^2\\).", "\\text{converges absolutely}", "The absolute series \\(\\sum1/n^2\\) is a p-series with \\(p=2>1\\), so the original series converges absolutely."],
+    ["power-radius", "Find R for \\(\\sum_{n=0}^{\\infty}x^n/5^n\\).", "R=5", "This is geometric with ratio \\(x/5\\); convergence requires \\(|x/5|<1\\), or \\(|x|<5\\), so \\(R=5\\)."],
+    ["power-interval", "Find the interval for \\(\\sum_{n=1}^{\\infty}(x-1)^n/n\\).", "[0,2)", "The ratio test gives \\(|x-1|<1\\). At \\(x=0\\), \\(\\sum(-1)^n/n\\) converges; at \\(x=2\\), \\(\\sum1/n\\) diverges, so the interval is \\([0,2)\\)."],
+    ["taylor", "Write the Maclaurin series for cos x.", "\\sum_{n=0}^{\\infty}(-1)^nx^{2n}/(2n)!", "The derivatives at zero cycle \\(1,0,-1,0\\), leaving even powers with alternating signs: \\(\\sum_{n=0}^{\\infty}(-1)^nx^{2n}/(2n)!\\)."],
+    ["poly", "Find T_3 for e^x at 0.", "1+x+x^2/2+x^3/6", "Every derivative of \\(e^x\\) equals 1 at zero, so \\(T_3=\\sum_{n=0}^3x^n/n!=1+x+x^2/2+x^3/6\\)."],
+    ["error", "Bound alternating-series error after four terms of \\(\\sum_{n=1}^{\\infty}(-1)^{n-1}/n\\).", "\\le1/5", "The terms \\(1/n\\) decrease to zero; after four terms the first omitted magnitude is \\(1/5\\), so \\(|R_4|\\le1/5\\)."],
+    ["param", "For x=t²,y=t³ find dy/dx.", "3t/2", "\\(dx/dt=2t\\) and \\(dy/dt=3t^2\\), so \\(dy/dx=(3t^2)/(2t)=3t/2\\) for \\(t\\ne0\\)."],
+    ["polar", "Convert r=2cosθ to Cartesian form.", "(x-1)^2+y^2=1", "Multiply by \\(r\\): \\(r^2=2r\\cos\\theta\\), so \\(x^2+y^2=2x\\), which completes the square to \\((x-1)^2+y^2=1\\)."],
+    ["concept", "Why must power-series endpoints be tested separately?", "\\text{The ratio/root test is inconclusive when }|x-a|=R.", "At \\(|x-a|=R\\), the limiting ratio or root equals 1, so the test is inconclusive and each endpoint series requires its own convergence test."],
   ];
   return (course === "Calculus I" ? calc1 : calc2).map(([id, prompt, answer, derivation]) => p(`${course === "Calculus I" ? "calc1" : "calc2"}-${id}`, prompt, `\\(${answer}\\)`, [
     derivation,
@@ -628,7 +673,7 @@ const workedProblems = selectedWorked.map(([resourceSlug, problemId, slug]) => {
     slug,
     canonicalPath: `/subjects/math/calculus/worked-problems/${slug}/`,
     summary: `A complete ${problem.method.toLowerCase()} example with method choice, derivation, verification, and a common wrong approach.`,
-    description: `See a concise answer and full derivation for ${problem.prompt.toLowerCase()}`,
+    description: `See a concise answer and full derivation for ${readablePrompt(problem.prompt).toLowerCase()}`,
     searchIntent: [slug.replaceAll("-", " "), problem.method],
     skills: [problem.method],
     prerequisites: parent.prerequisites,
@@ -706,22 +751,6 @@ const glossaryEnrichments = glossaryIds.map((id, index) => ({
 }));
 
 const catalog = { version: 1, revisionDate, resources, promotedVisualPages, workedProblems, glossaryEnrichments };
-const verification = [...resources.flatMap((resource) => resource.problems.map((problem) => ({
-  resource_id: resource.id,
-  problem_id: problem.id,
-  verification_method: problem.verificationMethod,
-  result: "pass",
-  notes: `Checked independently for the ${problem.method.toLowerCase()} method and domain.`,
-  review_status: "reviewed",
-}))), ...workedProblems.map((item) => ({
-  resource_id: item.id,
-  problem_id: item.problem.id,
-  verification_method: item.problem.verificationMethod,
-  result: "pass",
-  notes: "Inherited from the verified flagship source and editorially checked as a standalone derivation.",
-  review_status: "reviewed",
-}))];
-
 function texEscape(value) {
   return String(value).split(/(\\\([\s\S]*?\\\))/g).map((segment) => {
     if (segment.startsWith("\\(") && segment.endsWith("\\)")) return `$${segment.slice(2, -2)}$`;
@@ -750,7 +779,14 @@ function latexDocument(resource, key) {
   const problemBody = resource.problems.length
     ? resource.problems.map((problem) => {
       const prompt = texEscape(problem.prompt);
-      if (!key) return `\\item ${prompt}\\vspace{${resource.resourceType === "practice-exam" ? "1.0" : "0.75"}in}`;
+      if (!key) {
+        const workspace = resource.resourceType === "practice-exam"
+          ? "1.0"
+          : resource.id === "calculus-resource-evaluating-limits"
+            ? "0.62"
+            : "0.75";
+        return `\\item ${prompt}\\vspace{${workspace}in}`;
+      }
       const steps = problem.steps.map((step) => `\\item ${texEscape(step)}`).join("\n");
       return `\\item ${prompt}\\par\\textbf{Answer:} ${texEscape(problem.answer)}\\begin{enumerate}[label=\\alph*.]${steps}\\end{enumerate}`;
     }).join("\n")
@@ -804,7 +840,11 @@ async function compilePdf(resource, key) {
   const texPath = resolve(directory, `${resource.slug}-${suffix}.tex`);
   const pdfPath = resolve(directory, `${resource.slug}-${suffix}.pdf`);
   await writeFile(texPath, latexDocument(resource, key), "utf8");
-  const run = spawnSync("tectonic", ["--keep-logs", "--outdir", directory, texPath], { cwd: root, encoding: "utf8" });
+  const run = spawnSync("tectonic", ["--keep-logs", "--outdir", directory, texPath], {
+    cwd: root,
+    encoding: "utf8",
+    env: deterministicEnvironment,
+  });
   if (run.status !== 0) throw new Error(`Tectonic failed for ${resource.id}/${suffix}: ${run.stderr || run.stdout}`);
   await rm(texPath, { force: true });
   await rm(resolve(directory, `${resource.slug}-${suffix}.log`), { force: true });
@@ -813,16 +853,25 @@ async function compilePdf(resource, key) {
 
 async function buildAll() {
   await mkdir(dirname(catalogPath), { recursive: true });
-  await mkdir(dirname(verificationPath), { recursive: true });
   await mkdir(visualRoot, { recursive: true });
   await writeFile(catalogPath, `${JSON.stringify(catalog, null, 2)}\n`, "utf8");
-  await writeFile(verificationPath, `${JSON.stringify({ generatedAt: `${revisionDate}T00:00:00Z`, entries: verification }, null, 2)}\n`, "utf8");
   for (const definition of visualDefinitions) {
     const [id] = definition;
     const svgPath = resolve(visualRoot, `${id}.svg`);
     await writeFile(svgPath, svgFor(definition), "utf8");
     const pngPath = resolve(visualRoot, `${id}.png`);
-    const raster = spawnSync("magick", ["-background", "#101713", svgPath, "-resize", "1200x", "-alpha", "remove", "-alpha", "off", "-depth", "8", pngPath], { encoding: "utf8" });
+    const raster = spawnSync("magick", [
+      "-background", "#101713",
+      svgPath,
+      "-resize", "1200x",
+      "-alpha", "remove",
+      "-alpha", "off",
+      "-depth", "8",
+      "-define", "png:exclude-chunks=date,time",
+      "+set", "date:create",
+      "+set", "date:modify",
+      pngPath,
+    ], { encoding: "utf8", env: deterministicEnvironment });
     if (raster.status !== 0) throw new Error(`Raster generation failed for ${id}: ${raster.stderr}`);
   }
   const pdfRows = [];
@@ -833,7 +882,7 @@ async function buildAll() {
       const pdfPath = await compilePdf(resource, key);
       const bytes = await readFile(pdfPath);
       const publicPath = key ? resource.answerKeyPdf : resource.studentPdf;
-      headerLines.push(`${publicPath}\n  Link: <${canonicalHost}${resource.canonicalPath}>; rel="canonical"\n  Content-Disposition: inline\n  X-Robots-Tag: noindex\n`);
+      headerLines.push(`${publicPath}\n  Link: <${canonicalHost}${resource.canonicalPath}>; rel="canonical"\n  Content-Disposition: inline\n  X-Robots-Tag: noindex`);
       pdfRows.push({
         resource_id: resource.id,
         variant: key ? "answer-key" : "student",
@@ -845,7 +894,7 @@ async function buildAll() {
       });
     }
   }
-  await writeFile(headersPath, `${headerLines.join("\n")}\n`, "utf8");
+  await writeFile(headersPath, `${headerLines.join("\n\n")}\n`, "utf8");
   await writeFile(pdfVerificationPath, `${JSON.stringify({ generatedAt: `${revisionDate}T00:00:00Z`, files: pdfRows }, null, 2)}\n`, "utf8");
 }
 
@@ -876,9 +925,6 @@ async function verifyAll() {
     await access(resolve(visualRoot, `${id}.svg`));
     await access(resolve(visualRoot, `${id}.png`));
   }
-  const verificationDisk = JSON.parse(await readFile(verificationPath, "utf8"));
-  const expectedCount = resources.reduce((sum, resource) => sum + resource.problemCount, 0) + workedProblems.length;
-  if (verificationDisk.entries.length !== expectedCount || verificationDisk.entries.some((entry) => entry.result !== "pass" || entry.review_status !== "reviewed")) throw new Error("Mathematical verification coverage is incomplete");
   console.log(`Verified ${resources.length} flagship resources, ${resources.reduce((sum, resource) => sum + resource.problemCount, 0)} problems, ${workedProblems.length} worked pages, and ${glossaryEnrichments.length} glossary pages.`);
 }
 
@@ -886,5 +932,5 @@ if (check) await verifyAll();
 else {
   await buildAll();
   await verifyAll();
-  console.log("Generated build-time calculus resource catalog, PDFs, headers, verification evidence, and visual downloads.");
+  console.log("Generated build-time calculus resource catalog, PDFs, headers, and visual downloads.");
 }

@@ -47,10 +47,10 @@
       "problems": [
         {
           "id": "limits-direct-1",
-          "prompt": "Evaluate \\(lim_{x\\to2}(3x^2-5x+4)\\).",
+          "prompt": "Evaluate \\(\\lim_{x\\to2}(3x^2-5x+4)\\).",
           "answer": "\\(6\\)",
           "steps": [
-            "The expression is continuous at the target input \\(1\\).",
+            "The expression is continuous at the target input \\(2\\).",
             "Substitute the target and simplify to obtain \\(6\\)."
           ],
           "method": "Direct substitution",
@@ -59,7 +59,7 @@
         },
         {
           "id": "limits-direct-2",
-          "prompt": "Evaluate \\(lim_{x\\to-2}(x^3+4x)\\).",
+          "prompt": "Evaluate \\(\\lim_{x\\to-2}(x^3+4x)\\).",
           "answer": "\\(-16\\)",
           "steps": [
             "The expression is continuous at the target input \\(-2\\).",
@@ -71,7 +71,7 @@
         },
         {
           "id": "limits-direct-3",
-          "prompt": "Evaluate \\(lim_{t\\to3}\\frac{t^2+1}{t+2}\\).",
+          "prompt": "Evaluate \\(\\lim_{t\\to3}\\frac{t^2+1}{t+2}\\).",
           "answer": "\\(2\\)",
           "steps": [
             "The expression is continuous at the target input \\(3\\).",
@@ -83,7 +83,7 @@
         },
         {
           "id": "limits-direct-4",
-          "prompt": "Evaluate \\(lim_{h\\to0}(7-4h+h^2)\\).",
+          "prompt": "Evaluate \\(\\lim_{h\\to0}(7-4h+h^2)\\).",
           "answer": "\\(7\\)",
           "steps": [
             "The expression is continuous at the target input \\(0\\).",
@@ -95,7 +95,7 @@
         },
         {
           "id": "limits-direct-5",
-          "prompt": "Evaluate \\(lim_{u\\to1}\\sqrt{u+8}\\).",
+          "prompt": "Evaluate \\(\\lim_{u\\to1}\\sqrt{u+8}\\).",
           "answer": "\\(3\\)",
           "steps": [
             "The expression is continuous at the target input \\(1\\).",
@@ -107,7 +107,7 @@
         },
         {
           "id": "limits-direct-6",
-          "prompt": "Evaluate \\(lim_{x\\to4}\\frac{x+5}{\\sqrt{x}}\\).",
+          "prompt": "Evaluate \\(\\lim_{x\\to4}\\frac{x+5}{\\sqrt{x}}\\).",
           "answer": "\\(\\frac92\\)",
           "steps": [
             "The expression is continuous at the target input \\(4\\).",
@@ -252,9 +252,9 @@
           "prompt": "For \\(f(x)=\\begin{cases}x+2,&x<1\\\\4-x,&x\\ge1\\end{cases}\\), evaluate the limit as \\(x\\to1^-\\).",
           "answer": "\\(3\\)",
           "steps": [
-            "Select the branch determined by the direction of approach.",
-            "Evaluate nearby behavior on that branch; the value assigned at the endpoint does not control the limit.",
-            "The required approach gives \\(3\\)."
+            "Approaching from the left selects the branch \\(f(x)=x+2\\).",
+            "As \\(x\\to1^-\\), \\(x+2\\to3\\); the value assigned by the other branch at the endpoint does not control this one-sided limit.",
+            "Therefore the result is \\(3\\)."
           ],
           "method": "One-sided branch analysis",
           "commonError": "Using the branch selected by the endpoint equality instead of the approach direction.",
@@ -265,9 +265,9 @@
           "prompt": "For \\(f(x)=\\begin{cases}2x,&x<0\\\\x^2+1,&x\\ge0\\end{cases}\\), evaluate the limit as \\(x\\to0^+\\).",
           "answer": "\\(1\\)",
           "steps": [
-            "Select the branch determined by the direction of approach.",
-            "Evaluate nearby behavior on that branch; the value assigned at the endpoint does not control the limit.",
-            "The required approach gives \\(1\\)."
+            "Approaching from the right selects the branch \\(f(x)=x^2+1\\).",
+            "As \\(x\\to0^+\\), \\(x^2+1\\to1\\).",
+            "Therefore the result is \\(1\\)."
           ],
           "method": "One-sided branch analysis",
           "commonError": "Using the branch selected by the endpoint equality instead of the approach direction.",
@@ -278,9 +278,8 @@
           "prompt": "For \\(g(x)=\\frac{|x|}{x}\\), evaluate the limit as \\(x\\to0^-\\).",
           "answer": "\\(-1\\)",
           "steps": [
-            "Select the branch determined by the direction of approach.",
-            "Evaluate nearby behavior on that branch; the value assigned at the endpoint does not control the limit.",
-            "The required approach gives \\(-1\\)."
+            "For \\(x<0\\), \\(|x|=-x\\), so \\(g(x)=(-x)/x=-1\\).",
+            "Therefore the values remain \\(-1\\) as \\(x\\to0^-\\)."
           ],
           "method": "One-sided branch analysis",
           "commonError": "Using the branch selected by the endpoint equality instead of the approach direction.",
@@ -291,11 +290,11 @@
           "prompt": "For \\(h(x)=\\begin{cases}x^2,&x\\le2\\\\6-x,&x>2\\end{cases}\\), evaluate the limit as \\(x\\to2\\).",
           "answer": "\\(4\\)",
           "steps": [
-            "Select the branch determined by the direction of approach.",
-            "Evaluate nearby behavior on that branch; the value assigned at the endpoint does not control the limit.",
-            "The required approach gives \\(4\\)."
+            "As \\(x\\to2^-\\), the branch \\(x^2\\) approaches \\(4\\).",
+            "As \\(x\\to2^+\\), the branch \\(6-x\\) approaches \\(4\\).",
+            "Because both one-sided limits equal \\(4\\), the two-sided limit is \\(4\\)."
           ],
-          "method": "One-sided branch analysis",
+          "method": "Two-sided branch comparison",
           "commonError": "Using the branch selected by the endpoint equality instead of the approach direction.",
           "verificationMethod": "endpoint-and-branch-check"
         },
@@ -548,7 +547,8 @@
           "answer": "\\(y'=15(3x+2)^{4}\\)",
           "steps": [
             "Use the power rule on the outer power \\(u^{5}\\).",
-            "Multiply by the inner derivative \\(3\\)."
+            "Multiply by the inner derivative \\(3\\).",
+            "Therefore the result is \\(y'=15(3x+2)^{4}\\)."
           ],
           "method": "Basic chain rule",
           "commonError": "Lowering the power but forgetting the derivative of the inner linear function.",
@@ -560,7 +560,8 @@
           "answer": "\\(y'=20(5x-1)^{3}\\)",
           "steps": [
             "Use the power rule on the outer power \\(u^{4}\\).",
-            "Multiply by the inner derivative \\(5\\)."
+            "Multiply by the inner derivative \\(5\\).",
+            "Therefore the result is \\(y'=20(5x-1)^{3}\\)."
           ],
           "method": "Basic chain rule",
           "commonError": "Lowering the power but forgetting the derivative of the inner linear function.",
@@ -572,7 +573,8 @@
           "answer": "\\(y'=12(2x+4)^{5}\\)",
           "steps": [
             "Use the power rule on the outer power \\(u^{6}\\).",
-            "Multiply by the inner derivative \\(2\\)."
+            "Multiply by the inner derivative \\(2\\).",
+            "Therefore the result is \\(y'=12(2x+4)^{5}\\)."
           ],
           "method": "Basic chain rule",
           "commonError": "Lowering the power but forgetting the derivative of the inner linear function.",
@@ -584,7 +586,8 @@
           "answer": "\\(y'=-9(-3x+2)^{2}\\)",
           "steps": [
             "Use the power rule on the outer power \\(u^{3}\\).",
-            "Multiply by the inner derivative \\(-3\\)."
+            "Multiply by the inner derivative \\(-3\\).",
+            "Therefore the result is \\(y'=-9(-3x+2)^{2}\\)."
           ],
           "method": "Basic chain rule",
           "commonError": "Lowering the power but forgetting the derivative of the inner linear function.",
@@ -596,7 +599,8 @@
           "answer": "\\(y'=14(7x+1)^{1}\\)",
           "steps": [
             "Use the power rule on the outer power \\(u^{2}\\).",
-            "Multiply by the inner derivative \\(7\\)."
+            "Multiply by the inner derivative \\(7\\).",
+            "Therefore the result is \\(y'=14(7x+1)^{1}\\)."
           ],
           "method": "Basic chain rule",
           "commonError": "Lowering the power but forgetting the derivative of the inner linear function.",
@@ -608,7 +612,8 @@
           "answer": "\\(y'=12(4x-5)^{2}\\)",
           "steps": [
             "Use the power rule on the outer power \\(u^{3}\\).",
-            "Multiply by the inner derivative \\(4\\)."
+            "Multiply by the inner derivative \\(4\\).",
+            "Therefore the result is \\(y'=12(4x-5)^{2}\\)."
           ],
           "method": "Basic chain rule",
           "commonError": "Lowering the power but forgetting the derivative of the inner linear function.",
@@ -620,7 +625,8 @@
           "answer": "\\(y'=6xe^{3x^2}\\)",
           "steps": [
             "Treat \\(3x^2\\) as the inner function.",
-            "Differentiate the outer function and multiply by \\(6x\\)."
+            "Differentiate the outer function and multiply by \\(6x\\).",
+            "Therefore the result is \\(y'=6xe^{3x^2}\\)."
           ],
           "method": "Exponential or logarithmic chain rule",
           "commonError": "Differentiating the outside while silently discarding the inner derivative.",
@@ -632,7 +638,8 @@
           "answer": "\\(y'=e^{\\sin x}\\cos x\\)",
           "steps": [
             "Treat \\(\\sin x\\) as the inner function.",
-            "Differentiate the outer function and multiply by \\(\\cos x\\)."
+            "Differentiate the outer function and multiply by \\(\\cos x\\).",
+            "Therefore the result is \\(y'=e^{\\sin x}\\cos x\\)."
           ],
           "method": "Exponential or logarithmic chain rule",
           "commonError": "Differentiating the outside while silently discarding the inner derivative.",
@@ -644,7 +651,8 @@
           "answer": "\\(y'=\\frac5{5x-2}\\)",
           "steps": [
             "Treat \\(5x-2\\) as the inner function.",
-            "Differentiate the outer function and multiply by \\(5\\)."
+            "Differentiate the outer function and multiply by \\(5\\).",
+            "Therefore the result is \\(y'=\\frac5{5x-2}\\)."
           ],
           "method": "Exponential or logarithmic chain rule",
           "commonError": "Differentiating the outside while silently discarding the inner derivative.",
@@ -656,7 +664,8 @@
           "answer": "\\(y'=\\frac{2x}{x^2+4}\\)",
           "steps": [
             "Treat \\(x^2+4\\) as the inner function.",
-            "Differentiate the outer function and multiply by \\(2x\\)."
+            "Differentiate the outer function and multiply by \\(2x\\).",
+            "Therefore the result is \\(y'=\\frac{2x}{x^2+4}\\)."
           ],
           "method": "Exponential or logarithmic chain rule",
           "commonError": "Differentiating the outside while silently discarding the inner derivative.",
@@ -668,7 +677,8 @@
           "answer": "\\(y'=12x^2\\cos(4x^3)\\)",
           "steps": [
             "Identify the outer trigonometric function and preserve its inner input.",
-            "Differentiate the inner expression and multiply."
+            "Differentiate the inner expression and multiply.",
+            "Therefore the result is \\(y'=12x^2\\cos(4x^3)\\)."
           ],
           "method": "Trigonometric chain rule",
           "commonError": "Changing the trigonometric input while taking the outer derivative.",
@@ -680,7 +690,8 @@
           "answer": "\\(y'=-2\\sin(2x-1)\\)",
           "steps": [
             "Identify the outer trigonometric function and preserve its inner input.",
-            "Differentiate the inner expression and multiply."
+            "Differentiate the inner expression and multiply.",
+            "Therefore the result is \\(y'=-2\\sin(2x-1)\\)."
           ],
           "method": "Trigonometric chain rule",
           "commonError": "Changing the trigonometric input while taking the outer derivative.",
@@ -692,7 +703,8 @@
           "answer": "\\(y'=2x\\sec^2(x^2)\\)",
           "steps": [
             "Identify the outer trigonometric function and preserve its inner input.",
-            "Differentiate the inner expression and multiply."
+            "Differentiate the inner expression and multiply.",
+            "Therefore the result is \\(y'=2x\\sec^2(x^2)\\)."
           ],
           "method": "Trigonometric chain rule",
           "commonError": "Changing the trigonometric input while taking the outer derivative.",
@@ -704,7 +716,8 @@
           "answer": "\\(y'=3\\sin^2x\\cos x\\)",
           "steps": [
             "Identify the outer trigonometric function and preserve its inner input.",
-            "Differentiate the inner expression and multiply."
+            "Differentiate the inner expression and multiply.",
+            "Therefore the result is \\(y'=3\\sin^2x\\cos x\\)."
           ],
           "method": "Trigonometric chain rule",
           "commonError": "Changing the trigonometric input while taking the outer derivative.",
@@ -716,7 +729,8 @@
           "answer": "\\(y'=16(2x-3)(1+(2x-3)^2)^3\\)",
           "steps": [
             "Write the composition as nested layers from outside to inside.",
-            "Differentiate each layer once and multiply the factors."
+            "Differentiate each layer once and multiply the factors.",
+            "Therefore the result is \\(y'=16(2x-3)(1+(2x-3)^2)^3\\)."
           ],
           "method": "Nested chain rule",
           "commonError": "Skipping a middle layer of the composition.",
@@ -728,7 +742,8 @@
           "answer": "\\(y'=\\frac{x e^{\\sqrt{1+x^2}}}{\\sqrt{1+x^2}}\\)",
           "steps": [
             "Write the composition as nested layers from outside to inside.",
-            "Differentiate each layer once and multiply the factors."
+            "Differentiate each layer once and multiply the factors.",
+            "Therefore the result is \\(y'=\\frac{x e^{\\sqrt{1+x^2}}}{\\sqrt{1+x^2}}\\)."
           ],
           "method": "Nested chain rule",
           "commonError": "Skipping a middle layer of the composition.",
@@ -740,7 +755,8 @@
           "answer": "\\(y'=\\frac{2\\sin x\\cos x}{1+\\sin^2x}\\)",
           "steps": [
             "Write the composition as nested layers from outside to inside.",
-            "Differentiate each layer once and multiply the factors."
+            "Differentiate each layer once and multiply the factors.",
+            "Therefore the result is \\(y'=\\frac{2\\sin x\\cos x}{1+\\sin^2x}\\)."
           ],
           "method": "Nested chain rule",
           "commonError": "Skipping a middle layer of the composition.",
@@ -753,7 +769,8 @@
           "steps": [
             "Apply the product plus chain structure before simplifying.",
             "Retain every factor contributed by an inner derivative.",
-            "A factored final form is \\(e^{3x}(2x+3x^2)\\)."
+            "A factored final form is \\(e^{3x}(2x+3x^2)\\).",
+            "Therefore the result is \\(y'=e^{3x}(2x+3x^2)\\)."
           ],
           "method": "product plus chain",
           "commonError": "Applying the chain rule to a product or quotient as if it were one composition.",
@@ -766,7 +783,8 @@
           "steps": [
             "Apply the product plus chain structure before simplifying.",
             "Retain every factor contributed by an inner derivative.",
-            "A factored final form is \\(\\sin(x^2)+2x^2\\cos(x^2)\\)."
+            "A factored final form is \\(\\sin(x^2)+2x^2\\cos(x^2)\\).",
+            "Therefore the result is \\(y'=\\sin(x^2)+2x^2\\cos(x^2)\\)."
           ],
           "method": "product plus chain",
           "commonError": "Applying the chain rule to a product or quotient as if it were one composition.",
@@ -779,7 +797,8 @@
           "steps": [
             "Apply the quotient plus chain structure before simplifying.",
             "Retain every factor contributed by an inner derivative.",
-            "A factored final form is \\(\\frac{1-2\\ln x}{x^3}\\)."
+            "A factored final form is \\(\\frac{1-2\\ln x}{x^3}\\).",
+            "Therefore the result is \\(y'=\\frac{1-2\\ln x}{x^3}\\)."
           ],
           "method": "quotient plus chain",
           "commonError": "Applying the chain rule to a product or quotient as if it were one composition.",
@@ -792,7 +811,8 @@
           "steps": [
             "Apply the quotient rule structure before simplifying.",
             "Retain every factor contributed by an inner derivative.",
-            "A factored final form is \\(\\frac{e^x(1+x^2-2x)}{(1+x^2)^2}\\)."
+            "A factored final form is \\(\\frac{e^x(1+x^2-2x)}{(1+x^2)^2}\\).",
+            "Therefore the result is \\(y'=\\frac{e^x(1+x^2-2x)}{(1+x^2)^2}\\)."
           ],
           "method": "quotient rule",
           "commonError": "Applying the chain rule to a product or quotient as if it were one composition.",
@@ -805,7 +825,8 @@
           "steps": [
             "Apply the product plus chain structure before simplifying.",
             "Retain every factor contributed by an inner derivative.",
-            "A factored final form is \\((x^2+1)^2(7x^2-12x+1)\\)."
+            "A factored final form is \\((x^2+1)^2(7x^2-12x+1)\\).",
+            "Therefore the result is \\(y'=(x^2+1)^2(7x^2-12x+1)\\)."
           ],
           "method": "product plus chain",
           "commonError": "Applying the chain rule to a product or quotient as if it were one composition.",
@@ -818,7 +839,8 @@
           "steps": [
             "Apply the quotient plus chain structure before simplifying.",
             "Retain every factor contributed by an inner derivative.",
-            "A factored final form is \\(\\frac{2x\\cos(2x)-\\sin(2x)}{x^2}\\)."
+            "A factored final form is \\(\\frac{2x\\cos(2x)-\\sin(2x)}{x^2}\\).",
+            "Therefore the result is \\(y'=\\frac{2x\\cos(2x)-\\sin(2x)}{x^2}\\)."
           ],
           "method": "quotient plus chain",
           "commonError": "Applying the chain rule to a product or quotient as if it were one composition.",
@@ -831,7 +853,8 @@
           "steps": [
             "Apply the nested chain structure before simplifying.",
             "Retain every factor contributed by an inner derivative.",
-            "A factored final form is \\(\\frac{e^{2x}}{\\sqrt{1+e^{2x}}}\\)."
+            "A factored final form is \\(\\frac{e^{2x}}{\\sqrt{1+e^{2x}}}\\).",
+            "Therefore the result is \\(y'=\\frac{e^{2x}}{\\sqrt{1+e^{2x}}}\\)."
           ],
           "method": "nested chain",
           "commonError": "Applying the chain rule to a product or quotient as if it were one composition.",
@@ -917,7 +940,8 @@
           "answer": "\\(x=2,\\ V_{\\max}=128\\)",
           "steps": [
             "V=x(12-2x)^2 on 0<x<6; V'=12(x-2)(x-6), so the interior maximum is x=2.",
-            "Check feasibility, endpoints, and the sign or second derivative before declaring the optimum."
+            "Check feasibility, endpoints, and the sign or second derivative before declaring the optimum.",
+            "Therefore the result is \\(x=2,\\ V_{\\max}=128\\)."
           ],
           "method": "Constrained one-variable optimization",
           "commonError": "Solving f'(x)=0 without building the constraint or checking the feasible domain.",
@@ -929,7 +953,8 @@
           "answer": "\\(x=\\frac{16-\\sqrt{76}}3\\approx2.43\\)",
           "steps": [
             "V=x(20-2x)(12-2x). Solve V'=12x^2-128x+240=0 and retain the feasible critical point.",
-            "Check feasibility, endpoints, and the sign or second derivative before declaring the optimum."
+            "Check feasibility, endpoints, and the sign or second derivative before declaring the optimum.",
+            "Therefore the result is \\(x=\\frac{16-\\sqrt{76}}3\\approx2.43\\)."
           ],
           "method": "Constrained one-variable optimization",
           "commonError": "Solving f'(x)=0 without building the constraint or checking the feasible domain.",
@@ -941,7 +966,8 @@
           "answer": "\\(x=60,\\ y=120,\\ A=7200\\)",
           "steps": [
             "With 2x+y=240, A=x(240-2x); A'=240-4x=0.",
-            "Check feasibility, endpoints, and the sign or second derivative before declaring the optimum."
+            "Check feasibility, endpoints, and the sign or second derivative before declaring the optimum.",
+            "Therefore the result is \\(x=60,\\ y=120,\\ A=7200\\)."
           ],
           "method": "Constrained one-variable optimization",
           "commonError": "Solving f'(x)=0 without building the constraint or checking the feasible domain.",
@@ -953,7 +979,8 @@
           "answer": "\\(w=100,\\ell=150,\\ A=15000\\)",
           "steps": [
             "The constraint is 3w+2\\ell=600. Substitute \\ell=(600-3w)/2 into A=w\\ell.",
-            "Check feasibility, endpoints, and the sign or second derivative before declaring the optimum."
+            "Check feasibility, endpoints, and the sign or second derivative before declaring the optimum.",
+            "Therefore the result is \\(w=100,\\ell=150,\\ A=15000\\)."
           ],
           "method": "Constrained one-variable optimization",
           "commonError": "Solving f'(x)=0 without building the constraint or checking the feasible domain.",
@@ -965,7 +992,8 @@
           "answer": "\\(printed\\ width=16,\\ printed\\ height=24\\)",
           "steps": [
             "For printed width x, paper area is (x+4)(384/x+6). Set its derivative to zero.",
-            "Check feasibility, endpoints, and the sign or second derivative before declaring the optimum."
+            "Check feasibility, endpoints, and the sign or second derivative before declaring the optimum.",
+            "Therefore the result is \\(printed\\ width=16,\\ printed\\ height=24\\)."
           ],
           "method": "Constrained one-variable optimization",
           "commonError": "Solving f'(x)=0 without building the constraint or checking the feasible domain.",
@@ -977,7 +1005,8 @@
           "answer": "\\(r=5,\\ h=10\\)",
           "steps": [
             "Use h=250/r^2 in S=2\\pi r^2+2\\pi rh; solve S'=0.",
-            "Check feasibility, endpoints, and the sign or second derivative before declaring the optimum."
+            "Check feasibility, endpoints, and the sign or second derivative before declaring the optimum.",
+            "Therefore the result is \\(r=5,\\ h=10\\)."
           ],
           "method": "Constrained one-variable optimization",
           "commonError": "Solving f'(x)=0 without building the constraint or checking the feasible domain.",
@@ -989,7 +1018,8 @@
           "answer": "\\((\\pm\\sqrt{5/2},5/2)\\)",
           "steps": [
             "Minimize D^2=x^2+(x^2-3)^2. Critical points satisfy 2x(2x^2-5)=0; compare values.",
-            "Check feasibility, endpoints, and the sign or second derivative before declaring the optimum."
+            "Check feasibility, endpoints, and the sign or second derivative before declaring the optimum.",
+            "Therefore the result is \\((\\pm\\sqrt{5/2},5/2)\\)."
           ],
           "method": "Constrained one-variable optimization",
           "commonError": "Solving f'(x)=0 without building the constraint or checking the feasible domain.",
@@ -1001,7 +1031,8 @@
           "answer": "\\(width=5\\sqrt2,\\ height=5/\\sqrt2,\\ A=25\\)",
           "steps": [
             "A=2x\\sqrt{25-x^2}; maximize A²=4x²(25-x²).",
-            "Check feasibility, endpoints, and the sign or second derivative before declaring the optimum."
+            "Check feasibility, endpoints, and the sign or second derivative before declaring the optimum.",
+            "Therefore the result is \\(width=5\\sqrt2,\\ height=5/\\sqrt2,\\ A=25\\)."
           ],
           "method": "Constrained one-variable optimization",
           "commonError": "Solving f'(x)=0 without building the constraint or checking the feasible domain.",
@@ -1013,7 +1044,8 @@
           "answer": "\\(square\\ length=\\frac{80}{4+\\pi},\\ circle\\ length=\\frac{20\\pi}{4+\\pi}\\)",
           "steps": [
             "Let x go to the square: A=x²/16+(20-x)²/(4\\pi). Solve A'=0.",
-            "Check feasibility, endpoints, and the sign or second derivative before declaring the optimum."
+            "Check feasibility, endpoints, and the sign or second derivative before declaring the optimum.",
+            "Therefore the result is \\(square\\ length=\\frac{80}{4+\\pi},\\ circle\\ length=\\frac{20\\pi}{4+\\pi}\\)."
           ],
           "method": "Constrained one-variable optimization",
           "commonError": "Solving f'(x)=0 without building the constraint or checking the feasible domain.",
@@ -1025,7 +1057,8 @@
           "answer": "\\(q=20,\\ p=40,\\ R=800\\)",
           "steps": [
             "R=q(80-2q); R'=80-4q=0 and R''<0.",
-            "Check feasibility, endpoints, and the sign or second derivative before declaring the optimum."
+            "Check feasibility, endpoints, and the sign or second derivative before declaring the optimum.",
+            "Therefore the result is \\(q=20,\\ p=40,\\ R=800\\)."
           ],
           "method": "Constrained one-variable optimization",
           "commonError": "Solving f'(x)=0 without building the constraint or checking the feasible domain.",
@@ -1037,7 +1070,8 @@
           "answer": "\\(q=50\\)",
           "steps": [
             "Average cost is q+100+2500/q. Set 1-2500/q²=0.",
-            "Check feasibility, endpoints, and the sign or second derivative before declaring the optimum."
+            "Check feasibility, endpoints, and the sign or second derivative before declaring the optimum.",
+            "Therefore the result is \\(q=50\\)."
           ],
           "method": "Constrained one-variable optimization",
           "commonError": "Solving f'(x)=0 without building the constraint or checking the feasible domain.",
@@ -1049,7 +1083,8 @@
           "answer": "\\(x=y=5\\sqrt2,\\ A=25\\)",
           "steps": [
             "With x²+y²=100, maximize A=xy/2; symmetry or differentiation gives x=y.",
-            "Check feasibility, endpoints, and the sign or second derivative before declaring the optimum."
+            "Check feasibility, endpoints, and the sign or second derivative before declaring the optimum.",
+            "Therefore the result is \\(x=y=5\\sqrt2,\\ A=25\\)."
           ],
           "method": "Constrained one-variable optimization",
           "commonError": "Solving f'(x)=0 without building the constraint or checking the feasible domain.",
@@ -1057,11 +1092,12 @@
         },
         {
           "id": "optimization-cone",
-          "prompt": "A cone has volume 72\\pi. Minimize slant-independent material S=\\pi r²+\\pi rh.",
-          "answer": "\\(r=\\sqrt[3]{72},\\ h=3\\sqrt[3]{72}\\)",
+          "prompt": "A cone has volume 72\\pi. Under the material model S=\\pi r²+\\pi rh, minimize S.",
+          "answer": "\\(r=\\sqrt[3]{108}=3\\sqrt[3]{4},\\ h=2\\sqrt[3]{108}=6\\sqrt[3]{4}\\)",
           "steps": [
-            "Use h=216/r², then minimize S=\\pi r²+216\\pi/r.",
-            "Check feasibility, endpoints, and the sign or second derivative before declaring the optimum."
+            "Use h=216/r², so S=\\pi r²+216\\pi/r. Then S'=2\\pi r-216\\pi/r²=0 gives r³=108 and h=216/r²=2r.",
+            "Check feasibility, endpoints, and the sign or second derivative before declaring the optimum.",
+            "Therefore the result is \\(r=\\sqrt[3]{108}=3\\sqrt[3]{4},\\ h=2\\sqrt[3]{108}=6\\sqrt[3]{4}\\)."
           ],
           "method": "Constrained one-variable optimization",
           "commonError": "Solving f'(x)=0 without building the constraint or checking the feasible domain.",
@@ -1073,7 +1109,8 @@
           "answer": "\\(r=\\frac{20}{4+\\pi}\\)",
           "steps": [
             "Use width 2r and rectangular height h. The perimeter gives h=(20-(2+\\pi)r)/2; maximize 2rh+\\pi r²/2.",
-            "Check feasibility, endpoints, and the sign or second derivative before declaring the optimum."
+            "Check feasibility, endpoints, and the sign or second derivative before declaring the optimum.",
+            "Therefore the result is \\(r=\\frac{20}{4+\\pi}\\)."
           ],
           "method": "Constrained one-variable optimization",
           "commonError": "Solving f'(x)=0 without building the constraint or checking the feasible domain.",
@@ -1085,7 +1122,8 @@
           "answer": "\\(land\\ about\\ 5.75\\ km\\ before\\ town\\)",
           "steps": [
             "Let x be the downshore rowing distance. T=\\sqrt{x²+9}/3+(8-x)/5; solve T'=0.",
-            "Check feasibility, endpoints, and the sign or second derivative before declaring the optimum."
+            "Check feasibility, endpoints, and the sign or second derivative before declaring the optimum.",
+            "Therefore the result is \\(land\\ about\\ 5.75\\ km\\ before\\ town\\)."
           ],
           "method": "Constrained one-variable optimization",
           "commonError": "Solving f'(x)=0 without building the constraint or checking the feasible domain.",
@@ -1097,7 +1135,8 @@
           "answer": "\\(x=3,\\ f(3)=9\\)",
           "steps": [
             "Check the critical point x=3 and both endpoints; the largest listed value is 9.",
-            "Check feasibility, endpoints, and the sign or second derivative before declaring the optimum."
+            "Check feasibility, endpoints, and the sign or second derivative before declaring the optimum.",
+            "Therefore the result is \\(x=3,\\ f(3)=9\\)."
           ],
           "method": "Constrained one-variable optimization",
           "commonError": "Solving f'(x)=0 without building the constraint or checking the feasible domain.",
@@ -1183,7 +1222,7 @@
           "prompt": "Evaluate \\(\\lim_{x\\to2}(x^2+3x-1)\\).",
           "answer": "\\(9\\)",
           "steps": [
-            "Direct substitution applies.",
+            "The polynomial is continuous, so substitution gives \\(2^2+3(2)-1=4+6-1=9\\).",
             "The verified result is \\(9\\)."
           ],
           "method": "Course synthesis",
@@ -1195,7 +1234,7 @@
           "prompt": "Evaluate \\(\\lim_{x\\to4}(x^2-16)/(x-4)\\).",
           "answer": "\\(8\\)",
           "steps": [
-            "Factor and cancel x-4.",
+            "For \\(x\\ne4\\), \\((x^2-16)/(x-4)=x+4\\); therefore the limit is \\(4+4=8\\).",
             "The verified result is \\(8\\)."
           ],
           "method": "Course synthesis",
@@ -1207,7 +1246,7 @@
           "prompt": "Choose k so \\(f(x)=kx+1\\) for x<2 and \\(f(x)=7\\) for x≥2 is continuous.",
           "answer": "\\(k=3\\)",
           "steps": [
-            "Match the left limit 2k+1 to 7.",
+            "Continuity requires \\(2k+1=7\\), so \\(2k=6\\) and \\(k=3\\).",
             "The verified result is \\(k=3\\)."
           ],
           "method": "Course synthesis",
@@ -1219,7 +1258,7 @@
           "prompt": "Use the limit definition to find the derivative of x².",
           "answer": "\\(2x\\)",
           "steps": [
-            "Expand (x+h)², cancel, divide by h, and let h→0.",
+            "\\(f'(x)=\\lim_{h\\to0}((x+h)^2-x^2)/h=\\lim_{h\\to0}(2x+h)=2x\\).",
             "The verified result is \\(2x\\)."
           ],
           "method": "Course synthesis",
@@ -1231,7 +1270,7 @@
           "prompt": "Differentiate \\(4x^5-3x^2+7\\).",
           "answer": "\\(20x^4-6x\\)",
           "steps": [
-            "Apply linearity and the power rule.",
+            "\\(d(4x^5)/dx=20x^4\\), \\(d(-3x^2)/dx=-6x\\), and the constant derivative is zero.",
             "The verified result is \\(20x^4-6x\\)."
           ],
           "method": "Course synthesis",
@@ -1243,7 +1282,7 @@
           "prompt": "Differentiate \\(x^2\\sin x\\).",
           "answer": "\\(2x\\sin x+x^2\\cos x\\)",
           "steps": [
-            "Use the product rule.",
+            "The product rule gives \\((x^2)'\\sin x+x^2(\\sin x)'=2x\\sin x+x^2\\cos x\\).",
             "The verified result is \\(2x\\sin x+x^2\\cos x\\)."
           ],
           "method": "Course synthesis",
@@ -1255,7 +1294,7 @@
           "prompt": "Differentiate \\((x+1)/(x-1)\\).",
           "answer": "\\(-2/(x-1)^2\\)",
           "steps": [
-            "Use the quotient rule and simplify.",
+            "The quotient rule gives \\(((x-1)-(x+1))/(x-1)^2=-2/(x-1)^2\\), for \\(x\\ne1\\).",
             "The verified result is \\(-2/(x-1)^2\\)."
           ],
           "method": "Course synthesis",
@@ -1267,7 +1306,7 @@
           "prompt": "Differentiate \\((3x^2+1)^4\\).",
           "answer": "\\(24x(3x^2+1)^3\\)",
           "steps": [
-            "Outer power times inner derivative.",
+            "With \\(u=3x^2+1\\), \\(d(u^4)/dx=4u^3(6x)=24x(3x^2+1)^3\\).",
             "The verified result is \\(24x(3x^2+1)^3\\)."
           ],
           "method": "Course synthesis",
@@ -1279,7 +1318,7 @@
           "prompt": "For x²+y²=25, find dy/dx.",
           "answer": "\\(-x/y\\)",
           "steps": [
-            "Differentiate both sides with respect to x.",
+            "Differentiating gives \\(2x+2y\\,dy/dx=0\\), hence \\(dy/dx=-x/y\\) where \\(y\\ne0\\).",
             "The verified result is \\(-x/y\\)."
           ],
           "method": "Course synthesis",
@@ -1291,7 +1330,7 @@
           "prompt": "Find the tangent line to y=x³ at x=2.",
           "answer": "\\(y-8=12(x-2)\\)",
           "steps": [
-            "Evaluate the point and derivative.",
+            "At \\(x=2\\), \\(y=8\\) and \\(y'=3x^2=12\\), so point-slope form is \\(y-8=12(x-2)\\).",
             "The verified result is \\(y-8=12(x-2)\\)."
           ],
           "method": "Course synthesis",
@@ -1303,7 +1342,7 @@
           "prompt": "Find c guaranteed by MVT for f(x)=x² on [1,3].",
           "answer": "\\(c=2\\)",
           "steps": [
-            "Set 2c equal to the secant slope 4.",
+            "The secant slope is \\((9-1)/(3-1)=4\\); solving \\(f'(c)=2c=4\\) gives \\(c=2\\in(1,3)\\).",
             "The verified result is \\(c=2\\)."
           ],
           "method": "Course synthesis",
@@ -1315,7 +1354,7 @@
           "prompt": "Find critical numbers of x³-3x.",
           "answer": "\\(x=\\pm1\\)",
           "steps": [
-            "Solve 3x²-3=0.",
+            "\\(f'(x)=3x^2-3=3(x-1)(x+1)\\), so the critical numbers are \\(x=-1,1\\).",
             "The verified result is \\(x=\\pm1\\)."
           ],
           "method": "Course synthesis",
@@ -1327,7 +1366,7 @@
           "prompt": "Where is x³-3x increasing?",
           "answer": "\\((-\\infty,-1)\\cup(1,\\infty)\\)",
           "steps": [
-            "Use the sign of 3(x²-1).",
+            "Since \\(f'(x)=3(x^2-1)>0\\) exactly when \\(|x|>1\\), the function increases on \\(( -\\infty,-1)\\cup(1,\\infty)\\).",
             "The verified result is \\((-\\infty,-1)\\cup(1,\\infty)\\)."
           ],
           "method": "Course synthesis",
@@ -1339,7 +1378,7 @@
           "prompt": "Find the inflection point of x³-6x².",
           "answer": "\\((2,-16)\\)",
           "steps": [
-            "f''=6x-12 changes sign at 2.",
+            "\\(f''(x)=6x-12\\) changes from negative to positive at \\(x=2\\), and \\(f(2)=8-24=-16\\).",
             "The verified result is \\((2,-16)\\)."
           ],
           "method": "Course synthesis",
@@ -1351,7 +1390,7 @@
           "prompt": "A rectangle has perimeter 40. Find maximum area.",
           "answer": "\\(100\\)",
           "steps": [
-            "A=x(20-x) is maximal at x=10.",
+            "If the sides are \\(x\\) and \\(20-x\\), then \\(A=x(20-x)\\); \\(A'=20-2x=0\\) at \\(x=10\\), giving \\(A=100\\).",
             "The verified result is \\(100\\)."
           ],
           "method": "Course synthesis",
@@ -1363,7 +1402,7 @@
           "prompt": "A circle radius grows at 2 cm/s. Find dA/dt at r=5.",
           "answer": "\\(20\\pi\\text{ cm}^2/\\text{s}\\)",
           "steps": [
-            "Differentiate A=πr² with respect to time.",
+            "From \\(A=\\pi r^2\\), \\(dA/dt=2\\pi r\\,dr/dt=2\\pi(5)(2)=20\\pi\\text{ cm}^2/\\text{s}\\).",
             "The verified result is \\(20\\pi\\text{ cm}^2/\\text{s}\\)."
           ],
           "method": "Course synthesis",
@@ -1375,7 +1414,7 @@
           "prompt": "Use linearization at 9 to approximate √9.2.",
           "answer": "\\(3+0.2/6\\approx3.0333\\)",
           "steps": [
-            "L(x)=3+(x-9)/6.",
+            "For \\(f(x)=\\sqrt{x}\\), \\(f(9)=3\\) and \\(f'(9)=1/6\\), so \\(L(9.2)=3+0.2/6\\approx3.0333\\).",
             "The verified result is \\(3+0.2/6\\approx3.0333\\)."
           ],
           "method": "Course synthesis",
@@ -1387,7 +1426,7 @@
           "prompt": "Find \\(\\int(6x^2-4)dx\\).",
           "answer": "\\(2x^3-4x+C\\)",
           "steps": [
-            "Integrate term by term.",
+            "Termwise integration gives \\(6x^3/3-4x+C=2x^3-4x+C\\).",
             "The verified result is \\(2x^3-4x+C\\)."
           ],
           "method": "Course synthesis",
@@ -1399,7 +1438,7 @@
           "prompt": "Evaluate \\(\\int_0^2 3x^2dx\\).",
           "answer": "\\(8\\)",
           "steps": [
-            "Use x³ at the endpoints.",
+            "An antiderivative is \\(x^3\\), so \\([x^3]_0^2=8-0=8\\).",
             "The verified result is \\(8\\)."
           ],
           "method": "Course synthesis",
@@ -1411,7 +1450,7 @@
           "prompt": "Differentiate \\(F(x)=\\int_1^x\\cos(t^2)dt\\).",
           "answer": "\\(\\cos(x^2)\\)",
           "steps": [
-            "Apply FTC Part I.",
+            "FTC Part I evaluates the integrand at the variable upper bound: \\(F'(x)=\\cos(x^2)\\).",
             "The verified result is \\(\\cos(x^2)\\)."
           ],
           "method": "Course synthesis",
@@ -1423,7 +1462,7 @@
           "prompt": "Evaluate \\(\\int2x(x^2+1)^3dx\\).",
           "answer": "\\((x^2+1)^4/4+C\\)",
           "steps": [
-            "Let u=x²+1.",
+            "Let \\(u=x^2+1\\), so \\(du=2x\\,dx\\); then \\(\\int u^3du=u^4/4+C=(x^2+1)^4/4+C\\).",
             "The verified result is \\((x^2+1)^4/4+C\\)."
           ],
           "method": "Course synthesis",
@@ -1435,7 +1474,7 @@
           "prompt": "Find the area under y=x on [0,3].",
           "answer": "\\(9/2\\)",
           "steps": [
-            "Integrate x or use triangle area.",
+            "\\(A=\\int_0^3x\\,dx=[x^2/2]_0^3=9/2\\).",
             "The verified result is \\(9/2\\)."
           ],
           "method": "Course synthesis",
@@ -1447,7 +1486,7 @@
           "prompt": "Find the average value of x² on [0,3].",
           "answer": "\\(3\\)",
           "steps": [
-            "Divide the integral 9 by interval length 3.",
+            "\\(f_{\\rm avg}=\\frac1{3-0}\\int_0^3x^2dx=\\frac13[x^3/3]_0^3=3\\).",
             "The verified result is \\(3\\)."
           ],
           "method": "Course synthesis",
@@ -1459,7 +1498,7 @@
           "prompt": "If v(t)=3t²-6t, find displacement from 0 to 3.",
           "answer": "\\(0\\)",
           "steps": [
-            "Integrate velocity over the interval.",
+            "\\(\\int_0^3(3t^2-6t)dt=[t^3-3t^2]_0^3=(27-27)-0=0\\).",
             "The verified result is \\(0\\)."
           ],
           "method": "Course synthesis",
@@ -1469,10 +1508,10 @@
         {
           "id": "calc1-concept",
           "prompt": "Explain why a differentiable function is continuous.",
-          "answer": "\\(The derivative limit forces f(x)-f(a) to approach 0.\\)",
+          "answer": "\\(\\text{The derivative limit forces }f(x)-f(a)\\text{ to approach }0.\\)",
           "steps": [
-            "Factor f(x)-f(a) as a difference quotient times x-a.",
-            "The verified result is \\(The derivative limit forces f(x)-f(a) to approach 0.\\)."
+            "Write \\(f(x)-f(a)=((f(x)-f(a))/(x-a))(x-a)\\); differentiability makes the first factor approach \\(f'(a)\\) while the second approaches zero.",
+            "The verified result is \\(\\text{The derivative limit forces }f(x)-f(a)\\text{ to approach }0.\\)."
           ],
           "method": "Course synthesis",
           "commonError": "Selecting a familiar formula without checking its hypotheses.",
@@ -1565,9 +1604,9 @@
           "prompt": "Evaluate \\(\\int xe^x\\,dx\\).",
           "answer": "\\(e^x(x-1)+C\\)",
           "steps": [
-            "Choose u as the factor that simplifies when differentiated and integrate dv.",
-            "Apply \\(\\int u\\,dv=uv-\\int v\\,du\\); repeat when the remaining integral still has a polynomial factor.",
-            "Simplification gives \\(e^x(x-1)+C\\)."
+            "Take \\(u=x\\) and \\(dv=e^x dx\\), so \\(du=dx\\) and \\(v=e^x\\).",
+            "Then \\(\\int xe^x dx=xe^x-\\int e^x dx=xe^x-e^x+C=e^x(x-1)+C\\).",
+            "Therefore the result is \\(e^x(x-1)+C\\)."
           ],
           "method": "Integration by parts",
           "commonError": "Choosing dv that is harder to integrate or losing the minus sign in the formula.",
@@ -1578,9 +1617,9 @@
           "prompt": "Evaluate \\(\\int x^2e^x\\,dx\\).",
           "answer": "\\(e^x(x^2-2x+2)+C\\)",
           "steps": [
-            "Choose u as the factor that simplifies when differentiated and integrate dv.",
-            "Apply \\(\\int u\\,dv=uv-\\int v\\,du\\); repeat when the remaining integral still has a polynomial factor.",
-            "Simplification gives \\(e^x(x^2-2x+2)+C\\)."
+            "Take \\(u=x^2\\) and \\(dv=e^x dx\\): \\(I=x^2e^x-2\\int xe^x dx\\).",
+            "Using \\(\\int xe^x dx=e^x(x-1)\\), \\(I=e^x(x^2-2x+2)+C\\).",
+            "Therefore the result is \\(e^x(x^2-2x+2)+C\\)."
           ],
           "method": "Integration by parts",
           "commonError": "Choosing dv that is harder to integrate or losing the minus sign in the formula.",
@@ -1591,9 +1630,8 @@
           "prompt": "Evaluate \\(\\int x^3e^x\\,dx\\).",
           "answer": "\\(e^x(x^3-3x^2+6x-6)+C\\)",
           "steps": [
-            "Choose u as the factor that simplifies when differentiated and integrate dv.",
-            "Apply \\(\\int u\\,dv=uv-\\int v\\,du\\); repeat when the remaining integral still has a polynomial factor.",
-            "Simplification gives \\(e^x(x^3-3x^2+6x-6)+C\\)."
+            "Take \\(u=x^3\\) and \\(dv=e^x dx\\): \\(I=x^3e^x-3\\int x^2e^x dx\\).",
+            "Substitute \\(\\int x^2e^x dx=e^x(x^2-2x+2)\\) and collect terms to get \\(e^x(x^3-3x^2+6x-6)+C\\)."
           ],
           "method": "Integration by parts",
           "commonError": "Choosing dv that is harder to integrate or losing the minus sign in the formula.",
@@ -1604,9 +1642,9 @@
           "prompt": "Evaluate \\(\\int xe^{2x}\\,dx\\).",
           "answer": "\\(e^{2x}(2x-1)/4+C\\)",
           "steps": [
-            "Choose u as the factor that simplifies when differentiated and integrate dv.",
-            "Apply \\(\\int u\\,dv=uv-\\int v\\,du\\); repeat when the remaining integral still has a polynomial factor.",
-            "Simplification gives \\(e^{2x}(2x-1)/4+C\\)."
+            "Take \\(u=x\\) and \\(dv=e^{2x}dx\\), so \\(du=dx\\) and \\(v=e^{2x}/2\\).",
+            "Thus \\(I=xe^{2x}/2-\\int e^{2x}/2\\,dx=xe^{2x}/2-e^{2x}/4+C=e^{2x}(2x-1)/4+C\\).",
+            "Therefore the result is \\(e^{2x}(2x-1)/4+C\\)."
           ],
           "method": "Integration by parts",
           "commonError": "Choosing dv that is harder to integrate or losing the minus sign in the formula.",
@@ -1617,9 +1655,9 @@
           "prompt": "Evaluate \\(\\int x\\sin x\\,dx\\).",
           "answer": "\\(-x\\cos x+\\sin x+C\\)",
           "steps": [
-            "Choose u as the factor that simplifies when differentiated and integrate dv.",
-            "Apply \\(\\int u\\,dv=uv-\\int v\\,du\\); repeat when the remaining integral still has a polynomial factor.",
-            "Simplification gives \\(-x\\cos x+\\sin x+C\\)."
+            "Take \\(u=x\\) and \\(dv=\\sin x\\,dx\\), so \\(du=dx\\) and \\(v=-\\cos x\\).",
+            "Then \\(I=-x\\cos x+\\int\\cos x\\,dx=-x\\cos x+\\sin x+C\\).",
+            "Therefore the result is \\(-x\\cos x+\\sin x+C\\)."
           ],
           "method": "Integration by parts",
           "commonError": "Choosing dv that is harder to integrate or losing the minus sign in the formula.",
@@ -1630,9 +1668,9 @@
           "prompt": "Evaluate \\(\\int x\\cos x\\,dx\\).",
           "answer": "\\(x\\sin x+\\cos x+C\\)",
           "steps": [
-            "Choose u as the factor that simplifies when differentiated and integrate dv.",
-            "Apply \\(\\int u\\,dv=uv-\\int v\\,du\\); repeat when the remaining integral still has a polynomial factor.",
-            "Simplification gives \\(x\\sin x+\\cos x+C\\)."
+            "Take \\(u=x\\) and \\(dv=\\cos x\\,dx\\), so \\(du=dx\\) and \\(v=\\sin x\\).",
+            "Then \\(I=x\\sin x-\\int\\sin x\\,dx=x\\sin x+\\cos x+C\\).",
+            "Therefore the result is \\(x\\sin x+\\cos x+C\\)."
           ],
           "method": "Integration by parts",
           "commonError": "Choosing dv that is harder to integrate or losing the minus sign in the formula.",
@@ -1643,9 +1681,9 @@
           "prompt": "Evaluate \\(\\int x^2\\sin x\\,dx\\).",
           "answer": "\\(-x^2\\cos x+2x\\sin x+2\\cos x+C\\)",
           "steps": [
-            "Choose u as the factor that simplifies when differentiated and integrate dv.",
-            "Apply \\(\\int u\\,dv=uv-\\int v\\,du\\); repeat when the remaining integral still has a polynomial factor.",
-            "Simplification gives \\(-x^2\\cos x+2x\\sin x+2\\cos x+C\\)."
+            "Take \\(u=x^2\\) and \\(dv=\\sin x\\,dx\\): \\(I=-x^2\\cos x+2\\int x\\cos x\\,dx\\).",
+            "Since \\(\\int x\\cos x\\,dx=x\\sin x+\\cos x\\), \\(I=-x^2\\cos x+2x\\sin x+2\\cos x+C\\).",
+            "Therefore the result is \\(-x^2\\cos x+2x\\sin x+2\\cos x+C\\)."
           ],
           "method": "Integration by parts",
           "commonError": "Choosing dv that is harder to integrate or losing the minus sign in the formula.",
@@ -1656,9 +1694,9 @@
           "prompt": "Evaluate \\(\\int x^2\\cos x\\,dx\\).",
           "answer": "\\(x^2\\sin x+2x\\cos x-2\\sin x+C\\)",
           "steps": [
-            "Choose u as the factor that simplifies when differentiated and integrate dv.",
-            "Apply \\(\\int u\\,dv=uv-\\int v\\,du\\); repeat when the remaining integral still has a polynomial factor.",
-            "Simplification gives \\(x^2\\sin x+2x\\cos x-2\\sin x+C\\)."
+            "Take \\(u=x^2\\) and \\(dv=\\cos x\\,dx\\): \\(I=x^2\\sin x-2\\int x\\sin x\\,dx\\).",
+            "Since \\(\\int x\\sin x\\,dx=-x\\cos x+\\sin x\\), \\(I=x^2\\sin x+2x\\cos x-2\\sin x+C\\).",
+            "Therefore the result is \\(x^2\\sin x+2x\\cos x-2\\sin x+C\\)."
           ],
           "method": "Integration by parts",
           "commonError": "Choosing dv that is harder to integrate or losing the minus sign in the formula.",
@@ -1669,9 +1707,9 @@
           "prompt": "Evaluate \\(\\int\\ln x\\,dx\\).",
           "answer": "\\(x\\ln x-x+C\\)",
           "steps": [
-            "Choose u as the factor that simplifies when differentiated and integrate dv.",
-            "Apply \\(\\int u\\,dv=uv-\\int v\\,du\\); repeat when the remaining integral still has a polynomial factor.",
-            "Simplification gives \\(x\\ln x-x+C\\)."
+            "Write the integrand as \\((\\ln x)(1)\\); take \\(u=\\ln x\\) and \\(dv=dx\\), so \\(du=dx/x\\) and \\(v=x\\).",
+            "Then \\(I=x\\ln x-\\int1\\,dx=x\\ln x-x+C\\), for \\(x>0\\).",
+            "Therefore the result is \\(x\\ln x-x+C\\)."
           ],
           "method": "Integration by parts",
           "commonError": "Choosing dv that is harder to integrate or losing the minus sign in the formula.",
@@ -1682,9 +1720,9 @@
           "prompt": "Evaluate \\(\\int x\\ln x\\,dx\\).",
           "answer": "\\(\\frac{x^2}{2}\\ln x-\\frac{x^2}{4}+C\\)",
           "steps": [
-            "Choose u as the factor that simplifies when differentiated and integrate dv.",
-            "Apply \\(\\int u\\,dv=uv-\\int v\\,du\\); repeat when the remaining integral still has a polynomial factor.",
-            "Simplification gives \\(\\frac{x^2}{2}\\ln x-\\frac{x^2}{4}+C\\)."
+            "Take \\(u=\\ln x\\) and \\(dv=x\\,dx\\), so \\(du=dx/x\\) and \\(v=x^2/2\\).",
+            "Then \\(I=(x^2/2)\\ln x-\\frac12\\int x\\,dx=(x^2/2)\\ln x-x^2/4+C\\), for \\(x>0\\).",
+            "Therefore the result is \\(\\frac{x^2}{2}\\ln x-\\frac{x^2}{4}+C\\)."
           ],
           "method": "Integration by parts",
           "commonError": "Choosing dv that is harder to integrate or losing the minus sign in the formula.",
@@ -1695,9 +1733,8 @@
           "prompt": "Evaluate \\(\\int(\\ln x)^2\\,dx\\).",
           "answer": "\\(x[(\\ln x)^2-2\\ln x+2]+C\\)",
           "steps": [
-            "Choose u as the factor that simplifies when differentiated and integrate dv.",
-            "Apply \\(\\int u\\,dv=uv-\\int v\\,du\\); repeat when the remaining integral still has a polynomial factor.",
-            "Simplification gives \\(x[(\\ln x)^2-2\\ln x+2]+C\\)."
+            "Take \\(u=(\\ln x)^2\\) and \\(dv=dx\\): \\(I=x(\\ln x)^2-2\\int\\ln x\\,dx\\).",
+            "Substitute \\(\\int\\ln x\\,dx=x\\ln x-x\\) to obtain \\(x[(\\ln x)^2-2\\ln x+2]+C\\), for \\(x>0\\)."
           ],
           "method": "Integration by parts",
           "commonError": "Choosing dv that is harder to integrate or losing the minus sign in the formula.",
@@ -1708,9 +1745,9 @@
           "prompt": "Evaluate \\(\\int\\arctan x\\,dx\\).",
           "answer": "\\(x\\arctan x-\\frac12\\ln(1+x^2)+C\\)",
           "steps": [
-            "Choose u as the factor that simplifies when differentiated and integrate dv.",
-            "Apply \\(\\int u\\,dv=uv-\\int v\\,du\\); repeat when the remaining integral still has a polynomial factor.",
-            "Simplification gives \\(x\\arctan x-\\frac12\\ln(1+x^2)+C\\)."
+            "Take \\(u=\\arctan x\\) and \\(dv=dx\\), so \\(du=dx/(1+x^2)\\) and \\(v=x\\).",
+            "Then \\(I=x\\arctan x-\\int x/(1+x^2)\\,dx=x\\arctan x-\\frac12\\ln(1+x^2)+C\\).",
+            "Therefore the result is \\(x\\arctan x-\\frac12\\ln(1+x^2)+C\\)."
           ],
           "method": "Integration by parts",
           "commonError": "Choosing dv that is harder to integrate or losing the minus sign in the formula.",
@@ -1721,9 +1758,9 @@
           "prompt": "Evaluate \\(\\int\\arcsin x\\,dx\\).",
           "answer": "\\(x\\arcsin x+\\sqrt{1-x^2}+C\\)",
           "steps": [
-            "Choose u as the factor that simplifies when differentiated and integrate dv.",
-            "Apply \\(\\int u\\,dv=uv-\\int v\\,du\\); repeat when the remaining integral still has a polynomial factor.",
-            "Simplification gives \\(x\\arcsin x+\\sqrt{1-x^2}+C\\)."
+            "Take \\(u=\\arcsin x\\) and \\(dv=dx\\), so \\(du=dx/\\sqrt{1-x^2}\\) and \\(v=x\\).",
+            "Because \\(\\int x/\\sqrt{1-x^2}\\,dx=-\\sqrt{1-x^2}\\), \\(I=x\\arcsin x+\\sqrt{1-x^2}+C\\) on \\((-1,1)\\).",
+            "Therefore the result is \\(x\\arcsin x+\\sqrt{1-x^2}+C\\)."
           ],
           "method": "Integration by parts",
           "commonError": "Choosing dv that is harder to integrate or losing the minus sign in the formula.",
@@ -1734,9 +1771,9 @@
           "prompt": "Evaluate \\(\\int_0^1xe^x\\,dx\\).",
           "answer": "\\(1\\)",
           "steps": [
-            "Choose u as the factor that simplifies when differentiated and integrate dv.",
-            "Apply \\(\\int u\\,dv=uv-\\int v\\,du\\); repeat when the remaining integral still has a polynomial factor.",
-            "Simplification and endpoint evaluation gives \\(1\\)."
+            "Using \\(u=x\\) and \\(dv=e^x dx\\), an antiderivative is \\(e^x(x-1)\\).",
+            "Evaluate the bounds: \\([e^x(x-1)]_0^1=0-(-1)=1\\).",
+            "Therefore the result is \\(1\\)."
           ],
           "method": "Integration by parts",
           "commonError": "Choosing dv that is harder to integrate or losing the minus sign in the formula.",
@@ -1747,9 +1784,9 @@
           "prompt": "Evaluate \\(\\int_0^\\pi x\\sin x\\,dx\\).",
           "answer": "\\(\\pi\\)",
           "steps": [
-            "Choose u as the factor that simplifies when differentiated and integrate dv.",
-            "Apply \\(\\int u\\,dv=uv-\\int v\\,du\\); repeat when the remaining integral still has a polynomial factor.",
-            "Simplification and endpoint evaluation gives \\(\\pi\\)."
+            "Using \\(u=x\\) and \\(dv=\\sin x\\,dx\\), an antiderivative is \\(-x\\cos x+\\sin x\\).",
+            "Evaluate the bounds: \\([-x\\cos x+\\sin x]_0^\\pi=\\pi-0=\\pi\\).",
+            "Therefore the result is \\(\\pi\\)."
           ],
           "method": "Integration by parts",
           "commonError": "Choosing dv that is harder to integrate or losing the minus sign in the formula.",
@@ -1760,9 +1797,9 @@
           "prompt": "Evaluate \\(\\int e^x\\cos x\\,dx\\).",
           "answer": "\\(\\frac{e^x}{2}(\\sin x+\\cos x)+C\\)",
           "steps": [
-            "Choose u as the factor that simplifies when differentiated and integrate dv.",
-            "Apply \\(\\int u\\,dv=uv-\\int v\\,du\\); repeat when the remaining integral still has a polynomial factor.",
-            "Simplification and endpoint evaluation gives \\(\\frac{e^x}{2}(\\sin x+\\cos x)+C\\)."
+            "Let \\(I=\\int e^x\\cos x\\,dx\\). Two integrations by parts give \\(I=e^x\\cos x+e^x\\sin x-I\\).",
+            "Therefore \\(2I=e^x(\\sin x+\\cos x)\\), so \\(I=\\frac{e^x}{2}(\\sin x+\\cos x)+C\\).",
+            "Therefore the result is \\(\\frac{e^x}{2}(\\sin x+\\cos x)+C\\)."
           ],
           "method": "Cyclic integration by parts",
           "commonError": "Choosing dv that is harder to integrate or losing the minus sign in the formula.",
@@ -1773,9 +1810,9 @@
           "prompt": "Evaluate \\(\\int e^x\\sin x\\,dx\\).",
           "answer": "\\(\\frac{e^x}{2}(\\sin x-\\cos x)+C\\)",
           "steps": [
-            "Choose u as the factor that simplifies when differentiated and integrate dv.",
-            "Apply \\(\\int u\\,dv=uv-\\int v\\,du\\); repeat when the remaining integral still has a polynomial factor.",
-            "Simplification and endpoint evaluation gives \\(\\frac{e^x}{2}(\\sin x-\\cos x)+C\\)."
+            "Let \\(I=\\int e^x\\sin x\\,dx\\). Two integrations by parts give \\(I=e^x\\sin x-e^x\\cos x-I\\).",
+            "Therefore \\(2I=e^x(\\sin x-\\cos x)\\), so \\(I=\\frac{e^x}{2}(\\sin x-\\cos x)+C\\).",
+            "Therefore the result is \\(\\frac{e^x}{2}(\\sin x-\\cos x)+C\\)."
           ],
           "method": "Cyclic integration by parts",
           "commonError": "Choosing dv that is harder to integrate or losing the minus sign in the formula.",
@@ -1786,9 +1823,9 @@
           "prompt": "Evaluate \\(\\int x^4e^x\\,dx\\).",
           "answer": "\\(e^x(x^4-4x^3+12x^2-24x+24)+C\\)",
           "steps": [
-            "Choose u as the factor that simplifies when differentiated and integrate dv.",
-            "Apply \\(\\int u\\,dv=uv-\\int v\\,du\\); repeat when the remaining integral still has a polynomial factor.",
-            "Simplification and endpoint evaluation gives \\(e^x(x^4-4x^3+12x^2-24x+24)+C\\)."
+            "Repeatedly take the polynomial as \\(u\\): \\(I=x^4e^x-4\\int x^3e^x dx\\).",
+            "Substituting the three prior reductions gives \\(I=e^x(x^4-4x^3+12x^2-24x+24)+C\\).",
+            "Therefore the result is \\(e^x(x^4-4x^3+12x^2-24x+24)+C\\)."
           ],
           "method": "Integration by parts",
           "commonError": "Choosing dv that is harder to integrate or losing the minus sign in the formula.",
@@ -1799,9 +1836,9 @@
           "prompt": "Evaluate \\(\\int x^2\\ln x\\,dx\\).",
           "answer": "\\(\\frac{x^3}{3}\\ln x-\\frac{x^3}{9}+C\\)",
           "steps": [
-            "Choose u as the factor that simplifies when differentiated and integrate dv.",
-            "Apply \\(\\int u\\,dv=uv-\\int v\\,du\\); repeat when the remaining integral still has a polynomial factor.",
-            "Simplification and endpoint evaluation gives \\(\\frac{x^3}{3}\\ln x-\\frac{x^3}{9}+C\\)."
+            "Take \\(u=\\ln x\\) and \\(dv=x^2dx\\), so \\(du=dx/x\\) and \\(v=x^3/3\\).",
+            "Then \\(I=(x^3/3)\\ln x-\\frac13\\int x^2dx=(x^3/3)\\ln x-x^3/9+C\\), for \\(x>0\\).",
+            "Therefore the result is \\(\\frac{x^3}{3}\\ln x-\\frac{x^3}{9}+C\\)."
           ],
           "method": "Integration by parts",
           "commonError": "Choosing dv that is harder to integrate or losing the minus sign in the formula.",
@@ -1812,9 +1849,9 @@
           "prompt": "Evaluate \\(\\int_1^e\\ln x\\,dx\\).",
           "answer": "\\(1\\)",
           "steps": [
-            "Choose u as the factor that simplifies when differentiated and integrate dv.",
-            "Apply \\(\\int u\\,dv=uv-\\int v\\,du\\); repeat when the remaining integral still has a polynomial factor.",
-            "Simplification and endpoint evaluation gives \\(1\\)."
+            "Using \\(u=\\ln x\\) and \\(dv=dx\\), an antiderivative is \\(x\\ln x-x\\).",
+            "Evaluate the bounds: \\([x\\ln x-x]_1^e=0-(-1)=1\\).",
+            "Therefore the result is \\(1\\)."
           ],
           "method": "Integration by parts",
           "commonError": "Choosing dv that is harder to integrate or losing the minus sign in the formula.",
@@ -1979,9 +2016,8 @@
           "prompt": "Find the common ratio of 3, 12, 48, …",
           "answer": "\\(r=4\\)",
           "steps": [
-            "Identify the first included term, common ratio, and whether the sum is finite or infinite.",
-            "Use \\(S_n=a(1-r^n)/(1-r)\\) for a finite sum or \\(S=a/(1-r)\\) only when \\(|r|<1\\).",
-            "Substitution and simplification give \\(r=4\\)."
+            "Divide either term by its predecessor: \\(12/3=4\\) and \\(48/12=4\\).",
+            "The constant quotient is \\(r=4\\)."
           ],
           "method": "Geometric-series structure",
           "commonError": "Using the infinite-sum formula without checking the common-ratio condition or the starting index.",
@@ -1992,9 +2028,9 @@
           "prompt": "Find a_8 when a_1=5 and r=2.",
           "answer": "\\(a_8=640\\)",
           "steps": [
-            "Identify the first included term, common ratio, and whether the sum is finite or infinite.",
-            "Use \\(S_n=a(1-r^n)/(1-r)\\) for a finite sum or \\(S=a/(1-r)\\) only when \\(|r|<1\\).",
-            "Substitution and simplification give \\(a_8=640\\)."
+            "Use \\(a_n=a_1r^{n-1}\\).",
+            "Thus \\(a_8=5(2)^7=640\\).",
+            "Therefore the result is \\(a_8=640\\)."
           ],
           "method": "Geometric-series structure",
           "commonError": "Using the infinite-sum formula without checking the common-ratio condition or the starting index.",
@@ -2005,9 +2041,8 @@
           "prompt": "Evaluate \\(\\sum_{k=0}^{5}3(2)^k\\).",
           "answer": "\\(189\\)",
           "steps": [
-            "Identify the first included term, common ratio, and whether the sum is finite or infinite.",
-            "Use \\(S_n=a(1-r^n)/(1-r)\\) for a finite sum or \\(S=a/(1-r)\\) only when \\(|r|<1\\).",
-            "Substitution and simplification give \\(189\\)."
+            "There are six terms with first term \\(3\\) and ratio \\(2\\).",
+            "Using \\(S_6=3(1-2^6)/(1-2)\\) gives \\(189\\)."
           ],
           "method": "Geometric-series structure",
           "commonError": "Using the infinite-sum formula without checking the common-ratio condition or the starting index.",
@@ -2018,9 +2053,8 @@
           "prompt": "Evaluate \\(\\sum_{k=0}^{4}16(1/2)^k\\).",
           "answer": "\\(31\\)",
           "steps": [
-            "Identify the first included term, common ratio, and whether the sum is finite or infinite.",
-            "Use \\(S_n=a(1-r^n)/(1-r)\\) for a finite sum or \\(S=a/(1-r)\\) only when \\(|r|<1\\).",
-            "Substitution and simplification give \\(31\\)."
+            "There are five terms with first term \\(16\\) and ratio \\(1/2\\).",
+            "Using \\(S_5=16(1-(1/2)^5)/(1-1/2)\\) gives \\(31\\)."
           ],
           "method": "Geometric-series structure",
           "commonError": "Using the infinite-sum formula without checking the common-ratio condition or the starting index.",
@@ -2031,9 +2065,9 @@
           "prompt": "Evaluate \\(\\sum_{k=0}^{\\infty}12(1/3)^k\\).",
           "answer": "\\(18\\)",
           "steps": [
-            "Identify the first included term, common ratio, and whether the sum is finite or infinite.",
-            "Use \\(S_n=a(1-r^n)/(1-r)\\) for a finite sum or \\(S=a/(1-r)\\) only when \\(|r|<1\\).",
-            "Substitution and simplification give \\(18\\)."
+            "Here \\(a=12\\), \\(r=1/3\\), and \\(|r|<1\\).",
+            "Therefore \\(S=a/(1-r)=12/(1-1/3)=18\\).",
+            "Therefore the result is \\(18\\)."
           ],
           "method": "Geometric-series structure",
           "commonError": "Using the infinite-sum formula without checking the common-ratio condition or the starting index.",
@@ -2044,9 +2078,9 @@
           "prompt": "Evaluate \\(\\sum_{k=0}^{\\infty}8(-1/2)^k\\).",
           "answer": "\\(16/3\\)",
           "steps": [
-            "Identify the first included term, common ratio, and whether the sum is finite or infinite.",
-            "Use \\(S_n=a(1-r^n)/(1-r)\\) for a finite sum or \\(S=a/(1-r)\\) only when \\(|r|<1\\).",
-            "Substitution and simplification give \\(16/3\\)."
+            "Here \\(a=8\\), \\(r=-1/2\\), and \\(|r|<1\\).",
+            "Therefore \\(S=8/(1+1/2)=16/3\\).",
+            "Therefore the result is \\(16/3\\)."
           ],
           "method": "Geometric-series structure",
           "commonError": "Using the infinite-sum formula without checking the common-ratio condition or the starting index.",
@@ -2055,11 +2089,11 @@
         {
           "id": "geometric-diverge",
           "prompt": "Decide whether \\(\\sum_{k=0}^{\\infty}5(1.02)^k\\) converges.",
-          "answer": "\\(diverges\\)",
+          "answer": "\\(\\text{diverges}\\)",
           "steps": [
-            "Identify the first included term, common ratio, and whether the sum is finite or infinite.",
-            "Use \\(S_n=a(1-r^n)/(1-r)\\) for a finite sum or \\(S=a/(1-r)\\) only when \\(|r|<1\\).",
-            "Substitution and simplification give \\(diverges\\)."
+            "The common ratio is \\(r=1.02\\), so \\(|r|>1\\).",
+            "Its terms do not approach zero, and the infinite geometric series diverges.",
+            "Therefore the result is \\(\\text{diverges}\\)."
           ],
           "method": "Geometric-series structure",
           "commonError": "Using the infinite-sum formula without checking the common-ratio condition or the starting index.",
@@ -2070,9 +2104,9 @@
           "prompt": "Evaluate \\(\\sum_{n=3}^{\\infty}2(1/4)^n\\).",
           "answer": "\\(1/24\\)",
           "steps": [
-            "Identify the first included term, common ratio, and whether the sum is finite or infinite.",
-            "Use \\(S_n=a(1-r^n)/(1-r)\\) for a finite sum or \\(S=a/(1-r)\\) only when \\(|r|<1\\).",
-            "Substitution and simplification give \\(1/24\\)."
+            "The first included term is \\(2(1/4)^3=1/32\\), not \\(2\\).",
+            "With ratio \\(1/4\\), the sum is \\((1/32)/(1-1/4)=1/24\\).",
+            "Therefore the result is \\(1/24\\)."
           ],
           "method": "Geometric-series structure",
           "commonError": "Using the infinite-sum formula without checking the common-ratio condition or the starting index.",
@@ -2083,9 +2117,9 @@
           "prompt": "Rewrite \\(\\sum_{n=1}^{\\infty}3^{1-n}\\) in \\(ar^k\\) form and sum it.",
           "answer": "\\(3/2\\)",
           "steps": [
-            "Identify the first included term, common ratio, and whether the sum is finite or infinite.",
-            "Use \\(S_n=a(1-r^n)/(1-r)\\) for a finite sum or \\(S=a/(1-r)\\) only when \\(|r|<1\\).",
-            "Substitution and simplification give \\(3/2\\)."
+            "At \\(n=1\\) the first term is \\(1\\), and each next term is multiplied by \\(1/3\\).",
+            "Thus the series is \\(\\sum_{k=0}^{\\infty}(1/3)^k\\), whose sum is \\(1/(1-1/3)=3/2\\).",
+            "Therefore the result is \\(3/2\\)."
           ],
           "method": "Geometric-series structure",
           "commonError": "Using the infinite-sum formula without checking the common-ratio condition or the starting index.",
@@ -2096,9 +2130,9 @@
           "prompt": "Write 0.333… as a fraction.",
           "answer": "\\(1/3\\)",
           "steps": [
-            "Identify the first included term, common ratio, and whether the sum is finite or infinite.",
-            "Use \\(S_n=a(1-r^n)/(1-r)\\) for a finite sum or \\(S=a/(1-r)\\) only when \\(|r|<1\\).",
-            "Substitution and simplification give \\(1/3\\)."
+            "Write the decimal as \\(3/10+3/100+\\cdots\\).",
+            "This has \\(a=3/10\\), \\(r=1/10\\), so its sum is \\((3/10)/(9/10)=1/3\\).",
+            "Therefore the result is \\(1/3\\)."
           ],
           "method": "Geometric-series structure",
           "commonError": "Using the infinite-sum formula without checking the common-ratio condition or the starting index.",
@@ -2109,9 +2143,9 @@
           "prompt": "Write 0.272727… as a fraction.",
           "answer": "\\(3/11\\)",
           "steps": [
-            "Identify the first included term, common ratio, and whether the sum is finite or infinite.",
-            "Use \\(S_n=a(1-r^n)/(1-r)\\) for a finite sum or \\(S=a/(1-r)\\) only when \\(|r|<1\\).",
-            "Substitution and simplification give \\(3/11\\)."
+            "Write the decimal as \\(27/100+27/10000+\\cdots\\).",
+            "This has \\(a=27/100\\), \\(r=1/100\\), so its sum is \\(27/99=3/11\\).",
+            "Therefore the result is \\(3/11\\)."
           ],
           "method": "Geometric-series structure",
           "commonError": "Using the infinite-sum formula without checking the common-ratio condition or the starting index.",
@@ -2122,9 +2156,8 @@
           "prompt": "Write 0.145145… as a fraction.",
           "answer": "\\(145/999\\)",
           "steps": [
-            "Identify the first included term, common ratio, and whether the sum is finite or infinite.",
-            "Use \\(S_n=a(1-r^n)/(1-r)\\) for a finite sum or \\(S=a/(1-r)\\) only when \\(|r|<1\\).",
-            "Substitution and simplification give \\(145/999\\)."
+            "Write the decimal as \\(145/1000+145/1000000+\\cdots\\).",
+            "This has ratio \\(1/1000\\), so its sum is \\(145/999\\)."
           ],
           "method": "Geometric-series structure",
           "commonError": "Using the infinite-sum formula without checking the common-ratio condition or the starting index.",
@@ -2135,9 +2168,9 @@
           "prompt": "A ball rebounds 70% of each previous height after a 10 m drop. Find total vertical distance.",
           "answer": "\\(170/3\\text{ m}\\)",
           "steps": [
-            "Identify the first included term, common ratio, and whether the sum is finite or infinite.",
-            "Use \\(S_n=a(1-r^n)/(1-r)\\) for a finite sum or \\(S=a/(1-r)\\) only when \\(|r|<1\\).",
-            "Substitution and simplification give \\(170/3\\text{ m}\\)."
+            "The initial drop contributes \\(10\\) m; each rebound height is traveled once up and once down.",
+            "Thus \\(D=10+2(7+7(0.7)+\\cdots)=10+14/(1-0.7)=170/3\\text{ m}\\).",
+            "Therefore the result is \\(170/3\\text{ m}\\)."
           ],
           "method": "Geometric-series structure",
           "commonError": "Using the infinite-sum formula without checking the common-ratio condition or the starting index.",
@@ -2148,9 +2181,9 @@
           "prompt": "Deposit 100 dollars at the end of each year for four years at 5 percent. Find the value immediately after the fourth deposit.",
           "answer": "\\(431.01\\text{ dollars}\\)",
           "steps": [
-            "Identify the first included term, common ratio, and whether the sum is finite or infinite.",
-            "Use \\(S_n=a(1-r^n)/(1-r)\\) for a finite sum or \\(S=a/(1-r)\\) only when \\(|r|<1\\).",
-            "Substitution and simplification give \\(431.01\\text{ dollars}\\)."
+            "Immediately after the fourth deposit, the four deposits have grown for three, two, one, and zero years.",
+            "The value is \\(100(1.05^3+1.05^2+1.05+1)=431.0125\\), or \\(431.01\\) dollars to the nearest cent.",
+            "Therefore the result is \\(431.01\\text{ dollars}\\)."
           ],
           "method": "Geometric-series structure",
           "commonError": "Using the infinite-sum formula without checking the common-ratio condition or the starting index.",
@@ -2161,9 +2194,9 @@
           "prompt": "A square has area 1; each stage shades one fourth of the remaining area. Find total shaded area.",
           "answer": "\\(1\\)",
           "steps": [
-            "Identify the first included term, common ratio, and whether the sum is finite or infinite.",
-            "Use \\(S_n=a(1-r^n)/(1-r)\\) for a finite sum or \\(S=a/(1-r)\\) only when \\(|r|<1\\).",
-            "Substitution and simplification give \\(1\\)."
+            "The shaded areas are \\(1/4,(3/4)(1/4),(3/4)^2(1/4),\\ldots\\).",
+            "Their sum is \\((1/4)/(1-3/4)=1\\).",
+            "Therefore the result is \\(1\\)."
           ],
           "method": "Geometric-series structure",
           "commonError": "Using the infinite-sum formula without checking the common-ratio condition or the starting index.",
@@ -2174,9 +2207,9 @@
           "prompt": "Find S_n for 7+7(0.8)+7(0.8)^2+…",
           "answer": "\\(35(1-0.8^n)\\)",
           "steps": [
-            "Identify the first included term, common ratio, and whether the sum is finite or infinite.",
-            "Use \\(S_n=a(1-r^n)/(1-r)\\) for a finite sum or \\(S=a/(1-r)\\) only when \\(|r|<1\\).",
-            "Substitution and simplification give \\(35(1-0.8^n)\\)."
+            "The first term is \\(7\\), the ratio is \\(0.8\\), and the first \\(n\\) terms end at exponent \\(n-1\\).",
+            "Therefore \\(S_n=7(1-0.8^n)/(1-0.8)=35(1-0.8^n)\\).",
+            "Therefore the result is \\(35(1-0.8^n)\\)."
           ],
           "method": "Geometric-series structure",
           "commonError": "Using the infinite-sum formula without checking the common-ratio condition or the starting index.",
@@ -2187,9 +2220,9 @@
           "prompt": "An infinite geometric series has first term 6 and sum 15. Find r.",
           "answer": "\\(3/5\\)",
           "steps": [
-            "Identify the first included term, common ratio, and whether the sum is finite or infinite.",
-            "Use \\(S_n=a(1-r^n)/(1-r)\\) for a finite sum or \\(S=a/(1-r)\\) only when \\(|r|<1\\).",
-            "Substitution and simplification give \\(3/5\\)."
+            "Use \\(15=6/(1-r)\\).",
+            "Then \\(1-r=2/5\\), so \\(r=3/5\\), which satisfies \\(|r|<1\\).",
+            "Therefore the result is \\(3/5\\)."
           ],
           "method": "Geometric-series structure",
           "commonError": "Using the infinite-sum formula without checking the common-ratio condition or the starting index.",
@@ -2200,9 +2233,9 @@
           "prompt": "An infinite geometric series has ratio -1/4 and sum 8. Find its first term.",
           "answer": "\\(10\\)",
           "steps": [
-            "Identify the first included term, common ratio, and whether the sum is finite or infinite.",
-            "Use \\(S_n=a(1-r^n)/(1-r)\\) for a finite sum or \\(S=a/(1-r)\\) only when \\(|r|<1\\).",
-            "Substitution and simplification give \\(10\\)."
+            "Use \\(8=a/(1-(-1/4))=a/(5/4)\\).",
+            "Thus \\(a=10\\).",
+            "Therefore the result is \\(10\\)."
           ],
           "method": "Geometric-series structure",
           "commonError": "Using the infinite-sum formula without checking the common-ratio condition or the starting index.",
@@ -2213,9 +2246,9 @@
           "prompt": "A student uses a/(1-r) for r=2. Diagnose the error.",
           "answer": "\\(|r|\\ge1,\\text{ so the infinite series diverges}\\)",
           "steps": [
-            "Identify the first included term, common ratio, and whether the sum is finite or infinite.",
-            "Use \\(S_n=a(1-r^n)/(1-r)\\) for a finite sum or \\(S=a/(1-r)\\) only when \\(|r|<1\\).",
-            "Substitution and simplification give \\(|r|\\ge1,\\text{ so the infinite series diverges}\\)."
+            "The formula \\(a/(1-r)\\) requires \\(|r|<1\\).",
+            "For \\(r=2\\), the terms do not approach zero, so the infinite series diverges.",
+            "Therefore the result is \\(|r|\\ge1,\\text{ so the infinite series diverges}\\)."
           ],
           "method": "Geometric-series structure",
           "commonError": "Using the infinite-sum formula without checking the common-ratio condition or the starting index.",
@@ -2226,9 +2259,9 @@
           "prompt": "Evaluate \\(\\sum_{n=2}^{6}5(3)^{n-2}\\).",
           "answer": "\\(605\\)",
           "steps": [
-            "Identify the first included term, common ratio, and whether the sum is finite or infinite.",
-            "Use \\(S_n=a(1-r^n)/(1-r)\\) for a finite sum or \\(S=a/(1-r)\\) only when \\(|r|<1\\).",
-            "Substitution and simplification give \\(605\\)."
+            "At \\(n=2\\) the first term is \\(5\\); there are five terms through \\(n=6\\), with ratio \\(3\\).",
+            "Thus \\(S_5=5(1-3^5)/(1-3)=605\\).",
+            "Therefore the result is \\(605\\)."
           ],
           "method": "Geometric-series structure",
           "commonError": "Using the infinite-sum formula without checking the common-ratio condition or the starting index.",
@@ -2314,9 +2347,8 @@
           "prompt": "Find the degree-3 Maclaurin polynomial for e^x.",
           "answer": "\\(1+x+x^2/2+x^3/6\\)",
           "steps": [
-            "Start from derivatives at the center or a known convergent power series.",
-            "Apply substitution, differentiation, integration, or the ratio test while preserving the convergence condition.",
-            "The resulting expression is \\(1+x+x^2/2+x^3/6\\)."
+            "Use \\(e^x=\\sum_{n=0}^{\\infty}x^n/n!\\).",
+            "Retaining degrees 0 through 3 gives \\(1+x+x^2/2+x^3/6\\)."
           ],
           "method": "Taylor or power-series construction",
           "commonError": "Transforming the formula but forgetting to transform the interval, endpoints, factorial, or remainder.",
@@ -2327,9 +2359,8 @@
           "prompt": "Find the degree-5 Maclaurin polynomial for sin x.",
           "answer": "\\(x-x^3/6+x^5/120\\)",
           "steps": [
-            "Start from derivatives at the center or a known convergent power series.",
-            "Apply substitution, differentiation, integration, or the ratio test while preserving the convergence condition.",
-            "The resulting expression is \\(x-x^3/6+x^5/120\\)."
+            "Use \\(\\sin x=\\sum_{n=0}^{\\infty}(-1)^nx^{2n+1}/(2n+1)!\\).",
+            "Retaining terms through degree 5 gives \\(x-x^3/6+x^5/120\\)."
           ],
           "method": "Taylor or power-series construction",
           "commonError": "Transforming the formula but forgetting to transform the interval, endpoints, factorial, or remainder.",
@@ -2340,9 +2371,8 @@
           "prompt": "Find the degree-4 Maclaurin polynomial for cos x.",
           "answer": "\\(1-x^2/2+x^4/24\\)",
           "steps": [
-            "Start from derivatives at the center or a known convergent power series.",
-            "Apply substitution, differentiation, integration, or the ratio test while preserving the convergence condition.",
-            "The resulting expression is \\(1-x^2/2+x^4/24\\)."
+            "Use \\(\\cos x=\\sum_{n=0}^{\\infty}(-1)^nx^{2n}/(2n)!\\).",
+            "Retaining terms through degree 4 gives \\(1-x^2/2+x^4/24\\)."
           ],
           "method": "Taylor or power-series construction",
           "commonError": "Transforming the formula but forgetting to transform the interval, endpoints, factorial, or remainder.",
@@ -2353,9 +2383,8 @@
           "prompt": "Write the first four nonzero terms of ln(1+x).",
           "answer": "\\(x-x^2/2+x^3/3-x^4/4\\)",
           "steps": [
-            "Start from derivatives at the center or a known convergent power series.",
-            "Apply substitution, differentiation, integration, or the ratio test while preserving the convergence condition.",
-            "The resulting expression is \\(x-x^2/2+x^3/3-x^4/4\\)."
+            "Integrate the geometric series for \\(1/(1+x)\\) term by term.",
+            "The first four nonzero terms are \\(x-x^2/2+x^3/3-x^4/4\\)."
           ],
           "method": "Taylor or power-series construction",
           "commonError": "Transforming the formula but forgetting to transform the interval, endpoints, factorial, or remainder.",
@@ -2366,9 +2395,9 @@
           "prompt": "Expand 1/(1-x) as a power series.",
           "answer": "\\(\\sum_{n=0}^{\\infty}x^n,\\ |x|<1\\)",
           "steps": [
-            "Start from derivatives at the center or a known convergent power series.",
-            "Apply substitution, differentiation, integration, or the ratio test while preserving the convergence condition.",
-            "The resulting expression is \\(\\sum_{n=0}^{\\infty}x^n,\\ |x|<1\\)."
+            "The geometric identity \\(1/(1-r)=\\sum_{n=0}^{\\infty}r^n\\) requires \\(|r|<1\\).",
+            "Set \\(r=x\\) to obtain \\(\\sum_{n=0}^{\\infty}x^n\\) for \\(|x|<1\\).",
+            "Therefore the result is \\(\\sum_{n=0}^{\\infty}x^n,\\ |x|<1\\)."
           ],
           "method": "Taylor or power-series construction",
           "commonError": "Transforming the formula but forgetting to transform the interval, endpoints, factorial, or remainder.",
@@ -2379,9 +2408,9 @@
           "prompt": "Expand 1/(1+x^2) as a power series.",
           "answer": "\\(\\sum_{n=0}^{\\infty}(-1)^nx^{2n},\\ |x|<1\\)",
           "steps": [
-            "Start from derivatives at the center or a known convergent power series.",
-            "Apply substitution, differentiation, integration, or the ratio test while preserving the convergence condition.",
-            "The resulting expression is \\(\\sum_{n=0}^{\\infty}(-1)^nx^{2n},\\ |x|<1\\)."
+            "Set \\(r=-x^2\\) in the geometric series.",
+            "This gives \\(\\sum_{n=0}^{\\infty}(-1)^nx^{2n}\\), with \\(|x|<1\\).",
+            "Therefore the result is \\(\\sum_{n=0}^{\\infty}(-1)^nx^{2n},\\ |x|<1\\)."
           ],
           "method": "Taylor or power-series construction",
           "commonError": "Transforming the formula but forgetting to transform the interval, endpoints, factorial, or remainder.",
@@ -2392,9 +2421,9 @@
           "prompt": "Expand 1/(1-3x) as a power series.",
           "answer": "\\(\\sum_{n=0}^{\\infty}3^nx^n,\\ |x|<1/3\\)",
           "steps": [
-            "Start from derivatives at the center or a known convergent power series.",
-            "Apply substitution, differentiation, integration, or the ratio test while preserving the convergence condition.",
-            "The resulting expression is \\(\\sum_{n=0}^{\\infty}3^nx^n,\\ |x|<1/3\\)."
+            "Set \\(r=3x\\) in the geometric series.",
+            "The condition \\(|3x|<1\\) gives \\(|x|<1/3\\).",
+            "Therefore the result is \\(\\sum_{n=0}^{\\infty}3^nx^n,\\ |x|<1/3\\)."
           ],
           "method": "Taylor or power-series construction",
           "commonError": "Transforming the formula but forgetting to transform the interval, endpoints, factorial, or remainder.",
@@ -2405,9 +2434,9 @@
           "prompt": "Find a power series for 1/(1-x)^2.",
           "answer": "\\(\\sum_{n=1}^{\\infty}nx^{n-1},\\ |x|<1\\)",
           "steps": [
-            "Start from derivatives at the center or a known convergent power series.",
-            "Apply substitution, differentiation, integration, or the ratio test while preserving the convergence condition.",
-            "The resulting expression is \\(\\sum_{n=1}^{\\infty}nx^{n-1},\\ |x|<1\\)."
+            "Differentiate \\(1/(1-x)=\\sum_{n=0}^{\\infty}x^n\\) term by term.",
+            "This gives \\(1/(1-x)^2=\\sum_{n=1}^{\\infty}nx^{n-1}\\) for \\(|x|<1\\).",
+            "Therefore the result is \\(\\sum_{n=1}^{\\infty}nx^{n-1},\\ |x|<1\\)."
           ],
           "method": "Taylor or power-series construction",
           "commonError": "Transforming the formula but forgetting to transform the interval, endpoints, factorial, or remainder.",
@@ -2415,12 +2444,12 @@
         },
         {
           "id": "taylor-int",
-          "prompt": "Find a power series for arctan x by integrating 1/(1+x²).",
-          "answer": "\\(\\sum_{n=0}^{\\infty}(-1)^n x^{2n+1}/(2n+1)\\)",
+          "prompt": "Find a power series for arctan x by integrating 1/(1+x²), and state its interval of convergence.",
+          "answer": "\\(\\sum_{n=0}^{\\infty}(-1)^n x^{2n+1}/(2n+1),\\ -1\\le x\\le1\\)",
           "steps": [
-            "Start from derivatives at the center or a known convergent power series.",
-            "Apply substitution, differentiation, integration, or the ratio test while preserving the convergence condition.",
-            "The resulting expression is \\(\\sum_{n=0}^{\\infty}(-1)^n x^{2n+1}/(2n+1)\\)."
+            "Integrate \\(1/(1+x^2)=\\sum_{n=0}^{\\infty}(-1)^nx^{2n}\\) from 0 to \\(x\\).",
+            "The result is \\(\\sum_{n=0}^{\\infty}(-1)^nx^{2n+1}/(2n+1)\\); direct endpoint tests include both \\(x=-1\\) and \\(x=1\\).",
+            "Therefore the result is \\(\\sum_{n=0}^{\\infty}(-1)^n x^{2n+1}/(2n+1),\\ -1\\le x\\le1\\)."
           ],
           "method": "Taylor or power-series construction",
           "commonError": "Transforming the formula but forgetting to transform the interval, endpoints, factorial, or remainder.",
@@ -2431,9 +2460,8 @@
           "prompt": "Find the degree-2 Taylor polynomial for ln x centered at 1.",
           "answer": "\\((x-1)-(x-1)^2/2\\)",
           "steps": [
-            "Start from derivatives at the center or a known convergent power series.",
-            "Apply substitution, differentiation, integration, or the ratio test while preserving the convergence condition.",
-            "The resulting expression is \\((x-1)-(x-1)^2/2\\)."
+            "For \\(f(x)=\\ln x\\), \\(f(1)=0\\), \\(f'(1)=1\\), and \\(f''(1)=-1\\).",
+            "Substitution in the degree-2 Taylor formula gives \\((x-1)-(x-1)^2/2\\)."
           ],
           "method": "Taylor or power-series construction",
           "commonError": "Transforming the formula but forgetting to transform the interval, endpoints, factorial, or remainder.",
@@ -2444,9 +2472,8 @@
           "prompt": "Write the Taylor series for e^x centered at a.",
           "answer": "\\(e^a\\sum_{n=0}^{\\infty}(x-a)^n/n!\\)",
           "steps": [
-            "Start from derivatives at the center or a known convergent power series.",
-            "Apply substitution, differentiation, integration, or the ratio test while preserving the convergence condition.",
-            "The resulting expression is \\(e^a\\sum_{n=0}^{\\infty}(x-a)^n/n!\\)."
+            "Every derivative of \\(e^x\\) equals \\(e^x\\), so \\(f^{(n)}(a)=e^a\\).",
+            "The Taylor formula gives \\(e^a\\sum_{n=0}^{\\infty}(x-a)^n/n!\\), convergent for every real \\(x\\)."
           ],
           "method": "Taylor or power-series construction",
           "commonError": "Transforming the formula but forgetting to transform the interval, endpoints, factorial, or remainder.",
@@ -2457,9 +2484,8 @@
           "prompt": "If f^(n)(0)=2^n, find the Maclaurin series.",
           "answer": "\\(\\sum_{n=0}^{\\infty}2^nx^n/n!=e^{2x}\\)",
           "steps": [
-            "Start from derivatives at the center or a known convergent power series.",
-            "Apply substitution, differentiation, integration, or the ratio test while preserving the convergence condition.",
-            "The resulting expression is \\(\\sum_{n=0}^{\\infty}2^nx^n/n!=e^{2x}\\)."
+            "The Maclaurin coefficient is \\(f^{(n)}(0)/n!=2^n/n!\\).",
+            "Thus the series is \\(\\sum_{n=0}^{\\infty}2^nx^n/n!=e^{2x}\\)."
           ],
           "method": "Taylor or power-series construction",
           "commonError": "Transforming the formula but forgetting to transform the interval, endpoints, factorial, or remainder.",
@@ -2470,9 +2496,8 @@
           "prompt": "Use T_3 for e^x to approximate e^{0.1}.",
           "answer": "\\(1.105166\\overline6\\)",
           "steps": [
-            "Start from derivatives at the center or a known convergent power series.",
-            "Apply substitution, differentiation, integration, or the ratio test while preserving the convergence condition.",
-            "The resulting expression is \\(1.105166\\overline6\\)."
+            "Evaluate \\(T_3(0.1)=1+0.1+0.1^2/2+0.1^3/6\\).",
+            "The result is \\(1.105166\\overline6\\)."
           ],
           "method": "Taylor or power-series construction",
           "commonError": "Transforming the formula but forgetting to transform the interval, endpoints, factorial, or remainder.",
@@ -2483,9 +2508,8 @@
           "prompt": "Use x-x³/6 to approximate sin(0.2).",
           "answer": "\\(0.198666\\overline6\\)",
           "steps": [
-            "Start from derivatives at the center or a known convergent power series.",
-            "Apply substitution, differentiation, integration, or the ratio test while preserving the convergence condition.",
-            "The resulting expression is \\(0.198666\\overline6\\)."
+            "Evaluate \\(0.2-(0.2)^3/6\\).",
+            "The result is \\(0.198666\\overline6\\)."
           ],
           "method": "Taylor or power-series construction",
           "commonError": "Transforming the formula but forgetting to transform the interval, endpoints, factorial, or remainder.",
@@ -2493,12 +2517,11 @@
         },
         {
           "id": "taylor-radius",
-          "prompt": "Find the radius of \\(\\sum n x^n/4^n\\).",
+          "prompt": "Find the radius of \\(\\sum_{n=1}^{\\infty} n x^n/4^n\\).",
           "answer": "\\(R=4\\)",
           "steps": [
-            "Start from derivatives at the center or a known convergent power series.",
-            "Apply substitution, differentiation, integration, or the ratio test while preserving the convergence condition.",
-            "The resulting expression is \\(R=4\\)."
+            "The ratio of successive absolute terms approaches \\(|x|/4\\).",
+            "Convergence requires \\(|x|<4\\), so \\(R=4\\)."
           ],
           "method": "Taylor or power-series construction",
           "commonError": "Transforming the formula but forgetting to transform the interval, endpoints, factorial, or remainder.",
@@ -2506,12 +2529,11 @@
         },
         {
           "id": "taylor-interval",
-          "prompt": "Find the interval of convergence of \\(\\sum x^n/n\\).",
+          "prompt": "Find the interval of convergence of \\(\\sum_{n=1}^{\\infty} x^n/n\\).",
           "answer": "\\([-1,1)\\)",
           "steps": [
-            "Start from derivatives at the center or a known convergent power series.",
-            "Apply substitution, differentiation, integration, or the ratio test while preserving the convergence condition.",
-            "The resulting expression is \\([-1,1)\\)."
+            "The radius is 1. At \\(x=1\\) the harmonic series diverges; at \\(x=-1\\) the alternating harmonic series converges.",
+            "Therefore the interval is \\([-1,1)\\)."
           ],
           "method": "Taylor or power-series construction",
           "commonError": "Transforming the formula but forgetting to transform the interval, endpoints, factorial, or remainder.",
@@ -2519,12 +2541,11 @@
         },
         {
           "id": "taylor-shifted",
-          "prompt": "Find the interval of convergence of \\(\\sum (x-2)^n/(n3^n)\\).",
+          "prompt": "Find the interval of convergence of \\(\\sum_{n=1}^{\\infty} (x-2)^n/(n3^n)\\).",
           "answer": "\\([-1,5)\\)",
           "steps": [
-            "Start from derivatives at the center or a known convergent power series.",
-            "Apply substitution, differentiation, integration, or the ratio test while preserving the convergence condition.",
-            "The resulting expression is \\([-1,5)\\)."
+            "The ratio test gives \\(|x-2|<3\\), hence \\(-1<x<5\\).",
+            "At \\(x=-1\\) the series is alternating harmonic and converges; at \\(x=5\\) it is harmonic and diverges, giving \\([-1,5)\\)."
           ],
           "method": "Taylor or power-series construction",
           "commonError": "Transforming the formula but forgetting to transform the interval, endpoints, factorial, or remainder.",
@@ -2532,12 +2553,11 @@
         },
         {
           "id": "taylor-ratio",
-          "prompt": "Find R for \\(\\sum n!(x+1)^n/(2n)!\\).",
+          "prompt": "Find R for \\(\\sum_{n=0}^{\\infty} n!(x+1)^n/(2n)!\\).",
           "answer": "\\(R=\\infty\\)",
           "steps": [
-            "Start from derivatives at the center or a known convergent power series.",
-            "Apply substitution, differentiation, integration, or the ratio test while preserving the convergence condition.",
-            "The resulting expression is \\(R=\\infty\\)."
+            "The coefficient ratio satisfies \\(|a_n/a_{n+1}|=(2n+2)(2n+1)/(n+1)=2(2n+1)\\).",
+            "This tends to infinity, so \\(R=\\infty\\)."
           ],
           "method": "Taylor or power-series construction",
           "commonError": "Transforming the formula but forgetting to transform the interval, endpoints, factorial, or remainder.",
@@ -2548,9 +2568,9 @@
           "prompt": "Bound the error of the degree-3 Maclaurin approximation to e^{0.2}.",
           "answer": "\\(|R_3|\\le e^{0.2}(0.2)^4/4!<0.000082\\)",
           "steps": [
-            "Start from derivatives at the center or a known convergent power series.",
-            "Apply substitution, differentiation, integration, or the ratio test while preserving the convergence condition.",
-            "The resulting expression is \\(|R_3|\\le e^{0.2}(0.2)^4/4!<0.000082\\)."
+            "Taylor's theorem gives \\(|R_3|\\le e^{0.2}(0.2)^4/4!\\) on \\([0,0.2]\\).",
+            "The bound is approximately \\(0.00008143<0.000082\\).",
+            "Therefore the result is \\(|R_3|\\le e^{0.2}(0.2)^4/4!<0.000082\\)."
           ],
           "method": "Taylor or power-series construction",
           "commonError": "Transforming the formula but forgetting to transform the interval, endpoints, factorial, or remainder.",
@@ -2561,9 +2581,9 @@
           "prompt": "How many terms of the alternating arctan series ensure error below 0.001 at x=1/2?",
           "answer": "\\(4\\text{ terms}\\)",
           "steps": [
-            "Start from derivatives at the center or a known convergent power series.",
-            "Apply substitution, differentiation, integration, or the ratio test while preserving the convergence condition.",
-            "The resulting expression is \\(4\\text{ terms}\\)."
+            "After \\(N\\) terms, the alternating-series error is at most \\((1/2)^{2N+1}/(2N+1)\\).",
+            "Three terms give about \\(0.001116>0.001\\), while four give about \\(0.000217<0.001\\), so four terms are required.",
+            "Therefore the result is \\(4\\text{ terms}\\)."
           ],
           "method": "Taylor or power-series construction",
           "commonError": "Transforming the formula but forgetting to transform the interval, endpoints, factorial, or remainder.",
@@ -2652,7 +2672,7 @@
           "prompt": "Evaluate \\(\\int xe^x dx\\).",
           "answer": "\\(e^x(x-1)+C\\)",
           "steps": [
-            "Use integration by parts.",
+            "With \\(u=x\\), \\(dv=e^x dx\\), \\(I=xe^x-\\int e^x dx=e^x(x-1)+C\\).",
             "The verified result is \\(e^x(x-1)+C\\)."
           ],
           "method": "Course synthesis",
@@ -2664,7 +2684,7 @@
           "prompt": "Evaluate \\(\\int\\sin^3x\\cos xdx\\).",
           "answer": "\\(\\sin^4x/4+C\\)",
           "steps": [
-            "Use u=sin x.",
+            "Let \\(u=\\sin x\\), \\(du=\\cos xdx\\); then \\(\\int u^3du=u^4/4+C=\\sin^4x/4+C\\).",
             "The verified result is \\(\\sin^4x/4+C\\)."
           ],
           "method": "Course synthesis",
@@ -2676,7 +2696,7 @@
           "prompt": "Evaluate \\(\\int1/(x^2-1)dx\\).",
           "answer": "\\(\\frac12\\ln|\\frac{x-1}{x+1}|+C\\)",
           "steps": [
-            "Use partial fractions.",
+            "\\(1/(x^2-1)=\\frac12/(x-1)-\\frac12/(x+1)\\); integrating gives \\(\\frac12\\ln|x-1|-\\frac12\\ln|x+1|+C\\).",
             "The verified result is \\(\\frac12\\ln|\\frac{x-1}{x+1}|+C\\)."
           ],
           "method": "Course synthesis",
@@ -2686,10 +2706,10 @@
         {
           "id": "calc2-improper",
           "prompt": "Determine convergence of \\(\\int_1^\\infty x^{-2}dx\\).",
-          "answer": "\\(converges to 1\\)",
+          "answer": "\\(\\text{converges to }1\\)",
           "steps": [
-            "Evaluate the defining limit.",
-            "The verified result is \\(converges to 1\\)."
+            "\\(\\lim_{b\\to\\infty}[-x^{-1}]_1^b=\\lim_{b\\to\\infty}(1-1/b)=1\\), so the improper integral converges.",
+            "The verified result is \\(\\text{converges to }1\\)."
           ],
           "method": "Course synthesis",
           "commonError": "Selecting a familiar formula without checking its hypotheses.",
@@ -2700,7 +2720,7 @@
           "prompt": "Find area between y=x and y=x² on [0,1].",
           "answer": "\\(1/6\\)",
           "steps": [
-            "Integrate top minus bottom.",
+            "On \\([0,1]\\), \\(x\\ge x^2\\), so \\(A=\\int_0^1(x-x^2)dx=[x^2/2-x^3/3]_0^1=1/6\\).",
             "The verified result is \\(1/6\\)."
           ],
           "method": "Course synthesis",
@@ -2712,7 +2732,7 @@
           "prompt": "Rotate y=x on [0,2] about x-axis. Find volume.",
           "answer": "\\(8\\pi/3\\)",
           "steps": [
-            "Use disks: π∫x²dx.",
+            "\\(V=\\pi\\int_0^2x^2dx=\\pi[x^3/3]_0^2=8\\pi/3\\).",
             "The verified result is \\(8\\pi/3\\)."
           ],
           "method": "Course synthesis",
@@ -2724,7 +2744,7 @@
           "prompt": "A force F(x)=4x acts from x=0 to 3. Find work.",
           "answer": "\\(18\\)",
           "steps": [
-            "Integrate force over displacement.",
+            "\\(W=\\int_0^3 4x\\,dx=[2x^2]_0^3=18\\).",
             "The verified result is \\(18\\)."
           ],
           "method": "Course synthesis",
@@ -2733,10 +2753,10 @@
         },
         {
           "id": "calc2-sequence",
-          "prompt": "Find \\(\\lim n/(n+1)\\).",
+          "prompt": "Find \\(\\lim_{n\\to\\infty} n/(n+1)\\).",
           "answer": "\\(1\\)",
           "steps": [
-            "Divide by n.",
+            "Divide by \\(n\\): \\(n/(n+1)=1/(1+1/n)\\to1\\).",
             "The verified result is \\(1\\)."
           ],
           "method": "Course synthesis",
@@ -2748,7 +2768,7 @@
           "prompt": "Sum \\(\\sum_{n=0}^\\infty3(1/2)^n\\).",
           "answer": "\\(6\\)",
           "steps": [
-            "Use a/(1-r).",
+            "Here \\(a=3\\), \\(r=1/2\\), and \\(|r|<1\\), so \\(S=3/(1-1/2)=6\\).",
             "The verified result is \\(6\\)."
           ],
           "method": "Course synthesis",
@@ -2757,11 +2777,11 @@
         },
         {
           "id": "calc2-nth",
-          "prompt": "Test \\(\\sum n/(n+1)\\) for convergence.",
-          "answer": "\\(diverges\\)",
+          "prompt": "Test \\(\\sum_{n=1}^{\\infty} n/(n+1)\\) for convergence.",
+          "answer": "\\(\\text{diverges}\\)",
           "steps": [
-            "Terms do not approach zero.",
-            "The verified result is \\(diverges\\)."
+            "The terms satisfy \\(n/(n+1)\\to1\\ne0\\), so the nth-term test proves divergence.",
+            "The verified result is \\(\\text{diverges}\\)."
           ],
           "method": "Course synthesis",
           "commonError": "Selecting a familiar formula without checking its hypotheses.",
@@ -2769,11 +2789,11 @@
         },
         {
           "id": "calc2-pseries",
-          "prompt": "Test \\(\\sum1/n^{3/2}\\).",
-          "answer": "\\(converges\\)",
+          "prompt": "Test \\(\\sum_{n=1}^{\\infty}1/n^{3/2}\\).",
+          "answer": "\\(\\text{converges}\\)",
           "steps": [
-            "It is a p-series with p>1.",
-            "The verified result is \\(converges\\)."
+            "This is a p-series with \\(p=3/2>1\\), so it converges.",
+            "The verified result is \\(\\text{converges}\\)."
           ],
           "method": "Course synthesis",
           "commonError": "Selecting a familiar formula without checking its hypotheses.",
@@ -2781,11 +2801,11 @@
         },
         {
           "id": "calc2-comparison",
-          "prompt": "Test \\(\\sum1/(n^2+4)\\).",
-          "answer": "\\(converges\\)",
+          "prompt": "Test \\(\\sum_{n=1}^{\\infty}1/(n^2+4)\\).",
+          "answer": "\\(\\text{converges}\\)",
           "steps": [
-            "Compare with 1/n².",
-            "The verified result is \\(converges\\)."
+            "For \\(n\\ge1\\), \\(0<1/(n^2+4)<1/n^2\\); comparison with the convergent p-series proves convergence.",
+            "The verified result is \\(\\text{converges}\\)."
           ],
           "method": "Course synthesis",
           "commonError": "Selecting a familiar formula without checking its hypotheses.",
@@ -2793,11 +2813,11 @@
         },
         {
           "id": "calc2-limitcomparison",
-          "prompt": "Test \\(\\sum(3n+1)/(n^2+2)\\).",
-          "answer": "\\(diverges\\)",
+          "prompt": "Test \\(\\sum_{n=1}^{\\infty}(3n+1)/(n^2+2)\\).",
+          "answer": "\\(\\text{diverges}\\)",
           "steps": [
-            "Limit compare with 1/n.",
-            "The verified result is \\(diverges\\)."
+            "With \\(b_n=1/n\\), \\(a_n/b_n=n(3n+1)/(n^2+2)\\to3\\); limit comparison with the harmonic series gives divergence.",
+            "The verified result is \\(\\text{diverges}\\)."
           ],
           "method": "Course synthesis",
           "commonError": "Selecting a familiar formula without checking its hypotheses.",
@@ -2805,11 +2825,11 @@
         },
         {
           "id": "calc2-ratio",
-          "prompt": "Test \\(\\sum n!/4^n\\).",
-          "answer": "\\(diverges\\)",
+          "prompt": "Test \\(\\sum_{n=1}^{\\infty} n!/4^n\\).",
+          "answer": "\\(\\text{diverges}\\)",
           "steps": [
-            "The ratio (n+1)/4 eventually exceeds 1.",
-            "The verified result is \\(diverges\\)."
+            "\\(a_{n+1}/a_n=(n+1)/4\\), which eventually exceeds 1, so the positive terms do not approach zero and the series diverges.",
+            "The verified result is \\(\\text{diverges}\\)."
           ],
           "method": "Course synthesis",
           "commonError": "Selecting a familiar formula without checking its hypotheses.",
@@ -2817,11 +2837,11 @@
         },
         {
           "id": "calc2-root",
-          "prompt": "Test \\(\\sum(2n/(3n+1))^n\\).",
-          "answer": "\\(converges\\)",
+          "prompt": "Test \\(\\sum_{n=1}^{\\infty}(2n/(3n+1))^n\\).",
+          "answer": "\\(\\text{converges}\\)",
           "steps": [
-            "Root-test limit is 2/3.",
-            "The verified result is \\(converges\\)."
+            "The root-test limit is \\(\\lim 2n/(3n+1)=2/3<1\\), so the series converges absolutely.",
+            "The verified result is \\(\\text{converges}\\)."
           ],
           "method": "Course synthesis",
           "commonError": "Selecting a familiar formula without checking its hypotheses.",
@@ -2829,11 +2849,11 @@
         },
         {
           "id": "calc2-alternating",
-          "prompt": "Test \\(\\sum(-1)^{n-1}/n\\).",
-          "answer": "\\(converges conditionally\\)",
+          "prompt": "Test \\(\\sum_{n=1}^{\\infty}(-1)^{n-1}/n\\).",
+          "answer": "\\(\\text{converges conditionally}\\)",
           "steps": [
-            "AST applies; harmonic absolute series diverges.",
-            "The verified result is \\(converges conditionally\\)."
+            "\\(1/n\\) decreases to zero, so the alternating-series test gives convergence; \\(\\sum1/n\\) diverges, hence convergence is conditional.",
+            "The verified result is \\(\\text{converges conditionally}\\)."
           ],
           "method": "Course synthesis",
           "commonError": "Selecting a familiar formula without checking its hypotheses.",
@@ -2841,11 +2861,11 @@
         },
         {
           "id": "calc2-absolute",
-          "prompt": "Classify \\(\\sum(-1)^n/n^2\\).",
-          "answer": "\\(converges absolutely\\)",
+          "prompt": "Classify \\(\\sum_{n=1}^{\\infty}(-1)^n/n^2\\).",
+          "answer": "\\(\\text{converges absolutely}\\)",
           "steps": [
-            "The absolute series is a p-series with p=2.",
-            "The verified result is \\(converges absolutely\\)."
+            "The absolute series \\(\\sum1/n^2\\) is a p-series with \\(p=2>1\\), so the original series converges absolutely.",
+            "The verified result is \\(\\text{converges absolutely}\\)."
           ],
           "method": "Course synthesis",
           "commonError": "Selecting a familiar formula without checking its hypotheses.",
@@ -2853,10 +2873,10 @@
         },
         {
           "id": "calc2-power-radius",
-          "prompt": "Find R for \\(\\sum x^n/5^n\\).",
+          "prompt": "Find R for \\(\\sum_{n=0}^{\\infty}x^n/5^n\\).",
           "answer": "\\(R=5\\)",
           "steps": [
-            "It is geometric with ratio x/5.",
+            "This is geometric with ratio \\(x/5\\); convergence requires \\(|x/5|<1\\), or \\(|x|<5\\), so \\(R=5\\).",
             "The verified result is \\(R=5\\)."
           ],
           "method": "Course synthesis",
@@ -2865,10 +2885,10 @@
         },
         {
           "id": "calc2-power-interval",
-          "prompt": "Find interval for \\(\\sum(x-1)^n/n\\).",
+          "prompt": "Find the interval for \\(\\sum_{n=1}^{\\infty}(x-1)^n/n\\).",
           "answer": "\\([0,2)\\)",
           "steps": [
-            "R=1, then test both endpoints.",
+            "The ratio test gives \\(|x-1|<1\\). At \\(x=0\\), \\(\\sum(-1)^n/n\\) converges; at \\(x=2\\), \\(\\sum1/n\\) diverges, so the interval is \\([0,2)\\).",
             "The verified result is \\([0,2)\\)."
           ],
           "method": "Course synthesis",
@@ -2878,10 +2898,10 @@
         {
           "id": "calc2-taylor",
           "prompt": "Write the Maclaurin series for cos x.",
-          "answer": "\\(\\sum(-1)^nx^{2n}/(2n)!\\)",
+          "answer": "\\(\\sum_{n=0}^{\\infty}(-1)^nx^{2n}/(2n)!\\)",
           "steps": [
-            "Use the derivative cycle.",
-            "The verified result is \\(\\sum(-1)^nx^{2n}/(2n)!\\)."
+            "The derivatives at zero cycle \\(1,0,-1,0\\), leaving even powers with alternating signs: \\(\\sum_{n=0}^{\\infty}(-1)^nx^{2n}/(2n)!\\).",
+            "The verified result is \\(\\sum_{n=0}^{\\infty}(-1)^nx^{2n}/(2n)!\\)."
           ],
           "method": "Course synthesis",
           "commonError": "Selecting a familiar formula without checking its hypotheses.",
@@ -2892,7 +2912,7 @@
           "prompt": "Find T_3 for e^x at 0.",
           "answer": "\\(1+x+x^2/2+x^3/6\\)",
           "steps": [
-            "Use derivatives of e^x.",
+            "Every derivative of \\(e^x\\) equals 1 at zero, so \\(T_3=\\sum_{n=0}^3x^n/n!=1+x+x^2/2+x^3/6\\).",
             "The verified result is \\(1+x+x^2/2+x^3/6\\)."
           ],
           "method": "Course synthesis",
@@ -2901,10 +2921,10 @@
         },
         {
           "id": "calc2-error",
-          "prompt": "Bound alternating-series error after four terms of \\(\\sum(-1)^{n-1}/n\\).",
+          "prompt": "Bound alternating-series error after four terms of \\(\\sum_{n=1}^{\\infty}(-1)^{n-1}/n\\).",
           "answer": "\\(\\le1/5\\)",
           "steps": [
-            "Use the first omitted term.",
+            "The terms \\(1/n\\) decrease to zero; after four terms the first omitted magnitude is \\(1/5\\), so \\(|R_4|\\le1/5\\).",
             "The verified result is \\(\\le1/5\\)."
           ],
           "method": "Course synthesis",
@@ -2916,7 +2936,7 @@
           "prompt": "For x=t²,y=t³ find dy/dx.",
           "answer": "\\(3t/2\\)",
           "steps": [
-            "Divide dy/dt by dx/dt.",
+            "\\(dx/dt=2t\\) and \\(dy/dt=3t^2\\), so \\(dy/dx=(3t^2)/(2t)=3t/2\\) for \\(t\\ne0\\).",
             "The verified result is \\(3t/2\\)."
           ],
           "method": "Course synthesis",
@@ -2928,7 +2948,7 @@
           "prompt": "Convert r=2cosθ to Cartesian form.",
           "answer": "\\((x-1)^2+y^2=1\\)",
           "steps": [
-            "Use r²=2r cosθ.",
+            "Multiply by \\(r\\): \\(r^2=2r\\cos\\theta\\), so \\(x^2+y^2=2x\\), which completes the square to \\((x-1)^2+y^2=1\\).",
             "The verified result is \\((x-1)^2+y^2=1\\)."
           ],
           "method": "Course synthesis",
@@ -2938,10 +2958,10 @@
         {
           "id": "calc2-concept",
           "prompt": "Why must power-series endpoints be tested separately?",
-          "answer": "\\(The ratio/root test is inconclusive when |x-a|=R.\\)",
+          "answer": "\\(\\text{The ratio/root test is inconclusive when }|x-a|=R.\\)",
           "steps": [
-            "At the boundary the limiting ratio equals 1.",
-            "The verified result is \\(The ratio/root test is inconclusive when |x-a|=R.\\)."
+            "At \\(|x-a|=R\\), the limiting ratio or root equals 1, so the test is inconclusive and each endpoint series requires its own convergence test.",
+            "The verified result is \\(\\text{The ratio/root test is inconclusive when }|x-a|=R.\\)."
           ],
           "method": "Course synthesis",
           "commonError": "Selecting a familiar formula without checking its hypotheses.",
@@ -3246,7 +3266,7 @@
       "slug": "limit-by-factoring",
       "canonicalPath": "/subjects/math/calculus/worked-problems/limit-by-factoring/",
       "summary": "A complete factoring and cancellation example with method choice, derivation, verification, and a common wrong approach.",
-      "description": "See a concise answer and full derivation for evaluate \\(\\lim_{x\\to3}\\frac{x^2-9}{x-3}\\).",
+      "description": "See a concise answer and full derivation for evaluate limit as x approaches 3 x squared minus 9 over x minus 3.",
       "searchIntent": [
         "limit by factoring",
         "Factoring and cancellation"
@@ -3326,7 +3346,7 @@
       "slug": "limit-by-rationalization",
       "canonicalPath": "/subjects/math/calculus/worked-problems/limit-by-rationalization/",
       "summary": "A complete rationalization example with method choice, derivation, verification, and a common wrong approach.",
-      "description": "See a concise answer and full derivation for evaluate \\(\\lim_{x\\to9}\\frac{\\sqrt{x}-3}{x-9}\\).",
+      "description": "See a concise answer and full derivation for evaluate limit as x approaches 9 the square root of (x) minus 3 over x minus 9.",
       "searchIntent": [
         "limit by rationalization",
         "Rationalization"
@@ -3406,7 +3426,7 @@
       "slug": "one-sided-piecewise-limit",
       "canonicalPath": "/subjects/math/calculus/worked-problems/one-sided-piecewise-limit/",
       "summary": "A complete one-sided branch analysis example with method choice, derivation, verification, and a common wrong approach.",
-      "description": "See a concise answer and full derivation for for \\(f(x)=\\begin{cases}x+2,&x<1\\\\4-x,&x\\ge1\\end{cases}\\), evaluate the limit as \\(x\\to1^-\\).",
+      "description": "See a concise answer and full derivation for for f (x) equals piecewise function: row 1: x plus 2,, x less than 1; row 2: 4 minus x,, x greater than or equal to 1, evaluate the limit as x approaches 1 to the power (minus).",
       "searchIntent": [
         "one sided piecewise limit",
         "One-sided branch analysis"
@@ -3461,9 +3481,9 @@
         "prompt": "For \\(f(x)=\\begin{cases}x+2,&x<1\\\\4-x,&x\\ge1\\end{cases}\\), evaluate the limit as \\(x\\to1^-\\).",
         "answer": "\\(3\\)",
         "steps": [
-          "Select the branch determined by the direction of approach.",
-          "Evaluate nearby behavior on that branch; the value assigned at the endpoint does not control the limit.",
-          "The required approach gives \\(3\\)."
+          "Approaching from the left selects the branch \\(f(x)=x+2\\).",
+          "As \\(x\\to1^-\\), \\(x+2\\to3\\); the value assigned by the other branch at the endpoint does not control this one-sided limit.",
+          "Therefore the result is \\(3\\)."
         ],
         "method": "One-sided branch analysis",
         "commonError": "Using the branch selected by the endpoint equality instead of the approach direction.",
@@ -3486,7 +3506,7 @@
       "slug": "basic-chain-rule",
       "canonicalPath": "/subjects/math/calculus/worked-problems/basic-chain-rule/",
       "summary": "A complete basic chain rule example with method choice, derivation, verification, and a common wrong approach.",
-      "description": "See a concise answer and full derivation for differentiate \\(y=(3x+2)^{5}\\).",
+      "description": "See a concise answer and full derivation for differentiate y equals (3 x plus 2) to the power (5).",
       "searchIntent": [
         "basic chain rule",
         "Basic chain rule"
@@ -3543,7 +3563,8 @@
         "answer": "\\(y'=15(3x+2)^{4}\\)",
         "steps": [
           "Use the power rule on the outer power \\(u^{5}\\).",
-          "Multiply by the inner derivative \\(3\\)."
+          "Multiply by the inner derivative \\(3\\).",
+          "Therefore the result is \\(y'=15(3x+2)^{4}\\)."
         ],
         "method": "Basic chain rule",
         "commonError": "Lowering the power but forgetting the derivative of the inner linear function.",
@@ -3566,7 +3587,7 @@
       "slug": "nested-chain-rule",
       "canonicalPath": "/subjects/math/calculus/worked-problems/nested-chain-rule/",
       "summary": "A complete nested chain rule example with method choice, derivation, verification, and a common wrong approach.",
-      "description": "See a concise answer and full derivation for differentiate \\(y=(1+(2x-3)^2)^4\\).",
+      "description": "See a concise answer and full derivation for differentiate y equals (1 plus (2 x minus 3) squared) to the power (4).",
       "searchIntent": [
         "nested chain rule",
         "Nested chain rule"
@@ -3623,7 +3644,8 @@
         "answer": "\\(y'=16(2x-3)(1+(2x-3)^2)^3\\)",
         "steps": [
           "Write the composition as nested layers from outside to inside.",
-          "Differentiate each layer once and multiply the factors."
+          "Differentiate each layer once and multiply the factors.",
+          "Therefore the result is \\(y'=16(2x-3)(1+(2x-3)^2)^3\\)."
         ],
         "method": "Nested chain rule",
         "commonError": "Skipping a middle layer of the composition.",
@@ -3646,7 +3668,7 @@
       "slug": "product-plus-chain-rule",
       "canonicalPath": "/subjects/math/calculus/worked-problems/product-plus-chain-rule/",
       "summary": "A complete product plus chain example with method choice, derivation, verification, and a common wrong approach.",
-      "description": "See a concise answer and full derivation for differentiate \\(y=x^2e^{3x}\\).",
+      "description": "See a concise answer and full derivation for differentiate y equals x squared e to the power (3 x).",
       "searchIntent": [
         "product plus chain rule",
         "product plus chain"
@@ -3704,7 +3726,8 @@
         "steps": [
           "Apply the product plus chain structure before simplifying.",
           "Retain every factor contributed by an inner derivative.",
-          "A factored final form is \\(e^{3x}(2x+3x^2)\\)."
+          "A factored final form is \\(e^{3x}(2x+3x^2)\\).",
+          "Therefore the result is \\(y'=e^{3x}(2x+3x^2)\\)."
         ],
         "method": "product plus chain",
         "commonError": "Applying the chain rule to a product or quotient as if it were one composition.",
@@ -3727,7 +3750,7 @@
       "slug": "quotient-plus-chain-rule",
       "canonicalPath": "/subjects/math/calculus/worked-problems/quotient-plus-chain-rule/",
       "summary": "A complete quotient plus chain example with method choice, derivation, verification, and a common wrong approach.",
-      "description": "See a concise answer and full derivation for differentiate \\(y=\\frac{\\ln x}{x^2}\\).",
+      "description": "See a concise answer and full derivation for differentiate y equals natural log x over x squared.",
       "searchIntent": [
         "quotient plus chain rule",
         "quotient plus chain"
@@ -3785,7 +3808,8 @@
         "steps": [
           "Apply the quotient plus chain structure before simplifying.",
           "Retain every factor contributed by an inner derivative.",
-          "A factored final form is \\(\\frac{1-2\\ln x}{x^3}\\)."
+          "A factored final form is \\(\\frac{1-2\\ln x}{x^3}\\).",
+          "Therefore the result is \\(y'=\\frac{1-2\\ln x}{x^3}\\)."
         ],
         "method": "quotient plus chain",
         "commonError": "Applying the chain rule to a product or quotient as if it were one composition.",
@@ -3864,7 +3888,8 @@
         "answer": "\\(x=2,\\ V_{\\max}=128\\)",
         "steps": [
           "V=x(12-2x)^2 on 0<x<6; V'=12(x-2)(x-6), so the interior maximum is x=2.",
-          "Check feasibility, endpoints, and the sign or second derivative before declaring the optimum."
+          "Check feasibility, endpoints, and the sign or second derivative before declaring the optimum.",
+          "Therefore the result is \\(x=2,\\ V_{\\max}=128\\)."
         ],
         "method": "Constrained one-variable optimization",
         "commonError": "Solving f'(x)=0 without building the constraint or checking the feasible domain.",
@@ -3943,7 +3968,8 @@
         "answer": "\\(x=60,\\ y=120,\\ A=7200\\)",
         "steps": [
           "With 2x+y=240, A=x(240-2x); A'=240-4x=0.",
-          "Check feasibility, endpoints, and the sign or second derivative before declaring the optimum."
+          "Check feasibility, endpoints, and the sign or second derivative before declaring the optimum.",
+          "Therefore the result is \\(x=60,\\ y=120,\\ A=7200\\)."
         ],
         "method": "Constrained one-variable optimization",
         "commonError": "Solving f'(x)=0 without building the constraint or checking the feasible domain.",
@@ -3966,7 +3992,7 @@
       "slug": "integration-by-parts-x-e-x",
       "canonicalPath": "/subjects/math/calculus/worked-problems/integration-by-parts-x-e-x/",
       "summary": "A complete integration by parts example with method choice, derivation, verification, and a common wrong approach.",
-      "description": "See a concise answer and full derivation for evaluate \\(\\int xe^x\\,dx\\).",
+      "description": "See a concise answer and full derivation for evaluate integral x e to the power (x) d x.",
       "searchIntent": [
         "integration by parts x e x",
         "Integration by parts"
@@ -4021,9 +4047,9 @@
         "prompt": "Evaluate \\(\\int xe^x\\,dx\\).",
         "answer": "\\(e^x(x-1)+C\\)",
         "steps": [
-          "Choose u as the factor that simplifies when differentiated and integrate dv.",
-          "Apply \\(\\int u\\,dv=uv-\\int v\\,du\\); repeat when the remaining integral still has a polynomial factor.",
-          "Simplification gives \\(e^x(x-1)+C\\)."
+          "Take \\(u=x\\) and \\(dv=e^x dx\\), so \\(du=dx\\) and \\(v=e^x\\).",
+          "Then \\(\\int xe^x dx=xe^x-\\int e^x dx=xe^x-e^x+C=e^x(x-1)+C\\).",
+          "Therefore the result is \\(e^x(x-1)+C\\)."
         ],
         "method": "Integration by parts",
         "commonError": "Choosing dv that is harder to integrate or losing the minus sign in the formula.",
@@ -4046,7 +4072,7 @@
       "slug": "integration-by-parts-log-x",
       "canonicalPath": "/subjects/math/calculus/worked-problems/integration-by-parts-log-x/",
       "summary": "A complete integration by parts example with method choice, derivation, verification, and a common wrong approach.",
-      "description": "See a concise answer and full derivation for evaluate \\(\\int\\ln x\\,dx\\).",
+      "description": "See a concise answer and full derivation for evaluate integral natural log x d x.",
       "searchIntent": [
         "integration by parts log x",
         "Integration by parts"
@@ -4101,9 +4127,9 @@
         "prompt": "Evaluate \\(\\int\\ln x\\,dx\\).",
         "answer": "\\(x\\ln x-x+C\\)",
         "steps": [
-          "Choose u as the factor that simplifies when differentiated and integrate dv.",
-          "Apply \\(\\int u\\,dv=uv-\\int v\\,du\\); repeat when the remaining integral still has a polynomial factor.",
-          "Simplification gives \\(x\\ln x-x+C\\)."
+          "Write the integrand as \\((\\ln x)(1)\\); take \\(u=\\ln x\\) and \\(dv=dx\\), so \\(du=dx/x\\) and \\(v=x\\).",
+          "Then \\(I=x\\ln x-\\int1\\,dx=x\\ln x-x+C\\), for \\(x>0\\).",
+          "Therefore the result is \\(x\\ln x-x+C\\)."
         ],
         "method": "Integration by parts",
         "commonError": "Choosing dv that is harder to integrate or losing the minus sign in the formula.",
@@ -4126,7 +4152,7 @@
       "slug": "repeated-integration-by-parts",
       "canonicalPath": "/subjects/math/calculus/worked-problems/repeated-integration-by-parts/",
       "summary": "A complete integration by parts example with method choice, derivation, verification, and a common wrong approach.",
-      "description": "See a concise answer and full derivation for evaluate \\(\\int x^2e^x\\,dx\\).",
+      "description": "See a concise answer and full derivation for evaluate integral x squared e to the power (x) d x.",
       "searchIntent": [
         "repeated integration by parts",
         "Integration by parts"
@@ -4181,9 +4207,9 @@
         "prompt": "Evaluate \\(\\int x^2e^x\\,dx\\).",
         "answer": "\\(e^x(x^2-2x+2)+C\\)",
         "steps": [
-          "Choose u as the factor that simplifies when differentiated and integrate dv.",
-          "Apply \\(\\int u\\,dv=uv-\\int v\\,du\\); repeat when the remaining integral still has a polynomial factor.",
-          "Simplification gives \\(e^x(x^2-2x+2)+C\\)."
+          "Take \\(u=x^2\\) and \\(dv=e^x dx\\): \\(I=x^2e^x-2\\int xe^x dx\\).",
+          "Using \\(\\int xe^x dx=e^x(x-1)\\), \\(I=e^x(x^2-2x+2)+C\\).",
+          "Therefore the result is \\(e^x(x^2-2x+2)+C\\)."
         ],
         "method": "Integration by parts",
         "commonError": "Choosing dv that is harder to integrate or losing the minus sign in the formula.",
@@ -4206,7 +4232,7 @@
       "slug": "finite-geometric-sum",
       "canonicalPath": "/subjects/math/calculus/worked-problems/finite-geometric-sum/",
       "summary": "A complete geometric-series structure example with method choice, derivation, verification, and a common wrong approach.",
-      "description": "See a concise answer and full derivation for evaluate \\(\\sum_{k=0}^{5}3(2)^k\\).",
+      "description": "See a concise answer and full derivation for evaluate sum from k equals 0 to 5 3 (2) to the power (k).",
       "searchIntent": [
         "finite geometric sum",
         "Geometric-series structure"
@@ -4261,9 +4287,8 @@
         "prompt": "Evaluate \\(\\sum_{k=0}^{5}3(2)^k\\).",
         "answer": "\\(189\\)",
         "steps": [
-          "Identify the first included term, common ratio, and whether the sum is finite or infinite.",
-          "Use \\(S_n=a(1-r^n)/(1-r)\\) for a finite sum or \\(S=a/(1-r)\\) only when \\(|r|<1\\).",
-          "Substitution and simplification give \\(189\\)."
+          "There are six terms with first term \\(3\\) and ratio \\(2\\).",
+          "Using \\(S_6=3(1-2^6)/(1-2)\\) gives \\(189\\)."
         ],
         "method": "Geometric-series structure",
         "commonError": "Using the infinite-sum formula without checking the common-ratio condition or the starting index.",
@@ -4286,7 +4311,7 @@
       "slug": "infinite-geometric-sum",
       "canonicalPath": "/subjects/math/calculus/worked-problems/infinite-geometric-sum/",
       "summary": "A complete geometric-series structure example with method choice, derivation, verification, and a common wrong approach.",
-      "description": "See a concise answer and full derivation for evaluate \\(\\sum_{k=0}^{\\infty}12(1/3)^k\\).",
+      "description": "See a concise answer and full derivation for evaluate sum from k equals 0 to infinity 1 2 (1 / 3) to the power (k).",
       "searchIntent": [
         "infinite geometric sum",
         "Geometric-series structure"
@@ -4341,9 +4366,9 @@
         "prompt": "Evaluate \\(\\sum_{k=0}^{\\infty}12(1/3)^k\\).",
         "answer": "\\(18\\)",
         "steps": [
-          "Identify the first included term, common ratio, and whether the sum is finite or infinite.",
-          "Use \\(S_n=a(1-r^n)/(1-r)\\) for a finite sum or \\(S=a/(1-r)\\) only when \\(|r|<1\\).",
-          "Substitution and simplification give \\(18\\)."
+          "Here \\(a=12\\), \\(r=1/3\\), and \\(|r|<1\\).",
+          "Therefore \\(S=a/(1-r)=12/(1-1/3)=18\\).",
+          "Therefore the result is \\(18\\)."
         ],
         "method": "Geometric-series structure",
         "commonError": "Using the infinite-sum formula without checking the common-ratio condition or the starting index.",
@@ -4366,7 +4391,7 @@
       "slug": "shifted-geometric-series",
       "canonicalPath": "/subjects/math/calculus/worked-problems/shifted-geometric-series/",
       "summary": "A complete geometric-series structure example with method choice, derivation, verification, and a common wrong approach.",
-      "description": "See a concise answer and full derivation for evaluate \\(\\sum_{n=3}^{\\infty}2(1/4)^n\\).",
+      "description": "See a concise answer and full derivation for evaluate sum from n equals 3 to infinity 2 (1 / 4) to the power (n).",
       "searchIntent": [
         "shifted geometric series",
         "Geometric-series structure"
@@ -4421,9 +4446,9 @@
         "prompt": "Evaluate \\(\\sum_{n=3}^{\\infty}2(1/4)^n\\).",
         "answer": "\\(1/24\\)",
         "steps": [
-          "Identify the first included term, common ratio, and whether the sum is finite or infinite.",
-          "Use \\(S_n=a(1-r^n)/(1-r)\\) for a finite sum or \\(S=a/(1-r)\\) only when \\(|r|<1\\).",
-          "Substitution and simplification give \\(1/24\\)."
+          "The first included term is \\(2(1/4)^3=1/32\\), not \\(2\\).",
+          "With ratio \\(1/4\\), the sum is \\((1/32)/(1-1/4)=1/24\\).",
+          "Therefore the result is \\(1/24\\)."
         ],
         "method": "Geometric-series structure",
         "commonError": "Using the infinite-sum formula without checking the common-ratio condition or the starting index.",
@@ -4501,9 +4526,9 @@
         "prompt": "Write 0.272727… as a fraction.",
         "answer": "\\(3/11\\)",
         "steps": [
-          "Identify the first included term, common ratio, and whether the sum is finite or infinite.",
-          "Use \\(S_n=a(1-r^n)/(1-r)\\) for a finite sum or \\(S=a/(1-r)\\) only when \\(|r|<1\\).",
-          "Substitution and simplification give \\(3/11\\)."
+          "Write the decimal as \\(27/100+27/10000+\\cdots\\).",
+          "This has \\(a=27/100\\), \\(r=1/100\\), so its sum is \\(27/99=3/11\\).",
+          "Therefore the result is \\(3/11\\)."
         ],
         "method": "Geometric-series structure",
         "commonError": "Using the infinite-sum formula without checking the common-ratio condition or the starting index.",
@@ -4529,7 +4554,7 @@
       "slug": "ratio-test-example",
       "canonicalPath": "/subjects/math/calculus/worked-problems/ratio-test-example/",
       "summary": "A complete course synthesis example with method choice, derivation, verification, and a common wrong approach.",
-      "description": "See a concise answer and full derivation for test \\(\\sum n!/4^n\\).",
+      "description": "See a concise answer and full derivation for test sum from n equals 1 to infinity n ! / 4 to the power (n).",
       "searchIntent": [
         "ratio test example",
         "Course synthesis"
@@ -4586,11 +4611,11 @@
       "parentResourceId": "calculus-resource-calculus-2-final",
       "problem": {
         "id": "calc2-ratio",
-        "prompt": "Test \\(\\sum n!/4^n\\).",
-        "answer": "\\(diverges\\)",
+        "prompt": "Test \\(\\sum_{n=1}^{\\infty} n!/4^n\\).",
+        "answer": "\\(\\text{diverges}\\)",
         "steps": [
-          "The ratio (n+1)/4 eventually exceeds 1.",
-          "The verified result is \\(diverges\\)."
+          "\\(a_{n+1}/a_n=(n+1)/4\\), which eventually exceeds 1, so the positive terms do not approach zero and the series diverges.",
+          "The verified result is \\(\\text{diverges}\\)."
         ],
         "method": "Course synthesis",
         "commonError": "Selecting a familiar formula without checking its hypotheses.",
@@ -4616,7 +4641,7 @@
       "slug": "root-test-example",
       "canonicalPath": "/subjects/math/calculus/worked-problems/root-test-example/",
       "summary": "A complete course synthesis example with method choice, derivation, verification, and a common wrong approach.",
-      "description": "See a concise answer and full derivation for test \\(\\sum(2n/(3n+1))^n\\).",
+      "description": "See a concise answer and full derivation for test sum from n equals 1 to infinity (2 n / (3 n plus 1)) to the power (n).",
       "searchIntent": [
         "root test example",
         "Course synthesis"
@@ -4673,11 +4698,11 @@
       "parentResourceId": "calculus-resource-calculus-2-final",
       "problem": {
         "id": "calc2-root",
-        "prompt": "Test \\(\\sum(2n/(3n+1))^n\\).",
-        "answer": "\\(converges\\)",
+        "prompt": "Test \\(\\sum_{n=1}^{\\infty}(2n/(3n+1))^n\\).",
+        "answer": "\\(\\text{converges}\\)",
         "steps": [
-          "Root-test limit is 2/3.",
-          "The verified result is \\(converges\\)."
+          "The root-test limit is \\(\\lim 2n/(3n+1)=2/3<1\\), so the series converges absolutely.",
+          "The verified result is \\(\\text{converges}\\)."
         ],
         "method": "Course synthesis",
         "commonError": "Selecting a familiar formula without checking its hypotheses.",
@@ -4703,7 +4728,7 @@
       "slug": "limit-comparison-example",
       "canonicalPath": "/subjects/math/calculus/worked-problems/limit-comparison-example/",
       "summary": "A complete course synthesis example with method choice, derivation, verification, and a common wrong approach.",
-      "description": "See a concise answer and full derivation for test \\(\\sum(3n+1)/(n^2+2)\\).",
+      "description": "See a concise answer and full derivation for test sum from n equals 1 to infinity (3 n plus 1) / (n squared plus 2).",
       "searchIntent": [
         "limit comparison example",
         "Course synthesis"
@@ -4760,11 +4785,11 @@
       "parentResourceId": "calculus-resource-calculus-2-final",
       "problem": {
         "id": "calc2-limitcomparison",
-        "prompt": "Test \\(\\sum(3n+1)/(n^2+2)\\).",
-        "answer": "\\(diverges\\)",
+        "prompt": "Test \\(\\sum_{n=1}^{\\infty}(3n+1)/(n^2+2)\\).",
+        "answer": "\\(\\text{diverges}\\)",
         "steps": [
-          "Limit compare with 1/n.",
-          "The verified result is \\(diverges\\)."
+          "With \\(b_n=1/n\\), \\(a_n/b_n=n(3n+1)/(n^2+2)\\to3\\); limit comparison with the harmonic series gives divergence.",
+          "The verified result is \\(\\text{diverges}\\)."
         ],
         "method": "Course synthesis",
         "commonError": "Selecting a familiar formula without checking its hypotheses.",
@@ -4790,7 +4815,7 @@
       "slug": "alternating-series-test-example",
       "canonicalPath": "/subjects/math/calculus/worked-problems/alternating-series-test-example/",
       "summary": "A complete course synthesis example with method choice, derivation, verification, and a common wrong approach.",
-      "description": "See a concise answer and full derivation for test \\(\\sum(-1)^{n-1}/n\\).",
+      "description": "See a concise answer and full derivation for test sum from n equals 1 to infinity (minus 1) to the power (n minus 1) / n.",
       "searchIntent": [
         "alternating series test example",
         "Course synthesis"
@@ -4847,11 +4872,11 @@
       "parentResourceId": "calculus-resource-calculus-2-final",
       "problem": {
         "id": "calc2-alternating",
-        "prompt": "Test \\(\\sum(-1)^{n-1}/n\\).",
-        "answer": "\\(converges conditionally\\)",
+        "prompt": "Test \\(\\sum_{n=1}^{\\infty}(-1)^{n-1}/n\\).",
+        "answer": "\\(\\text{converges conditionally}\\)",
         "steps": [
-          "AST applies; harmonic absolute series diverges.",
-          "The verified result is \\(converges conditionally\\)."
+          "\\(1/n\\) decreases to zero, so the alternating-series test gives convergence; \\(\\sum1/n\\) diverges, hence convergence is conditional.",
+          "The verified result is \\(\\text{converges conditionally}\\)."
         ],
         "method": "Course synthesis",
         "commonError": "Selecting a familiar formula without checking its hypotheses.",
@@ -4877,7 +4902,7 @@
       "slug": "absolute-versus-conditional-convergence",
       "canonicalPath": "/subjects/math/calculus/worked-problems/absolute-versus-conditional-convergence/",
       "summary": "A complete course synthesis example with method choice, derivation, verification, and a common wrong approach.",
-      "description": "See a concise answer and full derivation for classify \\(\\sum(-1)^n/n^2\\).",
+      "description": "See a concise answer and full derivation for classify sum from n equals 1 to infinity (minus 1) to the power (n) / n squared.",
       "searchIntent": [
         "absolute versus conditional convergence",
         "Course synthesis"
@@ -4934,11 +4959,11 @@
       "parentResourceId": "calculus-resource-calculus-2-final",
       "problem": {
         "id": "calc2-absolute",
-        "prompt": "Classify \\(\\sum(-1)^n/n^2\\).",
-        "answer": "\\(converges absolutely\\)",
+        "prompt": "Classify \\(\\sum_{n=1}^{\\infty}(-1)^n/n^2\\).",
+        "answer": "\\(\\text{converges absolutely}\\)",
         "steps": [
-          "The absolute series is a p-series with p=2.",
-          "The verified result is \\(converges absolutely\\)."
+          "The absolute series \\(\\sum1/n^2\\) is a p-series with \\(p=2>1\\), so the original series converges absolutely.",
+          "The verified result is \\(\\text{converges absolutely}\\)."
         ],
         "method": "Course synthesis",
         "commonError": "Selecting a familiar formula without checking its hypotheses.",
@@ -5017,9 +5042,8 @@
         "prompt": "If f^(n)(0)=2^n, find the Maclaurin series.",
         "answer": "\\(\\sum_{n=0}^{\\infty}2^nx^n/n!=e^{2x}\\)",
         "steps": [
-          "Start from derivatives at the center or a known convergent power series.",
-          "Apply substitution, differentiation, integration, or the ratio test while preserving the convergence condition.",
-          "The resulting expression is \\(\\sum_{n=0}^{\\infty}2^nx^n/n!=e^{2x}\\)."
+          "The Maclaurin coefficient is \\(f^{(n)}(0)/n!=2^n/n!\\).",
+          "Thus the series is \\(\\sum_{n=0}^{\\infty}2^nx^n/n!=e^{2x}\\)."
         ],
         "method": "Taylor or power-series construction",
         "commonError": "Transforming the formula but forgetting to transform the interval, endpoints, factorial, or remainder.",
@@ -5098,9 +5122,9 @@
         "prompt": "Expand 1/(1+x^2) as a power series.",
         "answer": "\\(\\sum_{n=0}^{\\infty}(-1)^nx^{2n},\\ |x|<1\\)",
         "steps": [
-          "Start from derivatives at the center or a known convergent power series.",
-          "Apply substitution, differentiation, integration, or the ratio test while preserving the convergence condition.",
-          "The resulting expression is \\(\\sum_{n=0}^{\\infty}(-1)^nx^{2n},\\ |x|<1\\)."
+          "Set \\(r=-x^2\\) in the geometric series.",
+          "This gives \\(\\sum_{n=0}^{\\infty}(-1)^nx^{2n}\\), with \\(|x|<1\\).",
+          "Therefore the result is \\(\\sum_{n=0}^{\\infty}(-1)^nx^{2n},\\ |x|<1\\)."
         ],
         "method": "Taylor or power-series construction",
         "commonError": "Transforming the formula but forgetting to transform the interval, endpoints, factorial, or remainder.",
@@ -5123,7 +5147,7 @@
       "slug": "interval-of-convergence-example",
       "canonicalPath": "/subjects/math/calculus/worked-problems/interval-of-convergence-example/",
       "summary": "A complete taylor or power-series construction example with method choice, derivation, verification, and a common wrong approach.",
-      "description": "See a concise answer and full derivation for find the interval of convergence of \\(\\sum x^n/n\\).",
+      "description": "See a concise answer and full derivation for find the interval of convergence of sum from n equals 1 to infinity x to the power (n) / n.",
       "searchIntent": [
         "interval of convergence example",
         "Taylor or power-series construction"
@@ -5176,12 +5200,11 @@
       "parentResourceId": "calculus-resource-taylor-series",
       "problem": {
         "id": "taylor-interval",
-        "prompt": "Find the interval of convergence of \\(\\sum x^n/n\\).",
+        "prompt": "Find the interval of convergence of \\(\\sum_{n=1}^{\\infty} x^n/n\\).",
         "answer": "\\([-1,1)\\)",
         "steps": [
-          "Start from derivatives at the center or a known convergent power series.",
-          "Apply substitution, differentiation, integration, or the ratio test while preserving the convergence condition.",
-          "The resulting expression is \\([-1,1)\\)."
+          "The radius is 1. At \\(x=1\\) the harmonic series diverges; at \\(x=-1\\) the alternating harmonic series converges.",
+          "Therefore the interval is \\([-1,1)\\)."
         ],
         "method": "Taylor or power-series construction",
         "commonError": "Transforming the formula but forgetting to transform the interval, endpoints, factorial, or remainder.",
@@ -5260,9 +5283,9 @@
         "prompt": "Bound the error of the degree-3 Maclaurin approximation to e^{0.2}.",
         "answer": "\\(|R_3|\\le e^{0.2}(0.2)^4/4!<0.000082\\)",
         "steps": [
-          "Start from derivatives at the center or a known convergent power series.",
-          "Apply substitution, differentiation, integration, or the ratio test while preserving the convergence condition.",
-          "The resulting expression is \\(|R_3|\\le e^{0.2}(0.2)^4/4!<0.000082\\)."
+          "Taylor's theorem gives \\(|R_3|\\le e^{0.2}(0.2)^4/4!\\) on \\([0,0.2]\\).",
+          "The bound is approximately \\(0.00008143<0.000082\\).",
+          "Therefore the result is \\(|R_3|\\le e^{0.2}(0.2)^4/4!<0.000082\\)."
         ],
         "method": "Taylor or power-series construction",
         "commonError": "Transforming the formula but forgetting to transform the interval, endpoints, factorial, or remainder.",
@@ -5287,7 +5310,7 @@
       "slug": "fundamental-theorem-derivative",
       "canonicalPath": "/subjects/math/calculus/worked-problems/fundamental-theorem-derivative/",
       "summary": "A complete course synthesis example with method choice, derivation, verification, and a common wrong approach.",
-      "description": "See a concise answer and full derivation for differentiate \\(f(x)=\\int_1^x\\cos(t^2)dt\\).",
+      "description": "See a concise answer and full derivation for differentiate f (x) equals integral from 1 to x cosine (t squared) d t.",
       "searchIntent": [
         "fundamental theorem derivative",
         "Course synthesis"
@@ -5347,7 +5370,7 @@
         "prompt": "Differentiate \\(F(x)=\\int_1^x\\cos(t^2)dt\\).",
         "answer": "\\(\\cos(x^2)\\)",
         "steps": [
-          "Apply FTC Part I.",
+          "FTC Part I evaluates the integrand at the variable upper bound: \\(F'(x)=\\cos(x^2)\\).",
           "The verified result is \\(\\cos(x^2)\\)."
         ],
         "method": "Course synthesis",

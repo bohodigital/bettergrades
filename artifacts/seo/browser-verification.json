@@ -1,20 +1,118 @@
 {
-  "schemaVersion": 1,
-  "generatedAt": "2026-07-23T17:00:00.000Z",
-  "environment": "local production build",
-  "browser": "Codex in-app Chromium",
-  "viewport": "desktop default",
-  "routeCount": 8,
-  "checks": [
-    "one H1",
-    "one main region",
-    "no duplicate noscript lesson",
-    "no visible editorial directive",
-    "no visible malformed math tokens",
-    "no horizontal document overflow",
-    "expected page title"
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-24T01:19:41.354Z",
+  "environment": "local-candidate",
+  "browser": "Playwright Chromium",
+  "sourceCommit": "aa047e5f2cda36a8a3ddadf008aa6a7551ebf240",
+  "sourceTree": "6352d8d51640f4d33d650efd2ebb2e259ecead77",
+  "buildHash": "7f42bca29033780de1006162ee5c4954bc8142ef52e347afaa3ac16cd4c3fda2",
+  "testCount": 7,
+  "passedCount": 7,
+  "failedCount": 0,
+  "viewportMatrix": [
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "name": "tablet",
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "name": "mobile",
+      "width": 390,
+      "height": 844
+    }
   ],
-  "failureCount": 0,
-  "pass": true,
-  "note": "Private-preview and live-origin verification are appended only after the exact candidate is deployed through the governed release flow."
+  "modes": [
+    "JavaScript enabled",
+    "JavaScript disabled",
+    "dark mode",
+    "keyboard-only focus",
+    "print CSS"
+  ],
+  "pageTypeCount": 14,
+  "analyticsEventsExercised": [
+    "resource_view",
+    "resource_download",
+    "worksheet_download",
+    "answer_key_download",
+    "practice_exam_download",
+    "formula_sheet_download",
+    "visual_download",
+    "worksheet_print",
+    "practice_start",
+    "practice_complete",
+    "exam_start",
+    "exam_complete",
+    "worked_solution_open",
+    "lesson_to_resource_click",
+    "resource_to_lesson_click",
+    "glossary_to_lesson_click"
+  ],
+  "assertions": {
+    "noConsoleErrors": true,
+    "noFailedRequiredRequests": true,
+    "noHorizontalOverflow": true,
+    "noJavaScriptStaticContentComplete": true,
+    "noJavaScriptControlsSuppressed": true,
+    "downloadsAndRedirects": true,
+    "analyticsBothSinks": true,
+    "doNotTrackSuppression": true
+  },
+  "tests": [
+    {
+      "title": "desktop route matrix renders one complete document without overflow",
+      "expectedStatus": "passed",
+      "status": "passed",
+      "durationMs": 9453,
+      "errors": []
+    },
+    {
+      "title": "tablet route matrix renders one complete document without overflow",
+      "expectedStatus": "passed",
+      "status": "passed",
+      "durationMs": 9360,
+      "errors": []
+    },
+    {
+      "title": "mobile route matrix renders one complete document without overflow",
+      "expectedStatus": "passed",
+      "status": "passed",
+      "durationMs": 9612,
+      "errors": []
+    },
+    {
+      "title": "JavaScript-disabled educational pages preserve static content and suppress controls",
+      "expectedStatus": "passed",
+      "status": "passed",
+      "durationMs": 583,
+      "errors": []
+    },
+    {
+      "title": "keyboard focus, dark mode, and print CSS remain usable",
+      "expectedStatus": "passed",
+      "status": "passed",
+      "durationMs": 1292,
+      "errors": []
+    },
+    {
+      "title": "downloads, redirect, answer reveal, and practice controls work",
+      "expectedStatus": "passed",
+      "status": "passed",
+      "durationMs": 982,
+      "errors": []
+    },
+    {
+      "title": "every resource analytics event fires through both sinks with safe dimensions and respects Do Not Track",
+      "expectedStatus": "passed",
+      "status": "passed",
+      "durationMs": 3295,
+      "errors": []
+    }
+  ],
+  "failures": [],
+  "pass": true
 }

@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-07-24T01:09:09Z",
+  "reviewer": {
+    "role": "Fresh-context independent mathematical and editorial reviewer",
+    "identity": "Codex fresh-context independent reviewer /root/independent_math_review",
+    "independent": true
+  },
+  "implementationReview": {
+    "reviewedAt": "2026-07-23T23:45:00Z",
+    "identity": "Codex primary implementation review",
+    "independent": false
+  },
+  "catalogSha256": "11cb1a9d94ae88ee709af9cd14bf90d7ce877e09fc6dca6e1ceeac688bbafbeb",
+  "scope": {
+    "flagshipProblems": 174,
+    "derivedWorkedProblems": 26,
+    "totalTargets": 200
+  },
+  "result": "pass",
+  "categoryReviews": [
+    {
+      "category": "limits",
+      "count": 24,
+      "checks": ["target and variable consistency", "one-sided branch selection", "two-sided comparison", "infinite-limit sign", "dominant behavior", "factor and radical domain"],
+      "result": "pass_after_correction"
+    },
+    {
+      "category": "derivatives",
+      "count": 24,
+      "checks": ["independent differentiation", "inner factors", "product and quotient structure", "numerical sample equivalence"],
+      "result": "pass"
+    },
+    {
+      "category": "optimization",
+      "count": 16,
+      "checks": ["objective and constraint", "feasible domain", "critical equations", "endpoint or limiting behavior", "dimensions and objective values"],
+      "result": "pass_after_correction"
+    },
+    {
+      "category": "calculus-i-exam",
+      "count": 25,
+      "checks": ["prompt data", "method", "answer", "units", "domain", "interpretation"],
+      "result": "pass_after_correction"
+    },
+    {
+      "category": "integration-by-parts",
+      "count": 20,
+      "checks": ["antiderivative differentiation", "signs and constants", "definite endpoints", "method language"],
+      "result": "pass_after_correction"
+    },
+    {
+      "category": "geometric-series",
+      "count": 20,
+      "checks": ["first term and ratio", "finite indexing", "absolute-ratio condition", "model units", "problem-specific explanation"],
+      "result": "pass_after_correction"
+    },
+    {
+      "category": "taylor-series",
+      "count": 20,
+      "checks": ["center and coefficients", "factorials and signs", "radius and endpoints", "approximation tolerance", "error hypotheses"],
+      "result": "pass_after_correction"
+    },
+    {
+      "category": "calculus-ii-exam",
+      "count": 25,
+      "checks": ["integration", "applications", "series hypotheses", "summation bounds", "endpoint tests", "parametric and polar conversion"],
+      "result": "pass_after_correction"
+    },
+    {
+      "category": "derived-worked-problems",
+      "count": 26,
+      "checks": ["exact source linkage", "prompt-answer-step hash agreement", "standalone method and common-error context"],
+      "result": "pass"
+    }
+  ],
+  "findings": [
+    {"id": "EDU-001", "problemId": "limits-direct-1", "severity": "blocking", "finding": "Explanation named target 1 while the prompt approaches 2.", "resolution": "Corrected the canonical generator to target 2."},
+    {"id": "EDU-002", "problemId": "limits-sided-4", "severity": "blocking", "finding": "A two-sided piecewise limit used generic one-sided language.", "resolution": "Added explicit left- and right-hand calculations and equality conclusion."},
+    {"id": "EDU-003", "problemId": "optimization-cone", "severity": "blocking", "finding": "The reported dimensions did not satisfy the stationarity equation; S'=0 gives r cubed equal to 108, not 72.", "resolution": "Corrected radius, height, and derivation."},
+    {"id": "EDU-004", "problemGroup": "integration-by-parts", "affectedCount": 4, "severity": "blocking", "finding": "Four indefinite integrals incorrectly claimed endpoint evaluation.", "resolution": "Restricted endpoint language to the three definite-integral records."},
+    {"id": "EDU-005", "problemGroup": "geometric-series", "affectedCount": 20, "severity": "blocking", "finding": "Template explanations did not prove the individual requested results.", "resolution": "Replaced them with problem-specific computations, indexing, conditions, and units."},
+    {"id": "EDU-006", "problemGroup": "taylor-series", "affectedCount": 20, "severity": "blocking", "finding": "Template explanations did not document the individual transformation, endpoint, or error calculation.", "resolution": "Replaced them with problem-specific derivations and endpoint tests."},
+    {"id": "EDU-007", "problemGroup": "series-prompts", "affectedCount": 16, "severity": "blocking", "finding": "Several sigma and limit prompts omitted bounds or the limiting variable.", "resolution": "Added explicit lower/upper bounds and n approaching infinity."},
+    {"id": "EDU-008", "problemId": "taylor-int", "severity": "blocking", "finding": "The arctangent power-series answer omitted its endpoint convergence interval.", "resolution": "Added the interval -1 through 1 and explicit endpoint review."},
+    {"id": "EDU-009", "problemGroup": "textual-exam-answers", "affectedCount": 2, "severity": "blocking", "finding": "Prose conclusions were emitted as bare math identifiers.", "resolution": "Wrapped prose in mathematical text markup."},
+    {"id": "EDU-010", "problemGroup": "integration-by-parts", "affectedCount": 20, "severity": "blocking", "finding": "Keys used method-only template cues instead of problem-specific derivations.", "resolution": "Added the actual u, dv, intermediate integrals, repeated reductions, endpoint substitutions, and cyclic equations."},
+    {"id": "EDU-011", "problemGroup": "practice-finals", "affectedCount": 50, "severity": "blocking", "finding": "Exam keys used short method cues instead of showing the calculation or convergence hypotheses.", "resolution": "Replaced all 50 cues with problem-specific computations, bounds, decompositions, and test conditions."}
+  ]
+}

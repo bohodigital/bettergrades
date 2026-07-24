@@ -69,6 +69,23 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <style>{`
+            .practice-progress button,
+            .resource-downloads button,
+            .limits-check form,
+            .calculus-attempt-reveal button,
+            .interactive-only {
+              visibility: hidden;
+            }
+            html.js .practice-progress button,
+            html.js .resource-downloads button,
+            html.js .limits-check form,
+            html.js .calculus-attempt-reveal button,
+            html.js .interactive-only {
+              visibility: visible;
+            }
+          `}</style>
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
           "@context": "https://schema.org",
           "@graph": [
@@ -89,9 +106,9 @@ export default function RootLayout({
   if(!publicHosts[window.location.hostname.toLowerCase()])return;
   if(navigator.doNotTrack==='1'||window.doNotTrack==='1')return;
   window.dataLayer=window.dataLayer||[];
-  function gtag(){window.dataLayer.push(arguments);}
-  gtag('js',new Date());
-  gtag('config','${GOOGLE_ANALYTICS_ID}',{
+  window.gtag=window.gtag||function(){window.dataLayer.push(arguments);};
+  window.gtag('js',new Date());
+  window.gtag('config','${GOOGLE_ANALYTICS_ID}',{
     anonymize_ip:true,
     allow_google_signals:false,
     allow_ad_personalization_signals:false

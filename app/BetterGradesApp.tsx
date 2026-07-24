@@ -2,23 +2,18 @@
 
 /* eslint-disable @next/next/no-html-link-for-pages -- this route shell uses deliberate document navigation */
 
-import { createContext, FormEvent, lazy, ReactNode, Suspense, useContext, useEffect, useMemo, useState } from "react";
+import { createContext, FormEvent, ReactNode, useContext, useEffect, useMemo, useState } from "react";
 import type { Question } from "../lib/activities";
 import { algebraCheckerHref } from "../lib/algebra-practice.mjs";
-import { isLimitsUnitPath, limitsUnitPracticeRoutes } from "../lib/calculus/limits-unit-index.mjs";
-import type { LimitsUnitPublicPage } from "../lib/calculus/limits-unit.mjs";
-import { calculusUnitPracticeRoutes, isCalculusUnitPath } from "../lib/calculus/calculus-units-index.mjs";
-import type { CalculusUnitPublicPage } from "../lib/calculus/calculus-unit.mjs";
+import { limitsUnitPracticeRoutes } from "../lib/calculus/limits-unit-index.mjs";
+import { calculusUnitPracticeRoutes } from "../lib/calculus/calculus-units-index.mjs";
 import { courseLibraries } from "../lib/course-library";
 import { problems, searchProblems, type Problem } from "../lib/content";
-import type { MathGlossaryTerm } from "../lib/glossary/math/registry.mjs";
 import { subjects } from "../lib/registry/catalog";
 import { assessments, getAssessment } from "../lib/registry/practice";
 import { isExpressionOnlyQuery, searchKindLabels, searchSite, type SearchKind, type SiteSearchRecord } from "../lib/site-search";
 import { CourseHubContent, getArticle, LibraryArticleContent, LibraryHomeSection, LibrarySearchResults, searchLibrary, TopicContent } from "./LibraryPages";
 import { AlgebraExpressionChecker } from "./AlgebraExpressionChecker";
-import type { PublishingResource, ResourceHub } from "../lib/resources/catalog.mjs";
-import type { ResourceCardSummary, ResourceLinkSummary } from "./ResourcePages";
 
 import { Formula, Math, MathOrText } from "./Math";
 import { PageGlossaryTerms } from "./PageGlossaryTerms";
@@ -34,24 +29,7 @@ const calculusChapterLinks = [
   ["Chapter 4", "Sequences and Series · Units 4A and 4B", "/subjects/math/calculus/sequences-and-series/"],
 ];
 
-const GlossaryHubPage = lazy(() => import("./GlossaryPages").then((module) => ({ default: module.GlossaryHubPage })));
-const MathGlossaryPage = lazy(() => import("./GlossaryPages").then((module) => ({ default: module.MathGlossaryPage })));
-const MathConventionsPage = lazy(() => import("./GlossaryPages").then((module) => ({ default: module.MathConventionsPage })));
-const LimitsUnitPageContent = lazy(() => import("./LimitsUnitPages").then((module) => ({ default: module.LimitsUnitPageContent })));
-const CalculusUnitPageContent = lazy(() => import("./CalculusUnitPages").then((module) => ({ default: module.CalculusUnitPageContent })));
-const ResourcePage = lazy(() => import("./ResourcePages").then((module) => ({ default: module.ResourcePage })));
-const ResourceHubPage = lazy(() => import("./ResourcePages").then((module) => ({ default: module.ResourceHubPage })));
-
-function GlossaryBoundary({ children }: { children: ReactNode }) {
-  return <Suspense fallback={<section className="glossary-loading section-pad"><span>Loading glossary…</span></section>}>{children}</Suspense>;
-}
-
 const PathContext = createContext("/");
-type GlossaryData = {
-  terms: readonly MathGlossaryTerm[];
-  categories: readonly { id: MathGlossaryTerm["categoryId"]; label: string; description: string }[];
-  uppercaseConventions: Readonly<Record<string, string>>;
-};
 
 function Link({ href, children, className = "" }: { href: string; children: ReactNode; className?: string }) {
   return <a href={href} className={className}>{children}</a>;
@@ -431,8 +409,12 @@ function Quiz({ questions, storageKey, title, mode = "practice" }: { questions: 
 
 const practiceLabels = { quiz: "Quick quiz", diagnostic: "Diagnostic", "practice-exam": "Practice exam", challenge: "Challenge" } as const;
 function AssessmentDirectory({ eyebrow, title, intro }: { eyebrow: string; title: string; intro: string }) { return <Shell><section className="page-hero section-pad"><Eyebrow>{eyebrow}</Eyebrow><h1>{title}</h1><p>{intro}</p></section><section className="activity-list section-pad">{assessments.map((item) => <Link href={item.path} className="activity-row" key={item.id}><span>Practice</span><div><Eyebrow>{practiceLabels[item.kind]} · Mathematics · Calculus</Eyebrow><h2>{item.title}</h2><p>{item.description}</p><span className="tag">Explained feedback</span><span className="tag">Device-local progress</span></div><b>Start →</b></Link>)}{limitsUnitPracticeRoutes.map((item) => <Link href={item.path} className="activity-row" key={item.path}><span>Unit 1</span><div><Eyebrow>{item.pageType.replaceAll("-", " ")} · Calculus I · Limits</Eyebrow><h2>{item.h1}</h2><p>{item.description}</p><span className="tag">Full worked solutions</span><span className="tag">No account required</span></div><b>Start →</b></Link>)}{calculusUnitPracticeRoutes.map((item) => { const unitLabel = item.unitId === "calc-1-unit-2b-derivative-applications" ? "Unit 2B" : item.unitId === "calc-1-unit-3a-integral-foundations-techniques" ? "Unit 3A" : item.unitId === "calc-1-unit-3b-integration-applications" ? "Unit 3B" : item.unitId === "calc-2-unit-4a-sequences-infinite-series" ? "Unit 4A" : item.unitId === "calc-2-unit-4b-power-taylor-series" ? "Unit 4B" : "Unit 2A"; const course = unitLabel.startsWith("Unit 4") ? "Calculus II" : "Calculus I"; return <Link href={item.path} className="activity-row" key={item.path}><span>{unitLabel}</span><div><Eyebrow>{item.pageType.replaceAll("-", " ")} · {course} · {unitLabel}</Eyebrow><h2>{item.title}</h2><p>{item.description}</p><span className="tag">Attempt-and-reveal</span><span className="tag">No account required</span></div><b>Start →</b></Link>; })}</section></Shell>; }
-function PracticePage() { return <AssessmentDirectory eyebrow="Practice center" title="Quizzes, practice exams, diagnostics, and challenges." intro="One organized home for free practice with explanations. Start by subject, then choose the kind of workout you need." />; }
-function MathPracticePage() { return <AssessmentDirectory eyebrow="Practice · Mathematics" title="Practice that explains the miss." intro="The current interactive sets focus on calculus. Algebra has a connected collection of worked guides, and its first assessment set is the next content release." />; }
+function PracticePage() {
+  return <Shell><section className="page-hero section-pad"><Eyebrow>Practice center</Eyebrow><h1>Choose a subject before choosing a workout.</h1><p>Practice is organized by subject and course so a diagnostic, quiz, or exam stays connected to the lessons that repair a missed skill.</p></section><section className="single-product section-pad"><Link href="/practice/math/" className="product-row"><span className="product-mark">∑</span><div><Eyebrow>Subject practice</Eyebrow><h2>Mathematics</h2><p>Choose a Quick quiz, Diagnostic, Practice exam, or Challenge after opening the course you are studying.</p><small>Featured: Calculus foundations practice exam</small><span className="tag">Calculus available now</span><span className="tag">No account required</span></div><b>Choose a math course →</b></Link></section></Shell>;
+}
+function MathPracticePage() {
+  return <Shell><section className="page-hero section-pad"><Eyebrow>Practice · Mathematics</Eyebrow><h1>Choose the mathematics course you are studying.</h1><p>The course directory keeps practice beside its prerequisite map, lessons, worked examples, and answer keys.</p></section><section className="single-product section-pad"><Link href="/practice/math/calculus/" className="product-row"><span className="product-mark">∫</span><div><Eyebrow>Course practice</Eyebrow><h2>Calculus</h2><p>Use limits through Taylor-series quizzes, diagnostics, cumulative reviews, timed exams, and complete attempt-gated solutions.</p><span className="tag">Calculus I and II</span><span className="tag">Explained feedback</span></div><b>Open calculus practice →</b></Link></section></Shell>;
+}
 function CalculusPracticePage() { return <AssessmentDirectory eyebrow="Practice · Mathematics · Calculus" title="Pick the kind of calculus practice you need." intro="Warm up with a quiz, find prerequisite gaps, take a mixed practice exam, or race the Integration Bee clock." />; }
 function AssessmentPage({ id }: { id: string }) { const assessment = getAssessment(id)!; const mode = assessment.kind === "diagnostic" ? "exam" : assessment.kind === "practice-exam" ? "practice-exam" : assessment.kind === "challenge" ? "bee" : "practice"; return <Shell><section className={mode === "bee" ? "bee-page section-pad" : "quiz-page section-pad"}>{mode !== "bee" ? <header className="quiz-page-heading"><Eyebrow>{practiceLabels[assessment.kind]}</Eyebrow><h1>{assessment.title}</h1><p>{assessment.description}</p></header> : null}<Quiz questions={assessment.questions} storageKey={assessment.storageKey} title={assessment.title} mode={mode} /></section></Shell>; }
 
@@ -453,24 +435,15 @@ function PolicyPage({ path }: { path: string }) { const data = policyContent[pat
 
 function NotFound() { return <Shell><section className="not-found section-pad"><span>4≥4</span><Eyebrow>That page did not make the grade</Eyebrow><h1>Wrong turn. Useful recovery.</h1><p>The page may have moved, or the expression may need a different phrasing. Search the answer bank or return to calculus.</p><SearchBox large /><div className="button-row"><Link href="/" className="button button-ghost">Back home</Link><Link href="/subjects/math/calculus/" className="text-link">Browse calculus →</Link></div></section></Shell>; }
 
-function BetterGradesRoute({ path, glossaryData, limitsUnitPage, calculusUnitPage, resourcePage, resourceHub, hubResources = [], relatedResources = [], enrichedGlossaryTermIds = [] }: { path: string; glossaryData?: GlossaryData; limitsUnitPage?: LimitsUnitPublicPage; calculusUnitPage?: CalculusUnitPublicPage; resourcePage?: PublishingResource; resourceHub?: ResourceHub; hubResources?: readonly ResourceCardSummary[]; relatedResources?: readonly ResourceLinkSummary[]; enrichedGlossaryTermIds?: readonly string[] }) {
+function BetterGradesRoute({ path, routeContent }: { path: string; routeContent?: ReactNode }) {
   if (path === "/") return <HomePage />;
   if (path === "/subjects/") return <SubjectsPage />;
   if (path === "/subjects/math/") return <MathSubjectPage />;
-  if (resourceHub) return <Shell><Suspense fallback={<section className="section-pad">Loading resource library…</section>}><ResourceHubPage hub={resourceHub} resources={hubResources} /></Suspense></Shell>;
-  if (resourcePage) return <Shell><Suspense fallback={<section className="section-pad">Loading resource…</section>}><ResourcePage resource={resourcePage} glossaryTerms={glossaryData?.terms} relatedResources={relatedResources} enrichedGlossaryTermIds={enrichedGlossaryTermIds} /></Suspense></Shell>;
+  if (routeContent) return <Shell>{routeContent}</Shell>;
   const courseMatch = path.match(/^\/subjects\/math\/([^/]+)\/$/);
   if (courseMatch && courseLibraries.some((course) => course.slug === courseMatch[1])) return <Shell><CourseHubContent domainSlug={courseMatch[1]} /></Shell>;
-  if (isCalculusUnitPath(path)) {
-    if (!calculusUnitPage) return <NotFound />;
-    return <Shell><Suspense fallback={<section className="section-pad">Loading lesson…</section>}><CalculusUnitPageContent page={calculusUnitPage} /></Suspense></Shell>;
-  }
   const topicMatch = path.match(/^\/subjects\/math\/([^/]+)\/([^/]+)\/$/);
   if (topicMatch) return <Shell><TopicContent domainSlug={topicMatch[1]} topicSlug={topicMatch[2]} /></Shell>;
-  if (isLimitsUnitPath(path)) {
-    if (!limitsUnitPage) return <NotFound />;
-    return <Shell><Suspense fallback={<section className="section-pad">Loading lesson…</section>}><LimitsUnitPageContent page={limitsUnitPage} /></Suspense></Shell>;
-  }
   const articleMatch = path.match(/^\/subjects\/math\/([^/]+)\/([^/]+)\/([^/]+)\/$/);
   if (articleMatch) {
     const article = getArticle(articleMatch[1], articleMatch[2], articleMatch[3]);
@@ -478,9 +451,6 @@ function BetterGradesRoute({ path, glossaryData, limitsUnitPage, calculusUnitPag
   }
   if (path === "/answers/") return <AnswersPage />;
   if (path === "/search/") return <SearchPage />;
-  if (path === "/glossary/" && glossaryData) return <Shell><GlossaryBoundary><GlossaryHubPage terms={glossaryData.terms} /></GlossaryBoundary></Shell>;
-  if (path === "/glossary/math/" && glossaryData) return <Shell><GlossaryBoundary><MathGlossaryPage terms={glossaryData.terms} categories={glossaryData.categories} /></GlossaryBoundary></Shell>;
-  if (path === "/glossary/math/conventions/" && glossaryData) return <Shell><GlossaryBoundary><MathConventionsPage uppercaseConventions={glossaryData.uppercaseConventions} /></GlossaryBoundary></Shell>;
   if (path === "/answers/calculus/integral-of-sec-cubed/") return <SecCubedLatexPage />;
   if (path === "/learn/calculus/integration-by-parts/") return <LearnLatexPage />;
   if (path === "/tools/") return <ToolsPage />;
@@ -497,6 +467,6 @@ function BetterGradesRoute({ path, glossaryData, limitsUnitPage, calculusUnitPag
   return <NotFound />;
 }
 
-export function BetterGradesApp({ path, glossaryData, limitsUnitPage, calculusUnitPage, resourcePage, resourceHub, hubResources, relatedResources, enrichedGlossaryTermIds }: { path: string; glossaryData?: GlossaryData; limitsUnitPage?: LimitsUnitPublicPage; calculusUnitPage?: CalculusUnitPublicPage; resourcePage?: PublishingResource; resourceHub?: ResourceHub; hubResources?: readonly ResourceCardSummary[]; relatedResources?: readonly ResourceLinkSummary[]; enrichedGlossaryTermIds?: readonly string[] }) {
-  return <PathContext.Provider value={path}><BetterGradesRoute path={path} glossaryData={glossaryData} limitsUnitPage={limitsUnitPage} calculusUnitPage={calculusUnitPage} resourcePage={resourcePage} resourceHub={resourceHub} hubResources={hubResources} relatedResources={relatedResources} enrichedGlossaryTermIds={enrichedGlossaryTermIds} /></PathContext.Provider>;
+export function BetterGradesApp({ path, routeContent }: { path: string; routeContent?: ReactNode }) {
+  return <PathContext.Provider value={path}><BetterGradesRoute path={path} routeContent={routeContent} /></PathContext.Provider>;
 }

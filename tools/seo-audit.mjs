@@ -1,6 +1,14 @@
 import { createHash } from "node:crypto";
+import { execFileSync } from "node:child_process";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import {
+  contentFingerprint,
+  decodeHtmlEntities,
+  duplicateAnalysis,
+  substantiveMainText,
+} from "../lib/seo/content-fingerprint.mjs";
+import { pagesPackageHash } from "../lib/seo/build-hash.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const label = process.argv.find((argument) => argument.startsWith("--label="))?.split("=")[1] ?? "baseline";
@@ -22,19 +30,8 @@ function fetchLocal(path, init) {
   }), env, context);
 }
 
-function decodeEntities(value) {
-  return value
-    .replace(/&nbsp;/gi, " ")
-    .replace(/&amp;/gi, "&")
-    .replace(/&lt;/gi, "<")
-    .replace(/&gt;/gi, ">")
-    .replace(/&quot;/gi, '"')
-    .replace(/&#(?:x27|39);/gi, "'")
-    .replace(/&#(\d+);/g, (_, number) => String.fromCodePoint(Number(number)));
-}
-
 function visibleText(html) {
-  return decodeEntities(html)
+  return decodeHtmlEntities(html)
     .replace(/<script\b[\s\S]*?<\/script>/gi, " ")
     .replace(/<style\b[\s\S]*?<\/style>/gi, " ")
     .replace(/<annotation\b[\s\S]*?<\/annotation>/gi, " ")
@@ -57,7 +54,7 @@ function hash(value) {
 }
 
 function firstMatch(html, pattern) {
-  return decodeEntities(html.match(pattern)?.[1] ?? "").replace(/\s+/g, " ").trim();
+  return decodeHtmlEntities(html.match(pattern)?.[1] ?? "").replace(/\s+/g, " ").trim();
 }
 
 function classify(path) {
@@ -86,11 +83,6 @@ function metaDescription(html) {
   return html.match(/<meta\b[^>]*name="description"[^>]*content="([^"]*)"/i)?.[1]
     ?? html.match(/<meta\b[^>]*content="([^"]*)"[^>]*name="description"/i)?.[1]
     ?? "";
-}
-
-function mainText(html) {
-  const matches = [...html.matchAll(/<main\b[^>]*>([\s\S]*?)<\/main>/gi)];
-  return matches.map((match) => normalizedFingerprintText(match[1])).join(" ");
 }
 
 const sitemapResponse = await fetchLocal("/sitemap.xml");
@@ -125,7 +117,7 @@ for (const path of routes) {
   const response = await fetchLocal(path);
   const html = await response.text();
   const text = normalizedFingerprintText(html);
-  const main = mainText(html);
+  const main = substantiveMainText(html);
   const h1Count = (html.match(/<h1\b/gi) ?? []).length;
   const mainCount = (html.match(/<main\b/gi) ?? []).length;
   const noScriptLessonCount = (html.match(/data-noscript-calculus-fallback=/gi) ?? []).length;
@@ -143,7 +135,7 @@ for (const path of routes) {
     canonical: canonical(html),
     robots: firstMatch(html, /<meta\b[^>]*name="robots"[^>]*content="([^"]*)"/i),
     title: firstMatch(html, /<title>([\s\S]*?)<\/title>/i),
-    metaDescription: decodeEntities(metaDescription(html)),
+    metaDescription: decodeHtmlEntities(metaDescription(html)),
     h1Count,
     mainCount,
     imageCount: images.length,
@@ -152,7 +144,8 @@ for (const path of routes) {
     textLength: text.length,
     textFingerprint: hash(text),
     mainTextLength: main.length,
-    mainTextFingerprint: hash(main),
+    mainTextFingerprint: contentFingerprint(main),
+    mainText: main,
   });
   rawAudit.push({
     path,
@@ -167,13 +160,12 @@ for (const path of routes) {
     canonical: canonical(html),
     expectedCanonical: `https://bettergrades.net${path}`,
     textFingerprint: hash(text),
-    mainTextFingerprint: hash(main),
+    mainTextFingerprint: contentFingerprint(main),
   });
 }
 
-const duplicateGroups = [...Map.groupBy(inventory, (entry) => entry.mainTextFingerprint)]
-  .filter(([, entries]) => entries.length > 1)
-  .map(([fingerprint, entries]) => ({ fingerprint, paths: entries.map((entry) => entry.path) }));
+const duplicateGroups = duplicateAnalysis(inventory);
+for (const entry of inventory) delete entry.mainText;
 
 const redirectsFile = await readFile(resolve(root, "dist", "pages", "_redirects"), "utf8");
 const literalRedirects = redirectsFile
@@ -248,11 +240,20 @@ const crawlRuns = [
 ];
 for (let repeat = 0; repeat < 5; repeat += 1) crawlRuns.push(await runBatch(burstSample, 20));
 
-const workerBytes = (await readFile(resolve(root, "dist", "pages", "_worker.js"))).byteLength;
+const workerBytesBuffer = await readFile(resolve(root, "dist", "pages", "_worker.js"));
+const workerBytes = workerBytesBuffer.byteLength;
+const sourceCommit = execFileSync("git", ["rev-parse", "HEAD"], { cwd: root, encoding: "utf8" }).trim();
+const sourceTree = execFileSync("git", ["rev-parse", "HEAD^{tree}"], { cwd: root, encoding: "utf8" }).trim();
+const buildHash = await pagesPackageHash(resolve(root, "dist", "pages"));
+const generatedAt = new Date().toISOString();
 const report = {
-  schemaVersion: 1,
+  schemaVersion: 2,
   label,
-  generatedAt: new Date().toISOString(),
+  generatedAt,
+  environment: "local-candidate",
+  sourceCommit,
+  sourceTree,
+  buildHash,
   routeCount: routes.length,
   routesByPageType: Object.fromEntries([...Map.groupBy(inventory, (entry) => entry.pageType)].map(([type, entries]) => [type, entries.length])),
   unexpectedStatusCount: inventory.filter((entry) => entry.status !== 200).length,
@@ -277,9 +278,28 @@ const csv = [
 await Promise.all([
   writeFile(resolve(artifactDirectory, `${label}-route-inventory.json`), `${JSON.stringify(report, null, 2)}\n`),
   writeFile(resolve(artifactDirectory, `${label}-route-inventory.csv`), `${csv}\n`),
-  writeFile(resolve(artifactDirectory, `${label}-raw-html-audit.json`), `${JSON.stringify({ schemaVersion: 1, label, routes: rawAudit }, null, 2)}\n`),
-  writeFile(resolve(artifactDirectory, `${label}-redirect-audit.json`), `${JSON.stringify({ schemaVersion: 1, label, redirects: redirectAudit }, null, 2)}\n`),
-  writeFile(resolve(artifactDirectory, `crawl-load-${label === "baseline" ? "before" : "after"}.json`), `${JSON.stringify({ schemaVersion: 1, label, runs: crawlRuns }, null, 2)}\n`),
+  writeFile(resolve(artifactDirectory, `${label}-raw-html-audit.json`), `${JSON.stringify({
+    schemaVersion: 2,
+    label,
+    generatedAt,
+    environment: "local-candidate",
+    sourceCommit,
+    sourceTree,
+    buildHash,
+    routeCount: routes.length,
+    failureCounts: {
+      unexpectedStatus: inventory.filter((entry) => entry.status !== 200).length,
+      canonicalMismatch: inventory.filter((entry) => entry.canonical !== `https://bettergrades.net${entry.path}`).length,
+      h1: inventory.filter((entry) => entry.h1Count !== 1).length,
+      main: inventory.filter((entry) => entry.mainCount !== 1).length,
+      duplicateLesson: rawAudit.filter((entry) => entry.substantiveLessonBodies > 1).length,
+      leak: rawAudit.filter((entry) => entry.leakFindings.length).length,
+      malformedMath: rawAudit.filter((entry) => entry.malformedMathFindings.length).length,
+    },
+    routes: rawAudit,
+  }, null, 2)}\n`),
+  writeFile(resolve(artifactDirectory, `${label}-redirect-audit.json`), `${JSON.stringify({ schemaVersion: 2, label, generatedAt, sourceCommit, sourceTree, buildHash, redirectCount: redirectAudit.length, failureCount: redirectAudit.filter((entry) => !entry.oneHop).length, redirects: redirectAudit }, null, 2)}\n`),
+  writeFile(resolve(artifactDirectory, `crawl-load-${label === "baseline" ? "before" : "after"}.json`), `${JSON.stringify({ schemaVersion: 2, label, generatedAt, sourceCommit, sourceTree, buildHash, runs: crawlRuns }, null, 2)}\n`),
 ]);
 
 console.log(JSON.stringify({
@@ -294,3 +314,16 @@ console.log(JSON.stringify({
   crawlFailureCount: crawlRuns.reduce((sum, run) => sum + run.failures.length, 0),
   workerBytes,
 }, null, 2));
+
+const failureCount = report.unexpectedStatusCount
+  + report.canonicalMismatchCount
+  + report.h1ViolationCount
+  + report.mainViolationCount
+  + report.duplicateLessonRouteCount
+  + report.leakRouteCount
+  + report.malformedMathRouteCount
+  + duplicateGroups.exact.length
+  + duplicateGroups.near.length
+  + redirectAudit.filter((entry) => !entry.oneHop).length
+  + crawlRuns.reduce((sum, run) => sum + run.failures.length, 0);
+if (failureCount > 0) throw new Error(`SEO audit failed with ${failureCount} finding(s); inspect artifacts/seo/${label}-*.json`);

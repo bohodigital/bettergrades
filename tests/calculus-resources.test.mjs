@@ -58,10 +58,66 @@ test("flagship problem counts and solution coverage match the editorial brief", 
 test("mathematical verification covers every flagship and selected worked problem", async () => {
   const artifact = JSON.parse(await readFile(resolve(root, "artifacts/seo/mathematical-verification.json"), "utf8"));
   const expected = flagshipResources.reduce((sum, resource) => sum + resource.problemCount, 0) + workedProblemResources.length;
+  assert.equal(artifact.schemaVersion, 2);
   assert.equal(artifact.entries.length, expected);
-  assert.ok(artifact.entries.every((entry) => entry.result === "pass" && entry.review_status === "reviewed"));
+  assert.equal(artifact.summary.totalTargets, expected);
+  assert.equal(artifact.summary.machineFailureCount, 0);
+  assert.equal(artifact.summary.editorialFailureCount, 0);
+  assert.equal(artifact.summary.reviewerIndependentOfImplementation, true, "the pinned second review must be independent of implementation");
+  assert.ok(artifact.summary.machineCheckCount > expected * 5);
+  assert.ok(artifact.entries.every((entry) => (
+    /^[a-f0-9]{64}$/.test(entry.prompt_hash)
+    && /^[a-f0-9]{64}$/.test(entry.answer_hash)
+    && entry.editorial_review_result === "pass"
+    && entry.machine_checks.length >= 2
+    && entry.machine_checks.every((check) => check.result === "pass" && check.observed !== undefined && check.expected !== undefined)
+  )));
+  assert.ok(artifact.entries.some((entry) => entry.verification_methods.includes("independent symbolic/numerical equivalence")));
+  assert.ok(artifact.entries.some((entry) => entry.verification_methods.includes("independent optimization recomputation: S'/pi")));
   const keys = new Set(artifact.entries.map((entry) => `${entry.resource_id}/${entry.problem_id}`));
   for (const resource of flagshipResources) for (const problem of resource.problems) assert.ok(keys.has(`${resource.id}/${problem.id}`));
+});
+
+test("educational QA regressions preserve corrected limit, optimization, and series reasoning", () => {
+  const problem = (slug, id) => flagshipResources.find((resource) => resource.slug === slug).problems.find((item) => item.id === id);
+  const direct = problem("evaluating-limits", "limits-direct-1");
+  assert.match(direct.prompt, /x\\to2/);
+  assert.ok(direct.steps.join(" ").includes("target input \\(2\\)"));
+  assert.equal(direct.steps.join(" ").includes("target input \\(1\\)"), false);
+
+  const sided = problem("evaluating-limits", "limits-sided-4");
+  assert.match(sided.steps.join(" "), /x\\to2\^-/);
+  assert.match(sided.steps.join(" "), /x\\to2\^\+/);
+  assert.ok(sided.steps.join(" ").includes("both one-sided limits equal \\(4\\)"));
+
+  const cone = problem("optimization", "optimization-cone");
+  assert.match(cone.answer, /sqrt\[3\]\{108\}/);
+  assert.match(cone.steps.join(" "), /r³=108/);
+
+  const arctangent = problem("taylor-series", "taylor-int");
+  assert.match(arctangent.answer, /-1\\le x\\le1/);
+  assert.match(arctangent.steps.join(" "), /endpoint tests include both/);
+
+  const improper = problem("calculus-2-final", "calc2-improper");
+  assert.equal(improper.answer, "\\(\\text{converges to }1\\)");
+
+  const parts = flagshipResources.find((resource) => resource.slug === "integration-by-parts").problems;
+  for (const item of parts) {
+    assert.doesNotMatch(item.steps.join(" "), /Choose u as the factor that simplifies|repeat when the remaining integral/);
+    assert.match(item.steps.join(" "), /take|using|let|repeatedly/i);
+  }
+  assert.match(problem("integration-by-parts", "ibp-xe^x").steps.join(" "), /xe\^x-\\int e\^x/);
+});
+
+test("published problem explanations are specific, bounded, and contain their conclusion", () => {
+  for (const resource of flagshipResources) {
+    for (const problem of resource.problems) {
+      assert.ok(problem.steps.some((step) => step.includes(problem.answer)), `${problem.id}: answer absent from solution`);
+      assert.doesNotMatch(problem.steps.join(" "), /Identify the first included term, common ratio, and whether the sum is finite or infinite\./);
+      assert.doesNotMatch(problem.steps.join(" "), /Start from derivatives at the center or a known convergent power series\./);
+      if (problem.prompt.includes("\\sum")) assert.match(problem.prompt, /\\sum_\{[^}]+\}\^(?:\{[^}]+\}|\\[A-Za-z]+)/, `${problem.id}: unbounded sum`);
+    }
+  }
 });
 
 test("student and answer-key PDFs are distinct, searchable, embedded, and answer-safe", async () => {
