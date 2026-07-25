@@ -2,7 +2,7 @@
 
 /* eslint-disable @next/next/no-html-link-for-pages -- this route shell uses deliberate document navigation */
 
-import { createContext, FormEvent, ReactNode, useContext, useEffect, useMemo, useRef, useState } from "react";
+import { createContext, FormEvent, ReactNode, useContext, useEffect, useMemo, useRef, useState, type MouseEvent } from "react";
 import type { Question } from "../lib/activities";
 import { algebraCheckerHref } from "../lib/algebra-practice.mjs";
 import { limitsUnitPracticeRoutes } from "../lib/calculus/limits-unit-index.mjs";
@@ -92,7 +92,9 @@ function ThemeControl() {
 function Header() {
   const path = useContext(PathContext);
   const isActive = (href: string) => href === "/" ? path === href : path.startsWith(href);
-  const navigationClick = (href: string, surface: string) => {
+  const navigationClick = (href: string, surface: string) => (event: MouseEvent<HTMLAnchorElement>) => {
+    const delaysCurrentNavigation = !event.defaultPrevented && event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey && event.currentTarget.target !== "_blank";
+    if (delaysCurrentNavigation) event.preventDefault();
     void Promise.all([findabilityIdentity(path), findabilityIdentity(href)]).then(([source, target]) => {
       trackFindabilityEvent("navigation_destination_click", {
         source_page_id: source.id,
@@ -103,52 +105,54 @@ function Header() {
         placement: surface,
         navigation_surface: surface,
       });
+    }).finally(() => {
+      if (delaysCurrentNavigation) window.location.assign(href);
     });
   };
   return (
     <header className="site-header">
       <div className="header-inner">
-        <a href="/" className="brand" aria-label="Better Grades home" onClick={() => navigationClick("/", "header-brand")}><span className="brand-mark">≥</span><span>Better Grades</span></a>
+        <a href="/" className="brand" aria-label="Better Grades home" onClick={navigationClick("/", "header-brand")}><span className="brand-mark">≥</span><span>Better Grades</span></a>
         <nav className="desktop-nav" aria-label="Primary">
           <details className="desktop-learn-menu">
             <summary>Learn <span aria-hidden="true">⌄</span></summary>
             <div className="desktop-learn-panel">
               <section>
                 <span>Courses</span>
-                <a href="/subjects/math/algebra/" onClick={() => navigationClick("/subjects/math/algebra/", "desktop-primary")}><b>Algebra</b><small>Foundations through functions</small></a>
-                <a href="/subjects/math/calculus/" onClick={() => navigationClick("/subjects/math/calculus/", "desktop-primary")}><b>Calculus</b><small>The complete course navigator</small></a>
-                <a href="/subjects/math/" onClick={() => navigationClick("/subjects/math/", "desktop-primary")}><b>All mathematics</b><small>Browse every course and resource</small></a>
+                <a href="/subjects/math/algebra/" onClick={navigationClick("/subjects/math/algebra/", "desktop-primary")}><b>Algebra</b><small>Foundations through functions</small></a>
+                <a href="/subjects/math/calculus/" onClick={navigationClick("/subjects/math/calculus/", "desktop-primary")}><b>Calculus</b><small>The complete course navigator</small></a>
+                <a href="/subjects/math/" onClick={navigationClick("/subjects/math/", "desktop-primary")}><b>All mathematics</b><small>Browse every course and resource</small></a>
               </section>
               <section className="desktop-calculus-chapters">
                 <span>Calculus chapters</span>
-                {calculusChapterLinks.map(([chapter, label, href]) => <a href={href} onClick={() => navigationClick(href, "desktop-primary")} key={href}><small>{chapter}</small><b>{label}</b></a>)}
+                {calculusChapterLinks.map(([chapter, label, href]) => <a href={href} onClick={navigationClick(href, "desktop-primary")} key={href}><small>{chapter}</small><b>{label}</b></a>)}
               </section>
               <section className="desktop-learn-shortcuts">
                 <span>Get somewhere fast</span>
-                <a href="/search/" onClick={() => navigationClick("/search/", "desktop-primary")}><b>Find an answer</b><small>Search lessons, methods, and examples</small></a>
-                <a href="/practice/math/calculus/" onClick={() => navigationClick("/practice/math/calculus/", "desktop-primary")}><b>Calculus practice</b><small>Quizzes, reviews, and exams</small></a>
-                <a href="/practice/math/calculus/exams/calculus-foundations/" onClick={() => navigationClick("/practice/math/calculus/exams/calculus-foundations/", "desktop-primary")}><b>Calculus foundations exam</b><small>Complete explained practice exam</small></a>
+                <a href="/search/" onClick={navigationClick("/search/", "desktop-primary")}><b>Find an answer</b><small>Search lessons, methods, and examples</small></a>
+                <a href="/practice/math/calculus/" onClick={navigationClick("/practice/math/calculus/", "desktop-primary")}><b>Calculus practice</b><small>Quizzes, reviews, and exams</small></a>
+                <a href="/practice/math/calculus/exams/calculus-foundations/" onClick={navigationClick("/practice/math/calculus/exams/calculus-foundations/", "desktop-primary")}><b>Calculus foundations exam</b><small>Complete explained practice exam</small></a>
               </section>
             </div>
           </details>
-          {nav.map(([label, href]) => <a key={href} href={href} onClick={() => navigationClick(href, "desktop-primary")} aria-current={isActive(href) ? "page" : undefined}>{label}</a>)}
+          {nav.map(([label, href]) => <a key={href} href={href} onClick={navigationClick(href, "desktop-primary")} aria-current={isActive(href) ? "page" : undefined}>{label}</a>)}
         </nav>
         <div className="header-actions">
-          <a href="/search/" className="header-search" aria-label="Search" onClick={() => navigationClick("/search/", "header-action")}><span>⌕</span><b>Search</b></a>
+          <a href="/search/" className="header-search" aria-label="Search" onClick={navigationClick("/search/", "header-action")}><span>⌕</span><b>Search</b></a>
           <ThemeControl />
           <details className="mobile-menu"><summary aria-label="Open menu">Menu</summary><nav aria-label="Mobile navigation">
-            <a className="mobile-navigation-link" href="/" onClick={() => navigationClick("/", "mobile-menu")}><b>Home</b><small>Return to Better Grades</small></a>
-            <a className="mobile-navigation-link" href="/search/" onClick={() => navigationClick("/search/", "mobile-menu")}><b>Search</b><small>Find a lesson or answer</small></a>
+            <a className="mobile-navigation-link" href="/" onClick={navigationClick("/", "mobile-menu")}><b>Home</b><small>Return to Better Grades</small></a>
+            <a className="mobile-navigation-link" href="/search/" onClick={navigationClick("/search/", "mobile-menu")}><b>Search</b><small>Find a lesson or answer</small></a>
             <details className="mobile-course-menu"><summary>Learn</summary><div>
-              <a className="mobile-navigation-link" href="/subjects/math/" onClick={() => navigationClick("/subjects/math/", "mobile-menu")}><b>All mathematics</b><small>Browse courses and resources</small></a>
-              <a className="mobile-navigation-link" href="/subjects/math/algebra/" onClick={() => navigationClick("/subjects/math/algebra/", "mobile-menu")}><b>Algebra</b><small>Open the course</small></a>
-              <a className="mobile-navigation-link" href="/subjects/math/calculus/" onClick={() => navigationClick("/subjects/math/calculus/", "mobile-menu")}><b>Calculus</b><small>Open the full course map</small></a>
-              {calculusChapterLinks.map(([chapter, label, href]) => <a className="mobile-navigation-link" href={href} onClick={() => navigationClick(href, "mobile-menu")} key={href}><small>{chapter}</small><b>{label}</b></a>)}
-              <a className="mobile-navigation-link" href="/practice/math/calculus/" onClick={() => navigationClick("/practice/math/calculus/", "mobile-menu")}><b>Calculus practice</b><small>Quizzes, reviews, and exams</small></a>
-              <a className="mobile-navigation-link" href="/practice/math/calculus/exams/calculus-foundations/" onClick={() => navigationClick("/practice/math/calculus/exams/calculus-foundations/", "mobile-menu")}><b>Calculus foundations exam</b><small>Complete explained practice exam</small></a>
+              <a className="mobile-navigation-link" href="/subjects/math/" onClick={navigationClick("/subjects/math/", "mobile-menu")}><b>All mathematics</b><small>Browse courses and resources</small></a>
+              <a className="mobile-navigation-link" href="/subjects/math/algebra/" onClick={navigationClick("/subjects/math/algebra/", "mobile-menu")}><b>Algebra</b><small>Open the course</small></a>
+              <a className="mobile-navigation-link" href="/subjects/math/calculus/" onClick={navigationClick("/subjects/math/calculus/", "mobile-menu")}><b>Calculus</b><small>Open the full course map</small></a>
+              {calculusChapterLinks.map(([chapter, label, href]) => <a className="mobile-navigation-link" href={href} onClick={navigationClick(href, "mobile-menu")} key={href}><small>{chapter}</small><b>{label}</b></a>)}
+              <a className="mobile-navigation-link" href="/practice/math/calculus/" onClick={navigationClick("/practice/math/calculus/", "mobile-menu")}><b>Calculus practice</b><small>Quizzes, reviews, and exams</small></a>
+              <a className="mobile-navigation-link" href="/practice/math/calculus/exams/calculus-foundations/" onClick={navigationClick("/practice/math/calculus/exams/calculus-foundations/", "mobile-menu")}><b>Calculus foundations exam</b><small>Complete explained practice exam</small></a>
             </div></details>
-            <a className="mobile-navigation-link" href="/glossary/math/" onClick={() => navigationClick("/glossary/math/", "mobile-menu")}><b>Math glossary</b><small>Definitions, symbols, and notation</small></a>
-            {nav.map(([label, href]) => <a className="mobile-navigation-link" key={href} href={href} onClick={() => navigationClick(href, "mobile-menu")} aria-current={isActive(href) ? "page" : undefined}><b>{label}</b></a>)}
+            <a className="mobile-navigation-link" href="/glossary/math/" onClick={navigationClick("/glossary/math/", "mobile-menu")}><b>Math glossary</b><small>Definitions, symbols, and notation</small></a>
+            {nav.map(([label, href]) => <a className="mobile-navigation-link" key={href} href={href} onClick={navigationClick(href, "mobile-menu")} aria-current={isActive(href) ? "page" : undefined}><b>{label}</b></a>)}
           </nav></details>
         </div>
       </div>
@@ -256,9 +260,13 @@ function AnswersPage() {
 const searchKindMarks: Record<SearchKind, string> = { guide: "§", topic: "01", tool: "x²", practice: "✓", answer: "=", glossary: "Aa" };
 
 function SiteSearchResult({ record, query, rank }: { record: SiteSearchRecord; query: string; rank: number }) {
-  function trackClick() {
+  function trackClick(event: MouseEvent<HTMLAnchorElement>) {
+    const delaysCurrentNavigation = !event.defaultPrevented && event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey && event.currentTarget.target !== "_blank";
+    if (delaysCurrentNavigation) event.preventDefault();
     void Promise.all([findabilityIdentity("/search/"), findabilityIdentity(record.path)]).then(([source, target]) => {
       trackFindabilityEvent("site_search_result_click", { source_page_id: source.id, source_page_role: source.pageRole, target_page_id: target.id, target_page_role: target.pageRole, relationship_type: "search_result", query, result_rank: rank, placement: "search-results" });
+    }).finally(() => {
+      if (delaysCurrentNavigation) window.location.assign(record.path);
     });
   }
   return <a href={record.path} onClick={trackClick} className={`site-search-result kind-${record.kind}`}><span className="site-search-mark">{searchKindMarks[record.kind]}</span><div><small>{record.label || searchKindLabels[record.kind]} · {record.domainName}{record.topicName ? ` · ${record.topicName}` : ""}</small><h3>{record.title}</h3><p>{record.description}</p></div><b>Open →</b></a>;

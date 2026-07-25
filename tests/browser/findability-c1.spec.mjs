@@ -78,3 +78,53 @@ test("desktop navigation and learning-path clicks emit complete analytics dimens
   }
   await context.close();
 });
+
+test("real navigation waits for delayed analytics identities", async ({ browser }) => {
+  const events = [];
+  const context = await browser.newContext({ viewport: { width: 1440, height: 900 } });
+  await context.exposeFunction("captureFindabilityEvent", (sink, args) => events.push({ sink, args }));
+  await context.addInitScript(() => {
+    window.gtag = (...args) => window.captureFindabilityEvent("ga4", args);
+    window.umami = { track: (event, data) => window.captureFindabilityEvent("umami", ["event", event, data]) };
+  });
+  const page = await context.newPage();
+  await page.route("**/assets/route-identities-*.js", async (route) => {
+    await new Promise((resolve) => setTimeout(resolve, 2_500));
+    await route.continue();
+  });
+
+  await page.goto("/");
+  await Promise.all([
+    page.waitForURL("**/resources/"),
+    page.locator('.desktop-nav > a[href="/resources/"]').click(),
+  ]);
+  expect(events.find((item) => item.sink === "ga4" && item.args[1] === "navigation_destination_click")?.args[2]).toMatchObject({
+    source_page_role: "home",
+    target_page_role: "resource-library",
+  });
+  await context.close();
+
+  const searchEvents = [];
+  const searchContext = await browser.newContext({ viewport: { width: 1440, height: 900 } });
+  await searchContext.exposeFunction("captureFindabilityEvent", (sink, args) => searchEvents.push({ sink, args }));
+  await searchContext.addInitScript(() => {
+    window.gtag = (...args) => window.captureFindabilityEvent("ga4", args);
+    window.umami = { track: (event, data) => window.captureFindabilityEvent("umami", ["event", event, data]) };
+  });
+  const searchPage = await searchContext.newPage();
+  await searchPage.route("**/assets/route-identities-*.js", async (route) => {
+    await new Promise((resolve) => setTimeout(resolve, 2_500));
+    await route.continue();
+  });
+  await searchPage.goto("/search/?q=Calculus%20practice");
+  await Promise.all([
+    searchPage.waitForURL("**/practice/math/calculus/"),
+    searchPage.locator(".site-search-result").first().click(),
+  ]);
+  expect(searchEvents.find((item) => item.sink === "ga4" && item.args[1] === "site_search_result_click")?.args[2]).toMatchObject({
+    source_page_role: "search",
+    target_page_role: "assessment",
+    result_rank: 1,
+  });
+  await searchContext.close();
+});
