@@ -1,19 +1,19 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-25T19:17:25.142Z",
-  "sourceCommit": "f19724c84b8fce5af7e899def22160ffe313b8f0",
-  "sourceTree": "1438de299e0e2eb0bb5c311fa4b3aeec25fe4d49",
-  "buildHash": "2471c4e87be75477f356472e4773b978a12bee5d75b211e72b9d9ab396b6a5d9",
+  "generatedAt": "2026-07-25T19:38:17.540Z",
+  "sourceCommit": "025138e42860a8abbfa25c6717e7b19e76e669e1",
+  "sourceTree": "4a9b3028a695c780457c63de3a61e9c26eb91214",
+  "buildHash": "fce468f50f8d584205d883427667964610dd5e4a2bc9ecb967dd27d5775a5875",
   "toolVersion": "1.0.0",
   "routeCount": 509,
   "failureCount": 0,
   "definitions": {
     "all": "all unique crawlable internal anchors",
-    "navigation": "global, mobile, footer, hub, course-map, and unit-map edges",
+    "navigation": "global, mobile, hub, course-map, unit-map, and sequential edges; footer-only paths excluded",
     "contextual": "editorial and companion edges"
   },
   "unreachableAll": 0,
-  "deepNavigation": 44,
+  "deepNavigation": 46,
   "hiddenImportant": 0,
   "zeroContextualIncoming": 254,
   "depths": [
@@ -30,7 +30,7 @@
       "route": "/about/",
       "role": "policy",
       "all": 1,
-      "navigation": 1,
+      "navigation": 2,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -39,7 +39,7 @@
       "route": "/accessibility/",
       "role": "policy",
       "all": 1,
-      "navigation": 1,
+      "navigation": 2,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -48,7 +48,7 @@
       "route": "/answers/",
       "role": "directory",
       "all": 1,
-      "navigation": 1,
+      "navigation": 2,
       "contextual": 1,
       "breadcrumb": null,
       "sequential": null
@@ -57,7 +57,7 @@
       "route": "/answers/calculus/integral-of-sec-cubed/",
       "role": "answer",
       "all": 1,
-      "navigation": 2,
+      "navigation": 3,
       "contextual": 1,
       "breadcrumb": null,
       "sequential": null
@@ -75,7 +75,7 @@
       "route": "/editorial-policy/",
       "role": "policy",
       "all": 1,
-      "navigation": 1,
+      "navigation": 2,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -138,7 +138,7 @@
       "route": "/glossary/math/conventions/",
       "role": "glossary-term",
       "all": 1,
-      "navigation": 1,
+      "navigation": 2,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -327,7 +327,7 @@
       "route": "/how-we-verify/",
       "role": "policy",
       "all": 1,
-      "navigation": 1,
+      "navigation": 2,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -408,7 +408,7 @@
       "route": "/privacy/",
       "role": "policy",
       "all": 1,
-      "navigation": 1,
+      "navigation": 2,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -444,7 +444,7 @@
       "route": "/subjects/",
       "role": "subject-hub",
       "all": 1,
-      "navigation": 1,
+      "navigation": 2,
       "contextual": 1,
       "breadcrumb": null,
       "sequential": null
@@ -471,7 +471,7 @@
       "route": "/subjects/math/algebra/expressions-equations/",
       "role": "quick-answer",
       "all": 2,
-      "navigation": null,
+      "navigation": 4,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -498,7 +498,7 @@
       "route": "/subjects/math/algebra/expressions-equations/evaluating-expressions-by-substitution/",
       "role": "method-guide",
       "all": 2,
-      "navigation": null,
+      "navigation": 2,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -534,7 +534,7 @@
       "route": "/subjects/math/algebra/linear-relationships/",
       "role": "quick-answer",
       "all": 2,
-      "navigation": null,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -552,7 +552,7 @@
       "route": "/subjects/math/algebra/linear-relationships/graphing-linear-equations-from-standard-form/",
       "role": "method-guide",
       "all": 3,
-      "navigation": null,
+      "navigation": 4,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -561,7 +561,7 @@
       "route": "/subjects/math/algebra/linear-relationships/interpreting-linear-models/",
       "role": "quick-answer",
       "all": 2,
-      "navigation": 2,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -570,7 +570,7 @@
       "route": "/subjects/math/algebra/linear-relationships/parallel-perpendicular-lines/",
       "role": "concept-explainer",
       "all": 2,
-      "navigation": 2,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -579,7 +579,7 @@
       "route": "/subjects/math/algebra/linear-relationships/point-slope-vs-slope-intercept/",
       "role": "decision-guide",
       "all": 2,
-      "navigation": 2,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -597,7 +597,7 @@
       "route": "/subjects/math/algebra/polynomials-factoring/",
       "role": "quick-answer",
       "all": 2,
-      "navigation": null,
+      "navigation": 5,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -606,7 +606,7 @@
       "route": "/subjects/math/algebra/polynomials-factoring/completing-the-square/",
       "role": "method-guide",
       "all": 3,
-      "navigation": null,
+      "navigation": 6,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -615,7 +615,7 @@
       "route": "/subjects/math/algebra/polynomials-factoring/exponent-rules/",
       "role": "concept-explainer",
       "all": 3,
-      "navigation": null,
+      "navigation": 6,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -624,7 +624,7 @@
       "route": "/subjects/math/algebra/polynomials-factoring/factoring-trinomials/",
       "role": "method-guide",
       "all": 3,
-      "navigation": null,
+      "navigation": 6,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -633,7 +633,7 @@
       "route": "/subjects/math/algebra/polynomials-factoring/greatest-common-factor/",
       "role": "method-guide",
       "all": 3,
-      "navigation": null,
+      "navigation": 6,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -642,7 +642,7 @@
       "route": "/subjects/math/algebra/polynomials-factoring/multiply-polynomials/",
       "role": "method-guide",
       "all": 3,
-      "navigation": null,
+      "navigation": 6,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -651,7 +651,7 @@
       "route": "/subjects/math/algebra/polynomials-factoring/special-factor-patterns/",
       "role": "decision-guide",
       "all": 3,
-      "navigation": null,
+      "navigation": 6,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -660,7 +660,7 @@
       "route": "/subjects/math/algebra/radicals-exponents-functions/",
       "role": "quick-answer",
       "all": 2,
-      "navigation": null,
+      "navigation": 7,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -669,7 +669,7 @@
       "route": "/subjects/math/algebra/radicals-exponents-functions/exponential-growth-and-decay/",
       "role": "concept-explainer",
       "all": 3,
-      "navigation": null,
+      "navigation": 8,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -678,7 +678,7 @@
       "route": "/subjects/math/algebra/radicals-exponents-functions/function-notation/",
       "role": "concept-explainer",
       "all": 3,
-      "navigation": null,
+      "navigation": 8,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -687,7 +687,7 @@
       "route": "/subjects/math/algebra/radicals-exponents-functions/inverse-functions-vs-reciprocals/",
       "role": "decision-guide",
       "all": 3,
-      "navigation": null,
+      "navigation": 8,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -696,7 +696,7 @@
       "route": "/subjects/math/algebra/radicals-exponents-functions/rational-exponents/",
       "role": "concept-explainer",
       "all": 3,
-      "navigation": null,
+      "navigation": 8,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -705,7 +705,7 @@
       "route": "/subjects/math/algebra/radicals-exponents-functions/simplifying-radicals/",
       "role": "method-guide",
       "all": 3,
-      "navigation": null,
+      "navigation": 8,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -714,7 +714,7 @@
       "route": "/subjects/math/algebra/radicals-exponents-functions/solving-radical-equations/",
       "role": "method-guide",
       "all": 3,
-      "navigation": null,
+      "navigation": 8,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -723,7 +723,7 @@
       "route": "/subjects/math/algebra/rational-expressions/",
       "role": "quick-answer",
       "all": 2,
-      "navigation": null,
+      "navigation": 6,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -732,7 +732,7 @@
       "route": "/subjects/math/algebra/rational-expressions/add-subtract-rational-expressions/",
       "role": "method-guide",
       "all": 3,
-      "navigation": null,
+      "navigation": 7,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -741,7 +741,7 @@
       "route": "/subjects/math/algebra/rational-expressions/direct-inverse-variation/",
       "role": "decision-guide",
       "all": 3,
-      "navigation": null,
+      "navigation": 7,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -750,7 +750,7 @@
       "route": "/subjects/math/algebra/rational-expressions/rational-domain-restrictions/",
       "role": "concept-explainer",
       "all": 3,
-      "navigation": null,
+      "navigation": 7,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -759,7 +759,7 @@
       "route": "/subjects/math/algebra/rational-expressions/simplifying-complex-rational-expressions/",
       "role": "method-guide",
       "all": 3,
-      "navigation": null,
+      "navigation": 7,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -768,7 +768,7 @@
       "route": "/subjects/math/algebra/rational-expressions/simplifying-rational-expressions/",
       "role": "method-guide",
       "all": 3,
-      "navigation": null,
+      "navigation": 7,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -777,7 +777,7 @@
       "route": "/subjects/math/algebra/rational-expressions/solving-rational-equations/",
       "role": "method-guide",
       "all": 3,
-      "navigation": null,
+      "navigation": 7,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -786,7 +786,7 @@
       "route": "/subjects/math/algebra/systems-inequalities/",
       "role": "quick-answer",
       "all": 2,
-      "navigation": null,
+      "navigation": 4,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -795,7 +795,7 @@
       "route": "/subjects/math/algebra/systems-inequalities/choosing-system-method/",
       "role": "decision-guide",
       "all": 3,
-      "navigation": null,
+      "navigation": 5,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -804,7 +804,7 @@
       "route": "/subjects/math/algebra/systems-inequalities/compound-inequalities/",
       "role": "method-guide",
       "all": 3,
-      "navigation": null,
+      "navigation": 5,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -813,7 +813,7 @@
       "route": "/subjects/math/algebra/systems-inequalities/elimination-systems/",
       "role": "method-guide",
       "all": 3,
-      "navigation": null,
+      "navigation": 5,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -822,7 +822,7 @@
       "route": "/subjects/math/algebra/systems-inequalities/graphing-linear-inequalities/",
       "role": "method-guide",
       "all": 3,
-      "navigation": null,
+      "navigation": 5,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -831,7 +831,7 @@
       "route": "/subjects/math/algebra/systems-inequalities/no-one-infinite-solutions/",
       "role": "concept-explainer",
       "all": 3,
-      "navigation": null,
+      "navigation": 5,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -840,7 +840,7 @@
       "route": "/subjects/math/algebra/systems-inequalities/substitution-systems/",
       "role": "method-guide",
       "all": 3,
-      "navigation": null,
+      "navigation": 5,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -1542,7 +1542,7 @@
       "route": "/subjects/math/calculus/derivative-applications/unit-2b-review/",
       "role": "decision-guide",
       "all": 2,
-      "navigation": 4,
+      "navigation": null,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2937,7 +2937,7 @@
       "route": "/subjects/math/calculus/limits-continuity/unit/",
       "role": "decision-guide",
       "all": 2,
-      "navigation": 3,
+      "navigation": null,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -3090,7 +3090,7 @@
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/cosine-limits/",
       "role": "decision-guide",
       "all": 2,
-      "navigation": 3,
+      "navigation": null,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -3279,7 +3279,7 @@
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/infinite-limits/",
       "role": "decision-guide",
       "all": 2,
-      "navigation": 3,
+      "navigation": null,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -3495,7 +3495,7 @@
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/trig-limit-decision-guide/",
       "role": "decision-guide",
       "all": 2,
-      "navigation": 4,
+      "navigation": null,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -3504,7 +3504,7 @@
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/trig-limits-concept-quiz/",
       "role": "decision-guide",
       "all": 2,
-      "navigation": 3,
+      "navigation": null,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -3513,7 +3513,7 @@
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/trig-limits-practice/",
       "role": "decision-guide",
       "all": 2,
-      "navigation": 3,
+      "navigation": null,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
