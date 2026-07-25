@@ -1,13 +1,13 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-25T03:49:28.422Z",
+  "generatedAt": "2026-07-25T19:16:10.857Z",
   "environment": "local-candidate",
   "browser": "Playwright Chromium",
-  "sourceCommit": "bd8c106e74f203f68e2f27595523610c4a911c39",
-  "sourceTree": "badf00de3bad5d9c348275d8d09b8fdb24a82c92",
-  "buildHash": "c39a9bdfe4dfb1a9d4d68fb080f3a5419954c579d2b8e94585be40bc8e891d42",
-  "testCount": 10,
-  "passedCount": 10,
+  "sourceCommit": "f19724c84b8fce5af7e899def22160ffe313b8f0",
+  "sourceTree": "1438de299e0e2eb0bb5c311fa4b3aeec25fe4d49",
+  "buildHash": "2471c4e87be75477f356472e4773b978a12bee5d75b211e72b9d9ab396b6a5d9",
+  "testCount": 12,
+  "passedCount": 12,
   "failedCount": 0,
   "viewportMatrix": [
     {
@@ -50,7 +50,10 @@
     "worked_solution_open",
     "lesson_to_resource_click",
     "resource_to_lesson_click",
-    "glossary_to_lesson_click"
+    "glossary_to_lesson_click",
+    "navigation_destination_click",
+    "learning_relationship_click",
+    "article_to_lesson_click"
   ],
   "assertions": {
     "noConsoleErrors": true,
@@ -64,73 +67,87 @@
   },
   "tests": [
     {
+      "title": "visible search results preserve exact-match rank one",
+      "expectedStatus": "passed",
+      "status": "passed",
+      "durationMs": 1178,
+      "errors": []
+    },
+    {
+      "title": "desktop navigation and learning-path clicks emit complete analytics dimensions",
+      "expectedStatus": "passed",
+      "status": "passed",
+      "durationMs": 618,
+      "errors": []
+    },
+    {
       "title": "calculus starts collapsed and the top-level Resources tab exposes the complete library",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 444,
+      "durationMs": 506,
       "errors": []
     },
     {
       "title": "desktop route matrix renders one complete document without overflow",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 9520,
+      "durationMs": 10127,
       "errors": []
     },
     {
       "title": "tablet route matrix renders one complete document without overflow",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 9697,
+      "durationMs": 10017,
       "errors": []
     },
     {
       "title": "mobile route matrix renders one complete document without overflow",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 9929,
+      "durationMs": 10314,
       "errors": []
     },
     {
       "title": "JavaScript-disabled educational pages preserve static content and suppress controls",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 331,
+      "durationMs": 576,
       "errors": []
     },
     {
       "title": "keyboard focus, dark mode, and print CSS remain usable",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 806,
+      "durationMs": 1353,
       "errors": []
     },
     {
       "title": "downloads, redirect, answer reveal, and practice controls work",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 787,
+      "durationMs": 1036,
       "errors": []
     },
     {
       "title": "PDF links use native accessible new tabs and preserve one analytics event pair",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 1284,
+      "durationMs": 1788,
       "errors": []
     },
     {
       "title": "PDF links remain native new-tab anchors when JavaScript is disabled",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 5268,
+      "durationMs": 5459,
       "errors": []
     },
     {
       "title": "every resource analytics event fires through both sinks with safe dimensions and respects Do Not Track",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 2832,
+      "durationMs": 3343,
       "errors": []
     }
   ],

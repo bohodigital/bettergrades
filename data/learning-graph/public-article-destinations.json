@@ -3,19 +3,7 @@
     {
       "relationship": {
         "sourceId": "article.answer-cal-int-sec3",
-        "targetId": "article.answer-cal-parts-when",
-        "type": "explains"
-      },
-      "target": {
-        "id": "article.answer-cal-parts-when",
-        "canonicalPath": "/learn/calculus/integration-by-parts/",
-        "pageRole": "method-guide",
-        "shortTitle": "Integration by parts, without the guessing game."
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "article.answer-cal-int-sec3",
+        "sourceRole": "answer",
         "targetId": "assessment.assessment-math-calculus-integration-bee",
         "type": "assesses"
       },
@@ -25,25 +13,27 @@
         "pageRole": "assessment",
         "shortTitle": "Twenty integrals. One very honest clock."
       }
+    },
+    {
+      "relationship": {
+        "sourceId": "article.answer-cal-int-sec3",
+        "sourceRole": "answer",
+        "targetId": "assessment.assessment-math-calculus-method-selection",
+        "type": "assesses"
+      },
+      "target": {
+        "id": "assessment.assessment-math-calculus-method-selection",
+        "canonicalPath": "/practice/math/calculus/quizzes/integration-method-selection/",
+        "pageRole": "assessment",
+        "shortTitle": "Integration method selection"
+      }
     }
   ],
   "/learn/calculus/integration-by-parts/": [
     {
       "relationship": {
         "sourceId": "article.answer-cal-parts-when",
-        "targetId": "article.answer-cal-int-sec3",
-        "type": "explains"
-      },
-      "target": {
-        "id": "article.answer-cal-int-sec3",
-        "canonicalPath": "/answers/calculus/integral-of-sec-cubed/",
-        "pageRole": "answer",
-        "shortTitle": "What is the integral of sec³x?"
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "article.answer-cal-parts-when",
+        "sourceRole": "method-guide",
         "targetId": "assessment.assessment-math-calculus-method-selection",
         "type": "assesses"
       },
@@ -59,27 +49,15 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-algebra-expressions-equations-combining-like-terms",
-        "targetId": "article.resource-math-algebra-expressions-equations-distributive-property",
-        "type": "explains"
+        "sourceRole": "method-guide",
+        "targetId": "tool.tool-math-algebra-expression-checker",
+        "type": "uses_tool"
       },
       "target": {
-        "id": "article.resource-math-algebra-expressions-equations-distributive-property",
-        "canonicalPath": "/subjects/math/algebra/expressions-equations/distributive-property/",
-        "pageRole": "method-guide",
-        "shortTitle": "The distributive property: why the outside factor reaches every term"
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "article.resource-math-algebra-expressions-equations-combining-like-terms",
-        "targetId": "article.resource-math-algebra-expressions-equations-order-of-operations-with-variables",
-        "type": "explains"
-      },
-      "target": {
-        "id": "article.resource-math-algebra-expressions-equations-order-of-operations-with-variables",
-        "canonicalPath": "/subjects/math/algebra/expressions-equations/order-of-operations-with-variables/",
-        "pageRole": "method-guide",
-        "shortTitle": "Order of operations with variables: what actually comes first?"
+        "id": "tool.tool-math-algebra-expression-checker",
+        "canonicalPath": "/tools/math/algebra/expression-checker/",
+        "pageRole": "tool",
+        "shortTitle": "Type it messy. See it clearly."
       }
     }
   ],
@@ -87,27 +65,15 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-algebra-expressions-equations-distributive-property",
-        "targetId": "article.resource-math-algebra-expressions-equations-combining-like-terms",
-        "type": "explains"
+        "sourceRole": "method-guide",
+        "targetId": "tool.tool-math-algebra-expression-checker",
+        "type": "uses_tool"
       },
       "target": {
-        "id": "article.resource-math-algebra-expressions-equations-combining-like-terms",
-        "canonicalPath": "/subjects/math/algebra/expressions-equations/combining-like-terms/",
-        "pageRole": "method-guide",
-        "shortTitle": "Combining like terms without combining things that only look alike"
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "article.resource-math-algebra-expressions-equations-distributive-property",
-        "targetId": "article.resource-math-algebra-expressions-equations-solving-linear-equations",
-        "type": "explains"
-      },
-      "target": {
-        "id": "article.resource-math-algebra-expressions-equations-solving-linear-equations",
-        "canonicalPath": "/subjects/math/algebra/expressions-equations/solving-linear-equations/",
-        "pageRole": "decision-guide",
-        "shortTitle": "Solving linear equations: keep the balance, not a bag of tricks"
+        "id": "tool.tool-math-algebra-expression-checker",
+        "canonicalPath": "/tools/math/algebra/expression-checker/",
+        "pageRole": "tool",
+        "shortTitle": "Type it messy. See it clearly."
       }
     }
   ],
@@ -115,27 +81,15 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-algebra-expressions-equations-evaluating-expressions-by-substitution",
-        "targetId": "article.resource-math-algebra-expressions-equations-combining-like-terms",
-        "type": "explains"
+        "sourceRole": "method-guide",
+        "targetId": "tool.tool-math-algebra-expression-checker",
+        "type": "uses_tool"
       },
       "target": {
-        "id": "article.resource-math-algebra-expressions-equations-combining-like-terms",
-        "canonicalPath": "/subjects/math/algebra/expressions-equations/combining-like-terms/",
-        "pageRole": "method-guide",
-        "shortTitle": "Combining like terms without combining things that only look alike"
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "article.resource-math-algebra-expressions-equations-evaluating-expressions-by-substitution",
-        "targetId": "article.resource-math-algebra-expressions-equations-order-of-operations-with-variables",
-        "type": "explains"
-      },
-      "target": {
-        "id": "article.resource-math-algebra-expressions-equations-order-of-operations-with-variables",
-        "canonicalPath": "/subjects/math/algebra/expressions-equations/order-of-operations-with-variables/",
-        "pageRole": "method-guide",
-        "shortTitle": "Order of operations with variables: what actually comes first?"
+        "id": "tool.tool-math-algebra-expression-checker",
+        "canonicalPath": "/tools/math/algebra/expression-checker/",
+        "pageRole": "tool",
+        "shortTitle": "Type it messy. See it clearly."
       }
     }
   ],
@@ -143,27 +97,15 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-algebra-expressions-equations-order-of-operations-with-variables",
-        "targetId": "article.resource-math-algebra-expressions-equations-combining-like-terms",
-        "type": "explains"
+        "sourceRole": "method-guide",
+        "targetId": "tool.tool-math-algebra-expression-checker",
+        "type": "uses_tool"
       },
       "target": {
-        "id": "article.resource-math-algebra-expressions-equations-combining-like-terms",
-        "canonicalPath": "/subjects/math/algebra/expressions-equations/combining-like-terms/",
-        "pageRole": "method-guide",
-        "shortTitle": "Combining like terms without combining things that only look alike"
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "article.resource-math-algebra-expressions-equations-order-of-operations-with-variables",
-        "targetId": "article.resource-math-algebra-polynomials-factoring-exponent-rules",
-        "type": "explains"
-      },
-      "target": {
-        "id": "article.resource-math-algebra-polynomials-factoring-exponent-rules",
-        "canonicalPath": "/subjects/math/algebra/polynomials-factoring/exponent-rules/",
-        "pageRole": "method-guide",
-        "shortTitle": "Exponent rules that come from counting factors"
+        "id": "tool.tool-math-algebra-expression-checker",
+        "canonicalPath": "/tools/math/algebra/expression-checker/",
+        "pageRole": "tool",
+        "shortTitle": "Type it messy. See it clearly."
       }
     }
   ],
@@ -171,27 +113,15 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-algebra-expressions-equations-solving-linear-equations",
-        "targetId": "article.resource-math-algebra-expressions-equations-distributive-property",
-        "type": "explains"
+        "sourceRole": "decision-guide",
+        "targetId": "tool.tool-math-algebra-expression-checker",
+        "type": "uses_tool"
       },
       "target": {
-        "id": "article.resource-math-algebra-expressions-equations-distributive-property",
-        "canonicalPath": "/subjects/math/algebra/expressions-equations/distributive-property/",
-        "pageRole": "method-guide",
-        "shortTitle": "The distributive property: why the outside factor reaches every term"
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "article.resource-math-algebra-expressions-equations-solving-linear-equations",
-        "targetId": "article.resource-math-algebra-expressions-equations-variables-on-both-sides",
-        "type": "explains"
-      },
-      "target": {
-        "id": "article.resource-math-algebra-expressions-equations-variables-on-both-sides",
-        "canonicalPath": "/subjects/math/algebra/expressions-equations/variables-on-both-sides/",
-        "pageRole": "decision-guide",
-        "shortTitle": "Variables on both sides: which side should you move them to?"
+        "id": "tool.tool-math-algebra-expression-checker",
+        "canonicalPath": "/tools/math/algebra/expression-checker/",
+        "pageRole": "tool",
+        "shortTitle": "Type it messy. See it clearly."
       }
     }
   ],
@@ -199,27 +129,15 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-algebra-expressions-equations-variables-on-both-sides",
-        "targetId": "article.resource-math-algebra-expressions-equations-distributive-property",
-        "type": "explains"
+        "sourceRole": "decision-guide",
+        "targetId": "tool.tool-math-algebra-expression-checker",
+        "type": "uses_tool"
       },
       "target": {
-        "id": "article.resource-math-algebra-expressions-equations-distributive-property",
-        "canonicalPath": "/subjects/math/algebra/expressions-equations/distributive-property/",
-        "pageRole": "method-guide",
-        "shortTitle": "The distributive property: why the outside factor reaches every term"
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "article.resource-math-algebra-expressions-equations-variables-on-both-sides",
-        "targetId": "article.resource-math-algebra-expressions-equations-solving-linear-equations",
-        "type": "explains"
-      },
-      "target": {
-        "id": "article.resource-math-algebra-expressions-equations-solving-linear-equations",
-        "canonicalPath": "/subjects/math/algebra/expressions-equations/solving-linear-equations/",
-        "pageRole": "decision-guide",
-        "shortTitle": "Solving linear equations: keep the balance, not a bag of tricks"
+        "id": "tool.tool-math-algebra-expression-checker",
+        "canonicalPath": "/tools/math/algebra/expression-checker/",
+        "pageRole": "tool",
+        "shortTitle": "Type it messy. See it clearly."
       }
     }
   ],
@@ -227,27 +145,15 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-algebra-linear-relationships-equation-from-two-points",
-        "targetId": "article.resource-math-algebra-linear-relationships-parallel-perpendicular-lines",
-        "type": "explains"
+        "sourceRole": "decision-guide",
+        "targetId": "tool.tool-math-algebra-expression-checker",
+        "type": "uses_tool"
       },
       "target": {
-        "id": "article.resource-math-algebra-linear-relationships-parallel-perpendicular-lines",
-        "canonicalPath": "/subjects/math/algebra/linear-relationships/parallel-perpendicular-lines/",
-        "pageRole": "decision-guide",
-        "shortTitle": "Parallel and perpendicular slopes, with the vertical-line exception"
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "article.resource-math-algebra-linear-relationships-equation-from-two-points",
-        "targetId": "article.resource-math-algebra-linear-relationships-point-slope-vs-slope-intercept",
-        "type": "explains"
-      },
-      "target": {
-        "id": "article.resource-math-algebra-linear-relationships-point-slope-vs-slope-intercept",
-        "canonicalPath": "/subjects/math/algebra/linear-relationships/point-slope-vs-slope-intercept/",
-        "pageRole": "quick-answer",
-        "shortTitle": "Point-slope or slope-intercept form: which should you use?"
+        "id": "tool.tool-math-algebra-expression-checker",
+        "canonicalPath": "/tools/math/algebra/expression-checker/",
+        "pageRole": "tool",
+        "shortTitle": "Type it messy. See it clearly."
       }
     }
   ],
@@ -255,27 +161,15 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-algebra-linear-relationships-graphing-linear-equations-from-standard-form",
-        "targetId": "article.resource-math-algebra-linear-relationships-equation-from-two-points",
-        "type": "explains"
+        "sourceRole": "decision-guide",
+        "targetId": "tool.tool-math-algebra-expression-checker",
+        "type": "uses_tool"
       },
       "target": {
-        "id": "article.resource-math-algebra-linear-relationships-equation-from-two-points",
-        "canonicalPath": "/subjects/math/algebra/linear-relationships/equation-from-two-points/",
-        "pageRole": "decision-guide",
-        "shortTitle": "How to write a line equation from two points"
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "article.resource-math-algebra-linear-relationships-graphing-linear-equations-from-standard-form",
-        "targetId": "article.resource-math-algebra-linear-relationships-point-slope-vs-slope-intercept",
-        "type": "explains"
-      },
-      "target": {
-        "id": "article.resource-math-algebra-linear-relationships-point-slope-vs-slope-intercept",
-        "canonicalPath": "/subjects/math/algebra/linear-relationships/point-slope-vs-slope-intercept/",
-        "pageRole": "quick-answer",
-        "shortTitle": "Point-slope or slope-intercept form: which should you use?"
+        "id": "tool.tool-math-algebra-expression-checker",
+        "canonicalPath": "/tools/math/algebra/expression-checker/",
+        "pageRole": "tool",
+        "shortTitle": "Type it messy. See it clearly."
       }
     }
   ],
@@ -283,27 +177,15 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-algebra-linear-relationships-interpreting-linear-models",
-        "targetId": "article.resource-math-algebra-linear-relationships-slope-as-rate-of-change",
-        "type": "explains"
+        "sourceRole": "quick-answer",
+        "targetId": "tool.tool-math-algebra-expression-checker",
+        "type": "uses_tool"
       },
       "target": {
-        "id": "article.resource-math-algebra-linear-relationships-slope-as-rate-of-change",
-        "canonicalPath": "/subjects/math/algebra/linear-relationships/slope-as-rate-of-change/",
-        "pageRole": "quick-answer",
-        "shortTitle": "Slope is a rate of change, not just rise over run"
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "article.resource-math-algebra-linear-relationships-interpreting-linear-models",
-        "targetId": "article.resource-math-algebra-radicals-exponents-functions-function-notation",
-        "type": "explains"
-      },
-      "target": {
-        "id": "article.resource-math-algebra-radicals-exponents-functions-function-notation",
-        "canonicalPath": "/subjects/math/algebra/radicals-exponents-functions/function-notation/",
-        "pageRole": "quick-answer",
-        "shortTitle": "Function notation: inputs, outputs, and what f(x) does not mean"
+        "id": "tool.tool-math-algebra-expression-checker",
+        "canonicalPath": "/tools/math/algebra/expression-checker/",
+        "pageRole": "tool",
+        "shortTitle": "Type it messy. See it clearly."
       }
     }
   ],
@@ -311,27 +193,15 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-algebra-linear-relationships-parallel-perpendicular-lines",
-        "targetId": "article.resource-math-algebra-linear-relationships-equation-from-two-points",
-        "type": "explains"
+        "sourceRole": "decision-guide",
+        "targetId": "tool.tool-math-algebra-expression-checker",
+        "type": "uses_tool"
       },
       "target": {
-        "id": "article.resource-math-algebra-linear-relationships-equation-from-two-points",
-        "canonicalPath": "/subjects/math/algebra/linear-relationships/equation-from-two-points/",
-        "pageRole": "decision-guide",
-        "shortTitle": "How to write a line equation from two points"
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "article.resource-math-algebra-linear-relationships-parallel-perpendicular-lines",
-        "targetId": "article.resource-math-algebra-linear-relationships-point-slope-vs-slope-intercept",
-        "type": "explains"
-      },
-      "target": {
-        "id": "article.resource-math-algebra-linear-relationships-point-slope-vs-slope-intercept",
-        "canonicalPath": "/subjects/math/algebra/linear-relationships/point-slope-vs-slope-intercept/",
-        "pageRole": "quick-answer",
-        "shortTitle": "Point-slope or slope-intercept form: which should you use?"
+        "id": "tool.tool-math-algebra-expression-checker",
+        "canonicalPath": "/tools/math/algebra/expression-checker/",
+        "pageRole": "tool",
+        "shortTitle": "Type it messy. See it clearly."
       }
     }
   ],
@@ -339,27 +209,15 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-algebra-linear-relationships-point-slope-vs-slope-intercept",
-        "targetId": "article.resource-math-algebra-linear-relationships-equation-from-two-points",
-        "type": "explains"
+        "sourceRole": "quick-answer",
+        "targetId": "tool.tool-math-algebra-expression-checker",
+        "type": "uses_tool"
       },
       "target": {
-        "id": "article.resource-math-algebra-linear-relationships-equation-from-two-points",
-        "canonicalPath": "/subjects/math/algebra/linear-relationships/equation-from-two-points/",
-        "pageRole": "decision-guide",
-        "shortTitle": "How to write a line equation from two points"
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "article.resource-math-algebra-linear-relationships-point-slope-vs-slope-intercept",
-        "targetId": "article.resource-math-algebra-linear-relationships-interpreting-linear-models",
-        "type": "explains"
-      },
-      "target": {
-        "id": "article.resource-math-algebra-linear-relationships-interpreting-linear-models",
-        "canonicalPath": "/subjects/math/algebra/linear-relationships/interpreting-linear-models/",
-        "pageRole": "quick-answer",
-        "shortTitle": "What do slope and intercept mean in a linear model?"
+        "id": "tool.tool-math-algebra-expression-checker",
+        "canonicalPath": "/tools/math/algebra/expression-checker/",
+        "pageRole": "tool",
+        "shortTitle": "Type it messy. See it clearly."
       }
     }
   ],
@@ -367,27 +225,15 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-algebra-linear-relationships-slope-as-rate-of-change",
-        "targetId": "article.resource-math-algebra-linear-relationships-equation-from-two-points",
-        "type": "explains"
+        "sourceRole": "quick-answer",
+        "targetId": "tool.tool-math-algebra-expression-checker",
+        "type": "uses_tool"
       },
       "target": {
-        "id": "article.resource-math-algebra-linear-relationships-equation-from-two-points",
-        "canonicalPath": "/subjects/math/algebra/linear-relationships/equation-from-two-points/",
-        "pageRole": "decision-guide",
-        "shortTitle": "How to write a line equation from two points"
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "article.resource-math-algebra-linear-relationships-slope-as-rate-of-change",
-        "targetId": "article.resource-math-algebra-linear-relationships-interpreting-linear-models",
-        "type": "explains"
-      },
-      "target": {
-        "id": "article.resource-math-algebra-linear-relationships-interpreting-linear-models",
-        "canonicalPath": "/subjects/math/algebra/linear-relationships/interpreting-linear-models/",
-        "pageRole": "quick-answer",
-        "shortTitle": "What do slope and intercept mean in a linear model?"
+        "id": "tool.tool-math-algebra-expression-checker",
+        "canonicalPath": "/tools/math/algebra/expression-checker/",
+        "pageRole": "tool",
+        "shortTitle": "Type it messy. See it clearly."
       }
     }
   ],
@@ -395,27 +241,15 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-algebra-polynomials-factoring-completing-the-square",
-        "targetId": "article.resource-math-algebra-polynomials-factoring-factoring-trinomials",
-        "type": "explains"
+        "sourceRole": "decision-guide",
+        "targetId": "tool.tool-math-algebra-expression-checker",
+        "type": "uses_tool"
       },
       "target": {
-        "id": "article.resource-math-algebra-polynomials-factoring-factoring-trinomials",
-        "canonicalPath": "/subjects/math/algebra/polynomials-factoring/factoring-trinomials/",
-        "pageRole": "decision-guide",
-        "shortTitle": "Factoring trinomials: use product and sum, not random guessing"
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "article.resource-math-algebra-polynomials-factoring-completing-the-square",
-        "targetId": "article.resource-math-algebra-polynomials-factoring-multiply-polynomials",
-        "type": "explains"
-      },
-      "target": {
-        "id": "article.resource-math-algebra-polynomials-factoring-multiply-polynomials",
-        "canonicalPath": "/subjects/math/algebra/polynomials-factoring/multiply-polynomials/",
-        "pageRole": "decision-guide",
-        "shortTitle": "Multiplying polynomials without losing a term"
+        "id": "tool.tool-math-algebra-expression-checker",
+        "canonicalPath": "/tools/math/algebra/expression-checker/",
+        "pageRole": "tool",
+        "shortTitle": "Type it messy. See it clearly."
       }
     }
   ],
@@ -423,27 +257,15 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-algebra-polynomials-factoring-exponent-rules",
-        "targetId": "article.resource-math-algebra-polynomials-factoring-multiply-polynomials",
-        "type": "explains"
+        "sourceRole": "method-guide",
+        "targetId": "tool.tool-math-algebra-expression-checker",
+        "type": "uses_tool"
       },
       "target": {
-        "id": "article.resource-math-algebra-polynomials-factoring-multiply-polynomials",
-        "canonicalPath": "/subjects/math/algebra/polynomials-factoring/multiply-polynomials/",
-        "pageRole": "decision-guide",
-        "shortTitle": "Multiplying polynomials without losing a term"
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "article.resource-math-algebra-polynomials-factoring-exponent-rules",
-        "targetId": "article.resource-math-algebra-radicals-exponents-functions-rational-exponents",
-        "type": "explains"
-      },
-      "target": {
-        "id": "article.resource-math-algebra-radicals-exponents-functions-rational-exponents",
-        "canonicalPath": "/subjects/math/algebra/radicals-exponents-functions/rational-exponents/",
-        "pageRole": "method-guide",
-        "shortTitle": "Rational exponents: the bridge between powers and roots"
+        "id": "tool.tool-math-algebra-expression-checker",
+        "canonicalPath": "/tools/math/algebra/expression-checker/",
+        "pageRole": "tool",
+        "shortTitle": "Type it messy. See it clearly."
       }
     }
   ],
@@ -451,27 +273,15 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-algebra-polynomials-factoring-factoring-trinomials",
-        "targetId": "article.resource-math-algebra-polynomials-factoring-greatest-common-factor",
-        "type": "explains"
+        "sourceRole": "decision-guide",
+        "targetId": "tool.tool-math-algebra-expression-checker",
+        "type": "uses_tool"
       },
       "target": {
-        "id": "article.resource-math-algebra-polynomials-factoring-greatest-common-factor",
-        "canonicalPath": "/subjects/math/algebra/polynomials-factoring/greatest-common-factor/",
-        "pageRole": "decision-guide",
-        "shortTitle": "Factor the greatest common factor before anything fancy"
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "article.resource-math-algebra-polynomials-factoring-factoring-trinomials",
-        "targetId": "article.resource-math-algebra-polynomials-factoring-multiply-polynomials",
-        "type": "explains"
-      },
-      "target": {
-        "id": "article.resource-math-algebra-polynomials-factoring-multiply-polynomials",
-        "canonicalPath": "/subjects/math/algebra/polynomials-factoring/multiply-polynomials/",
-        "pageRole": "decision-guide",
-        "shortTitle": "Multiplying polynomials without losing a term"
+        "id": "tool.tool-math-algebra-expression-checker",
+        "canonicalPath": "/tools/math/algebra/expression-checker/",
+        "pageRole": "tool",
+        "shortTitle": "Type it messy. See it clearly."
       }
     }
   ],
@@ -479,27 +289,15 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-algebra-polynomials-factoring-greatest-common-factor",
-        "targetId": "article.resource-math-algebra-polynomials-factoring-factoring-trinomials",
-        "type": "explains"
+        "sourceRole": "decision-guide",
+        "targetId": "tool.tool-math-algebra-expression-checker",
+        "type": "uses_tool"
       },
       "target": {
-        "id": "article.resource-math-algebra-polynomials-factoring-factoring-trinomials",
-        "canonicalPath": "/subjects/math/algebra/polynomials-factoring/factoring-trinomials/",
-        "pageRole": "decision-guide",
-        "shortTitle": "Factoring trinomials: use product and sum, not random guessing"
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "article.resource-math-algebra-polynomials-factoring-greatest-common-factor",
-        "targetId": "article.resource-math-algebra-polynomials-factoring-special-factor-patterns",
-        "type": "explains"
-      },
-      "target": {
-        "id": "article.resource-math-algebra-polynomials-factoring-special-factor-patterns",
-        "canonicalPath": "/subjects/math/algebra/polynomials-factoring/special-factor-patterns/",
-        "pageRole": "decision-guide",
-        "shortTitle": "Difference of squares or perfect-square trinomial?"
+        "id": "tool.tool-math-algebra-expression-checker",
+        "canonicalPath": "/tools/math/algebra/expression-checker/",
+        "pageRole": "tool",
+        "shortTitle": "Type it messy. See it clearly."
       }
     }
   ],
@@ -507,27 +305,15 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-algebra-polynomials-factoring-multiply-polynomials",
-        "targetId": "article.resource-math-algebra-expressions-equations-distributive-property",
-        "type": "explains"
+        "sourceRole": "decision-guide",
+        "targetId": "tool.tool-math-algebra-expression-checker",
+        "type": "uses_tool"
       },
       "target": {
-        "id": "article.resource-math-algebra-expressions-equations-distributive-property",
-        "canonicalPath": "/subjects/math/algebra/expressions-equations/distributive-property/",
-        "pageRole": "method-guide",
-        "shortTitle": "The distributive property: why the outside factor reaches every term"
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "article.resource-math-algebra-polynomials-factoring-multiply-polynomials",
-        "targetId": "article.resource-math-algebra-polynomials-factoring-factoring-trinomials",
-        "type": "explains"
-      },
-      "target": {
-        "id": "article.resource-math-algebra-polynomials-factoring-factoring-trinomials",
-        "canonicalPath": "/subjects/math/algebra/polynomials-factoring/factoring-trinomials/",
-        "pageRole": "decision-guide",
-        "shortTitle": "Factoring trinomials: use product and sum, not random guessing"
+        "id": "tool.tool-math-algebra-expression-checker",
+        "canonicalPath": "/tools/math/algebra/expression-checker/",
+        "pageRole": "tool",
+        "shortTitle": "Type it messy. See it clearly."
       }
     }
   ],
@@ -535,27 +321,15 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-algebra-polynomials-factoring-special-factor-patterns",
-        "targetId": "article.resource-math-algebra-polynomials-factoring-factoring-trinomials",
-        "type": "explains"
+        "sourceRole": "decision-guide",
+        "targetId": "tool.tool-math-algebra-expression-checker",
+        "type": "uses_tool"
       },
       "target": {
-        "id": "article.resource-math-algebra-polynomials-factoring-factoring-trinomials",
-        "canonicalPath": "/subjects/math/algebra/polynomials-factoring/factoring-trinomials/",
-        "pageRole": "decision-guide",
-        "shortTitle": "Factoring trinomials: use product and sum, not random guessing"
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "article.resource-math-algebra-polynomials-factoring-special-factor-patterns",
-        "targetId": "article.resource-math-algebra-polynomials-factoring-greatest-common-factor",
-        "type": "explains"
-      },
-      "target": {
-        "id": "article.resource-math-algebra-polynomials-factoring-greatest-common-factor",
-        "canonicalPath": "/subjects/math/algebra/polynomials-factoring/greatest-common-factor/",
-        "pageRole": "decision-guide",
-        "shortTitle": "Factor the greatest common factor before anything fancy"
+        "id": "tool.tool-math-algebra-expression-checker",
+        "canonicalPath": "/tools/math/algebra/expression-checker/",
+        "pageRole": "tool",
+        "shortTitle": "Type it messy. See it clearly."
       }
     }
   ],
@@ -563,27 +337,15 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-algebra-radicals-exponents-functions-exponential-growth-and-decay",
-        "targetId": "article.resource-math-algebra-radicals-exponents-functions-function-notation",
-        "type": "explains"
+        "sourceRole": "decision-guide",
+        "targetId": "tool.tool-math-algebra-expression-checker",
+        "type": "uses_tool"
       },
       "target": {
-        "id": "article.resource-math-algebra-radicals-exponents-functions-function-notation",
-        "canonicalPath": "/subjects/math/algebra/radicals-exponents-functions/function-notation/",
-        "pageRole": "quick-answer",
-        "shortTitle": "Function notation: inputs, outputs, and what f(x) does not mean"
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "article.resource-math-algebra-radicals-exponents-functions-exponential-growth-and-decay",
-        "targetId": "article.resource-math-algebra-radicals-exponents-functions-rational-exponents",
-        "type": "explains"
-      },
-      "target": {
-        "id": "article.resource-math-algebra-radicals-exponents-functions-rational-exponents",
-        "canonicalPath": "/subjects/math/algebra/radicals-exponents-functions/rational-exponents/",
-        "pageRole": "method-guide",
-        "shortTitle": "Rational exponents: the bridge between powers and roots"
+        "id": "tool.tool-math-algebra-expression-checker",
+        "canonicalPath": "/tools/math/algebra/expression-checker/",
+        "pageRole": "tool",
+        "shortTitle": "Type it messy. See it clearly."
       }
     }
   ],
@@ -591,27 +353,15 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-algebra-radicals-exponents-functions-function-notation",
-        "targetId": "article.resource-math-algebra-expressions-equations-order-of-operations-with-variables",
-        "type": "explains"
+        "sourceRole": "quick-answer",
+        "targetId": "tool.tool-math-algebra-expression-checker",
+        "type": "uses_tool"
       },
       "target": {
-        "id": "article.resource-math-algebra-expressions-equations-order-of-operations-with-variables",
-        "canonicalPath": "/subjects/math/algebra/expressions-equations/order-of-operations-with-variables/",
-        "pageRole": "method-guide",
-        "shortTitle": "Order of operations with variables: what actually comes first?"
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "article.resource-math-algebra-radicals-exponents-functions-function-notation",
-        "targetId": "article.resource-math-algebra-linear-relationships-interpreting-linear-models",
-        "type": "explains"
-      },
-      "target": {
-        "id": "article.resource-math-algebra-linear-relationships-interpreting-linear-models",
-        "canonicalPath": "/subjects/math/algebra/linear-relationships/interpreting-linear-models/",
-        "pageRole": "quick-answer",
-        "shortTitle": "What do slope and intercept mean in a linear model?"
+        "id": "tool.tool-math-algebra-expression-checker",
+        "canonicalPath": "/tools/math/algebra/expression-checker/",
+        "pageRole": "tool",
+        "shortTitle": "Type it messy. See it clearly."
       }
     }
   ],
@@ -619,27 +369,15 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-algebra-radicals-exponents-functions-inverse-functions-vs-reciprocals",
-        "targetId": "article.resource-math-algebra-radicals-exponents-functions-function-notation",
-        "type": "explains"
+        "sourceRole": "decision-guide",
+        "targetId": "tool.tool-math-algebra-expression-checker",
+        "type": "uses_tool"
       },
       "target": {
-        "id": "article.resource-math-algebra-radicals-exponents-functions-function-notation",
-        "canonicalPath": "/subjects/math/algebra/radicals-exponents-functions/function-notation/",
-        "pageRole": "quick-answer",
-        "shortTitle": "Function notation: inputs, outputs, and what f(x) does not mean"
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "article.resource-math-algebra-radicals-exponents-functions-inverse-functions-vs-reciprocals",
-        "targetId": "article.resource-math-algebra-rational-expressions-direct-inverse-variation",
-        "type": "explains"
-      },
-      "target": {
-        "id": "article.resource-math-algebra-rational-expressions-direct-inverse-variation",
-        "canonicalPath": "/subjects/math/algebra/rational-expressions/direct-inverse-variation/",
-        "pageRole": "quick-answer",
-        "shortTitle": "Direct or inverse variation: which model matches the relationship?"
+        "id": "tool.tool-math-algebra-expression-checker",
+        "canonicalPath": "/tools/math/algebra/expression-checker/",
+        "pageRole": "tool",
+        "shortTitle": "Type it messy. See it clearly."
       }
     }
   ],
@@ -647,27 +385,15 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-algebra-radicals-exponents-functions-rational-exponents",
-        "targetId": "article.resource-math-algebra-polynomials-factoring-exponent-rules",
-        "type": "explains"
+        "sourceRole": "method-guide",
+        "targetId": "tool.tool-math-algebra-expression-checker",
+        "type": "uses_tool"
       },
       "target": {
-        "id": "article.resource-math-algebra-polynomials-factoring-exponent-rules",
-        "canonicalPath": "/subjects/math/algebra/polynomials-factoring/exponent-rules/",
-        "pageRole": "method-guide",
-        "shortTitle": "Exponent rules that come from counting factors"
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "article.resource-math-algebra-radicals-exponents-functions-rational-exponents",
-        "targetId": "article.resource-math-algebra-radicals-exponents-functions-simplifying-radicals",
-        "type": "explains"
-      },
-      "target": {
-        "id": "article.resource-math-algebra-radicals-exponents-functions-simplifying-radicals",
-        "canonicalPath": "/subjects/math/algebra/radicals-exponents-functions/simplifying-radicals/",
-        "pageRole": "method-guide",
-        "shortTitle": "Simplifying radicals by pulling out perfect powers"
+        "id": "tool.tool-math-algebra-expression-checker",
+        "canonicalPath": "/tools/math/algebra/expression-checker/",
+        "pageRole": "tool",
+        "shortTitle": "Type it messy. See it clearly."
       }
     }
   ],
@@ -675,27 +401,15 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-algebra-radicals-exponents-functions-simplifying-radicals",
-        "targetId": "article.resource-math-algebra-polynomials-factoring-exponent-rules",
-        "type": "explains"
+        "sourceRole": "method-guide",
+        "targetId": "tool.tool-math-algebra-expression-checker",
+        "type": "uses_tool"
       },
       "target": {
-        "id": "article.resource-math-algebra-polynomials-factoring-exponent-rules",
-        "canonicalPath": "/subjects/math/algebra/polynomials-factoring/exponent-rules/",
-        "pageRole": "method-guide",
-        "shortTitle": "Exponent rules that come from counting factors"
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "article.resource-math-algebra-radicals-exponents-functions-simplifying-radicals",
-        "targetId": "article.resource-math-algebra-radicals-exponents-functions-rational-exponents",
-        "type": "explains"
-      },
-      "target": {
-        "id": "article.resource-math-algebra-radicals-exponents-functions-rational-exponents",
-        "canonicalPath": "/subjects/math/algebra/radicals-exponents-functions/rational-exponents/",
-        "pageRole": "method-guide",
-        "shortTitle": "Rational exponents: the bridge between powers and roots"
+        "id": "tool.tool-math-algebra-expression-checker",
+        "canonicalPath": "/tools/math/algebra/expression-checker/",
+        "pageRole": "tool",
+        "shortTitle": "Type it messy. See it clearly."
       }
     }
   ],
@@ -703,27 +417,15 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-algebra-radicals-exponents-functions-solving-radical-equations",
-        "targetId": "article.resource-math-algebra-radicals-exponents-functions-rational-exponents",
-        "type": "explains"
+        "sourceRole": "method-guide",
+        "targetId": "tool.tool-math-algebra-expression-checker",
+        "type": "uses_tool"
       },
       "target": {
-        "id": "article.resource-math-algebra-radicals-exponents-functions-rational-exponents",
-        "canonicalPath": "/subjects/math/algebra/radicals-exponents-functions/rational-exponents/",
-        "pageRole": "method-guide",
-        "shortTitle": "Rational exponents: the bridge between powers and roots"
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "article.resource-math-algebra-radicals-exponents-functions-solving-radical-equations",
-        "targetId": "article.resource-math-algebra-radicals-exponents-functions-simplifying-radicals",
-        "type": "explains"
-      },
-      "target": {
-        "id": "article.resource-math-algebra-radicals-exponents-functions-simplifying-radicals",
-        "canonicalPath": "/subjects/math/algebra/radicals-exponents-functions/simplifying-radicals/",
-        "pageRole": "method-guide",
-        "shortTitle": "Simplifying radicals by pulling out perfect powers"
+        "id": "tool.tool-math-algebra-expression-checker",
+        "canonicalPath": "/tools/math/algebra/expression-checker/",
+        "pageRole": "tool",
+        "shortTitle": "Type it messy. See it clearly."
       }
     }
   ],
@@ -731,27 +433,15 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-algebra-rational-expressions-add-subtract-rational-expressions",
-        "targetId": "article.resource-math-algebra-rational-expressions-rational-domain-restrictions",
-        "type": "explains"
+        "sourceRole": "method-guide",
+        "targetId": "tool.tool-math-algebra-expression-checker",
+        "type": "uses_tool"
       },
       "target": {
-        "id": "article.resource-math-algebra-rational-expressions-rational-domain-restrictions",
-        "canonicalPath": "/subjects/math/algebra/rational-expressions/rational-domain-restrictions/",
-        "pageRole": "method-guide",
-        "shortTitle": "Domain restrictions in rational expressions"
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "article.resource-math-algebra-rational-expressions-add-subtract-rational-expressions",
-        "targetId": "article.resource-math-algebra-rational-expressions-simplifying-rational-expressions",
-        "type": "explains"
-      },
-      "target": {
-        "id": "article.resource-math-algebra-rational-expressions-simplifying-rational-expressions",
-        "canonicalPath": "/subjects/math/algebra/rational-expressions/simplifying-rational-expressions/",
-        "pageRole": "method-guide",
-        "shortTitle": "Simplifying rational expressions by factors, not by terms"
+        "id": "tool.tool-math-algebra-expression-checker",
+        "canonicalPath": "/tools/math/algebra/expression-checker/",
+        "pageRole": "tool",
+        "shortTitle": "Type it messy. See it clearly."
       }
     }
   ],
@@ -759,27 +449,15 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-algebra-rational-expressions-direct-inverse-variation",
-        "targetId": "article.resource-math-algebra-linear-relationships-interpreting-linear-models",
-        "type": "explains"
+        "sourceRole": "quick-answer",
+        "targetId": "tool.tool-math-algebra-expression-checker",
+        "type": "uses_tool"
       },
       "target": {
-        "id": "article.resource-math-algebra-linear-relationships-interpreting-linear-models",
-        "canonicalPath": "/subjects/math/algebra/linear-relationships/interpreting-linear-models/",
-        "pageRole": "quick-answer",
-        "shortTitle": "What do slope and intercept mean in a linear model?"
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "article.resource-math-algebra-rational-expressions-direct-inverse-variation",
-        "targetId": "article.resource-math-algebra-radicals-exponents-functions-function-notation",
-        "type": "explains"
-      },
-      "target": {
-        "id": "article.resource-math-algebra-radicals-exponents-functions-function-notation",
-        "canonicalPath": "/subjects/math/algebra/radicals-exponents-functions/function-notation/",
-        "pageRole": "quick-answer",
-        "shortTitle": "Function notation: inputs, outputs, and what f(x) does not mean"
+        "id": "tool.tool-math-algebra-expression-checker",
+        "canonicalPath": "/tools/math/algebra/expression-checker/",
+        "pageRole": "tool",
+        "shortTitle": "Type it messy. See it clearly."
       }
     }
   ],
@@ -787,27 +465,15 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-algebra-rational-expressions-rational-domain-restrictions",
-        "targetId": "article.resource-math-algebra-rational-expressions-add-subtract-rational-expressions",
-        "type": "explains"
+        "sourceRole": "method-guide",
+        "targetId": "tool.tool-math-algebra-expression-checker",
+        "type": "uses_tool"
       },
       "target": {
-        "id": "article.resource-math-algebra-rational-expressions-add-subtract-rational-expressions",
-        "canonicalPath": "/subjects/math/algebra/rational-expressions/add-subtract-rational-expressions/",
-        "pageRole": "method-guide",
-        "shortTitle": "Adding and subtracting rational expressions"
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "article.resource-math-algebra-rational-expressions-rational-domain-restrictions",
-        "targetId": "article.resource-math-algebra-rational-expressions-simplifying-rational-expressions",
-        "type": "explains"
-      },
-      "target": {
-        "id": "article.resource-math-algebra-rational-expressions-simplifying-rational-expressions",
-        "canonicalPath": "/subjects/math/algebra/rational-expressions/simplifying-rational-expressions/",
-        "pageRole": "method-guide",
-        "shortTitle": "Simplifying rational expressions by factors, not by terms"
+        "id": "tool.tool-math-algebra-expression-checker",
+        "canonicalPath": "/tools/math/algebra/expression-checker/",
+        "pageRole": "tool",
+        "shortTitle": "Type it messy. See it clearly."
       }
     }
   ],
@@ -815,27 +481,15 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-algebra-rational-expressions-simplifying-complex-rational-expressions",
-        "targetId": "article.resource-math-algebra-rational-expressions-add-subtract-rational-expressions",
-        "type": "explains"
+        "sourceRole": "method-guide",
+        "targetId": "tool.tool-math-algebra-expression-checker",
+        "type": "uses_tool"
       },
       "target": {
-        "id": "article.resource-math-algebra-rational-expressions-add-subtract-rational-expressions",
-        "canonicalPath": "/subjects/math/algebra/rational-expressions/add-subtract-rational-expressions/",
-        "pageRole": "method-guide",
-        "shortTitle": "Adding and subtracting rational expressions"
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "article.resource-math-algebra-rational-expressions-simplifying-complex-rational-expressions",
-        "targetId": "article.resource-math-algebra-rational-expressions-rational-domain-restrictions",
-        "type": "explains"
-      },
-      "target": {
-        "id": "article.resource-math-algebra-rational-expressions-rational-domain-restrictions",
-        "canonicalPath": "/subjects/math/algebra/rational-expressions/rational-domain-restrictions/",
-        "pageRole": "method-guide",
-        "shortTitle": "Domain restrictions in rational expressions"
+        "id": "tool.tool-math-algebra-expression-checker",
+        "canonicalPath": "/tools/math/algebra/expression-checker/",
+        "pageRole": "tool",
+        "shortTitle": "Type it messy. See it clearly."
       }
     }
   ],
@@ -843,27 +497,15 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-algebra-rational-expressions-simplifying-rational-expressions",
-        "targetId": "article.resource-math-algebra-polynomials-factoring-factoring-trinomials",
-        "type": "explains"
+        "sourceRole": "method-guide",
+        "targetId": "tool.tool-math-algebra-expression-checker",
+        "type": "uses_tool"
       },
       "target": {
-        "id": "article.resource-math-algebra-polynomials-factoring-factoring-trinomials",
-        "canonicalPath": "/subjects/math/algebra/polynomials-factoring/factoring-trinomials/",
-        "pageRole": "decision-guide",
-        "shortTitle": "Factoring trinomials: use product and sum, not random guessing"
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "article.resource-math-algebra-rational-expressions-simplifying-rational-expressions",
-        "targetId": "article.resource-math-algebra-rational-expressions-add-subtract-rational-expressions",
-        "type": "explains"
-      },
-      "target": {
-        "id": "article.resource-math-algebra-rational-expressions-add-subtract-rational-expressions",
-        "canonicalPath": "/subjects/math/algebra/rational-expressions/add-subtract-rational-expressions/",
-        "pageRole": "method-guide",
-        "shortTitle": "Adding and subtracting rational expressions"
+        "id": "tool.tool-math-algebra-expression-checker",
+        "canonicalPath": "/tools/math/algebra/expression-checker/",
+        "pageRole": "tool",
+        "shortTitle": "Type it messy. See it clearly."
       }
     }
   ],
@@ -871,27 +513,15 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-algebra-rational-expressions-solving-rational-equations",
-        "targetId": "article.resource-math-algebra-expressions-equations-solving-linear-equations",
-        "type": "explains"
+        "sourceRole": "method-guide",
+        "targetId": "tool.tool-math-algebra-expression-checker",
+        "type": "uses_tool"
       },
       "target": {
-        "id": "article.resource-math-algebra-expressions-equations-solving-linear-equations",
-        "canonicalPath": "/subjects/math/algebra/expressions-equations/solving-linear-equations/",
-        "pageRole": "decision-guide",
-        "shortTitle": "Solving linear equations: keep the balance, not a bag of tricks"
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "article.resource-math-algebra-rational-expressions-solving-rational-equations",
-        "targetId": "article.resource-math-algebra-rational-expressions-add-subtract-rational-expressions",
-        "type": "explains"
-      },
-      "target": {
-        "id": "article.resource-math-algebra-rational-expressions-add-subtract-rational-expressions",
-        "canonicalPath": "/subjects/math/algebra/rational-expressions/add-subtract-rational-expressions/",
-        "pageRole": "method-guide",
-        "shortTitle": "Adding and subtracting rational expressions"
+        "id": "tool.tool-math-algebra-expression-checker",
+        "canonicalPath": "/tools/math/algebra/expression-checker/",
+        "pageRole": "tool",
+        "shortTitle": "Type it messy. See it clearly."
       }
     }
   ],
@@ -899,27 +529,15 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-algebra-systems-inequalities-choosing-system-method",
-        "targetId": "article.resource-math-algebra-systems-inequalities-elimination-systems",
-        "type": "explains"
+        "sourceRole": "decision-guide",
+        "targetId": "tool.tool-math-algebra-expression-checker",
+        "type": "uses_tool"
       },
       "target": {
-        "id": "article.resource-math-algebra-systems-inequalities-elimination-systems",
-        "canonicalPath": "/subjects/math/algebra/systems-inequalities/elimination-systems/",
-        "pageRole": "decision-guide",
-        "shortTitle": "Solving systems by elimination"
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "article.resource-math-algebra-systems-inequalities-choosing-system-method",
-        "targetId": "article.resource-math-algebra-systems-inequalities-no-one-infinite-solutions",
-        "type": "explains"
-      },
-      "target": {
-        "id": "article.resource-math-algebra-systems-inequalities-no-one-infinite-solutions",
-        "canonicalPath": "/subjects/math/algebra/systems-inequalities/no-one-infinite-solutions/",
-        "pageRole": "decision-guide",
-        "shortTitle": "One solution, no solution, or infinitely many?"
+        "id": "tool.tool-math-algebra-expression-checker",
+        "canonicalPath": "/tools/math/algebra/expression-checker/",
+        "pageRole": "tool",
+        "shortTitle": "Type it messy. See it clearly."
       }
     }
   ],
@@ -927,27 +545,15 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-algebra-systems-inequalities-compound-inequalities",
-        "targetId": "article.resource-math-algebra-expressions-equations-solving-linear-equations",
-        "type": "explains"
+        "sourceRole": "method-guide",
+        "targetId": "tool.tool-math-algebra-expression-checker",
+        "type": "uses_tool"
       },
       "target": {
-        "id": "article.resource-math-algebra-expressions-equations-solving-linear-equations",
-        "canonicalPath": "/subjects/math/algebra/expressions-equations/solving-linear-equations/",
-        "pageRole": "decision-guide",
-        "shortTitle": "Solving linear equations: keep the balance, not a bag of tricks"
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "article.resource-math-algebra-systems-inequalities-compound-inequalities",
-        "targetId": "article.resource-math-algebra-radicals-exponents-functions-solving-radical-equations",
-        "type": "explains"
-      },
-      "target": {
-        "id": "article.resource-math-algebra-radicals-exponents-functions-solving-radical-equations",
-        "canonicalPath": "/subjects/math/algebra/radicals-exponents-functions/solving-radical-equations/",
-        "pageRole": "method-guide",
-        "shortTitle": "Solving radical equations and checking for extraneous roots"
+        "id": "tool.tool-math-algebra-expression-checker",
+        "canonicalPath": "/tools/math/algebra/expression-checker/",
+        "pageRole": "tool",
+        "shortTitle": "Type it messy. See it clearly."
       }
     }
   ],
@@ -955,27 +561,15 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-algebra-systems-inequalities-elimination-systems",
-        "targetId": "article.resource-math-algebra-systems-inequalities-choosing-system-method",
-        "type": "explains"
+        "sourceRole": "decision-guide",
+        "targetId": "tool.tool-math-algebra-expression-checker",
+        "type": "uses_tool"
       },
       "target": {
-        "id": "article.resource-math-algebra-systems-inequalities-choosing-system-method",
-        "canonicalPath": "/subjects/math/algebra/systems-inequalities/choosing-system-method/",
-        "pageRole": "decision-guide",
-        "shortTitle": "Graphing, substitution, or elimination: which system method fits?"
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "article.resource-math-algebra-systems-inequalities-elimination-systems",
-        "targetId": "article.resource-math-algebra-systems-inequalities-no-one-infinite-solutions",
-        "type": "explains"
-      },
-      "target": {
-        "id": "article.resource-math-algebra-systems-inequalities-no-one-infinite-solutions",
-        "canonicalPath": "/subjects/math/algebra/systems-inequalities/no-one-infinite-solutions/",
-        "pageRole": "decision-guide",
-        "shortTitle": "One solution, no solution, or infinitely many?"
+        "id": "tool.tool-math-algebra-expression-checker",
+        "canonicalPath": "/tools/math/algebra/expression-checker/",
+        "pageRole": "tool",
+        "shortTitle": "Type it messy. See it clearly."
       }
     }
   ],
@@ -983,27 +577,15 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-algebra-systems-inequalities-graphing-linear-inequalities",
-        "targetId": "article.resource-math-algebra-systems-inequalities-choosing-system-method",
-        "type": "explains"
+        "sourceRole": "decision-guide",
+        "targetId": "tool.tool-math-algebra-expression-checker",
+        "type": "uses_tool"
       },
       "target": {
-        "id": "article.resource-math-algebra-systems-inequalities-choosing-system-method",
-        "canonicalPath": "/subjects/math/algebra/systems-inequalities/choosing-system-method/",
-        "pageRole": "decision-guide",
-        "shortTitle": "Graphing, substitution, or elimination: which system method fits?"
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "article.resource-math-algebra-systems-inequalities-graphing-linear-inequalities",
-        "targetId": "article.resource-math-algebra-systems-inequalities-compound-inequalities",
-        "type": "explains"
-      },
-      "target": {
-        "id": "article.resource-math-algebra-systems-inequalities-compound-inequalities",
-        "canonicalPath": "/subjects/math/algebra/systems-inequalities/compound-inequalities/",
-        "pageRole": "method-guide",
-        "shortTitle": "Compound inequalities: and, or, and the sign flip"
+        "id": "tool.tool-math-algebra-expression-checker",
+        "canonicalPath": "/tools/math/algebra/expression-checker/",
+        "pageRole": "tool",
+        "shortTitle": "Type it messy. See it clearly."
       }
     }
   ],
@@ -1011,27 +593,15 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-algebra-systems-inequalities-no-one-infinite-solutions",
-        "targetId": "article.resource-math-algebra-expressions-equations-variables-on-both-sides",
-        "type": "explains"
+        "sourceRole": "decision-guide",
+        "targetId": "tool.tool-math-algebra-expression-checker",
+        "type": "uses_tool"
       },
       "target": {
-        "id": "article.resource-math-algebra-expressions-equations-variables-on-both-sides",
-        "canonicalPath": "/subjects/math/algebra/expressions-equations/variables-on-both-sides/",
-        "pageRole": "decision-guide",
-        "shortTitle": "Variables on both sides: which side should you move them to?"
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "article.resource-math-algebra-systems-inequalities-no-one-infinite-solutions",
-        "targetId": "article.resource-math-algebra-systems-inequalities-choosing-system-method",
-        "type": "explains"
-      },
-      "target": {
-        "id": "article.resource-math-algebra-systems-inequalities-choosing-system-method",
-        "canonicalPath": "/subjects/math/algebra/systems-inequalities/choosing-system-method/",
-        "pageRole": "decision-guide",
-        "shortTitle": "Graphing, substitution, or elimination: which system method fits?"
+        "id": "tool.tool-math-algebra-expression-checker",
+        "canonicalPath": "/tools/math/algebra/expression-checker/",
+        "pageRole": "tool",
+        "shortTitle": "Type it messy. See it clearly."
       }
     }
   ],
@@ -1039,27 +609,15 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-algebra-systems-inequalities-substitution-systems",
-        "targetId": "article.resource-math-algebra-systems-inequalities-choosing-system-method",
-        "type": "explains"
+        "sourceRole": "decision-guide",
+        "targetId": "tool.tool-math-algebra-expression-checker",
+        "type": "uses_tool"
       },
       "target": {
-        "id": "article.resource-math-algebra-systems-inequalities-choosing-system-method",
-        "canonicalPath": "/subjects/math/algebra/systems-inequalities/choosing-system-method/",
-        "pageRole": "decision-guide",
-        "shortTitle": "Graphing, substitution, or elimination: which system method fits?"
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "article.resource-math-algebra-systems-inequalities-substitution-systems",
-        "targetId": "article.resource-math-algebra-systems-inequalities-elimination-systems",
-        "type": "explains"
-      },
-      "target": {
-        "id": "article.resource-math-algebra-systems-inequalities-elimination-systems",
-        "canonicalPath": "/subjects/math/algebra/systems-inequalities/elimination-systems/",
-        "pageRole": "decision-guide",
-        "shortTitle": "Solving systems by elimination"
+        "id": "tool.tool-math-algebra-expression-checker",
+        "canonicalPath": "/tools/math/algebra/expression-checker/",
+        "pageRole": "tool",
+        "shortTitle": "Type it messy. See it clearly."
       }
     }
   ],
@@ -1067,27 +625,29 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-calculus-derivative-applications-curve-sketching-from-derivatives",
-        "targetId": "article.resource-math-calculus-derivative-applications-optimization",
-        "type": "explains"
+        "sourceRole": "method-guide",
+        "targetId": "practice-exam.assessment-math-calculus-foundations-exam",
+        "type": "assesses"
       },
       "target": {
-        "id": "article.resource-math-calculus-derivative-applications-optimization",
-        "canonicalPath": "/subjects/math/calculus/derivative-applications/optimization/",
-        "pageRole": "method-guide",
-        "shortTitle": "A calculus optimization workflow that does not skip the model"
+        "id": "practice-exam.assessment-math-calculus-foundations-exam",
+        "canonicalPath": "/practice/math/calculus/exams/calculus-foundations/",
+        "pageRole": "practice-exam",
+        "shortTitle": "Calculus foundations practice exam"
       }
     },
     {
       "relationship": {
         "sourceId": "article.resource-math-calculus-derivative-applications-curve-sketching-from-derivatives",
-        "targetId": "article.resource-math-calculus-limits-continuity-infinite-limits-and-asymptotes",
+        "sourceRole": "method-guide",
+        "targetId": "textbook-lesson.calc-1-unit-2b-derivative-applications-advanced-notes",
         "type": "explains"
       },
       "target": {
-        "id": "article.resource-math-calculus-limits-continuity-infinite-limits-and-asymptotes",
-        "canonicalPath": "/subjects/math/calculus/limits-continuity/infinite-limits-and-asymptotes/",
-        "pageRole": "method-guide",
-        "shortTitle": "Infinite limits and vertical asymptotes"
+        "id": "textbook-lesson.calc-1-unit-2b-derivative-applications-advanced-notes",
+        "canonicalPath": "/subjects/math/calculus/derivative-applications/advanced-notes/",
+        "pageRole": "textbook-lesson",
+        "shortTitle": "Advanced Notes: Analysis Behind the Applications"
       }
     }
   ],
@@ -1095,27 +655,29 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-calculus-derivative-applications-linear-approximation",
-        "targetId": "article.resource-math-calculus-derivatives-chain-rule",
-        "type": "explains"
+        "sourceRole": "method-guide",
+        "targetId": "practice-exam.assessment-math-calculus-foundations-exam",
+        "type": "assesses"
       },
       "target": {
-        "id": "article.resource-math-calculus-derivatives-chain-rule",
-        "canonicalPath": "/subjects/math/calculus/derivatives/chain-rule/",
-        "pageRole": "method-guide",
-        "shortTitle": "The Chain Rule as a structure-reading skill"
+        "id": "practice-exam.assessment-math-calculus-foundations-exam",
+        "canonicalPath": "/practice/math/calculus/exams/calculus-foundations/",
+        "pageRole": "practice-exam",
+        "shortTitle": "Calculus foundations practice exam"
       }
     },
     {
       "relationship": {
         "sourceId": "article.resource-math-calculus-derivative-applications-linear-approximation",
-        "targetId": "course.domain-math-calculus",
+        "sourceRole": "method-guide",
+        "targetId": "textbook-lesson.calc-1-unit-2b-derivative-applications-advanced-notes",
         "type": "explains"
       },
       "target": {
-        "id": "course.domain-math-calculus",
-        "canonicalPath": "/subjects/math/calculus/",
-        "pageRole": "course-hub",
-        "shortTitle": "Calculus"
+        "id": "textbook-lesson.calc-1-unit-2b-derivative-applications-advanced-notes",
+        "canonicalPath": "/subjects/math/calculus/derivative-applications/advanced-notes/",
+        "pageRole": "textbook-lesson",
+        "shortTitle": "Advanced Notes: Analysis Behind the Applications"
       }
     }
   ],
@@ -1123,27 +685,29 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-calculus-derivative-applications-optimization",
-        "targetId": "article.resource-math-calculus-derivative-applications-curve-sketching-from-derivatives",
-        "type": "explains"
+        "sourceRole": "method-guide",
+        "targetId": "practice-exam.assessment-math-calculus-foundations-exam",
+        "type": "assesses"
       },
       "target": {
-        "id": "article.resource-math-calculus-derivative-applications-curve-sketching-from-derivatives",
-        "canonicalPath": "/subjects/math/calculus/derivative-applications/curve-sketching-from-derivatives/",
-        "pageRole": "method-guide",
-        "shortTitle": "Curve sketching from first and second derivatives"
+        "id": "practice-exam.assessment-math-calculus-foundations-exam",
+        "canonicalPath": "/practice/math/calculus/exams/calculus-foundations/",
+        "pageRole": "practice-exam",
+        "shortTitle": "Calculus foundations practice exam"
       }
     },
     {
       "relationship": {
         "sourceId": "article.resource-math-calculus-derivative-applications-optimization",
-        "targetId": "article.resource-math-calculus-derivative-applications-related-rates",
+        "sourceRole": "method-guide",
+        "targetId": "textbook-lesson.calc-1-unit-2b-derivative-applications-optimization-modeling",
         "type": "explains"
       },
       "target": {
-        "id": "article.resource-math-calculus-derivative-applications-related-rates",
-        "canonicalPath": "/subjects/math/calculus/derivative-applications/related-rates/",
-        "pageRole": "method-guide",
-        "shortTitle": "Related rates: translate the geometry before differentiating"
+        "id": "textbook-lesson.calc-1-unit-2b-derivative-applications-optimization-modeling",
+        "canonicalPath": "/subjects/math/calculus/derivative-applications/optimization-modeling/",
+        "pageRole": "textbook-lesson",
+        "shortTitle": "Optimization Modeling"
       }
     }
   ],
@@ -1151,27 +715,29 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-calculus-derivative-applications-related-rates",
-        "targetId": "article.resource-math-calculus-derivative-applications-linear-approximation",
-        "type": "explains"
+        "sourceRole": "method-guide",
+        "targetId": "practice-exam.assessment-math-calculus-foundations-exam",
+        "type": "assesses"
       },
       "target": {
-        "id": "article.resource-math-calculus-derivative-applications-linear-approximation",
-        "canonicalPath": "/subjects/math/calculus/derivative-applications/linear-approximation/",
-        "pageRole": "method-guide",
-        "shortTitle": "Linear approximation: use the tangent line as a local calculator"
+        "id": "practice-exam.assessment-math-calculus-foundations-exam",
+        "canonicalPath": "/practice/math/calculus/exams/calculus-foundations/",
+        "pageRole": "practice-exam",
+        "shortTitle": "Calculus foundations practice exam"
       }
     },
     {
       "relationship": {
         "sourceId": "article.resource-math-calculus-derivative-applications-related-rates",
-        "targetId": "article.resource-math-calculus-derivative-applications-optimization",
+        "sourceRole": "method-guide",
+        "targetId": "textbook-lesson.calc-1-unit-2b-derivative-applications-related-rates-workflow",
         "type": "explains"
       },
       "target": {
-        "id": "article.resource-math-calculus-derivative-applications-optimization",
-        "canonicalPath": "/subjects/math/calculus/derivative-applications/optimization/",
-        "pageRole": "method-guide",
-        "shortTitle": "A calculus optimization workflow that does not skip the model"
+        "id": "textbook-lesson.calc-1-unit-2b-derivative-applications-related-rates-workflow",
+        "canonicalPath": "/subjects/math/calculus/derivative-applications/related-rates-workflow/",
+        "pageRole": "textbook-lesson",
+        "shortTitle": "Related Rates Workflow"
       }
     }
   ],
@@ -1179,27 +745,29 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-calculus-derivatives-chain-rule",
-        "targetId": "article.resource-math-calculus-derivative-applications-linear-approximation",
-        "type": "explains"
+        "sourceRole": "method-guide",
+        "targetId": "practice-exam.assessment-math-calculus-foundations-exam",
+        "type": "assesses"
       },
       "target": {
-        "id": "article.resource-math-calculus-derivative-applications-linear-approximation",
-        "canonicalPath": "/subjects/math/calculus/derivative-applications/linear-approximation/",
-        "pageRole": "method-guide",
-        "shortTitle": "Linear approximation: use the tangent line as a local calculator"
+        "id": "practice-exam.assessment-math-calculus-foundations-exam",
+        "canonicalPath": "/practice/math/calculus/exams/calculus-foundations/",
+        "pageRole": "practice-exam",
+        "shortTitle": "Calculus foundations practice exam"
       }
     },
     {
       "relationship": {
         "sourceId": "article.resource-math-calculus-derivatives-chain-rule",
-        "targetId": "course.domain-math-calculus",
+        "sourceRole": "method-guide",
+        "targetId": "textbook-lesson.calc-1-unit-2a-derivative-foundations-techniques-composition",
         "type": "explains"
       },
       "target": {
-        "id": "course.domain-math-calculus",
-        "canonicalPath": "/subjects/math/calculus/",
-        "pageRole": "course-hub",
-        "shortTitle": "Calculus"
+        "id": "textbook-lesson.calc-1-unit-2a-derivative-foundations-techniques-composition",
+        "canonicalPath": "/subjects/math/calculus/derivatives/composition/",
+        "pageRole": "textbook-lesson",
+        "shortTitle": "Composition and the Need for the Chain Rule"
       }
     }
   ],
@@ -1207,27 +775,29 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-calculus-derivatives-derivative-of-x-to-the-x",
-        "targetId": "article.resource-math-calculus-derivatives-chain-rule",
-        "type": "explains"
+        "sourceRole": "quick-answer",
+        "targetId": "practice-exam.assessment-math-calculus-foundations-exam",
+        "type": "assesses"
       },
       "target": {
-        "id": "article.resource-math-calculus-derivatives-chain-rule",
-        "canonicalPath": "/subjects/math/calculus/derivatives/chain-rule/",
-        "pageRole": "method-guide",
-        "shortTitle": "The Chain Rule as a structure-reading skill"
+        "id": "practice-exam.assessment-math-calculus-foundations-exam",
+        "canonicalPath": "/practice/math/calculus/exams/calculus-foundations/",
+        "pageRole": "practice-exam",
+        "shortTitle": "Calculus foundations practice exam"
       }
     },
     {
       "relationship": {
         "sourceId": "article.resource-math-calculus-derivatives-derivative-of-x-to-the-x",
-        "targetId": "course.domain-math-calculus",
+        "sourceRole": "quick-answer",
+        "targetId": "textbook-lesson.calc-1-unit-2a-derivative-foundations-techniques-advanced-notes-2a",
         "type": "explains"
       },
       "target": {
-        "id": "course.domain-math-calculus",
-        "canonicalPath": "/subjects/math/calculus/",
-        "pageRole": "course-hub",
-        "shortTitle": "Calculus"
+        "id": "textbook-lesson.calc-1-unit-2a-derivative-foundations-techniques-advanced-notes-2a",
+        "canonicalPath": "/subjects/math/calculus/derivatives/advanced-notes-2a/",
+        "pageRole": "textbook-lesson",
+        "shortTitle": "Advanced Notes: What Differentiability Is Really Saying"
       }
     }
   ],
@@ -1235,27 +805,29 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-calculus-derivatives-derivatives-of-inverse-trig-functions",
-        "targetId": "article.resource-math-calculus-derivatives-chain-rule",
-        "type": "explains"
+        "sourceRole": "method-guide",
+        "targetId": "practice-exam.assessment-math-calculus-foundations-exam",
+        "type": "assesses"
       },
       "target": {
-        "id": "article.resource-math-calculus-derivatives-chain-rule",
-        "canonicalPath": "/subjects/math/calculus/derivatives/chain-rule/",
-        "pageRole": "method-guide",
-        "shortTitle": "The Chain Rule as a structure-reading skill"
+        "id": "practice-exam.assessment-math-calculus-foundations-exam",
+        "canonicalPath": "/practice/math/calculus/exams/calculus-foundations/",
+        "pageRole": "practice-exam",
+        "shortTitle": "Calculus foundations practice exam"
       }
     },
     {
       "relationship": {
         "sourceId": "article.resource-math-calculus-derivatives-derivatives-of-inverse-trig-functions",
-        "targetId": "course.domain-math-calculus",
+        "sourceRole": "method-guide",
+        "targetId": "textbook-lesson.calc-1-unit-2a-derivative-foundations-techniques-advanced-notes-2a",
         "type": "explains"
       },
       "target": {
-        "id": "course.domain-math-calculus",
-        "canonicalPath": "/subjects/math/calculus/",
-        "pageRole": "course-hub",
-        "shortTitle": "Calculus"
+        "id": "textbook-lesson.calc-1-unit-2a-derivative-foundations-techniques-advanced-notes-2a",
+        "canonicalPath": "/subjects/math/calculus/derivatives/advanced-notes-2a/",
+        "pageRole": "textbook-lesson",
+        "shortTitle": "Advanced Notes: What Differentiability Is Really Saying"
       }
     }
   ],
@@ -1263,27 +835,29 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-calculus-derivatives-product-rule-vs-quotient-rule",
-        "targetId": "article.resource-math-calculus-derivative-applications-curve-sketching-from-derivatives",
-        "type": "explains"
+        "sourceRole": "decision-guide",
+        "targetId": "practice-exam.assessment-math-calculus-foundations-exam",
+        "type": "assesses"
       },
       "target": {
-        "id": "article.resource-math-calculus-derivative-applications-curve-sketching-from-derivatives",
-        "canonicalPath": "/subjects/math/calculus/derivative-applications/curve-sketching-from-derivatives/",
-        "pageRole": "method-guide",
-        "shortTitle": "Curve sketching from first and second derivatives"
+        "id": "practice-exam.assessment-math-calculus-foundations-exam",
+        "canonicalPath": "/practice/math/calculus/exams/calculus-foundations/",
+        "pageRole": "practice-exam",
+        "shortTitle": "Calculus foundations practice exam"
       }
     },
     {
       "relationship": {
         "sourceId": "article.resource-math-calculus-derivatives-product-rule-vs-quotient-rule",
-        "targetId": "article.resource-math-calculus-derivatives-chain-rule",
+        "sourceRole": "decision-guide",
+        "targetId": "textbook-lesson.calc-1-unit-2a-derivative-foundations-techniques-advanced-notes-2a",
         "type": "explains"
       },
       "target": {
-        "id": "article.resource-math-calculus-derivatives-chain-rule",
-        "canonicalPath": "/subjects/math/calculus/derivatives/chain-rule/",
-        "pageRole": "method-guide",
-        "shortTitle": "The Chain Rule as a structure-reading skill"
+        "id": "textbook-lesson.calc-1-unit-2a-derivative-foundations-techniques-advanced-notes-2a",
+        "canonicalPath": "/subjects/math/calculus/derivatives/advanced-notes-2a/",
+        "pageRole": "textbook-lesson",
+        "shortTitle": "Advanced Notes: What Differentiability Is Really Saying"
       }
     }
   ],
@@ -1291,27 +865,29 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-calculus-integration-applications-average-value-of-a-function",
-        "targetId": "article.resource-math-calculus-integration-applications-work-and-fluid-force",
-        "type": "explains"
+        "sourceRole": "method-guide",
+        "targetId": "practice-exam.assessment-math-calculus-foundations-exam",
+        "type": "assesses"
       },
       "target": {
-        "id": "article.resource-math-calculus-integration-applications-work-and-fluid-force",
-        "canonicalPath": "/subjects/math/calculus/integration-applications/work-and-fluid-force/",
-        "pageRole": "decision-guide",
-        "shortTitle": "Setting up work and fluid-force integrals"
+        "id": "practice-exam.assessment-math-calculus-foundations-exam",
+        "canonicalPath": "/practice/math/calculus/exams/calculus-foundations/",
+        "pageRole": "practice-exam",
+        "shortTitle": "Calculus foundations practice exam"
       }
     },
     {
       "relationship": {
         "sourceId": "article.resource-math-calculus-integration-applications-average-value-of-a-function",
-        "targetId": "course.domain-math-calculus",
+        "sourceRole": "method-guide",
+        "targetId": "textbook-lesson.subjects-math-calculus-integration-applications-arc-length",
         "type": "explains"
       },
       "target": {
-        "id": "course.domain-math-calculus",
-        "canonicalPath": "/subjects/math/calculus/",
-        "pageRole": "course-hub",
-        "shortTitle": "Calculus"
+        "id": "textbook-lesson.subjects-math-calculus-integration-applications-arc-length",
+        "canonicalPath": "/subjects/math/calculus/integration-applications/arc-length/",
+        "pageRole": "textbook-lesson",
+        "shortTitle": "Arc Length"
       }
     }
   ],
@@ -1319,27 +895,29 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-calculus-integration-applications-washer-vs-shell",
-        "targetId": "article.resource-math-calculus-integration-applications-work-and-fluid-force",
-        "type": "explains"
+        "sourceRole": "decision-guide",
+        "targetId": "practice-exam.assessment-math-calculus-foundations-exam",
+        "type": "assesses"
       },
       "target": {
-        "id": "article.resource-math-calculus-integration-applications-work-and-fluid-force",
-        "canonicalPath": "/subjects/math/calculus/integration-applications/work-and-fluid-force/",
-        "pageRole": "decision-guide",
-        "shortTitle": "Setting up work and fluid-force integrals"
+        "id": "practice-exam.assessment-math-calculus-foundations-exam",
+        "canonicalPath": "/practice/math/calculus/exams/calculus-foundations/",
+        "pageRole": "practice-exam",
+        "shortTitle": "Calculus foundations practice exam"
       }
     },
     {
       "relationship": {
         "sourceId": "article.resource-math-calculus-integration-applications-washer-vs-shell",
-        "targetId": "course.domain-math-calculus",
+        "sourceRole": "decision-guide",
+        "targetId": "textbook-lesson.subjects-math-calculus-integration-applications-arc-length",
         "type": "explains"
       },
       "target": {
-        "id": "course.domain-math-calculus",
-        "canonicalPath": "/subjects/math/calculus/",
-        "pageRole": "course-hub",
-        "shortTitle": "Calculus"
+        "id": "textbook-lesson.subjects-math-calculus-integration-applications-arc-length",
+        "canonicalPath": "/subjects/math/calculus/integration-applications/arc-length/",
+        "pageRole": "textbook-lesson",
+        "shortTitle": "Arc Length"
       }
     }
   ],
@@ -1347,27 +925,29 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-calculus-integration-applications-work-and-fluid-force",
-        "targetId": "article.resource-math-calculus-derivative-applications-related-rates",
-        "type": "explains"
+        "sourceRole": "decision-guide",
+        "targetId": "practice-exam.assessment-math-calculus-foundations-exam",
+        "type": "assesses"
       },
       "target": {
-        "id": "article.resource-math-calculus-derivative-applications-related-rates",
-        "canonicalPath": "/subjects/math/calculus/derivative-applications/related-rates/",
-        "pageRole": "method-guide",
-        "shortTitle": "Related rates: translate the geometry before differentiating"
+        "id": "practice-exam.assessment-math-calculus-foundations-exam",
+        "canonicalPath": "/practice/math/calculus/exams/calculus-foundations/",
+        "pageRole": "practice-exam",
+        "shortTitle": "Calculus foundations practice exam"
       }
     },
     {
       "relationship": {
         "sourceId": "article.resource-math-calculus-integration-applications-work-and-fluid-force",
-        "targetId": "article.resource-math-calculus-integration-applications-average-value-of-a-function",
+        "sourceRole": "decision-guide",
+        "targetId": "textbook-lesson.subjects-math-calculus-integration-applications-arc-length",
         "type": "explains"
       },
       "target": {
-        "id": "article.resource-math-calculus-integration-applications-average-value-of-a-function",
-        "canonicalPath": "/subjects/math/calculus/integration-applications/average-value-of-a-function/",
-        "pageRole": "method-guide",
-        "shortTitle": "Average value of a function on an interval"
+        "id": "textbook-lesson.subjects-math-calculus-integration-applications-arc-length",
+        "canonicalPath": "/subjects/math/calculus/integration-applications/arc-length/",
+        "pageRole": "textbook-lesson",
+        "shortTitle": "Arc Length"
       }
     }
   ],
@@ -1375,27 +955,29 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-calculus-integration-techniques-improper-integrals",
-        "targetId": "article.resource-math-calculus-integration-techniques-u-substitution",
-        "type": "explains"
+        "sourceRole": "quick-answer",
+        "targetId": "assessment.assessment-math-calculus-method-selection",
+        "type": "assesses"
       },
       "target": {
-        "id": "article.resource-math-calculus-integration-techniques-u-substitution",
-        "canonicalPath": "/subjects/math/calculus/integration-techniques/u-substitution/",
-        "pageRole": "decision-guide",
-        "shortTitle": "u-substitution as the reverse Chain Rule"
+        "id": "assessment.assessment-math-calculus-method-selection",
+        "canonicalPath": "/practice/math/calculus/quizzes/integration-method-selection/",
+        "pageRole": "assessment",
+        "shortTitle": "Integration method selection"
       }
     },
     {
       "relationship": {
         "sourceId": "article.resource-math-calculus-integration-techniques-improper-integrals",
-        "targetId": "article.resource-math-calculus-sequences-series-harmonic-series-diverges",
-        "type": "explains"
+        "sourceRole": "quick-answer",
+        "targetId": "tool.tool-math-calculus-integration-method-finder",
+        "type": "uses_tool"
       },
       "target": {
-        "id": "article.resource-math-calculus-sequences-series-harmonic-series-diverges",
-        "canonicalPath": "/subjects/math/calculus/sequences-series/harmonic-series-diverges/",
-        "pageRole": "quick-answer",
-        "shortTitle": "Why does the harmonic series diverge?"
+        "id": "tool.tool-math-calculus-integration-method-finder",
+        "canonicalPath": "/tools/math/calculus/integration-method-finder/",
+        "pageRole": "tool",
+        "shortTitle": "Integration Method Finder"
       }
     }
   ],
@@ -1403,27 +985,29 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-calculus-integration-techniques-integration-by-parts-strategy",
-        "targetId": "article.resource-math-calculus-integration-techniques-improper-integrals",
-        "type": "explains"
+        "sourceRole": "decision-guide",
+        "targetId": "assessment.assessment-math-calculus-method-selection",
+        "type": "assesses"
       },
       "target": {
-        "id": "article.resource-math-calculus-integration-techniques-improper-integrals",
-        "canonicalPath": "/subjects/math/calculus/integration-techniques/improper-integrals/",
-        "pageRole": "quick-answer",
-        "shortTitle": "Improper integrals are limits, not unusual notation"
+        "id": "assessment.assessment-math-calculus-method-selection",
+        "canonicalPath": "/practice/math/calculus/quizzes/integration-method-selection/",
+        "pageRole": "assessment",
+        "shortTitle": "Integration method selection"
       }
     },
     {
       "relationship": {
         "sourceId": "article.resource-math-calculus-integration-techniques-integration-by-parts-strategy",
-        "targetId": "article.resource-math-calculus-integration-techniques-trigonometric-integrals",
-        "type": "explains"
+        "sourceRole": "decision-guide",
+        "targetId": "tool.tool-math-calculus-integration-method-finder",
+        "type": "uses_tool"
       },
       "target": {
-        "id": "article.resource-math-calculus-integration-techniques-trigonometric-integrals",
-        "canonicalPath": "/subjects/math/calculus/integration-techniques/trigonometric-integrals/",
-        "pageRole": "decision-guide",
-        "shortTitle": "How to choose an identity for a trigonometric integral"
+        "id": "tool.tool-math-calculus-integration-method-finder",
+        "canonicalPath": "/tools/math/calculus/integration-method-finder/",
+        "pageRole": "tool",
+        "shortTitle": "Integration Method Finder"
       }
     }
   ],
@@ -1431,27 +1015,29 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-calculus-integration-techniques-partial-fractions",
-        "targetId": "article.resource-math-calculus-integration-techniques-improper-integrals",
-        "type": "explains"
+        "sourceRole": "decision-guide",
+        "targetId": "assessment.assessment-math-calculus-method-selection",
+        "type": "assesses"
       },
       "target": {
-        "id": "article.resource-math-calculus-integration-techniques-improper-integrals",
-        "canonicalPath": "/subjects/math/calculus/integration-techniques/improper-integrals/",
-        "pageRole": "quick-answer",
-        "shortTitle": "Improper integrals are limits, not unusual notation"
+        "id": "assessment.assessment-math-calculus-method-selection",
+        "canonicalPath": "/practice/math/calculus/quizzes/integration-method-selection/",
+        "pageRole": "assessment",
+        "shortTitle": "Integration method selection"
       }
     },
     {
       "relationship": {
         "sourceId": "article.resource-math-calculus-integration-techniques-partial-fractions",
-        "targetId": "article.resource-math-calculus-integration-techniques-trigonometric-substitution",
-        "type": "explains"
+        "sourceRole": "decision-guide",
+        "targetId": "tool.tool-math-calculus-integration-method-finder",
+        "type": "uses_tool"
       },
       "target": {
-        "id": "article.resource-math-calculus-integration-techniques-trigonometric-substitution",
-        "canonicalPath": "/subjects/math/calculus/integration-techniques/trigonometric-substitution/",
-        "pageRole": "decision-guide",
-        "shortTitle": "Choosing the right trigonometric substitution"
+        "id": "tool.tool-math-calculus-integration-method-finder",
+        "canonicalPath": "/tools/math/calculus/integration-method-finder/",
+        "pageRole": "tool",
+        "shortTitle": "Integration Method Finder"
       }
     }
   ],
@@ -1459,27 +1045,29 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-calculus-integration-techniques-trigonometric-integrals",
-        "targetId": "article.resource-math-calculus-integration-techniques-improper-integrals",
-        "type": "explains"
+        "sourceRole": "decision-guide",
+        "targetId": "assessment.assessment-math-calculus-method-selection",
+        "type": "assesses"
       },
       "target": {
-        "id": "article.resource-math-calculus-integration-techniques-improper-integrals",
-        "canonicalPath": "/subjects/math/calculus/integration-techniques/improper-integrals/",
-        "pageRole": "quick-answer",
-        "shortTitle": "Improper integrals are limits, not unusual notation"
+        "id": "assessment.assessment-math-calculus-method-selection",
+        "canonicalPath": "/practice/math/calculus/quizzes/integration-method-selection/",
+        "pageRole": "assessment",
+        "shortTitle": "Integration method selection"
       }
     },
     {
       "relationship": {
         "sourceId": "article.resource-math-calculus-integration-techniques-trigonometric-integrals",
-        "targetId": "article.resource-math-calculus-integration-techniques-trigonometric-substitution",
-        "type": "explains"
+        "sourceRole": "decision-guide",
+        "targetId": "tool.tool-math-calculus-integration-method-finder",
+        "type": "uses_tool"
       },
       "target": {
-        "id": "article.resource-math-calculus-integration-techniques-trigonometric-substitution",
-        "canonicalPath": "/subjects/math/calculus/integration-techniques/trigonometric-substitution/",
-        "pageRole": "decision-guide",
-        "shortTitle": "Choosing the right trigonometric substitution"
+        "id": "tool.tool-math-calculus-integration-method-finder",
+        "canonicalPath": "/tools/math/calculus/integration-method-finder/",
+        "pageRole": "tool",
+        "shortTitle": "Integration Method Finder"
       }
     }
   ],
@@ -1487,27 +1075,29 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-calculus-integration-techniques-trigonometric-substitution",
-        "targetId": "article.resource-math-calculus-integration-techniques-trigonometric-integrals",
-        "type": "explains"
+        "sourceRole": "decision-guide",
+        "targetId": "assessment.assessment-math-calculus-method-selection",
+        "type": "assesses"
       },
       "target": {
-        "id": "article.resource-math-calculus-integration-techniques-trigonometric-integrals",
-        "canonicalPath": "/subjects/math/calculus/integration-techniques/trigonometric-integrals/",
-        "pageRole": "decision-guide",
-        "shortTitle": "How to choose an identity for a trigonometric integral"
+        "id": "assessment.assessment-math-calculus-method-selection",
+        "canonicalPath": "/practice/math/calculus/quizzes/integration-method-selection/",
+        "pageRole": "assessment",
+        "shortTitle": "Integration method selection"
       }
     },
     {
       "relationship": {
         "sourceId": "article.resource-math-calculus-integration-techniques-trigonometric-substitution",
-        "targetId": "article.resource-math-calculus-integration-techniques-u-substitution",
-        "type": "explains"
+        "sourceRole": "decision-guide",
+        "targetId": "tool.tool-math-calculus-integration-method-finder",
+        "type": "uses_tool"
       },
       "target": {
-        "id": "article.resource-math-calculus-integration-techniques-u-substitution",
-        "canonicalPath": "/subjects/math/calculus/integration-techniques/u-substitution/",
-        "pageRole": "decision-guide",
-        "shortTitle": "u-substitution as the reverse Chain Rule"
+        "id": "tool.tool-math-calculus-integration-method-finder",
+        "canonicalPath": "/tools/math/calculus/integration-method-finder/",
+        "pageRole": "tool",
+        "shortTitle": "Integration Method Finder"
       }
     }
   ],
@@ -1515,27 +1105,29 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-calculus-integration-techniques-u-substitution",
-        "targetId": "article.resource-math-calculus-derivatives-chain-rule",
-        "type": "explains"
+        "sourceRole": "decision-guide",
+        "targetId": "assessment.assessment-math-calculus-method-selection",
+        "type": "assesses"
       },
       "target": {
-        "id": "article.resource-math-calculus-derivatives-chain-rule",
-        "canonicalPath": "/subjects/math/calculus/derivatives/chain-rule/",
-        "pageRole": "method-guide",
-        "shortTitle": "The Chain Rule as a structure-reading skill"
+        "id": "assessment.assessment-math-calculus-method-selection",
+        "canonicalPath": "/practice/math/calculus/quizzes/integration-method-selection/",
+        "pageRole": "assessment",
+        "shortTitle": "Integration method selection"
       }
     },
     {
       "relationship": {
         "sourceId": "article.resource-math-calculus-integration-techniques-u-substitution",
-        "targetId": "article.resource-math-calculus-integration-techniques-improper-integrals",
-        "type": "explains"
+        "sourceRole": "decision-guide",
+        "targetId": "tool.tool-math-calculus-integration-method-finder",
+        "type": "uses_tool"
       },
       "target": {
-        "id": "article.resource-math-calculus-integration-techniques-improper-integrals",
-        "canonicalPath": "/subjects/math/calculus/integration-techniques/improper-integrals/",
-        "pageRole": "quick-answer",
-        "shortTitle": "Improper integrals are limits, not unusual notation"
+        "id": "tool.tool-math-calculus-integration-method-finder",
+        "canonicalPath": "/tools/math/calculus/integration-method-finder/",
+        "pageRole": "tool",
+        "shortTitle": "Integration Method Finder"
       }
     }
   ],
@@ -1543,27 +1135,29 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-calculus-limits-continuity-continuity-at-a-point",
-        "targetId": "article.resource-math-calculus-limits-continuity-evaluating-indeterminate-limits",
-        "type": "explains"
+        "sourceRole": "method-guide",
+        "targetId": "assessment.assessment-math-calculus-readiness",
+        "type": "assesses"
       },
       "target": {
-        "id": "article.resource-math-calculus-limits-continuity-evaluating-indeterminate-limits",
-        "canonicalPath": "/subjects/math/calculus/limits-continuity/evaluating-indeterminate-limits/",
-        "pageRole": "quick-answer",
-        "shortTitle": "How to evaluate an indeterminate limit"
+        "id": "assessment.assessment-math-calculus-readiness",
+        "canonicalPath": "/practice/math/calculus/diagnostics/calculus-readiness/",
+        "pageRole": "assessment",
+        "shortTitle": "Calculus readiness diagnostic"
       }
     },
     {
       "relationship": {
         "sourceId": "article.resource-math-calculus-limits-continuity-continuity-at-a-point",
-        "targetId": "article.resource-math-calculus-limits-continuity-squeeze-theorem",
+        "sourceRole": "method-guide",
+        "targetId": "textbook-lesson.calc-1-unit-2b-derivative-applications-mean-value-theorem",
         "type": "explains"
       },
       "target": {
-        "id": "article.resource-math-calculus-limits-continuity-squeeze-theorem",
-        "canonicalPath": "/subjects/math/calculus/limits-continuity/squeeze-theorem/",
-        "pageRole": "quick-answer",
-        "shortTitle": "How and when to use the Squeeze Theorem"
+        "id": "textbook-lesson.calc-1-unit-2b-derivative-applications-mean-value-theorem",
+        "canonicalPath": "/subjects/math/calculus/derivative-applications/mean-value-theorem/",
+        "pageRole": "textbook-lesson",
+        "shortTitle": "The Mean Value Theorem"
       }
     }
   ],
@@ -1571,27 +1165,15 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-calculus-limits-continuity-evaluating-indeterminate-limits",
-        "targetId": "article.resource-math-calculus-limits-continuity-infinite-limits-and-asymptotes",
-        "type": "explains"
+        "sourceRole": "quick-answer",
+        "targetId": "assessment.assessment-math-calculus-readiness",
+        "type": "assesses"
       },
       "target": {
-        "id": "article.resource-math-calculus-limits-continuity-infinite-limits-and-asymptotes",
-        "canonicalPath": "/subjects/math/calculus/limits-continuity/infinite-limits-and-asymptotes/",
-        "pageRole": "method-guide",
-        "shortTitle": "Infinite limits and vertical asymptotes"
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "article.resource-math-calculus-limits-continuity-evaluating-indeterminate-limits",
-        "targetId": "article.resource-math-calculus-limits-continuity-limit-of-sin-x-over-x",
-        "type": "explains"
-      },
-      "target": {
-        "id": "article.resource-math-calculus-limits-continuity-limit-of-sin-x-over-x",
-        "canonicalPath": "/subjects/math/calculus/limits-continuity/limit-of-sin-x-over-x/",
-        "pageRole": "quick-answer",
-        "shortTitle": "Why is the limit of sin x over x equal to 1?"
+        "id": "assessment.assessment-math-calculus-readiness",
+        "canonicalPath": "/practice/math/calculus/diagnostics/calculus-readiness/",
+        "pageRole": "assessment",
+        "shortTitle": "Calculus readiness diagnostic"
       }
     }
   ],
@@ -1599,27 +1181,15 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-calculus-limits-continuity-infinite-limits-and-asymptotes",
-        "targetId": "article.resource-math-calculus-derivative-applications-curve-sketching-from-derivatives",
-        "type": "explains"
+        "sourceRole": "method-guide",
+        "targetId": "assessment.assessment-math-calculus-readiness",
+        "type": "assesses"
       },
       "target": {
-        "id": "article.resource-math-calculus-derivative-applications-curve-sketching-from-derivatives",
-        "canonicalPath": "/subjects/math/calculus/derivative-applications/curve-sketching-from-derivatives/",
-        "pageRole": "method-guide",
-        "shortTitle": "Curve sketching from first and second derivatives"
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "article.resource-math-calculus-limits-continuity-infinite-limits-and-asymptotes",
-        "targetId": "article.resource-math-calculus-limits-continuity-continuity-at-a-point",
-        "type": "explains"
-      },
-      "target": {
-        "id": "article.resource-math-calculus-limits-continuity-continuity-at-a-point",
-        "canonicalPath": "/subjects/math/calculus/limits-continuity/continuity-at-a-point/",
-        "pageRole": "method-guide",
-        "shortTitle": "What continuity at a point really requires"
+        "id": "assessment.assessment-math-calculus-readiness",
+        "canonicalPath": "/practice/math/calculus/diagnostics/calculus-readiness/",
+        "pageRole": "assessment",
+        "shortTitle": "Calculus readiness diagnostic"
       }
     }
   ],
@@ -1627,27 +1197,15 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-calculus-limits-continuity-limit-of-sin-x-over-x",
-        "targetId": "article.resource-math-calculus-limits-continuity-continuity-at-a-point",
-        "type": "explains"
+        "sourceRole": "quick-answer",
+        "targetId": "assessment.assessment-math-calculus-readiness",
+        "type": "assesses"
       },
       "target": {
-        "id": "article.resource-math-calculus-limits-continuity-continuity-at-a-point",
-        "canonicalPath": "/subjects/math/calculus/limits-continuity/continuity-at-a-point/",
-        "pageRole": "method-guide",
-        "shortTitle": "What continuity at a point really requires"
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "article.resource-math-calculus-limits-continuity-limit-of-sin-x-over-x",
-        "targetId": "article.resource-math-calculus-limits-continuity-evaluating-indeterminate-limits",
-        "type": "explains"
-      },
-      "target": {
-        "id": "article.resource-math-calculus-limits-continuity-evaluating-indeterminate-limits",
-        "canonicalPath": "/subjects/math/calculus/limits-continuity/evaluating-indeterminate-limits/",
-        "pageRole": "quick-answer",
-        "shortTitle": "How to evaluate an indeterminate limit"
+        "id": "assessment.assessment-math-calculus-readiness",
+        "canonicalPath": "/practice/math/calculus/diagnostics/calculus-readiness/",
+        "pageRole": "assessment",
+        "shortTitle": "Calculus readiness diagnostic"
       }
     }
   ],
@@ -1655,27 +1213,15 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-calculus-limits-continuity-one-sided-limits-and-jump-discontinuities",
-        "targetId": "article.resource-math-calculus-limits-continuity-continuity-at-a-point",
-        "type": "explains"
+        "sourceRole": "method-guide",
+        "targetId": "assessment.assessment-math-calculus-readiness",
+        "type": "assesses"
       },
       "target": {
-        "id": "article.resource-math-calculus-limits-continuity-continuity-at-a-point",
-        "canonicalPath": "/subjects/math/calculus/limits-continuity/continuity-at-a-point/",
-        "pageRole": "method-guide",
-        "shortTitle": "What continuity at a point really requires"
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "article.resource-math-calculus-limits-continuity-one-sided-limits-and-jump-discontinuities",
-        "targetId": "article.resource-math-calculus-limits-continuity-evaluating-indeterminate-limits",
-        "type": "explains"
-      },
-      "target": {
-        "id": "article.resource-math-calculus-limits-continuity-evaluating-indeterminate-limits",
-        "canonicalPath": "/subjects/math/calculus/limits-continuity/evaluating-indeterminate-limits/",
-        "pageRole": "quick-answer",
-        "shortTitle": "How to evaluate an indeterminate limit"
+        "id": "assessment.assessment-math-calculus-readiness",
+        "canonicalPath": "/practice/math/calculus/diagnostics/calculus-readiness/",
+        "pageRole": "assessment",
+        "shortTitle": "Calculus readiness diagnostic"
       }
     }
   ],
@@ -1683,27 +1229,15 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-calculus-limits-continuity-squeeze-theorem",
-        "targetId": "article.resource-math-calculus-limits-continuity-continuity-at-a-point",
-        "type": "explains"
+        "sourceRole": "quick-answer",
+        "targetId": "assessment.assessment-math-calculus-readiness",
+        "type": "assesses"
       },
       "target": {
-        "id": "article.resource-math-calculus-limits-continuity-continuity-at-a-point",
-        "canonicalPath": "/subjects/math/calculus/limits-continuity/continuity-at-a-point/",
-        "pageRole": "method-guide",
-        "shortTitle": "What continuity at a point really requires"
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "article.resource-math-calculus-limits-continuity-squeeze-theorem",
-        "targetId": "article.resource-math-calculus-limits-continuity-evaluating-indeterminate-limits",
-        "type": "explains"
-      },
-      "target": {
-        "id": "article.resource-math-calculus-limits-continuity-evaluating-indeterminate-limits",
-        "canonicalPath": "/subjects/math/calculus/limits-continuity/evaluating-indeterminate-limits/",
-        "pageRole": "quick-answer",
-        "shortTitle": "How to evaluate an indeterminate limit"
+        "id": "assessment.assessment-math-calculus-readiness",
+        "canonicalPath": "/practice/math/calculus/diagnostics/calculus-readiness/",
+        "pageRole": "assessment",
+        "shortTitle": "Calculus readiness diagnostic"
       }
     }
   ],
@@ -1711,19 +1245,7 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-calculus-sequences-series-harmonic-series-diverges",
-        "targetId": "article.resource-math-calculus-integration-techniques-improper-integrals",
-        "type": "explains"
-      },
-      "target": {
-        "id": "article.resource-math-calculus-integration-techniques-improper-integrals",
-        "canonicalPath": "/subjects/math/calculus/integration-techniques/improper-integrals/",
-        "pageRole": "quick-answer",
-        "shortTitle": "Improper integrals are limits, not unusual notation"
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "article.resource-math-calculus-sequences-series-harmonic-series-diverges",
+        "sourceRole": "quick-answer",
         "targetId": "practice-exam.assessment-math-calculus-foundations-exam",
         "type": "assesses"
       },
@@ -1739,6 +1261,7 @@
     {
       "relationship": {
         "sourceId": "article.resource-math-calculus-sequences-series-ratio-test-vs-root-test",
+        "sourceRole": "decision-guide",
         "targetId": "practice-exam.assessment-math-calculus-foundations-exam",
         "type": "assesses"
       },
@@ -1754,6 +1277,7 @@
     {
       "relationship": {
         "sourceId": "article.topic-math-algebra-expressions-equations",
+        "sourceRole": "quick-answer",
         "targetId": "tool.tool-math-algebra-expression-checker",
         "type": "uses_tool"
       },
@@ -1769,6 +1293,7 @@
     {
       "relationship": {
         "sourceId": "article.topic-math-algebra-linear-relationships",
+        "sourceRole": "quick-answer",
         "targetId": "tool.tool-math-algebra-expression-checker",
         "type": "uses_tool"
       },
@@ -1784,6 +1309,7 @@
     {
       "relationship": {
         "sourceId": "article.topic-math-algebra-polynomials-factoring",
+        "sourceRole": "quick-answer",
         "targetId": "tool.tool-math-algebra-expression-checker",
         "type": "uses_tool"
       },
@@ -1799,6 +1325,7 @@
     {
       "relationship": {
         "sourceId": "article.topic-math-algebra-radicals-exponents-functions",
+        "sourceRole": "quick-answer",
         "targetId": "tool.tool-math-algebra-expression-checker",
         "type": "uses_tool"
       },
@@ -1814,6 +1341,7 @@
     {
       "relationship": {
         "sourceId": "article.topic-math-algebra-rational-expressions",
+        "sourceRole": "quick-answer",
         "targetId": "tool.tool-math-algebra-expression-checker",
         "type": "uses_tool"
       },
@@ -1829,6 +1357,7 @@
     {
       "relationship": {
         "sourceId": "article.topic-math-algebra-systems-inequalities",
+        "sourceRole": "quick-answer",
         "targetId": "tool.tool-math-algebra-expression-checker",
         "type": "uses_tool"
       },
@@ -1844,6 +1373,7 @@
     {
       "relationship": {
         "sourceId": "article.topic-math-calculus-integration-techniques",
+        "sourceRole": "quick-answer",
         "targetId": "assessment.assessment-math-calculus-method-selection",
         "type": "assesses"
       },
@@ -1857,8 +1387,9 @@
     {
       "relationship": {
         "sourceId": "article.topic-math-calculus-integration-techniques",
+        "sourceRole": "quick-answer",
         "targetId": "textbook-lesson.subjects-math-calculus-integrals-accumulation-functions",
-        "type": "full_version_of"
+        "type": "explains"
       },
       "target": {
         "id": "textbook-lesson.subjects-math-calculus-integrals-accumulation-functions",
@@ -1872,27 +1403,29 @@
     {
       "relationship": {
         "sourceId": "textbook-lesson.calc-1-unit-2b-derivative-applications-unit-2b-review",
-        "targetId": "assessment.practice-calculus-hub",
-        "type": "assesses"
+        "sourceRole": "decision-guide",
+        "targetId": "textbook-lesson.calc-1-unit-2b-derivative-applications-advanced-notes",
+        "type": "explains"
       },
       "target": {
-        "id": "assessment.practice-calculus-hub",
-        "canonicalPath": "/practice/math/calculus/",
-        "pageRole": "assessment",
-        "shortTitle": "Pick the kind of calculus practice you need."
+        "id": "textbook-lesson.calc-1-unit-2b-derivative-applications-advanced-notes",
+        "canonicalPath": "/subjects/math/calculus/derivative-applications/advanced-notes/",
+        "pageRole": "textbook-lesson",
+        "shortTitle": "Advanced Notes: Analysis Behind the Applications"
       }
     },
     {
       "relationship": {
         "sourceId": "textbook-lesson.calc-1-unit-2b-derivative-applications-unit-2b-review",
-        "targetId": "course.domain-math-calculus",
+        "sourceRole": "decision-guide",
+        "targetId": "textbook-lesson.calc-1-unit-2b-derivative-applications-extrema-and-critical-numbers",
         "type": "explains"
       },
       "target": {
-        "id": "course.domain-math-calculus",
-        "canonicalPath": "/subjects/math/calculus/",
-        "pageRole": "course-hub",
-        "shortTitle": "Calculus"
+        "id": "textbook-lesson.calc-1-unit-2b-derivative-applications-extrema-and-critical-numbers",
+        "canonicalPath": "/subjects/math/calculus/derivative-applications/extrema-and-critical-numbers/",
+        "pageRole": "textbook-lesson",
+        "shortTitle": "Extrema and Critical Numbers"
       }
     }
   ],
@@ -1900,19 +1433,21 @@
     {
       "relationship": {
         "sourceId": "textbook-lesson.limits.calculus-limits-and-continuity",
-        "targetId": "assessment.practice-calculus-hub",
+        "sourceRole": "decision-guide",
+        "targetId": "worksheet.calculus-resource-evaluating-limits",
         "type": "assesses"
       },
       "target": {
-        "id": "assessment.practice-calculus-hub",
-        "canonicalPath": "/practice/math/calculus/",
-        "pageRole": "assessment",
-        "shortTitle": "Pick the kind of calculus practice you need."
+        "id": "worksheet.calculus-resource-evaluating-limits",
+        "canonicalPath": "/subjects/math/calculus/worksheets/evaluating-limits/",
+        "pageRole": "worksheet",
+        "shortTitle": "Evaluating Limits Worksheet with Complete Solutions"
       }
     },
     {
       "relationship": {
         "sourceId": "textbook-lesson.limits.calculus-limits-and-continuity",
+        "sourceRole": "decision-guide",
         "targetId": "practice-exam.calculus-resource-calculus-1-final",
         "type": "assesses"
       },
@@ -1928,27 +1463,15 @@
     {
       "relationship": {
         "sourceId": "textbook-lesson.limits.calculus-limits-cosine-limits",
-        "targetId": "assessment.practice-calculus-hub",
+        "sourceRole": "decision-guide",
+        "targetId": "resource-hub.practice.math.calculus",
         "type": "assesses"
       },
       "target": {
-        "id": "assessment.practice-calculus-hub",
+        "id": "resource-hub.practice.math.calculus",
         "canonicalPath": "/practice/math/calculus/",
         "pageRole": "assessment",
         "shortTitle": "Pick the kind of calculus practice you need."
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "textbook-lesson.limits.calculus-limits-cosine-limits",
-        "targetId": "textbook-lesson.limits.calculus-limits-and-continuity",
-        "type": "explains"
-      },
-      "target": {
-        "id": "textbook-lesson.limits.calculus-limits-and-continuity",
-        "canonicalPath": "/subjects/math/calculus/limits-continuity/unit/",
-        "pageRole": "decision-guide",
-        "shortTitle": "Limits and Continuity Course Overview"
       }
     }
   ],
@@ -1956,27 +1479,15 @@
     {
       "relationship": {
         "sourceId": "textbook-lesson.limits.calculus-limits-infinite-limits",
-        "targetId": "assessment.practice-calculus-hub",
+        "sourceRole": "decision-guide",
+        "targetId": "resource-hub.practice.math.calculus",
         "type": "assesses"
       },
       "target": {
-        "id": "assessment.practice-calculus-hub",
+        "id": "resource-hub.practice.math.calculus",
         "canonicalPath": "/practice/math/calculus/",
         "pageRole": "assessment",
         "shortTitle": "Pick the kind of calculus practice you need."
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "textbook-lesson.limits.calculus-limits-infinite-limits",
-        "targetId": "textbook-lesson.limits.calculus-limits-and-continuity",
-        "type": "explains"
-      },
-      "target": {
-        "id": "textbook-lesson.limits.calculus-limits-and-continuity",
-        "canonicalPath": "/subjects/math/calculus/limits-continuity/unit/",
-        "pageRole": "decision-guide",
-        "shortTitle": "Limits and Continuity Course Overview"
       }
     }
   ],
@@ -1984,27 +1495,15 @@
     {
       "relationship": {
         "sourceId": "textbook-lesson.limits.calculus-limits-trig-limit-decision-guide",
-        "targetId": "assessment.practice-calculus-hub",
+        "sourceRole": "decision-guide",
+        "targetId": "resource-hub.practice.math.calculus",
         "type": "assesses"
       },
       "target": {
-        "id": "assessment.practice-calculus-hub",
+        "id": "resource-hub.practice.math.calculus",
         "canonicalPath": "/practice/math/calculus/",
         "pageRole": "assessment",
         "shortTitle": "Pick the kind of calculus practice you need."
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "textbook-lesson.limits.calculus-limits-trig-limit-decision-guide",
-        "targetId": "textbook-lesson.limits.calculus-limits-and-continuity",
-        "type": "explains"
-      },
-      "target": {
-        "id": "textbook-lesson.limits.calculus-limits-and-continuity",
-        "canonicalPath": "/subjects/math/calculus/limits-continuity/unit/",
-        "pageRole": "decision-guide",
-        "shortTitle": "Limits and Continuity Course Overview"
       }
     }
   ],
@@ -2012,27 +1511,15 @@
     {
       "relationship": {
         "sourceId": "textbook-lesson.limits.calculus-limits-trig-limits-concept-quiz",
-        "targetId": "assessment.practice-calculus-hub",
+        "sourceRole": "decision-guide",
+        "targetId": "resource-hub.practice.math.calculus",
         "type": "assesses"
       },
       "target": {
-        "id": "assessment.practice-calculus-hub",
+        "id": "resource-hub.practice.math.calculus",
         "canonicalPath": "/practice/math/calculus/",
         "pageRole": "assessment",
         "shortTitle": "Pick the kind of calculus practice you need."
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "textbook-lesson.limits.calculus-limits-trig-limits-concept-quiz",
-        "targetId": "textbook-lesson.limits.calculus-limits-and-continuity",
-        "type": "explains"
-      },
-      "target": {
-        "id": "textbook-lesson.limits.calculus-limits-and-continuity",
-        "canonicalPath": "/subjects/math/calculus/limits-continuity/unit/",
-        "pageRole": "decision-guide",
-        "shortTitle": "Limits and Continuity Course Overview"
       }
     }
   ],
@@ -2040,27 +1527,15 @@
     {
       "relationship": {
         "sourceId": "textbook-lesson.limits.calculus-limits-trig-limits-practice",
-        "targetId": "assessment.practice-calculus-hub",
+        "sourceRole": "decision-guide",
+        "targetId": "resource-hub.practice.math.calculus",
         "type": "assesses"
       },
       "target": {
-        "id": "assessment.practice-calculus-hub",
+        "id": "resource-hub.practice.math.calculus",
         "canonicalPath": "/practice/math/calculus/",
         "pageRole": "assessment",
         "shortTitle": "Pick the kind of calculus practice you need."
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "textbook-lesson.limits.calculus-limits-trig-limits-practice",
-        "targetId": "textbook-lesson.limits.calculus-limits-and-continuity",
-        "type": "explains"
-      },
-      "target": {
-        "id": "textbook-lesson.limits.calculus-limits-and-continuity",
-        "canonicalPath": "/subjects/math/calculus/limits-continuity/unit/",
-        "pageRole": "decision-guide",
-        "shortTitle": "Limits and Continuity Course Overview"
       }
     }
   ],
@@ -2068,27 +1543,15 @@
     {
       "relationship": {
         "sourceId": "textbook-lesson.limits.calculus-limits-trig-limits-review",
-        "targetId": "assessment.practice-calculus-hub",
+        "sourceRole": "decision-guide",
+        "targetId": "resource-hub.practice.math.calculus",
         "type": "assesses"
       },
       "target": {
-        "id": "assessment.practice-calculus-hub",
+        "id": "resource-hub.practice.math.calculus",
         "canonicalPath": "/practice/math/calculus/",
         "pageRole": "assessment",
         "shortTitle": "Pick the kind of calculus practice you need."
-      }
-    },
-    {
-      "relationship": {
-        "sourceId": "textbook-lesson.limits.calculus-limits-trig-limits-review",
-        "targetId": "textbook-lesson.limits.calculus-limits-and-continuity",
-        "type": "explains"
-      },
-      "target": {
-        "id": "textbook-lesson.limits.calculus-limits-and-continuity",
-        "canonicalPath": "/subjects/math/calculus/limits-continuity/unit/",
-        "pageRole": "decision-guide",
-        "shortTitle": "Limits and Continuity Course Overview"
       }
     }
   ]

@@ -2255,65 +2255,7 @@
     ]
   },
   {
-    "id": "assessment.practice-calculus-hub",
-    "nodeType": "assessment",
-    "pageRole": "assessment",
-    "title": "Calculus practice",
-    "shortTitle": "Pick the kind of calculus practice you need.",
-    "canonicalPath": "/practice/math/calculus/",
-    "subjectId": "subject.math",
-    "courseId": "course.math.calculus",
-    "unitId": null,
-    "topicIds": [
-      "topic.math.calculus"
-    ],
-    "primaryConceptId": "concept.math.calculus",
-    "secondaryConceptIds": [],
-    "skillIds": [
-      "skill.math.calculus",
-      "skill.math.assessment-calculus",
-      "skill.math.calculus-practice"
-    ],
-    "indexPolicy": "index",
-    "status": "published",
-    "searchAliases": [
-      "calculus",
-      "assessment calculus",
-      "calculus practice"
-    ],
-    "formerPaths": []
-  },
-  {
-    "id": "assessment.practice-math-hub",
-    "nodeType": "assessment",
-    "pageRole": "assessment",
-    "title": "Mathematics practice",
-    "shortTitle": "Choose the mathematics course you are studying.",
-    "canonicalPath": "/practice/math/",
-    "subjectId": "subject.math",
-    "courseId": null,
-    "unitId": null,
-    "topicIds": [
-      "topic.math.math"
-    ],
-    "primaryConceptId": "concept.math.math",
-    "secondaryConceptIds": [],
-    "skillIds": [
-      "skill.math.math",
-      "skill.math.assessment-math",
-      "skill.math.mathematics-practice"
-    ],
-    "indexPolicy": "index",
-    "status": "published",
-    "searchAliases": [
-      "math",
-      "assessment math",
-      "mathematics practice"
-    ],
-    "formerPaths": []
-  },
-  {
-    "id": "course.domain-math-algebra",
+    "id": "course.math.algebra",
     "nodeType": "course",
     "pageRole": "course-hub",
     "title": "Algebra course map",
@@ -2347,7 +2289,7 @@
     "formerPaths": []
   },
   {
-    "id": "course.domain-math-calculus",
+    "id": "course.math.calculus",
     "nodeType": "course",
     "pageRole": "course-hub",
     "title": "Calculus course map",
@@ -3624,6 +3566,64 @@
     "formerPaths": []
   },
   {
+    "id": "resource-hub.practice.math",
+    "nodeType": "assessment",
+    "pageRole": "assessment",
+    "title": "Mathematics practice",
+    "shortTitle": "Choose the mathematics course you are studying.",
+    "canonicalPath": "/practice/math/",
+    "subjectId": "subject.math",
+    "courseId": null,
+    "unitId": null,
+    "topicIds": [
+      "topic.math.math"
+    ],
+    "primaryConceptId": "concept.math.math",
+    "secondaryConceptIds": [],
+    "skillIds": [
+      "skill.math.math",
+      "skill.math.assessment-math",
+      "skill.math.mathematics-practice"
+    ],
+    "indexPolicy": "index",
+    "status": "published",
+    "searchAliases": [
+      "math",
+      "assessment math",
+      "mathematics practice"
+    ],
+    "formerPaths": []
+  },
+  {
+    "id": "resource-hub.practice.math.calculus",
+    "nodeType": "assessment",
+    "pageRole": "assessment",
+    "title": "Calculus practice",
+    "shortTitle": "Pick the kind of calculus practice you need.",
+    "canonicalPath": "/practice/math/calculus/",
+    "subjectId": "subject.math",
+    "courseId": "course.math.calculus",
+    "unitId": null,
+    "topicIds": [
+      "topic.math.calculus"
+    ],
+    "primaryConceptId": "concept.math.calculus",
+    "secondaryConceptIds": [],
+    "skillIds": [
+      "skill.math.calculus",
+      "skill.math.assessment-calculus",
+      "skill.math.calculus-practice"
+    ],
+    "indexPolicy": "index",
+    "status": "published",
+    "searchAliases": [
+      "calculus",
+      "assessment calculus",
+      "calculus practice"
+    ],
+    "formerPaths": []
+  },
+  {
     "id": "resource-hub.resource-hub-formula-sheets",
     "nodeType": "resource-hub",
     "pageRole": "resource-hub",
@@ -3749,7 +3749,7 @@
     "formerPaths": []
   },
   {
-    "id": "subject.legacy.subjects",
+    "id": "subject.all",
     "nodeType": "subject",
     "pageRole": "subject-hub",
     "title": "Browse subjects",
@@ -17556,7 +17556,40 @@
     ]
   },
   {
-    "id": "unit.calc-1-unit-2a-derivative-foundations-techniques-derivatives",
+    "id": "unit.calculus.1",
+    "nodeType": "unit",
+    "pageRole": "unit-hub",
+    "title": "Limits & Continuity",
+    "shortTitle": "Limits & Continuity",
+    "canonicalPath": "/subjects/math/calculus/limits-continuity/",
+    "subjectId": "subject.math",
+    "courseId": "course.math.calculus",
+    "unitId": "unit.calculus.1",
+    "topicIds": [
+      "topic.math.continuity"
+    ],
+    "primaryConceptId": "concept.math.continuity",
+    "secondaryConceptIds": [],
+    "skillIds": [
+      "skill.math.calculus",
+      "skill.math.limits-continuity",
+      "skill.math.learn",
+      "skill.math.topic"
+    ],
+    "indexPolicy": "index",
+    "status": "published",
+    "searchAliases": [
+      "Calculus",
+      "limits continuity",
+      "learn",
+      "topic"
+    ],
+    "formerPaths": [
+      "/topics/calculus/limits-continuity/"
+    ]
+  },
+  {
+    "id": "unit.calculus.2a",
     "nodeType": "unit",
     "pageRole": "unit-hub",
     "title": "Unit 2A: Derivative Foundations and Differentiation Techniques",
@@ -17599,7 +17632,7 @@
     ]
   },
   {
-    "id": "unit.calc-1-unit-2b-derivative-applications-derivative-applications",
+    "id": "unit.calculus.2b",
     "nodeType": "unit",
     "pageRole": "unit-hub",
     "title": "Unit 2B: Applications of Derivatives",
@@ -17642,7 +17675,7 @@
     ]
   },
   {
-    "id": "unit.subjects-math-calculus-integrals",
+    "id": "unit.calculus.3a",
     "nodeType": "unit",
     "pageRole": "unit-hub",
     "title": "Unit 3A: Integral Foundations and Techniques",
@@ -17683,7 +17716,7 @@
     "formerPaths": []
   },
   {
-    "id": "unit.subjects-math-calculus-integration-applications",
+    "id": "unit.calculus.3b",
     "nodeType": "unit",
     "pageRole": "unit-hub",
     "title": "Unit 3B: Applications of Integration",
@@ -17725,46 +17758,7 @@
     ]
   },
   {
-    "id": "unit.subjects-math-calculus-power-series-and-taylor-series",
-    "nodeType": "unit",
-    "pageRole": "unit-hub",
-    "title": "Unit 4B: Power Series and Taylor Series",
-    "shortTitle": "Unit 4B: Power Series and Taylor Series",
-    "canonicalPath": "/subjects/math/calculus/power-series-and-taylor-series/",
-    "subjectId": "subject.math",
-    "courseId": "course.math.calculus",
-    "unitId": "unit.calculus.4b",
-    "topicIds": [
-      "topic.math.taylor-series"
-    ],
-    "primaryConceptId": "concept.math.taylor-series",
-    "secondaryConceptIds": [],
-    "skillIds": [
-      "skill.math.unit-4b-power-series-and-taylor-series",
-      "skill.math.orientation-and-the-power-series-roadmap",
-      "skill.math.power-series-and-taylor-series",
-      "skill.math.hub",
-      "skill.math.unit-4b",
-      "skill.math.sequence-series-convergence",
-      "skill.math.calculus"
-    ],
-    "indexPolicy": "index",
-    "status": "published",
-    "searchAliases": [
-      "unit 4b: power series and taylor series",
-      "Unit 4B: Power Series and Taylor Series",
-      "Orientation and the power-series roadmap",
-      "Power Series and Taylor Series",
-      "hub",
-      "Unit 4B",
-      "sequence series convergence",
-      "calculus",
-      "power series and taylor series"
-    ],
-    "formerPaths": []
-  },
-  {
-    "id": "unit.subjects-math-calculus-sequences-and-series",
+    "id": "unit.calculus.4a",
     "nodeType": "unit",
     "pageRole": "unit-hub",
     "title": "Unit 4A: Sequences and Infinite Series",
@@ -17807,37 +17801,43 @@
     ]
   },
   {
-    "id": "unit.topic-math-calculus-limits-continuity",
+    "id": "unit.calculus.4b",
     "nodeType": "unit",
     "pageRole": "unit-hub",
-    "title": "Limits & Continuity",
-    "shortTitle": "Limits & Continuity",
-    "canonicalPath": "/subjects/math/calculus/limits-continuity/",
+    "title": "Unit 4B: Power Series and Taylor Series",
+    "shortTitle": "Unit 4B: Power Series and Taylor Series",
+    "canonicalPath": "/subjects/math/calculus/power-series-and-taylor-series/",
     "subjectId": "subject.math",
     "courseId": "course.math.calculus",
-    "unitId": "unit.calculus.1",
+    "unitId": "unit.calculus.4b",
     "topicIds": [
-      "topic.math.continuity"
+      "topic.math.taylor-series"
     ],
-    "primaryConceptId": "concept.math.continuity",
+    "primaryConceptId": "concept.math.taylor-series",
     "secondaryConceptIds": [],
     "skillIds": [
-      "skill.math.calculus",
-      "skill.math.limits-continuity",
-      "skill.math.learn",
-      "skill.math.topic"
+      "skill.math.unit-4b-power-series-and-taylor-series",
+      "skill.math.orientation-and-the-power-series-roadmap",
+      "skill.math.power-series-and-taylor-series",
+      "skill.math.hub",
+      "skill.math.unit-4b",
+      "skill.math.sequence-series-convergence",
+      "skill.math.calculus"
     ],
     "indexPolicy": "index",
     "status": "published",
     "searchAliases": [
-      "Calculus",
-      "limits continuity",
-      "learn",
-      "topic"
+      "unit 4b: power series and taylor series",
+      "Unit 4B: Power Series and Taylor Series",
+      "Orientation and the power-series roadmap",
+      "Power Series and Taylor Series",
+      "hub",
+      "Unit 4B",
+      "sequence series convergence",
+      "calculus",
+      "power series and taylor series"
     ],
-    "formerPaths": [
-      "/topics/calculus/limits-continuity/"
-    ]
+    "formerPaths": []
   },
   {
     "id": "visual-guide.calculus-resource-convergence-tests-flowchart",
