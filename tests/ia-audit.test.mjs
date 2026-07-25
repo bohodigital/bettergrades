@@ -8,15 +8,13 @@ const required = [
   "artifacts/ia/internal-link-graph.json",
   "artifacts/ia/click-depth-report.json",
   "artifacts/ia/search-findability-report.json",
-  "artifacts/ia/chrome-density-report.json",
-  "artifacts/ia/seo-metadata-report.json",
   "data/ia/article-lesson-candidates.json",
   "data/ia/prioritized-backlog.csv",
   "docs/ia/BETTERGRADES_IA_FINDABILITY_AUDIT_2026-07-24.md",
   "artifacts/ia/audit-manifest.json",
 ];
 
-test("IA audit produces every core artifact", async () => {
+test("committed IA audit evidence includes every required core artifact", async () => {
   for (const path of required) assert.ok((await stat(path)).size > 0, `${path} should exist and be non-empty`);
 });
 

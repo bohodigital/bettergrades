@@ -9,6 +9,8 @@ const root = resolve(import.meta.dirname, "..");
 const outDir = resolve(root, "data/learning-graph");
 const check = process.argv.includes("--check");
 const tempBundle = resolve(tmpdir(), `bettergrades-learning-graph-${process.pid}.mjs`);
+const sourceCommitArg = process.argv.find((arg) => arg.startsWith("--source-commit="))?.split("=", 2)[1];
+const sourceTreeArg = process.argv.find((arg) => arg.startsWith("--source-tree="))?.split("=", 2)[1];
 
 function git(...args) {
   return execFileSync("git", args, { cwd: root, encoding: "utf8" }).trim();
@@ -70,7 +72,15 @@ await build({
 
 try {
   const { adaptCurrentRegistries } = await import(`${pathToFileURL(tempBundle).href}?v=${Date.now()}`);
-  const graph = adaptCurrentRegistries(git("rev-parse", "HEAD"), git("rev-parse", "HEAD^{tree}"));
+  const committedGraph = check
+    ? JSON.parse(await readFile(resolve(outDir, "graph.json"), "utf8"))
+    : null;
+  const sourceCommit = sourceCommitArg ?? committedGraph?.sourceCommit ?? git("rev-parse", "HEAD");
+  const sourceTree = sourceTreeArg ?? committedGraph?.sourceTree ?? git("rev-parse", `${sourceCommit}^{tree}`);
+  if (git("rev-parse", `${sourceCommit}^{tree}`) !== sourceTree) {
+    throw new Error(`Learning graph source binding mismatch: ${sourceCommit} does not resolve to ${sourceTree}`);
+  }
+  const graph = adaptCurrentRegistries(sourceCommit, sourceTree);
   const nodeByPath = new Map(graph.nodes.map((node) => [node.canonicalPath, node]));
   const provisional = [];
   const candidateSources = [
@@ -113,6 +123,8 @@ try {
   const skills = Array.from(new Set(graph.nodes.flatMap((node) => node.skillIds))).sort().map((id) => ({ id }));
   const publicRelationships = graph.relationships.filter((relationship) => ["approved", "existing"].includes(relationship.editorialStatus));
   const nodeById = new Map(graph.nodes.map((node) => [node.id, node]));
+  const publicTargetTypes = new Set(["textbook-lesson", "worksheet", "practice-exam", "worked-problem", "formula-sheet", "visual-guide", "glossary-term", "tool", "assessment"]);
+  const relationshipPriority = { full_version_of: 100, practices: 90, assesses: 80, references: 70, visualizes: 60, uses_tool: 50, explains: 40, follows: 30 };
   const publicArticleDestinations = Object.fromEntries(
     graph.nodes
       .filter((node) => node.nodeType === "article")
@@ -120,6 +132,21 @@ try {
         const seen = new Set();
         const destinations = publicRelationships
           .filter((relationship) => relationship.sourceId === source.id)
+          .filter((relationship) => {
+            const target = nodeById.get(relationship.targetId);
+            return target && publicTargetTypes.has(target.nodeType);
+          })
+          .sort((left, right) => {
+            const leftTarget = nodeById.get(left.targetId);
+            const rightTarget = nodeById.get(right.targetId);
+            const score = (relationship, target) =>
+              (relationshipPriority[relationship.type] ?? 0)
+              + target.skillIds.filter((id) => source.skillIds.includes(id)).length * 10
+              + (target.primaryConceptId && target.primaryConceptId === source.primaryConceptId ? 5 : 0)
+              + (target.unitId && target.unitId === source.unitId ? 4 : 0);
+            return score(right, rightTarget) - score(left, leftTarget)
+              || `${left.targetId}:${left.type}`.localeCompare(`${right.targetId}:${right.type}`);
+          })
           .flatMap((relationship) => {
             const target = nodeById.get(relationship.targetId);
             if (!target || seen.has(target.id)) return [];
@@ -127,6 +154,7 @@ try {
             return [{
               relationship: {
                 sourceId: relationship.sourceId,
+                sourceRole: source.pageRole,
                 targetId: relationship.targetId,
                 type: relationship.type,
               },

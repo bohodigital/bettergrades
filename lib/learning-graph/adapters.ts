@@ -46,17 +46,8 @@ const roleToType: Record<string, LearningNodeType> = {
 };
 
 function stableNodeId(path: string, role: string): string {
-  const publishing = publishingByPath.get(path);
-  if (publishing) return `${publishing.resourceType}.${publishing.id}`;
-  const hub = hubByPath.get(path);
-  if (hub) return `resource-hub.${hub.id}`;
-  const unitRoute = unitRouteByPath.get(path) as { id?: string } | undefined;
-  if (unitRoute?.id) return `${role === "unit-hub" ? "unit" : "textbook-lesson"}.${semanticToken(unitRoute.id)}`;
-  const limitsRoute = limitsRouteByPath.get(path) as { sourceSlug?: string } | undefined;
-  if (limitsRoute?.sourceSlug) return `${role === "unit-hub" ? "unit" : "textbook-lesson"}.limits.${semanticToken(limitsRoute.sourceSlug)}`;
-  const search = searchByPath.get(path);
-  if (search?.id && !String(search.id).startsWith("route:")) return `${roleToType[role] ?? "topic"}.${semanticToken(search.id)}`;
   const fixed: Record<string, string> = {
+    "/subjects/": "subject.all",
     "/subjects/math/": "subject.math",
     "/subjects/math/algebra/": "course.math.algebra",
     "/subjects/math/calculus/": "course.math.calculus",
@@ -67,7 +58,22 @@ function stableNodeId(path: string, role: string): string {
     "/resources/": "resource-hub.math.resources",
     "/tools/": "resource-hub.math.tools",
   };
-  return fixed[path] ?? `${roleToType[role] ?? "topic"}.legacy.${semanticToken(path)}`;
+  if (fixed[path]) return fixed[path];
+  if (role === "unit-hub") {
+    const unitId = unitIdFor(path);
+    if (unitId) return unitId;
+  }
+  const publishing = publishingByPath.get(path);
+  if (publishing) return `${publishing.resourceType}.${publishing.id}`;
+  const hub = hubByPath.get(path);
+  if (hub) return `resource-hub.${hub.id}`;
+  const unitRoute = unitRouteByPath.get(path) as { id?: string } | undefined;
+  if (unitRoute?.id) return `${role === "unit-hub" ? "unit" : "textbook-lesson"}.${semanticToken(unitRoute.id)}`;
+  const limitsRoute = limitsRouteByPath.get(path) as { sourceSlug?: string } | undefined;
+  if (limitsRoute?.sourceSlug) return `${role === "unit-hub" ? "unit" : "textbook-lesson"}.limits.${semanticToken(limitsRoute.sourceSlug)}`;
+  const search = searchByPath.get(path);
+  if (search?.id && !String(search.id).startsWith("route:")) return `${roleToType[role] ?? "topic"}.${semanticToken(search.id)}`;
+  return `${roleToType[role] ?? "topic"}.legacy.${semanticToken(path)}`;
 }
 
 function unitIdFor(path: string) {
@@ -127,7 +133,10 @@ function relationshipType(page: AuditPage, target: AuditPage): RelationshipType 
   if (["worksheet", "practice-exam", "assessment"].includes(target.page_role)) return page.page_role === "textbook-lesson" ? "practices" : "assesses";
   if (target.page_role === "glossary-term") return "references";
   if (target.page_role === "visual-guide") return "visualizes";
-  if (target.page_role === "textbook-lesson" && page.page_role !== "textbook-lesson") return "full_version_of";
+  // A rendered link proves an existing connection, not that editorial review
+  // selected it as the page's one primary full-learning destination. The
+  // dedicated candidate queue owns that stronger (provisional) assertion.
+  if (target.page_role === "textbook-lesson" && page.page_role !== "textbook-lesson") return "explains";
   return "explains";
 }
 

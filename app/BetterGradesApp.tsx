@@ -102,24 +102,24 @@ function Header() {
   return (
     <header className="site-header">
       <div className="header-inner">
-        <Link href="/" className="brand" aria-label="Better Grades home"><span className="brand-mark">≥</span><span>Better Grades</span></Link>
+        <a href="/" className="brand" aria-label="Better Grades home" onClick={() => navigationClick("/", "header-brand")}><span className="brand-mark">≥</span><span>Better Grades</span></a>
         <nav className="desktop-nav" aria-label="Primary">
           <details className="desktop-learn-menu">
             <summary>Learn <span aria-hidden="true">⌄</span></summary>
             <div className="desktop-learn-panel">
               <section>
                 <span>Courses</span>
-                <Link href="/subjects/math/algebra/"><b>Algebra</b><small>Foundations through functions</small></Link>
-                <Link href="/subjects/math/calculus/"><b>Calculus</b><small>The complete course navigator</small></Link>
+                <a href="/subjects/math/algebra/" onClick={() => navigationClick("/subjects/math/algebra/", "desktop-primary")}><b>Algebra</b><small>Foundations through functions</small></a>
+                <a href="/subjects/math/calculus/" onClick={() => navigationClick("/subjects/math/calculus/", "desktop-primary")}><b>Calculus</b><small>The complete course navigator</small></a>
                 <a href="/subjects/math/" onClick={() => navigationClick("/subjects/math/", "desktop-primary")}><b>All mathematics</b><small>Browse every course and resource</small></a>
               </section>
               <section className="desktop-calculus-chapters">
                 <span>Calculus chapters</span>
-                {calculusChapterLinks.map(([chapter, label, href]) => <Link href={href} key={href}><small>{chapter}</small><b>{label}</b></Link>)}
+                {calculusChapterLinks.map(([chapter, label, href]) => <a href={href} onClick={() => navigationClick(href, "desktop-primary")} key={href}><small>{chapter}</small><b>{label}</b></a>)}
               </section>
               <section className="desktop-learn-shortcuts">
                 <span>Get somewhere fast</span>
-                <Link href="/search/"><b>Find an answer</b><small>Search lessons, methods, and examples</small></Link>
+                <a href="/search/" onClick={() => navigationClick("/search/", "desktop-primary")}><b>Find an answer</b><small>Search lessons, methods, and examples</small></a>
                 <a href="/practice/math/calculus/" onClick={() => navigationClick("/practice/math/calculus/", "desktop-primary")}><b>Calculus practice</b><small>Quizzes, reviews, and exams</small></a>
                 <a href="/practice/math/calculus/exams/calculus-foundations/" onClick={() => navigationClick("/practice/math/calculus/exams/calculus-foundations/", "desktop-primary")}><b>Calculus foundations exam</b><small>Complete explained practice exam</small></a>
               </section>
@@ -128,7 +128,7 @@ function Header() {
           {nav.map(([label, href]) => <a key={href} href={href} onClick={() => navigationClick(href, "desktop-primary")} aria-current={isActive(href) ? "page" : undefined}>{label}</a>)}
         </nav>
         <div className="header-actions">
-          <Link href="/search/" className="header-search" aria-label="Search"><span>⌕</span><b>Search</b></Link>
+          <a href="/search/" className="header-search" aria-label="Search" onClick={() => navigationClick("/search/", "header-action")}><span>⌕</span><b>Search</b></a>
           <ThemeControl />
           <details className="mobile-menu"><summary aria-label="Open menu">Menu</summary><nav aria-label="Mobile navigation">
             <a className="mobile-navigation-link" href="/" onClick={() => navigationClick("/", "mobile-menu")}><b>Home</b><small>Return to Better Grades</small></a>
@@ -270,7 +270,14 @@ function SearchPage() {
     ...siteResults.filter((record) => record.kind === "tool" || record.kind === "practice").slice(0, 5),
     ...siteResults.filter((record) => record.kind === "glossary").slice(0, 5),
   ];
-  const resultGroups = [
+  const resultGroups = query ? [
+    {
+      id: "ranked",
+      title: "Best matches",
+      description: "Exact titles, registered aliases, and canonical path matches stay ahead of broader topic and body matches.",
+      records: visibleResults,
+    },
+  ] : [
     { id: "content", title: "Guides and direct answers", description: "The explanation first: complete guides, worked examples, and reviewed answers.", records: visibleResults.filter((record) => record.kind === "guide" || record.kind === "answer") },
     { id: "topics", title: "Topics and course maps", description: "See where this idea sits and what to learn before or after it.", records: visibleResults.filter((record) => record.kind === "topic") },
     { id: "actions", title: "Tools and practice", description: "Check an expression, choose a method, or work an explained set.", records: visibleResults.filter((record) => record.kind === "tool" || record.kind === "practice") },
@@ -297,7 +304,7 @@ function SearchPage() {
         <div className="search-filter-block"><span>Resource</span><div className="search-filters" aria-label="Filter by resource type">{[["all", "Everything"], ["guide", "Guides"], ["topic", "Topics"], ["glossary", "Glossary"], ["tool", "Tools"], ["practice", "Practice"], ["answer", "Direct answers"]].map(([value, label]) => <button key={value} type="button" className={kind === value ? "active" : ""} onClick={() => setKind(value as "all" | SearchKind)}>{label}</button>)}</div></div>
       </section>
       <section className="search-results section-pad">
-        <div className="results-head"><h2>{query ? `Results for “${query}”` : "Browse the index"}</h2><span>Organized by resource type</span></div>
+        <div className="results-head"><h2>{query ? `Results for “${query}”` : "Browse the index"}</h2><span>{query ? "Ranked by exactness and relevance" : "Organized by resource type"}</span></div>
         {showExpressionTool && <Link href={algebraCheckerHref(query)} className="expression-search-result"><span className="product-mark">x²</span><div><small>Interactive tool · Bounded Better Grades request</small><h3>Check or simplify this expression</h3><p>Your expression is carried into the calculator. Nothing unrelated is mixed into the result list.</p></div><b>Open with expression ↗</b></Link>}
         {resultGroups.map((group) => group.records.length ? <section className="site-search-group" key={group.id}><header><div><h3>{group.title}</h3><p>{group.description}</p></div></header><div className="site-search-list">{group.records.map((record) => <SiteSearchResult record={record} query={query} rank={siteResults.indexOf(record) + 1} key={record.id} />)}</div></section> : null)}
         {siteResults.length > visibleResults.length && <p className="search-limit-note">Showing the strongest matches. Add another word or choose a filter to narrow the index.</p>}

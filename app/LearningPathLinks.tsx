@@ -4,7 +4,7 @@ import { trackFindabilityEvent } from "../lib/learning-graph/analytics";
 import publicArticleDestinations from "../data/learning-graph/public-article-destinations.json";
 
 type PublicDestination = {
-  relationship: { sourceId: string; targetId: string; type: string };
+  relationship: { sourceId: string; sourceRole: string; targetId: string; type: string };
   target: { id: string; canonicalPath: string; pageRole: string; shortTitle: string };
 };
 
@@ -30,16 +30,25 @@ export function LearningPathLinks({ sourcePath, placement }: { sourcePath: strin
           href={target.canonicalPath}
           key={target.id}
           onClick={() => {
-            trackFindabilityEvent("learning_relationship_click", {
+            const eventData = {
               source_page_id: relationship.sourceId,
+              source_page_role: relationship.sourceRole,
               target_page_id: relationship.targetId,
               target_page_role: target.pageRole,
               relationship_type: relationship.type,
               placement,
               result_rank: index + 1,
-            });
-            const specific = target.pageRole === "textbook-lesson" ? "article_to_lesson_click" : target.pageRole === "glossary-term" ? "lesson_to_reference_click" : target.pageRole === "worksheet" || target.pageRole === "practice-exam" ? "lesson_to_practice_click" : "";
-            if (specific) trackFindabilityEvent(specific, { source_page_id: relationship.sourceId, target_page_id: relationship.targetId, relationship_type: relationship.type, placement });
+            };
+            trackFindabilityEvent("learning_relationship_click", eventData);
+            const articleRoles = new Set(["quick-answer", "concept-explainer", "method-guide", "decision-guide", "answer"]);
+            const specific =
+              articleRoles.has(relationship.sourceRole) && target.pageRole === "textbook-lesson" ? "article_to_lesson_click"
+              : relationship.sourceRole === "textbook-lesson" && articleRoles.has(target.pageRole) ? "lesson_to_article_click"
+              : relationship.sourceRole === "textbook-lesson" && ["worksheet", "practice-exam", "assessment"].includes(target.pageRole) ? "lesson_to_practice_click"
+              : relationship.sourceRole === "textbook-lesson" && target.pageRole === "glossary-term" ? "lesson_to_reference_click"
+              : relationship.sourceRole === "glossary-term" && target.pageRole === "textbook-lesson" ? "glossary_to_lesson_click"
+              : "";
+            if (specific) trackFindabilityEvent(specific, eventData);
           }}
         >
           <span>{purposeLabels[relationship.type] ?? "Continue learning"}</span><b>{target.shortTitle}</b><i>→</i>
