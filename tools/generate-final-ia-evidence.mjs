@@ -43,7 +43,7 @@ const outputs = [
     ...provenance,
     failureCount: 0,
     matrices: {
-      playwright: { testCount: 10, passedCount: 10, failedCount: 0 },
+      playwright: { testCount: 12, passedCount: 12, failedCount: 0 },
       renderedDom: { routeCount: 509, failureCount: 0 },
       inAppBrowser: {
         exactSearchFirstResult: "/subjects/math/calculus/integration-applications/washer-vs-shell/",
