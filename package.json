@@ -33,6 +33,9 @@
     "test:math": "node --test tests/calculus-resources.test.mjs",
     "test:browser": "playwright test --config=playwright.config.mjs && node tools/summarize-browser-results.mjs",
     "test:rendered-dom": "node tools/rendered-dom-audit.mjs",
+    "audit:ia": "node tools/ia-audit.mjs",
+    "audit:ia:browser": "node tools/ia-audit/browser-audit.mjs",
+    "audit:ia:test": "node --test tests/ia-audit.test.mjs",
     "test": "corepack pnpm run build:pages && node --test --test-concurrency=1 tests/*.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --ignore-pattern .wrangler --ignore-pattern worker-configuration.d.ts",
     "db:generate": "drizzle-kit generate"
