@@ -79,7 +79,7 @@ test("desktop navigation and learning-path clicks emit complete analytics dimens
   await context.close();
 });
 
-test("real navigation waits for delayed analytics identities", async ({ browser }) => {
+test("real navigation stays immediate and replays delayed analytics identities", async ({ browser }) => {
   const events = [];
   const context = await browser.newContext({ viewport: { width: 1440, height: 900 } });
   await context.exposeFunction("captureFindabilityEvent", (sink, args) => events.push({ sink, args }));
@@ -98,7 +98,7 @@ test("real navigation waits for delayed analytics identities", async ({ browser 
     page.waitForURL("**/resources/"),
     page.locator('.desktop-nav > a[href="/resources/"]').click(),
   ]);
-  expect(events.find((item) => item.sink === "ga4" && item.args[1] === "navigation_destination_click")?.args[2]).toMatchObject({
+  await expect.poll(() => events.find((item) => item.sink === "ga4" && item.args[1] === "navigation_destination_click")?.args[2]).toMatchObject({
     source_page_role: "home",
     target_page_role: "resource-library",
   });
@@ -121,10 +121,30 @@ test("real navigation waits for delayed analytics identities", async ({ browser 
     searchPage.waitForURL("**/practice/math/calculus/"),
     searchPage.locator(".site-search-result").first().click(),
   ]);
-  expect(searchEvents.find((item) => item.sink === "ga4" && item.args[1] === "site_search_result_click")?.args[2]).toMatchObject({
+  await expect.poll(() => searchEvents.find((item) => item.sink === "ga4" && item.args[1] === "site_search_result_click")?.args[2]).toMatchObject({
     source_page_role: "search",
     target_page_role: "assessment",
     result_rank: 1,
   });
   await searchContext.close();
+
+  let releaseIdentityRequest;
+  const identityRequestGate = new Promise((resolve) => {
+    releaseIdentityRequest = resolve;
+  });
+  const stalledContext = await browser.newContext({ viewport: { width: 1440, height: 900 } });
+  const stalledPage = await stalledContext.newPage();
+  await stalledPage.route("**/assets/route-identities-*.js", async (route) => {
+    await identityRequestGate;
+    await route.continue();
+  });
+  await stalledPage.goto("/");
+  const navigationStartedAt = Date.now();
+  await Promise.all([
+    stalledPage.waitForURL("**/resources/"),
+    stalledPage.locator('.desktop-nav > a[href="/resources/"]').click(),
+  ]);
+  expect(Date.now() - navigationStartedAt).toBeLessThan(1_000);
+  releaseIdentityRequest();
+  await stalledContext.close();
 });

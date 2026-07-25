@@ -81,15 +81,17 @@ test("visible query results preserve the exact search ranking contract", async (
 });
 
 test("findability click events carry source and target roles", async () => {
-  const [learningLinks, application] = await Promise.all([
+  const [learningLinks, application, analytics] = await Promise.all([
     readFile(resolve(root, "app/LearningPathLinks.tsx"), "utf8"),
     readFile(resolve(root, "app/BetterGradesApp.tsx"), "utf8"),
+    readFile(resolve(root, "lib/learning-graph/analytics.ts"), "utf8"),
   ]);
   assert.match(learningLinks, /source_page_role: relationship\.sourceRole/);
   assert.match(learningLinks, /target_page_role: target\.pageRole/);
   assert.match(learningLinks, /trackFindabilityEvent\(specific, eventData\)/);
-  assert.match(application, /source_page_id: source\.id/);
-  assert.match(application, /target_page_id: target\.id/);
+  assert.match(application, /trackFindabilityNavigation\(event, "site_search_result_click"/);
+  assert.match(analytics, /source_page_id: source\.id/);
+  assert.match(analytics, /target_page_id: target\.id/);
   assert.match(application, /relationship_type: "search_result"/);
   assert.match(application, /result_count: siteResults\.length/);
   assert.doesNotMatch(application, /result_rank: siteResults\.length/);

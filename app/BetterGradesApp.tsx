@@ -14,7 +14,7 @@ import { assessments, getAssessment } from "../lib/registry/practice";
 import { isExpressionOnlyQuery, searchKindLabels, searchSite, type SearchKind, type SiteSearchRecord } from "../lib/site-search";
 import { CourseHubContent, getArticle, LibraryArticleContent, LibraryHomeSection, LibrarySearchResults, searchLibrary, TopicContent } from "./LibraryPages";
 import { AlgebraExpressionChecker } from "./AlgebraExpressionChecker";
-import { findabilityIdentity, trackFindabilityEvent } from "../lib/learning-graph/analytics";
+import { findabilityIdentity, trackFindabilityEvent, trackFindabilityNavigation } from "../lib/learning-graph/analytics";
 
 import { Formula, Math, MathOrText } from "./Math";
 import { PageGlossaryTerms } from "./PageGlossaryTerms";
@@ -93,20 +93,10 @@ function Header() {
   const path = useContext(PathContext);
   const isActive = (href: string) => href === "/" ? path === href : path.startsWith(href);
   const navigationClick = (href: string, surface: string) => (event: MouseEvent<HTMLAnchorElement>) => {
-    const delaysCurrentNavigation = !event.defaultPrevented && event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey && event.currentTarget.target !== "_blank";
-    if (delaysCurrentNavigation) event.preventDefault();
-    void Promise.all([findabilityIdentity(path), findabilityIdentity(href)]).then(([source, target]) => {
-      trackFindabilityEvent("navigation_destination_click", {
-        source_page_id: source.id,
-        source_page_role: source.pageRole,
-        target_page_id: target.id,
-        target_page_role: target.pageRole,
-        relationship_type: "navigation",
-        placement: surface,
-        navigation_surface: surface,
-      });
-    }).finally(() => {
-      if (delaysCurrentNavigation) window.location.assign(href);
+    trackFindabilityNavigation(event, "navigation_destination_click", path, href, {
+      relationship_type: "navigation",
+      placement: surface,
+      navigation_surface: surface,
     });
   };
   return (
@@ -261,12 +251,11 @@ const searchKindMarks: Record<SearchKind, string> = { guide: "§", topic: "01", 
 
 function SiteSearchResult({ record, query, rank }: { record: SiteSearchRecord; query: string; rank: number }) {
   function trackClick(event: MouseEvent<HTMLAnchorElement>) {
-    const delaysCurrentNavigation = !event.defaultPrevented && event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey && event.currentTarget.target !== "_blank";
-    if (delaysCurrentNavigation) event.preventDefault();
-    void Promise.all([findabilityIdentity("/search/"), findabilityIdentity(record.path)]).then(([source, target]) => {
-      trackFindabilityEvent("site_search_result_click", { source_page_id: source.id, source_page_role: source.pageRole, target_page_id: target.id, target_page_role: target.pageRole, relationship_type: "search_result", query, result_rank: rank, placement: "search-results" });
-    }).finally(() => {
-      if (delaysCurrentNavigation) window.location.assign(record.path);
+    trackFindabilityNavigation(event, "site_search_result_click", "/search/", record.path, {
+      relationship_type: "search_result",
+      query,
+      result_rank: rank,
+      placement: "search-results",
     });
   }
   return <a href={record.path} onClick={trackClick} className={`site-search-result kind-${record.kind}`}><span className="site-search-mark">{searchKindMarks[record.kind]}</span><div><small>{record.label || searchKindLabels[record.kind]} · {record.domainName}{record.topicName ? ` · ${record.topicName}` : ""}</small><h3>{record.title}</h3><p>{record.description}</p></div><b>Open →</b></a>;
