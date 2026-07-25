@@ -23,6 +23,11 @@ export type SiteSearchRecord = {
   label: string;
   keywords: string[];
   priority: number;
+  shortTitle?: string;
+  aliases?: string[];
+  formerPaths?: string[];
+  concepts?: string[];
+  skills?: string[];
 };
 
 export type SiteSearchOptions = {
@@ -173,9 +178,39 @@ const publishingRecords: SiteSearchRecord[] = publishedResourcePages
     label: resource.resourceType.replaceAll("-", " ").replace(/\b\w/g, (letter) => letter.toUpperCase()),
     keywords: [...resource.searchIntent, ...resource.skills, ...resource.topics, resource.course, resource.unit],
     priority: resource.resourceType === "practice-exam" ? 96 : resource.resourceType === "worksheet" ? 92 : 86,
+    shortTitle: resource.shortTitle,
+    aliases: resource.searchIntent,
+    concepts: resource.topics,
+    skills: resource.skills,
   }));
 
+const criticalFindabilityRecords: SiteSearchRecord[] = [
+  {
+    id: "glossary-math-conventions", kind: "glossary",
+    title: "Mathematics variable and notation conventions", shortTitle: "Math conventions",
+    description: "See the variable, naming, and notation rules used throughout Better Grades mathematics content.",
+    path: "/glossary/math/conventions/", domainSlug: "math", domainName: "Mathematics", topicName: "Notation",
+    label: "Glossary term", keywords: ["conventions", "glossary term conventions", "math notation conventions"],
+    aliases: ["conventions", "math conventions"], concepts: ["conventions"], skills: ["glossary term conventions"], priority: 88,
+  },
+  {
+    id: "practice-math-hub", kind: "practice", title: "Mathematics practice", shortTitle: "Math practice",
+    description: "Browse free mathematics quizzes, diagnostics, practice exams, and challenges.",
+    path: "/practice/math/", domainSlug: "math", domainName: "Mathematics", label: "Practice hub",
+    keywords: ["math", "assessment math", "mathematics practice"], aliases: ["math practice"],
+    concepts: ["mathematics"], skills: ["assessment math"], priority: 93,
+  },
+  {
+    id: "practice-calculus-hub", kind: "practice", title: "Calculus practice", shortTitle: "Calculus practice",
+    description: "Choose a calculus quiz, diagnostic, practice exam, or challenge.",
+    path: "/practice/math/calculus/", domainSlug: "calculus", domainName: "Calculus", label: "Practice hub",
+    keywords: ["calculus", "assessment calculus", "calculus practice"], aliases: ["calculus practice"],
+    concepts: ["calculus"], skills: ["assessment calculus"], priority: 94,
+  },
+];
+
 export const siteSearchRecords: SiteSearchRecord[] = [
+  ...criticalFindabilityRecords,
   ...limitsUnitSearchRecords,
   ...(calculusUnitSearchRecords as SiteSearchRecord[]),
   ...guideRecords,

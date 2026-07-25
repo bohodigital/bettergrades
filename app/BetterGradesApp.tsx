@@ -2,7 +2,7 @@
 
 /* eslint-disable @next/next/no-html-link-for-pages -- this route shell uses deliberate document navigation */
 
-import { createContext, FormEvent, ReactNode, useContext, useEffect, useMemo, useState } from "react";
+import { createContext, FormEvent, ReactNode, useContext, useEffect, useMemo, useRef, useState } from "react";
 import type { Question } from "../lib/activities";
 import { algebraCheckerHref } from "../lib/algebra-practice.mjs";
 import { limitsUnitPracticeRoutes } from "../lib/calculus/limits-unit-index.mjs";
@@ -14,12 +14,13 @@ import { assessments, getAssessment } from "../lib/registry/practice";
 import { isExpressionOnlyQuery, searchKindLabels, searchSite, type SearchKind, type SiteSearchRecord } from "../lib/site-search";
 import { CourseHubContent, getArticle, LibraryArticleContent, LibraryHomeSection, LibrarySearchResults, searchLibrary, TopicContent } from "./LibraryPages";
 import { AlgebraExpressionChecker } from "./AlgebraExpressionChecker";
+import { trackFindabilityEvent } from "../lib/learning-graph/analytics";
 
 import { Formula, Math, MathOrText } from "./Math";
 import { PageGlossaryTerms } from "./PageGlossaryTerms";
 
 const nav = [
-  ["Resources", "/resources/"], ["Practice", "/practice/"], ["Tools", "/tools/"], ["Glossary", "/glossary/math/"],
+  ["Resources", "/resources/"], ["Practice", "/practice/"], ["Tools", "/tools/"], ["Glossary", "/glossary/"],
 ];
 
 const calculusChapterLinks = [
@@ -91,6 +92,13 @@ function ThemeControl() {
 function Header() {
   const path = useContext(PathContext);
   const isActive = (href: string) => href === "/" ? path === href : path.startsWith(href);
+  const navigationClick = (href: string, surface: string) => {
+    trackFindabilityEvent("navigation_destination_click", {
+      target_page_id: href,
+      target_page_role: "navigation-destination",
+      navigation_surface: surface,
+    });
+  };
   return (
     <header className="site-header">
       <div className="header-inner">
@@ -103,7 +111,7 @@ function Header() {
                 <span>Courses</span>
                 <Link href="/subjects/math/algebra/"><b>Algebra</b><small>Foundations through functions</small></Link>
                 <Link href="/subjects/math/calculus/"><b>Calculus</b><small>The complete course navigator</small></Link>
-                <Link href="/subjects/math/"><b>All mathematics</b><small>Browse every course and resource</small></Link>
+                <a href="/subjects/math/" onClick={() => navigationClick("/subjects/math/", "desktop-primary")}><b>All mathematics</b><small>Browse every course and resource</small></a>
               </section>
               <section className="desktop-calculus-chapters">
                 <span>Calculus chapters</span>
@@ -112,23 +120,29 @@ function Header() {
               <section className="desktop-learn-shortcuts">
                 <span>Get somewhere fast</span>
                 <Link href="/search/"><b>Find an answer</b><small>Search lessons, methods, and examples</small></Link>
-                <Link href="/practice/math/calculus/"><b>Calculus practice</b><small>Quizzes, reviews, and exams</small></Link>
+                <a href="/practice/math/calculus/" onClick={() => navigationClick("/practice/math/calculus/", "desktop-primary")}><b>Calculus practice</b><small>Quizzes, reviews, and exams</small></a>
+                <a href="/practice/math/calculus/exams/calculus-foundations/" onClick={() => navigationClick("/practice/math/calculus/exams/calculus-foundations/", "desktop-primary")}><b>Calculus foundations exam</b><small>Complete explained practice exam</small></a>
               </section>
             </div>
           </details>
-          {nav.map(([label, href]) => <Link key={href} href={href} aria-current={isActive(href) ? "page" : undefined}>{label}</Link>)}
+          {nav.map(([label, href]) => <a key={href} href={href} onClick={() => navigationClick(href, "desktop-primary")} aria-current={isActive(href) ? "page" : undefined}>{label}</a>)}
         </nav>
         <div className="header-actions">
           <Link href="/search/" className="header-search" aria-label="Search"><span>⌕</span><b>Search</b></Link>
           <ThemeControl />
           <details className="mobile-menu"><summary aria-label="Open menu">Menu</summary><nav aria-label="Mobile navigation">
-            <Link href="/search/"><b>Search</b><small>Find a lesson or answer</small></Link>
+            <a className="mobile-navigation-link" href="/" onClick={() => navigationClick("/", "mobile-menu")}><b>Home</b><small>Return to Better Grades</small></a>
+            <a className="mobile-navigation-link" href="/search/" onClick={() => navigationClick("/search/", "mobile-menu")}><b>Search</b><small>Find a lesson or answer</small></a>
             <details className="mobile-course-menu"><summary>Learn</summary><div>
-              <Link href="/subjects/math/algebra/"><b>Algebra</b><small>Open the course</small></Link>
-              <Link href="/subjects/math/calculus/"><b>Calculus</b><small>Open the full course map</small></Link>
-              {calculusChapterLinks.map(([chapter, label, href]) => <Link href={href} key={href}><small>{chapter}</small><b>{label}</b></Link>)}
+              <a className="mobile-navigation-link" href="/subjects/math/" onClick={() => navigationClick("/subjects/math/", "mobile-menu")}><b>All mathematics</b><small>Browse courses and resources</small></a>
+              <a className="mobile-navigation-link" href="/subjects/math/algebra/" onClick={() => navigationClick("/subjects/math/algebra/", "mobile-menu")}><b>Algebra</b><small>Open the course</small></a>
+              <a className="mobile-navigation-link" href="/subjects/math/calculus/" onClick={() => navigationClick("/subjects/math/calculus/", "mobile-menu")}><b>Calculus</b><small>Open the full course map</small></a>
+              {calculusChapterLinks.map(([chapter, label, href]) => <a className="mobile-navigation-link" href={href} onClick={() => navigationClick(href, "mobile-menu")} key={href}><small>{chapter}</small><b>{label}</b></a>)}
+              <a className="mobile-navigation-link" href="/practice/math/calculus/" onClick={() => navigationClick("/practice/math/calculus/", "mobile-menu")}><b>Calculus practice</b><small>Quizzes, reviews, and exams</small></a>
+              <a className="mobile-navigation-link" href="/practice/math/calculus/exams/calculus-foundations/" onClick={() => navigationClick("/practice/math/calculus/exams/calculus-foundations/", "mobile-menu")}><b>Calculus foundations exam</b><small>Complete explained practice exam</small></a>
             </div></details>
-            {nav.map(([label, href]) => <Link key={href} href={href} aria-current={isActive(href) ? "page" : undefined}><b>{label}</b></Link>)}
+            <a className="mobile-navigation-link" href="/glossary/math/" onClick={() => navigationClick("/glossary/math/", "mobile-menu")}><b>Math glossary</b><small>Definitions, symbols, and notation</small></a>
+            {nav.map(([label, href]) => <a className="mobile-navigation-link" key={href} href={href} onClick={() => navigationClick(href, "mobile-menu")} aria-current={isActive(href) ? "page" : undefined}><b>{label}</b></a>)}
           </nav></details>
         </div>
       </div>
@@ -235,14 +249,15 @@ function AnswersPage() {
 
 const searchKindMarks: Record<SearchKind, string> = { guide: "§", topic: "01", tool: "x²", practice: "✓", answer: "=", glossary: "Aa" };
 
-function SiteSearchResult({ record }: { record: SiteSearchRecord }) {
-  return <Link href={record.path} className={`site-search-result kind-${record.kind}`}><span className="site-search-mark">{searchKindMarks[record.kind]}</span><div><small>{searchKindLabels[record.kind]} · {record.domainName}{record.topicName ? ` · ${record.topicName}` : ""}</small><h3>{record.title}</h3><p>{record.description}</p></div><b>Open →</b></Link>;
+function SiteSearchResult({ record, query, rank }: { record: SiteSearchRecord; query: string; rank: number }) {
+  return <a href={record.path} onClick={() => trackFindabilityEvent("site_search_result_click", { target_page_id: record.id, target_page_role: record.label, query, result_rank: rank, placement: "search-results" })} className={`site-search-result kind-${record.kind}`}><span className="site-search-mark">{searchKindMarks[record.kind]}</span><div><small>{record.label || searchKindLabels[record.kind]} · {record.domainName}{record.topicName ? ` · ${record.topicName}` : ""}</small><h3>{record.title}</h3><p>{record.description}</p></div><b>Open →</b></a>;
 }
 
 function SearchPage() {
   const [query, setQuery] = useState("");
   const [domain, setDomain] = useState("all");
   const [kind, setKind] = useState<"all" | SearchKind>("all");
+  const lastTrackedQuery = useRef("");
   useEffect(() => {
     const frame = requestAnimationFrame(() => setQuery(new URLSearchParams(window.location.search).get("q") || ""));
     return () => cancelAnimationFrame(frame);
@@ -261,6 +276,17 @@ function SearchPage() {
     { id: "actions", title: "Tools and practice", description: "Check an expression, choose a method, or work an explained set.", records: visibleResults.filter((record) => record.kind === "tool" || record.kind === "practice") },
     { id: "glossary", title: "Terms, symbols, and notation", description: "Get a visual definition, then jump to the complete mathematics glossary.", records: visibleResults.filter((record) => record.kind === "glossary") },
   ];
+  useEffect(() => {
+    const normalized = query.trim();
+    if (!normalized) return;
+    const timer = window.setTimeout(() => {
+      if (lastTrackedQuery.current === normalized) return;
+      lastTrackedQuery.current = normalized;
+      trackFindabilityEvent("site_search", { query: normalized, result_rank: siteResults.length });
+      if (!siteResults.length && !showExpressionTool) trackFindabilityEvent("site_search_zero_results", { query: normalized });
+    }, 400);
+    return () => window.clearTimeout(timer);
+  }, [query, showExpressionTool, siteResults]);
   function submit(event: FormEvent) { event.preventDefault(); window.history.replaceState(null, "", query.trim() ? `/search/?q=${encodeURIComponent(query.trim())}` : "/search/"); }
   return (
     <Shell>
@@ -273,7 +299,7 @@ function SearchPage() {
       <section className="search-results section-pad">
         <div className="results-head"><h2>{query ? `Results for “${query}”` : "Browse the index"}</h2><span>Organized by resource type</span></div>
         {showExpressionTool && <Link href={algebraCheckerHref(query)} className="expression-search-result"><span className="product-mark">x²</span><div><small>Interactive tool · Bounded Better Grades request</small><h3>Check or simplify this expression</h3><p>Your expression is carried into the calculator. Nothing unrelated is mixed into the result list.</p></div><b>Open with expression ↗</b></Link>}
-        {resultGroups.map((group) => group.records.length ? <section className="site-search-group" key={group.id}><header><div><h3>{group.title}</h3><p>{group.description}</p></div></header><div className="site-search-list">{group.records.map((record) => <SiteSearchResult record={record} key={record.id} />)}</div></section> : null)}
+        {resultGroups.map((group) => group.records.length ? <section className="site-search-group" key={group.id}><header><div><h3>{group.title}</h3><p>{group.description}</p></div></header><div className="site-search-list">{group.records.map((record) => <SiteSearchResult record={record} query={query} rank={siteResults.indexOf(record) + 1} key={record.id} />)}</div></section> : null)}
         {siteResults.length > visibleResults.length && <p className="search-limit-note">Showing the strongest matches. Add another word or choose a filter to narrow the index.</p>}
         {(siteResults.length > 0 || showExpressionTool) && <><h3 className="group-label">Keep browsing by course</h3><div className="next-moves"><Link href="/subjects/math/algebra/"><b>Algebra</b><span>Build from expressions through functions →</span></Link><Link href="/subjects/math/calculus/"><b>Calculus</b><span>Follow the connected calculus course →</span></Link></div></>}
         {!siteResults.length && !showExpressionTool && <NoResults query={query} />}

@@ -365,6 +365,9 @@ export function ResourceLibraryPage({ resources }: { resources: readonly Resourc
       <nav className="resource-library-categories" aria-label="Resource categories">
         {libraryGroups.map(([type, title]) => <a href={`#${type}`} key={type}>{title}<span>{resources.filter((resource) => resource.resourceType === type).length}</span></a>)}
       </nav>
+      <nav className="resource-hub-nav" aria-label="Browse dedicated calculus resource hubs">
+        {hubLinks.map(([path, title]) => <a href={path} key={path}>{title}</a>)}
+      </nav>
       <section className="resource-hub-intro"><h2>Choose the format that fits the job</h2><p>Use worksheets and exams when you need practice, formula sheets and visuals when you need a reference, and worked problems or glossary entries when one specific idea is slowing you down.</p></section>
       {libraryGroups.map(([type, title, description]) => {
         const group = resources.filter((resource) => resource.resourceType === type);
