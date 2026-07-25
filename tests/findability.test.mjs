@@ -57,6 +57,7 @@ test("critical routes have ordinary canonical parent anchors", async () => {
   const combined = sources.join("\n");
   const routes = [
     "/glossary/",
+    "/subjects/math/calculus/derivative-applications/curve-sketching-from-derivatives/",
     "/subjects/math/calculus/integration-applications/average-value-of-a-function/",
     "/subjects/math/calculus/integration-applications/washer-vs-shell/",
     "/subjects/math/calculus/integration-applications/work-and-fluid-force/",

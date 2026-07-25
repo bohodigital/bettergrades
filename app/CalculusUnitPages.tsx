@@ -231,6 +231,10 @@ const derivativeDeepDives = [
   ["/subjects/math/calculus/derivatives/derivatives-of-inverse-trig-functions/", "Inverse-trigonometric derivative patterns"],
 ];
 
+const derivativeApplicationDeepDives = [
+  ["/subjects/math/calculus/derivative-applications/curve-sketching-from-derivatives/", "Curve sketching from derivative evidence"],
+] as const;
+
 const integralDeepDives = [
   ["/subjects/math/calculus/integration-techniques/", "Integration techniques: the in-depth article collection"],
   ["/subjects/math/calculus/integration-techniques/u-substitution/", "u-Substitution as a structure-reading method"],
@@ -253,6 +257,7 @@ const integrationApplicationDeepDives = [
 
 const sequencesSeriesDeepDives = [
   ["/subjects/math/calculus/sequences-series/ratio-test-vs-root-test/", "Ratio Test or Root Test?"],
+  ["/subjects/math/calculus/sequences-series/harmonic-series-diverges/", "Why the harmonic series diverges"],
 ] as const;
 
 const unitMapProfiles = {
@@ -319,7 +324,7 @@ function UnitMap({ page }: { page: CalculusUnitPublicPage }) {
   const assessments = unitRoutes.filter((route) => ["diagnostic", "review", "quiz", "practice", "exam", "reference"].includes(route.pageType));
   const answerKeys = unitRoutes.filter((route) => route.pageType === "answer-key");
   const explorations = unitRoutes.filter((route) => route.pageType === "exploration");
-  const focusedArticles = sequencesSeriesUnit ? sequencesSeriesDeepDives : powerTaylorUnit ? [] : integralFoundationsUnit ? integralDeepDives : integrationApplicationsUnit ? integrationApplicationDeepDives : applicationsUnit ? [] : derivativeDeepDives;
+  const focusedArticles = sequencesSeriesUnit ? sequencesSeriesDeepDives : powerTaylorUnit ? [] : integralFoundationsUnit ? integralDeepDives : integrationApplicationsUnit ? integrationApplicationDeepDives : applicationsUnit ? derivativeApplicationDeepDives : derivativeDeepDives;
   return <section className="limits-unit-map calculus-unit-map" aria-label={`${page.unit.shortTitle} textbook map`}>
     <header className="limits-map-intro"><div><p className="eyebrow">Core textbook</p><h2>The complete Unit {page.unit.code} path</h2></div><p>{profile.pathIntro}</p></header>
     <section className="calculus-prerequisites"><div><p className="eyebrow">What this unit teaches</p><h3>{profile.teachesTitle}</h3><p>{profile.teaches}</p></div><div><p className="eyebrow">Prerequisites</p><h3>{profile.prerequisitesTitle}</h3><p>{profile.prerequisites}</p></div></section>
