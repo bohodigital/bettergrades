@@ -39,7 +39,8 @@ const report = {
     "practice_exam_download", "formula_sheet_download", "visual_download", "worksheet_print",
     "practice_start", "practice_complete", "exam_start", "exam_complete",
     "worked_solution_open", "lesson_to_resource_click", "resource_to_lesson_click",
-    "glossary_to_lesson_click",
+    "glossary_to_lesson_click", "navigation_destination_click", "site_search_result_click",
+    "learning_relationship_click", "article_to_lesson_click",
   ],
   assertions: {
     noConsoleErrors: true,
@@ -53,7 +54,7 @@ const report = {
   },
   tests,
   failures,
-  pass: failures.length === 0 && tests.length === 10,
+  pass: failures.length === 0 && tests.length === 13,
 };
 await writeFile(outputPath, `${JSON.stringify(report, null, 2)}\n`);
 console.log(JSON.stringify({ testCount: report.testCount, passedCount: report.passedCount, failedCount: report.failedCount, pass: report.pass }, null, 2));

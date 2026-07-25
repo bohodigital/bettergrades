@@ -1,7 +1,7 @@
 {
   "config": {
-    "configFile": "/Users/darksmarskin/Documents/local2/worktrees/bettergrades-pdf-new-tab-final-closeout-20260724/playwright.config.mjs",
-    "rootDir": "/Users/darksmarskin/Documents/local2/worktrees/bettergrades-pdf-new-tab-final-closeout-20260724/tests/browser",
+    "configFile": "/Users/darksmarskin/Documents/local2/worktrees/bettergrades-handoff-c1-findability-20260724/playwright.config.mjs",
+    "rootDir": "/Users/darksmarskin/Documents/local2/worktrees/bettergrades-handoff-c1-findability-20260724/tests/browser",
     "forbidOnly": false,
     "fullyParallel": false,
     "globalSetup": null,
@@ -16,7 +16,7 @@
     "preserveOutput": "always",
     "projects": [
       {
-        "outputDir": "/Users/darksmarskin/Documents/local2/worktrees/bettergrades-pdf-new-tab-final-closeout-20260724/artifacts/browser/playwright-output",
+        "outputDir": "/Users/darksmarskin/Documents/local2/worktrees/bettergrades-handoff-c1-findability-20260724/artifacts/browser/playwright-output",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
@@ -24,7 +24,7 @@
         },
         "id": "",
         "name": "",
-        "testDir": "/Users/darksmarskin/Documents/local2/worktrees/bettergrades-pdf-new-tab-final-closeout-20260724/tests/browser",
+        "testDir": "/Users/darksmarskin/Documents/local2/worktrees/bettergrades-handoff-c1-findability-20260724/tests/browser",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -65,6 +65,116 @@
   },
   "suites": [
     {
+      "title": "findability-c1.spec.mjs",
+      "file": "findability-c1.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "visible search results preserve exact-match rank one",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1076,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-07-25T20:27:21.043Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "256efcd3bb2c2de4c000-5680fd0ab4c69fbd9d40",
+          "file": "findability-c1.spec.mjs",
+          "line": 11,
+          "column": 1
+        },
+        {
+          "title": "desktop navigation and learning-path clicks emit complete analytics dimensions",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1384,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-07-25T20:27:22.748Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "256efcd3bb2c2de4c000-45e5c3b97ad67d6d55f8",
+          "file": "findability-c1.spec.mjs",
+          "line": 25,
+          "column": 1
+        },
+        {
+          "title": "real navigation stays immediate and replays delayed analytics identities",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7404,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-07-25T20:27:24.139Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "256efcd3bb2c2de4c000-5e3a29eddb6b9acde231",
+          "file": "findability-c1.spec.mjs",
+          "line": 82,
+          "column": 1
+        }
+      ]
+    },
+    {
       "title": "release-b.spec.mjs",
       "file": "release-b.spec.mjs",
       "column": 0,
@@ -86,12 +196,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 577,
+                  "duration": 487,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-24T17:28:11.159Z",
+                  "startTime": "2026-07-25T20:27:31.562Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -120,12 +230,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 10217,
+                  "duration": 11879,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-24T17:28:12.361Z",
+                  "startTime": "2026-07-25T20:27:32.058Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -154,12 +264,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 10131,
+                  "duration": 11917,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-24T17:28:22.586Z",
+                  "startTime": "2026-07-25T20:27:43.943Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -188,12 +298,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 10364,
+                  "duration": 12324,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-24T17:28:32.725Z",
+                  "startTime": "2026-07-25T20:27:55.867Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -222,12 +332,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 604,
+                  "duration": 633,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-24T17:28:43.097Z",
+                  "startTime": "2026-07-25T20:28:08.198Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -256,12 +366,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1446,
+                  "duration": 1413,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-24T17:28:43.709Z",
+                  "startTime": "2026-07-25T20:28:08.839Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -290,12 +400,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1046,
+                  "duration": 1091,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-24T17:28:45.162Z",
+                  "startTime": "2026-07-25T20:28:10.261Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -324,12 +434,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1826,
+                  "duration": 1853,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-24T17:28:46.215Z",
+                  "startTime": "2026-07-25T20:28:11.360Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -358,12 +468,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 5463,
+                  "duration": 5477,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-24T17:28:48.048Z",
+                  "startTime": "2026-07-25T20:28:13.219Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -392,12 +502,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3659,
+                  "duration": 3567,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-24T17:28:53.517Z",
+                  "startTime": "2026-07-25T20:28:18.703Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -415,9 +525,9 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-07-24T17:28:10.167Z",
-    "duration": 47080.429,
-    "expected": 10,
+    "startTime": "2026-07-25T20:27:19.994Z",
+    "duration": 62394.136999999995,
+    "expected": 13,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0

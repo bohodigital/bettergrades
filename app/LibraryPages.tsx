@@ -20,6 +20,7 @@ import { LatexArticleDocument } from "./LatexArticle";
 import { CalculusCourseNavigation } from "./CalculusCourseNavigation";
 import { CalculusUnitNavigation, UNIT_3A_ROOT } from "./CalculusUnitNavigation";
 import { LimitsUnitMap } from "./LimitsUnitMap";
+import { LearningPathLinks } from "./LearningPathLinks";
 
 export { libraryArticleHref };
 
@@ -87,7 +88,7 @@ export function TopicContent({ domainSlug, topicSlug }: { domainSlug: string; to
         <nav className="breadcrumbs"><a href="/subjects/">Subjects</a><span>/</span><a href="/subjects/math/">Mathematics</a><span>/</span><a href={`/subjects/math/${course.slug}/`}>{course.name}</a><span>/</span><span>{topic.name}</span></nav>
         <div className="topic-hero-grid"><div><p className="eyebrow">{course.name} course topic</p><h1>{topic.name}</h1><p>{topic.description}</p></div><span className="topic-big-number" aria-hidden="true">{course.mark}</span></div>
       </section>
-      {isLimitsTopic && <LimitsUnitMap showSupporting={false} topicPage />}
+      {isLimitsTopic && <LimitsUnitMap showSupporting topicPage />}
       {isUnit3aTopic && <section className="limits-unit-map section-pad" aria-label="Unit 3A textbook map connection"><CalculusUnitNavigation currentUnit="3A" compact /><section className="limits-exam-key-callout"><div><p className="eyebrow">Core textbook</p><h2>Begin with the complete Unit 3A map</h2><p>Follow antiderivatives, signed accumulation, Riemann sums, the Fundamental Theorem, integration methods, numerical integration, improper integrals, review, exams, and published answer keys as one connected sequence.</p></div><a className="button button-ink" href={UNIT_3A_ROOT}>Open Unit 3A: Integrals →</a></section></section>}
       <section className="topic-page-body section-pad">
         <aside><strong>{isLimitsTopic || isUnit3aTopic ? "Beyond the textbook" : "Inside this topic"}</strong><span>{isLimitsTopic || isUnit3aTopic ? "Focused deep-dive articles" : "Guides, examples, and decision support"}</span><p>{isLimitsTopic || isUnit3aTopic ? "Use these focused explorations after the core map when one idea deserves a slower, closer look." : "Start with the idea, work a method, then use a decision guide when the route is not obvious."}</p>{isLimitsTopic && <a className="limits-unit-topic-link" href={LIMITS_UNIT_PREFIX}>Open every unit resource →</a>}{isUnit3aTopic && <a className="limits-unit-topic-link" href={UNIT_3A_ROOT}>Open the Unit 3A map →</a>}<a href={`/subjects/math/${course.slug}/`}>All {course.name.toLowerCase()} topics →</a>{topicTools.map((tool) => <a href={tool!.path} key={tool!.id}>Use {tool!.title} →</a>)}{topicAssessments.slice(0, 1).map((assessment) => <a href={assessment!.path} key={assessment!.id}>Practice this topic →</a>)}</aside>
@@ -111,7 +112,6 @@ export function LibraryArticleContent({ article }: { article: CourseArticle }) {
   const topicIndex = course.topics.findIndex((item) => item.slug === article.topicSlug);
   const nextTopic = course.topics[topicIndex + 1];
   const archetype = archetypes[article.archetype];
-  const related = article.related.map((slug) => course.articles.find((item) => item.slug === slug)).filter(Boolean) as CourseArticle[];
   const resource = getResourceRecord(article.domainSlug, article.topicSlug, article.slug);
   const articleTools = (resource?.relatedToolIds ?? []).map((id) => tools.find((tool) => tool.id === id)).filter(Boolean);
   const articleAssessments = (resource?.relatedAssessmentIds ?? []).map((id) => assessments.find((assessment) => assessment.id === id)).filter(Boolean);
@@ -146,7 +146,7 @@ export function LibraryArticleContent({ article }: { article: CourseArticle }) {
 
         <div className="latex-article-column">
           <LatexArticleDocument document={article.document} />
-          <section className="related-library"><div><p className="eyebrow">Continue the path</p><h2>Related resources</h2></div>{related.map((item) => <a href={libraryArticleHref(item)} key={item.slug}><span>{archetypes[item.archetype].label}</span><b>{item.title}</b><i>→</i></a>)}</section>
+          <LearningPathLinks sourcePath={libraryArticleHref(article)} placement="article-footer" />
         </div>
       </div>
 
