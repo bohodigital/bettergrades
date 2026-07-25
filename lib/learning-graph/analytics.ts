@@ -1,6 +1,6 @@
 "use client";
 
-import routeIdentities from "../../data/learning-graph/route-identities.json";
+const routeIdentitiesPromise = import("../../data/learning-graph/route-identities.json").then((module) => module.default);
 
 export type FindabilityEventData = {
   source_page_id?: string;
@@ -29,9 +29,10 @@ export function trackFindabilityEvent(event: string, data: FindabilityEventData 
   window.umami?.track(event, clean as Record<string, string | number>);
 }
 
-export function findabilityIdentity(path: string) {
+export async function findabilityIdentity(path: string) {
   const pathname = path.split(/[?#]/, 1)[0];
   const canonicalPath = pathname === "/" ? "/" : `${pathname.replace(/\/+$/, "")}/`;
+  const routeIdentities = await routeIdentitiesPromise;
   return routeIdentities[canonicalPath as keyof typeof routeIdentities] ?? {
     id: `route:${canonicalPath}`,
     pageRole: "other",

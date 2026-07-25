@@ -93,16 +93,16 @@ function Header() {
   const path = useContext(PathContext);
   const isActive = (href: string) => href === "/" ? path === href : path.startsWith(href);
   const navigationClick = (href: string, surface: string) => {
-    const source = findabilityIdentity(path);
-    const target = findabilityIdentity(href);
-    trackFindabilityEvent("navigation_destination_click", {
-      source_page_id: source.id,
-      source_page_role: source.pageRole,
-      target_page_id: target.id,
-      target_page_role: target.pageRole,
-      relationship_type: "navigation",
-      placement: surface,
-      navigation_surface: surface,
+    void Promise.all([findabilityIdentity(path), findabilityIdentity(href)]).then(([source, target]) => {
+      trackFindabilityEvent("navigation_destination_click", {
+        source_page_id: source.id,
+        source_page_role: source.pageRole,
+        target_page_id: target.id,
+        target_page_role: target.pageRole,
+        relationship_type: "navigation",
+        placement: surface,
+        navigation_surface: surface,
+      });
     });
   };
   return (
@@ -256,9 +256,12 @@ function AnswersPage() {
 const searchKindMarks: Record<SearchKind, string> = { guide: "§", topic: "01", tool: "x²", practice: "✓", answer: "=", glossary: "Aa" };
 
 function SiteSearchResult({ record, query, rank }: { record: SiteSearchRecord; query: string; rank: number }) {
-  const source = findabilityIdentity("/search/");
-  const target = findabilityIdentity(record.path);
-  return <a href={record.path} onClick={() => trackFindabilityEvent("site_search_result_click", { source_page_id: source.id, source_page_role: source.pageRole, target_page_id: target.id, target_page_role: target.pageRole, relationship_type: "search_result", query, result_rank: rank, placement: "search-results" })} className={`site-search-result kind-${record.kind}`}><span className="site-search-mark">{searchKindMarks[record.kind]}</span><div><small>{record.label || searchKindLabels[record.kind]} · {record.domainName}{record.topicName ? ` · ${record.topicName}` : ""}</small><h3>{record.title}</h3><p>{record.description}</p></div><b>Open →</b></a>;
+  function trackClick() {
+    void Promise.all([findabilityIdentity("/search/"), findabilityIdentity(record.path)]).then(([source, target]) => {
+      trackFindabilityEvent("site_search_result_click", { source_page_id: source.id, source_page_role: source.pageRole, target_page_id: target.id, target_page_role: target.pageRole, relationship_type: "search_result", query, result_rank: rank, placement: "search-results" });
+    });
+  }
+  return <a href={record.path} onClick={trackClick} className={`site-search-result kind-${record.kind}`}><span className="site-search-mark">{searchKindMarks[record.kind]}</span><div><small>{record.label || searchKindLabels[record.kind]} · {record.domainName}{record.topicName ? ` · ${record.topicName}` : ""}</small><h3>{record.title}</h3><p>{record.description}</p></div><b>Open →</b></a>;
 }
 
 function SearchPage() {
@@ -297,10 +300,11 @@ function SearchPage() {
     const timer = window.setTimeout(() => {
       if (lastTrackedQuery.current === normalized) return;
       lastTrackedQuery.current = normalized;
-      const source = findabilityIdentity("/search/");
-      const searchData = { source_page_id: source.id, source_page_role: source.pageRole, placement: "search-page", query: normalized, result_count: siteResults.length };
-      trackFindabilityEvent("site_search", searchData);
-      if (!siteResults.length && !showExpressionTool) trackFindabilityEvent("site_search_zero_results", searchData);
+      void findabilityIdentity("/search/").then((source) => {
+        const searchData = { source_page_id: source.id, source_page_role: source.pageRole, placement: "search-page", query: normalized, result_count: siteResults.length };
+        trackFindabilityEvent("site_search", searchData);
+        if (!siteResults.length && !showExpressionTool) trackFindabilityEvent("site_search_zero_results", searchData);
+      });
     }, 400);
     return () => window.clearTimeout(timer);
   }, [query, showExpressionTool, siteResults]);

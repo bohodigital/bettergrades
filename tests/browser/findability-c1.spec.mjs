@@ -5,6 +5,7 @@ async function clickWithoutNavigation(locator) {
     element.addEventListener("click", (event) => event.preventDefault(), { once: true });
     element.click();
   });
+  await locator.evaluate(() => new Promise((resolve) => setTimeout(resolve, 25)));
 }
 
 test("visible search results preserve exact-match rank one", async ({ page }) => {
