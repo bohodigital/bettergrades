@@ -19,6 +19,7 @@ const routeInventory = JSON.parse(await readFile(resolve(root, "data/ia/page-inv
 const linkGraph = JSON.parse(await readFile(resolve(artifactDir, "internal-link-graph.json"), "utf8"));
 const clickDepth = JSON.parse(await readFile(resolve(artifactDir, "click-depth-report.json"), "utf8"));
 const search = JSON.parse(await readFile(resolve(artifactDir, "search-findability-report.json"), "utf8"));
+const browser = JSON.parse(await readFile(resolve(root, "artifacts/seo/browser-verification.json"), "utf8"));
 const parity = parseCsv(await readFile(resolve(root, "data/ia/handoff-c1-navigation-parity-results.csv"), "utf8"));
 const provenance = {
   schemaVersion: 1,
@@ -43,8 +44,8 @@ const outputs = [
     ...provenance,
     failureCount: 0,
     matrices: {
-      playwright: { testCount: 12, passedCount: 12, failedCount: 0 },
-      renderedDom: { routeCount: 509, failureCount: 0 },
+      playwright: { testCount: browser.testCount, passedCount: browser.passedCount, failedCount: browser.failedCount },
+      renderedDom: { routeCount: search.routeCount, failureCount: 0 },
       inAppBrowser: {
         exactSearchFirstResult: "/subjects/math/calculus/integration-applications/washer-vs-shell/",
         canonicalVerified: true,
