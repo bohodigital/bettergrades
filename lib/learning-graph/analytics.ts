@@ -1,5 +1,7 @@
 "use client";
 
+import routeIdentities from "../../data/learning-graph/route-identities.json";
+
 export type FindabilityEventData = {
   source_page_id?: string;
   source_page_role?: string;
@@ -9,6 +11,7 @@ export type FindabilityEventData = {
   placement?: string;
   query?: string;
   result_rank?: number;
+  result_count?: number;
   navigation_surface?: string;
 };
 
@@ -24,4 +27,13 @@ export function trackFindabilityEvent(event: string, data: FindabilityEventData 
   const clean = Object.fromEntries(Object.entries(data).filter(([, value]) => value !== undefined && value !== ""));
   window.gtag?.("event", event, clean);
   window.umami?.track(event, clean as Record<string, string | number>);
+}
+
+export function findabilityIdentity(path: string) {
+  const pathname = path.split(/[?#]/, 1)[0];
+  const canonicalPath = pathname === "/" ? "/" : `${pathname.replace(/\/+$/, "")}/`;
+  return routeIdentities[canonicalPath as keyof typeof routeIdentities] ?? {
+    id: `route:${canonicalPath}`,
+    pageRole: "other",
+  };
 }

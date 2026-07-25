@@ -14,7 +14,7 @@ import { assessments, getAssessment } from "../lib/registry/practice";
 import { isExpressionOnlyQuery, searchKindLabels, searchSite, type SearchKind, type SiteSearchRecord } from "../lib/site-search";
 import { CourseHubContent, getArticle, LibraryArticleContent, LibraryHomeSection, LibrarySearchResults, searchLibrary, TopicContent } from "./LibraryPages";
 import { AlgebraExpressionChecker } from "./AlgebraExpressionChecker";
-import { trackFindabilityEvent } from "../lib/learning-graph/analytics";
+import { findabilityIdentity, trackFindabilityEvent } from "../lib/learning-graph/analytics";
 
 import { Formula, Math, MathOrText } from "./Math";
 import { PageGlossaryTerms } from "./PageGlossaryTerms";
@@ -93,9 +93,15 @@ function Header() {
   const path = useContext(PathContext);
   const isActive = (href: string) => href === "/" ? path === href : path.startsWith(href);
   const navigationClick = (href: string, surface: string) => {
+    const source = findabilityIdentity(path);
+    const target = findabilityIdentity(href);
     trackFindabilityEvent("navigation_destination_click", {
-      target_page_id: href,
-      target_page_role: "navigation-destination",
+      source_page_id: source.id,
+      source_page_role: source.pageRole,
+      target_page_id: target.id,
+      target_page_role: target.pageRole,
+      relationship_type: "navigation",
+      placement: surface,
       navigation_surface: surface,
     });
   };
@@ -250,7 +256,9 @@ function AnswersPage() {
 const searchKindMarks: Record<SearchKind, string> = { guide: "§", topic: "01", tool: "x²", practice: "✓", answer: "=", glossary: "Aa" };
 
 function SiteSearchResult({ record, query, rank }: { record: SiteSearchRecord; query: string; rank: number }) {
-  return <a href={record.path} onClick={() => trackFindabilityEvent("site_search_result_click", { target_page_id: record.id, target_page_role: record.label, query, result_rank: rank, placement: "search-results" })} className={`site-search-result kind-${record.kind}`}><span className="site-search-mark">{searchKindMarks[record.kind]}</span><div><small>{record.label || searchKindLabels[record.kind]} · {record.domainName}{record.topicName ? ` · ${record.topicName}` : ""}</small><h3>{record.title}</h3><p>{record.description}</p></div><b>Open →</b></a>;
+  const source = findabilityIdentity("/search/");
+  const target = findabilityIdentity(record.path);
+  return <a href={record.path} onClick={() => trackFindabilityEvent("site_search_result_click", { source_page_id: source.id, source_page_role: source.pageRole, target_page_id: target.id, target_page_role: target.pageRole, relationship_type: "search_result", query, result_rank: rank, placement: "search-results" })} className={`site-search-result kind-${record.kind}`}><span className="site-search-mark">{searchKindMarks[record.kind]}</span><div><small>{record.label || searchKindLabels[record.kind]} · {record.domainName}{record.topicName ? ` · ${record.topicName}` : ""}</small><h3>{record.title}</h3><p>{record.description}</p></div><b>Open →</b></a>;
 }
 
 function SearchPage() {
@@ -289,8 +297,10 @@ function SearchPage() {
     const timer = window.setTimeout(() => {
       if (lastTrackedQuery.current === normalized) return;
       lastTrackedQuery.current = normalized;
-      trackFindabilityEvent("site_search", { query: normalized, result_rank: siteResults.length });
-      if (!siteResults.length && !showExpressionTool) trackFindabilityEvent("site_search_zero_results", { query: normalized });
+      const source = findabilityIdentity("/search/");
+      const searchData = { source_page_id: source.id, source_page_role: source.pageRole, placement: "search-page", query: normalized, result_count: siteResults.length };
+      trackFindabilityEvent("site_search", searchData);
+      if (!siteResults.length && !showExpressionTool) trackFindabilityEvent("site_search_zero_results", searchData);
     }, 400);
     return () => window.clearTimeout(timer);
   }, [query, showExpressionTool, siteResults]);

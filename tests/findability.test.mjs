@@ -81,8 +81,31 @@ test("visible query results preserve the exact search ranking contract", async (
 });
 
 test("findability click events carry source and target roles", async () => {
-  const source = await readFile(resolve(root, "app/LearningPathLinks.tsx"), "utf8");
-  assert.match(source, /source_page_role: relationship\.sourceRole/);
-  assert.match(source, /target_page_role: target\.pageRole/);
-  assert.match(source, /trackFindabilityEvent\(specific, eventData\)/);
+  const [learningLinks, application] = await Promise.all([
+    readFile(resolve(root, "app/LearningPathLinks.tsx"), "utf8"),
+    readFile(resolve(root, "app/BetterGradesApp.tsx"), "utf8"),
+  ]);
+  assert.match(learningLinks, /source_page_role: relationship\.sourceRole/);
+  assert.match(learningLinks, /target_page_role: target\.pageRole/);
+  assert.match(learningLinks, /trackFindabilityEvent\(specific, eventData\)/);
+  assert.match(application, /source_page_id: source\.id/);
+  assert.match(application, /target_page_id: target\.id/);
+  assert.match(application, /relationship_type: "search_result"/);
+  assert.match(application, /result_count: siteResults\.length/);
+  assert.doesNotMatch(application, /result_rank: siteResults\.length/);
+});
+
+test("meaningful navigation depth excludes footer-only discovery", async () => {
+  const source = await readFile(resolve(root, "tools/ia-audit/audit.mjs"), "utf8");
+  const definition = source.match(/const meaningfulNavigationTypes = new Set\(\[([^\]]+)\]\);/)?.[1] ?? "";
+  assert.ok(definition);
+  assert.doesNotMatch(definition, /footer/);
+  assert.match(definition, /sequential-previous/);
+  assert.match(definition, /sequential-next/);
+});
+
+test("final parity evidence uses the Handoff C1 result source", async () => {
+  const source = await readFile(resolve(root, "tools/generate-final-ia-evidence.mjs"), "utf8");
+  assert.match(source, /handoff-c1-navigation-parity-results\.csv/);
+  assert.doesNotMatch(source, /readFile\(resolve\(root, "data\/ia\/desktop-mobile-parity\.csv"/);
 });

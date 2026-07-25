@@ -170,6 +170,10 @@ try {
         return [source.canonicalPath, destinations];
       }),
   );
+  const routeIdentities = Object.fromEntries([
+    ...graph.nodes.map((node) => [node.canonicalPath, { id: node.id, pageRole: node.pageRole }]),
+    ...graph.exclusions.map((item) => [item.canonicalPath, { id: `route:${item.canonicalPath}`, pageRole: item.pageRole }]),
+  ].sort(([left], [right]) => left.localeCompare(right)));
   await mkdir(outDir, { recursive: true });
   await writeOrCheck(resolve(outDir, "graph.json"), graph);
   await writeOrCheck(resolve(outDir, "nodes.json"), graph.nodes);
@@ -178,6 +182,7 @@ try {
   await writeOrCheck(resolve(outDir, "skills.json"), skills);
   await writeOrCheck(resolve(outDir, "exclusions.json"), graph.exclusions);
   await writeOrCheck(resolve(outDir, "public-article-destinations.json"), publicArticleDestinations);
+  await writeOrCheck(resolve(outDir, "route-identities.json"), routeIdentities);
   console.log(JSON.stringify({
     nodes: graph.nodes.length,
     relationships: graph.relationships.length,

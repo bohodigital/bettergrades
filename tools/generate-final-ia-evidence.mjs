@@ -19,7 +19,7 @@ const routeInventory = JSON.parse(await readFile(resolve(root, "data/ia/page-inv
 const linkGraph = JSON.parse(await readFile(resolve(artifactDir, "internal-link-graph.json"), "utf8"));
 const clickDepth = JSON.parse(await readFile(resolve(artifactDir, "click-depth-report.json"), "utf8"));
 const search = JSON.parse(await readFile(resolve(artifactDir, "search-findability-report.json"), "utf8"));
-const parity = parseCsv(await readFile(resolve(root, "data/ia/desktop-mobile-parity.csv"), "utf8"));
+const parity = parseCsv(await readFile(resolve(root, "data/ia/handoff-c1-navigation-parity-results.csv"), "utf8"));
 const provenance = {
   schemaVersion: 1,
   generatedAt: search.generatedAt,

@@ -288,7 +288,8 @@ function bfs(starts, edgeFilter) {
   return depth;
 }
 const allDepth = bfs(["/"], () => true);
-const navDepth = bfs(["/"], (e) => ["global-navigation", "mobile-navigation", "footer", "hub-listing", "course-map", "unit-map"].includes(e.link_type));
+const meaningfulNavigationTypes = new Set(["global-navigation", "mobile-navigation", "hub-listing", "course-map", "unit-map", "sequential-previous", "sequential-next"]);
+const navDepth = bfs(["/"], (e) => meaningfulNavigationTypes.has(e.link_type));
 const contextualDepth = bfs(["/"], (e) => e.contextual);
 const breadcrumbDepth = bfs(["/"], (e) => e.link_type === "breadcrumb");
 const sequentialDepth = bfs(["/"], (e) => e.link_type.startsWith("sequential-"));
@@ -372,7 +373,7 @@ const hiddenImportant = inventory.filter((p) => importantRoles.has(p.page_role) 
 await writeJson(resolve(artifactDir, "click-depth-report.json"), provenance({
   routeCount: inventory.length,
   failureCount: 0,
-  definitions: { all: "all unique crawlable internal anchors", navigation: "global, mobile, footer, hub, course-map, and unit-map edges", contextual: "editorial and companion edges" },
+  definitions: { all: "all unique crawlable internal anchors", navigation: "global, mobile, hub, course-map, unit-map, and sequential edges; footer-only paths excluded", contextual: "editorial and companion edges" },
   unreachableAll: inventory.filter((p) => p.click_depth_all_links === null).length,
   deepNavigation: deep.length,
   hiddenImportant: hiddenImportant.length,

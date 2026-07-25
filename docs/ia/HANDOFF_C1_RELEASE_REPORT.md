@@ -57,7 +57,7 @@ Privacy-bounded GA4/Umami events cover search, zero results, search-result click
 ## 12. Validation
 
 - Full repository suite: 267/267 passed.
-- Browser matrix: 10/10 passed.
+- Browser matrix: 12/12 passed.
 - Rendered-DOM audit: 509 routes, zero failures.
 - Graph generation/check: 497 nodes, 9,404 relationships, pass.
 - Search corpus: 2,390 queries, zero scoped failures.
