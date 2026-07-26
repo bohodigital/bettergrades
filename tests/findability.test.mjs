@@ -103,6 +103,8 @@ test("findability click events carry source and target roles", async () => {
     assert.match(learningLinks, new RegExp(`${dimension}: target\\.${dimension}`));
     assert.match(lessonLinks, new RegExp(`${dimension}: target\\.${dimension}`));
   }
+  assert.match(learningLinks, /navigation_surface: "article-learning-path"/);
+  assert.match(lessonLinks, /navigation_surface: "lesson-companion"/);
   assert.match(libraryPages, /"topic_hub_destination_click"/);
   assert.match(resourcePages, /"worked_problem_to_lesson_click"/);
 });

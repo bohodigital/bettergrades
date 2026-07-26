@@ -32,6 +32,7 @@ export function LessonCompanionLinks({ sourcePath, variant }: { sourcePath: stri
         target_page_role: target.pageRole,
         relationship_type: relationship.type,
         placement: relationship.placement,
+        navigation_surface: "lesson-companion",
         result_rank: index + 1,
         course: target.course,
         unit: target.unit,

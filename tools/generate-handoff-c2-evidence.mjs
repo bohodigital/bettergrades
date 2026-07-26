@@ -24,14 +24,21 @@ const articleApprovals = await readJson("data/ia/handoff-c2-approved-article-les
 const articleDeferrals = await readJson("data/ia/handoff-c2-deferred-article-lesson-map.json");
 const lessonApprovals = await readJson("data/ia/handoff-c2-approved-lesson-companion-map.json");
 const lessonDeferrals = await readJson("data/ia/handoff-c2-deferred-lesson-companion-map.json");
-const analyticsImplementation = (await Promise.all([
+const analyticsImplementationPaths = [
   "app/BetterGradesApp.tsx",
   "app/LearningPathLinks.tsx",
   "app/LessonCompanionLinks.tsx",
   "app/LibraryPages.tsx",
   "app/ResourcePages.tsx",
   "lib/learning-graph/analytics.ts",
-].map((path) => readFile(resolve(root, path), "utf8")))).join("\n");
+];
+const analyticsImplementationEntries = await Promise.all(analyticsImplementationPaths.map(async (path) => [path, await readFile(resolve(root, path), "utf8")]));
+const analyticsImplementationByPath = Object.fromEntries(analyticsImplementationEntries);
+const analyticsImplementation = analyticsImplementationEntries.map(([, source]) => source).join("\n");
+const relationshipComponentSources = [
+  analyticsImplementationByPath["app/LearningPathLinks.tsx"],
+  analyticsImplementationByPath["app/LessonCompanionLinks.tsx"],
+];
 const requiredAnalyticsEvents = [
   "navigation_destination_click", "topic_hub_destination_click", "article_to_lesson_click",
   "lesson_to_article_click", "lesson_to_practice_click", "lesson_to_reference_click",
@@ -53,10 +60,11 @@ const analyticsEventVerification = requiredAnalyticsEvents.map((event) => ({
 const analyticsDimensionVerification = requiredAnalyticsDimensions.map((dimension) => ({
   dimension,
   declared: analyticsImplementation.includes(`${dimension}?: string`) || analyticsImplementation.includes(`${dimension}:`),
+  emittedByEveryRelationshipComponent: relationshipComponentSources.every((source) => source.includes(`${dimension}:`)),
 }));
 const analyticsFailures = [
   ...analyticsEventVerification.filter((item) => !item.implemented || !item.exercised).map((item) => `event:${item.event}`),
-  ...analyticsDimensionVerification.filter((item) => !item.declared).map((item) => `dimension:${item.dimension}`),
+  ...analyticsDimensionVerification.filter((item) => !item.declared || !item.emittedByEveryRelationshipComponent).map((item) => `dimension:${item.dimension}`),
   ...[findabilityBrowserTest, resourceBrowserTest, dntBrowserTest, delayedNavigationTest]
     .filter((item) => !item || item.status !== "passed" || item.errors.length)
     .map((item) => `browser-test:${item?.title ?? "missing"}`),

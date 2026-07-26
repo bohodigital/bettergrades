@@ -40,6 +40,7 @@ export function LearningPathLinks({ sourcePath, placement, variant = "secondary"
               target_page_role: target.pageRole,
               relationship_type: relationship.type,
               placement,
+              navigation_surface: "article-learning-path",
               result_rank: index + 1,
               course: target.course,
               unit: target.unit,

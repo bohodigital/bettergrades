@@ -70,6 +70,7 @@ test("desktop navigation and learning-path clicks emit complete analytics dimens
       source_page_role: "method-guide",
       target_page_role: "textbook-lesson",
       placement: "article-intro",
+      navigation_surface: "article-learning-path",
       result_rank: 1,
       course: "course.math.calculus",
       unit: "unit.calculus.3a",
@@ -78,6 +79,26 @@ test("desktop navigation and learning-path clicks emit complete analytics dimens
     expect(event?.args[2].source_page_id).toBeTruthy();
     expect(event?.args[2].target_page_id).toBeTruthy();
     expect(event?.args[2].relationship_type).toBeTruthy();
+  }
+
+  await page.goto("/subjects/math/calculus/integrals/integration-by-parts/");
+  const lessonCompanion = page.locator('.lesson-companions a[href="/subjects/math/calculus/worksheets/integration-by-parts/"]');
+  await expect(lessonCompanion).toBeVisible();
+  await clickWithoutNavigation(lessonCompanion);
+  events = await page.evaluate(() => window.__events);
+  for (const sink of ["ga4", "umami"]) {
+    const lessonEvents = events.filter((item) => item.sink === sink && item.args[1] === "lesson_to_practice_click");
+    expect(lessonEvents).toHaveLength(1);
+    expect(lessonEvents[0].args[2]).toMatchObject({
+      source_page_role: "textbook-lesson",
+      target_page_role: "worksheet",
+      relationship_type: "practices",
+      placement: "lesson-intro",
+      navigation_surface: "lesson-companion",
+      course: "course.math.calculus",
+      unit: "unit.calculus.3a",
+      topic: "topic.math.integration-by-parts",
+    });
   }
 
   await page.goto("/subjects/math/calculus/integration-techniques/");
