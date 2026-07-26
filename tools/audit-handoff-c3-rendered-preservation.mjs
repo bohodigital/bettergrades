@@ -1,10 +1,13 @@
 import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { execFileSync } from "node:child_process";
 
 const root = resolve(import.meta.dirname, "..");
 const baselinePages = resolve(process.argv[2] ?? "");
 const candidatePages = resolve(root, "dist/pages");
 const inventory = JSON.parse(await readFile(resolve(root, "data/ia/page-inventory.json"), "utf8"));
+const sourceCommit = execFileSync("git", ["rev-parse", "HEAD"], { cwd: root, encoding: "utf8" }).trim();
+const sourceTree = execFileSync("git", ["rev-parse", "HEAD^{tree}"], { cwd: root, encoding: "utf8" }).trim();
 
 if (!process.argv[2]) throw new Error("Usage: node tools/audit-handoff-c3-rendered-preservation.mjs BASELINE_PAGES_DIR");
 
@@ -179,6 +182,8 @@ const totals = Object.fromEntries(
 const report = {
   schemaVersion: 1,
   baselineCommit: "61463a9d26fcf5fe8c4bc32658675b4b056dd8d8",
+  sourceCommit,
+  sourceTree,
   comparison: "rendered baseline main text segments versus rendered candidate body text segments",
   allowedClassifications: [
     "preserved in main",
