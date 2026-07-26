@@ -109,20 +109,23 @@ test("generated graph labels publish collision-free bounded placement metadata",
   assert.ok(labelCount >= 30, `expected at least 30 positioned labels, found ${labelCount}`);
 });
 
-test("shared Limits components expose the redesigned overview and native answer details", async () => {
+test("shared Limits components expose the compressed lesson frame and native answer details", async () => {
   const [component, map, css, interactive] = await Promise.all([
     readFile(new URL("../app/LimitsUnitPages.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/LimitsUnitMap.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
     readFile(new URL("../lib/visualization/renderers/bg-interactive-2d/BgInteractive2D.tsx", import.meta.url), "utf8"),
   ]);
-  assert.match(component, /className="limits-reading-lens"/);
-  assert.match(component, /className="limits-overview-guides"/);
+  assert.match(component, /className="lesson-objective"/);
+  assert.match(component, /className="lesson-position"/);
+  assert.match(component, /Lesson objective/);
+  assert.doesNotMatch(component, /className="limits-reading-lens"/);
+  assert.doesNotMatch(component, /className="limits-overview-guides"/);
   assert.match(component, /className="limits-exercise-answer"/);
   assert.match(component, /<summary>Show answer<\/summary>/);
   assert.match(map, /className="limits-reading-lens limits-map-lens"/);
-  assert.match(css, /\.limits-reading-lens \{/);
-  assert.match(css, /\.limits-overview-guides \{/);
+  assert.match(css, /\.lesson-objective \{/);
+  assert.match(css, /\.lesson-position \{/);
   assert.match(css, /\.limits-exercise-answer \{/);
   assert.match(interactive, /renderInteractiveAxes/);
   assert.match(interactive, /layoutRuntimeLabel/);

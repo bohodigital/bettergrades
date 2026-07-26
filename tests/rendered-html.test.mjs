@@ -138,10 +138,11 @@ test("sitewide navigation exposes learner paths globally and course hierarchy lo
   assert.match(html, />Practice <span/);
   assert.match(html, />Resources <span/);
   assert.match(html, /href="\/search\/"[^>]*>Search/);
-  assert.match(html, /Calculus I · Chapter 2/);
-  assert.match(visibleText(html), /Browse Chapter 2 sections/);
-  assert.match(html, /Unit 2A sections/);
-  assert.match(html, /Unit 2B sections/);
+  assert.match(html, /Unit 2B: Applications of Derivatives/);
+  assert.match(html, /Core textbook path/);
+  assert.match(visibleText(html), /The complete Unit 2B path/);
+  assert.match(html, /href="\/subjects\/math\/calculus\/derivatives\/"/);
+  assert.match(visibleText(html), /Review Unit 2A foundations/);
 });
 
 test("the top-level resource library links every published resource and document", async () => {
@@ -161,21 +162,19 @@ test("the top-level resource library links every published resource and document
   }
 });
 
-test("derivative and integral parts remain one labeled, inter-navigable chapter", async () => {
-  for (const [path, chapter, unitA, unitB] of [
-    ["/subjects/math/calculus/derivatives/", "2", "Unit 2A", "Unit 2B"],
-    ["/subjects/math/calculus/derivative-applications/", "2", "Unit 2A", "Unit 2B"],
-    ["/subjects/math/calculus/integrals/", "3", "Unit 3A", "Unit 3B"],
-    ["/subjects/math/calculus/integration-applications/", "3", "Unit 3A", "Unit 3B"],
+test("derivative and integral unit maps remain inter-navigable", async () => {
+  for (const [path, unit, counterpart] of [
+    ["/subjects/math/calculus/derivatives/", "2A", "/subjects/math/calculus/derivative-applications/"],
+    ["/subjects/math/calculus/derivative-applications/", "2B", "/subjects/math/calculus/derivatives/"],
+    ["/subjects/math/calculus/integrals/", "3A", "/subjects/math/calculus/integration-applications/"],
+    ["/subjects/math/calculus/integration-applications/", "3B", "/subjects/math/calculus/integrals/"],
   ]) {
     const response = await render(path);
     assert.equal(response.status, 200, path);
     const html = await response.text();
-    assert.match(html, new RegExp(`Calculus I · Chapter ${chapter}`), path);
-    assert.match(html, new RegExp(unitA), path);
-    assert.match(html, new RegExp(unitB), path);
-    assert.match(visibleText(html), new RegExp(`Browse Chapter ${chapter} sections`), path);
-    assert.match(html, /All calculus chapters/, path);
+    assert.match(html, new RegExp(`Unit ${unit}`), path);
+    assert.match(visibleText(html), new RegExp(`The complete Unit ${unit} path`), path);
+    assert.match(html, new RegExp(`href="${counterpart.replaceAll("/", "\\/")}"`), path);
   }
 });
 
@@ -219,7 +218,8 @@ test("limits unit lesson, quiz, practice, and exam routes server-render in the e
     const html = await response.text();
     assert.match(html, expected, path);
     assert.match(html, /Limits and Continuity/, path);
-    assert.match(html, /(?:Core textbook path|Supporting resource)/, path);
+    assert.match(html, /class="lesson-position"/, path);
+    assert.match(html, /Lesson objective/, path);
     assert.match(html, /Source &amp; rights/, path);
     assert.doesNotMatch(visibleText(html), /\\begin\{|&lt;script|javascript:/, path);
     assert.doesNotMatch(html, /\\lessonobjective\b/, path);
@@ -233,13 +233,11 @@ test("Limits overviews, visual study stops, and exercise answer reveals render a
   const response = await render(practicePath);
   const html = await response.text();
   assert.equal(response.status, 200, practicePath);
-  assert.match(html, /Section overview/);
+  assert.match(html, /Lesson objective/);
   assert.match(html, /Section 1: What a limit means/);
-  assert.match(html, /class="limits-reading-lens"/);
-  assert.match(html, /class="limits-overview-guides"/);
-  assert.match(html, />Notice</);
-  assert.match(html, />Decide</);
-  assert.match(html, />Avoid</);
+  assert.match(html, /class="lesson-objective"/);
+  assert.match(html, /class="lesson-position"/);
+  assert.doesNotMatch(html, /Section overview|Reading lens|limits-overview-guides|limits-editorial-intro/);
   assert.match(html, /Visual study stop/);
   assert.match(html, /data-bvlp-visual="jump-discontinuity"/);
   assert.equal((html.match(/data-exercise-number=/g) ?? []).length, 42);
