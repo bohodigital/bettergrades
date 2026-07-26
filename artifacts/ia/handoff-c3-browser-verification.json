@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-26T16:07:59-05:00",
+  "generatedAt": "2026-07-26T16:47:25-05:00",
   "environment": "owner-preview-candidate",
   "browser": "Playwright Chromium",
-  "sourceCommit": "36c546f313351adab559d7c3ab4e060b8a2669d7",
-  "sourceTree": "6b34870e0b848c041d1cb9c93ca4a077a47f9285",
-  "buildHash": "e1e0da364db2afc33fc6a109ab765cc86c1031e59170a55912b1ef440a9e39b2",
-  "testCount": 23,
-  "passedCount": 23,
+  "sourceCommit": "de22950021ffe8f63a305416dc290d4fc03ed36d",
+  "sourceTree": "484df33b2d4e940d6b60e3680bcb6563958a2c52",
+  "buildHash": "80df906ccb13dc432673b201f2935a7b474c4aad87a1e620543ec0fd315163fb",
+  "testCount": 24,
+  "passedCount": 24,
   "failedCount": 0,
   "viewportMatrix": [
     {
@@ -24,6 +24,11 @@
       "name": "mobile",
       "width": 390,
       "height": 844
+    },
+    {
+      "name": "small-mobile",
+      "width": 320,
+      "height": 720
     }
   ],
   "modes": [
@@ -75,167 +80,174 @@
       "title": "visible search results preserve exact-match rank one",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 954,
+      "durationMs": 1122,
       "errors": []
     },
     {
       "title": "desktop navigation and learning-path clicks emit complete analytics dimensions",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 3237,
+      "durationMs": 3658,
       "errors": []
     },
     {
       "title": "real navigation stays immediate and replays delayed analytics identities",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 7288,
+      "durationMs": 7644,
       "errors": []
     },
     {
       "title": "desktop navigation and homepage follow the C2 learner hierarchy",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 793,
+      "durationMs": 900,
       "errors": []
     },
     {
       "title": "tablet and mobile navigation preserve substantive parity without overflow",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 1333,
+      "durationMs": 1513,
       "errors": []
     },
     {
       "title": "representative C2 surfaces have one main, one h1, no overflow, and no console errors",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 9851,
+      "durationMs": 10124,
       "errors": []
     },
     {
       "title": "no-JavaScript navigation remains crawlable",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 227,
+      "durationMs": 297,
       "errors": []
     },
     {
       "title": "keyboard, dark mode, print, filters, and Do Not Track remain functional",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 1267,
+      "durationMs": 1404,
       "errors": []
     },
     {
       "title": "textbook lesson reaches exposition through one compact objective",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 646,
+      "durationMs": 847,
       "errors": []
     },
     {
       "title": "short article content precedes supporting paths and its outline",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 669,
+      "durationMs": 731,
       "errors": []
     },
     {
       "title": "worked problem begins with the problem and complete solution",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 395,
+      "durationMs": 456,
       "errors": []
     },
     {
       "title": "glossary definition is first and optional vocabulary follows main content",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 369,
+      "durationMs": 425,
       "errors": []
     },
     {
       "title": "tool interface remains in the first major content section",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 340,
+      "durationMs": 409,
+      "errors": []
+    },
+    {
+      "title": "320px mobile textbook preserves guidance without horizontal overflow",
+      "expectedStatus": "passed",
+      "status": "passed",
+      "durationMs": 572,
       "errors": []
     },
     {
       "title": "calculus starts collapsed and the Resources menus expose the complete library",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 490,
+      "durationMs": 545,
       "errors": []
     },
     {
       "title": "desktop route matrix renders one complete document without overflow",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 11616,
+      "durationMs": 12020,
       "errors": []
     },
     {
       "title": "tablet route matrix renders one complete document without overflow",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 11606,
+      "durationMs": 11961,
       "errors": []
     },
     {
       "title": "mobile route matrix renders one complete document without overflow",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 11821,
+      "durationMs": 12268,
       "errors": []
     },
     {
       "title": "JavaScript-disabled educational pages preserve static content and suppress controls",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 559,
+      "durationMs": 841,
       "errors": []
     },
     {
       "title": "keyboard focus, dark mode, and print CSS remain usable",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 1330,
+      "durationMs": 1464,
       "errors": []
     },
     {
       "title": "downloads, redirect, answer reveal, and practice controls work",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 1022,
+      "durationMs": 1158,
       "errors": []
     },
     {
       "title": "PDF links use native accessible new tabs and preserve one analytics event pair",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 1738,
+      "durationMs": 2129,
       "errors": []
     },
     {
       "title": "PDF links remain native new-tab anchors when JavaScript is disabled",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 5427,
+      "durationMs": 5671,
       "errors": []
     },
     {
       "title": "every resource analytics event fires through both sinks with safe dimensions and respects Do Not Track",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 3382,
+      "durationMs": 4377,
       "errors": []
     }
   ],
   "failures": [],
   "pass": true,
-  "rawBuildHash": "48005561e000c171c6f0ded110324488d9c1a3a06f673cb8ad8a27fd479a8744",
+  "rawBuildHash": "b5244beb13956b4b199187f636ffee274fca70e45ba7bfcd123f209051718ff3",
   "buildHashNormalization": [
     "VINEXT build/deployment/draft UUIDs",
     "VINEXT prerenderSecret"
@@ -245,13 +257,14 @@
   "handoff2BaseTree": "05472147834d17563a435318ed3611653e25ef2f",
   "auditCommit": "12e9983d429c4b6411ecf55591298fffb7874f03",
   "provenanceModel": "Evidence verifies sourceCommit/sourceTree; the containing evidence commit is bound by the pushed branch and Sites version.",
-  "candidateTestCount": 23,
-  "h3ContractTestCount": 5,
+  "candidateTestCount": 24,
+  "h3ContractTestCount": 6,
   "screenshotPaths": [
     "artifacts/browser/handoff-c3-textbook-desktop.png",
     "artifacts/browser/handoff-c3-article-desktop.png",
     "artifacts/browser/handoff-c3-worked-problem-mobile.png",
-    "artifacts/browser/handoff-c3-glossary-mobile.png"
+    "artifacts/browser/handoff-c3-glossary-mobile.png",
+    "artifacts/browser/handoff-c3-textbook-mobile-320.png"
   ],
   "failureCount": 0
 }

@@ -290,7 +290,7 @@ const outputs = [
       "artifacts/browser/handoff-c3-textbook-mobile-320.png",
     ],
     failureCount: browser.failedCount,
-    pass: browser.pass && h3Tests.length === 5,
+    pass: browser.pass && h3Tests.length >= 6,
   }],
   ["handoff-c3-analytics-verification.json", {
     ...base,
