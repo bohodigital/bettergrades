@@ -41,7 +41,8 @@ const report = {
     "worked_solution_open", "lesson_to_practice_click", "lesson_to_article_click",
     "lesson_to_reference_click", "resource_to_lesson_click",
     "glossary_to_lesson_click", "navigation_destination_click", "site_search_result_click",
-    "learning_relationship_click", "article_to_lesson_click",
+    "learning_relationship_click", "article_to_lesson_click", "topic_hub_destination_click",
+    "worked_problem_to_lesson_click",
   ],
   assertions: {
     noConsoleErrors: true,

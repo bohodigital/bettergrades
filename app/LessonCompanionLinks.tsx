@@ -5,7 +5,7 @@ import publicLessonDestinations from "../data/learning-graph/public-lesson-desti
 
 type LessonDestination = {
   relationship: { sourceId: string; sourceRole: string; targetId: string; type: string; placement: string };
-  target: { id: string; canonicalPath: string; pageRole: string; shortTitle: string };
+  target: { id: string; canonicalPath: string; pageRole: string; shortTitle: string; course: string; unit: string; topic: string };
 };
 
 const purposeLabels: Record<string, string> = {
@@ -33,6 +33,9 @@ export function LessonCompanionLinks({ sourcePath, variant }: { sourcePath: stri
         relationship_type: relationship.type,
         placement: relationship.placement,
         result_rank: index + 1,
+        course: target.course,
+        unit: target.unit,
+        topic: target.topic,
       };
       trackFindabilityEvent("learning_relationship_click", data);
       trackFindabilityEvent(

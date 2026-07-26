@@ -14,6 +14,9 @@ export type FindabilityEventData = {
   result_rank?: number;
   result_count?: number;
   navigation_surface?: string;
+  course?: string;
+  unit?: string;
+  topic?: string;
 };
 
 declare global {
@@ -41,6 +44,9 @@ export async function findabilityIdentity(path: string) {
   return routeIdentities[normalizedPath as keyof typeof routeIdentities] ?? {
     id: `route:${normalizedPath}`,
     pageRole: "other",
+    course: "not-applicable",
+    unit: "not-applicable",
+    topic: "not-applicable",
   };
 }
 
@@ -73,6 +79,9 @@ async function resolveAndTrackNavigation(pending: PendingNavigation) {
     source_page_role: source.pageRole,
     target_page_id: target.id,
     target_page_role: target.pageRole,
+    course: pending.data.course ?? target.course ?? source.course ?? "not-applicable",
+    unit: pending.data.unit ?? target.unit ?? source.unit ?? "not-applicable",
+    topic: pending.data.topic ?? target.topic ?? source.topic ?? "not-applicable",
   });
 }
 

@@ -71,10 +71,53 @@ test("desktop navigation and learning-path clicks emit complete analytics dimens
       target_page_role: "textbook-lesson",
       placement: "article-intro",
       result_rank: 1,
+      course: "course.math.calculus",
+      unit: "unit.calculus.3a",
+      topic: "topic.math.integration-by-parts",
     });
     expect(event?.args[2].source_page_id).toBeTruthy();
     expect(event?.args[2].target_page_id).toBeTruthy();
     expect(event?.args[2].relationship_type).toBeTruthy();
+  }
+
+  await page.goto("/subjects/math/calculus/integration-techniques/");
+  await clickWithoutNavigation(page.locator('.topic-article-list a[href="/subjects/math/calculus/integration-techniques/integration-by-parts-strategy/"]'));
+  events = await page.evaluate(() => window.__events);
+  for (const sink of ["ga4", "umami"]) {
+    const topicEvents = events.filter((item) => item.sink === sink && item.args[1] === "topic_hub_destination_click");
+    expect(topicEvents).toHaveLength(1);
+    expect(topicEvents[0].args[2]).toMatchObject({
+      relationship_type: "hub_destination",
+      placement: "topic-hub-listing",
+      navigation_surface: "topic-hub",
+      course: "course.math.calculus",
+      unit: "not-applicable",
+      topic: "topic.math.integration-techniques",
+    });
+    expect(topicEvents[0].args[2].source_page_id).toBeTruthy();
+    expect(topicEvents[0].args[2].source_page_role).toBeTruthy();
+    expect(topicEvents[0].args[2].target_page_id).toBeTruthy();
+    expect(topicEvents[0].args[2].target_page_role).toBeTruthy();
+  }
+
+  await page.goto("/subjects/math/calculus/worked-problems/limit-by-factoring/");
+  await clickWithoutNavigation(page.locator(".resource-related a").first());
+  events = await page.evaluate(() => window.__events);
+  for (const sink of ["ga4", "umami"]) {
+    const workedEvents = events.filter((item) => item.sink === sink && item.args[1] === "worked_problem_to_lesson_click");
+    expect(workedEvents).toHaveLength(1);
+    expect(workedEvents[0].args[2]).toMatchObject({
+      source_page_role: "worked-problem",
+      relationship_type: "full_version_of",
+      placement: "resource-footer",
+      navigation_surface: "worked-problem",
+      course: "Calculus I",
+      unit: "Unit 1",
+      topic: "limits",
+    });
+    expect(workedEvents[0].args[2].source_page_id).toBeTruthy();
+    expect(workedEvents[0].args[2].target_page_id).toBeTruthy();
+    expect(workedEvents[0].args[2].target_page_role).toBeTruthy();
   }
   await context.close();
 });

@@ -246,6 +246,7 @@ test("every resource analytics event fires through both sinks with safe dimensio
   await collect();
 
   await page.goto("/subjects/math/calculus/worked-problems/limit-by-factoring/");
+  await clickWithoutNavigation(page.locator(".resource-related a").first());
   await collect();
 
   await page.goto("/glossary/math/derivative/");
@@ -261,7 +262,7 @@ test("every resource analytics event fires through both sinks with safe dimensio
   const expectedEvents = [
     "resource_view", "resource_download", "worksheet_download", "answer_key_download", "practice_exam_download",
     "formula_sheet_download", "visual_download", "worksheet_print", "practice_start", "practice_complete",
-    "exam_start", "exam_complete", "worked_solution_open", "resource_to_lesson_click",
+    "exam_start", "exam_complete", "worked_solution_open", "resource_to_lesson_click", "worked_problem_to_lesson_click",
     "learning_relationship_click", "lesson_to_practice_click", "lesson_to_article_click",
     "lesson_to_reference_click", "glossary_to_lesson_click",
   ];
@@ -278,7 +279,7 @@ test("every resource analytics event fires through both sinks with safe dimensio
   expect(data).toMatchObject({ resource_id: "calculus-resource-evaluating-limits", resource_type: "worksheet" });
   const allowedDimensions = new Set([
     "resource_id", "resource_type", "course", "unit", "topic", "difficulty", "file_type", "source_lesson", "variant",
-    "source_page_id", "source_page_role", "target_page_id", "target_page_role", "relationship_type", "placement", "result_rank",
+    "source_page_id", "source_page_role", "target_page_id", "target_page_role", "relationship_type", "placement", "result_rank", "navigation_surface",
   ]);
   for (const event of allEvents.filter((item) => item.sink === "ga4")) {
     expect(Object.keys(event.args[2]).every((key) => allowedDimensions.has(key)), `${event.args[1]}: safe dimension names`).toBe(true);

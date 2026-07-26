@@ -4,6 +4,7 @@
 
 import { useEffect, useState, type AnchorHTMLAttributes, type ReactNode } from "react";
 import type { MathGlossaryTerm } from "../lib/glossary/math/registry.mjs";
+import { trackFindabilityNavigation } from "../lib/learning-graph/analytics";
 import type { PublishingResource, ResourceHub, ResourceProblem } from "../lib/resources/catalog.mjs";
 import { isPdfHref, pdfLinkAttributes } from "../lib/resources/pdf-links.mjs";
 import { Math } from "./Math";
@@ -211,7 +212,24 @@ function RelatedLinks({ resource, relatedResources, enrichedGlossaryTermIds }: {
     <section className="resource-related" aria-labelledby="related-learning">
       <h2 id="related-learning">Continue learning</h2>
       <div className="resource-related-grid">
-        {lesson && <div><h3>Learn fully</h3><ul><li><a href={lesson} onClick={() => trackResource(resource.resourceType === "glossary-term" ? "glossary_to_lesson_click" : "resource_to_lesson_click", resource, { source_lesson: lesson })}>{labelForPath(lesson)}</a></li></ul></div>}
+        {lesson && <div><h3>Learn fully</h3><ul><li><a href={lesson} onClick={(event) => trackFindabilityNavigation(
+          event,
+          resource.resourceType === "glossary-term"
+            ? "glossary_to_lesson_click"
+            : resource.resourceType === "worked-problem"
+              ? "worked_problem_to_lesson_click"
+              : "resource_to_lesson_click",
+          resource.canonicalPath,
+          lesson,
+          {
+            relationship_type: "full_version_of",
+            placement: "resource-footer",
+            navigation_surface: resource.resourceType,
+            course: resource.course || "not-applicable",
+            unit: resource.unit || "not-applicable",
+            topic: resource.topics[0] || "not-applicable",
+          },
+        )}>{labelForPath(lesson)}</a></li></ul></div>}
         {supporting.length > 0 && <div><h3>Supporting steps</h3><ul>{supporting.map((item) => <li key={item.key}><small>{item.role}</small><a href={item.href}>{item.label}</a></li>)}</ul></div>}
       </div>
     </section>

@@ -46,6 +46,7 @@ const result = {
   generatedAt: new Date().toISOString(),
   sourceCommit,
   sourceTree,
+  provenanceModel: "generated evidence verifies sourceCommit/sourceTree; the containing evidence commit is bound externally by GitHub PR and Sites version provenance",
   routeCount: 509,
   toolVersion: "1.0.0",
   failureCount: normalizedDifferences.length,

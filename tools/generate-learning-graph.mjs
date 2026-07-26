@@ -191,6 +191,9 @@ try {
                 canonicalPath: target.canonicalPath,
                 pageRole: target.pageRole,
                 shortTitle: target.shortTitle,
+                course: target.courseId ?? source.courseId ?? "not-applicable",
+                unit: target.unitId ?? source.unitId ?? "not-applicable",
+                topic: target.topicIds[0] ?? source.topicIds[0] ?? "not-applicable",
               },
             }];
           })
@@ -210,15 +213,35 @@ try {
           .sort((left, right) => (companionCategoryPriority[right.relationship.type] ?? 0) - (companionCategoryPriority[left.relationship.type] ?? 0) || left.target.canonicalPath.localeCompare(right.target.canonicalPath))
           .map(({ relationship, target }) => ({
             relationship: { sourceId: relationship.sourceId, sourceRole: source.pageRole, targetId: relationship.targetId, type: relationship.type, placement: relationship.placement },
-            target: { id: target.id, canonicalPath: target.canonicalPath, pageRole: target.pageRole, shortTitle: target.shortTitle },
+            target: {
+              id: target.id,
+              canonicalPath: target.canonicalPath,
+              pageRole: target.pageRole,
+              shortTitle: target.shortTitle,
+              course: target.courseId ?? source.courseId ?? "not-applicable",
+              unit: target.unitId ?? source.unitId ?? "not-applicable",
+              topic: target.topicIds[0] ?? source.topicIds[0] ?? "not-applicable",
+            },
           }))
           .slice(0, 4);
         return [source.canonicalPath, destinations];
       }),
   );
   const routeIdentities = Object.fromEntries([
-    ...graph.nodes.map((node) => [node.canonicalPath, { id: node.id, pageRole: node.pageRole }]),
-    ...graph.exclusions.map((item) => [item.canonicalPath, { id: `route:${item.canonicalPath}`, pageRole: item.pageRole }]),
+    ...graph.nodes.map((node) => [node.canonicalPath, {
+      id: node.id,
+      pageRole: node.pageRole,
+      course: node.courseId ?? "not-applicable",
+      unit: node.unitId ?? "not-applicable",
+      topic: node.topicIds[0] ?? "not-applicable",
+    }]),
+    ...graph.exclusions.map((item) => [item.canonicalPath, {
+      id: `route:${item.canonicalPath}`,
+      pageRole: item.pageRole,
+      course: "not-applicable",
+      unit: "not-applicable",
+      topic: "not-applicable",
+    }]),
   ].sort(([left], [right]) => left.localeCompare(right)));
   await mkdir(outDir, { recursive: true });
   await writeOrCheck(resolve(outDir, "graph.json"), graph);

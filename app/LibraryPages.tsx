@@ -14,6 +14,7 @@ import {
   type CourseArticle,
 } from "../lib/course-library";
 import { archetypes } from "../lib/library";
+import { trackFindabilityNavigation } from "../lib/learning-graph/analytics";
 import { getResourceRecord, tools } from "../lib/registry/catalog";
 import { assessments } from "../lib/registry/practice";
 import { LatexArticleDocument } from "./LatexArticle";
@@ -30,10 +31,29 @@ const resourceGroups = [
   { id: "decisions", title: "Choose a strategy", description: "Comparisons for the moments when several methods look possible.", archetypes: ["decision"] },
 ] as const;
 
-export function ArticleRow({ article, index }: { article: CourseArticle; index: number }) {
+export function ArticleRow({ article, index, topicHubSourcePath }: { article: CourseArticle; index: number; topicHubSourcePath?: string }) {
   const archetype = archetypes[article.archetype];
+  const destination = libraryArticleHref(article);
   return (
-    <a className="library-row" href={libraryArticleHref(article)} data-domain={article.domainSlug}>
+    <a
+      className="library-row"
+      href={destination}
+      data-domain={article.domainSlug}
+      onClick={topicHubSourcePath ? (event) => trackFindabilityNavigation(
+        event,
+        "topic_hub_destination_click",
+        topicHubSourcePath,
+        destination,
+        {
+          relationship_type: "hub_destination",
+          placement: "topic-hub-listing",
+          navigation_surface: "topic-hub",
+          course: `course.math.${article.domainSlug}`,
+          unit: "not-applicable",
+          topic: `topic.math.${article.topicSlug}`,
+        },
+      ) : undefined}
+    >
       <span className="library-row-number">{String(index + 1).padStart(2, "0")}</span>
       <span className="library-row-main"><small>{article.domainName} · {archetype.label}</small><b>{article.title}</b><em>{article.deck}</em></span>
       <span className="library-row-meta"><small>{article.course}</small><small>{archetypes[article.archetype].label}</small></span>
@@ -92,7 +112,7 @@ export function TopicContent({ domainSlug, topicSlug }: { domainSlug: string; to
       {isUnit3aTopic && <section className="limits-unit-map section-pad" aria-label="Unit 3A textbook map connection"><CalculusUnitNavigation currentUnit="3A" compact /><section className="limits-exam-key-callout"><div><p className="eyebrow">Core textbook</p><h2>Begin with the complete Unit 3A map</h2><p>Follow antiderivatives, signed accumulation, Riemann sums, the Fundamental Theorem, integration methods, numerical integration, improper integrals, review, exams, and published answer keys as one connected sequence.</p></div><a className="button button-ink" href={UNIT_3A_ROOT}>Open Unit 3A: Integrals →</a></section></section>}
       <section className="topic-page-body section-pad">
         <aside><strong>{isLimitsTopic || isUnit3aTopic ? "Beyond the textbook" : "Inside this topic"}</strong><span>{isLimitsTopic || isUnit3aTopic ? "Focused deep-dive articles" : "Guides, examples, and decision support"}</span><p>{isLimitsTopic || isUnit3aTopic ? "Use these focused explorations after the core map when one idea deserves a slower, closer look." : "Start with the idea, work a method, then use a decision guide when the route is not obvious."}</p>{isLimitsTopic && <a className="limits-unit-topic-link" href={LIMITS_UNIT_PREFIX}>Open every unit resource →</a>}{isUnit3aTopic && <a className="limits-unit-topic-link" href={UNIT_3A_ROOT}>Open the Unit 3A map →</a>}<a href={`/subjects/math/${course.slug}/`}>All {course.name.toLowerCase()} topics →</a>{topicTools.map((tool) => <a href={tool!.path} key={tool!.id}>Use {tool!.title} →</a>)}{topicAssessments.slice(0, 1).map((assessment) => <a href={assessment!.path} key={assessment!.id}>Practice this topic →</a>)}</aside>
-        <div className="topic-resource-groups">{(isLimitsTopic || isUnit3aTopic) && <header className="topic-explorations-intro"><p className="eyebrow">Further exploration</p><h2>Deep dives and extra articles</h2><p>The core map above is the textbook. These articles are side trails: close readings of one method, a single integral, or a conceptual distinction that rewards more time and more examples.</p></header>}{resourceGroups.map((group) => { const groupArticles = articles.filter((article) => (group.archetypes as readonly string[]).includes(article.archetype)); if (!groupArticles.length) return null; return <section className="topic-resource-group" key={group.id}><header><span>{group.title}</span><p>{group.description}</p></header><div className="topic-article-list">{groupArticles.map((article) => <ArticleRow article={article} index={articles.indexOf(article)} key={article.slug} />)}</div></section>; })}</div>
+        <div className="topic-resource-groups">{(isLimitsTopic || isUnit3aTopic) && <header className="topic-explorations-intro"><p className="eyebrow">Further exploration</p><h2>Deep dives and extra articles</h2><p>The core map above is the textbook. These articles are side trails: close readings of one method, a single integral, or a conceptual distinction that rewards more time and more examples.</p></header>}{resourceGroups.map((group) => { const groupArticles = articles.filter((article) => (group.archetypes as readonly string[]).includes(article.archetype)); if (!groupArticles.length) return null; return <section className="topic-resource-group" key={group.id}><header><span>{group.title}</span><p>{group.description}</p></header><div className="topic-article-list">{groupArticles.map((article) => <ArticleRow article={article} index={articles.indexOf(article)} topicHubSourcePath={`/subjects/math/${course.slug}/${topic.slug}/`} key={article.slug} />)}</div></section>; })}</div>
       </section>
       <nav className="topic-sequence section-pad" aria-label="Adjacent topics">
         {previous ? <a href={`/subjects/math/${course.slug}/${previous.slug}/`}><small>← Previous topic</small><b>{previous.name}</b></a> : <span />}

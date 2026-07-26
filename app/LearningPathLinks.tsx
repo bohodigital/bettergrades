@@ -5,7 +5,7 @@ import publicArticleDestinations from "../data/learning-graph/public-article-des
 
 type PublicDestination = {
   relationship: { sourceId: string; sourceRole: string; targetId: string; type: string };
-  target: { id: string; canonicalPath: string; pageRole: string; shortTitle: string };
+  target: { id: string; canonicalPath: string; pageRole: string; shortTitle: string; course: string; unit: string; topic: string };
 };
 
 const purposeLabels: Record<string, string> = {
@@ -41,6 +41,9 @@ export function LearningPathLinks({ sourcePath, placement, variant = "secondary"
               relationship_type: relationship.type,
               placement,
               result_rank: index + 1,
+              course: target.course,
+              unit: target.unit,
+              topic: target.topic,
             };
             trackFindabilityEvent("learning_relationship_click", eventData);
             const articleRoles = new Set(["quick-answer", "concept-explainer", "method-guide", "decision-guide", "answer"]);

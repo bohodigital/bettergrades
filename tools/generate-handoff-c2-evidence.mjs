@@ -24,11 +24,49 @@ const articleApprovals = await readJson("data/ia/handoff-c2-approved-article-les
 const articleDeferrals = await readJson("data/ia/handoff-c2-deferred-article-lesson-map.json");
 const lessonApprovals = await readJson("data/ia/handoff-c2-approved-lesson-companion-map.json");
 const lessonDeferrals = await readJson("data/ia/handoff-c2-deferred-lesson-companion-map.json");
+const analyticsImplementation = (await Promise.all([
+  "app/BetterGradesApp.tsx",
+  "app/LearningPathLinks.tsx",
+  "app/LessonCompanionLinks.tsx",
+  "app/LibraryPages.tsx",
+  "app/ResourcePages.tsx",
+  "lib/learning-graph/analytics.ts",
+].map((path) => readFile(resolve(root, path), "utf8")))).join("\n");
+const requiredAnalyticsEvents = [
+  "navigation_destination_click", "topic_hub_destination_click", "article_to_lesson_click",
+  "lesson_to_article_click", "lesson_to_practice_click", "lesson_to_reference_click",
+  "worked_problem_to_lesson_click", "glossary_to_lesson_click", "learning_relationship_click",
+];
+const requiredAnalyticsDimensions = [
+  "source_page_id", "source_page_role", "target_page_id", "target_page_role",
+  "relationship_type", "placement", "navigation_surface", "course", "unit", "topic",
+];
+const findabilityBrowserTest = browser.tests.find((item) => item.title === "desktop navigation and learning-path clicks emit complete analytics dimensions");
+const resourceBrowserTest = browser.tests.find((item) => item.title === "every resource analytics event fires through both sinks with safe dimensions and respects Do Not Track");
+const dntBrowserTest = browser.tests.find((item) => item.title === "keyboard, dark mode, print, filters, and Do Not Track remain functional");
+const delayedNavigationTest = browser.tests.find((item) => item.title === "real navigation stays immediate and replays delayed analytics identities");
+const analyticsEventVerification = requiredAnalyticsEvents.map((event) => ({
+  event,
+  implemented: analyticsImplementation.includes(`"${event}"`),
+  exercised: browser.analyticsEventsExercised.includes(event),
+}));
+const analyticsDimensionVerification = requiredAnalyticsDimensions.map((dimension) => ({
+  dimension,
+  declared: analyticsImplementation.includes(`${dimension}?: string`) || analyticsImplementation.includes(`${dimension}:`),
+}));
+const analyticsFailures = [
+  ...analyticsEventVerification.filter((item) => !item.implemented || !item.exercised).map((item) => `event:${item.event}`),
+  ...analyticsDimensionVerification.filter((item) => !item.declared).map((item) => `dimension:${item.dimension}`),
+  ...[findabilityBrowserTest, resourceBrowserTest, dntBrowserTest, delayedNavigationTest]
+    .filter((item) => !item || item.status !== "passed" || item.errors.length)
+    .map((item) => `browser-test:${item?.title ?? "missing"}`),
+];
 
 const base = {
   schemaVersion: 1,
   sourceCommit,
   sourceTree,
+  provenanceModel: "generated evidence verifies sourceCommit/sourceTree; the containing evidence commit is bound externally by GitHub PR and Sites version provenance",
   buildHash,
   rawBuildHash,
   buildHashNormalization: ["VINEXT build/deployment/draft UUIDs", "VINEXT prerenderSecret"],
@@ -110,21 +148,21 @@ const outputs = [
   }],
   ["handoff-c2-analytics-verification.json", {
     ...base,
-    failureCount: 0,
+    failureCount: analyticsFailures.length,
     ga4LoaderCount: 1,
     ga4ConfigurationCount: 1,
     umamiLoaderCount: 1,
-    bothSinksVerified: true,
-    exactOnceVerified: true,
-    doNotTrackSuppressionVerified: true,
-    navigationWithoutAnalyticsVerified: true,
+    bothSinksVerified: findabilityBrowserTest?.status === "passed" && resourceBrowserTest?.status === "passed",
+    exactOnceVerified: findabilityBrowserTest?.status === "passed",
+    doNotTrackSuppressionVerified: dntBrowserTest?.status === "passed" && resourceBrowserTest?.status === "passed",
+    navigationWithoutAnalyticsVerified: delayedNavigationTest?.status === "passed",
     sensitiveDimensionCount: 0,
-    events: [
-      "navigation_destination_click", "topic_hub_destination_click", "article_to_lesson_click",
-      "lesson_to_article_click", "lesson_to_practice_click", "lesson_to_reference_click",
-      "worked_problem_to_lesson_click", "glossary_to_lesson_click", "learning_relationship_click",
-    ],
-    pass: true,
+    events: requiredAnalyticsEvents,
+    requiredDimensions: requiredAnalyticsDimensions,
+    eventVerification: analyticsEventVerification,
+    dimensionVerification: analyticsDimensionVerification,
+    failures: analyticsFailures,
+    pass: analyticsFailures.length === 0,
   }],
   ["handoff-c2-route-inventory.json", {
     ...routeInventory,
