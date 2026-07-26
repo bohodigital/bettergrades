@@ -88,6 +88,7 @@ h1 em, h2 em { color: var(--brand); font-family: var(--serif); font-weight: 500;
 .desktop-learn-panel { position: absolute; top: calc(100% + 1px); right: 0; width: min(960px, calc(100vw - 36px)); padding: 22px; display: grid; grid-template-columns: .82fr 1.3fr .92fr; gap: 14px; border: 1px solid var(--line); border-top: 3px solid var(--brand); border-radius: 0 0 22px 22px; background: color-mix(in srgb, var(--surface), var(--paper) 20%); box-shadow: 0 24px 70px color-mix(in srgb, var(--ink), transparent 84%); }
 .desktop-learn-panel > section { min-width: 0; padding: 12px; display: grid; align-content: start; gap: 7px; }
 .desktop-learn-panel > section + section { border-left: 1px solid var(--line); }
+.desktop-learn-panel.desktop-path-panel { width: min(410px, calc(100vw - 36px)); grid-template-columns: 1fr; }
 .desktop-learn-panel > section > span { margin: 0 6px 5px; color: var(--brand); font-size: 10px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
 .desktop-learn-panel a { min-width: 0; padding: 10px; display: grid; gap: 3px; border-radius: 10px; color: var(--ink); }
 .desktop-learn-panel a:hover, .desktop-learn-panel a:focus-visible { background: var(--brand-soft); }
@@ -118,6 +119,8 @@ h1 em, h2 em { color: var(--brand); font-family: var(--serif); font-weight: 500;
 .mobile-course-menu > div { padding: 0 0 9px 8px; display: grid; gap: 2px; border-left: 2px solid var(--brand-soft); }
 
 .hero { min-height: 660px; padding-top: 84px; padding-bottom: 92px; display: grid; grid-template-columns: minmax(0, 1.18fr) minmax(360px, .82fr); gap: clamp(44px, 6vw, 86px); align-items: center; }
+.home-action-hero { min-height: 0; grid-template-columns: minmax(0, 1fr); }
+.home-action-hero .hero-copy { max-width: 880px; }
 .hero h1 { max-width: 660px; margin-bottom: 26px; }
 .hero h1 em { display: inline-block; }
 .hero-lede { max-width: 650px; margin-bottom: 28px; color: var(--muted); font-size: clamp(17px, 1.7vw, 20px); line-height: 1.55; }
@@ -731,6 +734,20 @@ h1 em, h2 em { color: var(--brand); font-family: var(--serif); font-weight: 500;
 .related-library > a:last-child { border-bottom: 1px solid var(--line); }
 .related-library > a span { color: var(--brand); font-size: 9px; font-weight: 900; text-transform: uppercase; }
 .related-library > a i { color: var(--brand); font-style: normal; }
+.learning-path-primary { margin: 24px 0 34px; padding: 18px 20px; border: 1px solid color-mix(in srgb, var(--brand), transparent 45%); border-left: 4px solid var(--brand); border-radius: 12px; background: var(--brand-soft); }
+.learning-path-primary > div { margin-bottom: 8px; }
+.learning-path-primary > div p:last-child { margin: 0; color: var(--muted); font-size: 13px; }
+.learning-path-primary > a { min-height: 52px; border-bottom: 0; }
+.learning-path-primary > a:last-child { border-bottom: 0; }
+.lesson-companions { margin: 30px 0; padding: 22px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+.lesson-companions-primary { border-left: 4px solid var(--brand); }
+.lesson-companions > header { margin-bottom: 12px; }
+.lesson-companions > header .eyebrow { margin-bottom: 8px; }
+.lesson-companions > header h2 { margin: 0; font-size: 1.75rem; }
+.lesson-companions > div { display: grid; gap: 8px; }
+.lesson-companions a { min-height: 58px; padding: 10px 0; display: grid; grid-template-columns: 130px minmax(0, 1fr) auto; gap: 16px; align-items: center; border-top: 1px solid var(--line); }
+.lesson-companions a span { color: var(--brand); font-size: 9px; font-weight: 900; letter-spacing: .06em; text-transform: uppercase; }
+.lesson-companions a i { color: var(--brand); font-style: normal; }
 .article-sequence { margin: 0 0 88px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .article-sequence a { padding: 18px; display: grid; border: 1px solid var(--line); border-radius: 5px; background: var(--surface); }
 .article-sequence a:last-child { text-align: right; }
@@ -1461,6 +1478,17 @@ h1 em, h2 em { color: var(--brand); font-family: var(--serif); font-weight: 500;
 .resource-library-categories a { padding: 16px 18px; display: flex; justify-content: space-between; align-items: center; gap: 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); font-weight: 850; }
 .resource-library-categories a:hover { border-color: var(--brand); color: var(--brand); }
 .resource-library-categories a span { min-width: 28px; height: 28px; display: grid; place-items: center; border-radius: 999px; background: var(--brand-soft); color: var(--brand); font-size: 11px; }
+.resource-library-filters { margin: 8px 0 30px; padding: 20px; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+.resource-library-filters > div { grid-column: 1 / -1; display: flex; justify-content: space-between; gap: 20px; }
+.resource-library-filters > div span { color: var(--brand); font-size: 11px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+.resource-library-filters > div strong { font-size: 12px; }
+.resource-library-filters label { display: grid; gap: 6px; color: var(--muted); font-size: 10px; font-weight: 850; text-transform: uppercase; }
+.resource-library-filters select { min-width: 0; padding: 9px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); color: var(--ink); font-size: 12px; text-transform: none; }
+.resource-library-filters button { grid-column: 1 / -1; justify-self: start; padding: 0; border: 0; background: transparent; color: var(--brand); cursor: pointer; font-size: 12px; font-weight: 850; }
+.practice-directory { padding-top: 24px; padding-bottom: 90px; border-top: 1px solid var(--line); }
+.practice-directory .path-row { grid-template-columns: 45px minmax(0, 1fr) auto; }
+.practice-directory .path-row > span:nth-child(2) { display: grid; grid-template-columns: minmax(190px, .55fr) minmax(230px, .8fr) minmax(280px, 1.2fr); gap: 24px; align-items: center; }
+.practice-directory .path-row > span:nth-child(2) > small:first-child { color: var(--brand); font-size: 10px; font-weight: 850; text-transform: uppercase; }
 .resource-library-group { padding: 62px 0; border-top: 1px solid var(--line); scroll-margin-top: 92px; }
 .resource-library-group > header { margin-bottom: 24px; display: grid; grid-template-columns: minmax(0, .9fr) minmax(280px, 1.1fr); gap: 36px; align-items: end; }
 .resource-library-group > header span { color: var(--brand); font-size: 10px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
@@ -1484,6 +1512,7 @@ h1 em, h2 em { color: var(--brand); font-family: var(--serif); font-weight: 500;
   .practice-progress { align-items: flex-start; flex-direction: column; }
   .resource-card-grid { grid-template-columns: repeat(2, 1fr); }
   .resource-library-categories { grid-template-columns: repeat(2, 1fr); }
+  .resource-library-filters { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .resource-download-actions { justify-content: flex-start; }
 }
 
@@ -1494,13 +1523,16 @@ h1 em, h2 em { color: var(--brand); font-family: var(--serif); font-weight: 500;
   .resource-preview > ol { columns: 1; }
   .resource-related-grid, .formula-groups, .exam-conditions, .resource-card-grid { grid-template-columns: 1fr; }
   .resource-library-categories, .resource-library-grid, .resource-library-group > header { grid-template-columns: 1fr; }
+  .resource-library-filters { grid-template-columns: 1fr; }
+  .practice-directory .path-row { grid-template-columns: 34px minmax(0, 1fr) auto; }
+  .practice-directory .path-row > span:nth-child(2) { grid-template-columns: 1fr; gap: 7px; padding: 18px 0; }
   .formula-groups > h2, .exam-conditions h2 { grid-column: 1; }
   .worked-solution { grid-template-columns: 1fr; }
   .resource-facts > span { flex: 1 1 135px; min-width: 0; }
 }
 
 @media print {
-  .resource-breadcrumbs, .resource-downloads, .resource-related, .resource-course-return { display: none !important; }
+  .resource-breadcrumbs, .resource-downloads, .resource-related, .resource-course-return, .resource-library-filters { display: none !important; }
   .resource-page { width: 100%; padding: 0; color: #000; }
   .resource-hero { padding: 0 0 18pt; }
   .resource-hero h1 { font-size: 26pt; }

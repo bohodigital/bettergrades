@@ -32,13 +32,13 @@ test("desktop navigation and learning-path clicks emit complete analytics dimens
   const page = await context.newPage();
 
   await page.goto("/");
-  await clickWithoutNavigation(page.locator('.desktop-nav > a[href="/resources/"]'));
+  await clickWithoutNavigation(page.locator('.desktop-nav > a[href="/search/"]'));
   let events = await page.evaluate(() => window.__events);
   expect(events.find((item) => item.sink === "ga4" && item.args[1] === "navigation_destination_click")?.args[2]).toMatchObject({
     source_page_id: "route:/",
     source_page_role: "home",
-    target_page_id: "resource-hub.math.resources",
-    target_page_role: "resource-library",
+    target_page_id: "route:/search/",
+    target_page_role: "search",
     relationship_type: "navigation",
     placement: "desktop-primary",
     navigation_surface: "desktop-primary",
@@ -58,8 +58,8 @@ test("desktop navigation and learning-path clicks emit complete analytics dimens
     result_rank: 1,
   });
 
-  await page.goto("/subjects/math/calculus/derivative-applications/curve-sketching-from-derivatives/");
-  const learningLink = page.locator('.learning-path-links a[href="/subjects/math/calculus/derivative-applications/advanced-notes/"]');
+  await page.goto("/learn/calculus/integration-by-parts/");
+  const learningLink = page.locator('.learning-path-primary a[href="/subjects/math/calculus/integrals/integration-by-parts/"]');
   await expect(learningLink).toBeVisible();
   await clickWithoutNavigation(learningLink);
   events = await page.evaluate(() => window.__events);
@@ -69,8 +69,8 @@ test("desktop navigation and learning-path clicks emit complete analytics dimens
     expect(event?.args[2]).toMatchObject({
       source_page_role: "method-guide",
       target_page_role: "textbook-lesson",
-      placement: "article-footer",
-      result_rank: 2,
+      placement: "article-intro",
+      result_rank: 1,
     });
     expect(event?.args[2].source_page_id).toBeTruthy();
     expect(event?.args[2].target_page_id).toBeTruthy();
@@ -95,12 +95,12 @@ test("real navigation stays immediate and replays delayed analytics identities",
 
   await page.goto("/");
   await Promise.all([
-    page.waitForURL("**/resources/"),
-    page.locator('.desktop-nav > a[href="/resources/"]').click(),
+    page.waitForURL("**/search/"),
+    page.locator('.desktop-nav > a[href="/search/"]').click(),
   ]);
   await expect.poll(() => events.find((item) => item.sink === "ga4" && item.args[1] === "navigation_destination_click")?.args[2]).toMatchObject({
     source_page_role: "home",
-    target_page_role: "resource-library",
+    target_page_role: "search",
   });
   await context.close();
 
@@ -141,8 +141,8 @@ test("real navigation stays immediate and replays delayed analytics identities",
   await stalledPage.goto("/");
   const navigationStartedAt = Date.now();
   await Promise.all([
-    stalledPage.waitForURL("**/resources/"),
-    stalledPage.locator('.desktop-nav > a[href="/resources/"]').click(),
+    stalledPage.waitForURL("**/search/"),
+    stalledPage.locator('.desktop-nav > a[href="/search/"]').click(),
   ]);
   expect(Date.now() - navigationStartedAt).toBeLessThan(1_000);
   releaseIdentityRequest();

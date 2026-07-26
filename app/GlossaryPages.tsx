@@ -49,7 +49,7 @@ export function MathGlossaryPage({ terms: allTerms, categories }: { terms: reado
   return (
     <>
       <section className="glossary-hero section-pad">
-        <nav className="breadcrumbs"><a href="/subjects/">Subjects</a><span>/</span><a href="/subjects/math/">Mathematics</a><span>/</span><span>Glossary</span></nav>
+        <nav className="breadcrumbs"><a href="/">Home</a><span>/</span><a href="/glossary/">Glossaries</a><span>/</span><span>Mathematics</span></nav>
         <p className="eyebrow">Mathematics glossary</p>
         <h1>Read the symbol.<br /><em>Understand the idea.</em></h1>
         <p>{allTerms.length} terms and notations, organized for quick lookup now and a much larger library later.</p>

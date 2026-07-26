@@ -180,10 +180,11 @@ function labelForPath(path: string) {
 }
 
 function Breadcrumbs({ resource }: { resource?: PublishingResource }) {
+  const practice = resource && ["worksheet", "practice-exam", "worked-problem"].includes(resource.resourceType);
   return (
     <nav className="resource-breadcrumbs" aria-label="Breadcrumb">
-      <a href="/subjects/">Subjects</a><span>/</span>
-      <a href="/subjects/math/">Mathematics</a><span>/</span>
+      <a href="/">Home</a><span>/</span>
+      <a href={practice ? "/practice/" : "/resources/"}>{practice ? "Practice" : "Resources"}</a><span>/</span>
       <a href="/subjects/math/calculus/">Calculus</a><span>/</span>
       {resource ? <><a href={`/subjects/math/calculus/${resource.resourceType === "worked-problem" ? "worked-problems" : resource.resourceType === "visual-guide" ? "visuals" : resource.resourceType === "practice-exam" ? "practice-exams" : resource.resourceType === "formula-sheet" ? "formula-sheets" : "worksheets"}/`}>{typeLabels[resource.resourceType]}</a><span>/</span><span aria-current="page">{resource.shortTitle}</span></> : <span aria-current="page">Resource library</span>}
     </nav>
@@ -201,13 +202,17 @@ function LibraryDownloads({ resource }: { resource: ResourceLibrarySummary }) {
 }
 
 function RelatedLinks({ resource, relatedResources, enrichedGlossaryTermIds }: { resource: PublishingResource; relatedResources: readonly ResourceLinkSummary[]; enrichedGlossaryTermIds: readonly string[] }) {
+  const lesson = [...resource.relatedLessons, ...resource.relatedArticles][0];
+  const supporting = [
+    ...relatedResources.slice(0, 2).map((item) => ({ key: item.id, href: item.canonicalPath, role: "Related resource", label: item.shortTitle })),
+    ...resource.relatedGlossaryTerms.slice(0, 1).map((term) => ({ key: term, href: enrichedGlossaryTermIds.includes(term) ? `/glossary/math/${term}/` : `/glossary/math/#${term}`, role: "Review the definition", label: term.replaceAll("-", " ") })),
+  ].slice(0, 3);
   return (
     <section className="resource-related" aria-labelledby="related-learning">
       <h2 id="related-learning">Continue learning</h2>
       <div className="resource-related-grid">
-        <div><h3>Lessons and articles</h3><ul>{[...resource.relatedLessons, ...resource.relatedArticles].map((path) => <li key={path}><a href={path} onClick={() => trackResource(resource.resourceType === "glossary-term" ? "glossary_to_lesson_click" : "resource_to_lesson_click", resource, { source_lesson: path })}>{labelForPath(path)}</a></li>)}</ul></div>
-        <div><h3>Related resources</h3><ul>{relatedResources.map((item) => <li key={item.id}><a href={item.canonicalPath}>{item.shortTitle}</a></li>)}</ul></div>
-        <div><h3>Glossary</h3><ul>{resource.relatedGlossaryTerms.map((term) => <li key={term}><a href={enrichedGlossaryTermIds.includes(term) ? `/glossary/math/${term}/` : `/glossary/math/#${term}`}>{term.replaceAll("-", " ")}</a></li>)}</ul></div>
+        {lesson && <div><h3>Learn fully</h3><ul><li><a href={lesson} onClick={() => trackResource(resource.resourceType === "glossary-term" ? "glossary_to_lesson_click" : "resource_to_lesson_click", resource, { source_lesson: lesson })}>{labelForPath(lesson)}</a></li></ul></div>}
+        {supporting.length > 0 && <div><h3>Supporting steps</h3><ul>{supporting.map((item) => <li key={item.key}><small>{item.role}</small><a href={item.href}>{item.label}</a></li>)}</ul></div>}
       </div>
     </section>
   );
@@ -352,7 +357,20 @@ export function ResourceHubPage({ hub, resources }: { hub: ResourceHub; resource
 }
 
 export function ResourceLibraryPage({ resources }: { resources: readonly ResourceLibrarySummary[] }) {
+  const [course, setCourse] = useState("all");
+  const [unit, setUnit] = useState("all");
+  const [topic, setTopic] = useState("all");
+  const [resourceType, setResourceType] = useState("all");
+  const [difficulty, setDifficulty] = useState("all");
   const downloadableCount = resources.reduce((count, resource) => count + Number(Boolean(resource.studentPdf)) + Number(Boolean(resource.answerKeyPdf)) + (resource.primaryVisual ? 2 : 0), 0);
+  const options = (values: string[]) => Array.from(new Set(values.filter(Boolean))).sort();
+  const filteredResources = resources.filter((resource) =>
+    (course === "all" || resource.course === course)
+    && (unit === "all" || resource.unit === unit)
+    && (topic === "all" || resource.topics.includes(topic))
+    && (resourceType === "all" || resource.resourceType === resourceType)
+    && (difficulty === "all" || resource.difficulty === difficulty)
+  );
   return (
     <div className="resource-hub resource-library">
       <nav className="resource-breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><span aria-current="page">Resources</span></nav>
@@ -369,8 +387,18 @@ export function ResourceLibraryPage({ resources }: { resources: readonly Resourc
         {hubLinks.map(([path, title]) => <a href={path} key={path}>{title}</a>)}
       </nav>
       <section className="resource-hub-intro"><h2>Choose the format that fits the job</h2><p>Use worksheets and exams when you need practice, formula sheets and visuals when you need a reference, and worked problems or glossary entries when one specific idea is slowing you down.</p></section>
+      <section className="resource-library-filters" aria-label="Filter resources">
+        <div><span>Filter the library</span><strong>{filteredResources.length} of {resources.length} resources</strong></div>
+        <label>Course<select value={course} onChange={(event) => setCourse(event.target.value)}><option value="all">All courses</option>{options(resources.map((resource) => resource.course)).map((value) => <option value={value} key={value}>{value}</option>)}</select></label>
+        <label>Unit<select value={unit} onChange={(event) => setUnit(event.target.value)}><option value="all">All units</option>{options(resources.map((resource) => resource.unit)).map((value) => <option value={value} key={value}>{value}</option>)}</select></label>
+        <label>Topic<select value={topic} onChange={(event) => setTopic(event.target.value)}><option value="all">All topics</option>{options(resources.flatMap((resource) => resource.topics)).map((value) => <option value={value} key={value}>{value}</option>)}</select></label>
+        <label>Resource type<select value={resourceType} onChange={(event) => setResourceType(event.target.value)}><option value="all">All types</option>{libraryGroups.map(([value, label]) => <option value={value} key={value}>{label}</option>)}</select></label>
+        <label>Difficulty<select value={difficulty} onChange={(event) => setDifficulty(event.target.value)}><option value="all">All levels</option>{options(resources.map((resource) => resource.difficulty)).map((value) => <option value={value} key={value}>{value}</option>)}</select></label>
+        <button type="button" onClick={() => { setCourse("all"); setUnit("all"); setTopic("all"); setResourceType("all"); setDifficulty("all"); }}>Clear filters</button>
+      </section>
       {libraryGroups.map(([type, title, description]) => {
-        const group = resources.filter((resource) => resource.resourceType === type);
+        const group = filteredResources.filter((resource) => resource.resourceType === type);
+        if (!group.length) return null;
         return <section className="resource-library-group" id={type} key={type}>
           <header><div><span>{String(group.length).padStart(2, "0")} resources</span><h2>{title}</h2></div><p>{description}</p></header>
           <div className="resource-library-grid">

@@ -18,17 +18,7 @@ import { findabilityIdentity, trackFindabilityEvent, trackFindabilityNavigation 
 
 import { Formula, Math, MathOrText } from "./Math";
 import { PageGlossaryTerms } from "./PageGlossaryTerms";
-
-const nav = [
-  ["Resources", "/resources/"], ["Practice", "/practice/"], ["Tools", "/tools/"], ["Glossary", "/glossary/"],
-];
-
-const calculusChapterLinks = [
-  ["Chapter 1", "Limits and Continuity", "/subjects/math/calculus/limits-continuity/"],
-  ["Chapter 2", "Derivatives · Units 2A and 2B", "/subjects/math/calculus/derivatives/"],
-  ["Chapter 3", "Integrals · Units 3A and 3B", "/subjects/math/calculus/integrals/"],
-  ["Chapter 4", "Sequences and Series · Units 4A and 4B", "/subjects/math/calculus/sequences-and-series/"],
-];
+import { LearningPathLinks } from "./LearningPathLinks";
 
 const PathContext = createContext("/");
 
@@ -91,7 +81,6 @@ function ThemeControl() {
 
 function Header() {
   const path = useContext(PathContext);
-  const isActive = (href: string) => href === "/" ? path === href : path.startsWith(href);
   const navigationClick = (href: string, surface: string) => (event: MouseEvent<HTMLAnchorElement>) => {
     trackFindabilityNavigation(event, "navigation_destination_click", path, href, {
       relationship_type: "navigation",
@@ -106,43 +95,59 @@ function Header() {
         <nav className="desktop-nav" aria-label="Primary">
           <details className="desktop-learn-menu">
             <summary>Learn <span aria-hidden="true">⌄</span></summary>
-            <div className="desktop-learn-panel">
-              <section>
-                <span>Courses</span>
+            <div className="desktop-learn-panel desktop-path-panel"><section>
+                <span>Learn by course</span>
                 <a href="/subjects/math/algebra/" onClick={navigationClick("/subjects/math/algebra/", "desktop-primary")}><b>Algebra</b><small>Foundations through functions</small></a>
                 <a href="/subjects/math/calculus/" onClick={navigationClick("/subjects/math/calculus/", "desktop-primary")}><b>Calculus</b><small>The complete course navigator</small></a>
-                <a href="/subjects/math/" onClick={navigationClick("/subjects/math/", "desktop-primary")}><b>All mathematics</b><small>Browse every course and resource</small></a>
-              </section>
-              <section className="desktop-calculus-chapters">
-                <span>Calculus chapters</span>
-                {calculusChapterLinks.map(([chapter, label, href]) => <a href={href} onClick={navigationClick(href, "desktop-primary")} key={href}><small>{chapter}</small><b>{label}</b></a>)}
-              </section>
-              <section className="desktop-learn-shortcuts">
-                <span>Get somewhere fast</span>
-                <a href="/search/" onClick={navigationClick("/search/", "desktop-primary")}><b>Find an answer</b><small>Search lessons, methods, and examples</small></a>
-                <a href="/practice/math/calculus/" onClick={navigationClick("/practice/math/calculus/", "desktop-primary")}><b>Calculus practice</b><small>Quizzes, reviews, and exams</small></a>
-                <a href="/practice/math/calculus/exams/calculus-foundations/" onClick={navigationClick("/practice/math/calculus/exams/calculus-foundations/", "desktop-primary")}><b>Calculus foundations exam</b><small>Complete explained practice exam</small></a>
-              </section>
-            </div>
+                <a href="/subjects/" onClick={navigationClick("/subjects/", "desktop-primary")}><b>Browse subjects</b><small>See every published subject</small></a>
+            </section></div>
           </details>
-          {nav.map(([label, href]) => <a key={href} href={href} onClick={navigationClick(href, "desktop-primary")} aria-current={isActive(href) ? "page" : undefined}>{label}</a>)}
+          <details className="desktop-learn-menu">
+            <summary>Practice <span aria-hidden="true">⌄</span></summary>
+            <div className="desktop-learn-panel desktop-path-panel"><section>
+              <span>Practice by purpose</span>
+              <a href="/subjects/math/calculus/worksheets/" onClick={navigationClick("/subjects/math/calculus/worksheets/", "desktop-primary")}><b>Worksheets</b><small>Focused sets with solutions</small></a>
+              <a href="/subjects/math/calculus/practice-exams/" onClick={navigationClick("/subjects/math/calculus/practice-exams/", "desktop-primary")}><b>Practice exams</b><small>Cumulative timed preparation</small></a>
+              <a href="/subjects/math/calculus/worked-problems/" onClick={navigationClick("/subjects/math/calculus/worked-problems/", "desktop-primary")}><b>Worked problems</b><small>Complete examples by skill</small></a>
+              <a href="/practice/" onClick={navigationClick("/practice/", "desktop-primary")}><b>Assessments and quizzes</b><small>Interactive practice center</small></a>
+            </section></div>
+          </details>
+          <details className="desktop-learn-menu">
+            <summary>Resources <span aria-hidden="true">⌄</span></summary>
+            <div className="desktop-learn-panel desktop-path-panel"><section>
+              <span>Look something up</span>
+              <a href="/subjects/math/calculus/formula-sheets/" onClick={navigationClick("/subjects/math/calculus/formula-sheets/", "desktop-primary")}><b>Formula sheets</b><small>Rules and when they apply</small></a>
+              <a href="/subjects/math/calculus/visuals/" onClick={navigationClick("/subjects/math/calculus/visuals/", "desktop-primary")}><b>Visual guides</b><small>Concepts made visible</small></a>
+              <a href="/glossary/math/" onClick={navigationClick("/glossary/math/", "desktop-primary")}><b>Glossary</b><small>Definitions and notation</small></a>
+              <a href="/tools/" onClick={navigationClick("/tools/", "desktop-primary")}><b>Tools</b><small>Calculate and check</small></a>
+              <a href="/resources/" onClick={navigationClick("/resources/", "desktop-primary")}><b>All resources</b><small>Browse the complete library</small></a>
+            </section></div>
+          </details>
+          <a href="/search/" onClick={navigationClick("/search/", "desktop-primary")} aria-current={path.startsWith("/search/") ? "page" : undefined}>Search</a>
         </nav>
         <div className="header-actions">
-          <a href="/search/" className="header-search" aria-label="Search" onClick={navigationClick("/search/", "header-action")}><span>⌕</span><b>Search</b></a>
           <ThemeControl />
           <details className="mobile-menu"><summary aria-label="Open menu">Menu</summary><nav aria-label="Mobile navigation">
             <a className="mobile-navigation-link" href="/" onClick={navigationClick("/", "mobile-menu")}><b>Home</b><small>Return to Better Grades</small></a>
             <a className="mobile-navigation-link" href="/search/" onClick={navigationClick("/search/", "mobile-menu")}><b>Search</b><small>Find a lesson or answer</small></a>
             <details className="mobile-course-menu"><summary>Learn</summary><div>
-              <a className="mobile-navigation-link" href="/subjects/math/" onClick={navigationClick("/subjects/math/", "mobile-menu")}><b>All mathematics</b><small>Browse courses and resources</small></a>
               <a className="mobile-navigation-link" href="/subjects/math/algebra/" onClick={navigationClick("/subjects/math/algebra/", "mobile-menu")}><b>Algebra</b><small>Open the course</small></a>
               <a className="mobile-navigation-link" href="/subjects/math/calculus/" onClick={navigationClick("/subjects/math/calculus/", "mobile-menu")}><b>Calculus</b><small>Open the full course map</small></a>
-              {calculusChapterLinks.map(([chapter, label, href]) => <a className="mobile-navigation-link" href={href} onClick={navigationClick(href, "mobile-menu")} key={href}><small>{chapter}</small><b>{label}</b></a>)}
-              <a className="mobile-navigation-link" href="/practice/math/calculus/" onClick={navigationClick("/practice/math/calculus/", "mobile-menu")}><b>Calculus practice</b><small>Quizzes, reviews, and exams</small></a>
-              <a className="mobile-navigation-link" href="/practice/math/calculus/exams/calculus-foundations/" onClick={navigationClick("/practice/math/calculus/exams/calculus-foundations/", "mobile-menu")}><b>Calculus foundations exam</b><small>Complete explained practice exam</small></a>
+              <a className="mobile-navigation-link" href="/subjects/" onClick={navigationClick("/subjects/", "mobile-menu")}><b>Browse subjects</b><small>See every published subject</small></a>
             </div></details>
-            <a className="mobile-navigation-link" href="/glossary/math/" onClick={navigationClick("/glossary/math/", "mobile-menu")}><b>Math glossary</b><small>Definitions, symbols, and notation</small></a>
-            {nav.map(([label, href]) => <a className="mobile-navigation-link" key={href} href={href} onClick={navigationClick(href, "mobile-menu")} aria-current={isActive(href) ? "page" : undefined}><b>{label}</b></a>)}
+            <details className="mobile-course-menu"><summary>Practice</summary><div>
+              <a className="mobile-navigation-link" href="/subjects/math/calculus/worksheets/" onClick={navigationClick("/subjects/math/calculus/worksheets/", "mobile-menu")}><b>Worksheets</b></a>
+              <a className="mobile-navigation-link" href="/subjects/math/calculus/practice-exams/" onClick={navigationClick("/subjects/math/calculus/practice-exams/", "mobile-menu")}><b>Practice exams</b></a>
+              <a className="mobile-navigation-link" href="/subjects/math/calculus/worked-problems/" onClick={navigationClick("/subjects/math/calculus/worked-problems/", "mobile-menu")}><b>Worked problems</b></a>
+              <a className="mobile-navigation-link" href="/practice/" onClick={navigationClick("/practice/", "mobile-menu")}><b>Assessments and quizzes</b></a>
+            </div></details>
+            <details className="mobile-course-menu"><summary>Resources</summary><div>
+              <a className="mobile-navigation-link" href="/subjects/math/calculus/formula-sheets/" onClick={navigationClick("/subjects/math/calculus/formula-sheets/", "mobile-menu")}><b>Formula sheets</b></a>
+              <a className="mobile-navigation-link" href="/subjects/math/calculus/visuals/" onClick={navigationClick("/subjects/math/calculus/visuals/", "mobile-menu")}><b>Visual guides</b></a>
+              <a className="mobile-navigation-link" href="/glossary/math/" onClick={navigationClick("/glossary/math/", "mobile-menu")}><b>Glossary</b></a>
+              <a className="mobile-navigation-link" href="/tools/" onClick={navigationClick("/tools/", "mobile-menu")}><b>Tools</b></a>
+              <a className="mobile-navigation-link" href="/resources/" onClick={navigationClick("/resources/", "mobile-menu")}><b>All resources</b></a>
+            </div></details>
           </nav></details>
         </div>
       </div>
@@ -176,42 +181,28 @@ function Eyebrow({ children, warm = false }: { children: ReactNode; warm?: boole
 function Verified() { return <span className="verified"><span aria-hidden="true">✓</span> Verified</span>; }
 
 function HomePage() {
-  const [methodAnswer, setMethodAnswer] = useState<number | null>(null);
   return (
     <Shell>
-      <section className="hero section-pad">
+      <section className="hero home-action-hero section-pad">
         <div className="hero-copy">
-          <Eyebrow>Free math help that gets to the point</Eyebrow>
-          <h1>Search the problem.<br /><em>Learn the method.</em></h1>
-          <p className="hero-lede">Type the question you have. Get a direct explanation, a worked example, and the next useful thing to practice—without an answer paywall.</p>
+          <Eyebrow>Better Grades</Eyebrow>
+          <h1>Better Grades</h1>
+          <p className="hero-lede"><strong>Clear math lessons, practice, and references.</strong><br />Find a topic, learn it fully, or practice the exact skill.</p>
           <SearchBox large />
           <div className="query-examples"><span>Try:</span><Link href="/search/?q=factor%20a%20trinomial">factor a trinomial</Link><Link href="/search/?q=slope%20from%20two%20points">slope from two points</Link><Link href="/search/?q=integral%20of%20sec%20cubed">integral of sec cubed</Link></div>
           <div className="hero-trust"><span>✓ No account required</span><span>✓ No hidden solution</span><span>✓ Full working shown</span></div>
         </div>
-        <div className="hero-interaction" aria-label="Integration method mini challenge">
-          <div className="paper-tab"><span>QUICK CHECK · CALCULUS</span><span>01 / 01</span></div>
-          <p className="micro-label">Which method should you try first?</p>
-          <Math tex={String.raw`\int x e^x\,dx`} display className="hero-equation" label="integral of x e to the x, d x" />
-          <div className="method-options">
-            {["Integration by parts", "u-substitution", "Trig identity"].map((option, i) => <button key={option} onClick={() => setMethodAnswer(i)} className={methodAnswer === i ? (i === 0 ? "correct" : "incorrect") : ""}><span>{String.fromCharCode(65 + i)}</span>{option}</button>)}
-          </div>
-          <div className={`method-feedback ${methodAnswer !== null ? "show" : ""}`}>{methodAnswer === 0 ? <><strong>Nice read.</strong> x gets simpler when differentiated; eˣ stays easy.</> : <><strong>Close, but look at the product.</strong> One factor gets simpler when differentiated.</>}</div>
-          <Link href="/tools/math/calculus/integration-method-finder/" className="text-link">Try the full method finder →</Link>
-          <span className="scribble">good instinct ↗</span>
-        </div>
       </section>
 
       <section className="paths section-pad">
-        <div className="section-heading"><div><Eyebrow>Choose your route</Eyebrow><h2>What are you here to do?</h2></div><p>Start with the thing due soon. We’ll connect it to the thing you actually need to learn.</p></div>
+        <div className="section-heading"><div><Eyebrow>Choose your route</Eyebrow><h2>What do you need right now?</h2></div><p>Start with a complete lesson, exact practice, or a focused reference.</p></div>
         <div className="path-list">
           {[
-            ["01", "Find an answer", "Search a specific question and get the result first—then the full reasoning.", "/answers/", "⌕"],
-            ["02", "Browse a subject", "Move through a course by topic instead of landing in a random pile of pages.", "/subjects/", "∴"],
-            ["03", "Use a tool", "Calculate, check, and see exactly where the method applies or breaks.", "/tools/", "ƒ"],
-            ["04", "Practice for a test", "Work on the mistake pattern, not a random pile of lookalike questions.", "/practice/", "↗"],
+            ["01", "Learn", "Follow a complete course or open a specific lesson.", "/subjects/", "∴"],
+            ["02", "Practice", "Use worksheets, worked problems, quizzes, and practice exams.", "/practice/", "↗"],
+            ["03", "Look something up", "Find a formula, definition, example, visual, or tool.", "/resources/", "⌕"],
           ].map(([num, title, copy, href, icon]) => <Link href={href} className="path-row" key={title}><span className="path-num">{num}</span><Icon>{icon}</Icon><span><strong>{title}</strong><small>{copy}</small></span><b aria-hidden="true">→</b></Link>)}
         </div>
-        <div className="bee-strip"><span className="mini-bee">∫<i>•</i></span><div><strong>Feeling competitive?</strong><span>Run a timed Integration Bee round. Explanations included; panic optional.</span></div><Link href="/practice/math/calculus/challenges/integration-bee/">Enter the Bee →</Link></div>
       </section>
 
       <LibraryHomeSection />
@@ -396,6 +387,7 @@ function LearnLatexPage() {
         <nav className="breadcrumbs"><Link href="/">Learn</Link><span>/</span><Link href="/subjects/math/calculus/">Calculus</Link><span>/</span><span>Integration by parts</span></nav>
         <header className="article-header"><Eyebrow>Method guide · Calculus II</Eyebrow><h1>Integration by parts, without the guessing game.</h1><p className="article-kicker">Reverse the product rule. Choose the factor that gets simpler.</p></header>
         <section className="lesson-intro"><div className="formula-card"><span>THE FORMULA</span><Math tex={String.raw`\int u\,dv=uv-\int v\,du`} display className="formula-card-equation" /></div><p>Integration by parts trades one integral for another. It is useful when a product contains a factor that becomes simpler after differentiation—like <Math tex="x" />, <Math tex={String.raw`\ln x`} />, or an inverse trig function.</p></section>
+        <LearningPathLinks sourcePath="/learn/calculus/integration-by-parts/" placement="article-intro" variant="primary" />
         <section className="article-body">
           <h2>How to recognize it</h2>
           <div className="signal-list"><div><span>01</span><b>A product of unlike functions</b><p>Polynomial × exponential and polynomial × trig are strong signals.</p></div><div><span>02</span><b>A lonely logarithm or inverse trig function</b><p>Rewrite <Math tex={String.raw`\ln x`} /> as <Math tex={String.raw`\ln x\cdot1`} />, then differentiate the awkward factor.</p></div><div><span>03</span><b>Differentiation simplifies one factor</b><p>If it makes the new integral worse, rethink the choice.</p></div></div>
@@ -454,7 +446,13 @@ function Quiz({ questions, storageKey, title, mode = "practice" }: { questions: 
 const practiceLabels = { quiz: "Quick quiz", diagnostic: "Diagnostic", "practice-exam": "Practice exam", challenge: "Challenge" } as const;
 function AssessmentDirectory({ eyebrow, title, intro }: { eyebrow: string; title: string; intro: string }) { return <Shell><section className="page-hero section-pad"><Eyebrow>{eyebrow}</Eyebrow><h1>{title}</h1><p>{intro}</p></section><section className="activity-list section-pad">{assessments.map((item) => <Link href={item.path} className="activity-row" key={item.id}><span>Practice</span><div><Eyebrow>{practiceLabels[item.kind]} · Mathematics · Calculus</Eyebrow><h2>{item.title}</h2><p>{item.description}</p><span className="tag">Explained feedback</span><span className="tag">Device-local progress</span></div><b>Start →</b></Link>)}{limitsUnitPracticeRoutes.map((item) => <Link href={item.path} className="activity-row" key={item.path}><span>Unit 1</span><div><Eyebrow>{item.pageType.replaceAll("-", " ")} · Calculus I · Limits</Eyebrow><h2>{item.h1}</h2><p>{item.description}</p><span className="tag">Full worked solutions</span><span className="tag">No account required</span></div><b>Start →</b></Link>)}{calculusUnitPracticeRoutes.map((item) => { const unitLabel = item.unitId === "calc-1-unit-2b-derivative-applications" ? "Unit 2B" : item.unitId === "calc-1-unit-3a-integral-foundations-techniques" ? "Unit 3A" : item.unitId === "calc-1-unit-3b-integration-applications" ? "Unit 3B" : item.unitId === "calc-2-unit-4a-sequences-infinite-series" ? "Unit 4A" : item.unitId === "calc-2-unit-4b-power-taylor-series" ? "Unit 4B" : "Unit 2A"; const course = unitLabel.startsWith("Unit 4") ? "Calculus II" : "Calculus I"; return <Link href={item.path} className="activity-row" key={item.path}><span>{unitLabel}</span><div><Eyebrow>{item.pageType.replaceAll("-", " ")} · {course} · {unitLabel}</Eyebrow><h2>{item.title}</h2><p>{item.description}</p><span className="tag">Attempt-and-reveal</span><span className="tag">No account required</span></div><b>Start →</b></Link>; })}</section></Shell>; }
 function PracticePage() {
-  return <Shell><section className="page-hero section-pad"><Eyebrow>Practice center</Eyebrow><h1>Choose a subject before choosing a workout.</h1><p>Practice is organized by subject and course so a diagnostic, quiz, or exam stays connected to the lessons that repair a missed skill.</p></section><section className="single-product section-pad"><Link href="/practice/math/" className="product-row"><span className="product-mark">∑</span><div><Eyebrow>Subject practice</Eyebrow><h2>Mathematics</h2><p>Choose a Quick quiz, Diagnostic, Practice exam, or Challenge after opening the course you are studying.</p><small>Featured: Calculus foundations practice exam</small><span className="tag">Calculus available now</span><span className="tag">No account required</span></div><b>Choose a math course →</b></Link></section></Shell>;
+  const paths = [
+    ["Worksheets", "Calculus · Units and exact skills", "Focused printable practice with complete worked solutions.", "/subjects/math/calculus/worksheets/"],
+    ["Worked problems", "Calculus · Topic and method", "Study one complete example before trying a related problem.", "/subjects/math/calculus/worked-problems/"],
+    ["Quizzes and assessments", "Mathematics · Calculus", "Quick quiz, Diagnostic, Challenge, and the Calculus foundations practice exam.", "/practice/math/calculus/"],
+    ["Practice exams", "Calculus I and II · Unit and course", "Timed mixed practice with student copies and complete answer keys.", "/subjects/math/calculus/practice-exams/"],
+  ];
+  return <Shell><section className="page-hero section-pad"><Eyebrow>Practice center</Eyebrow><h1>Practice the exact skill.</h1><p>Choose a course and purpose. Each practice route stays connected to the lessons that repair a missed skill.</p></section><section className="practice-directory section-pad">{paths.map(([title, scope, copy, href]) => <Link href={href} className="path-row" key={title}><span className="path-num">{String(paths.findIndex((item) => item[0] === title) + 1).padStart(2, "0")}</span><span><small>{scope}</small><strong>{title}</strong><small>{copy}</small></span><b aria-hidden="true">→</b></Link>)}</section></Shell>;
 }
 function MathPracticePage() {
   return <Shell><section className="page-hero section-pad"><Eyebrow>Practice · Mathematics</Eyebrow><h1>Choose the mathematics course you are studying.</h1><p>The course directory keeps practice beside its prerequisite map, lessons, worked examples, and answer keys.</p></section><section className="single-product section-pad"><Link href="/practice/math/calculus/" className="product-row"><span className="product-mark">∫</span><div><Eyebrow>Course practice</Eyebrow><h2>Calculus</h2><p>Use limits through Taylor-series quizzes, diagnostics, cumulative reviews, timed exams, and complete attempt-gated solutions.</p><span className="tag">Calculus I and II</span><span className="tag">Explained feedback</span></div><b>Open calculus practice →</b></Link></section></Shell>;

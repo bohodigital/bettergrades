@@ -42,7 +42,7 @@ test("graph hierarchy references resolve to canonical graph nodes", () => {
 
 test("provisional candidates stay in the editorial queue", () => {
   const provisional = graph.relationships.filter((relationship) => relationship.editorialStatus === "provisional");
-  assert.equal(provisional.length, 2756);
+  assert.equal(provisional.length, 2858);
   assert.ok(provisional.every((relationship) => relationship.placement === "editorial-queue"));
 });
 

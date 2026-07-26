@@ -19,12 +19,15 @@ const purposeLabels: Record<string, string> = {
   follows: "Continue to the next lesson",
 };
 
-export function LearningPathLinks({ sourcePath, placement }: { sourcePath: string; placement: string }) {
-  const destinations = (publicArticleDestinations[sourcePath as keyof typeof publicArticleDestinations] ?? []) as PublicDestination[];
+export function LearningPathLinks({ sourcePath, placement, variant = "secondary" }: { sourcePath: string; placement: string; variant?: "primary" | "secondary" }) {
+  const available = (publicArticleDestinations[sourcePath as keyof typeof publicArticleDestinations] ?? []) as PublicDestination[];
+  const destinations = variant === "primary"
+    ? available.filter(({ relationship, target }) => relationship.type === "full_version_of" && target.pageRole === "textbook-lesson").slice(0, 1)
+    : available.filter(({ relationship }) => relationship.type !== "full_version_of").slice(0, 3);
   if (!destinations.length) return null;
   return (
-    <section className="related-library learning-path-links" aria-label="Learning path">
-      <div><p className="eyebrow">Continue the path</p><h2>Choose your next learning step</h2></div>
+    <section className={`related-library learning-path-links learning-path-${variant}`} aria-label={variant === "primary" ? "Full course lesson" : "Learning path"}>
+      <div>{variant === "primary" ? <><p className="eyebrow">Learn this in the full course</p><p>The textbook lesson adds ordered instruction, examples, and course context.</p></> : <><p className="eyebrow">Continue</p><h2>Choose your next learning step</h2></>}</div>
       {destinations.map(({ relationship, target }, index) => (
         <a
           href={target.canonicalPath}
