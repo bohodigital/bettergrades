@@ -21,6 +21,7 @@ const internalLinks = await readJson("artifacts/ia/internal-link-graph.json");
 const search = await readJson("artifacts/ia/search-findability-report.json");
 const browser = await readJson("artifacts/seo/browser-verification.json");
 const graph = await readJson("data/learning-graph/graph.json");
+const renderedContentDiff = await readJson("artifacts/ia/handoff-c3-rendered-content-diff.json");
 
 function parseCsv(text) {
   const rows = [];
@@ -41,7 +42,6 @@ function parseCsv(text) {
 }
 
 const baselineFraming = parseCsv(execFileSync("git", ["show", `${handoff2BaseCommit}:data/ia/page-framing-audit.csv`], { cwd: root, encoding: "utf8", maxBuffer: 20 * 1024 * 1024 }));
-const baselineInventory = JSON.parse(execFileSync("git", ["show", `${handoff2BaseCommit}:data/ia/page-inventory.json`], { cwd: root, encoding: "utf8", maxBuffer: 40 * 1024 * 1024 }));
 const candidateFraming = parseCsv(await readFile(resolve(root, "data/ia/page-framing-audit.csv"), "utf8"));
 const intentRows = parseCsv(await readFile(resolve(root, "data/ia/handoff-c3-intent-conflict-review.csv"), "utf8"));
 const titleRows = parseCsv(await readFile(resolve(root, "data/ia/handoff-c3-title-opening-review.csv"), "utf8"));
@@ -102,31 +102,37 @@ const representativeShortFormMedianReductionPercent = baselineShortFormMedian
 const educationalRoots = ["content", "lib/calculus", "lib/course-library.ts", "lib/resources", "public/visuals"];
 const educationalChanges = execFileSync("git", ["diff", "--name-only", `${handoff2BaseCommit}..${sourceCommit}`, "--", ...educationalRoots], { cwd: root, encoding: "utf8" }).trim().split("\n").filter(Boolean);
 const candidateInventoryByRoute = new Map(routeInventory.routes.map((route) => [route.route, route]));
-const routeContentPreservation = baselineInventory.routes.map((baseline) => {
-  const candidate = candidateInventoryByRoute.get(baseline.route);
-  const baselineWords = Number(baseline.main_content_word_count);
-  const candidateWords = Number(candidate?.main_content_word_count);
-  const grossRemovedWords = Number.isFinite(candidateWords) ? Math.max(0, baselineWords - candidateWords) : baselineWords;
-  const grossReductionPercent = baselineWords > 0 ? Number(((grossRemovedWords / baselineWords) * 100).toFixed(2)) : 0;
-  const exclusionReasons = grossRemovedWords > 0
-    ? [
-      "duplicate headings and route metadata removed",
-      "generic boilerplate and repeated navigation removed",
-      "page vocabulary moved after main and remains accessible",
-    ]
-    : [];
+const routeContentPreservation = renderedContentDiff.routes.map((rendered) => {
+  const candidate = candidateInventoryByRoute.get(rendered.route);
+  const classifiedRemovedWords = rendered.removedRepeatedNavigationWords
+    + rendered.removedDuplicateMetadataOrGenericBoilerplateWords;
+  const substantiveEducationalLossWords = rendered.protectedRemovedWords + rendered.unclassifiedRemovedWords;
+  const grossRemovedWords = classifiedRemovedWords + substantiveEducationalLossWords;
+  const grossReductionPercent = rendered.baselineMainWords > 0
+    ? Number(((grossRemovedWords / rendered.baselineMainWords) * 100).toFixed(2))
+    : 0;
   return {
-    route: baseline.route,
-    pageRole: baseline.page_role,
-    baselineMainWords: baselineWords,
-    candidateMainWords: Number.isFinite(candidateWords) ? candidateWords : null,
+    route: rendered.route,
+    pageRole: rendered.pageRole,
+    baselineMainWords: rendered.baselineMainWords,
+    candidateMainWords: Number(candidate?.main_content_word_count) || null,
+    preservedInMainWords: rendered.preservedInMainWords,
+    movedOutsideMainWords: rendered.movedOutsideMainWords,
+    deduplicatedOrMovedWords: rendered.deduplicatedOrMovedWords,
+    removedRepeatedNavigationWords: rendered.removedRepeatedNavigationWords,
+    removedDuplicateMetadataOrGenericBoilerplateWords: rendered.removedDuplicateMetadataOrGenericBoilerplateWords,
     grossRemovedWords,
     grossReductionPercent,
-    excludedDuplicateGenericOrMovedWords: grossRemovedWords,
-    substantiveEducationalLossWords: 0,
-    substantiveEducationalLossPercent: 0,
-    exclusionReasons,
-    protectedGuidanceRenderedAfterExposition: baseline.page_role === "textbook-lesson",
+    excludedDuplicateGenericOrMovedWords: classifiedRemovedWords,
+    substantiveEducationalLossWords,
+    substantiveEducationalLossPercent: rendered.baselineMainWords > 0
+      ? Number(((substantiveEducationalLossWords / rendered.baselineMainWords) * 100).toFixed(4))
+      : 0,
+    unclassifiedRemovedWords: rendered.unclassifiedRemovedWords,
+    protectedRemovedWords: rendered.protectedRemovedWords,
+    protectedGuidanceRenderedAfterExposition: rendered.pageRole === "textbook-lesson"
+      ? rendered.candidateGuidanceParagraphCount > 0
+      : null,
     missingCandidateRoute: !candidate,
   };
 });
@@ -134,6 +140,7 @@ const grossBaselineWords = routeContentPreservation.reduce((sum, row) => sum + r
 const grossCandidateWords = routeContentPreservation.reduce((sum, row) => sum + (row.candidateMainWords ?? 0), 0);
 const routesOverTwoPercentGrossReduction = routeContentPreservation.filter((row) => row.grossReductionPercent > 2);
 const missingCandidateRoutes = routeContentPreservation.filter((row) => row.missingCandidateRoute);
+const substantiveEducationalLossWords = routeContentPreservation.reduce((sum, row) => sum + row.substantiveEducationalLossWords, 0);
 const destructiveDecisions = mergeRows.filter((row) => ["MERGE", "MERGE_AND_REDIRECT", "CANONICALIZE", "NOINDEX", "REMOVE"].includes(row.editorialDecision));
 const publicRelationships = graph.relationships.filter((item) => ["approved", "existing"].includes(item.editorialStatus));
 const provisionalRelationships = graph.relationships.filter((item) => item.editorialStatus === "provisional");
@@ -223,8 +230,15 @@ const outputs = [
     routesOverTwoPercentGrossReductionCount: routesOverTwoPercentGrossReduction.length,
     routesOverTwoPercentGrossReduction,
     routeContentPreservation,
+    renderedDiffMethod: renderedContentDiff.comparison,
+    renderedDiffAllowedClassifications: renderedContentDiff.allowedClassifications,
+    renderedDiffRouteCount: renderedContentDiff.routeCount,
+    renderedDiffFailureCount: renderedContentDiff.failureCount,
     missingCandidateRouteCount: missingCandidateRoutes.length,
-    substantiveEducationalTextLossPercent: 0,
+    substantiveEducationalLossWords,
+    substantiveEducationalTextLossPercent: grossBaselineWords
+      ? Number(((substantiveEducationalLossWords / grossBaselineWords) * 100).toFixed(6))
+      : 0,
     preservationProofs: [
       "educational source roots are byte-unchanged from the Handoff 2 base",
       "all semantic educational nodes, worked examples, exercises, checks, visuals, and math remain covered by full rendered tests",
@@ -233,8 +247,12 @@ const outputs = [
     ],
     preserved: ["definitions", "derivations", "worked examples", "visuals", "exercises", "checks", "misconception warnings", "accessibility text"],
     removedOnly: ["generic study instructions", "duplicate unit framing", "pre-content navigation walls", "repeated route metadata", "redundant card summaries"],
-    failureCount: educationalChanges.length + missingCandidateRoutes.length,
-    pass: educationalChanges.length === 0 && missingCandidateRoutes.length === 0,
+    failureCount: educationalChanges.length + missingCandidateRoutes.length + renderedContentDiff.failureCount + substantiveEducationalLossWords,
+    pass: educationalChanges.length === 0
+      && missingCandidateRoutes.length === 0
+      && renderedContentDiff.pass
+      && renderedContentDiff.routeCount === routeInventory.routeCount
+      && substantiveEducationalLossWords === 0,
   }],
   ["handoff-c3-intent-verification.json", {
     ...base,
