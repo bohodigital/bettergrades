@@ -171,7 +171,7 @@ function Footer() {
 
 function Shell({ children, narrow = false }: { children: ReactNode; narrow?: boolean }) {
   const path = useContext(PathContext);
-  return <><Header /><PageGlossaryTerms path={path} /><main className={narrow ? "narrow-main" : ""}>{children}</main><Footer /></>;
+  return <><Header /><main className={narrow ? "narrow-main" : ""}>{children}</main><PageGlossaryTerms path={path} /><Footer /></>;
 }
 
 function Eyebrow({ children, warm = false }: { children: ReactNode; warm?: boolean }) {

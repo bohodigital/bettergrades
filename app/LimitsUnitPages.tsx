@@ -132,18 +132,6 @@ function InteractiveCheck({ check }: { check: LimitsUnitPublicCheck }) {
 
 const orientationExcludedTypes = new Set(["answer-key", "hub"]);
 
-const pageModeGuidance: Record<string, string> = {
-  diagnostic: "Answer from memory first, then use each reveal to decide exactly which prerequisite deserves a short review.",
-  exam: "Complete a timed first pass without reveals. On correction, open one answer at a time and name the first line where your reasoning changed course.",
-  extension: "Follow the central idea before collecting techniques; the point is to deepen the model, not merely add another formula.",
-  lesson: "Read the explanation, predict the next move in each example, and then compare your prediction with the written reasoning.",
-  practice: "Work in short groups, commit to a complete answer, and use the reveal as feedback rather than as the first step.",
-  quiz: "Commit to each response before opening support, then return to the exact lesson if the explanation exposes a concept gap.",
-  reference: "Use this page to organize ideas you have already met, and turn each entry into a question you can answer without looking.",
-  review: "Diagnose the method before calculating; mixed review is valuable because the section label no longer tells you what to do.",
-  study: "Translate the advice into a concrete routine you can repeat on your own work, not a checklist you merely read once.",
-};
-
 const supportSectionIds: Record<string, string> = {
   meaning: "meaning",
   finite: "finite",
@@ -168,30 +156,10 @@ function TextbookOrientation({ page }: { page: LimitsUnitPublicPage }) {
   if (orientationExcludedTypes.has(page.route.pageType)) return null;
   const section = sectionForPage(page);
   if (!section) return null;
-  const previous = page.previous?.h1;
-  const next = page.next?.h1;
-  const modeGuidance = pageModeGuidance[page.route.pageType] ?? pageModeGuidance.lesson;
-  return <section className="limits-editorial-intro" aria-labelledby="limits-section-overview-title">
-    <header className="limits-overview-header">
-      <div><p className="eyebrow">Section overview</p><span>{section.from === section.to ? `Core page ${section.from}` : `Core pages ${section.from}-${section.to}`}</span></div>
-      <h2 id="limits-section-overview-title">{section.title}</h2>
-      <p className="limits-overview-lede">{section.description}</p>
-    </header>
-    <aside className="limits-reading-lens" aria-label="Reading lens">
-      <span>Reading lens</span>
-      <p>{section.lens}</p>
-    </aside>
-    <div className="limits-overview-guides">
-      <article><span>Notice</span><p>{section.mentalModel}</p></article>
-      <article><span>Decide</span><p>{section.decision}</p></article>
-      <article><span>Avoid</span><p>{section.commonTrap}</p></article>
-    </div>
-    <footer className="limits-overview-footer">
-      <div><span>Use this page</span><p>{modeGuidance}</p></div>
-      <div><span>Check yourself</span><p>{section.checkpoint}</p></div>
-      <p className="limits-overview-connection">{previous && next ? <>This page connects <strong>{previous}</strong> to <strong>{next}</strong>, so keep both the incoming idea and the next decision in view.</> : <>Use <strong>{page.route.h1}</strong> to connect the section&apos;s central idea to notation, graphs, and a defensible next move.</>}</p>
-    </footer>
-  </section>;
+  return <aside className="lesson-objective" aria-label="Lesson objective">
+    <span>Lesson objective · {section.title}</span>
+    <p>{page.route.description}</p>
+  </aside>;
 }
 
 function CompanionVisuals({ page }: { page: LimitsUnitPublicPage }) {
@@ -221,6 +189,14 @@ function CourseNavigation({ page }: { page: LimitsUnitPublicPage }) {
   </nav>;
 }
 
+function LessonPositionNavigation({ page }: { page: LimitsUnitPublicPage }) {
+  return <nav className="lesson-position" aria-label="Limits and Continuity lesson position">
+    {page.previous ? <a href={page.previous.path}>← Previous</a> : <span />}
+    <a href={page.returnRoute?.path ?? limitsUnitRoutes[0].path}>Unit map</a>
+    {page.next ? <a href={page.next.path}>Next →</a> : <span />}
+  </nav>;
+}
+
 export function LimitsUnitPageContent({ page }: { page: LimitsUnitPublicPage }) {
   const { route } = page;
   const checks = new Map(page.checks.map((check) => [check.id, check]));
@@ -231,16 +207,16 @@ export function LimitsUnitPageContent({ page }: { page: LimitsUnitPublicPage }) 
     <header className="limits-unit-hero section-pad">
       <nav className="breadcrumbs"><a href="/subjects/">Subjects</a><span>/</span><a href="/subjects/math/">Mathematics</a><span>/</span><a href="/subjects/math/calculus/">Calculus</a><span>/</span><a href="/subjects/math/calculus/limits-continuity/">Limits &amp; Continuity</a><span>/</span><span>{route.h1}</span></nav>
       <p className="eyebrow">Calculus I · Limits and Continuity · {labels[route.pageType] ?? route.pageType}</p>
-      <h1>{route.h1}</h1><p>{route.description}</p>
-      <div className="limits-progress"><strong>{route.isCoreSequence ? "Core textbook path" : "Supporting resource"}</strong><span>{route.isCoreSequence ? "Follow the sequence or choose a destination from the main unit map." : "Use this page when the main sequence reveals a specific question or skill gap."}</span>{route.pageType !== "hub" && <a href={page.returnRoute?.path ?? limitsUnitRoutes[0].path}>Return to the core path →</a>}</div>
+      <h1>{route.h1}</h1>{route.pageType === "hub" && <p>{route.description}</p>}
+      {route.pageType === "hub" ? <div className="limits-progress"><strong>Core textbook path</strong><span>Choose the next lesson from the ordered unit map.</span></div> : <LessonPositionNavigation page={page} />}
     </header>
-    <div className="limits-unit-layout section-pad"><aside><strong>On this page</strong><span>Explanation and interactive practice</span>{page.exerciseAnswers && <span>Attempt-gated answer reveals</span>}{answerKeyRoute && <a className="limits-key-aside" href={answerKeyRoute.path}>Exam answer key →</a>}<a href="/subjects/math/calculus/limits-continuity/">Main unit map →</a><a href={limitsUnitRoutes[0].path}>Full unit overview →</a><a href="/practice/math/calculus/">Calculus practice →</a></aside><div className="limits-unit-content">
+    <div className="limits-unit-layout section-pad"><div className="limits-unit-content">
       {route.pageType === "hub" ? <LimitsUnitMap /> : <TextbookOrientation page={page} />}
-      {route.pageType !== "hub" && <LessonCompanionLinks sourcePath={route.path} variant="primary" />}
       <CompanionVisuals page={page} />
       {route.pageType === "exam" && answerKeyRoute && <section className="limits-exam-key-callout"><div><p className="eyebrow">Answer key published</p><h2>Finish first. Then check every answer.</h2><p>The complete key is online, numbered to match this exam, and linked to the verified source appendix.</p></div><a className="button button-ink" href={answerKeyRoute.path}>View the complete answer key →</a></section>}
       <NodeChildren nodes={page.page.nodes} keyPrefix={route.sourceSlug} checks={checks} renderedCheckIds={renderedCheckIds} exerciseAnswers={page.exerciseAnswers} />
       <ExamAnswerKey page={page} />
+      {route.pageType !== "hub" && <LessonCompanionLinks sourcePath={route.path} variant="primary" />}
       <LessonCompanionLinks sourcePath={route.path} variant="secondary" />
       <section className="limits-rights"><p className="eyebrow">Source &amp; rights</p><h2>Original instruction with traceable references.</h2><p>{page.provenanceNote}</p><p>The verified handoff declares original composition and requires owner provenance review. BetterGrades-original material remains separate from public-domain references; no source textbook PDF is published here.</p></section>
     </div></div>

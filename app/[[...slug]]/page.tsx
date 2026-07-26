@@ -88,7 +88,7 @@ export default async function CatchAllPage({
       }))
     : undefined;
   const hubResources = resourceHub
-    ? getResourcesForHub(resourceHub.resourceType).map(({ id, canonicalPath, shortTitle, summary, resourceType, difficulty, course, problemCount, estimatedTime }) => ({ id, canonicalPath, shortTitle, summary, resourceType, difficulty, course, problemCount, estimatedTime }))
+    ? getResourcesForHub(resourceHub.resourceType).map(({ id, canonicalPath, shortTitle, resourceType, difficulty, course, unit, topics, problemCount, estimatedTime }) => ({ id, canonicalPath, shortTitle, resourceType, difficulty, course, unit, topics, problemCount, estimatedTime }))
     : undefined;
   const relatedResources = resourcePage
     ? resourcePage.relatedResources.map((id) => publishedResourcePages.find((resource) => resource.id === id)).filter((resource) => resource !== undefined).map(({ id, canonicalPath, shortTitle }) => ({ id, canonicalPath, shortTitle }))
