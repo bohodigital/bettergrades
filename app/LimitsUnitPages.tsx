@@ -162,6 +162,25 @@ function TextbookOrientation({ page }: { page: LimitsUnitPublicPage }) {
   </aside>;
 }
 
+function LessonStudyGuidance({ page }: { page: LimitsUnitPublicPage }) {
+  if (orientationExcludedTypes.has(page.route.pageType)) return null;
+  const section = sectionForPage(page);
+  if (!section) return null;
+  return <section className="lesson-guidance" aria-labelledby={`${page.route.sourceSlug}-study-guidance`}>
+    <header>
+      <p className="eyebrow">After the explanation</p>
+      <h2 id={`${page.route.sourceSlug}-study-guidance`}>Use the section idea</h2>
+    </header>
+    <div>
+      <article><span>Reading lens</span><p>{section.lens}</p></article>
+      <article><span>Mental model</span><p>{section.mentalModel}</p></article>
+      <article><span>Decision</span><p>{section.decision}</p></article>
+      <article><span>Common trap</span><p>{section.commonTrap}</p></article>
+      <article><span>Check yourself</span><p>{section.checkpoint}</p></article>
+    </div>
+  </section>;
+}
+
 function CompanionVisuals({ page }: { page: LimitsUnitPublicPage }) {
   if (!page.companionVisuals.length) return null;
   return <section className="limits-visual-study" aria-labelledby="limits-visual-study-title">
@@ -216,6 +235,7 @@ export function LimitsUnitPageContent({ page }: { page: LimitsUnitPublicPage }) 
       {route.pageType === "exam" && answerKeyRoute && <section className="limits-exam-key-callout"><div><p className="eyebrow">Answer key published</p><h2>Finish first. Then check every answer.</h2><p>The complete key is online, numbered to match this exam, and linked to the verified source appendix.</p></div><a className="button button-ink" href={answerKeyRoute.path}>View the complete answer key →</a></section>}
       <NodeChildren nodes={page.page.nodes} keyPrefix={route.sourceSlug} checks={checks} renderedCheckIds={renderedCheckIds} exerciseAnswers={page.exerciseAnswers} />
       <ExamAnswerKey page={page} />
+      <LessonStudyGuidance page={page} />
       {route.pageType !== "hub" && <LessonCompanionLinks sourcePath={route.path} variant="primary" />}
       <LessonCompanionLinks sourcePath={route.path} variant="secondary" />
       <section className="limits-rights"><p className="eyebrow">Source &amp; rights</p><h2>Original instruction with traceable references.</h2><p>{page.provenanceNote}</p><p>The verified handoff declares original composition and requires owner provenance review. BetterGrades-original material remains separate from public-domain references; no source textbook PDF is published here.</p></section>

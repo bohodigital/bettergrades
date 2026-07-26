@@ -64,3 +64,21 @@ test("tool interface remains in the first major content section", async ({ page 
   const toolTop = await page.locator(".finder-tool").evaluate((element) => element.getBoundingClientRect().top + window.scrollY);
   expect(toolTop).toBeLessThan(1300);
 });
+
+test("320px mobile textbook preserves guidance without horizontal overflow", async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 720 });
+  await page.goto("/subjects/math/calculus/integrals/integration-by-parts/");
+  await expect(page.locator(".lesson-objective")).toBeVisible();
+  await expect(page.locator(".limits-node").first()).toBeVisible();
+  await expect(page.locator(".lesson-guidance")).toBeVisible();
+  const layout = await page.locator("main").evaluate((main) => {
+    const exposition = main.querySelector(".limits-node");
+    const guidance = main.querySelector(".lesson-guidance");
+    return {
+      noOverflow: document.documentElement.scrollWidth <= window.innerWidth,
+      guidanceAfterExposition: Boolean(exposition && guidance && (exposition.compareDocumentPosition(guidance) & Node.DOCUMENT_POSITION_FOLLOWING)),
+    };
+  });
+  expect(layout).toEqual({ noOverflow: true, guidanceAfterExposition: true });
+  await page.screenshot({ path: "artifacts/browser/handoff-c3-textbook-mobile-320.png", fullPage: true });
+});

@@ -237,7 +237,10 @@ test("Limits overviews, visual study stops, and exercise answer reveals render a
   assert.match(html, /Section 1: What a limit means/);
   assert.match(html, /class="lesson-objective"/);
   assert.match(html, /class="lesson-position"/);
-  assert.doesNotMatch(html, /Section overview|Reading lens|limits-overview-guides|limits-editorial-intro/);
+  assert.match(html, /class="lesson-guidance"/);
+  assert.match(html, /Common trap/);
+  assert.match(html, /Check yourself/);
+  assert.doesNotMatch(html, /Section overview|limits-overview-guides|limits-editorial-intro/);
   assert.match(html, /Visual study stop/);
   assert.match(html, /data-bvlp-visual="jump-discontinuity"/);
   assert.equal((html.match(/data-exercise-number=/g) ?? []).length, 42);

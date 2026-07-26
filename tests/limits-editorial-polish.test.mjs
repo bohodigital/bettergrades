@@ -118,7 +118,10 @@ test("shared Limits components expose the compressed lesson frame and native ans
   ]);
   assert.match(component, /className="lesson-objective"/);
   assert.match(component, /className="lesson-position"/);
+  assert.match(component, /className="lesson-guidance"/);
   assert.match(component, /Lesson objective/);
+  assert.match(component, /section\.commonTrap/);
+  assert.match(component, /section\.checkpoint/);
   assert.doesNotMatch(component, /className="limits-reading-lens"/);
   assert.doesNotMatch(component, /className="limits-overview-guides"/);
   assert.match(component, /className="limits-exercise-answer"/);

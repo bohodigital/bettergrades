@@ -144,7 +144,7 @@ export function LibraryArticleContent({ article }: { article: CourseArticle }) {
   return (
     <article className="library-article">
       <header className="library-article-header">
-        <nav className="breadcrumbs"><a href="/">Home</a><span>/</span><a href="/subjects/math/">Math</a><span>/</span><a href={`/subjects/math/${course.slug}/`}>{course.name}</a><span>/</span><a href={`/subjects/math/${course.slug}/${topic.slug}/`}>{topic.shortName}</a><span>/</span><span>{article.shortTitle}</span></nav>
+        <nav className="breadcrumbs" aria-label="Article location"><a href={`/subjects/math/${course.slug}/`}>{course.name}</a><span>/</span><a href={`/subjects/math/${course.slug}/${topic.slug}/`}>{topic.shortName}</a></nav>
         <p className="article-meta-line"><span>{archetype.label}</span><span>Calculus I · {articleUnit ? `Unit ${articleUnit}` : article.course}</span><span>{article.difficulty}</span></p>
         <h1>{article.title}</h1>
         <p>{article.deck}</p>

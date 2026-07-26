@@ -37,7 +37,10 @@ function assertCompressedLessonFrame(html, route, unitCode, unitRoot) {
   assert.match(html, new RegExp(`href="${escapeRegExp(unitRoot)}"`), route.path);
   assert.match(html, /class="lesson-objective"/, route.path);
   assert.match(html, /Lesson objective/, route.path);
-  assert.doesNotMatch(html, /Section overview|Reading lens|limits-overview-guides|limits-editorial-intro/, route.path);
+  assert.match(html, /class="lesson-guidance"/, route.path);
+  assert.match(html, /Common trap/, route.path);
+  assert.match(html, /Check yourself/, route.path);
+  assert.doesNotMatch(html, /Section overview|limits-overview-guides|limits-editorial-intro/, route.path);
 }
 
 test("all 67 Unit 2A pages render as clean textbook pages with no source notation", async () => {

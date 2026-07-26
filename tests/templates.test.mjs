@@ -10,7 +10,11 @@ test("textbook templates use one compact objective and put learning paths after 
   for (const path of ["app/CalculusUnitPages.tsx", "app/LimitsUnitPages.tsx"]) {
     const text = await source(path);
     assert.match(text, /className="lesson-objective"/);
+    assert.match(text, /className="lesson-guidance"/);
+    assert.match(text, /Common trap/);
+    assert.match(text, /Check yourself/);
     assert.doesNotMatch(text, /className="limits-overview-guides"/);
+    assert.ok(text.indexOf("<NodeChildren") < text.lastIndexOf("<LessonStudyGuidance"), `${path} must put retained study guidance after exposition`);
     assert.ok(text.indexOf("<NodeChildren") < text.indexOf('variant="primary"'), `${path} must teach before showing supporting paths`);
   }
 });

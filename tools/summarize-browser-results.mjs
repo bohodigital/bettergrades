@@ -31,6 +31,7 @@ const report = {
     { name: "desktop", width: 1440, height: 900 },
     { name: "tablet", width: 768, height: 1024 },
     { name: "mobile", width: 390, height: 844 },
+    { name: "small-mobile", width: 320, height: 720 },
   ],
   modes: ["JavaScript enabled", "JavaScript disabled", "dark mode", "keyboard-only focus", "print CSS"],
   pageTypeCount: 15,

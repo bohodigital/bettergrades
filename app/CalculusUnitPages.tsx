@@ -218,6 +218,23 @@ function TextbookOrientation({ page }: { page: CalculusUnitPublicPage }) {
   </aside>;
 }
 
+function LessonStudyGuidance({ page }: { page: CalculusUnitPublicPage }) {
+  const guidance = getCalculusUnitSectionGuidance(page.unit.id, page.page.sectionId);
+  return <section className="lesson-guidance" aria-labelledby={`${page.route.id}-study-guidance`}>
+    <header>
+      <p className="eyebrow">After the explanation</p>
+      <h2 id={`${page.route.id}-study-guidance`}>Use the section idea</h2>
+    </header>
+    <div>
+      <article><span>Reading lens</span><p>{guidance.lens}</p></article>
+      <article><span>Mental model</span><p>{guidance.mentalModel}</p></article>
+      <article><span>Decision</span><p>{guidance.decision}</p></article>
+      <article><span>Common trap</span><p>{guidance.commonTrap}</p></article>
+      <article><span>Check yourself</span><p>{guidance.checkpoint}</p></article>
+    </div>
+  </section>;
+}
+
 const derivativeDeepDives = [
   ["/subjects/math/calculus/derivatives/derivative-of-x-to-the-x/", "Why x to the x needs logarithmic differentiation"],
   ["/subjects/math/calculus/derivatives/chain-rule/", "The Chain Rule as a structure-reading skill"],
@@ -365,6 +382,7 @@ export function CalculusUnitPageContent({ page }: { page: CalculusUnitPublicPage
       {page.route.pageType === "practice" && <section className="limits-node limits-node-method calculus-practice-method"><header><span>Practice method</span><h2>Work in three passes</h2></header><div><p><strong>First, classify.</strong> Name the {integralUnit ? "integral output and structural method" : "derivative idea or rule"} before writing algebra. This separates a recognition error from a calculation error.</p><p><strong>Second, solve without the key.</strong> Record a complete attempt, including bounds, constants, domains, units, or interpretation when the prompt asks for them.</p><p><strong>Third, reveal one answer at a time.</strong> Compare the first line where your work differs, close the answer, and redo that item from a blank start.</p></div></section>}
       {page.route.pageType === "exam" && answerKey && <section className="limits-exam-key-callout"><div><p className="eyebrow">Answer key published</p><h2>Finish first. Then check every answer.</h2><p>The complete numbered key is online as its own easy-to-find route.</p></div><a className="button button-ink" href={answerKey.path}>View the complete answer key →</a></section>}
       <NodeChildren nodes={page.page.nodes} keyPrefix={page.route.id} unitId={page.unit.id} routeId={page.route.id} checks={checks} renderedChecks={renderedChecks} />
+      {page.route.pageType !== "hub" && <LessonStudyGuidance page={page} />}
       {page.assessmentSet && <section className="calculus-assessment-set"><header><p className="eyebrow">Structured concept quiz</p><h2>{page.assessmentSet.title}</h2><p>Write a response before revealing the model. These conceptual items use an honest attempt-and-reveal rubric rather than pretending an open response has one machine-provable wording.</p></header>{page.assessmentSet.items.map((item) => <InteractiveProblem key={item.id} problem={{ id: item.id, unitId: page.unit.id, pageSlug: page.route.slug, promptLatex: item.promptLatex, answerType: item.answerType, choices: [], hints: [], difficulty: "conceptual", topics: [], skills: [], attemptRequiredBeforeReveal: true }} />)}</section>}
       {[...checks.values()].filter((check) => !embeddedCheckIds.has(check.id)).map((check) => <InteractiveProblem problem={check} key={check.id} />)}
       {page.route.pageType !== "hub" && <LessonCompanionLinks sourcePath={page.route.path} variant="primary" />}
