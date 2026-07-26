@@ -34,7 +34,10 @@ test("desktop navigation and learning-path clicks emit complete analytics dimens
   await page.goto("/");
   await clickWithoutNavigation(page.locator('.desktop-nav > a[href="/search/"]'));
   let events = await page.evaluate(() => window.__events);
-  expect(events.find((item) => item.sink === "ga4" && item.args[1] === "navigation_destination_click")?.args[2]).toMatchObject({
+  for (const sink of ["ga4", "umami"]) {
+    const navigationEvents = events.filter((item) => item.sink === sink && item.args[1] === "navigation_destination_click");
+    expect(navigationEvents).toHaveLength(1);
+    expect(navigationEvents[0].args[2]).toMatchObject({
     source_page_id: "route:/",
     source_page_role: "home",
     target_page_id: "route:/search/",
@@ -42,7 +45,8 @@ test("desktop navigation and learning-path clicks emit complete analytics dimens
     relationship_type: "navigation",
     placement: "desktop-primary",
     navigation_surface: "desktop-primary",
-  });
+    });
+  }
 
   await page.goto("/search/?q=Calculus%20practice");
   await page.waitForTimeout(500);
@@ -63,10 +67,11 @@ test("desktop navigation and learning-path clicks emit complete analytics dimens
   await expect(learningLink).toBeVisible();
   await clickWithoutNavigation(learningLink);
   events = await page.evaluate(() => window.__events);
-  const generic = events.find((item) => item.sink === "ga4" && item.args[1] === "learning_relationship_click");
-  const specific = events.find((item) => item.sink === "ga4" && item.args[1] === "article_to_lesson_click");
-  for (const event of [generic, specific]) {
-    expect(event?.args[2]).toMatchObject({
+  for (const sink of ["ga4", "umami"]) {
+    for (const name of ["learning_relationship_click", "article_to_lesson_click"]) {
+      const relationshipEvents = events.filter((item) => item.sink === sink && item.args[1] === name);
+      expect(relationshipEvents).toHaveLength(1);
+      expect(relationshipEvents[0].args[2]).toMatchObject({
       source_page_role: "method-guide",
       target_page_role: "textbook-lesson",
       placement: "article-intro",
@@ -75,10 +80,11 @@ test("desktop navigation and learning-path clicks emit complete analytics dimens
       course: "course.math.calculus",
       unit: "unit.calculus.3a",
       topic: "topic.math.integration-by-parts",
-    });
-    expect(event?.args[2].source_page_id).toBeTruthy();
-    expect(event?.args[2].target_page_id).toBeTruthy();
-    expect(event?.args[2].relationship_type).toBeTruthy();
+      });
+      expect(relationshipEvents[0].args[2].source_page_id).toBeTruthy();
+      expect(relationshipEvents[0].args[2].target_page_id).toBeTruthy();
+      expect(relationshipEvents[0].args[2].relationship_type).toBeTruthy();
+    }
   }
 
   await page.goto("/subjects/math/calculus/integrals/integration-by-parts/");
@@ -141,6 +147,28 @@ test("desktop navigation and learning-path clicks emit complete analytics dimens
     expect(workedEvents[0].args[2].target_page_role).toBeTruthy();
   }
   await context.close();
+
+  const dntContext = await browser.newContext({ viewport: { width: 1440, height: 900 } });
+  await dntContext.addInitScript(() => {
+    Object.defineProperty(Navigator.prototype, "doNotTrack", { configurable: true, get: () => "1" });
+    window.__events = [];
+    window.gtag = (...args) => window.__events.push({ sink: "ga4", args });
+    window.umami = { track: (event, data) => window.__events.push({ sink: "umami", args: ["event", event, data] }) };
+  });
+  const dntPage = await dntContext.newPage();
+  const dntCases = [
+    ["/", '.desktop-nav > a[href="/search/"]'],
+    ["/learn/calculus/integration-by-parts/", '.learning-path-primary a[href="/subjects/math/calculus/integrals/integration-by-parts/"]'],
+    ["/subjects/math/calculus/integrals/integration-by-parts/", '.lesson-companions a[href="/subjects/math/calculus/worksheets/integration-by-parts/"]'],
+    ["/subjects/math/calculus/integration-techniques/", '.topic-article-list a[href="/subjects/math/calculus/integration-techniques/integration-by-parts-strategy/"]'],
+    ["/subjects/math/calculus/worked-problems/limit-by-factoring/", '.resource-related a[href="/subjects/math/calculus/limits-continuity/unit/limits/direct-substitution/"]'],
+  ];
+  for (const [route, selector] of dntCases) {
+    await dntPage.goto(route);
+    await clickWithoutNavigation(dntPage.locator(selector));
+  }
+  expect(await dntPage.evaluate(() => window.__events)).toEqual([]);
+  await dntContext.close();
 });
 
 test("real navigation stays immediate and replays delayed analytics identities", async ({ browser }) => {
