@@ -1,7 +1,7 @@
 import { execFileSync } from "node:child_process";
 import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
-import { pagesPackageHash } from "../lib/seo/build-hash.mjs";
+import { normalizedPagesPackageHash, pagesPackageHash } from "../lib/seo/build-hash.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const artifactDir = resolve(root, "artifacts/ia");
@@ -10,7 +10,8 @@ const handoff1BaseCommit = "bf5751658b0b86fae1a777f9147788161ac18085";
 const auditCommit = "12e9983d429c4b6411ecf55591298fffb7874f03";
 const sourceCommit = execFileSync("git", ["rev-parse", "HEAD"], { cwd: root, encoding: "utf8" }).trim();
 const sourceTree = execFileSync("git", ["rev-parse", "HEAD^{tree}"], { cwd: root, encoding: "utf8" }).trim();
-const buildHash = await pagesPackageHash(resolve(root, "dist/pages"));
+const rawBuildHash = await pagesPackageHash(resolve(root, "dist/pages"));
+const buildHash = await normalizedPagesPackageHash(resolve(root, "dist/pages"));
 const generatedAt = new Date().toISOString();
 
 const readJson = async (path) => JSON.parse(await readFile(resolve(root, path), "utf8"));
@@ -29,6 +30,8 @@ const base = {
   sourceCommit,
   sourceTree,
   buildHash,
+  rawBuildHash,
+  buildHashNormalization: ["VINEXT build/deployment/draft UUIDs", "VINEXT prerenderSecret"],
   generatedAt,
   environment: "local-candidate",
   routeCount: routeInventory.routeCount,
