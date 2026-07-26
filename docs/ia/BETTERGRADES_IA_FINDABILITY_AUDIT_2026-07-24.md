@@ -10,8 +10,8 @@
 
 ## 2. Audited repository and deployment
 
-- Repository start: `bf5751658b0b86fae1a777f9147788161ac18085`
-- Source tree: `a562b9fd9cc40fef34f8cac49c695dd4993d1c7a`
+- Repository start: `0a7c9ea3be4235ba2b99147d5ee4eb26394ce7b9`
+- Source tree: `79cf43f486b60bfa72732c0647e40fad298c79e6`
 - Local Pages build hash: `43e28d1961fdba0679783925032d7eb2b5b1a0d21b631835f5aa29f0ab4640aa`
 - Accepted pre-audit raw Pages hash: `e92dac55168fb8f492381019b7cc3070b2dbd1d12e244f9361d9217ab9d39c63`
 - Accepted immutable deployment sampled by retained live evidence: https://7029f1e2.bettergrades-vhc.pages.dev

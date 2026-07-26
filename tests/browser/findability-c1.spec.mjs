@@ -51,7 +51,7 @@ test("desktop navigation and learning-path clicks emit complete analytics dimens
   expect(events.find((item) => item.sink === "ga4" && item.args[1] === "site_search_result_click")?.args[2]).toMatchObject({
     source_page_id: "route:/search/",
     source_page_role: "search",
-    target_page_role: "assessment",
+    target_page_role: "directory",
     relationship_type: "search_result",
     placement: "search-results",
     query: "Calculus practice",
@@ -123,7 +123,7 @@ test("real navigation stays immediate and replays delayed analytics identities",
   ]);
   await expect.poll(() => searchEvents.find((item) => item.sink === "ga4" && item.args[1] === "site_search_result_click")?.args[2]).toMatchObject({
     source_page_role: "search",
-    target_page_role: "assessment",
+    target_page_role: "directory",
     result_rank: 1,
   });
   await searchContext.close();

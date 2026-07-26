@@ -35,8 +35,8 @@ const base = {
   handoff1BaseCommit,
   auditCommit,
 };
-const publicRelationships = relationships.relationships.filter((item) => ["approved", "existing"].includes(item.status));
-const provisionalRelationships = relationships.relationships.filter((item) => item.status === "provisional");
+const publicRelationships = relationships.filter((item) => ["approved", "existing"].includes(item.editorialStatus));
+const provisionalRelationships = relationships.filter((item) => item.editorialStatus === "provisional");
 const contextualEdges = internalLinks.edges.filter((item) => item.contextual);
 const navigationTypes = new Set(["global-navigation", "mobile-navigation", "breadcrumb", "course-map", "unit-map", "hub-listing", "sequential-previous", "sequential-next"]);
 const navigationEdges = internalLinks.edges.filter((item) => navigationTypes.has(item.link_type));

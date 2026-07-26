@@ -1,6 +1,6 @@
 # Provisional BetterGrades concept and skill taxonomy
 
-Generated from bf5751658b0b86fae1a777f9147788161ac18085 at 2026-07-26T04:51:25.821Z. This audit-only taxonomy contains 98 inferred concepts and 476 inferred skills. It is not an approved production registry.
+Generated from 0a7c9ea3be4235ba2b99147d5ee4eb26394ce7b9 at 2026-07-26T04:58:27.972Z. This audit-only taxonomy contains 98 inferred concepts and 476 inferred skills. It is not an approved production registry.
 
 ## Decision rule
 
