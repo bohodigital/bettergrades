@@ -18,11 +18,11 @@ const routes = [
   ["/glossary/math/derivative/", "enriched glossary"],
 ];
 
-test("calculus starts collapsed and the top-level Resources tab exposes the complete library", async ({ page }) => {
+test("calculus starts collapsed and the Resources menus expose the complete library", async ({ page }) => {
   await page.goto("/subjects/math/calculus/");
   await expect(page.locator('.calculus-chapter[open]')).toHaveCount(0);
-  await expect(page.locator('.desktop-nav > a[href="/resources/"]')).toHaveCount(1);
-  await expect(page.locator('.mobile-menu nav > a[href="/resources/"]')).toHaveCount(1);
+  await expect(page.locator('.desktop-learn-panel a[href="/resources/"]')).toHaveCount(1);
+  await expect(page.locator('.mobile-menu nav a[href="/resources/"]')).toHaveCount(1);
 
   await page.goto("/resources/");
   await expect(page.getByRole("heading", { level: 1, name: "Everything printable, visual, and worked through." })).toBeVisible();
@@ -246,21 +246,25 @@ test("every resource analytics event fires through both sinks with safe dimensio
   await collect();
 
   await page.goto("/subjects/math/calculus/worked-problems/limit-by-factoring/");
+  await clickWithoutNavigation(page.locator(".resource-related a").first());
   await collect();
 
   await page.goto("/glossary/math/derivative/");
   await clickWithoutNavigation(page.locator(".resource-related a").first());
   await collect();
 
-  await page.goto("/subjects/math/calculus/limits-continuity/unit/");
-  await clickWithoutNavigation(page.locator(".contextual-resource-links a").first());
+  await page.goto("/subjects/math/calculus/integrals/integration-by-parts/");
+  for (const link of await page.locator(".lesson-companions a").all()) {
+    await clickWithoutNavigation(link);
+  }
   await collect();
 
   const expectedEvents = [
     "resource_view", "resource_download", "worksheet_download", "answer_key_download", "practice_exam_download",
     "formula_sheet_download", "visual_download", "worksheet_print", "practice_start", "practice_complete",
-    "exam_start", "exam_complete", "worked_solution_open", "resource_to_lesson_click",
-    "lesson_to_resource_click", "glossary_to_lesson_click",
+    "exam_start", "exam_complete", "worked_solution_open", "resource_to_lesson_click", "worked_problem_to_lesson_click",
+    "learning_relationship_click", "lesson_to_practice_click", "lesson_to_article_click",
+    "lesson_to_reference_click", "glossary_to_lesson_click",
   ];
   for (const name of expectedEvents) {
     const ga4 = allEvents.filter((item) => item.args[1] === name && item.sink === "ga4");
@@ -273,7 +277,10 @@ test("every resource analytics event fires through both sinks with safe dimensio
   }
   const data = allEvents.find((item) => item.args[1] === "resource_view").args[2];
   expect(data).toMatchObject({ resource_id: "calculus-resource-evaluating-limits", resource_type: "worksheet" });
-  const allowedDimensions = new Set(["resource_id", "resource_type", "course", "unit", "topic", "difficulty", "file_type", "source_lesson", "variant"]);
+  const allowedDimensions = new Set([
+    "resource_id", "resource_type", "course", "unit", "topic", "difficulty", "file_type", "source_lesson", "variant",
+    "source_page_id", "source_page_role", "target_page_id", "target_page_role", "relationship_type", "placement", "result_rank", "navigation_surface",
+  ]);
   for (const event of allEvents.filter((item) => item.sink === "ga4")) {
     expect(Object.keys(event.args[2]).every((key) => allowedDimensions.has(key)), `${event.args[1]}: safe dimension names`).toBe(true);
   }

@@ -235,6 +235,7 @@ test("resource analytics preserve one loader and enumerate privacy-safe events",
     await readFile(resolve(root, "app/ResourcePages.tsx"), "utf8"),
     await readFile(resolve(root, "app/CalculusUnitPages.tsx"), "utf8"),
     await readFile(resolve(root, "app/LimitsUnitPages.tsx"), "utf8"),
+    await readFile(resolve(root, "app/LessonCompanionLinks.tsx"), "utf8"),
   ].join("\n");
   assert.equal((layout.match(/googletagmanager\.com\/gtag\/js/g) ?? []).length, 1);
   assert.equal((layout.match(/analytics\.bohodigitalservices\.com\/script\.js/g) ?? []).length, 1);
@@ -242,7 +243,7 @@ test("resource analytics preserve one loader and enumerate privacy-safe events",
     "resource_view", "resource_download", "worksheet_download", "answer_key_download", "practice_exam_download",
     "formula_sheet_download", "visual_download", "worksheet_print", "practice_start", "practice_complete",
     "exam_start", "exam_complete", "worked_solution_open", "resource_to_lesson_click",
-    "lesson_to_resource_click", "glossary_to_lesson_click",
+    "lesson_to_practice_click", "lesson_to_article_click", "lesson_to_reference_click", "glossary_to_lesson_click",
   ]) assert.match(pages, new RegExp(`"${event}"`), event);
   assert.doesNotMatch(pages, /student_name|student_email|full_response|raw_work/i);
 });

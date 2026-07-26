@@ -82,6 +82,10 @@ try {
   }
   const graph = adaptCurrentRegistries(sourceCommit, sourceTree);
   const nodeByPath = new Map(graph.nodes.map((node) => [node.canonicalPath, node]));
+  const approvedArticleLessonMap = JSON.parse(await readFile(resolve(root, "data/ia/handoff-c2-approved-article-lesson-map.json"), "utf8"));
+  const approvedLessonCompanionMap = JSON.parse(await readFile(resolve(root, "data/ia/handoff-c2-approved-lesson-companion-map.json"), "utf8"));
+  const approvedRelationshipKeys = new Set(approvedArticleLessonMap.map((row) => `${row.sourceId}\0${row.targetId}\0${row.relationshipType}`));
+  const approvedCompanionPairs = new Set(approvedLessonCompanionMap.map((row) => `${row.lessonId}\0${row.targetId}`));
   const provisional = [];
   const candidateSources = [
     {
@@ -105,6 +109,8 @@ try {
       const source = nodeByPath.get(row[candidateSource.source]);
       const target = nodeByPath.get(row[candidateSource.target]);
       if (!source || !target || source.id === target.id) continue;
+      if (approvedRelationshipKeys.has(`${source.id}\0${target.id}\0${candidateSource.type}`)) continue;
+      if (candidateSource.file.includes("lesson-companion") && approvedCompanionPairs.has(`${source.id}\0${target.id}`)) continue;
       provisional.push({
         sourceId: source.id,
         targetId: target.id,
@@ -118,7 +124,29 @@ try {
       });
     }
   }
-  graph.relationships = [...graph.relationships, ...provisional].sort((a, b) => `${a.sourceId}:${a.targetId}:${a.type}:${a.editorialStatus}`.localeCompare(`${b.sourceId}:${b.targetId}:${b.type}:${b.editorialStatus}`));
+  const approvedRelationships = approvedArticleLessonMap.map((row) => ({
+    sourceId: row.sourceId,
+    targetId: row.targetId,
+    type: row.relationshipType,
+    confidence: row.confidence,
+    source: "data/ia/handoff-c2-approved-article-lesson-map.json",
+    editorialStatus: "approved",
+    placement: row.placement,
+    anchorText: row.anchorText,
+    reciprocalRequired: false,
+  }));
+  const approvedCompanionRelationships = approvedLessonCompanionMap.map((row) => ({
+    sourceId: row.lessonId,
+    targetId: row.targetId,
+    type: row.relationshipType,
+    confidence: row.confidence,
+    source: "data/ia/handoff-c2-approved-lesson-companion-map.json",
+    editorialStatus: "approved",
+    placement: row.placement,
+    anchorText: row.anchorText,
+    reciprocalRequired: false,
+  }));
+  graph.relationships = [...graph.relationships, ...approvedRelationships, ...approvedCompanionRelationships, ...provisional].sort((a, b) => `${a.sourceId}:${a.targetId}:${a.type}:${a.editorialStatus}`.localeCompare(`${b.sourceId}:${b.targetId}:${b.type}:${b.editorialStatus}`));
   const concepts = Array.from(new Set(graph.nodes.flatMap((node) => [node.primaryConceptId, ...node.secondaryConceptIds]).filter(Boolean))).sort().map((id) => ({ id }));
   const skills = Array.from(new Set(graph.nodes.flatMap((node) => node.skillIds))).sort().map((id) => ({ id }));
   const publicRelationships = graph.relationships.filter((relationship) => ["approved", "existing"].includes(relationship.editorialStatus));
@@ -163,6 +191,9 @@ try {
                 canonicalPath: target.canonicalPath,
                 pageRole: target.pageRole,
                 shortTitle: target.shortTitle,
+                course: target.courseId ?? source.courseId ?? "not-applicable",
+                unit: target.unitId ?? source.unitId ?? "not-applicable",
+                topic: target.topicIds[0] ?? source.topicIds[0] ?? "not-applicable",
               },
             }];
           })
@@ -170,9 +201,47 @@ try {
         return [source.canonicalPath, destinations];
       }),
   );
+  const companionCategoryPriority = { practices: 100, explains: 80, references: 70, visualizes: 60, uses_tool: 50 };
+  const publicLessonDestinations = Object.fromEntries(
+    graph.nodes
+      .filter((node) => node.nodeType === "textbook-lesson")
+      .map((source) => {
+        const destinations = publicRelationships
+          .filter((relationship) => relationship.sourceId === source.id && relationship.source === "data/ia/handoff-c2-approved-lesson-companion-map.json")
+          .map((relationship) => ({ relationship, target: nodeById.get(relationship.targetId) }))
+          .filter(({ target }) => target)
+          .sort((left, right) => (companionCategoryPriority[right.relationship.type] ?? 0) - (companionCategoryPriority[left.relationship.type] ?? 0) || left.target.canonicalPath.localeCompare(right.target.canonicalPath))
+          .map(({ relationship, target }) => ({
+            relationship: { sourceId: relationship.sourceId, sourceRole: source.pageRole, targetId: relationship.targetId, type: relationship.type, placement: relationship.placement },
+            target: {
+              id: target.id,
+              canonicalPath: target.canonicalPath,
+              pageRole: target.pageRole,
+              shortTitle: target.shortTitle,
+              course: target.courseId ?? source.courseId ?? "not-applicable",
+              unit: target.unitId ?? source.unitId ?? "not-applicable",
+              topic: target.topicIds[0] ?? source.topicIds[0] ?? "not-applicable",
+            },
+          }))
+          .slice(0, 4);
+        return [source.canonicalPath, destinations];
+      }),
+  );
   const routeIdentities = Object.fromEntries([
-    ...graph.nodes.map((node) => [node.canonicalPath, { id: node.id, pageRole: node.pageRole }]),
-    ...graph.exclusions.map((item) => [item.canonicalPath, { id: `route:${item.canonicalPath}`, pageRole: item.pageRole }]),
+    ...graph.nodes.map((node) => [node.canonicalPath, {
+      id: node.id,
+      pageRole: node.pageRole,
+      course: node.courseId ?? "not-applicable",
+      unit: node.unitId ?? "not-applicable",
+      topic: node.topicIds[0] ?? "not-applicable",
+    }]),
+    ...graph.exclusions.map((item) => [item.canonicalPath, {
+      id: `route:${item.canonicalPath}`,
+      pageRole: item.pageRole,
+      course: "not-applicable",
+      unit: "not-applicable",
+      topic: "not-applicable",
+    }]),
   ].sort(([left], [right]) => left.localeCompare(right)));
   await mkdir(outDir, { recursive: true });
   await writeOrCheck(resolve(outDir, "graph.json"), graph);
@@ -182,6 +251,7 @@ try {
   await writeOrCheck(resolve(outDir, "skills.json"), skills);
   await writeOrCheck(resolve(outDir, "exclusions.json"), graph.exclusions);
   await writeOrCheck(resolve(outDir, "public-article-destinations.json"), publicArticleDestinations);
+  await writeOrCheck(resolve(outDir, "public-lesson-destinations.json"), publicLessonDestinations);
   await writeOrCheck(resolve(outDir, "route-identities.json"), routeIdentities);
   console.log(JSON.stringify({
     nodes: graph.nodes.length,

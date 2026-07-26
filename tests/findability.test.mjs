@@ -42,7 +42,7 @@ test("graph hierarchy references resolve to canonical graph nodes", () => {
 
 test("provisional candidates stay in the editorial queue", () => {
   const provisional = graph.relationships.filter((relationship) => relationship.editorialStatus === "provisional");
-  assert.equal(provisional.length, 2756);
+  assert.equal(provisional.length, 2858);
   assert.ok(provisional.every((relationship) => relationship.placement === "editorial-queue"));
 });
 
@@ -81,8 +81,11 @@ test("visible query results preserve the exact search ranking contract", async (
 });
 
 test("findability click events carry source and target roles", async () => {
-  const [learningLinks, application, analytics] = await Promise.all([
+  const [learningLinks, lessonLinks, libraryPages, resourcePages, application, analytics] = await Promise.all([
     readFile(resolve(root, "app/LearningPathLinks.tsx"), "utf8"),
+    readFile(resolve(root, "app/LessonCompanionLinks.tsx"), "utf8"),
+    readFile(resolve(root, "app/LibraryPages.tsx"), "utf8"),
+    readFile(resolve(root, "app/ResourcePages.tsx"), "utf8"),
     readFile(resolve(root, "app/BetterGradesApp.tsx"), "utf8"),
     readFile(resolve(root, "lib/learning-graph/analytics.ts"), "utf8"),
   ]);
@@ -95,6 +98,15 @@ test("findability click events carry source and target roles", async () => {
   assert.match(application, /relationship_type: "search_result"/);
   assert.match(application, /result_count: siteResults\.length/);
   assert.doesNotMatch(application, /result_rank: siteResults\.length/);
+  for (const dimension of ["course", "unit", "topic"]) {
+    assert.match(analytics, new RegExp(`${dimension}\\?: string`));
+    assert.match(learningLinks, new RegExp(`${dimension}: target\\.${dimension}`));
+    assert.match(lessonLinks, new RegExp(`${dimension}: target\\.${dimension}`));
+  }
+  assert.match(learningLinks, /navigation_surface: "article-learning-path"/);
+  assert.match(lessonLinks, /navigation_surface: "lesson-companion"/);
+  assert.match(libraryPages, /"topic_hub_destination_click"/);
+  assert.match(resourcePages, /"worked_problem_to_lesson_click"/);
 });
 
 test("meaningful navigation depth excludes footer-only discovery", async () => {

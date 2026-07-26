@@ -72,8 +72,8 @@ test("server-renders the Better Grades homepage", async () => {
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
   const html = await response.text();
-  assert.match(html, /Free math help that gets to the point/);
-  assert.match(html, /Search the problem/);
+  assert.match(html, /Clear math lessons, practice, and references/);
+  assert.match(html, /Find a topic, learn it fully, or practice the exact skill/);
   assert.match(html, /Search guides/);
   assert.match(html, /New in the library/);
   assert.match(html, /Fresh explanations, ready to use/);
@@ -115,8 +115,8 @@ test("subject and course hubs expose the organized math library", async () => {
   assert.match(html, /data-chapter="3"[\s\S]*Unit 3A[\s\S]*Unit 3B/);
   assert.match(html, /data-chapter="4"[\s\S]*Sequences and Series/);
   assert.doesNotMatch(html, /data-chapter="1" open/);
-  assert.match(html, /Browse every course and resource/);
-  assert.match(html, /href="\/resources\/"[\s\S]*Open the resource library/);
+  assert.match(html, /Support the course without losing the sequence/);
+  assert.match(html, /href="\/resources\/"[\s\S]*Browse the complete library/);
   assert.doesNotMatch(html, /Applications of Derivatives[\s\S]*Open topic/);
 
   const algebra = await render("/subjects/math/algebra/");
@@ -125,18 +125,19 @@ test("subject and course hubs expose the organized math library", async () => {
   assert.match(algebraHtml, /Algebra/);
   assert.match(algebraHtml, /Expressions &amp; Equations/);
   assert.match(algebraHtml, /Polynomials &amp; Factoring/);
-  assert.match(algebraHtml, /Complete guides/);
+  assert.match(algebraHtml, /Open the first published guide/);
 });
 
-test("sitewide navigation exposes the calculus hierarchy on desktop and mobile", async () => {
+test("sitewide navigation exposes learner paths globally and course hierarchy locally", async () => {
   const response = await render("/subjects/math/calculus/derivative-applications/");
   assert.equal(response.status, 200);
   const html = await response.text();
   assert.match(html, /class="desktop-learn-menu"/);
   assert.match(html, /class="mobile-course-menu"/);
-  assert.match(html, /href="\/resources\/"[^>]*>Resources/);
-  assert.match(html, /Chapter 2[\s\S]*Derivatives · Units 2A and 2B/);
-  assert.match(html, /Chapter 3[\s\S]*Integrals · Units 3A and 3B/);
+  assert.match(html, />Learn <span/);
+  assert.match(html, />Practice <span/);
+  assert.match(html, />Resources <span/);
+  assert.match(html, /href="\/search\/"[^>]*>Search/);
   assert.match(html, /Calculus I · Chapter 2/);
   assert.match(visibleText(html), /Browse Chapter 2 sections/);
   assert.match(html, /Unit 2A sections/);

@@ -7,11 +7,11 @@ const GOOGLE_ANALYTICS_ID = "G-9X96S9GZQ2";
 export const metadata: Metadata = {
   metadataBase: new URL("https://bettergrades.net"),
   title: {
-    default: "Better Grades — Free answers, full explanations",
+    default: "Better Grades — Clear math lessons, practice, and references",
     template: "%s | Better Grades",
   },
   description:
-    "Free academic answers, complete calculus explanations, practical calculators, and practice that teaches the next problem too.",
+    "Clear math lessons, exact-skill practice, worked examples, formulas, definitions, visuals, and tools for algebra and calculus.",
   applicationName: "Better Grades",
   manifest: "/site.webmanifest",
   themeColor: "#125d50",
@@ -41,22 +41,22 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "Better Grades",
-    title: "Find the answer. Understand the method.",
-    description: "The answer is free. Understanding it is the point.",
+    title: "Better Grades — Clear math lessons, practice, and references",
+    description: "Find a topic, learn it fully, or practice the exact skill.",
     url: "https://bettergrades.net",
     images: [
       {
         url: "https://bettergrades.net/og.png",
         width: 1200,
         height: 630,
-        alt: "Better Grades — Find the answer. Understand the method.",
+        alt: "Better Grades — Clear math lessons, practice, and references.",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Find the answer. Understand the method.",
-    description: "Free answers, complete explanations, better practice.",
+    title: "Better Grades — Clear math lessons, practice, and references",
+    description: "Find a topic, learn it fully, or practice the exact skill.",
     images: ["https://bettergrades.net/og.png"],
   },
 };

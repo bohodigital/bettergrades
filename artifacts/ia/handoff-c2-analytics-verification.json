@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "e30b5298c4901bf3020639c6e4fa51649e9ce164",
+  "sourceTree": "0d91d19a5c509b7bf02749990f40b5a456e2ed38",
+  "provenanceModel": "generated evidence verifies sourceCommit/sourceTree; the containing evidence commit is bound externally by GitHub PR and Sites version provenance",
+  "buildHash": "9953ef1faa37e24ca45decfd741bc363685f0416ddd3809b89dacad92eaadd3d",
+  "rawBuildHash": "37e79204dac9482ed9a355a0f29cb26d10d9dd02801c8ff1ae63b5f88ea4a0dc",
+  "buildHashNormalization": [
+    "VINEXT build/deployment/draft UUIDs",
+    "VINEXT prerenderSecret"
+  ],
+  "generatedAt": "2026-07-26T05:50:43.562Z",
+  "environment": "local-candidate",
+  "routeCount": 509,
+  "handoff1BaseCommit": "bf5751658b0b86fae1a777f9147788161ac18085",
+  "auditCommit": "12e9983d429c4b6411ecf55591298fffb7874f03",
+  "failureCount": 0,
+  "ga4LoaderCount": 1,
+  "ga4ConfigurationCount": 1,
+  "umamiLoaderCount": 1,
+  "bothSinksVerified": true,
+  "exactOnceVerified": true,
+  "doNotTrackSuppressionVerified": true,
+  "navigationWithoutAnalyticsVerified": true,
+  "sensitiveDimensionCount": 0,
+  "events": [
+    "navigation_destination_click",
+    "topic_hub_destination_click",
+    "article_to_lesson_click",
+    "lesson_to_article_click",
+    "lesson_to_practice_click",
+    "lesson_to_reference_click",
+    "worked_problem_to_lesson_click",
+    "glossary_to_lesson_click",
+    "learning_relationship_click"
+  ],
+  "requiredDimensions": [
+    "source_page_id",
+    "source_page_role",
+    "target_page_id",
+    "target_page_role",
+    "relationship_type",
+    "placement",
+    "navigation_surface",
+    "course",
+    "unit",
+    "topic"
+  ],
+  "eventVerification": [
+    {
+      "event": "navigation_destination_click",
+      "implemented": true,
+      "exercised": true
+    },
+    {
+      "event": "topic_hub_destination_click",
+      "implemented": true,
+      "exercised": true
+    },
+    {
+      "event": "article_to_lesson_click",
+      "implemented": true,
+      "exercised": true
+    },
+    {
+      "event": "lesson_to_article_click",
+      "implemented": true,
+      "exercised": true
+    },
+    {
+      "event": "lesson_to_practice_click",
+      "implemented": true,
+      "exercised": true
+    },
+    {
+      "event": "lesson_to_reference_click",
+      "implemented": true,
+      "exercised": true
+    },
+    {
+      "event": "worked_problem_to_lesson_click",
+      "implemented": true,
+      "exercised": true
+    },
+    {
+      "event": "glossary_to_lesson_click",
+      "implemented": true,
+      "exercised": true
+    },
+    {
+      "event": "learning_relationship_click",
+      "implemented": true,
+      "exercised": true
+    }
+  ],
+  "dimensionVerification": [
+    {
+      "dimension": "source_page_id",
+      "declared": true,
+      "emittedByEveryRelationshipComponent": true
+    },
+    {
+      "dimension": "source_page_role",
+      "declared": true,
+      "emittedByEveryRelationshipComponent": true
+    },
+    {
+      "dimension": "target_page_id",
+      "declared": true,
+      "emittedByEveryRelationshipComponent": true
+    },
+    {
+      "dimension": "target_page_role",
+      "declared": true,
+      "emittedByEveryRelationshipComponent": true
+    },
+    {
+      "dimension": "relationship_type",
+      "declared": true,
+      "emittedByEveryRelationshipComponent": true
+    },
+    {
+      "dimension": "placement",
+      "declared": true,
+      "emittedByEveryRelationshipComponent": true
+    },
+    {
+      "dimension": "navigation_surface",
+      "declared": true,
+      "emittedByEveryRelationshipComponent": true
+    },
+    {
+      "dimension": "course",
+      "declared": true,
+      "emittedByEveryRelationshipComponent": true
+    },
+    {
+      "dimension": "unit",
+      "declared": true,
+      "emittedByEveryRelationshipComponent": true
+    },
+    {
+      "dimension": "topic",
+      "declared": true,
+      "emittedByEveryRelationshipComponent": true
+    }
+  ],
+  "failures": [],
+  "pass": true
+}

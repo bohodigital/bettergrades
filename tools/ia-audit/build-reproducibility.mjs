@@ -1,8 +1,7 @@
-import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import { dirname, join, relative, resolve } from "node:path";
-import { pagesPackageHash } from "../../lib/seo/build-hash.mjs";
+import { normalizeBuildSpecificBytes, normalizedPagesPackageHash, pagesPackageHash } from "../../lib/seo/build-hash.mjs";
 
 const args = new Map(process.argv.slice(2).map((arg) => {
   const [key, ...value] = arg.split("=");
@@ -23,24 +22,6 @@ async function filesBelow(directory) {
   return (await Promise.all(entries
     .filter((entry) => entry.name !== ".DS_Store")
     .map((entry) => entry.isDirectory() ? filesBelow(join(directory, entry.name)) : [join(directory, entry.name)]))).flat();
-}
-
-function normalizeBuildSpecificBytes(path, bytes) {
-  if (!/\.(?:html|js|json)$/.test(path)) return bytes;
-  return Buffer.from(bytes.toString()
-    .replace(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/gi, "<BUILD_UUID>")
-    .replace(/("prerenderSecret"\s*:\s*")[0-9a-f]{64}(")/gi, "$1<PRERENDER_SECRET>$2"));
-}
-
-async function normalizedPackageHash(directory) {
-  const digest = createHash("sha256");
-  for (const path of (await filesBelow(directory)).sort()) {
-    digest.update(relative(directory, path));
-    digest.update("\0");
-    digest.update(normalizeBuildSpecificBytes(path, await readFile(path)));
-    digest.update("\0");
-  }
-  return digest.digest("hex");
 }
 
 const beforePaths = (await filesBelow(beforeDir)).map((path) => relative(beforeDir, path)).sort();
@@ -65,14 +46,15 @@ const result = {
   generatedAt: new Date().toISOString(),
   sourceCommit,
   sourceTree,
+  provenanceModel: "generated evidence verifies sourceCommit/sourceTree; the containing evidence commit is bound externally by GitHub PR and Sites version provenance",
   routeCount: 509,
   toolVersion: "1.0.0",
   failureCount: normalizedDifferences.length,
   acceptedBaselineRawHash,
   beforeRawHash: await pagesPackageHash(beforeDir),
   afterRawHash: await pagesPackageHash(afterDir),
-  beforeNormalizedHash: await normalizedPackageHash(beforeDir),
-  afterNormalizedHash: await normalizedPackageHash(afterDir),
+  beforeNormalizedHash: await normalizedPagesPackageHash(beforeDir),
+  afterNormalizedHash: await normalizedPagesPackageHash(afterDir),
   fileCountBefore: beforePaths.length,
   fileCountAfter: afterPaths.length,
   rawDifferenceCount: rawDifferences.length,

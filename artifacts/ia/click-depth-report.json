@@ -1,21 +1,21 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-25T00:23:06.283Z",
-  "sourceCommit": "bd8c106e74f203f68e2f27595523610c4a911c39",
-  "sourceTree": "badf00de3bad5d9c348275d8d09b8fdb24a82c92",
-  "buildHash": "f0ae10fe9330b29d0667f8a59f1f09f5a05a9e7ddf10d43a69343d3b0d5c2840",
+  "generatedAt": "2026-07-26T04:58:27.972Z",
+  "sourceCommit": "0a7c9ea3be4235ba2b99147d5ee4eb26394ce7b9",
+  "sourceTree": "79cf43f486b60bfa72732c0647e40fad298c79e6",
+  "buildHash": "43e28d1961fdba0679783925032d7eb2b5b1a0d21b631835f5aa29f0ab4640aa",
   "toolVersion": "1.0.0",
   "routeCount": 509,
   "failureCount": 0,
   "definitions": {
     "all": "all unique crawlable internal anchors",
-    "navigation": "global, mobile, footer, hub, course-map, and unit-map edges",
+    "navigation": "global, mobile, hub, course-map, unit-map, and sequential edges; footer-only paths excluded",
     "contextual": "editorial and companion edges"
   },
-  "unreachableAll": 5,
-  "deepNavigation": 64,
-  "hiddenImportant": 15,
-  "zeroContextualIncoming": 215,
+  "unreachableAll": 0,
+  "deepNavigation": 41,
+  "hiddenImportant": 0,
+  "zeroContextualIncoming": 311,
   "depths": [
     {
       "route": "/",
@@ -30,7 +30,7 @@
       "route": "/about/",
       "role": "policy",
       "all": 1,
-      "navigation": 1,
+      "navigation": 2,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -39,7 +39,7 @@
       "route": "/accessibility/",
       "role": "policy",
       "all": 1,
-      "navigation": 1,
+      "navigation": 2,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -48,7 +48,7 @@
       "route": "/answers/",
       "role": "directory",
       "all": 1,
-      "navigation": 1,
+      "navigation": 2,
       "contextual": 1,
       "breadcrumb": null,
       "sequential": null
@@ -57,7 +57,7 @@
       "route": "/answers/calculus/integral-of-sec-cubed/",
       "role": "answer",
       "all": 1,
-      "navigation": 2,
+      "navigation": 3,
       "contextual": 1,
       "breadcrumb": null,
       "sequential": null
@@ -75,7 +75,7 @@
       "route": "/editorial-policy/",
       "role": "policy",
       "all": 1,
-      "navigation": 1,
+      "navigation": 2,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -83,8 +83,8 @@
     {
       "route": "/glossary/",
       "role": "glossary-hub",
-      "all": null,
-      "navigation": null,
+      "all": 2,
+      "navigation": 2,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -138,7 +138,7 @@
       "route": "/glossary/math/conventions/",
       "role": "glossary-term",
       "all": 1,
-      "navigation": 1,
+      "navigation": 2,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -327,7 +327,7 @@
       "route": "/how-we-verify/",
       "role": "policy",
       "all": 1,
-      "navigation": 1,
+      "navigation": 2,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -336,7 +336,7 @@
       "route": "/learn/calculus/integration-by-parts/",
       "role": "method-guide",
       "all": 1,
-      "navigation": 2,
+      "navigation": 3,
       "contextual": 1,
       "breadcrumb": null,
       "sequential": null
@@ -352,7 +352,7 @@
     },
     {
       "route": "/practice/math/",
-      "role": "assessment",
+      "role": "directory",
       "all": 2,
       "navigation": 2,
       "contextual": null,
@@ -361,19 +361,19 @@
     },
     {
       "route": "/practice/math/calculus/",
-      "role": "assessment",
-      "all": 1,
-      "navigation": 1,
-      "contextual": null,
+      "role": "directory",
+      "all": 2,
+      "navigation": 2,
+      "contextual": 3,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/practice/math/calculus/challenges/integration-bee/",
       "role": "assessment",
-      "all": 1,
-      "navigation": null,
-      "contextual": 1,
+      "all": 2,
+      "navigation": 3,
+      "contextual": 2,
       "breadcrumb": null,
       "sequential": null
     },
@@ -381,7 +381,7 @@
       "route": "/practice/math/calculus/diagnostics/calculus-readiness/",
       "role": "assessment",
       "all": 1,
-      "navigation": null,
+      "navigation": 3,
       "contextual": 1,
       "breadcrumb": null,
       "sequential": null
@@ -389,9 +389,9 @@
     {
       "route": "/practice/math/calculus/exams/calculus-foundations/",
       "role": "practice-exam",
-      "all": 2,
-      "navigation": null,
-      "contextual": null,
+      "all": 3,
+      "navigation": 3,
+      "contextual": 7,
       "breadcrumb": null,
       "sequential": null
     },
@@ -399,7 +399,7 @@
       "route": "/practice/math/calculus/quizzes/integration-method-selection/",
       "role": "assessment",
       "all": 1,
-      "navigation": null,
+      "navigation": 3,
       "contextual": 1,
       "breadcrumb": null,
       "sequential": null
@@ -408,7 +408,7 @@
       "route": "/privacy/",
       "role": "policy",
       "all": 1,
-      "navigation": 1,
+      "navigation": 2,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -418,7 +418,7 @@
       "role": "resource-library",
       "all": 1,
       "navigation": 1,
-      "contextual": null,
+      "contextual": 1,
       "breadcrumb": null,
       "sequential": null
     },
@@ -471,7 +471,7 @@
       "route": "/subjects/math/algebra/expressions-equations/",
       "role": "quick-answer",
       "all": 2,
-      "navigation": null,
+      "navigation": 4,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -487,7 +487,7 @@
     },
     {
       "route": "/subjects/math/algebra/expressions-equations/distributive-property/",
-      "role": "method-guide",
+      "role": "concept-explainer",
       "all": 1,
       "navigation": 1,
       "contextual": null,
@@ -498,14 +498,14 @@
       "route": "/subjects/math/algebra/expressions-equations/evaluating-expressions-by-substitution/",
       "role": "method-guide",
       "all": 2,
-      "navigation": null,
+      "navigation": 2,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/algebra/expressions-equations/order-of-operations-with-variables/",
-      "role": "method-guide",
+      "role": "concept-explainer",
       "all": 1,
       "navigation": 1,
       "contextual": null,
@@ -514,7 +514,7 @@
     },
     {
       "route": "/subjects/math/algebra/expressions-equations/solving-linear-equations/",
-      "role": "decision-guide",
+      "role": "method-guide",
       "all": 1,
       "navigation": 1,
       "contextual": null,
@@ -534,14 +534,14 @@
       "route": "/subjects/math/algebra/linear-relationships/",
       "role": "quick-answer",
       "all": 2,
-      "navigation": null,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/algebra/linear-relationships/equation-from-two-points/",
-      "role": "decision-guide",
+      "role": "method-guide",
       "all": 2,
       "navigation": 2,
       "contextual": null,
@@ -550,9 +550,9 @@
     },
     {
       "route": "/subjects/math/algebra/linear-relationships/graphing-linear-equations-from-standard-form/",
-      "role": "decision-guide",
+      "role": "method-guide",
       "all": 3,
-      "navigation": null,
+      "navigation": 4,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -561,32 +561,32 @@
       "route": "/subjects/math/algebra/linear-relationships/interpreting-linear-models/",
       "role": "quick-answer",
       "all": 2,
-      "navigation": 2,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/algebra/linear-relationships/parallel-perpendicular-lines/",
-      "role": "decision-guide",
+      "role": "concept-explainer",
       "all": 2,
-      "navigation": 2,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/algebra/linear-relationships/point-slope-vs-slope-intercept/",
-      "role": "quick-answer",
+      "role": "decision-guide",
       "all": 2,
-      "navigation": 2,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/algebra/linear-relationships/slope-as-rate-of-change/",
-      "role": "quick-answer",
+      "role": "concept-explainer",
       "all": 1,
       "navigation": 1,
       "contextual": null,
@@ -597,52 +597,52 @@
       "route": "/subjects/math/algebra/polynomials-factoring/",
       "role": "quick-answer",
       "all": 2,
-      "navigation": null,
+      "navigation": 5,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/algebra/polynomials-factoring/completing-the-square/",
-      "role": "decision-guide",
+      "role": "method-guide",
       "all": 3,
-      "navigation": null,
+      "navigation": 6,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/algebra/polynomials-factoring/exponent-rules/",
-      "role": "method-guide",
-      "all": 2,
-      "navigation": null,
+      "role": "concept-explainer",
+      "all": 3,
+      "navigation": 6,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/algebra/polynomials-factoring/factoring-trinomials/",
-      "role": "decision-guide",
+      "role": "method-guide",
       "all": 3,
-      "navigation": null,
+      "navigation": 6,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/algebra/polynomials-factoring/greatest-common-factor/",
-      "role": "decision-guide",
-      "all": 2,
-      "navigation": null,
+      "role": "method-guide",
+      "all": 3,
+      "navigation": 6,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/algebra/polynomials-factoring/multiply-polynomials/",
-      "role": "decision-guide",
-      "all": 2,
-      "navigation": null,
+      "role": "method-guide",
+      "all": 3,
+      "navigation": 6,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -651,7 +651,7 @@
       "route": "/subjects/math/algebra/polynomials-factoring/special-factor-patterns/",
       "role": "decision-guide",
       "all": 3,
-      "navigation": null,
+      "navigation": 6,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -660,25 +660,25 @@
       "route": "/subjects/math/algebra/radicals-exponents-functions/",
       "role": "quick-answer",
       "all": 2,
-      "navigation": null,
+      "navigation": 7,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/algebra/radicals-exponents-functions/exponential-growth-and-decay/",
-      "role": "decision-guide",
+      "role": "concept-explainer",
       "all": 3,
-      "navigation": null,
+      "navigation": 8,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/algebra/radicals-exponents-functions/function-notation/",
-      "role": "quick-answer",
-      "all": 2,
-      "navigation": null,
+      "role": "concept-explainer",
+      "all": 3,
+      "navigation": 8,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -687,16 +687,16 @@
       "route": "/subjects/math/algebra/radicals-exponents-functions/inverse-functions-vs-reciprocals/",
       "role": "decision-guide",
       "all": 3,
-      "navigation": null,
+      "navigation": 8,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/algebra/radicals-exponents-functions/rational-exponents/",
-      "role": "method-guide",
+      "role": "concept-explainer",
       "all": 3,
-      "navigation": null,
+      "navigation": 8,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -705,7 +705,7 @@
       "route": "/subjects/math/algebra/radicals-exponents-functions/simplifying-radicals/",
       "role": "method-guide",
       "all": 3,
-      "navigation": null,
+      "navigation": 8,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -714,7 +714,7 @@
       "route": "/subjects/math/algebra/radicals-exponents-functions/solving-radical-equations/",
       "role": "method-guide",
       "all": 3,
-      "navigation": null,
+      "navigation": 8,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -723,7 +723,7 @@
       "route": "/subjects/math/algebra/rational-expressions/",
       "role": "quick-answer",
       "all": 2,
-      "navigation": null,
+      "navigation": 6,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -732,25 +732,25 @@
       "route": "/subjects/math/algebra/rational-expressions/add-subtract-rational-expressions/",
       "role": "method-guide",
       "all": 3,
-      "navigation": null,
+      "navigation": 7,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/algebra/rational-expressions/direct-inverse-variation/",
-      "role": "quick-answer",
+      "role": "decision-guide",
       "all": 3,
-      "navigation": null,
+      "navigation": 7,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/algebra/rational-expressions/rational-domain-restrictions/",
-      "role": "method-guide",
+      "role": "concept-explainer",
       "all": 3,
-      "navigation": null,
+      "navigation": 7,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -759,7 +759,7 @@
       "route": "/subjects/math/algebra/rational-expressions/simplifying-complex-rational-expressions/",
       "role": "method-guide",
       "all": 3,
-      "navigation": null,
+      "navigation": 7,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -768,7 +768,7 @@
       "route": "/subjects/math/algebra/rational-expressions/simplifying-rational-expressions/",
       "role": "method-guide",
       "all": 3,
-      "navigation": null,
+      "navigation": 7,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -777,7 +777,7 @@
       "route": "/subjects/math/algebra/rational-expressions/solving-rational-equations/",
       "role": "method-guide",
       "all": 3,
-      "navigation": null,
+      "navigation": 7,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -786,7 +786,7 @@
       "route": "/subjects/math/algebra/systems-inequalities/",
       "role": "quick-answer",
       "all": 2,
-      "navigation": null,
+      "navigation": 4,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -795,7 +795,7 @@
       "route": "/subjects/math/algebra/systems-inequalities/choosing-system-method/",
       "role": "decision-guide",
       "all": 3,
-      "navigation": null,
+      "navigation": 5,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -804,43 +804,43 @@
       "route": "/subjects/math/algebra/systems-inequalities/compound-inequalities/",
       "role": "method-guide",
       "all": 3,
-      "navigation": null,
+      "navigation": 5,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/algebra/systems-inequalities/elimination-systems/",
-      "role": "decision-guide",
+      "role": "method-guide",
       "all": 3,
-      "navigation": null,
+      "navigation": 5,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/algebra/systems-inequalities/graphing-linear-inequalities/",
-      "role": "decision-guide",
+      "role": "method-guide",
       "all": 3,
-      "navigation": null,
+      "navigation": 5,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/algebra/systems-inequalities/no-one-infinite-solutions/",
-      "role": "decision-guide",
-      "all": 2,
-      "navigation": null,
+      "role": "concept-explainer",
+      "all": 3,
+      "navigation": 5,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/algebra/systems-inequalities/substitution-systems/",
-      "role": "decision-guide",
+      "role": "method-guide",
       "all": 3,
-      "navigation": null,
+      "navigation": 5,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -850,7 +850,7 @@
       "role": "course-hub",
       "all": 1,
       "navigation": 1,
-      "contextual": null,
+      "contextual": 3,
       "breadcrumb": null,
       "sequential": null
     },
@@ -859,7 +859,7 @@
       "role": "unit-hub",
       "all": 2,
       "navigation": 2,
-      "contextual": null,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
@@ -895,7 +895,7 @@
       "role": "textbook-lesson",
       "all": 2,
       "navigation": 2,
-      "contextual": null,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
@@ -920,7 +920,7 @@
     {
       "route": "/subjects/math/calculus/derivative-applications/approximation-concept-quiz/",
       "role": "textbook-lesson",
-      "all": 2,
+      "all": 3,
       "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
@@ -938,7 +938,7 @@
     {
       "route": "/subjects/math/calculus/derivative-applications/bridge-diagnostic/",
       "role": "textbook-lesson",
-      "all": 2,
+      "all": 3,
       "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
@@ -974,7 +974,7 @@
     {
       "route": "/subjects/math/calculus/derivative-applications/cumulative-practice/",
       "role": "textbook-lesson",
-      "all": 2,
+      "all": 3,
       "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
@@ -985,7 +985,7 @@
       "role": "method-guide",
       "all": 3,
       "navigation": null,
-      "contextual": null,
+      "contextual": 6,
       "breadcrumb": null,
       "sequential": null
     },
@@ -1030,7 +1030,7 @@
       "role": "textbook-lesson",
       "all": 2,
       "navigation": 2,
-      "contextual": null,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
@@ -1073,7 +1073,7 @@
     {
       "route": "/subjects/math/calculus/derivative-applications/interpretation-concept-quiz/",
       "role": "textbook-lesson",
-      "all": 2,
+      "all": 3,
       "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
@@ -1102,14 +1102,14 @@
       "role": "textbook-lesson",
       "all": 2,
       "navigation": 2,
-      "contextual": null,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/derivative-applications/lhopital-concept-quiz/",
       "role": "textbook-lesson",
-      "all": 2,
+      "all": 3,
       "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
@@ -1147,7 +1147,7 @@
       "role": "textbook-lesson",
       "all": 2,
       "navigation": 2,
-      "contextual": null,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
@@ -1162,8 +1162,8 @@
     },
     {
       "route": "/subjects/math/calculus/derivative-applications/linear-approximation/",
-      "role": "method-guide",
-      "all": 3,
+      "role": "concept-explainer",
+      "all": 5,
       "navigation": null,
       "contextual": null,
       "breadcrumb": null,
@@ -1183,7 +1183,7 @@
       "role": "textbook-lesson",
       "all": 2,
       "navigation": 2,
-      "contextual": null,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
@@ -1237,7 +1237,7 @@
       "role": "textbook-lesson",
       "all": 2,
       "navigation": 2,
-      "contextual": null,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
@@ -1271,7 +1271,7 @@
     {
       "route": "/subjects/math/calculus/derivative-applications/optimization-concept-quiz/",
       "role": "textbook-lesson",
-      "all": 2,
+      "all": 3,
       "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
@@ -1291,7 +1291,7 @@
       "role": "textbook-lesson",
       "all": 2,
       "navigation": 2,
-      "contextual": null,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
@@ -1307,7 +1307,7 @@
     {
       "route": "/subjects/math/calculus/derivative-applications/optimization/",
       "role": "method-guide",
-      "all": 3,
+      "all": 4,
       "navigation": null,
       "contextual": null,
       "breadcrumb": null,
@@ -1336,14 +1336,14 @@
       "role": "textbook-lesson",
       "all": 2,
       "navigation": 2,
-      "contextual": null,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/derivative-applications/practice-exam-a/",
       "role": "textbook-lesson",
-      "all": 2,
+      "all": 3,
       "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
@@ -1352,7 +1352,7 @@
     {
       "route": "/subjects/math/calculus/derivative-applications/practice-exam-b-answer-key/",
       "role": "textbook-lesson",
-      "all": 2,
+      "all": 3,
       "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
@@ -1361,7 +1361,7 @@
     {
       "route": "/subjects/math/calculus/derivative-applications/practice-exam-b/",
       "role": "textbook-lesson",
-      "all": 2,
+      "all": 3,
       "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
@@ -1406,7 +1406,7 @@
     {
       "route": "/subjects/math/calculus/derivative-applications/related-rates-concept-quiz/",
       "role": "textbook-lesson",
-      "all": 2,
+      "all": 3,
       "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
@@ -1462,14 +1462,14 @@
       "role": "textbook-lesson",
       "all": 2,
       "navigation": 2,
-      "contextual": null,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/derivative-applications/related-rates/",
       "role": "method-guide",
-      "all": 4,
+      "all": 5,
       "navigation": null,
       "contextual": null,
       "breadcrumb": null,
@@ -1523,7 +1523,7 @@
     {
       "route": "/subjects/math/calculus/derivative-applications/theorems-shape-concept-quiz/",
       "role": "textbook-lesson",
-      "all": 2,
+      "all": 3,
       "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
@@ -1542,8 +1542,8 @@
       "route": "/subjects/math/calculus/derivative-applications/unit-2b-review/",
       "role": "decision-guide",
       "all": 2,
-      "navigation": 4,
-      "contextual": null,
+      "navigation": null,
+      "contextual": 4,
       "breadcrumb": null,
       "sequential": null
     },
@@ -1577,17 +1577,17 @@
     {
       "route": "/subjects/math/calculus/derivatives/",
       "role": "unit-hub",
-      "all": 1,
-      "navigation": 1,
-      "contextual": null,
+      "all": 2,
+      "navigation": 2,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/derivatives/advanced-chain-rule-linear-maps/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -1595,8 +1595,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/advanced-darboux-derivatives/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -1604,8 +1604,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/advanced-implicit-function-theorem/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -1613,8 +1613,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/advanced-local-linearity-little-o/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -1624,15 +1624,15 @@
       "role": "textbook-lesson",
       "all": 2,
       "navigation": 2,
-      "contextual": null,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/derivatives/chain-exp-log/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -1640,8 +1640,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/chain-rule-basic/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -1649,8 +1649,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/chain-rule-concept-quiz/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -1658,8 +1658,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/chain-rule-map/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -1667,8 +1667,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/chain-rule-review/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -1676,17 +1676,17 @@
     {
       "route": "/subjects/math/calculus/derivatives/chain-rule/",
       "role": "method-guide",
-      "all": 2,
+      "all": 3,
       "navigation": null,
-      "contextual": null,
+      "contextual": 6,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/derivatives/chain-trig/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -1694,8 +1694,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/combined-rules/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -1705,15 +1705,15 @@
       "role": "textbook-lesson",
       "all": 2,
       "navigation": 2,
-      "contextual": null,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/derivatives/core-rules-concept-quiz/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -1721,8 +1721,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/core-rules-review/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -1730,8 +1730,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/derivative-at-a-point/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -1739,8 +1739,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/derivative-computation-strategy/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -1748,8 +1748,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/derivative-function/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -1757,26 +1757,26 @@
     {
       "route": "/subjects/math/calculus/derivatives/derivative-of-x-to-the-x/",
       "role": "quick-answer",
-      "all": 2,
+      "all": 3,
       "navigation": null,
-      "contextual": null,
+      "contextual": 6,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/derivatives/derivatives-of-inverse-trig-functions/",
       "role": "method-guide",
-      "all": 2,
+      "all": 3,
       "navigation": null,
-      "contextual": null,
+      "contextual": 6,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/derivatives/difference-quotient-algebra/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -1784,8 +1784,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/differentiability-and-continuity/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -1793,8 +1793,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/exponential-e/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -1802,8 +1802,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/foundations-concept-quiz/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -1811,8 +1811,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/foundations-review/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -1820,8 +1820,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/from-graphs-and-tables/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -1829,8 +1829,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/general-exponential/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -1838,8 +1838,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/general-logarithms/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -1847,8 +1847,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/higher-derivative-techniques/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -1858,7 +1858,7 @@
       "role": "textbook-lesson",
       "all": 2,
       "navigation": 2,
-      "contextual": null,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
@@ -1867,15 +1867,15 @@
       "role": "textbook-lesson",
       "all": 2,
       "navigation": 2,
-      "contextual": null,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/derivatives/implicit-inverse-concept-quiz/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -1883,8 +1883,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/implicit-inverse-review/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -1892,8 +1892,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/implicit-second-derivative/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -1901,8 +1901,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/implicit-tangent-lines/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -1910,8 +1910,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/inverse-function-rule/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -1919,8 +1919,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/inverse-trig/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -1928,8 +1928,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/logarithmic-differentiation/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -1937,8 +1937,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/multiple-chain-layers/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -1946,8 +1946,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/natural-log/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -1955,8 +1955,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/negative-fractional-powers/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -1964,8 +1964,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/notation-and-units/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -1973,8 +1973,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/notation-guide/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -1982,8 +1982,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/other-trig-functions/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -1993,7 +1993,7 @@
       "role": "textbook-lesson",
       "all": 2,
       "navigation": 2,
-      "contextual": null,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
@@ -2002,15 +2002,15 @@
       "role": "textbook-lesson",
       "all": 2,
       "navigation": 2,
-      "contextual": null,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/derivatives/practice-exam-b-answer-key/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2018,8 +2018,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/prerequisite-diagnostic/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2027,17 +2027,17 @@
     {
       "route": "/subjects/math/calculus/derivatives/product-rule-vs-quotient-rule/",
       "role": "decision-guide",
-      "all": 2,
+      "all": 3,
       "navigation": null,
-      "contextual": null,
+      "contextual": 6,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/derivatives/product-rule/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2045,8 +2045,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/quotient-rule/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2054,8 +2054,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/rule-selection/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2065,15 +2065,15 @@
       "role": "textbook-lesson",
       "all": 2,
       "navigation": 2,
-      "contextual": null,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/derivatives/special-functions-concept-quiz/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2081,8 +2081,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/special-functions-review/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2090,8 +2090,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/sum-and-constant-multiple-rules/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2099,8 +2099,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/tangent-line-equation/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2108,8 +2108,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/unit-2a-common-errors/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2117,8 +2117,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/unit-2a-cumulative-practice/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2126,8 +2126,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/unit-2a-practice-exam-a/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2135,8 +2135,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/unit-2a-practice-exam-b/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2144,8 +2144,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/unit-2a-reference/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2155,15 +2155,15 @@
       "role": "textbook-lesson",
       "all": 2,
       "navigation": 2,
-      "contextual": null,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/derivatives/variable-exponents/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2171,8 +2171,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/what-does-derivative-mean/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2180,8 +2180,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/what-implicit-means/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2189,8 +2189,8 @@
     {
       "route": "/subjects/math/calculus/derivatives/why-derivative-rules-work/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2200,15 +2200,15 @@
       "role": "textbook-lesson",
       "all": 2,
       "navigation": 2,
-      "contextual": null,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/derivatives/why-special-derivatives-are-not-random/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2216,9 +2216,9 @@
     {
       "route": "/subjects/math/calculus/formula-sheets/",
       "role": "resource-hub",
-      "all": 3,
-      "navigation": null,
-      "contextual": null,
+      "all": 1,
+      "navigation": 1,
+      "contextual": 4,
       "breadcrumb": null,
       "sequential": null
     },
@@ -2234,9 +2234,9 @@
     {
       "route": "/subjects/math/calculus/integrals/",
       "role": "unit-hub",
-      "all": 1,
-      "navigation": 1,
-      "contextual": null,
+      "all": 2,
+      "navigation": 2,
+      "contextual": 3,
       "breadcrumb": null,
       "sequential": null
     },
@@ -2245,7 +2245,7 @@
       "role": "textbook-lesson",
       "all": 2,
       "navigation": 2,
-      "contextual": null,
+      "contextual": 3,
       "breadcrumb": null,
       "sequential": null
     },
@@ -2254,15 +2254,15 @@
       "role": "textbook-lesson",
       "all": 2,
       "navigation": 2,
-      "contextual": null,
+      "contextual": 3,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/integrals/average-value-of-a-function/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2272,15 +2272,15 @@
       "role": "textbook-lesson",
       "all": 2,
       "navigation": 2,
-      "contextual": null,
+      "contextual": 3,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/integrals/common-errors/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2288,8 +2288,8 @@
     {
       "route": "/subjects/math/calculus/integrals/cumulative-practice/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2297,8 +2297,8 @@
     {
       "route": "/subjects/math/calculus/integrals/definite-integral-signed-area/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2306,8 +2306,8 @@
     {
       "route": "/subjects/math/calculus/integrals/definite-integrals-by-substitution/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2315,8 +2315,8 @@
     {
       "route": "/subjects/math/calculus/integrals/displacement-and-distance/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2324,8 +2324,8 @@
     {
       "route": "/subjects/math/calculus/integrals/fundamental-theorem-part-one/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2333,8 +2333,8 @@
     {
       "route": "/subjects/math/calculus/integrals/fundamental-theorem-part-two/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2342,8 +2342,8 @@
     {
       "route": "/subjects/math/calculus/integrals/improper-integrals-infinite-intervals/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2351,8 +2351,8 @@
     {
       "route": "/subjects/math/calculus/integrals/improper-integrals-unbounded-functions/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2360,8 +2360,8 @@
     {
       "route": "/subjects/math/calculus/integrals/indefinite-integrals-and-c/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2369,8 +2369,8 @@
     {
       "route": "/subjects/math/calculus/integrals/initial-value-problems/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2379,16 +2379,16 @@
       "route": "/subjects/math/calculus/integrals/integration-by-parts/",
       "role": "textbook-lesson",
       "all": 2,
-      "navigation": 2,
-      "contextual": null,
+      "navigation": 3,
+      "contextual": 2,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/integrals/integration-strategy/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2396,8 +2396,8 @@
     {
       "route": "/subjects/math/calculus/integrals/left-right-midpoint-riemann-sums/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2405,8 +2405,8 @@
     {
       "route": "/subjects/math/calculus/integrals/net-change-theorem/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2416,16 +2416,16 @@
       "role": "textbook-lesson",
       "all": 2,
       "navigation": 2,
-      "contextual": null,
+      "contextual": 3,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/integrals/partial-fractions/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
-      "contextual": null,
+      "all": 3,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
@@ -2434,15 +2434,15 @@
       "role": "textbook-lesson",
       "all": 2,
       "navigation": 2,
-      "contextual": null,
+      "contextual": 3,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/integrals/practice-exam-a-answer-key/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2450,8 +2450,8 @@
     {
       "route": "/subjects/math/calculus/integrals/practice-exam-a/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2459,8 +2459,8 @@
     {
       "route": "/subjects/math/calculus/integrals/practice-exam-b-answer-key/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2468,8 +2468,8 @@
     {
       "route": "/subjects/math/calculus/integrals/practice-exam-b/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2477,8 +2477,8 @@
     {
       "route": "/subjects/math/calculus/integrals/properties-of-definite-integrals/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2486,8 +2486,8 @@
     {
       "route": "/subjects/math/calculus/integrals/rates-to-total-change/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2497,15 +2497,15 @@
       "role": "textbook-lesson",
       "all": 2,
       "navigation": 2,
-      "contextual": null,
+      "contextual": 3,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/integrals/riemann-sum-limit/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2513,8 +2513,8 @@
     {
       "route": "/subjects/math/calculus/integrals/simpsons-rule/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2522,8 +2522,8 @@
     {
       "route": "/subjects/math/calculus/integrals/substitution/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2531,8 +2531,8 @@
     {
       "route": "/subjects/math/calculus/integrals/trigonometric-integrals/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2540,8 +2540,8 @@
     {
       "route": "/subjects/math/calculus/integrals/trigonometric-substitution/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2549,8 +2549,8 @@
     {
       "route": "/subjects/math/calculus/integrals/variable-limits-and-chain-rule/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2560,7 +2560,7 @@
       "role": "unit-hub",
       "all": 2,
       "navigation": 2,
-      "contextual": null,
+      "contextual": 3,
       "breadcrumb": null,
       "sequential": null
     },
@@ -2569,7 +2569,7 @@
       "role": "textbook-lesson",
       "all": 2,
       "navigation": 2,
-      "contextual": null,
+      "contextual": 3,
       "breadcrumb": null,
       "sequential": null
     },
@@ -2578,15 +2578,15 @@
       "role": "textbook-lesson",
       "all": 2,
       "navigation": 2,
-      "contextual": null,
+      "contextual": 3,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/integration-applications/average-value-of-a-function/",
-      "role": "method-guide",
-      "all": null,
-      "navigation": null,
+      "role": "concept-explainer",
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2612,7 +2612,7 @@
     {
       "route": "/subjects/math/calculus/integration-applications/cumulative-practice/",
       "role": "textbook-lesson",
-      "all": 2,
+      "all": 3,
       "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
@@ -2684,7 +2684,7 @@
     {
       "route": "/subjects/math/calculus/integration-applications/physics-application-studio/",
       "role": "textbook-lesson",
-      "all": 2,
+      "all": 3,
       "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
@@ -2693,7 +2693,7 @@
     {
       "route": "/subjects/math/calculus/integration-applications/practice-exam-a-answer-key/",
       "role": "textbook-lesson",
-      "all": 2,
+      "all": 3,
       "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
@@ -2702,7 +2702,7 @@
     {
       "route": "/subjects/math/calculus/integration-applications/practice-exam-a/",
       "role": "textbook-lesson",
-      "all": 2,
+      "all": 3,
       "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
@@ -2711,7 +2711,7 @@
     {
       "route": "/subjects/math/calculus/integration-applications/practice-exam-b-answer-key/",
       "role": "textbook-lesson",
-      "all": 2,
+      "all": 3,
       "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
@@ -2720,7 +2720,7 @@
     {
       "route": "/subjects/math/calculus/integration-applications/practice-exam-b/",
       "role": "textbook-lesson",
-      "all": 2,
+      "all": 3,
       "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
@@ -2749,7 +2749,7 @@
       "role": "textbook-lesson",
       "all": 2,
       "navigation": 2,
-      "contextual": null,
+      "contextual": 3,
       "breadcrumb": null,
       "sequential": null
     },
@@ -2783,17 +2783,17 @@
     {
       "route": "/subjects/math/calculus/integration-applications/washer-vs-shell/",
       "role": "decision-guide",
-      "all": null,
-      "navigation": null,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/integration-applications/work-and-fluid-force/",
-      "role": "decision-guide",
-      "all": null,
-      "navigation": null,
+      "role": "method-guide",
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2803,7 +2803,7 @@
       "role": "textbook-lesson",
       "all": 2,
       "navigation": 2,
-      "contextual": null,
+      "contextual": 3,
       "breadcrumb": null,
       "sequential": null
     },
@@ -2811,44 +2811,44 @@
       "route": "/subjects/math/calculus/integration-techniques/",
       "role": "quick-answer",
       "all": 2,
-      "navigation": 2,
-      "contextual": null,
+      "navigation": 3,
+      "contextual": 4,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/integration-techniques/improper-integrals/",
-      "role": "quick-answer",
-      "all": 2,
-      "navigation": 3,
-      "contextual": null,
+      "role": "concept-explainer",
+      "all": 3,
+      "navigation": 4,
+      "contextual": 4,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/integration-techniques/integration-by-parts-strategy/",
-      "role": "decision-guide",
+      "role": "method-guide",
       "all": 3,
-      "navigation": 3,
+      "navigation": 4,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/integration-techniques/partial-fractions/",
-      "role": "decision-guide",
-      "all": 2,
-      "navigation": 3,
-      "contextual": null,
+      "role": "method-guide",
+      "all": 3,
+      "navigation": 4,
+      "contextual": 4,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/integration-techniques/trigonometric-integrals/",
       "role": "decision-guide",
-      "all": 2,
-      "navigation": 3,
-      "contextual": null,
+      "all": 3,
+      "navigation": 4,
+      "contextual": 4,
       "breadcrumb": null,
       "sequential": null
     },
@@ -2856,16 +2856,16 @@
       "route": "/subjects/math/calculus/integration-techniques/trigonometric-substitution/",
       "role": "decision-guide",
       "all": 3,
-      "navigation": 3,
+      "navigation": 4,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/integration-techniques/u-substitution/",
-      "role": "decision-guide",
-      "all": 2,
-      "navigation": 2,
+      "role": "method-guide",
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2873,35 +2873,35 @@
     {
       "route": "/subjects/math/calculus/limits-continuity/",
       "role": "unit-hub",
-      "all": 1,
-      "navigation": 1,
-      "contextual": null,
+      "all": 2,
+      "navigation": 2,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/continuity-at-a-point/",
-      "role": "method-guide",
-      "all": 2,
-      "navigation": 2,
+      "role": "concept-explainer",
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/evaluating-indeterminate-limits/",
-      "role": "quick-answer",
-      "all": 2,
-      "navigation": 2,
+      "role": "method-guide",
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/infinite-limits-and-asymptotes/",
-      "role": "method-guide",
-      "all": 2,
-      "navigation": 2,
+      "role": "concept-explainer",
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2909,26 +2909,26 @@
     {
       "route": "/subjects/math/calculus/limits-continuity/limit-of-sin-x-over-x/",
       "role": "quick-answer",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/one-sided-limits-and-jump-discontinuities/",
-      "role": "method-guide",
-      "all": 2,
-      "navigation": 2,
+      "role": "concept-explainer",
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/squeeze-theorem/",
-      "role": "quick-answer",
-      "all": 2,
-      "navigation": 2,
+      "role": "method-guide",
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -2937,17 +2937,17 @@
       "route": "/subjects/math/calculus/limits-continuity/unit/",
       "role": "decision-guide",
       "all": 2,
-      "navigation": 3,
-      "contextual": null,
+      "navigation": null,
+      "contextual": 4,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/continuity/bisection-method/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
-      "contextual": null,
+      "all": 3,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
@@ -2956,25 +2956,25 @@
       "role": "textbook-lesson",
       "all": 2,
       "navigation": 2,
-      "contextual": null,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/continuity/continuity-concept-quiz/",
       "role": "textbook-lesson",
-      "all": 2,
+      "all": 3,
       "navigation": 3,
-      "contextual": null,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/continuity/continuity-practice/",
       "role": "textbook-lesson",
-      "all": 2,
+      "all": 3,
       "navigation": 3,
-      "contextual": null,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
@@ -2982,80 +2982,80 @@
       "route": "/subjects/math/calculus/limits-continuity/unit/continuity/continuity-review/",
       "role": "textbook-lesson",
       "all": 3,
-      "navigation": null,
-      "contextual": null,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/continuity/continuous-functions/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
-      "contextual": null,
+      "all": 3,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/continuity/intermediate-value-theorem/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
-      "contextual": null,
+      "all": 3,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/continuity/intervals-endpoints/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
-      "contextual": null,
+      "all": 3,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/continuity/piecewise-parameters/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
-      "contextual": null,
+      "all": 3,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/continuity/repair-removable-discontinuity/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
-      "contextual": null,
+      "all": 3,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/continuity/two-parameter-continuity/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
-      "contextual": null,
+      "all": 3,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/continuity/types-of-discontinuity/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
-      "contextual": null,
+      "all": 3,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/absolute-value-piecewise/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
-      "contextual": null,
+      "all": 3,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
@@ -3063,44 +3063,44 @@
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/common-exam-errors/",
       "role": "textbook-lesson",
       "all": 3,
-      "navigation": null,
-      "contextual": null,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/complete-asymptote-analysis/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
-      "contextual": null,
+      "all": 3,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/complex-fractions/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
-      "contextual": null,
+      "all": 3,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/cosine-limits/",
       "role": "decision-guide",
-      "all": 2,
-      "navigation": 3,
-      "contextual": null,
+      "all": 3,
+      "navigation": null,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/cumulative-practice/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": null,
-      "contextual": null,
+      "all": 3,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
@@ -3109,34 +3109,34 @@
       "role": "textbook-lesson",
       "all": 2,
       "navigation": 2,
-      "contextual": null,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/disprove-limit-epsilon-delta/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
-      "contextual": null,
+      "all": 3,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/epsilon-delta-concept-quiz/",
       "role": "textbook-lesson",
-      "all": 2,
+      "all": 3,
       "navigation": 3,
-      "contextual": null,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/epsilon-delta-graph/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
-      "contextual": null,
+      "all": 3,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
@@ -3145,34 +3145,34 @@
       "role": "textbook-lesson",
       "all": 2,
       "navigation": 2,
-      "contextual": null,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/epsilon-delta-linear/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
-      "contextual": null,
+      "all": 3,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/epsilon-delta-practice/",
       "role": "textbook-lesson",
-      "all": 2,
+      "all": 3,
       "navigation": 3,
-      "contextual": null,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/epsilon-delta-quadratic/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
-      "contextual": null,
+      "all": 3,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
@@ -3180,44 +3180,44 @@
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/epsilon-delta-review/",
       "role": "textbook-lesson",
       "all": 3,
-      "navigation": null,
-      "contextual": null,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/factoring-limits/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
-      "contextual": null,
+      "all": 3,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/finite-limit-decision-tree/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
-      "contextual": null,
+      "all": 3,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/finite-limits-concept-quiz/",
       "role": "textbook-lesson",
-      "all": 2,
+      "all": 3,
       "navigation": 3,
-      "contextual": null,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/finite-limits-practice/",
       "role": "textbook-lesson",
-      "all": 2,
+      "all": 3,
       "navigation": 3,
-      "contextual": null,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
@@ -3225,8 +3225,8 @@
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/finite-limits-review/",
       "role": "textbook-lesson",
       "all": 3,
-      "navigation": null,
-      "contextual": null,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
@@ -3234,35 +3234,35 @@
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/formal-infinite-limits/",
       "role": "textbook-lesson",
       "all": 3,
-      "navigation": null,
-      "contextual": null,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/function-value-vs-limit/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
-      "contextual": null,
+      "all": 3,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/infinite-behavior-concept-quiz/",
       "role": "textbook-lesson",
-      "all": 2,
+      "all": 3,
       "navigation": 3,
-      "contextual": null,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/infinite-behavior-practice/",
       "role": "textbook-lesson",
-      "all": 2,
+      "all": 3,
       "navigation": 3,
-      "contextual": null,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
@@ -3270,8 +3270,8 @@
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/infinite-behavior-review/",
       "role": "textbook-lesson",
       "all": 3,
-      "navigation": null,
-      "contextual": null,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
@@ -3279,51 +3279,51 @@
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/infinite-limits/",
       "role": "decision-guide",
       "all": 2,
-      "navigation": 3,
-      "contextual": null,
+      "navigation": null,
+      "contextual": 4,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/infinity-minus-infinity/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
-      "contextual": null,
+      "all": 3,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/limit-at-a-hole/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
-      "contextual": null,
+      "all": 3,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/limit-laws/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
-      "contextual": null,
+      "all": 3,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/limits-at-infinity/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
-      "contextual": null,
+      "all": 3,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/meaning-concept-quiz/",
       "role": "textbook-lesson",
-      "all": 2,
+      "all": 3,
       "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
@@ -3332,7 +3332,7 @@
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/meaning-practice/",
       "role": "textbook-lesson",
-      "all": 2,
+      "all": 3,
       "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
@@ -3342,7 +3342,7 @@
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/meaning-review/",
       "role": "textbook-lesson",
       "all": 3,
-      "navigation": 4,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -3350,135 +3350,135 @@
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/notation-guide/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
-      "contextual": null,
+      "all": 3,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/one-sided-limits/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
-      "contextual": null,
+      "all": 3,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/practice-exam-a/",
       "role": "textbook-lesson",
-      "all": 2,
+      "all": 3,
       "navigation": 3,
-      "contextual": null,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/practice-exam-a/answer-key/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
-      "contextual": null,
+      "all": 3,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/practice-exam-b/",
       "role": "textbook-lesson",
-      "all": 2,
+      "all": 3,
       "navigation": 3,
-      "contextual": null,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/practice-exam-b/answer-key/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
-      "contextual": null,
+      "all": 3,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/prerequisite-diagnostic/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
-      "contextual": null,
+      "all": 3,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/radicals-at-infinity/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
-      "contextual": null,
+      "all": 3,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/ratio-of-sines/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
-      "contextual": null,
+      "all": 3,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/rationalizing-radicals/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
-      "contextual": null,
+      "all": 3,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/read-limits-from-graphs/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
-      "contextual": null,
+      "all": 3,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/scaled-sine-tangent/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
-      "contextual": null,
+      "all": 3,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/sin-x-over-x-proof/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
-      "contextual": null,
+      "all": 3,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/sin-x-over-x/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
-      "contextual": null,
+      "all": 3,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/slant-asymptotes/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
-      "contextual": null,
+      "all": 3,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
@@ -3487,34 +3487,34 @@
       "role": "textbook-lesson",
       "all": 2,
       "navigation": 2,
-      "contextual": null,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/trig-limit-decision-guide/",
       "role": "decision-guide",
-      "all": 2,
-      "navigation": 4,
-      "contextual": null,
+      "all": 3,
+      "navigation": null,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/trig-limits-concept-quiz/",
       "role": "decision-guide",
-      "all": 2,
+      "all": 3,
       "navigation": 3,
-      "contextual": null,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/trig-limits-practice/",
       "role": "decision-guide",
-      "all": 2,
+      "all": 3,
       "navigation": 3,
-      "contextual": null,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
@@ -3523,7 +3523,7 @@
       "role": "decision-guide",
       "all": 3,
       "navigation": null,
-      "contextual": null,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
@@ -3532,34 +3532,34 @@
       "role": "textbook-lesson",
       "all": 2,
       "navigation": 2,
-      "contextual": null,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/vertical-asymptotes/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
-      "contextual": null,
+      "all": 3,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/what-a-limit-means/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
-      "contextual": null,
+      "all": 3,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/when-a-limit-does-not-exist/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
-      "contextual": null,
+      "all": 3,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
@@ -3568,16 +3568,16 @@
       "role": "textbook-lesson",
       "all": 2,
       "navigation": 2,
-      "contextual": null,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
     {
       "route": "/subjects/math/calculus/limits-continuity/unit/limits/zero-over-zero/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
-      "contextual": null,
+      "all": 3,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
@@ -3585,8 +3585,8 @@
       "route": "/subjects/math/calculus/limits-continuity/unit/study/correct-practice-test/",
       "role": "textbook-lesson",
       "all": 3,
-      "navigation": null,
-      "contextual": null,
+      "navigation": 3,
+      "contextual": 5,
       "breadcrumb": null,
       "sequential": null
     },
@@ -3647,7 +3647,7 @@
     {
       "route": "/subjects/math/calculus/power-series-and-taylor-series/concept-quiz/",
       "role": "textbook-lesson",
-      "all": 2,
+      "all": 3,
       "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
@@ -3701,7 +3701,7 @@
     {
       "route": "/subjects/math/calculus/power-series-and-taylor-series/mixed-practice/",
       "role": "textbook-lesson",
-      "all": 2,
+      "all": 3,
       "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
@@ -3728,7 +3728,7 @@
     {
       "route": "/subjects/math/calculus/power-series-and-taylor-series/practice-exam-a-answer-key/",
       "role": "textbook-lesson",
-      "all": 2,
+      "all": 3,
       "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
@@ -3737,7 +3737,7 @@
     {
       "route": "/subjects/math/calculus/power-series-and-taylor-series/practice-exam-a/",
       "role": "textbook-lesson",
-      "all": 2,
+      "all": 3,
       "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
@@ -3746,7 +3746,7 @@
     {
       "route": "/subjects/math/calculus/power-series-and-taylor-series/practice-exam-b-answer-key/",
       "role": "textbook-lesson",
-      "all": 2,
+      "all": 3,
       "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
@@ -3755,7 +3755,7 @@
     {
       "route": "/subjects/math/calculus/power-series-and-taylor-series/practice-exam-b/",
       "role": "textbook-lesson",
-      "all": 2,
+      "all": 3,
       "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
@@ -3872,9 +3872,9 @@
     {
       "route": "/subjects/math/calculus/practice-exams/",
       "role": "resource-hub",
-      "all": 3,
-      "navigation": null,
-      "contextual": null,
+      "all": 1,
+      "navigation": 1,
+      "contextual": 4,
       "breadcrumb": null,
       "sequential": null
     },
@@ -3899,8 +3899,8 @@
     {
       "route": "/subjects/math/calculus/sequences-and-series/",
       "role": "unit-hub",
-      "all": 1,
-      "navigation": 1,
+      "all": 2,
+      "navigation": 2,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -3908,8 +3908,8 @@
     {
       "route": "/subjects/math/calculus/sequences-and-series/absolute-and-conditional-convergence/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -3917,8 +3917,8 @@
     {
       "route": "/subjects/math/calculus/sequences-and-series/alternating-series-error/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -3935,8 +3935,8 @@
     {
       "route": "/subjects/math/calculus/sequences-and-series/cauchy-criterion-preview/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -3953,8 +3953,8 @@
     {
       "route": "/subjects/math/calculus/sequences-and-series/common-errors/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -3962,8 +3962,8 @@
     {
       "route": "/subjects/math/calculus/sequences-and-series/concept-quiz/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -3971,8 +3971,8 @@
     {
       "route": "/subjects/math/calculus/sequences-and-series/convergence-tests-review/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -3980,8 +3980,8 @@
     {
       "route": "/subjects/math/calculus/sequences-and-series/direct-comparison-test/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -3989,8 +3989,8 @@
     {
       "route": "/subjects/math/calculus/sequences-and-series/explicit-and-recursive-sequences/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -3998,8 +3998,8 @@
     {
       "route": "/subjects/math/calculus/sequences-and-series/geometric-series/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -4007,8 +4007,8 @@
     {
       "route": "/subjects/math/calculus/sequences-and-series/harmonic-and-p-series/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -4025,8 +4025,8 @@
     {
       "route": "/subjects/math/calculus/sequences-and-series/integral-test-remainder-estimates/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -4043,8 +4043,8 @@
     {
       "route": "/subjects/math/calculus/sequences-and-series/limit-comparison-test/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -4052,8 +4052,8 @@
     {
       "route": "/subjects/math/calculus/sequences-and-series/limits-of-sequences/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -4061,8 +4061,8 @@
     {
       "route": "/subjects/math/calculus/sequences-and-series/monotone-and-bounded-sequences/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -4070,8 +4070,8 @@
     {
       "route": "/subjects/math/calculus/sequences-and-series/nth-term-divergence-test/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -4079,8 +4079,8 @@
     {
       "route": "/subjects/math/calculus/sequences-and-series/practice-exam-a-answer-key/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -4088,8 +4088,8 @@
     {
       "route": "/subjects/math/calculus/sequences-and-series/practice-exam-a/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -4097,8 +4097,8 @@
     {
       "route": "/subjects/math/calculus/sequences-and-series/practice-exam-b-answer-key/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -4106,8 +4106,8 @@
     {
       "route": "/subjects/math/calculus/sequences-and-series/practice-exam-b/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -4124,8 +4124,8 @@
     {
       "route": "/subjects/math/calculus/sequences-and-series/ratio-test/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -4133,8 +4133,8 @@
     {
       "route": "/subjects/math/calculus/sequences-and-series/reference-sheet/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -4142,8 +4142,8 @@
     {
       "route": "/subjects/math/calculus/sequences-and-series/root-test/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -4151,8 +4151,8 @@
     {
       "route": "/subjects/math/calculus/sequences-and-series/sequence-limit-laws/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -4160,8 +4160,8 @@
     {
       "route": "/subjects/math/calculus/sequences-and-series/sequence-review/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -4178,8 +4178,8 @@
     {
       "route": "/subjects/math/calculus/sequences-and-series/squeeze-theorem-for-sequences/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -4187,8 +4187,8 @@
     {
       "route": "/subjects/math/calculus/sequences-and-series/telescoping-series/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -4196,8 +4196,8 @@
     {
       "route": "/subjects/math/calculus/sequences-and-series/test-selection-practice/",
       "role": "textbook-lesson",
-      "all": 2,
-      "navigation": 2,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -4206,7 +4206,7 @@
       "route": "/subjects/math/calculus/sequences-series/harmonic-series-diverges/",
       "role": "quick-answer",
       "all": 3,
-      "navigation": null,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -4214,8 +4214,8 @@
     {
       "route": "/subjects/math/calculus/sequences-series/ratio-test-vs-root-test/",
       "role": "decision-guide",
-      "all": null,
-      "navigation": null,
+      "all": 3,
+      "navigation": 3,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -4223,8 +4223,8 @@
     {
       "route": "/subjects/math/calculus/visuals/",
       "role": "resource-hub",
-      "all": 3,
-      "navigation": null,
+      "all": 1,
+      "navigation": 1,
       "contextual": null,
       "breadcrumb": null,
       "sequential": null
@@ -4268,9 +4268,9 @@
     {
       "route": "/subjects/math/calculus/worked-problems/",
       "role": "resource-hub",
-      "all": 3,
-      "navigation": null,
-      "contextual": null,
+      "all": 1,
+      "navigation": 1,
+      "contextual": 4,
       "breadcrumb": null,
       "sequential": null
     },
@@ -4511,9 +4511,9 @@
     {
       "route": "/subjects/math/calculus/worksheets/",
       "role": "resource-hub",
-      "all": 3,
-      "navigation": null,
-      "contextual": null,
+      "all": 1,
+      "navigation": 1,
+      "contextual": 4,
       "breadcrumb": null,
       "sequential": null
     },
@@ -4576,7 +4576,7 @@
       "role": "directory",
       "all": 1,
       "navigation": 1,
-      "contextual": 1,
+      "contextual": null,
       "breadcrumb": null,
       "sequential": null
     },

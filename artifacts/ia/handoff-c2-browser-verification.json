@@ -1,0 +1,211 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-26T05:50:43.562Z",
+  "environment": "local-candidate",
+  "browser": "Playwright Chromium",
+  "sourceCommit": "e30b5298c4901bf3020639c6e4fa51649e9ce164",
+  "sourceTree": "0d91d19a5c509b7bf02749990f40b5a456e2ed38",
+  "buildHash": "9953ef1faa37e24ca45decfd741bc363685f0416ddd3809b89dacad92eaadd3d",
+  "testCount": 18,
+  "passedCount": 18,
+  "failedCount": 0,
+  "viewportMatrix": [
+    {
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "modes": [
+    "JavaScript enabled",
+    "JavaScript disabled",
+    "dark mode",
+    "keyboard-only focus",
+    "print CSS"
+  ],
+  "pageTypeCount": 15,
+  "analyticsEventsExercised": [
+    "resource_view",
+    "resource_download",
+    "worksheet_download",
+    "answer_key_download",
+    "practice_exam_download",
+    "formula_sheet_download",
+    "visual_download",
+    "worksheet_print",
+    "practice_start",
+    "practice_complete",
+    "exam_start",
+    "exam_complete",
+    "worked_solution_open",
+    "lesson_to_practice_click",
+    "lesson_to_article_click",
+    "lesson_to_reference_click",
+    "resource_to_lesson_click",
+    "glossary_to_lesson_click",
+    "navigation_destination_click",
+    "site_search_result_click",
+    "learning_relationship_click",
+    "article_to_lesson_click",
+    "topic_hub_destination_click",
+    "worked_problem_to_lesson_click"
+  ],
+  "assertions": {
+    "noConsoleErrors": true,
+    "noFailedRequiredRequests": true,
+    "noHorizontalOverflow": true,
+    "noJavaScriptStaticContentComplete": true,
+    "noJavaScriptControlsSuppressed": true,
+    "downloadsAndRedirects": true,
+    "analyticsBothSinks": true,
+    "doNotTrackSuppression": true
+  },
+  "tests": [
+    {
+      "title": "visible search results preserve exact-match rank one",
+      "expectedStatus": "passed",
+      "status": "passed",
+      "durationMs": 607,
+      "errors": []
+    },
+    {
+      "title": "desktop navigation and learning-path clicks emit complete analytics dimensions",
+      "expectedStatus": "passed",
+      "status": "passed",
+      "durationMs": 2208,
+      "errors": []
+    },
+    {
+      "title": "real navigation stays immediate and replays delayed analytics identities",
+      "expectedStatus": "passed",
+      "status": "passed",
+      "durationMs": 6702,
+      "errors": []
+    },
+    {
+      "title": "desktop navigation and homepage follow the C2 learner hierarchy",
+      "expectedStatus": "passed",
+      "status": "passed",
+      "durationMs": 474,
+      "errors": []
+    },
+    {
+      "title": "tablet and mobile navigation preserve substantive parity without overflow",
+      "expectedStatus": "passed",
+      "status": "passed",
+      "durationMs": 806,
+      "errors": []
+    },
+    {
+      "title": "representative C2 surfaces have one main, one h1, no overflow, and no console errors",
+      "expectedStatus": "passed",
+      "status": "passed",
+      "durationMs": 9023,
+      "errors": []
+    },
+    {
+      "title": "no-JavaScript navigation remains crawlable",
+      "expectedStatus": "passed",
+      "status": "passed",
+      "durationMs": 148,
+      "errors": []
+    },
+    {
+      "title": "keyboard, dark mode, print, filters, and Do Not Track remain functional",
+      "expectedStatus": "passed",
+      "status": "passed",
+      "durationMs": 689,
+      "errors": []
+    },
+    {
+      "title": "calculus starts collapsed and the Resources menus expose the complete library",
+      "expectedStatus": "passed",
+      "status": "passed",
+      "durationMs": 288,
+      "errors": []
+    },
+    {
+      "title": "desktop route matrix renders one complete document without overflow",
+      "expectedStatus": "passed",
+      "status": "passed",
+      "durationMs": 10311,
+      "errors": []
+    },
+    {
+      "title": "tablet route matrix renders one complete document without overflow",
+      "expectedStatus": "passed",
+      "status": "passed",
+      "durationMs": 10289,
+      "errors": []
+    },
+    {
+      "title": "mobile route matrix renders one complete document without overflow",
+      "expectedStatus": "passed",
+      "status": "passed",
+      "durationMs": 10425,
+      "errors": []
+    },
+    {
+      "title": "JavaScript-disabled educational pages preserve static content and suppress controls",
+      "expectedStatus": "passed",
+      "status": "passed",
+      "durationMs": 325,
+      "errors": []
+    },
+    {
+      "title": "keyboard focus, dark mode, and print CSS remain usable",
+      "expectedStatus": "passed",
+      "status": "passed",
+      "durationMs": 794,
+      "errors": []
+    },
+    {
+      "title": "downloads, redirect, answer reveal, and practice controls work",
+      "expectedStatus": "passed",
+      "status": "passed",
+      "durationMs": 656,
+      "errors": []
+    },
+    {
+      "title": "PDF links use native accessible new tabs and preserve one analytics event pair",
+      "expectedStatus": "passed",
+      "status": "passed",
+      "durationMs": 964,
+      "errors": []
+    },
+    {
+      "title": "PDF links remain native new-tab anchors when JavaScript is disabled",
+      "expectedStatus": "passed",
+      "status": "passed",
+      "durationMs": 5274,
+      "errors": []
+    },
+    {
+      "title": "every resource analytics event fires through both sinks with safe dimensions and respects Do Not Track",
+      "expectedStatus": "passed",
+      "status": "passed",
+      "durationMs": 2311,
+      "errors": []
+    }
+  ],
+  "failures": [],
+  "pass": true,
+  "provenanceModel": "generated evidence verifies sourceCommit/sourceTree; the containing evidence commit is bound externally by GitHub PR and Sites version provenance",
+  "rawBuildHash": "37e79204dac9482ed9a355a0f29cb26d10d9dd02801c8ff1ae63b5f88ea4a0dc",
+  "buildHashNormalization": [
+    "VINEXT build/deployment/draft UUIDs",
+    "VINEXT prerenderSecret"
+  ],
+  "routeCount": 509,
+  "handoff1BaseCommit": "bf5751658b0b86fae1a777f9147788161ac18085",
+  "auditCommit": "12e9983d429c4b6411ecf55591298fffb7874f03",
+  "failureCount": 0,
+  "reviewedPageTypeCount": 15
+}

@@ -83,7 +83,7 @@ function pageRole(route, html) {
   if (/^\/subjects\/math\/calculus\/(?:worksheets|practice-exams|formula-sheets|worked-problems|visuals)\/$/.test(route)) return "resource-hub";
   if (route === "/glossary/" || route === "/glossary/math/") return "glossary-hub";
   if (route.startsWith("/glossary/math/")) return "glossary-term";
-  if (route === "/tools/" || route === "/practice/" || route === "/answers/") return "directory";
+  if (route === "/tools/" || route === "/practice/" || route === "/practice/math/" || route === "/practice/math/calculus/" || route === "/answers/") return "directory";
   if (route.startsWith("/tools/")) return "tool";
   if (route.startsWith("/practice/")) return route.includes("exam") ? "practice-exam" : "assessment";
   if (route.startsWith("/answers/")) return "answer";

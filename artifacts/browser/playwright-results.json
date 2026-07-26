@@ -1,7 +1,7 @@
 {
   "config": {
-    "configFile": "/Users/darksmarskin/Documents/local2/worktrees/bettergrades-handoff-c1-findability-20260724/playwright.config.mjs",
-    "rootDir": "/Users/darksmarskin/Documents/local2/worktrees/bettergrades-handoff-c1-findability-20260724/tests/browser",
+    "configFile": "/Users/darksmarskin/Documents/local2/worktrees/bettergrades-handoff-c2-learning-paths-20260726/playwright.config.mjs",
+    "rootDir": "/Users/darksmarskin/Documents/local2/worktrees/bettergrades-handoff-c2-learning-paths-20260726/tests/browser",
     "forbidOnly": false,
     "fullyParallel": false,
     "globalSetup": null,
@@ -16,7 +16,7 @@
     "preserveOutput": "always",
     "projects": [
       {
-        "outputDir": "/Users/darksmarskin/Documents/local2/worktrees/bettergrades-handoff-c1-findability-20260724/artifacts/browser/playwright-output",
+        "outputDir": "/Users/darksmarskin/Documents/local2/worktrees/bettergrades-handoff-c2-learning-paths-20260726/artifacts/browser/playwright-output",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
@@ -24,7 +24,7 @@
         },
         "id": "",
         "name": "",
-        "testDir": "/Users/darksmarskin/Documents/local2/worktrees/bettergrades-handoff-c1-findability-20260724/tests/browser",
+        "testDir": "/Users/darksmarskin/Documents/local2/worktrees/bettergrades-handoff-c2-learning-paths-20260726/tests/browser",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -58,9 +58,12 @@
     "workers": 1,
     "webServer": {
       "command": "node tools/serve-pages-preview.mjs",
-      "url": "http://127.0.0.1:4173/",
+      "url": "http://127.0.0.1:4183/",
       "reuseExistingServer": false,
-      "timeout": 30000
+      "timeout": 30000,
+      "env": {
+        "PORT": "4183"
+      }
     }
   },
   "suites": [
@@ -86,12 +89,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1076,
+                  "duration": 607,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-25T20:27:21.043Z",
+                  "startTime": "2026-07-26T05:47:22.732Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -120,12 +123,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1384,
+                  "duration": 2208,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-25T20:27:22.748Z",
+                  "startTime": "2026-07-26T05:47:23.670Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -154,12 +157,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 7404,
+                  "duration": 6702,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-25T20:27:24.139Z",
+                  "startTime": "2026-07-26T05:47:25.883Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -169,19 +172,19 @@
           ],
           "id": "256efcd3bb2c2de4c000-5e3a29eddb6b9acde231",
           "file": "findability-c1.spec.mjs",
-          "line": 82,
+          "line": 174,
           "column": 1
         }
       ]
     },
     {
-      "title": "release-b.spec.mjs",
-      "file": "release-b.spec.mjs",
+      "title": "handoff-c2.spec.mjs",
+      "file": "handoff-c2.spec.mjs",
       "column": 0,
       "line": 0,
       "specs": [
         {
-          "title": "calculus starts collapsed and the top-level Resources tab exposes the complete library",
+          "title": "desktop navigation and homepage follow the C2 learner hierarchy",
           "ok": true,
           "tags": [],
           "tests": [
@@ -196,12 +199,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 487,
+                  "duration": 474,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-25T20:27:31.562Z",
+                  "startTime": "2026-07-26T05:47:32.595Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -209,7 +212,185 @@
               "status": "expected"
             }
           ],
-          "id": "105d5dd910e5ce979523-55f15433c08397db3b6c",
+          "id": "576105208f32ea5e0933-4a1aee8ea02aa9db1f1f",
+          "file": "handoff-c2.spec.mjs",
+          "line": 20,
+          "column": 1
+        },
+        {
+          "title": "tablet and mobile navigation preserve substantive parity without overflow",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 806,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-07-26T05:47:33.074Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "576105208f32ea5e0933-4e0de77623c097f2fac4",
+          "file": "handoff-c2.spec.mjs",
+          "line": 32,
+          "column": 1
+        },
+        {
+          "title": "representative C2 surfaces have one main, one h1, no overflow, and no console errors",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9023,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-07-26T05:47:33.885Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "576105208f32ea5e0933-d30e9da5db305b8b6b23",
+          "file": "handoff-c2.spec.mjs",
+          "line": 47,
+          "column": 1
+        },
+        {
+          "title": "no-JavaScript navigation remains crawlable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 148,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-07-26T05:47:42.912Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "576105208f32ea5e0933-69c48aaebe9895b08b15",
+          "file": "handoff-c2.spec.mjs",
+          "line": 64,
+          "column": 1
+        },
+        {
+          "title": "keyboard, dark mode, print, filters, and Do Not Track remain functional",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 689,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-07-26T05:47:43.066Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "576105208f32ea5e0933-cd6135894b8ad5186af4",
+          "file": "handoff-c2.spec.mjs",
+          "line": 74,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "release-b.spec.mjs",
+      "file": "release-b.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "calculus starts collapsed and the Resources menus expose the complete library",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 288,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-07-26T05:47:43.766Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "105d5dd910e5ce979523-d5c3ca1b811fbf98b7fc",
           "file": "release-b.spec.mjs",
           "line": 21,
           "column": 1
@@ -230,12 +411,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 11879,
+                  "duration": 10311,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-25T20:27:32.058Z",
+                  "startTime": "2026-07-26T05:47:44.058Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -264,12 +445,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 11917,
+                  "duration": 10289,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-25T20:27:43.943Z",
+                  "startTime": "2026-07-26T05:47:54.373Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -298,12 +479,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 12324,
+                  "duration": 10425,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-25T20:27:55.867Z",
+                  "startTime": "2026-07-26T05:48:04.667Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -332,12 +513,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 633,
+                  "duration": 325,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-25T20:28:08.198Z",
+                  "startTime": "2026-07-26T05:48:15.096Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -366,12 +547,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1413,
+                  "duration": 794,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-25T20:28:08.839Z",
+                  "startTime": "2026-07-26T05:48:15.425Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -400,12 +581,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1091,
+                  "duration": 656,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-25T20:28:10.261Z",
+                  "startTime": "2026-07-26T05:48:16.223Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -434,12 +615,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1853,
+                  "duration": 964,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-25T20:28:11.360Z",
+                  "startTime": "2026-07-26T05:48:16.883Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -468,12 +649,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 5477,
+                  "duration": 5274,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-25T20:28:13.219Z",
+                  "startTime": "2026-07-26T05:48:17.851Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -502,12 +683,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3567,
+                  "duration": 2311,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-25T20:28:18.703Z",
+                  "startTime": "2026-07-26T05:48:23.131Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -525,9 +706,9 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-07-25T20:27:19.994Z",
-    "duration": 62394.136999999995,
-    "expected": 13,
+    "startTime": "2026-07-26T05:47:22.172Z",
+    "duration": 63356.615999999995,
+    "expected": 18,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0

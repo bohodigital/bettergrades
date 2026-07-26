@@ -32,17 +32,21 @@ test("desktop navigation and learning-path clicks emit complete analytics dimens
   const page = await context.newPage();
 
   await page.goto("/");
-  await clickWithoutNavigation(page.locator('.desktop-nav > a[href="/resources/"]'));
+  await clickWithoutNavigation(page.locator('.desktop-nav > a[href="/search/"]'));
   let events = await page.evaluate(() => window.__events);
-  expect(events.find((item) => item.sink === "ga4" && item.args[1] === "navigation_destination_click")?.args[2]).toMatchObject({
+  for (const sink of ["ga4", "umami"]) {
+    const navigationEvents = events.filter((item) => item.sink === sink && item.args[1] === "navigation_destination_click");
+    expect(navigationEvents).toHaveLength(1);
+    expect(navigationEvents[0].args[2]).toMatchObject({
     source_page_id: "route:/",
     source_page_role: "home",
-    target_page_id: "resource-hub.math.resources",
-    target_page_role: "resource-library",
+    target_page_id: "route:/search/",
+    target_page_role: "search",
     relationship_type: "navigation",
     placement: "desktop-primary",
     navigation_surface: "desktop-primary",
-  });
+    });
+  }
 
   await page.goto("/search/?q=Calculus%20practice");
   await page.waitForTimeout(500);
@@ -51,32 +55,120 @@ test("desktop navigation and learning-path clicks emit complete analytics dimens
   expect(events.find((item) => item.sink === "ga4" && item.args[1] === "site_search_result_click")?.args[2]).toMatchObject({
     source_page_id: "route:/search/",
     source_page_role: "search",
-    target_page_role: "assessment",
+    target_page_role: "directory",
     relationship_type: "search_result",
     placement: "search-results",
     query: "Calculus practice",
     result_rank: 1,
   });
 
-  await page.goto("/subjects/math/calculus/derivative-applications/curve-sketching-from-derivatives/");
-  const learningLink = page.locator('.learning-path-links a[href="/subjects/math/calculus/derivative-applications/advanced-notes/"]');
+  await page.goto("/learn/calculus/integration-by-parts/");
+  const learningLink = page.locator('.learning-path-primary a[href="/subjects/math/calculus/integrals/integration-by-parts/"]');
   await expect(learningLink).toBeVisible();
   await clickWithoutNavigation(learningLink);
   events = await page.evaluate(() => window.__events);
-  const generic = events.find((item) => item.sink === "ga4" && item.args[1] === "learning_relationship_click");
-  const specific = events.find((item) => item.sink === "ga4" && item.args[1] === "article_to_lesson_click");
-  for (const event of [generic, specific]) {
-    expect(event?.args[2]).toMatchObject({
+  for (const sink of ["ga4", "umami"]) {
+    for (const name of ["learning_relationship_click", "article_to_lesson_click"]) {
+      const relationshipEvents = events.filter((item) => item.sink === sink && item.args[1] === name);
+      expect(relationshipEvents).toHaveLength(1);
+      expect(relationshipEvents[0].args[2]).toMatchObject({
       source_page_role: "method-guide",
       target_page_role: "textbook-lesson",
-      placement: "article-footer",
-      result_rank: 2,
+      placement: "article-intro",
+      navigation_surface: "article-learning-path",
+      result_rank: 1,
+      course: "course.math.calculus",
+      unit: "unit.calculus.3a",
+      topic: "topic.math.integration-by-parts",
+      });
+      expect(relationshipEvents[0].args[2].source_page_id).toBeTruthy();
+      expect(relationshipEvents[0].args[2].target_page_id).toBeTruthy();
+      expect(relationshipEvents[0].args[2].relationship_type).toBeTruthy();
+    }
+  }
+
+  await page.goto("/subjects/math/calculus/integrals/integration-by-parts/");
+  const lessonCompanion = page.locator('.lesson-companions a[href="/subjects/math/calculus/worksheets/integration-by-parts/"]');
+  await expect(lessonCompanion).toBeVisible();
+  await clickWithoutNavigation(lessonCompanion);
+  events = await page.evaluate(() => window.__events);
+  for (const sink of ["ga4", "umami"]) {
+    const lessonEvents = events.filter((item) => item.sink === sink && item.args[1] === "lesson_to_practice_click");
+    expect(lessonEvents).toHaveLength(1);
+    expect(lessonEvents[0].args[2]).toMatchObject({
+      source_page_role: "textbook-lesson",
+      target_page_role: "worksheet",
+      relationship_type: "practices",
+      placement: "lesson-intro",
+      navigation_surface: "lesson-companion",
+      course: "course.math.calculus",
+      unit: "unit.calculus.3a",
+      topic: "topic.math.integration-by-parts",
     });
-    expect(event?.args[2].source_page_id).toBeTruthy();
-    expect(event?.args[2].target_page_id).toBeTruthy();
-    expect(event?.args[2].relationship_type).toBeTruthy();
+  }
+
+  await page.goto("/subjects/math/calculus/integration-techniques/");
+  await clickWithoutNavigation(page.locator('.topic-article-list a[href="/subjects/math/calculus/integration-techniques/integration-by-parts-strategy/"]'));
+  events = await page.evaluate(() => window.__events);
+  for (const sink of ["ga4", "umami"]) {
+    const topicEvents = events.filter((item) => item.sink === sink && item.args[1] === "topic_hub_destination_click");
+    expect(topicEvents).toHaveLength(1);
+    expect(topicEvents[0].args[2]).toMatchObject({
+      relationship_type: "hub_destination",
+      placement: "topic-hub-listing",
+      navigation_surface: "topic-hub",
+      course: "course.math.calculus",
+      unit: "not-applicable",
+      topic: "topic.math.integration-techniques",
+    });
+    expect(topicEvents[0].args[2].source_page_id).toBeTruthy();
+    expect(topicEvents[0].args[2].source_page_role).toBeTruthy();
+    expect(topicEvents[0].args[2].target_page_id).toBeTruthy();
+    expect(topicEvents[0].args[2].target_page_role).toBeTruthy();
+  }
+
+  await page.goto("/subjects/math/calculus/worked-problems/limit-by-factoring/");
+  await clickWithoutNavigation(page.locator(".resource-related a").first());
+  events = await page.evaluate(() => window.__events);
+  for (const sink of ["ga4", "umami"]) {
+    const workedEvents = events.filter((item) => item.sink === sink && item.args[1] === "worked_problem_to_lesson_click");
+    expect(workedEvents).toHaveLength(1);
+    expect(workedEvents[0].args[2]).toMatchObject({
+      source_page_role: "worked-problem",
+      relationship_type: "full_version_of",
+      placement: "resource-footer",
+      navigation_surface: "worked-problem",
+      course: "Calculus I",
+      unit: "Unit 1",
+      topic: "limits",
+    });
+    expect(workedEvents[0].args[2].source_page_id).toBeTruthy();
+    expect(workedEvents[0].args[2].target_page_id).toBeTruthy();
+    expect(workedEvents[0].args[2].target_page_role).toBeTruthy();
   }
   await context.close();
+
+  const dntContext = await browser.newContext({ viewport: { width: 1440, height: 900 } });
+  await dntContext.addInitScript(() => {
+    Object.defineProperty(Navigator.prototype, "doNotTrack", { configurable: true, get: () => "1" });
+    window.__events = [];
+    window.gtag = (...args) => window.__events.push({ sink: "ga4", args });
+    window.umami = { track: (event, data) => window.__events.push({ sink: "umami", args: ["event", event, data] }) };
+  });
+  const dntPage = await dntContext.newPage();
+  const dntCases = [
+    ["/", '.desktop-nav > a[href="/search/"]'],
+    ["/learn/calculus/integration-by-parts/", '.learning-path-primary a[href="/subjects/math/calculus/integrals/integration-by-parts/"]'],
+    ["/subjects/math/calculus/integrals/integration-by-parts/", '.lesson-companions a[href="/subjects/math/calculus/worksheets/integration-by-parts/"]'],
+    ["/subjects/math/calculus/integration-techniques/", '.topic-article-list a[href="/subjects/math/calculus/integration-techniques/integration-by-parts-strategy/"]'],
+    ["/subjects/math/calculus/worked-problems/limit-by-factoring/", '.resource-related a[href="/subjects/math/calculus/limits-continuity/unit/limits/direct-substitution/"]'],
+  ];
+  for (const [route, selector] of dntCases) {
+    await dntPage.goto(route);
+    await clickWithoutNavigation(dntPage.locator(selector));
+  }
+  expect(await dntPage.evaluate(() => window.__events)).toEqual([]);
+  await dntContext.close();
 });
 
 test("real navigation stays immediate and replays delayed analytics identities", async ({ browser }) => {
@@ -95,12 +187,12 @@ test("real navigation stays immediate and replays delayed analytics identities",
 
   await page.goto("/");
   await Promise.all([
-    page.waitForURL("**/resources/"),
-    page.locator('.desktop-nav > a[href="/resources/"]').click(),
+    page.waitForURL("**/search/"),
+    page.locator('.desktop-nav > a[href="/search/"]').click(),
   ]);
   await expect.poll(() => events.find((item) => item.sink === "ga4" && item.args[1] === "navigation_destination_click")?.args[2]).toMatchObject({
     source_page_role: "home",
-    target_page_role: "resource-library",
+    target_page_role: "search",
   });
   await context.close();
 
@@ -123,7 +215,7 @@ test("real navigation stays immediate and replays delayed analytics identities",
   ]);
   await expect.poll(() => searchEvents.find((item) => item.sink === "ga4" && item.args[1] === "site_search_result_click")?.args[2]).toMatchObject({
     source_page_role: "search",
-    target_page_role: "assessment",
+    target_page_role: "directory",
     result_rank: 1,
   });
   await searchContext.close();
@@ -141,8 +233,8 @@ test("real navigation stays immediate and replays delayed analytics identities",
   await stalledPage.goto("/");
   const navigationStartedAt = Date.now();
   await Promise.all([
-    stalledPage.waitForURL("**/resources/"),
-    stalledPage.locator('.desktop-nav > a[href="/resources/"]').click(),
+    stalledPage.waitForURL("**/search/"),
+    stalledPage.locator('.desktop-nav > a[href="/search/"]').click(),
   ]);
   expect(Date.now() - navigationStartedAt).toBeLessThan(1_000);
   releaseIdentityRequest();

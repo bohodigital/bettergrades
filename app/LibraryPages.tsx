@@ -14,6 +14,7 @@ import {
   type CourseArticle,
 } from "../lib/course-library";
 import { archetypes } from "../lib/library";
+import { trackFindabilityNavigation } from "../lib/learning-graph/analytics";
 import { getResourceRecord, tools } from "../lib/registry/catalog";
 import { assessments } from "../lib/registry/practice";
 import { LatexArticleDocument } from "./LatexArticle";
@@ -30,10 +31,29 @@ const resourceGroups = [
   { id: "decisions", title: "Choose a strategy", description: "Comparisons for the moments when several methods look possible.", archetypes: ["decision"] },
 ] as const;
 
-export function ArticleRow({ article, index }: { article: CourseArticle; index: number }) {
+export function ArticleRow({ article, index, topicHubSourcePath }: { article: CourseArticle; index: number; topicHubSourcePath?: string }) {
   const archetype = archetypes[article.archetype];
+  const destination = libraryArticleHref(article);
   return (
-    <a className="library-row" href={libraryArticleHref(article)} data-domain={article.domainSlug}>
+    <a
+      className="library-row"
+      href={destination}
+      data-domain={article.domainSlug}
+      onClick={topicHubSourcePath ? (event) => trackFindabilityNavigation(
+        event,
+        "topic_hub_destination_click",
+        topicHubSourcePath,
+        destination,
+        {
+          relationship_type: "hub_destination",
+          placement: "topic-hub-listing",
+          navigation_surface: "topic-hub",
+          course: `course.math.${article.domainSlug}`,
+          unit: "not-applicable",
+          topic: `topic.math.${article.topicSlug}`,
+        },
+      ) : undefined}
+    >
       <span className="library-row-number">{String(index + 1).padStart(2, "0")}</span>
       <span className="library-row-main"><small>{article.domainName} · {archetype.label}</small><b>{article.title}</b><em>{article.deck}</em></span>
       <span className="library-row-meta"><small>{article.course}</small><small>{archetypes[article.archetype].label}</small></span>
@@ -85,14 +105,14 @@ export function TopicContent({ domainSlug, topicSlug }: { domainSlug: string; to
   return (
     <>
       <section className="topic-page-hero section-pad">
-        <nav className="breadcrumbs"><a href="/subjects/">Subjects</a><span>/</span><a href="/subjects/math/">Mathematics</a><span>/</span><a href={`/subjects/math/${course.slug}/`}>{course.name}</a><span>/</span><span>{topic.name}</span></nav>
+        <nav className="breadcrumbs"><a href="/">Home</a><span>/</span><a href="/subjects/math/">Math</a><span>/</span><a href={`/subjects/math/${course.slug}/`}>{course.name}</a><span>/</span><span>{topic.name}</span></nav>
         <div className="topic-hero-grid"><div><p className="eyebrow">{course.name} course topic</p><h1>{topic.name}</h1><p>{topic.description}</p></div><span className="topic-big-number" aria-hidden="true">{course.mark}</span></div>
       </section>
       {isLimitsTopic && <LimitsUnitMap showSupporting topicPage />}
       {isUnit3aTopic && <section className="limits-unit-map section-pad" aria-label="Unit 3A textbook map connection"><CalculusUnitNavigation currentUnit="3A" compact /><section className="limits-exam-key-callout"><div><p className="eyebrow">Core textbook</p><h2>Begin with the complete Unit 3A map</h2><p>Follow antiderivatives, signed accumulation, Riemann sums, the Fundamental Theorem, integration methods, numerical integration, improper integrals, review, exams, and published answer keys as one connected sequence.</p></div><a className="button button-ink" href={UNIT_3A_ROOT}>Open Unit 3A: Integrals →</a></section></section>}
       <section className="topic-page-body section-pad">
         <aside><strong>{isLimitsTopic || isUnit3aTopic ? "Beyond the textbook" : "Inside this topic"}</strong><span>{isLimitsTopic || isUnit3aTopic ? "Focused deep-dive articles" : "Guides, examples, and decision support"}</span><p>{isLimitsTopic || isUnit3aTopic ? "Use these focused explorations after the core map when one idea deserves a slower, closer look." : "Start with the idea, work a method, then use a decision guide when the route is not obvious."}</p>{isLimitsTopic && <a className="limits-unit-topic-link" href={LIMITS_UNIT_PREFIX}>Open every unit resource →</a>}{isUnit3aTopic && <a className="limits-unit-topic-link" href={UNIT_3A_ROOT}>Open the Unit 3A map →</a>}<a href={`/subjects/math/${course.slug}/`}>All {course.name.toLowerCase()} topics →</a>{topicTools.map((tool) => <a href={tool!.path} key={tool!.id}>Use {tool!.title} →</a>)}{topicAssessments.slice(0, 1).map((assessment) => <a href={assessment!.path} key={assessment!.id}>Practice this topic →</a>)}</aside>
-        <div className="topic-resource-groups">{(isLimitsTopic || isUnit3aTopic) && <header className="topic-explorations-intro"><p className="eyebrow">Further exploration</p><h2>Deep dives and extra articles</h2><p>The core map above is the textbook. These articles are side trails: close readings of one method, a single integral, or a conceptual distinction that rewards more time and more examples.</p></header>}{resourceGroups.map((group) => { const groupArticles = articles.filter((article) => (group.archetypes as readonly string[]).includes(article.archetype)); if (!groupArticles.length) return null; return <section className="topic-resource-group" key={group.id}><header><span>{group.title}</span><p>{group.description}</p></header><div className="topic-article-list">{groupArticles.map((article) => <ArticleRow article={article} index={articles.indexOf(article)} key={article.slug} />)}</div></section>; })}</div>
+        <div className="topic-resource-groups">{(isLimitsTopic || isUnit3aTopic) && <header className="topic-explorations-intro"><p className="eyebrow">Further exploration</p><h2>Deep dives and extra articles</h2><p>The core map above is the textbook. These articles are side trails: close readings of one method, a single integral, or a conceptual distinction that rewards more time and more examples.</p></header>}{resourceGroups.map((group) => { const groupArticles = articles.filter((article) => (group.archetypes as readonly string[]).includes(article.archetype)); if (!groupArticles.length) return null; return <section className="topic-resource-group" key={group.id}><header><span>{group.title}</span><p>{group.description}</p></header><div className="topic-article-list">{groupArticles.map((article) => <ArticleRow article={article} index={articles.indexOf(article)} topicHubSourcePath={`/subjects/math/${course.slug}/${topic.slug}/`} key={article.slug} />)}</div></section>; })}</div>
       </section>
       <nav className="topic-sequence section-pad" aria-label="Adjacent topics">
         {previous ? <a href={`/subjects/math/${course.slug}/${previous.slug}/`}><small>← Previous topic</small><b>{previous.name}</b></a> : <span />}
@@ -124,7 +144,7 @@ export function LibraryArticleContent({ article }: { article: CourseArticle }) {
   return (
     <article className="library-article">
       <header className="library-article-header">
-        <nav className="breadcrumbs"><a href="/subjects/">Subjects</a><span>/</span><a href="/subjects/math/">Mathematics</a><span>/</span><a href={`/subjects/math/${course.slug}/`}>{course.name}</a><span>/</span><a href={`/subjects/math/${course.slug}/${topic.slug}/`}>{topic.shortName}</a><span>/</span><span>{article.shortTitle}</span></nav>
+        <nav className="breadcrumbs"><a href="/">Home</a><span>/</span><a href="/subjects/math/">Math</a><span>/</span><a href={`/subjects/math/${course.slug}/`}>{course.name}</a><span>/</span><a href={`/subjects/math/${course.slug}/${topic.slug}/`}>{topic.shortName}</a><span>/</span><span>{article.shortTitle}</span></nav>
         {articleUnit && <CalculusUnitNavigation currentUnit={articleUnit} compact />}
         <p className="article-meta-line"><span>{archetype.label}</span><span>Calculus I · {articleUnit ? `Unit ${articleUnit}` : article.course}</span><span>{article.difficulty}</span></p>
         <h1>{article.title}</h1>
@@ -145,8 +165,9 @@ export function LibraryArticleContent({ article }: { article: CourseArticle }) {
         </aside>
 
         <div className="latex-article-column">
+          <LearningPathLinks sourcePath={libraryArticleHref(article)} placement="article-intro" variant="primary" />
           <LatexArticleDocument document={article.document} />
-          <LearningPathLinks sourcePath={libraryArticleHref(article)} placement="article-footer" />
+          <LearningPathLinks sourcePath={libraryArticleHref(article)} placement="article-footer" variant="secondary" />
         </div>
       </div>
 
@@ -165,15 +186,22 @@ export function CourseHubContent({ domainSlug }: { domainSlug: string }) {
   const courseTools = tools.filter((tool) => tool.domainId === domainId);
   const courseAssessments = assessments.filter((assessment) => assessment.domainId === domainId);
   const startArticle = course.articles[0];
+  const startPath = domainSlug === "calculus" ? "/subjects/math/calculus/limits-continuity/" : startArticle ? libraryArticleHref(startArticle) : `/subjects/math/${course.slug}/`;
   return (
     <>
-      <section className="subject-hero section-pad"><div><p className="eyebrow">{course.eyebrow}</p><h1>{course.name}</h1><p>{course.description}</p><div className="subject-hero-actions"><a className="button button-ink" href={`/search/?q=${course.slug}`}>Search {course.name.toLowerCase()}</a><a className="button button-ghost" href="/practice/">Open practice</a></div></div><div className="subject-mark">{course.mark}<span>{course.slug}</span></div></section>
+      <section className="subject-hero section-pad"><div><p className="eyebrow">{course.eyebrow}</p><h1>{course.name}</h1><p>{course.description}</p><div className="subject-hero-actions"><a className="button button-ink" href={startPath}>{domainSlug === "calculus" ? "Start Calculus" : `Start ${course.name}`}</a><a className="button button-ghost" href={domainSlug === "calculus" ? "/practice/math/calculus/" : `/search/?q=${course.slug}`}>{domainSlug === "calculus" ? "Practice the course" : `Search ${course.name.toLowerCase()}`}</a></div></div><div className="subject-mark">{course.mark}<span>{course.slug}</span></div></section>
       {domainSlug === "calculus" ? <CalculusCourseNavigation currentPath="/subjects/math/calculus/" /> : <section className="calculus-map section-pad">
         <div className="section-heading"><div><p className="eyebrow">The course map</p><h2>One connected path.</h2></div><p>{course.promise}</p></div>
         <div className="calculus-map-list">{course.topics.map((topic) => <a href={`/subjects/math/${course.slug}/${topic.slug}/`} key={topic.slug}><span aria-hidden="true">{course.mark}</span><div><b>{topic.name}</b><small>{topic.description}</small></div><em>Open topic</em><i>→</i></a>)}</div>
       </section>}
-      {domainSlug === "calculus" && <section className="calculus-resource-paths section-pad" aria-labelledby="calculus-two-paths"><div><p className="eyebrow">Two useful paths</p><h2 id="calculus-two-paths">Follow the course—or focus your practice.</h2><p>The sequential course teaches each idea in order. The practice and reference library gives you printable worksheets, finals, formula sheets, worked problems, and visual guides without displacing that sequence.</p></div><div><a href="/subjects/math/calculus/limits-continuity/"><span>Path 1 · Learn in order</span><b>Start the complete calculus course</b><small>Lessons, concept checks, unit reviews, and exams →</small></a><a href="/resources/"><span>Path 2 · Practice and reference</span><b>Open the resource library</b><small>Worksheets, finals, formula sheets, visuals, and worked examples →</small></a></div></section>}
-      <section className="calculus-tools section-pad"><div><p className="eyebrow">Put it to work</p><h2>{domainSlug === "calculus" ? "Practice, tools, and close readings." : "Learn, calculate, practice."}</h2></div>{startArticle && <a href={libraryArticleHref(startArticle)}><span>Start here</span><b>{startArticle.shortTitle}</b><small>Open the first guide →</small></a>}{courseTools.slice(0, 1).map((tool) => <a href={tool.path} key={tool.id}><span>Tool</span><b>{tool.title}</b><small>Open the interactive tool →</small></a>)}{courseAssessments.length ? courseAssessments.slice(0, 1).map((assessment) => <a href={assessment.path} key={assessment.id}><span>Practice</span><b>{assessment.title}</b><small>Open explained practice →</small></a>) : <a href={`/search/?q=${course.slug}`}><span>All content</span><b>Complete guides</b><small>Search this course →</small></a>}</section>
+      {domainSlug === "calculus" && <section className="calculus-resource-paths section-pad" aria-labelledby="calculus-supporting-paths"><div><p className="eyebrow">Practice and reference</p><h2 id="calculus-supporting-paths">Support the course without losing the sequence.</h2><p>Chapters and lessons stay primary. Choose a supporting destination for the exact job you need next.</p></div><div>
+        <a href="/subjects/math/calculus/worksheets/"><span>Practice</span><b>Calculus worksheets</b><small>Focused practice with complete solutions →</small></a>
+        <a href="/subjects/math/calculus/practice-exams/"><span>Practice</span><b>Practice exams</b><small>Cumulative preparation and answer keys →</small></a>
+        <a href="/subjects/math/calculus/formula-sheets/"><span>Reference</span><b>Formula sheets</b><small>Rules, conditions, and compact reminders →</small></a>
+        <a href="/subjects/math/calculus/worked-problems/"><span>Worked examples</span><b>Worked problems</b><small>Complete solutions organized by skill →</small></a>
+        <a href="/subjects/math/calculus/integration-techniques/"><span>Quick explanations</span><b>Calculus articles</b><small>Focused explanations with distinct search purposes →</small></a>
+      </div></section>}
+      <section className="calculus-tools section-pad"><div><p className="eyebrow">{domainSlug === "calculus" ? "References and tools" : "Supporting paths"}</p><h2>{domainSlug === "calculus" ? "Check a definition, method, or result." : "Practice and look things up."}</h2></div>{domainSlug !== "calculus" && startArticle && <a href={libraryArticleHref(startArticle)}><span>Quick explanation</span><b>{startArticle.shortTitle}</b><small>Open the first published guide →</small></a>}{courseTools.slice(0, 1).map((tool) => <a href={tool.path} key={tool.id}><span>Tool</span><b>{tool.title}</b><small>Open the interactive tool →</small></a>)}{courseAssessments.length ? courseAssessments.slice(0, 1).map((assessment) => <a href={assessment.path} key={assessment.id}><span>Practice</span><b>{assessment.title}</b><small>Open explained practice →</small></a>) : <a href={`/search/?q=${course.slug}`}><span>Reference</span><b>Search {course.name}</b><small>Find a definition or example →</small></a>}</section>
     </>
   );
 }
