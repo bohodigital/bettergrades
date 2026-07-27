@@ -1,0 +1,100 @@
+{
+  "workOrder": "WO-2026-07-26-BETTERGRADES-HANDOFF-C3-TEMPLATE-INTENT-001",
+  "baseCommit": "61463a9d26fcf5fe8c4bc32658675b4b056dd8d8",
+  "baseTree": "05472147834d17563a435318ed3611653e25ef2f",
+  "handoff2ImmutableDeployment": "https://dfd06155.bettergrades-vhc.pages.dev",
+  "routeCount": 509,
+  "redirectCount": 135,
+  "nodeCount": 495,
+  "publicRelationshipCount": 5838,
+  "provisionalRelationshipCount": 2858,
+  "intentConflictCount": 26,
+  "titleOpeningQueueCount": 405,
+  "templateFrictionQueueCount": 55,
+  "mergeRedirectCandidateCount": 26,
+  "inventory": {
+    "routes": 509,
+    "routeRoles": 21,
+    "concepts": 495,
+    "graphNodes": 495,
+    "graphRelationships": 8696,
+    "publicRelationships": 5838,
+    "provisionalRelationships": 2858,
+    "intentConflictGroups": 26,
+    "titleOpeningReviewRows": 405,
+    "templateFrictionReviewRows": 55
+  },
+  "scope": {
+    "included": [
+      "shared page-template compression",
+      "direct-content-first ordering by page role",
+      "all 26 intent-conflict adjudications",
+      "title and opening queue disposition",
+      "representative browser and regression verification",
+      "owner-only Sites preview"
+    ],
+    "excluded": [
+      "route deletion or consolidation without exact owner approval",
+      "route-specific educational prose improvisation",
+      "visual identity redesign",
+      "analytics vendor or event-schema changes",
+      "Cloudflare deployment before owner preview approval"
+    ]
+  },
+  "baselineTemplateMetrics": {
+    "source": "data/ia/page-framing-audit.csv at production baseline",
+    "browserGeometryCoverage": 0,
+    "representativeRoleAverages": {
+      "textbook-lesson": {
+        "routes": 328,
+        "wordsBeforeContent": 16.71,
+        "domNodesBeforeContent": 16.79,
+        "navigationBlocksBeforeContent": 4.4,
+        "mainContentRatio": 0.81
+      },
+      "method-guide": {
+        "routes": 31,
+        "wordsBeforeContent": 7.94,
+        "domNodesBeforeContent": 13.03,
+        "navigationBlocksBeforeContent": 2.84,
+        "mainContentRatio": 0.61
+      },
+      "worked-problem": {
+        "routes": 26,
+        "wordsBeforeContent": 22.54,
+        "domNodesBeforeContent": 15,
+        "navigationBlocksBeforeContent": 1,
+        "mainContentRatio": 0.64
+      },
+      "glossary-term": {
+        "routes": 25,
+        "wordsBeforeContent": 16.24,
+        "domNodesBeforeContent": 14.76,
+        "navigationBlocksBeforeContent": 1,
+        "mainContentRatio": 0.53
+      },
+      "search": {
+        "routes": 1,
+        "wordsBeforeContent": 0,
+        "domNodesBeforeContent": 1,
+        "navigationBlocksBeforeContent": 0,
+        "mainContentRatio": 0.82
+      }
+    }
+  },
+  "decisionPolicy": {
+    "allowedWithoutDestructiveApproval": [
+      "KEEP_DISTINCT",
+      "NARROW",
+      "REWRITE",
+      "DEFER_WITH_REASON"
+    ],
+    "requiresExactOwnerApproval": [
+      "MERGE",
+      "REDIRECT",
+      "CONSOLIDATE",
+      "DELETE"
+    ],
+    "currentDestructiveDecisionCount": 0
+  }
+}

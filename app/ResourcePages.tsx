@@ -27,7 +27,7 @@ const typeLabels: Record<string, string> = {
 };
 
 export type ResourceLinkSummary = Pick<PublishingResource, "id" | "canonicalPath" | "shortTitle">;
-export type ResourceCardSummary = Pick<PublishingResource, "id" | "canonicalPath" | "shortTitle" | "summary" | "resourceType" | "difficulty" | "course" | "problemCount" | "estimatedTime">;
+export type ResourceCardSummary = Pick<PublishingResource, "id" | "canonicalPath" | "shortTitle" | "resourceType" | "difficulty" | "course" | "unit" | "topics" | "problemCount" | "estimatedTime">;
 type AnalyticsResource = Pick<PublishingResource, "id" | "resourceType" | "course" | "unit" | "topics" | "difficulty">;
 export type ResourceLibrarySummary = Pick<PublishingResource, "id" | "canonicalPath" | "shortTitle" | "summary" | "resourceType" | "difficulty" | "course" | "unit" | "topics" | "problemCount" | "estimatedTime" | "studentPdf" | "answerKeyPdf" | "primaryVisual">;
 
@@ -323,6 +323,9 @@ export function ResourcePage({ resource, glossaryTerms = [], relatedResources = 
     return <GlossaryResource resource={resource} term={glossaryTerms.find((term) => term.id === resource.glossaryTermId)} relatedResources={relatedResources} enrichedGlossaryTermIds={enrichedGlossaryTermIds} />;
   }
   const problems = resource.problems ?? (resource.problem ? [resource.problem] : []);
+  const problemFirst = resource.resourceType === "worked-problem";
+  const problemPreview = problems.length > 0 && <section className="resource-preview"><h2>{problemFirst ? "Problem" : "Printable preview"}</h2><ol>{problems.map((problem) => <li key={problem.id}><InlineMathText value={problem.prompt} /></li>)}</ol></section>;
+  const workedSolutions = problems.length > 0 && <section className="resource-solutions" aria-labelledby="solutions-title"><h2 id="solutions-title">Complete worked solutions</h2><p>Every problem has a source-matched answer and independently reviewed derivation.</p>{problems.map((problem, index) => <ProblemSolution problem={problem} index={index} key={problem.id} />)}</section>;
   return (
     <article className="resource-page">
       <ResourceAnalytics resource={resource} />
@@ -338,6 +341,8 @@ export function ResourcePage({ resource, glossaryTerms = [], relatedResources = 
           <span><b>{resource.difficulty}</b> progression</span>
         </div>
       </header>
+      {problemFirst && problemPreview}
+      {problemFirst && workedSolutions}
       <section className="resource-includes">
         <div><h2>What is included</h2><p>{resource.description}</p></div>
         <div><h3>Skills assessed</h3><ul>{resource.skills.map((skill) => <li key={skill}>{skill}</li>)}</ul></div>
@@ -348,8 +353,8 @@ export function ResourcePage({ resource, glossaryTerms = [], relatedResources = 
       <DownloadPanel resource={resource} />
       <PracticeProgress resource={resource} />
       {resource.formulaGroups && <section className="formula-groups"><h2>Reference formulas</h2>{resource.formulaGroups.map(([title, formulas]) => <article key={title}><h3>{title}</h3>{formulas.map((formula) => <Math key={formula} tex={formula} display />)}</article>)}</section>}
-      {problems.length > 0 && <section className="resource-preview"><h2>Printable preview</h2><ol>{problems.map((problem) => <li key={problem.id}><InlineMathText value={problem.prompt} /></li>)}</ol></section>}
-      {problems.length > 0 && <section className="resource-solutions" aria-labelledby="solutions-title"><h2 id="solutions-title">Complete worked solutions</h2><p>Every problem has a source-matched answer and independently reviewed derivation.</p>{problems.map((problem, index) => <ProblemSolution problem={problem} index={index} key={problem.id} />)}</section>}
+      {!problemFirst && problemPreview}
+      {!problemFirst && workedSolutions}
       <section className="resource-errors"><h2>Common errors</h2><ul>{(resource.commonErrors ?? problems.map((item) => item.commonError).slice(0, 3)).map((error) => <li key={error}>{error}</li>)}</ul></section>
       <RelatedLinks resource={resource} relatedResources={relatedResources} enrichedGlossaryTermIds={enrichedGlossaryTermIds} />
       <footer className="resource-license">Revised {resource.revisionDate}. {resource.license}</footer>
@@ -368,7 +373,7 @@ export function ResourceHubPage({ hub, resources }: { hub: ResourceHub; resource
       <header className="resource-hero"><span>Practice and reference library</span><h1>{hub.title}</h1><p>{hub.description}</p><div className="resource-facts"><span><b>{resources.length}</b> published resources</span><span><b>Free</b> no sign-in</span><span><b>Verified</b> mathematics</span></div></header>
       <nav className="resource-hub-nav" aria-label="Calculus resource libraries">{hubLinks.map(([path, title]) => <a href={path} aria-current={path === hub.path ? "page" : undefined} key={path}>{title}</a>)}</nav>
       <section className="resource-hub-intro"><h2>Choose by course and purpose</h2><p>The sequential calculus course remains the best path for first learning. Use this library for focused practice, exam preparation, printable reference, or a second explanation of one method.</p></section>
-      {groups.map((group) => <section className="resource-hub-group" key={group.course}><h2>{group.course}</h2><div className="resource-card-grid">{group.resources.map((resource) => <a href={resource.canonicalPath} className="resource-card" key={resource.id}><span>{typeLabels[resource.resourceType]} · {resource.difficulty}</span><h3>{resource.shortTitle}</h3><p>{resource.summary}</p><b>{resource.problemCount ? `${resource.problemCount} problems` : `${resource.estimatedTime}-minute guide`} →</b></a>)}</div></section>)}
+      {groups.map((group) => <section className="resource-hub-group" key={group.course}><h2>{group.course}</h2><div className="resource-card-grid">{group.resources.map((resource) => <a href={resource.canonicalPath} className="resource-card" key={resource.id}><span>{typeLabels[resource.resourceType]} · {resource.difficulty}</span><h3>{resource.shortTitle}</h3><small>{resource.unit} · {resource.topics[0]}</small><b>{resource.problemCount ? `${resource.problemCount} problems` : `${resource.estimatedTime}-minute guide`} →</b></a>)}</div></section>)}
       <section className="resource-course-return"><h2>Following the full course?</h2><p>Return to the calculus course map for the complete sequence of lessons, concept checks, practice, and exams.</p><a className="button button-ink" href="/subjects/math/calculus/">Open the calculus course map</a></section>
     </div>
   );
@@ -421,10 +426,9 @@ export function ResourceLibraryPage({ resources }: { resources: readonly Resourc
           <header><div><span>{String(group.length).padStart(2, "0")} resources</span><h2>{title}</h2></div><p>{description}</p></header>
           <div className="resource-library-grid">
             {group.map((resource) => <article className="resource-library-card" key={resource.id}>
-              <div><span>{resource.course} · {resource.unit}</span><h3><a href={resource.canonicalPath}>{resource.shortTitle}</a></h3><p>{resource.summary}</p></div>
+              <div><span>{resource.course} · {resource.unit}</span><h3><a href={resource.canonicalPath}>{resource.shortTitle}</a></h3><p>{resource.topics[0]} · {typeLabels[resource.resourceType]} · {resource.difficulty}</p></div>
               <div className="resource-library-card-footer">
                 <small>{resource.problemCount ? `${resource.problemCount} problems` : `${resource.estimatedTime}-minute reference`} · {resource.difficulty}</small>
-                <a className="resource-library-open" href={resource.canonicalPath}>Open resource <span aria-hidden="true">→</span></a>
                 <LibraryDownloads resource={resource} />
               </div>
             </article>)}

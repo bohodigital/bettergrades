@@ -30,6 +30,19 @@ function visibleText(html) {
     .trim();
 }
 
+function assertCompressedLessonFrame(html, route, unitCode, unitRoot) {
+  if (route.pageType === "hub") return;
+  assert.match(html, /class="lesson-position"/, route.path);
+  assert.match(html, new RegExp(`aria-label="Unit ${unitCode} lesson position"`), route.path);
+  assert.match(html, new RegExp(`href="${escapeRegExp(unitRoot)}"`), route.path);
+  assert.match(html, /class="lesson-objective"/, route.path);
+  assert.match(html, /Lesson objective/, route.path);
+  assert.match(html, /class="lesson-guidance"/, route.path);
+  assert.match(html, /Common trap/, route.path);
+  assert.match(html, /Check yourself/, route.path);
+  assert.doesNotMatch(html, /Section overview|limits-overview-guides|limits-editorial-intro/, route.path);
+}
+
 test("all 67 Unit 2A pages render as clean textbook pages with no source notation", async () => {
   const unitRoutes = calculusUnitRoutes.filter((route) => route.unitId === "calc-1-unit-2a-derivative-foundations-techniques");
   assert.equal(unitRoutes.length, 67);
@@ -39,10 +52,7 @@ test("all 67 Unit 2A pages render as clean textbook pages with no source notatio
     const html = await response.text();
     assert.match(html, /data-unit-id="calc-1-unit-2a-derivative-foundations-techniques"/, route.path);
     assert.match(visibleText(html), /Calculus I · Unit 2A/, route.path);
-    assert.match(html, /aria-label="Calculus Unit 2 course navigation"/, route.path);
-    assert.match(html, /href="\/subjects\/math\/calculus\/derivatives\/"[^>]+aria-current="location"/, route.path);
-    assert.match(html, /href="\/subjects\/math\/calculus\/derivative-applications\/"/, route.path);
-    assert.match(html, /Continue to Unit 2B/, route.path);
+    assertCompressedLessonFrame(html, route, "2A", "/subjects/math/calculus/derivatives/");
     const renderedTitle = route.title.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("'", "&#x27;").replaceAll('"', "&quot;");
     assert.match(html, new RegExp(`<h1>${escapeRegExp(renderedTitle)}</h1>`), route.path);
     if (route.pageType !== "hub" && !/Unit 2A/.test(route.title)) assert.match(html, /<title>[^<]+\| Unit 2A \| Better Grades<\/title>/, route.path);
@@ -52,10 +62,6 @@ test("all 67 Unit 2A pages render as clean textbook pages with no source notatio
     assert.doesNotMatch(visibleText(html), /visual accompanies the complete printable source|Graph reading guide/, route.path);
     const renderedCheckIds = [...html.matchAll(/data-check-id="([^"]+)"/g)].map((match) => match[1]);
     assert.equal(renderedCheckIds.length, new Set(renderedCheckIds).size, `${route.path} renders each interactive check once`);
-    if (route.pageType !== "hub") {
-      assert.match(html, /Section overview/, route.path);
-      assert.match(html, /Reading lens/, route.path);
-    }
     if (route.path.endsWith("/unit-2a-cumulative-practice/")) {
       assert.equal((html.match(/Show supplied answer/g) ?? []).length, 36);
       assert.match(html, /Work in three passes/);
@@ -72,10 +78,7 @@ test("all 76 Unit 2B pages render as clean application-textbook pages", async ()
     const html = await response.text();
     assert.match(html, /data-unit-id="calc-1-unit-2b-derivative-applications"/, route.path);
     assert.match(visibleText(html), /Calculus I · Unit 2B/, route.path);
-    assert.match(html, /aria-label="Calculus Unit 2 course navigation"/, route.path);
-    assert.match(html, /href="\/subjects\/math\/calculus\/derivative-applications\/"[^>]+aria-current="location"/, route.path);
-    assert.match(html, /href="\/subjects\/math\/calculus\/derivatives\/"/, route.path);
-    assert.match(html, /Review Unit 2A foundations/, route.path);
+    assertCompressedLessonFrame(html, route, "2B", "/subjects/math/calculus/derivative-applications/");
     const renderedTitle = route.title.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("'", "&#x27;").replaceAll('"', "&quot;");
     assert.match(html, new RegExp(`<h1>${escapeRegExp(renderedTitle)}</h1>`), route.path);
     if (route.pageType !== "hub" && !/Unit 2B/.test(route.title)) assert.match(html, /<title>[^<]+\| Unit 2B \| Better Grades<\/title>/, route.path);
@@ -84,10 +87,6 @@ test("all 76 Unit 2B pages render as clean application-textbook pages", async ()
     assert.doesNotMatch(html, /This equation could not be rendered safely|This visual is temporarily unavailable|class="katex-error"/, route.path);
     const renderedCheckIds = [...html.matchAll(/data-check-id="([^"]+)"/g)].map((match) => match[1]);
     assert.equal(renderedCheckIds.length, new Set(renderedCheckIds).size, `${route.path} renders each interactive check once`);
-    if (route.pageType !== "hub") {
-      assert.match(html, /Section overview/, route.path);
-      assert.match(html, /Reading lens/, route.path);
-    }
     const answerRoute = route.path.match(/\/(?:bridge-diagnostic|interpretation-review|approximation-review|related-rates-review|theorems-shape-review|optimization-review|lhopital-review|modeling-studio-review|advanced-newton-convergence|cumulative-practice)\/$/);
     if (answerRoute) assert.ok((html.match(/Show supplied answer/g) ?? []).length > 0, route.path);
     if (route.path.endsWith("/cumulative-practice/")) assert.equal((html.match(/Show supplied answer/g) ?? []).length, 30);
@@ -115,12 +114,13 @@ test("focused derivative articles remain visibly and semantically connected to U
     const response = await render(path);
     assert.equal(response.status, 200, path);
     const html = await response.text();
-    assert.match(html, /aria-label="Calculus Unit 2 course navigation"/, path);
-    assert.match(html, /href="\/subjects\/math\/calculus\/derivatives\/"[^>]+aria-current="location"/, path);
-    assert.match(html, /href="\/subjects\/math\/calculus\/derivative-applications\/"/, path);
     assert.match(visibleText(html), /Calculus I · Unit 2A/, path);
     assert.match(html, /<title>[^<]+\| Unit 2A \| Better Grades<\/title>/, path);
     assert.match(html, /<meta[^>]+name="description"[^>]+Unit 2A/i, path);
+    assert.match(html, /data-article-format="latex-document"/, path);
+    assert.match(html, /Put it to work/, path);
+    assert.match(html, /Topic map/, path);
+    assert.doesNotMatch(html, /Calculus Unit 2 course navigation/, path);
   }
 });
 
@@ -134,9 +134,7 @@ test("all Unit 3A pages render as clean integral-textbook pages", async () => {
     const text = visibleText(html);
     assert.match(html, /data-unit-id="calc-1-unit-3a-integral-foundations-techniques"/, route.path);
     assert.match(text, /Calculus I.*Unit 3A/, route.path);
-    assert.match(html, /aria-label="Calculus Unit 3 course navigation"/, route.path);
-    assert.match(html, /href="\/subjects\/math\/calculus\/integrals\/"[^>]+aria-current="location"/, route.path);
-    assert.match(html, /href="\/subjects\/math\/calculus\/integration-applications\/"/, route.path);
+    assertCompressedLessonFrame(html, route, "3A", "/subjects/math/calculus/integrals/");
     const renderedTitle = route.title.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("'", "&#x27;").replaceAll('"', "&quot;");
     assert.match(html, new RegExp(`<h1>${escapeRegExp(renderedTitle)}</h1>`), route.path);
     if (route.pageType !== "hub" && !/Unit 3A/.test(route.title)) assert.match(html, /<title>[^<]+\| Unit 3A \| Better Grades<\/title>/, route.path);
@@ -145,10 +143,6 @@ test("all Unit 3A pages render as clean integral-textbook pages", async () => {
     assert.doesNotMatch(html, /This equation could not be rendered safely|This visual is temporarily unavailable|class="katex-error"/, route.path);
     const renderedCheckIds = [...html.matchAll(/data-check-id="([^"]+)"/g)].map((match) => match[1]);
     assert.equal(renderedCheckIds.length, new Set(renderedCheckIds).size, `${route.path} renders each interactive check once`);
-    if (route.pageType !== "hub") {
-      assert.match(html, /Section overview/, route.path);
-      assert.match(html, /Reading lens/, route.path);
-    }
     if (route.path.endsWith("/cumulative-practice/")) assert.equal((html.match(/Show supplied answer/g) ?? []).length, 12);
   }
 });
@@ -180,9 +174,7 @@ test("all Unit 3B pages render as clean application-textbook pages", async () =>
     const text = visibleText(html);
     assert.match(html, /data-unit-id="calc-1-unit-3b-integration-applications"/, route.path);
     assert.match(text, /Calculus I.*Unit 3B/, route.path);
-    assert.match(html, /aria-label="Calculus Unit 3 course navigation"/, route.path);
-    assert.match(html, /href="\/subjects\/math\/calculus\/integration-applications\/"[^>]+aria-current="location"/, route.path);
-    assert.match(html, /href="\/subjects\/math\/calculus\/integrals\/"/, route.path);
+    assertCompressedLessonFrame(html, route, "3B", "/subjects/math/calculus/integration-applications/");
     const renderedTitle = route.title.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("'", "&#x27;").replaceAll('"', "&quot;");
     assert.match(html, new RegExp(`<h1>${escapeRegExp(renderedTitle)}</h1>`), route.path);
     if (route.pageType !== "hub" && !/Unit 3B/.test(route.title)) assert.match(html, /<title>[^<]+\| Unit 3B \| Better Grades<\/title>/, route.path);
@@ -191,10 +183,6 @@ test("all Unit 3B pages render as clean application-textbook pages", async () =>
     assert.doesNotMatch(html, /This equation could not be rendered safely|This visual is temporarily unavailable|class="katex-error"/, route.path);
     const renderedCheckIds = [...html.matchAll(/data-check-id="([^"]+)"/g)].map((match) => match[1]);
     assert.equal(renderedCheckIds.length, new Set(renderedCheckIds).size, `${route.path} renders each interactive check once`);
-    if (route.pageType !== "hub") {
-      assert.match(html, /Section overview/, route.path);
-      assert.match(html, /Reading lens/, route.path);
-    }
     if (answerCounts.has(route.path)) assert.equal((html.match(/Show supplied answer/g) ?? []).length, answerCounts.get(route.path), route.path);
     if (route.pageType === "exam") assert.match(html, /View the complete answer key/, route.path);
   }
@@ -225,9 +213,7 @@ test("all Unit 4A pages render as clean Calculus II sequence-and-series pages", 
     const text = visibleText(html);
     assert.match(html, /data-unit-id="calc-2-unit-4a-sequences-infinite-series"/, route.path);
     assert.match(text, /Calculus II.*Unit 4A/, route.path);
-    assert.match(html, /aria-label="Calculus Unit 4 course navigation"/, route.path);
-    assert.match(html, /href="\/subjects\/math\/calculus\/sequences-and-series\/"[^>]+aria-current="location"/, route.path);
-    assert.match(html, /href="\/subjects\/math\/calculus\/power-series-and-taylor-series\/"/, route.path);
+    assertCompressedLessonFrame(html, route, "4A", "/subjects/math/calculus/sequences-and-series/");
     const renderedTitle = route.title.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("'", "&#x27;").replaceAll('"', "&quot;");
     assert.match(html, new RegExp(`<h1>${escapeRegExp(renderedTitle)}</h1>`), route.path);
     if (route.pageType !== "hub" && !/Unit 4A/.test(route.title)) assert.match(html, /<title>[^<]+\| Unit 4A \| Better Grades<\/title>/, route.path);
@@ -235,10 +221,6 @@ test("all Unit 4A pages render as clean Calculus II sequence-and-series pages", 
     assert.doesNotMatch(html, /This equation could not be rendered safely|This visual is temporarily unavailable|class="katex-error"/, route.path);
     const renderedCheckIds = [...html.matchAll(/data-check-id="([^"]+)"/g)].map((match) => match[1]);
     assert.equal(renderedCheckIds.length, new Set(renderedCheckIds).size, `${route.path} renders each interactive check once`);
-    if (route.pageType !== "hub") {
-      assert.match(html, /Section overview/, route.path);
-      assert.match(html, /Reading lens/, route.path);
-    }
     if (route.pageType === "exam") assert.match(html, /View the complete answer key/, route.path);
   }
 });
@@ -266,9 +248,7 @@ test("all Unit 4B pages render as clean Calculus II power-and-Taylor-series page
     const text = visibleText(html);
     assert.match(html, /data-unit-id="calc-2-unit-4b-power-taylor-series"/, route.path);
     assert.match(text, /Calculus II.*Unit 4B/, route.path);
-    assert.match(html, /aria-label="Calculus Unit 4 course navigation"/, route.path);
-    assert.match(html, /href="\/subjects\/math\/calculus\/power-series-and-taylor-series\/"[^>]+aria-current="location"/, route.path);
-    assert.match(html, /href="\/subjects\/math\/calculus\/sequences-and-series\/"/, route.path);
+    assertCompressedLessonFrame(html, route, "4B", "/subjects/math/calculus/power-series-and-taylor-series/");
     const renderedTitle = route.title.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("'", "&#x27;").replaceAll('"', "&quot;");
     assert.match(html, new RegExp(`<h1>${escapeRegExp(renderedTitle)}</h1>`), route.path);
     if (route.pageType !== "hub" && !/Unit 4B/.test(route.title)) assert.match(html, /<title>[^<]+\| Unit 4B \| Better Grades<\/title>/, route.path);
@@ -276,7 +256,6 @@ test("all Unit 4B pages render as clean Calculus II power-and-Taylor-series page
     assert.doesNotMatch(html, /This equation could not be rendered safely|This visual is temporarily unavailable|class="katex-error"/, route.path);
     const renderedCheckIds = [...html.matchAll(/data-check-id="([^"]+)"/g)].map((match) => match[1]);
     assert.equal(renderedCheckIds.length, new Set(renderedCheckIds).size, `${route.path} renders each interactive check once`);
-    if (route.pageType !== "hub") { assert.match(html, /Section overview/, route.path); assert.match(html, /Reading lens/, route.path); }
     if (route.pageType === "exam") assert.match(html, /View the complete answer key/, route.path);
   }
 });
@@ -294,7 +273,8 @@ test("calculus lessons render one complete crawl-visible lesson without a duplic
     assert.equal((html.match(/<main\b/g) ?? []).length, 1, `${path} has one crawl-visible main`);
     assert.doesNotMatch(html, /<noscript>|data-noscript-calculus-fallback=|class="no-script-lesson"/, path);
     assert.match(html, titlePattern, path);
-    assert.match(html, /Section overview/, path);
+    assert.match(html, /Lesson objective/, path);
+    assert.match(html, /class="lesson-position"/, path);
     const visibleText = html
       .replace(/<(?:script|style|annotation)\b[^>]*>[\s\S]*?<\/(?:script|style|annotation)>/gi, " ")
       .replace(/<[^>]+>/g, " ");

@@ -1,12 +1,10 @@
 "use client";
 
-/* eslint-disable @next/next/no-html-link-for-pages -- canonical course navigation uses document navigation */
-
 import { FormEvent, ReactNode, useState } from "react";
 import { getCalculusUnitCollection, getCalculusUnitSectionGuidance } from "../lib/calculus/calculus-units-index.mjs";
 import type { CalculusPublicProblem, CalculusUnitNode, CalculusUnitPublicPage } from "../lib/calculus/calculus-unit.mjs";
 import { BetterGradesVisual } from "./BetterGradesVisual";
-import { CalculusUnitNavigation, UNIT_2A_ROOT, UNIT_2B_ROOT, UNIT_3A_ROOT, UNIT_3B_ROOT, UNIT_4A_ROOT, UNIT_4B_ROOT } from "./CalculusUnitNavigation";
+import { UNIT_2A_ROOT, UNIT_2B_ROOT, UNIT_3A_ROOT, UNIT_3B_ROOT, UNIT_4A_ROOT, UNIT_4B_ROOT } from "./CalculusUnitNavigation";
 import { LessonCompanionLinks } from "./LessonCompanionLinks";
 import { Math } from "./Math";
 
@@ -214,12 +212,26 @@ function SemanticNode({ node, keyPrefix, unitId, routeId, checks, renderedChecks
 }
 
 function TextbookOrientation({ page }: { page: CalculusUnitPublicPage }) {
+  return <aside className="lesson-objective" aria-label="Lesson objective">
+    <span>Lesson objective · {page.page.sectionTitle}</span>
+    <p>{page.route.description}</p>
+  </aside>;
+}
+
+function LessonStudyGuidance({ page }: { page: CalculusUnitPublicPage }) {
   const guidance = getCalculusUnitSectionGuidance(page.unit.id, page.page.sectionId);
-  return <section className="limits-editorial-intro" aria-labelledby="calculus-section-overview-title">
-    <header className="limits-overview-header"><div><p className="eyebrow">Section overview</p><span>{page.page.sectionTitle}</span></div><h2 id="calculus-section-overview-title">What this section is building</h2><p className="limits-overview-lede">{page.route.description}</p></header>
-    <aside className="limits-reading-lens" aria-label="Reading lens"><span>Reading lens</span><p>{guidance.lens}</p></aside>
-    <div className="limits-overview-guides"><article><span>Notice</span><p>{guidance.mentalModel}</p></article><article><span>Decide</span><p>{guidance.decision}</p></article><article><span>Avoid</span><p>{guidance.commonTrap}</p></article></div>
-    <footer className="limits-overview-footer"><div><span>Use this page</span><p>Read the explanation first, predict each next move, and use the checks as feedback on your reasoning—not just your final expression.</p></div><div><span>Check yourself</span><p>{guidance.checkpoint}</p></div></footer>
+  return <section className="lesson-guidance" aria-labelledby={`${page.route.id}-study-guidance`}>
+    <header>
+      <p className="eyebrow">After the explanation</p>
+      <h2 id={`${page.route.id}-study-guidance`}>Use the section idea</h2>
+    </header>
+    <div>
+      <article><span>Reading lens</span><p>{guidance.lens}</p></article>
+      <article><span>Mental model</span><p>{guidance.mentalModel}</p></article>
+      <article><span>Decision</span><p>{guidance.decision}</p></article>
+      <article><span>Common trap</span><p>{guidance.commonTrap}</p></article>
+      <article><span>Check yourself</span><p>{guidance.checkpoint}</p></article>
+    </div>
   </section>;
 }
 
@@ -341,23 +353,20 @@ function CourseNavigation({ page }: { page: CalculusUnitPublicPage }) {
   return <nav className="limits-sequence" aria-label={`${page.unit.shortTitle} sequence`}>{page.previous ? <a href={page.previous.path}><small>← Previous</small><b>{page.previous.title}</b></a> : <span />}{page.next ? <a href={page.next.path}><small>Next →</small><b>{page.next.title}</b></a> : <a href={page.unit.root}><small>Unit overview →</small><b>{page.unit.shortTitle}</b></a>}</nav>;
 }
 
+function LessonPositionNavigation({ page }: { page: CalculusUnitPublicPage }) {
+  return <nav className="lesson-position" aria-label={`Unit ${page.unit.code} lesson position`}>
+    {page.previous ? <a href={page.previous.path}>← Previous</a> : <span />}
+    <a href={page.unit.root}>Unit {page.unit.code} map</a>
+    {page.next ? <a href={page.next.path}>Next →</a> : <span />}
+  </nav>;
+}
+
 export function CalculusUnitPageContent({ page }: { page: CalculusUnitPublicPage }) {
   const checks = new Map(page.checks.map((check) => [check.id, check]));
   const renderedChecks = new Set<string>();
   const embeddedCheckIds = collectEmbeddedCheckIds(page.page.nodes);
   const answerKey = page.related.find((route) => route.pageType === "answer-key");
   const currentUnit = page.unit.code === "2B" ? "2B" : page.unit.code === "3A" ? "3A" : page.unit.code === "3B" ? "3B" : page.unit.code === "4A" ? "4A" : page.unit.code === "4B" ? "4B" : "2A";
-  const companion = currentUnit === "2A"
-    ? { root: UNIT_2B_ROOT, label: "Continue to Unit 2B →" }
-    : currentUnit === "2B"
-      ? { root: UNIT_2A_ROOT, label: "Review Unit 2A foundations →" }
-      : currentUnit === "3A"
-        ? { root: UNIT_3B_ROOT, label: "Continue to Unit 3B applications →" }
-        : currentUnit === "3B"
-          ? { root: UNIT_3A_ROOT, label: "Review Unit 3A foundations →" }
-          : currentUnit === "4A"
-            ? { root: UNIT_4B_ROOT, label: "Continue to Unit 4B →" }
-            : { root: UNIT_4A_ROOT, label: "Review Unit 4A convergence →" };
   const integralUnit = currentUnit.startsWith("3");
   const calculusCourse = currentUnit.startsWith("4") ? "Calculus II" : "Calculus I";
   const routeUrl = `https://bettergrades.net${page.route.path}`;
@@ -367,15 +376,16 @@ export function CalculusUnitPageContent({ page }: { page: CalculusUnitPublicPage
     { "@type": "BreadcrumbList", "@id": `${routeUrl}#breadcrumbs`, itemListElement: page.route.breadcrumbs.map((crumb, index) => ({ "@type": "ListItem", position: index + 1, name: crumb.name, item: `https://bettergrades.net${crumb.path}` })) },
   ] };
   return <article className="limits-unit-page calculus-unit-page" data-page-type={page.route.pageType} data-unit-id={page.unit.id}>
-    <header className="limits-unit-hero section-pad"><nav className="breadcrumbs">{page.route.breadcrumbs.map((crumb, index) => <span key={`${crumb.path}-${index}`}>{index > 0 && <i>/</i>}<a href={crumb.path}>{crumb.name}</a></span>)}</nav><CalculusUnitNavigation currentUnit={currentUnit} /><p className="eyebrow">{calculusCourse} · Unit {page.unit.code} · {labels[page.route.pageType] ?? page.route.pageType.replaceAll("-", " ")}</p><h1>{page.route.title}</h1><p>{page.route.description}</p><div className="limits-progress"><strong>{page.route.isCore ? "Core textbook path" : "Supporting resource"}</strong><span>{page.route.isCore ? "Follow the sequence or choose a destination from the unit map." : "Use this page when the main sequence reveals a specific gap or question."}</span>{page.route.pageType !== "hub" && <a href={page.unit.root}>Open the Unit {page.unit.code} map →</a>}</div></header>
-    <div className="limits-unit-layout section-pad"><aside><strong>On this page</strong><span>Explanation and interactive practice</span>{answerKey && <a className="limits-key-aside" href={answerKey.path}>Exam answer key →</a>}<a href={page.unit.root}>Unit {page.unit.code} map →</a><a className="limits-unit-topic-link" href={companion.root}>{companion.label}</a><a href="/practice/math/calculus/">Calculus practice →</a></aside><div className="limits-unit-content">
+    <header className="limits-unit-hero section-pad"><nav className="breadcrumbs">{page.route.breadcrumbs.map((crumb, index) => <span key={`${crumb.path}-${index}`}>{index > 0 && <i>/</i>}<a href={crumb.path}>{crumb.name}</a></span>)}</nav><p className="eyebrow">{calculusCourse} · Unit {page.unit.code} · {labels[page.route.pageType] ?? page.route.pageType.replaceAll("-", " ")}</p><h1>{page.route.title}</h1>{page.route.pageType === "hub" && <p>{page.route.description}</p>}{page.route.pageType === "hub" ? <div className="limits-progress"><strong>Core textbook path</strong><span>Choose the next lesson from the ordered unit map.</span></div> : <LessonPositionNavigation page={page} />}</header>
+    <div className="limits-unit-layout section-pad"><div className="limits-unit-content">
       {page.route.pageType === "hub" ? <UnitMap page={page} /> : <TextbookOrientation page={page} />}
-      {page.route.pageType !== "hub" && <LessonCompanionLinks sourcePath={page.route.path} variant="primary" />}
       {page.route.pageType === "practice" && <section className="limits-node limits-node-method calculus-practice-method"><header><span>Practice method</span><h2>Work in three passes</h2></header><div><p><strong>First, classify.</strong> Name the {integralUnit ? "integral output and structural method" : "derivative idea or rule"} before writing algebra. This separates a recognition error from a calculation error.</p><p><strong>Second, solve without the key.</strong> Record a complete attempt, including bounds, constants, domains, units, or interpretation when the prompt asks for them.</p><p><strong>Third, reveal one answer at a time.</strong> Compare the first line where your work differs, close the answer, and redo that item from a blank start.</p></div></section>}
       {page.route.pageType === "exam" && answerKey && <section className="limits-exam-key-callout"><div><p className="eyebrow">Answer key published</p><h2>Finish first. Then check every answer.</h2><p>The complete numbered key is online as its own easy-to-find route.</p></div><a className="button button-ink" href={answerKey.path}>View the complete answer key →</a></section>}
       <NodeChildren nodes={page.page.nodes} keyPrefix={page.route.id} unitId={page.unit.id} routeId={page.route.id} checks={checks} renderedChecks={renderedChecks} />
+      {page.route.pageType !== "hub" && <LessonStudyGuidance page={page} />}
       {page.assessmentSet && <section className="calculus-assessment-set"><header><p className="eyebrow">Structured concept quiz</p><h2>{page.assessmentSet.title}</h2><p>Write a response before revealing the model. These conceptual items use an honest attempt-and-reveal rubric rather than pretending an open response has one machine-provable wording.</p></header>{page.assessmentSet.items.map((item) => <InteractiveProblem key={item.id} problem={{ id: item.id, unitId: page.unit.id, pageSlug: page.route.slug, promptLatex: item.promptLatex, answerType: item.answerType, choices: [], hints: [], difficulty: "conceptual", topics: [], skills: [], attemptRequiredBeforeReveal: true }} />)}</section>}
       {[...checks.values()].filter((check) => !embeddedCheckIds.has(check.id)).map((check) => <InteractiveProblem problem={check} key={check.id} />)}
+      {page.route.pageType !== "hub" && <LessonCompanionLinks sourcePath={page.route.path} variant="primary" />}
       <LessonCompanionLinks sourcePath={page.route.path} variant="secondary" />
       <section className="limits-rights"><p className="eyebrow">Source &amp; rights</p><h2>Original instruction with traceable references.</h2><p>{page.page.compositionStatus}</p><p>Reference textbooks remain rights-separated and are not published as application assets. Any direct adaptation requires separate identification and attribution.</p></section>
     </div></div>

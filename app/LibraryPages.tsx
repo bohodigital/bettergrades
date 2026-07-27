@@ -144,8 +144,7 @@ export function LibraryArticleContent({ article }: { article: CourseArticle }) {
   return (
     <article className="library-article">
       <header className="library-article-header">
-        <nav className="breadcrumbs"><a href="/">Home</a><span>/</span><a href="/subjects/math/">Math</a><span>/</span><a href={`/subjects/math/${course.slug}/`}>{course.name}</a><span>/</span><a href={`/subjects/math/${course.slug}/${topic.slug}/`}>{topic.shortName}</a><span>/</span><span>{article.shortTitle}</span></nav>
-        {articleUnit && <CalculusUnitNavigation currentUnit={articleUnit} compact />}
+        <nav className="breadcrumbs" aria-label="Article location"><a href={`/subjects/math/${course.slug}/`}>{course.name}</a><span>/</span><a href={`/subjects/math/${course.slug}/${topic.slug}/`}>{topic.shortName}</a></nav>
         <p className="article-meta-line"><span>{archetype.label}</span><span>Calculus I · {articleUnit ? `Unit ${articleUnit}` : article.course}</span><span>{article.difficulty}</span></p>
         <h1>{article.title}</h1>
         <p>{article.deck}</p>
@@ -153,9 +152,16 @@ export function LibraryArticleContent({ article }: { article: CourseArticle }) {
       </header>
 
       <div className="latex-article-layout">
+        <div className="latex-article-column">
+          <LatexArticleDocument document={article.document} />
+          <LearningPathLinks sourcePath={libraryArticleHref(article)} placement="article-intro" variant="primary" />
+          <LearningPathLinks sourcePath={libraryArticleHref(article)} placement="article-footer" variant="secondary" />
+        </div>
         <aside className="latex-article-rail">
-          <strong>Article outline</strong>
-          {article.document.sections.map((section, index) => <a key={section.id} href={`#${section.id}`}><span>{String(index + 1).padStart(2, "0")}</span>{section.heading}</a>)}
+          <details>
+            <summary>Article outline</summary>
+            {article.document.sections.map((section, index) => <a key={section.id} href={`#${section.id}`}><span>{String(index + 1).padStart(2, "0")}</span>{section.heading}</a>)}
+          </details>
           <div className="latex-article-links">
             <span>Put it to work</span>
             <a href={`/subjects/math/${course.slug}/${topic.slug}/`}><small>Topic map</small><b>{topic.name}</b></a>
@@ -163,12 +169,6 @@ export function LibraryArticleContent({ article }: { article: CourseArticle }) {
             {articleAssessments.slice(0, 1).map((assessment) => <a href={assessment!.path} key={assessment!.id}><small>Practice</small><b>{assessment!.title}</b></a>)}
           </div>
         </aside>
-
-        <div className="latex-article-column">
-          <LearningPathLinks sourcePath={libraryArticleHref(article)} placement="article-intro" variant="primary" />
-          <LatexArticleDocument document={article.document} />
-          <LearningPathLinks sourcePath={libraryArticleHref(article)} placement="article-footer" variant="secondary" />
-        </div>
       </div>
 
       <nav className="article-sequence" aria-label="Adjacent articles">

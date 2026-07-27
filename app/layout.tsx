@@ -30,13 +30,6 @@ export const metadata: Metadata = {
     shortcut: "/favicon.ico",
     apple: [{ url: "/apple-touch-icon.png", type: "image/png", sizes: "180x180" }],
   },
-  keywords: [
-    "free math answers",
-    "calculus help",
-    "integration practice",
-    "math calculators",
-    "step by step solutions",
-  ],
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",

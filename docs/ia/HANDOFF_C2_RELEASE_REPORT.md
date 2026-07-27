@@ -63,11 +63,59 @@ Work order: `WO-2026-07-26-BETTERGRADES-HANDOFF-C2-LEARNING-PATHS-001`
 
 ## 8. Candidate preview, review, PR, merge, and production
 
-The exact candidate commit/tree, package hash, owner-only preview URL, Sites version and deployment ID, independent-review disposition, pull request, merge binding, production deployment, and live verification are recorded after those release gates complete.
+Handoff 2 completed every release gate:
+
+- Pull request: `#51`
+- Reviewed candidate commit: `863841b87a43c31be76b5d517938bcc405b7ee80`
+- Reviewed candidate tree: `05472147834d17563a435318ed3611653e25ef2f`
+- Merge commit: `61463a9d26fcf5fe8c4bc32658675b4b056dd8d8`
+- Final merged tree: `05472147834d17563a435318ed3611653e25ef2f`
+- Merged-tree equality: the merge tree exactly equals the reviewed candidate tree.
+- Normalized Pages build hash: `9953ef1faa37e24ca45decfd741bc363685f0416ddd3809b89dacad92eaadd3d`
+- Owner-only preview: `https://better-grades.mankopoppi.chatgpt.site`
+- Sites version: `52`
+- Sites version ID: `appgprj_6a52d8b9848c81918fa5ff88a08eece0~appgver_23c1be972be481919ad1ab3c72563fc4`
+- Sites deployment ID: `appgdep_6a65a0c6a548819191f006d18f147587`
+- Sites source commit: `863841b87a43c31be76b5d517938bcc405b7ee80`
+- Sites package SHA-256: `7864921c63a4e1954c2a1361a0bbe2bf4094597a4665101585062ca344b81180`
+- Sites archive content hash: `b92943547ca3eecf70b12dbf84226da3b58008874d01382db4515d48399d8cb5`
+- Independent review: `SHIP`
+- GitHub validation: passed.
+- Exact merged-main repository tests: 281/281 passed.
+- Final browser verification: 18/18 passed.
+- Analytics verification: passed with exactly-once GA4 and Umami delivery, Do Not Track suppression, and the sensitive-data denylist.
+- Cloudflare deployment timestamp: `2026-07-26T06:05:27.784392+00:00`
+- Immutable deployment: `https://dfd06155.bettergrades-vhc.pages.dev`
+- Stable Pages: `https://bettergrades-vhc.pages.dev`
+- Apex: `https://bettergrades.net`
+- WWW: `https://www.bettergrades.net`
+- Live HTTP verification: 8/8 sampled release endpoints returned HTTP 200, including immutable, stable, apex, WWW, Calculus, Practice, Resources, and Search.
+
+The deployment used the existing BetterGrades Cloudflare Pages project and fixed
+credential wrapper. It did not change DNS, bindings, credentials, analytics
+identifiers, ownership, billing, or retained deployments.
+
+The two earlier blocked audit shells,
+`WO-2026-07-25-BETTERGRADES-HANDOFF-C1-PREVIEW-AUDIT-001` and
+`WO-2026-07-25-BETTERGRADES-HANDOFF-C1-AUDIT-RECOVERY-002`, remain preserved
+as history. They were blocked by evidence-access and work-order serialization
+problems, not by a technical rejection of the candidate. Handoff 1 was later
+independently reviewed and accepted through PR `#50`; Handoff 2 was independently
+reviewed as `SHIP` and merged through PR `#51`.
 
 ## 9. Rollback
 
-Preserve the Handoff 1 immutable deployment and Release B deployment. Roll back through the governed BetterGrades Cloudflare wrapper to the Handoff 1 deployment; do not alter DNS, bindings, credentials, analytics identifiers, or retained deployments.
+Preserve every accepted immutable deployment. The rollback sequence is:
+
+1. Revert the Handoff 2 merge normally without rewriting history.
+2. Rebuild exact clean Handoff 1 commit `bf5751658b0b86fae1a777f9147788161ac18085`.
+3. Redeploy it through the governed BetterGrades Cloudflare wrapper and verify
+   `https://d40825cc.bettergrades-vhc.pages.dev`, stable Pages, apex, and WWW.
+4. If an earlier recovery point is required, preserve and use Release B at
+   `https://7029f1e2.bettergrades-vhc.pages.dev`.
+
+Do not alter DNS, bindings, credentials, analytics identifiers, ownership,
+billing, or retained deployments.
 
 ## 10. Handoff 3 locked queues
 
