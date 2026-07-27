@@ -8,9 +8,11 @@ Work order: `WO-2026-07-26-BETTERGRADES-HANDOFF-C3-TEMPLATE-INTENT-001`
 - Independent release review: `SHIP`
 - Production baseline: Handoff 2 commit `61463a9d26fcf5fe8c4bc32658675b4b056dd8d8`
 - Production baseline tree: `05472147834d17563a435318ed3611653e25ef2f`
-- Handoff 3 approved code commit: `3d58f0dfdaa789ba33ed42eaca69ed6dc0b692b0`
-- Handoff 3 approved code tree: `708c5cc2ade7631c2482bfe9b1ae29b5bdd62dc4`
-- Review branch: `feat/bettergrades-handoff-c3-template-intent-20260726`
+- Handoff 3 graph-reproducible candidate commit:
+  `a43c3fe88bbd01ebc025ad1a17d201860a56eb93`
+- Handoff 3 graph-reproducible candidate tree:
+  `eb5a4df9e3e700e97841ffe9995f37498a3b7184`
+- Review branch: `codex/handoff-c3-release-repro-20260727`
 
 The commit containing this document is an evidence-only descendant of the
 approved code commit. It does not change the deployable application output.
@@ -21,11 +23,11 @@ retain the normalized build hash below.
 
 - Preview URL: `https://better-grades.mankopoppi.chatgpt.site`
 - Sites project: `appgprj_6a52d8b9848c81918fa5ff88a08eece0`
-- Sites version: `55`
-- Sites version ID: `appgprj_6a52d8b9848c81918fa5ff88a08eece0~appgver_c909260762d081918b98910889036709`
-- Sites deployment ID: `appgdep_6a6685e0cff8819191f928fae960029c`
-- Sites source commit: `3d58f0dfdaa789ba33ed42eaca69ed6dc0b692b0`
-- Sites archive SHA-256: `453de1f2f6a20addcd8e76dd420531830d40ab402d94286b038fe8ca8bd7e2d6`
+- Sites version: `56`
+- Sites version ID: `appgprj_6a52d8b9848c81918fa5ff88a08eece0~appgver_ede9a20fd610819198646afe647d39d1`
+- Sites deployment ID: `appgdep_6a67a60bc3f88191b5668abcd57e3c3b`
+- Sites source commit: `a43c3fe88bbd01ebc025ad1a17d201860a56eb93`
+- Sites archive SHA-256: `5dc83c173eccaa66da8dbe34b29d2ec715da421c0ab528411bb3ff73a48a7ecc`
 - Sites deployment status: `succeeded`
 - Access mode: `custom`, with the owner as the sole allowed viewer and no
   allowed groups
@@ -37,9 +39,9 @@ retain the normalized build hash below.
 - Canonical HTML routes: `509`
 - One-hop redirects: `135`
 - Normalized Pages build SHA-256:
-  `80df906ccb13dc432673b201f2935a7b474c4aad87a1e620543ec0fd315163fb`
+  `c0ef4ed4a3e627fe65126fdacc393113549e27d68c32a68eeb2d2b66ac8dd4d9`
 - Candidate raw Pages build SHA-256:
-  `abe99c2ffface6653729cb258eefe92af69243c573b448ef9ab1c4cbad3ad3a5`
+  `f9382efcff40bce27064b44913002ef7ccb2c11ef40d7269fc9185b25a60f376`
 
 The normalized hash removes only documented vinext deployment/build UUIDs and
 the prerender secret. The raw hash identifies the final local candidate build;
@@ -58,12 +60,19 @@ the Sites archive hash identifies the uploaded v55 package.
 - Required 320-by-720 mobile contract: passed
 - Unapproved destructive route decisions: `0`
 - Analytics exact-once and Do Not Track verification: passed
+- Graph generation/check: `495` nodes, `3,706` relationships, `848` public,
+  and `2,858` provisional
+- Graph correction: `5,007` obsolete Handoff 2 rendered-navigation edges
+  removed and `17` current rendered edges added
+- Explicit approved relationships changed: `0`; all `20` remain public
+- Provisional relationships changed: `0`; none render publicly
 - Independent reviewer: fresh-context release review
 - Independent verdict: `SHIP`
 
-The final independent review reproduced the rendered baseline-to-candidate
-audit, confirmed that protected and unclassified synthetic deletions fail
-closed, inspected the 320-pixel mobile evidence, and found no release blocker.
+The final independent review reproduced the graph check and exact edge
+classification, verified all approved and provisional relationships, confirmed
+the rendered baseline-to-candidate preservation evidence and browser matrix,
+and found no release blocker.
 
 ## Owner release instruction
 
@@ -90,4 +99,3 @@ the pre-merge branch package.
 - Handoff 2: `https://dfd06155.bettergrades-vhc.pages.dev`
 - Handoff 1: `https://d40825cc.bettergrades-vhc.pages.dev`
 - Release B: `https://7029f1e2.bettergrades-vhc.pages.dev`
-
