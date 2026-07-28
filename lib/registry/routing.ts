@@ -1,5 +1,6 @@
 import { limitsUnitRoutes } from "../calculus/limits-unit-index.mjs";
 import { calculusUnitRoutes, supersededCalculusPaths } from "../calculus/calculus-units-index.mjs";
+import { algebraCourseRoutes } from "../algebra/algebra-course-index.mjs";
 import { domains, resources, subjects, tools, topics } from "./catalog";
 import { assessments } from "./practice";
 import type { RedirectRecord, RegistryRoute } from "./schema";
@@ -22,6 +23,7 @@ const fixedRoutes: RegistryRoute[] = [
   ...["about", "how-we-verify", "editorial-policy", "source-policy", "corrections", "privacy", "accessibility"].map((slug) => ({ path: `/${slug}/`, title: "Better Grades", description: "Better Grades publishing and product standards.", indexable: true })),
 ];
 const calculusUnitRoutePaths = new Set(calculusUnitRoutes.map((route) => route.path));
+const algebraCourseRoutePaths = new Set(algebraCourseRoutes.map((route) => route.path));
 const supersededCalculusRoutePaths = new Set(supersededCalculusPaths);
 const supersededCalculusTargets = new Map([
   ["/subjects/math/calculus/sequences-series/", "/subjects/math/calculus/sequences-and-series/"],
@@ -33,11 +35,12 @@ const supersededCalculusTargets = new Map([
 
 export const registryRoutes: RegistryRoute[] = [
   ...fixedRoutes,
-  ...subjects.map((item) => ({ path: item.path, title: item.name, description: item.description, indexable: true })),
-  ...domains.map((item) => ({ path: item.path, title: `${item.name} resources`, description: item.description, indexable: true })),
+  ...algebraCourseRoutes.map((item) => ({ path: item.path, title: item.title, description: item.description, indexable: item.indexable })),
+  ...subjects.filter((item) => !algebraCourseRoutePaths.has(item.path)).map((item) => ({ path: item.path, title: item.name, description: item.description, indexable: true })),
+  ...domains.filter((item) => !algebraCourseRoutePaths.has(item.path)).map((item) => ({ path: item.path, title: `${item.name} resources`, description: item.description, indexable: true })),
   ...calculusUnitRoutes.map((item) => ({ path: item.path, title: item.title, description: item.description, indexable: item.indexable })),
-  ...topics.filter((item) => !calculusUnitRoutePaths.has(item.path) && !supersededCalculusRoutePaths.has(item.path)).map((item) => ({ path: item.path, title: `${item.name} ${domains.find((domain) => domain.id === item.domainId)?.name ?? "mathematics"} resources`, description: item.description, indexable: true })),
-  ...resources.filter((item) => !calculusUnitRoutePaths.has(item.path) && !supersededCalculusRoutePaths.has(item.path)).map((item) => ({ path: item.path, title: item.title, description: item.description, indexable: true })),
+  ...topics.filter((item) => !algebraCourseRoutePaths.has(item.path) && !calculusUnitRoutePaths.has(item.path) && !supersededCalculusRoutePaths.has(item.path)).map((item) => ({ path: item.path, title: `${item.name} ${domains.find((domain) => domain.id === item.domainId)?.name ?? "mathematics"} resources`, description: item.description, indexable: true })),
+  ...resources.filter((item) => !algebraCourseRoutePaths.has(item.path) && !calculusUnitRoutePaths.has(item.path) && !supersededCalculusRoutePaths.has(item.path)).map((item) => ({ path: item.path, title: item.title, description: item.description, indexable: true })),
   ...limitsUnitRoutes.map((item) => ({ path: item.path, title: item.metadataTitle, description: item.description, indexable: item.indexable })),
   ...assessments.map((item) => ({ path: item.path, title: item.title, description: item.description, indexable: true })),
   ...tools.map((item) => ({ path: item.path, title: item.title, description: item.description, indexable: true })),

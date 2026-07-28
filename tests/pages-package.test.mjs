@@ -119,7 +119,7 @@ test("Pages package contains the advanced Worker and static assets", async () =>
   );
 });
 
-test("Pages package preserves the exact Limits and Units 2A through 4B visual inventories", async () => {
+test("Pages package preserves the exact Calculus and Algebra visual inventories", async () => {
   const limitsManifest = JSON.parse(
     await readFile(new URL("../content/visualizations/limits-continuity/compiled-scenes.v1.json", import.meta.url), "utf8"),
   );
@@ -144,6 +144,11 @@ test("Pages package preserves the exact Limits and Units 2A through 4B visual in
   const runtimeManifests = await Promise.all(
     ["unit-2a", "unit-2b", "unit-3a", "unit-3b", "unit-4a", "unit-4b"].map(async (unit) => JSON.parse(
       await readFile(new URL(`../content/calculus/units/${unit}/public-runtime-scenes.server.json`, import.meta.url), "utf8"),
+    )),
+  );
+  const algebraRuntimeManifests = await Promise.all(
+    Array.from({ length: 15 }, (_, index) => `unit-a${index}`).map(async (unit) => JSON.parse(
+      await readFile(new URL(`../content/algebra/units/${unit}/public-runtime-scenes.server.json`, import.meta.url), "utf8"),
     )),
   );
   assert.equal(limitsManifest.manifestVersion, 1);
@@ -188,7 +193,15 @@ test("Pages package preserves the exact Limits and Units 2A through 4B visual in
       assert.equal(Object.hasOwn(runtimeScene, "interactiveScene"), runtimeScene.hydration !== "none");
     }
   }
-  const manifests = [limitsManifest, unitManifest, unit2bManifest, unit3aManifest, unit3bManifest, unit4aManifest, unit4bManifest];
+  assert.equal(algebraRuntimeManifests.reduce((count, manifest) => count + manifest.sceneCount, 0), 417);
+  assert.equal(algebraRuntimeManifests.reduce((count, manifest) => count + manifest.interactiveCount, 0), 9);
+  for (const runtimeManifest of algebraRuntimeManifests) {
+    assert.equal(runtimeManifest.manifestVersion, 1);
+    assert.equal(runtimeManifest.scenes.length, runtimeManifest.sceneCount);
+    assert.equal(runtimeManifest.scenes.filter(({ hydration }) => hydration !== "none").length, runtimeManifest.interactiveCount);
+    assert.ok(runtimeManifest.scenes.every(({ visibility }) => visibility === "public"));
+  }
+  const manifests = [limitsManifest, unitManifest, unit2bManifest, unit3aManifest, unit3bManifest, unit4aManifest, unit4bManifest, ...algebraRuntimeManifests];
   const expectedAssetNames = manifests.flatMap(({ scenes }) => scenes.map(({ staticAsset }) => staticAsset.path.split("/").at(-1))).sort();
   const publicAssetNames = (await readdir(new URL("../public/visuals/v1/", import.meta.url)))
     .filter((name) => name.endsWith(".svg"))

@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "auditedAgainstCommit": "f04574b0052824348f7bf6fa5dfaf246e504109e",
+  "packageRouteCount": 226,
+  "resolvedRouteCount": 226,
+  "currentCanonicalRouteCount": 509,
+  "netNewRouteCount": 223,
+  "expectedFinalCanonicalRouteCount": 732,
+  "collisions": [
+    {
+      "path": "/subjects/math/algebra/",
+      "resolution": "replace-content-preserve-canonical",
+      "role": "course hub"
+    },
+    {
+      "path": "/subjects/math/algebra/linear-relationships/",
+      "resolution": "course-unit-resolves-before-legacy-topic",
+      "role": "Unit A4 hub"
+    },
+    {
+      "path": "/subjects/math/algebra/rational-expressions/",
+      "resolution": "course-unit-resolves-before-legacy-topic",
+      "role": "Unit A10 hub"
+    },
+    {
+      "path": "/subjects/math/algebra/rational-expressions/simplifying-rational-expressions/",
+      "resolution": "preserve-existing-compact-guide-and-move-course-lesson",
+      "replacementCoursePath": "/subjects/math/algebra/rational-expressions/simplifying-rational-expressions-course/",
+      "role": "Unit A10.2 lesson",
+      "reason": "The canonical compact factor-method guide predates the storyboard audit and remains independently useful."
+    }
+  ]
+}
