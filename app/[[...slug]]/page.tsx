@@ -77,8 +77,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug?: st
     } : {}),
     ...(algebra ? {
       keywords: [algebra.code ? `Algebra Unit ${algebra.code}` : "complete Algebra course", algebra.name, algebra.topic, "Algebra textbook"],
-      openGraph: { type: "article" as const, title, description, url: path, siteName: "Better Grades" },
-      twitter: { card: "summary_large_image" as const, title, description },
+      openGraph: {
+        type: "article" as const,
+        title,
+        description,
+        url: path,
+        siteName: "Better Grades",
+        images: [{ url: "/og-algebra.png", width: 1731, height: 909, alt: "BetterGrades Algebra: Quantities, Equations, and Structure" }],
+      },
+      twitter: { card: "summary_large_image" as const, title, description, images: ["/og-algebra.png"] },
+      other: { "course-revision-date": "2026-07-28", "course-route-role": getPublicAlgebraCoursePage(path)?.route.pageType ?? "course" },
     } : {}),
   };
 }

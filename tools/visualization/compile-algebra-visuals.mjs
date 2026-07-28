@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
+import { mkdir, readFile, readdir, rename, rm, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 
 import { createCortexJsLatexCompiler } from "../../lib/visualization/ast/mathjson-boundary.server.ts";
@@ -12,6 +12,14 @@ const requestedUnit = process.argv.find((argument) => argument.startsWith("--uni
 const course = JSON.parse(await readFile(resolve(root, "content/algebra/course.public.json"), "utf8"));
 const unitCodes = requestedUnit ? [requestedUnit.replace(/^unit-/i, "").toUpperCase()] : course.units.map((unit) => unit.code);
 const assetDirectory = resolve(root, "public/visuals/v1");
+
+if (!checkOnly) {
+  const prefix = requestedUnit ? `algebra-${requestedUnit.replace(/^unit-/i, "").toLowerCase()}-` : "algebra-";
+  const existingAssets = await readdir(assetDirectory).catch(() => []);
+  for (const name of existingAssets) {
+    if (name.startsWith(prefix) && name.endsWith(".svg")) await rm(resolve(assetDirectory, name));
+  }
+}
 
 function publicInteractiveScene(scene) {
   const {

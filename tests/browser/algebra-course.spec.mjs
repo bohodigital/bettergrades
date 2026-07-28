@@ -15,8 +15,8 @@ test("interactive Algebra lesson retains three BVLP fallbacks and hydrates only 
   await expect(page.locator("[data-bvlp-visual]")).toHaveCount(3);
   await expect(page.locator("[data-static-fallback=retained] img")).toHaveCount(3);
   await expect(page.locator("[data-bvlp-renderer=bg-interactive-2d]")).toHaveCount(1);
-  await expect(page.locator(".algebra-exercise-families article")).toHaveCount(5);
-  await expect(page.locator("[data-check-id=lesson-a0-1-checkpoint]")).toHaveCount(1);
+  await expect(page.locator(".algebra-exercise-families article")).toHaveCount(16);
+  await expect(page.locator("[data-check-id=a0-1-q16]")).toHaveCount(1);
 });
 
 test("static Algebra lesson ships no interactive slot", async ({ page }) => {
@@ -35,14 +35,15 @@ test("the compact rational-expression guide remains canonical beside the distinc
   await expect(page.locator("[data-unit-id=algebra-unit-a10]")).toHaveCount(1);
 });
 
-test("open-response checks stay locked until an attempt and reveal only a rubric", async ({ page }) => {
+test("open-response checks stay locked until an attempt and then reveal the protected guide", async ({ page }) => {
   await page.goto("/subjects/math/algebra/arithmetic-readiness/number-lines-and-signed-quantities/");
-  const check = page.locator("[data-check-id=lesson-a0-1-checkpoint]");
+  const check = page.locator("[data-check-id=a0-1-q16]");
   await expect(check.locator("summary")).toContainText("Attempt once");
   await check.locator("textarea").fill("I would place the values on one number line, compare their positions, and verify the sign and distance from zero.");
   await check.getByRole("button", { name: "Submit attempt" }).click();
   await expect(check.locator(".limits-check-feedback")).toContainText("open response");
   await expect(check.locator("summary")).toContainText("Compare with");
   await check.locator("summary").click();
-  await expect(check.locator("details p")).toContainText("A strong response demonstrates");
+  await expect(check.locator("details p")).toContainText("The response must address");
+  await expect(check.locator("details p")).toContainText("Worked solution:");
 });

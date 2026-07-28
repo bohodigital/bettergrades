@@ -1,8 +1,10 @@
+import { execFileSync } from "node:child_process";
 import { access, cp, mkdir, readFile, readdir, rename, rm, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import { build as esbuildBuild } from "esbuild";
 import resourceCatalog from "../content/calculus/resources/catalog.json" with { type: "json" };
+import algebraCourse from "../content/algebra/course.public.json" with { type: "json" };
 
 const root = process.cwd();
 const client = resolve(root, "dist", "client");
@@ -110,6 +112,9 @@ for (const route of ["/robots.txt", "/sitemap.xml"]) {
 
 const canonicalHost = "https://bettergrades.net";
 const xmlEscape = (value) => value.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+const revisionDate = execFileSync("git", ["log", "-1", "--format=%cs"], { cwd: root, encoding: "utf8" }).trim();
+if (!/^\d{4}-\d{2}-\d{2}$/.test(revisionDate)) throw new Error(`Could not derive a real revision date from Git: ${revisionDate}`);
+const algebraRouteRoles = new Map(algebraCourse.routes.map((route) => [route.path, route.pageType]));
 const unitRoots = [
   "/subjects/math/calculus/limits-continuity/",
   "/subjects/math/calculus/limits-continuity/unit/",
@@ -121,9 +126,14 @@ const unitRoots = [
   "/subjects/math/calculus/power-series-and-taylor-series/",
 ];
 const groups = {
+  "sitemap-course-hubs.xml": [],
   "sitemap-lessons.xml": [],
   "sitemap-articles.xml": [],
   "sitemap-unit-hubs.xml": [],
+  "sitemap-reviews-practice.xml": [],
+  "sitemap-mastery-checks.xml": [],
+  "sitemap-investigations.xml": [],
+  "sitemap-answer-keys.xml": [],
   "sitemap-worksheets.xml": [],
   "sitemap-practice-exams.xml": [],
   "sitemap-formula-sheets.xml": [],
@@ -133,7 +143,15 @@ const groups = {
   "sitemap-pages.xml": [],
 };
 for (const route of indexableRoutes) {
-  if (route.startsWith("/subjects/math/calculus/worksheets/") && route !== "/subjects/math/calculus/worksheets/") groups["sitemap-worksheets.xml"].push(route);
+  const algebraRole = algebraRouteRoles.get(route);
+  if (algebraRole === "course-hub") groups["sitemap-course-hubs.xml"].push(route);
+  else if (algebraRole === "unit-hub") groups["sitemap-unit-hubs.xml"].push(route);
+  else if (algebraRole === "lesson") groups["sitemap-lessons.xml"].push(route);
+  else if (["review", "practice", "diagnostic", "exam"].includes(algebraRole)) groups["sitemap-reviews-practice.xml"].push(route);
+  else if (algebraRole === "mastery-check") groups["sitemap-mastery-checks.xml"].push(route);
+  else if (algebraRole === "investigation") groups["sitemap-investigations.xml"].push(route);
+  else if (algebraRole === "answer-key") groups["sitemap-answer-keys.xml"].push(route);
+  else if (route.startsWith("/subjects/math/calculus/worksheets/") && route !== "/subjects/math/calculus/worksheets/") groups["sitemap-worksheets.xml"].push(route);
   else if (route.startsWith("/subjects/math/calculus/practice-exams/") && route !== "/subjects/math/calculus/practice-exams/") groups["sitemap-practice-exams.xml"].push(route);
   else if (route.startsWith("/subjects/math/calculus/formula-sheets/") && route !== "/subjects/math/calculus/formula-sheets/") groups["sitemap-formula-sheets.xml"].push(route);
   else if (route.startsWith("/subjects/math/calculus/worked-problems/") && route !== "/subjects/math/calculus/worked-problems/") groups["sitemap-worked-problems.xml"].push(route);
@@ -144,7 +162,7 @@ for (const route of indexableRoutes) {
   else if (route.startsWith("/subjects/math/") || route.startsWith("/learn/") || route.startsWith("/answers/")) groups["sitemap-articles.xml"].push(route);
   else groups["sitemap-pages.xml"].push(route);
 }
-const urlset = (routes) => `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${routes.map((route) => `  <url><loc>${xmlEscape(`${canonicalHost}${route}`)}</loc><lastmod>2026-07-23</lastmod></url>`).join("\n")}\n</urlset>\n`;
+const urlset = (routes) => `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${routes.map((route) => `  <url><loc>${xmlEscape(`${canonicalHost}${route}`)}</loc><lastmod>${revisionDate}</lastmod></url>`).join("\n")}\n</urlset>\n`;
 for (const [file, routes] of Object.entries(groups)) {
   await writeFile(resolve(output, file), urlset(routes), "utf8");
 }
@@ -152,7 +170,7 @@ const visualPages = [...resourceCatalog.resources, ...resourceCatalog.promotedVi
 const imageSitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${visualPages.map((resource) => `  <url><loc>${xmlEscape(`${canonicalHost}${resource.canonicalPath}`)}</loc><image:image><image:loc>${xmlEscape(`${canonicalHost}/visuals/resources/${resource.primaryVisual}.png`)}</image:loc><image:title>${xmlEscape(resource.shortTitle)}</image:title><image:caption>${xmlEscape(resource.summary)}</image:caption></image:image></url>`).join("\n")}\n</urlset>\n`;
 await writeFile(resolve(output, "sitemap-images.xml"), imageSitemap, "utf8");
 const sitemapFiles = [...Object.keys(groups), "sitemap-images.xml"];
-const sitemapIndex = `<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapFiles.map((file) => `  <sitemap><loc>${canonicalHost}/${file}</loc><lastmod>2026-07-23</lastmod></sitemap>`).join("\n")}\n</sitemapindex>\n`;
+const sitemapIndex = `<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapFiles.map((file) => `  <sitemap><loc>${canonicalHost}/${file}</loc><lastmod>${revisionDate}</lastmod></sitemap>`).join("\n")}\n</sitemapindex>\n`;
 await writeFile(resolve(output, "sitemap.xml"), sitemapIndex, "utf8");
 const notFoundResponse = await render("/definitely-not-a-page/");
 if (notFoundResponse.status !== 404) throw new Error(`Static 404 render returned ${notFoundResponse.status}`);

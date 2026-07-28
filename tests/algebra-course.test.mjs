@@ -45,6 +45,7 @@ test("the reconciled Algebra inventory matches the approved package", () => {
     interactiveFigures: 9,
     exerciseFamilies: 695,
     assessmentBlueprints: 55,
+    concreteQuestions: 2224,
   });
   assert.equal(new Set(course.routes.map((route) => route.id)).size, 226);
   assert.equal(new Set(course.routes.map((route) => route.path)).size, 226);
@@ -83,7 +84,10 @@ test("every Algebra unit has normalized route, page, assessment, exercise, visua
       "assessment-rubrics.server.json",
       "exercise-families.public.json",
       "exercise-guidance.server.json",
+      "exercise-bank.public.json",
+      "exercise-solutions.server.json",
       "visual-authoring-briefs.v3.json",
+      "visual-semantic-manifests.v1.json",
       "visual-specs.v1.json",
       "compiled-scenes.v1.json",
       "public-runtime-scenes.server.json",
@@ -116,10 +120,81 @@ test("all 417 visuals compile through BVLP with nine route-local interactives an
 
 test("browser-safe Algebra data does not expose answer boundaries or response rubrics", async () => {
   const source = await readFile(resolve(root, "content/algebra/course.public.json"), "utf8");
-  assert.doesNotMatch(source, /canonicalAnswer|acceptedAnswers|answerBoundary|gradingPolicy|A strong response demonstrates/);
+  assert.doesNotMatch(source, /canonicalAnswer|expectedAnswer|acceptedAnswers|completeSolution|answerBoundary|gradingPolicy|A strong response demonstrates/);
   const api = await readFile(resolve(root, "app/api/algebra-course-reveal/route.ts"), "utf8");
   assert.match(api, /getAlgebraAssessmentRubric/);
   assert.match(api, /Write a real attempt/);
+});
+
+test("all 139 learner lessons satisfy the remediation authoring contract", () => {
+  const lessons = course.pages.filter((page) => page.lesson).map((page) => page.lesson);
+  assert.equal(lessons.length, 139);
+  assert.equal(new Set(lessons.map((lesson) => lesson.id)).size, 139);
+  for (const lesson of lessons) {
+    assert.equal(lesson.prerequisiteChecks.length, 3, lesson.id);
+    assert.ok(lesson.exposition.length >= 2, lesson.id);
+    assert.ok(lesson.exposition.every((paragraph) => paragraph.length >= 180), lesson.id);
+    assert.ok(lesson.definitions.length >= 1, lesson.id);
+    assert.deepEqual(lesson.examples.map((example) => example.kind), ["foundation", "representation", "transfer"], lesson.id);
+    assert.ok(lesson.examples.every((example) => example.steps.length >= 2 && example.answer && example.interpretation.length >= 15), lesson.id);
+    assert.ok(lesson.misconceptions.every((item) => item.wrongMove.length >= 10 && item.whyItFails.length >= 20 && item.repair.length >= 15), lesson.id);
+    assert.equal(lesson.practiceQuestions.length, 16, lesson.id);
+    assert.equal(lesson.exercises.length, 16, lesson.id);
+    assert.equal(lesson.exitCheck.length, 2, lesson.id);
+    assert.ok(lesson.sources.length >= 1, lesson.id);
+  }
+});
+
+test("the public learner payload contains no authoring scaffolds or accidental programming tokens", async () => {
+  const source = await readFile(resolve(root, "content/algebra/course.public.json"), "utf8");
+  const forbidden = [
+    "Foundation example: a clean numerical case",
+    "Representation example: apply the same idea",
+    "Transfer example: combine",
+    "Let the anchor figure establish",
+    "Return to the opening",
+    "The closing paragraph should make",
+    "One clean attempt-before-reveal item",
+    "Mastery of the preceding dependency strand",
+    "Connect the representation to the lesson outcome",
+    "A strong response demonstrates",
+  ];
+  for (const phrase of forbidden) assert.ok(!source.includes(phrase), phrase);
+  assert.doesNotMatch(source, /\b(?:undefined|NaN|PLACEHOLDER|TODO|TBD)\b/);
+  for (const route of course.routes) assert.doesNotMatch(route.description, /\b(?:undefined|null|NaN)\b/, route.path);
+});
+
+test("all exercise and assessment surfaces use concrete, protected question records", async () => {
+  assert.equal(course.exerciseBank.length, 2224);
+  assert.equal(new Set(course.exerciseBank.map((question) => question.id)).size, 2224);
+  for (const question of course.exerciseBank) {
+    assert.ok(question.prompt.length >= 10, question.id);
+    assert.ok(question.hint.length >= 5, question.id);
+    assert.ok(question.remediationPath.startsWith("/subjects/math/algebra/"), question.id);
+    assert.ok(question.solutionRef.startsWith("solution:"), question.id);
+  }
+  assert.equal(course.assessments.length, 55);
+  for (const assessment of course.assessments) {
+    assert.equal(assessment.questionIds.length, assessment.questionCount, assessment.id);
+    assert.equal(new Set(assessment.questionIds).size, assessment.questionCount, assessment.id);
+    assert.ok(assessment.questionIds.every((id) => course.exerciseBank.some((question) => question.id === id)), assessment.id);
+  }
+  const protectedRecords = JSON.parse(await readFile(resolve(root, "content/algebra/assessment-rubrics.server.json"), "utf8"));
+  assert.equal(protectedRecords.rubrics.length, 2224);
+  assert.ok(protectedRecords.rubrics.every((record) => record.expectedAnswer && record.completeSolution && record.rubric));
+});
+
+test("all 417 visuals have semantic manifests and no generic scaffold signatures", async () => {
+  let manifestCount = 0;
+  for (const unit of course.units) {
+    const directory = resolve(root, "content/algebra/units", `unit-${unit.code.toLowerCase()}`);
+    const semantics = JSON.parse(await readFile(resolve(directory, "visual-semantic-manifests.v1.json"), "utf8"));
+    const specs = await readFile(resolve(directory, "visual-specs.v1.json"), "utf8");
+    manifestCount += semantics.manifests.length;
+    assert.ok(semantics.manifests.every((manifest) => manifest.requiredObjects.length && manifest.requiredRelationships.length && manifest.assertions.length));
+    assert.doesNotMatch(specs, /Connect the representation to the lesson outcome|context-box|structure-box|meaning-box/);
+  }
+  assert.equal(manifestCount, 417);
 });
 
 test("exact Algebra titles and skills resolve through the shared search index", () => {

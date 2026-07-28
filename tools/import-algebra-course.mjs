@@ -2,6 +2,12 @@ import { createHash } from "node:crypto";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 
+import {
+  buildLessonArtifacts,
+  exactAssessmentCount,
+  publicAssessmentKind,
+} from "./algebra-remediation-content.mjs";
+
 const root = resolve(import.meta.dirname, "..");
 const sourceDirectory = resolve(root, "content/algebra/storyboard-v2");
 const outputDirectory = resolve(root, "content/algebra");
@@ -45,11 +51,16 @@ function parseCsv(source) {
 }
 
 const cleanPath = (path) => path === PACKAGE_COLLISION_PATH ? PRESERVED_COURSE_PATH : path;
+const learnerSafeText = (value) => String(value ?? "")
+  .replace(/\bUndefined zero cases\b/gi, "Cases where zero powers are not defined")
+  .replace(/\bMissing-power placeholders\b/gi, "Explicit gaps for missing powers")
+  .replace(/\s+/g, " ")
+  .trim();
 const publicDescription = (route, unit, lesson) => lesson?.outcome
   ?? (route.page_type === "course-hub"
     ? "A complete Algebra course from arithmetic readiness through functions, logarithms, synthesis, cumulative practice, and assessment."
     : route.page_type === "unit-hub"
-      ? `${unit.role} ${unit.governing_question}`
+      ? `${unit.role} ${unit.governingQuestion}`
       : `${route.title} for ${unit?.title ?? "the complete Algebra course"}, with an explicit attempt-first assessment blueprint.`);
 const publicExercise = (exercise) => {
   const copy = { ...exercise };
@@ -124,11 +135,11 @@ const visualBriefs = rawVisuals.map((visual) => ({
   lessonId: visual.lesson_id,
   unitCode: visual.unit,
   role: visual.figure_role,
-  description: visual.description,
+  description: learnerSafeText(visual.description),
   interactive: visual.interaction_required === "yes",
   rendererRequirement: visual.renderer_requirement,
   path: cleanPath(visual.canonical_lesson_path),
-  altText: `${visual.figure_role} figure for ${lessonsById.get(visual.lesson_id)?.title ?? visual.lesson_id}: ${visual.description}`,
+  altText: `Figure for ${lessonsById.get(visual.lesson_id)?.title ?? visual.lesson_id}: ${learnerSafeText(visual.description)}`,
 }));
 const exercises = rawExercises.map((exercise) => ({
   id: exercise.exercise_set,
@@ -143,9 +154,10 @@ const exercises = rawExercises.map((exercise) => ({
 const assessmentBlueprints = rawAssessments.map((assessment) => ({
   id: assessment.assessment_id,
   unitCode: assessment.unit === "course" ? null : assessment.unit,
-  kind: assessment.kind,
+  kind: publicAssessmentKind(assessment.kind),
   path: assessment.path,
-  questionCount: assessment.question_count,
+  sourceQuestionRange: assessment.question_count,
+  questionCount: exactAssessmentCount(assessment.question_count),
   durationMinutes: assessment.duration_minutes,
   grading: assessment.grading,
   answerRoute: assessment.answer_route,
@@ -200,12 +212,45 @@ const searchRecords = routes.map((route) => ({
   keywords: route.searchTerms,
   priority: route.pageType === "course-hub" ? 99 : route.pageType === "unit-hub" ? 96 : practicePageTypes.has(route.pageType) ? 92 : 84,
 }));
+
+const lessonArtifacts = new Map();
+for (const unit of units) {
+  const unitLessons = [...lessonsById.values()]
+    .filter((candidate) => candidate.unitCode === unit.code)
+    .sort((left, right) => left.sequence - right.sequence);
+  for (const [index, lesson] of unitLessons.entries()) {
+    lessonArtifacts.set(lesson.id, buildLessonArtifacts({
+      lesson,
+      unit,
+      figures: visualBriefs.filter((visual) => visual.lessonId === lesson.id),
+      families: exercises.filter((exercise) => exercise.lessonId === lesson.id),
+      previous: index > 0 ? unitLessons[index - 1] : null,
+      next: index < unitLessons.length - 1 ? unitLessons[index + 1] : null,
+    }));
+  }
+}
+const concreteQuestions = [...lessonArtifacts.values()].flatMap((artifact) => artifact.questions);
+const protectedSolutions = [...lessonArtifacts.values()].flatMap((artifact) => artifact.solutions);
+const questionsByUnit = Map.groupBy(concreteQuestions, (question) => question.unitCode);
+const questionById = new Map(concreteQuestions.map((question) => [question.id, question]));
+const materializedAssessments = assessmentBlueprints.map((assessment) => {
+  const pool = assessment.unitCode ? questionsByUnit.get(assessment.unitCode) ?? [] : concreteQuestions;
+  if (pool.length === 0) throw new Error(`Assessment ${assessment.id} has no concrete question pool.`);
+  const offset = [...assessment.id].reduce((sum, character) => sum + character.charCodeAt(0), 0) % pool.length;
+  const questionIds = Array.from({ length: assessment.questionCount }, (_, index) => pool[(offset + index) % pool.length].id);
+  return {
+    ...assessment,
+    questionIds,
+    solutionAccess: assessment.answerRoute?.startsWith("/") ? assessment.answerRoute : "Attempt-gated response guide on this route.",
+    cumulativePolicy: assessment.cumulativeShare,
+  };
+});
+
 const routePages = routes.map((route) => {
   const unit = unitsByCode.get(route.unitCode);
   const lesson = route.lessonId ? lessonsById.get(route.lessonId) : undefined;
   const unitLessons = [...lessonsById.values()].filter((candidate) => candidate.unitCode === route.unitCode).sort((a, b) => a.sequence - b.sequence);
-  const assessment = assessmentBlueprints.find((candidate) => candidate.path === route.path || candidate.answerRoute === route.path);
-  const lessonIndex = lesson ? unitLessons.findIndex((candidate) => candidate.id === lesson.id) : -1;
+  const assessment = materializedAssessments.find((candidate) => candidate.path === route.path || candidate.answerRoute === route.path);
   const breadcrumbs = [
     { name: "Home", path: "/" },
     { name: "Mathematics", path: "/subjects/math/" },
@@ -216,26 +261,10 @@ const routePages = routes.map((route) => {
   return {
     route,
     unit: unit ?? null,
-    lesson: lesson ? {
-      ...lesson,
-      figures: visualBriefs.filter((visual) => visual.lessonId === lesson.id),
-      exerciseFamilies: exercises
-        .filter((exercise) => exercise.lessonId === lesson.id)
-        .map(publicExercise),
-      previous: lessonIndex > 0 ? unitLessons[lessonIndex - 1] : null,
-      next: lessonIndex >= 0 && lessonIndex < unitLessons.length - 1 ? unitLessons[lessonIndex + 1] : null,
-    } : null,
+    lesson: lesson ? lessonArtifacts.get(lesson.id).publicLesson : null,
     assessment: assessment ?? null,
-    assessmentPrompts: assessment
-      ? (assessment.unitCode ? unitLessons : [...lessonsById.values()]
-        .filter((candidate) => candidate.sequence <= 3))
-        .map((candidate) => ({
-          id: `${assessment.id}-${candidate.id.toLowerCase().replace(".", "-")}`,
-          lessonId: candidate.id,
-          prompt: candidate.checkpoint,
-        }))
-      : [],
-    unitLessons: route.pageType === "unit-hub" ? unitLessons : [],
+    assessmentPrompts: assessment ? assessment.questionIds.map((id) => questionById.get(id)) : [],
+    unitLessons: route.pageType === "unit-hub" ? unitLessons.map((candidate) => lessonArtifacts.get(candidate.id).publicLesson) : [],
     units: route.pageType === "course-hub" ? units : [],
     breadcrumbs,
   };
@@ -287,11 +316,13 @@ const coursePublic = {
     interactiveFigures: visualBriefs.filter((visual) => visual.interactive).length,
     exerciseFamilies: exercises.length,
     assessmentBlueprints: assessmentBlueprints.length,
+    concreteQuestions: concreteQuestions.length,
   },
   units,
   routes,
   pages: routePages,
-  assessmentBlueprints,
+  assessments: materializedAssessments,
+  exerciseBank: concreteQuestions,
   learningGraph: graph,
   release: {
     state: "private-preview-required",
@@ -309,22 +340,17 @@ const provenanceServer = {
   releaseRestriction: "Private preview and explicit owner approval are required before production publication.",
   collisionReport: "content/algebra/route-collision-report.json",
 };
-const assessmentRubricRecords = [
-    ...[...lessonsById.values()].map((lesson) => ({
-      id: `lesson-${lesson.id.toLowerCase().replace(".", "-")}-checkpoint`,
-      rubric: `A strong response demonstrates this outcome: ${lesson.outcome}. It states a method, preserves restrictions and units when relevant, and includes a check or interpretation.`,
-    })),
-    ...routePages.flatMap((page) => page.assessmentPrompts.map((prompt) => {
-    const lesson = lessonsById.get(prompt.lessonId);
-    return {
-      id: prompt.id,
-      rubric: `A strong response demonstrates this outcome: ${lesson?.outcome ?? "choose and justify an appropriate Algebra method"}. It states a method, preserves restrictions and units when relevant, and includes a check or interpretation.`,
-    };
-    })),
-];
 const assessmentRubricsServer = {
   schemaVersion: 1,
-  rubrics: [...new Map(assessmentRubricRecords.map((rubric) => [rubric.id, rubric])).values()],
+  rubrics: protectedSolutions.map((solution) => ({
+    id: questionById.get(solution.questionId)?.id,
+    solutionRef: solution.id,
+    rubric: solution.detailedRubric,
+    expectedAnswer: solution.expectedAnswer,
+    acceptedAlternatives: solution.acceptedAlternatives,
+    completeSolution: solution.completeSolution,
+    gradingBoundary: solution.gradingBoundary,
+  })),
 };
 
 function json(value) {
@@ -338,6 +364,11 @@ const outputs = new Map([
   [resolve(outputDirectory, "route-collision-report.json"), json(collisionReport)],
   [resolve(outputDirectory, "provenance.server.json"), json(provenanceServer)],
   [resolve(outputDirectory, "assessment-rubrics.server.json"), json(assessmentRubricsServer)],
+  [resolve(outputDirectory, "authoring", "lessons.private.json"), json({
+    schemaVersion: 1,
+    private: true,
+    lessons: [...lessonArtifacts.values()].map((artifact) => artifact.privateAuthoring),
+  })],
 ]);
 
 for (const unit of units) {
@@ -345,19 +376,17 @@ for (const unit of units) {
   const unitRoutes = routes.filter((route) => route.unitCode === unit.code);
   const unitLessons = [...lessonsById.values()].filter((lesson) => lesson.unitCode === unit.code).sort((a, b) => a.sequence - b.sequence);
   const unitPages = routePages.filter((page) => page.route.unitCode === unit.code);
-  const unitAssessments = assessmentBlueprints.filter((assessment) => assessment.unitCode === unit.code);
-  outputs.set(resolve(directory, "unit-index.public.json"), json({ schemaVersion: 1, unit, lessons: unitLessons }));
+  const unitAssessments = materializedAssessments.filter((assessment) => assessment.unitCode === unit.code);
+  const publicUnitLessons = unitLessons.map((lesson) => lessonArtifacts.get(lesson.id).publicLesson);
+  const unitQuestions = questionsByUnit.get(unit.code) ?? [];
+  outputs.set(resolve(directory, "unit-index.public.json"), json({ schemaVersion: 1, unit, lessons: publicUnitLessons }));
   outputs.set(resolve(directory, "routes.public.json"), json({ schemaVersion: 1, unit, routes: unitRoutes }));
   outputs.set(resolve(directory, "pages.server.json"), json({ schemaVersion: 1, unitId: unit.id, pages: unitPages }));
   outputs.set(resolve(directory, "assessments.public.json"), json({ schemaVersion: 1, unitId: unit.id, assessments: unitAssessments }));
   outputs.set(resolve(directory, "assessment-rubrics.server.json"), json({
     schemaVersion: 1,
     unitId: unit.id,
-    rubrics: unitPages.flatMap((page) => page.assessmentPrompts.map(({ id, lessonId }) => ({
-      id,
-      rubric: assessmentRubricsServer.rubrics.find((rubric) => rubric.id === id)?.rubric
-        ?? `A strong response demonstrates the ${lessonId} outcome and includes a check.`,
-    }))),
+    rubrics: assessmentRubricsServer.rubrics.filter((rubric) => unitQuestions.some((question) => question.id === rubric.id)),
   }));
   outputs.set(resolve(directory, "exercise-families.public.json"), json({
     schemaVersion: 1,
@@ -368,6 +397,17 @@ for (const unit of units) {
     schemaVersion: 1,
     unitId: unit.id,
     families: exercises.filter((exercise) => exercise.unitCode === unit.code),
+  }));
+  outputs.set(resolve(directory, "exercise-bank.public.json"), json({
+    schemaVersion: 1,
+    unitId: unit.id,
+    questionCount: unitQuestions.length,
+    questions: unitQuestions,
+  }));
+  outputs.set(resolve(directory, "exercise-solutions.server.json"), json({
+    schemaVersion: 1,
+    unitId: unit.id,
+    solutions: protectedSolutions.filter((solution) => unitQuestions.some((question) => question.id === solution.questionId)),
   }));
   outputs.set(resolve(directory, "visual-authoring-briefs.v3.json"), json({
     schemaVersion: 3,

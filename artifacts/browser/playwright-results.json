@@ -1,7 +1,7 @@
 {
   "config": {
-    "configFile": "/Users/darksmarskin/Documents/local2/worktrees/bettergrades-algebra-full-course-20260727/playwright.config.mjs",
-    "rootDir": "/Users/darksmarskin/Documents/local2/worktrees/bettergrades-algebra-full-course-20260727/tests/browser",
+    "configFile": "/Users/darksmarskin/Documents/local2/worktrees/bettergrades-algebra-remediation-v3/playwright.config.mjs",
+    "rootDir": "/Users/darksmarskin/Documents/local2/worktrees/bettergrades-algebra-remediation-v3/tests/browser",
     "forbidOnly": false,
     "fullyParallel": false,
     "globalSetup": null,
@@ -16,7 +16,7 @@
     "preserveOutput": "always",
     "projects": [
       {
-        "outputDir": "/Users/darksmarskin/Documents/local2/worktrees/bettergrades-algebra-full-course-20260727/artifacts/browser/playwright-output",
+        "outputDir": "/Users/darksmarskin/Documents/local2/worktrees/bettergrades-algebra-remediation-v3/artifacts/browser/playwright-output",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
@@ -24,7 +24,7 @@
         },
         "id": "",
         "name": "",
-        "testDir": "/Users/darksmarskin/Documents/local2/worktrees/bettergrades-algebra-full-course-20260727/tests/browser",
+        "testDir": "/Users/darksmarskin/Documents/local2/worktrees/bettergrades-algebra-remediation-v3/tests/browser",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -89,12 +89,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 359,
+                  "duration": 544,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-28T01:11:19.583Z",
+                  "startTime": "2026-07-28T22:26:03.420Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -123,12 +123,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 348,
+                  "duration": 503,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-28T01:11:20.392Z",
+                  "startTime": "2026-07-28T22:26:04.837Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -157,12 +157,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 344,
+                  "duration": 349,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-28T01:11:20.752Z",
+                  "startTime": "2026-07-28T22:26:05.354Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -191,12 +191,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 522,
+                  "duration": 557,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-28T01:11:21.104Z",
+                  "startTime": "2026-07-28T22:26:05.711Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -210,7 +210,7 @@
           "column": 1
         },
         {
-          "title": "open-response checks stay locked until an attempt and reveal only a rubric",
+          "title": "open-response checks stay locked until an attempt and then reveal the protected guide",
           "ok": true,
           "tags": [],
           "tests": [
@@ -225,12 +225,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2324,
+                  "duration": 2401,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-28T01:11:21.634Z",
+                  "startTime": "2026-07-28T22:26:06.276Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -238,9 +238,255 @@
               "status": "expected"
             }
           ],
-          "id": "3c6710dbf81a45d22a83-9693e4820530b0ce3874",
+          "id": "3c6710dbf81a45d22a83-56455115f3f5a60643cc",
           "file": "algebra-course.spec.mjs",
           "line": 38,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "algebra-remediation.spec.mjs",
+      "file": "algebra-remediation.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "remediated Algebra surfaces are complete and bounded at desktop",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4442,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-07-28T22:26:08.693Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4e4fbc396443197a3b7a-252949d80335b22c2f53",
+          "file": "algebra-remediation.spec.mjs",
+          "line": 32,
+          "column": 3
+        },
+        {
+          "title": "remediated Algebra surfaces are complete and bounded at tablet",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4507,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-07-28T22:26:13.145Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4e4fbc396443197a3b7a-32716410d4c46bbd3d81",
+          "file": "algebra-remediation.spec.mjs",
+          "line": 32,
+          "column": 3
+        },
+        {
+          "title": "remediated Algebra surfaces are complete and bounded at mobile",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4425,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-07-28T22:26:17.659Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4e4fbc396443197a3b7a-8db83735f50bc1e3878c",
+          "file": "algebra-remediation.spec.mjs",
+          "line": 32,
+          "column": 3
+        },
+        {
+          "title": "remediated Algebra surfaces are complete and bounded at small-mobile",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4438,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-07-28T22:26:22.090Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4e4fbc396443197a3b7a-b0861f6d178ee3cf60d8",
+          "file": "algebra-remediation.spec.mjs",
+          "line": 32,
+          "column": 3
+        },
+        {
+          "title": "Algebra lessons remain substantive without JavaScript",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 266,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-07-28T22:26:26.538Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4e4fbc396443197a3b7a-583ad037333594291832",
+          "file": "algebra-remediation.spec.mjs",
+          "line": 52,
+          "column": 1
+        },
+        {
+          "title": "Algebra lesson print fallback is bounded and preserves all three figures",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 416,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-07-28T22:26:26.812Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4e4fbc396443197a3b7a-a586822501fa8c87323c",
+          "file": "algebra-remediation.spec.mjs",
+          "line": 63,
+          "column": 1
+        },
+        {
+          "title": "all nine bounded Algebra interactives respond to keyboard input",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3282,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-07-28T22:26:27.236Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4e4fbc396443197a3b7a-6572eb54429932c4c08b",
+          "file": "algebra-remediation.spec.mjs",
+          "line": 71,
           "column": 1
         }
       ]
@@ -267,12 +513,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 929,
+                  "duration": 1009,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-28T01:11:23.977Z",
+                  "startTime": "2026-07-28T22:26:30.538Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -301,12 +547,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3283,
+                  "duration": 3451,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-28T01:11:24.914Z",
+                  "startTime": "2026-07-28T22:26:31.555Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -335,12 +581,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 7362,
+                  "duration": 7768,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-28T01:11:28.204Z",
+                  "startTime": "2026-07-28T22:26:35.014Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -377,12 +623,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 814,
+                  "duration": 874,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-28T01:11:35.579Z",
+                  "startTime": "2026-07-28T22:26:42.797Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -411,12 +657,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1358,
+                  "duration": 1453,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-28T01:11:36.401Z",
+                  "startTime": "2026-07-28T22:26:43.680Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -445,12 +691,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 9885,
+                  "duration": 10091,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-28T01:11:37.765Z",
+                  "startTime": "2026-07-28T22:26:45.140Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -479,12 +725,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 249,
+                  "duration": 276,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-28T01:11:47.657Z",
+                  "startTime": "2026-07-28T22:26:55.239Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -513,12 +759,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1224,
+                  "duration": 1502,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-28T01:11:47.913Z",
+                  "startTime": "2026-07-28T22:26:55.521Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -555,12 +801,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 754,
+                  "duration": 795,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-28T01:11:49.150Z",
+                  "startTime": "2026-07-28T22:26:57.039Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -589,12 +835,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 687,
+                  "duration": 721,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-28T01:11:49.911Z",
+                  "startTime": "2026-07-28T22:26:57.844Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -623,12 +869,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 419,
+                  "duration": 459,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-28T01:11:50.606Z",
+                  "startTime": "2026-07-28T22:26:58.573Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -657,12 +903,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 386,
+                  "duration": 419,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-28T01:11:51.031Z",
+                  "startTime": "2026-07-28T22:26:59.038Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -691,12 +937,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 357,
+                  "duration": 367,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-28T01:11:51.424Z",
+                  "startTime": "2026-07-28T22:26:59.464Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -725,12 +971,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 524,
+                  "duration": 558,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-28T01:11:51.788Z",
+                  "startTime": "2026-07-28T22:26:59.838Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -767,12 +1013,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 504,
+                  "duration": 545,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-28T01:11:52.327Z",
+                  "startTime": "2026-07-28T22:27:00.414Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -801,12 +1047,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 11665,
+                  "duration": 12036,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-28T01:11:52.838Z",
+                  "startTime": "2026-07-28T22:27:00.966Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -835,12 +1081,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 11655,
+                  "duration": 12021,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-28T01:12:04.510Z",
+                  "startTime": "2026-07-28T22:27:13.008Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -869,12 +1115,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 11873,
+                  "duration": 12208,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-28T01:12:16.173Z",
+                  "startTime": "2026-07-28T22:27:25.038Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -903,12 +1149,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 581,
+                  "duration": 733,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-28T01:12:28.052Z",
+                  "startTime": "2026-07-28T22:27:37.253Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -937,12 +1183,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1312,
+                  "duration": 1518,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-28T01:12:28.641Z",
+                  "startTime": "2026-07-28T22:27:37.994Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -971,12 +1217,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1066,
+                  "duration": 1040,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-28T01:12:29.961Z",
+                  "startTime": "2026-07-28T22:27:39.522Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1005,12 +1251,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1776,
+                  "duration": 1801,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-28T01:12:31.033Z",
+                  "startTime": "2026-07-28T22:27:40.570Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1039,12 +1285,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 5463,
+                  "duration": 5474,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-28T01:12:32.815Z",
+                  "startTime": "2026-07-28T22:27:42.377Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1073,12 +1319,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3500,
+                  "duration": 3555,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-28T01:12:38.284Z",
+                  "startTime": "2026-07-28T22:27:47.858Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1096,9 +1342,9 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-07-28T01:11:18.633Z",
-    "duration": 83231.618,
-    "expected": 29,
+    "startTime": "2026-07-28T22:26:02.377Z",
+    "duration": 109118.182,
+    "expected": 36,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0

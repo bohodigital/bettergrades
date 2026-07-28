@@ -134,7 +134,7 @@ test("Pages Worker serves both bounded Algebra course assessment APIs", async ()
     new Request("https://bettergrades.net/api/algebra-course-check", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ id: "a0-review-a0-1", answer: "I placed the values on a number line and checked their order." }),
+      body: JSON.stringify({ id: "a0-1-q16", answer: "I placed the values on a number line and checked their order." }),
     }),
     environment,
   );
@@ -145,12 +145,12 @@ test("Pages Worker serves both bounded Algebra course assessment APIs", async ()
     new Request("https://bettergrades.net/api/algebra-course-reveal", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ id: "a0-review-a0-1", attempt: "I placed the values on a number line and checked their order." }),
+      body: JSON.stringify({ id: "a0-1-q16", attempt: "I placed the values on a number line and checked their order." }),
     }),
     environment,
   );
   assert.equal(revealResponse.status, 200);
-  assert.match((await revealResponse.json()).rubric, /Interpret sign as position, direction, and change/);
+  assert.match((await revealResponse.json()).rubric, /interpret sign as position, direction, and change/i);
 });
 
 test("Pages package preserves the exact Calculus and Algebra visual inventories", async () => {
