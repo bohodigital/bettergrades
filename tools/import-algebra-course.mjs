@@ -179,6 +179,27 @@ const routes = rawRoutes.map((route) => {
 });
 
 const routesByPath = new Map(routes.map((route) => [route.path, route]));
+const practicePageTypes = new Set(["answer-key", "diagnostic", "exam", "investigation", "mastery-check", "practice", "review"]);
+const routeLabel = (pageType) => {
+  if (pageType === "course-hub") return "Complete course";
+  if (pageType === "unit-hub") return "Unit map";
+  if (pageType === "answer-key") return "Response guide";
+  if (pageType === "mastery-check") return "Mastery check";
+  return pageType.replaceAll("-", " ").replace(/\b\w/g, (letter) => letter.toUpperCase());
+};
+const searchRecords = routes.map((route) => ({
+  id: route.id,
+  kind: practicePageTypes.has(route.pageType) ? "practice" : route.pageType.endsWith("hub") ? "topic" : "guide",
+  title: route.title,
+  description: route.description,
+  path: route.path,
+  domainSlug: "algebra",
+  domainName: "Algebra",
+  topicName: route.unitCode ? `Unit ${route.unitCode}` : "Complete Algebra course",
+  label: routeLabel(route.pageType),
+  keywords: route.searchTerms,
+  priority: route.pageType === "course-hub" ? 99 : route.pageType === "unit-hub" ? 96 : practicePageTypes.has(route.pageType) ? 92 : 84,
+}));
 const routePages = routes.map((route) => {
   const unit = unitsByCode.get(route.unitCode);
   const lesson = route.lessonId ? lessonsById.get(route.lessonId) : undefined;
@@ -312,6 +333,8 @@ function json(value) {
 
 const outputs = new Map([
   [resolve(outputDirectory, "course.public.json"), json(coursePublic)],
+  [resolve(outputDirectory, "routes.public.json"), json({ schemaVersion: 1, routes })],
+  [resolve(outputDirectory, "search.public.json"), json({ schemaVersion: 1, records: searchRecords })],
   [resolve(outputDirectory, "route-collision-report.json"), json(collisionReport)],
   [resolve(outputDirectory, "provenance.server.json"), json(provenanceServer)],
   [resolve(outputDirectory, "assessment-rubrics.server.json"), json(assessmentRubricsServer)],

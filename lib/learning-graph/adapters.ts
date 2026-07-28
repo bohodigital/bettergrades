@@ -1,5 +1,6 @@
 import auditInventory from "../../data/ia/page-inventory.json" with { type: "json" };
-import { algebraCourse, algebraCourseRoutes } from "../algebra/algebra-course.mjs";
+import { algebraCourse } from "../algebra/algebra-course.mjs";
+import { algebraCourseRoutes } from "../algebra/algebra-course-index.mjs";
 import { calculusUnitRoutes, calculusUnits } from "../calculus/calculus-units-index.mjs";
 import { limitsUnitRoutes } from "../calculus/limits-unit-index.mjs";
 import { publishedResourcePages, resourceHubs } from "../resources/catalog.mjs";

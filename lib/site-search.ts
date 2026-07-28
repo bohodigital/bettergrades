@@ -1,6 +1,6 @@
 import { limitsUnitSearchRecords } from "./calculus/limits-unit-index.mjs";
 import { calculusUnitRoutes, calculusUnitSearchRecords, supersededCalculusPaths } from "./calculus/calculus-units-index.mjs";
-import { algebraCourseRoutes, algebraCourseSearchRecords } from "./algebra/algebra-course.mjs";
+import { algebraCourseSearchRecords } from "./algebra/algebra-course-search.mjs";
 import { problems } from "./content";
 import { domains, resourceFormatLabel, resources, tools, topics } from "./registry/catalog";
 import { assessments } from "./registry/practice";
@@ -49,7 +49,7 @@ const domainFor = (domainId: string) => domains.find((domain) => domain.id === d
 const topicFor = (topicId: string) => topics.find((topic) => topic.id === topicId);
 
 const calculusUnitPaths = new Set(calculusUnitRoutes.map((route) => route.path));
-const algebraCoursePaths = new Set(algebraCourseRoutes.map((route) => route.path));
+const algebraCoursePaths = new Set((algebraCourseSearchRecords as SiteSearchRecord[]).map((record) => record.path));
 const supersededCalculusRoutePaths = new Set(supersededCalculusPaths);
 const guideRecords: SiteSearchRecord[] = resources.filter((resource) => !algebraCoursePaths.has(resource.path) && !calculusUnitPaths.has(resource.path) && !supersededCalculusRoutePaths.has(resource.path)).map((resource) => {
   const domain = domainFor(resource.domainId)!;

@@ -1,6 +1,6 @@
 import { limitsUnitRoutes } from "../calculus/limits-unit-index.mjs";
 import { calculusUnitRoutes, supersededCalculusPaths } from "../calculus/calculus-units-index.mjs";
-import { algebraCourseRoutes } from "../algebra/algebra-course.mjs";
+import { algebraCourseRoutes } from "../algebra/algebra-course-index.mjs";
 import { domains, resources, subjects, tools, topics } from "./catalog";
 import { assessments } from "./practice";
 import type { RedirectRecord, RegistryRoute } from "./schema";

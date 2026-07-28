@@ -3,6 +3,7 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 import { limitsUnitRoutes } from "../lib/calculus/limits-unit-index.mjs";
 import { calculusUnitRoutes } from "../lib/calculus/calculus-units-index.mjs";
+import { algebraCourseRoutes } from "../lib/algebra/algebra-course-index.mjs";
 import { publishedResourcePages } from "../lib/resources/catalog.mjs";
 
 const expectedLimitsVisuals = [
@@ -25,10 +26,10 @@ function escapeRegExp(value) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
+const workerPromise = import(new URL("../dist/server/index.js", import.meta.url).href).then(({ default: worker }) => worker);
+
 async function render(path = "/") {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
-  const { default: worker } = await import(workerUrl.href);
+  const worker = await workerPromise;
   return worker.fetch(
     new Request(`http://localhost${path}`, { headers: { accept: "text/html" } }),
     { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
@@ -37,9 +38,7 @@ async function render(path = "/") {
 }
 
 async function createRenderer() {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}-route-audit`);
-  const { default: worker } = await import(workerUrl.href);
+  const worker = await workerPromise;
   return (path = "/") => worker.fetch(
     new Request(`http://localhost${path}`, { headers: { accept: "text/html" } }),
     { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
@@ -122,10 +121,11 @@ test("subject and course hubs expose the organized math library", async () => {
   const algebra = await render("/subjects/math/algebra/");
   assert.equal(algebra.status, 200);
   const algebraHtml = await algebra.text();
-  assert.match(algebraHtml, /Algebra/);
-  assert.match(algebraHtml, /Expressions &amp; Equations/);
-  assert.match(algebraHtml, /Polynomials &amp; Factoring/);
-  assert.match(algebraHtml, /Open the first published guide/);
+  assert.match(algebraHtml, /Algebra: Quantities, Equations, and Structure/);
+  assert.match(algebraHtml, /Fifteen connected units/);
+  assert.match(algebraHtml, /Arithmetic Readiness and Repair/);
+  assert.match(algebraHtml, /Algebra Synthesis and Precalculus Readiness/);
+  assert.match(algebraHtml, /Quick-reference layer preserved/);
 });
 
 test("sitewide navigation exposes learner paths globally and course hierarchy locally", async () => {
@@ -508,10 +508,11 @@ test("all registry articles not superseded by a released unit render in their or
   const sitemap = await render("/sitemap.xml");
   const sitemapBody = await sitemap.text();
   const unitPaths = new Set(calculusUnitRoutes.map((route) => route.path));
+  const algebraPaths = new Set(algebraCourseRoutes.map((route) => route.path));
   const resourcePaths = new Set(publishedResourcePages.map((resource) => resource.canonicalPath));
   const paths = [...sitemapBody.matchAll(/<loc>https:\/\/bettergrades\.net(\/subjects\/math\/(?:algebra|calculus)\/[^<]+\/[^<]+\/)<\/loc>/g)]
     .map((match) => match[1])
-    .filter((path) => path.split("/").filter(Boolean).length === 5 && !path.includes("/unit/") && !unitPaths.has(path) && !resourcePaths.has(path));
+    .filter((path) => path.split("/").filter(Boolean).length === 5 && !path.includes("/unit/") && !unitPaths.has(path) && !algebraPaths.has(path) && !resourcePaths.has(path));
   assert.equal(paths.length, new Set(paths).size);
   assert.ok(paths.length > 50, "the existing library must remain substantially intact");
 
