@@ -145,6 +145,35 @@ test("all 139 learner lessons satisfy the remediation authoring contract", () =>
   }
 });
 
+test("A0–A2 are fully authored foundations rather than generic lesson-template variants", async () => {
+  const lessons = course.pages
+    .filter((page) => page.lesson && /^A[012]\./.test(page.lesson.id))
+    .map((page) => page.lesson);
+  const questions = lessons.flatMap((lesson) => lesson.practiceQuestions);
+  const publicFoundation = JSON.stringify(lessons);
+  assert.equal(lessons.length, 28);
+  assert.ok(lessons.every((lesson) => lesson.foundationEdition === "authored-v1"));
+  assert.equal(questions.length, 448);
+  assert.equal(new Set(questions.map((question) => question.prompt)).size, 448);
+  assert.ok(lessons.every((lesson) => new Set(lesson.examples.map((example) => example.prompt)).size === 3));
+  assert.doesNotMatch(publicFoundation, /Begin by naming the mathematical objects before manipulating them/);
+  assert.doesNotMatch(publicFoundation, /A classmate reaches/);
+  assert.doesNotMatch(publicFoundation, /Create a labeled table, graph, number line, or diagram/);
+
+  const protectedSolutions = [];
+  for (const unitCode of ["a0", "a1", "a2"]) {
+    const records = JSON.parse(await readFile(resolve(root, "content/algebra/units", `unit-${unitCode}`, "exercise-solutions.server.json"), "utf8"));
+    protectedSolutions.push(...records.solutions);
+  }
+  assert.equal(protectedSolutions.length, 448);
+  for (const lesson of lessons) {
+    const lessonSlug = lesson.id.toLowerCase().replace(".", "-");
+    const lessonSolutions = protectedSolutions.filter((solution) => solution.questionId.split("-q")[0] === lessonSlug);
+    assert.equal(lessonSolutions.length, 16, lesson.id);
+    assert.equal(new Set(lessonSolutions.map((solution) => solution.completeSolution)).size, 16, lesson.id);
+  }
+});
+
 test("the public learner payload contains no authoring scaffolds or accidental programming tokens", async () => {
   const source = await readFile(resolve(root, "content/algebra/course.public.json"), "utf8");
   const forbidden = [
@@ -195,6 +224,20 @@ test("all 417 visuals have semantic manifests and no generic scaffold signatures
     assert.doesNotMatch(specs, /Connect the representation to the lesson outcome|context-box|structure-box|meaning-box/);
   }
   assert.equal(manifestCount, 417);
+});
+
+test("all 84 A0–A2 visuals carry lesson-authored mathematical labels and relationships", async () => {
+  let count = 0;
+  for (const unitCode of ["a0", "a1", "a2"]) {
+    const directory = resolve(root, "content/algebra/units", `unit-${unitCode}`);
+    const semantics = JSON.parse(await readFile(resolve(directory, "visual-semantic-manifests.v1.json"), "utf8"));
+    const specs = await readFile(resolve(directory, "visual-specs.v1.json"), "utf8");
+    count += semantics.manifests.length;
+    assert.ok(semantics.manifests.every((manifest) => manifest.requiredLabels.length >= 4));
+    assert.ok(semantics.manifests.every((manifest) => manifest.requiredObjects.length >= 4));
+    assert.doesNotMatch(specs, /"id": "checked-result"|generic three-panel scaffold/);
+  }
+  assert.equal(count, 84);
 });
 
 test("exact Algebra titles and skills resolve through the shared search index", () => {

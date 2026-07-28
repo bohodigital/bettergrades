@@ -2,6 +2,7 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 
 import { buildVisualSemanticManifest } from "../algebra-remediation-content.mjs";
+import { getFoundationVisualProfile } from "../algebra-foundations/visuals.mjs";
 
 const root = resolve(import.meta.dirname, "../..");
 const checkOnly = process.argv.includes("--check");
@@ -114,20 +115,32 @@ function semanticPhrases(brief) {
 }
 
 function numberLineSpec(brief) {
+  const profile = getFoundationVisualProfile(brief.id);
   const phrases = semanticPhrases(brief);
+  const labels = profile?.labels ?? ["−3", "0", "3"];
+  const layers = profile ? [
+    segment("number-line", -5.5, 0, 5.5, 0, `Number line for ${brief.description}`, "double"),
+    point("left-value", -3, 0, `Left marked value: ${labels[0]}.`, "diamond"),
+    point("origin", 0, 0, `Center marked value: ${labels[1]}.`, "square"),
+    point("right-value", 3, 0, `Right marked value: ${labels[2]}.`, "circle"),
+    layerLabel("left-label", labels[0], -3.5, -1.1),
+    layerLabel("center-label", labels[1], -0.55, -1.1),
+    layerLabel("right-label", labels[2], 2.5, -1.1),
+    layerLabel("relationship-label", profile.note, -5, 1.35),
+  ] : [
+    segment("number-line", -5.5, 0, 5.5, 0, `Number line for ${brief.description}`, "double"),
+    point("left-value", -3, 0, "Marked value at negative three.", "diamond"),
+    point("origin", 0, 0, "Origin at zero.", "square"),
+    point("right-value", 3, 0, "Marked value at positive three.", "circle"),
+    layerLabel("relationship-label", phrases.join(" · "), -5, 1.35),
+  ];
   const spec = {
     ...base(brief, false),
     kind: "number-line",
     coordinateSpace: { type: "number-line", variables: ["x"], unitsRequired: false },
     viewport: { xMin: -6, xMax: 6, yMin: -2, yMax: 2, aspectRatio: 3, padding: 0.05 },
     axes: { mode: "explicit", axes: [{ id: "value-axis", orientation: "x", label: rich(phrases[0]), scale: "linear", tickMode: "fixed-step", tickStep: 1, showGrid: false }] },
-    layers: [
-      segment("number-line", -5.5, 0, 5.5, 0, `Number line for ${brief.description}`, "double"),
-      point("left-value", -3, 0, "Marked value at negative three.", "diamond"),
-      point("origin", 0, 0, "Origin at zero.", "square"),
-      point("right-value", 3, 0, "Marked value at positive three.", "circle"),
-      layerLabel("relationship-label", phrases.join(" · "), -5, 1.35),
-    ],
+    layers,
     controls: [],
     requiredCapabilities: ["static-fallback", "number-line", "open-closed-points", "annotations"],
     preferredRenderer: "prefer-static",
@@ -172,6 +185,8 @@ function graphSpec(brief) {
 }
 
 function lessonMathLabels(brief) {
+  const foundationProfile = getFoundationVisualProfile(brief.id);
+  if (foundationProfile) return foundationProfile.labels;
   const lesson = course.pages.find((page) => page.lesson?.id === brief.lessonId)?.lesson;
   const text = `${lesson?.title ?? ""} ${lesson?.outcome ?? ""} ${brief.description}`;
   if (/logarithm|exponential|growth|decay|geometric/i.test(text)) return ["2³ = 8", "log₂(8) = 3", "inverse operations"];
@@ -185,6 +200,53 @@ function lessonMathLabels(brief) {
   if (/ratio|rate|percent|proportion|variation/i.test(text)) return ["3/5 = w/20", "w = 12", "3:5 = 12:20"];
   if (/complex number/i.test(text)) return ["(3 + 2i)(3 − 2i)", "9 − 4i²", "13"];
   return ["3x + 5 = 20", "3x = 15", "x = 5"];
+}
+
+function foundationFlowSpec(brief, profile) {
+  const lesson = course.pages.find((page) => page.lesson?.id === brief.lessonId)?.lesson;
+  const layers = [
+    layerLabel("lesson-label", `${brief.lessonId} · ${lesson?.title ?? brief.lessonId}`, 0.65, 6.3),
+  ];
+  const cardXs = [0.65, 4.45, 8.25];
+  for (const [index, label] of profile.labels.entries()) {
+    const x = cardXs[index];
+    layers.push({
+      id: `step-card-${index + 1}`,
+      kind: "polygon",
+      zIndex: 4,
+      geometry: {
+        points: [{ x, y: 2.35 }, { x: x + 3.1, y: 2.35 }, { x: x + 3.1, y: 5.4 }, { x, y: 5.4 }],
+        closed: true,
+      },
+      presentation: {
+        ...presentation(`Step ${index + 1}: ${label}`, index === 2 ? "visual-primary" : "visual-secondary"),
+        pattern: index === 2 ? "diagonal" : "dots",
+      },
+    });
+    layers.push(layerLabel(`step-number-${index + 1}`, `STEP ${index + 1}`, x + 0.25, 4.92));
+    for (const [lineIndex, line] of wrapLabel(label, 22).entries()) {
+      layers.push(layerLabel(`step-${index + 1}-line-${lineIndex + 1}`, line, x + 0.25, 4.15 - lineIndex * 0.58));
+    }
+    if (index < 2) {
+      layers.push(segment(`flow-arrow-${index + 1}`, x + 3.15, 3.85, x + 3.72, 3.85, `Step ${index + 1} leads to step ${index + 2}.`, "double"));
+    }
+  }
+  for (const [lineIndex, line] of wrapLabel(profile.note, 74).entries()) {
+    layers.push(layerLabel(`relationship-note-${lineIndex + 1}`, line, 0.7, 1.35 - lineIndex * 0.52));
+  }
+  const spec = {
+    ...base(brief, false),
+    kind: "geometry-2d",
+    coordinateSpace: { type: "diagram-2d", variables: ["x", "y"], unitsRequired: false },
+    viewport: { xMin: 0, xMax: 12, yMin: 0, yMax: 7, aspectRatio: 1.72, padding: 0.04 },
+    axes: { mode: "none", reason: `Three explicit stages show the mathematical relationship in ${brief.description}.` },
+    layers,
+    controls: [],
+    requiredCapabilities: ["static-fallback", "annotations", "geometry-primitives"],
+    preferredRenderer: "prefer-static",
+  };
+  spec.accessibility.readingOrder = spec.layers.map((layer) => layer.id);
+  return spec;
 }
 
 function equationSpec(brief) {
@@ -258,8 +320,14 @@ function areaSpec(brief) {
 
 function tableSpec(brief) {
   const lesson = course.pages.find((page) => page.lesson?.id === brief.lessonId)?.lesson;
+  const profile = getFoundationVisualProfile(brief.id);
   const labels = lessonMathLabels(brief);
-  const values = [
+  const values = profile ? [
+    ["stage", "mathematical form", "meaning"],
+    ["start", labels[0], "given"],
+    ["connect", labels[1], "relationship"],
+    ["conclude", labels[2], "result"],
+  ] : [
     ["stage", "mathematical form", "check"],
     ["given", labels[0], "identify"],
     ["transform", labels[1], "equivalent"],
@@ -271,6 +339,7 @@ function tableSpec(brief) {
   for (const [row, cells] of values.entries()) {
     for (const [column, value] of cells.entries()) layers.push(layerLabel(`cell-label-${row}-${column}`, value, 1.45 + column * (10 / 3), 5.0 - row * 1.1));
   }
+  if (profile) layers.push(layerLabel("relationship-note", profile.note, 0.7, 0.15));
   const spec = {
     ...base(brief, false),
     kind: "geometry-2d",
@@ -288,7 +357,25 @@ function tableSpec(brief) {
 
 function factorTreeSpec(brief) {
   const lesson = course.pages.find((page) => page.lesson?.id === brief.lessonId)?.lesson;
-  const layers = [
+  const profile = getFoundationVisualProfile(brief.id);
+  const layers = profile ? [
+    layerLabel("figure-claim", `${brief.lessonId} · ${lesson?.title ?? brief.lessonId}`, 0.7, 6.3),
+    layerLabel("root-value", "60", 5.8, 5.65),
+    segment("branch-six", 6, 5.35, 3.8, 4.25, "Sixty decomposes into six times ten."),
+    segment("branch-ten", 6, 5.35, 8.2, 4.25, "Sixty decomposes into six times ten."),
+    layerLabel("factor-six", "6", 3.65, 3.9),
+    layerLabel("factor-ten", "10", 8.0, 3.9),
+    segment("six-two", 3.8, 3.7, 2.5, 2.55, "Six decomposes into two times three."),
+    segment("six-three", 3.8, 3.7, 5.1, 2.55, "Six decomposes into two times three."),
+    segment("ten-two", 8.2, 3.7, 7.0, 2.55, "Ten decomposes into two times five."),
+    segment("ten-five", 8.2, 3.7, 9.4, 2.55, "Ten decomposes into two times five."),
+    layerLabel("prime-two-a", "2", 2.35, 2.15),
+    layerLabel("prime-three", "3", 4.95, 2.15),
+    layerLabel("prime-two-b", "2", 6.85, 2.15),
+    layerLabel("prime-five", "5", 9.25, 2.15),
+    layerLabel("factorization", profile.labels[1], 0.8, 1.15),
+    layerLabel("relationship-note", profile.note, 0.8, 0.55),
+  ] : [
     layerLabel("figure-claim", brief.description, 0.7, 6.3),
     layerLabel("root-value", "12", 5.8, 5.5),
     segment("branch-left", 6, 5.2, 3.8, 3.8, "Twelve decomposes into three times four."),
@@ -318,6 +405,11 @@ function factorTreeSpec(brief) {
 }
 
 function staticSpec(brief) {
+  const foundationProfile = getFoundationVisualProfile(brief.id);
+  if (foundationProfile?.layout === "number-line") return numberLineSpec(brief);
+  if (foundationProfile?.layout === "factor-tree") return factorTreeSpec(brief);
+  if (foundationProfile?.layout === "table") return tableSpec(brief);
+  if (foundationProfile?.layout === "flow") return foundationFlowSpec(brief, foundationProfile);
   if (/number line|interval|timeline|scale|slider|before-after|place-value slider/i.test(brief.description)) return numberLineSpec(brief);
   if (/graph|coordinate|slope|parabola|function|curve|intercept|asymptote|residual/i.test(brief.description)) return graphSpec(brief);
   if (/factor tree|prime-exponent inventory/i.test(brief.description)) return factorTreeSpec(brief);

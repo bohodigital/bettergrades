@@ -47,6 +47,20 @@ test("static Algebra lesson ships no interactive slot", async ({ page }) => {
   await expect(page.locator(".bvlp-interactive-slot")).toHaveCount(0);
 });
 
+test("A0–A2 lessons organize authored practice into usable rounds with optional hints", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/subjects/math/algebra/linear-equations/multistep-linear-equations/");
+  const practice = page.locator(".algebra-foundation-practice");
+  await expect(practice.locator(".algebra-practice-group")).toHaveCount(4);
+  await expect(practice.locator(".algebra-exercise-families article")).toHaveCount(16);
+  await expect(practice.locator(".algebra-question-hint[open]")).toHaveCount(0);
+  const firstHint = practice.locator(".algebra-question-hint").first();
+  await firstHint.locator("summary").click();
+  await expect(firstHint).toHaveAttribute("open", "");
+  await expect(firstHint.locator("p")).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
+});
+
 test("the compact rational-expression guide remains canonical beside the distinct full-course lesson", async ({ page }) => {
   await page.goto("/subjects/math/algebra/rational-expressions/simplifying-rational-expressions/");
   await expect(page.locator("h1")).toContainText("Simplifying rational expressions by factors");

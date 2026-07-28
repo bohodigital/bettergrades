@@ -143,6 +143,78 @@
   font-size: 1rem;
 }
 
+.algebra-practice-groups {
+  display: grid;
+  gap: 1.35rem;
+}
+
+.algebra-practice-group {
+  padding: 1rem;
+  border: 1px solid color-mix(in srgb, var(--brand), var(--line) 70%);
+  border-radius: 0.9rem;
+  background: color-mix(in srgb, var(--paper), var(--brand-soft) 16%);
+}
+
+.algebra-practice-group > header {
+  margin-bottom: 0.85rem;
+}
+
+.algebra-practice-group > header h3 {
+  margin: 0.15rem 0 0;
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+}
+
+.algebra-foundation-practice .algebra-exercise-families {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+}
+
+.algebra-foundation-practice .algebra-exercise-families article {
+  display: flex;
+  flex-direction: column;
+  min-height: 10.5rem;
+}
+
+.algebra-foundation-practice .algebra-exercise-families h4 {
+  margin: 0.65rem 0 1rem;
+  font-size: 1.02rem;
+  line-height: 1.45;
+}
+
+.algebra-question-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.35rem 0.75rem;
+  color: var(--muted);
+}
+
+.algebra-question-meta span {
+  color: var(--brand);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.algebra-question-hint {
+  margin-top: auto;
+  border-top: 1px solid var(--line);
+  padding-top: 0.65rem;
+}
+
+.algebra-question-hint summary {
+  width: fit-content;
+  color: var(--brand);
+  cursor: pointer;
+  font-weight: 750;
+}
+
+.algebra-question-hint p {
+  margin: 0.65rem 0 0;
+  color: var(--muted);
+}
+
 .algebra-attempt textarea {
   display: block;
   width: 100%;

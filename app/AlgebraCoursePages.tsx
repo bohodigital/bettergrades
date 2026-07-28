@@ -168,6 +168,39 @@ function LessonList({ title, label, items }: { title: string; label: string; ite
   return <section className="limits-node limits-node-exposition"><header><span>{label}</span><h2>{title}</h2></header><div><ol>{items.map((item, index) => <li key={`${index}-${item}`}>{item}</li>)}</ol></div></section>;
 }
 
+function LessonPractice({ lesson }: { lesson: NonNullable<AlgebraCoursePage["lesson"]> }) {
+  const authoredFoundation = lesson.foundationEdition === "authored-v1";
+  if (!authoredFoundation) {
+    return <section className="limits-node limits-node-exercise"><header><span>Practice</span><h2>{lesson.practiceQuestions.length} concrete questions</h2></header><div><div className="algebra-exercise-families">{lesson.practiceQuestions.map((question) => <article key={question.id}><code>{question.id}</code><h3>{question.prompt}</h3><p>{question.hint}</p><small>{pageTypeLabel(question.purpose ?? "practice")} · {pageTypeLabel(question.difficulty ?? "standard")}</small></article>)}</div></div></section>;
+  }
+
+  const groups = [
+    { title: "Warm-up", label: "Recall and read the structure", questions: lesson.practiceQuestions.slice(0, 4) },
+    { title: "Core practice", label: "Build accuracy one step at a time", questions: lesson.practiceQuestions.slice(4, 10) },
+    { title: "Represent and reason", label: "Explain, compare, and diagnose", questions: lesson.practiceQuestions.slice(10, 14) },
+    { title: "Finish strong", label: "Model, transfer, and verify", questions: lesson.practiceQuestions.slice(14, 16) },
+  ];
+
+  return <section className="limits-node limits-node-exercise algebra-foundation-practice">
+    <header><span>Practice</span><h2>Sixteen questions in four deliberate rounds</h2></header>
+    <div className="algebra-practice-groups">
+      {groups.map((group) => <section className="algebra-practice-group" key={group.title} aria-labelledby={`${lesson.id}-${group.title.replaceAll(" ", "-")}`}>
+        <header><p className="eyebrow">{group.label}</p><h3 id={`${lesson.id}-${group.title.replaceAll(" ", "-")}`}>{group.title}</h3></header>
+        <div className="algebra-exercise-families">
+          {group.questions.map((question) => {
+            const number = lesson.practiceQuestions.indexOf(question) + 1;
+            return <article key={question.id}>
+              <div className="algebra-question-meta"><span>Question {number}</span><small>{pageTypeLabel(question.purpose ?? "practice")} · {pageTypeLabel(question.difficulty ?? "standard")}</small></div>
+              <h4>{question.prompt}</h4>
+              <details className="algebra-question-hint"><summary>Need a hint?</summary><p>{question.hint}</p></details>
+            </article>;
+          })}
+        </div>
+      </section>)}
+    </div>
+  </section>;
+}
+
 function LessonPage({ page }: { page: AlgebraCoursePage }) {
   const lesson = page.lesson;
   if (!lesson || !page.unit) return null;
@@ -182,7 +215,7 @@ function LessonPage({ page }: { page: AlgebraCoursePage }) {
       <figcaption><strong>{lesson.title} · Figure {figure.id}</strong><p>{figure.description}</p>{figure.interactive && <small>Use the bounded control to compare states; the initial state remains available as a complete static figure.</small>}</figcaption>
     </figure>)}</section>
     <section className="limits-node limits-node-example"><header><span>Worked examples</span><h2>Calculate, represent, and transfer</h2></header><div className="algebra-worked-examples">{lesson.examples.map((example) => <article key={example.kind}><p className="eyebrow">{pageTypeLabel(example.kind)}</p><h3>{example.prompt}</h3><ol>{example.steps.map((step) => <li key={step}>{step}</li>)}</ol><p><strong>Answer:</strong> {example.answer}</p><p>{example.interpretation}</p></article>)}</div></section>
-    <section className="limits-node limits-node-exercise"><header><span>Practice</span><h2>{lesson.practiceQuestions.length} concrete questions</h2></header><div><div className="algebra-exercise-families">{lesson.practiceQuestions.map((question) => <article key={question.id}><code>{question.id}</code><h3>{question.prompt}</h3><p>{question.hint}</p><small>{pageTypeLabel(question.purpose ?? "practice")} · {pageTypeLabel(question.difficulty ?? "standard")}</small></article>)}</div></div></section>
+    <LessonPractice lesson={lesson} />
     <section className="limits-node limits-node-caution"><header><span>Error analysis</span><h2>Spot and repair a tempting mistake</h2></header><div>{lesson.misconceptions.map((item) => <article key={item.wrongMove}><p><strong>Wrong move:</strong> {item.wrongMove}</p><p><strong>Why it fails:</strong> {item.whyItFails}</p><p><strong>Repair:</strong> {item.repair}</p></article>)}</div></section>
     <AttemptFirstPrompt prompt={{ id: lesson.checkpoint.id, lessonId: lesson.id, prompt: lesson.checkpoint.prompt, responseType: lesson.checkpoint.responseType }} />
     <LessonList title="Two-item exit check" label="Before continuing" items={lesson.exitCheck.map((id) => lesson.practiceQuestions.find((question) => question.id === id)?.prompt ?? `Complete question ${id} from this lesson’s practice bank.`)} />

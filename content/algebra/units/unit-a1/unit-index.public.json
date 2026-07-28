@@ -37,65 +37,71 @@
       "title": "Variables and changing quantities",
       "path": "/subjects/math/algebra/quantities-variables/variables-and-changing-quantities/",
       "outcome": "Distinguish unknowns, changing quantities, parameters, constants, and labels.",
+      "foundationEdition": "authored-v1",
       "opening": {
         "prompt": "Track altitude over time and decide which quantities vary.",
-        "purpose": "Use a concrete situation to identify the quantities and decision that make variables and changing quantities necessary."
+        "purpose": "Name each quantity’s role before using symbols so variables, unknowns, parameters, constants, and labels are not confused."
       },
       "prerequisiteChecks": [
-        "Name the known quantity, the unknown quantity, and any units in the opening situation.",
-        "Classify the central object as an expression, equation, inequality, relation, function, or numerical comparison.",
-        "State one earlier rule or representation you would use to check a result for variables and changing quantities."
+        "Identify what changes in a distance-over-time table.",
+        "Distinguish a number from a unit label.",
+        "Describe the horizontal and vertical quantities on a simple graph."
       ],
       "exposition": [
-        "Distinguish unknowns, changing quantities, parameters, constants, and labels. Begin by naming the mathematical objects before manipulating them. In variables and changing quantities, notation compresses a relationship among quantities; it does not replace that relationship. Track what each symbol represents, preserve grouping and units, and mark any restriction or endpoint as soon as it appears. The first useful question is therefore not “Which memorized move do I use?” but “What must remain true from one line or representation to the next?”",
-        "Time-altitude table and graph. Read the labels as mathematical evidence: identify what is fixed, what changes, and how the objects are related. Then connect that evidence to the symbolic work one justified step at a time. A correct transformation preserves the relevant value, truth set, rate, domain, or geometric feature. If a step changes one of those, it needs a stated condition and a check against the original problem.",
-        "Quantity-role map. Use the worked examples to compare symbolic, numerical, and visual forms. Each form should answer the same question, even when it emphasizes a different feature. Finish by interpreting the result in a complete sentence and checking it with substitution, estimation, units, graph position, or an inverse operation. That final check distinguishes a plausible-looking candidate from a supported conclusion."
+        "A variable is a symbol assigned to a quantity, not merely a letter waiting to be solved. Its role comes from context. In h(t), time t varies and altitude h depends on it. A letter can instead represent one unknown value, a fixed parameter controlling a family, or a label with no numerical role.",
+        "A constant keeps the same value within the model. A parameter is held fixed during one instance but may change between instances. In C = mt + b, t may vary, C depends on t, and m and b act as parameters selecting one cost plan.",
+        "Good algebra begins with a quantity dictionary: symbol, meaning, units, allowed values, and role. This prevents meaningless substitutions and makes graphs, tables, and formulas describe the same relationship."
       ],
       "definitions": [
         {
-          "term": "Variables and changing quantities",
-          "definition": "Distinguish unknowns, changing quantities, parameters, constants, and labels. The term names the lesson’s central relationship and the conditions under which its methods are valid.",
-          "conditions": "Preserve the original domain, units, grouping, direction, and equivalence conditions whenever they apply."
+          "term": "variable quantity",
+          "definition": "A quantity allowed to take more than one value in the situation.",
+          "conditions": "Its allowable values form its domain."
         },
         {
-          "term": "valid transformation",
-          "definition": "A justified change of form that preserves the value, truth set, relationship, or solution information required by the original problem.",
-          "conditions": "One-way operations can create candidates and therefore require checking in the original statement."
+          "term": "unknown",
+          "definition": "A fixed but not yet determined value satisfying stated conditions.",
+          "conditions": "An unknown is not necessarily changing."
+        },
+        {
+          "term": "parameter",
+          "definition": "A value held fixed in one model but varied to compare a family of models.",
+          "conditions": "State what the parameter controls."
         }
       ],
       "examples": [
         {
           "kind": "foundation",
-          "prompt": "A car travels 180 miles in 3 hours. Find the unit rate and predict the distance in 5 hours at that rate.",
+          "prompt": "In h = 1200 − 80t, identify each quantity and role.",
           "steps": [
-            "Divide distance by time to obtain miles per hour.",
-            "Multiply the unit rate by 5 hours.",
-            "Cancel hours and retain miles."
+            "Read h as altitude in feet and t as elapsed time in seconds.",
+            "t varies and h depends on t.",
+            "1200 and −80 are constants describing initial altitude and rate."
           ],
-          "answer": "60 miles per hour; 300 miles",
-          "interpretation": "The units show both the rate and the predicted distance are dimensionally consistent."
+          "answer": "t: independent variable; h: dependent variable; 1200 and −80: constants",
+          "interpretation": "Symbols gain meaning from the quantity dictionary."
         },
         {
           "kind": "representation",
-          "prompt": "Represent the result of this variables and changing quantities case in a second form: A car travels 180 miles in 3 hours. Find the unit rate and predict the distance in 5 hours at that rate.",
+          "prompt": "In y = mx + b, explain why m is often a parameter.",
           "steps": [
-            "Complete the calculation or classification before changing representations.",
-            "Choose a table, graph, number line, diagram, or equivalent symbolic form that preserves the same quantities.",
-            "Label the input, output, units, restrictions, or endpoints that carry mathematical meaning."
+            "Hold m fixed to draw one line.",
+            "Change m to select a different line.",
+            "Observe that x still varies along each chosen line."
           ],
-          "answer": "A correctly labeled second representation that preserves 60 miles per hour; 300 miles.",
-          "interpretation": "The second form must communicate the same relationship, not merely repeat the symbols from the first form."
+          "answer": "m controls the line’s slope",
+          "interpretation": "A parameter indexes a family while variables move within one member."
         },
         {
           "kind": "transfer",
-          "prompt": "A classmate reaches “60 miles per hour; 300 miles” in a quantities, variables, and mathematical objects problem. Decide whether the reasoning is valid and justify the decision from the original conditions.",
+          "prompt": "A box marked A contains 12 bolts. Is A a variable?",
           "steps": [
-            "Restate the original condition and identify any domain, unit, sign, or equivalence requirement.",
-            "Reproduce the decisive operation using the worked case.",
-            "Check the proposed result against the original statement and explain the conclusion."
+            "Ask whether A is assigned a numerical quantity.",
+            "Here A only names the box.",
+            "The bolt count 12 is the numerical constant."
           ],
-          "answer": "The result is valid only when the reproduced work and original-condition check both support 60 miles per hour; 300 miles.",
-          "interpretation": "A transferred method is complete only after its conditions and conclusion are checked in context."
+          "answer": "No; A is a label",
+          "interpretation": "Not every letter in a mathematical display is a variable."
         }
       ],
       "figures": [
@@ -132,14 +138,14 @@
       ],
       "misconceptions": [
         {
-          "wrongMove": "Manipulating the symbols in a variables and changing quantities problem before identifying the quantities and governing condition.",
-          "whyItFails": "That move can lose a sign, unit, endpoint, denominator restriction, grouping symbol, or other condition that the outcome explicitly requires.",
-          "repair": "Annotate the original condition, perform one justified step, and check the conclusion using the units show both the rate and the predicted distance are dimensionally consistent."
+          "wrongMove": "Every letter is an unknown that must be solved.",
+          "whyItFails": "Letters can name changing quantities, parameters, constants, units, objects, or labels.",
+          "repair": "Write a symbol-to-quantity dictionary before manipulating a formula."
         }
       ],
       "checkpoint": {
         "id": "a1-1-q16",
-        "prompt": "Exit check: answer the case and give one sentence explaining why the result fits the lesson outcome: A car travels 180 miles in 3 hours. Find the unit rate and predict the distance in 5 hours at that rate.",
+        "prompt": "Write a complete variable declaration for the cost of x adult tickets at $14 each.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -165,12 +171,12 @@
           "id": "a1-1-q01",
           "lessonId": "A1.1",
           "unitCode": "A1",
-          "prompt": "Before using a formula, classify the mathematical objects and quantities in this case: A car travels 180 miles in 3 hours. Find the unit rate and predict the distance in 5 hours at that rate.",
+          "prompt": "In d = 55t, identify the independent and dependent quantities.",
           "responseType": "open-response",
           "skill": "Distinguish unknowns, changing quantities, parameters, constants, and labels.",
           "purpose": "retrieval",
           "difficulty": "foundation",
-          "hint": "Name what variables and changing quantities requires before doing arithmetic.",
+          "hint": "Recall the named definition or perform a direct substitution before choosing an operation.",
           "errorTags": [
             "variables-and-changing-quantities-structure",
             "a1-unchecked-result"
@@ -189,12 +195,12 @@
           "id": "a1-1-q02",
           "lessonId": "A1.1",
           "unitCode": "A1",
-          "prompt": "State the condition, restriction, unit, or sign rule that must be preserved while answering: A car travels 180 miles in 3 hours. Find the unit rate and predict the distance in 5 hours at that rate.",
+          "prompt": "In A = πr², identify the constant and variable quantities.",
           "responseType": "open-response",
           "skill": "Distinguish unknowns, changing quantities, parameters, constants, and labels.",
           "purpose": "retrieval",
           "difficulty": "foundation",
-          "hint": "Name what variables and changing quantities requires before doing arithmetic.",
+          "hint": "Recall the named definition or perform a direct substitution before choosing an operation.",
           "errorTags": [
             "variables-and-changing-quantities-structure",
             "a1-unchecked-result"
@@ -213,12 +219,12 @@
           "id": "a1-1-q03",
           "lessonId": "A1.1",
           "unitCode": "A1",
-          "prompt": "Explain why the first step “Divide distance by time to obtain miles per hour.” is valid for variables and changing quantities.",
+          "prompt": "In C = 12n + 35, interpret 12 and 35 for a service plan.",
           "responseType": "open-response",
           "skill": "Distinguish unknowns, changing quantities, parameters, constants, and labels.",
           "purpose": "concept",
           "difficulty": "standard",
-          "hint": "Name what variables and changing quantities requires before doing arithmetic.",
+          "hint": "State what must remain true, then connect that condition to the equation.",
           "errorTags": [
             "variables-and-changing-quantities-structure",
             "a1-unchecked-result"
@@ -237,12 +243,12 @@
           "id": "a1-1-q04",
           "lessonId": "A1.1",
           "unitCode": "A1",
-          "prompt": "Compare the lesson outcome with this case and identify the exact relationship being used: A car travels 180 miles in 3 hours. Find the unit rate and predict the distance in 5 hours at that rate.",
+          "prompt": "Is x in x + 7 = 19 changing or unknown?",
           "responseType": "open-response",
           "skill": "Distinguish unknowns, changing quantities, parameters, constants, and labels.",
           "purpose": "concept",
           "difficulty": "standard",
-          "hint": "Name what variables and changing quantities requires before doing arithmetic.",
+          "hint": "State what must remain true, then connect that condition to the equation.",
           "errorTags": [
             "variables-and-changing-quantities-structure",
             "a1-unchecked-result"
@@ -261,12 +267,12 @@
           "id": "a1-1-q05",
           "lessonId": "A1.1",
           "unitCode": "A1",
-          "prompt": "A car travels 180 miles in 3 hours. Find the unit rate and predict the distance in 5 hours at that rate.",
+          "prompt": "In f_a(x) = ax², explain the role of a.",
           "responseType": "open-response",
           "skill": "Distinguish unknowns, changing quantities, parameters, constants, and labels.",
           "purpose": "procedure",
           "difficulty": "standard",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "variables-and-changing-quantities-structure",
             "a1-unchecked-result"
@@ -285,12 +291,12 @@
           "id": "a1-1-q06",
           "lessonId": "A1.1",
           "unitCode": "A1",
-          "prompt": "Complete the worked case independently, showing the step between “Divide distance by time to obtain miles per hour.” and “Cancel hours and retain miles.”: A car travels 180 miles in 3 hours. Find the unit rate and predict the distance in 5 hours at that rate.",
+          "prompt": "A graph labels a point P. Must P be a number?",
           "responseType": "open-response",
           "skill": "Distinguish unknowns, changing quantities, parameters, constants, and labels.",
           "purpose": "procedure",
           "difficulty": "standard",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "variables-and-changing-quantities-structure",
             "a1-unchecked-result"
@@ -309,12 +315,12 @@
           "id": "a1-1-q07",
           "lessonId": "A1.1",
           "unitCode": "A1",
-          "prompt": "Use a different valid method to answer the same case, then compare it with the supplied sequence: A car travels 180 miles in 3 hours. Find the unit rate and predict the distance in 5 hours at that rate.",
+          "prompt": "Create a quantity dictionary for p = 3s + 2 where s is side length in cm and p is perimeter in cm.",
           "responseType": "open-response",
           "skill": "Distinguish unknowns, changing quantities, parameters, constants, and labels.",
           "purpose": "procedure",
           "difficulty": "mixed",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "variables-and-changing-quantities-structure",
             "a1-unchecked-result"
@@ -333,12 +339,12 @@
           "id": "a1-1-q08",
           "lessonId": "A1.1",
           "unitCode": "A1",
-          "prompt": "Check the proposed result “60 miles per hour; 300 miles” in the original condition and report the evidence.",
+          "prompt": "Which values are reasonable for the number n of students in a room?",
           "responseType": "open-response",
           "skill": "Distinguish unknowns, changing quantities, parameters, constants, and labels.",
           "purpose": "procedure",
           "difficulty": "mixed",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "variables-and-changing-quantities-structure",
             "a1-unchecked-result"
@@ -357,12 +363,12 @@
           "id": "a1-1-q09",
           "lessonId": "A1.1",
           "unitCode": "A1",
-          "prompt": "Rewrite the case in an equivalent form before solving it: A car travels 180 miles in 3 hours. Find the unit rate and predict the distance in 5 hours at that rate.",
+          "prompt": "Which values are reasonable for elapsed time t in a race model?",
           "responseType": "open-response",
           "skill": "Distinguish unknowns, changing quantities, parameters, constants, and labels.",
           "purpose": "procedure",
           "difficulty": "standard",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "variables-and-changing-quantities-structure",
             "a1-unchecked-result"
@@ -381,12 +387,12 @@
           "id": "a1-1-q10",
           "lessonId": "A1.1",
           "unitCode": "A1",
-          "prompt": "Identify the most efficient first move, carry it out, and finish the calculation: A car travels 180 miles in 3 hours. Find the unit rate and predict the distance in 5 hours at that rate.",
+          "prompt": "In V = lwh, which quantity depends on the other three?",
           "responseType": "open-response",
           "skill": "Distinguish unknowns, changing quantities, parameters, constants, and labels.",
           "purpose": "procedure",
           "difficulty": "mixed",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "variables-and-changing-quantities-structure",
             "a1-unchecked-result"
@@ -405,12 +411,12 @@
           "id": "a1-1-q11",
           "lessonId": "A1.1",
           "unitCode": "A1",
-          "prompt": "Create a labeled table, graph, number line, or diagram that communicates the result “60 miles per hour; 300 miles.”",
+          "prompt": "A student calls °C a variable in T = 20°C. Repair the claim.",
           "responseType": "open-response",
           "skill": "Distinguish unknowns, changing quantities, parameters, constants, and labels.",
           "purpose": "representation",
           "difficulty": "mixed",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Label the quantities and make the same relationship visible in the new form.",
           "errorTags": [
             "variables-and-changing-quantities-structure",
             "a1-unchecked-result"
@@ -429,12 +435,12 @@
           "id": "a1-1-q12",
           "lessonId": "A1.1",
           "unitCode": "A1",
-          "prompt": "Translate this case into a second representation and explain which feature stays invariant: A car travels 180 miles in 3 hours. Find the unit rate and predict the distance in 5 hours at that rate.",
+          "prompt": "Give one context where k is a constant and one where it is a parameter.",
           "responseType": "open-response",
           "skill": "Distinguish unknowns, changing quantities, parameters, constants, and labels.",
           "purpose": "representation",
           "difficulty": "transfer",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Label the quantities and make the same relationship visible in the new form.",
           "errorTags": [
             "variables-and-changing-quantities-structure",
             "a1-unchecked-result"
@@ -453,12 +459,12 @@
           "id": "a1-1-q13",
           "lessonId": "A1.1",
           "unitCode": "A1",
-          "prompt": "A learner skips the original-condition check and reports “60 miles per hour; 300 miles.” Explain what could go wrong and repair the work.",
+          "prompt": "For y = 2x + b, what stays fixed while viewing one line?",
           "responseType": "open-response",
           "skill": "Distinguish unknowns, changing quantities, parameters, constants, and labels.",
           "purpose": "error-analysis",
           "difficulty": "mixed",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Locate the first line that no longer preserves the original relationship.",
           "errorTags": [
             "variables-and-changing-quantities-structure",
             "a1-unchecked-result"
@@ -477,12 +483,12 @@
           "id": "a1-1-q14",
           "lessonId": "A1.1",
           "unitCode": "A1",
-          "prompt": "Change one numerical value in the case, solve the revised problem, and explain which steps remain valid: A car travels 180 miles in 3 hours. Find the unit rate and predict the distance in 5 hours at that rate.",
+          "prompt": "Explain why using m for both mass and meters in one formula is ambiguous.",
           "responseType": "open-response",
           "skill": "Distinguish unknowns, changing quantities, parameters, constants, and labels.",
           "purpose": "transfer",
           "difficulty": "transfer",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Identify the familiar equation structure before changing any symbols.",
           "errorTags": [
             "variables-and-changing-quantities-structure",
             "a1-unchecked-result"
@@ -501,12 +507,12 @@
           "id": "a1-1-q15",
           "lessonId": "A1.1",
           "unitCode": "A1",
-          "prompt": "Write a short real-world situation modeled by the same relationship as this case, including units where they apply: A car travels 180 miles in 3 hours. Find the unit rate and predict the distance in 5 hours at that rate.",
+          "prompt": "A tank starts with 100 L and drains at r L/min. Name roles in V = 100 − rt.",
           "responseType": "open-response",
           "skill": "Distinguish unknowns, changing quantities, parameters, constants, and labels.",
           "purpose": "modeling",
           "difficulty": "transfer",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Define the unknown and its units before writing the equation.",
           "errorTags": [
             "variables-and-changing-quantities-structure",
             "a1-unchecked-result"
@@ -525,12 +531,12 @@
           "id": "a1-1-q16",
           "lessonId": "A1.1",
           "unitCode": "A1",
-          "prompt": "Exit check: answer the case and give one sentence explaining why the result fits the lesson outcome: A car travels 180 miles in 3 hours. Find the unit rate and predict the distance in 5 hours at that rate.",
+          "prompt": "Write a complete variable declaration for the cost of x adult tickets at $14 each.",
           "responseType": "open-response",
           "skill": "Distinguish unknowns, changing quantities, parameters, constants, and labels.",
           "purpose": "exit",
           "difficulty": "standard",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Solve, classify the solution set, and verify against the original equation.",
           "errorTags": [
             "variables-and-changing-quantities-structure",
             "a1-unchecked-result"
@@ -551,10 +557,9 @@
         "a1-1-q16"
       ],
       "takeaway": {
-        "summary": "Distinguish unknowns, changing quantities, parameters, constants, and labels. A complete solution names the relationship, preserves its conditions, and verifies the conclusion.",
+        "summary": "A symbol’s role comes from the quantity it represents and the context in which it is used.",
         "conditions": [
-          "Keep original restrictions and units visible.",
-          "Use an independent check whenever an operation may create candidates or lose information."
+          "Declare meaning, units, and allowed values before operating on symbols."
         ]
       },
       "navigation": {
@@ -583,65 +588,71 @@
       "title": "Expressions, equations, and inequalities",
       "path": "/subjects/math/algebra/quantities-variables/expressions-equations-and-inequalities/",
       "outcome": "Classify symbolic objects by whether they name a value or make a true-or-false claim.",
+      "foundationEdition": "authored-v1",
       "opening": {
         "prompt": "Compare 3x+2, 3x+2=11, and 3x+2<11.",
-        "purpose": "Use a concrete situation to identify the quantities and decision that make expressions, equations, and inequalities necessary."
+        "purpose": "Classify expressions, equations, and inequalities so the goal of the work is clear before any manipulation."
       },
       "prerequisiteChecks": [
-        "Name the known quantity, the unknown quantity, and any units in the opening situation.",
-        "Classify the central object as an expression, equation, inequality, relation, function, or numerical comparison.",
-        "State one earlier rule or representation you would use to check a result for expressions, equations, and inequalities."
+        "Evaluate 3·4 + 2.",
+        "State whether 11 = 11 is true.",
+        "Compare 9 and 12 using an order symbol."
       ],
       "exposition": [
-        "Classify symbolic objects by whether they name a value or make a true-or-false claim. Begin by naming the mathematical objects before manipulating them. In expressions, equations, and inequalities, notation compresses a relationship among quantities; it does not replace that relationship. Track what each symbol represents, preserve grouping and units, and mark any restriction or endpoint as soon as it appears. The first useful question is therefore not “Which memorized move do I use?” but “What must remain true from one line or representation to the next?”",
-        "Three-column mathematical-object sorter. Read the labels as mathematical evidence: identify what is fixed, what changes, and how the objects are related. Then connect that evidence to the symbolic work one justified step at a time. A correct transformation preserves the relevant value, truth set, rate, domain, or geometric feature. If a step changes one of those, it needs a stated condition and a check against the original problem.",
-        "Truth-value substitution panel. Use the worked examples to compare symbolic, numerical, and visual forms. Each form should answer the same question, even when it emphasizes a different feature. Finish by interpreting the result in a complete sentence and checking it with substitution, estimation, units, graph position, or an inverse operation. That final check distinguishes a plausible-looking candidate from a supported conclusion."
+        "An expression names a value but does not make a claim, so 3x + 2 has no truth value by itself. An equation claims two expressions are equal. An inequality claims one expression is ordered relative to another.",
+        "Evaluation finds an expression’s value for supplied inputs. Solving finds all inputs that make an equation or inequality true. Simplifying rewrites an expression without changing its value on its domain. These are different goals and require different conclusions.",
+        "The equal sign means 'has the same value as,' not 'the answer comes next.' Reading a chain such as 2(5)+1 = 10+1 = 11 is valid because every expression in the chain has the same value."
       ],
       "definitions": [
         {
-          "term": "Expressions, equations, and inequalities",
-          "definition": "Classify symbolic objects by whether they name a value or make a true-or-false claim. The term names the lesson’s central relationship and the conditions under which its methods are valid.",
-          "conditions": "Preserve the original domain, units, grouping, direction, and equivalence conditions whenever they apply."
+          "term": "expression",
+          "definition": "A mathematical object that names a value.",
+          "conditions": "It has no true-or-false status by itself."
         },
         {
-          "term": "valid transformation",
-          "definition": "A justified change of form that preserves the value, truth set, relationship, or solution information required by the original problem.",
-          "conditions": "One-way operations can create candidates and therefore require checking in the original statement."
+          "term": "equation",
+          "definition": "A statement that two expressions have equal value.",
+          "conditions": "Its solution set contains inputs making the statement true."
+        },
+        {
+          "term": "inequality",
+          "definition": "A statement comparing the order of two expressions.",
+          "conditions": "Its solution set often contains an interval of values."
         }
       ],
       "examples": [
         {
           "kind": "foundation",
-          "prompt": "Solve and represent −2x + 3 > 7.",
+          "prompt": "Classify 4x − 7, 4x − 7 = 9, and 4x − 7 < 9.",
           "steps": [
-            "Subtract 3 from both sides to obtain −2x > 4.",
-            "Divide by −2 and reverse the order symbol.",
-            "Check one value from the proposed set in the original inequality."
+            "Look for a relation symbol.",
+            "No relation symbol means expression.",
+            "= makes an equation; < makes an inequality."
           ],
-          "answer": "x < −2",
-          "interpretation": "The solution is every number to the left of −2 on a number line; −2 is not included."
+          "answer": "Expression; equation; inequality",
+          "interpretation": "Classification identifies whether to evaluate, solve, or compare."
         },
         {
           "kind": "representation",
-          "prompt": "Represent the result of this expressions, equations, and inequalities case in a second form: Solve and represent −2x + 3 > 7.",
+          "prompt": "Evaluate 4x − 7 at x = 3.",
           "steps": [
-            "Complete the calculation or classification before changing representations.",
-            "Choose a table, graph, number line, diagram, or equivalent symbolic form that preserves the same quantities.",
-            "Label the input, output, units, restrictions, or endpoints that carry mathematical meaning."
+            "Substitute 3 for x.",
+            "Preserve multiplication.",
+            "Compute 12 − 7."
           ],
-          "answer": "A correctly labeled second representation that preserves x < −2.",
-          "interpretation": "The second form must communicate the same relationship, not merely repeat the symbols from the first form."
+          "answer": "5",
+          "interpretation": "Evaluation returns a value, not a solution set."
         },
         {
           "kind": "transfer",
-          "prompt": "A classmate reaches “x < −2” in a quantities, variables, and mathematical objects problem. Decide whether the reasoning is valid and justify the decision from the original conditions.",
+          "prompt": "Determine whether x = 3 solves 4x − 7 = 5.",
           "steps": [
-            "Restate the original condition and identify any domain, unit, sign, or equivalence requirement.",
-            "Reproduce the decisive operation using the worked case.",
-            "Check the proposed result against the original statement and explain the conclusion."
+            "Substitute 3 on the left.",
+            "Compute 5.",
+            "Compare both sides."
           ],
-          "answer": "The result is valid only when the reproduced work and original-condition check both support x < −2.",
-          "interpretation": "A transferred method is complete only after its conditions and conclusion are checked in context."
+          "answer": "Yes",
+          "interpretation": "The resulting true statement 5 = 5 verifies the solution."
         }
       ],
       "figures": [
@@ -678,14 +689,14 @@
       ],
       "misconceptions": [
         {
-          "wrongMove": "Manipulating the symbols in a expressions, equations, and inequalities problem before identifying the quantities and governing condition.",
-          "whyItFails": "That move can lose a sign, unit, endpoint, denominator restriction, grouping symbol, or other condition that the outcome explicitly requires.",
-          "repair": "Annotate the original condition, perform one justified step, and check the conclusion using the solution is every number to the left of −2 on a number line; −2 is not included."
+          "wrongMove": "An expression can be solved.",
+          "whyItFails": "An expression has no claim to make true; it can be evaluated or simplified.",
+          "repair": "Name the object and the requested action before beginning."
         }
       ],
       "checkpoint": {
         "id": "a1-2-q16",
-        "prompt": "Exit check: answer the case and give one sentence explaining why the result fits the lesson outcome: Solve and represent −2x + 3 > 7.",
+        "prompt": "Classify and complete the correct action for 6y − 1 when y = 2.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -711,12 +722,12 @@
           "id": "a1-2-q01",
           "lessonId": "A1.2",
           "unitCode": "A1",
-          "prompt": "Before using a formula, classify the mathematical objects and quantities in this case: Solve and represent −2x + 3 > 7.",
+          "prompt": "Classify 5a² − 3a + 1.",
           "responseType": "open-response",
           "skill": "Classify symbolic objects by whether they name a value or make a true-or-false claim.",
           "purpose": "retrieval",
           "difficulty": "foundation",
-          "hint": "Name what expressions, equations, and inequalities requires before doing arithmetic.",
+          "hint": "Recall the named definition or perform a direct substitution before choosing an operation.",
           "errorTags": [
             "expressions-equations-and-inequalities-structure",
             "a1-unchecked-result"
@@ -735,12 +746,12 @@
           "id": "a1-2-q02",
           "lessonId": "A1.2",
           "unitCode": "A1",
-          "prompt": "State the condition, restriction, unit, or sign rule that must be preserved while answering: Solve and represent −2x + 3 > 7.",
+          "prompt": "Classify 2n + 4 = 18.",
           "responseType": "open-response",
           "skill": "Classify symbolic objects by whether they name a value or make a true-or-false claim.",
           "purpose": "retrieval",
           "difficulty": "foundation",
-          "hint": "Name what expressions, equations, and inequalities requires before doing arithmetic.",
+          "hint": "Recall the named definition or perform a direct substitution before choosing an operation.",
           "errorTags": [
             "expressions-equations-and-inequalities-structure",
             "a1-unchecked-result"
@@ -759,12 +770,12 @@
           "id": "a1-2-q03",
           "lessonId": "A1.2",
           "unitCode": "A1",
-          "prompt": "Explain why the first step “Subtract 3 from both sides to obtain −2x > 4.” is valid for expressions, equations, and inequalities.",
+          "prompt": "Classify 7 − 3t ≥ 10.",
           "responseType": "open-response",
           "skill": "Classify symbolic objects by whether they name a value or make a true-or-false claim.",
           "purpose": "concept",
           "difficulty": "standard",
-          "hint": "Name what expressions, equations, and inequalities requires before doing arithmetic.",
+          "hint": "State what must remain true, then connect that condition to the equation.",
           "errorTags": [
             "expressions-equations-and-inequalities-structure",
             "a1-unchecked-result"
@@ -783,12 +794,12 @@
           "id": "a1-2-q04",
           "lessonId": "A1.2",
           "unitCode": "A1",
-          "prompt": "Compare the lesson outcome with this case and identify the exact relationship being used: Solve and represent −2x + 3 > 7.",
+          "prompt": "Evaluate 2x² − 3 at x = −2.",
           "responseType": "open-response",
           "skill": "Classify symbolic objects by whether they name a value or make a true-or-false claim.",
           "purpose": "concept",
           "difficulty": "standard",
-          "hint": "Name what expressions, equations, and inequalities requires before doing arithmetic.",
+          "hint": "State what must remain true, then connect that condition to the equation.",
           "errorTags": [
             "expressions-equations-and-inequalities-structure",
             "a1-unchecked-result"
@@ -807,12 +818,12 @@
           "id": "a1-2-q05",
           "lessonId": "A1.2",
           "unitCode": "A1",
-          "prompt": "Solve and represent −2x + 3 > 7.",
+          "prompt": "Is 4 a solution of 3x + 1 = 13?",
           "responseType": "open-response",
           "skill": "Classify symbolic objects by whether they name a value or make a true-or-false claim.",
           "purpose": "procedure",
           "difficulty": "standard",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "expressions-equations-and-inequalities-structure",
             "a1-unchecked-result"
@@ -831,12 +842,12 @@
           "id": "a1-2-q06",
           "lessonId": "A1.2",
           "unitCode": "A1",
-          "prompt": "Complete the worked case independently, showing the step between “Subtract 3 from both sides to obtain −2x > 4.” and “Check one value from the proposed set in the original inequality.”: Solve and represent −2x + 3 > 7.",
+          "prompt": "Is −1 a solution of 2x − 5 > −6?",
           "responseType": "open-response",
           "skill": "Classify symbolic objects by whether they name a value or make a true-or-false claim.",
           "purpose": "procedure",
           "difficulty": "standard",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "expressions-equations-and-inequalities-structure",
             "a1-unchecked-result"
@@ -855,12 +866,12 @@
           "id": "a1-2-q07",
           "lessonId": "A1.2",
           "unitCode": "A1",
-          "prompt": "Use a different valid method to answer the same case, then compare it with the supplied sequence: Solve and represent −2x + 3 > 7.",
+          "prompt": "What is the goal when simplifying 3(x+2)+x?",
           "responseType": "open-response",
           "skill": "Classify symbolic objects by whether they name a value or make a true-or-false claim.",
           "purpose": "procedure",
           "difficulty": "mixed",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "expressions-equations-and-inequalities-structure",
             "a1-unchecked-result"
@@ -879,12 +890,12 @@
           "id": "a1-2-q08",
           "lessonId": "A1.2",
           "unitCode": "A1",
-          "prompt": "Check the proposed result “x < −2” in the original condition and report the evidence.",
+          "prompt": "What is the goal when solving 3(x+2)+x = 18?",
           "responseType": "open-response",
           "skill": "Classify symbolic objects by whether they name a value or make a true-or-false claim.",
           "purpose": "procedure",
           "difficulty": "mixed",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "expressions-equations-and-inequalities-structure",
             "a1-unchecked-result"
@@ -903,12 +914,12 @@
           "id": "a1-2-q09",
           "lessonId": "A1.2",
           "unitCode": "A1",
-          "prompt": "Rewrite the case in an equivalent form before solving it: Solve and represent −2x + 3 > 7.",
+          "prompt": "Repair the chain 3·4 + 2 = 12 = 14.",
           "responseType": "open-response",
           "skill": "Classify symbolic objects by whether they name a value or make a true-or-false claim.",
           "purpose": "procedure",
           "difficulty": "standard",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "expressions-equations-and-inequalities-structure",
             "a1-unchecked-result"
@@ -927,12 +938,12 @@
           "id": "a1-2-q10",
           "lessonId": "A1.2",
           "unitCode": "A1",
-          "prompt": "Identify the most efficient first move, carry it out, and finish the calculation: Solve and represent −2x + 3 > 7.",
+          "prompt": "Write an equation representing 'five more than twice x is 19.'",
           "responseType": "open-response",
           "skill": "Classify symbolic objects by whether they name a value or make a true-or-false claim.",
           "purpose": "procedure",
           "difficulty": "mixed",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "expressions-equations-and-inequalities-structure",
             "a1-unchecked-result"
@@ -951,12 +962,12 @@
           "id": "a1-2-q11",
           "lessonId": "A1.2",
           "unitCode": "A1",
-          "prompt": "Create a labeled table, graph, number line, or diagram that communicates the result “x < −2.”",
+          "prompt": "Write an inequality representing 'the cost c is at most $40.'",
           "responseType": "open-response",
           "skill": "Classify symbolic objects by whether they name a value or make a true-or-false claim.",
           "purpose": "representation",
           "difficulty": "mixed",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Label the quantities and make the same relationship visible in the new form.",
           "errorTags": [
             "expressions-equations-and-inequalities-structure",
             "a1-unchecked-result"
@@ -975,12 +986,12 @@
           "id": "a1-2-q12",
           "lessonId": "A1.2",
           "unitCode": "A1",
-          "prompt": "Translate this case into a second representation and explain which feature stays invariant: Solve and represent −2x + 3 > 7.",
+          "prompt": "Does x + 2 name a proposition?",
           "responseType": "open-response",
           "skill": "Classify symbolic objects by whether they name a value or make a true-or-false claim.",
           "purpose": "representation",
           "difficulty": "transfer",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Label the quantities and make the same relationship visible in the new form.",
           "errorTags": [
             "expressions-equations-and-inequalities-structure",
             "a1-unchecked-result"
@@ -999,12 +1010,12 @@
           "id": "a1-2-q13",
           "lessonId": "A1.2",
           "unitCode": "A1",
-          "prompt": "A learner skips the original-condition check and reports “x < −2.” Explain what could go wrong and repair the work.",
+          "prompt": "Give the truth value of 3(5) − 2 = 13.",
           "responseType": "open-response",
           "skill": "Classify symbolic objects by whether they name a value or make a true-or-false claim.",
           "purpose": "error-analysis",
           "difficulty": "mixed",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Locate the first line that no longer preserves the original relationship.",
           "errorTags": [
             "expressions-equations-and-inequalities-structure",
             "a1-unchecked-result"
@@ -1023,12 +1034,12 @@
           "id": "a1-2-q14",
           "lessonId": "A1.2",
           "unitCode": "A1",
-          "prompt": "Change one numerical value in the case, solve the revised problem, and explain which steps remain valid: Solve and represent −2x + 3 > 7.",
+          "prompt": "A student writes 2x + 3 = 5x as a simplification step with no original equation. What is wrong?",
           "responseType": "open-response",
           "skill": "Classify symbolic objects by whether they name a value or make a true-or-false claim.",
           "purpose": "transfer",
           "difficulty": "transfer",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Identify the familiar equation structure before changing any symbols.",
           "errorTags": [
             "expressions-equations-and-inequalities-structure",
             "a1-unchecked-result"
@@ -1047,12 +1058,12 @@
           "id": "a1-2-q15",
           "lessonId": "A1.2",
           "unitCode": "A1",
-          "prompt": "Write a short real-world situation modeled by the same relationship as this case, including units where they apply: Solve and represent −2x + 3 > 7.",
+          "prompt": "Describe the solution-set type likely produced by x < 4.",
           "responseType": "open-response",
           "skill": "Classify symbolic objects by whether they name a value or make a true-or-false claim.",
           "purpose": "modeling",
           "difficulty": "transfer",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Define the unknown and its units before writing the equation.",
           "errorTags": [
             "expressions-equations-and-inequalities-structure",
             "a1-unchecked-result"
@@ -1071,12 +1082,12 @@
           "id": "a1-2-q16",
           "lessonId": "A1.2",
           "unitCode": "A1",
-          "prompt": "Exit check: answer the case and give one sentence explaining why the result fits the lesson outcome: Solve and represent −2x + 3 > 7.",
+          "prompt": "Classify and complete the correct action for 6y − 1 when y = 2.",
           "responseType": "open-response",
           "skill": "Classify symbolic objects by whether they name a value or make a true-or-false claim.",
           "purpose": "exit",
           "difficulty": "standard",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Solve, classify the solution set, and verify against the original equation.",
           "errorTags": [
             "expressions-equations-and-inequalities-structure",
             "a1-unchecked-result"
@@ -1097,10 +1108,9 @@
         "a1-2-q16"
       ],
       "takeaway": {
-        "summary": "Classify symbolic objects by whether they name a value or make a true-or-false claim. A complete solution names the relationship, preserves its conditions, and verifies the conclusion.",
+        "summary": "Expressions name values; equations and inequalities make claims.",
         "conditions": [
-          "Keep original restrictions and units visible.",
-          "Use an independent check whenever an operation may create candidates or lose information."
+          "Evaluation, simplification, and solving answer different questions."
         ]
       },
       "navigation": {
@@ -1132,65 +1142,71 @@
       "title": "Terms, factors, coefficients, and structure",
       "path": "/subjects/math/algebra/quantities-variables/terms-factors-coefficients-and-structure/",
       "outcome": "Read nested sums and products without flattening them incorrectly.",
+      "foundationEdition": "authored-v1",
       "opening": {
         "prompt": "Dissect a formula with several layers of grouping.",
-        "purpose": "Use a concrete situation to identify the quantities and decision that make terms, factors, coefficients, and structure necessary."
+        "purpose": "Read sums, products, coefficients, and nested grouping from the outside in without flattening structure."
       },
       "prerequisiteChecks": [
-        "Name the known quantity, the unknown quantity, and any units in the opening situation.",
-        "Classify the central object as an expression, equation, inequality, relation, function, or numerical comparison.",
-        "State one earlier rule or representation you would use to check a result for terms, factors, coefficients, and structure."
+        "Identify the addends in 7 + 4.",
+        "Identify the factors in 7·4.",
+        "Explain what parentheses group in 3(2+5)."
       ],
       "exposition": [
-        "Read nested sums and products without flattening them incorrectly. Begin by naming the mathematical objects before manipulating them. In terms, factors, coefficients, and structure, notation compresses a relationship among quantities; it does not replace that relationship. Track what each symbol represents, preserve grouping and units, and mark any restriction or endpoint as soon as it appears. The first useful question is therefore not “Which memorized move do I use?” but “What must remain true from one line or representation to the next?”",
-        "Expression tree. Read the labels as mathematical evidence: identify what is fixed, what changes, and how the objects are related. Then connect that evidence to the symbolic work one justified step at a time. A correct transformation preserves the relevant value, truth set, rate, domain, or geometric feature. If a step changes one of those, it needs a stated condition and a check against the original problem.",
-        "Terms-versus-factors color coding. Use the worked examples to compare symbolic, numerical, and visual forms. Each form should answer the same question, even when it emphasizes a different feature. Finish by interpreting the result in a complete sentence and checking it with substitution, estimation, units, graph position, or an inverse operation. That final check distinguishes a plausible-looking candidate from a supported conclusion."
+        "Terms are the addends of a sum, while factors are the multiplicative pieces of a product. In 3x + 5, the terms are 3x and 5; inside the first term, 3 and x are factors. A coefficient is the numerical factor multiplying a variable expression.",
+        "Structure is nested. In 2(x + 4) − 3, the outermost operation is subtraction, while multiplication and addition occur inside its parts. Reading the expression tree from the outside inward prevents illegal combinations.",
+        "A fraction bar groups the entire numerator and denominator. In (x+1)/(x−2), neither plus nor minus is an outermost operation; the whole numerator is divided by the whole denominator."
       ],
       "definitions": [
         {
-          "term": "Terms, factors, coefficients, and structure",
-          "definition": "Read nested sums and products without flattening them incorrectly. The term names the lesson’s central relationship and the conditions under which its methods are valid.",
-          "conditions": "Preserve the original domain, units, grouping, direction, and equivalence conditions whenever they apply."
+          "term": "term",
+          "definition": "An addend in a sum after subtraction is interpreted as adding an opposite.",
+          "conditions": "Terms are identified at the current grouping level."
         },
         {
-          "term": "valid transformation",
-          "definition": "A justified change of form that preserves the value, truth set, relationship, or solution information required by the original problem.",
-          "conditions": "One-way operations can create candidates and therefore require checking in the original statement."
+          "term": "factor",
+          "definition": "A multiplicative component of a product.",
+          "conditions": "Factors can themselves be grouped sums or quotients."
+        },
+        {
+          "term": "coefficient",
+          "definition": "A numerical factor multiplying a variable or variable expression.",
+          "conditions": "The implied coefficient of x is 1 and of −x is −1."
         }
       ],
       "examples": [
         {
           "kind": "foundation",
-          "prompt": "Factor x² − 5x + 6 completely and verify the result.",
+          "prompt": "Describe the structure of 4x² − 3x + 7.",
           "steps": [
-            "Find two integers whose product is 6 and whose sum is −5.",
-            "Write the product (x − 2)(x − 3).",
-            "Expand to recover x² − 5x + 6."
+            "Read subtraction as addition of opposites.",
+            "Identify three terms.",
+            "Identify coefficients 4, −3, and constant 7."
           ],
-          "answer": "(x − 2)(x − 3)",
-          "interpretation": "The factors expose the zeros 2 and 3 while expansion confirms equivalence."
+          "answer": "Terms: 4x², −3x, 7",
+          "interpretation": "Terms are separated only at the outer sum level."
         },
         {
           "kind": "representation",
-          "prompt": "Represent the result of this terms, factors, coefficients, and structure case in a second form: Factor x² − 5x + 6 completely and verify the result.",
+          "prompt": "Describe 5(x − 2)² without expanding.",
           "steps": [
-            "Complete the calculation or classification before changing representations.",
-            "Choose a table, graph, number line, diagram, or equivalent symbolic form that preserves the same quantities.",
-            "Label the input, output, units, restrictions, or endpoints that carry mathematical meaning."
+            "The outer operation is multiplication by 5.",
+            "The second factor is a square.",
+            "The squared base is the grouped difference x − 2."
           ],
-          "answer": "A correctly labeled second representation that preserves (x − 2)(x − 3).",
-          "interpretation": "The second form must communicate the same relationship, not merely repeat the symbols from the first form."
+          "answer": "Product of 5 and the square of x−2",
+          "interpretation": "The description preserves nested structure."
         },
         {
           "kind": "transfer",
-          "prompt": "A classmate reaches “(x − 2)(x − 3)” in a quantities, variables, and mathematical objects problem. Decide whether the reasoning is valid and justify the decision from the original conditions.",
+          "prompt": "Find the numerator and denominator of (2x+1)/(3−x).",
           "steps": [
-            "Restate the original condition and identify any domain, unit, sign, or equivalence requirement.",
-            "Reproduce the decisive operation using the worked case.",
-            "Check the proposed result against the original statement and explain the conclusion."
+            "Treat the fraction bar as grouping.",
+            "Everything above is the numerator.",
+            "Everything below is the denominator."
           ],
-          "answer": "The result is valid only when the reproduced work and original-condition check both support (x − 2)(x − 3).",
-          "interpretation": "A transferred method is complete only after its conditions and conclusion are checked in context."
+          "answer": "Numerator 2x+1; denominator 3−x",
+          "interpretation": "The fraction bar has the grouping force of parentheses."
         }
       ],
       "figures": [
@@ -1227,14 +1243,14 @@
       ],
       "misconceptions": [
         {
-          "wrongMove": "Manipulating the symbols in a terms, factors, coefficients, and structure problem before identifying the quantities and governing condition.",
-          "whyItFails": "That move can lose a sign, unit, endpoint, denominator restriction, grouping symbol, or other condition that the outcome explicitly requires.",
-          "repair": "Annotate the original condition, perform one justified step, and check the conclusion using the factors expose the zeros 2 and 3 while expansion confirms equivalence."
+          "wrongMove": "Terms are every piece separated by any operation sign.",
+          "whyItFails": "Term boundaries come from addition at the current grouping level; multiplication signs stay inside a term.",
+          "repair": "Identify the outermost operation first, then move inward."
         }
       ],
       "checkpoint": {
         "id": "a1-3-q16",
-        "prompt": "Exit check: answer the case and give one sentence explaining why the result fits the lesson outcome: Factor x² − 5x + 6 completely and verify the result.",
+        "prompt": "Explain why preserving structure matters when evaluating 2(x+3)².",
         "responseType": "open-response"
       },
       "exercises": [
@@ -1260,12 +1276,12 @@
           "id": "a1-3-q01",
           "lessonId": "A1.3",
           "unitCode": "A1",
-          "prompt": "Before using a formula, classify the mathematical objects and quantities in this case: Factor x² − 5x + 6 completely and verify the result.",
+          "prompt": "List the terms of 6x² − 4x + 9.",
           "responseType": "open-response",
           "skill": "Read nested sums and products without flattening them incorrectly.",
           "purpose": "retrieval",
           "difficulty": "foundation",
-          "hint": "Name what terms, factors, coefficients, and structure requires before doing arithmetic.",
+          "hint": "Recall the named definition or perform a direct substitution before choosing an operation.",
           "errorTags": [
             "terms-factors-coefficients-and-structure-structure",
             "a1-unchecked-result"
@@ -1284,12 +1300,12 @@
           "id": "a1-3-q02",
           "lessonId": "A1.3",
           "unitCode": "A1",
-          "prompt": "State the condition, restriction, unit, or sign rule that must be preserved while answering: Factor x² − 5x + 6 completely and verify the result.",
+          "prompt": "List the factors of −3xy.",
           "responseType": "open-response",
           "skill": "Read nested sums and products without flattening them incorrectly.",
           "purpose": "retrieval",
           "difficulty": "foundation",
-          "hint": "Name what terms, factors, coefficients, and structure requires before doing arithmetic.",
+          "hint": "Recall the named definition or perform a direct substitution before choosing an operation.",
           "errorTags": [
             "terms-factors-coefficients-and-structure-structure",
             "a1-unchecked-result"
@@ -1308,12 +1324,12 @@
           "id": "a1-3-q03",
           "lessonId": "A1.3",
           "unitCode": "A1",
-          "prompt": "Explain why the first step “Find two integers whose product is 6 and whose sum is −5.” is valid for terms, factors, coefficients, and structure.",
+          "prompt": "State the coefficient of x in x − 5.",
           "responseType": "open-response",
           "skill": "Read nested sums and products without flattening them incorrectly.",
           "purpose": "concept",
           "difficulty": "standard",
-          "hint": "Name what terms, factors, coefficients, and structure requires before doing arithmetic.",
+          "hint": "State what must remain true, then connect that condition to the equation.",
           "errorTags": [
             "terms-factors-coefficients-and-structure-structure",
             "a1-unchecked-result"
@@ -1332,12 +1348,12 @@
           "id": "a1-3-q04",
           "lessonId": "A1.3",
           "unitCode": "A1",
-          "prompt": "Compare the lesson outcome with this case and identify the exact relationship being used: Factor x² − 5x + 6 completely and verify the result.",
+          "prompt": "State the coefficient of x² in −x² + 4.",
           "responseType": "open-response",
           "skill": "Read nested sums and products without flattening them incorrectly.",
           "purpose": "concept",
           "difficulty": "standard",
-          "hint": "Name what terms, factors, coefficients, and structure requires before doing arithmetic.",
+          "hint": "State what must remain true, then connect that condition to the equation.",
           "errorTags": [
             "terms-factors-coefficients-and-structure-structure",
             "a1-unchecked-result"
@@ -1356,12 +1372,12 @@
           "id": "a1-3-q05",
           "lessonId": "A1.3",
           "unitCode": "A1",
-          "prompt": "Factor x² − 5x + 6 completely and verify the result.",
+          "prompt": "Name the outermost operation in 2(x+7).",
           "responseType": "open-response",
           "skill": "Read nested sums and products without flattening them incorrectly.",
           "purpose": "procedure",
           "difficulty": "standard",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "terms-factors-coefficients-and-structure-structure",
             "a1-unchecked-result"
@@ -1380,12 +1396,12 @@
           "id": "a1-3-q06",
           "lessonId": "A1.3",
           "unitCode": "A1",
-          "prompt": "Complete the worked case independently, showing the step between “Find two integers whose product is 6 and whose sum is −5.” and “Expand to recover x² − 5x + 6.”: Factor x² − 5x + 6 completely and verify the result.",
+          "prompt": "Name the outermost operation in 2x + 7.",
           "responseType": "open-response",
           "skill": "Read nested sums and products without flattening them incorrectly.",
           "purpose": "procedure",
           "difficulty": "standard",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "terms-factors-coefficients-and-structure-structure",
             "a1-unchecked-result"
@@ -1404,12 +1420,12 @@
           "id": "a1-3-q07",
           "lessonId": "A1.3",
           "unitCode": "A1",
-          "prompt": "Use a different valid method to answer the same case, then compare it with the supplied sequence: Factor x² − 5x + 6 completely and verify the result.",
+          "prompt": "Describe the structure of (a+b)/5.",
           "responseType": "open-response",
           "skill": "Read nested sums and products without flattening them incorrectly.",
           "purpose": "procedure",
           "difficulty": "mixed",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "terms-factors-coefficients-and-structure-structure",
             "a1-unchecked-result"
@@ -1428,12 +1444,12 @@
           "id": "a1-3-q08",
           "lessonId": "A1.3",
           "unitCode": "A1",
-          "prompt": "Check the proposed result “(x − 2)(x − 3)” in the original condition and report the evidence.",
+          "prompt": "Describe the structure of a + b/5.",
           "responseType": "open-response",
           "skill": "Read nested sums and products without flattening them incorrectly.",
           "purpose": "procedure",
           "difficulty": "mixed",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "terms-factors-coefficients-and-structure-structure",
             "a1-unchecked-result"
@@ -1452,12 +1468,12 @@
           "id": "a1-3-q09",
           "lessonId": "A1.3",
           "unitCode": "A1",
-          "prompt": "Rewrite the case in an equivalent form before solving it: Factor x² − 5x + 6 completely and verify the result.",
+          "prompt": "How many terms does 3(x+2) have before expansion at the outer level?",
           "responseType": "open-response",
           "skill": "Read nested sums and products without flattening them incorrectly.",
           "purpose": "procedure",
           "difficulty": "standard",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "terms-factors-coefficients-and-structure-structure",
             "a1-unchecked-result"
@@ -1476,12 +1492,12 @@
           "id": "a1-3-q10",
           "lessonId": "A1.3",
           "unitCode": "A1",
-          "prompt": "Identify the most efficient first move, carry it out, and finish the calculation: Factor x² − 5x + 6 completely and verify the result.",
+          "prompt": "How many terms does 3x + 6 have?",
           "responseType": "open-response",
           "skill": "Read nested sums and products without flattening them incorrectly.",
           "purpose": "procedure",
           "difficulty": "mixed",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "terms-factors-coefficients-and-structure-structure",
             "a1-unchecked-result"
@@ -1500,12 +1516,12 @@
           "id": "a1-3-q11",
           "lessonId": "A1.3",
           "unitCode": "A1",
-          "prompt": "Create a labeled table, graph, number line, or diagram that communicates the result “(x − 2)(x − 3).”",
+          "prompt": "Identify base and exponent in (x−4)³.",
           "responseType": "open-response",
           "skill": "Read nested sums and products without flattening them incorrectly.",
           "purpose": "representation",
           "difficulty": "mixed",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Label the quantities and make the same relationship visible in the new form.",
           "errorTags": [
             "terms-factors-coefficients-and-structure-structure",
             "a1-unchecked-result"
@@ -1524,12 +1540,12 @@
           "id": "a1-3-q12",
           "lessonId": "A1.3",
           "unitCode": "A1",
-          "prompt": "Translate this case into a second representation and explain which feature stays invariant: Factor x² − 5x + 6 completely and verify the result.",
+          "prompt": "A student calls 2 and x terms in 2x+3. Repair the language.",
           "responseType": "open-response",
           "skill": "Read nested sums and products without flattening them incorrectly.",
           "purpose": "representation",
           "difficulty": "transfer",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Label the quantities and make the same relationship visible in the new form.",
           "errorTags": [
             "terms-factors-coefficients-and-structure-structure",
             "a1-unchecked-result"
@@ -1548,12 +1564,12 @@
           "id": "a1-3-q13",
           "lessonId": "A1.3",
           "unitCode": "A1",
-          "prompt": "A learner skips the original-condition check and reports “(x − 2)(x − 3).” Explain what could go wrong and repair the work.",
+          "prompt": "Draw or describe an expression tree for 4 − 2(x+1).",
           "responseType": "open-response",
           "skill": "Read nested sums and products without flattening them incorrectly.",
           "purpose": "error-analysis",
           "difficulty": "mixed",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Locate the first line that no longer preserves the original relationship.",
           "errorTags": [
             "terms-factors-coefficients-and-structure-structure",
             "a1-unchecked-result"
@@ -1572,12 +1588,12 @@
           "id": "a1-3-q14",
           "lessonId": "A1.3",
           "unitCode": "A1",
-          "prompt": "Change one numerical value in the case, solve the revised problem, and explain which steps remain valid: Factor x² − 5x + 6 completely and verify the result.",
+          "prompt": "Identify numerator, denominator, and restriction in (x+5)/(2x).",
           "responseType": "open-response",
           "skill": "Read nested sums and products without flattening them incorrectly.",
           "purpose": "transfer",
           "difficulty": "transfer",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Identify the familiar equation structure before changing any symbols.",
           "errorTags": [
             "terms-factors-coefficients-and-structure-structure",
             "a1-unchecked-result"
@@ -1596,12 +1612,12 @@
           "id": "a1-3-q15",
           "lessonId": "A1.3",
           "unitCode": "A1",
-          "prompt": "Write a short real-world situation modeled by the same relationship as this case, including units where they apply: Factor x² − 5x + 6 completely and verify the result.",
+          "prompt": "Rewrite 7 − 3x as an addition expression.",
           "responseType": "open-response",
           "skill": "Read nested sums and products without flattening them incorrectly.",
           "purpose": "modeling",
           "difficulty": "transfer",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Define the unknown and its units before writing the equation.",
           "errorTags": [
             "terms-factors-coefficients-and-structure-structure",
             "a1-unchecked-result"
@@ -1620,12 +1636,12 @@
           "id": "a1-3-q16",
           "lessonId": "A1.3",
           "unitCode": "A1",
-          "prompt": "Exit check: answer the case and give one sentence explaining why the result fits the lesson outcome: Factor x² − 5x + 6 completely and verify the result.",
+          "prompt": "Explain why preserving structure matters when evaluating 2(x+3)².",
           "responseType": "open-response",
           "skill": "Read nested sums and products without flattening them incorrectly.",
           "purpose": "exit",
           "difficulty": "standard",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Solve, classify the solution set, and verify against the original equation.",
           "errorTags": [
             "terms-factors-coefficients-and-structure-structure",
             "a1-unchecked-result"
@@ -1646,10 +1662,9 @@
         "a1-3-q16"
       ],
       "takeaway": {
-        "summary": "Read nested sums and products without flattening them incorrectly. A complete solution names the relationship, preserves its conditions, and verifies the conclusion.",
+        "summary": "Terms belong to sums; factors belong to products; coefficients are numerical factors.",
         "conditions": [
-          "Keep original restrictions and units visible.",
-          "Use an independent check whenever an operation may create candidates or lose information."
+          "Read the outermost operation first and preserve every grouping boundary."
         ]
       },
       "navigation": {
@@ -1681,65 +1696,71 @@
       "title": "Substitution and evaluation",
       "path": "/subjects/math/algebra/quantities-variables/substitution-and-evaluation/",
       "outcome": "Replace variables or subexpressions with equal-valued expressions while preserving grouping.",
+      "foundationEdition": "authored-v1",
       "opening": {
         "prompt": "Evaluate a cost formula for several signed and fractional inputs.",
-        "purpose": "Use a concrete situation to identify the quantities and decision that make substitution and evaluation necessary."
+        "purpose": "Substitute equal values or expressions while protecting grouping, signs, and units."
       },
       "prerequisiteChecks": [
-        "Name the known quantity, the unknown quantity, and any units in the opening situation.",
-        "Classify the central object as an expression, equation, inequality, relation, function, or numerical comparison.",
-        "State one earlier rule or representation you would use to check a result for substitution and evaluation."
+        "Evaluate 3·5 − 2.",
+        "Compute (−4)².",
+        "Explain why parentheses can preserve a negative input."
       ],
       "exposition": [
-        "Replace variables or subexpressions with equal-valued expressions while preserving grouping. Begin by naming the mathematical objects before manipulating them. In substitution and evaluation, notation compresses a relationship among quantities; it does not replace that relationship. Track what each symbol represents, preserve grouping and units, and mark any restriction or endpoint as soon as it appears. The first useful question is therefore not “Which memorized move do I use?” but “What must remain true from one line or representation to the next?”",
-        "Replaceable expression tiles. Read the labels as mathematical evidence: identify what is fixed, what changes, and how the objects are related. Then connect that evidence to the symbolic work one justified step at a time. A correct transformation preserves the relevant value, truth set, rate, domain, or geometric feature. If a step changes one of those, it needs a stated condition and a check against the original problem.",
-        "Parentheses guard around substituted values. Use the worked examples to compare symbolic, numerical, and visual forms. Each form should answer the same question, even when it emphasizes a different feature. Finish by interpreting the result in a complete sentence and checking it with substitution, estimation, units, graph position, or an inverse operation. That final check distinguishes a plausible-looking candidate from a supported conclusion."
+        "Substitution replaces a symbol or subexpression with an equal-valued quantity. The replacement must occupy the same structural position as the original symbol, so parentheses are essential around negative numbers, fractions, and multi-term expressions.",
+        "Evaluation is substitution followed by arithmetic. A clear evaluation line first shows the replacement, then simplifies in justified steps. Units should travel with measured quantities.",
+        "Substitution may also replace one expression with an equivalent expression. If y = 2x + 1, then 3y − 4 becomes 3(2x+1) − 4. The parentheses preserve y as one complete object throughout the rewrite."
       ],
       "definitions": [
         {
-          "term": "Substitution and evaluation",
-          "definition": "Replace variables or subexpressions with equal-valued expressions while preserving grouping. The term names the lesson’s central relationship and the conditions under which its methods are valid.",
-          "conditions": "Preserve the original domain, units, grouping, direction, and equivalence conditions whenever they apply."
+          "term": "substitution",
+          "definition": "Replacement of a symbol or subexpression by an equal-valued quantity.",
+          "conditions": "The replacement must retain the original grouping role."
         },
         {
-          "term": "valid transformation",
-          "definition": "A justified change of form that preserves the value, truth set, relationship, or solution information required by the original problem.",
-          "conditions": "One-way operations can create candidates and therefore require checking in the original statement."
+          "term": "evaluate",
+          "definition": "Find the numerical value of an expression for specified inputs.",
+          "conditions": "Show the substitution before arithmetic."
+        },
+        {
+          "term": "replacement expression",
+          "definition": "The complete expression inserted for a symbol.",
+          "conditions": "Use parentheses when it contains more than one term or a leading sign."
         }
       ],
       "examples": [
         {
           "kind": "foundation",
-          "prompt": "Solve the system x + y = 7 and x − y = 1.",
+          "prompt": "Evaluate 2x² − 3x + 1 at x = −2.",
           "steps": [
-            "Add the equations to eliminate y and obtain 2x = 8.",
-            "Solve x = 4, then substitute to find y = 3.",
-            "Check (4, 3) in both equations."
+            "Write 2(−2)² − 3(−2) + 1.",
+            "Evaluate the square and products.",
+            "Add 8 + 6 + 1."
           ],
-          "answer": "(4, 3)",
-          "interpretation": "The ordered pair is the single point that satisfies both conditions."
+          "answer": "15",
+          "interpretation": "Parentheses ensure the negative input is squared."
         },
         {
           "kind": "representation",
-          "prompt": "Represent the result of this substitution and evaluation case in a second form: Solve the system x + y = 7 and x − y = 1.",
+          "prompt": "Evaluate A = 1/2bh for b = 7 cm and h = 4 cm.",
           "steps": [
-            "Complete the calculation or classification before changing representations.",
-            "Choose a table, graph, number line, diagram, or equivalent symbolic form that preserves the same quantities.",
-            "Label the input, output, units, restrictions, or endpoints that carry mathematical meaning."
+            "Substitute values with units.",
+            "Compute 1/2·7·4.",
+            "Combine length units as square centimeters."
           ],
-          "answer": "A correctly labeled second representation that preserves (4, 3).",
-          "interpretation": "The second form must communicate the same relationship, not merely repeat the symbols from the first form."
+          "answer": "14 cm²",
+          "interpretation": "The result’s units match area."
         },
         {
           "kind": "transfer",
-          "prompt": "A classmate reaches “(4, 3)” in a quantities, variables, and mathematical objects problem. Decide whether the reasoning is valid and justify the decision from the original conditions.",
+          "prompt": "If y = 2x + 1, rewrite 3y − 4 in terms of x.",
           "steps": [
-            "Restate the original condition and identify any domain, unit, sign, or equivalence requirement.",
-            "Reproduce the decisive operation using the worked case.",
-            "Check the proposed result against the original statement and explain the conclusion."
+            "Replace y by the entire expression 2x+1.",
+            "Write 3(2x+1) − 4.",
+            "Distribute and combine constants."
           ],
-          "answer": "The result is valid only when the reproduced work and original-condition check both support (4, 3).",
-          "interpretation": "A transferred method is complete only after its conditions and conclusion are checked in context."
+          "answer": "6x − 1",
+          "interpretation": "The grouped replacement preserves equivalence."
         }
       ],
       "figures": [
@@ -1776,14 +1797,14 @@
       ],
       "misconceptions": [
         {
-          "wrongMove": "Manipulating the symbols in a substitution and evaluation problem before identifying the quantities and governing condition.",
-          "whyItFails": "That move can lose a sign, unit, endpoint, denominator restriction, grouping symbol, or other condition that the outcome explicitly requires.",
-          "repair": "Annotate the original condition, perform one justified step, and check the conclusion using the ordered pair is the single point that satisfies both conditions."
+          "wrongMove": "When x = −3, x² becomes −3².",
+          "whyItFails": "The replacement for x is the complete number −3 and must be grouped: (−3)².",
+          "repair": "Put parentheses around every substituted negative or multi-term expression."
         }
       ],
       "checkpoint": {
         "id": "a1-4-q16",
-        "prompt": "Exit check: answer the case and give one sentence explaining why the result fits the lesson outcome: Solve the system x + y = 7 and x − y = 1.",
+        "prompt": "Evaluate 2(x+y)−xy for x=−1, y=4.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -1809,12 +1830,12 @@
           "id": "a1-4-q01",
           "lessonId": "A1.4",
           "unitCode": "A1",
-          "prompt": "Before using a formula, classify the mathematical objects and quantities in this case: Solve the system x + y = 7 and x − y = 1.",
+          "prompt": "Evaluate 5x − 7 at x = 4.",
           "responseType": "open-response",
           "skill": "Replace variables or subexpressions with equal-valued expressions while preserving grouping.",
           "purpose": "retrieval",
           "difficulty": "foundation",
-          "hint": "Name what substitution and evaluation requires before doing arithmetic.",
+          "hint": "Recall the named definition or perform a direct substitution before choosing an operation.",
           "errorTags": [
             "substitution-and-evaluation-structure",
             "a1-unchecked-result"
@@ -1833,12 +1854,12 @@
           "id": "a1-4-q02",
           "lessonId": "A1.4",
           "unitCode": "A1",
-          "prompt": "State the condition, restriction, unit, or sign rule that must be preserved while answering: Solve the system x + y = 7 and x − y = 1.",
+          "prompt": "Evaluate x² + 2x at x = −3.",
           "responseType": "open-response",
           "skill": "Replace variables or subexpressions with equal-valued expressions while preserving grouping.",
           "purpose": "retrieval",
           "difficulty": "foundation",
-          "hint": "Name what substitution and evaluation requires before doing arithmetic.",
+          "hint": "Recall the named definition or perform a direct substitution before choosing an operation.",
           "errorTags": [
             "substitution-and-evaluation-structure",
             "a1-unchecked-result"
@@ -1857,12 +1878,12 @@
           "id": "a1-4-q03",
           "lessonId": "A1.4",
           "unitCode": "A1",
-          "prompt": "Explain why the first step “Add the equations to eliminate y and obtain 2x = 8.” is valid for substitution and evaluation.",
+          "prompt": "Evaluate 3a²b for a = −2 and b = 5.",
           "responseType": "open-response",
           "skill": "Replace variables or subexpressions with equal-valued expressions while preserving grouping.",
           "purpose": "concept",
           "difficulty": "standard",
-          "hint": "Name what substitution and evaluation requires before doing arithmetic.",
+          "hint": "State what must remain true, then connect that condition to the equation.",
           "errorTags": [
             "substitution-and-evaluation-structure",
             "a1-unchecked-result"
@@ -1881,12 +1902,12 @@
           "id": "a1-4-q04",
           "lessonId": "A1.4",
           "unitCode": "A1",
-          "prompt": "Compare the lesson outcome with this case and identify the exact relationship being used: Solve the system x + y = 7 and x − y = 1.",
+          "prompt": "Evaluate (m−n)/(m+n) for m=5, n=2.",
           "responseType": "open-response",
           "skill": "Replace variables or subexpressions with equal-valued expressions while preserving grouping.",
           "purpose": "concept",
           "difficulty": "standard",
-          "hint": "Name what substitution and evaluation requires before doing arithmetic.",
+          "hint": "State what must remain true, then connect that condition to the equation.",
           "errorTags": [
             "substitution-and-evaluation-structure",
             "a1-unchecked-result"
@@ -1905,12 +1926,12 @@
           "id": "a1-4-q05",
           "lessonId": "A1.4",
           "unitCode": "A1",
-          "prompt": "Solve the system x + y = 7 and x − y = 1.",
+          "prompt": "Evaluate C = 2πr for r = 3 cm.",
           "responseType": "open-response",
           "skill": "Replace variables or subexpressions with equal-valued expressions while preserving grouping.",
           "purpose": "procedure",
           "difficulty": "standard",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "substitution-and-evaluation-structure",
             "a1-unchecked-result"
@@ -1929,12 +1950,12 @@
           "id": "a1-4-q06",
           "lessonId": "A1.4",
           "unitCode": "A1",
-          "prompt": "Complete the worked case independently, showing the step between “Add the equations to eliminate y and obtain 2x = 8.” and “Check (4, 3) in both equations.”: Solve the system x + y = 7 and x − y = 1.",
+          "prompt": "Evaluate d = rt for r = 55 mi/hr and t = 2.5 hr.",
           "responseType": "open-response",
           "skill": "Replace variables or subexpressions with equal-valued expressions while preserving grouping.",
           "purpose": "procedure",
           "difficulty": "standard",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "substitution-and-evaluation-structure",
             "a1-unchecked-result"
@@ -1953,12 +1974,12 @@
           "id": "a1-4-q07",
           "lessonId": "A1.4",
           "unitCode": "A1",
-          "prompt": "Use a different valid method to answer the same case, then compare it with the supplied sequence: Solve the system x + y = 7 and x − y = 1.",
+          "prompt": "If p = x−4, rewrite p²+3p in terms of x.",
           "responseType": "open-response",
           "skill": "Replace variables or subexpressions with equal-valued expressions while preserving grouping.",
           "purpose": "procedure",
           "difficulty": "mixed",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "substitution-and-evaluation-structure",
             "a1-unchecked-result"
@@ -1977,12 +1998,12 @@
           "id": "a1-4-q08",
           "lessonId": "A1.4",
           "unitCode": "A1",
-          "prompt": "Check the proposed result “(4, 3)” in the original condition and report the evidence.",
+          "prompt": "Simplify the previous expression.",
           "responseType": "open-response",
           "skill": "Replace variables or subexpressions with equal-valued expressions while preserving grouping.",
           "purpose": "procedure",
           "difficulty": "mixed",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "substitution-and-evaluation-structure",
             "a1-unchecked-result"
@@ -2001,12 +2022,12 @@
           "id": "a1-4-q09",
           "lessonId": "A1.4",
           "unitCode": "A1",
-          "prompt": "Rewrite the case in an equivalent form before solving it: Solve the system x + y = 7 and x − y = 1.",
+          "prompt": "If y = 3x+2 and x=4, find y.",
           "responseType": "open-response",
           "skill": "Replace variables or subexpressions with equal-valued expressions while preserving grouping.",
           "purpose": "procedure",
           "difficulty": "standard",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "substitution-and-evaluation-structure",
             "a1-unchecked-result"
@@ -2025,12 +2046,12 @@
           "id": "a1-4-q10",
           "lessonId": "A1.4",
           "unitCode": "A1",
-          "prompt": "Identify the most efficient first move, carry it out, and finish the calculation: Solve the system x + y = 7 and x − y = 1.",
+          "prompt": "If f(t)=t²−1, find f(1/2).",
           "responseType": "open-response",
           "skill": "Replace variables or subexpressions with equal-valued expressions while preserving grouping.",
           "purpose": "procedure",
           "difficulty": "mixed",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "substitution-and-evaluation-structure",
             "a1-unchecked-result"
@@ -2049,12 +2070,12 @@
           "id": "a1-4-q11",
           "lessonId": "A1.4",
           "unitCode": "A1",
-          "prompt": "Create a labeled table, graph, number line, or diagram that communicates the result “(4, 3).”",
+          "prompt": "A student evaluates x² at x=−5 as −25. Repair the work.",
           "responseType": "open-response",
           "skill": "Replace variables or subexpressions with equal-valued expressions while preserving grouping.",
           "purpose": "representation",
           "difficulty": "mixed",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Label the quantities and make the same relationship visible in the new form.",
           "errorTags": [
             "substitution-and-evaluation-structure",
             "a1-unchecked-result"
@@ -2073,12 +2094,12 @@
           "id": "a1-4-q12",
           "lessonId": "A1.4",
           "unitCode": "A1",
-          "prompt": "Translate this case into a second representation and explain which feature stays invariant: Solve the system x + y = 7 and x − y = 1.",
+          "prompt": "Why is 4(2x+1) required when y=2x+1 is substituted into 4y?",
           "responseType": "open-response",
           "skill": "Replace variables or subexpressions with equal-valued expressions while preserving grouping.",
           "purpose": "representation",
           "difficulty": "transfer",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Label the quantities and make the same relationship visible in the new form.",
           "errorTags": [
             "substitution-and-evaluation-structure",
             "a1-unchecked-result"
@@ -2097,12 +2118,12 @@
           "id": "a1-4-q13",
           "lessonId": "A1.4",
           "unitCode": "A1",
-          "prompt": "A learner skips the original-condition check and reports “(4, 3).” Explain what could go wrong and repair the work.",
+          "prompt": "Evaluate P=2l+2w for l=5.2 m, w=3.1 m.",
           "responseType": "open-response",
           "skill": "Replace variables or subexpressions with equal-valued expressions while preserving grouping.",
           "purpose": "error-analysis",
           "difficulty": "mixed",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Locate the first line that no longer preserves the original relationship.",
           "errorTags": [
             "substitution-and-evaluation-structure",
             "a1-unchecked-result"
@@ -2121,12 +2142,12 @@
           "id": "a1-4-q14",
           "lessonId": "A1.4",
           "unitCode": "A1",
-          "prompt": "Change one numerical value in the case, solve the revised problem, and explain which steps remain valid: Solve the system x + y = 7 and x − y = 1.",
+          "prompt": "For g(x)=|x−3|, find g(−2).",
           "responseType": "open-response",
           "skill": "Replace variables or subexpressions with equal-valued expressions while preserving grouping.",
           "purpose": "transfer",
           "difficulty": "transfer",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Identify the familiar equation structure before changing any symbols.",
           "errorTags": [
             "substitution-and-evaluation-structure",
             "a1-unchecked-result"
@@ -2145,12 +2166,12 @@
           "id": "a1-4-q15",
           "lessonId": "A1.4",
           "unitCode": "A1",
-          "prompt": "Write a short real-world situation modeled by the same relationship as this case, including units where they apply: Solve the system x + y = 7 and x − y = 1.",
+          "prompt": "If a=b/c, rewrite 2a+1 using b and c.",
           "responseType": "open-response",
           "skill": "Replace variables or subexpressions with equal-valued expressions while preserving grouping.",
           "purpose": "modeling",
           "difficulty": "transfer",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Define the unknown and its units before writing the equation.",
           "errorTags": [
             "substitution-and-evaluation-structure",
             "a1-unchecked-result"
@@ -2169,12 +2190,12 @@
           "id": "a1-4-q16",
           "lessonId": "A1.4",
           "unitCode": "A1",
-          "prompt": "Exit check: answer the case and give one sentence explaining why the result fits the lesson outcome: Solve the system x + y = 7 and x − y = 1.",
+          "prompt": "Evaluate 2(x+y)−xy for x=−1, y=4.",
           "responseType": "open-response",
           "skill": "Replace variables or subexpressions with equal-valued expressions while preserving grouping.",
           "purpose": "exit",
           "difficulty": "standard",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Solve, classify the solution set, and verify against the original equation.",
           "errorTags": [
             "substitution-and-evaluation-structure",
             "a1-unchecked-result"
@@ -2195,10 +2216,9 @@
         "a1-4-q16"
       ],
       "takeaway": {
-        "summary": "Replace variables or subexpressions with equal-valued expressions while preserving grouping. A complete solution names the relationship, preserves its conditions, and verifies the conclusion.",
+        "summary": "Substitution replaces one complete mathematical object with an equal one.",
         "conditions": [
-          "Keep original restrictions and units visible.",
-          "Use an independent check whenever an operation may create candidates or lose information."
+          "Use parentheses and carry units so the replacement preserves structure."
         ]
       },
       "navigation": {
@@ -2230,65 +2250,71 @@
       "title": "Grouping and order of operations",
       "path": "/subjects/math/algebra/quantities-variables/grouping-and-order-of-operations/",
       "outcome": "Interpret grouping symbols as explicit structure and precedence as a shared reading convention.",
+      "foundationEdition": "authored-v1",
       "opening": {
         "prompt": "Resolve two calculator entries that appear similar but mean different things.",
-        "purpose": "Use a concrete situation to identify the quantities and decision that make grouping and order of operations necessary."
+        "purpose": "Use grouping and precedence to read expressions unambiguously and enter them correctly in calculators."
       },
       "prerequisiteChecks": [
-        "Name the known quantity, the unknown quantity, and any units in the opening situation.",
-        "Classify the central object as an expression, equation, inequality, relation, function, or numerical comparison.",
-        "State one earlier rule or representation you would use to check a result for grouping and order of operations."
+        "Evaluate 6+2·3.",
+        "Explain what (6+2) groups.",
+        "Identify numerator and denominator in 8/2."
       ],
       "exposition": [
-        "Interpret grouping symbols as explicit structure and precedence as a shared reading convention. Begin by naming the mathematical objects before manipulating them. In grouping and order of operations, notation compresses a relationship among quantities; it does not replace that relationship. Track what each symbol represents, preserve grouping and units, and mark any restriction or endpoint as soon as it appears. The first useful question is therefore not “Which memorized move do I use?” but “What must remain true from one line or representation to the next?”",
-        "Expression tree evaluation path. Read the labels as mathematical evidence: identify what is fixed, what changes, and how the objects are related. Then connect that evidence to the symbolic work one justified step at a time. A correct transformation preserves the relevant value, truth set, rate, domain, or geometric feature. If a step changes one of those, it needs a stated condition and a check against the original problem.",
-        "Fraction bar as parentheses. Use the worked examples to compare symbolic, numerical, and visual forms. Each form should answer the same question, even when it emphasizes a different feature. Finish by interpreting the result in a complete sentence and checking it with substitution, estimation, units, graph position, or an inverse operation. That final check distinguishes a plausible-looking candidate from a supported conclusion."
+        "Order of operations is a reading convention for expressions without extra grouping. Grouping symbols override the default order and communicate which expression is one unit. Exponents apply to their complete bases before multiplication and addition.",
+        "Multiplication and division share one precedence level and are processed left to right; addition and subtraction do the same. The mnemonic PEMDAS becomes misleading if it suggests multiplication always precedes division.",
+        "Calculator syntax must preserve written grouping. A fraction such as (x+1)/(x−2) needs parentheses around both numerator and denominator when typed on one line. Spacing alone does not create a mathematical group."
       ],
       "definitions": [
         {
-          "term": "Grouping and order of operations",
-          "definition": "Interpret grouping symbols as explicit structure and precedence as a shared reading convention. The term names the lesson’s central relationship and the conditions under which its methods are valid.",
-          "conditions": "Preserve the original domain, units, grouping, direction, and equivalence conditions whenever they apply."
+          "term": "precedence",
+          "definition": "The agreed priority used to parse an expression when grouping is not explicit.",
+          "conditions": "Operations at the same level are handled left to right."
         },
         {
-          "term": "valid transformation",
-          "definition": "A justified change of form that preserves the value, truth set, relationship, or solution information required by the original problem.",
-          "conditions": "One-way operations can create candidates and therefore require checking in the original statement."
+          "term": "grouping symbol",
+          "definition": "Notation marking an expression as one unit, including parentheses, brackets, fraction bars, and radical bars.",
+          "conditions": "The entire grouped expression is evaluated together."
+        },
+        {
+          "term": "ambiguous input",
+          "definition": "A typed expression that can be read in more than one way.",
+          "conditions": "Add parentheses rather than relying on visual spacing."
         }
       ],
       "examples": [
         {
           "kind": "foundation",
-          "prompt": "A recipe uses 3 cups of water for 5 cups of flour. Find the water needed for 20 cups of flour.",
+          "prompt": "Evaluate 18 ÷ 3·2.",
           "steps": [
-            "Write the ordered ratio 3/5 = w/20.",
-            "Multiply both sides by 20.",
-            "Check that 12/20 reduces to 3/5."
+            "Division and multiplication share precedence.",
+            "Work left to right: 18 ÷ 3 = 6.",
+            "Then compute 6·2."
           ],
-          "answer": "12 cups of water",
-          "interpretation": "The scale factor from 5 to 20 is 4, so the water quantity also scales by 4."
+          "answer": "12",
+          "interpretation": "It is not 18 ÷ 6."
         },
         {
           "kind": "representation",
-          "prompt": "Represent the result of this grouping and order of operations case in a second form: A recipe uses 3 cups of water for 5 cups of flour. Find the water needed for 20 cups of flour.",
+          "prompt": "Compare 2+3²·4 and (2+3)²·4.",
           "steps": [
-            "Complete the calculation or classification before changing representations.",
-            "Choose a table, graph, number line, diagram, or equivalent symbolic form that preserves the same quantities.",
-            "Label the input, output, units, restrictions, or endpoints that carry mathematical meaning."
+            "Evaluate exponent first in the ungrouped expression.",
+            "Evaluate the grouped sum first in the second.",
+            "Compare 38 and 100."
           ],
-          "answer": "A correctly labeled second representation that preserves 12 cups of water.",
-          "interpretation": "The second form must communicate the same relationship, not merely repeat the symbols from the first form."
+          "answer": "38 and 100",
+          "interpretation": "Grouping changes the structure and therefore the value."
         },
         {
           "kind": "transfer",
-          "prompt": "A classmate reaches “12 cups of water” in a quantities, variables, and mathematical objects problem. Decide whether the reasoning is valid and justify the decision from the original conditions.",
+          "prompt": "Type (5+1)/(8−2) unambiguously.",
           "steps": [
-            "Restate the original condition and identify any domain, unit, sign, or equivalence requirement.",
-            "Reproduce the decisive operation using the worked case.",
-            "Check the proposed result against the original statement and explain the conclusion."
+            "Group the numerator.",
+            "Group the denominator.",
+            "Place the division between the two groups."
           ],
-          "answer": "The result is valid only when the reproduced work and original-condition check both support 12 cups of water.",
-          "interpretation": "A transferred method is complete only after its conditions and conclusion are checked in context."
+          "answer": "(5+1)/(8−2) = 1",
+          "interpretation": "The typed form matches the fraction bar’s grouping."
         }
       ],
       "figures": [
@@ -2325,14 +2351,14 @@
       ],
       "misconceptions": [
         {
-          "wrongMove": "Manipulating the symbols in a grouping and order of operations problem before identifying the quantities and governing condition.",
-          "whyItFails": "That move can lose a sign, unit, endpoint, denominator restriction, grouping symbol, or other condition that the outcome explicitly requires.",
-          "repair": "Annotate the original condition, perform one justified step, and check the conclusion using the scale factor from 5 to 20 is 4, so the water quantity also scales by 4."
+          "wrongMove": "Multiplication must always be done before division.",
+          "whyItFails": "They have equal precedence and are evaluated left to right.",
+          "repair": "Mark operation levels or add grouping before computing."
         }
       ],
       "checkpoint": {
         "id": "a1-5-q16",
-        "prompt": "Exit check: answer the case and give one sentence explaining why the result fits the lesson outcome: A recipe uses 3 cups of water for 5 cups of flour. Find the water needed for 20 cups of flour.",
+        "prompt": "Evaluate {2+[3(4−1)]}².",
         "responseType": "open-response"
       },
       "exercises": [
@@ -2358,12 +2384,12 @@
           "id": "a1-5-q01",
           "lessonId": "A1.5",
           "unitCode": "A1",
-          "prompt": "Before using a formula, classify the mathematical objects and quantities in this case: A recipe uses 3 cups of water for 5 cups of flour. Find the water needed for 20 cups of flour.",
+          "prompt": "Evaluate 7 + 3·4.",
           "responseType": "open-response",
           "skill": "Interpret grouping symbols as explicit structure and precedence as a shared reading convention.",
           "purpose": "retrieval",
           "difficulty": "foundation",
-          "hint": "Name what grouping and order of operations requires before doing arithmetic.",
+          "hint": "Recall the named definition or perform a direct substitution before choosing an operation.",
           "errorTags": [
             "grouping-and-order-of-operations-structure",
             "a1-unchecked-result"
@@ -2382,12 +2408,12 @@
           "id": "a1-5-q02",
           "lessonId": "A1.5",
           "unitCode": "A1",
-          "prompt": "State the condition, restriction, unit, or sign rule that must be preserved while answering: A recipe uses 3 cups of water for 5 cups of flour. Find the water needed for 20 cups of flour.",
+          "prompt": "Evaluate (7+3)·4.",
           "responseType": "open-response",
           "skill": "Interpret grouping symbols as explicit structure and precedence as a shared reading convention.",
           "purpose": "retrieval",
           "difficulty": "foundation",
-          "hint": "Name what grouping and order of operations requires before doing arithmetic.",
+          "hint": "Recall the named definition or perform a direct substitution before choosing an operation.",
           "errorTags": [
             "grouping-and-order-of-operations-structure",
             "a1-unchecked-result"
@@ -2406,12 +2432,12 @@
           "id": "a1-5-q03",
           "lessonId": "A1.5",
           "unitCode": "A1",
-          "prompt": "Explain why the first step “Write the ordered ratio 3/5 = w/20.” is valid for grouping and order of operations.",
+          "prompt": "Evaluate 24÷6·2.",
           "responseType": "open-response",
           "skill": "Interpret grouping symbols as explicit structure and precedence as a shared reading convention.",
           "purpose": "concept",
           "difficulty": "standard",
-          "hint": "Name what grouping and order of operations requires before doing arithmetic.",
+          "hint": "State what must remain true, then connect that condition to the equation.",
           "errorTags": [
             "grouping-and-order-of-operations-structure",
             "a1-unchecked-result"
@@ -2430,12 +2456,12 @@
           "id": "a1-5-q04",
           "lessonId": "A1.5",
           "unitCode": "A1",
-          "prompt": "Compare the lesson outcome with this case and identify the exact relationship being used: A recipe uses 3 cups of water for 5 cups of flour. Find the water needed for 20 cups of flour.",
+          "prompt": "Evaluate 24÷(6·2).",
           "responseType": "open-response",
           "skill": "Interpret grouping symbols as explicit structure and precedence as a shared reading convention.",
           "purpose": "concept",
           "difficulty": "standard",
-          "hint": "Name what grouping and order of operations requires before doing arithmetic.",
+          "hint": "State what must remain true, then connect that condition to the equation.",
           "errorTags": [
             "grouping-and-order-of-operations-structure",
             "a1-unchecked-result"
@@ -2454,12 +2480,12 @@
           "id": "a1-5-q05",
           "lessonId": "A1.5",
           "unitCode": "A1",
-          "prompt": "A recipe uses 3 cups of water for 5 cups of flour. Find the water needed for 20 cups of flour.",
+          "prompt": "Evaluate 3² + 2³.",
           "responseType": "open-response",
           "skill": "Interpret grouping symbols as explicit structure and precedence as a shared reading convention.",
           "purpose": "procedure",
           "difficulty": "standard",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "grouping-and-order-of-operations-structure",
             "a1-unchecked-result"
@@ -2478,12 +2504,12 @@
           "id": "a1-5-q06",
           "lessonId": "A1.5",
           "unitCode": "A1",
-          "prompt": "Complete the worked case independently, showing the step between “Write the ordered ratio 3/5 = w/20.” and “Check that 12/20 reduces to 3/5.”: A recipe uses 3 cups of water for 5 cups of flour. Find the water needed for 20 cups of flour.",
+          "prompt": "Evaluate −4² and (−4)².",
           "responseType": "open-response",
           "skill": "Interpret grouping symbols as explicit structure and precedence as a shared reading convention.",
           "purpose": "procedure",
           "difficulty": "standard",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "grouping-and-order-of-operations-structure",
             "a1-unchecked-result"
@@ -2502,12 +2528,12 @@
           "id": "a1-5-q07",
           "lessonId": "A1.5",
           "unitCode": "A1",
-          "prompt": "Use a different valid method to answer the same case, then compare it with the supplied sequence: A recipe uses 3 cups of water for 5 cups of flour. Find the water needed for 20 cups of flour.",
+          "prompt": "Evaluate 2[5−(3−7)].",
           "responseType": "open-response",
           "skill": "Interpret grouping symbols as explicit structure and precedence as a shared reading convention.",
           "purpose": "procedure",
           "difficulty": "mixed",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "grouping-and-order-of-operations-structure",
             "a1-unchecked-result"
@@ -2526,12 +2552,12 @@
           "id": "a1-5-q08",
           "lessonId": "A1.5",
           "unitCode": "A1",
-          "prompt": "Check the proposed result “12 cups of water” in the original condition and report the evidence.",
+          "prompt": "Evaluate (18−6)/(2+1).",
           "responseType": "open-response",
           "skill": "Interpret grouping symbols as explicit structure and precedence as a shared reading convention.",
           "purpose": "procedure",
           "difficulty": "mixed",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "grouping-and-order-of-operations-structure",
             "a1-unchecked-result"
@@ -2550,12 +2576,12 @@
           "id": "a1-5-q09",
           "lessonId": "A1.5",
           "unitCode": "A1",
-          "prompt": "Rewrite the case in an equivalent form before solving it: A recipe uses 3 cups of water for 5 cups of flour. Find the water needed for 20 cups of flour.",
+          "prompt": "Type the fraction x+3 over 2x−1 on one line.",
           "responseType": "open-response",
           "skill": "Interpret grouping symbols as explicit structure and precedence as a shared reading convention.",
           "purpose": "procedure",
           "difficulty": "standard",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "grouping-and-order-of-operations-structure",
             "a1-unchecked-result"
@@ -2574,12 +2600,12 @@
           "id": "a1-5-q10",
           "lessonId": "A1.5",
           "unitCode": "A1",
-          "prompt": "Identify the most efficient first move, carry it out, and finish the calculation: A recipe uses 3 cups of water for 5 cups of flour. Find the water needed for 20 cups of flour.",
+          "prompt": "Insert parentheses so 8−2·3 equals 18.",
           "responseType": "open-response",
           "skill": "Interpret grouping symbols as explicit structure and precedence as a shared reading convention.",
           "purpose": "procedure",
           "difficulty": "mixed",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "grouping-and-order-of-operations-structure",
             "a1-unchecked-result"
@@ -2598,12 +2624,12 @@
           "id": "a1-5-q11",
           "lessonId": "A1.5",
           "unitCode": "A1",
-          "prompt": "Create a labeled table, graph, number line, or diagram that communicates the result “12 cups of water.”",
+          "prompt": "A student evaluates 20−8÷4 as 3. Repair the work.",
           "responseType": "open-response",
           "skill": "Interpret grouping symbols as explicit structure and precedence as a shared reading convention.",
           "purpose": "representation",
           "difficulty": "mixed",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Label the quantities and make the same relationship visible in the new form.",
           "errorTags": [
             "grouping-and-order-of-operations-structure",
             "a1-unchecked-result"
@@ -2622,12 +2648,12 @@
           "id": "a1-5-q12",
           "lessonId": "A1.5",
           "unitCode": "A1",
-          "prompt": "Translate this case into a second representation and explain which feature stays invariant: A recipe uses 3 cups of water for 5 cups of flour. Find the water needed for 20 cups of flour.",
+          "prompt": "Evaluate 5 + 12÷3².",
           "responseType": "open-response",
           "skill": "Interpret grouping symbols as explicit structure and precedence as a shared reading convention.",
           "purpose": "representation",
           "difficulty": "transfer",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Label the quantities and make the same relationship visible in the new form.",
           "errorTags": [
             "grouping-and-order-of-operations-structure",
             "a1-unchecked-result"
@@ -2646,12 +2672,12 @@
           "id": "a1-5-q13",
           "lessonId": "A1.5",
           "unitCode": "A1",
-          "prompt": "A learner skips the original-condition check and reports “12 cups of water.” Explain what could go wrong and repair the work.",
+          "prompt": "Explain the role of the radical bar in √(9+7).",
           "responseType": "open-response",
           "skill": "Interpret grouping symbols as explicit structure and precedence as a shared reading convention.",
           "purpose": "error-analysis",
           "difficulty": "mixed",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Locate the first line that no longer preserves the original relationship.",
           "errorTags": [
             "grouping-and-order-of-operations-structure",
             "a1-unchecked-result"
@@ -2670,12 +2696,12 @@
           "id": "a1-5-q14",
           "lessonId": "A1.5",
           "unitCode": "A1",
-          "prompt": "Change one numerical value in the case, solve the revised problem, and explain which steps remain valid: A recipe uses 3 cups of water for 5 cups of flour. Find the water needed for 20 cups of flour.",
+          "prompt": "Evaluate 6/2(1+2) using standard left-to-right convention.",
           "responseType": "open-response",
           "skill": "Interpret grouping symbols as explicit structure and precedence as a shared reading convention.",
           "purpose": "transfer",
           "difficulty": "transfer",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Identify the familiar equation structure before changing any symbols.",
           "errorTags": [
             "grouping-and-order-of-operations-structure",
             "a1-unchecked-result"
@@ -2694,12 +2720,12 @@
           "id": "a1-5-q15",
           "lessonId": "A1.5",
           "unitCode": "A1",
-          "prompt": "Write a short real-world situation modeled by the same relationship as this case, including units where they apply: A recipe uses 3 cups of water for 5 cups of flour. Find the water needed for 20 cups of flour.",
+          "prompt": "Rewrite a/b+c to mean a divided by the entire sum b+c.",
           "responseType": "open-response",
           "skill": "Interpret grouping symbols as explicit structure and precedence as a shared reading convention.",
           "purpose": "modeling",
           "difficulty": "transfer",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Define the unknown and its units before writing the equation.",
           "errorTags": [
             "grouping-and-order-of-operations-structure",
             "a1-unchecked-result"
@@ -2718,12 +2744,12 @@
           "id": "a1-5-q16",
           "lessonId": "A1.5",
           "unitCode": "A1",
-          "prompt": "Exit check: answer the case and give one sentence explaining why the result fits the lesson outcome: A recipe uses 3 cups of water for 5 cups of flour. Find the water needed for 20 cups of flour.",
+          "prompt": "Evaluate {2+[3(4−1)]}².",
           "responseType": "open-response",
           "skill": "Interpret grouping symbols as explicit structure and precedence as a shared reading convention.",
           "purpose": "exit",
           "difficulty": "standard",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Solve, classify the solution set, and verify against the original equation.",
           "errorTags": [
             "grouping-and-order-of-operations-structure",
             "a1-unchecked-result"
@@ -2744,10 +2770,9 @@
         "a1-5-q16"
       ],
       "takeaway": {
-        "summary": "Interpret grouping symbols as explicit structure and precedence as a shared reading convention. A complete solution names the relationship, preserves its conditions, and verifies the conclusion.",
+        "summary": "Grouping determines structure; precedence only resolves ungrouped notation.",
         "conditions": [
-          "Keep original restrictions and units visible.",
-          "Use an independent check whenever an operation may create candidates or lose information."
+          "Multiplication/division and addition/subtraction are each handled left to right."
         ]
       },
       "navigation": {
@@ -2779,65 +2804,71 @@
       "title": "Properties of real-number operations",
       "path": "/subjects/math/algebra/quantities-variables/properties-of-real-number-operations/",
       "outcome": "Use commutative, associative, identity, inverse, and distributive properties to justify rewrites.",
+      "foundationEdition": "authored-v1",
       "opening": {
         "prompt": "Rearrange a calculation to make it easier without changing its value.",
-        "purpose": "Use a concrete situation to identify the quantities and decision that make properties of real-number operations necessary."
+        "purpose": "Use properties of real-number operations to justify efficient, equivalent rewrites."
       },
       "prerequisiteChecks": [
-        "Name the known quantity, the unknown quantity, and any units in the opening situation.",
-        "Classify the central object as an expression, equation, inequality, relation, function, or numerical comparison.",
-        "State one earlier rule or representation you would use to check a result for properties of real-number operations."
+        "Compute 7+0 and 7·1.",
+        "Name the opposite of 5.",
+        "Use an area model to explain 3(4+2)."
       ],
       "exposition": [
-        "Use commutative, associative, identity, inverse, and distributive properties to justify rewrites. Begin by naming the mathematical objects before manipulating them. In properties of real-number operations, notation compresses a relationship among quantities; it does not replace that relationship. Track what each symbol represents, preserve grouping and units, and mark any restriction or endpoint as soon as it appears. The first useful question is therefore not “Which memorized move do I use?” but “What must remain true from one line or representation to the next?”",
-        "Property action cards. Read the labels as mathematical evidence: identify what is fixed, what changes, and how the objects are related. Then connect that evidence to the symbolic work one justified step at a time. A correct transformation preserves the relevant value, truth set, rate, domain, or geometric feature. If a step changes one of those, it needs a stated condition and a check against the original problem.",
-        "Area model for distribution. Use the worked examples to compare symbolic, numerical, and visual forms. Each form should answer the same question, even when it emphasizes a different feature. Finish by interpreting the result in a complete sentence and checking it with substitution, estimation, units, graph position, or an inverse operation. That final check distinguishes a plausible-looking candidate from a supported conclusion."
+        "Properties describe transformations that preserve value. Commutative properties change order, associative properties change grouping, identities leave a value unchanged, and inverses combine to an identity.",
+        "The distributive property links multiplication with addition: a(b+c)=ab+ac. It works in both directions, enabling expansion and factoring. Distribution applies to every term in the grouped sum.",
+        "A written solution should name the property that licenses each non-arithmetic rewrite. This turns symbolic movement into a proof of equivalence rather than a pattern guess that happens to look familiar."
       ],
       "definitions": [
         {
-          "term": "Properties of real-number operations",
-          "definition": "Use commutative, associative, identity, inverse, and distributive properties to justify rewrites. The term names the lesson’s central relationship and the conditions under which its methods are valid.",
-          "conditions": "Preserve the original domain, units, grouping, direction, and equivalence conditions whenever they apply."
+          "term": "commutative property",
+          "definition": "Order may be reversed in addition or multiplication.",
+          "conditions": "Subtraction and division are not commutative."
         },
         {
-          "term": "valid transformation",
-          "definition": "A justified change of form that preserves the value, truth set, relationship, or solution information required by the original problem.",
-          "conditions": "One-way operations can create candidates and therefore require checking in the original statement."
+          "term": "associative property",
+          "definition": "Grouping may change in repeated addition or multiplication.",
+          "conditions": "It does not change the order of terms or factors."
+        },
+        {
+          "term": "distributive property",
+          "definition": "Multiplication by a sum equals the sum of the products.",
+          "conditions": "Every term inside the group receives the outside factor."
         }
       ],
       "examples": [
         {
           "kind": "foundation",
-          "prompt": "A recipe uses 3 cups of water for 5 cups of flour. Find the water needed for 20 cups of flour.",
+          "prompt": "Compute 25·17·4 efficiently.",
           "steps": [
-            "Write the ordered ratio 3/5 = w/20.",
-            "Multiply both sides by 20.",
-            "Check that 12/20 reduces to 3/5."
+            "Use commutativity to place 25 and 4 together.",
+            "Use associativity to group (25·4)·17.",
+            "Compute 100·17."
           ],
-          "answer": "12 cups of water",
-          "interpretation": "The scale factor from 5 to 20 is 4, so the water quantity also scales by 4."
+          "answer": "1,700",
+          "interpretation": "The properties change order and grouping without changing value."
         },
         {
           "kind": "representation",
-          "prompt": "Represent the result of this properties of real-number operations case in a second form: A recipe uses 3 cups of water for 5 cups of flour. Find the water needed for 20 cups of flour.",
+          "prompt": "Expand −3(2x−5).",
           "steps": [
-            "Complete the calculation or classification before changing representations.",
-            "Choose a table, graph, number line, diagram, or equivalent symbolic form that preserves the same quantities.",
-            "Label the input, output, units, restrictions, or endpoints that carry mathematical meaning."
+            "Distribute −3 to 2x.",
+            "Distribute −3 to −5.",
+            "Combine the resulting terms."
           ],
-          "answer": "A correctly labeled second representation that preserves 12 cups of water.",
-          "interpretation": "The second form must communicate the same relationship, not merely repeat the symbols from the first form."
+          "answer": "−6x + 15",
+          "interpretation": "The sign of the outside factor applies to both products."
         },
         {
           "kind": "transfer",
-          "prompt": "A classmate reaches “12 cups of water” in a quantities, variables, and mathematical objects problem. Decide whether the reasoning is valid and justify the decision from the original conditions.",
+          "prompt": "Factor 12x + 18.",
           "steps": [
-            "Restate the original condition and identify any domain, unit, sign, or equivalence requirement.",
-            "Reproduce the decisive operation using the worked case.",
-            "Check the proposed result against the original statement and explain the conclusion."
+            "Find GCF 6.",
+            "Rewrite each term as a product containing 6.",
+            "Reverse distribution."
           ],
-          "answer": "The result is valid only when the reproduced work and original-condition check both support 12 cups of water.",
-          "interpretation": "A transferred method is complete only after its conditions and conclusion are checked in context."
+          "answer": "6(2x+3)",
+          "interpretation": "Factoring exposes the common multiplicative structure."
         }
       ],
       "figures": [
@@ -2874,14 +2905,14 @@
       ],
       "misconceptions": [
         {
-          "wrongMove": "Manipulating the symbols in a properties of real-number operations problem before identifying the quantities and governing condition.",
-          "whyItFails": "That move can lose a sign, unit, endpoint, denominator restriction, grouping symbol, or other condition that the outcome explicitly requires.",
-          "repair": "Annotate the original condition, perform one justified step, and check the conclusion using the scale factor from 5 to 20 is 4, so the water quantity also scales by 4."
+          "wrongMove": "Distribution applies only to the first term in parentheses.",
+          "whyItFails": "The grouped expression is a sum, so the outside factor multiplies every addend.",
+          "repair": "Draw an area model or write one product for each inside term."
         }
       ],
       "checkpoint": {
         "id": "a1-6-q16",
-        "prompt": "Exit check: answer the case and give one sentence explaining why the result fits the lesson outcome: A recipe uses 3 cups of water for 5 cups of flour. Find the water needed for 20 cups of flour.",
+        "prompt": "Justify 7x+7y = 7(x+y).",
         "responseType": "open-response"
       },
       "exercises": [
@@ -2907,12 +2938,12 @@
           "id": "a1-6-q01",
           "lessonId": "A1.6",
           "unitCode": "A1",
-          "prompt": "Before using a formula, classify the mathematical objects and quantities in this case: A recipe uses 3 cups of water for 5 cups of flour. Find the water needed for 20 cups of flour.",
+          "prompt": "Name the property: 8+13 = 13+8.",
           "responseType": "open-response",
           "skill": "Use commutative, associative, identity, inverse, and distributive properties to justify rewrites.",
           "purpose": "retrieval",
           "difficulty": "foundation",
-          "hint": "Name what properties of real-number operations requires before doing arithmetic.",
+          "hint": "Recall the named definition or perform a direct substitution before choosing an operation.",
           "errorTags": [
             "properties-of-real-number-operations-structure",
             "a1-unchecked-result"
@@ -2931,12 +2962,12 @@
           "id": "a1-6-q02",
           "lessonId": "A1.6",
           "unitCode": "A1",
-          "prompt": "State the condition, restriction, unit, or sign rule that must be preserved while answering: A recipe uses 3 cups of water for 5 cups of flour. Find the water needed for 20 cups of flour.",
+          "prompt": "Name the property: (2·5)·7 = 2·(5·7).",
           "responseType": "open-response",
           "skill": "Use commutative, associative, identity, inverse, and distributive properties to justify rewrites.",
           "purpose": "retrieval",
           "difficulty": "foundation",
-          "hint": "Name what properties of real-number operations requires before doing arithmetic.",
+          "hint": "Recall the named definition or perform a direct substitution before choosing an operation.",
           "errorTags": [
             "properties-of-real-number-operations-structure",
             "a1-unchecked-result"
@@ -2955,12 +2986,12 @@
           "id": "a1-6-q03",
           "lessonId": "A1.6",
           "unitCode": "A1",
-          "prompt": "Explain why the first step “Write the ordered ratio 3/5 = w/20.” is valid for properties of real-number operations.",
+          "prompt": "Name the property: x+0=x.",
           "responseType": "open-response",
           "skill": "Use commutative, associative, identity, inverse, and distributive properties to justify rewrites.",
           "purpose": "concept",
           "difficulty": "standard",
-          "hint": "Name what properties of real-number operations requires before doing arithmetic.",
+          "hint": "State what must remain true, then connect that condition to the equation.",
           "errorTags": [
             "properties-of-real-number-operations-structure",
             "a1-unchecked-result"
@@ -2979,12 +3010,12 @@
           "id": "a1-6-q04",
           "lessonId": "A1.6",
           "unitCode": "A1",
-          "prompt": "Compare the lesson outcome with this case and identify the exact relationship being used: A recipe uses 3 cups of water for 5 cups of flour. Find the water needed for 20 cups of flour.",
+          "prompt": "Name the property: a·1=a.",
           "responseType": "open-response",
           "skill": "Use commutative, associative, identity, inverse, and distributive properties to justify rewrites.",
           "purpose": "concept",
           "difficulty": "standard",
-          "hint": "Name what properties of real-number operations requires before doing arithmetic.",
+          "hint": "State what must remain true, then connect that condition to the equation.",
           "errorTags": [
             "properties-of-real-number-operations-structure",
             "a1-unchecked-result"
@@ -3003,12 +3034,12 @@
           "id": "a1-6-q05",
           "lessonId": "A1.6",
           "unitCode": "A1",
-          "prompt": "A recipe uses 3 cups of water for 5 cups of flour. Find the water needed for 20 cups of flour.",
+          "prompt": "Name the property: y+(−y)=0.",
           "responseType": "open-response",
           "skill": "Use commutative, associative, identity, inverse, and distributive properties to justify rewrites.",
           "purpose": "procedure",
           "difficulty": "standard",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "properties-of-real-number-operations-structure",
             "a1-unchecked-result"
@@ -3027,12 +3058,12 @@
           "id": "a1-6-q06",
           "lessonId": "A1.6",
           "unitCode": "A1",
-          "prompt": "Complete the worked case independently, showing the step between “Write the ordered ratio 3/5 = w/20.” and “Check that 12/20 reduces to 3/5.”: A recipe uses 3 cups of water for 5 cups of flour. Find the water needed for 20 cups of flour.",
+          "prompt": "State the multiplicative inverse of −3/5.",
           "responseType": "open-response",
           "skill": "Use commutative, associative, identity, inverse, and distributive properties to justify rewrites.",
           "purpose": "procedure",
           "difficulty": "standard",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "properties-of-real-number-operations-structure",
             "a1-unchecked-result"
@@ -3051,12 +3082,12 @@
           "id": "a1-6-q07",
           "lessonId": "A1.6",
           "unitCode": "A1",
-          "prompt": "Use a different valid method to answer the same case, then compare it with the supplied sequence: A recipe uses 3 cups of water for 5 cups of flour. Find the water needed for 20 cups of flour.",
+          "prompt": "Use properties to compute 48+37+52 efficiently.",
           "responseType": "open-response",
           "skill": "Use commutative, associative, identity, inverse, and distributive properties to justify rewrites.",
           "purpose": "procedure",
           "difficulty": "mixed",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "properties-of-real-number-operations-structure",
             "a1-unchecked-result"
@@ -3075,12 +3106,12 @@
           "id": "a1-6-q08",
           "lessonId": "A1.6",
           "unitCode": "A1",
-          "prompt": "Check the proposed result “12 cups of water” in the original condition and report the evidence.",
+          "prompt": "Use properties to compute 8·125·6.",
           "responseType": "open-response",
           "skill": "Use commutative, associative, identity, inverse, and distributive properties to justify rewrites.",
           "purpose": "procedure",
           "difficulty": "mixed",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "properties-of-real-number-operations-structure",
             "a1-unchecked-result"
@@ -3099,12 +3130,12 @@
           "id": "a1-6-q09",
           "lessonId": "A1.6",
           "unitCode": "A1",
-          "prompt": "Rewrite the case in an equivalent form before solving it: A recipe uses 3 cups of water for 5 cups of flour. Find the water needed for 20 cups of flour.",
+          "prompt": "Expand 5(x+4).",
           "responseType": "open-response",
           "skill": "Use commutative, associative, identity, inverse, and distributive properties to justify rewrites.",
           "purpose": "procedure",
           "difficulty": "standard",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "properties-of-real-number-operations-structure",
             "a1-unchecked-result"
@@ -3123,12 +3154,12 @@
           "id": "a1-6-q10",
           "lessonId": "A1.6",
           "unitCode": "A1",
-          "prompt": "Identify the most efficient first move, carry it out, and finish the calculation: A recipe uses 3 cups of water for 5 cups of flour. Find the water needed for 20 cups of flour.",
+          "prompt": "Expand −2(3x−7).",
           "responseType": "open-response",
           "skill": "Use commutative, associative, identity, inverse, and distributive properties to justify rewrites.",
           "purpose": "procedure",
           "difficulty": "mixed",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "properties-of-real-number-operations-structure",
             "a1-unchecked-result"
@@ -3147,12 +3178,12 @@
           "id": "a1-6-q11",
           "lessonId": "A1.6",
           "unitCode": "A1",
-          "prompt": "Create a labeled table, graph, number line, or diagram that communicates the result “12 cups of water.”",
+          "prompt": "Expand 4(2x+3y−1).",
           "responseType": "open-response",
           "skill": "Use commutative, associative, identity, inverse, and distributive properties to justify rewrites.",
           "purpose": "representation",
           "difficulty": "mixed",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Label the quantities and make the same relationship visible in the new form.",
           "errorTags": [
             "properties-of-real-number-operations-structure",
             "a1-unchecked-result"
@@ -3171,12 +3202,12 @@
           "id": "a1-6-q12",
           "lessonId": "A1.6",
           "unitCode": "A1",
-          "prompt": "Translate this case into a second representation and explain which feature stays invariant: A recipe uses 3 cups of water for 5 cups of flour. Find the water needed for 20 cups of flour.",
+          "prompt": "Factor 15x+25.",
           "responseType": "open-response",
           "skill": "Use commutative, associative, identity, inverse, and distributive properties to justify rewrites.",
           "purpose": "representation",
           "difficulty": "transfer",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Label the quantities and make the same relationship visible in the new form.",
           "errorTags": [
             "properties-of-real-number-operations-structure",
             "a1-unchecked-result"
@@ -3195,12 +3226,12 @@
           "id": "a1-6-q13",
           "lessonId": "A1.6",
           "unitCode": "A1",
-          "prompt": "A learner skips the original-condition check and reports “12 cups of water.” Explain what could go wrong and repair the work.",
+          "prompt": "Factor −6x+18.",
           "responseType": "open-response",
           "skill": "Use commutative, associative, identity, inverse, and distributive properties to justify rewrites.",
           "purpose": "error-analysis",
           "difficulty": "mixed",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Locate the first line that no longer preserves the original relationship.",
           "errorTags": [
             "properties-of-real-number-operations-structure",
             "a1-unchecked-result"
@@ -3219,12 +3250,12 @@
           "id": "a1-6-q14",
           "lessonId": "A1.6",
           "unitCode": "A1",
-          "prompt": "Change one numerical value in the case, solve the revised problem, and explain which steps remain valid: A recipe uses 3 cups of water for 5 cups of flour. Find the water needed for 20 cups of flour.",
+          "prompt": "Explain why a−b ≠ b−a in general.",
           "responseType": "open-response",
           "skill": "Use commutative, associative, identity, inverse, and distributive properties to justify rewrites.",
           "purpose": "transfer",
           "difficulty": "transfer",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Identify the familiar equation structure before changing any symbols.",
           "errorTags": [
             "properties-of-real-number-operations-structure",
             "a1-unchecked-result"
@@ -3243,12 +3274,12 @@
           "id": "a1-6-q15",
           "lessonId": "A1.6",
           "unitCode": "A1",
-          "prompt": "Write a short real-world situation modeled by the same relationship as this case, including units where they apply: A recipe uses 3 cups of water for 5 cups of flour. Find the water needed for 20 cups of flour.",
+          "prompt": "A student rewrites (a+b)² as a²+b² using distribution. Repair the claim.",
           "responseType": "open-response",
           "skill": "Use commutative, associative, identity, inverse, and distributive properties to justify rewrites.",
           "purpose": "modeling",
           "difficulty": "transfer",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Define the unknown and its units before writing the equation.",
           "errorTags": [
             "properties-of-real-number-operations-structure",
             "a1-unchecked-result"
@@ -3267,12 +3298,12 @@
           "id": "a1-6-q16",
           "lessonId": "A1.6",
           "unitCode": "A1",
-          "prompt": "Exit check: answer the case and give one sentence explaining why the result fits the lesson outcome: A recipe uses 3 cups of water for 5 cups of flour. Find the water needed for 20 cups of flour.",
+          "prompt": "Justify 7x+7y = 7(x+y).",
           "responseType": "open-response",
           "skill": "Use commutative, associative, identity, inverse, and distributive properties to justify rewrites.",
           "purpose": "exit",
           "difficulty": "standard",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Solve, classify the solution set, and verify against the original equation.",
           "errorTags": [
             "properties-of-real-number-operations-structure",
             "a1-unchecked-result"
@@ -3293,10 +3324,9 @@
         "a1-6-q16"
       ],
       "takeaway": {
-        "summary": "Use commutative, associative, identity, inverse, and distributive properties to justify rewrites. A complete solution names the relationship, preserves its conditions, and verifies the conclusion.",
+        "summary": "Properties are licenses for value-preserving rewrites.",
         "conditions": [
-          "Keep original restrictions and units visible.",
-          "Use an independent check whenever an operation may create candidates or lose information."
+          "Name the property, apply it to the complete structure, and check by reversing the rewrite."
         ]
       },
       "navigation": {
@@ -3328,65 +3358,71 @@
       "title": "Equivalent expressions and like terms",
       "path": "/subjects/math/algebra/quantities-variables/equivalent-expressions-and-like-terms/",
       "outcome": "Recognize rewrites that preserve value for every allowed input and combine only structurally alike terms.",
+      "foundationEdition": "authored-v1",
       "opening": {
         "prompt": "Compare two formulas by testing and then proving equivalence.",
-        "purpose": "Use a concrete situation to identify the quantities and decision that make equivalent expressions and like terms necessary."
+        "purpose": "Recognize equivalent expressions and combine only terms with identical variable structure."
       },
       "prerequisiteChecks": [
-        "Name the known quantity, the unknown quantity, and any units in the opening situation.",
-        "Classify the central object as an expression, equation, inequality, relation, function, or numerical comparison.",
-        "State one earlier rule or representation you would use to check a result for equivalent expressions and like terms."
+        "Identify coefficients in 3x and −5x.",
+        "Use distribution on 2(x+4).",
+        "Explain why 3 apples + 2 apples can combine."
       ],
       "exposition": [
-        "Recognize rewrites that preserve value for every allowed input and combine only structurally alike terms. Begin by naming the mathematical objects before manipulating them. In equivalent expressions and like terms, notation compresses a relationship among quantities; it does not replace that relationship. Track what each symbol represents, preserve grouping and units, and mark any restriction or endpoint as soon as it appears. The first useful question is therefore not “Which memorized move do I use?” but “What must remain true from one line or representation to the next?”",
-        "Algebra tiles. Read the labels as mathematical evidence: identify what is fixed, what changes, and how the objects are related. Then connect that evidence to the symbolic work one justified step at a time. A correct transformation preserves the relevant value, truth set, rate, domain, or geometric feature. If a step changes one of those, it needs a stated condition and a check against the original problem.",
-        "Value-table equivalence check. Use the worked examples to compare symbolic, numerical, and visual forms. Each form should answer the same question, even when it emphasizes a different feature. Finish by interpreting the result in a complete sentence and checking it with substitution, estimation, units, graph position, or an inverse operation. That final check distinguishes a plausible-looking candidate from a supported conclusion."
+        "Equivalent expressions have the same value for every allowed input. Numerical testing can disprove equivalence but cannot prove it for all inputs; properties provide a general proof across the full domain.",
+        "Like terms have identical variable factors raised to identical powers. Their coefficients count copies of that shared unit, so 3x+5x=8x. Terms x and x² are not alike, just as meters and square meters are not alike.",
+        "A reliable simplification sequence distributes first, identifies terms with signs attached, groups like structures, and combines coefficients. The result should be checked at one convenient input to catch arithmetic errors."
       ],
       "definitions": [
         {
-          "term": "Equivalent expressions and like terms",
-          "definition": "Recognize rewrites that preserve value for every allowed input and combine only structurally alike terms. The term names the lesson’s central relationship and the conditions under which its methods are valid.",
-          "conditions": "Preserve the original domain, units, grouping, direction, and equivalence conditions whenever they apply."
+          "term": "equivalent expressions",
+          "definition": "Expressions equal for every input in their common domain.",
+          "conditions": "A proof uses properties or a complete algebraic derivation."
         },
         {
-          "term": "valid transformation",
-          "definition": "A justified change of form that preserves the value, truth set, relationship, or solution information required by the original problem.",
-          "conditions": "One-way operations can create candidates and therefore require checking in the original statement."
+          "term": "like terms",
+          "definition": "Terms with exactly the same variable part, including exponents.",
+          "conditions": "Only their numerical coefficients may differ."
+        },
+        {
+          "term": "constant term",
+          "definition": "A term with no variable factor.",
+          "conditions": "It is like only other constant terms."
         }
       ],
       "examples": [
         {
           "kind": "foundation",
-          "prompt": "Factor x² − 5x + 6 completely and verify the result.",
+          "prompt": "Simplify 4x − 7 + 3x + 2.",
           "steps": [
-            "Find two integers whose product is 6 and whose sum is −5.",
-            "Write the product (x − 2)(x − 3).",
-            "Expand to recover x² − 5x + 6."
+            "Group x-terms and constants.",
+            "Combine coefficients 4+3.",
+            "Combine constants −7+2."
           ],
-          "answer": "(x − 2)(x − 3)",
-          "interpretation": "The factors expose the zeros 2 and 3 while expansion confirms equivalence."
+          "answer": "7x−5",
+          "interpretation": "The variable structure x is preserved."
         },
         {
           "kind": "representation",
-          "prompt": "Represent the result of this equivalent expressions and like terms case in a second form: Factor x² − 5x + 6 completely and verify the result.",
+          "prompt": "Simplify 3(2x−5) − 4(x+1).",
           "steps": [
-            "Complete the calculation or classification before changing representations.",
-            "Choose a table, graph, number line, diagram, or equivalent symbolic form that preserves the same quantities.",
-            "Label the input, output, units, restrictions, or endpoints that carry mathematical meaning."
+            "Distribute to get 6x−15−4x−4.",
+            "Combine x-terms.",
+            "Combine constants."
           ],
-          "answer": "A correctly labeled second representation that preserves (x − 2)(x − 3).",
-          "interpretation": "The second form must communicate the same relationship, not merely repeat the symbols from the first form."
+          "answer": "2x−19",
+          "interpretation": "Distribution reveals the like terms."
         },
         {
           "kind": "transfer",
-          "prompt": "A classmate reaches “(x − 2)(x − 3)” in a quantities, variables, and mathematical objects problem. Decide whether the reasoning is valid and justify the decision from the original conditions.",
+          "prompt": "Decide whether 2(x+3)+x and 3x+6 are equivalent.",
           "steps": [
-            "Restate the original condition and identify any domain, unit, sign, or equivalence requirement.",
-            "Reproduce the decisive operation using the worked case.",
-            "Check the proposed result against the original statement and explain the conclusion."
+            "Distribute the first expression.",
+            "Combine 2x+x.",
+            "Compare with the second expression."
           ],
-          "answer": "The result is valid only when the reproduced work and original-condition check both support (x − 2)(x − 3).",
-          "interpretation": "A transferred method is complete only after its conditions and conclusion are checked in context."
+          "answer": "Yes",
+          "interpretation": "Both simplify to 3x+6 for every x."
         }
       ],
       "figures": [
@@ -3423,14 +3459,14 @@
       ],
       "misconceptions": [
         {
-          "wrongMove": "Manipulating the symbols in a equivalent expressions and like terms problem before identifying the quantities and governing condition.",
-          "whyItFails": "That move can lose a sign, unit, endpoint, denominator restriction, grouping symbol, or other condition that the outcome explicitly requires.",
-          "repair": "Annotate the original condition, perform one justified step, and check the conclusion using the factors expose the zeros 2 and 3 while expansion confirms equivalence."
+          "wrongMove": "Terms are like whenever they use the same letter.",
+          "whyItFails": "Exponents are part of variable structure; x and x² represent different units.",
+          "repair": "Match the full variable part before adding coefficients."
         }
       ],
       "checkpoint": {
         "id": "a1-7-q16",
-        "prompt": "Exit check: answer the case and give one sentence explaining why the result fits the lesson outcome: Factor x² − 5x + 6 completely and verify the result.",
+        "prompt": "Explain why testing x=1 alone cannot prove equivalence.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -3456,12 +3492,12 @@
           "id": "a1-7-q01",
           "lessonId": "A1.7",
           "unitCode": "A1",
-          "prompt": "Before using a formula, classify the mathematical objects and quantities in this case: Factor x² − 5x + 6 completely and verify the result.",
+          "prompt": "Simplify 6x+2x.",
           "responseType": "open-response",
           "skill": "Recognize rewrites that preserve value for every allowed input and combine only structurally alike terms.",
           "purpose": "retrieval",
           "difficulty": "foundation",
-          "hint": "Name what equivalent expressions and like terms requires before doing arithmetic.",
+          "hint": "Recall the named definition or perform a direct substitution before choosing an operation.",
           "errorTags": [
             "equivalent-expressions-and-like-terms-structure",
             "a1-unchecked-result"
@@ -3480,12 +3516,12 @@
           "id": "a1-7-q02",
           "lessonId": "A1.7",
           "unitCode": "A1",
-          "prompt": "State the condition, restriction, unit, or sign rule that must be preserved while answering: Factor x² − 5x + 6 completely and verify the result.",
+          "prompt": "Simplify 9a−4a+3.",
           "responseType": "open-response",
           "skill": "Recognize rewrites that preserve value for every allowed input and combine only structurally alike terms.",
           "purpose": "retrieval",
           "difficulty": "foundation",
-          "hint": "Name what equivalent expressions and like terms requires before doing arithmetic.",
+          "hint": "Recall the named definition or perform a direct substitution before choosing an operation.",
           "errorTags": [
             "equivalent-expressions-and-like-terms-structure",
             "a1-unchecked-result"
@@ -3504,12 +3540,12 @@
           "id": "a1-7-q03",
           "lessonId": "A1.7",
           "unitCode": "A1",
-          "prompt": "Explain why the first step “Find two integers whose product is 6 and whose sum is −5.” is valid for equivalent expressions and like terms.",
+          "prompt": "Simplify 5x²+3x−2x²+x.",
           "responseType": "open-response",
           "skill": "Recognize rewrites that preserve value for every allowed input and combine only structurally alike terms.",
           "purpose": "concept",
           "difficulty": "standard",
-          "hint": "Name what equivalent expressions and like terms requires before doing arithmetic.",
+          "hint": "State what must remain true, then connect that condition to the equation.",
           "errorTags": [
             "equivalent-expressions-and-like-terms-structure",
             "a1-unchecked-result"
@@ -3528,12 +3564,12 @@
           "id": "a1-7-q04",
           "lessonId": "A1.7",
           "unitCode": "A1",
-          "prompt": "Compare the lesson outcome with this case and identify the exact relationship being used: Factor x² − 5x + 6 completely and verify the result.",
+          "prompt": "Simplify 7−2y+5+y.",
           "responseType": "open-response",
           "skill": "Recognize rewrites that preserve value for every allowed input and combine only structurally alike terms.",
           "purpose": "concept",
           "difficulty": "standard",
-          "hint": "Name what equivalent expressions and like terms requires before doing arithmetic.",
+          "hint": "State what must remain true, then connect that condition to the equation.",
           "errorTags": [
             "equivalent-expressions-and-like-terms-structure",
             "a1-unchecked-result"
@@ -3552,12 +3588,12 @@
           "id": "a1-7-q05",
           "lessonId": "A1.7",
           "unitCode": "A1",
-          "prompt": "Factor x² − 5x + 6 completely and verify the result.",
+          "prompt": "Simplify 4(2x+1)+3x.",
           "responseType": "open-response",
           "skill": "Recognize rewrites that preserve value for every allowed input and combine only structurally alike terms.",
           "purpose": "procedure",
           "difficulty": "standard",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "equivalent-expressions-and-like-terms-structure",
             "a1-unchecked-result"
@@ -3576,12 +3612,12 @@
           "id": "a1-7-q06",
           "lessonId": "A1.7",
           "unitCode": "A1",
-          "prompt": "Complete the worked case independently, showing the step between “Find two integers whose product is 6 and whose sum is −5.” and “Expand to recover x² − 5x + 6.”: Factor x² − 5x + 6 completely and verify the result.",
+          "prompt": "Simplify −3(x−2)+5x.",
           "responseType": "open-response",
           "skill": "Recognize rewrites that preserve value for every allowed input and combine only structurally alike terms.",
           "purpose": "procedure",
           "difficulty": "standard",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "equivalent-expressions-and-like-terms-structure",
             "a1-unchecked-result"
@@ -3600,12 +3636,12 @@
           "id": "a1-7-q07",
           "lessonId": "A1.7",
           "unitCode": "A1",
-          "prompt": "Use a different valid method to answer the same case, then compare it with the supplied sequence: Factor x² − 5x + 6 completely and verify the result.",
+          "prompt": "Simplify 2(x+4)−(x−1).",
           "responseType": "open-response",
           "skill": "Recognize rewrites that preserve value for every allowed input and combine only structurally alike terms.",
           "purpose": "procedure",
           "difficulty": "mixed",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "equivalent-expressions-and-like-terms-structure",
             "a1-unchecked-result"
@@ -3624,12 +3660,12 @@
           "id": "a1-7-q08",
           "lessonId": "A1.7",
           "unitCode": "A1",
-          "prompt": "Check the proposed result “(x − 2)(x − 3)” in the original condition and report the evidence.",
+          "prompt": "Are 4(x−2) and 4x−2 equivalent?",
           "responseType": "open-response",
           "skill": "Recognize rewrites that preserve value for every allowed input and combine only structurally alike terms.",
           "purpose": "procedure",
           "difficulty": "mixed",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "equivalent-expressions-and-like-terms-structure",
             "a1-unchecked-result"
@@ -3648,12 +3684,12 @@
           "id": "a1-7-q09",
           "lessonId": "A1.7",
           "unitCode": "A1",
-          "prompt": "Rewrite the case in an equivalent form before solving it: Factor x² − 5x + 6 completely and verify the result.",
+          "prompt": "Are 3x+3x² and 6x³ equivalent?",
           "responseType": "open-response",
           "skill": "Recognize rewrites that preserve value for every allowed input and combine only structurally alike terms.",
           "purpose": "procedure",
           "difficulty": "standard",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "equivalent-expressions-and-like-terms-structure",
             "a1-unchecked-result"
@@ -3672,12 +3708,12 @@
           "id": "a1-7-q10",
           "lessonId": "A1.7",
           "unitCode": "A1",
-          "prompt": "Identify the most efficient first move, carry it out, and finish the calculation: Factor x² − 5x + 6 completely and verify the result.",
+          "prompt": "Prove 5(x+2)−2x and 3x+10 are equivalent.",
           "responseType": "open-response",
           "skill": "Recognize rewrites that preserve value for every allowed input and combine only structurally alike terms.",
           "purpose": "procedure",
           "difficulty": "mixed",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "equivalent-expressions-and-like-terms-structure",
             "a1-unchecked-result"
@@ -3696,12 +3732,12 @@
           "id": "a1-7-q11",
           "lessonId": "A1.7",
           "unitCode": "A1",
-          "prompt": "Create a labeled table, graph, number line, or diagram that communicates the result “(x − 2)(x − 3).”",
+          "prompt": "Find k so 4x+kx = 11x.",
           "responseType": "open-response",
           "skill": "Recognize rewrites that preserve value for every allowed input and combine only structurally alike terms.",
           "purpose": "representation",
           "difficulty": "mixed",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Label the quantities and make the same relationship visible in the new form.",
           "errorTags": [
             "equivalent-expressions-and-like-terms-structure",
             "a1-unchecked-result"
@@ -3720,12 +3756,12 @@
           "id": "a1-7-q12",
           "lessonId": "A1.7",
           "unitCode": "A1",
-          "prompt": "Translate this case into a second representation and explain which feature stays invariant: Factor x² − 5x + 6 completely and verify the result.",
+          "prompt": "A student simplifies 2x+3 as 5x. Repair the work.",
           "responseType": "open-response",
           "skill": "Recognize rewrites that preserve value for every allowed input and combine only structurally alike terms.",
           "purpose": "representation",
           "difficulty": "transfer",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Label the quantities and make the same relationship visible in the new form.",
           "errorTags": [
             "equivalent-expressions-and-like-terms-structure",
             "a1-unchecked-result"
@@ -3744,12 +3780,12 @@
           "id": "a1-7-q13",
           "lessonId": "A1.7",
           "unitCode": "A1",
-          "prompt": "A learner skips the original-condition check and reports “(x − 2)(x − 3).” Explain what could go wrong and repair the work.",
+          "prompt": "Simplify 1/2x + 3/4x.",
           "responseType": "open-response",
           "skill": "Recognize rewrites that preserve value for every allowed input and combine only structurally alike terms.",
           "purpose": "error-analysis",
           "difficulty": "mixed",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Locate the first line that no longer preserves the original relationship.",
           "errorTags": [
             "equivalent-expressions-and-like-terms-structure",
             "a1-unchecked-result"
@@ -3768,12 +3804,12 @@
           "id": "a1-7-q14",
           "lessonId": "A1.7",
           "unitCode": "A1",
-          "prompt": "Change one numerical value in the case, solve the revised problem, and explain which steps remain valid: Factor x² − 5x + 6 completely and verify the result.",
+          "prompt": "Simplify 0.3y−1.2+0.7y+2.",
           "responseType": "open-response",
           "skill": "Recognize rewrites that preserve value for every allowed input and combine only structurally alike terms.",
           "purpose": "transfer",
           "difficulty": "transfer",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Identify the familiar equation structure before changing any symbols.",
           "errorTags": [
             "equivalent-expressions-and-like-terms-structure",
             "a1-unchecked-result"
@@ -3792,12 +3828,12 @@
           "id": "a1-7-q15",
           "lessonId": "A1.7",
           "unitCode": "A1",
-          "prompt": "Write a short real-world situation modeled by the same relationship as this case, including units where they apply: Factor x² − 5x + 6 completely and verify the result.",
+          "prompt": "Check 2x−19 and 3(2x−5)−4(x+1) at x=5.",
           "responseType": "open-response",
           "skill": "Recognize rewrites that preserve value for every allowed input and combine only structurally alike terms.",
           "purpose": "modeling",
           "difficulty": "transfer",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Define the unknown and its units before writing the equation.",
           "errorTags": [
             "equivalent-expressions-and-like-terms-structure",
             "a1-unchecked-result"
@@ -3816,12 +3852,12 @@
           "id": "a1-7-q16",
           "lessonId": "A1.7",
           "unitCode": "A1",
-          "prompt": "Exit check: answer the case and give one sentence explaining why the result fits the lesson outcome: Factor x² − 5x + 6 completely and verify the result.",
+          "prompt": "Explain why testing x=1 alone cannot prove equivalence.",
           "responseType": "open-response",
           "skill": "Recognize rewrites that preserve value for every allowed input and combine only structurally alike terms.",
           "purpose": "exit",
           "difficulty": "standard",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Solve, classify the solution set, and verify against the original equation.",
           "errorTags": [
             "equivalent-expressions-and-like-terms-structure",
             "a1-unchecked-result"
@@ -3842,10 +3878,9 @@
         "a1-7-q16"
       ],
       "takeaway": {
-        "summary": "Recognize rewrites that preserve value for every allowed input and combine only structurally alike terms. A complete solution names the relationship, preserves its conditions, and verifies the conclusion.",
+        "summary": "Equivalent expressions agree for every allowed input.",
         "conditions": [
-          "Keep original restrictions and units visible.",
-          "Use an independent check whenever an operation may create candidates or lose information."
+          "Combine coefficients only when the complete variable factors match."
         ]
       },
       "navigation": {
@@ -3877,65 +3912,71 @@
       "title": "Formulas, units, and mathematical communication",
       "path": "/subjects/math/algebra/quantities-variables/formulas-units-and-mathematical-communication/",
       "outcome": "Read formulas as reusable relationships and communicate transformations unambiguously.",
+      "foundationEdition": "authored-v1",
       "opening": {
         "prompt": "Use an area, distance, or finance formula with units.",
-        "purpose": "Use a concrete situation to identify the quantities and decision that make formulas, units, and mathematical communication necessary."
+        "purpose": "Read formulas as relationships among measured quantities and write substitutions and transformations so another reader can verify them."
       },
       "prerequisiteChecks": [
-        "Name the known quantity, the unknown quantity, and any units in the opening situation.",
-        "Classify the central object as an expression, equation, inequality, relation, function, or numerical comparison.",
-        "State one earlier rule or representation you would use to check a result for formulas, units, and mathematical communication."
+        "State units for length and area.",
+        "Substitute r=3 into 2πr.",
+        "Solve a one-step multiplication fact such as 4x=20."
       ],
       "exposition": [
-        "Read formulas as reusable relationships and communicate transformations unambiguously. Begin by naming the mathematical objects before manipulating them. In formulas, units, and mathematical communication, notation compresses a relationship among quantities; it does not replace that relationship. Track what each symbol represents, preserve grouping and units, and mark any restriction or endpoint as soon as it appears. The first useful question is therefore not “Which memorized move do I use?” but “What must remain true from one line or representation to the next?”",
-        "Annotated formula with variable meanings and units. Read the labels as mathematical evidence: identify what is fixed, what changes, and how the objects are related. Then connect that evidence to the symbolic work one justified step at a time. A correct transformation preserves the relevant value, truth set, rate, domain, or geometric feature. If a step changes one of those, it needs a stated condition and a check against the original problem.",
-        "Dimensional-consistency panel. Use the worked examples to compare symbolic, numerical, and visual forms. Each form should answer the same question, even when it emphasizes a different feature. Finish by interpreting the result in a complete sentence and checking it with substitution, estimation, units, graph position, or an inverse operation. That final check distinguishes a plausible-looking candidate from a supported conclusion."
+        "A formula is a reusable relationship among quantities. Every symbol should be declared with meaning and units. Dimensional consistency constrains sensible substitutions and catches many transcription errors.",
+        "Using a formula requires more than inserting numbers: identify the target quantity, select the correct relationship, substitute with grouping and units, compute, and interpret the result. A numerical answer without a unit or context is incomplete when the inputs are measured.",
+        "Rearranging a formula isolates a chosen quantity while preserving equality. The same equation may be useful in several solved forms, but restrictions such as nonzero divisors must be recorded."
       ],
       "definitions": [
         {
-          "term": "Formulas, units, and mathematical communication",
-          "definition": "Read formulas as reusable relationships and communicate transformations unambiguously. The term names the lesson’s central relationship and the conditions under which its methods are valid.",
-          "conditions": "Preserve the original domain, units, grouping, direction, and equivalence conditions whenever they apply."
+          "term": "formula",
+          "definition": "An equation expressing a reusable relationship among quantities.",
+          "conditions": "Every symbol and unit should be declared."
         },
         {
-          "term": "valid transformation",
-          "definition": "A justified change of form that preserves the value, truth set, relationship, or solution information required by the original problem.",
-          "conditions": "One-way operations can create candidates and therefore require checking in the original statement."
+          "term": "literal equation",
+          "definition": "An equation containing several letters representing quantities.",
+          "conditions": "It may be rearranged to solve for one chosen quantity."
+        },
+        {
+          "term": "dimensional consistency",
+          "definition": "Matching dimensions across equal or added quantities.",
+          "conditions": "It is a necessary check on a measurement formula."
         }
       ],
       "examples": [
         {
           "kind": "foundation",
-          "prompt": "For f(x) = 2x² − 3, find f(2) and state what the result means.",
+          "prompt": "Use A=lw for l=8.5 cm and w=3 cm.",
           "steps": [
-            "Replace every x with 2 while preserving grouping.",
-            "Compute 2(2²) − 3.",
-            "Pair the input with its resulting output."
+            "Declare l and w as lengths.",
+            "Substitute A=(8.5 cm)(3 cm).",
+            "Multiply values and units."
           ],
-          "answer": "f(2) = 5",
-          "interpretation": "The function assigns the output 5 to the input 2."
+          "answer": "25.5 cm²",
+          "interpretation": "Length times length produces area."
         },
         {
           "kind": "representation",
-          "prompt": "Represent the result of this formulas, units, and mathematical communication case in a second form: For f(x) = 2x² − 3, find f(2) and state what the result means.",
+          "prompt": "Use C=5/9(F−32) for F=95°F.",
           "steps": [
-            "Complete the calculation or classification before changing representations.",
-            "Choose a table, graph, number line, diagram, or equivalent symbolic form that preserves the same quantities.",
-            "Label the input, output, units, restrictions, or endpoints that carry mathematical meaning."
+            "Group 95−32.",
+            "Compute 63·5/9.",
+            "Attach Celsius units and interpret."
           ],
-          "answer": "A correctly labeled second representation that preserves f(2) = 5.",
-          "interpretation": "The second form must communicate the same relationship, not merely repeat the symbols from the first form."
+          "answer": "35°C",
+          "interpretation": "The grouped subtraction is required by the formula."
         },
         {
           "kind": "transfer",
-          "prompt": "A classmate reaches “f(2) = 5” in a quantities, variables, and mathematical objects problem. Decide whether the reasoning is valid and justify the decision from the original conditions.",
+          "prompt": "Solve d=rt for t and state the restriction.",
           "steps": [
-            "Restate the original condition and identify any domain, unit, sign, or equivalence requirement.",
-            "Reproduce the decisive operation using the worked case.",
-            "Check the proposed result against the original statement and explain the conclusion."
+            "Divide both sides by r.",
+            "Write t=d/r.",
+            "Record that r cannot be zero for this division."
           ],
-          "answer": "The result is valid only when the reproduced work and original-condition check both support f(2) = 5.",
-          "interpretation": "A transferred method is complete only after its conditions and conclusion are checked in context."
+          "answer": "t=d/r, r≠0",
+          "interpretation": "The rearranged form answers a different target question."
         }
       ],
       "figures": [
@@ -3972,14 +4013,14 @@
       ],
       "misconceptions": [
         {
-          "wrongMove": "Manipulating the symbols in a formulas, units, and mathematical communication problem before identifying the quantities and governing condition.",
-          "whyItFails": "That move can lose a sign, unit, endpoint, denominator restriction, grouping symbol, or other condition that the outcome explicitly requires.",
-          "repair": "Annotate the original condition, perform one justified step, and check the conclusion using the function assigns the output 5 to the input 2."
+          "wrongMove": "A correct number is complete even when units are omitted.",
+          "whyItFails": "Units communicate the quantity type and allow dimensional checking.",
+          "repair": "Carry units through substitution and interpret the final measurement in words."
         }
       ],
       "checkpoint": {
         "id": "a1-8-q16",
-        "prompt": "Exit check: answer the case and give one sentence explaining why the result fits the lesson outcome: For f(x) = 2x² − 3, find f(2) and state what the result means.",
+        "prompt": "Present a complete solution using A=1/2bh for b=12 ft, h=7 ft.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -4005,12 +4046,12 @@
           "id": "a1-8-q01",
           "lessonId": "A1.8",
           "unitCode": "A1",
-          "prompt": "Before using a formula, classify the mathematical objects and quantities in this case: For f(x) = 2x² − 3, find f(2) and state what the result means.",
+          "prompt": "Use P=2l+2w for l=9 m, w=4 m.",
           "responseType": "open-response",
           "skill": "Read formulas as reusable relationships and communicate transformations unambiguously.",
           "purpose": "retrieval",
           "difficulty": "foundation",
-          "hint": "Name what formulas, units, and mathematical communication requires before doing arithmetic.",
+          "hint": "Recall the named definition or perform a direct substitution before choosing an operation.",
           "errorTags": [
             "formulas-units-and-mathematical-communication-structure",
             "a1-unchecked-result"
@@ -4029,12 +4070,12 @@
           "id": "a1-8-q02",
           "lessonId": "A1.8",
           "unitCode": "A1",
-          "prompt": "State the condition, restriction, unit, or sign rule that must be preserved while answering: For f(x) = 2x² − 3, find f(2) and state what the result means.",
+          "prompt": "Use A=πr² for r=5 cm.",
           "responseType": "open-response",
           "skill": "Read formulas as reusable relationships and communicate transformations unambiguously.",
           "purpose": "retrieval",
           "difficulty": "foundation",
-          "hint": "Name what formulas, units, and mathematical communication requires before doing arithmetic.",
+          "hint": "Recall the named definition or perform a direct substitution before choosing an operation.",
           "errorTags": [
             "formulas-units-and-mathematical-communication-structure",
             "a1-unchecked-result"
@@ -4053,12 +4094,12 @@
           "id": "a1-8-q03",
           "lessonId": "A1.8",
           "unitCode": "A1",
-          "prompt": "Explain why the first step “Replace every x with 2 while preserving grouping.” is valid for formulas, units, and mathematical communication.",
+          "prompt": "Use I=Prt for P=$800, r=0.04/year, t=3 years.",
           "responseType": "open-response",
           "skill": "Read formulas as reusable relationships and communicate transformations unambiguously.",
           "purpose": "concept",
           "difficulty": "standard",
-          "hint": "Name what formulas, units, and mathematical communication requires before doing arithmetic.",
+          "hint": "State what must remain true, then connect that condition to the equation.",
           "errorTags": [
             "formulas-units-and-mathematical-communication-structure",
             "a1-unchecked-result"
@@ -4077,12 +4118,12 @@
           "id": "a1-8-q04",
           "lessonId": "A1.8",
           "unitCode": "A1",
-          "prompt": "Compare the lesson outcome with this case and identify the exact relationship being used: For f(x) = 2x² − 3, find f(2) and state what the result means.",
+          "prompt": "Use v=d/t for d=150 km, t=2.5 h.",
           "responseType": "open-response",
           "skill": "Read formulas as reusable relationships and communicate transformations unambiguously.",
           "purpose": "concept",
           "difficulty": "standard",
-          "hint": "Name what formulas, units, and mathematical communication requires before doing arithmetic.",
+          "hint": "State what must remain true, then connect that condition to the equation.",
           "errorTags": [
             "formulas-units-and-mathematical-communication-structure",
             "a1-unchecked-result"
@@ -4101,12 +4142,12 @@
           "id": "a1-8-q05",
           "lessonId": "A1.8",
           "unitCode": "A1",
-          "prompt": "For f(x) = 2x² − 3, find f(2) and state what the result means.",
+          "prompt": "Solve A=bh for h.",
           "responseType": "open-response",
           "skill": "Read formulas as reusable relationships and communicate transformations unambiguously.",
           "purpose": "procedure",
           "difficulty": "standard",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "formulas-units-and-mathematical-communication-structure",
             "a1-unchecked-result"
@@ -4125,12 +4166,12 @@
           "id": "a1-8-q06",
           "lessonId": "A1.8",
           "unitCode": "A1",
-          "prompt": "Complete the worked case independently, showing the step between “Replace every x with 2 while preserving grouping.” and “Pair the input with its resulting output.”: For f(x) = 2x² − 3, find f(2) and state what the result means.",
+          "prompt": "Solve P=2l+2w for w.",
           "responseType": "open-response",
           "skill": "Read formulas as reusable relationships and communicate transformations unambiguously.",
           "purpose": "procedure",
           "difficulty": "standard",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "formulas-units-and-mathematical-communication-structure",
             "a1-unchecked-result"
@@ -4149,12 +4190,12 @@
           "id": "a1-8-q07",
           "lessonId": "A1.8",
           "unitCode": "A1",
-          "prompt": "Use a different valid method to answer the same case, then compare it with the supplied sequence: For f(x) = 2x² − 3, find f(2) and state what the result means.",
+          "prompt": "Solve C=5/9(F−32) for F.",
           "responseType": "open-response",
           "skill": "Read formulas as reusable relationships and communicate transformations unambiguously.",
           "purpose": "procedure",
           "difficulty": "mixed",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "formulas-units-and-mathematical-communication-structure",
             "a1-unchecked-result"
@@ -4173,12 +4214,12 @@
           "id": "a1-8-q08",
           "lessonId": "A1.8",
           "unitCode": "A1",
-          "prompt": "Check the proposed result “f(2) = 5” in the original condition and report the evidence.",
+          "prompt": "Check whether area = 2l+2w is dimensionally plausible.",
           "responseType": "open-response",
           "skill": "Read formulas as reusable relationships and communicate transformations unambiguously.",
           "purpose": "procedure",
           "difficulty": "mixed",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "formulas-units-and-mathematical-communication-structure",
             "a1-unchecked-result"
@@ -4197,12 +4238,12 @@
           "id": "a1-8-q09",
           "lessonId": "A1.8",
           "unitCode": "A1",
-          "prompt": "Rewrite the case in an equivalent form before solving it: For f(x) = 2x² − 3, find f(2) and state what the result means.",
+          "prompt": "Write a quantity dictionary for d=rt.",
           "responseType": "open-response",
           "skill": "Read formulas as reusable relationships and communicate transformations unambiguously.",
           "purpose": "procedure",
           "difficulty": "standard",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "formulas-units-and-mathematical-communication-structure",
             "a1-unchecked-result"
@@ -4221,12 +4262,12 @@
           "id": "a1-8-q10",
           "lessonId": "A1.8",
           "unitCode": "A1",
-          "prompt": "Identify the most efficient first move, carry it out, and finish the calculation: For f(x) = 2x² − 3, find f(2) and state what the result means.",
+          "prompt": "A student substitutes x=−3 into x² as −3². Repair the written line.",
           "responseType": "open-response",
           "skill": "Read formulas as reusable relationships and communicate transformations unambiguously.",
           "purpose": "procedure",
           "difficulty": "mixed",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Write one equality-preserving step at a time and keep signs and grouping visible.",
           "errorTags": [
             "formulas-units-and-mathematical-communication-structure",
             "a1-unchecked-result"
@@ -4245,12 +4286,12 @@
           "id": "a1-8-q11",
           "lessonId": "A1.8",
           "unitCode": "A1",
-          "prompt": "Create a labeled table, graph, number line, or diagram that communicates the result “f(2) = 5.”",
+          "prompt": "Which formula fits constant-speed travel: d=rt or d=r+t?",
           "responseType": "open-response",
           "skill": "Read formulas as reusable relationships and communicate transformations unambiguously.",
           "purpose": "representation",
           "difficulty": "mixed",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Label the quantities and make the same relationship visible in the new form.",
           "errorTags": [
             "formulas-units-and-mathematical-communication-structure",
             "a1-unchecked-result"
@@ -4269,12 +4310,12 @@
           "id": "a1-8-q12",
           "lessonId": "A1.8",
           "unitCode": "A1",
-          "prompt": "Translate this case into a second representation and explain which feature stays invariant: For f(x) = 2x² − 3, find f(2) and state what the result means.",
+          "prompt": "Use V=lwh for 2.5 m, 1.2 m, and 0.8 m.",
           "responseType": "open-response",
           "skill": "Read formulas as reusable relationships and communicate transformations unambiguously.",
           "purpose": "representation",
           "difficulty": "transfer",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Label the quantities and make the same relationship visible in the new form.",
           "errorTags": [
             "formulas-units-and-mathematical-communication-structure",
             "a1-unchecked-result"
@@ -4293,12 +4334,12 @@
           "id": "a1-8-q13",
           "lessonId": "A1.8",
           "unitCode": "A1",
-          "prompt": "A learner skips the original-condition check and reports “f(2) = 5.” Explain what could go wrong and repair the work.",
+          "prompt": "Explain why a formula may have several useful solved forms.",
           "responseType": "open-response",
           "skill": "Read formulas as reusable relationships and communicate transformations unambiguously.",
           "purpose": "error-analysis",
           "difficulty": "mixed",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Locate the first line that no longer preserves the original relationship.",
           "errorTags": [
             "formulas-units-and-mathematical-communication-structure",
             "a1-unchecked-result"
@@ -4317,12 +4358,12 @@
           "id": "a1-8-q14",
           "lessonId": "A1.8",
           "unitCode": "A1",
-          "prompt": "Change one numerical value in the case, solve the revised problem, and explain which steps remain valid: For f(x) = 2x² − 3, find f(2) and state what the result means.",
+          "prompt": "Write the density formula if density is mass per volume.",
           "responseType": "open-response",
           "skill": "Read formulas as reusable relationships and communicate transformations unambiguously.",
           "purpose": "transfer",
           "difficulty": "transfer",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Identify the familiar equation structure before changing any symbols.",
           "errorTags": [
             "formulas-units-and-mathematical-communication-structure",
             "a1-unchecked-result"
@@ -4341,12 +4382,12 @@
           "id": "a1-8-q15",
           "lessonId": "A1.8",
           "unitCode": "A1",
-          "prompt": "Write a short real-world situation modeled by the same relationship as this case, including units where they apply: For f(x) = 2x² − 3, find f(2) and state what the result means.",
+          "prompt": "Solve ρ=m/V for m.",
           "responseType": "open-response",
           "skill": "Read formulas as reusable relationships and communicate transformations unambiguously.",
           "purpose": "modeling",
           "difficulty": "transfer",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Define the unknown and its units before writing the equation.",
           "errorTags": [
             "formulas-units-and-mathematical-communication-structure",
             "a1-unchecked-result"
@@ -4365,12 +4406,12 @@
           "id": "a1-8-q16",
           "lessonId": "A1.8",
           "unitCode": "A1",
-          "prompt": "Exit check: answer the case and give one sentence explaining why the result fits the lesson outcome: For f(x) = 2x² − 3, find f(2) and state what the result means.",
+          "prompt": "Present a complete solution using A=1/2bh for b=12 ft, h=7 ft.",
           "responseType": "open-response",
           "skill": "Read formulas as reusable relationships and communicate transformations unambiguously.",
           "purpose": "exit",
           "difficulty": "standard",
-          "hint": "Start from the original condition, preserve its structure, and use the lesson’s worked case as a check.",
+          "hint": "Solve, classify the solution set, and verify against the original equation.",
           "errorTags": [
             "formulas-units-and-mathematical-communication-structure",
             "a1-unchecked-result"
@@ -4391,10 +4432,9 @@
         "a1-8-q16"
       ],
       "takeaway": {
-        "summary": "Read formulas as reusable relationships and communicate transformations unambiguously. A complete solution names the relationship, preserves its conditions, and verifies the conclusion.",
+        "summary": "A formula is a relationship among named quantities, not a slot machine for numbers.",
         "conditions": [
-          "Keep original restrictions and units visible.",
-          "Use an independent check whenever an operation may create candidates or lose information."
+          "Declare symbols, preserve grouping, carry units, and state restrictions when rearranging."
         ]
       },
       "navigation": {

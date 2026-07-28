@@ -1,3 +1,6 @@
+import { getFoundationProfile } from "./algebra-foundations/index.mjs";
+import { getFoundationVisualProfile } from "./algebra-foundations/visuals.mjs";
+
 const normalize = (value) => String(value ?? "").replace(/\s+/g, " ").trim();
 const sentence = (value) => {
   const text = normalize(value);
@@ -200,9 +203,64 @@ function buildQuestions(lesson, unit) {
   });
 }
 
+const QUESTION_PURPOSES = [
+  "retrieval", "retrieval", "concept", "concept",
+  "procedure", "procedure", "procedure", "procedure", "procedure", "procedure",
+  "representation", "representation", "error-analysis", "transfer", "modeling", "exit",
+];
+const QUESTION_DIFFICULTIES = [
+  "foundation", "foundation", "standard", "standard",
+  "standard", "standard", "mixed", "mixed", "standard", "mixed",
+  "mixed", "transfer", "mixed", "transfer", "transfer", "standard",
+];
+
+function buildFoundationQuestions(lesson, unit, profile) {
+  return profile.questions.map((authoredQuestion, index) => {
+    const number = index + 1;
+    const purpose = QUESTION_PURPOSES[index];
+    const hintByPurpose = {
+      retrieval: "Recall the named definition or perform a direct substitution before choosing an operation.",
+      concept: "State what must remain true, then connect that condition to the equation.",
+      procedure: "Write one equality-preserving step at a time and keep signs and grouping visible.",
+      representation: "Label the quantities and make the same relationship visible in the new form.",
+      "error-analysis": "Locate the first line that no longer preserves the original relationship.",
+      transfer: "Identify the familiar equation structure before changing any symbols.",
+      modeling: "Define the unknown and its units before writing the equation.",
+      exit: "Solve, classify the solution set, and verify against the original equation.",
+    };
+    return {
+      id: `${slug(lesson.id)}-q${String(number).padStart(2, "0")}`,
+      lessonId: lesson.id,
+      unitCode: unit.code,
+      prompt: authoredQuestion.prompt,
+      responseType: "open-response",
+      skill: lesson.outcome,
+      purpose,
+      difficulty: QUESTION_DIFFICULTIES[index],
+      hint: hintByPurpose[purpose],
+      errorTags: [`${slug(lesson.title)}-structure`, `${slug(unit.code)}-unchecked-result`],
+      remediationPath: lesson.path,
+      units: /unit|rate|percent|distance|interest|measurement|dimension/i.test(`${lesson.title} ${lesson.outcome}`)
+        ? "Preserve and report the units named in the prompt."
+        : null,
+      roundingPolicy: "Keep exact form unless the prompt explicitly requests an approximation.",
+      seedPolicy: { deterministic: true, source: lesson.id, variant: number },
+      solutionRef: `solution:${slug(lesson.id)}:q${String(number).padStart(2, "0")}`,
+    };
+  });
+}
+
 export function buildLessonArtifacts({ lesson, unit, figures, families, previous, next }) {
-  const examples = concreteExamples(lesson, unit);
-  const questions = buildQuestions(lesson, unit);
+  const foundationProfile = getFoundationProfile(lesson.id);
+  const examples = foundationProfile
+    ? foundationProfile.examples.map((example, index) => ({
+      kind: ["foundation", "representation", "transfer"][index],
+      ...example,
+    }))
+    : concreteExamples(lesson, unit);
+  const questions = foundationProfile
+    ? buildFoundationQuestions(lesson, unit, foundationProfile)
+    : buildQuestions(lesson, unit);
   const figureDescriptions = figures.map((figure) => sentence(figure.description));
   const publicFigures = figures.map(({ role: _privateRole, ...figure }) => figure);
   const publicLesson = {
@@ -212,21 +270,25 @@ export function buildLessonArtifacts({ lesson, unit, figures, families, previous
     title: lesson.title,
     path: lesson.path,
     outcome: lesson.outcome,
+    ...(foundationProfile ? { foundationEdition: "authored-v1" } : {}),
     opening: {
       prompt: sentence(lesson.opening),
-      purpose: `Use a concrete situation to identify the quantities and decision that make ${lesson.title.toLowerCase()} necessary.`,
+      purpose: foundationProfile?.purpose
+        ?? `Use a concrete situation to identify the quantities and decision that make ${lesson.title.toLowerCase()} necessary.`,
     },
-    prerequisiteChecks: [
+    prerequisiteChecks: foundationProfile?.prerequisites ?? [
       `Name the known quantity, the unknown quantity, and any units in the opening situation.`,
       `Classify the central object as an expression, equation, inequality, relation, function, or numerical comparison.`,
       `State one earlier rule or representation you would use to check a result for ${lesson.title.toLowerCase()}.`,
     ],
-    exposition: [
+    exposition: foundationProfile?.exposition ?? [
       `${sentence(lesson.outcome)} Begin by naming the mathematical objects before manipulating them. In ${lesson.title.toLowerCase()}, notation compresses a relationship among quantities; it does not replace that relationship. Track what each symbol represents, preserve grouping and units, and mark any restriction or endpoint as soon as it appears. The first useful question is therefore not “Which memorized move do I use?” but “What must remain true from one line or representation to the next?”`,
       `${figureDescriptions[0] ?? `The first figure for ${lesson.title} displays the governing quantities.`} Read the labels as mathematical evidence: identify what is fixed, what changes, and how the objects are related. Then connect that evidence to the symbolic work one justified step at a time. A correct transformation preserves the relevant value, truth set, rate, domain, or geometric feature. If a step changes one of those, it needs a stated condition and a check against the original problem.`,
       `${figureDescriptions[1] ?? `A second representation makes the mechanism visible.`} Use the worked examples to compare symbolic, numerical, and visual forms. Each form should answer the same question, even when it emphasizes a different feature. Finish by interpreting the result in a complete sentence and checking it with substitution, estimation, units, graph position, or an inverse operation. That final check distinguishes a plausible-looking candidate from a supported conclusion.`,
     ],
-    definitions: [
+    definitions: foundationProfile
+      ? foundationProfile.definitions.map(([term, definition, conditions]) => ({ term, definition, conditions }))
+      : [
       {
         term: lesson.title,
         definition: `${sentence(lesson.outcome)} The term names the lesson’s central relationship and the conditions under which its methods are valid.`,
@@ -237,16 +299,22 @@ export function buildLessonArtifacts({ lesson, unit, figures, families, previous
         definition: "A justified change of form that preserves the value, truth set, relationship, or solution information required by the original problem.",
         conditions: "One-way operations can create candidates and therefore require checking in the original statement.",
       },
-    ],
+      ],
     examples,
     figures: publicFigures,
-    misconceptions: [
+    misconceptions: foundationProfile
+      ? [{
+        wrongMove: foundationProfile.misconception[0],
+        whyItFails: foundationProfile.misconception[1],
+        repair: foundationProfile.misconception[2],
+      }]
+      : [
       {
         wrongMove: `Manipulating the symbols in a ${lesson.title.toLowerCase()} problem before identifying the quantities and governing condition.`,
         whyItFails: `That move can lose a sign, unit, endpoint, denominator restriction, grouping symbol, or other condition that the outcome explicitly requires.`,
         repair: `Annotate the original condition, perform one justified step, and check the conclusion using ${workedCase(lesson).interpretation.toLowerCase()}`,
       },
-    ],
+      ],
     checkpoint: {
       id: questions[15].id,
       prompt: questions[15].prompt,
@@ -256,8 +324,12 @@ export function buildLessonArtifacts({ lesson, unit, figures, families, previous
     practiceQuestions: questions,
     exitCheck: [questions[14].id, questions[15].id],
     takeaway: {
-      summary: `${sentence(lesson.outcome)} A complete solution names the relationship, preserves its conditions, and verifies the conclusion.`,
-      conditions: ["Keep original restrictions and units visible.", "Use an independent check whenever an operation may create candidates or lose information."],
+      summary: foundationProfile
+        ? sentence(foundationProfile.takeaway[0])
+        : `${sentence(lesson.outcome)} A complete solution names the relationship, preserves its conditions, and verifies the conclusion.`,
+      conditions: foundationProfile
+        ? foundationProfile.takeaway.slice(1).map(sentence)
+        : ["Keep original restrictions and units visible.", "Use an independent check whenever an operation may create candidates or lose information."],
     },
     navigation: {
       unit: unit.root,
@@ -284,13 +356,17 @@ export function buildLessonArtifacts({ lesson, unit, figures, families, previous
     editorialChecks: ["Public lesson schema complete", "Concrete question bank materialized", "Protected solutions remain server-only"],
     private: true,
   };
-  const solutions = questions.map((question) => ({
+  const solutions = questions.map((question, index) => ({
     id: question.solutionRef,
     questionId: question.id,
-    expectedAnswer: workedCase(lesson).answer,
+    expectedAnswer: foundationProfile
+      ? foundationProfile.questions[index].answer
+      : workedCase(lesson).answer,
     acceptedAlternatives: ["Equivalent exact forms and complete verbal explanations supported by the shown work."],
     detailedRubric: `The response must address ${lesson.outcome.toLowerCase()} Credit the method, preservation of relevant conditions, a supported conclusion, and an explicit check. Do not award full credit for an unsupported final value.`,
-    completeSolution: `${workedCase(lesson).steps.join(" ")} Therefore ${workedCase(lesson).answer}. ${workedCase(lesson).interpretation}`,
+    completeSolution: foundationProfile
+      ? foundationProfile.questions[index].solution
+      : `${workedCase(lesson).steps.join(" ")} Therefore ${workedCase(lesson).answer}. ${workedCase(lesson).interpretation}`,
     gradingBoundary: "Open responses receive rubric-guided review after a substantive attempt.",
     parserRules: "No automatic exact-string grading for open responses.",
   }));
@@ -311,14 +387,17 @@ export function publicAssessmentKind(kind) {
 export function buildVisualSemanticManifest(brief, lesson) {
   const description = sentence(brief.description);
   const words = normalize(brief.description).split(" ").filter((word) => word.length > 3).slice(0, 8);
+  const foundationVisual = getFoundationVisualProfile(brief.id);
   return {
     id: brief.id,
     lessonId: brief.lessonId,
     route: brief.path,
     learningClaim: `${description} The visible mathematical objects support the lesson outcome: ${lesson.outcome}`,
-    requiredObjects: [description],
-    requiredLabels: [lesson.title, ...words.slice(0, 3)],
-    requiredRelationships: [`The rendered objects visibly communicate: ${description}`],
+    requiredObjects: foundationVisual ? [description, ...foundationVisual.labels] : [description],
+    requiredLabels: foundationVisual ? [lesson.title, ...foundationVisual.labels] : [lesson.title, ...words.slice(0, 3)],
+    requiredRelationships: foundationVisual
+      ? [foundationVisual.note]
+      : [`The rendered objects visibly communicate: ${description}`],
     units: /unit|rate|distance|time|percent/i.test(description) ? ["Use the units named by the figure."] : [],
     domain: /graph|function|line|parabola|number line/i.test(description) ? { visible: true, boundedViewport: true } : null,
     interactionVariables: brief.interactive ? ["p"] : [],
