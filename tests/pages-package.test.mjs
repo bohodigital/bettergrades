@@ -45,6 +45,8 @@ test("Pages package contains the advanced Worker and static assets", async () =>
     "utf8",
   );
   assert.match(worker, /ASSETS/);
+  assert.match(worker, /\/api\/algebra-course-check/);
+  assert.match(worker, /\/api\/algebra-course-reveal/);
   assert.match(worker, /\/api\/calculus-check/);
   assert.doesNotMatch(worker, /Evaluating Limits Worksheet with Complete Solutions/, "static educational content must not enter the API-only Worker");
   assert.doesNotMatch(
@@ -117,6 +119,38 @@ test("Pages package contains the advanced Worker and static assets", async () =>
     redirects,
     /^\/subjects\/math\/calculus\/sequences-series\/geometric-series\/ \/subjects\/math\/calculus\/sequences-and-series\/geometric-series\/ 308$/m,
   );
+});
+
+test("Pages Worker serves both bounded Algebra course assessment APIs", async () => {
+  const workerUrl = new URL(`../dist/pages/_worker.js?test=${Date.now()}`, import.meta.url);
+  const { default: worker } = await import(workerUrl);
+  const environment = {
+    ASSETS: {
+      fetch: async () => new Response("Not found", { status: 404 }),
+    },
+  };
+
+  const checkResponse = await worker.fetch(
+    new Request("https://bettergrades.net/api/algebra-course-check", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ id: "a0-review-a0-1", answer: "I placed the values on a number line and checked their order." }),
+    }),
+    environment,
+  );
+  assert.equal(checkResponse.status, 200);
+  assert.equal((await checkResponse.json()).status, "uncertain");
+
+  const revealResponse = await worker.fetch(
+    new Request("https://bettergrades.net/api/algebra-course-reveal", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ id: "a0-review-a0-1", attempt: "I placed the values on a number line and checked their order." }),
+    }),
+    environment,
+  );
+  assert.equal(revealResponse.status, 200);
+  assert.match((await revealResponse.json()).rubric, /Interpret sign as position, direction, and change/);
 });
 
 test("Pages package preserves the exact Calculus and Algebra visual inventories", async () => {

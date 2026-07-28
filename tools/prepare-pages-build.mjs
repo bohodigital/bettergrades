@@ -54,7 +54,7 @@ await cp(server, output, { recursive: true });
 await rm(resolve(output, "wrangler.json"), { force: true });
 
 // Every educational route is pre-rendered below and bypasses the Worker in
-// production. Bundle only the four bounded APIs and the image-asset pass-through
+// production. Bundle only the six bounded APIs and the image-asset pass-through
 // so the release package cannot pay the size or runtime cost of the page corpus.
 await esbuildBuild({
   entryPoints: [productionWorkerEntry],

@@ -1,4 +1,6 @@
 import { POST as algebraPost } from "../app/api/algebra/route";
+import { POST as algebraCourseCheckPost } from "../app/api/algebra-course-check/route";
+import { POST as algebraCourseRevealPost } from "../app/api/algebra-course-reveal/route";
 import { POST as calculusCheckPost } from "../app/api/calculus-check/route";
 import { POST as calculusRevealPost } from "../app/api/calculus-reveal/route";
 import { POST as limitsCheckPost } from "../app/api/limits-check/route";
@@ -9,6 +11,8 @@ type PagesEnvironment = {
 
 const apiHandlers = new Map<string, (request: Request) => Promise<Response>>([
   ["/api/algebra", algebraPost],
+  ["/api/algebra-course-check", algebraCourseCheckPost],
+  ["/api/algebra-course-reveal", algebraCourseRevealPost],
   ["/api/calculus-check", calculusCheckPost],
   ["/api/calculus-reveal", calculusRevealPost],
   ["/api/limits-check", limitsCheckPost],
