@@ -1,11 +1,32 @@
 import { expect, test } from "@playwright/test";
 
-test("complete Algebra hub exposes all fifteen units and preserves the quick-guide layer", async ({ page }) => {
+test("complete Algebra hub exposes its course portrait and expandable fifteen-unit contents", async ({ page }) => {
   await page.goto("/subjects/math/algebra/");
   await expect(page.locator("h1")).toHaveText("Algebra: Quantities, Equations, and Structure");
-  await expect(page.locator(".algebra-course-map .limits-chapter")).toHaveCount(15);
+  const units = page.locator(".algebra-course-unit");
+  await expect(units).toHaveCount(15);
+  await expect(page.locator(".algebra-course-art img")).toBeVisible();
+  await expect(page.locator(".algebra-course-art img")).toHaveAttribute("src", "/og-algebra.png");
+  await expect(units.filter({ has: page.locator("summary") }).locator("summary")).toHaveCount(15);
+  await expect(page.locator(".algebra-course-unit[open]")).toHaveCount(0);
+  await units.first().locator("summary").click();
+  await expect(units.first()).toHaveAttribute("open", "");
+  await expect(units.first().locator('nav[aria-label="Unit A0 lessons"] a')).toHaveCount(10);
+  await expect(units.first().locator(".algebra-course-support-links a")).toHaveCount(5);
   await expect(page.locator(".algebra-legacy-layer .limits-support-grid").first().locator("a")).toHaveCount(36);
   await expect(page.locator("main")).toHaveCount(1);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
+});
+
+test("mobile Algebra contents keep the course portrait and every unit disclosure in bounds", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/subjects/math/algebra/");
+  await expect(page.locator(".algebra-course-art img")).toBeVisible();
+  const units = page.locator(".algebra-course-unit");
+  await expect(units).toHaveCount(15);
+  await units.last().locator("summary").click();
+  await expect(units.last()).toHaveAttribute("open", "");
+  await expect(units.last().locator('nav[aria-label="Unit A14 lessons"] a')).toHaveCount(7);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
 });
 

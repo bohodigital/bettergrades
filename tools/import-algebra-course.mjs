@@ -246,6 +246,14 @@ const materializedAssessments = assessmentBlueprints.map((assessment) => {
   };
 });
 
+const courseUnits = units.map((unit) => ({
+  ...unit,
+  lessons: [...lessonsById.values()]
+    .filter((candidate) => candidate.unitCode === unit.code)
+    .sort((left, right) => left.sequence - right.sequence)
+    .map(({ id, sequence, title, path, outcome }) => ({ id, sequence, title, path, outcome })),
+}));
+
 const routePages = routes.map((route) => {
   const unit = unitsByCode.get(route.unitCode);
   const lesson = route.lessonId ? lessonsById.get(route.lessonId) : undefined;
@@ -265,7 +273,7 @@ const routePages = routes.map((route) => {
     assessment: assessment ?? null,
     assessmentPrompts: assessment ? assessment.questionIds.map((id) => questionById.get(id)) : [],
     unitLessons: route.pageType === "unit-hub" ? unitLessons.map((candidate) => lessonArtifacts.get(candidate.id).publicLesson) : [],
-    units: route.pageType === "course-hub" ? units : [],
+    units: route.pageType === "course-hub" ? courseUnits : [],
     breadcrumbs,
   };
 });

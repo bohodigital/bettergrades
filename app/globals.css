@@ -37,6 +37,84 @@
   margin: 1rem 0;
 }
 
+.algebra-course-art {
+  margin: 0 0 clamp(3rem, 7vw, 5.5rem);
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--brand), transparent 55%);
+  border-radius: 1.25rem;
+  background: #061a2e;
+  box-shadow: var(--shadow);
+}
+
+.algebra-course-art img {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 1731 / 909;
+}
+
+.algebra-course-art figcaption {
+  padding: 1rem clamp(1rem, 3vw, 1.6rem) 1.15rem;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.8rem 1rem;
+  align-items: baseline;
+  background: var(--surface);
+}
+
+.algebra-course-art figcaption span {
+  color: var(--warm);
+  font-size: 0.67rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.algebra-course-art figcaption strong {
+  font-size: clamp(0.95rem, 2vw, 1.2rem);
+}
+
+.algebra-course-unit-list {
+  margin-bottom: clamp(2.5rem, 6vw, 5rem);
+}
+
+.algebra-course-unit > summary {
+  grid-template-columns: 105px minmax(0, 1fr) 95px 30px;
+}
+
+.algebra-course-unit-card > nav a {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr) auto;
+  justify-content: initial;
+  align-items: baseline;
+}
+
+.algebra-course-unit-card > nav a > span {
+  color: var(--warm);
+  font-variant-numeric: tabular-nums;
+}
+
+.algebra-course-unit-card > nav a > b {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.algebra-course-unit-card > nav a > i {
+  color: var(--brand);
+  font-style: normal;
+}
+
+.algebra-course-unit-card > .algebra-course-support-links {
+  padding-top: 0;
+  border-top: 1px solid var(--line);
+  background: color-mix(in srgb, var(--brand-soft), transparent 70%);
+}
+
+.algebra-course-unit-card > .algebra-course-support-links a {
+  grid-template-columns: minmax(0, 1fr) auto;
+  color: var(--brand);
+}
+
 .algebra-legacy-layer {
   border-top: 1px solid var(--line);
 }
@@ -87,6 +165,12 @@
   .algebra-figure-sequence {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     align-items: start;
+  }
+}
+
+@media (max-width: 44rem) {
+  .algebra-course-art figcaption {
+    grid-template-columns: 1fr;
   }
 }
 

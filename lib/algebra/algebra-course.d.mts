@@ -35,6 +35,16 @@ export type AlgebraUnit = {
   answerKeyRoute: string;
 };
 
+export type AlgebraCourseUnit = AlgebraUnit & {
+  lessons: Array<{
+    id: string;
+    sequence: number;
+    title: string;
+    path: string;
+    outcome: string;
+  }>;
+};
+
 export type AlgebraFigure = {
   id: string;
   description: string;
@@ -92,7 +102,7 @@ export type AlgebraCoursePage = {
   };
   assessmentPrompts: AlgebraAssessmentPrompt[];
   unitLessons: AlgebraLesson[];
-  units: AlgebraUnit[];
+  units: AlgebraCourseUnit[];
   breadcrumbs: Array<{ name: string; path: string }>;
 };
 

@@ -23,6 +23,17 @@ const sitemapClasses = {
   "answer-key": "sitemap-answer-keys.xml",
 };
 
+test("the course hub carries the complete expandable lesson index", () => {
+  const courseHub = course.pages.find((page) => page.route.pageType === "course-hub");
+  assert.ok(courseHub);
+  assert.equal(courseHub.units.length, 15);
+  assert.equal(courseHub.units.reduce((sum, unit) => sum + unit.lessons.length, 0), 139);
+  for (const unit of courseHub.units) {
+    assert.equal(unit.lessons.length, unit.lessonCount, unit.code);
+    assert.equal(new Set(unit.lessons.map((lesson) => lesson.path)).size, unit.lessonCount, unit.code);
+  }
+});
+
 test("all 226 Algebra routes are in exactly one role-based sitemap with a real revision date", async () => {
   const files = [...new Set(Object.values(sitemapClasses))];
   const sitemaps = new Map(await Promise.all(files.map(async (file) => [file, await readFile(resolve(pages, file), "utf8")])));

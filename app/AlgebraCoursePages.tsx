@@ -91,13 +91,51 @@ function CourseHub({ page }: { page: AlgebraCoursePage }) {
   const algebraTools = tools.filter((tool) => tool.domainId === "domain-math-algebra");
   return <>
     <section className="limits-unit-map calculus-unit-map algebra-course-map" aria-label="Complete Algebra course map">
-      <header className="limits-map-intro"><div><p className="eyebrow">Complete textbook</p><h2>Fifteen connected units</h2></div><p>Start with the readiness diagnostic, follow the ordered spine, or enter at the exact unit that repairs your current gap.</p></header>
-      <div className="limits-chapter-map">{page.units.map((unit) => <section className="limits-chapter" key={unit.id}>
-        <header><div><span>Unit {unit.code}</span><h3><a href={unit.root}>{unit.title}</a></h3></div><p>{unit.act}</p></header>
-        <aside className="limits-reading-lens limits-map-lens"><span>Governing question</span><p>{unit.governingQuestion}</p></aside>
-        <p>{unit.role}</p>
-        <a className="text-link" href={unit.root}>Open {unit.lessonCount}-lesson unit →</a>
-      </section>)}</div>
+      <figure className="algebra-course-art">
+        <img
+          src="/og-algebra.png"
+          width="1731"
+          height="909"
+          alt="BetterGrades Algebra learning path from arithmetic readiness through equations, functions, graphs, and logarithms"
+          fetchPriority="high"
+        />
+        <figcaption><span>Course portrait</span><strong>Quantities, equations, and structure form one connected learning path.</strong></figcaption>
+      </figure>
+      <header className="limits-map-intro"><div><p className="eyebrow">Complete textbook</p><h2>Fifteen connected units</h2></div><p>Expand any unit to see its complete lesson sequence, review, practice, investigation, mastery check, and response guide.</p></header>
+      <div className="calculus-chapter-list algebra-course-unit-list">
+        {page.units.map((unit) => <details className="calculus-chapter algebra-course-unit" data-unit={unit.code} key={unit.id}>
+          <summary>
+            <span className="calculus-chapter-number">Unit {unit.code}</span>
+            <span className="calculus-chapter-title"><b>{unit.title}</b><small>{unit.role}</small></span>
+            <span className="calculus-chapter-course">{unit.lessonCount} lessons</span>
+            <span className="calculus-chapter-toggle" aria-hidden="true">+</span>
+          </summary>
+          <div className="calculus-chapter-units">
+            <section className="calculus-chapter-unit algebra-course-unit-card">
+              <header>
+                <span>{unit.act}</span>
+                <h3>{unit.title}</h3>
+                <p>{unit.governingQuestion}</p>
+                <a href={unit.root}>Open Unit {unit.code} map <span aria-hidden="true">→</span></a>
+              </header>
+              <nav aria-label={`Unit ${unit.code} lessons`}>
+                {unit.lessons.map((lesson) => <a href={lesson.path} key={lesson.id}>
+                  <span>{String(lesson.sequence).padStart(2, "0")}</span>
+                  <b>{lesson.title}</b>
+                  <i aria-hidden="true">→</i>
+                </a>)}
+              </nav>
+              <nav className="algebra-course-support-links" aria-label={`Unit ${unit.code} review and assessment`}>
+                <a href={unit.reviewRoute}><b>Review</b><i aria-hidden="true">→</i></a>
+                <a href={unit.practiceRoute}><b>Mixed practice</b><i aria-hidden="true">→</i></a>
+                <a href={unit.masteryRoute}><b>Mastery check</b><i aria-hidden="true">→</i></a>
+                {unit.investigationRoute && <a href={unit.investigationRoute}><b>Investigation</b><i aria-hidden="true">→</i></a>}
+                <a href={unit.answerKeyRoute}><b>Response guide</b><i aria-hidden="true">→</i></a>
+              </nav>
+            </section>
+          </div>
+        </details>)}
+      </div>
       <section className="limits-exam-key-callout"><div><p className="eyebrow">Choose a starting point</p><h2>Diagnostic, final exam, and cumulative response guide</h2><p>Checks are attempt-first and deterministic only where the supplied source defines a provable answer. Open explanation prompts return an honest rubric.</p></div><div className="button-row"><a className="button button-ink" href="/subjects/math/algebra/diagnostic/">Take the diagnostic</a><a className="button button-ghost" href="/subjects/math/algebra/final-exam/">Open final exam</a></div></section>
     </section>
     <section className="section-pad algebra-legacy-layer" aria-labelledby="algebra-quick-guides">

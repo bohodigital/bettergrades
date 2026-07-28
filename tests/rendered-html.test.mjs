@@ -125,6 +125,10 @@ test("subject and course hubs expose the organized math library", async () => {
   assert.match(algebraHtml, /Fifteen connected units/);
   assert.match(algebraHtml, /Arithmetic Readiness and Repair/);
   assert.match(algebraHtml, /Algebra Synthesis and Precalculus Readiness/);
+  assert.match(algebraHtml, /class="algebra-course-art"/);
+  assert.match(algebraHtml, /src="\/og-algebra\.png"/);
+  assert.equal((algebraHtml.match(/class="calculus-chapter algebra-course-unit"/g) ?? []).length, 15);
+  assert.match(algebraHtml, /aria-label="Unit A0 lessons"[\s\S]*Number lines and signed quantities/);
   assert.match(algebraHtml, /Quick-reference layer preserved/);
 });
 
