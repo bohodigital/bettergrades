@@ -1,4 +1,5 @@
 import auditInventory from "../../data/ia/page-inventory.json" with { type: "json" };
+import { algebraCourse, algebraCourseRoutes } from "../algebra/algebra-course.mjs";
 import { calculusUnitRoutes, calculusUnits } from "../calculus/calculus-units-index.mjs";
 import { limitsUnitRoutes } from "../calculus/limits-unit-index.mjs";
 import { publishedResourcePages, resourceHubs } from "../resources/catalog.mjs";
@@ -15,6 +16,8 @@ for (const record of siteSearchRecords) {
   if (!current || record.priority > current.priority) searchByPath.set(record.path, record);
 }
 const unitRouteByPath = new Map(calculusUnitRoutes.map((route: { path: string }) => [route.path, route]));
+const algebraRouteByPath = new Map(algebraCourseRoutes.map((route: { path: string }) => [route.path, route]));
+const algebraPageByPath = new Map(algebraCourse.pages.map((page: { route: { path: string } }) => [page.route.path, page]));
 const limitsRouteByPath = new Map(limitsUnitRoutes.map((route: { path: string }) => [route.path, route]));
 const publishingByPath = new Map(publishedResourcePages.map((resource) => [resource.canonicalPath, resource]));
 const hubByPath = new Map(resourceHubs.map((hub) => [hub.path, hub]));
@@ -77,6 +80,8 @@ function stableNodeId(path: string, role: string): string {
 }
 
 function unitIdFor(path: string) {
+  const algebraRoute = algebraRouteByPath.get(path) as { unitCode?: string | null } | undefined;
+  if (algebraRoute?.unitCode) return `unit.math.algebra.${semanticToken(algebraRoute.unitCode)}`;
   const route = unitRouteByPath.get(path) as { unitId?: string } | undefined;
   if (route?.unitId) {
     const unit = (calculusUnits as readonly Record<string, unknown>[]).find((candidate) => candidate.id === route.unitId);
@@ -84,6 +89,64 @@ function unitIdFor(path: string) {
   }
   if (path.includes("/limits-continuity/")) return "unit.calculus.1";
   return null;
+}
+
+function algebraNodeId(route: { id: string; pageType: string; unitCode?: string | null; lessonId?: string | null }) {
+  if (route.pageType === "course-hub") return "course.math.algebra";
+  if (route.pageType === "unit-hub") return `unit.math.algebra.${semanticToken(route.unitCode ?? route.id)}`;
+  if (route.pageType === "lesson") return `textbook-lesson.math.algebra.${semanticToken(route.lessonId ?? route.id)}`;
+  return `assessment.math.algebra.${semanticToken(route.id.replace(/^algebra-/, ""))}`;
+}
+
+function buildAlgebraNode(route: {
+  id: string;
+  path: string;
+  title: string;
+  pageType: string;
+  unitCode?: string | null;
+  lessonId?: string | null;
+  description: string;
+  searchTerms: string[];
+  indexable: boolean;
+}): LearningNode {
+  const page = algebraPageByPath.get(route.path) as {
+    unit?: { title?: string; governingQuestion?: string } | null;
+    lesson?: { outcome?: string } | null;
+  } | undefined;
+  const pageRole = route.pageType === "course-hub"
+    ? "course-hub"
+    : route.pageType === "unit-hub"
+      ? "unit-hub"
+      : route.pageType === "lesson"
+        ? "textbook-lesson"
+        : "assessment";
+  const topic = page?.lesson?.outcome ?? page?.unit?.title ?? "Algebra";
+  return {
+    id: algebraNodeId(route),
+    nodeType: roleToType[pageRole],
+    pageRole,
+    title: route.title,
+    shortTitle: route.title,
+    canonicalPath: route.path,
+    subjectId: "subject.math",
+    courseId: "course.math.algebra",
+    unitId: route.unitCode ? `unit.math.algebra.${semanticToken(route.unitCode)}` : null,
+    topicIds: route.unitCode ? [`topic.math.algebra.${semanticToken(route.unitCode)}`] : [],
+    primaryConceptId: conceptId(topic),
+    secondaryConceptIds: [],
+    skillIds: Array.from(new Set(route.searchTerms.slice(0, 12).map(skillId).filter((value): value is string => Boolean(value)))),
+    indexPolicy: route.indexable ? "index" : "noindex",
+    status: "review",
+    searchAliases: Array.from(new Set(route.searchTerms)),
+    formerPaths: [],
+  };
+}
+
+function algebraSeedId(route: { id: string; pageType: string; unitCode?: string | null }) {
+  if (route.pageType === "course-hub") return "course-math-algebra-full";
+  if (route.pageType === "unit-hub") return `unit-math-algebra-${String(route.unitCode).toLowerCase()}`;
+  if (route.pageType === "lesson") return `lesson-math-${route.id}`;
+  return `assessment-${route.id.replace(/^algebra-/, "")}`;
 }
 
 function buildNode(route: { path: string; title: string; indexable: boolean }, page: AuditPage): LearningNode {
@@ -144,6 +207,11 @@ export function adaptCurrentRegistries(sourceCommit: string, sourceTree: string)
   const exclusions: LearningGraph["exclusions"] = [];
   const nodes: LearningNode[] = [];
   for (const route of registryRoutes.filter((candidate) => candidate.indexable && !redirectSources.has(candidate.path))) {
+    const algebraRoute = algebraRouteByPath.get(route.path) as Parameters<typeof buildAlgebraNode>[0] | undefined;
+    if (algebraRoute) {
+      nodes.push(buildAlgebraNode(algebraRoute));
+      continue;
+    }
     const page = auditByPath.get(route.path);
     if (!page) {
       exclusions.push({ canonicalPath: route.path, pageRole: "unknown", reason: "Route added after the immutable audit; classify before publishing graph relationships." });
@@ -184,6 +252,43 @@ export function adaptCurrentRegistries(sourceCommit: string, sourceTree: string)
         reciprocalRequired: false,
       });
     }
+  }
+  const algebraNodeBySeedId = new Map<string, LearningNode>();
+  for (const route of algebraCourseRoutes as ReadonlyArray<{ id: string; pageType: string; unitCode?: string | null; path: string }>) {
+    const node = nodeByPath.get(route.path);
+    if (node) algebraNodeBySeedId.set(algebraSeedId(route), node);
+  }
+  const algebraRelationshipTypes: Record<string, RelationshipType> = {
+    part_of: "belongs_to",
+    precedes: "prerequisite_for",
+    practices: "practices",
+    uses_tool: "uses_tool",
+  };
+  for (const seed of algebraCourse.learningGraph as ReadonlyArray<{
+    sourceId: string;
+    targetId: string;
+    relationship: string;
+    public: boolean;
+    purpose: string;
+  }>) {
+    const source = algebraNodeBySeedId.get(seed.sourceId);
+    const target = algebraNodeBySeedId.get(seed.targetId);
+    const type = algebraRelationshipTypes[seed.relationship];
+    if (!source || !target || !type) continue;
+    const key = `${source.id}\0${target.id}\0${type}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    relationships.push({
+      sourceId: source.id,
+      targetId: target.id,
+      type,
+      confidence: "high",
+      source: "content/algebra/storyboard-v2/learning_graph_seed.csv",
+      editorialStatus: seed.public ? "approved" : "provisional",
+      placement: "algebra-course-navigation",
+      anchorText: target.shortTitle,
+      reciprocalRequired: false,
+    });
   }
   return {
     schemaVersion: 1,

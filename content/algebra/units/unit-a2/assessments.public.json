@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "unitId": "algebra-unit-a2",
+  "assessments": [
+    {
+      "id": "a2-review",
+      "unitCode": "A2",
+      "kind": "review",
+      "path": "/subjects/math/algebra/linear-equations/review/",
+      "questionCount": "35-50",
+      "durationMinutes": "35-60",
+      "grading": "mixed self-check + selected deterministic checks",
+      "answerRoute": "embedded attempt-gated reveals",
+      "cumulativeShare": "25% prior units",
+      "indexable": true
+    },
+    {
+      "id": "a2-practice",
+      "unitCode": "A2",
+      "kind": "practice",
+      "path": "/subjects/math/algebra/linear-equations/practice/",
+      "questionCount": "20-40",
+      "durationMinutes": "flexible",
+      "grading": "deterministic where supported; symbolic equivalence server-side",
+      "answerRoute": "attempt-gated per item",
+      "cumulativeShare": "30% prior units",
+      "indexable": true
+    },
+    {
+      "id": "a2-mastery",
+      "unitCode": "A2",
+      "kind": "mastery-check",
+      "path": "/subjects/math/algebra/linear-equations/mastery-check/",
+      "questionCount": "24-32",
+      "durationMinutes": "30-55",
+      "grading": "deterministic + rubric-scored explanation prompts",
+      "answerRoute": "/subjects/math/algebra/linear-equations/mastery-check/answer-key/",
+      "cumulativeShare": "15% older + 25% recent",
+      "indexable": true
+    },
+    {
+      "id": "a2-investigation",
+      "unitCode": "A2",
+      "kind": "performance-task",
+      "path": "/subjects/math/algebra/linear-equations/investigation/",
+      "questionCount": "1 multistage investigation",
+      "durationMinutes": "45-90",
+      "grading": "rubric; setup, representation, computation, checking, interpretation",
+      "answerRoute": "attempt-gated model solution on same route or separate teacher-only artifact",
+      "cumulativeShare": "integrated",
+      "indexable": true
+    }
+  ]
+}

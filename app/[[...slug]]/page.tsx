@@ -9,9 +9,11 @@ import { isLimitsUnitPath } from "../../lib/calculus/limits-unit-index.mjs";
 import { getPublicLimitsUnitPage } from "../../lib/calculus/limits-unit.mjs";
 import { isCalculusUnitPath } from "../../lib/calculus/calculus-units-index.mjs";
 import { getPublicCalculusUnitPage } from "../../lib/calculus/calculus-unit.mjs";
+import { getPublicAlgebraCoursePage, isAlgebraCoursePath } from "../../lib/algebra/algebra-course.mjs";
 import { GlossaryHubPage, MathConventionsPage, MathGlossaryPage } from "../GlossaryPages";
 import { LimitsUnitPageContent } from "../LimitsUnitPages";
 import { CalculusUnitPageContent } from "../CalculusUnitPages";
+import { AlgebraCoursePageContent } from "../AlgebraCoursePages";
 import { ResourceHubPage, ResourceLibraryPage, ResourcePage } from "../ResourcePages";
 function getPath(slug: string[] = []) {
   return `/${slug.join("/")}${slug.length ? "/" : ""}`;
@@ -27,15 +29,30 @@ function getCalculusUnitSeo(path: string) {
   return undefined;
 }
 
+function getAlgebraUnitSeo(path: string) {
+  const page = getPublicAlgebraCoursePage(path);
+  if (!page) return undefined;
+  return {
+    code: page.unit?.code,
+    name: page.unit?.title ?? "Algebra: Quantities, Equations, and Structure",
+    topic: page.lesson?.title ?? page.unit?.governingQuestion ?? "complete Algebra course",
+  };
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ slug?: string[] }> }): Promise<Metadata> {
   const { slug = [] } = await params;
   const path = getPath(slug);
   const meta = getRoute(path) || { title: "Better Grades", description: "Free academic answers, complete explanations, useful tools, and better practice.", indexable: true };
   const resource = getPublishedResourcePage(path);
   const unit = getCalculusUnitSeo(path);
-  const title = unit && !new RegExp(`\\bUnit ${unit.code}\\b`).test(meta.title) ? `${meta.title} | Unit ${unit.code}` : meta.title;
+  const algebra = getAlgebraUnitSeo(path);
+  const title = algebra?.code && !new RegExp(`\\bUnit ${algebra.code}\\b`).test(meta.title)
+    ? `${meta.title} | Unit ${algebra.code}`
+    : unit && !new RegExp(`\\bUnit ${unit.code}\\b`).test(meta.title) ? `${meta.title} | Unit ${unit.code}` : meta.title;
   const course = unit?.code?.startsWith("4") ? "Calculus II" : "Calculus I";
-  const description = unit && !new RegExp(`\\bUnit ${unit.code}\\b`).test(meta.description) ? `${meta.description} Part of ${course} Unit ${unit.code}: ${unit.name}.` : meta.description;
+  const description = algebra?.code && !new RegExp(`\\bUnit ${algebra.code}\\b`).test(meta.description)
+    ? `${meta.description} Part of BetterGrades Algebra Unit ${algebra.code}: ${algebra.name}.`
+    : unit && !new RegExp(`\\bUnit ${unit.code}\\b`).test(meta.description) ? `${meta.description} Part of ${course} Unit ${unit.code}: ${unit.name}.` : meta.description;
   return {
     title: path === "/" ? { absolute: title } : title,
     description,
@@ -55,6 +72,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug?: st
     } : {}),
     ...(unit ? {
       keywords: [`Calculus Unit ${unit.code}`, unit.name, unit.topic ?? "derivatives", course],
+      openGraph: { type: "article" as const, title, description, url: path, siteName: "Better Grades" },
+      twitter: { card: "summary_large_image" as const, title, description },
+    } : {}),
+    ...(algebra ? {
+      keywords: [algebra.code ? `Algebra Unit ${algebra.code}` : "complete Algebra course", algebra.name, algebra.topic, "Algebra textbook"],
       openGraph: { type: "article" as const, title, description, url: path, siteName: "Better Grades" },
       twitter: { card: "summary_large_image" as const, title, description },
     } : {}),
@@ -78,6 +100,7 @@ export default async function CatchAllPage({
     : undefined;
   const limitsUnitPage = isLimitsUnitPath(path) ? getPublicLimitsUnitPage(path) : undefined;
   const calculusUnitPage = isCalculusUnitPath(path) ? getPublicCalculusUnitPage(path) : undefined;
+  const algebraCoursePage = isAlgebraCoursePath(path) ? getPublicAlgebraCoursePage(path) : undefined;
   const resourcePage = getPublishedResourcePage(path);
   const resourceHub = getResourceHub(path);
   const libraryResources = path === "/resources/"
@@ -97,7 +120,8 @@ export default async function CatchAllPage({
     ? resourcePage.relatedGlossaryTerms.filter((id) => enrichedGlossaryResources.some((resource) => resource.glossaryTermId === id))
     : undefined;
   let routeContent: ReactNode;
-  if (libraryResources) routeContent = <ResourceLibraryPage resources={libraryResources} />;
+  if (algebraCoursePage) routeContent = <AlgebraCoursePageContent page={algebraCoursePage} />;
+  else if (libraryResources) routeContent = <ResourceLibraryPage resources={libraryResources} />;
   else if (resourceHub) routeContent = <ResourceHubPage hub={resourceHub} resources={hubResources ?? []} />;
   else if (resourcePage) routeContent = <ResourcePage resource={resourcePage} glossaryTerms={glossaryData?.terms} relatedResources={relatedResources ?? []} enrichedGlossaryTermIds={enrichedGlossaryTermIds ?? []} />;
   else if (calculusUnitPage) routeContent = <CalculusUnitPageContent page={calculusUnitPage} />;

@@ -10,7 +10,8 @@ const root = resolve(import.meta.dirname, "..");
 test("every canonical audit route is mapped or explicitly excluded", () => {
   const covered = new Set([...graph.nodes.map((node) => node.canonicalPath), ...graph.exclusions.map((item) => item.canonicalPath)]);
   assert.equal(auditInventory.routes.filter((route) => !covered.has(route.route)).length, 0);
-  assert.equal(covered.size, auditInventory.routeCount);
+  assert.equal(auditInventory.routeCount, 509);
+  assert.equal(covered.size, 732);
 });
 
 test("graph ids and canonical paths are unique", () => {

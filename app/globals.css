@@ -22,6 +22,74 @@
   --math: "Cambria Math", Cambria, "Times New Roman", serif;
 }
 
+/* Complete Algebra course installation */
+.algebra-course-page .limits-unit-content {
+  max-width: 76rem;
+}
+
+.algebra-course-map .limits-chapter,
+.algebra-unit-map .limits-chapter {
+  min-width: 0;
+}
+
+.algebra-course-map .limits-chapter > p,
+.algebra-unit-map .limits-chapter > p {
+  margin: 1rem 0;
+}
+
+.algebra-legacy-layer {
+  border-top: 1px solid var(--line);
+}
+
+.algebra-figure-sequence {
+  display: grid;
+  gap: 1.25rem;
+  margin: 2rem 0;
+}
+
+.algebra-exercise-families {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: 0.8rem;
+}
+
+.algebra-exercise-families article {
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+  background: var(--paper);
+}
+
+.algebra-exercise-families h3 {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+.algebra-attempt textarea {
+  display: block;
+  width: 100%;
+  margin: 0.5rem 0 0.8rem;
+  padding: 0.8rem;
+  resize: vertical;
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+}
+
+.algebra-assessment-prompts {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 70rem) {
+  .algebra-figure-sequence {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: start;
+  }
+}
+
 html[data-theme="dark"] {
   --paper: #131a17;
   --paper-2: #1b2420;
