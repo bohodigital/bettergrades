@@ -35,6 +35,137 @@ function publicLearnerText(value) {
     : value;
 }
 
+const editorialProfiles = {
+  1: {
+    lens: "Precalculus is unforgiving about hidden algebra errors. The useful habit is to separate reversible algebra from steps that can create candidates, and to keep domain restrictions beside the work instead of trying to remember them at the end.",
+    check: "Re-read the original statement, not only the simplified line. Confirm every restriction, substitute each candidate, and describe what the result means before moving on.",
+    questions: ["What family of problem is this?", "Which values are forbidden before any simplification?", "Did any step create candidates that still need checking?"],
+    application: "These algebra choices are the load-bearing steps beneath later work with functions. A restriction lost here can turn into a false intercept, a missing asymptote, or an invalid model several lessons later.",
+  },
+  2: {
+    lens: "A function is a dependency, not merely an equation. Inputs, outputs, units, and domain must agree in words, tables, graphs, and formulas; each representation should tell the same mathematical story.",
+    check: "Choose two representations and make them verify one another. A table can test a formula, a graph can expose a domain or range claim, and units can reveal a model that is algebraically neat but conceptually wrong.",
+    questions: ["What is the input and what is the output?", "Which inputs are allowed?", "Where is the same feature visible in another representation?"],
+    application: "The same dependency may arrive as a story, table, graph, or formula. Learning to preserve the inputs, outputs, units, and domain while moving among those forms is the central language of the course.",
+  },
+  3: {
+    lens: "Transformations become reliable when they are treated as coordinate mappings. Outside operations change outputs; inside operations change the inputs that produce those outputs, which is why horizontal changes often appear to work in the opposite direction.",
+    check: "Track at least one landmark point from the parent graph to the transformed graph, then verify the new domain, range, intercepts, or asymptotes from the formula.",
+    questions: ["Which parent family is underneath the formula?", "Does the operation act on input or output?", "Where do the landmark points move?"],
+    application: "Transformation language lets you read a complicated graph as a modified parent rather than a collection of disconnected points. That makes prediction possible before any calculator window is opened.",
+  },
+  4: {
+    lens: "Composition and inversion are about information flow. A composite sends an input through stages in a fixed order; an inverse reverses that flow only when each output identifies a unique input.",
+    check: "Name the intermediate quantity, enforce its domain, and verify an inverse with composition. Units are especially useful because the output unit of one stage must match the input unit of the next.",
+    questions: ["Which function acts first?", "Is the intermediate output allowed?", "Can the process be reversed without ambiguity?"],
+    application: "Many real models are built in stages—a conversion followed by a cost rule, or a measurement followed by a calibration. Composition records that order, while inverse reasoning asks whether the stages can be undone.",
+  },
+  5: {
+    lens: "Polynomial formulas contain structural information before a graph is drawn. Degree and leading coefficient control the ends, factors reveal zeros, multiplicity predicts crossing or touching, and selected values settle the remaining shape.",
+    check: "Compare the proposed graph with the factorization and leading term. Every real zero, sign interval, end direction, and y-intercept should agree with the same formula.",
+    questions: ["What does the leading term force at the ends?", "Where are the zeros and what are their multiplicities?", "Which intervals are positive or negative?"],
+    application: "Polynomial structure links symbolic factors to visible graph behavior. Reading that structure efficiently makes it possible to sketch, solve, and model without treating every problem as a blind numerical search.",
+  },
+  6: {
+    lens: "A rational function carries permanent memory of its original denominator. Factoring may reveal holes, asymptotes, and sign changes, but cancellation never restores an input that the original formula excluded.",
+    check: "Record exclusions first, then compare the factored and simplified forms. Test one point in every sign interval and examine both sides of each vertical asymptote.",
+    questions: ["Which inputs make the original denominator zero?", "Does each excluded input create a hole or an asymptote?", "What happens on each continuity interval?"],
+    application: "Rational graphs are organized around the inputs the denominator forbids. Those exclusions divide the graph into continuity intervals and explain why a simplified expression may still contain a hole or asymptote.",
+  },
+  7: {
+    lens: "Exponential change multiplies over equal input steps, while logarithms answer the inverse question: what exponent produces a given output? Parameters must be interpreted as an initial value, a multiplier, a rate, or a long-run bound—not as decoration.",
+    check: "Test the model at input zero and one step later, confirm the multiplier or inverse relationship, and state whether the domain and long-run behavior make sense in context.",
+    questions: ["Is change additive, multiplicative, or bounded?", "What do the parameters mean with units?", "Would a logarithm reverse the relationship?"],
+    application: "Multiplicative models describe repeated percentage change, while logarithms recover the time or exponent hidden inside that process. Together they support growth, decay, finance, regression, and bounded models.",
+  },
+  8: {
+    lens: "A system asks for simultaneous truth. Graphs show common intersections, elimination preserves the solution set, and matrices record the same operations compactly; the representation changes, but the solution condition does not.",
+    check: "Substitute the result into every original equation or inequality. For matrix work, translate the final rows back into statements about variables, pivots, free variables, and consistency.",
+    questions: ["What does a solution represent in this context?", "Which elimination move preserves the solution set?", "Does the result satisfy every original condition?"],
+    application: "Systems combine several conditions into one decision. Graphs, equations, inequalities, and matrices are different views of the same requirement: the final result must satisfy every condition at once.",
+  },
+};
+
+function lowerInitial(value) {
+  return value ? `${value[0].toLowerCase()}${value.slice(1)}` : value;
+}
+
+function methodSteps(sourceLesson, profile) {
+  const clauses = sourceLesson.exposition[0]
+    .split(/,\s+(?:and\s+)?|\s+and\s+(?=[a-z])/i)
+    .map((clause) => clause.trim().replace(/[.]$/, ""))
+    .filter(Boolean);
+  const steps = clauses.slice(0, 4);
+  while (steps.length < 3) steps.push(profile.questions[steps.length] ?? profile.check);
+  return steps.map((step, index) => `${index + 1}. ${step[0].toUpperCase()}${step.slice(1)}.`);
+}
+
+function editorialGuide(sourceLesson, unitSequence) {
+  const profile = editorialProfiles[unitSequence];
+  const foundation = sourceLesson.examples[0];
+  return {
+    application: profile.application,
+    bigIdea: [
+      profile.lens,
+      `This lesson narrows that lens to one goal: ${lowerInitial(sourceLesson.outcome)} The point is not to memorize an isolated trick; it is to know what evidence makes the conclusion valid and how a second representation can check it.`,
+    ],
+    method: methodSteps(sourceLesson, profile),
+    questions: profile.questions,
+    verification: profile.check,
+    foundationWalkthrough: {
+      problem: foundation.problem,
+      plan: `Start by identifying the mathematical structure in the prompt. Then use the lesson method rather than guessing from appearance: ${sourceLesson.exposition[0]}`,
+      conclusion: foundation.solution,
+      check: foundation.interpretation,
+    },
+  };
+}
+
+function expandedPractice(sourceLesson, guide) {
+  const original = sourceLesson.practice.slice(0, 4);
+  const [foundation, representation, transfer] = sourceLesson.examples;
+  const additions = [
+    {
+      prompt: `Explain why this conclusion is valid: ${foundation.solution} Use the foundation problem as evidence: ${foundation.problem}`,
+      answer: `${foundation.solution} ${foundation.interpretation}`,
+    },
+    {
+      prompt: `Solve the representation example, then name the feature of ${sourceLesson.title.toLowerCase()} that it illustrates: ${representation.problem}`,
+      answer: `${representation.solution} ${representation.interpretation}`,
+    },
+    {
+      prompt: `Correct this reasoning and identify the first unsafe assumption: ${sourceLesson.commonMistake}`,
+      answer: `A correct approach begins by following the lesson method: ${sourceLesson.exposition[0]} ${guide.verification}`,
+    },
+    {
+      prompt: `Connect two representations for this example: ${foundation.problem} Describe what a graph, table, mapping, or algebraic form would have to show.`,
+      answer: `${foundation.solution} The second representation must preserve the same inputs, outputs, restrictions, and conclusion. ${foundation.interpretation}`,
+    },
+    {
+      prompt: `Create a nearby example by changing one number or condition in this prompt: ${transfer.problem} Predict the effect, solve your new example, and compare it with the original.`,
+      answer: `Answers vary. The comparison should state the changed condition, show valid work, and use the original result as a reference: ${transfer.solution} ${transfer.interpretation}`,
+    },
+    {
+      prompt: `Write a short verification checklist for ${sourceLesson.title.toLowerCase()}, then apply it to one worked example from this lesson.`,
+      answer: `${guide.verification} A complete response should apply that check to a specific example and explain why the conclusion follows.`,
+    },
+  ];
+  return [...original, ...additions];
+}
+
+function learnerFigureCaption(sourceLesson, figure, index) {
+  if (index === 0) {
+    return `Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: ${sourceLesson.examples[0].interpretation}`;
+  }
+  if (index === 1) {
+    return `Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for ${sourceLesson.title.toLowerCase()}.`;
+  }
+  const shortcut = sourceLesson.commonMistake
+    .replace(/^A frequent error is\s+/i, "")
+    .replace(/[.!?]+$/, "");
+  return `Compare the valid path with the tempting shortcut. The figure shows why ${lowerInitial(shortcut)} leads to a false conclusion.`;
+}
+
 async function loadJson(path) {
   return JSON.parse(await readFile(path, "utf8"));
 }
@@ -86,7 +217,8 @@ for (const sourceLesson of sourceLessons) {
   const publicLessonId = `precalculus-u${profile.sequence}-l${lessonSequence}`;
   const path = `${courseRoot}${profile.slug}/${slugify(sourceLesson.title)}/`;
   const checkpointId = `${publicLessonId}-checkpoint`;
-  const practice = sourceLesson.practice.map((item, index) => {
+  const guide = editorialGuide(sourceLesson, profile.sequence);
+  const practice = expandedPractice(sourceLesson, guide).map((item, index) => {
     const id = `${publicLessonId}-practice-${String(index + 1).padStart(2, "0")}`;
     solutions.push({
       id,
@@ -112,6 +244,7 @@ for (const sourceLesson of sourceLessons) {
     role: figure.role,
     title: figure.title,
     description: figure.description,
+    caption: learnerFigureCaption(sourceLesson, figure, index),
     anchorProblem: sourceLesson.examples[0].problem,
     anchorConclusion: sourceLesson.examples[0].solution,
     anchorInterpretation: sourceLesson.examples[0].interpretation,
@@ -131,6 +264,7 @@ for (const sourceLesson of sourceLessons) {
     opening: sourceLesson.opening,
     prerequisites: sourceLesson.prerequisites.map(publicLearnerText),
     exposition: sourceLesson.exposition,
+    guide,
     commonMistake: sourceLesson.commonMistake,
     examples: sourceLesson.examples,
     figures,
@@ -295,8 +429,10 @@ for (const unit of publicUnits) {
     figures: unitLessons.flatMap((lesson) => lesson.figures.map((figure) => ({
       ...figure,
       lessonId: lesson.id,
+      lessonSequence: lesson.sequence,
       lessonTitle: lesson.title,
       lessonOutcome: lesson.outcome,
+      lessonGuide: lesson.guide,
       route: lesson.path,
     }))),
   }, `Precalculus unit ${unit.sequence} visual briefs`);

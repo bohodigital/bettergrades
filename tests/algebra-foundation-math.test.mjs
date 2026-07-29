@@ -21,6 +21,10 @@ test("foundation prose becomes real LaTeX fragments without consuming surroundin
   assert.equal(foundationMathFragments("Explain the operation in words.").length, 1);
   assert.deepEqual(foundationMathFragments("Explain the operation in words.")[0], { kind: "text", value: "Explain the operation in words." });
   assert.deepEqual(foundationMathFragments("Record a concise operation history."), [{ kind: "text", value: "Record a concise operation history." }]);
+  assert.deepEqual(
+    foundationMathFragments("Check repeated inputs in a table, outgoing arrows in a mapping, and intersections in a graph."),
+    [{ kind: "text", value: "Check repeated inputs in a table, outgoing arrows in a mapping, and intersections in a graph." }],
+  );
   assert.deepEqual(mathTex("Compare a − b with b − a."), ["a - b", "b - a"]);
   assert.deepEqual(
     mathTex("In x(x + 2)/x, x can cancel when x ≠ 0."),

@@ -100,7 +100,10 @@ function AttemptFirstPrompt({
 
 function CourseHub({ page }: { page: PrecalculusCoursePage }) {
   return <section className="limits-unit-map calculus-unit-map algebra-course-map precalculus-course-map" aria-label="Precalculus course map">
-    <header className="limits-map-intro"><div><p className="eyebrow">Continuous course</p><h2>Functions, models, and change</h2></div><p>Open a unit to follow its exact lesson sequence. Each lesson connects explanation, worked examples, semantic figures, practice, and source records.</p></header>
+    <header className="limits-map-intro precalculus-map-intro">
+      <img src="/og-precalculus.png" alt="Precalculus: Functions, Models, and Change, illustrated with a function curve and coordinate grid" />
+      <div><p className="eyebrow">Continuous course</p><h2>Functions, models, and change</h2><p>Open a unit to follow its lesson sequence. Each lesson now combines a conceptual reading, a reusable method, worked reasoning, mathematical figures, and practice that asks for more than recall.</p></div>
+    </header>
     <div className="calculus-chapter-list algebra-course-unit-list">
       {page.units.map((unit) => <details className="calculus-chapter algebra-course-unit" key={unit.id}>
         <summary>
@@ -135,9 +138,28 @@ function LessonPage({ page }: { page: PrecalculusCoursePage }) {
   if (!page.lesson) return null;
   const lesson = page.lesson;
   return <div className="algebra-textbook-lesson precalculus-textbook-lesson">
-    <section className="limits-node limits-node-application algebra-lesson-opening"><header><span>Opening</span><h2>Start with the situation</h2></header><div>{lesson.opening.map((paragraph) => <p key={paragraph}><AlgebraMathText value={paragraph} /></p>)}</div></section>
+    <section className="limits-node limits-node-application algebra-lesson-opening"><header><span>Opening</span><h2>Start with the situation</h2></header><div>
+      <p><AlgebraMathText value={lesson.opening[0]} /></p>
+      <p><AlgebraMathText value={lesson.guide.application} /></p>
+    </div></section>
     <section className="limits-node limits-node-exposition"><header><span>Before you begin</span><h2>Prerequisite check</h2></header><div><ul>{lesson.prerequisites.map((item) => <li key={item}><AlgebraMathText value={item} /></li>)}</ul></div></section>
-    <section className="limits-node limits-node-exposition algebra-lesson-exposition"><header><span>Exact learner exposition</span><h2>Explanation</h2></header><div>{lesson.exposition.map((paragraph) => <p key={paragraph}><AlgebraMathText value={paragraph} /></p>)}</div></section>
+    <section className="limits-node limits-node-exposition algebra-lesson-exposition"><header><span>Core explanation</span><h2>Explanation</h2></header><div>{lesson.exposition.map((paragraph) => <p key={paragraph}><AlgebraMathText value={paragraph} /></p>)}</div></section>
+    <section className="limits-node limits-node-exposition precalculus-concept-reading"><header><span>Conceptual reading</span><h2>What the idea is really doing</h2></header><div>
+      {lesson.guide.bigIdea.map((paragraph) => <p key={paragraph}><AlgebraMathText value={paragraph} /></p>)}
+      <aside><strong>Questions to keep in view</strong><ul>{lesson.guide.questions.map((question) => <li key={question}>{question}</li>)}</ul></aside>
+    </div></section>
+    <section className="limits-node algebra-authored-method precalculus-lesson-method"><header><span>Reusable method</span><h2>A reliable route through the problem</h2></header><div>
+      <ol>{lesson.guide.method.map((step) => <li key={step}><AlgebraMathText value={step.replace(/^\d+\.\s*/, "")} /></li>)}</ol>
+      <p><strong>Verification:</strong> <AlgebraMathText value={lesson.guide.verification} /></p>
+    </div></section>
+    <section className="limits-node limits-node-example precalculus-foundation-walkthrough"><header><span>Foundation walkthrough</span><h2>Plan before calculating</h2></header><div>
+      <p className="eyebrow">Problem</p><h3><AlgebraMathText value={lesson.guide.foundationWalkthrough.problem} display="auto" /></h3>
+      <dl>
+        <div><dt>Plan</dt><dd><AlgebraMathText value={lesson.guide.foundationWalkthrough.plan} /></dd></div>
+        <div><dt>Conclusion</dt><dd><AlgebraMathText value={lesson.guide.foundationWalkthrough.conclusion} display="auto" /></dd></div>
+        <div><dt>Why the check works</dt><dd><AlgebraMathText value={lesson.guide.foundationWalkthrough.check} /></dd></div>
+      </dl>
+    </div></section>
     <section className="limits-node limits-node-example algebra-lesson-examples"><header><span>Worked examples</span><h2>See the idea in three forms</h2></header><div className="algebra-worked-examples">{lesson.examples.map((example) => <article key={example.type}>
       <p className="eyebrow">{example.type} example</p>
       <h3><AlgebraMathText value={example.problem} display="auto" /></h3>
@@ -146,7 +168,7 @@ function LessonPage({ page }: { page: PrecalculusCoursePage }) {
     </article>)}</div></section>
     <section className="algebra-figure-sequence" aria-label={`${lesson.title} semantic figures`}>{lesson.figures.map((figure) => <figure className="limits-graph limits-graph-visual calculus-unit-visual" key={figure.id}>
       {figure.visual ? <BetterGradesVisual visual={figure.visual} /> : <p role="alert">This compiled figure is temporarily unavailable.</p>}
-      <figcaption><strong>{figure.role} · {figure.title}</strong><p><AlgebraMathText value={figure.description} /></p></figcaption>
+      <figcaption><strong>{figure.role} · {figure.title}</strong><p><AlgebraMathText value={figure.caption} /></p></figcaption>
     </figure>)}</section>
     <section className="limits-node limits-node-caution algebra-lesson-caution"><header><span>Common mistake</span><h2>Find the first invalid move</h2></header><div><p><AlgebraMathText value={lesson.commonMistake} /></p></div></section>
     <AttemptFirstPrompt prompt={lesson.checkpoint} label="Check yourself" />
