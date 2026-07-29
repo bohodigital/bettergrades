@@ -48,6 +48,8 @@ test("Pages package contains the advanced Worker and static assets", async () =>
   assert.match(worker, /\/api\/algebra-course-check/);
   assert.match(worker, /\/api\/algebra-course-reveal/);
   assert.match(worker, /\/api\/calculus-check/);
+  assert.match(worker, /\/api\/precalculus-course-check/);
+  assert.match(worker, /\/api\/precalculus-course-reveal/);
   assert.doesNotMatch(worker, /Evaluating Limits Worksheet with Complete Solutions/, "static educational content must not enter the API-only Worker");
   assert.doesNotMatch(
     worker,
@@ -121,6 +123,35 @@ test("Pages package contains the advanced Worker and static assets", async () =>
   );
 });
 
+test("Pages Worker serves both bounded Precalculus answer APIs", async () => {
+  const workerUrl = new URL(`../dist/pages/_worker.js?precalculus-test=${Date.now()}`, import.meta.url);
+  const { default: worker } = await import(workerUrl);
+  const environment = { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } };
+  const attempt = "I distributed both sides and checked the resulting identity.";
+
+  const checkResponse = await worker.fetch(
+    new Request("https://bettergrades.net/api/precalculus-course-check", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ id: "precalculus-u1-l1-checkpoint", answer: attempt }),
+    }),
+    environment,
+  );
+  assert.equal(checkResponse.status, 200);
+  assert.equal((await checkResponse.json()).status, "uncertain");
+
+  const revealResponse = await worker.fetch(
+    new Request("https://bettergrades.net/api/precalculus-course-reveal", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ id: "precalculus-u1-l1-checkpoint", attempt }),
+    }),
+    environment,
+  );
+  assert.equal(revealResponse.status, 200);
+  assert.match((await revealResponse.json()).answer, /Identity; all real numbers/);
+});
+
 test("Pages Worker serves both bounded Algebra course assessment APIs", async () => {
   const workerUrl = new URL(`../dist/pages/_worker.js?test=${Date.now()}`, import.meta.url);
   const { default: worker } = await import(workerUrl);
@@ -153,7 +184,7 @@ test("Pages Worker serves both bounded Algebra course assessment APIs", async ()
   assert.match((await revealResponse.json()).rubric, /interpret sign as position, direction, and change/i);
 });
 
-test("Pages package preserves the exact Calculus and Algebra visual inventories", async () => {
+test("Pages package preserves the exact Calculus, Algebra, and Precalculus visual inventories", async () => {
   const limitsManifest = JSON.parse(
     await readFile(new URL("../content/visualizations/limits-continuity/compiled-scenes.v1.json", import.meta.url), "utf8"),
   );
@@ -183,6 +214,11 @@ test("Pages package preserves the exact Calculus and Algebra visual inventories"
   const algebraRuntimeManifests = await Promise.all(
     Array.from({ length: 15 }, (_, index) => `unit-a${index}`).map(async (unit) => JSON.parse(
       await readFile(new URL(`../content/algebra/units/${unit}/public-runtime-scenes.server.json`, import.meta.url), "utf8"),
+    )),
+  );
+  const precalculusRuntimeManifests = await Promise.all(
+    Array.from({ length: 8 }, (_, index) => `unit-${index + 1}`).map(async (unit) => JSON.parse(
+      await readFile(new URL(`../content/precalculus/units/${unit}/public-runtime-scenes.server.json`, import.meta.url), "utf8"),
     )),
   );
   assert.equal(limitsManifest.manifestVersion, 1);
@@ -235,7 +271,25 @@ test("Pages package preserves the exact Calculus and Algebra visual inventories"
     assert.equal(runtimeManifest.scenes.filter(({ hydration }) => hydration !== "none").length, runtimeManifest.interactiveCount);
     assert.ok(runtimeManifest.scenes.every(({ visibility }) => visibility === "public"));
   }
-  const manifests = [limitsManifest, unitManifest, unit2bManifest, unit3aManifest, unit3bManifest, unit4aManifest, unit4bManifest, ...algebraRuntimeManifests];
+  assert.equal(precalculusRuntimeManifests.reduce((count, manifest) => count + manifest.sceneCount, 0), 252);
+  assert.equal(precalculusRuntimeManifests.reduce((count, manifest) => count + manifest.interactiveCount, 0), 0);
+  for (const runtimeManifest of precalculusRuntimeManifests) {
+    assert.equal(runtimeManifest.manifestVersion, 1);
+    assert.equal(runtimeManifest.scenes.length, runtimeManifest.sceneCount);
+    assert.equal(runtimeManifest.scenes.filter(({ hydration }) => hydration !== "none").length, runtimeManifest.interactiveCount);
+    assert.ok(runtimeManifest.scenes.every(({ visibility }) => visibility === "public"));
+  }
+  const manifests = [
+    limitsManifest,
+    unitManifest,
+    unit2bManifest,
+    unit3aManifest,
+    unit3bManifest,
+    unit4aManifest,
+    unit4bManifest,
+    ...algebraRuntimeManifests,
+    ...precalculusRuntimeManifests,
+  ];
   const expectedAssetNames = manifests.flatMap(({ scenes }) => scenes.map(({ staticAsset }) => staticAsset.path.split("/").at(-1))).sort();
   const publicAssetNames = (await readdir(new URL("../public/visuals/v1/", import.meta.url)))
     .filter((name) => name.endsWith(".svg"))

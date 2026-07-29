@@ -2308,6 +2308,40 @@ h1 em, h2 em { color: var(--brand); font-family: var(--serif); font-weight: 500;
   font-size: 0.82rem;
 }
 
+.precalculus-course-page .precalculus-course-map .calculus-chapter-title small {
+  max-width: 46rem;
+}
+
+.precalculus-textbook-lesson .precalculus-practice > div {
+  display: grid;
+  gap: 1rem;
+}
+
+.precalculus-textbook-lesson .precalculus-attempt.is-compact {
+  margin: 0;
+  padding: 1rem;
+  break-inside: avoid;
+}
+
+.precalculus-textbook-lesson .precalculus-attempt.is-compact + .precalculus-attempt.is-compact {
+  margin-top: 0;
+}
+
+.precalculus-textbook-lesson .precalculus-attempt.is-compact textarea {
+  min-height: 5.5rem;
+}
+
+.precalculus-textbook-lesson .limits-rights ul {
+  margin: 0.6rem 0;
+  padding-left: 1.15rem;
+}
+
+.precalculus-textbook-lesson .limits-rights li {
+  margin: 0.2rem 0;
+  font-size: 0.76rem;
+  line-height: 1.45;
+}
+
 @media (max-width: 44rem) {
   .algebra-course-page[data-page-type="lesson"] .limits-unit-hero,
   .algebra-course-page[data-page-type="lesson"] .limits-sequence {

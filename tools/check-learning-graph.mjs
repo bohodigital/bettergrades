@@ -3,6 +3,7 @@ import concepts from "../data/learning-graph/concepts.json" with { type: "json" 
 import skills from "../data/learning-graph/skills.json" with { type: "json" };
 import inventory from "../data/ia/page-inventory.json" with { type: "json" };
 import algebraCourse from "../content/algebra/course.public.json" with { type: "json" };
+import precalculusCourse from "../content/precalculus/course.public.json" with { type: "json" };
 import { build } from "esbuild";
 import { tmpdir } from "node:os";
 import { resolve } from "node:path";
@@ -27,6 +28,7 @@ try {
   const canonicalRoutes = new Set([
     ...inventory.routes.map((route) => route.route),
     ...algebraCourse.routes.map((route) => route.path),
+    ...precalculusCourse.routes.map((route) => route.path),
   ]);
   const coveredRoutes = new Set([...graph.nodes.map((node) => node.canonicalPath), ...graph.exclusions.map((item) => item.canonicalPath)]);
   for (const node of graph.nodes) {

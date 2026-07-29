@@ -44,6 +44,17 @@ export const courseLibraries: CourseLibrary[] = [
     topics: libraryTopics,
     articles: withCourse([...libraryArticles, ...calculusExpansionArticles], "calculus", "Calculus"),
   },
+  {
+    slug: "precalculus",
+    name: "Precalculus",
+    eyebrow: "Mathematics · Functions and models",
+    description: "Functions, multiple representations, transformations, polynomial and rational behavior, exponential models, systems, and matrices in one continuous course.",
+    promise: "Connect formulas, graphs, tables, and context before trusting a conclusion.",
+    mark: "ƒ",
+    level: "Precalculus",
+    topics: [],
+    articles: [],
+  },
 ];
 
 export const allLibraryArticles = courseLibraries.flatMap((course) => course.articles);
