@@ -1,5 +1,6 @@
 import { getFoundationProfile } from "./algebra-foundations/index.mjs";
 import { getFoundationVisualProfile } from "./algebra-foundations/visuals.mjs";
+import { buildTextbookProfile } from "./algebra-textbook/index.mjs";
 
 const normalize = (value) => String(value ?? "").replace(/\s+/g, " ").trim();
 const sentence = (value) => {
@@ -216,7 +217,7 @@ const QUESTION_DIFFICULTIES = [
   "transfer", "transfer", "mixed", "standard",
 ];
 
-function buildFoundationQuestions(lesson, unit, profile) {
+function buildAuthoredQuestions(lesson, unit, profile) {
   return profile.questions.map((authoredQuestion, index) => {
     const number = index + 1;
     const purpose = QUESTION_PURPOSES[index];
@@ -254,16 +255,16 @@ function buildFoundationQuestions(lesson, unit, profile) {
 
 export function buildLessonArtifacts({ lesson, unit, figures, families, previous, next }) {
   const foundationProfile = getFoundationProfile(lesson.id);
-  const examples = foundationProfile
-    ? foundationProfile.examples.map((example, index) => ({
+  const profile = foundationProfile ?? buildTextbookProfile(lesson, unit);
+  const examples = profile
+    ? profile.examples.map((example, index) => ({
       kind: ["foundation", "representation", "transfer"][index],
       ...example,
     }))
     : concreteExamples(lesson, unit);
-  const questions = foundationProfile
-    ? buildFoundationQuestions(lesson, unit, foundationProfile)
+  const questions = profile
+    ? buildAuthoredQuestions(lesson, unit, profile)
     : buildQuestions(lesson, unit);
-  const figureDescriptions = figures.map((figure) => sentence(figure.description));
   const publicFigures = figures.map(({ role: _privateRole, ...figure }) => figure);
   const publicLesson = {
     id: lesson.id,
@@ -272,25 +273,25 @@ export function buildLessonArtifacts({ lesson, unit, figures, families, previous
     title: lesson.title,
     path: lesson.path,
     outcome: lesson.outcome,
+    ...(profile?.textbookEdition ? { textbookEdition: profile.textbookEdition } : {}),
     ...(foundationProfile ? { foundationEdition: "authored-v2" } : {}),
     opening: {
       prompt: sentence(lesson.opening),
-      purpose: foundationProfile?.purpose
+      purpose: profile?.purpose
         ?? `Use a concrete situation to identify the quantities and decision that make ${lesson.title.toLowerCase()} necessary.`,
     },
-    prerequisiteChecks: foundationProfile?.prerequisites ?? [
+    prerequisiteChecks: profile?.prerequisites ?? [
       `Name the known quantity, the unknown quantity, and any units in the opening situation.`,
       `Classify the central object as an expression, equation, inequality, relation, function, or numerical comparison.`,
       `State one earlier rule or representation you would use to check a result for ${lesson.title.toLowerCase()}.`,
     ],
-    exposition: foundationProfile?.exposition ?? [
+    exposition: profile?.exposition ?? [
       `${sentence(lesson.outcome)} Begin by naming the mathematical objects before manipulating them. In ${lesson.title.toLowerCase()}, notation compresses a relationship among quantities; it does not replace that relationship. Track what each symbol represents, preserve grouping and units, and mark any restriction or endpoint as soon as it appears. The first useful question is therefore not “Which memorized move do I use?” but “What must remain true from one line or representation to the next?”`,
-      `${figureDescriptions[0] ?? `The first figure for ${lesson.title} displays the governing quantities.`} Read the labels as mathematical evidence: identify what is fixed, what changes, and how the objects are related. Then connect that evidence to the symbolic work one justified step at a time. A correct transformation preserves the relevant value, truth set, rate, domain, or geometric feature. If a step changes one of those, it needs a stated condition and a check against the original problem.`,
-      `${figureDescriptions[1] ?? `A second representation makes the mechanism visible.`} Use the worked examples to compare symbolic, numerical, and visual forms. Each form should answer the same question, even when it emphasizes a different feature. Finish by interpreting the result in a complete sentence and checking it with substitution, estimation, units, graph position, or an inverse operation. That final check distinguishes a plausible-looking candidate from a supported conclusion.`,
+      `A second representation can make the governing structure visible without replacing the algebra. Use the worked examples to compare symbolic, numerical, and graphical forms only where each form carries mathematical evidence. Finish by interpreting the result in a complete sentence and checking it with substitution, estimation, units, graph position, or an inverse operation.`,
     ],
-    ...(foundationProfile?.method ? { method: foundationProfile.method } : {}),
-    definitions: foundationProfile
-      ? foundationProfile.definitions.map(([term, definition, conditions]) => ({ term, definition, conditions }))
+    ...(profile?.method ? { method: profile.method } : {}),
+    definitions: profile
+      ? profile.definitions.map(([term, definition, conditions]) => ({ term, definition, conditions }))
       : [
       {
         term: lesson.title,
@@ -305,11 +306,11 @@ export function buildLessonArtifacts({ lesson, unit, figures, families, previous
       ],
     examples,
     figures: publicFigures,
-    misconceptions: foundationProfile
+    misconceptions: profile
       ? [{
-        wrongMove: foundationProfile.misconception[0],
-        whyItFails: foundationProfile.misconception[1],
-        repair: foundationProfile.misconception[2],
+        wrongMove: profile.misconception[0],
+        whyItFails: profile.misconception[1],
+        repair: profile.misconception[2],
       }]
       : [
       {
@@ -327,11 +328,11 @@ export function buildLessonArtifacts({ lesson, unit, figures, families, previous
     practiceQuestions: questions,
     exitCheck: questions.slice(-2).map((question) => question.id),
     takeaway: {
-      summary: foundationProfile
-        ? sentence(foundationProfile.takeaway[0])
+      summary: profile
+        ? sentence(profile.takeaway[0])
         : `${sentence(lesson.outcome)} A complete solution names the relationship, preserves its conditions, and verifies the conclusion.`,
-      conditions: foundationProfile
-        ? foundationProfile.takeaway.slice(1).map(sentence)
+      conditions: profile
+        ? profile.takeaway.slice(1).map(sentence)
         : ["Keep original restrictions and units visible.", "Use an independent check whenever an operation may create candidates or lose information."],
     },
     navigation: {
@@ -362,13 +363,13 @@ export function buildLessonArtifacts({ lesson, unit, figures, families, previous
   const solutions = questions.map((question, index) => ({
     id: question.solutionRef,
     questionId: question.id,
-    expectedAnswer: foundationProfile
-      ? foundationProfile.questions[index].answer
+    expectedAnswer: profile
+      ? profile.questions[index].answer
       : workedCase(lesson).answer,
     acceptedAlternatives: ["Equivalent exact forms and complete verbal explanations supported by the shown work."],
     detailedRubric: `The response must address ${lesson.outcome.toLowerCase()} Credit the method, preservation of relevant conditions, a supported conclusion, and an explicit check. Do not award full credit for an unsupported final value.`,
-    completeSolution: foundationProfile
-      ? foundationProfile.questions[index].solution
+    completeSolution: profile
+      ? profile.questions[index].solution
       : `${workedCase(lesson).steps.join(" ")} Therefore ${workedCase(lesson).answer}. ${workedCase(lesson).interpretation}`,
     gradingBoundary: "Open responses receive rubric-guided review after a substantive attempt.",
     parserRules: "No automatic exact-string grading for open responses.",

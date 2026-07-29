@@ -3,6 +3,7 @@ import test from "node:test";
 
 import katex from "katex";
 
+import course from "../content/algebra/course.public.json" with { type: "json" };
 import { foundationMathFragments, foundationTextToLatex } from "../lib/algebra/foundation-math.mjs";
 import { FOUNDATION_PROFILES } from "../tools/algebra-foundations/index.mjs";
 
@@ -74,4 +75,50 @@ test("every detected A0–A2 expression is valid strict KaTeX", () => {
     }
   }
   assert.ok(expressionCount >= 3_900, `expected comprehensive math coverage, received ${expressionCount}`);
+});
+
+test("every detected A3–A14 textbook expression is valid strict KaTeX", () => {
+  const lessons = course.pages
+    .filter((page) => page.lesson && /^A(?:[3-9]|1[0-4])\./.test(page.lesson.id))
+    .map((page) => page.lesson);
+  let expressionCount = 0;
+
+  const visit = (value, lessonId) => {
+    if (typeof value === "string") {
+      for (const fragment of foundationMathFragments(value)) {
+        if (fragment.kind !== "math") continue;
+        expressionCount += 1;
+        assert.equal(
+          fragment.tex.includes("/"),
+          false,
+          `${lessonId}: ${JSON.stringify(value)} retained slash notation in ${JSON.stringify(fragment.tex)}`,
+        );
+        assert.doesNotThrow(
+          () => katex.renderToString(fragment.tex, { throwOnError: true, strict: "error" }),
+          `${lessonId}: ${JSON.stringify(value)} produced invalid TeX ${JSON.stringify(fragment.tex)}`,
+        );
+      }
+      return;
+    }
+    if (Array.isArray(value)) value.forEach((entry) => visit(entry, lessonId));
+    else if (value && typeof value === "object") Object.values(value).forEach((entry) => visit(entry, lessonId));
+  };
+
+  for (const lesson of lessons) {
+    visit([
+      lesson.opening,
+      lesson.prerequisiteChecks,
+      lesson.exposition,
+      lesson.method,
+      lesson.definitions,
+      lesson.examples,
+      lesson.misconceptions,
+      lesson.checkpoint,
+      lesson.practiceQuestions.map(({ prompt, hint }) => ({ prompt, hint })),
+      lesson.exitCheck,
+      lesson.takeaway,
+    ], lesson.id);
+  }
+
+  assert.ok(expressionCount >= 7_000, `expected comprehensive textbook math coverage, received ${expressionCount}`);
 });

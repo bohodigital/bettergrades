@@ -160,8 +160,8 @@ function LessonList({ title, label, items }: { title: string; label: string; ite
 }
 
 function LessonPractice({ lesson }: { lesson: NonNullable<AlgebraCoursePage["lesson"]> }) {
-  const authoredFoundation = lesson.foundationEdition?.startsWith("authored-");
-  if (!authoredFoundation) {
+  const authoredTextbook = lesson.textbookEdition?.startsWith("authored-") || lesson.foundationEdition?.startsWith("authored-");
+  if (!authoredTextbook) {
     return <section className="limits-node limits-node-exercise"><header><span>Practice</span><h2>{lesson.practiceQuestions.length} concrete questions</h2></header><div><div className="algebra-exercise-families">{lesson.practiceQuestions.map((question) => <article key={question.id}><code>{question.id}</code><h3><AlgebraMathText value={question.prompt} display="auto" /></h3><p><AlgebraMathText value={question.hint} /></p><small>{pageTypeLabel(question.purpose ?? "practice")} · {pageTypeLabel(question.difficulty ?? "standard")}</small></article>)}</div></div></section>;
   }
 

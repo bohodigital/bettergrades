@@ -45,7 +45,7 @@ test("the reconciled Algebra inventory matches the approved package", () => {
     interactiveFigures: 9,
     exerciseFamilies: 695,
     assessmentBlueprints: 55,
-    concreteQuestions: 2336,
+    concreteQuestions: 2780,
   });
   assert.equal(new Set(course.routes.map((route) => route.id)).size, 226);
   assert.equal(new Set(course.routes.map((route) => route.path)).size, 226);
@@ -151,12 +151,57 @@ test("all 139 learner lessons satisfy the remediation authoring contract", () =>
     assert.deepEqual(lesson.examples.map((example) => example.kind), ["foundation", "representation", "transfer"], lesson.id);
     assert.ok(lesson.examples.every((example) => example.steps.length >= 2 && example.answer && example.interpretation.length >= 15), lesson.id);
     assert.ok(lesson.misconceptions.every((item) => item.wrongMove.length >= 10 && item.whyItFails.length >= 20 && item.repair.length >= 15), lesson.id);
-    const expectedQuestionCount = lesson.foundationEdition === "authored-v2" ? 20 : 16;
+    const expectedQuestionCount =
+      lesson.foundationEdition === "authored-v2" || lesson.textbookEdition?.startsWith("authored-")
+        ? 20
+        : 16;
     assert.equal(lesson.practiceQuestions.length, expectedQuestionCount, lesson.id);
     assert.equal(lesson.exercises.length, expectedQuestionCount, lesson.id);
     assert.equal(lesson.exitCheck.length, 2, lesson.id);
     assert.ok(lesson.sources.length >= 1, lesson.id);
   }
+});
+
+test("A3–A14 meet the complete textbook authoring standard", async () => {
+  const lessons = course.pages
+    .filter((page) => page.lesson && /^A(?:[3-9]|1[0-4])\./.test(page.lesson.id))
+    .map((page) => page.lesson);
+  const questions = lessons.flatMap((lesson) => lesson.practiceQuestions);
+  const publicTextbook = JSON.stringify(lessons);
+
+  assert.equal(lessons.length, 111);
+  assert.ok(lessons.every((lesson) => lesson.textbookEdition === "authored-v3"));
+  assert.equal(questions.length, 2220);
+  assert.equal(new Set(questions.map((question) => question.prompt)).size, 2220);
+  assert.ok(lessons.every((lesson) => lesson.exposition.length >= 10));
+  assert.ok(lessons.every((lesson) => {
+    const wordCount = lesson.exposition.join(" ").match(/\b[\p{L}\p{N}]+(?:[’'-][\p{L}\p{N}]+)*\b/gu)?.length ?? 0;
+    return wordCount >= 650;
+  }));
+  assert.ok(lessons.every((lesson) => lesson.method?.title && lesson.method.steps.length === 3 && lesson.method.check));
+  assert.ok(lessons.every((lesson) => lesson.definitions.length >= 4));
+  assert.ok(lessons.every((lesson) => lesson.examples.length === 3));
+  assert.ok(lessons.every((lesson) => new Set(lesson.examples.map((example) => example.prompt)).size === 3));
+  assert.doesNotMatch(publicTextbook, /Begin by naming the mathematical objects before manipulating them/);
+  assert.doesNotMatch(publicTextbook, /Represent the result of this .* case/);
+  assert.doesNotMatch(publicTextbook, /A correctly labeled second representation that preserves/);
+
+  const expectedLessonCases = new Map([
+    ["A10.2", /Simplify \(x² − 9\)\/\(x² − x − 6\)/],
+    ["A12.5", /find the range and intervals of increase and decrease/],
+    ["A13.3", /5\(0\.8\)/],
+  ]);
+  for (const [lessonId, expectedPrompt] of expectedLessonCases) {
+    const lesson = lessons.find((entry) => entry.id === lessonId);
+    assert.match(lesson.examples[0].prompt, expectedPrompt, lessonId);
+  }
+
+  const protectedSolutions = [];
+  for (const unitCode of course.units.map((unit) => unit.code.toLowerCase()).filter((unitCode) => Number(unitCode.slice(1)) >= 3)) {
+    const records = JSON.parse(await readFile(resolve(root, "content/algebra/units", `unit-${unitCode}`, "exercise-solutions.server.json"), "utf8"));
+    protectedSolutions.push(...records.solutions);
+  }
+  assert.equal(protectedSolutions.length, 2220);
 });
 
 test("A0–A2 are fully authored foundations rather than generic lesson-template variants", async () => {
@@ -212,13 +257,16 @@ test("the public learner payload contains no authoring scaffolds or accidental p
     "A strong response demonstrates",
   ];
   for (const phrase of forbidden) assert.ok(!source.includes(phrase), phrase);
-  assert.doesNotMatch(source, /\b(?:undefined|NaN|PLACEHOLDER|TODO|TBD)\b/);
+  assert.doesNotMatch(source, /\b(?:NaN|PLACEHOLDER|TODO|TBD)\b/);
+  const undefinedUses = source.match(/\bundefined\b/gi) ?? [];
+  const mathematicalUndefinedUses = source.match(/\bundefined slope\b/gi) ?? [];
+  assert.equal(undefinedUses.length, mathematicalUndefinedUses.length);
   for (const route of course.routes) assert.doesNotMatch(route.description, /\b(?:undefined|null|NaN)\b/, route.path);
 });
 
 test("all exercise and assessment surfaces use concrete, protected question records", async () => {
-  assert.equal(course.exerciseBank.length, 2336);
-  assert.equal(new Set(course.exerciseBank.map((question) => question.id)).size, 2336);
+  assert.equal(course.exerciseBank.length, 2780);
+  assert.equal(new Set(course.exerciseBank.map((question) => question.id)).size, 2780);
   for (const question of course.exerciseBank) {
     assert.ok(question.prompt.length >= 10, question.id);
     assert.ok(question.hint.length >= 5, question.id);
@@ -232,7 +280,7 @@ test("all exercise and assessment surfaces use concrete, protected question reco
     assert.ok(assessment.questionIds.every((id) => course.exerciseBank.some((question) => question.id === id)), assessment.id);
   }
   const protectedRecords = JSON.parse(await readFile(resolve(root, "content/algebra/assessment-rubrics.server.json"), "utf8"));
-  assert.equal(protectedRecords.rubrics.length, 2336);
+  assert.equal(protectedRecords.rubrics.length, 2780);
   assert.ok(protectedRecords.rubrics.every((record) => record.expectedAnswer && record.completeSolution && record.rubric));
 });
 

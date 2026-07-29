@@ -51,11 +51,12 @@ test("all 226 Algebra routes are in exactly one role-based sitemap with a real r
 test("rendered Algebra pages expose finished instruction, unique metadata, and the course social image", async () => {
   const titles = new Set();
   const descriptions = new Set();
-  const forbidden = /Foundation example: a clean numerical case|Let the anchor figure establish|Connect the representation to the lesson outcome|A strong response demonstrates|\bundefined\b|\bPLACEHOLDER\b/;
+  const forbidden = /Foundation example: a clean numerical case|Let the anchor figure establish|Connect the representation to the lesson outcome|A strong response demonstrates|\bPLACEHOLDER\b/;
   for (const route of course.routes) {
     const html = await readFile(resolve(pages, route.path.slice(1), "index.html"), "utf8");
     const visibleHtml = html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "");
     assert.doesNotMatch(visibleHtml, forbidden, route.path);
+    assert.doesNotMatch(visibleHtml.replace(/\bundefined slope\b/gi, ""), /\bundefined\b/i, route.path);
     assert.equal((html.match(/<h1(?:\s|>)/g) ?? []).length, 1, route.path);
     assert.match(html, /<main(?:\s|>)/, route.path);
     assert.match(html, /rel="canonical"/, route.path);

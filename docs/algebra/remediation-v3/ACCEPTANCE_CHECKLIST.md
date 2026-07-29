@@ -7,7 +7,7 @@
 - [x] 226 Algebra routes preserved
 - [x] 509 earlier canonicals preserved
 - [x] 732 unique combined public routes
-- [x] 2,224 concrete questions
+- [x] 2,780 concrete questions
 - [x] 55 assessments with exact question IDs
 - [x] protected solutions absent from the public course payload
 - [x] 417 semantic visual manifests

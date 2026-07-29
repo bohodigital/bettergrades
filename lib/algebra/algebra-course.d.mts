@@ -60,6 +60,7 @@ export type AlgebraLesson = {
   title: string;
   path: string;
   outcome: string;
+  textbookEdition?: string;
   foundationEdition?: string;
   opening: { prompt: string; purpose: string };
   prerequisiteChecks: string[];

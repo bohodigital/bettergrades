@@ -78,6 +78,34 @@ test("A0–A2 lessons render accessible KaTeX instead of plain Unicode lookalike
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
 });
 
+test("A3–A14 each render as complete, restrained textbook lessons", async ({ page }) => {
+  const routes = [
+    "/subjects/math/algebra/inequalities-absolute-value/inequalities-and-truth-sets/",
+    "/subjects/math/algebra/linear-relationships/ratios-and-equivalent-ratios/",
+    "/subjects/math/algebra/systems/systems-as-simultaneous-conditions/",
+    "/subjects/math/algebra/exponents-roots/exponents-as-repeated-multiplication/",
+    "/subjects/math/algebra/polynomial-operations/polynomial-vocabulary-and-evaluation/",
+    "/subjects/math/algebra/factoring-quadratics/factoring-as-reverse-distribution-and-gcf/",
+    "/subjects/math/algebra/quadratic-functions/quadratic-relations-and-three-useful-forms/",
+    "/subjects/math/algebra/rational-expressions/rational-expressions-and-restrictions/",
+    "/subjects/math/algebra/radicals-complex-numbers/general-nth-roots-and-principal-roots/",
+    "/subjects/math/algebra/functions/relations-and-functions/",
+    "/subjects/math/algebra/exponential-logarithmic/additive-versus-multiplicative-patterns/",
+    "/subjects/math/algebra/precalculus-readiness/classifying-mathematical-objects/",
+  ];
+
+  for (const route of routes) {
+    await page.goto(route);
+    await expect(page.locator(".algebra-lesson-exposition > div > p"), route).toHaveCount(10);
+    await expect(page.locator(".algebra-authored-method li"), route).toHaveCount(3);
+    await expect(page.locator(".algebra-worked-examples article"), route).toHaveCount(3);
+    await expect(page.locator(".algebra-practice-group"), route).toHaveCount(4);
+    await expect(page.locator(".algebra-exercise-families article"), route).toHaveCount(20);
+    expect(await page.locator(".algebra-course-page .latex-inline").count(), route).toBeGreaterThan(10);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth), route).toBe(true);
+  }
+});
+
 test("the compact rational-expression guide remains canonical beside the distinct full-course lesson", async ({ page }) => {
   await page.goto("/subjects/math/algebra/rational-expressions/simplifying-rational-expressions/");
   await expect(page.locator("h1")).toContainText("Simplifying rational expressions by factors");

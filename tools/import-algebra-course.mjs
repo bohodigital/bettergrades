@@ -7,6 +7,7 @@ import {
   exactAssessmentCount,
   publicAssessmentKind,
 } from "./algebra-remediation-content.mjs";
+import { assertCompleteTextbookProfiles } from "./algebra-textbook/index.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const sourceDirectory = resolve(root, "content/algebra/storyboard-v2");
@@ -129,6 +130,7 @@ const lessonsById = new Map(rawLessons.map((lesson) => [lesson.lesson_id, {
   exerciseCount: lesson.exercise_count,
   releasePhase: Number(lesson.release_phase),
 }]));
+assertCompleteTextbookProfiles([...lessonsById.values()], unitsByCode);
 
 const visualBriefs = rawVisuals.map((visual) => ({
   id: visual.figure_id,

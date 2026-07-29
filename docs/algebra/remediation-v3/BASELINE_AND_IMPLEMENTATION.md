@@ -35,13 +35,13 @@ Every one of the 139 lessons now contains:
 - concept-specific figures;
 - one structured misconception and repair;
 - a checkpoint;
-- 16 concrete practice questions;
+- 20 concrete practice questions;
 - exactly two exit questions;
 - a takeaway, conditions, navigation, and rights-separated source record.
 
-The course contains 2,224 unique concrete questions. Every question has a complete prompt, hint, response type, skill, purpose, difficulty, error tags, remediation path, deterministic seed record, units/rounding policy, and a server-only solution reference.
+The course contains 2,780 unique concrete questions. Every question has a complete prompt, hint, response type, skill, purpose, difficulty, error tags, remediation path, deterministic seed record, units/rounding policy, and a server-only solution reference.
 
-All 55 assessments now declare an exact integer count and exact question IDs. The generated server layer contains 2,224 matching scoring and worked-solution records.
+All 55 assessments now declare an exact integer count and exact question IDs. The generated server layer contains 2,780 matching scoring and worked-solution records.
 
 ## Visual contract
 
