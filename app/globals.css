@@ -1851,7 +1851,7 @@ h1 em, h2 em { color: var(--brand); font-family: var(--serif); font-weight: 500;
 
 /* Algebra lessons: compact textbook reading layout */
 .algebra-course-page[data-page-type="lesson"] .limits-unit-hero {
-  width: min(52rem, calc(100% - 48px));
+  width: min(48rem, calc(100% - 48px));
   padding-top: 1.8rem;
   padding-bottom: 1.45rem;
 }
@@ -1868,7 +1868,7 @@ h1 em, h2 em { color: var(--brand); font-family: var(--serif); font-weight: 500;
 }
 
 .algebra-course-page[data-page-type="lesson"] .limits-unit-hero h1 {
-  max-width: 46rem;
+  max-width: 43rem;
   margin: 0 0 0.7rem;
   font-size: clamp(1.9rem, 3.8vw, 2.65rem);
   line-height: 1.08;
@@ -1877,16 +1877,16 @@ h1 em, h2 em { color: var(--brand); font-family: var(--serif); font-weight: 500;
 }
 
 .algebra-course-page[data-page-type="lesson"] .limits-unit-hero > p:not(.eyebrow) {
-  max-width: 46rem;
+  max-width: 43rem;
   margin: 0;
   font-family: var(--serif);
   font-size: 1rem;
   line-height: 1.58;
-  text-wrap: pretty;
+  text-wrap: wrap;
 }
 
 .algebra-course-page[data-page-type="lesson"] .lesson-position {
-  max-width: 46rem;
+  max-width: 43rem;
   margin-top: 1rem;
   grid-template-columns: 1fr auto;
 }
@@ -1909,11 +1909,24 @@ h1 em, h2 em { color: var(--brand); font-family: var(--serif); font-weight: 500;
 
 .algebra-course-page[data-page-type="lesson"] .limits-unit-content {
   width: 100%;
-  max-width: 46rem;
+  max-width: 43rem;
 }
 
 .algebra-textbook-lesson {
   color: var(--ink);
+  text-align: left;
+  word-spacing: normal;
+  letter-spacing: normal;
+}
+
+.algebra-textbook-lesson .latex-inline {
+  display: inline;
+  max-width: none;
+  vertical-align: -0.075em;
+}
+
+.algebra-textbook-lesson .latex-inline .katex {
+  white-space: nowrap;
 }
 
 .algebra-textbook-lesson .limits-node {
@@ -1959,7 +1972,7 @@ h1 em, h2 em { color: var(--brand); font-family: var(--serif); font-weight: 500;
 
 .algebra-textbook-lesson .limits-node p {
   margin: 0 0 0.9rem;
-  text-wrap: pretty;
+  text-wrap: wrap;
 }
 
 .algebra-textbook-lesson .limits-node ol,
@@ -1982,13 +1995,14 @@ h1 em, h2 em { color: var(--brand); font-family: var(--serif); font-weight: 500;
 }
 
 .algebra-textbook-lesson .algebra-lesson-exposition > div > p {
-  margin: 0;
-  font-size: 1.06rem;
-  line-height: 1.78;
+  margin: 0 0 0.72rem;
+  font-size: 1.045rem;
+  line-height: 1.68;
+  text-wrap: wrap;
 }
 
 .algebra-textbook-lesson .algebra-lesson-exposition > div > p + p {
-  text-indent: 1.5em;
+  text-indent: 1.3em;
 }
 
 .algebra-textbook-lesson .algebra-lesson-opening,
@@ -2098,7 +2112,7 @@ h1 em, h2 em { color: var(--brand); font-family: var(--serif); font-weight: 500;
 
 .algebra-textbook-lesson .algebra-worked-examples h3 {
   margin: 0 0 0.55rem;
-  font-size: 1.05rem;
+  font-size: 1.02rem;
   line-height: 1.5;
 }
 
@@ -2138,8 +2152,8 @@ h1 em, h2 em { color: var(--brand); font-family: var(--serif); font-weight: 500;
 }
 
 .algebra-textbook-lesson .algebra-foundation-practice .algebra-exercise-families {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0 1.25rem;
+  grid-template-columns: 1fr;
+  gap: 0;
 }
 
 .algebra-textbook-lesson .algebra-foundation-practice .algebra-exercise-families article {

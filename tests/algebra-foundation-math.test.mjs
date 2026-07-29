@@ -3,7 +3,7 @@ import test from "node:test";
 
 import katex from "katex";
 
-import { foundationMathFragments } from "../lib/algebra/foundation-math.mjs";
+import { foundationMathFragments, foundationTextToLatex } from "../lib/algebra/foundation-math.mjs";
 import { FOUNDATION_PROFILES } from "../tools/algebra-foundations/index.mjs";
 
 function mathTex(value) {
@@ -31,6 +31,23 @@ test("foundation prose becomes real LaTeX fragments without consuming surroundin
   );
 });
 
+test("fractions use a textbook fraction bar for simple, signed, grouped, and complex quotients", () => {
+  const cases = new Map([
+    ["x/3", String.raw`\frac{x}{3}`],
+    ["x/−4", String.raw`\frac{x}{-4}`],
+    ["1/2bh", String.raw`\frac{1}{2}bh`],
+    ["a³/a³", String.raw`\frac{a^{3}}{a^{3}}`],
+    ["(x+1)/(x−2)", String.raw`\frac{x+1}{x-2}`],
+    ["(x−3)(x+3)/(x−3)", String.raw`\frac{(x-3)(x+3)}{x-3}`],
+    ["(1/2 + 1/3)/(5/6)", String.raw`\frac{\frac{1}{2} + \frac{1}{3}}{\frac{5}{6}}`],
+    ["x/(1/(xy))", String.raw`\frac{x}{\frac{1}{xy}}`],
+    ["kg·m²/s²", String.raw`\frac{kg\cdot m^{2}}{s^{2}}`],
+  ]);
+  for (const [source, expected] of cases) {
+    assert.equal(foundationTextToLatex(source), expected, source);
+  }
+});
+
 test("every detected A0–A2 expression is valid strict KaTeX", () => {
   const strings = [];
   const visit = (value) => {
@@ -45,6 +62,11 @@ test("every detected A0–A2 expression is valid strict KaTeX", () => {
     for (const fragment of foundationMathFragments(value)) {
       if (fragment.kind !== "math") continue;
       expressionCount += 1;
+      assert.equal(
+        fragment.tex.includes("/"),
+        false,
+        `${JSON.stringify(value)} retained slash notation in ${JSON.stringify(fragment.tex)}`,
+      );
       assert.doesNotThrow(
         () => katex.renderToString(fragment.tex, { throwOnError: true, strict: "error" }),
         `${JSON.stringify(value)} produced invalid TeX ${JSON.stringify(fragment.tex)}`,
