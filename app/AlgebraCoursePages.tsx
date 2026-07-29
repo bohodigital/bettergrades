@@ -73,7 +73,7 @@ function AttemptFirstPrompt({ prompt, answerKey = false }: { prompt: AlgebraAsse
 
   return <section className="limits-check algebra-attempt" id={prompt.id} data-check-id={prompt.id}>
     <header><span>{answerKey ? "Attempt-gated response guide" : "Open-response check"}</span><code>{prompt.lessonId}</code></header>
-    <p className="limits-check-prompt"><AlgebraMathText value={prompt.prompt} /></p>
+    <p className="limits-check-prompt"><AlgebraMathText value={prompt.prompt} display="auto" /></p>
     <form onSubmit={check}>
       <label htmlFor={`${prompt.id}-answer`}>Your method, work, and check</label>
       <textarea id={`${prompt.id}-answer`} value={answer} onChange={(event) => setAnswer(event.target.value)} rows={4} required />
@@ -172,7 +172,7 @@ function LessonList({ title, label, items }: { title: string; label: string; ite
 function LessonPractice({ lesson }: { lesson: NonNullable<AlgebraCoursePage["lesson"]> }) {
   const authoredFoundation = lesson.foundationEdition?.startsWith("authored-");
   if (!authoredFoundation) {
-    return <section className="limits-node limits-node-exercise"><header><span>Practice</span><h2>{lesson.practiceQuestions.length} concrete questions</h2></header><div><div className="algebra-exercise-families">{lesson.practiceQuestions.map((question) => <article key={question.id}><code>{question.id}</code><h3><AlgebraMathText value={question.prompt} /></h3><p><AlgebraMathText value={question.hint} /></p><small>{pageTypeLabel(question.purpose ?? "practice")} · {pageTypeLabel(question.difficulty ?? "standard")}</small></article>)}</div></div></section>;
+    return <section className="limits-node limits-node-exercise"><header><span>Practice</span><h2>{lesson.practiceQuestions.length} concrete questions</h2></header><div><div className="algebra-exercise-families">{lesson.practiceQuestions.map((question) => <article key={question.id}><code>{question.id}</code><h3><AlgebraMathText value={question.prompt} display="auto" /></h3><p><AlgebraMathText value={question.hint} /></p><small>{pageTypeLabel(question.purpose ?? "practice")} · {pageTypeLabel(question.difficulty ?? "standard")}</small></article>)}</div></div></section>;
   }
 
   const groups = [
@@ -192,7 +192,7 @@ function LessonPractice({ lesson }: { lesson: NonNullable<AlgebraCoursePage["les
             const number = lesson.practiceQuestions.indexOf(question) + 1;
             return <article key={question.id}>
               <div className="algebra-question-meta"><span>Question {number}</span><small>{pageTypeLabel(question.purpose ?? "practice")} · {pageTypeLabel(question.difficulty ?? "standard")}</small></div>
-              <h4><AlgebraMathText value={question.prompt} /></h4>
+              <h4><AlgebraMathText value={question.prompt} display="auto" /></h4>
               <details className="algebra-question-hint"><summary>Need a hint?</summary><p><AlgebraMathText value={question.hint} /></p></details>
             </article>;
           })}
@@ -209,15 +209,15 @@ function LessonPage({ page }: { page: AlgebraCoursePage }) {
     <section className="limits-node limits-node-application algebra-lesson-opening"><header><span>Opening situation</span><h2>Start here</h2></header><div><p><AlgebraMathText value={lesson.opening.prompt} /></p><p><AlgebraMathText value={lesson.opening.purpose} /></p></div></section>
     <LessonList title="Prerequisite check" label="Before this lesson" items={lesson.prerequisiteChecks} />
     <section className="limits-node limits-node-exposition algebra-lesson-exposition"><header><span>Lesson text</span><h2>Explanation</h2></header><div>{lesson.exposition.map((paragraph) => <p key={paragraph}><AlgebraMathText value={paragraph} /></p>)}</div></section>
-    {lesson.method && <section className="limits-node limits-node-method algebra-authored-method"><header><span>Method</span><h2><AlgebraMathText value={lesson.method.title} /></h2></header><div><ol>{lesson.method.steps.map((step) => <li key={step}><AlgebraMathText value={step} /></li>)}</ol><p><strong>Check:</strong> <AlgebraMathText value={lesson.method.check} /></p></div></section>}
+    {lesson.method && <section className="limits-node limits-node-method algebra-authored-method"><header><span>Method</span><h2><AlgebraMathText value={lesson.method.title} /></h2></header><div><ol>{lesson.method.steps.map((step) => <li key={step}><AlgebraMathText value={step} display="auto" /></li>)}</ol><p><strong>Check:</strong> <AlgebraMathText value={lesson.method.check} display="auto" /></p></div></section>}
     <section className="limits-node limits-node-method algebra-lesson-definitions"><header><span>Reference</span><h2>Definitions and conditions</h2></header><div><dl>{lesson.definitions.map((definition) => <div key={definition.term}><dt><strong><AlgebraMathText value={definition.term} /></strong></dt><dd><AlgebraMathText value={definition.definition} />{definition.conditions && <small><AlgebraMathText value={definition.conditions} /></small>}</dd></div>)}</dl></div></section>
     <section className="algebra-figure-sequence" aria-label={`${lesson.title} figures`}>{lesson.figures.map((figure) => <figure className="limits-graph limits-graph-visual calculus-unit-visual" key={figure.id}>
       {figure.visual ? <BetterGradesVisual visual={figure.visual} /> : <p role="alert">This compiled figure is temporarily unavailable.</p>}
       <figcaption><strong>{lesson.title} · Figure {figure.id}</strong><p><AlgebraMathText value={figure.description} /></p>{figure.interactive && <small>Use the bounded control to compare states; the initial state remains available as a complete static figure.</small>}</figcaption>
     </figure>)}</section>
-    <section className="limits-node limits-node-example algebra-lesson-examples"><header><span>Examples</span><h2>Worked examples</h2></header><div className="algebra-worked-examples">{lesson.examples.map((example) => <article key={example.kind}><p className="eyebrow">{pageTypeLabel(example.kind)}</p><h3><AlgebraMathText value={example.prompt} /></h3><ol>{example.steps.map((step) => <li key={step}><AlgebraMathText value={step} /></li>)}</ol><p><strong>Answer:</strong> <AlgebraMathText value={example.answer} /></p><p><AlgebraMathText value={example.interpretation} /></p></article>)}</div></section>
+    <section className="limits-node limits-node-example algebra-lesson-examples"><header><span>Examples</span><h2>Worked examples</h2></header><div className="algebra-worked-examples">{lesson.examples.map((example) => <article key={example.kind}><p className="eyebrow">{pageTypeLabel(example.kind)}</p><h3><AlgebraMathText value={example.prompt} display="auto" /></h3><ol>{example.steps.map((step) => <li key={step}><AlgebraMathText value={step} display="auto" /></li>)}</ol><p className="algebra-example-answer"><strong>Answer</strong><AlgebraMathText value={example.answer} display="auto" /></p><p><AlgebraMathText value={example.interpretation} /></p></article>)}</div></section>
     <LessonPractice lesson={lesson} />
-    <section className="limits-node limits-node-caution algebra-lesson-caution"><header><span>Common mistakes</span><h2>Error analysis</h2></header><div>{lesson.misconceptions.map((item) => <article key={item.wrongMove}><p><strong>Wrong move:</strong> <AlgebraMathText value={item.wrongMove} /></p><p><strong>Why it fails:</strong> <AlgebraMathText value={item.whyItFails} /></p><p><strong>Repair:</strong> <AlgebraMathText value={item.repair} /></p></article>)}</div></section>
+    <section className="limits-node limits-node-caution algebra-lesson-caution"><header><span>Common mistakes</span><h2>Error analysis</h2></header><div>{lesson.misconceptions.map((item) => <article key={item.wrongMove}><p><strong>Wrong move:</strong> <AlgebraMathText value={item.wrongMove} display="auto" /></p><p><strong>Why it fails:</strong> <AlgebraMathText value={item.whyItFails} /></p><p><strong>Repair:</strong> <AlgebraMathText value={item.repair} display="auto" /></p></article>)}</div></section>
     <AttemptFirstPrompt prompt={{ id: lesson.checkpoint.id, lessonId: lesson.id, prompt: lesson.checkpoint.prompt, responseType: lesson.checkpoint.responseType }} />
     <LessonList title="Exit check" label="Before continuing" items={lesson.exitCheck.map((id) => lesson.practiceQuestions.find((question) => question.id === id)?.prompt ?? `Complete question ${id} from this lesson’s practice bank.`)} />
     <section className="limits-node limits-node-bridge algebra-lesson-takeaway"><header><span>Summary</span><h2>What to remember</h2></header><div><p><AlgebraMathText value={lesson.takeaway.summary} /></p><ul>{lesson.takeaway.conditions.map((condition) => <li key={condition}><AlgebraMathText value={condition} /></li>)}</ul><p><a href={lesson.navigation.practice}>Continue to unit practice →</a></p></div></section>

@@ -88,6 +88,24 @@ test("representative A0–A2 lessons render textbook mathematics through KaTeX a
   }
 });
 
+test("worked Algebra examples separate display equations from inline prose mathematics", async () => {
+  const cases = [
+    ["/subjects/math/algebra/arithmetic-readiness/fractions-as-numbers/", 6],
+    ["/subjects/math/algebra/linear-equations/multistep-linear-equations/", 9],
+    ["/subjects/math/algebra/linear-equations/equations-with-fractions-and-decimals/", 10],
+  ];
+  for (const [path, minimumDisplays] of cases) {
+    const html = await readFile(resolve(pages, path.slice(1), "index.html"), "utf8");
+    const visibleHtml = html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "");
+    const examples = visibleHtml.match(/class="limits-node limits-node-example algebra-lesson-examples"[\s\S]*?class="limits-node limits-node-exercise/)?.[0] ?? "";
+    const exposition = visibleHtml.match(/class="limits-node limits-node-exposition algebra-lesson-exposition"[\s\S]*?class="limits-node limits-node-method/)?.[0] ?? "";
+    assert.ok((examples.match(/class="latex latex-display/g) ?? []).length >= minimumDisplays, `${path} kept worked equations inline`);
+    assert.equal((examples.match(/class="algebra-example-answer/g) ?? []).length, 3, `${path} lost textbook answer lines`);
+    assert.doesNotMatch(examples, /class="katex-error"/, path);
+    assert.doesNotMatch(exposition, /class="latex latex-display"/, `${path} promoted ordinary prose math`);
+  }
+});
+
 test("all 139 exact lesson titles rank first in the generated search index", async () => {
   const output = resolve(tmpdir(), `bettergrades-algebra-remediation-search-${process.pid}.mjs`);
   try {

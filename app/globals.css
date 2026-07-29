@@ -1929,6 +1929,40 @@ h1 em, h2 em { color: var(--brand); font-family: var(--serif); font-weight: 500;
   white-space: nowrap;
 }
 
+.algebra-textbook-lesson .algebra-equation-statement {
+  display: block;
+  margin: 0.3rem 0 0.4rem;
+  text-indent: 0;
+}
+
+.algebra-textbook-lesson .algebra-equation-lead {
+  display: block;
+  margin-bottom: 0.15rem;
+  font-family: var(--serif);
+  font-size: 0.92rem;
+  font-weight: 650;
+  line-height: 1.45;
+}
+
+.algebra-textbook-lesson .algebra-textbook-equation {
+  display: block;
+  max-width: 100%;
+  padding: 0.25rem 0 0.35rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  text-align: center;
+  text-indent: 0;
+}
+
+.algebra-textbook-lesson .algebra-textbook-equation .katex-display {
+  margin: 0;
+  text-align: center;
+}
+
+.algebra-textbook-lesson .algebra-textbook-equation .katex {
+  font-size: 1.08em;
+}
+
 .algebra-textbook-lesson .limits-node {
   margin: 2.35rem 0;
   overflow: visible;
@@ -2114,6 +2148,45 @@ h1 em, h2 em { color: var(--brand); font-family: var(--serif); font-weight: 500;
   margin: 0 0 0.55rem;
   font-size: 1.02rem;
   line-height: 1.5;
+}
+
+.algebra-textbook-lesson .algebra-worked-examples h3 .algebra-equation-statement {
+  margin-top: 0;
+}
+
+.algebra-textbook-lesson .algebra-worked-examples h3 .algebra-equation-lead {
+  font-size: 1rem;
+}
+
+.algebra-textbook-lesson .algebra-worked-examples li .algebra-textbook-equation {
+  padding-top: 0.35rem;
+  padding-bottom: 0.45rem;
+}
+
+.algebra-textbook-lesson .algebra-example-answer {
+  margin: 0.65rem 0 0.85rem;
+  padding: 0.65rem 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.algebra-textbook-lesson .algebra-example-answer > strong {
+  display: block;
+  margin-bottom: 0.1rem;
+  color: var(--brand);
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  font-weight: 900;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.algebra-textbook-lesson .algebra-example-answer .algebra-equation-statement {
+  margin: 0;
+}
+
+.algebra-textbook-lesson .algebra-example-answer .algebra-textbook-equation {
+  padding-bottom: 0.2rem;
 }
 
 .algebra-textbook-lesson .algebra-foundation-practice {
@@ -2310,6 +2383,15 @@ h1 em, h2 em { color: var(--brand); font-family: var(--serif); font-weight: 500;
 
   .algebra-textbook-lesson .algebra-foundation-practice .algebra-exercise-families {
     grid-template-columns: 1fr;
+  }
+
+  .algebra-textbook-lesson .algebra-textbook-equation {
+    padding-top: 0.2rem;
+    padding-bottom: 0.3rem;
+  }
+
+  .algebra-textbook-lesson .algebra-textbook-equation .katex {
+    font-size: 1em;
   }
 
   .algebra-course-page[data-page-type="lesson"] .limits-sequence {
