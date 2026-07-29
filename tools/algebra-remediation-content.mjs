@@ -256,9 +256,12 @@ function buildAuthoredQuestions(lesson, unit, profile) {
 export function buildLessonArtifacts({ lesson, unit, figures, families, previous, next }) {
   const foundationProfile = getFoundationProfile(lesson.id);
   const profile = foundationProfile ?? buildTextbookProfile(lesson, unit);
+  const exampleKinds = profile?.textbookEdition === "authored-v4"
+    ? ["worked-example-1", "worked-example-2", "worked-example-3"]
+    : ["foundation", "representation", "transfer"];
   const examples = profile
     ? profile.examples.map((example, index) => ({
-      kind: ["foundation", "representation", "transfer"][index],
+      kind: exampleKinds[index],
       ...example,
     }))
     : concreteExamples(lesson, unit);

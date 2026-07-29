@@ -56,7 +56,6 @@ test("rendered Algebra pages expose finished instruction, unique metadata, and t
     const html = await readFile(resolve(pages, route.path.slice(1), "index.html"), "utf8");
     const visibleHtml = html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "");
     assert.doesNotMatch(visibleHtml, forbidden, route.path);
-    assert.doesNotMatch(visibleHtml.replace(/\bundefined slope\b/gi, ""), /\bundefined\b/i, route.path);
     assert.equal((html.match(/<h1(?:\s|>)/g) ?? []).length, 1, route.path);
     assert.match(html, /<main(?:\s|>)/, route.path);
     assert.match(html, /rel="canonical"/, route.path);

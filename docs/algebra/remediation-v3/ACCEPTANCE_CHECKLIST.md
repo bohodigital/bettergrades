@@ -8,6 +8,7 @@
 - [x] 509 earlier canonicals preserved
 - [x] 732 unique combined public routes
 - [x] 2,780 concrete questions
+- [x] 333 unique rigorous worked examples across A3–A14
 - [x] 55 assessments with exact question IDs
 - [x] protected solutions absent from the public course payload
 - [x] 417 semantic visual manifests
@@ -23,7 +24,7 @@
 
 ## Candidate review gates
 
-- [x] full automated test suite (306/306)
+- [x] full automated test suite (317/317)
 - [x] 732-route build and public-output scan (14 leak patterns, zero findings)
 - [x] browser matrix: 1440×900, 768×1024, 390×844, 320×700
 - [x] JavaScript-on and JavaScript-off content parity

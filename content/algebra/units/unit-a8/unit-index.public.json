@@ -37,10 +37,10 @@
       "title": "Factoring as reverse distribution and GCF",
       "path": "/subjects/math/algebra/factoring-quadratics/factoring-as-reverse-distribution-and-gcf/",
       "outcome": "Rewrite sums as products by extracting the greatest shared factor and verify by expansion.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Recover rectangle side lengths from an expanded area.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn factoring as reverse distribution and gcf as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn factoring as reverse distribution and gcf as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Rewrite sums as products by extracting the greatest shared factor and verify by expansion.",
@@ -92,7 +92,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "Factor 18x⁴y − 24x³y² completely using the greatest common factor.",
           "steps": [
             "Find the greatest common numerical factor 6.",
@@ -103,26 +103,26 @@
           "interpretation": "The GCF contains every factor shared by all terms at its minimum exponent."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Coordinate expanded, factored, and completed-square forms with zeros, symmetry, and the corresponding parabola.",
+          "kind": "worked-example-2",
+          "prompt": "Factor 18x⁴y − 24x³y² completely by greatest common factor.",
           "steps": [
-            "First solve the original case and retain the exact result 6x³y(3x − 4y)..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "The coefficient GCF is 6.",
+            "The shared variable factor is x³y.",
+            "Divide each term by 6x³y to obtain the remaining binomial."
           ],
-          "answer": "The second representation must preserve 6x³y(3x − 4y)..",
-          "interpretation": "The GCF contains every factor shared by all terms at its minimum exponent. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "6x³y(3x − 4y).",
+          "interpretation": "A complete GCF includes the greatest numerical factor and the least exponent of each shared variable."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “6x³y(3x − 4y).” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "Factor 5a(a − 3) + 2(a − 3).",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Expand any factorization and substitute every proposed solution into the original quadratic equation.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "Identify the shared binomial factor a − 3.",
+            "Factor it out as one algebraic object.",
+            "Check by distributing."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms 6x³y(3x − 4y)..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "(a − 3)(5a + 2).",
+          "interpretation": "A common factor may be an entire expression, not only a monomial."
         }
       ],
       "figures": [
@@ -166,7 +166,7 @@
       ],
       "checkpoint": {
         "id": "a8-1-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for factoring as reverse distribution and gcf, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. Factor 5a(a − 3) + 2(a − 3).",
         "responseType": "open-response"
       },
       "exercises": [
@@ -316,7 +316,7 @@
           "id": "a8-1-q06",
           "lessonId": "A8.1",
           "unitCode": "A8",
-          "prompt": "Complete the calculation after the first step “Find the greatest common numerical factor 6.” and show the missing algebra.",
+          "prompt": "Factor 18x⁴y − 24x³y² completely by greatest common factor.",
           "responseType": "open-response",
           "skill": "Rewrite sums as products by extracting the greatest shared factor and verify by expansion.",
           "purpose": "procedure",
@@ -340,7 +340,7 @@
           "id": "a8-1-q07",
           "lessonId": "A8.1",
           "unitCode": "A8",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: Factor 18x⁴y − 24x³y² completely using the greatest common factor.",
+          "prompt": "Factor 5a(a − 3) + 2(a − 3).",
           "responseType": "open-response",
           "skill": "Rewrite sums as products by extracting the greatest shared factor and verify by expansion.",
           "purpose": "procedure",
@@ -388,7 +388,7 @@
           "id": "a8-1-q09",
           "lessonId": "A8.1",
           "unitCode": "A8",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: Factor 18x⁴y − 24x³y² completely using the greatest common factor.",
+          "prompt": "Complete the calculation after “The coefficient GCF is 6.” in this problem: Factor 18x⁴y − 24x³y² completely by greatest common factor.",
           "responseType": "open-response",
           "skill": "Rewrite sums as products by extracting the greatest shared factor and verify by expansion.",
           "purpose": "procedure",
@@ -412,7 +412,7 @@
           "id": "a8-1-q10",
           "lessonId": "A8.1",
           "unitCode": "A8",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: Factor 18x⁴y − 24x³y² completely using the greatest common factor.",
+          "prompt": "Name and justify the most efficient first move, then solve: Factor 5a(a − 3) + 2(a − 3).",
           "responseType": "open-response",
           "skill": "Rewrite sums as products by extracting the greatest shared factor and verify by expansion.",
           "purpose": "procedure",
@@ -436,7 +436,7 @@
           "id": "a8-1-q11",
           "lessonId": "A8.1",
           "unitCode": "A8",
-          "prompt": "Build the second representation requested here: Coordinate expanded, factored, and completed-square forms with zeros, symmetry, and the corresponding parabola. Use the worked case Factor 18x⁴y − 24x³y² completely using the greatest common factor.",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: Factor 18x⁴y − 24x³y² completely by greatest common factor. Factor 5a(a − 3) + 2(a − 3).",
           "responseType": "open-response",
           "skill": "Rewrite sums as products by extracting the greatest shared factor and verify by expansion.",
           "purpose": "representation",
@@ -460,7 +460,7 @@
           "id": "a8-1-q12",
           "lessonId": "A8.1",
           "unitCode": "A8",
-          "prompt": "For factoring as reverse distribution and gcf, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: Factor 18x⁴y − 24x³y² completely using the greatest common factor.",
+          "prompt": "Create the representation most useful for checking this result: Factor 18x⁴y − 24x³y² completely by greatest common factor. Coordinate expanded, factored, and completed-square forms with zeros, symmetry, and the corresponding parabola.",
           "responseType": "open-response",
           "skill": "Rewrite sums as products by extracting the greatest shared factor and verify by expansion.",
           "purpose": "representation",
@@ -508,7 +508,7 @@
           "id": "a8-1-q14",
           "lessonId": "A8.1",
           "unitCode": "A8",
-          "prompt": "Repair a solution that performs the final step before completing “Take the minimum shared powers x³ and y.” in the worked case.",
+          "prompt": "Repair a solution that skips “Factor it out as one algebraic object.” while solving: Factor 5a(a − 3) + 2(a − 3).",
           "responseType": "open-response",
           "skill": "Rewrite sums as products by extracting the greatest shared factor and verify by expansion.",
           "purpose": "transfer",
@@ -604,7 +604,7 @@
           "id": "a8-1-q18",
           "lessonId": "A8.1",
           "unitCode": "A8",
-          "prompt": "Compare the answer to Factor 18x⁴y − 24x³y² completely using the greatest common factor. with this lesson outcome—Rewrite sums as products by extracting the greatest shared factor and verify by expansion. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Rewrite sums as products by extracting the greatest shared factor and verify by expansion. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Rewrite sums as products by extracting the greatest shared factor and verify by expansion.",
           "purpose": "modeling",
@@ -628,7 +628,7 @@
           "id": "a8-1-q19",
           "lessonId": "A8.1",
           "unitCode": "A8",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. Factor 18x⁴y − 24x³y² completely using the greatest common factor.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Factor 18x⁴y − 24x³y² completely by greatest common factor.",
           "responseType": "open-response",
           "skill": "Rewrite sums as products by extracting the greatest shared factor and verify by expansion.",
           "purpose": "error-analysis",
@@ -652,7 +652,7 @@
           "id": "a8-1-q20",
           "lessonId": "A8.1",
           "unitCode": "A8",
-          "prompt": "Exit check: write a compact method-and-check summary for factoring as reverse distribution and gcf, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Factor 5a(a − 3) + 2(a − 3).",
           "responseType": "open-response",
           "skill": "Rewrite sums as products by extracting the greatest shared factor and verify by expansion.",
           "purpose": "exit",
@@ -710,10 +710,10 @@
       "title": "Factoring by grouping",
       "path": "/subjects/math/algebra/factoring-quadratics/factoring-by-grouping/",
       "outcome": "Create a repeated binomial factor by grouping four terms strategically.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Rearrange a four-part area into matching strips.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn factoring by grouping as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn factoring by grouping as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Create a repeated binomial factor by grouping four terms strategically.",
@@ -765,7 +765,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "Factor 6x³ + 9x² + 4x + 6 by grouping.",
           "steps": [
             "Group the first two and last two terms.",
@@ -776,26 +776,26 @@
           "interpretation": "Strategic grouping creates a common binomial factor and reverses distribution twice."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Coordinate expanded, factored, and completed-square forms with zeros, symmetry, and the corresponding parabola.",
+          "kind": "worked-example-2",
+          "prompt": "Factor x³ + 4x² + 3x + 12 by grouping.",
           "steps": [
-            "First solve the original case and retain the exact result (3x² + 2)(2x + 3)..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "Group as (x³ + 4x²) + (3x + 12).",
+            "Factor x² from the first group and 3 from the second.",
+            "Extract the common binomial x + 4."
           ],
-          "answer": "The second representation must preserve (3x² + 2)(2x + 3)..",
-          "interpretation": "Strategic grouping creates a common binomial factor and reverses distribution twice. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "(x + 4)(x² + 3).",
+          "interpretation": "Grouping succeeds when the groups expose the same binomial factor."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “(3x² + 2)(2x + 3).” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "Factor 6a² − 9a + 4ab − 6b by grouping.",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Expand any factorization and substitute every proposed solution into the original quadratic equation.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "Group (6a² − 9a) + (4ab − 6b).",
+            "Factor 3a and 2b to obtain 3a(2a − 3) + 2b(2a − 3).",
+            "Extract the common binomial."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms (3x² + 2)(2x + 3)..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "(2a − 3)(3a + 2b).",
+          "interpretation": "The grouping arrangement is chosen to create a repeated factor."
         }
       ],
       "figures": [
@@ -839,7 +839,7 @@
       ],
       "checkpoint": {
         "id": "a8-2-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for factoring by grouping, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. Factor 6a² − 9a + 4ab − 6b by grouping.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -989,7 +989,7 @@
           "id": "a8-2-q06",
           "lessonId": "A8.2",
           "unitCode": "A8",
-          "prompt": "Complete the calculation after the first step “Group the first two and last two terms.” and show the missing algebra.",
+          "prompt": "Factor x³ + 4x² + 3x + 12 by grouping.",
           "responseType": "open-response",
           "skill": "Create a repeated binomial factor by grouping four terms strategically.",
           "purpose": "procedure",
@@ -1013,7 +1013,7 @@
           "id": "a8-2-q07",
           "lessonId": "A8.2",
           "unitCode": "A8",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: Factor 6x³ + 9x² + 4x + 6 by grouping.",
+          "prompt": "Factor 6a² − 9a + 4ab − 6b by grouping.",
           "responseType": "open-response",
           "skill": "Create a repeated binomial factor by grouping four terms strategically.",
           "purpose": "procedure",
@@ -1061,7 +1061,7 @@
           "id": "a8-2-q09",
           "lessonId": "A8.2",
           "unitCode": "A8",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: Factor 6x³ + 9x² + 4x + 6 by grouping.",
+          "prompt": "Complete the calculation after “Group as (x³ + 4x²) + (3x + 12).” in this problem: Factor x³ + 4x² + 3x + 12 by grouping.",
           "responseType": "open-response",
           "skill": "Create a repeated binomial factor by grouping four terms strategically.",
           "purpose": "procedure",
@@ -1085,7 +1085,7 @@
           "id": "a8-2-q10",
           "lessonId": "A8.2",
           "unitCode": "A8",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: Factor 6x³ + 9x² + 4x + 6 by grouping.",
+          "prompt": "Name and justify the most efficient first move, then solve: Factor 6a² − 9a + 4ab − 6b by grouping.",
           "responseType": "open-response",
           "skill": "Create a repeated binomial factor by grouping four terms strategically.",
           "purpose": "procedure",
@@ -1109,7 +1109,7 @@
           "id": "a8-2-q11",
           "lessonId": "A8.2",
           "unitCode": "A8",
-          "prompt": "Build the second representation requested here: Coordinate expanded, factored, and completed-square forms with zeros, symmetry, and the corresponding parabola. Use the worked case Factor 6x³ + 9x² + 4x + 6 by grouping.",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: Factor x³ + 4x² + 3x + 12 by grouping. Factor 6a² − 9a + 4ab − 6b by grouping.",
           "responseType": "open-response",
           "skill": "Create a repeated binomial factor by grouping four terms strategically.",
           "purpose": "representation",
@@ -1133,7 +1133,7 @@
           "id": "a8-2-q12",
           "lessonId": "A8.2",
           "unitCode": "A8",
-          "prompt": "For factoring by grouping, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: Factor 6x³ + 9x² + 4x + 6 by grouping.",
+          "prompt": "Create the representation most useful for checking this result: Factor x³ + 4x² + 3x + 12 by grouping. Coordinate expanded, factored, and completed-square forms with zeros, symmetry, and the corresponding parabola.",
           "responseType": "open-response",
           "skill": "Create a repeated binomial factor by grouping four terms strategically.",
           "purpose": "representation",
@@ -1181,7 +1181,7 @@
           "id": "a8-2-q14",
           "lessonId": "A8.2",
           "unitCode": "A8",
-          "prompt": "Repair a solution that performs the final step before completing “Factor 3x² from the first group and 2 from the second.” in the worked case.",
+          "prompt": "Repair a solution that skips “Factor 3a and 2b to obtain 3a(2a − 3) + 2b(2a − 3).” while solving: Factor 6a² − 9a + 4ab − 6b by grouping.",
           "responseType": "open-response",
           "skill": "Create a repeated binomial factor by grouping four terms strategically.",
           "purpose": "transfer",
@@ -1277,7 +1277,7 @@
           "id": "a8-2-q18",
           "lessonId": "A8.2",
           "unitCode": "A8",
-          "prompt": "Compare the answer to Factor 6x³ + 9x² + 4x + 6 by grouping. with this lesson outcome—Create a repeated binomial factor by grouping four terms strategically. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Create a repeated binomial factor by grouping four terms strategically. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Create a repeated binomial factor by grouping four terms strategically.",
           "purpose": "modeling",
@@ -1301,7 +1301,7 @@
           "id": "a8-2-q19",
           "lessonId": "A8.2",
           "unitCode": "A8",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. Factor 6x³ + 9x² + 4x + 6 by grouping.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Factor x³ + 4x² + 3x + 12 by grouping.",
           "responseType": "open-response",
           "skill": "Create a repeated binomial factor by grouping four terms strategically.",
           "purpose": "error-analysis",
@@ -1325,7 +1325,7 @@
           "id": "a8-2-q20",
           "lessonId": "A8.2",
           "unitCode": "A8",
-          "prompt": "Exit check: write a compact method-and-check summary for factoring by grouping, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Factor 6a² − 9a + 4ab − 6b by grouping.",
           "responseType": "open-response",
           "skill": "Create a repeated binomial factor by grouping four terms strategically.",
           "purpose": "exit",
@@ -1386,10 +1386,10 @@
       "title": "Factoring x^2+bx+c",
       "path": "/subjects/math/algebra/factoring-quadratics/factoring-x-2-bx-c/",
       "outcome": "Use factor pairs whose product and sum match the trinomial.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Find rectangle dimensions from area and perimeter information.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn factoring x^2+bx+c as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn factoring x^2+bx+c as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Use factor pairs whose product and sum match the trinomial.",
@@ -1441,7 +1441,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "Factor x² − 7x + 12.",
           "steps": [
             "List integer factor pairs of 12.",
@@ -1452,26 +1452,26 @@
           "interpretation": "For x² + bx + c, the factor constants multiply to c and add to b."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Coordinate expanded, factored, and completed-square forms with zeros, symmetry, and the corresponding parabola.",
+          "kind": "worked-example-2",
+          "prompt": "Factor x² − 11x + 24.",
           "steps": [
-            "First solve the original case and retain the exact result (x − 3)(x − 4)..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "Find two integers whose product is 24 and sum is −11.",
+            "Choose −3 and −8.",
+            "Write the corresponding binomial factors and verify by expansion."
           ],
-          "answer": "The second representation must preserve (x − 3)(x − 4)..",
-          "interpretation": "For x² + bx + c, the factor constants multiply to c and add to b. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "(x − 3)(x − 8).",
+          "interpretation": "For a monic trinomial, the factor constants multiply to c and add to b."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “(x − 3)(x − 4).” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "Decide whether x² + 4x + 7 factors over the integers.",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Expand any factorization and substitute every proposed solution into the original quadratic equation.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "Integer factors would require two integers with product 7 and sum 4.",
+            "The pairs 1 and 7 or −1 and −7 have sums 8 or −8.",
+            "Conclude that no integer binomial factorization exists."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms (x − 3)(x − 4)..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "Irreducible over the integers.",
+          "interpretation": "Failure to find a valid factor pair is a mathematical conclusion when all divisor pairs have been checked."
         }
       ],
       "figures": [
@@ -1515,7 +1515,7 @@
       ],
       "checkpoint": {
         "id": "a8-3-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for factoring x^2+bx+c, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. Decide whether x² + 4x + 7 factors over the integers.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -1665,7 +1665,7 @@
           "id": "a8-3-q06",
           "lessonId": "A8.3",
           "unitCode": "A8",
-          "prompt": "Complete the calculation after the first step “List integer factor pairs of 12.” and show the missing algebra.",
+          "prompt": "Factor x² − 11x + 24.",
           "responseType": "open-response",
           "skill": "Use factor pairs whose product and sum match the trinomial.",
           "purpose": "procedure",
@@ -1689,7 +1689,7 @@
           "id": "a8-3-q07",
           "lessonId": "A8.3",
           "unitCode": "A8",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: Factor x² − 7x + 12.",
+          "prompt": "Decide whether x² + 4x + 7 factors over the integers.",
           "responseType": "open-response",
           "skill": "Use factor pairs whose product and sum match the trinomial.",
           "purpose": "procedure",
@@ -1737,7 +1737,7 @@
           "id": "a8-3-q09",
           "lessonId": "A8.3",
           "unitCode": "A8",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: Factor x² − 7x + 12.",
+          "prompt": "Complete the calculation after “Find two integers whose product is 24 and sum is −11.” in this problem: Factor x² − 11x + 24.",
           "responseType": "open-response",
           "skill": "Use factor pairs whose product and sum match the trinomial.",
           "purpose": "procedure",
@@ -1761,7 +1761,7 @@
           "id": "a8-3-q10",
           "lessonId": "A8.3",
           "unitCode": "A8",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: Factor x² − 7x + 12.",
+          "prompt": "Name and justify the most efficient first move, then solve: Decide whether x² + 4x + 7 factors over the integers.",
           "responseType": "open-response",
           "skill": "Use factor pairs whose product and sum match the trinomial.",
           "purpose": "procedure",
@@ -1785,7 +1785,7 @@
           "id": "a8-3-q11",
           "lessonId": "A8.3",
           "unitCode": "A8",
-          "prompt": "Build the second representation requested here: Coordinate expanded, factored, and completed-square forms with zeros, symmetry, and the corresponding parabola. Use the worked case Factor x² − 7x + 12.",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: Factor x² − 11x + 24. Decide whether x² + 4x + 7 factors over the integers.",
           "responseType": "open-response",
           "skill": "Use factor pairs whose product and sum match the trinomial.",
           "purpose": "representation",
@@ -1809,7 +1809,7 @@
           "id": "a8-3-q12",
           "lessonId": "A8.3",
           "unitCode": "A8",
-          "prompt": "For factoring x^2+bx+c, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: Factor x² − 7x + 12.",
+          "prompt": "Create the representation most useful for checking this result: Factor x² − 11x + 24. Coordinate expanded, factored, and completed-square forms with zeros, symmetry, and the corresponding parabola.",
           "responseType": "open-response",
           "skill": "Use factor pairs whose product and sum match the trinomial.",
           "purpose": "representation",
@@ -1857,7 +1857,7 @@
           "id": "a8-3-q14",
           "lessonId": "A8.3",
           "unitCode": "A8",
-          "prompt": "Repair a solution that performs the final step before completing “Choose the pair whose sum is −7.” in the worked case.",
+          "prompt": "Repair a solution that skips “The pairs 1 and 7 or −1 and −7 have sums 8 or −8.” while solving: Decide whether x² + 4x + 7 factors over the integers.",
           "responseType": "open-response",
           "skill": "Use factor pairs whose product and sum match the trinomial.",
           "purpose": "transfer",
@@ -1953,7 +1953,7 @@
           "id": "a8-3-q18",
           "lessonId": "A8.3",
           "unitCode": "A8",
-          "prompt": "Compare the answer to Factor x² − 7x + 12. with this lesson outcome—Use factor pairs whose product and sum match the trinomial. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Use factor pairs whose product and sum match the trinomial. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Use factor pairs whose product and sum match the trinomial.",
           "purpose": "modeling",
@@ -1977,7 +1977,7 @@
           "id": "a8-3-q19",
           "lessonId": "A8.3",
           "unitCode": "A8",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. Factor x² − 7x + 12.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Factor x² − 11x + 24.",
           "responseType": "open-response",
           "skill": "Use factor pairs whose product and sum match the trinomial.",
           "purpose": "error-analysis",
@@ -2001,7 +2001,7 @@
           "id": "a8-3-q20",
           "lessonId": "A8.3",
           "unitCode": "A8",
-          "prompt": "Exit check: write a compact method-and-check summary for factoring x^2+bx+c, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Decide whether x² + 4x + 7 factors over the integers.",
           "responseType": "open-response",
           "skill": "Use factor pairs whose product and sum match the trinomial.",
           "purpose": "exit",
@@ -2062,10 +2062,10 @@
       "title": "Factoring ax^2+bx+c",
       "path": "/subjects/math/algebra/factoring-quadratics/factoring-ax-2-bx-c/",
       "outcome": "Decompose the middle term using ac and group.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Factor a scaled quadratic area.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn factoring ax^2+bx+c as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn factoring ax^2+bx+c as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Decompose the middle term using ac and group.",
@@ -2117,7 +2117,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "Factor 6x² + 11x + 3 using the ac method.",
           "steps": [
             "Compute ac = 18 and find factors 9 and 2 whose sum is 11.",
@@ -2128,26 +2128,26 @@
           "interpretation": "Splitting the middle term creates two groups with a shared binomial factor."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Coordinate expanded, factored, and completed-square forms with zeros, symmetry, and the corresponding parabola.",
+          "kind": "worked-example-2",
+          "prompt": "Factor 6x² + 11x + 3.",
           "steps": [
-            "First solve the original case and retain the exact result (3x + 1)(2x + 3)..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "Compute ac = 18 and find 9 and 2, whose sum is 11.",
+            "Split the middle term: 6x² + 9x + 2x + 3.",
+            "Factor by grouping."
           ],
-          "answer": "The second representation must preserve (3x + 1)(2x + 3)..",
-          "interpretation": "Splitting the middle term creates two groups with a shared binomial factor. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "(3x + 1)(2x + 3).",
+          "interpretation": "The ac method rewrites the middle term so grouping can expose two binomial factors."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “(3x + 1)(2x + 3).” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "Factor 8y² − 14y − 15.",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Expand any factorization and substitute every proposed solution into the original quadratic equation.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "Compute ac = −120 and choose −20 and 6, whose sum is −14.",
+            "Rewrite as 8y² − 20y + 6y − 15.",
+            "Factor the two groups."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms (3x + 1)(2x + 3)..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "(4y + 3)(2y − 5).",
+          "interpretation": "A negative constant requires factor constants of opposite sign."
         }
       ],
       "figures": [
@@ -2191,7 +2191,7 @@
       ],
       "checkpoint": {
         "id": "a8-4-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for factoring ax^2+bx+c, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. Factor 8y² − 14y − 15.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -2341,7 +2341,7 @@
           "id": "a8-4-q06",
           "lessonId": "A8.4",
           "unitCode": "A8",
-          "prompt": "Complete the calculation after the first step “Compute ac = 18 and find factors 9 and 2 whose sum is 11.” and show the missing algebra.",
+          "prompt": "Factor 6x² + 11x + 3.",
           "responseType": "open-response",
           "skill": "Decompose the middle term using ac and group.",
           "purpose": "procedure",
@@ -2365,7 +2365,7 @@
           "id": "a8-4-q07",
           "lessonId": "A8.4",
           "unitCode": "A8",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: Factor 6x² + 11x + 3 using the ac method.",
+          "prompt": "Factor 8y² − 14y − 15.",
           "responseType": "open-response",
           "skill": "Decompose the middle term using ac and group.",
           "purpose": "procedure",
@@ -2413,7 +2413,7 @@
           "id": "a8-4-q09",
           "lessonId": "A8.4",
           "unitCode": "A8",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: Factor 6x² + 11x + 3 using the ac method.",
+          "prompt": "Complete the calculation after “Compute ac = 18 and find 9 and 2, whose sum is 11.” in this problem: Factor 6x² + 11x + 3.",
           "responseType": "open-response",
           "skill": "Decompose the middle term using ac and group.",
           "purpose": "procedure",
@@ -2437,7 +2437,7 @@
           "id": "a8-4-q10",
           "lessonId": "A8.4",
           "unitCode": "A8",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: Factor 6x² + 11x + 3 using the ac method.",
+          "prompt": "Name and justify the most efficient first move, then solve: Factor 8y² − 14y − 15.",
           "responseType": "open-response",
           "skill": "Decompose the middle term using ac and group.",
           "purpose": "procedure",
@@ -2461,7 +2461,7 @@
           "id": "a8-4-q11",
           "lessonId": "A8.4",
           "unitCode": "A8",
-          "prompt": "Build the second representation requested here: Coordinate expanded, factored, and completed-square forms with zeros, symmetry, and the corresponding parabola. Use the worked case Factor 6x² + 11x + 3 using the ac method.",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: Factor 6x² + 11x + 3. Factor 8y² − 14y − 15.",
           "responseType": "open-response",
           "skill": "Decompose the middle term using ac and group.",
           "purpose": "representation",
@@ -2485,7 +2485,7 @@
           "id": "a8-4-q12",
           "lessonId": "A8.4",
           "unitCode": "A8",
-          "prompt": "For factoring ax^2+bx+c, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: Factor 6x² + 11x + 3 using the ac method.",
+          "prompt": "Create the representation most useful for checking this result: Factor 6x² + 11x + 3. Coordinate expanded, factored, and completed-square forms with zeros, symmetry, and the corresponding parabola.",
           "responseType": "open-response",
           "skill": "Decompose the middle term using ac and group.",
           "purpose": "representation",
@@ -2533,7 +2533,7 @@
           "id": "a8-4-q14",
           "lessonId": "A8.4",
           "unitCode": "A8",
-          "prompt": "Repair a solution that performs the final step before completing “Rewrite 11x as 9x + 2x.” in the worked case.",
+          "prompt": "Repair a solution that skips “Rewrite as 8y² − 20y + 6y − 15.” while solving: Factor 8y² − 14y − 15.",
           "responseType": "open-response",
           "skill": "Decompose the middle term using ac and group.",
           "purpose": "transfer",
@@ -2629,7 +2629,7 @@
           "id": "a8-4-q18",
           "lessonId": "A8.4",
           "unitCode": "A8",
-          "prompt": "Compare the answer to Factor 6x² + 11x + 3 using the ac method. with this lesson outcome—Decompose the middle term using ac and group. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Decompose the middle term using ac and group. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Decompose the middle term using ac and group.",
           "purpose": "modeling",
@@ -2653,7 +2653,7 @@
           "id": "a8-4-q19",
           "lessonId": "A8.4",
           "unitCode": "A8",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. Factor 6x² + 11x + 3 using the ac method.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Factor 6x² + 11x + 3.",
           "responseType": "open-response",
           "skill": "Decompose the middle term using ac and group.",
           "purpose": "error-analysis",
@@ -2677,7 +2677,7 @@
           "id": "a8-4-q20",
           "lessonId": "A8.4",
           "unitCode": "A8",
-          "prompt": "Exit check: write a compact method-and-check summary for factoring ax^2+bx+c, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Factor 8y² − 14y − 15.",
           "responseType": "open-response",
           "skill": "Decompose the middle term using ac and group.",
           "purpose": "exit",
@@ -2738,10 +2738,10 @@
       "title": "Special factoring patterns",
       "path": "/subjects/math/algebra/factoring-quadratics/special-factoring-patterns/",
       "outcome": "Reverse difference of squares and perfect-square trinomials under their exact conditions.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Recognize a missing-square corner or conjugate product.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn special factoring patterns as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn special factoring patterns as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Reverse difference of squares and perfect-square trinomials under their exact conditions.",
@@ -2793,7 +2793,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "Factor 25x² − 40x + 16 and 49y² − 81.",
           "steps": [
             "Recognize square endpoints and test the middle term of the trinomial.",
@@ -2804,26 +2804,26 @@
           "interpretation": "Special patterns save work only when every coefficient and sign satisfies the exact pattern."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Coordinate expanded, factored, and completed-square forms with zeros, symmetry, and the corresponding parabola.",
+          "kind": "worked-example-2",
+          "prompt": "Factor 25x² − 64 completely.",
           "steps": [
-            "First solve the original case and retain the exact result (5x − 4)² and (7y − 9)(7y + 9)..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "Recognize squares (5x)² and 8².",
+            "Apply a² − b² = (a − b)(a + b).",
+            "Check by multiplying conjugates."
           ],
-          "answer": "The second representation must preserve (5x − 4)² and (7y − 9)(7y + 9)..",
-          "interpretation": "Special patterns save work only when every coefficient and sign satisfies the exact pattern. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "(5x − 8)(5x + 8).",
+          "interpretation": "A difference of squares factors into conjugates."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “(5x − 4)² and (7y − 9)(7y + 9).” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "Factor 9a² + 30ab + 25b².",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Expand any factorization and substitute every proposed solution into the original quadratic equation.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "Recognize 9a² = (3a)² and 25b² = (5b)².",
+            "Check that the middle term is 2(3a)(5b) = 30ab.",
+            "Write the perfect-square binomial."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms (5x − 4)² and (7y − 9)(7y + 9)..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "(3a + 5b)².",
+          "interpretation": "The middle-term check distinguishes a perfect-square trinomial from a merely square-ended trinomial."
         }
       ],
       "figures": [
@@ -2867,7 +2867,7 @@
       ],
       "checkpoint": {
         "id": "a8-5-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for special factoring patterns, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. Factor 9a² + 30ab + 25b².",
         "responseType": "open-response"
       },
       "exercises": [
@@ -3017,7 +3017,7 @@
           "id": "a8-5-q06",
           "lessonId": "A8.5",
           "unitCode": "A8",
-          "prompt": "Complete the calculation after the first step “Recognize square endpoints and test the middle term of the trinomial.” and show the missing algebra.",
+          "prompt": "Factor 25x² − 64 completely.",
           "responseType": "open-response",
           "skill": "Reverse difference of squares and perfect-square trinomials under their exact conditions.",
           "purpose": "procedure",
@@ -3041,7 +3041,7 @@
           "id": "a8-5-q07",
           "lessonId": "A8.5",
           "unitCode": "A8",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: Factor 25x² − 40x + 16 and 49y² − 81.",
+          "prompt": "Factor 9a² + 30ab + 25b².",
           "responseType": "open-response",
           "skill": "Reverse difference of squares and perfect-square trinomials under their exact conditions.",
           "purpose": "procedure",
@@ -3089,7 +3089,7 @@
           "id": "a8-5-q09",
           "lessonId": "A8.5",
           "unitCode": "A8",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: Factor 25x² − 40x + 16 and 49y² − 81.",
+          "prompt": "Complete the calculation after “Recognize squares (5x)² and 8².” in this problem: Factor 25x² − 64 completely.",
           "responseType": "open-response",
           "skill": "Reverse difference of squares and perfect-square trinomials under their exact conditions.",
           "purpose": "procedure",
@@ -3113,7 +3113,7 @@
           "id": "a8-5-q10",
           "lessonId": "A8.5",
           "unitCode": "A8",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: Factor 25x² − 40x + 16 and 49y² − 81.",
+          "prompt": "Name and justify the most efficient first move, then solve: Factor 9a² + 30ab + 25b².",
           "responseType": "open-response",
           "skill": "Reverse difference of squares and perfect-square trinomials under their exact conditions.",
           "purpose": "procedure",
@@ -3137,7 +3137,7 @@
           "id": "a8-5-q11",
           "lessonId": "A8.5",
           "unitCode": "A8",
-          "prompt": "Build the second representation requested here: Coordinate expanded, factored, and completed-square forms with zeros, symmetry, and the corresponding parabola. Use the worked case Factor 25x² − 40x + 16 and 49y² − 81.",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: Factor 25x² − 64 completely. Factor 9a² + 30ab + 25b².",
           "responseType": "open-response",
           "skill": "Reverse difference of squares and perfect-square trinomials under their exact conditions.",
           "purpose": "representation",
@@ -3161,7 +3161,7 @@
           "id": "a8-5-q12",
           "lessonId": "A8.5",
           "unitCode": "A8",
-          "prompt": "For special factoring patterns, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: Factor 25x² − 40x + 16 and 49y² − 81.",
+          "prompt": "Create the representation most useful for checking this result: Factor 25x² − 64 completely. Coordinate expanded, factored, and completed-square forms with zeros, symmetry, and the corresponding parabola.",
           "responseType": "open-response",
           "skill": "Reverse difference of squares and perfect-square trinomials under their exact conditions.",
           "purpose": "representation",
@@ -3209,7 +3209,7 @@
           "id": "a8-5-q14",
           "lessonId": "A8.5",
           "unitCode": "A8",
-          "prompt": "Repair a solution that performs the final step before completing “Reverse the perfect-square pattern.” in the worked case.",
+          "prompt": "Repair a solution that skips “Check that the middle term is 2(3a)(5b) = 30ab.” while solving: Factor 9a² + 30ab + 25b².",
           "responseType": "open-response",
           "skill": "Reverse difference of squares and perfect-square trinomials under their exact conditions.",
           "purpose": "transfer",
@@ -3305,7 +3305,7 @@
           "id": "a8-5-q18",
           "lessonId": "A8.5",
           "unitCode": "A8",
-          "prompt": "Compare the answer to Factor 25x² − 40x + 16 and 49y² − 81. with this lesson outcome—Reverse difference of squares and perfect-square trinomials under their exact conditions. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Reverse difference of squares and perfect-square trinomials under their exact conditions. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Reverse difference of squares and perfect-square trinomials under their exact conditions.",
           "purpose": "modeling",
@@ -3329,7 +3329,7 @@
           "id": "a8-5-q19",
           "lessonId": "A8.5",
           "unitCode": "A8",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. Factor 25x² − 40x + 16 and 49y² − 81.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Factor 25x² − 64 completely.",
           "responseType": "open-response",
           "skill": "Reverse difference of squares and perfect-square trinomials under their exact conditions.",
           "purpose": "error-analysis",
@@ -3353,7 +3353,7 @@
           "id": "a8-5-q20",
           "lessonId": "A8.5",
           "unitCode": "A8",
-          "prompt": "Exit check: write a compact method-and-check summary for special factoring patterns, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Factor 9a² + 30ab + 25b².",
           "responseType": "open-response",
           "skill": "Reverse difference of squares and perfect-square trinomials under their exact conditions.",
           "purpose": "exit",
@@ -3414,10 +3414,10 @@
       "title": "General factoring strategy and irreducibility",
       "path": "/subjects/math/algebra/factoring-quadratics/general-factoring-strategy-and-irreducibility/",
       "outcome": "Choose factoring methods in order and state what coefficient system is allowed.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Factor a multistage polynomial until no permitted factors remain.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn general factoring strategy and irreducibility as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn general factoring strategy and irreducibility as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Choose factoring methods in order and state what coefficient system is allowed.",
@@ -3469,7 +3469,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "Factor 2x³ − 18x completely over the integers.",
           "steps": [
             "Extract the GCF 2x.",
@@ -3480,26 +3480,26 @@
           "interpretation": "A general strategy checks GCF before patterns and continues until every factor is irreducible in the stated coefficient system."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Coordinate expanded, factored, and completed-square forms with zeros, symmetry, and the corresponding parabola.",
+          "kind": "worked-example-2",
+          "prompt": "Factor 12x³ − 27x completely.",
           "steps": [
-            "First solve the original case and retain the exact result 2x(x − 3)(x + 3)..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "First extract the GCF 3x.",
+            "The remaining 4x² − 9 is a difference of squares.",
+            "Factor the difference of squares."
           ],
-          "answer": "The second representation must preserve 2x(x − 3)(x + 3)..",
-          "interpretation": "A general strategy checks GCF before patterns and continues until every factor is irreducible in the stated coefficient system. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "3x(2x − 3)(2x + 3).",
+          "interpretation": "A general strategy repeats: GCF first, then inspect the reduced expression for a named pattern."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “2x(x − 3)(x + 3).” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "Factor 2x³ + 8x² + 3x + 12 completely.",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Expand any factorization and substitute every proposed solution into the original quadratic equation.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "There is no nontrivial GCF.",
+            "Group as 2x²(x + 4) + 3(x + 4).",
+            "Extract x + 4 and inspect the remaining factor."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms 2x(x − 3)(x + 3)..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "(x + 4)(2x² + 3), irreducible over the integers.",
+          "interpretation": "Complete factoring includes a justified stopping point."
         }
       ],
       "figures": [
@@ -3543,7 +3543,7 @@
       ],
       "checkpoint": {
         "id": "a8-6-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for general factoring strategy and irreducibility, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. Factor 2x³ + 8x² + 3x + 12 completely.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -3693,7 +3693,7 @@
           "id": "a8-6-q06",
           "lessonId": "A8.6",
           "unitCode": "A8",
-          "prompt": "Complete the calculation after the first step “Extract the GCF 2x.” and show the missing algebra.",
+          "prompt": "Factor 12x³ − 27x completely.",
           "responseType": "open-response",
           "skill": "Choose factoring methods in order and state what coefficient system is allowed.",
           "purpose": "procedure",
@@ -3717,7 +3717,7 @@
           "id": "a8-6-q07",
           "lessonId": "A8.6",
           "unitCode": "A8",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: Factor 2x³ − 18x completely over the integers.",
+          "prompt": "Factor 2x³ + 8x² + 3x + 12 completely.",
           "responseType": "open-response",
           "skill": "Choose factoring methods in order and state what coefficient system is allowed.",
           "purpose": "procedure",
@@ -3765,7 +3765,7 @@
           "id": "a8-6-q09",
           "lessonId": "A8.6",
           "unitCode": "A8",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: Factor 2x³ − 18x completely over the integers.",
+          "prompt": "Complete the calculation after “First extract the GCF 3x.” in this problem: Factor 12x³ − 27x completely.",
           "responseType": "open-response",
           "skill": "Choose factoring methods in order and state what coefficient system is allowed.",
           "purpose": "procedure",
@@ -3789,7 +3789,7 @@
           "id": "a8-6-q10",
           "lessonId": "A8.6",
           "unitCode": "A8",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: Factor 2x³ − 18x completely over the integers.",
+          "prompt": "Name and justify the most efficient first move, then solve: Factor 2x³ + 8x² + 3x + 12 completely.",
           "responseType": "open-response",
           "skill": "Choose factoring methods in order and state what coefficient system is allowed.",
           "purpose": "procedure",
@@ -3813,7 +3813,7 @@
           "id": "a8-6-q11",
           "lessonId": "A8.6",
           "unitCode": "A8",
-          "prompt": "Build the second representation requested here: Coordinate expanded, factored, and completed-square forms with zeros, symmetry, and the corresponding parabola. Use the worked case Factor 2x³ − 18x completely over the integers.",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: Factor 12x³ − 27x completely. Factor 2x³ + 8x² + 3x + 12 completely.",
           "responseType": "open-response",
           "skill": "Choose factoring methods in order and state what coefficient system is allowed.",
           "purpose": "representation",
@@ -3837,7 +3837,7 @@
           "id": "a8-6-q12",
           "lessonId": "A8.6",
           "unitCode": "A8",
-          "prompt": "For general factoring strategy and irreducibility, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: Factor 2x³ − 18x completely over the integers.",
+          "prompt": "Create the representation most useful for checking this result: Factor 12x³ − 27x completely. Coordinate expanded, factored, and completed-square forms with zeros, symmetry, and the corresponding parabola.",
           "responseType": "open-response",
           "skill": "Choose factoring methods in order and state what coefficient system is allowed.",
           "purpose": "representation",
@@ -3885,7 +3885,7 @@
           "id": "a8-6-q14",
           "lessonId": "A8.6",
           "unitCode": "A8",
-          "prompt": "Repair a solution that performs the final step before completing “Recognize the remaining difference of squares x² − 9.” in the worked case.",
+          "prompt": "Repair a solution that skips “Group as 2x²(x + 4) + 3(x + 4).” while solving: Factor 2x³ + 8x² + 3x + 12 completely.",
           "responseType": "open-response",
           "skill": "Choose factoring methods in order and state what coefficient system is allowed.",
           "purpose": "transfer",
@@ -3981,7 +3981,7 @@
           "id": "a8-6-q18",
           "lessonId": "A8.6",
           "unitCode": "A8",
-          "prompt": "Compare the answer to Factor 2x³ − 18x completely over the integers. with this lesson outcome—Choose factoring methods in order and state what coefficient system is allowed. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Choose factoring methods in order and state what coefficient system is allowed. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Choose factoring methods in order and state what coefficient system is allowed.",
           "purpose": "modeling",
@@ -4005,7 +4005,7 @@
           "id": "a8-6-q19",
           "lessonId": "A8.6",
           "unitCode": "A8",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. Factor 2x³ − 18x completely over the integers.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Factor 12x³ − 27x completely.",
           "responseType": "open-response",
           "skill": "Choose factoring methods in order and state what coefficient system is allowed.",
           "purpose": "error-analysis",
@@ -4029,7 +4029,7 @@
           "id": "a8-6-q20",
           "lessonId": "A8.6",
           "unitCode": "A8",
-          "prompt": "Exit check: write a compact method-and-check summary for general factoring strategy and irreducibility, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Factor 2x³ + 8x² + 3x + 12 completely.",
           "responseType": "open-response",
           "skill": "Choose factoring methods in order and state what coefficient system is allowed.",
           "purpose": "exit",
@@ -4090,10 +4090,10 @@
       "title": "Zero-product property",
       "path": "/subjects/math/algebra/factoring-quadratics/zero-product-property/",
       "outcome": "Explain why a zero product forces at least one factor to be zero.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Collapse a product by setting a factor to zero.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn zero-product property as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn zero-product property as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Explain why a zero product forces at least one factor to be zero.",
@@ -4145,7 +4145,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "Solve (2x − 5)(x + 4) = 0 and explain why the method applies.",
           "steps": [
             "Use the zero-product property because the complete product equals zero.",
@@ -4156,26 +4156,26 @@
           "interpretation": "A zero product forces at least one factor to be zero."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Coordinate expanded, factored, and completed-square forms with zeros, symmetry, and the corresponding parabola.",
+          "kind": "worked-example-2",
+          "prompt": "Solve (4x + 1)(x − 6) = 0.",
           "steps": [
-            "First solve the original case and retain the exact result x = 5/2 or x = −4..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "Apply the zero-product property to the two factors.",
+            "Solve 4x + 1 = 0 and x − 6 = 0.",
+            "Substitute both values into the product."
           ],
-          "answer": "The second representation must preserve x = 5/2 or x = −4..",
-          "interpretation": "A zero product forces at least one factor to be zero. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "x = −1/4 or x = 6.",
+          "interpretation": "A product equals zero exactly when at least one real factor equals zero."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “x = 5/2 or x = −4.” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "Explain why the zero-product property cannot be applied directly to (x − 2)(x + 5) = 18, then solve by rewriting.",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Expand any factorization and substitute every proposed solution into the original quadratic equation.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "The product is not equal to zero, so setting each factor to 18 or 0 is invalid.",
+            "Expand and move 18 to obtain x² + 3x − 28 = 0.",
+            "Factor as (x + 7)(x − 4) = 0."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms x = 5/2 or x = −4..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "x = −7 or x = 4.",
+          "interpretation": "The zero-product property requires a zero on one side before factors can be set equal to zero."
         }
       ],
       "figures": [
@@ -4219,7 +4219,7 @@
       ],
       "checkpoint": {
         "id": "a8-7-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for zero-product property, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. Explain why the zero-product property cannot be applied directly to (x − 2)(x + 5) = 18, then solve by rewriting.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -4369,7 +4369,7 @@
           "id": "a8-7-q06",
           "lessonId": "A8.7",
           "unitCode": "A8",
-          "prompt": "Complete the calculation after the first step “Use the zero-product property because the complete product equals zero.” and show the missing algebra.",
+          "prompt": "Solve (4x + 1)(x − 6) = 0.",
           "responseType": "open-response",
           "skill": "Explain why a zero product forces at least one factor to be zero.",
           "purpose": "procedure",
@@ -4393,7 +4393,7 @@
           "id": "a8-7-q07",
           "lessonId": "A8.7",
           "unitCode": "A8",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: Solve (2x − 5)(x + 4) = 0 and explain why the method applies.",
+          "prompt": "Explain why the zero-product property cannot be applied directly to (x − 2)(x + 5) = 18, then solve by rewriting.",
           "responseType": "open-response",
           "skill": "Explain why a zero product forces at least one factor to be zero.",
           "purpose": "procedure",
@@ -4441,7 +4441,7 @@
           "id": "a8-7-q09",
           "lessonId": "A8.7",
           "unitCode": "A8",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: Solve (2x − 5)(x + 4) = 0 and explain why the method applies.",
+          "prompt": "Complete the calculation after “Apply the zero-product property to the two factors.” in this problem: Solve (4x + 1)(x − 6) = 0.",
           "responseType": "open-response",
           "skill": "Explain why a zero product forces at least one factor to be zero.",
           "purpose": "procedure",
@@ -4465,7 +4465,7 @@
           "id": "a8-7-q10",
           "lessonId": "A8.7",
           "unitCode": "A8",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: Solve (2x − 5)(x + 4) = 0 and explain why the method applies.",
+          "prompt": "Name and justify the most efficient first move, then solve: Explain why the zero-product property cannot be applied directly to (x − 2)(x + 5) = 18, then solve by rewriting.",
           "responseType": "open-response",
           "skill": "Explain why a zero product forces at least one factor to be zero.",
           "purpose": "procedure",
@@ -4489,7 +4489,7 @@
           "id": "a8-7-q11",
           "lessonId": "A8.7",
           "unitCode": "A8",
-          "prompt": "Build the second representation requested here: Coordinate expanded, factored, and completed-square forms with zeros, symmetry, and the corresponding parabola. Use the worked case Solve (2x − 5)(x + 4) = 0 and explain why the method applies.",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: Solve (4x + 1)(x − 6) = 0. Explain why the zero-product property cannot be applied directly to (x − 2)(x + 5) = 18, then solve by rewriting.",
           "responseType": "open-response",
           "skill": "Explain why a zero product forces at least one factor to be zero.",
           "purpose": "representation",
@@ -4513,7 +4513,7 @@
           "id": "a8-7-q12",
           "lessonId": "A8.7",
           "unitCode": "A8",
-          "prompt": "For zero-product property, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: Solve (2x − 5)(x + 4) = 0 and explain why the method applies.",
+          "prompt": "Create the representation most useful for checking this result: Solve (4x + 1)(x − 6) = 0. Coordinate expanded, factored, and completed-square forms with zeros, symmetry, and the corresponding parabola.",
           "responseType": "open-response",
           "skill": "Explain why a zero product forces at least one factor to be zero.",
           "purpose": "representation",
@@ -4561,7 +4561,7 @@
           "id": "a8-7-q14",
           "lessonId": "A8.7",
           "unitCode": "A8",
-          "prompt": "Repair a solution that performs the final step before completing “Set each factor equal to zero.” in the worked case.",
+          "prompt": "Repair a solution that skips “Expand and move 18 to obtain x² + 3x − 28 = 0.” while solving: Explain why the zero-product property cannot be applied directly to (x − 2)(x + 5) = 18, then solve by rewriting.",
           "responseType": "open-response",
           "skill": "Explain why a zero product forces at least one factor to be zero.",
           "purpose": "transfer",
@@ -4657,7 +4657,7 @@
           "id": "a8-7-q18",
           "lessonId": "A8.7",
           "unitCode": "A8",
-          "prompt": "Compare the answer to Solve (2x − 5)(x + 4) = 0 and explain why the method applies. with this lesson outcome—Explain why a zero product forces at least one factor to be zero. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Explain why a zero product forces at least one factor to be zero. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Explain why a zero product forces at least one factor to be zero.",
           "purpose": "modeling",
@@ -4681,7 +4681,7 @@
           "id": "a8-7-q19",
           "lessonId": "A8.7",
           "unitCode": "A8",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. Solve (2x − 5)(x + 4) = 0 and explain why the method applies.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Solve (4x + 1)(x − 6) = 0.",
           "responseType": "open-response",
           "skill": "Explain why a zero product forces at least one factor to be zero.",
           "purpose": "error-analysis",
@@ -4705,7 +4705,7 @@
           "id": "a8-7-q20",
           "lessonId": "A8.7",
           "unitCode": "A8",
-          "prompt": "Exit check: write a compact method-and-check summary for zero-product property, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Explain why the zero-product property cannot be applied directly to (x − 2)(x + 5) = 18, then solve by rewriting.",
           "responseType": "open-response",
           "skill": "Explain why a zero product forces at least one factor to be zero.",
           "purpose": "exit",
@@ -4766,10 +4766,10 @@
       "title": "Solving quadratics by factoring",
       "path": "/subjects/math/algebra/factoring-quadratics/solving-quadratics-by-factoring/",
       "outcome": "Move all terms to one side, factor, and solve each factor equation.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Find times or dimensions that make a quadratic quantity zero.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn solving quadratics by factoring as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn solving quadratics by factoring as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Move all terms to one side, factor, and solve each factor equation.",
@@ -4821,7 +4821,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "Solve 2x² − 7x + 3 = 0 by factoring.",
           "steps": [
             "Factor the quadratic as (2x − 1)(x − 3).",
@@ -4832,26 +4832,26 @@
           "interpretation": "Factoring exposes the linear conditions that make the quadratic product zero."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Coordinate expanded, factored, and completed-square forms with zeros, symmetry, and the corresponding parabola.",
+          "kind": "worked-example-2",
+          "prompt": "Solve 3x² − 15x = 18 by factoring.",
           "steps": [
-            "First solve the original case and retain the exact result x = 1/2 or x = 3..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "Move all terms to one side: 3x² − 15x − 18 = 0.",
+            "Factor 3(x² − 5x − 6) = 3(x − 6)(x + 1).",
+            "Apply the zero-product property and check."
           ],
-          "answer": "The second representation must preserve x = 1/2 or x = 3..",
-          "interpretation": "Factoring exposes the linear conditions that make the quadratic product zero. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "x = 6 or x = −1.",
+          "interpretation": "Factoring solves a quadratic only after it is written as a zero product."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “x = 1/2 or x = 3.” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "A rectangle has area 48 and side lengths x + 2 and x + 6. Find the positive side lengths.",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Expand any factorization and substitute every proposed solution into the original quadratic equation.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "Write (x + 2)(x + 6) = 48.",
+            "Expand and rearrange to x² + 8x − 36 = 0, then factor as (x + 12)(x − 3).",
+            "Reject x = −12 because it gives negative lengths."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms x = 1/2 or x = 3..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "x = 3; side lengths 5 and 9.",
+          "interpretation": "Contextual restrictions select the physically meaningful root."
         }
       ],
       "figures": [
@@ -4895,7 +4895,7 @@
       ],
       "checkpoint": {
         "id": "a8-8-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for solving quadratics by factoring, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. A rectangle has area 48 and side lengths x + 2 and x + 6. Find the positive side lengths.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -5045,7 +5045,7 @@
           "id": "a8-8-q06",
           "lessonId": "A8.8",
           "unitCode": "A8",
-          "prompt": "Complete the calculation after the first step “Factor the quadratic as (2x − 1)(x − 3).” and show the missing algebra.",
+          "prompt": "Solve 3x² − 15x = 18 by factoring.",
           "responseType": "open-response",
           "skill": "Move all terms to one side, factor, and solve each factor equation.",
           "purpose": "procedure",
@@ -5069,7 +5069,7 @@
           "id": "a8-8-q07",
           "lessonId": "A8.8",
           "unitCode": "A8",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: Solve 2x² − 7x + 3 = 0 by factoring.",
+          "prompt": "A rectangle has area 48 and side lengths x + 2 and x + 6. Find the positive side lengths.",
           "responseType": "open-response",
           "skill": "Move all terms to one side, factor, and solve each factor equation.",
           "purpose": "procedure",
@@ -5117,7 +5117,7 @@
           "id": "a8-8-q09",
           "lessonId": "A8.8",
           "unitCode": "A8",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: Solve 2x² − 7x + 3 = 0 by factoring.",
+          "prompt": "Complete the calculation after “Move all terms to one side: 3x² − 15x − 18 = 0.” in this problem: Solve 3x² − 15x = 18 by factoring.",
           "responseType": "open-response",
           "skill": "Move all terms to one side, factor, and solve each factor equation.",
           "purpose": "procedure",
@@ -5141,7 +5141,7 @@
           "id": "a8-8-q10",
           "lessonId": "A8.8",
           "unitCode": "A8",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: Solve 2x² − 7x + 3 = 0 by factoring.",
+          "prompt": "Name and justify the most efficient first move, then solve: A rectangle has area 48 and side lengths x + 2 and x + 6. Find the positive side lengths.",
           "responseType": "open-response",
           "skill": "Move all terms to one side, factor, and solve each factor equation.",
           "purpose": "procedure",
@@ -5165,7 +5165,7 @@
           "id": "a8-8-q11",
           "lessonId": "A8.8",
           "unitCode": "A8",
-          "prompt": "Build the second representation requested here: Coordinate expanded, factored, and completed-square forms with zeros, symmetry, and the corresponding parabola. Use the worked case Solve 2x² − 7x + 3 = 0 by factoring.",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: Solve 3x² − 15x = 18 by factoring. A rectangle has area 48 and side lengths x + 2 and x + 6. Find the positive side lengths.",
           "responseType": "open-response",
           "skill": "Move all terms to one side, factor, and solve each factor equation.",
           "purpose": "representation",
@@ -5189,7 +5189,7 @@
           "id": "a8-8-q12",
           "lessonId": "A8.8",
           "unitCode": "A8",
-          "prompt": "For solving quadratics by factoring, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: Solve 2x² − 7x + 3 = 0 by factoring.",
+          "prompt": "Create the representation most useful for checking this result: Solve 3x² − 15x = 18 by factoring. Coordinate expanded, factored, and completed-square forms with zeros, symmetry, and the corresponding parabola.",
           "responseType": "open-response",
           "skill": "Move all terms to one side, factor, and solve each factor equation.",
           "purpose": "representation",
@@ -5237,7 +5237,7 @@
           "id": "a8-8-q14",
           "lessonId": "A8.8",
           "unitCode": "A8",
-          "prompt": "Repair a solution that performs the final step before completing “Apply the zero-product property.” in the worked case.",
+          "prompt": "Repair a solution that skips “Expand and rearrange to x² + 8x − 36 = 0, then factor as (x + 12)(x − 3).” while solving: A rectangle has area 48 and side lengths x + 2 and x + 6. Find the positive side lengths.",
           "responseType": "open-response",
           "skill": "Move all terms to one side, factor, and solve each factor equation.",
           "purpose": "transfer",
@@ -5333,7 +5333,7 @@
           "id": "a8-8-q18",
           "lessonId": "A8.8",
           "unitCode": "A8",
-          "prompt": "Compare the answer to Solve 2x² − 7x + 3 = 0 by factoring. with this lesson outcome—Move all terms to one side, factor, and solve each factor equation. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Move all terms to one side, factor, and solve each factor equation. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Move all terms to one side, factor, and solve each factor equation.",
           "purpose": "modeling",
@@ -5357,7 +5357,7 @@
           "id": "a8-8-q19",
           "lessonId": "A8.8",
           "unitCode": "A8",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. Solve 2x² − 7x + 3 = 0 by factoring.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Solve 3x² − 15x = 18 by factoring.",
           "responseType": "open-response",
           "skill": "Move all terms to one side, factor, and solve each factor equation.",
           "purpose": "error-analysis",
@@ -5381,7 +5381,7 @@
           "id": "a8-8-q20",
           "lessonId": "A8.8",
           "unitCode": "A8",
-          "prompt": "Exit check: write a compact method-and-check summary for solving quadratics by factoring, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. A rectangle has area 48 and side lengths x + 2 and x + 6. Find the positive side lengths.",
           "responseType": "open-response",
           "skill": "Move all terms to one side, factor, and solve each factor equation.",
           "purpose": "exit",
@@ -5442,10 +5442,10 @@
       "title": "Square-root method",
       "path": "/subjects/math/algebra/factoring-quadratics/square-root-method/",
       "outcome": "Solve isolated-square equations using both roots and domain reasoning.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Recover all positions or dimensions matching a squared condition.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn square-root method as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn square-root method as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Solve isolated-square equations using both roots and domain reasoning.",
@@ -5497,7 +5497,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "Solve 3(x − 2)² = 48 using the square-root method.",
           "steps": [
             "Divide by 3 to isolate the square.",
@@ -5508,26 +5508,26 @@
           "interpretation": "Solving an isolated even power requires both positive and negative roots."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Coordinate expanded, factored, and completed-square forms with zeros, symmetry, and the corresponding parabola.",
+          "kind": "worked-example-2",
+          "prompt": "Solve 5(x − 3)² = 80 by the square-root method.",
           "steps": [
-            "First solve the original case and retain the exact result x = −2 or x = 6..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "Divide by 5 to isolate (x − 3)² = 16.",
+            "Take both square roots: x − 3 = ±4.",
+            "Solve the two linear equations and check."
           ],
-          "answer": "The second representation must preserve x = −2 or x = 6..",
-          "interpretation": "Solving an isolated even power requires both positive and negative roots. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "x = 7 or x = −1.",
+          "interpretation": "The ± symbol is required when solving an even-power equation."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “x = −2 or x = 6.” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "Solve 2x² + 7 = 25 over the real numbers.",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Expand any factorization and substitute every proposed solution into the original quadratic equation.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "Subtract 7 and divide by 2 to obtain x² = 9.",
+            "Take both real square roots.",
+            "Check both candidates."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms x = −2 or x = 6..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "x = ±3.",
+          "interpretation": "The square-root method is efficient when the squared expression can be isolated directly."
         }
       ],
       "figures": [
@@ -5571,7 +5571,7 @@
       ],
       "checkpoint": {
         "id": "a8-9-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for square-root method, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. Solve 2x² + 7 = 25 over the real numbers.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -5721,7 +5721,7 @@
           "id": "a8-9-q06",
           "lessonId": "A8.9",
           "unitCode": "A8",
-          "prompt": "Complete the calculation after the first step “Divide by 3 to isolate the square.” and show the missing algebra.",
+          "prompt": "Solve 5(x − 3)² = 80 by the square-root method.",
           "responseType": "open-response",
           "skill": "Solve isolated-square equations using both roots and domain reasoning.",
           "purpose": "procedure",
@@ -5745,7 +5745,7 @@
           "id": "a8-9-q07",
           "lessonId": "A8.9",
           "unitCode": "A8",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: Solve 3(x − 2)² = 48 using the square-root method.",
+          "prompt": "Solve 2x² + 7 = 25 over the real numbers.",
           "responseType": "open-response",
           "skill": "Solve isolated-square equations using both roots and domain reasoning.",
           "purpose": "procedure",
@@ -5793,7 +5793,7 @@
           "id": "a8-9-q09",
           "lessonId": "A8.9",
           "unitCode": "A8",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: Solve 3(x − 2)² = 48 using the square-root method.",
+          "prompt": "Complete the calculation after “Divide by 5 to isolate (x − 3)² = 16.” in this problem: Solve 5(x − 3)² = 80 by the square-root method.",
           "responseType": "open-response",
           "skill": "Solve isolated-square equations using both roots and domain reasoning.",
           "purpose": "procedure",
@@ -5817,7 +5817,7 @@
           "id": "a8-9-q10",
           "lessonId": "A8.9",
           "unitCode": "A8",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: Solve 3(x − 2)² = 48 using the square-root method.",
+          "prompt": "Name and justify the most efficient first move, then solve: Solve 2x² + 7 = 25 over the real numbers.",
           "responseType": "open-response",
           "skill": "Solve isolated-square equations using both roots and domain reasoning.",
           "purpose": "procedure",
@@ -5841,7 +5841,7 @@
           "id": "a8-9-q11",
           "lessonId": "A8.9",
           "unitCode": "A8",
-          "prompt": "Build the second representation requested here: Coordinate expanded, factored, and completed-square forms with zeros, symmetry, and the corresponding parabola. Use the worked case Solve 3(x − 2)² = 48 using the square-root method.",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: Solve 5(x − 3)² = 80 by the square-root method. Solve 2x² + 7 = 25 over the real numbers.",
           "responseType": "open-response",
           "skill": "Solve isolated-square equations using both roots and domain reasoning.",
           "purpose": "representation",
@@ -5865,7 +5865,7 @@
           "id": "a8-9-q12",
           "lessonId": "A8.9",
           "unitCode": "A8",
-          "prompt": "For square-root method, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: Solve 3(x − 2)² = 48 using the square-root method.",
+          "prompt": "Create the representation most useful for checking this result: Solve 5(x − 3)² = 80 by the square-root method. Coordinate expanded, factored, and completed-square forms with zeros, symmetry, and the corresponding parabola.",
           "responseType": "open-response",
           "skill": "Solve isolated-square equations using both roots and domain reasoning.",
           "purpose": "representation",
@@ -5913,7 +5913,7 @@
           "id": "a8-9-q14",
           "lessonId": "A8.9",
           "unitCode": "A8",
-          "prompt": "Repair a solution that performs the final step before completing “Take both square roots of 16.” in the worked case.",
+          "prompt": "Repair a solution that skips “Take both real square roots.” while solving: Solve 2x² + 7 = 25 over the real numbers.",
           "responseType": "open-response",
           "skill": "Solve isolated-square equations using both roots and domain reasoning.",
           "purpose": "transfer",
@@ -6009,7 +6009,7 @@
           "id": "a8-9-q18",
           "lessonId": "A8.9",
           "unitCode": "A8",
-          "prompt": "Compare the answer to Solve 3(x − 2)² = 48 using the square-root method. with this lesson outcome—Solve isolated-square equations using both roots and domain reasoning. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Solve isolated-square equations using both roots and domain reasoning. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Solve isolated-square equations using both roots and domain reasoning.",
           "purpose": "modeling",
@@ -6033,7 +6033,7 @@
           "id": "a8-9-q19",
           "lessonId": "A8.9",
           "unitCode": "A8",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. Solve 3(x − 2)² = 48 using the square-root method.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Solve 5(x − 3)² = 80 by the square-root method.",
           "responseType": "open-response",
           "skill": "Solve isolated-square equations using both roots and domain reasoning.",
           "purpose": "error-analysis",
@@ -6057,7 +6057,7 @@
           "id": "a8-9-q20",
           "lessonId": "A8.9",
           "unitCode": "A8",
-          "prompt": "Exit check: write a compact method-and-check summary for square-root method, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Solve 2x² + 7 = 25 over the real numbers.",
           "responseType": "open-response",
           "skill": "Solve isolated-square equations using both roots and domain reasoning.",
           "purpose": "exit",
@@ -6118,10 +6118,10 @@
       "title": "Completing the square geometrically",
       "path": "/subjects/math/algebra/factoring-quadratics/completing-the-square-geometrically/",
       "outcome": "Add the missing corner that turns x^2+bx into a perfect square.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Complete an incomplete square made of algebra tiles.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn completing the square geometrically as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn completing the square geometrically as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Add the missing corner that turns x^2+bx into a perfect square.",
@@ -6173,7 +6173,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "Complete the square for x² + 6x using an area interpretation.",
           "steps": [
             "View x² and 6x as one square plus two rectangles of width 3.",
@@ -6184,26 +6184,26 @@
           "interpretation": "Half the linear coefficient gives the side length of the missing corner."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Coordinate expanded, factored, and completed-square forms with zeros, symmetry, and the corresponding parabola.",
+          "kind": "worked-example-2",
+          "prompt": "Complete the square for x² + 10x using an area-model interpretation.",
           "steps": [
-            "First solve the original case and retain the exact result x² + 6x + 9 = (x + 3)²..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "Half the x-coefficient is 5.",
+            "Add 5² = 25 to fill the missing corner of the square.",
+            "Write the resulting perfect-square trinomial."
           ],
-          "answer": "The second representation must preserve x² + 6x + 9 = (x + 3)²..",
-          "interpretation": "Half the linear coefficient gives the side length of the missing corner. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "x² + 10x + 25 = (x + 5)².",
+          "interpretation": "The added corner area is the square of half the linear coefficient."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “x² + 6x + 9 = (x + 3)².” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "Rewrite x² − 6x + 2 by completing the square.",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Expand any factorization and substitute every proposed solution into the original quadratic equation.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "Half of −6 is −3, whose square is 9.",
+            "Add and subtract 9 without changing the expression.",
+            "Factor the perfect-square trinomial."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms x² + 6x + 9 = (x + 3)²..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "(x − 3)² − 7.",
+          "interpretation": "Adding and subtracting the same quantity preserves value while revealing a square."
         }
       ],
       "figures": [
@@ -6247,7 +6247,7 @@
       ],
       "checkpoint": {
         "id": "a8-10-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for completing the square geometrically, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. Rewrite x² − 6x + 2 by completing the square.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -6397,7 +6397,7 @@
           "id": "a8-10-q06",
           "lessonId": "A8.10",
           "unitCode": "A8",
-          "prompt": "Complete the calculation after the first step “View x² and 6x as one square plus two rectangles of width 3.” and show the missing algebra.",
+          "prompt": "Complete the square for x² + 10x using an area-model interpretation.",
           "responseType": "open-response",
           "skill": "Add the missing corner that turns x^2+bx into a perfect square.",
           "purpose": "procedure",
@@ -6421,7 +6421,7 @@
           "id": "a8-10-q07",
           "lessonId": "A8.10",
           "unitCode": "A8",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: Complete the square for x² + 6x using an area interpretation.",
+          "prompt": "Rewrite x² − 6x + 2 by completing the square.",
           "responseType": "open-response",
           "skill": "Add the missing corner that turns x^2+bx into a perfect square.",
           "purpose": "procedure",
@@ -6469,7 +6469,7 @@
           "id": "a8-10-q09",
           "lessonId": "A8.10",
           "unitCode": "A8",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: Complete the square for x² + 6x using an area interpretation.",
+          "prompt": "Complete the calculation after “Half the x-coefficient is 5.” in this problem: Complete the square for x² + 10x using an area-model interpretation.",
           "responseType": "open-response",
           "skill": "Add the missing corner that turns x^2+bx into a perfect square.",
           "purpose": "procedure",
@@ -6493,7 +6493,7 @@
           "id": "a8-10-q10",
           "lessonId": "A8.10",
           "unitCode": "A8",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: Complete the square for x² + 6x using an area interpretation.",
+          "prompt": "Name and justify the most efficient first move, then solve: Rewrite x² − 6x + 2 by completing the square.",
           "responseType": "open-response",
           "skill": "Add the missing corner that turns x^2+bx into a perfect square.",
           "purpose": "procedure",
@@ -6517,7 +6517,7 @@
           "id": "a8-10-q11",
           "lessonId": "A8.10",
           "unitCode": "A8",
-          "prompt": "Build the second representation requested here: Coordinate expanded, factored, and completed-square forms with zeros, symmetry, and the corresponding parabola. Use the worked case Complete the square for x² + 6x using an area interpretation.",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: Complete the square for x² + 10x using an area-model interpretation. Rewrite x² − 6x + 2 by completing the square.",
           "responseType": "open-response",
           "skill": "Add the missing corner that turns x^2+bx into a perfect square.",
           "purpose": "representation",
@@ -6541,7 +6541,7 @@
           "id": "a8-10-q12",
           "lessonId": "A8.10",
           "unitCode": "A8",
-          "prompt": "For completing the square geometrically, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: Complete the square for x² + 6x using an area interpretation.",
+          "prompt": "Create the representation most useful for checking this result: Complete the square for x² + 10x using an area-model interpretation. Coordinate expanded, factored, and completed-square forms with zeros, symmetry, and the corresponding parabola.",
           "responseType": "open-response",
           "skill": "Add the missing corner that turns x^2+bx into a perfect square.",
           "purpose": "representation",
@@ -6589,7 +6589,7 @@
           "id": "a8-10-q14",
           "lessonId": "A8.10",
           "unitCode": "A8",
-          "prompt": "Repair a solution that performs the final step before completing “Add the missing 3-by-3 corner.” in the worked case.",
+          "prompt": "Repair a solution that skips “Add and subtract 9 without changing the expression.” while solving: Rewrite x² − 6x + 2 by completing the square.",
           "responseType": "open-response",
           "skill": "Add the missing corner that turns x^2+bx into a perfect square.",
           "purpose": "transfer",
@@ -6685,7 +6685,7 @@
           "id": "a8-10-q18",
           "lessonId": "A8.10",
           "unitCode": "A8",
-          "prompt": "Compare the answer to Complete the square for x² + 6x using an area interpretation. with this lesson outcome—Add the missing corner that turns x^2+bx into a perfect square. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Add the missing corner that turns x^2+bx into a perfect square. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Add the missing corner that turns x^2+bx into a perfect square.",
           "purpose": "modeling",
@@ -6709,7 +6709,7 @@
           "id": "a8-10-q19",
           "lessonId": "A8.10",
           "unitCode": "A8",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. Complete the square for x² + 6x using an area interpretation.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Complete the square for x² + 10x using an area-model interpretation.",
           "responseType": "open-response",
           "skill": "Add the missing corner that turns x^2+bx into a perfect square.",
           "purpose": "error-analysis",
@@ -6733,7 +6733,7 @@
           "id": "a8-10-q20",
           "lessonId": "A8.10",
           "unitCode": "A8",
-          "prompt": "Exit check: write a compact method-and-check summary for completing the square geometrically, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Rewrite x² − 6x + 2 by completing the square.",
           "responseType": "open-response",
           "skill": "Add the missing corner that turns x^2+bx into a perfect square.",
           "purpose": "exit",
@@ -6794,10 +6794,10 @@
       "title": "Completing the square algebraically",
       "path": "/subjects/math/algebra/factoring-quadratics/completing-the-square-algebraically/",
       "outcome": "Translate the geometric construction into a general equation-solving method.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Solve a quadratic that does not factor cleanly.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn completing the square algebraically as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn completing the square algebraically as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Translate the geometric construction into a general equation-solving method.",
@@ -6849,7 +6849,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "Solve x² + 8x − 5 = 0 by completing the square.",
           "steps": [
             "Move the constant to obtain x² + 8x = 5.",
@@ -6860,26 +6860,26 @@
           "interpretation": "Adding the same missing-corner value to both sides preserves equality and creates an invertible square form."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Coordinate expanded, factored, and completed-square forms with zeros, symmetry, and the corresponding parabola.",
+          "kind": "worked-example-2",
+          "prompt": "Solve x² − 6x − 7 = 0 by completing the square.",
           "steps": [
-            "First solve the original case and retain the exact result x = −4 ± √21..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "Move the constant: x² − 6x = 7.",
+            "Add 9 to both sides to obtain (x − 3)² = 16.",
+            "Take square roots and solve."
           ],
-          "answer": "The second representation must preserve x = −4 ± √21..",
-          "interpretation": "Adding the same missing-corner value to both sides preserves equality and creates an invertible square form. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "x = 7 or x = −1.",
+          "interpretation": "Completing the square creates an equivalent isolated-square equation."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “x = −4 ± √21.” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "Solve 2x² + 8x + 1 = 0 by completing the square.",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Expand any factorization and substitute every proposed solution into the original quadratic equation.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "Divide by 2: x² + 4x + 1/2 = 0, then move 1/2.",
+            "Add 4 to both sides to obtain (x + 2)² = 7/2.",
+            "Take square roots and simplify."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms x = −4 ± √21..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "x = −2 ± √14/2.",
+          "interpretation": "Dividing by the leading coefficient first makes the completing-square term visible."
         }
       ],
       "figures": [
@@ -6923,7 +6923,7 @@
       ],
       "checkpoint": {
         "id": "a8-11-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for completing the square algebraically, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. Solve 2x² + 8x + 1 = 0 by completing the square.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -7073,7 +7073,7 @@
           "id": "a8-11-q06",
           "lessonId": "A8.11",
           "unitCode": "A8",
-          "prompt": "Complete the calculation after the first step “Move the constant to obtain x² + 8x = 5.” and show the missing algebra.",
+          "prompt": "Solve x² − 6x − 7 = 0 by completing the square.",
           "responseType": "open-response",
           "skill": "Translate the geometric construction into a general equation-solving method.",
           "purpose": "procedure",
@@ -7097,7 +7097,7 @@
           "id": "a8-11-q07",
           "lessonId": "A8.11",
           "unitCode": "A8",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: Solve x² + 8x − 5 = 0 by completing the square.",
+          "prompt": "Solve 2x² + 8x + 1 = 0 by completing the square.",
           "responseType": "open-response",
           "skill": "Translate the geometric construction into a general equation-solving method.",
           "purpose": "procedure",
@@ -7145,7 +7145,7 @@
           "id": "a8-11-q09",
           "lessonId": "A8.11",
           "unitCode": "A8",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: Solve x² + 8x − 5 = 0 by completing the square.",
+          "prompt": "Complete the calculation after “Move the constant: x² − 6x = 7.” in this problem: Solve x² − 6x − 7 = 0 by completing the square.",
           "responseType": "open-response",
           "skill": "Translate the geometric construction into a general equation-solving method.",
           "purpose": "procedure",
@@ -7169,7 +7169,7 @@
           "id": "a8-11-q10",
           "lessonId": "A8.11",
           "unitCode": "A8",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: Solve x² + 8x − 5 = 0 by completing the square.",
+          "prompt": "Name and justify the most efficient first move, then solve: Solve 2x² + 8x + 1 = 0 by completing the square.",
           "responseType": "open-response",
           "skill": "Translate the geometric construction into a general equation-solving method.",
           "purpose": "procedure",
@@ -7193,7 +7193,7 @@
           "id": "a8-11-q11",
           "lessonId": "A8.11",
           "unitCode": "A8",
-          "prompt": "Build the second representation requested here: Coordinate expanded, factored, and completed-square forms with zeros, symmetry, and the corresponding parabola. Use the worked case Solve x² + 8x − 5 = 0 by completing the square.",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: Solve x² − 6x − 7 = 0 by completing the square. Solve 2x² + 8x + 1 = 0 by completing the square.",
           "responseType": "open-response",
           "skill": "Translate the geometric construction into a general equation-solving method.",
           "purpose": "representation",
@@ -7217,7 +7217,7 @@
           "id": "a8-11-q12",
           "lessonId": "A8.11",
           "unitCode": "A8",
-          "prompt": "For completing the square algebraically, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: Solve x² + 8x − 5 = 0 by completing the square.",
+          "prompt": "Create the representation most useful for checking this result: Solve x² − 6x − 7 = 0 by completing the square. Coordinate expanded, factored, and completed-square forms with zeros, symmetry, and the corresponding parabola.",
           "responseType": "open-response",
           "skill": "Translate the geometric construction into a general equation-solving method.",
           "purpose": "representation",
@@ -7265,7 +7265,7 @@
           "id": "a8-11-q14",
           "lessonId": "A8.11",
           "unitCode": "A8",
-          "prompt": "Repair a solution that performs the final step before completing “Add 16 to both sides and factor the perfect square.” in the worked case.",
+          "prompt": "Repair a solution that skips “Add 4 to both sides to obtain (x + 2)² = 7/2.” while solving: Solve 2x² + 8x + 1 = 0 by completing the square.",
           "responseType": "open-response",
           "skill": "Translate the geometric construction into a general equation-solving method.",
           "purpose": "transfer",
@@ -7361,7 +7361,7 @@
           "id": "a8-11-q18",
           "lessonId": "A8.11",
           "unitCode": "A8",
-          "prompt": "Compare the answer to Solve x² + 8x − 5 = 0 by completing the square. with this lesson outcome—Translate the geometric construction into a general equation-solving method. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Translate the geometric construction into a general equation-solving method. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Translate the geometric construction into a general equation-solving method.",
           "purpose": "modeling",
@@ -7385,7 +7385,7 @@
           "id": "a8-11-q19",
           "lessonId": "A8.11",
           "unitCode": "A8",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. Solve x² + 8x − 5 = 0 by completing the square.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Solve x² − 6x − 7 = 0 by completing the square.",
           "responseType": "open-response",
           "skill": "Translate the geometric construction into a general equation-solving method.",
           "purpose": "error-analysis",
@@ -7409,7 +7409,7 @@
           "id": "a8-11-q20",
           "lessonId": "A8.11",
           "unitCode": "A8",
-          "prompt": "Exit check: write a compact method-and-check summary for completing the square algebraically, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Solve 2x² + 8x + 1 = 0 by completing the square.",
           "responseType": "open-response",
           "skill": "Translate the geometric construction into a general equation-solving method.",
           "purpose": "exit",
@@ -7470,10 +7470,10 @@
       "title": "Quadratic formula and discriminant",
       "path": "/subjects/math/algebra/factoring-quadratics/quadratic-formula-and-discriminant/",
       "outcome": "Derive the general formula and use the discriminant to predict real root behavior.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Solve a general quadratic and compare its graph intersections.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn quadratic formula and discriminant as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn quadratic formula and discriminant as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Derive the general formula and use the discriminant to predict real root behavior.",
@@ -7525,7 +7525,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "Use the quadratic formula to solve 2x² + 3x − 4 = 0 and interpret the discriminant.",
           "steps": [
             "Identify a = 2, b = 3, and c = −4.",
@@ -7536,26 +7536,26 @@
           "interpretation": "The quadratic formula gives exact roots, while the discriminant predicts their real-number behavior."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Coordinate expanded, factored, and completed-square forms with zeros, symmetry, and the corresponding parabola.",
+          "kind": "worked-example-2",
+          "prompt": "Use the quadratic formula to solve 2x² − 3x − 4 = 0.",
           "steps": [
-            "First solve the original case and retain the exact result x = (−3 ± √41)/4; the positive discriminant gives two distinct real roots..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "Identify a = 2, b = −3, and c = −4.",
+            "Compute the discriminant b² − 4ac = 41.",
+            "Substitute into the formula and simplify."
           ],
-          "answer": "The second representation must preserve x = (−3 ± √41)/4; the positive discriminant gives two distinct real roots..",
-          "interpretation": "The quadratic formula gives exact roots, while the discriminant predicts their real-number behavior. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "x = (3 ± √41)/4.",
+          "interpretation": "A positive nonsquare discriminant produces two distinct irrational real roots."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “x = (−3 ± √41)/4; the positive discriminant gives two distinct real roots.” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "Classify the roots of 9x² + 12x + 4 = 0 using the discriminant.",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Expand any factorization and substitute every proposed solution into the original quadratic equation.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "Identify a = 9, b = 12, and c = 4.",
+            "Compute Δ = 12² − 4(9)(4) = 0.",
+            "Use the formula or perfect-square structure to find the repeated root."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms x = (−3 ± √41)/4; the positive discriminant gives two distinct real roots..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "One repeated real root, x = −2/3.",
+          "interpretation": "A zero discriminant means the parabola touches the horizontal axis once."
         }
       ],
       "figures": [
@@ -7599,7 +7599,7 @@
       ],
       "checkpoint": {
         "id": "a8-12-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for quadratic formula and discriminant, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. Classify the roots of 9x² + 12x + 4 = 0 using the discriminant.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -7749,7 +7749,7 @@
           "id": "a8-12-q06",
           "lessonId": "A8.12",
           "unitCode": "A8",
-          "prompt": "Complete the calculation after the first step “Identify a = 2, b = 3, and c = −4.” and show the missing algebra.",
+          "prompt": "Use the quadratic formula to solve 2x² − 3x − 4 = 0.",
           "responseType": "open-response",
           "skill": "Derive the general formula and use the discriminant to predict real root behavior.",
           "purpose": "procedure",
@@ -7773,7 +7773,7 @@
           "id": "a8-12-q07",
           "lessonId": "A8.12",
           "unitCode": "A8",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: Use the quadratic formula to solve 2x² + 3x − 4 = 0 and interpret the discriminant.",
+          "prompt": "Classify the roots of 9x² + 12x + 4 = 0 using the discriminant.",
           "responseType": "open-response",
           "skill": "Derive the general formula and use the discriminant to predict real root behavior.",
           "purpose": "procedure",
@@ -7821,7 +7821,7 @@
           "id": "a8-12-q09",
           "lessonId": "A8.12",
           "unitCode": "A8",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: Use the quadratic formula to solve 2x² + 3x − 4 = 0 and interpret the discriminant.",
+          "prompt": "Complete the calculation after “Identify a = 2, b = −3, and c = −4.” in this problem: Use the quadratic formula to solve 2x² − 3x − 4 = 0.",
           "responseType": "open-response",
           "skill": "Derive the general formula and use the discriminant to predict real root behavior.",
           "purpose": "procedure",
@@ -7845,7 +7845,7 @@
           "id": "a8-12-q10",
           "lessonId": "A8.12",
           "unitCode": "A8",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: Use the quadratic formula to solve 2x² + 3x − 4 = 0 and interpret the discriminant.",
+          "prompt": "Name and justify the most efficient first move, then solve: Classify the roots of 9x² + 12x + 4 = 0 using the discriminant.",
           "responseType": "open-response",
           "skill": "Derive the general formula and use the discriminant to predict real root behavior.",
           "purpose": "procedure",
@@ -7869,7 +7869,7 @@
           "id": "a8-12-q11",
           "lessonId": "A8.12",
           "unitCode": "A8",
-          "prompt": "Build the second representation requested here: Coordinate expanded, factored, and completed-square forms with zeros, symmetry, and the corresponding parabola. Use the worked case Use the quadratic formula to solve 2x² + 3x − 4 = 0 and interpret the discriminant.",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: Use the quadratic formula to solve 2x² − 3x − 4 = 0. Classify the roots of 9x² + 12x + 4 = 0 using the discriminant.",
           "responseType": "open-response",
           "skill": "Derive the general formula and use the discriminant to predict real root behavior.",
           "purpose": "representation",
@@ -7893,7 +7893,7 @@
           "id": "a8-12-q12",
           "lessonId": "A8.12",
           "unitCode": "A8",
-          "prompt": "For quadratic formula and discriminant, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: Use the quadratic formula to solve 2x² + 3x − 4 = 0 and interpret the discriminant.",
+          "prompt": "Create the representation most useful for checking this result: Use the quadratic formula to solve 2x² − 3x − 4 = 0. Coordinate expanded, factored, and completed-square forms with zeros, symmetry, and the corresponding parabola.",
           "responseType": "open-response",
           "skill": "Derive the general formula and use the discriminant to predict real root behavior.",
           "purpose": "representation",
@@ -7941,7 +7941,7 @@
           "id": "a8-12-q14",
           "lessonId": "A8.12",
           "unitCode": "A8",
-          "prompt": "Repair a solution that performs the final step before completing “Compute b² − 4ac = 41.” in the worked case.",
+          "prompt": "Repair a solution that skips “Compute Δ = 12² − 4(9)(4) = 0.” while solving: Classify the roots of 9x² + 12x + 4 = 0 using the discriminant.",
           "responseType": "open-response",
           "skill": "Derive the general formula and use the discriminant to predict real root behavior.",
           "purpose": "transfer",
@@ -8037,7 +8037,7 @@
           "id": "a8-12-q18",
           "lessonId": "A8.12",
           "unitCode": "A8",
-          "prompt": "Compare the answer to Use the quadratic formula to solve 2x² + 3x − 4 = 0 and interpret the discriminant. with this lesson outcome—Derive the general formula and use the discriminant to predict real root behavior. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Derive the general formula and use the discriminant to predict real root behavior. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Derive the general formula and use the discriminant to predict real root behavior.",
           "purpose": "modeling",
@@ -8061,7 +8061,7 @@
           "id": "a8-12-q19",
           "lessonId": "A8.12",
           "unitCode": "A8",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. Use the quadratic formula to solve 2x² + 3x − 4 = 0 and interpret the discriminant.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Use the quadratic formula to solve 2x² − 3x − 4 = 0.",
           "responseType": "open-response",
           "skill": "Derive the general formula and use the discriminant to predict real root behavior.",
           "purpose": "error-analysis",
@@ -8085,7 +8085,7 @@
           "id": "a8-12-q20",
           "lessonId": "A8.12",
           "unitCode": "A8",
-          "prompt": "Exit check: write a compact method-and-check summary for quadratic formula and discriminant, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Classify the roots of 9x² + 12x + 4 = 0 using the discriminant.",
           "responseType": "open-response",
           "skill": "Derive the general formula and use the discriminant to predict real root behavior.",
           "purpose": "exit",

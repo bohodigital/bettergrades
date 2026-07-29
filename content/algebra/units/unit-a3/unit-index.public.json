@@ -37,10 +37,10 @@
       "title": "Inequalities and truth sets",
       "path": "/subjects/math/algebra/inequalities-absolute-value/inequalities-and-truth-sets/",
       "outcome": "Interpret an inequality as a condition satisfied by a region of values.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Test candidate values against a safety or budget threshold.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn inequalities and truth sets as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn inequalities and truth sets as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Interpret an inequality as a condition satisfied by a region of values.",
@@ -92,7 +92,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "Determine whether x = 4 and x = 7 belong to the truth set of 3x + 2 < 20.",
           "steps": [
             "Substitute each candidate into the left side.",
@@ -103,26 +103,26 @@
           "interpretation": "A truth set contains values that make the complete inequality true, not values that merely look close to its boundary."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Use an inequality, interval notation, and a number-line description; each must show the same endpoints, inclusion, and direction.",
+          "kind": "worked-example-2",
+          "prompt": "Find the truth set of 2x − 5 ≥ 9 among {−3, 0, 7, 10}.",
           "steps": [
-            "First solve the original case and retain the exact result x = 4 belongs to the truth set; x = 7 does not..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "Substitute each candidate into 2x − 5.",
+            "The resulting left sides are −11, −5, 9, and 15.",
+            "Keep exactly the candidates whose left side is at least 9."
           ],
-          "answer": "The second representation must preserve x = 4 belongs to the truth set; x = 7 does not..",
-          "interpretation": "A truth set contains values that make the complete inequality true, not values that merely look close to its boundary. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "{7, 10}.",
+          "interpretation": "A finite truth set is determined by testing the complete statement for every allowed candidate."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “x = 4 belongs to the truth set; x = 7 does not.” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "Describe all real numbers that make x² < 9 true.",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Test a value inside the proposed set, a value outside it, and every boundary value in the original condition.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "The boundary equation x² = 9 has solutions −3 and 3.",
+            "Between the boundaries, squaring produces a value below 9; outside them it produces a value above 9.",
+            "Use open endpoints because the inequality is strict."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms x = 4 belongs to the truth set; x = 7 does not..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "−3 < x < 3, or (−3, 3).",
+          "interpretation": "Boundary analysis turns an inequality into a complete real-number truth set."
         }
       ],
       "figures": [
@@ -166,7 +166,7 @@
       ],
       "checkpoint": {
         "id": "a3-1-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for inequalities and truth sets, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. Describe all real numbers that make x² < 9 true.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -316,7 +316,7 @@
           "id": "a3-1-q06",
           "lessonId": "A3.1",
           "unitCode": "A3",
-          "prompt": "Complete the calculation after the first step “Substitute each candidate into the left side.” and show the missing algebra.",
+          "prompt": "Find the truth set of 2x − 5 ≥ 9 among {−3, 0, 7, 10}.",
           "responseType": "open-response",
           "skill": "Interpret an inequality as a condition satisfied by a region of values.",
           "purpose": "procedure",
@@ -340,7 +340,7 @@
           "id": "a3-1-q07",
           "lessonId": "A3.1",
           "unitCode": "A3",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: Determine whether x = 4 and x = 7 belong to the truth set of 3x + 2 < 20.",
+          "prompt": "Describe all real numbers that make x² < 9 true.",
           "responseType": "open-response",
           "skill": "Interpret an inequality as a condition satisfied by a region of values.",
           "purpose": "procedure",
@@ -388,7 +388,7 @@
           "id": "a3-1-q09",
           "lessonId": "A3.1",
           "unitCode": "A3",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: Determine whether x = 4 and x = 7 belong to the truth set of 3x + 2 < 20.",
+          "prompt": "Complete the calculation after “Substitute each candidate into 2x − 5.” in this problem: Find the truth set of 2x − 5 ≥ 9 among {−3, 0, 7, 10}.",
           "responseType": "open-response",
           "skill": "Interpret an inequality as a condition satisfied by a region of values.",
           "purpose": "procedure",
@@ -412,7 +412,7 @@
           "id": "a3-1-q10",
           "lessonId": "A3.1",
           "unitCode": "A3",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: Determine whether x = 4 and x = 7 belong to the truth set of 3x + 2 < 20.",
+          "prompt": "Name and justify the most efficient first move, then solve: Describe all real numbers that make x² < 9 true.",
           "responseType": "open-response",
           "skill": "Interpret an inequality as a condition satisfied by a region of values.",
           "purpose": "procedure",
@@ -436,7 +436,7 @@
           "id": "a3-1-q11",
           "lessonId": "A3.1",
           "unitCode": "A3",
-          "prompt": "Build the second representation requested here: Use an inequality, interval notation, and a number-line description; each must show the same endpoints, inclusion, and direction. Use the worked case Determine whether x = 4 and x = 7 belong to the truth set of 3x + 2 < 20.",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: Find the truth set of 2x − 5 ≥ 9 among {−3, 0, 7, 10}. Describe all real numbers that make x² < 9 true.",
           "responseType": "open-response",
           "skill": "Interpret an inequality as a condition satisfied by a region of values.",
           "purpose": "representation",
@@ -460,7 +460,7 @@
           "id": "a3-1-q12",
           "lessonId": "A3.1",
           "unitCode": "A3",
-          "prompt": "For inequalities and truth sets, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: Determine whether x = 4 and x = 7 belong to the truth set of 3x + 2 < 20.",
+          "prompt": "Create the representation most useful for checking this result: Find the truth set of 2x − 5 ≥ 9 among {−3, 0, 7, 10}. Use an inequality, interval notation, and a number-line description; each must show the same endpoints, inclusion, and direction.",
           "responseType": "open-response",
           "skill": "Interpret an inequality as a condition satisfied by a region of values.",
           "purpose": "representation",
@@ -508,7 +508,7 @@
           "id": "a3-1-q14",
           "lessonId": "A3.1",
           "unitCode": "A3",
-          "prompt": "Repair a solution that performs the final step before completing “For x = 4, compare 14 with 20; for x = 7, compare 23 with 20.” in the worked case.",
+          "prompt": "Repair a solution that skips “Between the boundaries, squaring produces a value below 9; outside them it produces a value above 9.” while solving: Describe all real numbers that make x² < 9 true.",
           "responseType": "open-response",
           "skill": "Interpret an inequality as a condition satisfied by a region of values.",
           "purpose": "transfer",
@@ -604,7 +604,7 @@
           "id": "a3-1-q18",
           "lessonId": "A3.1",
           "unitCode": "A3",
-          "prompt": "Compare the answer to Determine whether x = 4 and x = 7 belong to the truth set of 3x + 2 < 20. with this lesson outcome—Interpret an inequality as a condition satisfied by a region of values. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Interpret an inequality as a condition satisfied by a region of values. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Interpret an inequality as a condition satisfied by a region of values.",
           "purpose": "modeling",
@@ -628,7 +628,7 @@
           "id": "a3-1-q19",
           "lessonId": "A3.1",
           "unitCode": "A3",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. Determine whether x = 4 and x = 7 belong to the truth set of 3x + 2 < 20.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Find the truth set of 2x − 5 ≥ 9 among {−3, 0, 7, 10}.",
           "responseType": "open-response",
           "skill": "Interpret an inequality as a condition satisfied by a region of values.",
           "purpose": "error-analysis",
@@ -652,7 +652,7 @@
           "id": "a3-1-q20",
           "lessonId": "A3.1",
           "unitCode": "A3",
-          "prompt": "Exit check: write a compact method-and-check summary for inequalities and truth sets, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Describe all real numbers that make x² < 9 true.",
           "responseType": "open-response",
           "skill": "Interpret an inequality as a condition satisfied by a region of values.",
           "purpose": "exit",
@@ -710,10 +710,10 @@
       "title": "Solving linear inequalities",
       "path": "/subjects/math/algebra/inequalities-absolute-value/solving-linear-inequalities/",
       "outcome": "Apply equation-style operations while tracking order and representing the result as a set.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Find all values that keep a total under a limit.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn solving linear inequalities as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn solving linear inequalities as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Apply equation-style operations while tracking order and representing the result as a set.",
@@ -765,7 +765,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "Solve 5 − 3x ≤ 17 and write the solution in interval notation.",
           "steps": [
             "Subtract 5 from both sides to obtain −3x ≤ 12.",
@@ -776,26 +776,26 @@
           "interpretation": "The endpoint is included because equality is allowed, and negative division reverses the direction of the truth set."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Use an inequality, interval notation, and a number-line description; each must show the same endpoints, inclusion, and direction.",
+          "kind": "worked-example-2",
+          "prompt": "Solve (2x − 1)/3 > 5 and graph the solution set.",
           "steps": [
-            "First solve the original case and retain the exact result x ≥ −4, or [−4, ∞)..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "Multiply both sides by positive 3, so the order remains unchanged: 2x − 1 > 15.",
+            "Add 1 and divide by 2 to obtain x > 8.",
+            "Check x = 9 in the original inequality and exclude the boundary x = 8."
           ],
-          "answer": "The second representation must preserve x ≥ −4, or [−4, ∞)..",
-          "interpretation": "The endpoint is included because equality is allowed, and negative division reverses the direction of the truth set. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "x > 8, or (8, ∞).",
+          "interpretation": "Positive scaling preserves order, and the strict boundary is shown with an open endpoint."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “x ≥ −4, or [−4, ∞).” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "A delivery company charges $18 plus $4 per mile. For what distances d is the charge at most $50?",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Test a value inside the proposed set, a value outside it, and every boundary value in the original condition.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "Model the limit by 18 + 4d ≤ 50 with d ≥ 0.",
+            "Subtract 18 and divide by 4 to obtain d ≤ 8.",
+            "Intersect the algebraic result with the contextual domain d ≥ 0."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms x ≥ −4, or [−4, ∞)..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "0 ≤ d ≤ 8 miles.",
+          "interpretation": "The contextual domain removes negative distances from the algebraic truth set."
         }
       ],
       "figures": [
@@ -839,7 +839,7 @@
       ],
       "checkpoint": {
         "id": "a3-2-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for solving linear inequalities, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. A delivery company charges $18 plus $4 per mile. For what distances d is the charge at most $50?",
         "responseType": "open-response"
       },
       "exercises": [
@@ -989,7 +989,7 @@
           "id": "a3-2-q06",
           "lessonId": "A3.2",
           "unitCode": "A3",
-          "prompt": "Complete the calculation after the first step “Subtract 5 from both sides to obtain −3x ≤ 12.” and show the missing algebra.",
+          "prompt": "Solve (2x − 1)/3 > 5 and graph the solution set.",
           "responseType": "open-response",
           "skill": "Apply equation-style operations while tracking order and representing the result as a set.",
           "purpose": "procedure",
@@ -1013,7 +1013,7 @@
           "id": "a3-2-q07",
           "lessonId": "A3.2",
           "unitCode": "A3",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: Solve 5 − 3x ≤ 17 and write the solution in interval notation.",
+          "prompt": "A delivery company charges $18 plus $4 per mile. For what distances d is the charge at most $50?",
           "responseType": "open-response",
           "skill": "Apply equation-style operations while tracking order and representing the result as a set.",
           "purpose": "procedure",
@@ -1061,7 +1061,7 @@
           "id": "a3-2-q09",
           "lessonId": "A3.2",
           "unitCode": "A3",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: Solve 5 − 3x ≤ 17 and write the solution in interval notation.",
+          "prompt": "Complete the calculation after “Multiply both sides by positive 3, so the order remains unchanged: 2x − 1 > 15.” in this problem: Solve (2x − 1)/3 > 5 and graph the solution set.",
           "responseType": "open-response",
           "skill": "Apply equation-style operations while tracking order and representing the result as a set.",
           "purpose": "procedure",
@@ -1085,7 +1085,7 @@
           "id": "a3-2-q10",
           "lessonId": "A3.2",
           "unitCode": "A3",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: Solve 5 − 3x ≤ 17 and write the solution in interval notation.",
+          "prompt": "Name and justify the most efficient first move, then solve: A delivery company charges $18 plus $4 per mile. For what distances d is the charge at most $50?",
           "responseType": "open-response",
           "skill": "Apply equation-style operations while tracking order and representing the result as a set.",
           "purpose": "procedure",
@@ -1109,7 +1109,7 @@
           "id": "a3-2-q11",
           "lessonId": "A3.2",
           "unitCode": "A3",
-          "prompt": "Build the second representation requested here: Use an inequality, interval notation, and a number-line description; each must show the same endpoints, inclusion, and direction. Use the worked case Solve 5 − 3x ≤ 17 and write the solution in interval notation.",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: Solve (2x − 1)/3 > 5 and graph the solution set. A delivery company charges $18 plus $4 per mile. For what distances d is the charge at most $50?",
           "responseType": "open-response",
           "skill": "Apply equation-style operations while tracking order and representing the result as a set.",
           "purpose": "representation",
@@ -1133,7 +1133,7 @@
           "id": "a3-2-q12",
           "lessonId": "A3.2",
           "unitCode": "A3",
-          "prompt": "For solving linear inequalities, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: Solve 5 − 3x ≤ 17 and write the solution in interval notation.",
+          "prompt": "Create the representation most useful for checking this result: Solve (2x − 1)/3 > 5 and graph the solution set. Use an inequality, interval notation, and a number-line description; each must show the same endpoints, inclusion, and direction.",
           "responseType": "open-response",
           "skill": "Apply equation-style operations while tracking order and representing the result as a set.",
           "purpose": "representation",
@@ -1181,7 +1181,7 @@
           "id": "a3-2-q14",
           "lessonId": "A3.2",
           "unitCode": "A3",
-          "prompt": "Repair a solution that performs the final step before completing “Divide by −3 and reverse the order symbol.” in the worked case.",
+          "prompt": "Repair a solution that skips “Subtract 18 and divide by 4 to obtain d ≤ 8.” while solving: A delivery company charges $18 plus $4 per mile. For what distances d is the charge at most $50?",
           "responseType": "open-response",
           "skill": "Apply equation-style operations while tracking order and representing the result as a set.",
           "purpose": "transfer",
@@ -1277,7 +1277,7 @@
           "id": "a3-2-q18",
           "lessonId": "A3.2",
           "unitCode": "A3",
-          "prompt": "Compare the answer to Solve 5 − 3x ≤ 17 and write the solution in interval notation. with this lesson outcome—Apply equation-style operations while tracking order and representing the result as a set. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Apply equation-style operations while tracking order and representing the result as a set. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Apply equation-style operations while tracking order and representing the result as a set.",
           "purpose": "modeling",
@@ -1301,7 +1301,7 @@
           "id": "a3-2-q19",
           "lessonId": "A3.2",
           "unitCode": "A3",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. Solve 5 − 3x ≤ 17 and write the solution in interval notation.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Solve (2x − 1)/3 > 5 and graph the solution set.",
           "responseType": "open-response",
           "skill": "Apply equation-style operations while tracking order and representing the result as a set.",
           "purpose": "error-analysis",
@@ -1325,7 +1325,7 @@
           "id": "a3-2-q20",
           "lessonId": "A3.2",
           "unitCode": "A3",
-          "prompt": "Exit check: write a compact method-and-check summary for solving linear inequalities, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. A delivery company charges $18 plus $4 per mile. For what distances d is the charge at most $50?",
           "responseType": "open-response",
           "skill": "Apply equation-style operations while tracking order and representing the result as a set.",
           "purpose": "exit",
@@ -1386,10 +1386,10 @@
       "title": "Why negative scaling reverses order",
       "path": "/subjects/math/algebra/inequalities-absolute-value/why-negative-scaling-reverses-order/",
       "outcome": "Explain order reversal through reflection and numerical comparison.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Reflect two ordered points through zero.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn why negative scaling reverses order as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn why negative scaling reverses order as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Explain order reversal through reflection and numerical comparison.",
@@ -1441,7 +1441,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "Start with 2 < 5. Multiply both sides by −3 and explain the resulting comparison.",
           "steps": [
             "Scale both numbers by −3 to obtain −6 and −15.",
@@ -1452,26 +1452,26 @@
           "interpretation": "Negative scaling reflects both values across zero, exchanging left and right and therefore reversing order."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Use an inequality, interval notation, and a number-line description; each must show the same endpoints, inclusion, and direction.",
+          "kind": "worked-example-2",
+          "prompt": "Start with −4 < 2. Multiply by −5 and justify the new comparison.",
           "steps": [
-            "First solve the original case and retain the exact result −6 > −15..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "The products are 20 and −10.",
+            "On a number line, 20 lies to the right of −10.",
+            "Write the reversed order relation."
           ],
-          "answer": "The second representation must preserve −6 > −15..",
-          "interpretation": "Negative scaling reflects both values across zero, exchanging left and right and therefore reversing order. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "20 > −10.",
+          "interpretation": "Multiplication by a negative reflects both values across zero and reverses their order."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “−6 > −15.” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "Explain why dividing 6 > −3 by −3 gives −2 < 1.",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Test a value inside the proposed set, a value outside it, and every boundary value in the original condition.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "Division by −3 is multiplication by the negative reciprocal −1/3.",
+            "The scale changes 6 to −2 and −3 to 1.",
+            "A negative scale reverses the original greater-than relation."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms −6 > −15..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "−2 < 1.",
+          "interpretation": "The reversal follows from an order-reflecting transformation, not from an arbitrary symbol rule."
         }
       ],
       "figures": [
@@ -1515,7 +1515,7 @@
       ],
       "checkpoint": {
         "id": "a3-3-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for why negative scaling reverses order, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. Explain why dividing 6 > −3 by −3 gives −2 < 1.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -1665,7 +1665,7 @@
           "id": "a3-3-q06",
           "lessonId": "A3.3",
           "unitCode": "A3",
-          "prompt": "Complete the calculation after the first step “Scale both numbers by −3 to obtain −6 and −15.” and show the missing algebra.",
+          "prompt": "Start with −4 < 2. Multiply by −5 and justify the new comparison.",
           "responseType": "open-response",
           "skill": "Explain order reversal through reflection and numerical comparison.",
           "purpose": "procedure",
@@ -1689,7 +1689,7 @@
           "id": "a3-3-q07",
           "lessonId": "A3.3",
           "unitCode": "A3",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: Start with 2 < 5. Multiply both sides by −3 and explain the resulting comparison.",
+          "prompt": "Explain why dividing 6 > −3 by −3 gives −2 < 1.",
           "responseType": "open-response",
           "skill": "Explain order reversal through reflection and numerical comparison.",
           "purpose": "procedure",
@@ -1737,7 +1737,7 @@
           "id": "a3-3-q09",
           "lessonId": "A3.3",
           "unitCode": "A3",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: Start with 2 < 5. Multiply both sides by −3 and explain the resulting comparison.",
+          "prompt": "Complete the calculation after “The products are 20 and −10.” in this problem: Start with −4 < 2. Multiply by −5 and justify the new comparison.",
           "responseType": "open-response",
           "skill": "Explain order reversal through reflection and numerical comparison.",
           "purpose": "procedure",
@@ -1761,7 +1761,7 @@
           "id": "a3-3-q10",
           "lessonId": "A3.3",
           "unitCode": "A3",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: Start with 2 < 5. Multiply both sides by −3 and explain the resulting comparison.",
+          "prompt": "Name and justify the most efficient first move, then solve: Explain why dividing 6 > −3 by −3 gives −2 < 1.",
           "responseType": "open-response",
           "skill": "Explain order reversal through reflection and numerical comparison.",
           "purpose": "procedure",
@@ -1785,7 +1785,7 @@
           "id": "a3-3-q11",
           "lessonId": "A3.3",
           "unitCode": "A3",
-          "prompt": "Build the second representation requested here: Use an inequality, interval notation, and a number-line description; each must show the same endpoints, inclusion, and direction. Use the worked case Start with 2 < 5. Multiply both sides by −3 and explain the resulting comparison.",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: Start with −4 < 2. Multiply by −5 and justify the new comparison. Explain why dividing 6 > −3 by −3 gives −2 < 1.",
           "responseType": "open-response",
           "skill": "Explain order reversal through reflection and numerical comparison.",
           "purpose": "representation",
@@ -1809,7 +1809,7 @@
           "id": "a3-3-q12",
           "lessonId": "A3.3",
           "unitCode": "A3",
-          "prompt": "For why negative scaling reverses order, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: Start with 2 < 5. Multiply both sides by −3 and explain the resulting comparison.",
+          "prompt": "Create the representation most useful for checking this result: Start with −4 < 2. Multiply by −5 and justify the new comparison. Use an inequality, interval notation, and a number-line description; each must show the same endpoints, inclusion, and direction.",
           "responseType": "open-response",
           "skill": "Explain order reversal through reflection and numerical comparison.",
           "purpose": "representation",
@@ -1857,7 +1857,7 @@
           "id": "a3-3-q14",
           "lessonId": "A3.3",
           "unitCode": "A3",
-          "prompt": "Repair a solution that performs the final step before completing “Locate the products on a number line or compare their signed values.” in the worked case.",
+          "prompt": "Repair a solution that skips “The scale changes 6 to −2 and −3 to 1.” while solving: Explain why dividing 6 > −3 by −3 gives −2 < 1.",
           "responseType": "open-response",
           "skill": "Explain order reversal through reflection and numerical comparison.",
           "purpose": "transfer",
@@ -1953,7 +1953,7 @@
           "id": "a3-3-q18",
           "lessonId": "A3.3",
           "unitCode": "A3",
-          "prompt": "Compare the answer to Start with 2 < 5. Multiply both sides by −3 and explain the resulting comparison. with this lesson outcome—Explain order reversal through reflection and numerical comparison. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Explain order reversal through reflection and numerical comparison. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Explain order reversal through reflection and numerical comparison.",
           "purpose": "modeling",
@@ -1977,7 +1977,7 @@
           "id": "a3-3-q19",
           "lessonId": "A3.3",
           "unitCode": "A3",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. Start with 2 < 5. Multiply both sides by −3 and explain the resulting comparison.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Start with −4 < 2. Multiply by −5 and justify the new comparison.",
           "responseType": "open-response",
           "skill": "Explain order reversal through reflection and numerical comparison.",
           "purpose": "error-analysis",
@@ -2001,7 +2001,7 @@
           "id": "a3-3-q20",
           "lessonId": "A3.3",
           "unitCode": "A3",
-          "prompt": "Exit check: write a compact method-and-check summary for why negative scaling reverses order, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Explain why dividing 6 > −3 by −3 gives −2 < 1.",
           "responseType": "open-response",
           "skill": "Explain order reversal through reflection and numerical comparison.",
           "purpose": "exit",
@@ -2062,10 +2062,10 @@
       "title": "Interval notation and endpoint meaning",
       "path": "/subjects/math/algebra/inequalities-absolute-value/interval-notation-and-endpoint-meaning/",
       "outcome": "Translate among inequalities, number-line graphs, and interval notation.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Encode an allowed temperature or measurement range.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn interval notation and endpoint meaning as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn interval notation and endpoint meaning as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Translate among inequalities, number-line graphs, and interval notation.",
@@ -2117,7 +2117,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "Translate −2 < x ≤ 5 into interval notation and describe its number-line graph.",
           "steps": [
             "Use a parenthesis at −2 because −2 is excluded.",
@@ -2128,26 +2128,26 @@
           "interpretation": "The inequality, interval, and number-line description encode the same set and endpoint decisions."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Use an inequality, interval notation, and a number-line description; each must show the same endpoints, inclusion, and direction.",
+          "kind": "worked-example-2",
+          "prompt": "Write x ≤ −1 or x > 4 in interval notation and describe the endpoints.",
           "steps": [
-            "First solve the original case and retain the exact result (−2, 5], with an open endpoint at −2 and a closed endpoint at 5..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "The first ray contains −1, so use a bracket there.",
+            "The second ray excludes 4, so use a parenthesis there.",
+            "Join the disjoint rays with a union symbol."
           ],
-          "answer": "The second representation must preserve (−2, 5], with an open endpoint at −2 and a closed endpoint at 5..",
-          "interpretation": "The inequality, interval, and number-line description encode the same set and endpoint decisions. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "(−∞, −1] ∪ (4, ∞).",
+          "interpretation": "A union records values satisfying either condition, with endpoint marks preserving equality information."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “(−2, 5], with an open endpoint at −2 and a closed endpoint at 5.” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "Translate [−2, 5) ∩ (1, 8] into a compound inequality.",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Test a value inside the proposed set, a value outside it, and every boundary value in the original condition.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "The overlap begins just above 1 because (1, 8] excludes 1.",
+            "It ends just below 5 because [−2, 5) excludes 5.",
+            "Write both conditions as one and-statement."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms (−2, 5], with an open endpoint at −2 and a closed endpoint at 5..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "1 < x < 5.",
+          "interpretation": "Intersection keeps only values belonging to both intervals."
         }
       ],
       "figures": [
@@ -2191,7 +2191,7 @@
       ],
       "checkpoint": {
         "id": "a3-4-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for interval notation and endpoint meaning, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. Translate [−2, 5) ∩ (1, 8] into a compound inequality.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -2341,7 +2341,7 @@
           "id": "a3-4-q06",
           "lessonId": "A3.4",
           "unitCode": "A3",
-          "prompt": "Complete the calculation after the first step “Use a parenthesis at −2 because −2 is excluded.” and show the missing algebra.",
+          "prompt": "Write x ≤ −1 or x > 4 in interval notation and describe the endpoints.",
           "responseType": "open-response",
           "skill": "Translate among inequalities, number-line graphs, and interval notation.",
           "purpose": "procedure",
@@ -2365,7 +2365,7 @@
           "id": "a3-4-q07",
           "lessonId": "A3.4",
           "unitCode": "A3",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: Translate −2 < x ≤ 5 into interval notation and describe its number-line graph.",
+          "prompt": "Translate [−2, 5) ∩ (1, 8] into a compound inequality.",
           "responseType": "open-response",
           "skill": "Translate among inequalities, number-line graphs, and interval notation.",
           "purpose": "procedure",
@@ -2413,7 +2413,7 @@
           "id": "a3-4-q09",
           "lessonId": "A3.4",
           "unitCode": "A3",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: Translate −2 < x ≤ 5 into interval notation and describe its number-line graph.",
+          "prompt": "Complete the calculation after “The first ray contains −1, so use a bracket there.” in this problem: Write x ≤ −1 or x > 4 in interval notation and describe the endpoints.",
           "responseType": "open-response",
           "skill": "Translate among inequalities, number-line graphs, and interval notation.",
           "purpose": "procedure",
@@ -2437,7 +2437,7 @@
           "id": "a3-4-q10",
           "lessonId": "A3.4",
           "unitCode": "A3",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: Translate −2 < x ≤ 5 into interval notation and describe its number-line graph.",
+          "prompt": "Name and justify the most efficient first move, then solve: Translate [−2, 5) ∩ (1, 8] into a compound inequality.",
           "responseType": "open-response",
           "skill": "Translate among inequalities, number-line graphs, and interval notation.",
           "purpose": "procedure",
@@ -2461,7 +2461,7 @@
           "id": "a3-4-q11",
           "lessonId": "A3.4",
           "unitCode": "A3",
-          "prompt": "Build the second representation requested here: Use an inequality, interval notation, and a number-line description; each must show the same endpoints, inclusion, and direction. Use the worked case Translate −2 < x ≤ 5 into interval notation and describe its number-line graph.",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: Write x ≤ −1 or x > 4 in interval notation and describe the endpoints. Translate [−2, 5) ∩ (1, 8] into a compound inequality.",
           "responseType": "open-response",
           "skill": "Translate among inequalities, number-line graphs, and interval notation.",
           "purpose": "representation",
@@ -2485,7 +2485,7 @@
           "id": "a3-4-q12",
           "lessonId": "A3.4",
           "unitCode": "A3",
-          "prompt": "For interval notation and endpoint meaning, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: Translate −2 < x ≤ 5 into interval notation and describe its number-line graph.",
+          "prompt": "Create the representation most useful for checking this result: Write x ≤ −1 or x > 4 in interval notation and describe the endpoints. Use an inequality, interval notation, and a number-line description; each must show the same endpoints, inclusion, and direction.",
           "responseType": "open-response",
           "skill": "Translate among inequalities, number-line graphs, and interval notation.",
           "purpose": "representation",
@@ -2533,7 +2533,7 @@
           "id": "a3-4-q14",
           "lessonId": "A3.4",
           "unitCode": "A3",
-          "prompt": "Repair a solution that performs the final step before completing “Use a bracket at 5 because 5 is included.” in the worked case.",
+          "prompt": "Repair a solution that skips “It ends just below 5 because [−2, 5) excludes 5.” while solving: Translate [−2, 5) ∩ (1, 8] into a compound inequality.",
           "responseType": "open-response",
           "skill": "Translate among inequalities, number-line graphs, and interval notation.",
           "purpose": "transfer",
@@ -2629,7 +2629,7 @@
           "id": "a3-4-q18",
           "lessonId": "A3.4",
           "unitCode": "A3",
-          "prompt": "Compare the answer to Translate −2 < x ≤ 5 into interval notation and describe its number-line graph. with this lesson outcome—Translate among inequalities, number-line graphs, and interval notation. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Translate among inequalities, number-line graphs, and interval notation. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Translate among inequalities, number-line graphs, and interval notation.",
           "purpose": "modeling",
@@ -2653,7 +2653,7 @@
           "id": "a3-4-q19",
           "lessonId": "A3.4",
           "unitCode": "A3",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. Translate −2 < x ≤ 5 into interval notation and describe its number-line graph.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Write x ≤ −1 or x > 4 in interval notation and describe the endpoints.",
           "responseType": "open-response",
           "skill": "Translate among inequalities, number-line graphs, and interval notation.",
           "purpose": "error-analysis",
@@ -2677,7 +2677,7 @@
           "id": "a3-4-q20",
           "lessonId": "A3.4",
           "unitCode": "A3",
-          "prompt": "Exit check: write a compact method-and-check summary for interval notation and endpoint meaning, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Translate [−2, 5) ∩ (1, 8] into a compound inequality.",
           "responseType": "open-response",
           "skill": "Translate among inequalities, number-line graphs, and interval notation.",
           "purpose": "exit",
@@ -2738,10 +2738,10 @@
       "title": "Compound inequalities",
       "path": "/subjects/math/algebra/inequalities-absolute-value/compound-inequalities/",
       "outcome": "Interpret and solve intersections and unions of conditions.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Find values satisfying simultaneous minimum and maximum requirements.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn compound inequalities as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn compound inequalities as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Interpret and solve intersections and unions of conditions.",
@@ -2793,7 +2793,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "Solve −1 ≤ 2x + 3 < 9 as one compound inequality.",
           "steps": [
             "Subtract 3 from all three parts to obtain −4 ≤ 2x < 6.",
@@ -2804,26 +2804,26 @@
           "interpretation": "An and-compound inequality describes the intersection of two conditions, so the solution is one bounded interval."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Use an inequality, interval notation, and a number-line description; each must show the same endpoints, inclusion, and direction.",
+          "kind": "worked-example-2",
+          "prompt": "Solve 3x − 2 ≤ 7 or 2x + 5 > 13.",
           "steps": [
-            "First solve the original case and retain the exact result −2 ≤ x < 3, or [−2, 3)..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "Solve the first inequality to obtain x ≤ 3.",
+            "Solve the second inequality to obtain x > 4.",
+            "Use a union because the connector is or."
           ],
-          "answer": "The second representation must preserve −2 ≤ x < 3, or [−2, 3)..",
-          "interpretation": "An and-compound inequality describes the intersection of two conditions, so the solution is one bounded interval. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "x ≤ 3 or x > 4; (−∞, 3] ∪ (4, ∞).",
+          "interpretation": "An or-compound inequality combines both truth sets rather than keeping only their overlap."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “−2 ≤ x < 3, or [−2, 3).” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "Solve −4 < 2 − 3x ≤ 11.",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Test a value inside the proposed set, a value outside it, and every boundary value in the original condition.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "Subtract 2 throughout: −6 < −3x ≤ 9.",
+            "Divide all three parts by −3 and reverse both order relations.",
+            "Rewrite the ordered result from least to greatest."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms −2 ≤ x < 3, or [−2, 3)..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "−3 ≤ x < 2; [−3, 2).",
+          "interpretation": "Every part of a compound inequality must undergo the same operation, including both reversals under negative division."
         }
       ],
       "figures": [
@@ -2867,7 +2867,7 @@
       ],
       "checkpoint": {
         "id": "a3-5-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for compound inequalities, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. Solve −4 < 2 − 3x ≤ 11.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -3017,7 +3017,7 @@
           "id": "a3-5-q06",
           "lessonId": "A3.5",
           "unitCode": "A3",
-          "prompt": "Complete the calculation after the first step “Subtract 3 from all three parts to obtain −4 ≤ 2x < 6.” and show the missing algebra.",
+          "prompt": "Solve 3x − 2 ≤ 7 or 2x + 5 > 13.",
           "responseType": "open-response",
           "skill": "Interpret and solve intersections and unions of conditions.",
           "purpose": "procedure",
@@ -3041,7 +3041,7 @@
           "id": "a3-5-q07",
           "lessonId": "A3.5",
           "unitCode": "A3",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: Solve −1 ≤ 2x + 3 < 9 as one compound inequality.",
+          "prompt": "Solve −4 < 2 − 3x ≤ 11.",
           "responseType": "open-response",
           "skill": "Interpret and solve intersections and unions of conditions.",
           "purpose": "procedure",
@@ -3089,7 +3089,7 @@
           "id": "a3-5-q09",
           "lessonId": "A3.5",
           "unitCode": "A3",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: Solve −1 ≤ 2x + 3 < 9 as one compound inequality.",
+          "prompt": "Complete the calculation after “Solve the first inequality to obtain x ≤ 3.” in this problem: Solve 3x − 2 ≤ 7 or 2x + 5 > 13.",
           "responseType": "open-response",
           "skill": "Interpret and solve intersections and unions of conditions.",
           "purpose": "procedure",
@@ -3113,7 +3113,7 @@
           "id": "a3-5-q10",
           "lessonId": "A3.5",
           "unitCode": "A3",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: Solve −1 ≤ 2x + 3 < 9 as one compound inequality.",
+          "prompt": "Name and justify the most efficient first move, then solve: Solve −4 < 2 − 3x ≤ 11.",
           "responseType": "open-response",
           "skill": "Interpret and solve intersections and unions of conditions.",
           "purpose": "procedure",
@@ -3137,7 +3137,7 @@
           "id": "a3-5-q11",
           "lessonId": "A3.5",
           "unitCode": "A3",
-          "prompt": "Build the second representation requested here: Use an inequality, interval notation, and a number-line description; each must show the same endpoints, inclusion, and direction. Use the worked case Solve −1 ≤ 2x + 3 < 9 as one compound inequality.",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: Solve 3x − 2 ≤ 7 or 2x + 5 > 13. Solve −4 < 2 − 3x ≤ 11.",
           "responseType": "open-response",
           "skill": "Interpret and solve intersections and unions of conditions.",
           "purpose": "representation",
@@ -3161,7 +3161,7 @@
           "id": "a3-5-q12",
           "lessonId": "A3.5",
           "unitCode": "A3",
-          "prompt": "For compound inequalities, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: Solve −1 ≤ 2x + 3 < 9 as one compound inequality.",
+          "prompt": "Create the representation most useful for checking this result: Solve 3x − 2 ≤ 7 or 2x + 5 > 13. Use an inequality, interval notation, and a number-line description; each must show the same endpoints, inclusion, and direction.",
           "responseType": "open-response",
           "skill": "Interpret and solve intersections and unions of conditions.",
           "purpose": "representation",
@@ -3209,7 +3209,7 @@
           "id": "a3-5-q14",
           "lessonId": "A3.5",
           "unitCode": "A3",
-          "prompt": "Repair a solution that performs the final step before completing “Divide all three parts by 2.” in the worked case.",
+          "prompt": "Repair a solution that skips “Divide all three parts by −3 and reverse both order relations.” while solving: Solve −4 < 2 − 3x ≤ 11.",
           "responseType": "open-response",
           "skill": "Interpret and solve intersections and unions of conditions.",
           "purpose": "transfer",
@@ -3305,7 +3305,7 @@
           "id": "a3-5-q18",
           "lessonId": "A3.5",
           "unitCode": "A3",
-          "prompt": "Compare the answer to Solve −1 ≤ 2x + 3 < 9 as one compound inequality. with this lesson outcome—Interpret and solve intersections and unions of conditions. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Interpret and solve intersections and unions of conditions. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Interpret and solve intersections and unions of conditions.",
           "purpose": "modeling",
@@ -3329,7 +3329,7 @@
           "id": "a3-5-q19",
           "lessonId": "A3.5",
           "unitCode": "A3",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. Solve −1 ≤ 2x + 3 < 9 as one compound inequality.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Solve 3x − 2 ≤ 7 or 2x + 5 > 13.",
           "responseType": "open-response",
           "skill": "Interpret and solve intersections and unions of conditions.",
           "purpose": "error-analysis",
@@ -3353,7 +3353,7 @@
           "id": "a3-5-q20",
           "lessonId": "A3.5",
           "unitCode": "A3",
-          "prompt": "Exit check: write a compact method-and-check summary for compound inequalities, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Solve −4 < 2 − 3x ≤ 11.",
           "responseType": "open-response",
           "skill": "Interpret and solve intersections and unions of conditions.",
           "purpose": "exit",
@@ -3414,10 +3414,10 @@
       "title": "Absolute value as distance",
       "path": "/subjects/math/algebra/inequalities-absolute-value/absolute-value-as-distance/",
       "outcome": "Interpret |x-a| as the distance from a center a.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Locate all points a fixed distance from a target.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn absolute value as distance as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn absolute value as distance as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Interpret |x-a| as the distance from a center a.",
@@ -3469,7 +3469,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "Solve |x − 4| = 7 by interpreting absolute value as distance.",
           "steps": [
             "Read the equation as a point x being 7 units from the center 4.",
@@ -3480,26 +3480,28 @@
           "interpretation": "A positive distance from a center produces two symmetric points."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Use an inequality, interval notation, and a number-line description; each must show the same endpoints, inclusion, and direction.",
+          "kind": "worked-example-2",
+          "prompt": "Solve |x + 2| = 5 by using distance from a center.",
           "steps": [
-            "First solve the original case and retain the exact result x = 11 or x = −3..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "Rewrite x + 2 as x − (−2), so the center is −2.",
+            "Move 5 units left and right from −2.",
+            "Check both points in the original absolute-value equation."
           ],
-          "answer": "The second representation must preserve x = 11 or x = −3..",
-          "interpretation": "A positive distance from a center produces two symmetric points. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "x = −7 or x = 3.",
+          "interpretation": "A positive fixed distance produces two points symmetric about the center."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “x = 11 or x = −3.” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "A machine part is acceptable when its length t is within 1.5 mm of 10 mm. Write and solve an absolute-value inequality.",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Test a value inside the proposed set, a value outside it, and every boundary value in the original condition.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "Translate within 1.5 of 10 as ",
+            "t − 10",
+            " ≤ 1.5.",
+            "Rewrite it as −1.5 ≤ t − 10 ≤ 1.5.",
+            "Add 10 throughout."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms x = 11 or x = −3..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "8.5 ≤ t ≤ 11.5 mm.",
+          "interpretation": "A tolerance condition is a closed interval centered at the target measurement."
         }
       ],
       "figures": [
@@ -3543,7 +3545,7 @@
       ],
       "checkpoint": {
         "id": "a3-6-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for absolute value as distance, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. A machine part is acceptable when its length t is within 1.5 mm of 10 mm. Write and solve an absolute-value inequality.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -3693,7 +3695,7 @@
           "id": "a3-6-q06",
           "lessonId": "A3.6",
           "unitCode": "A3",
-          "prompt": "Complete the calculation after the first step “Read the equation as a point x being 7 units from the center 4.” and show the missing algebra.",
+          "prompt": "Solve |x + 2| = 5 by using distance from a center.",
           "responseType": "open-response",
           "skill": "Interpret |x-a| as the distance from a center a.",
           "purpose": "procedure",
@@ -3717,7 +3719,7 @@
           "id": "a3-6-q07",
           "lessonId": "A3.6",
           "unitCode": "A3",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: Solve |x − 4| = 7 by interpreting absolute value as distance.",
+          "prompt": "A machine part is acceptable when its length t is within 1.5 mm of 10 mm. Write and solve an absolute-value inequality.",
           "responseType": "open-response",
           "skill": "Interpret |x-a| as the distance from a center a.",
           "purpose": "procedure",
@@ -3765,7 +3767,7 @@
           "id": "a3-6-q09",
           "lessonId": "A3.6",
           "unitCode": "A3",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: Solve |x − 4| = 7 by interpreting absolute value as distance.",
+          "prompt": "Complete the calculation after “Rewrite x + 2 as x − (−2), so the center is −2.” in this problem: Solve |x + 2| = 5 by using distance from a center.",
           "responseType": "open-response",
           "skill": "Interpret |x-a| as the distance from a center a.",
           "purpose": "procedure",
@@ -3789,7 +3791,7 @@
           "id": "a3-6-q10",
           "lessonId": "A3.6",
           "unitCode": "A3",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: Solve |x − 4| = 7 by interpreting absolute value as distance.",
+          "prompt": "Name and justify the most efficient first move, then solve: A machine part is acceptable when its length t is within 1.5 mm of 10 mm. Write and solve an absolute-value inequality.",
           "responseType": "open-response",
           "skill": "Interpret |x-a| as the distance from a center a.",
           "purpose": "procedure",
@@ -3813,7 +3815,7 @@
           "id": "a3-6-q11",
           "lessonId": "A3.6",
           "unitCode": "A3",
-          "prompt": "Build the second representation requested here: Use an inequality, interval notation, and a number-line description; each must show the same endpoints, inclusion, and direction. Use the worked case Solve |x − 4| = 7 by interpreting absolute value as distance.",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: Solve |x + 2| = 5 by using distance from a center. A machine part is acceptable when its length t is within 1.5 mm of 10 mm. Write and solve an absolute-value inequality.",
           "responseType": "open-response",
           "skill": "Interpret |x-a| as the distance from a center a.",
           "purpose": "representation",
@@ -3837,7 +3839,7 @@
           "id": "a3-6-q12",
           "lessonId": "A3.6",
           "unitCode": "A3",
-          "prompt": "For absolute value as distance, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: Solve |x − 4| = 7 by interpreting absolute value as distance.",
+          "prompt": "Create the representation most useful for checking this result: Solve |x + 2| = 5 by using distance from a center. Use an inequality, interval notation, and a number-line description; each must show the same endpoints, inclusion, and direction.",
           "responseType": "open-response",
           "skill": "Interpret |x-a| as the distance from a center a.",
           "purpose": "representation",
@@ -3885,7 +3887,7 @@
           "id": "a3-6-q14",
           "lessonId": "A3.6",
           "unitCode": "A3",
-          "prompt": "Repair a solution that performs the final step before completing “Move 7 units right and 7 units left from 4.” in the worked case.",
+          "prompt": "Repair a solution that skips “t − 10” while solving: A machine part is acceptable when its length t is within 1.5 mm of 10 mm. Write and solve an absolute-value inequality.",
           "responseType": "open-response",
           "skill": "Interpret |x-a| as the distance from a center a.",
           "purpose": "transfer",
@@ -3981,7 +3983,7 @@
           "id": "a3-6-q18",
           "lessonId": "A3.6",
           "unitCode": "A3",
-          "prompt": "Compare the answer to Solve |x − 4| = 7 by interpreting absolute value as distance. with this lesson outcome—Interpret |x-a| as the distance from a center a. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Interpret |x-a| as the distance from a center a. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Interpret |x-a| as the distance from a center a.",
           "purpose": "modeling",
@@ -4005,7 +4007,7 @@
           "id": "a3-6-q19",
           "lessonId": "A3.6",
           "unitCode": "A3",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. Solve |x − 4| = 7 by interpreting absolute value as distance.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Solve |x + 2| = 5 by using distance from a center.",
           "responseType": "open-response",
           "skill": "Interpret |x-a| as the distance from a center a.",
           "purpose": "error-analysis",
@@ -4029,7 +4031,7 @@
           "id": "a3-6-q20",
           "lessonId": "A3.6",
           "unitCode": "A3",
-          "prompt": "Exit check: write a compact method-and-check summary for absolute value as distance, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. A machine part is acceptable when its length t is within 1.5 mm of 10 mm. Write and solve an absolute-value inequality.",
           "responseType": "open-response",
           "skill": "Interpret |x-a| as the distance from a center a.",
           "purpose": "exit",
@@ -4090,10 +4092,10 @@
       "title": "Absolute-value equations and inequalities",
       "path": "/subjects/math/algebra/inequalities-absolute-value/absolute-value-equations-and-inequalities/",
       "outcome": "Derive point, interval, or exterior solutions from distance meaning.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Model acceptable error and forbidden zones.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn absolute-value equations and inequalities as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn absolute-value equations and inequalities as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Derive point, interval, or exterior solutions from distance meaning.",
@@ -4145,7 +4147,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "Solve |2x − 1| < 5 and express the result as an interval.",
           "steps": [
             "Rewrite the distance condition as −5 < 2x − 1 < 5.",
@@ -4156,26 +4158,26 @@
           "interpretation": "A strict less-than absolute-value inequality describes inputs whose expression lies inside an open distance band."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Use an inequality, interval notation, and a number-line description; each must show the same endpoints, inclusion, and direction.",
+          "kind": "worked-example-2",
+          "prompt": "Solve |3x + 2| ≥ 8.",
           "steps": [
-            "First solve the original case and retain the exact result −2 < x < 3, or (−2, 3)..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "Split the exterior-distance condition into 3x + 2 ≥ 8 or 3x + 2 ≤ −8.",
+            "Solve the two linear inequalities.",
+            "Check one value from each exterior ray in the original inequality."
           ],
-          "answer": "The second representation must preserve −2 < x < 3, or (−2, 3)..",
-          "interpretation": "A strict less-than absolute-value inequality describes inputs whose expression lies inside an open distance band. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "x ≥ 2 or x ≤ −10/3.",
+          "interpretation": "A greater-than absolute-value inequality describes values outside a central interval."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “−2 < x < 3, or (−2, 3).” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "Solve |2x − 7| = −4.",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Test a value inside the proposed set, a value outside it, and every boundary value in the original condition.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "Recognize that every absolute value is nonnegative.",
+            "A nonnegative expression cannot equal −4.",
+            "State the empty solution set without creating two false linear equations."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms −2 < x < 3, or (−2, 3)..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "No solution; ∅.",
+          "interpretation": "Checking the possible range of absolute value prevents an invalid algebraic split."
         }
       ],
       "figures": [
@@ -4219,7 +4221,7 @@
       ],
       "checkpoint": {
         "id": "a3-7-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for absolute-value equations and inequalities, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. Solve |2x − 7| = −4.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -4369,7 +4371,7 @@
           "id": "a3-7-q06",
           "lessonId": "A3.7",
           "unitCode": "A3",
-          "prompt": "Complete the calculation after the first step “Rewrite the distance condition as −5 < 2x − 1 < 5.” and show the missing algebra.",
+          "prompt": "Solve |3x + 2| ≥ 8.",
           "responseType": "open-response",
           "skill": "Derive point, interval, or exterior solutions from distance meaning.",
           "purpose": "procedure",
@@ -4393,7 +4395,7 @@
           "id": "a3-7-q07",
           "lessonId": "A3.7",
           "unitCode": "A3",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: Solve |2x − 1| < 5 and express the result as an interval.",
+          "prompt": "Solve |2x − 7| = −4.",
           "responseType": "open-response",
           "skill": "Derive point, interval, or exterior solutions from distance meaning.",
           "purpose": "procedure",
@@ -4441,7 +4443,7 @@
           "id": "a3-7-q09",
           "lessonId": "A3.7",
           "unitCode": "A3",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: Solve |2x − 1| < 5 and express the result as an interval.",
+          "prompt": "Complete the calculation after “Split the exterior-distance condition into 3x + 2 ≥ 8 or 3x + 2 ≤ −8.” in this problem: Solve |3x + 2| ≥ 8.",
           "responseType": "open-response",
           "skill": "Derive point, interval, or exterior solutions from distance meaning.",
           "purpose": "procedure",
@@ -4465,7 +4467,7 @@
           "id": "a3-7-q10",
           "lessonId": "A3.7",
           "unitCode": "A3",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: Solve |2x − 1| < 5 and express the result as an interval.",
+          "prompt": "Name and justify the most efficient first move, then solve: Solve |2x − 7| = −4.",
           "responseType": "open-response",
           "skill": "Derive point, interval, or exterior solutions from distance meaning.",
           "purpose": "procedure",
@@ -4489,7 +4491,7 @@
           "id": "a3-7-q11",
           "lessonId": "A3.7",
           "unitCode": "A3",
-          "prompt": "Build the second representation requested here: Use an inequality, interval notation, and a number-line description; each must show the same endpoints, inclusion, and direction. Use the worked case Solve |2x − 1| < 5 and express the result as an interval.",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: Solve |3x + 2| ≥ 8. Solve |2x − 7| = −4.",
           "responseType": "open-response",
           "skill": "Derive point, interval, or exterior solutions from distance meaning.",
           "purpose": "representation",
@@ -4513,7 +4515,7 @@
           "id": "a3-7-q12",
           "lessonId": "A3.7",
           "unitCode": "A3",
-          "prompt": "For absolute-value equations and inequalities, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: Solve |2x − 1| < 5 and express the result as an interval.",
+          "prompt": "Create the representation most useful for checking this result: Solve |3x + 2| ≥ 8. Use an inequality, interval notation, and a number-line description; each must show the same endpoints, inclusion, and direction.",
           "responseType": "open-response",
           "skill": "Derive point, interval, or exterior solutions from distance meaning.",
           "purpose": "representation",
@@ -4561,7 +4563,7 @@
           "id": "a3-7-q14",
           "lessonId": "A3.7",
           "unitCode": "A3",
-          "prompt": "Repair a solution that performs the final step before completing “Add 1 throughout and then divide throughout by 2.” in the worked case.",
+          "prompt": "Repair a solution that skips “A nonnegative expression cannot equal −4.” while solving: Solve |2x − 7| = −4.",
           "responseType": "open-response",
           "skill": "Derive point, interval, or exterior solutions from distance meaning.",
           "purpose": "transfer",
@@ -4657,7 +4659,7 @@
           "id": "a3-7-q18",
           "lessonId": "A3.7",
           "unitCode": "A3",
-          "prompt": "Compare the answer to Solve |2x − 1| < 5 and express the result as an interval. with this lesson outcome—Derive point, interval, or exterior solutions from distance meaning. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Derive point, interval, or exterior solutions from distance meaning. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Derive point, interval, or exterior solutions from distance meaning.",
           "purpose": "modeling",
@@ -4681,7 +4683,7 @@
           "id": "a3-7-q19",
           "lessonId": "A3.7",
           "unitCode": "A3",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. Solve |2x − 1| < 5 and express the result as an interval.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Solve |3x + 2| ≥ 8.",
           "responseType": "open-response",
           "skill": "Derive point, interval, or exterior solutions from distance meaning.",
           "purpose": "error-analysis",
@@ -4705,7 +4707,7 @@
           "id": "a3-7-q20",
           "lessonId": "A3.7",
           "unitCode": "A3",
-          "prompt": "Exit check: write a compact method-and-check summary for absolute-value equations and inequalities, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Solve |2x − 7| = −4.",
           "responseType": "open-response",
           "skill": "Derive point, interval, or exterior solutions from distance meaning.",
           "purpose": "exit",
@@ -4766,10 +4768,10 @@
       "title": "Literal equations and formulas",
       "path": "/subjects/math/algebra/inequalities-absolute-value/literal-equations-and-formulas/",
       "outcome": "Isolate a specified variable while preserving the relationship and units.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Rearrange geometry, rate, or science formulas for the needed quantity.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn literal equations and formulas as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn literal equations and formulas as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Isolate a specified variable while preserving the relationship and units.",
@@ -4821,7 +4823,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "Solve A = (1/2)h(b₁ + b₂) for h and state the required condition.",
           "steps": [
             "Multiply both sides by 2 to obtain 2A = h(b₁ + b₂).",
@@ -4832,26 +4834,26 @@
           "interpretation": "Rearranging a formula preserves the relationship while making the requested quantity and its restrictions explicit."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Use an inequality, interval notation, and a number-line description; each must show the same endpoints, inclusion, and direction.",
+          "kind": "worked-example-2",
+          "prompt": "Solve the perimeter formula P = 2l + 2w for w.",
           "steps": [
-            "First solve the original case and retain the exact result h = 2A/(b₁ + b₂), provided b₁ + b₂ ≠ 0..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "Subtract 2l from both sides: P − 2l = 2w.",
+            "Divide by 2.",
+            "Check by substituting the result back into the perimeter formula."
           ],
-          "answer": "The second representation must preserve h = 2A/(b₁ + b₂), provided b₁ + b₂ ≠ 0..",
-          "interpretation": "Rearranging a formula preserves the relationship while making the requested quantity and its restrictions explicit. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "w = (P − 2l)/2 = P/2 − l.",
+          "interpretation": "Both equivalent forms isolate width while preserving the length units."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “h = 2A/(b₁ + b₂), provided b₁ + b₂ ≠ 0.” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "Solve v = u + at for t and state the restriction.",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Test a value inside the proposed set, a value outside it, and every boundary value in the original condition.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "Subtract u from both sides to obtain v − u = at.",
+            "Divide by a.",
+            "State the nonzero condition required by that division."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms h = 2A/(b₁ + b₂), provided b₁ + b₂ ≠ 0..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "t = (v − u)/a, provided a ≠ 0.",
+          "interpretation": "A literal-equation solution must retain the condition under which the isolating division is legal."
         }
       ],
       "figures": [
@@ -4895,7 +4897,7 @@
       ],
       "checkpoint": {
         "id": "a3-8-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for literal equations and formulas, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. Solve v = u + at for t and state the restriction.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -5045,7 +5047,7 @@
           "id": "a3-8-q06",
           "lessonId": "A3.8",
           "unitCode": "A3",
-          "prompt": "Complete the calculation after the first step “Multiply both sides by 2 to obtain 2A = h(b₁ + b₂).” and show the missing algebra.",
+          "prompt": "Solve the perimeter formula P = 2l + 2w for w.",
           "responseType": "open-response",
           "skill": "Isolate a specified variable while preserving the relationship and units.",
           "purpose": "procedure",
@@ -5069,7 +5071,7 @@
           "id": "a3-8-q07",
           "lessonId": "A3.8",
           "unitCode": "A3",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: Solve A = (1/2)h(b₁ + b₂) for h and state the required condition.",
+          "prompt": "Solve v = u + at for t and state the restriction.",
           "responseType": "open-response",
           "skill": "Isolate a specified variable while preserving the relationship and units.",
           "purpose": "procedure",
@@ -5117,7 +5119,7 @@
           "id": "a3-8-q09",
           "lessonId": "A3.8",
           "unitCode": "A3",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: Solve A = (1/2)h(b₁ + b₂) for h and state the required condition.",
+          "prompt": "Complete the calculation after “Subtract 2l from both sides: P − 2l = 2w.” in this problem: Solve the perimeter formula P = 2l + 2w for w.",
           "responseType": "open-response",
           "skill": "Isolate a specified variable while preserving the relationship and units.",
           "purpose": "procedure",
@@ -5141,7 +5143,7 @@
           "id": "a3-8-q10",
           "lessonId": "A3.8",
           "unitCode": "A3",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: Solve A = (1/2)h(b₁ + b₂) for h and state the required condition.",
+          "prompt": "Name and justify the most efficient first move, then solve: Solve v = u + at for t and state the restriction.",
           "responseType": "open-response",
           "skill": "Isolate a specified variable while preserving the relationship and units.",
           "purpose": "procedure",
@@ -5165,7 +5167,7 @@
           "id": "a3-8-q11",
           "lessonId": "A3.8",
           "unitCode": "A3",
-          "prompt": "Build the second representation requested here: Use an inequality, interval notation, and a number-line description; each must show the same endpoints, inclusion, and direction. Use the worked case Solve A = (1/2)h(b₁ + b₂) for h and state the required condition.",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: Solve the perimeter formula P = 2l + 2w for w. Solve v = u + at for t and state the restriction.",
           "responseType": "open-response",
           "skill": "Isolate a specified variable while preserving the relationship and units.",
           "purpose": "representation",
@@ -5189,7 +5191,7 @@
           "id": "a3-8-q12",
           "lessonId": "A3.8",
           "unitCode": "A3",
-          "prompt": "For literal equations and formulas, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: Solve A = (1/2)h(b₁ + b₂) for h and state the required condition.",
+          "prompt": "Create the representation most useful for checking this result: Solve the perimeter formula P = 2l + 2w for w. Use an inequality, interval notation, and a number-line description; each must show the same endpoints, inclusion, and direction.",
           "responseType": "open-response",
           "skill": "Isolate a specified variable while preserving the relationship and units.",
           "purpose": "representation",
@@ -5237,7 +5239,7 @@
           "id": "a3-8-q14",
           "lessonId": "A3.8",
           "unitCode": "A3",
-          "prompt": "Repair a solution that performs the final step before completing “Divide by b₁ + b₂.” in the worked case.",
+          "prompt": "Repair a solution that skips “Divide by a.” while solving: Solve v = u + at for t and state the restriction.",
           "responseType": "open-response",
           "skill": "Isolate a specified variable while preserving the relationship and units.",
           "purpose": "transfer",
@@ -5333,7 +5335,7 @@
           "id": "a3-8-q18",
           "lessonId": "A3.8",
           "unitCode": "A3",
-          "prompt": "Compare the answer to Solve A = (1/2)h(b₁ + b₂) for h and state the required condition. with this lesson outcome—Isolate a specified variable while preserving the relationship and units. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Isolate a specified variable while preserving the relationship and units. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Isolate a specified variable while preserving the relationship and units.",
           "purpose": "modeling",
@@ -5357,7 +5359,7 @@
           "id": "a3-8-q19",
           "lessonId": "A3.8",
           "unitCode": "A3",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. Solve A = (1/2)h(b₁ + b₂) for h and state the required condition.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Solve the perimeter formula P = 2l + 2w for w.",
           "responseType": "open-response",
           "skill": "Isolate a specified variable while preserving the relationship and units.",
           "purpose": "error-analysis",
@@ -5381,7 +5383,7 @@
           "id": "a3-8-q20",
           "lessonId": "A3.8",
           "unitCode": "A3",
-          "prompt": "Exit check: write a compact method-and-check summary for literal equations and formulas, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Solve v = u + at for t and state the restriction.",
           "responseType": "open-response",
           "skill": "Isolate a specified variable while preserving the relationship and units.",
           "purpose": "exit",

@@ -37,10 +37,10 @@
       "title": "Polynomial vocabulary and evaluation",
       "path": "/subjects/math/algebra/polynomial-operations/polynomial-vocabulary-and-evaluation/",
       "outcome": "Identify degree, leading term, coefficients, and standard form and distinguish polynomials from other expressions.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Sort a collection of algebraic expressions by structure.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn polynomial vocabulary and evaluation as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn polynomial vocabulary and evaluation as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Identify degree, leading term, coefficients, and standard form and distinguish polynomials from other expressions.",
@@ -92,7 +92,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "Write 4 − 3x³ + 2x − 7x⁵ in standard form and identify its degree and leading coefficient.",
           "steps": [
             "Order terms by descending exponent.",
@@ -103,26 +103,26 @@
           "interpretation": "Standard form makes a polynomial’s leading behavior and missing powers visible."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Use standard form, an area or multiplication grid when helpful, and the expanded/factored identity.",
+          "kind": "worked-example-2",
+          "prompt": "For p(x) = −3x⁴ + 2x² − 7, identify the degree, leading coefficient, constant term, and p(−2).",
           "steps": [
-            "First solve the original case and retain the exact result −7x⁵ − 3x³ + 2x + 4; degree 5; leading coefficient −7..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "Read the highest exponent 4 and its coefficient −3.",
+            "The constant term is −7.",
+            "Substitute −2 with parentheses and evaluate each power."
           ],
-          "answer": "The second representation must preserve −7x⁵ − 3x³ + 2x + 4; degree 5; leading coefficient −7..",
-          "interpretation": "Standard form makes a polynomial’s leading behavior and missing powers visible. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "Degree 4, leading coefficient −3, constant −7, and p(−2) = −47.",
+          "interpretation": "Vocabulary describes structure, while evaluation turns the polynomial into a numerical output."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “−7x⁵ − 3x³ + 2x + 4; degree 5; leading coefficient −7.” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "Write 5 − 2x³ + 7x − x⁵ in standard form and classify it by degree.",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Reverse the operation: subtract to check addition, expand to check multiplication patterns, or reconstruct dividend = divisor·quotient + remainder.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "Order terms from greatest exponent to least.",
+            "Preserve each coefficient and sign.",
+            "Read the highest remaining exponent."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms −7x⁵ − 3x³ + 2x + 4; degree 5; leading coefficient −7..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "−x⁵ − 2x³ + 7x + 5; degree 5.",
+          "interpretation": "Standard form makes the leading term and degree immediately visible."
         }
       ],
       "figures": [
@@ -166,7 +166,7 @@
       ],
       "checkpoint": {
         "id": "a7-1-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for polynomial vocabulary and evaluation, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. Write 5 − 2x³ + 7x − x⁵ in standard form and classify it by degree.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -316,7 +316,7 @@
           "id": "a7-1-q06",
           "lessonId": "A7.1",
           "unitCode": "A7",
-          "prompt": "Complete the calculation after the first step “Order terms by descending exponent.” and show the missing algebra.",
+          "prompt": "For p(x) = −3x⁴ + 2x² − 7, identify the degree, leading coefficient, constant term, and p(−2).",
           "responseType": "open-response",
           "skill": "Identify degree, leading term, coefficients, and standard form and distinguish polynomials from other expressions.",
           "purpose": "procedure",
@@ -340,7 +340,7 @@
           "id": "a7-1-q07",
           "lessonId": "A7.1",
           "unitCode": "A7",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: Write 4 − 3x³ + 2x − 7x⁵ in standard form and identify its degree and leading coefficient.",
+          "prompt": "Write 5 − 2x³ + 7x − x⁵ in standard form and classify it by degree.",
           "responseType": "open-response",
           "skill": "Identify degree, leading term, coefficients, and standard form and distinguish polynomials from other expressions.",
           "purpose": "procedure",
@@ -388,7 +388,7 @@
           "id": "a7-1-q09",
           "lessonId": "A7.1",
           "unitCode": "A7",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: Write 4 − 3x³ + 2x − 7x⁵ in standard form and identify its degree and leading coefficient.",
+          "prompt": "Complete the calculation after “Read the highest exponent 4 and its coefficient −3.” in this problem: For p(x) = −3x⁴ + 2x² − 7, identify the degree, leading coefficient, constant term, and p(−2).",
           "responseType": "open-response",
           "skill": "Identify degree, leading term, coefficients, and standard form and distinguish polynomials from other expressions.",
           "purpose": "procedure",
@@ -412,7 +412,7 @@
           "id": "a7-1-q10",
           "lessonId": "A7.1",
           "unitCode": "A7",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: Write 4 − 3x³ + 2x − 7x⁵ in standard form and identify its degree and leading coefficient.",
+          "prompt": "Name and justify the most efficient first move, then solve: Write 5 − 2x³ + 7x − x⁵ in standard form and classify it by degree.",
           "responseType": "open-response",
           "skill": "Identify degree, leading term, coefficients, and standard form and distinguish polynomials from other expressions.",
           "purpose": "procedure",
@@ -436,7 +436,7 @@
           "id": "a7-1-q11",
           "lessonId": "A7.1",
           "unitCode": "A7",
-          "prompt": "Build the second representation requested here: Use standard form, an area or multiplication grid when helpful, and the expanded/factored identity. Use the worked case Write 4 − 3x³ + 2x − 7x⁵ in standard form and identify its degree and leading coefficient.",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: For p(x) = −3x⁴ + 2x² − 7, identify the degree, leading coefficient, constant term, and p(−2). Write 5 − 2x³ + 7x − x⁵ in standard form and classify it by degree.",
           "responseType": "open-response",
           "skill": "Identify degree, leading term, coefficients, and standard form and distinguish polynomials from other expressions.",
           "purpose": "representation",
@@ -460,7 +460,7 @@
           "id": "a7-1-q12",
           "lessonId": "A7.1",
           "unitCode": "A7",
-          "prompt": "For polynomial vocabulary and evaluation, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: Write 4 − 3x³ + 2x − 7x⁵ in standard form and identify its degree and leading coefficient.",
+          "prompt": "Create the representation most useful for checking this result: For p(x) = −3x⁴ + 2x² − 7, identify the degree, leading coefficient, constant term, and p(−2). Use standard form, an area or multiplication grid when helpful, and the expanded/factored identity.",
           "responseType": "open-response",
           "skill": "Identify degree, leading term, coefficients, and standard form and distinguish polynomials from other expressions.",
           "purpose": "representation",
@@ -508,7 +508,7 @@
           "id": "a7-1-q14",
           "lessonId": "A7.1",
           "unitCode": "A7",
-          "prompt": "Repair a solution that performs the final step before completing “Locate the highest nonzero power.” in the worked case.",
+          "prompt": "Repair a solution that skips “Preserve each coefficient and sign.” while solving: Write 5 − 2x³ + 7x − x⁵ in standard form and classify it by degree.",
           "responseType": "open-response",
           "skill": "Identify degree, leading term, coefficients, and standard form and distinguish polynomials from other expressions.",
           "purpose": "transfer",
@@ -604,7 +604,7 @@
           "id": "a7-1-q18",
           "lessonId": "A7.1",
           "unitCode": "A7",
-          "prompt": "Compare the answer to Write 4 − 3x³ + 2x − 7x⁵ in standard form and identify its degree and leading coefficient. with this lesson outcome—Identify degree, leading term, coefficients, and standard form and distinguish polynomials from other expressions. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Identify degree, leading term, coefficients, and standard form and distinguish polynomials from other expressions. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Identify degree, leading term, coefficients, and standard form and distinguish polynomials from other expressions.",
           "purpose": "modeling",
@@ -628,7 +628,7 @@
           "id": "a7-1-q19",
           "lessonId": "A7.1",
           "unitCode": "A7",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. Write 4 − 3x³ + 2x − 7x⁵ in standard form and identify its degree and leading coefficient.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. For p(x) = −3x⁴ + 2x² − 7, identify the degree, leading coefficient, constant term, and p(−2).",
           "responseType": "open-response",
           "skill": "Identify degree, leading term, coefficients, and standard form and distinguish polynomials from other expressions.",
           "purpose": "error-analysis",
@@ -652,7 +652,7 @@
           "id": "a7-1-q20",
           "lessonId": "A7.1",
           "unitCode": "A7",
-          "prompt": "Exit check: write a compact method-and-check summary for polynomial vocabulary and evaluation, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Write 5 − 2x³ + 7x − x⁵ in standard form and classify it by degree.",
           "responseType": "open-response",
           "skill": "Identify degree, leading term, coefficients, and standard form and distinguish polynomials from other expressions.",
           "purpose": "exit",
@@ -710,10 +710,10 @@
       "title": "Adding and subtracting polynomials",
       "path": "/subjects/math/algebra/polynomial-operations/adding-and-subtracting-polynomials/",
       "outcome": "Combine like powers while preserving signs and missing terms.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Combine two changing quantities represented by polynomials.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn adding and subtracting polynomials as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn adding and subtracting polynomials as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Combine like powers while preserving signs and missing terms.",
@@ -765,7 +765,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "Simplify (3x³ − 2x + 5) − (x³ + 4x² − 7x − 1).",
           "steps": [
             "Distribute the subtraction sign to every term in the second polynomial.",
@@ -776,26 +776,26 @@
           "interpretation": "Polynomial subtraction changes every sign in the subtracted expression before like terms combine."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Use standard form, an area or multiplication grid when helpful, and the expanded/factored identity.",
+          "kind": "worked-example-2",
+          "prompt": "Simplify (4x³ − 2x² + 7x − 1) + (−x³ + 5x² − 3).",
           "steps": [
-            "First solve the original case and retain the exact result 2x³ − 4x² + 5x + 6..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "Group terms with identical variable parts.",
+            "Add their coefficients.",
+            "Write the result in descending powers."
           ],
-          "answer": "The second representation must preserve 2x³ − 4x² + 5x + 6..",
-          "interpretation": "Polynomial subtraction changes every sign in the subtracted expression before like terms combine. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "3x³ + 3x² + 7x − 4.",
+          "interpretation": "Only like terms combine because only they represent the same algebraic quantity."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “2x³ − 4x² + 5x + 6.” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "Subtract (2a² − 5a + 8) − (−3a² + a − 4).",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Reverse the operation: subtract to check addition, expand to check multiplication patterns, or reconstruct dividend = divisor·quotient + remainder.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "Distribute the subtraction sign to every term in the second polynomial.",
+            "Combine a² terms, a terms, and constants.",
+            "Check by adding the second polynomial back to the difference."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms 2x³ − 4x² + 5x + 6..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "5a² − 6a + 12.",
+          "interpretation": "Polynomial subtraction means adding the opposite of the entire subtracted polynomial."
         }
       ],
       "figures": [
@@ -839,7 +839,7 @@
       ],
       "checkpoint": {
         "id": "a7-2-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for adding and subtracting polynomials, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. Subtract (2a² − 5a + 8) − (−3a² + a − 4).",
         "responseType": "open-response"
       },
       "exercises": [
@@ -989,7 +989,7 @@
           "id": "a7-2-q06",
           "lessonId": "A7.2",
           "unitCode": "A7",
-          "prompt": "Complete the calculation after the first step “Distribute the subtraction sign to every term in the second polynomial.” and show the missing algebra.",
+          "prompt": "Simplify (4x³ − 2x² + 7x − 1) + (−x³ + 5x² − 3).",
           "responseType": "open-response",
           "skill": "Combine like powers while preserving signs and missing terms.",
           "purpose": "procedure",
@@ -1013,7 +1013,7 @@
           "id": "a7-2-q07",
           "lessonId": "A7.2",
           "unitCode": "A7",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: Simplify (3x³ − 2x + 5) − (x³ + 4x² − 7x − 1).",
+          "prompt": "Subtract (2a² − 5a + 8) − (−3a² + a − 4).",
           "responseType": "open-response",
           "skill": "Combine like powers while preserving signs and missing terms.",
           "purpose": "procedure",
@@ -1061,7 +1061,7 @@
           "id": "a7-2-q09",
           "lessonId": "A7.2",
           "unitCode": "A7",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: Simplify (3x³ − 2x + 5) − (x³ + 4x² − 7x − 1).",
+          "prompt": "Complete the calculation after “Group terms with identical variable parts.” in this problem: Simplify (4x³ − 2x² + 7x − 1) + (−x³ + 5x² − 3).",
           "responseType": "open-response",
           "skill": "Combine like powers while preserving signs and missing terms.",
           "purpose": "procedure",
@@ -1085,7 +1085,7 @@
           "id": "a7-2-q10",
           "lessonId": "A7.2",
           "unitCode": "A7",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: Simplify (3x³ − 2x + 5) − (x³ + 4x² − 7x − 1).",
+          "prompt": "Name and justify the most efficient first move, then solve: Subtract (2a² − 5a + 8) − (−3a² + a − 4).",
           "responseType": "open-response",
           "skill": "Combine like powers while preserving signs and missing terms.",
           "purpose": "procedure",
@@ -1109,7 +1109,7 @@
           "id": "a7-2-q11",
           "lessonId": "A7.2",
           "unitCode": "A7",
-          "prompt": "Build the second representation requested here: Use standard form, an area or multiplication grid when helpful, and the expanded/factored identity. Use the worked case Simplify (3x³ − 2x + 5) − (x³ + 4x² − 7x − 1).",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: Simplify (4x³ − 2x² + 7x − 1) + (−x³ + 5x² − 3). Subtract (2a² − 5a + 8) − (−3a² + a − 4).",
           "responseType": "open-response",
           "skill": "Combine like powers while preserving signs and missing terms.",
           "purpose": "representation",
@@ -1133,7 +1133,7 @@
           "id": "a7-2-q12",
           "lessonId": "A7.2",
           "unitCode": "A7",
-          "prompt": "For adding and subtracting polynomials, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: Simplify (3x³ − 2x + 5) − (x³ + 4x² − 7x − 1).",
+          "prompt": "Create the representation most useful for checking this result: Simplify (4x³ − 2x² + 7x − 1) + (−x³ + 5x² − 3). Use standard form, an area or multiplication grid when helpful, and the expanded/factored identity.",
           "responseType": "open-response",
           "skill": "Combine like powers while preserving signs and missing terms.",
           "purpose": "representation",
@@ -1181,7 +1181,7 @@
           "id": "a7-2-q14",
           "lessonId": "A7.2",
           "unitCode": "A7",
-          "prompt": "Repair a solution that performs the final step before completing “Align like powers, including missing powers.” in the worked case.",
+          "prompt": "Repair a solution that skips “Combine a² terms, a terms, and constants.” while solving: Subtract (2a² − 5a + 8) − (−3a² + a − 4).",
           "responseType": "open-response",
           "skill": "Combine like powers while preserving signs and missing terms.",
           "purpose": "transfer",
@@ -1277,7 +1277,7 @@
           "id": "a7-2-q18",
           "lessonId": "A7.2",
           "unitCode": "A7",
-          "prompt": "Compare the answer to Simplify (3x³ − 2x + 5) − (x³ + 4x² − 7x − 1). with this lesson outcome—Combine like powers while preserving signs and missing terms. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Combine like powers while preserving signs and missing terms. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Combine like powers while preserving signs and missing terms.",
           "purpose": "modeling",
@@ -1301,7 +1301,7 @@
           "id": "a7-2-q19",
           "lessonId": "A7.2",
           "unitCode": "A7",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. Simplify (3x³ − 2x + 5) − (x³ + 4x² − 7x − 1).",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Simplify (4x³ − 2x² + 7x − 1) + (−x³ + 5x² − 3).",
           "responseType": "open-response",
           "skill": "Combine like powers while preserving signs and missing terms.",
           "purpose": "error-analysis",
@@ -1325,7 +1325,7 @@
           "id": "a7-2-q20",
           "lessonId": "A7.2",
           "unitCode": "A7",
-          "prompt": "Exit check: write a compact method-and-check summary for adding and subtracting polynomials, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Subtract (2a² − 5a + 8) − (−3a² + a − 4).",
           "responseType": "open-response",
           "skill": "Combine like powers while preserving signs and missing terms.",
           "purpose": "exit",
@@ -1386,10 +1386,10 @@
       "title": "Multiplying monomials",
       "path": "/subjects/math/algebra/polynomial-operations/multiplying-monomials/",
       "outcome": "Combine coefficients and like bases using exponent laws.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Scale a monomial quantity.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn multiplying monomials as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn multiplying monomials as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Combine coefficients and like bases using exponent laws.",
@@ -1441,7 +1441,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "Multiply (−3x⁴y²)(5x³y⁵).",
           "steps": [
             "Multiply the numerical coefficients.",
@@ -1452,26 +1452,26 @@
           "interpretation": "Monomial multiplication combines coefficients and counts repeated factors of each common base."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Use standard form, an area or multiplication grid when helpful, and the expanded/factored identity.",
+          "kind": "worked-example-2",
+          "prompt": "Multiply (−4x³y²)(3x⁵y⁻¹) and use positive exponents.",
           "steps": [
-            "First solve the original case and retain the exact result −15x⁷y⁷..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "Multiply coefficients to obtain −12.",
+            "Add exponents of x and of y.",
+            "Simplify y²y⁻¹ to y."
           ],
-          "answer": "The second representation must preserve −15x⁷y⁷..",
-          "interpretation": "Monomial multiplication combines coefficients and counts repeated factors of each common base. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "−12x⁸y.",
+          "interpretation": "Monomial multiplication combines numerical factors and repeated factors independently."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “−15x⁷y⁷.” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "Find the area of a rectangle with side lengths 6a²b and 5ab³.",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Reverse the operation: subtract to check addition, expand to check multiplication patterns, or reconstruct dividend = divisor·quotient + remainder.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "Multiply the coefficients 6 and 5.",
+            "Add exponents of matching bases.",
+            "Attach square units to the product."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms −15x⁷y⁷..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "30a³b⁴ square units.",
+          "interpretation": "A geometric product follows the same monomial laws while retaining its dimensional meaning."
         }
       ],
       "figures": [
@@ -1515,7 +1515,7 @@
       ],
       "checkpoint": {
         "id": "a7-3-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for multiplying monomials, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. Find the area of a rectangle with side lengths 6a²b and 5ab³.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -1665,7 +1665,7 @@
           "id": "a7-3-q06",
           "lessonId": "A7.3",
           "unitCode": "A7",
-          "prompt": "Complete the calculation after the first step “Multiply the numerical coefficients.” and show the missing algebra.",
+          "prompt": "Multiply (−4x³y²)(3x⁵y⁻¹) and use positive exponents.",
           "responseType": "open-response",
           "skill": "Combine coefficients and like bases using exponent laws.",
           "purpose": "procedure",
@@ -1689,7 +1689,7 @@
           "id": "a7-3-q07",
           "lessonId": "A7.3",
           "unitCode": "A7",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: Multiply (−3x⁴y²)(5x³y⁵).",
+          "prompt": "Find the area of a rectangle with side lengths 6a²b and 5ab³.",
           "responseType": "open-response",
           "skill": "Combine coefficients and like bases using exponent laws.",
           "purpose": "procedure",
@@ -1737,7 +1737,7 @@
           "id": "a7-3-q09",
           "lessonId": "A7.3",
           "unitCode": "A7",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: Multiply (−3x⁴y²)(5x³y⁵).",
+          "prompt": "Complete the calculation after “Multiply coefficients to obtain −12.” in this problem: Multiply (−4x³y²)(3x⁵y⁻¹) and use positive exponents.",
           "responseType": "open-response",
           "skill": "Combine coefficients and like bases using exponent laws.",
           "purpose": "procedure",
@@ -1761,7 +1761,7 @@
           "id": "a7-3-q10",
           "lessonId": "A7.3",
           "unitCode": "A7",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: Multiply (−3x⁴y²)(5x³y⁵).",
+          "prompt": "Name and justify the most efficient first move, then solve: Find the area of a rectangle with side lengths 6a²b and 5ab³.",
           "responseType": "open-response",
           "skill": "Combine coefficients and like bases using exponent laws.",
           "purpose": "procedure",
@@ -1785,7 +1785,7 @@
           "id": "a7-3-q11",
           "lessonId": "A7.3",
           "unitCode": "A7",
-          "prompt": "Build the second representation requested here: Use standard form, an area or multiplication grid when helpful, and the expanded/factored identity. Use the worked case Multiply (−3x⁴y²)(5x³y⁵).",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: Multiply (−4x³y²)(3x⁵y⁻¹) and use positive exponents. Find the area of a rectangle with side lengths 6a²b and 5ab³.",
           "responseType": "open-response",
           "skill": "Combine coefficients and like bases using exponent laws.",
           "purpose": "representation",
@@ -1809,7 +1809,7 @@
           "id": "a7-3-q12",
           "lessonId": "A7.3",
           "unitCode": "A7",
-          "prompt": "For multiplying monomials, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: Multiply (−3x⁴y²)(5x³y⁵).",
+          "prompt": "Create the representation most useful for checking this result: Multiply (−4x³y²)(3x⁵y⁻¹) and use positive exponents. Use standard form, an area or multiplication grid when helpful, and the expanded/factored identity.",
           "responseType": "open-response",
           "skill": "Combine coefficients and like bases using exponent laws.",
           "purpose": "representation",
@@ -1857,7 +1857,7 @@
           "id": "a7-3-q14",
           "lessonId": "A7.3",
           "unitCode": "A7",
-          "prompt": "Repair a solution that performs the final step before completing “Add exponents of the common base x.” in the worked case.",
+          "prompt": "Repair a solution that skips “Add exponents of matching bases.” while solving: Find the area of a rectangle with side lengths 6a²b and 5ab³.",
           "responseType": "open-response",
           "skill": "Combine coefficients and like bases using exponent laws.",
           "purpose": "transfer",
@@ -1953,7 +1953,7 @@
           "id": "a7-3-q18",
           "lessonId": "A7.3",
           "unitCode": "A7",
-          "prompt": "Compare the answer to Multiply (−3x⁴y²)(5x³y⁵). with this lesson outcome—Combine coefficients and like bases using exponent laws. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Combine coefficients and like bases using exponent laws. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Combine coefficients and like bases using exponent laws.",
           "purpose": "modeling",
@@ -1977,7 +1977,7 @@
           "id": "a7-3-q19",
           "lessonId": "A7.3",
           "unitCode": "A7",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. Multiply (−3x⁴y²)(5x³y⁵).",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Multiply (−4x³y²)(3x⁵y⁻¹) and use positive exponents.",
           "responseType": "open-response",
           "skill": "Combine coefficients and like bases using exponent laws.",
           "purpose": "error-analysis",
@@ -2001,7 +2001,7 @@
           "id": "a7-3-q20",
           "lessonId": "A7.3",
           "unitCode": "A7",
-          "prompt": "Exit check: write a compact method-and-check summary for multiplying monomials, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Find the area of a rectangle with side lengths 6a²b and 5ab³.",
           "responseType": "open-response",
           "skill": "Combine coefficients and like bases using exponent laws.",
           "purpose": "exit",
@@ -2062,10 +2062,10 @@
       "title": "Monomial times polynomial",
       "path": "/subjects/math/algebra/polynomial-operations/monomial-times-polynomial/",
       "outcome": "Distribute one factor to every term and factor back to verify.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Expand the area of a rectangle with an algebraic side.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn monomial times polynomial as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn monomial times polynomial as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Distribute one factor to every term and factor back to verify.",
@@ -2117,7 +2117,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "Expand −2x³(4x² − 3x + 5).",
           "steps": [
             "Multiply −2x³ by each of the three terms.",
@@ -2128,26 +2128,26 @@
           "interpretation": "Distribution creates one product term for every term in the grouped polynomial."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Use standard form, an area or multiplication grid when helpful, and the expanded/factored identity.",
+          "kind": "worked-example-2",
+          "prompt": "Expand −3x²(2x³ − 5x + 4).",
           "steps": [
-            "First solve the original case and retain the exact result −8x⁵ + 6x⁴ − 10x³..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "Multiply −3x² by each term inside the parentheses.",
+            "Multiply coefficients and add exponents of x.",
+            "Preserve the signs of all three products."
           ],
-          "answer": "The second representation must preserve −8x⁵ + 6x⁴ − 10x³..",
-          "interpretation": "Distribution creates one product term for every term in the grouped polynomial. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "−6x⁵ + 15x³ − 12x².",
+          "interpretation": "The distributive property requires the monomial to reach every polynomial term."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “−8x⁵ + 6x⁴ − 10x³.” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "Factor-check the expansion 4ab(3a² − 2ab + b²).",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Reverse the operation: subtract to check addition, expand to check multiplication patterns, or reconstruct dividend = divisor·quotient + remainder.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "Distribute 4ab across the three terms.",
+            "Obtain 12a³b, −8a²b², and 4ab³.",
+            "Factor 4ab back out to verify the original form."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms −8x⁵ + 6x⁴ − 10x³..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "12a³b − 8a²b² + 4ab³.",
+          "interpretation": "Expansion and common-factor extraction are inverse operations."
         }
       ],
       "figures": [
@@ -2191,7 +2191,7 @@
       ],
       "checkpoint": {
         "id": "a7-4-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for monomial times polynomial, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. Factor-check the expansion 4ab(3a² − 2ab + b²).",
         "responseType": "open-response"
       },
       "exercises": [
@@ -2341,7 +2341,7 @@
           "id": "a7-4-q06",
           "lessonId": "A7.4",
           "unitCode": "A7",
-          "prompt": "Complete the calculation after the first step “Multiply −2x³ by each of the three terms.” and show the missing algebra.",
+          "prompt": "Expand −3x²(2x³ − 5x + 4).",
           "responseType": "open-response",
           "skill": "Distribute one factor to every term and factor back to verify.",
           "purpose": "procedure",
@@ -2365,7 +2365,7 @@
           "id": "a7-4-q07",
           "lessonId": "A7.4",
           "unitCode": "A7",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: Expand −2x³(4x² − 3x + 5).",
+          "prompt": "Factor-check the expansion 4ab(3a² − 2ab + b²).",
           "responseType": "open-response",
           "skill": "Distribute one factor to every term and factor back to verify.",
           "purpose": "procedure",
@@ -2413,7 +2413,7 @@
           "id": "a7-4-q09",
           "lessonId": "A7.4",
           "unitCode": "A7",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: Expand −2x³(4x² − 3x + 5).",
+          "prompt": "Complete the calculation after “Multiply −3x² by each term inside the parentheses.” in this problem: Expand −3x²(2x³ − 5x + 4).",
           "responseType": "open-response",
           "skill": "Distribute one factor to every term and factor back to verify.",
           "purpose": "procedure",
@@ -2437,7 +2437,7 @@
           "id": "a7-4-q10",
           "lessonId": "A7.4",
           "unitCode": "A7",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: Expand −2x³(4x² − 3x + 5).",
+          "prompt": "Name and justify the most efficient first move, then solve: Factor-check the expansion 4ab(3a² − 2ab + b²).",
           "responseType": "open-response",
           "skill": "Distribute one factor to every term and factor back to verify.",
           "purpose": "procedure",
@@ -2461,7 +2461,7 @@
           "id": "a7-4-q11",
           "lessonId": "A7.4",
           "unitCode": "A7",
-          "prompt": "Build the second representation requested here: Use standard form, an area or multiplication grid when helpful, and the expanded/factored identity. Use the worked case Expand −2x³(4x² − 3x + 5).",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: Expand −3x²(2x³ − 5x + 4). Factor-check the expansion 4ab(3a² − 2ab + b²).",
           "responseType": "open-response",
           "skill": "Distribute one factor to every term and factor back to verify.",
           "purpose": "representation",
@@ -2485,7 +2485,7 @@
           "id": "a7-4-q12",
           "lessonId": "A7.4",
           "unitCode": "A7",
-          "prompt": "For monomial times polynomial, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: Expand −2x³(4x² − 3x + 5).",
+          "prompt": "Create the representation most useful for checking this result: Expand −3x²(2x³ − 5x + 4). Use standard form, an area or multiplication grid when helpful, and the expanded/factored identity.",
           "responseType": "open-response",
           "skill": "Distribute one factor to every term and factor back to verify.",
           "purpose": "representation",
@@ -2533,7 +2533,7 @@
           "id": "a7-4-q14",
           "lessonId": "A7.4",
           "unitCode": "A7",
-          "prompt": "Repair a solution that performs the final step before completing “Multiply coefficients and add exponents for each product.” in the worked case.",
+          "prompt": "Repair a solution that skips “Obtain 12a³b, −8a²b², and 4ab³.” while solving: Factor-check the expansion 4ab(3a² − 2ab + b²).",
           "responseType": "open-response",
           "skill": "Distribute one factor to every term and factor back to verify.",
           "purpose": "transfer",
@@ -2629,7 +2629,7 @@
           "id": "a7-4-q18",
           "lessonId": "A7.4",
           "unitCode": "A7",
-          "prompt": "Compare the answer to Expand −2x³(4x² − 3x + 5). with this lesson outcome—Distribute one factor to every term and factor back to verify. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Distribute one factor to every term and factor back to verify. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Distribute one factor to every term and factor back to verify.",
           "purpose": "modeling",
@@ -2653,7 +2653,7 @@
           "id": "a7-4-q19",
           "lessonId": "A7.4",
           "unitCode": "A7",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. Expand −2x³(4x² − 3x + 5).",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Expand −3x²(2x³ − 5x + 4).",
           "responseType": "open-response",
           "skill": "Distribute one factor to every term and factor back to verify.",
           "purpose": "error-analysis",
@@ -2677,7 +2677,7 @@
           "id": "a7-4-q20",
           "lessonId": "A7.4",
           "unitCode": "A7",
-          "prompt": "Exit check: write a compact method-and-check summary for monomial times polynomial, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Factor-check the expansion 4ab(3a² − 2ab + b²).",
           "responseType": "open-response",
           "skill": "Distribute one factor to every term and factor back to verify.",
           "purpose": "exit",
@@ -2738,10 +2738,10 @@
       "title": "Polynomial times polynomial",
       "path": "/subjects/math/algebra/polynomial-operations/polynomial-times-polynomial/",
       "outcome": "Organize all pairwise products through general distribution.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Multiply two algebraic side lengths.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn polynomial times polynomial as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn polynomial times polynomial as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Organize all pairwise products through general distribution.",
@@ -2793,7 +2793,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "Expand (2x − 3)(x² + 4x − 5).",
           "steps": [
             "Multiply 2x by every term in the second factor.",
@@ -2804,26 +2804,26 @@
           "interpretation": "General distribution accounts for every pair of terms across the two factors."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Use standard form, an area or multiplication grid when helpful, and the expanded/factored identity.",
+          "kind": "worked-example-2",
+          "prompt": "Multiply (2x − 3)(x² + 4x − 5).",
           "steps": [
-            "First solve the original case and retain the exact result 2x³ + 5x² − 22x + 15..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "Distribute 2x across the trinomial.",
+            "Distribute −3 across the trinomial.",
+            "Combine the like x² and x terms."
           ],
-          "answer": "The second representation must preserve 2x³ + 5x² − 22x + 15..",
-          "interpretation": "General distribution accounts for every pair of terms across the two factors. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "2x³ + 5x² − 22x + 15.",
+          "interpretation": "Organized distribution ensures every term in one factor multiplies every term in the other."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “2x³ + 5x² − 22x + 15.” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "Multiply (x² + x + 1)(x² − x + 1).",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Reverse the operation: subtract to check addition, expand to check multiplication patterns, or reconstruct dividend = divisor·quotient + remainder.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "Distribute each term of the first trinomial.",
+            "Collect terms by degree.",
+            "Observe cancellation of the cubic and linear terms."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms 2x³ + 5x² − 22x + 15..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "x⁴ + x² + 1.",
+          "interpretation": "A symmetric factor structure can produce cancellation that is easy to miss without aligned terms."
         }
       ],
       "figures": [
@@ -2867,7 +2867,7 @@
       ],
       "checkpoint": {
         "id": "a7-5-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for polynomial times polynomial, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. Multiply (x² + x + 1)(x² − x + 1).",
         "responseType": "open-response"
       },
       "exercises": [
@@ -3017,7 +3017,7 @@
           "id": "a7-5-q06",
           "lessonId": "A7.5",
           "unitCode": "A7",
-          "prompt": "Complete the calculation after the first step “Multiply 2x by every term in the second factor.” and show the missing algebra.",
+          "prompt": "Multiply (2x − 3)(x² + 4x − 5).",
           "responseType": "open-response",
           "skill": "Organize all pairwise products through general distribution.",
           "purpose": "procedure",
@@ -3041,7 +3041,7 @@
           "id": "a7-5-q07",
           "lessonId": "A7.5",
           "unitCode": "A7",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: Expand (2x − 3)(x² + 4x − 5).",
+          "prompt": "Multiply (x² + x + 1)(x² − x + 1).",
           "responseType": "open-response",
           "skill": "Organize all pairwise products through general distribution.",
           "purpose": "procedure",
@@ -3089,7 +3089,7 @@
           "id": "a7-5-q09",
           "lessonId": "A7.5",
           "unitCode": "A7",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: Expand (2x − 3)(x² + 4x − 5).",
+          "prompt": "Complete the calculation after “Distribute 2x across the trinomial.” in this problem: Multiply (2x − 3)(x² + 4x − 5).",
           "responseType": "open-response",
           "skill": "Organize all pairwise products through general distribution.",
           "purpose": "procedure",
@@ -3113,7 +3113,7 @@
           "id": "a7-5-q10",
           "lessonId": "A7.5",
           "unitCode": "A7",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: Expand (2x − 3)(x² + 4x − 5).",
+          "prompt": "Name and justify the most efficient first move, then solve: Multiply (x² + x + 1)(x² − x + 1).",
           "responseType": "open-response",
           "skill": "Organize all pairwise products through general distribution.",
           "purpose": "procedure",
@@ -3137,7 +3137,7 @@
           "id": "a7-5-q11",
           "lessonId": "A7.5",
           "unitCode": "A7",
-          "prompt": "Build the second representation requested here: Use standard form, an area or multiplication grid when helpful, and the expanded/factored identity. Use the worked case Expand (2x − 3)(x² + 4x − 5).",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: Multiply (2x − 3)(x² + 4x − 5). Multiply (x² + x + 1)(x² − x + 1).",
           "responseType": "open-response",
           "skill": "Organize all pairwise products through general distribution.",
           "purpose": "representation",
@@ -3161,7 +3161,7 @@
           "id": "a7-5-q12",
           "lessonId": "A7.5",
           "unitCode": "A7",
-          "prompt": "For polynomial times polynomial, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: Expand (2x − 3)(x² + 4x − 5).",
+          "prompt": "Create the representation most useful for checking this result: Multiply (2x − 3)(x² + 4x − 5). Use standard form, an area or multiplication grid when helpful, and the expanded/factored identity.",
           "responseType": "open-response",
           "skill": "Organize all pairwise products through general distribution.",
           "purpose": "representation",
@@ -3209,7 +3209,7 @@
           "id": "a7-5-q14",
           "lessonId": "A7.5",
           "unitCode": "A7",
-          "prompt": "Repair a solution that performs the final step before completing “Multiply −3 by every term in the second factor.” in the worked case.",
+          "prompt": "Repair a solution that skips “Collect terms by degree.” while solving: Multiply (x² + x + 1)(x² − x + 1).",
           "responseType": "open-response",
           "skill": "Organize all pairwise products through general distribution.",
           "purpose": "transfer",
@@ -3305,7 +3305,7 @@
           "id": "a7-5-q18",
           "lessonId": "A7.5",
           "unitCode": "A7",
-          "prompt": "Compare the answer to Expand (2x − 3)(x² + 4x − 5). with this lesson outcome—Organize all pairwise products through general distribution. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Organize all pairwise products through general distribution. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Organize all pairwise products through general distribution.",
           "purpose": "modeling",
@@ -3329,7 +3329,7 @@
           "id": "a7-5-q19",
           "lessonId": "A7.5",
           "unitCode": "A7",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. Expand (2x − 3)(x² + 4x − 5).",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Multiply (2x − 3)(x² + 4x − 5).",
           "responseType": "open-response",
           "skill": "Organize all pairwise products through general distribution.",
           "purpose": "error-analysis",
@@ -3353,7 +3353,7 @@
           "id": "a7-5-q20",
           "lessonId": "A7.5",
           "unitCode": "A7",
-          "prompt": "Exit check: write a compact method-and-check summary for polynomial times polynomial, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Multiply (x² + x + 1)(x² − x + 1).",
           "responseType": "open-response",
           "skill": "Organize all pairwise products through general distribution.",
           "purpose": "exit",
@@ -3414,10 +3414,10 @@
       "title": "Special products",
       "path": "/subjects/math/algebra/polynomial-operations/special-products/",
       "outcome": "Recognize binomial squares and conjugate products as geometric and algebraic patterns.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Compare a squared sum with a difference of squares.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn special products as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn special products as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Recognize binomial squares and conjugate products as geometric and algebraic patterns.",
@@ -3469,7 +3469,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "Expand (3x − 5)² and (3x − 5)(3x + 5), then compare the patterns.",
           "steps": [
             "Use a² − 2ab + b² for the square.",
@@ -3480,26 +3480,26 @@
           "interpretation": "The middle terms combine in a square and cancel in a conjugate product."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Use standard form, an area or multiplication grid when helpful, and the expanded/factored identity.",
+          "kind": "worked-example-2",
+          "prompt": "Expand (3x − 5)² without dropping the middle term.",
           "steps": [
-            "First solve the original case and retain the exact result (3x − 5)² = 9x² − 30x + 25; (3x − 5)(3x + 5) = 9x² − 25..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "Use (a − b)² = a² − 2ab + b².",
+            "Compute (3x)², −2(3x)(5), and 5².",
+            "Combine the three terms."
           ],
-          "answer": "The second representation must preserve (3x − 5)² = 9x² − 30x + 25; (3x − 5)(3x + 5) = 9x² − 25..",
-          "interpretation": "The middle terms combine in a square and cancel in a conjugate product. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "9x² − 30x + 25.",
+          "interpretation": "Squaring a binomial includes two equal cross-products."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “(3x − 5)² = 9x² − 30x + 25; (3x − 5)(3x + 5) = 9x² − 25.” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "Compute (2y + 7)(2y − 7) using structure.",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Reverse the operation: subtract to check addition, expand to check multiplication patterns, or reconstruct dividend = divisor·quotient + remainder.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "Recognize conjugate binomials a + b and a − b.",
+            "Apply the difference-of-squares identity a² − b².",
+            "Square 2y and 7."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms (3x − 5)² = 9x² − 30x + 25; (3x − 5)(3x + 5) = 9x² − 25..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "4y² − 49.",
+          "interpretation": "Opposite middle terms cancel in a conjugate product."
         }
       ],
       "figures": [
@@ -3543,7 +3543,7 @@
       ],
       "checkpoint": {
         "id": "a7-6-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for special products, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. Compute (2y + 7)(2y − 7) using structure.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -3693,7 +3693,7 @@
           "id": "a7-6-q06",
           "lessonId": "A7.6",
           "unitCode": "A7",
-          "prompt": "Complete the calculation after the first step “Use a² − 2ab + b² for the square.” and show the missing algebra.",
+          "prompt": "Expand (3x − 5)² without dropping the middle term.",
           "responseType": "open-response",
           "skill": "Recognize binomial squares and conjugate products as geometric and algebraic patterns.",
           "purpose": "procedure",
@@ -3717,7 +3717,7 @@
           "id": "a7-6-q07",
           "lessonId": "A7.6",
           "unitCode": "A7",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: Expand (3x − 5)² and (3x − 5)(3x + 5), then compare the patterns.",
+          "prompt": "Compute (2y + 7)(2y − 7) using structure.",
           "responseType": "open-response",
           "skill": "Recognize binomial squares and conjugate products as geometric and algebraic patterns.",
           "purpose": "procedure",
@@ -3765,7 +3765,7 @@
           "id": "a7-6-q09",
           "lessonId": "A7.6",
           "unitCode": "A7",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: Expand (3x − 5)² and (3x − 5)(3x + 5), then compare the patterns.",
+          "prompt": "Complete the calculation after “Use (a − b)² = a² − 2ab + b².” in this problem: Expand (3x − 5)² without dropping the middle term.",
           "responseType": "open-response",
           "skill": "Recognize binomial squares and conjugate products as geometric and algebraic patterns.",
           "purpose": "procedure",
@@ -3789,7 +3789,7 @@
           "id": "a7-6-q10",
           "lessonId": "A7.6",
           "unitCode": "A7",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: Expand (3x − 5)² and (3x − 5)(3x + 5), then compare the patterns.",
+          "prompt": "Name and justify the most efficient first move, then solve: Compute (2y + 7)(2y − 7) using structure.",
           "responseType": "open-response",
           "skill": "Recognize binomial squares and conjugate products as geometric and algebraic patterns.",
           "purpose": "procedure",
@@ -3813,7 +3813,7 @@
           "id": "a7-6-q11",
           "lessonId": "A7.6",
           "unitCode": "A7",
-          "prompt": "Build the second representation requested here: Use standard form, an area or multiplication grid when helpful, and the expanded/factored identity. Use the worked case Expand (3x − 5)² and (3x − 5)(3x + 5), then compare the patterns.",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: Expand (3x − 5)² without dropping the middle term. Compute (2y + 7)(2y − 7) using structure.",
           "responseType": "open-response",
           "skill": "Recognize binomial squares and conjugate products as geometric and algebraic patterns.",
           "purpose": "representation",
@@ -3837,7 +3837,7 @@
           "id": "a7-6-q12",
           "lessonId": "A7.6",
           "unitCode": "A7",
-          "prompt": "For special products, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: Expand (3x − 5)² and (3x − 5)(3x + 5), then compare the patterns.",
+          "prompt": "Create the representation most useful for checking this result: Expand (3x − 5)² without dropping the middle term. Use standard form, an area or multiplication grid when helpful, and the expanded/factored identity.",
           "responseType": "open-response",
           "skill": "Recognize binomial squares and conjugate products as geometric and algebraic patterns.",
           "purpose": "representation",
@@ -3885,7 +3885,7 @@
           "id": "a7-6-q14",
           "lessonId": "A7.6",
           "unitCode": "A7",
-          "prompt": "Repair a solution that performs the final step before completing “Use a² − b² for the conjugate product.” in the worked case.",
+          "prompt": "Repair a solution that skips “Apply the difference-of-squares identity a² − b².” while solving: Compute (2y + 7)(2y − 7) using structure.",
           "responseType": "open-response",
           "skill": "Recognize binomial squares and conjugate products as geometric and algebraic patterns.",
           "purpose": "transfer",
@@ -3981,7 +3981,7 @@
           "id": "a7-6-q18",
           "lessonId": "A7.6",
           "unitCode": "A7",
-          "prompt": "Compare the answer to Expand (3x − 5)² and (3x − 5)(3x + 5), then compare the patterns. with this lesson outcome—Recognize binomial squares and conjugate products as geometric and algebraic patterns. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Recognize binomial squares and conjugate products as geometric and algebraic patterns. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Recognize binomial squares and conjugate products as geometric and algebraic patterns.",
           "purpose": "modeling",
@@ -4005,7 +4005,7 @@
           "id": "a7-6-q19",
           "lessonId": "A7.6",
           "unitCode": "A7",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. Expand (3x − 5)² and (3x − 5)(3x + 5), then compare the patterns.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Expand (3x − 5)² without dropping the middle term.",
           "responseType": "open-response",
           "skill": "Recognize binomial squares and conjugate products as geometric and algebraic patterns.",
           "purpose": "error-analysis",
@@ -4029,7 +4029,7 @@
           "id": "a7-6-q20",
           "lessonId": "A7.6",
           "unitCode": "A7",
-          "prompt": "Exit check: write a compact method-and-check summary for special products, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Compute (2y + 7)(2y − 7) using structure.",
           "responseType": "open-response",
           "skill": "Recognize binomial squares and conjugate products as geometric and algebraic patterns.",
           "purpose": "exit",
@@ -4090,10 +4090,10 @@
       "title": "Division by a monomial",
       "path": "/subjects/math/algebra/polynomial-operations/division-by-a-monomial/",
       "outcome": "Divide every polynomial term and state restrictions where needed.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Reverse a distributed multiplication.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn division by a monomial as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn division by a monomial as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Divide every polynomial term and state restrictions where needed.",
@@ -4145,7 +4145,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "Divide (12x⁵ − 18x³ + 6x²) by 6x².",
           "steps": [
             "Divide every term by the monomial.",
@@ -4156,26 +4156,26 @@
           "interpretation": "Division by a monomial distributes across every term and retains the divisor’s domain restriction."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Use standard form, an area or multiplication grid when helpful, and the expanded/factored identity.",
+          "kind": "worked-example-2",
+          "prompt": "Divide (18x⁵ − 12x³ + 6x²)/(6x²).",
           "steps": [
-            "First solve the original case and retain the exact result 2x³ − 3x + 1, with x ≠ 0..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "Divide each numerator term by 6x².",
+            "Simplify coefficients and subtract exponents.",
+            "Retain the original restriction x ≠ 0."
           ],
-          "answer": "The second representation must preserve 2x³ − 3x + 1, with x ≠ 0..",
-          "interpretation": "Division by a monomial distributes across every term and retains the divisor’s domain restriction. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "3x³ − 2x + 1, with x ≠ 0.",
+          "interpretation": "Division by a monomial distributes across a sum because every term shares that divisor."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “2x³ − 3x + 1, with x ≠ 0.” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "Simplify (−15a⁴b³ + 10a²b⁵)/(5a²b²).",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Reverse the operation: subtract to check addition, expand to check multiplication patterns, or reconstruct dividend = divisor·quotient + remainder.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "Divide both terms by 5a²b².",
+            "Simplify the first quotient to −3a²b and the second to 2b³.",
+            "State original denominator restrictions."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms 2x³ − 3x + 1, with x ≠ 0..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "−3a²b + 2b³, with a ≠ 0 and b ≠ 0.",
+          "interpretation": "Termwise division is valid only because the common monomial divides every term."
         }
       ],
       "figures": [
@@ -4219,7 +4219,7 @@
       ],
       "checkpoint": {
         "id": "a7-7-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for division by a monomial, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. Simplify (−15a⁴b³ + 10a²b⁵)/(5a²b²).",
         "responseType": "open-response"
       },
       "exercises": [
@@ -4369,7 +4369,7 @@
           "id": "a7-7-q06",
           "lessonId": "A7.7",
           "unitCode": "A7",
-          "prompt": "Complete the calculation after the first step “Divide every term by the monomial.” and show the missing algebra.",
+          "prompt": "Divide (18x⁵ − 12x³ + 6x²)/(6x²).",
           "responseType": "open-response",
           "skill": "Divide every polynomial term and state restrictions where needed.",
           "purpose": "procedure",
@@ -4393,7 +4393,7 @@
           "id": "a7-7-q07",
           "lessonId": "A7.7",
           "unitCode": "A7",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: Divide (12x⁵ − 18x³ + 6x²) by 6x².",
+          "prompt": "Simplify (−15a⁴b³ + 10a²b⁵)/(5a²b²).",
           "responseType": "open-response",
           "skill": "Divide every polynomial term and state restrictions where needed.",
           "purpose": "procedure",
@@ -4441,7 +4441,7 @@
           "id": "a7-7-q09",
           "lessonId": "A7.7",
           "unitCode": "A7",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: Divide (12x⁵ − 18x³ + 6x²) by 6x².",
+          "prompt": "Complete the calculation after “Divide each numerator term by 6x².” in this problem: Divide (18x⁵ − 12x³ + 6x²)/(6x²).",
           "responseType": "open-response",
           "skill": "Divide every polynomial term and state restrictions where needed.",
           "purpose": "procedure",
@@ -4465,7 +4465,7 @@
           "id": "a7-7-q10",
           "lessonId": "A7.7",
           "unitCode": "A7",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: Divide (12x⁵ − 18x³ + 6x²) by 6x².",
+          "prompt": "Name and justify the most efficient first move, then solve: Simplify (−15a⁴b³ + 10a²b⁵)/(5a²b²).",
           "responseType": "open-response",
           "skill": "Divide every polynomial term and state restrictions where needed.",
           "purpose": "procedure",
@@ -4489,7 +4489,7 @@
           "id": "a7-7-q11",
           "lessonId": "A7.7",
           "unitCode": "A7",
-          "prompt": "Build the second representation requested here: Use standard form, an area or multiplication grid when helpful, and the expanded/factored identity. Use the worked case Divide (12x⁵ − 18x³ + 6x²) by 6x².",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: Divide (18x⁵ − 12x³ + 6x²)/(6x²). Simplify (−15a⁴b³ + 10a²b⁵)/(5a²b²).",
           "responseType": "open-response",
           "skill": "Divide every polynomial term and state restrictions where needed.",
           "purpose": "representation",
@@ -4513,7 +4513,7 @@
           "id": "a7-7-q12",
           "lessonId": "A7.7",
           "unitCode": "A7",
-          "prompt": "For division by a monomial, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: Divide (12x⁵ − 18x³ + 6x²) by 6x².",
+          "prompt": "Create the representation most useful for checking this result: Divide (18x⁵ − 12x³ + 6x²)/(6x²). Use standard form, an area or multiplication grid when helpful, and the expanded/factored identity.",
           "responseType": "open-response",
           "skill": "Divide every polynomial term and state restrictions where needed.",
           "purpose": "representation",
@@ -4561,7 +4561,7 @@
           "id": "a7-7-q14",
           "lessonId": "A7.7",
           "unitCode": "A7",
-          "prompt": "Repair a solution that performs the final step before completing “Divide coefficients and subtract exponents.” in the worked case.",
+          "prompt": "Repair a solution that skips “Simplify the first quotient to −3a²b and the second to 2b³.” while solving: Simplify (−15a⁴b³ + 10a²b⁵)/(5a²b²).",
           "responseType": "open-response",
           "skill": "Divide every polynomial term and state restrictions where needed.",
           "purpose": "transfer",
@@ -4657,7 +4657,7 @@
           "id": "a7-7-q18",
           "lessonId": "A7.7",
           "unitCode": "A7",
-          "prompt": "Compare the answer to Divide (12x⁵ − 18x³ + 6x²) by 6x². with this lesson outcome—Divide every polynomial term and state restrictions where needed. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Divide every polynomial term and state restrictions where needed. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Divide every polynomial term and state restrictions where needed.",
           "purpose": "modeling",
@@ -4681,7 +4681,7 @@
           "id": "a7-7-q19",
           "lessonId": "A7.7",
           "unitCode": "A7",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. Divide (12x⁵ − 18x³ + 6x²) by 6x².",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Divide (18x⁵ − 12x³ + 6x²)/(6x²).",
           "responseType": "open-response",
           "skill": "Divide every polynomial term and state restrictions where needed.",
           "purpose": "error-analysis",
@@ -4705,7 +4705,7 @@
           "id": "a7-7-q20",
           "lessonId": "A7.7",
           "unitCode": "A7",
-          "prompt": "Exit check: write a compact method-and-check summary for division by a monomial, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Simplify (−15a⁴b³ + 10a²b⁵)/(5a²b²).",
           "responseType": "open-response",
           "skill": "Divide every polynomial term and state restrictions where needed.",
           "purpose": "exit",
@@ -4766,10 +4766,10 @@
       "title": "Polynomial long division",
       "path": "/subjects/math/algebra/polynomial-operations/polynomial-long-division/",
       "outcome": "Use place-value alignment to write a polynomial as divisor times quotient plus remainder.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Divide an algebraic area or expression by a known factor.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn polynomial long division as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn polynomial long division as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Use place-value alignment to write a polynomial as divisor times quotient plus remainder.",
@@ -4821,7 +4821,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "Divide 2x³ + 3x² − 11x − 6 by x + 3.",
           "steps": [
             "Divide the leading terms to obtain 2x², multiply back, and subtract.",
@@ -4832,26 +4832,26 @@
           "interpretation": "Polynomial long division repeatedly removes the leading term and is checked by divisor times quotient plus remainder."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Use standard form, an area or multiplication grid when helpful, and the expanded/factored identity.",
+          "kind": "worked-example-2",
+          "prompt": "Divide x³ − 4x² + x + 6 by x − 2.",
           "steps": [
-            "First solve the original case and retain the exact result 2x² − 3x − 2, remainder 0..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "Divide x³ by x to get x² and subtract x³ − 2x².",
+            "Divide −2x² by x to get −2x and subtract −2x² + 4x.",
+            "Divide −3x by x to get −3 and subtract −3x + 6."
           ],
-          "answer": "The second representation must preserve 2x² − 3x − 2, remainder 0..",
-          "interpretation": "Polynomial long division repeatedly removes the leading term and is checked by divisor times quotient plus remainder. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "x² − 2x − 3, remainder 0.",
+          "interpretation": "A zero remainder verifies that x − 2 is a polynomial factor."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “2x² − 3x − 2, remainder 0.” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "Divide 2x³ + x² − 5 by x + 1.",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Reverse the operation: subtract to check addition, expand to check multiplication patterns, or reconstruct dividend = divisor·quotient + remainder.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "Insert the missing 0x term before division.",
+            "Successive quotient terms are 2x², −x, and x.",
+            "Subtract the final product x² + x to obtain remainder −6."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms 2x² − 3x − 2, remainder 0..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "2x² − x + 1 − 6/(x + 1).",
+          "interpretation": "Missing powers require zero placeholders, and a nonzero remainder is written over the divisor."
         }
       ],
       "figures": [
@@ -4895,7 +4895,7 @@
       ],
       "checkpoint": {
         "id": "a7-8-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for polynomial long division, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. Divide 2x³ + x² − 5 by x + 1.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -5045,7 +5045,7 @@
           "id": "a7-8-q06",
           "lessonId": "A7.8",
           "unitCode": "A7",
-          "prompt": "Complete the calculation after the first step “Divide the leading terms to obtain 2x², multiply back, and subtract.” and show the missing algebra.",
+          "prompt": "Divide x³ − 4x² + x + 6 by x − 2.",
           "responseType": "open-response",
           "skill": "Use place-value alignment to write a polynomial as divisor times quotient plus remainder.",
           "purpose": "procedure",
@@ -5069,7 +5069,7 @@
           "id": "a7-8-q07",
           "lessonId": "A7.8",
           "unitCode": "A7",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: Divide 2x³ + 3x² − 11x − 6 by x + 3.",
+          "prompt": "Divide 2x³ + x² − 5 by x + 1.",
           "responseType": "open-response",
           "skill": "Use place-value alignment to write a polynomial as divisor times quotient plus remainder.",
           "purpose": "procedure",
@@ -5117,7 +5117,7 @@
           "id": "a7-8-q09",
           "lessonId": "A7.8",
           "unitCode": "A7",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: Divide 2x³ + 3x² − 11x − 6 by x + 3.",
+          "prompt": "Complete the calculation after “Divide x³ by x to get x² and subtract x³ − 2x².” in this problem: Divide x³ − 4x² + x + 6 by x − 2.",
           "responseType": "open-response",
           "skill": "Use place-value alignment to write a polynomial as divisor times quotient plus remainder.",
           "purpose": "procedure",
@@ -5141,7 +5141,7 @@
           "id": "a7-8-q10",
           "lessonId": "A7.8",
           "unitCode": "A7",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: Divide 2x³ + 3x² − 11x − 6 by x + 3.",
+          "prompt": "Name and justify the most efficient first move, then solve: Divide 2x³ + x² − 5 by x + 1.",
           "responseType": "open-response",
           "skill": "Use place-value alignment to write a polynomial as divisor times quotient plus remainder.",
           "purpose": "procedure",
@@ -5165,7 +5165,7 @@
           "id": "a7-8-q11",
           "lessonId": "A7.8",
           "unitCode": "A7",
-          "prompt": "Build the second representation requested here: Use standard form, an area or multiplication grid when helpful, and the expanded/factored identity. Use the worked case Divide 2x³ + 3x² − 11x − 6 by x + 3.",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: Divide x³ − 4x² + x + 6 by x − 2. Divide 2x³ + x² − 5 by x + 1.",
           "responseType": "open-response",
           "skill": "Use place-value alignment to write a polynomial as divisor times quotient plus remainder.",
           "purpose": "representation",
@@ -5189,7 +5189,7 @@
           "id": "a7-8-q12",
           "lessonId": "A7.8",
           "unitCode": "A7",
-          "prompt": "For polynomial long division, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: Divide 2x³ + 3x² − 11x − 6 by x + 3.",
+          "prompt": "Create the representation most useful for checking this result: Divide x³ − 4x² + x + 6 by x − 2. Use standard form, an area or multiplication grid when helpful, and the expanded/factored identity.",
           "responseType": "open-response",
           "skill": "Use place-value alignment to write a polynomial as divisor times quotient plus remainder.",
           "purpose": "representation",
@@ -5237,7 +5237,7 @@
           "id": "a7-8-q14",
           "lessonId": "A7.8",
           "unitCode": "A7",
-          "prompt": "Repair a solution that performs the final step before completing “Repeat to obtain −3x, then −2.” in the worked case.",
+          "prompt": "Repair a solution that skips “Successive quotient terms are 2x², −x, and x.” while solving: Divide 2x³ + x² − 5 by x + 1.",
           "responseType": "open-response",
           "skill": "Use place-value alignment to write a polynomial as divisor times quotient plus remainder.",
           "purpose": "transfer",
@@ -5333,7 +5333,7 @@
           "id": "a7-8-q18",
           "lessonId": "A7.8",
           "unitCode": "A7",
-          "prompt": "Compare the answer to Divide 2x³ + 3x² − 11x − 6 by x + 3. with this lesson outcome—Use place-value alignment to write a polynomial as divisor times quotient plus remainder. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Use place-value alignment to write a polynomial as divisor times quotient plus remainder. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Use place-value alignment to write a polynomial as divisor times quotient plus remainder.",
           "purpose": "modeling",
@@ -5357,7 +5357,7 @@
           "id": "a7-8-q19",
           "lessonId": "A7.8",
           "unitCode": "A7",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. Divide 2x³ + 3x² − 11x − 6 by x + 3.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Divide x³ − 4x² + x + 6 by x − 2.",
           "responseType": "open-response",
           "skill": "Use place-value alignment to write a polynomial as divisor times quotient plus remainder.",
           "purpose": "error-analysis",
@@ -5381,7 +5381,7 @@
           "id": "a7-8-q20",
           "lessonId": "A7.8",
           "unitCode": "A7",
-          "prompt": "Exit check: write a compact method-and-check summary for polynomial long division, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Divide 2x³ + x² − 5 by x + 1.",
           "responseType": "open-response",
           "skill": "Use place-value alignment to write a polynomial as divisor times quotient plus remainder.",
           "purpose": "exit",
@@ -5442,10 +5442,10 @@
       "title": "Polynomial structure clinic",
       "path": "/subjects/math/algebra/polynomial-operations/polynomial-structure-clinic/",
       "outcome": "Choose the correct operation and reject false distribution or exponent laws.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Sort and repair mixed polynomial work.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn polynomial structure clinic as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn polynomial structure clinic as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Choose the correct operation and reject false distribution or exponent laws.",
@@ -5497,7 +5497,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "A student claims (x + 4)² = x² + 16. Diagnose and repair the identity.",
           "steps": [
             "Expand the product (x + 4)(x + 4).",
@@ -5508,26 +5508,26 @@
           "interpretation": "Squaring a binomial includes two equal cross-products; an exponent does not distribute across addition."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Use standard form, an area or multiplication grid when helpful, and the expanded/factored identity.",
+          "kind": "worked-example-2",
+          "prompt": "Simplify (x + 2)(x − 2) + 4x − (x² − 3x).",
           "steps": [
-            "First solve the original case and retain the exact result (x + 4)² = x² + 8x + 16..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "Recognize the conjugate product as x² − 4.",
+            "Distribute the subtraction across x² − 3x.",
+            "Combine like terms."
           ],
-          "answer": "The second representation must preserve (x + 4)² = x² + 8x + 16..",
-          "interpretation": "Squaring a binomial includes two equal cross-products; an exponent does not distribute across addition. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "7x − 4.",
+          "interpretation": "Structure recognition shortens the work, but ordinary sign rules still control the final combination."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “(x + 4)² = x² + 8x + 16.” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "Determine whether 6x⁴ − 9x³ + 3x² is written most usefully in expanded form or factored form for finding zeros.",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Reverse the operation: subtract to check addition, expand to check multiplication patterns, or reconstruct dividend = divisor·quotient + remainder.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "Extract the greatest common factor 3x².",
+            "Factor the remaining quadratic 2x² − 3x + 1 as (2x − 1)(x − 1).",
+            "Read zeros from the product."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms (x + 4)² = x² + 8x + 16..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "3x²(2x − 1)(x − 1); zeros 0, 1/2, and 1.",
+          "interpretation": "The useful form depends on the question; factored form exposes zeros hidden in expanded form."
         }
       ],
       "figures": [
@@ -5571,7 +5571,7 @@
       ],
       "checkpoint": {
         "id": "a7-9-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for polynomial structure clinic, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. Determine whether 6x⁴ − 9x³ + 3x² is written most usefully in expanded form or factored form for finding zeros.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -5721,7 +5721,7 @@
           "id": "a7-9-q06",
           "lessonId": "A7.9",
           "unitCode": "A7",
-          "prompt": "Complete the calculation after the first step “Expand the product (x + 4)(x + 4).” and show the missing algebra.",
+          "prompt": "Simplify (x + 2)(x − 2) + 4x − (x² − 3x).",
           "responseType": "open-response",
           "skill": "Choose the correct operation and reject false distribution or exponent laws.",
           "purpose": "procedure",
@@ -5745,7 +5745,7 @@
           "id": "a7-9-q07",
           "lessonId": "A7.9",
           "unitCode": "A7",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: A student claims (x + 4)² = x² + 16. Diagnose and repair the identity.",
+          "prompt": "Determine whether 6x⁴ − 9x³ + 3x² is written most usefully in expanded form or factored form for finding zeros.",
           "responseType": "open-response",
           "skill": "Choose the correct operation and reject false distribution or exponent laws.",
           "purpose": "procedure",
@@ -5793,7 +5793,7 @@
           "id": "a7-9-q09",
           "lessonId": "A7.9",
           "unitCode": "A7",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: A student claims (x + 4)² = x² + 16. Diagnose and repair the identity.",
+          "prompt": "Complete the calculation after “Recognize the conjugate product as x² − 4.” in this problem: Simplify (x + 2)(x − 2) + 4x − (x² − 3x).",
           "responseType": "open-response",
           "skill": "Choose the correct operation and reject false distribution or exponent laws.",
           "purpose": "procedure",
@@ -5817,7 +5817,7 @@
           "id": "a7-9-q10",
           "lessonId": "A7.9",
           "unitCode": "A7",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: A student claims (x + 4)² = x² + 16. Diagnose and repair the identity.",
+          "prompt": "Name and justify the most efficient first move, then solve: Determine whether 6x⁴ − 9x³ + 3x² is written most usefully in expanded form or factored form for finding zeros.",
           "responseType": "open-response",
           "skill": "Choose the correct operation and reject false distribution or exponent laws.",
           "purpose": "procedure",
@@ -5841,7 +5841,7 @@
           "id": "a7-9-q11",
           "lessonId": "A7.9",
           "unitCode": "A7",
-          "prompt": "Build the second representation requested here: Use standard form, an area or multiplication grid when helpful, and the expanded/factored identity. Use the worked case A student claims (x + 4)² = x² + 16. Diagnose and repair the identity.",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: Simplify (x + 2)(x − 2) + 4x − (x² − 3x). Determine whether 6x⁴ − 9x³ + 3x² is written most usefully in expanded form or factored form for finding zeros.",
           "responseType": "open-response",
           "skill": "Choose the correct operation and reject false distribution or exponent laws.",
           "purpose": "representation",
@@ -5865,7 +5865,7 @@
           "id": "a7-9-q12",
           "lessonId": "A7.9",
           "unitCode": "A7",
-          "prompt": "For polynomial structure clinic, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: A student claims (x + 4)² = x² + 16. Diagnose and repair the identity.",
+          "prompt": "Create the representation most useful for checking this result: Simplify (x + 2)(x − 2) + 4x − (x² − 3x). Use standard form, an area or multiplication grid when helpful, and the expanded/factored identity.",
           "responseType": "open-response",
           "skill": "Choose the correct operation and reject false distribution or exponent laws.",
           "purpose": "representation",
@@ -5913,7 +5913,7 @@
           "id": "a7-9-q14",
           "lessonId": "A7.9",
           "unitCode": "A7",
-          "prompt": "Repair a solution that performs the final step before completing “List all four pairwise products.” in the worked case.",
+          "prompt": "Repair a solution that skips “Factor the remaining quadratic 2x² − 3x + 1 as (2x − 1)(x − 1).” while solving: Determine whether 6x⁴ − 9x³ + 3x² is written most usefully in expanded form or factored form for finding zeros.",
           "responseType": "open-response",
           "skill": "Choose the correct operation and reject false distribution or exponent laws.",
           "purpose": "transfer",
@@ -6009,7 +6009,7 @@
           "id": "a7-9-q18",
           "lessonId": "A7.9",
           "unitCode": "A7",
-          "prompt": "Compare the answer to A student claims (x + 4)² = x² + 16. Diagnose and repair the identity. with this lesson outcome—Choose the correct operation and reject false distribution or exponent laws. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Choose the correct operation and reject false distribution or exponent laws. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Choose the correct operation and reject false distribution or exponent laws.",
           "purpose": "modeling",
@@ -6033,7 +6033,7 @@
           "id": "a7-9-q19",
           "lessonId": "A7.9",
           "unitCode": "A7",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. A student claims (x + 4)² = x² + 16. Diagnose and repair the identity.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Simplify (x + 2)(x − 2) + 4x − (x² − 3x).",
           "responseType": "open-response",
           "skill": "Choose the correct operation and reject false distribution or exponent laws.",
           "purpose": "error-analysis",
@@ -6057,7 +6057,7 @@
           "id": "a7-9-q20",
           "lessonId": "A7.9",
           "unitCode": "A7",
-          "prompt": "Exit check: write a compact method-and-check summary for polynomial structure clinic, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Determine whether 6x⁴ − 9x³ + 3x² is written most usefully in expanded form or factored form for finding zeros.",
           "responseType": "open-response",
           "skill": "Choose the correct operation and reject false distribution or exponent laws.",
           "purpose": "exit",

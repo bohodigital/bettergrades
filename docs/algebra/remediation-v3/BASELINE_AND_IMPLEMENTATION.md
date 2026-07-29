@@ -31,7 +31,7 @@ Every one of the 139 lessons now contains:
 - exactly three prerequisite checks;
 - at least three substantial explanation paragraphs;
 - definitions with validity conditions;
-- three complete worked examples (calculation, second representation, and transfer);
+- three distinct, fully solved mathematical examples with explicit work, answer checks, and interpretation;
 - concept-specific figures;
 - one structured misconception and repair;
 - a checkpoint;
@@ -40,6 +40,8 @@ Every one of the 139 lessons now contains:
 - a takeaway, conditions, navigation, and rights-separated source record.
 
 The course contains 2,780 unique concrete questions. Every question has a complete prompt, hint, response type, skill, purpose, difficulty, error tags, remediation path, deterministic seed record, units/rounding policy, and a server-only solution reference.
+
+Units A3–A14 contain 333 unique worked examples. Each of their 111 lessons now carries three different mathematical problems rather than one calculation followed by generic representation and verification scaffolds.
 
 All 55 assessments now declare an exact integer count and exact question IDs. The generated server layer contains 2,780 matching scoring and worked-solution records.
 

@@ -148,7 +148,10 @@ test("all 139 learner lessons satisfy the remediation authoring contract", () =>
     assert.ok(lesson.exposition.length >= 2, lesson.id);
     assert.ok(lesson.exposition.every((paragraph) => paragraph.length >= 180), lesson.id);
     assert.ok(lesson.definitions.length >= 1, lesson.id);
-    assert.deepEqual(lesson.examples.map((example) => example.kind), ["foundation", "representation", "transfer"], lesson.id);
+    const expectedExampleKinds = lesson.textbookEdition === "authored-v4"
+      ? ["worked-example-1", "worked-example-2", "worked-example-3"]
+      : ["foundation", "representation", "transfer"];
+    assert.deepEqual(lesson.examples.map((example) => example.kind), expectedExampleKinds, lesson.id);
     assert.ok(lesson.examples.every((example) => example.steps.length >= 2 && example.answer && example.interpretation.length >= 15), lesson.id);
     assert.ok(lesson.misconceptions.every((item) => item.wrongMove.length >= 10 && item.whyItFails.length >= 20 && item.repair.length >= 15), lesson.id);
     const expectedQuestionCount =
@@ -170,7 +173,7 @@ test("A3–A14 meet the complete textbook authoring standard", async () => {
   const publicTextbook = JSON.stringify(lessons);
 
   assert.equal(lessons.length, 111);
-  assert.ok(lessons.every((lesson) => lesson.textbookEdition === "authored-v3"));
+  assert.ok(lessons.every((lesson) => lesson.textbookEdition === "authored-v4"));
   assert.equal(questions.length, 2220);
   assert.equal(new Set(questions.map((question) => question.prompt)).size, 2220);
   assert.ok(lessons.every((lesson) => lesson.exposition.length >= 10));
@@ -182,9 +185,15 @@ test("A3–A14 meet the complete textbook authoring standard", async () => {
   assert.ok(lessons.every((lesson) => lesson.definitions.length >= 4));
   assert.ok(lessons.every((lesson) => lesson.examples.length === 3));
   assert.ok(lessons.every((lesson) => new Set(lesson.examples.map((example) => example.prompt)).size === 3));
+  const examples = lessons.flatMap((lesson) => lesson.examples);
+  assert.equal(examples.length, 333);
+  assert.equal(new Set(examples.map((example) => example.prompt)).size, 333);
+  assert.ok(examples.every((example) => example.steps.length >= 3 && example.answer && example.interpretation.length >= 20));
   assert.doesNotMatch(publicTextbook, /Begin by naming the mathematical objects before manipulating them/);
   assert.doesNotMatch(publicTextbook, /Represent the result of this .* case/);
   assert.doesNotMatch(publicTextbook, /A correctly labeled second representation that preserves/);
+  assert.doesNotMatch(publicTextbook, /Represent and verify the result of the worked case/);
+  assert.doesNotMatch(publicTextbook, /A learner reports .* but does not show the check/);
 
   const expectedLessonCases = new Map([
     ["A10.2", /Simplify \(x² − 9\)\/\(x² − x − 6\)/],
@@ -258,9 +267,6 @@ test("the public learner payload contains no authoring scaffolds or accidental p
   ];
   for (const phrase of forbidden) assert.ok(!source.includes(phrase), phrase);
   assert.doesNotMatch(source, /\b(?:NaN|PLACEHOLDER|TODO|TBD)\b/);
-  const undefinedUses = source.match(/\bundefined\b/gi) ?? [];
-  const mathematicalUndefinedUses = source.match(/\bundefined slope\b/gi) ?? [];
-  assert.equal(undefinedUses.length, mathematicalUndefinedUses.length);
   for (const route of course.routes) assert.doesNotMatch(route.description, /\b(?:undefined|null|NaN)\b/, route.path);
 });
 

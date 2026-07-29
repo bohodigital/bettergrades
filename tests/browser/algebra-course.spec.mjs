@@ -99,6 +99,20 @@ test("A3–A14 each render as complete, restrained textbook lessons", async ({ p
     await expect(page.locator(".algebra-lesson-exposition > div > p"), route).toHaveCount(10);
     await expect(page.locator(".algebra-authored-method li"), route).toHaveCount(3);
     await expect(page.locator(".algebra-worked-examples article"), route).toHaveCount(3);
+    await expect(page.locator(".algebra-worked-examples .eyebrow"), route).toHaveText([
+      "Worked Example 1",
+      "Worked Example 2",
+      "Worked Example 3",
+    ]);
+    expect(
+      await page.locator(".algebra-worked-examples article").evaluateAll((examples) =>
+        examples.every((example) =>
+          example.querySelectorAll("ol > li").length >= 3
+          && Boolean(example.querySelector(".algebra-example-answer")),
+        ),
+      ),
+      route,
+    ).toBe(true);
     await expect(page.locator(".algebra-practice-group"), route).toHaveCount(4);
     await expect(page.locator(".algebra-exercise-families article"), route).toHaveCount(20);
     expect(await page.locator(".algebra-course-page .latex-inline").count(), route).toBeGreaterThan(10);

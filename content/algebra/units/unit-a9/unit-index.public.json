@@ -37,10 +37,10 @@
       "title": "Quadratic relations and three useful forms",
       "path": "/subjects/math/algebra/quadratic-functions/quadratic-relations-and-three-useful-forms/",
       "outcome": "Understand that standard, factored, and vertex forms expose different features of one function.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Compare three formulas for the same trajectory.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn quadratic relations and three useful forms as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn quadratic relations and three useful forms as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Understand that standard, factored, and vertex forms expose different features of one function.",
@@ -92,7 +92,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "Rewrite f(x) = x² − 6x + 5 in factored and vertex form, then name the feature exposed by each form.",
           "steps": [
             "Factor the trinomial using numbers that multiply to 5 and add to −6.",
@@ -103,26 +103,26 @@
           "interpretation": "Equivalent forms preserve the same function while making different structural features easy to read."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Use equivalent standard, factored, and vertex forms together with a labeled parabola.",
+          "kind": "worked-example-2",
+          "prompt": "For f(x) = x² − 6x + 5, write factored and vertex forms.",
           "steps": [
-            "First solve the original case and retain the exact result f(x) = (x − 1)(x − 5) = (x − 3)² − 4; zeros 1 and 5; vertex (3, −4)..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "Factor to obtain (x − 1)(x − 5).",
+            "Complete the square: x² − 6x + 9 − 4.",
+            "Write the vertex form."
           ],
-          "answer": "The second representation must preserve f(x) = (x − 1)(x − 5) = (x − 3)² − 4; zeros 1 and 5; vertex (3, −4)..",
-          "interpretation": "Equivalent forms preserve the same function while making different structural features easy to read. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "f(x) = (x − 1)(x − 5) = (x − 3)² − 4.",
+          "interpretation": "Factored form exposes zeros 1 and 5; vertex form exposes the minimum (3, −4)."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “f(x) = (x − 1)(x − 5) = (x − 3)² − 4; zeros 1 and 5; vertex (3, −4).” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "Expand g(x) = −2(x + 1)² + 8 and identify its three useful forms when possible.",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Verify the vertex, intercepts, symmetry, opening direction, and any contextual domain against the chosen formula.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "Expand (x + 1)² and distribute −2.",
+            "Obtain −2x² − 4x + 6.",
+            "Factor −2(x² + 2x − 3) = −2(x − 1)(x + 3)."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms f(x) = (x − 1)(x − 5) = (x − 3)² − 4; zeros 1 and 5; vertex (3, −4)..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "Vertex: −2(x + 1)² + 8; standard: −2x² − 4x + 6; factored: −2(x − 1)(x + 3).",
+          "interpretation": "Each equivalent form foregrounds a different graph feature."
         }
       ],
       "figures": [
@@ -166,7 +166,7 @@
       ],
       "checkpoint": {
         "id": "a9-1-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for quadratic relations and three useful forms, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. Expand g(x) = −2(x + 1)² + 8 and identify its three useful forms when possible.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -316,7 +316,7 @@
           "id": "a9-1-q06",
           "lessonId": "A9.1",
           "unitCode": "A9",
-          "prompt": "Complete the calculation after the first step “Factor the trinomial using numbers that multiply to 5 and add to −6.” and show the missing algebra.",
+          "prompt": "For f(x) = x² − 6x + 5, write factored and vertex forms.",
           "responseType": "open-response",
           "skill": "Understand that standard, factored, and vertex forms expose different features of one function.",
           "purpose": "procedure",
@@ -340,7 +340,7 @@
           "id": "a9-1-q07",
           "lessonId": "A9.1",
           "unitCode": "A9",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: Rewrite f(x) = x² − 6x + 5 in factored and vertex form, then name the feature exposed by each form.",
+          "prompt": "Expand g(x) = −2(x + 1)² + 8 and identify its three useful forms when possible.",
           "responseType": "open-response",
           "skill": "Understand that standard, factored, and vertex forms expose different features of one function.",
           "purpose": "procedure",
@@ -388,7 +388,7 @@
           "id": "a9-1-q09",
           "lessonId": "A9.1",
           "unitCode": "A9",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: Rewrite f(x) = x² − 6x + 5 in factored and vertex form, then name the feature exposed by each form.",
+          "prompt": "Complete the calculation after “Factor to obtain (x − 1)(x − 5).” in this problem: For f(x) = x² − 6x + 5, write factored and vertex forms.",
           "responseType": "open-response",
           "skill": "Understand that standard, factored, and vertex forms expose different features of one function.",
           "purpose": "procedure",
@@ -412,7 +412,7 @@
           "id": "a9-1-q10",
           "lessonId": "A9.1",
           "unitCode": "A9",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: Rewrite f(x) = x² − 6x + 5 in factored and vertex form, then name the feature exposed by each form.",
+          "prompt": "Name and justify the most efficient first move, then solve: Expand g(x) = −2(x + 1)² + 8 and identify its three useful forms when possible.",
           "responseType": "open-response",
           "skill": "Understand that standard, factored, and vertex forms expose different features of one function.",
           "purpose": "procedure",
@@ -436,7 +436,7 @@
           "id": "a9-1-q11",
           "lessonId": "A9.1",
           "unitCode": "A9",
-          "prompt": "Build the second representation requested here: Use equivalent standard, factored, and vertex forms together with a labeled parabola. Use the worked case Rewrite f(x) = x² − 6x + 5 in factored and vertex form, then name the feature exposed by each form.",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: For f(x) = x² − 6x + 5, write factored and vertex forms. Expand g(x) = −2(x + 1)² + 8 and identify its three useful forms when possible.",
           "responseType": "open-response",
           "skill": "Understand that standard, factored, and vertex forms expose different features of one function.",
           "purpose": "representation",
@@ -460,7 +460,7 @@
           "id": "a9-1-q12",
           "lessonId": "A9.1",
           "unitCode": "A9",
-          "prompt": "For quadratic relations and three useful forms, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: Rewrite f(x) = x² − 6x + 5 in factored and vertex form, then name the feature exposed by each form.",
+          "prompt": "Create the representation most useful for checking this result: For f(x) = x² − 6x + 5, write factored and vertex forms. Use equivalent standard, factored, and vertex forms together with a labeled parabola.",
           "responseType": "open-response",
           "skill": "Understand that standard, factored, and vertex forms expose different features of one function.",
           "purpose": "representation",
@@ -508,7 +508,7 @@
           "id": "a9-1-q14",
           "lessonId": "A9.1",
           "unitCode": "A9",
-          "prompt": "Repair a solution that performs the final step before completing “Complete the square by adding and subtracting 9.” in the worked case.",
+          "prompt": "Repair a solution that skips “Obtain −2x² − 4x + 6.” while solving: Expand g(x) = −2(x + 1)² + 8 and identify its three useful forms when possible.",
           "responseType": "open-response",
           "skill": "Understand that standard, factored, and vertex forms expose different features of one function.",
           "purpose": "transfer",
@@ -604,7 +604,7 @@
           "id": "a9-1-q18",
           "lessonId": "A9.1",
           "unitCode": "A9",
-          "prompt": "Compare the answer to Rewrite f(x) = x² − 6x + 5 in factored and vertex form, then name the feature exposed by each form. with this lesson outcome—Understand that standard, factored, and vertex forms expose different features of one function. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Understand that standard, factored, and vertex forms expose different features of one function. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Understand that standard, factored, and vertex forms expose different features of one function.",
           "purpose": "modeling",
@@ -628,7 +628,7 @@
           "id": "a9-1-q19",
           "lessonId": "A9.1",
           "unitCode": "A9",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. Rewrite f(x) = x² − 6x + 5 in factored and vertex form, then name the feature exposed by each form.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. For f(x) = x² − 6x + 5, write factored and vertex forms.",
           "responseType": "open-response",
           "skill": "Understand that standard, factored, and vertex forms expose different features of one function.",
           "purpose": "error-analysis",
@@ -652,7 +652,7 @@
           "id": "a9-1-q20",
           "lessonId": "A9.1",
           "unitCode": "A9",
-          "prompt": "Exit check: write a compact method-and-check summary for quadratic relations and three useful forms, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Expand g(x) = −2(x + 1)² + 8 and identify its three useful forms when possible.",
           "responseType": "open-response",
           "skill": "Understand that standard, factored, and vertex forms expose different features of one function.",
           "purpose": "exit",
@@ -710,10 +710,10 @@
       "title": "Graphing parabolas",
       "path": "/subjects/math/algebra/quadratic-functions/graphing-parabolas/",
       "outcome": "Use opening, scale, symmetry, vertex, and intercepts to construct a graph.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Sketch a parabola from a few structural features.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn graphing parabolas as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn graphing parabolas as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Use opening, scale, symmetry, vertex, and intercepts to construct a graph.",
@@ -765,7 +765,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "Sketch y = −2(x − 1)² + 8 from its structural features.",
           "steps": [
             "Read the vertex (1, 8) and axis x = 1.",
@@ -776,26 +776,26 @@
           "interpretation": "A structural sketch uses vertex, opening, scale, symmetry, and intercepts before filling in additional points."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Use equivalent standard, factored, and vertex forms together with a labeled parabola.",
+          "kind": "worked-example-2",
+          "prompt": "Graph y = (x + 2)² − 9 by naming its key features.",
           "steps": [
-            "First solve the original case and retain the exact result Vertex (1, 8), axis x = 1, x-intercepts (−1, 0) and (3, 0), and y-intercept (0, 6)..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "Read the vertex (−2, −9) and axis x = −2.",
+            "The positive leading coefficient means the parabola opens upward.",
+            "Set y = 0 to obtain x = −5 or x = 1, and evaluate y at x = 0."
           ],
-          "answer": "The second representation must preserve Vertex (1, 8), axis x = 1, x-intercepts (−1, 0) and (3, 0), and y-intercept (0, 6)..",
-          "interpretation": "A structural sketch uses vertex, opening, scale, symmetry, and intercepts before filling in additional points. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "Vertex (−2, −9), axis x = −2, x-intercepts (−5, 0) and (1, 0), y-intercept (0, −5).",
+          "interpretation": "Structural features determine a reliable sketch without plotting arbitrary points."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “Vertex (1, 8), axis x = 1, x-intercepts (−1, 0) and (3, 0), and y-intercept (0, 6).” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "Graph y = −x² + 4x + 5 by converting to vertex form.",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Verify the vertex, intercepts, symmetry, opening direction, and any contextual domain against the chosen formula.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "Complete the square: −(x² − 4x) + 5 = −(x − 2)² + 9.",
+            "Read the vertex and opening direction.",
+            "Factor −(x − 5)(x + 1) to find intercepts."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms Vertex (1, 8), axis x = 1, x-intercepts (−1, 0) and (3, 0), and y-intercept (0, 6)..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "Vertex (2, 9), axis x = 2, x-intercepts (−1, 0) and (5, 0), y-intercept (0, 5).",
+          "interpretation": "Equivalent forms cross-check the same parabola’s vertex and zeros."
         }
       ],
       "figures": [
@@ -839,7 +839,7 @@
       ],
       "checkpoint": {
         "id": "a9-2-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for graphing parabolas, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. Graph y = −x² + 4x + 5 by converting to vertex form.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -989,7 +989,7 @@
           "id": "a9-2-q06",
           "lessonId": "A9.2",
           "unitCode": "A9",
-          "prompt": "Complete the calculation after the first step “Read the vertex (1, 8) and axis x = 1.” and show the missing algebra.",
+          "prompt": "Graph y = (x + 2)² − 9 by naming its key features.",
           "responseType": "open-response",
           "skill": "Use opening, scale, symmetry, vertex, and intercepts to construct a graph.",
           "purpose": "procedure",
@@ -1013,7 +1013,7 @@
           "id": "a9-2-q07",
           "lessonId": "A9.2",
           "unitCode": "A9",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: Sketch y = −2(x − 1)² + 8 from its structural features.",
+          "prompt": "Graph y = −x² + 4x + 5 by converting to vertex form.",
           "responseType": "open-response",
           "skill": "Use opening, scale, symmetry, vertex, and intercepts to construct a graph.",
           "purpose": "procedure",
@@ -1061,7 +1061,7 @@
           "id": "a9-2-q09",
           "lessonId": "A9.2",
           "unitCode": "A9",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: Sketch y = −2(x − 1)² + 8 from its structural features.",
+          "prompt": "Complete the calculation after “Read the vertex (−2, −9) and axis x = −2.” in this problem: Graph y = (x + 2)² − 9 by naming its key features.",
           "responseType": "open-response",
           "skill": "Use opening, scale, symmetry, vertex, and intercepts to construct a graph.",
           "purpose": "procedure",
@@ -1085,7 +1085,7 @@
           "id": "a9-2-q10",
           "lessonId": "A9.2",
           "unitCode": "A9",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: Sketch y = −2(x − 1)² + 8 from its structural features.",
+          "prompt": "Name and justify the most efficient first move, then solve: Graph y = −x² + 4x + 5 by converting to vertex form.",
           "responseType": "open-response",
           "skill": "Use opening, scale, symmetry, vertex, and intercepts to construct a graph.",
           "purpose": "procedure",
@@ -1109,7 +1109,7 @@
           "id": "a9-2-q11",
           "lessonId": "A9.2",
           "unitCode": "A9",
-          "prompt": "Build the second representation requested here: Use equivalent standard, factored, and vertex forms together with a labeled parabola. Use the worked case Sketch y = −2(x − 1)² + 8 from its structural features.",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: Graph y = (x + 2)² − 9 by naming its key features. Graph y = −x² + 4x + 5 by converting to vertex form.",
           "responseType": "open-response",
           "skill": "Use opening, scale, symmetry, vertex, and intercepts to construct a graph.",
           "purpose": "representation",
@@ -1133,7 +1133,7 @@
           "id": "a9-2-q12",
           "lessonId": "A9.2",
           "unitCode": "A9",
-          "prompt": "For graphing parabolas, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: Sketch y = −2(x − 1)² + 8 from its structural features.",
+          "prompt": "Create the representation most useful for checking this result: Graph y = (x + 2)² − 9 by naming its key features. Use equivalent standard, factored, and vertex forms together with a labeled parabola.",
           "responseType": "open-response",
           "skill": "Use opening, scale, symmetry, vertex, and intercepts to construct a graph.",
           "purpose": "representation",
@@ -1181,7 +1181,7 @@
           "id": "a9-2-q14",
           "lessonId": "A9.2",
           "unitCode": "A9",
-          "prompt": "Repair a solution that performs the final step before completing “Use a = −2 to determine downward opening and vertical scale.” in the worked case.",
+          "prompt": "Repair a solution that skips “Read the vertex and opening direction.” while solving: Graph y = −x² + 4x + 5 by converting to vertex form.",
           "responseType": "open-response",
           "skill": "Use opening, scale, symmetry, vertex, and intercepts to construct a graph.",
           "purpose": "transfer",
@@ -1277,7 +1277,7 @@
           "id": "a9-2-q18",
           "lessonId": "A9.2",
           "unitCode": "A9",
-          "prompt": "Compare the answer to Sketch y = −2(x − 1)² + 8 from its structural features. with this lesson outcome—Use opening, scale, symmetry, vertex, and intercepts to construct a graph. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Use opening, scale, symmetry, vertex, and intercepts to construct a graph. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Use opening, scale, symmetry, vertex, and intercepts to construct a graph.",
           "purpose": "modeling",
@@ -1301,7 +1301,7 @@
           "id": "a9-2-q19",
           "lessonId": "A9.2",
           "unitCode": "A9",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. Sketch y = −2(x − 1)² + 8 from its structural features.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Graph y = (x + 2)² − 9 by naming its key features.",
           "responseType": "open-response",
           "skill": "Use opening, scale, symmetry, vertex, and intercepts to construct a graph.",
           "purpose": "error-analysis",
@@ -1325,7 +1325,7 @@
           "id": "a9-2-q20",
           "lessonId": "A9.2",
           "unitCode": "A9",
-          "prompt": "Exit check: write a compact method-and-check summary for graphing parabolas, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Graph y = −x² + 4x + 5 by converting to vertex form.",
           "responseType": "open-response",
           "skill": "Use opening, scale, symmetry, vertex, and intercepts to construct a graph.",
           "purpose": "exit",
@@ -1386,10 +1386,10 @@
       "title": "Factored form and zeros",
       "path": "/subjects/math/algebra/quadratic-functions/factored-form-and-zeros/",
       "outcome": "Connect factors, roots, sign changes, and horizontal intercepts.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Predict where a modeled quantity becomes zero.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn factored form and zeros as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn factored form and zeros as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Connect factors, roots, sign changes, and horizontal intercepts.",
@@ -1441,7 +1441,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "For f(x) = (x + 2)(x − 5), find the zeros, horizontal intercepts, and sign on each interval.",
           "steps": [
             "Set each factor equal to zero.",
@@ -1452,26 +1452,26 @@
           "interpretation": "Factored form links roots, intercepts, and sign changes through the signs of the factors."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Use equivalent standard, factored, and vertex forms together with a labeled parabola.",
+          "kind": "worked-example-2",
+          "prompt": "For f(x) = 3(x + 4)(x − 2), identify zeros, axis of symmetry, and vertical intercept.",
           "steps": [
-            "First solve the original case and retain the exact result Zeros −2 and 5; intercepts (−2, 0) and (5, 0); positive on (−∞, −2)∪(5, ∞) and negative on (−2, 5)..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "Set each factor to zero to obtain x = −4 and x = 2.",
+            "Average the zeros to find the axis x = −1.",
+            "Evaluate f(0)."
           ],
-          "answer": "The second representation must preserve Zeros −2 and 5; intercepts (−2, 0) and (5, 0); positive on (−∞, −2)∪(5, ∞) and negative on (−2, 5)..",
-          "interpretation": "Factored form links roots, intercepts, and sign changes through the signs of the factors. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "Zeros −4 and 2; axis x = −1; y-intercept (0, −24).",
+          "interpretation": "The axis lies midway between the symmetric zeros."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “Zeros −2 and 5; intercepts (−2, 0) and (5, 0); positive on (−∞, −2)∪(5, ∞) and negative on (−2, 5).” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "Build a quadratic with zeros −2 and 5 that passes through (1, −24).",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Verify the vertex, intercepts, symmetry, opening direction, and any contextual domain against the chosen formula.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "Start with f(x) = a(x + 2)(x − 5).",
+            "Substitute (1, −24): −24 = a(3)(−4).",
+            "Solve a = 2."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms Zeros −2 and 5; intercepts (−2, 0) and (5, 0); positive on (−∞, −2)∪(5, ∞) and negative on (−2, 5)..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "f(x) = 2(x + 2)(x − 5).",
+          "interpretation": "Zeros determine the factors, while one additional point determines the vertical scale."
         }
       ],
       "figures": [
@@ -1515,7 +1515,7 @@
       ],
       "checkpoint": {
         "id": "a9-3-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for factored form and zeros, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. Build a quadratic with zeros −2 and 5 that passes through (1, −24).",
         "responseType": "open-response"
       },
       "exercises": [
@@ -1665,7 +1665,7 @@
           "id": "a9-3-q06",
           "lessonId": "A9.3",
           "unitCode": "A9",
-          "prompt": "Complete the calculation after the first step “Set each factor equal to zero.” and show the missing algebra.",
+          "prompt": "For f(x) = 3(x + 4)(x − 2), identify zeros, axis of symmetry, and vertical intercept.",
           "responseType": "open-response",
           "skill": "Connect factors, roots, sign changes, and horizontal intercepts.",
           "purpose": "procedure",
@@ -1689,7 +1689,7 @@
           "id": "a9-3-q07",
           "lessonId": "A9.3",
           "unitCode": "A9",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: For f(x) = (x + 2)(x − 5), find the zeros, horizontal intercepts, and sign on each interval.",
+          "prompt": "Build a quadratic with zeros −2 and 5 that passes through (1, −24).",
           "responseType": "open-response",
           "skill": "Connect factors, roots, sign changes, and horizontal intercepts.",
           "purpose": "procedure",
@@ -1737,7 +1737,7 @@
           "id": "a9-3-q09",
           "lessonId": "A9.3",
           "unitCode": "A9",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: For f(x) = (x + 2)(x − 5), find the zeros, horizontal intercepts, and sign on each interval.",
+          "prompt": "Complete the calculation after “Set each factor to zero to obtain x = −4 and x = 2.” in this problem: For f(x) = 3(x + 4)(x − 2), identify zeros, axis of symmetry, and vertical intercept.",
           "responseType": "open-response",
           "skill": "Connect factors, roots, sign changes, and horizontal intercepts.",
           "purpose": "procedure",
@@ -1761,7 +1761,7 @@
           "id": "a9-3-q10",
           "lessonId": "A9.3",
           "unitCode": "A9",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: For f(x) = (x + 2)(x − 5), find the zeros, horizontal intercepts, and sign on each interval.",
+          "prompt": "Name and justify the most efficient first move, then solve: Build a quadratic with zeros −2 and 5 that passes through (1, −24).",
           "responseType": "open-response",
           "skill": "Connect factors, roots, sign changes, and horizontal intercepts.",
           "purpose": "procedure",
@@ -1785,7 +1785,7 @@
           "id": "a9-3-q11",
           "lessonId": "A9.3",
           "unitCode": "A9",
-          "prompt": "Build the second representation requested here: Use equivalent standard, factored, and vertex forms together with a labeled parabola. Use the worked case For f(x) = (x + 2)(x − 5), find the zeros, horizontal intercepts, and sign on each interval.",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: For f(x) = 3(x + 4)(x − 2), identify zeros, axis of symmetry, and vertical intercept. Build a quadratic with zeros −2 and 5 that passes through (1, −24).",
           "responseType": "open-response",
           "skill": "Connect factors, roots, sign changes, and horizontal intercepts.",
           "purpose": "representation",
@@ -1809,7 +1809,7 @@
           "id": "a9-3-q12",
           "lessonId": "A9.3",
           "unitCode": "A9",
-          "prompt": "For factored form and zeros, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: For f(x) = (x + 2)(x − 5), find the zeros, horizontal intercepts, and sign on each interval.",
+          "prompt": "Create the representation most useful for checking this result: For f(x) = 3(x + 4)(x − 2), identify zeros, axis of symmetry, and vertical intercept. Use equivalent standard, factored, and vertex forms together with a labeled parabola.",
           "responseType": "open-response",
           "skill": "Connect factors, roots, sign changes, and horizontal intercepts.",
           "purpose": "representation",
@@ -1857,7 +1857,7 @@
           "id": "a9-3-q14",
           "lessonId": "A9.3",
           "unitCode": "A9",
-          "prompt": "Repair a solution that performs the final step before completing “Use the zeros −2 and 5 to divide the number line.” in the worked case.",
+          "prompt": "Repair a solution that skips “Substitute (1, −24): −24 = a(3)(−4).” while solving: Build a quadratic with zeros −2 and 5 that passes through (1, −24).",
           "responseType": "open-response",
           "skill": "Connect factors, roots, sign changes, and horizontal intercepts.",
           "purpose": "transfer",
@@ -1953,7 +1953,7 @@
           "id": "a9-3-q18",
           "lessonId": "A9.3",
           "unitCode": "A9",
-          "prompt": "Compare the answer to For f(x) = (x + 2)(x − 5), find the zeros, horizontal intercepts, and sign on each interval. with this lesson outcome—Connect factors, roots, sign changes, and horizontal intercepts. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Connect factors, roots, sign changes, and horizontal intercepts. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Connect factors, roots, sign changes, and horizontal intercepts.",
           "purpose": "modeling",
@@ -1977,7 +1977,7 @@
           "id": "a9-3-q19",
           "lessonId": "A9.3",
           "unitCode": "A9",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. For f(x) = (x + 2)(x − 5), find the zeros, horizontal intercepts, and sign on each interval.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. For f(x) = 3(x + 4)(x − 2), identify zeros, axis of symmetry, and vertical intercept.",
           "responseType": "open-response",
           "skill": "Connect factors, roots, sign changes, and horizontal intercepts.",
           "purpose": "error-analysis",
@@ -2001,7 +2001,7 @@
           "id": "a9-3-q20",
           "lessonId": "A9.3",
           "unitCode": "A9",
-          "prompt": "Exit check: write a compact method-and-check summary for factored form and zeros, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Build a quadratic with zeros −2 and 5 that passes through (1, −24).",
           "responseType": "open-response",
           "skill": "Connect factors, roots, sign changes, and horizontal intercepts.",
           "purpose": "exit",
@@ -2062,10 +2062,10 @@
       "title": "Vertex form and transformations",
       "path": "/subjects/math/algebra/quadratic-functions/vertex-form-and-transformations/",
       "outcome": "Read shifts, scale, and extrema from a(x-h)^2+k.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Move and stretch a parent parabola.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn vertex form and transformations as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn vertex form and transformations as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Read shifts, scale, and extrema from a(x-h)^2+k.",
@@ -2117,7 +2117,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "Describe the transformations from y = x² to y = 3(x + 2)² − 5.",
           "steps": [
             "Read x + 2 as a horizontal shift left 2.",
@@ -2128,26 +2128,26 @@
           "interpretation": "Vertex form records transformations relative to the parent parabola without requiring expansion."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Use equivalent standard, factored, and vertex forms together with a labeled parabola.",
+          "kind": "worked-example-2",
+          "prompt": "Describe the transformations from y = x² to y = 3(x − 4)² − 2.",
           "steps": [
-            "First solve the original case and retain the exact result Shift left 2, stretch vertically by 3, and shift down 5; vertex (−2, −5), opening upward..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "The expression x − 4 shifts the graph right 4.",
+            "The factor 3 applies a vertical stretch by 3.",
+            "The −2 shifts the graph down 2."
           ],
-          "answer": "The second representation must preserve Shift left 2, stretch vertically by 3, and shift down 5; vertex (−2, −5), opening upward..",
-          "interpretation": "Vertex form records transformations relative to the parent parabola without requiring expansion. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "Vertex (4, −2), axis x = 4, opens upward with vertical stretch 3.",
+          "interpretation": "Transformation parameters determine position, direction, and scale."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “Shift left 2, stretch vertically by 3, and shift down 5; vertex (−2, −5), opening upward.” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "Write the equation of a parabola with vertex (−3, 5) that opens downward and passes through (−1, −3).",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Verify the vertex, intercepts, symmetry, opening direction, and any contextual domain against the chosen formula.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "Use vertex form y = a(x + 3)² + 5.",
+            "Substitute (−1, −3): −3 = 4a + 5.",
+            "Solve a = −2."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms Shift left 2, stretch vertically by 3, and shift down 5; vertex (−2, −5), opening upward..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "y = −2(x + 3)² + 5.",
+          "interpretation": "A vertex and one nonvertex point determine the scale factor."
         }
       ],
       "figures": [
@@ -2191,7 +2191,7 @@
       ],
       "checkpoint": {
         "id": "a9-4-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for vertex form and transformations, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. Write the equation of a parabola with vertex (−3, 5) that opens downward and passes through (−1, −3).",
         "responseType": "open-response"
       },
       "exercises": [
@@ -2341,7 +2341,7 @@
           "id": "a9-4-q06",
           "lessonId": "A9.4",
           "unitCode": "A9",
-          "prompt": "Complete the calculation after the first step “Read x + 2 as a horizontal shift left 2.” and show the missing algebra.",
+          "prompt": "Describe the transformations from y = x² to y = 3(x − 4)² − 2.",
           "responseType": "open-response",
           "skill": "Read shifts, scale, and extrema from a(x-h)^2+k.",
           "purpose": "procedure",
@@ -2365,7 +2365,7 @@
           "id": "a9-4-q07",
           "lessonId": "A9.4",
           "unitCode": "A9",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: Describe the transformations from y = x² to y = 3(x + 2)² − 5.",
+          "prompt": "Write the equation of a parabola with vertex (−3, 5) that opens downward and passes through (−1, −3).",
           "responseType": "open-response",
           "skill": "Read shifts, scale, and extrema from a(x-h)^2+k.",
           "purpose": "procedure",
@@ -2413,7 +2413,7 @@
           "id": "a9-4-q09",
           "lessonId": "A9.4",
           "unitCode": "A9",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: Describe the transformations from y = x² to y = 3(x + 2)² − 5.",
+          "prompt": "Complete the calculation after “The expression x − 4 shifts the graph right 4.” in this problem: Describe the transformations from y = x² to y = 3(x − 4)² − 2.",
           "responseType": "open-response",
           "skill": "Read shifts, scale, and extrema from a(x-h)^2+k.",
           "purpose": "procedure",
@@ -2437,7 +2437,7 @@
           "id": "a9-4-q10",
           "lessonId": "A9.4",
           "unitCode": "A9",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: Describe the transformations from y = x² to y = 3(x + 2)² − 5.",
+          "prompt": "Name and justify the most efficient first move, then solve: Write the equation of a parabola with vertex (−3, 5) that opens downward and passes through (−1, −3).",
           "responseType": "open-response",
           "skill": "Read shifts, scale, and extrema from a(x-h)^2+k.",
           "purpose": "procedure",
@@ -2461,7 +2461,7 @@
           "id": "a9-4-q11",
           "lessonId": "A9.4",
           "unitCode": "A9",
-          "prompt": "Build the second representation requested here: Use equivalent standard, factored, and vertex forms together with a labeled parabola. Use the worked case Describe the transformations from y = x² to y = 3(x + 2)² − 5.",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: Describe the transformations from y = x² to y = 3(x − 4)² − 2. Write the equation of a parabola with vertex (−3, 5) that opens downward and passes through (−1, −3).",
           "responseType": "open-response",
           "skill": "Read shifts, scale, and extrema from a(x-h)^2+k.",
           "purpose": "representation",
@@ -2485,7 +2485,7 @@
           "id": "a9-4-q12",
           "lessonId": "A9.4",
           "unitCode": "A9",
-          "prompt": "For vertex form and transformations, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: Describe the transformations from y = x² to y = 3(x + 2)² − 5.",
+          "prompt": "Create the representation most useful for checking this result: Describe the transformations from y = x² to y = 3(x − 4)² − 2. Use equivalent standard, factored, and vertex forms together with a labeled parabola.",
           "responseType": "open-response",
           "skill": "Read shifts, scale, and extrema from a(x-h)^2+k.",
           "purpose": "representation",
@@ -2533,7 +2533,7 @@
           "id": "a9-4-q14",
           "lessonId": "A9.4",
           "unitCode": "A9",
-          "prompt": "Repair a solution that performs the final step before completing “Read the factor 3 as a vertical stretch.” in the worked case.",
+          "prompt": "Repair a solution that skips “Substitute (−1, −3): −3 = 4a + 5.” while solving: Write the equation of a parabola with vertex (−3, 5) that opens downward and passes through (−1, −3).",
           "responseType": "open-response",
           "skill": "Read shifts, scale, and extrema from a(x-h)^2+k.",
           "purpose": "transfer",
@@ -2629,7 +2629,7 @@
           "id": "a9-4-q18",
           "lessonId": "A9.4",
           "unitCode": "A9",
-          "prompt": "Compare the answer to Describe the transformations from y = x² to y = 3(x + 2)² − 5. with this lesson outcome—Read shifts, scale, and extrema from a(x-h)^2+k. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Read shifts, scale, and extrema from a(x-h)^2+k. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Read shifts, scale, and extrema from a(x-h)^2+k.",
           "purpose": "modeling",
@@ -2653,7 +2653,7 @@
           "id": "a9-4-q19",
           "lessonId": "A9.4",
           "unitCode": "A9",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. Describe the transformations from y = x² to y = 3(x + 2)² − 5.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Describe the transformations from y = x² to y = 3(x − 4)² − 2.",
           "responseType": "open-response",
           "skill": "Read shifts, scale, and extrema from a(x-h)^2+k.",
           "purpose": "error-analysis",
@@ -2677,7 +2677,7 @@
           "id": "a9-4-q20",
           "lessonId": "A9.4",
           "unitCode": "A9",
-          "prompt": "Exit check: write a compact method-and-check summary for vertex form and transformations, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Write the equation of a parabola with vertex (−3, 5) that opens downward and passes through (−1, −3).",
           "responseType": "open-response",
           "skill": "Read shifts, scale, and extrema from a(x-h)^2+k.",
           "purpose": "exit",
@@ -2738,10 +2738,10 @@
       "title": "Moving among forms",
       "path": "/subjects/math/algebra/quadratic-functions/moving-among-forms/",
       "outcome": "Factor, expand, or complete the square according to the question being asked.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Reveal zeros, intercept, or optimum from the same function.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn moving among forms as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn moving among forms as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Factor, expand, or complete the square according to the question being asked.",
@@ -2793,7 +2793,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "Choose a useful form for f(x) = 2x² − 12x + 10 when the goal is to find the minimum value.",
           "steps": [
             "Recognize that vertex form directly exposes an extremum.",
@@ -2804,26 +2804,26 @@
           "interpretation": "Changing form is strategic: vertex form answers an extremum question directly."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Use equivalent standard, factored, and vertex forms together with a labeled parabola.",
+          "kind": "worked-example-2",
+          "prompt": "Convert y = 2x² − 12x + 10 to vertex form.",
           "steps": [
-            "First solve the original case and retain the exact result f(x) = 2(x − 3)² − 8, so the minimum value is −8 at x = 3..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "Factor 2 from the quadratic and linear terms.",
+            "Complete the square inside: x² − 6x = (x − 3)² − 9.",
+            "Distribute and combine constants."
           ],
-          "answer": "The second representation must preserve f(x) = 2(x − 3)² − 8, so the minimum value is −8 at x = 3..",
-          "interpretation": "Changing form is strategic: vertex form answers an extremum question directly. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "y = 2(x − 3)² − 8.",
+          "interpretation": "Vertex form exposes the minimum value −8 at x = 3."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “f(x) = 2(x − 3)² − 8, so the minimum value is −8 at x = 3.” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "Convert y = −(x − 4)² + 25 to factored form.",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Verify the vertex, intercepts, symmetry, opening direction, and any contextual domain against the chosen formula.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "Set y = 0 to find (x − 4)² = 25.",
+            "The zeros are x = −1 and x = 9.",
+            "Use the leading coefficient −1 with those factors."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms f(x) = 2(x − 3)² − 8, so the minimum value is −8 at x = 3..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "y = −(x + 1)(x − 9).",
+          "interpretation": "Solving for zeros provides the factors while preserving the original leading coefficient."
         }
       ],
       "figures": [
@@ -2867,7 +2867,7 @@
       ],
       "checkpoint": {
         "id": "a9-5-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for moving among forms, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. Convert y = −(x − 4)² + 25 to factored form.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -3017,7 +3017,7 @@
           "id": "a9-5-q06",
           "lessonId": "A9.5",
           "unitCode": "A9",
-          "prompt": "Complete the calculation after the first step “Recognize that vertex form directly exposes an extremum.” and show the missing algebra.",
+          "prompt": "Convert y = 2x² − 12x + 10 to vertex form.",
           "responseType": "open-response",
           "skill": "Factor, expand, or complete the square according to the question being asked.",
           "purpose": "procedure",
@@ -3041,7 +3041,7 @@
           "id": "a9-5-q07",
           "lessonId": "A9.5",
           "unitCode": "A9",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: Choose a useful form for f(x) = 2x² − 12x + 10 when the goal is to find the minimum value.",
+          "prompt": "Convert y = −(x − 4)² + 25 to factored form.",
           "responseType": "open-response",
           "skill": "Factor, expand, or complete the square according to the question being asked.",
           "purpose": "procedure",
@@ -3089,7 +3089,7 @@
           "id": "a9-5-q09",
           "lessonId": "A9.5",
           "unitCode": "A9",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: Choose a useful form for f(x) = 2x² − 12x + 10 when the goal is to find the minimum value.",
+          "prompt": "Complete the calculation after “Factor 2 from the quadratic and linear terms.” in this problem: Convert y = 2x² − 12x + 10 to vertex form.",
           "responseType": "open-response",
           "skill": "Factor, expand, or complete the square according to the question being asked.",
           "purpose": "procedure",
@@ -3113,7 +3113,7 @@
           "id": "a9-5-q10",
           "lessonId": "A9.5",
           "unitCode": "A9",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: Choose a useful form for f(x) = 2x² − 12x + 10 when the goal is to find the minimum value.",
+          "prompt": "Name and justify the most efficient first move, then solve: Convert y = −(x − 4)² + 25 to factored form.",
           "responseType": "open-response",
           "skill": "Factor, expand, or complete the square according to the question being asked.",
           "purpose": "procedure",
@@ -3137,7 +3137,7 @@
           "id": "a9-5-q11",
           "lessonId": "A9.5",
           "unitCode": "A9",
-          "prompt": "Build the second representation requested here: Use equivalent standard, factored, and vertex forms together with a labeled parabola. Use the worked case Choose a useful form for f(x) = 2x² − 12x + 10 when the goal is to find the minimum value.",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: Convert y = 2x² − 12x + 10 to vertex form. Convert y = −(x − 4)² + 25 to factored form.",
           "responseType": "open-response",
           "skill": "Factor, expand, or complete the square according to the question being asked.",
           "purpose": "representation",
@@ -3161,7 +3161,7 @@
           "id": "a9-5-q12",
           "lessonId": "A9.5",
           "unitCode": "A9",
-          "prompt": "For moving among forms, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: Choose a useful form for f(x) = 2x² − 12x + 10 when the goal is to find the minimum value.",
+          "prompt": "Create the representation most useful for checking this result: Convert y = 2x² − 12x + 10 to vertex form. Use equivalent standard, factored, and vertex forms together with a labeled parabola.",
           "responseType": "open-response",
           "skill": "Factor, expand, or complete the square according to the question being asked.",
           "purpose": "representation",
@@ -3209,7 +3209,7 @@
           "id": "a9-5-q14",
           "lessonId": "A9.5",
           "unitCode": "A9",
-          "prompt": "Repair a solution that performs the final step before completing “Factor out 2 from the quadratic and linear terms, then complete the square.” in the worked case.",
+          "prompt": "Repair a solution that skips “The zeros are x = −1 and x = 9.” while solving: Convert y = −(x − 4)² + 25 to factored form.",
           "responseType": "open-response",
           "skill": "Factor, expand, or complete the square according to the question being asked.",
           "purpose": "transfer",
@@ -3305,7 +3305,7 @@
           "id": "a9-5-q18",
           "lessonId": "A9.5",
           "unitCode": "A9",
-          "prompt": "Compare the answer to Choose a useful form for f(x) = 2x² − 12x + 10 when the goal is to find the minimum value. with this lesson outcome—Factor, expand, or complete the square according to the question being asked. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Factor, expand, or complete the square according to the question being asked. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Factor, expand, or complete the square according to the question being asked.",
           "purpose": "modeling",
@@ -3329,7 +3329,7 @@
           "id": "a9-5-q19",
           "lessonId": "A9.5",
           "unitCode": "A9",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. Choose a useful form for f(x) = 2x² − 12x + 10 when the goal is to find the minimum value.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Convert y = 2x² − 12x + 10 to vertex form.",
           "responseType": "open-response",
           "skill": "Factor, expand, or complete the square according to the question being asked.",
           "purpose": "error-analysis",
@@ -3353,7 +3353,7 @@
           "id": "a9-5-q20",
           "lessonId": "A9.5",
           "unitCode": "A9",
-          "prompt": "Exit check: write a compact method-and-check summary for moving among forms, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Convert y = −(x − 4)² + 25 to factored form.",
           "responseType": "open-response",
           "skill": "Factor, expand, or complete the square according to the question being asked.",
           "purpose": "exit",
@@ -3414,10 +3414,10 @@
       "title": "Quadratic models and extrema",
       "path": "/subjects/math/algebra/quadratic-functions/quadratic-models-and-extrema/",
       "outcome": "Interpret the vertex as a maximum or minimum in context.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Model projectile height, area, or revenue.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn quadratic models and extrema as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn quadratic models and extrema as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Interpret the vertex as a maximum or minimum in context.",
@@ -3469,7 +3469,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "A projectile’s height is h(t) = −16t² + 64t + 5. Find and interpret its maximum height.",
           "steps": [
             "Use t = −b/(2a) to find the vertex time.",
@@ -3480,26 +3480,26 @@
           "interpretation": "The vertex represents the maximum only within the model’s contextual domain and carries both time and height units."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Use equivalent standard, factored, and vertex forms together with a labeled parabola.",
+          "kind": "worked-example-2",
+          "prompt": "A projectile’s height is h(t) = −16t² + 64t + 5. Find its maximum height and when it occurs.",
           "steps": [
-            "First solve the original case and retain the exact result The maximum occurs at t = 2 seconds and is h(2) = 69 feet..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "Use t = −b/(2a) = −64/[2(−16)] = 2.",
+            "Evaluate h(2).",
+            "Interpret the vertex within the time domain."
           ],
-          "answer": "The second representation must preserve The maximum occurs at t = 2 seconds and is h(2) = 69 feet..",
-          "interpretation": "The vertex represents the maximum only within the model’s contextual domain and carries both time and height units. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "Maximum height 69 feet at t = 2 seconds.",
+          "interpretation": "For a downward-opening quadratic, the vertex gives the physical maximum."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “The maximum occurs at t = 2 seconds and is h(2) = 69 feet.” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "A farmer has 80 meters of fencing for three sides of a rectangle against a wall. Maximize area.",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Verify the vertex, intercepts, symmetry, opening direction, and any contextual domain against the chosen formula.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "Let x be each side perpendicular to the wall, so the third fenced side is 80 − 2x.",
+            "Write A(x) = x(80 − 2x) = −2x² + 80x.",
+            "Find the vertex x = 20 and compute the other dimension and area."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms The maximum occurs at t = 2 seconds and is h(2) = 69 feet..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "Dimensions 20 m by 40 m; maximum area 800 m².",
+          "interpretation": "The quadratic vertex solves the constrained optimization model."
         }
       ],
       "figures": [
@@ -3543,7 +3543,7 @@
       ],
       "checkpoint": {
         "id": "a9-6-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for quadratic models and extrema, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. A farmer has 80 meters of fencing for three sides of a rectangle against a wall. Maximize area.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -3693,7 +3693,7 @@
           "id": "a9-6-q06",
           "lessonId": "A9.6",
           "unitCode": "A9",
-          "prompt": "Complete the calculation after the first step “Use t = −b/(2a) to find the vertex time.” and show the missing algebra.",
+          "prompt": "A projectile’s height is h(t) = −16t² + 64t + 5. Find its maximum height and when it occurs.",
           "responseType": "open-response",
           "skill": "Interpret the vertex as a maximum or minimum in context.",
           "purpose": "procedure",
@@ -3717,7 +3717,7 @@
           "id": "a9-6-q07",
           "lessonId": "A9.6",
           "unitCode": "A9",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: A projectile’s height is h(t) = −16t² + 64t + 5. Find and interpret its maximum height.",
+          "prompt": "A farmer has 80 meters of fencing for three sides of a rectangle against a wall. Maximize area.",
           "responseType": "open-response",
           "skill": "Interpret the vertex as a maximum or minimum in context.",
           "purpose": "procedure",
@@ -3765,7 +3765,7 @@
           "id": "a9-6-q09",
           "lessonId": "A9.6",
           "unitCode": "A9",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: A projectile’s height is h(t) = −16t² + 64t + 5. Find and interpret its maximum height.",
+          "prompt": "Complete the calculation after “Use t = −b/(2a) = −64/[2(−16)] = 2.” in this problem: A projectile’s height is h(t) = −16t² + 64t + 5. Find its maximum height and when it occurs.",
           "responseType": "open-response",
           "skill": "Interpret the vertex as a maximum or minimum in context.",
           "purpose": "procedure",
@@ -3789,7 +3789,7 @@
           "id": "a9-6-q10",
           "lessonId": "A9.6",
           "unitCode": "A9",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: A projectile’s height is h(t) = −16t² + 64t + 5. Find and interpret its maximum height.",
+          "prompt": "Name and justify the most efficient first move, then solve: A farmer has 80 meters of fencing for three sides of a rectangle against a wall. Maximize area.",
           "responseType": "open-response",
           "skill": "Interpret the vertex as a maximum or minimum in context.",
           "purpose": "procedure",
@@ -3813,7 +3813,7 @@
           "id": "a9-6-q11",
           "lessonId": "A9.6",
           "unitCode": "A9",
-          "prompt": "Build the second representation requested here: Use equivalent standard, factored, and vertex forms together with a labeled parabola. Use the worked case A projectile’s height is h(t) = −16t² + 64t + 5. Find and interpret its maximum height.",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: A projectile’s height is h(t) = −16t² + 64t + 5. Find its maximum height and when it occurs. A farmer has 80 meters of fencing for three sides of a rectangle against a wall. Maximize area.",
           "responseType": "open-response",
           "skill": "Interpret the vertex as a maximum or minimum in context.",
           "purpose": "representation",
@@ -3837,7 +3837,7 @@
           "id": "a9-6-q12",
           "lessonId": "A9.6",
           "unitCode": "A9",
-          "prompt": "For quadratic models and extrema, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: A projectile’s height is h(t) = −16t² + 64t + 5. Find and interpret its maximum height.",
+          "prompt": "Create the representation most useful for checking this result: A projectile’s height is h(t) = −16t² + 64t + 5. Find its maximum height and when it occurs. Use equivalent standard, factored, and vertex forms together with a labeled parabola.",
           "responseType": "open-response",
           "skill": "Interpret the vertex as a maximum or minimum in context.",
           "purpose": "representation",
@@ -3885,7 +3885,7 @@
           "id": "a9-6-q14",
           "lessonId": "A9.6",
           "unitCode": "A9",
-          "prompt": "Repair a solution that performs the final step before completing “Evaluate h at that time.” in the worked case.",
+          "prompt": "Repair a solution that skips “Write A(x) = x(80 − 2x) = −2x² + 80x.” while solving: A farmer has 80 meters of fencing for three sides of a rectangle against a wall. Maximize area.",
           "responseType": "open-response",
           "skill": "Interpret the vertex as a maximum or minimum in context.",
           "purpose": "transfer",
@@ -3981,7 +3981,7 @@
           "id": "a9-6-q18",
           "lessonId": "A9.6",
           "unitCode": "A9",
-          "prompt": "Compare the answer to A projectile’s height is h(t) = −16t² + 64t + 5. Find and interpret its maximum height. with this lesson outcome—Interpret the vertex as a maximum or minimum in context. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Interpret the vertex as a maximum or minimum in context. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Interpret the vertex as a maximum or minimum in context.",
           "purpose": "modeling",
@@ -4005,7 +4005,7 @@
           "id": "a9-6-q19",
           "lessonId": "A9.6",
           "unitCode": "A9",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. A projectile’s height is h(t) = −16t² + 64t + 5. Find and interpret its maximum height.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. A projectile’s height is h(t) = −16t² + 64t + 5. Find its maximum height and when it occurs.",
           "responseType": "open-response",
           "skill": "Interpret the vertex as a maximum or minimum in context.",
           "purpose": "error-analysis",
@@ -4029,7 +4029,7 @@
           "id": "a9-6-q20",
           "lessonId": "A9.6",
           "unitCode": "A9",
-          "prompt": "Exit check: write a compact method-and-check summary for quadratic models and extrema, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. A farmer has 80 meters of fencing for three sides of a rectangle against a wall. Maximize area.",
           "responseType": "open-response",
           "skill": "Interpret the vertex as a maximum or minimum in context.",
           "purpose": "exit",
@@ -4090,10 +4090,10 @@
       "title": "Quadratic inequalities",
       "path": "/subjects/math/algebra/quadratic-functions/quadratic-inequalities/",
       "outcome": "Combine zeros, sign intervals, and graph position to find solution regions.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Determine when a quadratic quantity exceeds a threshold.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn quadratic inequalities as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn quadratic inequalities as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Combine zeros, sign intervals, and graph position to find solution regions.",
@@ -4145,7 +4145,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "Solve x² − 5x + 6 ≤ 0.",
           "steps": [
             "Factor as (x − 2)(x − 3).",
@@ -4156,26 +4156,26 @@
           "interpretation": "An upward-opening quadratic is at or below the axis between its real zeros."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Use equivalent standard, factored, and vertex forms together with a labeled parabola.",
+          "kind": "worked-example-2",
+          "prompt": "Solve x² + x − 6 ≤ 0.",
           "steps": [
-            "First solve the original case and retain the exact result 2 ≤ x ≤ 3, or [2, 3]..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "Factor as (x + 3)(x − 2) ≤ 0.",
+            "Use boundary points −3 and 2 to divide the number line.",
+            "Test one point in each interval and include both zeros."
           ],
-          "answer": "The second representation must preserve 2 ≤ x ≤ 3, or [2, 3]..",
-          "interpretation": "An upward-opening quadratic is at or below the axis between its real zeros. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "[−3, 2].",
+          "interpretation": "An upward-opening quadratic is nonpositive between its real zeros."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “2 ≤ x ≤ 3, or [2, 3].” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "Solve −2(x + 1)(x − 4) > 0.",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Verify the vertex, intercepts, symmetry, opening direction, and any contextual domain against the chosen formula.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "The boundary points are −1 and 4.",
+            "Because the leading coefficient is negative, the parabola is positive between the zeros.",
+            "Use open endpoints for the strict inequality."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms 2 ≤ x ≤ 3, or [2, 3]..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "(−1, 4).",
+          "interpretation": "Sign analysis must include both factor signs and the leading coefficient."
         }
       ],
       "figures": [
@@ -4219,7 +4219,7 @@
       ],
       "checkpoint": {
         "id": "a9-7-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for quadratic inequalities, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. Solve −2(x + 1)(x − 4) > 0.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -4369,7 +4369,7 @@
           "id": "a9-7-q06",
           "lessonId": "A9.7",
           "unitCode": "A9",
-          "prompt": "Complete the calculation after the first step “Factor as (x − 2)(x − 3).” and show the missing algebra.",
+          "prompt": "Solve x² + x − 6 ≤ 0.",
           "responseType": "open-response",
           "skill": "Combine zeros, sign intervals, and graph position to find solution regions.",
           "purpose": "procedure",
@@ -4393,7 +4393,7 @@
           "id": "a9-7-q07",
           "lessonId": "A9.7",
           "unitCode": "A9",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: Solve x² − 5x + 6 ≤ 0.",
+          "prompt": "Solve −2(x + 1)(x − 4) > 0.",
           "responseType": "open-response",
           "skill": "Combine zeros, sign intervals, and graph position to find solution regions.",
           "purpose": "procedure",
@@ -4441,7 +4441,7 @@
           "id": "a9-7-q09",
           "lessonId": "A9.7",
           "unitCode": "A9",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: Solve x² − 5x + 6 ≤ 0.",
+          "prompt": "Complete the calculation after “Factor as (x + 3)(x − 2) ≤ 0.” in this problem: Solve x² + x − 6 ≤ 0.",
           "responseType": "open-response",
           "skill": "Combine zeros, sign intervals, and graph position to find solution regions.",
           "purpose": "procedure",
@@ -4465,7 +4465,7 @@
           "id": "a9-7-q10",
           "lessonId": "A9.7",
           "unitCode": "A9",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: Solve x² − 5x + 6 ≤ 0.",
+          "prompt": "Name and justify the most efficient first move, then solve: Solve −2(x + 1)(x − 4) > 0.",
           "responseType": "open-response",
           "skill": "Combine zeros, sign intervals, and graph position to find solution regions.",
           "purpose": "procedure",
@@ -4489,7 +4489,7 @@
           "id": "a9-7-q11",
           "lessonId": "A9.7",
           "unitCode": "A9",
-          "prompt": "Build the second representation requested here: Use equivalent standard, factored, and vertex forms together with a labeled parabola. Use the worked case Solve x² − 5x + 6 ≤ 0.",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: Solve x² + x − 6 ≤ 0. Solve −2(x + 1)(x − 4) > 0.",
           "responseType": "open-response",
           "skill": "Combine zeros, sign intervals, and graph position to find solution regions.",
           "purpose": "representation",
@@ -4513,7 +4513,7 @@
           "id": "a9-7-q12",
           "lessonId": "A9.7",
           "unitCode": "A9",
-          "prompt": "For quadratic inequalities, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: Solve x² − 5x + 6 ≤ 0.",
+          "prompt": "Create the representation most useful for checking this result: Solve x² + x − 6 ≤ 0. Use equivalent standard, factored, and vertex forms together with a labeled parabola.",
           "responseType": "open-response",
           "skill": "Combine zeros, sign intervals, and graph position to find solution regions.",
           "purpose": "representation",
@@ -4561,7 +4561,7 @@
           "id": "a9-7-q14",
           "lessonId": "A9.7",
           "unitCode": "A9",
-          "prompt": "Repair a solution that performs the final step before completing “Use 2 and 3 as critical values and test the three intervals.” in the worked case.",
+          "prompt": "Repair a solution that skips “Because the leading coefficient is negative, the parabola is positive between the zeros.” while solving: Solve −2(x + 1)(x − 4) > 0.",
           "responseType": "open-response",
           "skill": "Combine zeros, sign intervals, and graph position to find solution regions.",
           "purpose": "transfer",
@@ -4657,7 +4657,7 @@
           "id": "a9-7-q18",
           "lessonId": "A9.7",
           "unitCode": "A9",
-          "prompt": "Compare the answer to Solve x² − 5x + 6 ≤ 0. with this lesson outcome—Combine zeros, sign intervals, and graph position to find solution regions. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Combine zeros, sign intervals, and graph position to find solution regions. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Combine zeros, sign intervals, and graph position to find solution regions.",
           "purpose": "modeling",
@@ -4681,7 +4681,7 @@
           "id": "a9-7-q19",
           "lessonId": "A9.7",
           "unitCode": "A9",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. Solve x² − 5x + 6 ≤ 0.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Solve x² + x − 6 ≤ 0.",
           "responseType": "open-response",
           "skill": "Combine zeros, sign intervals, and graph position to find solution regions.",
           "purpose": "error-analysis",
@@ -4705,7 +4705,7 @@
           "id": "a9-7-q20",
           "lessonId": "A9.7",
           "unitCode": "A9",
-          "prompt": "Exit check: write a compact method-and-check summary for quadratic inequalities, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Solve −2(x + 1)(x − 4) > 0.",
           "responseType": "open-response",
           "skill": "Combine zeros, sign intervals, and graph position to find solution regions.",
           "purpose": "exit",
@@ -4766,10 +4766,10 @@
       "title": "Quadratic regression and model limitations",
       "path": "/subjects/math/algebra/quadratic-functions/quadratic-regression-and-model-limitations/",
       "outcome": "Fit curved data and compare model quality without mistaking fit for causation.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Compare linear and quadratic fits to a trend.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn quadratic regression and model limitations as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn quadratic regression and model limitations as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Fit curved data and compare model quality without mistaking fit for causation.",
@@ -4821,7 +4821,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "Two models fit a dataset: linear residuals show a U-shaped pattern, while quadratic residuals are small and randomly scattered. Choose the stronger model and state a limitation.",
           "steps": [
             "Interpret the systematic linear residual pattern as missed curvature.",
@@ -4832,26 +4832,26 @@
           "interpretation": "Residual structure matters more than a graph merely appearing close to the data points."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Use equivalent standard, factored, and vertex forms together with a labeled parabola.",
+          "kind": "worked-example-2",
+          "prompt": "A quadratic regression gives ŷ = −0.5x² + 4x + 3 for data measured on 0 ≤ x ≤ 7. Find the predicted maximum and state the valid modeling interval.",
           "steps": [
-            "First solve the original case and retain the exact result The quadratic model is stronger within the observed input range, but fit alone does not prove causation or justify distant extrapolation..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "Compute the vertex input x = −4/[2(−0.5)] = 4.",
+            "Evaluate the model at x = 4.",
+            "Keep the interpretation inside the observed input interval."
           ],
-          "answer": "The second representation must preserve The quadratic model is stronger within the observed input range, but fit alone does not prove causation or justify distant extrapolation..",
-          "interpretation": "Residual structure matters more than a graph merely appearing close to the data points. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "Predicted maximum 11 at x = 4; use the model on 0 ≤ x ≤ 7.",
+          "interpretation": "A regression vertex is a model prediction, not an unrestricted law."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “The quadratic model is stronger within the observed input range, but fit alone does not prove causation or justify distant extrapolation.” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "Residuals from a quadratic fit are 0.2, −0.1, 0.0, 0.1, −0.2, while a linear fit has residuals 4, 1, −2, −3, 0. Compare the fits cautiously.",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Verify the vertex, intercepts, symmetry, opening direction, and any contextual domain against the chosen formula.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "Compare the magnitudes and patterns of both residual sets.",
+            "The quadratic residuals are smaller and centered near zero.",
+            "State that residual evidence supports, but does not prove, the quadratic model."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms The quadratic model is stronger within the observed input range, but fit alone does not prove causation or justify distant extrapolation..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "The quadratic fit is better supported for these observations.",
+          "interpretation": "Model choice considers residual behavior, domain, and context rather than equation complexity alone."
         }
       ],
       "figures": [
@@ -4895,7 +4895,7 @@
       ],
       "checkpoint": {
         "id": "a9-8-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for quadratic regression and model limitations, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. Residuals from a quadratic fit are 0.2, −0.1, 0.0, 0.1, −0.2, while a linear fit has residuals 4, 1, −2, −3, 0. Compare the fits cautiously.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -5045,7 +5045,7 @@
           "id": "a9-8-q06",
           "lessonId": "A9.8",
           "unitCode": "A9",
-          "prompt": "Complete the calculation after the first step “Interpret the systematic linear residual pattern as missed curvature.” and show the missing algebra.",
+          "prompt": "A quadratic regression gives ŷ = −0.5x² + 4x + 3 for data measured on 0 ≤ x ≤ 7. Find the predicted maximum and state the valid modeling interval.",
           "responseType": "open-response",
           "skill": "Fit curved data and compare model quality without mistaking fit for causation.",
           "purpose": "procedure",
@@ -5069,7 +5069,7 @@
           "id": "a9-8-q07",
           "lessonId": "A9.8",
           "unitCode": "A9",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: Two models fit a dataset: linear residuals show a U-shaped pattern, while quadratic residuals are small and randomly scattered. Choose the stronger model and state a limitation.",
+          "prompt": "Residuals from a quadratic fit are 0.2, −0.1, 0.0, 0.1, −0.2, while a linear fit has residuals 4, 1, −2, −3, 0. Compare the fits cautiously.",
           "responseType": "open-response",
           "skill": "Fit curved data and compare model quality without mistaking fit for causation.",
           "purpose": "procedure",
@@ -5117,7 +5117,7 @@
           "id": "a9-8-q09",
           "lessonId": "A9.8",
           "unitCode": "A9",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: Two models fit a dataset: linear residuals show a U-shaped pattern, while quadratic residuals are small and randomly scattered. Choose the stronger model and state a limitation.",
+          "prompt": "Complete the calculation after “Compute the vertex input x = −4/[2(−0.5)] = 4.” in this problem: A quadratic regression gives ŷ = −0.5x² + 4x + 3 for data measured on 0 ≤ x ≤ 7. Find the predicted maximum and state the valid modeling interval.",
           "responseType": "open-response",
           "skill": "Fit curved data and compare model quality without mistaking fit for causation.",
           "purpose": "procedure",
@@ -5141,7 +5141,7 @@
           "id": "a9-8-q10",
           "lessonId": "A9.8",
           "unitCode": "A9",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: Two models fit a dataset: linear residuals show a U-shaped pattern, while quadratic residuals are small and randomly scattered. Choose the stronger model and state a limitation.",
+          "prompt": "Name and justify the most efficient first move, then solve: Residuals from a quadratic fit are 0.2, −0.1, 0.0, 0.1, −0.2, while a linear fit has residuals 4, 1, −2, −3, 0. Compare the fits cautiously.",
           "responseType": "open-response",
           "skill": "Fit curved data and compare model quality without mistaking fit for causation.",
           "purpose": "procedure",
@@ -5165,7 +5165,7 @@
           "id": "a9-8-q11",
           "lessonId": "A9.8",
           "unitCode": "A9",
-          "prompt": "Build the second representation requested here: Use equivalent standard, factored, and vertex forms together with a labeled parabola. Use the worked case Two models fit a dataset: linear residuals show a U-shaped pattern, while quadratic residuals are small and randomly scattered. Choose the stronger model and state a limitation.",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: A quadratic regression gives ŷ = −0.5x² + 4x + 3 for data measured on 0 ≤ x ≤ 7. Find the predicted maximum and state the valid modeling interval. Residuals from a quadratic fit are 0.2, −0.1, 0.0, 0.1, −0.2, while a linear fit has residuals 4, 1, −2, −3, 0. Compare the fits cautiously.",
           "responseType": "open-response",
           "skill": "Fit curved data and compare model quality without mistaking fit for causation.",
           "purpose": "representation",
@@ -5189,7 +5189,7 @@
           "id": "a9-8-q12",
           "lessonId": "A9.8",
           "unitCode": "A9",
-          "prompt": "For quadratic regression and model limitations, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: Two models fit a dataset: linear residuals show a U-shaped pattern, while quadratic residuals are small and randomly scattered. Choose the stronger model and state a limitation.",
+          "prompt": "Create the representation most useful for checking this result: A quadratic regression gives ŷ = −0.5x² + 4x + 3 for data measured on 0 ≤ x ≤ 7. Find the predicted maximum and state the valid modeling interval. Use equivalent standard, factored, and vertex forms together with a labeled parabola.",
           "responseType": "open-response",
           "skill": "Fit curved data and compare model quality without mistaking fit for causation.",
           "purpose": "representation",
@@ -5237,7 +5237,7 @@
           "id": "a9-8-q14",
           "lessonId": "A9.8",
           "unitCode": "A9",
-          "prompt": "Repair a solution that performs the final step before completing “Interpret random quadratic residual scatter as better structural fit.” in the worked case.",
+          "prompt": "Repair a solution that skips “The quadratic residuals are smaller and centered near zero.” while solving: Residuals from a quadratic fit are 0.2, −0.1, 0.0, 0.1, −0.2, while a linear fit has residuals 4, 1, −2, −3, 0. Compare the fits cautiously.",
           "responseType": "open-response",
           "skill": "Fit curved data and compare model quality without mistaking fit for causation.",
           "purpose": "transfer",
@@ -5333,7 +5333,7 @@
           "id": "a9-8-q18",
           "lessonId": "A9.8",
           "unitCode": "A9",
-          "prompt": "Compare the answer to Two models fit a dataset: linear residuals show a U-shaped pattern, while quadratic residuals are small and randomly scattered. Choose the stronger model and state a limitation. with this lesson outcome—Fit curved data and compare model quality without mistaking fit for causation. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Fit curved data and compare model quality without mistaking fit for causation. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Fit curved data and compare model quality without mistaking fit for causation.",
           "purpose": "modeling",
@@ -5357,7 +5357,7 @@
           "id": "a9-8-q19",
           "lessonId": "A9.8",
           "unitCode": "A9",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. Two models fit a dataset: linear residuals show a U-shaped pattern, while quadratic residuals are small and randomly scattered. Choose the stronger model and state a limitation.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. A quadratic regression gives ŷ = −0.5x² + 4x + 3 for data measured on 0 ≤ x ≤ 7. Find the predicted maximum and state the valid modeling interval.",
           "responseType": "open-response",
           "skill": "Fit curved data and compare model quality without mistaking fit for causation.",
           "purpose": "error-analysis",
@@ -5381,7 +5381,7 @@
           "id": "a9-8-q20",
           "lessonId": "A9.8",
           "unitCode": "A9",
-          "prompt": "Exit check: write a compact method-and-check summary for quadratic regression and model limitations, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Residuals from a quadratic fit are 0.2, −0.1, 0.0, 0.1, −0.2, while a linear fit has residuals 4, 1, −2, −3, 0. Compare the fits cautiously.",
           "responseType": "open-response",
           "skill": "Fit curved data and compare model quality without mistaking fit for causation.",
           "purpose": "exit",

@@ -1,4 +1,5 @@
 import { getLessonCase } from "./lesson-cases.mjs";
+import { getExtraExamples } from "./extra-examples.mjs";
 import { getUnitGuide } from "./unit-guides.mjs";
 
 const sentence = (value) => {
@@ -6,43 +7,53 @@ const sentence = (value) => {
   return /[.!?]$/.test(text) ? text : `${text}.`;
 };
 
-function makeQuestions(lesson, lessonCase, guide) {
-  const completeWork = `${lessonCase.steps.join(" ")} Therefore ${sentence(lessonCase.answer)} ${sentence(lessonCase.interpretation)}`;
+function makeQuestions(lesson, lessonCases, guide) {
+  const [lessonCase, secondCase, thirdCase] = lessonCases;
+  const completeWork = (example) => `${example.steps.join(" ")} Therefore ${sentence(example.answer)} ${sentence(example.interpretation)}`;
   const entries = [
     [`Classify the mathematical object and requested action in this lesson case: ${lessonCase.prompt}`, `The object and action must agree with ${lesson.title.toLowerCase()} and the instruction in the prompt.`],
     [`State the central definition behind this outcome: ${lesson.outcome}`, sentence(lesson.outcome)],
     [`Before calculating, list every sign, endpoint, unit, grouping, or domain condition that can affect: ${lessonCase.prompt}`, guide.check],
     [`Explain why this opening move is valid: ${lessonCase.steps[0]}`, lessonCase.steps[0]],
     [lessonCase.prompt, lessonCase.answer],
-    [`Complete the calculation after the first step “${lessonCase.steps[0]}” and show the missing algebra.`, lessonCase.answer],
-    [`Solve the worked case independently, using a second valid organization when one is available: ${lessonCase.prompt}`, lessonCase.answer],
+    [secondCase.prompt, secondCase.answer],
+    [thirdCase.prompt, thirdCase.answer],
     [`Verify the proposed result “${lessonCase.answer}” against the original statement.`, guide.check],
-    [`Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: ${lessonCase.prompt}`, lessonCase.answer],
-    [`Name the most efficient first move for this problem and justify it from structure: ${lessonCase.prompt}`, lessonCase.steps[0]],
-    [`Build the second representation requested here: ${guide.representation} Use the worked case ${lessonCase.prompt}`, lessonCase.answer],
-    [`For ${lesson.title.toLowerCase()}, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: ${lessonCase.prompt}`, lessonCase.interpretation],
+    [`Complete the calculation after “${secondCase.steps[0]}” in this problem: ${secondCase.prompt}`, secondCase.answer],
+    [`Name and justify the most efficient first move, then solve: ${thirdCase.prompt}`, thirdCase.answer],
+    [`Compare the methods used in these two cases and identify the structural reason they differ: ${secondCase.prompt} ${thirdCase.prompt}`, `${secondCase.interpretation} ${thirdCase.interpretation}`],
+    [`Create the representation most useful for checking this result: ${secondCase.prompt} ${guide.representation}`, secondCase.answer],
     [`A learner reports “${lessonCase.answer}” but omits the original-condition check. Explain the risk before deciding whether the result is supported.`, guide.check],
-    [`Repair a solution that performs the final step before completing “${lessonCase.steps[1]}” in the worked case.`, lessonCase.steps.join(" ")],
+    [`Repair a solution that skips “${thirdCase.steps[1]}” while solving: ${thirdCase.prompt}`, thirdCase.steps.join(" ")],
     [`In this ${lesson.title.toLowerCase()} case, change one numerical value, solve the revised problem, and identify which parts of the original method still apply: ${lessonCase.prompt}`, `A correct revision preserves the method’s structural conditions and includes a new original-condition check.`],
     [`Connect the opening situation “${sentence(lesson.opening)}” to the algebraic structure used in the worked case. Define quantities and units before writing any equation.`, lessonCase.interpretation],
     [`Explain why the method for ${lesson.title.toLowerCase()} is valid here and name one nearby problem where it would not apply.`, `${lessonCase.interpretation} The counterexample must violate a stated structural condition.`],
-    [`Compare the answer to ${lessonCase.prompt} with this lesson outcome—${sentence(lesson.outcome)} Explain what the answer reveals rather than merely restating it.`, lessonCase.interpretation],
-    [`Exit check: solve and verify the complete worked case without referring to the displayed steps. ${lessonCase.prompt}`, lessonCase.answer],
-    [`Exit check: write a compact method-and-check summary for ${lesson.title.toLowerCase()}, using the worked case as evidence.`, `${lessonCase.steps.join(" ")} ${guide.check}`],
+    [`Compare the conclusions of all three worked cases with this lesson outcome—${sentence(lesson.outcome)} Explain what remains invariant across them.`, lessonCases.map((example) => example.interpretation).join(" ")],
+    [`Exit check: solve and verify without referring to the displayed steps. ${secondCase.prompt}`, secondCase.answer],
+    [`Exit check: solve and verify without referring to the displayed steps. ${thirdCase.prompt}`, thirdCase.answer],
   ];
   return entries.map(([prompt, answer], index) => ({
     prompt,
     answer: sentence(answer),
-    solution: index === 4 || index === 5 || index === 6 || index === 18 ? completeWork : sentence(answer),
+    solution: index === 4
+      ? completeWork(lessonCase)
+      : index === 5 || index === 18
+        ? completeWork(secondCase)
+        : index === 6 || index === 19
+          ? completeWork(thirdCase)
+          : sentence(answer),
   }));
 }
 
 export function buildTextbookProfile(lesson, unit) {
   if (Number(unit.code.slice(1)) < 3) return null;
   const lessonCase = getLessonCase(lesson.id);
+  const extraExamples = getExtraExamples(lesson.id);
   const guide = getUnitGuide(unit.code);
   if (!lessonCase) throw new Error(`Missing textbook worked case for ${lesson.id}.`);
+  if (!extraExamples || extraExamples.length !== 2) throw new Error(`Missing two rigorous worked examples for ${lesson.id}.`);
   if (!guide) throw new Error(`Missing textbook unit guide for ${unit.code}.`);
+  const lessonCases = [lessonCase, ...extraExamples];
 
   const methodTitle = `Solve ${lesson.title.toLowerCase()} from structure`;
   const exposition = [
@@ -57,8 +68,8 @@ export function buildTextbookProfile(lesson, unit) {
   ];
 
   return {
-    textbookEdition: "authored-v3",
-    purpose: `Use the opening situation and a fully checked worked case to learn ${lesson.title.toLowerCase()} as a connected mathematical idea rather than a memorized slogan.`,
+    textbookEdition: "authored-v4",
+    purpose: `Use the opening situation and three distinct, fully solved cases to learn ${lesson.title.toLowerCase()} as a connected mathematical idea rather than a memorized slogan.`,
     prerequisites: [
       `State the earlier definition or operation most directly connected to: ${lesson.outcome}`,
       `Classify the object in the worked prompt before choosing an operation: ${lessonCase.prompt}`,
@@ -74,36 +85,9 @@ export function buildTextbookProfile(lesson, unit) {
       [lesson.title, sentence(lesson.outcome), "Use the term only when the object satisfies the structural and domain conditions developed in this lesson."],
       ...guide.definitions,
     ],
-    examples: [
-      {
-        prompt: lessonCase.prompt,
-        steps: lessonCase.steps,
-        answer: lessonCase.answer,
-        interpretation: lessonCase.interpretation,
-      },
-      {
-        prompt: `Represent and verify the result of the worked case in a second form. ${guide.representation}`,
-        steps: [
-          `First solve the original case and retain the exact result ${lessonCase.answer}.`,
-          "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-          "Read the conclusion back from the second form and compare it with the original statement.",
-        ],
-        answer: `The second representation must preserve ${lessonCase.answer}.`,
-        interpretation: `${lessonCase.interpretation} The representation is evidence only when the same conclusion can be read from it.`,
-      },
-      {
-        prompt: `A learner reports “${lessonCase.answer}” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.`,
-        steps: [
-          "Return to the original condition rather than checking only a transformed line.",
-          guide.check,
-          "State whether the proposed result is verified, only a candidate, or invalid, and explain why.",
-        ],
-        answer: `The conclusion is justified only after the original-condition check confirms ${lessonCase.answer}.`,
-        interpretation: "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates.",
-      },
-    ],
+    examples: lessonCases,
     misconception: guide.misconception,
-    questions: makeQuestions(lesson, lessonCase, guide),
+    questions: makeQuestions(lesson, lessonCases, guide),
     takeaway: [
       `${sentence(lesson.outcome)} Use structure to choose the method, preserve every condition, and interpret the checked result.`,
       guide.check,
@@ -114,13 +98,21 @@ export function buildTextbookProfile(lesson, unit) {
 
 export function assertCompleteTextbookProfiles(lessons, unitsByCode) {
   const remaining = lessons.filter((lesson) => Number(lesson.unitCode.slice(1)) >= 3);
+  const examplePrompts = new Set();
   for (const lesson of remaining) {
     const profile = buildTextbookProfile(lesson, unitsByCode.get(lesson.unitCode));
     const wordCount = profile.exposition.join(" ").match(/\b[\p{L}\p{N}]+(?:[’'-][\p{L}\p{N}]+)*\b/gu)?.length ?? 0;
     if (profile.exposition.length < 10) throw new Error(`${lesson.id} requires at least 10 textbook exposition paragraphs.`);
     if (wordCount < 650) throw new Error(`${lesson.id} requires at least 650 exposition words; found ${wordCount}.`);
     if (profile.examples.length !== 3) throw new Error(`${lesson.id} requires exactly three worked examples.`);
+    if (new Set(profile.examples.map((example) => example.prompt)).size !== 3) throw new Error(`${lesson.id} requires three distinct worked examples.`);
+    for (const example of profile.examples) {
+      if (examplePrompts.has(example.prompt)) throw new Error(`Worked-example prompt is duplicated across lessons: ${example.prompt}`);
+      examplePrompts.add(example.prompt);
+      if (example.steps.length < 3 || !example.answer || !example.interpretation) throw new Error(`${lesson.id} has an incomplete worked example: ${example.prompt}`);
+    }
     if (profile.questions.length !== 20) throw new Error(`${lesson.id} requires exactly twenty authored practice questions.`);
   }
+  if (examplePrompts.size !== remaining.length * 3) throw new Error(`Expected ${remaining.length * 3} unique worked examples; found ${examplePrompts.size}.`);
   return remaining.length;
 }

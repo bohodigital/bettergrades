@@ -37,10 +37,10 @@
       "title": "Exponents as repeated multiplication",
       "path": "/subjects/math/algebra/exponents-roots/exponents-as-repeated-multiplication/",
       "outcome": "Distinguish base, exponent, factors, and value.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Build area and volume from repeated side lengths.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn exponents as repeated multiplication as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn exponents as repeated multiplication as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Distinguish base, exponent, factors, and value.",
@@ -92,7 +92,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "Write 5⁴ as repeated multiplication, identify the base and exponent, and evaluate.",
           "steps": [
             "Use four factors of the base 5.",
@@ -103,26 +103,26 @@
           "interpretation": "The exponent counts repeated factors of the base."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Use repeated factors, exponent notation, a value table, and a function graph when the lesson concerns a power family.",
+          "kind": "worked-example-2",
+          "prompt": "Write (−2)⁵ as repeated multiplication and evaluate.",
           "steps": [
-            "First solve the original case and retain the exact result Base 5, exponent 4, and value 625..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "Use five factors of the grouped base −2.",
+            "Pair four negative factors to obtain a positive product, leaving one negative factor.",
+            "Multiply to obtain the value."
           ],
-          "answer": "The second representation must preserve Base 5, exponent 4, and value 625..",
-          "interpretation": "The exponent counts repeated factors of the base. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "(−2)⁵ = −32.",
+          "interpretation": "An odd number of negative factors produces a negative product."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “Base 5, exponent 4, and value 625.” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "A square array has 12 rows of 12 objects. Write the count with an exponent and evaluate.",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Expand a small instance into repeated factors and substitute the result back into the original power or root statement.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "The same factor 12 appears twice.",
+            "Write the product as 12².",
+            "Evaluate 12·12."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms Base 5, exponent 4, and value 625..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "12² = 144 objects.",
+          "interpretation": "Exponent notation compresses repeated multiplication of one base."
         }
       ],
       "figures": [
@@ -166,7 +166,7 @@
       ],
       "checkpoint": {
         "id": "a6-1-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for exponents as repeated multiplication, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. A square array has 12 rows of 12 objects. Write the count with an exponent and evaluate.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -316,7 +316,7 @@
           "id": "a6-1-q06",
           "lessonId": "A6.1",
           "unitCode": "A6",
-          "prompt": "Complete the calculation after the first step “Use four factors of the base 5.” and show the missing algebra.",
+          "prompt": "Write (−2)⁵ as repeated multiplication and evaluate.",
           "responseType": "open-response",
           "skill": "Distinguish base, exponent, factors, and value.",
           "purpose": "procedure",
@@ -340,7 +340,7 @@
           "id": "a6-1-q07",
           "lessonId": "A6.1",
           "unitCode": "A6",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: Write 5⁴ as repeated multiplication, identify the base and exponent, and evaluate.",
+          "prompt": "A square array has 12 rows of 12 objects. Write the count with an exponent and evaluate.",
           "responseType": "open-response",
           "skill": "Distinguish base, exponent, factors, and value.",
           "purpose": "procedure",
@@ -388,7 +388,7 @@
           "id": "a6-1-q09",
           "lessonId": "A6.1",
           "unitCode": "A6",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: Write 5⁴ as repeated multiplication, identify the base and exponent, and evaluate.",
+          "prompt": "Complete the calculation after “Use five factors of the grouped base −2.” in this problem: Write (−2)⁵ as repeated multiplication and evaluate.",
           "responseType": "open-response",
           "skill": "Distinguish base, exponent, factors, and value.",
           "purpose": "procedure",
@@ -412,7 +412,7 @@
           "id": "a6-1-q10",
           "lessonId": "A6.1",
           "unitCode": "A6",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: Write 5⁴ as repeated multiplication, identify the base and exponent, and evaluate.",
+          "prompt": "Name and justify the most efficient first move, then solve: A square array has 12 rows of 12 objects. Write the count with an exponent and evaluate.",
           "responseType": "open-response",
           "skill": "Distinguish base, exponent, factors, and value.",
           "purpose": "procedure",
@@ -436,7 +436,7 @@
           "id": "a6-1-q11",
           "lessonId": "A6.1",
           "unitCode": "A6",
-          "prompt": "Build the second representation requested here: Use repeated factors, exponent notation, a value table, and a function graph when the lesson concerns a power family. Use the worked case Write 5⁴ as repeated multiplication, identify the base and exponent, and evaluate.",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: Write (−2)⁵ as repeated multiplication and evaluate. A square array has 12 rows of 12 objects. Write the count with an exponent and evaluate.",
           "responseType": "open-response",
           "skill": "Distinguish base, exponent, factors, and value.",
           "purpose": "representation",
@@ -460,7 +460,7 @@
           "id": "a6-1-q12",
           "lessonId": "A6.1",
           "unitCode": "A6",
-          "prompt": "For exponents as repeated multiplication, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: Write 5⁴ as repeated multiplication, identify the base and exponent, and evaluate.",
+          "prompt": "Create the representation most useful for checking this result: Write (−2)⁵ as repeated multiplication and evaluate. Use repeated factors, exponent notation, a value table, and a function graph when the lesson concerns a power family.",
           "responseType": "open-response",
           "skill": "Distinguish base, exponent, factors, and value.",
           "purpose": "representation",
@@ -508,7 +508,7 @@
           "id": "a6-1-q14",
           "lessonId": "A6.1",
           "unitCode": "A6",
-          "prompt": "Repair a solution that performs the final step before completing “Write 5·5·5·5.” in the worked case.",
+          "prompt": "Repair a solution that skips “Write the product as 12².” while solving: A square array has 12 rows of 12 objects. Write the count with an exponent and evaluate.",
           "responseType": "open-response",
           "skill": "Distinguish base, exponent, factors, and value.",
           "purpose": "transfer",
@@ -604,7 +604,7 @@
           "id": "a6-1-q18",
           "lessonId": "A6.1",
           "unitCode": "A6",
-          "prompt": "Compare the answer to Write 5⁴ as repeated multiplication, identify the base and exponent, and evaluate. with this lesson outcome—Distinguish base, exponent, factors, and value. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Distinguish base, exponent, factors, and value. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Distinguish base, exponent, factors, and value.",
           "purpose": "modeling",
@@ -628,7 +628,7 @@
           "id": "a6-1-q19",
           "lessonId": "A6.1",
           "unitCode": "A6",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. Write 5⁴ as repeated multiplication, identify the base and exponent, and evaluate.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Write (−2)⁵ as repeated multiplication and evaluate.",
           "responseType": "open-response",
           "skill": "Distinguish base, exponent, factors, and value.",
           "purpose": "error-analysis",
@@ -652,7 +652,7 @@
           "id": "a6-1-q20",
           "lessonId": "A6.1",
           "unitCode": "A6",
-          "prompt": "Exit check: write a compact method-and-check summary for exponents as repeated multiplication, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. A square array has 12 rows of 12 objects. Write the count with an exponent and evaluate.",
           "responseType": "open-response",
           "skill": "Distinguish base, exponent, factors, and value.",
           "purpose": "exit",
@@ -710,10 +710,10 @@
       "title": "Negative bases and grouping",
       "path": "/subjects/math/algebra/exponents-roots/negative-bases-and-grouping/",
       "outcome": "Distinguish negation from raising a negative base to a power.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Compare -3^2 and (-3)^2.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn negative bases and grouping as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn negative bases and grouping as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Distinguish negation from raising a negative base to a power.",
@@ -765,7 +765,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "Compare −4² and (−4)².",
           "steps": [
             "For −4², apply the exponent to 4 before the leading negation.",
@@ -776,26 +776,26 @@
           "interpretation": "Parentheses determine whether the negative sign belongs to the base."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Use repeated factors, exponent notation, a value table, and a function graph when the lesson concerns a power family.",
+          "kind": "worked-example-2",
+          "prompt": "Compare −2⁴, (−2)⁴, and (−2)³.",
           "steps": [
-            "First solve the original case and retain the exact result −4² = −16, while (−4)² = 16..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "In −2⁴, exponentiation occurs before the leading negation.",
+            "In (−2)⁴ and (−2)³, the negative is part of the base.",
+            "Evaluate each expression."
           ],
-          "answer": "The second representation must preserve −4² = −16, while (−4)² = 16..",
-          "interpretation": "Parentheses determine whether the negative sign belongs to the base. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "−2⁴ = −16, (−2)⁴ = 16, and (−2)³ = −8.",
+          "interpretation": "Grouping and exponent parity jointly determine the sign."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “−4² = −16, while (−4)² = 16.” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "Evaluate −(−3)² and [−(−3)]².",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Expand a small instance into repeated factors and substitute the result back into the original power or root statement.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "For the first expression, square −3 and then apply the outside negative.",
+            "For the second, simplify the entire bracket to 3 before squaring.",
+            "Compare the results."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms −4² = −16, while (−4)² = 16..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "−(−3)² = −9; [−(−3)]² = 9.",
+          "interpretation": "Parentheses determine which operations belong to the base."
         }
       ],
       "figures": [
@@ -839,7 +839,7 @@
       ],
       "checkpoint": {
         "id": "a6-2-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for negative bases and grouping, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. Evaluate −(−3)² and [−(−3)]².",
         "responseType": "open-response"
       },
       "exercises": [
@@ -989,7 +989,7 @@
           "id": "a6-2-q06",
           "lessonId": "A6.2",
           "unitCode": "A6",
-          "prompt": "Complete the calculation after the first step “For −4², apply the exponent to 4 before the leading negation.” and show the missing algebra.",
+          "prompt": "Compare −2⁴, (−2)⁴, and (−2)³.",
           "responseType": "open-response",
           "skill": "Distinguish negation from raising a negative base to a power.",
           "purpose": "procedure",
@@ -1013,7 +1013,7 @@
           "id": "a6-2-q07",
           "lessonId": "A6.2",
           "unitCode": "A6",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: Compare −4² and (−4)².",
+          "prompt": "Evaluate −(−3)² and [−(−3)]².",
           "responseType": "open-response",
           "skill": "Distinguish negation from raising a negative base to a power.",
           "purpose": "procedure",
@@ -1061,7 +1061,7 @@
           "id": "a6-2-q09",
           "lessonId": "A6.2",
           "unitCode": "A6",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: Compare −4² and (−4)².",
+          "prompt": "Complete the calculation after “In −2⁴, exponentiation occurs before the leading negation.” in this problem: Compare −2⁴, (−2)⁴, and (−2)³.",
           "responseType": "open-response",
           "skill": "Distinguish negation from raising a negative base to a power.",
           "purpose": "procedure",
@@ -1085,7 +1085,7 @@
           "id": "a6-2-q10",
           "lessonId": "A6.2",
           "unitCode": "A6",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: Compare −4² and (−4)².",
+          "prompt": "Name and justify the most efficient first move, then solve: Evaluate −(−3)² and [−(−3)]².",
           "responseType": "open-response",
           "skill": "Distinguish negation from raising a negative base to a power.",
           "purpose": "procedure",
@@ -1109,7 +1109,7 @@
           "id": "a6-2-q11",
           "lessonId": "A6.2",
           "unitCode": "A6",
-          "prompt": "Build the second representation requested here: Use repeated factors, exponent notation, a value table, and a function graph when the lesson concerns a power family. Use the worked case Compare −4² and (−4)².",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: Compare −2⁴, (−2)⁴, and (−2)³. Evaluate −(−3)² and [−(−3)]².",
           "responseType": "open-response",
           "skill": "Distinguish negation from raising a negative base to a power.",
           "purpose": "representation",
@@ -1133,7 +1133,7 @@
           "id": "a6-2-q12",
           "lessonId": "A6.2",
           "unitCode": "A6",
-          "prompt": "For negative bases and grouping, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: Compare −4² and (−4)².",
+          "prompt": "Create the representation most useful for checking this result: Compare −2⁴, (−2)⁴, and (−2)³. Use repeated factors, exponent notation, a value table, and a function graph when the lesson concerns a power family.",
           "responseType": "open-response",
           "skill": "Distinguish negation from raising a negative base to a power.",
           "purpose": "representation",
@@ -1181,7 +1181,7 @@
           "id": "a6-2-q14",
           "lessonId": "A6.2",
           "unitCode": "A6",
-          "prompt": "Repair a solution that performs the final step before completing “For (−4)², use −4 as the grouped base.” in the worked case.",
+          "prompt": "Repair a solution that skips “For the second, simplify the entire bracket to 3 before squaring.” while solving: Evaluate −(−3)² and [−(−3)]².",
           "responseType": "open-response",
           "skill": "Distinguish negation from raising a negative base to a power.",
           "purpose": "transfer",
@@ -1277,7 +1277,7 @@
           "id": "a6-2-q18",
           "lessonId": "A6.2",
           "unitCode": "A6",
-          "prompt": "Compare the answer to Compare −4² and (−4)². with this lesson outcome—Distinguish negation from raising a negative base to a power. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Distinguish negation from raising a negative base to a power. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Distinguish negation from raising a negative base to a power.",
           "purpose": "modeling",
@@ -1301,7 +1301,7 @@
           "id": "a6-2-q19",
           "lessonId": "A6.2",
           "unitCode": "A6",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. Compare −4² and (−4)².",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Compare −2⁴, (−2)⁴, and (−2)³.",
           "responseType": "open-response",
           "skill": "Distinguish negation from raising a negative base to a power.",
           "purpose": "error-analysis",
@@ -1325,7 +1325,7 @@
           "id": "a6-2-q20",
           "lessonId": "A6.2",
           "unitCode": "A6",
-          "prompt": "Exit check: write a compact method-and-check summary for negative bases and grouping, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Evaluate −(−3)² and [−(−3)]².",
           "responseType": "open-response",
           "skill": "Distinguish negation from raising a negative base to a power.",
           "purpose": "exit",
@@ -1386,10 +1386,10 @@
       "title": "Product and quotient laws",
       "path": "/subjects/math/algebra/exponents-roots/product-and-quotient-laws/",
       "outcome": "Combine powers with a common base by counting repeated factors.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Merge and cancel factor chains.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn product and quotient laws as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn product and quotient laws as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Combine powers with a common base by counting repeated factors.",
@@ -1441,7 +1441,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "Simplify a⁷·a³/a⁴ for a ≠ 0.",
           "steps": [
             "Add exponents across the product in the numerator.",
@@ -1452,26 +1452,26 @@
           "interpretation": "Product and quotient laws count repeated factors of the same nonzero base."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Use repeated factors, exponent notation, a value table, and a function graph when the lesson concerns a power family.",
+          "kind": "worked-example-2",
+          "prompt": "Simplify (m⁹n³)(m⁻⁴n⁵) using positive exponents.",
           "steps": [
-            "First solve the original case and retain the exact result a⁶, with a ≠ 0..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "Add exponents of the common base m: 9 + (−4) = 5.",
+            "Add exponents of n: 3 + 5 = 8.",
+            "Write the product."
           ],
-          "answer": "The second representation must preserve a⁶, with a ≠ 0..",
-          "interpretation": "Product and quotient laws count repeated factors of the same nonzero base. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "m⁵n⁸.",
+          "interpretation": "Product laws combine exponents only for matching bases."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “a⁶, with a ≠ 0.” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "Simplify 18a⁷b⁴/(6a²b⁶) and state restrictions.",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Expand a small instance into repeated factors and substitute the result back into the original power or root statement.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "Divide coefficients to obtain 3.",
+            "Subtract exponents of a and b.",
+            "Rewrite b⁻² as a reciprocal and retain denominator restrictions."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms a⁶, with a ≠ 0..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "3a⁵/b², with a ≠ 0 and b ≠ 0 in the original expression.",
+          "interpretation": "A negative exponent in the quotient becomes reciprocal structure, while original restrictions remain."
         }
       ],
       "figures": [
@@ -1515,7 +1515,7 @@
       ],
       "checkpoint": {
         "id": "a6-3-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for product and quotient laws, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. Simplify 18a⁷b⁴/(6a²b⁶) and state restrictions.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -1665,7 +1665,7 @@
           "id": "a6-3-q06",
           "lessonId": "A6.3",
           "unitCode": "A6",
-          "prompt": "Complete the calculation after the first step “Add exponents across the product in the numerator.” and show the missing algebra.",
+          "prompt": "Simplify (m⁹n³)(m⁻⁴n⁵) using positive exponents.",
           "responseType": "open-response",
           "skill": "Combine powers with a common base by counting repeated factors.",
           "purpose": "procedure",
@@ -1689,7 +1689,7 @@
           "id": "a6-3-q07",
           "lessonId": "A6.3",
           "unitCode": "A6",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: Simplify a⁷·a³/a⁴ for a ≠ 0.",
+          "prompt": "Simplify 18a⁷b⁴/(6a²b⁶) and state restrictions.",
           "responseType": "open-response",
           "skill": "Combine powers with a common base by counting repeated factors.",
           "purpose": "procedure",
@@ -1737,7 +1737,7 @@
           "id": "a6-3-q09",
           "lessonId": "A6.3",
           "unitCode": "A6",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: Simplify a⁷·a³/a⁴ for a ≠ 0.",
+          "prompt": "Complete the calculation after “Add exponents of the common base m: 9 + (−4) = 5.” in this problem: Simplify (m⁹n³)(m⁻⁴n⁵) using positive exponents.",
           "responseType": "open-response",
           "skill": "Combine powers with a common base by counting repeated factors.",
           "purpose": "procedure",
@@ -1761,7 +1761,7 @@
           "id": "a6-3-q10",
           "lessonId": "A6.3",
           "unitCode": "A6",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: Simplify a⁷·a³/a⁴ for a ≠ 0.",
+          "prompt": "Name and justify the most efficient first move, then solve: Simplify 18a⁷b⁴/(6a²b⁶) and state restrictions.",
           "responseType": "open-response",
           "skill": "Combine powers with a common base by counting repeated factors.",
           "purpose": "procedure",
@@ -1785,7 +1785,7 @@
           "id": "a6-3-q11",
           "lessonId": "A6.3",
           "unitCode": "A6",
-          "prompt": "Build the second representation requested here: Use repeated factors, exponent notation, a value table, and a function graph when the lesson concerns a power family. Use the worked case Simplify a⁷·a³/a⁴ for a ≠ 0.",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: Simplify (m⁹n³)(m⁻⁴n⁵) using positive exponents. Simplify 18a⁷b⁴/(6a²b⁶) and state restrictions.",
           "responseType": "open-response",
           "skill": "Combine powers with a common base by counting repeated factors.",
           "purpose": "representation",
@@ -1809,7 +1809,7 @@
           "id": "a6-3-q12",
           "lessonId": "A6.3",
           "unitCode": "A6",
-          "prompt": "For product and quotient laws, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: Simplify a⁷·a³/a⁴ for a ≠ 0.",
+          "prompt": "Create the representation most useful for checking this result: Simplify (m⁹n³)(m⁻⁴n⁵) using positive exponents. Use repeated factors, exponent notation, a value table, and a function graph when the lesson concerns a power family.",
           "responseType": "open-response",
           "skill": "Combine powers with a common base by counting repeated factors.",
           "purpose": "representation",
@@ -1857,7 +1857,7 @@
           "id": "a6-3-q14",
           "lessonId": "A6.3",
           "unitCode": "A6",
-          "prompt": "Repair a solution that performs the final step before completing “Subtract the denominator exponent for the quotient.” in the worked case.",
+          "prompt": "Repair a solution that skips “Subtract exponents of a and b.” while solving: Simplify 18a⁷b⁴/(6a²b⁶) and state restrictions.",
           "responseType": "open-response",
           "skill": "Combine powers with a common base by counting repeated factors.",
           "purpose": "transfer",
@@ -1953,7 +1953,7 @@
           "id": "a6-3-q18",
           "lessonId": "A6.3",
           "unitCode": "A6",
-          "prompt": "Compare the answer to Simplify a⁷·a³/a⁴ for a ≠ 0. with this lesson outcome—Combine powers with a common base by counting repeated factors. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Combine powers with a common base by counting repeated factors. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Combine powers with a common base by counting repeated factors.",
           "purpose": "modeling",
@@ -1977,7 +1977,7 @@
           "id": "a6-3-q19",
           "lessonId": "A6.3",
           "unitCode": "A6",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. Simplify a⁷·a³/a⁴ for a ≠ 0.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Simplify (m⁹n³)(m⁻⁴n⁵) using positive exponents.",
           "responseType": "open-response",
           "skill": "Combine powers with a common base by counting repeated factors.",
           "purpose": "error-analysis",
@@ -2001,7 +2001,7 @@
           "id": "a6-3-q20",
           "lessonId": "A6.3",
           "unitCode": "A6",
-          "prompt": "Exit check: write a compact method-and-check summary for product and quotient laws, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Simplify 18a⁷b⁴/(6a²b⁶) and state restrictions.",
           "responseType": "open-response",
           "skill": "Combine powers with a common base by counting repeated factors.",
           "purpose": "exit",
@@ -2062,10 +2062,10 @@
       "title": "Power of a power, product, and quotient",
       "path": "/subjects/math/algebra/exponents-roots/power-of-a-power-product-and-quotient/",
       "outcome": "Track how an outer exponent applies to every factor.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Expand a nested power before compressing it.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn power of a power, product, and quotient as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn power of a power, product, and quotient as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Track how an outer exponent applies to every factor.",
@@ -2117,7 +2117,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "Simplify [(2x³y)²]/(4xy²).",
           "steps": [
             "Apply the outer exponent to the coefficient and every factor in the numerator.",
@@ -2128,26 +2128,26 @@
           "interpretation": "An outer power acts on the complete grouped product, not only the first factor."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Use repeated factors, exponent notation, a value table, and a function graph when the lesson concerns a power family.",
+          "kind": "worked-example-2",
+          "prompt": "Simplify (3x²y⁻¹)³ using positive exponents.",
           "steps": [
-            "First solve the original case and retain the exact result x⁵, with x ≠ 0 and y ≠ 0 in the original expression..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "Cube the coefficient and multiply each inner exponent by 3.",
+            "Obtain 27x⁶y⁻³.",
+            "Move y³ to the denominator."
           ],
-          "answer": "The second representation must preserve x⁵, with x ≠ 0 and y ≠ 0 in the original expression..",
-          "interpretation": "An outer power acts on the complete grouped product, not only the first factor. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "27x⁶/y³, with y ≠ 0.",
+          "interpretation": "A power applied to a product acts on every factor."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “x⁵, with x ≠ 0 and y ≠ 0 in the original expression.” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "Simplify [(a²b³)/(2c)]².",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Expand a small instance into repeated factors and substitute the result back into the original power or root statement.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "Square the numerator factors and the denominator.",
+            "Compute (a²)² = a⁴ and (b³)² = b⁶.",
+            "State the denominator restriction."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms x⁵, with x ≠ 0 and y ≠ 0 in the original expression..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "a⁴b⁶/(4c²), with c ≠ 0.",
+          "interpretation": "The quotient power law applies to the entire grouped fraction."
         }
       ],
       "figures": [
@@ -2191,7 +2191,7 @@
       ],
       "checkpoint": {
         "id": "a6-4-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for power of a power, product, and quotient, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. Simplify [(a²b³)/(2c)]².",
         "responseType": "open-response"
       },
       "exercises": [
@@ -2341,7 +2341,7 @@
           "id": "a6-4-q06",
           "lessonId": "A6.4",
           "unitCode": "A6",
-          "prompt": "Complete the calculation after the first step “Apply the outer exponent to the coefficient and every factor in the numerator.” and show the missing algebra.",
+          "prompt": "Simplify (3x²y⁻¹)³ using positive exponents.",
           "responseType": "open-response",
           "skill": "Track how an outer exponent applies to every factor.",
           "purpose": "procedure",
@@ -2365,7 +2365,7 @@
           "id": "a6-4-q07",
           "lessonId": "A6.4",
           "unitCode": "A6",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: Simplify [(2x³y)²]/(4xy²).",
+          "prompt": "Simplify [(a²b³)/(2c)]².",
           "responseType": "open-response",
           "skill": "Track how an outer exponent applies to every factor.",
           "purpose": "procedure",
@@ -2413,7 +2413,7 @@
           "id": "a6-4-q09",
           "lessonId": "A6.4",
           "unitCode": "A6",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: Simplify [(2x³y)²]/(4xy²).",
+          "prompt": "Complete the calculation after “Cube the coefficient and multiply each inner exponent by 3.” in this problem: Simplify (3x²y⁻¹)³ using positive exponents.",
           "responseType": "open-response",
           "skill": "Track how an outer exponent applies to every factor.",
           "purpose": "procedure",
@@ -2437,7 +2437,7 @@
           "id": "a6-4-q10",
           "lessonId": "A6.4",
           "unitCode": "A6",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: Simplify [(2x³y)²]/(4xy²).",
+          "prompt": "Name and justify the most efficient first move, then solve: Simplify [(a²b³)/(2c)]².",
           "responseType": "open-response",
           "skill": "Track how an outer exponent applies to every factor.",
           "purpose": "procedure",
@@ -2461,7 +2461,7 @@
           "id": "a6-4-q11",
           "lessonId": "A6.4",
           "unitCode": "A6",
-          "prompt": "Build the second representation requested here: Use repeated factors, exponent notation, a value table, and a function graph when the lesson concerns a power family. Use the worked case Simplify [(2x³y)²]/(4xy²).",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: Simplify (3x²y⁻¹)³ using positive exponents. Simplify [(a²b³)/(2c)]².",
           "responseType": "open-response",
           "skill": "Track how an outer exponent applies to every factor.",
           "purpose": "representation",
@@ -2485,7 +2485,7 @@
           "id": "a6-4-q12",
           "lessonId": "A6.4",
           "unitCode": "A6",
-          "prompt": "For power of a power, product, and quotient, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: Simplify [(2x³y)²]/(4xy²).",
+          "prompt": "Create the representation most useful for checking this result: Simplify (3x²y⁻¹)³ using positive exponents. Use repeated factors, exponent notation, a value table, and a function graph when the lesson concerns a power family.",
           "responseType": "open-response",
           "skill": "Track how an outer exponent applies to every factor.",
           "purpose": "representation",
@@ -2533,7 +2533,7 @@
           "id": "a6-4-q14",
           "lessonId": "A6.4",
           "unitCode": "A6",
-          "prompt": "Repair a solution that performs the final step before completing “Obtain 4x⁶y² before dividing.” in the worked case.",
+          "prompt": "Repair a solution that skips “Compute (a²)² = a⁴ and (b³)² = b⁶.” while solving: Simplify [(a²b³)/(2c)]².",
           "responseType": "open-response",
           "skill": "Track how an outer exponent applies to every factor.",
           "purpose": "transfer",
@@ -2629,7 +2629,7 @@
           "id": "a6-4-q18",
           "lessonId": "A6.4",
           "unitCode": "A6",
-          "prompt": "Compare the answer to Simplify [(2x³y)²]/(4xy²). with this lesson outcome—Track how an outer exponent applies to every factor. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Track how an outer exponent applies to every factor. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Track how an outer exponent applies to every factor.",
           "purpose": "modeling",
@@ -2653,7 +2653,7 @@
           "id": "a6-4-q19",
           "lessonId": "A6.4",
           "unitCode": "A6",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. Simplify [(2x³y)²]/(4xy²).",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Simplify (3x²y⁻¹)³ using positive exponents.",
           "responseType": "open-response",
           "skill": "Track how an outer exponent applies to every factor.",
           "purpose": "error-analysis",
@@ -2677,7 +2677,7 @@
           "id": "a6-4-q20",
           "lessonId": "A6.4",
           "unitCode": "A6",
-          "prompt": "Exit check: write a compact method-and-check summary for power of a power, product, and quotient, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Simplify [(a²b³)/(2c)]².",
           "responseType": "open-response",
           "skill": "Track how an outer exponent applies to every factor.",
           "purpose": "exit",
@@ -2738,10 +2738,10 @@
       "title": "Zero and negative exponents",
       "path": "/subjects/math/algebra/exponents-roots/zero-and-negative-exponents/",
       "outcome": "Define exponents beyond positive integers by preserving established laws.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Continue an exponent table downward.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn zero and negative exponents as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn zero and negative exponents as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Define exponents beyond positive integers by preserving established laws.",
@@ -2793,7 +2793,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "Simplify (3x⁻²y⁰)/(6x) using positive exponents.",
           "steps": [
             "Use y⁰ = 1 and the coefficient ratio 3/6 = 1/2.",
@@ -2804,26 +2804,26 @@
           "interpretation": "Zero and negative exponents preserve exponent laws while introducing reciprocal structure and nonzero bases."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Use repeated factors, exponent notation, a value table, and a function graph when the lesson concerns a power family.",
+          "kind": "worked-example-2",
+          "prompt": "Simplify (4a⁰b⁻³)/(2b⁻¹) using positive exponents.",
           "steps": [
-            "First solve the original case and retain the exact result 1/(2x³), with x ≠ 0 and y ≠ 0 in the original expression..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "Use a⁰ = 1 for a ≠ 0 and simplify the coefficient to 2.",
+            "Subtract b-exponents: −3 − (−1) = −2.",
+            "Rewrite with a positive exponent."
           ],
-          "answer": "The second representation must preserve 1/(2x³), with x ≠ 0 and y ≠ 0 in the original expression..",
-          "interpretation": "Zero and negative exponents preserve exponent laws while introducing reciprocal structure and nonzero bases. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "2/b², with a ≠ 0 and b ≠ 0 in the original expression.",
+          "interpretation": "Zero exponents remove factors numerically but do not erase restrictions inherited from the original form."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “1/(2x³), with x ≠ 0 and y ≠ 0 in the original expression.” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "Rewrite 1/(x⁻²y³) using positive exponents.",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Expand a small instance into repeated factors and substitute the result back into the original power or root statement.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "Use x⁻² = 1/x².",
+            "Dividing by (y³/x²) multiplies by its reciprocal.",
+            "Simplify the resulting fraction."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms 1/(2x³), with x ≠ 0 and y ≠ 0 in the original expression..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "x²/y³, with x ≠ 0 and y ≠ 0.",
+          "interpretation": "A negative exponent changes factor location; it does not make the factor negative."
         }
       ],
       "figures": [
@@ -2867,7 +2867,7 @@
       ],
       "checkpoint": {
         "id": "a6-5-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for zero and negative exponents, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. Rewrite 1/(x⁻²y³) using positive exponents.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -3017,7 +3017,7 @@
           "id": "a6-5-q06",
           "lessonId": "A6.5",
           "unitCode": "A6",
-          "prompt": "Complete the calculation after the first step “Use y⁰ = 1 and the coefficient ratio 3/6 = 1/2.” and show the missing algebra.",
+          "prompt": "Simplify (4a⁰b⁻³)/(2b⁻¹) using positive exponents.",
           "responseType": "open-response",
           "skill": "Define exponents beyond positive integers by preserving established laws.",
           "purpose": "procedure",
@@ -3041,7 +3041,7 @@
           "id": "a6-5-q07",
           "lessonId": "A6.5",
           "unitCode": "A6",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: Simplify (3x⁻²y⁰)/(6x) using positive exponents.",
+          "prompt": "Rewrite 1/(x⁻²y³) using positive exponents.",
           "responseType": "open-response",
           "skill": "Define exponents beyond positive integers by preserving established laws.",
           "purpose": "procedure",
@@ -3089,7 +3089,7 @@
           "id": "a6-5-q09",
           "lessonId": "A6.5",
           "unitCode": "A6",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: Simplify (3x⁻²y⁰)/(6x) using positive exponents.",
+          "prompt": "Complete the calculation after “Use a⁰ = 1 for a ≠ 0 and simplify the coefficient to 2.” in this problem: Simplify (4a⁰b⁻³)/(2b⁻¹) using positive exponents.",
           "responseType": "open-response",
           "skill": "Define exponents beyond positive integers by preserving established laws.",
           "purpose": "procedure",
@@ -3113,7 +3113,7 @@
           "id": "a6-5-q10",
           "lessonId": "A6.5",
           "unitCode": "A6",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: Simplify (3x⁻²y⁰)/(6x) using positive exponents.",
+          "prompt": "Name and justify the most efficient first move, then solve: Rewrite 1/(x⁻²y³) using positive exponents.",
           "responseType": "open-response",
           "skill": "Define exponents beyond positive integers by preserving established laws.",
           "purpose": "procedure",
@@ -3137,7 +3137,7 @@
           "id": "a6-5-q11",
           "lessonId": "A6.5",
           "unitCode": "A6",
-          "prompt": "Build the second representation requested here: Use repeated factors, exponent notation, a value table, and a function graph when the lesson concerns a power family. Use the worked case Simplify (3x⁻²y⁰)/(6x) using positive exponents.",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: Simplify (4a⁰b⁻³)/(2b⁻¹) using positive exponents. Rewrite 1/(x⁻²y³) using positive exponents.",
           "responseType": "open-response",
           "skill": "Define exponents beyond positive integers by preserving established laws.",
           "purpose": "representation",
@@ -3161,7 +3161,7 @@
           "id": "a6-5-q12",
           "lessonId": "A6.5",
           "unitCode": "A6",
-          "prompt": "For zero and negative exponents, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: Simplify (3x⁻²y⁰)/(6x) using positive exponents.",
+          "prompt": "Create the representation most useful for checking this result: Simplify (4a⁰b⁻³)/(2b⁻¹) using positive exponents. Use repeated factors, exponent notation, a value table, and a function graph when the lesson concerns a power family.",
           "responseType": "open-response",
           "skill": "Define exponents beyond positive integers by preserving established laws.",
           "purpose": "representation",
@@ -3209,7 +3209,7 @@
           "id": "a6-5-q14",
           "lessonId": "A6.5",
           "unitCode": "A6",
-          "prompt": "Repair a solution that performs the final step before completing “Combine x⁻²/x as x⁻³.” in the worked case.",
+          "prompt": "Repair a solution that skips “Dividing by (y³/x²) multiplies by its reciprocal.” while solving: Rewrite 1/(x⁻²y³) using positive exponents.",
           "responseType": "open-response",
           "skill": "Define exponents beyond positive integers by preserving established laws.",
           "purpose": "transfer",
@@ -3305,7 +3305,7 @@
           "id": "a6-5-q18",
           "lessonId": "A6.5",
           "unitCode": "A6",
-          "prompt": "Compare the answer to Simplify (3x⁻²y⁰)/(6x) using positive exponents. with this lesson outcome—Define exponents beyond positive integers by preserving established laws. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Define exponents beyond positive integers by preserving established laws. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Define exponents beyond positive integers by preserving established laws.",
           "purpose": "modeling",
@@ -3329,7 +3329,7 @@
           "id": "a6-5-q19",
           "lessonId": "A6.5",
           "unitCode": "A6",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. Simplify (3x⁻²y⁰)/(6x) using positive exponents.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Simplify (4a⁰b⁻³)/(2b⁻¹) using positive exponents.",
           "responseType": "open-response",
           "skill": "Define exponents beyond positive integers by preserving established laws.",
           "purpose": "error-analysis",
@@ -3353,7 +3353,7 @@
           "id": "a6-5-q20",
           "lessonId": "A6.5",
           "unitCode": "A6",
-          "prompt": "Exit check: write a compact method-and-check summary for zero and negative exponents, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Rewrite 1/(x⁻²y³) using positive exponents.",
           "responseType": "open-response",
           "skill": "Define exponents beyond positive integers by preserving established laws.",
           "purpose": "exit",
@@ -3414,10 +3414,10 @@
       "title": "Scientific notation",
       "path": "/subjects/math/algebra/exponents-roots/scientific-notation/",
       "outcome": "Represent scale with a normalized coefficient and power of ten.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Compare astronomical and microscopic measurements.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn scientific notation as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn scientific notation as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Represent scale with a normalized coefficient and power of ten.",
@@ -3469,7 +3469,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "Write 0.0000725 in scientific notation and multiply it by 3.0×10⁶.",
           "steps": [
             "Move the decimal five places right to obtain a normalized coefficient.",
@@ -3480,26 +3480,26 @@
           "interpretation": "Scientific notation separates significant digits from scale."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Use repeated factors, exponent notation, a value table, and a function graph when the lesson concerns a power family.",
+          "kind": "worked-example-2",
+          "prompt": "Compute (6.0×10⁷)(3.5×10⁻⁴) in scientific notation.",
           "steps": [
-            "First solve the original case and retain the exact result 0.0000725 = 7.25×10⁻⁵, and the product is 2.175×10² = 217.5..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "Multiply coefficients: 6.0·3.5 = 21.0.",
+            "Add exponents: 7 + (−4) = 3.",
+            "Normalize 21.0×10³ to a coefficient between 1 and 10."
           ],
-          "answer": "The second representation must preserve 0.0000725 = 7.25×10⁻⁵, and the product is 2.175×10² = 217.5..",
-          "interpretation": "Scientific notation separates significant digits from scale. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "2.10×10⁴.",
+          "interpretation": "Normalization moves one decimal place and compensates by increasing the power of ten."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “0.0000725 = 7.25×10⁻⁵, and the product is 2.175×10² = 217.5.” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "Compute (8.4×10⁻³)/(2.0×10⁵).",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Expand a small instance into repeated factors and substitute the result back into the original power or root statement.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "Divide coefficients: 8.4/2.0 = 4.2.",
+            "Subtract exponents: −3 − 5 = −8.",
+            "Confirm that the coefficient is normalized."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms 0.0000725 = 7.25×10⁻⁵, and the product is 2.175×10² = 217.5..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "4.2×10⁻⁸.",
+          "interpretation": "Division in scientific notation divides coefficients and subtracts powers of ten."
         }
       ],
       "figures": [
@@ -3543,7 +3543,7 @@
       ],
       "checkpoint": {
         "id": "a6-6-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for scientific notation, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. Compute (8.4×10⁻³)/(2.0×10⁵).",
         "responseType": "open-response"
       },
       "exercises": [
@@ -3693,7 +3693,7 @@
           "id": "a6-6-q06",
           "lessonId": "A6.6",
           "unitCode": "A6",
-          "prompt": "Complete the calculation after the first step “Move the decimal five places right to obtain a normalized coefficient.” and show the missing algebra.",
+          "prompt": "Compute (6.0×10⁷)(3.5×10⁻⁴) in scientific notation.",
           "responseType": "open-response",
           "skill": "Represent scale with a normalized coefficient and power of ten.",
           "purpose": "procedure",
@@ -3717,7 +3717,7 @@
           "id": "a6-6-q07",
           "lessonId": "A6.6",
           "unitCode": "A6",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: Write 0.0000725 in scientific notation and multiply it by 3.0×10⁶.",
+          "prompt": "Compute (8.4×10⁻³)/(2.0×10⁵).",
           "responseType": "open-response",
           "skill": "Represent scale with a normalized coefficient and power of ten.",
           "purpose": "procedure",
@@ -3765,7 +3765,7 @@
           "id": "a6-6-q09",
           "lessonId": "A6.6",
           "unitCode": "A6",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: Write 0.0000725 in scientific notation and multiply it by 3.0×10⁶.",
+          "prompt": "Complete the calculation after “Multiply coefficients: 6.0·3.5 = 21.0.” in this problem: Compute (6.0×10⁷)(3.5×10⁻⁴) in scientific notation.",
           "responseType": "open-response",
           "skill": "Represent scale with a normalized coefficient and power of ten.",
           "purpose": "procedure",
@@ -3789,7 +3789,7 @@
           "id": "a6-6-q10",
           "lessonId": "A6.6",
           "unitCode": "A6",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: Write 0.0000725 in scientific notation and multiply it by 3.0×10⁶.",
+          "prompt": "Name and justify the most efficient first move, then solve: Compute (8.4×10⁻³)/(2.0×10⁵).",
           "responseType": "open-response",
           "skill": "Represent scale with a normalized coefficient and power of ten.",
           "purpose": "procedure",
@@ -3813,7 +3813,7 @@
           "id": "a6-6-q11",
           "lessonId": "A6.6",
           "unitCode": "A6",
-          "prompt": "Build the second representation requested here: Use repeated factors, exponent notation, a value table, and a function graph when the lesson concerns a power family. Use the worked case Write 0.0000725 in scientific notation and multiply it by 3.0×10⁶.",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: Compute (6.0×10⁷)(3.5×10⁻⁴) in scientific notation. Compute (8.4×10⁻³)/(2.0×10⁵).",
           "responseType": "open-response",
           "skill": "Represent scale with a normalized coefficient and power of ten.",
           "purpose": "representation",
@@ -3837,7 +3837,7 @@
           "id": "a6-6-q12",
           "lessonId": "A6.6",
           "unitCode": "A6",
-          "prompt": "For scientific notation, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: Write 0.0000725 in scientific notation and multiply it by 3.0×10⁶.",
+          "prompt": "Create the representation most useful for checking this result: Compute (6.0×10⁷)(3.5×10⁻⁴) in scientific notation. Use repeated factors, exponent notation, a value table, and a function graph when the lesson concerns a power family.",
           "responseType": "open-response",
           "skill": "Represent scale with a normalized coefficient and power of ten.",
           "purpose": "representation",
@@ -3885,7 +3885,7 @@
           "id": "a6-6-q14",
           "lessonId": "A6.6",
           "unitCode": "A6",
-          "prompt": "Repair a solution that performs the final step before completing “Write 7.25×10⁻⁵.” in the worked case.",
+          "prompt": "Repair a solution that skips “Subtract exponents: −3 − 5 = −8.” while solving: Compute (8.4×10⁻³)/(2.0×10⁵).",
           "responseType": "open-response",
           "skill": "Represent scale with a normalized coefficient and power of ten.",
           "purpose": "transfer",
@@ -3981,7 +3981,7 @@
           "id": "a6-6-q18",
           "lessonId": "A6.6",
           "unitCode": "A6",
-          "prompt": "Compare the answer to Write 0.0000725 in scientific notation and multiply it by 3.0×10⁶. with this lesson outcome—Represent scale with a normalized coefficient and power of ten. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Represent scale with a normalized coefficient and power of ten. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Represent scale with a normalized coefficient and power of ten.",
           "purpose": "modeling",
@@ -4005,7 +4005,7 @@
           "id": "a6-6-q19",
           "lessonId": "A6.6",
           "unitCode": "A6",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. Write 0.0000725 in scientific notation and multiply it by 3.0×10⁶.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Compute (6.0×10⁷)(3.5×10⁻⁴) in scientific notation.",
           "responseType": "open-response",
           "skill": "Represent scale with a normalized coefficient and power of ten.",
           "purpose": "error-analysis",
@@ -4029,7 +4029,7 @@
           "id": "a6-6-q20",
           "lessonId": "A6.6",
           "unitCode": "A6",
-          "prompt": "Exit check: write a compact method-and-check summary for scientific notation, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Compute (8.4×10⁻³)/(2.0×10⁵).",
           "responseType": "open-response",
           "skill": "Represent scale with a normalized coefficient and power of ten.",
           "purpose": "exit",
@@ -4090,10 +4090,10 @@
       "title": "Square roots and nth roots",
       "path": "/subjects/math/algebra/exponents-roots/square-roots-and-nth-roots/",
       "outcome": "Treat roots as inverse questions with principal-root conventions.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Recover side length from area and edge length from volume.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn square roots and nth roots as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn square roots and nth roots as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Treat roots as inverse questions with principal-root conventions.",
@@ -4145,7 +4145,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "Evaluate √144 and solve x² = 144 over the real numbers.",
           "steps": [
             "Use the principal-root convention for √144.",
@@ -4156,26 +4156,26 @@
           "interpretation": "The radical symbol names one principal value, while a power equation may have two real solutions."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Use repeated factors, exponent notation, a value table, and a function graph when the lesson concerns a power family.",
+          "kind": "worked-example-2",
+          "prompt": "Evaluate ∛(−216) and explain why the result is real.",
           "steps": [
-            "First solve the original case and retain the exact result √144 = 12; x = −12 or x = 12..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "Seek a real number whose cube is −216.",
+            "Because 6³ = 216 and odd powers preserve sign, use −6.",
+            "Check (−6)³."
           ],
-          "answer": "The second representation must preserve √144 = 12; x = −12 or x = 12..",
-          "interpretation": "The radical symbol names one principal value, while a power equation may have two real solutions. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "∛(−216) = −6.",
+          "interpretation": "Odd roots are defined for negative real radicands."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “√144 = 12; x = −12 or x = 12.” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "Simplify √196 and compare it with the solutions of x² = 196.",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Expand a small instance into repeated factors and substitute the result back into the original power or root statement.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "The radical symbol requests the principal nonnegative square root.",
+            "Compute √196 = 14.",
+            "For the equation, include both real numbers whose square is 196."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms √144 = 12; x = −12 or x = 12..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "√196 = 14; x = ±14.",
+          "interpretation": "A principal radical is one value, while an even-power equation may have two solutions."
         }
       ],
       "figures": [
@@ -4219,7 +4219,7 @@
       ],
       "checkpoint": {
         "id": "a6-7-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for square roots and nth roots, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. Simplify √196 and compare it with the solutions of x² = 196.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -4369,7 +4369,7 @@
           "id": "a6-7-q06",
           "lessonId": "A6.7",
           "unitCode": "A6",
-          "prompt": "Complete the calculation after the first step “Use the principal-root convention for √144.” and show the missing algebra.",
+          "prompt": "Evaluate ∛(−216) and explain why the result is real.",
           "responseType": "open-response",
           "skill": "Treat roots as inverse questions with principal-root conventions.",
           "purpose": "procedure",
@@ -4393,7 +4393,7 @@
           "id": "a6-7-q07",
           "lessonId": "A6.7",
           "unitCode": "A6",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: Evaluate √144 and solve x² = 144 over the real numbers.",
+          "prompt": "Simplify √196 and compare it with the solutions of x² = 196.",
           "responseType": "open-response",
           "skill": "Treat roots as inverse questions with principal-root conventions.",
           "purpose": "procedure",
@@ -4441,7 +4441,7 @@
           "id": "a6-7-q09",
           "lessonId": "A6.7",
           "unitCode": "A6",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: Evaluate √144 and solve x² = 144 over the real numbers.",
+          "prompt": "Complete the calculation after “Seek a real number whose cube is −216.” in this problem: Evaluate ∛(−216) and explain why the result is real.",
           "responseType": "open-response",
           "skill": "Treat roots as inverse questions with principal-root conventions.",
           "purpose": "procedure",
@@ -4465,7 +4465,7 @@
           "id": "a6-7-q10",
           "lessonId": "A6.7",
           "unitCode": "A6",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: Evaluate √144 and solve x² = 144 over the real numbers.",
+          "prompt": "Name and justify the most efficient first move, then solve: Simplify √196 and compare it with the solutions of x² = 196.",
           "responseType": "open-response",
           "skill": "Treat roots as inverse questions with principal-root conventions.",
           "purpose": "procedure",
@@ -4489,7 +4489,7 @@
           "id": "a6-7-q11",
           "lessonId": "A6.7",
           "unitCode": "A6",
-          "prompt": "Build the second representation requested here: Use repeated factors, exponent notation, a value table, and a function graph when the lesson concerns a power family. Use the worked case Evaluate √144 and solve x² = 144 over the real numbers.",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: Evaluate ∛(−216) and explain why the result is real. Simplify √196 and compare it with the solutions of x² = 196.",
           "responseType": "open-response",
           "skill": "Treat roots as inverse questions with principal-root conventions.",
           "purpose": "representation",
@@ -4513,7 +4513,7 @@
           "id": "a6-7-q12",
           "lessonId": "A6.7",
           "unitCode": "A6",
-          "prompt": "For square roots and nth roots, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: Evaluate √144 and solve x² = 144 over the real numbers.",
+          "prompt": "Create the representation most useful for checking this result: Evaluate ∛(−216) and explain why the result is real. Use repeated factors, exponent notation, a value table, and a function graph when the lesson concerns a power family.",
           "responseType": "open-response",
           "skill": "Treat roots as inverse questions with principal-root conventions.",
           "purpose": "representation",
@@ -4561,7 +4561,7 @@
           "id": "a6-7-q14",
           "lessonId": "A6.7",
           "unitCode": "A6",
-          "prompt": "Repair a solution that performs the final step before completing “For the equation, identify every real number whose square is 144.” in the worked case.",
+          "prompt": "Repair a solution that skips “Compute √196 = 14.” while solving: Simplify √196 and compare it with the solutions of x² = 196.",
           "responseType": "open-response",
           "skill": "Treat roots as inverse questions with principal-root conventions.",
           "purpose": "transfer",
@@ -4657,7 +4657,7 @@
           "id": "a6-7-q18",
           "lessonId": "A6.7",
           "unitCode": "A6",
-          "prompt": "Compare the answer to Evaluate √144 and solve x² = 144 over the real numbers. with this lesson outcome—Treat roots as inverse questions with principal-root conventions. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Treat roots as inverse questions with principal-root conventions. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Treat roots as inverse questions with principal-root conventions.",
           "purpose": "modeling",
@@ -4681,7 +4681,7 @@
           "id": "a6-7-q19",
           "lessonId": "A6.7",
           "unitCode": "A6",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. Evaluate √144 and solve x² = 144 over the real numbers.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Evaluate ∛(−216) and explain why the result is real.",
           "responseType": "open-response",
           "skill": "Treat roots as inverse questions with principal-root conventions.",
           "purpose": "error-analysis",
@@ -4705,7 +4705,7 @@
           "id": "a6-7-q20",
           "lessonId": "A6.7",
           "unitCode": "A6",
-          "prompt": "Exit check: write a compact method-and-check summary for square roots and nth roots, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Simplify √196 and compare it with the solutions of x² = 196.",
           "responseType": "open-response",
           "skill": "Treat roots as inverse questions with principal-root conventions.",
           "purpose": "exit",
@@ -4766,10 +4766,10 @@
       "title": "Simple power and root equations",
       "path": "/subjects/math/algebra/exponents-roots/simple-power-and-root-equations/",
       "outcome": "Find all real values whose power equals a target and check by substitution.",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Solve x^2=25 and x^3=-8.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn simple power and root equations as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn simple power and root equations as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Find all real values whose power equals a target and check by substitution.",
@@ -4821,7 +4821,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "Solve x⁴ = 81 over the real numbers.",
           "steps": [
             "Take the fourth-root question and note that the exponent is even.",
@@ -4832,26 +4832,26 @@
           "interpretation": "An even power equation with a positive target has symmetric real solutions."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Use repeated factors, exponent notation, a value table, and a function graph when the lesson concerns a power family.",
+          "kind": "worked-example-2",
+          "prompt": "Solve 3x³ = −192 over the real numbers.",
           "steps": [
-            "First solve the original case and retain the exact result x = −3 or x = 3..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "Divide by 3 to obtain x³ = −64.",
+            "Take the real cube root.",
+            "Substitute the result into the original equation."
           ],
-          "answer": "The second representation must preserve x = −3 or x = 3..",
-          "interpretation": "An even power equation with a positive target has symmetric real solutions. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "x = −4.",
+          "interpretation": "An odd-power equation has one real solution for every real target."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “x = −3 or x = 3.” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "Solve (x − 2)⁴ = 16 over the real numbers.",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Expand a small instance into repeated factors and substitute the result back into the original power or root statement.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "Take the fourth-root condition x − 2 = ±2.",
+            "Solve the two linear equations.",
+            "Check both values in the original equation."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms x = −3 or x = 3..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "x = 0 or x = 4.",
+          "interpretation": "Even powers require both positive and negative real roots after isolation."
         }
       ],
       "figures": [
@@ -4895,7 +4895,7 @@
       ],
       "checkpoint": {
         "id": "a6-8-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for simple power and root equations, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. Solve (x − 2)⁴ = 16 over the real numbers.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -5045,7 +5045,7 @@
           "id": "a6-8-q06",
           "lessonId": "A6.8",
           "unitCode": "A6",
-          "prompt": "Complete the calculation after the first step “Take the fourth-root question and note that the exponent is even.” and show the missing algebra.",
+          "prompt": "Solve 3x³ = −192 over the real numbers.",
           "responseType": "open-response",
           "skill": "Find all real values whose power equals a target and check by substitution.",
           "purpose": "procedure",
@@ -5069,7 +5069,7 @@
           "id": "a6-8-q07",
           "lessonId": "A6.8",
           "unitCode": "A6",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: Solve x⁴ = 81 over the real numbers.",
+          "prompt": "Solve (x − 2)⁴ = 16 over the real numbers.",
           "responseType": "open-response",
           "skill": "Find all real values whose power equals a target and check by substitution.",
           "purpose": "procedure",
@@ -5117,7 +5117,7 @@
           "id": "a6-8-q09",
           "lessonId": "A6.8",
           "unitCode": "A6",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: Solve x⁴ = 81 over the real numbers.",
+          "prompt": "Complete the calculation after “Divide by 3 to obtain x³ = −64.” in this problem: Solve 3x³ = −192 over the real numbers.",
           "responseType": "open-response",
           "skill": "Find all real values whose power equals a target and check by substitution.",
           "purpose": "procedure",
@@ -5141,7 +5141,7 @@
           "id": "a6-8-q10",
           "lessonId": "A6.8",
           "unitCode": "A6",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: Solve x⁴ = 81 over the real numbers.",
+          "prompt": "Name and justify the most efficient first move, then solve: Solve (x − 2)⁴ = 16 over the real numbers.",
           "responseType": "open-response",
           "skill": "Find all real values whose power equals a target and check by substitution.",
           "purpose": "procedure",
@@ -5165,7 +5165,7 @@
           "id": "a6-8-q11",
           "lessonId": "A6.8",
           "unitCode": "A6",
-          "prompt": "Build the second representation requested here: Use repeated factors, exponent notation, a value table, and a function graph when the lesson concerns a power family. Use the worked case Solve x⁴ = 81 over the real numbers.",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: Solve 3x³ = −192 over the real numbers. Solve (x − 2)⁴ = 16 over the real numbers.",
           "responseType": "open-response",
           "skill": "Find all real values whose power equals a target and check by substitution.",
           "purpose": "representation",
@@ -5189,7 +5189,7 @@
           "id": "a6-8-q12",
           "lessonId": "A6.8",
           "unitCode": "A6",
-          "prompt": "For simple power and root equations, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: Solve x⁴ = 81 over the real numbers.",
+          "prompt": "Create the representation most useful for checking this result: Solve 3x³ = −192 over the real numbers. Use repeated factors, exponent notation, a value table, and a function graph when the lesson concerns a power family.",
           "responseType": "open-response",
           "skill": "Find all real values whose power equals a target and check by substitution.",
           "purpose": "representation",
@@ -5237,7 +5237,7 @@
           "id": "a6-8-q14",
           "lessonId": "A6.8",
           "unitCode": "A6",
-          "prompt": "Repair a solution that performs the final step before completing “Recognize 81 = 3⁴.” in the worked case.",
+          "prompt": "Repair a solution that skips “Solve the two linear equations.” while solving: Solve (x − 2)⁴ = 16 over the real numbers.",
           "responseType": "open-response",
           "skill": "Find all real values whose power equals a target and check by substitution.",
           "purpose": "transfer",
@@ -5333,7 +5333,7 @@
           "id": "a6-8-q18",
           "lessonId": "A6.8",
           "unitCode": "A6",
-          "prompt": "Compare the answer to Solve x⁴ = 81 over the real numbers. with this lesson outcome—Find all real values whose power equals a target and check by substitution. Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Find all real values whose power equals a target and check by substitution. Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Find all real values whose power equals a target and check by substitution.",
           "purpose": "modeling",
@@ -5357,7 +5357,7 @@
           "id": "a6-8-q19",
           "lessonId": "A6.8",
           "unitCode": "A6",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. Solve x⁴ = 81 over the real numbers.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Solve 3x³ = −192 over the real numbers.",
           "responseType": "open-response",
           "skill": "Find all real values whose power equals a target and check by substitution.",
           "purpose": "error-analysis",
@@ -5381,7 +5381,7 @@
           "id": "a6-8-q20",
           "lessonId": "A6.8",
           "unitCode": "A6",
-          "prompt": "Exit check: write a compact method-and-check summary for simple power and root equations, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Solve (x − 2)⁴ = 16 over the real numbers.",
           "responseType": "open-response",
           "skill": "Find all real values whose power equals a target and check by substitution.",
           "purpose": "exit",
@@ -5442,10 +5442,10 @@
       "title": "Power-function preview",
       "path": "/subjects/math/algebra/exponents-roots/power-function-preview/",
       "outcome": "Compare tables and graphs of x, x^2, x^3, and sqrt(x).",
-      "textbookEdition": "authored-v3",
+      "textbookEdition": "authored-v4",
       "opening": {
         "prompt": "Observe how equal input steps create unequal output changes.",
-        "purpose": "Use the opening situation and a fully checked worked case to learn power-function preview as a connected mathematical idea rather than a memorized slogan."
+        "purpose": "Use the opening situation and three distinct, fully solved cases to learn power-function preview as a connected mathematical idea rather than a memorized slogan."
       },
       "prerequisiteChecks": [
         "State the earlier definition or operation most directly connected to: Compare tables and graphs of x, x^2, x^3, and sqrt(x).",
@@ -5497,7 +5497,7 @@
       ],
       "examples": [
         {
-          "kind": "foundation",
+          "kind": "worked-example-1",
           "prompt": "Compare f(x) = x² and g(x) = x³ at x = −2, 0, and 2, then describe their symmetry.",
           "steps": [
             "Evaluate both functions at the three inputs.",
@@ -5508,26 +5508,26 @@
           "interpretation": "Even powers erase the sign of opposite inputs, while odd powers preserve opposite output signs."
         },
         {
-          "kind": "representation",
-          "prompt": "Represent and verify the result of the worked case in a second form. Use repeated factors, exponent notation, a value table, and a function graph when the lesson concerns a power family.",
+          "kind": "worked-example-2",
+          "prompt": "For f(x) = x⁴, compute f(−2), f(−1), f(0), f(1), and f(2), then describe symmetry.",
           "steps": [
-            "First solve the original case and retain the exact result f outputs 4, 0, 4 and is even; g outputs −8, 0, 8 and is odd..",
-            "Label every input, output, unit, endpoint, restriction, intercept, or factor that carries meaning in the second form.",
-            "Read the conclusion back from the second form and compare it with the original statement."
+            "Evaluate the fourth power at each input.",
+            "The outputs are 16, 1, 0, 1, and 16.",
+            "Compare outputs at opposite inputs."
           ],
-          "answer": "The second representation must preserve f outputs 4, 0, 4 and is even; g outputs −8, 0, 8 and is odd..",
-          "interpretation": "Even powers erase the sign of opposite inputs, while odd powers preserve opposite output signs. The representation is evidence only when the same conclusion can be read from it."
+          "answer": "f is even and symmetric about the y-axis.",
+          "interpretation": "Even powers give equal outputs for x and −x."
         },
         {
-          "kind": "transfer",
-          "prompt": "A learner reports “f outputs 4, 0, 4 and is even; g outputs −8, 0, 8 and is odd.” but does not show the check. Decide whether the conclusion is justified and supply the missing verification.",
+          "kind": "worked-example-3",
+          "prompt": "Compare the end behavior of g(x) = −2x³ and h(x) = 3x⁴.",
           "steps": [
-            "Return to the original condition rather than checking only a transformed line.",
-            "Expand a small instance into repeated factors and substitute the result back into the original power or root statement.",
-            "State whether the proposed result is verified, only a candidate, or invalid, and explain why."
+            "Use the leading coefficient and exponent parity.",
+            "For g, opposite input directions produce opposite output directions, reversed by the negative coefficient.",
+            "For h, both ends rise because the degree is even and the coefficient is positive."
           ],
-          "answer": "The conclusion is justified only after the original-condition check confirms f outputs 4, 0, 4 and is even; g outputs −8, 0, 8 and is odd..",
-          "interpretation": "Verification is part of the solution, especially when a transformation may lose restrictions or create candidates."
+          "answer": "g(x)→∞ as x→−∞ and g(x)→−∞ as x→∞; h(x)→∞ in both directions.",
+          "interpretation": "Degree parity and leading-coefficient sign determine polynomial power-function end behavior."
         }
       ],
       "figures": [
@@ -5571,7 +5571,7 @@
       ],
       "checkpoint": {
         "id": "a6-9-q20",
-        "prompt": "Exit check: write a compact method-and-check summary for power-function preview, using the worked case as evidence.",
+        "prompt": "Exit check: solve and verify without referring to the displayed steps. Compare the end behavior of g(x) = −2x³ and h(x) = 3x⁴.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -5721,7 +5721,7 @@
           "id": "a6-9-q06",
           "lessonId": "A6.9",
           "unitCode": "A6",
-          "prompt": "Complete the calculation after the first step “Evaluate both functions at the three inputs.” and show the missing algebra.",
+          "prompt": "For f(x) = x⁴, compute f(−2), f(−1), f(0), f(1), and f(2), then describe symmetry.",
           "responseType": "open-response",
           "skill": "Compare tables and graphs of x, x^2, x^3, and sqrt(x).",
           "purpose": "procedure",
@@ -5745,7 +5745,7 @@
           "id": "a6-9-q07",
           "lessonId": "A6.9",
           "unitCode": "A6",
-          "prompt": "Solve the worked case independently, using a second valid organization when one is available: Compare f(x) = x² and g(x) = x³ at x = −2, 0, and 2, then describe their symmetry.",
+          "prompt": "Compare the end behavior of g(x) = −2x³ and h(x) = 3x⁴.",
           "responseType": "open-response",
           "skill": "Compare tables and graphs of x, x^2, x^3, and sqrt(x).",
           "purpose": "procedure",
@@ -5793,7 +5793,7 @@
           "id": "a6-9-q09",
           "lessonId": "A6.9",
           "unitCode": "A6",
-          "prompt": "Rewrite the worked case in the form or notation that most clearly exposes the lesson outcome: Compare f(x) = x² and g(x) = x³ at x = −2, 0, and 2, then describe their symmetry.",
+          "prompt": "Complete the calculation after “Evaluate the fourth power at each input.” in this problem: For f(x) = x⁴, compute f(−2), f(−1), f(0), f(1), and f(2), then describe symmetry.",
           "responseType": "open-response",
           "skill": "Compare tables and graphs of x, x^2, x^3, and sqrt(x).",
           "purpose": "procedure",
@@ -5817,7 +5817,7 @@
           "id": "a6-9-q10",
           "lessonId": "A6.9",
           "unitCode": "A6",
-          "prompt": "Name the most efficient first move for this problem and justify it from structure: Compare f(x) = x² and g(x) = x³ at x = −2, 0, and 2, then describe their symmetry.",
+          "prompt": "Name and justify the most efficient first move, then solve: Compare the end behavior of g(x) = −2x³ and h(x) = 3x⁴.",
           "responseType": "open-response",
           "skill": "Compare tables and graphs of x, x^2, x^3, and sqrt(x).",
           "purpose": "procedure",
@@ -5841,7 +5841,7 @@
           "id": "a6-9-q11",
           "lessonId": "A6.9",
           "unitCode": "A6",
-          "prompt": "Build the second representation requested here: Use repeated factors, exponent notation, a value table, and a function graph when the lesson concerns a power family. Use the worked case Compare f(x) = x² and g(x) = x³ at x = −2, 0, and 2, then describe their symmetry.",
+          "prompt": "Compare the methods used in these two cases and identify the structural reason they differ: For f(x) = x⁴, compute f(−2), f(−1), f(0), f(1), and f(2), then describe symmetry. Compare the end behavior of g(x) = −2x³ and h(x) = 3x⁴.",
           "responseType": "open-response",
           "skill": "Compare tables and graphs of x, x^2, x^3, and sqrt(x).",
           "purpose": "representation",
@@ -5865,7 +5865,7 @@
           "id": "a6-9-q12",
           "lessonId": "A6.9",
           "unitCode": "A6",
-          "prompt": "For power-function preview, explain which value, truth set, rate, domain, or graph feature must remain invariant between the two representations of this case: Compare f(x) = x² and g(x) = x³ at x = −2, 0, and 2, then describe their symmetry.",
+          "prompt": "Create the representation most useful for checking this result: For f(x) = x⁴, compute f(−2), f(−1), f(0), f(1), and f(2), then describe symmetry. Use repeated factors, exponent notation, a value table, and a function graph when the lesson concerns a power family.",
           "responseType": "open-response",
           "skill": "Compare tables and graphs of x, x^2, x^3, and sqrt(x).",
           "purpose": "representation",
@@ -5913,7 +5913,7 @@
           "id": "a6-9-q14",
           "lessonId": "A6.9",
           "unitCode": "A6",
-          "prompt": "Repair a solution that performs the final step before completing “Compare outputs for opposite inputs.” in the worked case.",
+          "prompt": "Repair a solution that skips “For g, opposite input directions produce opposite output directions, reversed by the negative coefficient.” while solving: Compare the end behavior of g(x) = −2x³ and h(x) = 3x⁴.",
           "responseType": "open-response",
           "skill": "Compare tables and graphs of x, x^2, x^3, and sqrt(x).",
           "purpose": "transfer",
@@ -6009,7 +6009,7 @@
           "id": "a6-9-q18",
           "lessonId": "A6.9",
           "unitCode": "A6",
-          "prompt": "Compare the answer to Compare f(x) = x² and g(x) = x³ at x = −2, 0, and 2, then describe their symmetry. with this lesson outcome—Compare tables and graphs of x, x^2, x^3, and sqrt(x). Explain what the answer reveals rather than merely restating it.",
+          "prompt": "Compare the conclusions of all three worked cases with this lesson outcome—Compare tables and graphs of x, x^2, x^3, and sqrt(x). Explain what remains invariant across them.",
           "responseType": "open-response",
           "skill": "Compare tables and graphs of x, x^2, x^3, and sqrt(x).",
           "purpose": "modeling",
@@ -6033,7 +6033,7 @@
           "id": "a6-9-q19",
           "lessonId": "A6.9",
           "unitCode": "A6",
-          "prompt": "Exit check: solve and verify the complete worked case without referring to the displayed steps. Compare f(x) = x² and g(x) = x³ at x = −2, 0, and 2, then describe their symmetry.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. For f(x) = x⁴, compute f(−2), f(−1), f(0), f(1), and f(2), then describe symmetry.",
           "responseType": "open-response",
           "skill": "Compare tables and graphs of x, x^2, x^3, and sqrt(x).",
           "purpose": "error-analysis",
@@ -6057,7 +6057,7 @@
           "id": "a6-9-q20",
           "lessonId": "A6.9",
           "unitCode": "A6",
-          "prompt": "Exit check: write a compact method-and-check summary for power-function preview, using the worked case as evidence.",
+          "prompt": "Exit check: solve and verify without referring to the displayed steps. Compare the end behavior of g(x) = −2x³ and h(x) = 3x⁴.",
           "responseType": "open-response",
           "skill": "Compare tables and graphs of x, x^2, x^3, and sqrt(x).",
           "purpose": "exit",
