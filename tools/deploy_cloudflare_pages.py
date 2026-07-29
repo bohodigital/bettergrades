@@ -10,9 +10,11 @@ import re
 import shutil
 import subprocess
 import sys
+import tempfile
+from contextlib import contextmanager
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any
+from typing import Any, Iterator
 from urllib.error import HTTPError, URLError
 from urllib.parse import quote
 from urllib.request import Request, urlopen
@@ -34,7 +36,20 @@ KEEPASSXC_CLI = "/usr/bin/keepassxc-cli"
 WRANGLER = "/usr/local/bin/wrangler"
 API_BASE = "https://api.cloudflare.com/client/v4"
 AUDIT_PATH = Path("/srv/local1/runtime/bettergrades/cloudflare-pages-audit.jsonl")
+UPLOAD_STAGING_ROOT = Path("/srv/local1/runtime/bettergrades/pages-upload-staging")
 URL_RE = re.compile(r"https://[a-z0-9-]+\.bettergrades-vhc\.pages\.dev", re.I)
+MAX_PAGES_FILE_SIZE = 25 * 1024 * 1024
+UPLOAD_ROOT_EXCLUDES = frozenset(
+    {
+        "index.js",
+        "ssr",
+        "__vite_rsc_assets_manifest.js",
+        ".vite",
+        "image-config.json",
+        "vinext-externals.json",
+        "vinext-server.json",
+    }
+)
 
 
 class DeploymentError(RuntimeError):
@@ -194,49 +209,89 @@ def clear_vinext_deploy_redirect() -> None:
         shutil.rmtree(VINEXT_DEPLOY_REDIRECT)
 
 
+@contextmanager
+def staged_upload_directory(
+    source: Path,
+    sha: str,
+    staging_root: Path = UPLOAD_STAGING_ROOT,
+) -> Iterator[Path]:
+    """Copy only deployable Pages artifacts into a short-lived upload directory."""
+    staging_root.mkdir(parents=True, exist_ok=True, mode=0o700)
+    staging_root.chmod(0o700)
+
+    source_root = source.resolve()
+
+    def ignore_server_only(directory: str, names: list[str]) -> set[str]:
+        if Path(directory).resolve() != source_root:
+            return set()
+        return set(names).intersection(UPLOAD_ROOT_EXCLUDES)
+
+    with tempfile.TemporaryDirectory(prefix=f"{sha[:12]}-", dir=staging_root) as temporary:
+        upload_dir = Path(temporary) / "pages"
+        shutil.copytree(source_root, upload_dir, ignore=ignore_server_only)
+
+        for required in ("_worker.js", "_routes.json", "assets", "index.html"):
+            if not (upload_dir / required).exists():
+                raise DeploymentError(f"the staged Pages upload is missing {required}")
+
+        oversized = [
+            path.relative_to(upload_dir).as_posix()
+            for path in upload_dir.rglob("*")
+            if path.is_file() and path.stat().st_size > MAX_PAGES_FILE_SIZE
+        ]
+        if oversized:
+            raise DeploymentError(
+                "the staged Pages upload still contains oversized files: "
+                + ", ".join(sorted(oversized)[:8])
+            )
+
+        yield upload_dir
+
+
 def deploy(token: str) -> dict[str, Any]:
     sha = require_deployable_tree()
     clear_vinext_deploy_redirect()
-    environment = os.environ.copy()
-    environment.update(
-        {
-            "CLOUDFLARE_API_TOKEN": token,
-            "CLOUDFLARE_ACCOUNT_ID": ACCOUNT_ID,
-            "WRANGLER_SEND_METRICS": "false",
-            "CI": "true",
-        }
-    )
-    command = [
-        WRANGLER,
-        "pages",
-        "deploy",
-        str(OUTPUT_DIR),
-        "--project-name",
-        PROJECT,
-        "--branch",
-        "main",
-        "--commit-hash",
-        sha,
-        "--commit-message",
-        f"Better Grades production {sha[:12]}",
-        "--commit-dirty=false",
-    ]
-    try:
-        result = subprocess.run(
-            command,
-            cwd=REPO_ROOT,
-            env=environment,
-            text=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            timeout=900,
-            check=False,
+    with staged_upload_directory(OUTPUT_DIR, sha) as upload_dir:
+        environment = os.environ.copy()
+        environment.update(
+            {
+                "CLOUDFLARE_API_TOKEN": token,
+                "CLOUDFLARE_ACCOUNT_ID": ACCOUNT_ID,
+                "WRANGLER_SEND_METRICS": "false",
+                "CI": "true",
+            }
         )
-    except (OSError, subprocess.TimeoutExpired) as exc:
-        raise DeploymentError("the fixed Wrangler deployment process failed to run") from exc
-    finally:
-        environment["CLOUDFLARE_API_TOKEN"] = ""
-        environment.clear()
+        command = [
+            WRANGLER,
+            "pages",
+            "deploy",
+            str(upload_dir),
+            "--project-name",
+            PROJECT,
+            "--branch",
+            "main",
+            "--commit-hash",
+            sha,
+            "--commit-message",
+            f"Better Grades production {sha[:12]}",
+            "--commit-dirty=false",
+        ]
+        try:
+            result = subprocess.run(
+                command,
+                cwd=REPO_ROOT,
+                env=environment,
+                text=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                timeout=900,
+                check=False,
+            )
+        except (OSError, subprocess.TimeoutExpired) as exc:
+            raise DeploymentError("the fixed Wrangler deployment process failed to run") from exc
+        finally:
+            environment["CLOUDFLARE_API_TOKEN"] = ""
+            environment.clear()
 
     combined = scrub(f"{result.stdout}\n{result.stderr}", token)
     if result.returncode != 0:
