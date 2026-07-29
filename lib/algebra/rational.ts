@@ -4,7 +4,7 @@ export const rationalArticles = [
   algebraArticle({
     slug: "rational-domain-restrictions", topicSlug: "rational-expressions", archetype: "concept",
     title: "Domain restrictions in rational expressions", shortTitle: "Rational restrictions",
-    deck: "A rational expression is undefined wherever its original denominator is zero. Simplifying the formula does not restore an excluded input.",
+    deck: "A rational expression has no value wherever its original denominator is zero. Simplifying the formula does not restore an excluded input.",
     course: "Algebra II", difficulty: "Intermediate", minutes: 8,
     formula: String.raw`\frac{x^2-9}{x-3}=x+3,\quad x\ne3`, immediate: { label: "Rule", text: "Find restrictions from the original denominator before canceling factors." },
     sections: [

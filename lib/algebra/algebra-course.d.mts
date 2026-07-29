@@ -35,9 +35,18 @@ export type AlgebraUnit = {
   answerKeyRoute: string;
 };
 
+export type AlgebraCourseUnit = AlgebraUnit & {
+  lessons: Array<{
+    id: string;
+    sequence: number;
+    title: string;
+    path: string;
+    outcome: string;
+  }>;
+};
+
 export type AlgebraFigure = {
   id: string;
-  role: string;
   description: string;
   interactive: boolean;
   altText: string;
@@ -51,23 +60,36 @@ export type AlgebraLesson = {
   title: string;
   path: string;
   outcome: string;
-  opening: string;
-  prerequisites: string;
-  storyBeat: string;
-  checkpoint: string;
+  textbookEdition?: string;
+  foundationEdition?: string;
+  opening: { prompt: string; purpose: string };
+  prerequisiteChecks: string[];
+  exposition: string[];
+  method?: { title: string; steps: string[]; check: string };
+  definitions: Array<{ term: string; definition: string; conditions?: string }>;
+  examples: Array<{ kind: string; prompt: string; steps: string[]; answer: string; interpretation: string }>;
+  misconceptions: Array<{ wrongMove: string; whyItFails: string; repair: string }>;
+  checkpoint: { id: string; prompt: string; responseType: string };
+  exercises: string[];
+  practiceQuestions: AlgebraAssessmentPrompt[];
   exitCheck: string[];
-  expositionBeats: string[];
-  examples: string[];
-  misconceptions: string[];
-  bridgeForward: string;
-  exerciseCount: string;
+  takeaway: { summary: string; conditions: string[] };
+  navigation: { unit: string; previous: string | null; next: string | null; practice: string };
+  sources: Array<{ sourceId: string; use: string; rights: string }>;
   figures: AlgebraFigure[];
-  exerciseFamilies: Array<{ id: string; purpose: string; recommendedCount: string }>;
   previous: { title: string; path: string } | null;
   next: { title: string; path: string } | null;
 };
 
-export type AlgebraAssessmentPrompt = { id: string; lessonId: string; prompt: string };
+export type AlgebraAssessmentPrompt = {
+  id: string;
+  lessonId: string;
+  prompt: string;
+  responseType?: string;
+  purpose?: string;
+  difficulty?: string;
+  hint?: string;
+};
 export type AlgebraCoursePage = {
   route: AlgebraRoute;
   unit: AlgebraUnit | null;
@@ -75,7 +97,7 @@ export type AlgebraCoursePage = {
   assessment: null | {
     id: string;
     kind: string;
-    questionCount: string;
+    questionCount: number;
     durationMinutes: string;
     grading: string;
     answerRoute: string;
@@ -83,7 +105,7 @@ export type AlgebraCoursePage = {
   };
   assessmentPrompts: AlgebraAssessmentPrompt[];
   unitLessons: AlgebraLesson[];
-  units: AlgebraUnit[];
+  units: AlgebraCourseUnit[];
   breadcrumbs: Array<{ name: string; path: string }>;
 };
 

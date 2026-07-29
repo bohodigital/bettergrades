@@ -23,6 +23,6 @@ export async function POST(request: Request) {
   }
   return Response.json({
     status: "uncertain",
-    feedback: "This source prompt is open response, so BetterGrades will not pretend one wording is machine-provable. Your attempt is recorded locally; open the supplied rubric and compare the method, restrictions, units, and check.",
+    feedback: "This is an open response, so BetterGrades will not pretend one wording is machine-provable. Open the response guide and compare your method, restrictions, units, conclusion, and check.",
   });
 }

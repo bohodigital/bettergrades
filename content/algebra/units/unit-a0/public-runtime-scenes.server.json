@@ -1,7 +1,7 @@
 {
   "manifestVersion": 1,
   "collectionId": "algebra-unit-a0-visuals",
-  "sourceSha256": "c24028c2c214e7b4598bf19319147ac394d100d8075b9e0ee1b5d5819bead35f",
+  "sourceSha256": "6233a5c3d7a52fc58cb06b41821fcfda822fabfaf70ce5494cbfa480f43ccb1d",
   "compilerVersion": "bvlp-compiler-v1",
   "sceneCount": 30,
   "interactiveCount": 1,
@@ -9,20 +9,21 @@
     {
       "id": "algebra-a0-1-v1",
       "sourceVisualId": "algebra-a0-1-v1",
+      "isFunctionGraph": false,
       "selectedRenderer": "bg-interactive-2d",
       "hydration": "near-viewport",
       "staticAsset": {
-        "path": "/visuals/v1/algebra-a0-1-v1.5284ea2133abed0a.svg",
-        "sha256": "5284ea2133abed0ae2fb138f401541449c234418c450e94aede0d54484074552",
-        "bytes": 11312,
+        "path": "/visuals/v1/algebra-a0-1-v1.1e3c59419a8cf763.svg",
+        "sha256": "1e3c59419a8cf7638496f566c5b0d00ab48940d9c9b8e00364eb663ab25d975d",
+        "bytes": 8968,
         "width": 960,
-        "height": 558
+        "height": 400
       },
       "title": {
         "segments": [
           {
             "kind": "text",
-            "text": "A0.1 · Anchor"
+            "text": "Number lines and signed quantities · Draggable number line with direction arrows and opposite pairs."
           }
         ]
       },
@@ -30,19 +31,22 @@
         "segments": [
           {
             "kind": "text",
-            "text": "Draggable number line with direction arrows and opposite pairs. This anchor figure supports Interpret sign as position, direction, and change; compare signed numbers and rewrite subtraction as addition of an opposite."
+            "text": "Draggable number line with direction arrows and opposite pairs. This figure supports Interpret sign as position, direction, and change; compare signed numbers and rewrite subtraction as addition of an opposite."
           }
         ]
       },
       "learningPurpose": "Use the visible structure in “Draggable number line with direction arrows and opposite pairs.” to connect the opening context to the lesson outcome: Interpret sign as position, direction, and change; compare signed numbers and rewrite subtraction as addition of an opposite.",
-      "longDescription": "Anchor figure for Number lines and signed quantities: Draggable number line with direction arrows and opposite pairs. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.1-V1.",
+      "longDescription": "Figure for Number lines and signed quantities: Draggable number line with direction arrows and opposite pairs. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.1-V1.",
       "accessibility": {
-        "ariaLabel": "Anchor figure for Number lines and signed quantities: Draggable number line with direction arrows and opposite pairs.",
-        "summary": "Draggable number line with direction arrows and opposite pairs. This anchor figure supports Interpret sign as position, direction, and change; compare signed numbers and rewrite subtraction as addition of an opposite.. The reading order follows the visible labels and mathematical objects.",
+        "ariaLabel": "Figure for Number lines and signed quantities: Draggable number line with direction arrows and opposite pairs.",
+        "summary": "Draggable number line with direction arrows and opposite pairs. This figure supports Interpret sign as position, direction, and change; compare signed numbers and rewrite subtraction as addition of an opposite.. The reading order follows the visible labels and mathematical objects.",
         "readingOrder": [
-          "parameter-family",
-          "reading-note",
-          "parameter-control"
+          "signed-number-line",
+          "origin",
+          "selected-position",
+          "negative-direction",
+          "positive-direction",
+          "signed-position-control"
         ],
         "colorIndependentDescription": "Meaning is carried by written labels, position, line style, and shape; color is supplementary.",
         "keyboardInstructions": "Focus the parameter control and use its previous and next actions to compare states.",
@@ -52,18 +56,18 @@
         "reducedMotion": "disable-animation",
         "staticFallbackEquivalent": true
       },
-      "sourceFingerprint": "bvlp1-b3e0c5de",
+      "sourceFingerprint": "bvlp1-a90168c7",
       "visibility": "public",
       "interactiveScene": {
         "compiledSceneVersion": 1,
         "sourceSpecVersion": 1,
         "id": "algebra-a0-1-v1",
-        "kind": "cartesian-2d",
+        "kind": "number-line",
         "title": {
           "segments": [
             {
               "kind": "text",
-              "text": "A0.1 · Anchor"
+              "text": "Number lines and signed quantities · Draggable number line with direction arrows and opposite pairs."
             }
           ]
         },
@@ -71,115 +75,171 @@
           "segments": [
             {
               "kind": "text",
-              "text": "Draggable number line with direction arrows and opposite pairs. This anchor figure supports Interpret sign as position, direction, and change; compare signed numbers and rewrite subtraction as addition of an opposite."
+              "text": "Draggable number line with direction arrows and opposite pairs. This figure supports Interpret sign as position, direction, and change; compare signed numbers and rewrite subtraction as addition of an opposite."
             }
           ]
         },
         "learningPurpose": "Use the visible structure in “Draggable number line with direction arrows and opposite pairs.” to connect the opening context to the lesson outcome: Interpret sign as position, direction, and change; compare signed numbers and rewrite subtraction as addition of an opposite.",
-        "longDescription": "Anchor figure for Number lines and signed quantities: Draggable number line with direction arrows and opposite pairs. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.1-V1.",
+        "longDescription": "Figure for Number lines and signed quantities: Draggable number line with direction arrows and opposite pairs. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.1-V1.",
         "coordinateSpace": {
-          "type": "cartesian-2d",
+          "type": "number-line",
           "variables": [
             "x",
-            "y"
+            "p"
           ],
           "unitsRequired": false
         },
         "viewport": {
           "xMin": -6,
           "xMax": 6,
-          "yMin": -6,
-          "yMax": 6,
-          "aspectRatio": 1.72,
+          "yMin": -2,
+          "yMax": 2,
+          "aspectRatio": 3,
           "padding": 0.05
         },
         "axes": {
           "mode": "explicit",
           "axes": [
             {
-              "id": "input-axis",
+              "id": "signed-axis",
               "orientation": "x",
               "label": {
                 "segments": [
                   {
                     "kind": "text",
-                    "text": "input x"
+                    "text": "signed value"
                   }
                 ]
               },
               "scale": "linear",
-              "tickMode": "automatic",
-              "showGrid": true
-            },
-            {
-              "id": "output-axis",
-              "orientation": "y",
-              "label": {
-                "segments": [
-                  {
-                    "kind": "text",
-                    "text": "position"
-                  }
-                ]
-              },
-              "scale": "linear",
-              "tickMode": "automatic",
-              "showGrid": true
+              "tickMode": "fixed-step",
+              "tickStep": 1,
+              "showGrid": false
             }
           ]
         },
         "panels": [],
         "layers": [
           {
-            "id": "parameter-family",
+            "id": "signed-number-line",
             "visible": true,
-            "zIndex": 0,
+            "zIndex": 5,
             "presentation": {
-              "strokeToken": "visual-primary",
-              "lineStyle": "solid",
+              "strokeToken": "visual-ink",
+              "lineStyle": "double",
               "markerShape": "none",
               "pattern": "none",
-              "colorIndependentCue": "Solid curve shows the current state controlled by signed position p."
+              "colorIndependentCue": "Signed number line with negative and positive directions."
             },
             "references": [],
-            "kind": "function",
+            "kind": "segment",
             "geometry": {
-              "expression": {
-                "type": "variable",
-                "name": "p"
+              "start": {
+                "x": -5.5,
+                "y": 0
               },
-              "variable": "x",
-              "domain": {
-                "min": -6,
-                "max": 6,
-                "includeMin": true,
-                "includeMax": true
+              "end": {
+                "x": 5.5,
+                "y": 0
               }
             }
           },
           {
-            "id": "reading-note",
+            "id": "origin",
             "visible": true,
-            "zIndex": 0,
+            "zIndex": 20,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "fillToken": "visual-primary",
+              "lineStyle": "solid",
+              "markerShape": "square",
+              "pattern": "diagonal",
+              "colorIndependentCue": "Origin at zero."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 0,
+                "y": 0
+              }
+            }
+          },
+          {
+            "id": "selected-position",
+            "visible": true,
+            "zIndex": 30,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "fillToken": "visual-primary",
+              "lineStyle": "solid",
+              "markerShape": "diamond",
+              "pattern": "diagonal",
+              "colorIndependentCue": "Diamond marks the selected signed position."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": {
+                  "type": "variable",
+                  "name": "p"
+                },
+                "y": 0
+              }
+            }
+          },
+          {
+            "id": "negative-direction",
+            "visible": true,
+            "zIndex": 40,
             "presentation": {
               "strokeToken": "visual-ink",
               "lineStyle": "solid",
               "markerShape": "none",
               "pattern": "none",
-              "colorIndependentCue": "Written directions identify how to inspect signed position p."
+              "colorIndependentCue": "Written mathematical label: negative ←"
             },
             "references": [],
-            "kind": "annotation",
+            "kind": "label",
             "geometry": {
-              "anchor": {
-                "x": -5.28,
-                "y": 5.04
+              "position": {
+                "x": -5.2,
+                "y": 1.2
               },
               "content": {
                 "segments": [
                   {
                     "kind": "text",
-                    "text": "Draggable number line with direction arrows and opposite pairs. Change signed position p; compare shape, direction, and intercepts."
+                    "text": "negative ←"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "positive-direction",
+            "visible": true,
+            "zIndex": 40,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Written mathematical label: → positive"
+            },
+            "references": [],
+            "kind": "label",
+            "geometry": {
+              "position": {
+                "x": 3.8,
+                "y": 1.2
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "→ positive"
                   }
                 ]
               }
@@ -188,7 +248,7 @@
         ],
         "controls": [
           {
-            "id": "parameter-control",
+            "id": "signed-position-control",
             "label": {
               "segments": [
                 {
@@ -197,29 +257,31 @@
                 }
               ]
             },
-            "announcementTemplate": "signed position p is {value}.",
+            "announcementTemplate": "The signed position is {value}.",
             "kind": "step-control",
             "parameter": "p",
             "values": [
+              -5,
               -3,
-              -2,
               -1,
-              -0.5,
-              0.5,
+              0,
               1,
-              2,
-              3
+              3,
+              5
             ],
-            "initialIndex": 5
+            "initialIndex": 3
           }
         ],
         "accessibility": {
-          "ariaLabel": "Anchor figure for Number lines and signed quantities: Draggable number line with direction arrows and opposite pairs.",
-          "summary": "Draggable number line with direction arrows and opposite pairs. This anchor figure supports Interpret sign as position, direction, and change; compare signed numbers and rewrite subtraction as addition of an opposite.. The reading order follows the visible labels and mathematical objects.",
+          "ariaLabel": "Figure for Number lines and signed quantities: Draggable number line with direction arrows and opposite pairs.",
+          "summary": "Draggable number line with direction arrows and opposite pairs. This figure supports Interpret sign as position, direction, and change; compare signed numbers and rewrite subtraction as addition of an opposite.. The reading order follows the visible labels and mathematical objects.",
           "readingOrder": [
-            "parameter-family",
-            "reading-note",
-            "parameter-control"
+            "signed-number-line",
+            "origin",
+            "selected-position",
+            "negative-direction",
+            "positive-direction",
+            "signed-position-control"
           ],
           "colorIndependentDescription": "Meaning is carried by written labels, position, line style, and shape; color is supplementary.",
           "keyboardInstructions": "Focus the parameter control and use its previous and next actions to compare states.",
@@ -235,7 +297,7 @@
             "segments": [
               {
                 "kind": "text",
-                "text": "Draggable number line with direction arrows and opposite pairs. This anchor figure supports Interpret sign as position, direction, and change; compare signed numbers and rewrite subtraction as addition of an opposite."
+                "text": "Draggable number line with direction arrows and opposite pairs. This figure supports Interpret sign as position, direction, and change; compare signed numbers and rewrite subtraction as addition of an opposite."
               }
             ]
           },
@@ -255,8 +317,8 @@
         },
         "requiredCapabilities": [
           "annotations",
-          "cartesian-axes",
-          "function-paths",
+          "number-line",
+          "open-closed-points",
           "parameter-controls",
           "static-fallback"
         ],
@@ -272,7 +334,7 @@
         "provenance": {
           "route": "/subjects/math/algebra/arithmetic-readiness/number-lines-and-signed-quantities/",
           "sourceVisualId": "algebra-a0-1-v1",
-          "sourceFingerprint": "bvlp1-b3e0c5de",
+          "sourceFingerprint": "bvlp1-a90168c7",
           "compilerVersion": "bvlp-compiler-v1",
           "visibility": "public"
         }
@@ -281,20 +343,21 @@
     {
       "id": "algebra-a0-1-v2",
       "sourceVisualId": "algebra-a0-1-v2",
+      "isFunctionGraph": false,
       "selectedRenderer": "static-svg",
       "hydration": "none",
       "staticAsset": {
-        "path": "/visuals/v1/algebra-a0-1-v2.237ed4e4cf89bf3d.svg",
-        "sha256": "237ed4e4cf89bf3dfbf9b61b3dab3de1fd2ed299a2fed7efb57e475ea94d5cbd",
-        "bytes": 7944,
+        "path": "/visuals/v1/algebra-a0-1-v2.e7d6831a01c34f40.svg",
+        "sha256": "e7d6831a01c34f4011efe16db42aeeed964cf08cb6d749d147835abfc88ba1ee",
+        "bytes": 10310,
         "width": 960,
-        "height": 558
+        "height": 400
       },
       "title": {
         "segments": [
           {
             "kind": "text",
-            "text": "A0.1 · Mechanism"
+            "text": "Number lines and signed quantities · Context strip connecting temperature, elevation, and balance to signed values."
           }
         ]
       },
@@ -302,42 +365,43 @@
         "segments": [
           {
             "kind": "text",
-            "text": "Context strip connecting temperature, elevation, and balance to signed values. This mechanism figure supports Interpret sign as position, direction, and change; compare signed numbers and rewrite subtraction as addition of an opposite."
+            "text": "Context strip connecting temperature, elevation, and balance to signed values. This figure supports Interpret sign as position, direction, and change; compare signed numbers and rewrite subtraction as addition of an opposite."
           }
         ]
       },
       "learningPurpose": "Use the visible structure in “Context strip connecting temperature, elevation, and balance to signed values.” to connect the opening context to the lesson outcome: Interpret sign as position, direction, and change; compare signed numbers and rewrite subtraction as addition of an opposite.",
-      "longDescription": "Mechanism figure for Number lines and signed quantities: Context strip connecting temperature, elevation, and balance to signed values. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.1-V2.",
+      "longDescription": "Figure for Number lines and signed quantities: Context strip connecting temperature, elevation, and balance to signed values. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.1-V2.",
       "accessibility": {
-        "ariaLabel": "Mechanism figure for Number lines and signed quantities: Context strip connecting temperature, elevation, and balance to signed values.",
-        "summary": "Context strip connecting temperature, elevation, and balance to signed values. This mechanism figure supports Interpret sign as position, direction, and change; compare signed numbers and rewrite subtraction as addition of an opposite.. The reading order follows the visible labels and mathematical objects.",
+        "ariaLabel": "Figure for Number lines and signed quantities: Context strip connecting temperature, elevation, and balance to signed values.",
+        "summary": "Context strip connecting temperature, elevation, and balance to signed values. This figure supports Interpret sign as position, direction, and change; compare signed numbers and rewrite subtraction as addition of an opposite.. The reading order follows the visible labels and mathematical objects.",
         "readingOrder": [
-          "context-box",
-          "context-label",
-          "context-arrow",
-          "structure-box",
-          "structure-label",
-          "structure-arrow",
-          "meaning-box",
-          "meaning-label"
+          "number-line",
+          "left-value",
+          "origin",
+          "right-value",
+          "left-label",
+          "center-label",
+          "right-label",
+          "relationship-label"
         ],
         "colorIndependentDescription": "Meaning is carried by written labels, position, line style, and shape; color is supplementary.",
         "controlInstructions": [],
         "reducedMotion": "not-applicable",
         "staticFallbackEquivalent": true
       },
-      "sourceFingerprint": "bvlp1-4871ab10",
+      "sourceFingerprint": "bvlp1-82ad57e1",
       "visibility": "public"
     },
     {
       "id": "algebra-a0-1-v3",
       "sourceVisualId": "algebra-a0-1-v3",
+      "isFunctionGraph": false,
       "selectedRenderer": "static-svg",
       "hydration": "none",
       "staticAsset": {
-        "path": "/visuals/v1/algebra-a0-1-v3.cb914ca8a10c592c.svg",
-        "sha256": "cb914ca8a10c592c6316f4df2ef0c0ae8321132afd8b3c9269d1afc629912e25",
-        "bytes": 7836,
+        "path": "/visuals/v1/algebra-a0-1-v3.8d8283960a4ca451.svg",
+        "sha256": "8d8283960a4ca451ea8827354a14b63345cc79477c3eb88781322d9590b9044a",
+        "bytes": 9780,
         "width": 960,
         "height": 558
       },
@@ -345,7 +409,7 @@
         "segments": [
           {
             "kind": "text",
-            "text": "A0.1 · Representation"
+            "text": "Number lines and signed quantities · Error panel contrasting value, sign, and absolute magnitude."
           }
         ]
       },
@@ -353,42 +417,48 @@
         "segments": [
           {
             "kind": "text",
-            "text": "Error panel contrasting value, sign, and absolute magnitude. This representation figure supports Interpret sign as position, direction, and change; compare signed numbers and rewrite subtraction as addition of an opposite."
+            "text": "Error panel contrasting value, sign, and absolute magnitude. This figure supports Interpret sign as position, direction, and change; compare signed numbers and rewrite subtraction as addition of an opposite."
           }
         ]
       },
       "learningPurpose": "Use the visible structure in “Error panel contrasting value, sign, and absolute magnitude.” to connect the opening context to the lesson outcome: Interpret sign as position, direction, and change; compare signed numbers and rewrite subtraction as addition of an opposite.",
-      "longDescription": "Representation figure for Number lines and signed quantities: Error panel contrasting value, sign, and absolute magnitude. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.1-V3.",
+      "longDescription": "Figure for Number lines and signed quantities: Error panel contrasting value, sign, and absolute magnitude. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.1-V3.",
       "accessibility": {
-        "ariaLabel": "Representation figure for Number lines and signed quantities: Error panel contrasting value, sign, and absolute magnitude.",
-        "summary": "Error panel contrasting value, sign, and absolute magnitude. This representation figure supports Interpret sign as position, direction, and change; compare signed numbers and rewrite subtraction as addition of an opposite.. The reading order follows the visible labels and mathematical objects.",
+        "ariaLabel": "Figure for Number lines and signed quantities: Error panel contrasting value, sign, and absolute magnitude.",
+        "summary": "Error panel contrasting value, sign, and absolute magnitude. This figure supports Interpret sign as position, direction, and change; compare signed numbers and rewrite subtraction as addition of an opposite.. The reading order follows the visible labels and mathematical objects.",
         "readingOrder": [
-          "context-box",
-          "context-label",
-          "context-arrow",
-          "structure-box",
-          "structure-label",
-          "structure-arrow",
-          "meaning-box",
-          "meaning-label"
+          "lesson-label",
+          "step-card-1",
+          "step-number-1",
+          "step-1-line-1",
+          "flow-arrow-1",
+          "step-card-2",
+          "step-number-2",
+          "step-2-line-1",
+          "flow-arrow-2",
+          "step-card-3",
+          "step-number-3",
+          "step-3-line-1",
+          "relationship-note-1"
         ],
         "colorIndependentDescription": "Meaning is carried by written labels, position, line style, and shape; color is supplementary.",
         "controlInstructions": [],
         "reducedMotion": "not-applicable",
         "staticFallbackEquivalent": true
       },
-      "sourceFingerprint": "bvlp1-22f47095",
+      "sourceFingerprint": "bvlp1-b6957dd0",
       "visibility": "public"
     },
     {
       "id": "algebra-a0-2-v1",
       "sourceVisualId": "algebra-a0-2-v1",
+      "isFunctionGraph": false,
       "selectedRenderer": "static-svg",
       "hydration": "none",
       "staticAsset": {
-        "path": "/visuals/v1/algebra-a0-2-v1.b145d2c196b64d07.svg",
-        "sha256": "b145d2c196b64d074087dcf48396f96837a26ba99a41a55d4e821a93b76ef504",
-        "bytes": 7535,
+        "path": "/visuals/v1/algebra-a0-2-v1.cabde935123c1022.svg",
+        "sha256": "cabde935123c102262f23b4e85bc8df9852a257987b2f58e4367683bf8c936a7",
+        "bytes": 14478,
         "width": 960,
         "height": 558
       },
@@ -396,7 +466,7 @@
         "segments": [
           {
             "kind": "text",
-            "text": "A0.2 · Anchor"
+            "text": "Whole-number operations and estimation · Place-value expansion and regrouping diagram."
           }
         ]
       },
@@ -404,42 +474,59 @@
         "segments": [
           {
             "kind": "text",
-            "text": "Place-value expansion and regrouping diagram. This anchor figure supports Use place value, the four operations, rounding, and order of magnitude to judge whether exact output is plausible."
+            "text": "Place-value expansion and regrouping diagram. This figure supports Use place value, the four operations, rounding, and order of magnitude to judge whether exact output is plausible."
           }
         ]
       },
       "learningPurpose": "Use the visible structure in “Place-value expansion and regrouping diagram.” to connect the opening context to the lesson outcome: Use place value, the four operations, rounding, and order of magnitude to judge whether exact output is plausible.",
-      "longDescription": "Anchor figure for Whole-number operations and estimation: Place-value expansion and regrouping diagram. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.2-V1.",
+      "longDescription": "Figure for Whole-number operations and estimation: Place-value expansion and regrouping diagram. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.2-V1.",
       "accessibility": {
-        "ariaLabel": "Anchor figure for Whole-number operations and estimation: Place-value expansion and regrouping diagram.",
-        "summary": "Place-value expansion and regrouping diagram. This anchor figure supports Use place value, the four operations, rounding, and order of magnitude to judge whether exact output is plausible.. The reading order follows the visible labels and mathematical objects.",
+        "ariaLabel": "Figure for Whole-number operations and estimation: Place-value expansion and regrouping diagram.",
+        "summary": "Place-value expansion and regrouping diagram. This figure supports Use place value, the four operations, rounding, and order of magnitude to judge whether exact output is plausible.. The reading order follows the visible labels and mathematical objects.",
         "readingOrder": [
-          "context-box",
-          "context-label",
-          "context-arrow",
-          "structure-box",
-          "structure-label",
-          "structure-arrow",
-          "meaning-box",
-          "meaning-label"
+          "figure-claim",
+          "lesson-label",
+          "row-0",
+          "row-1",
+          "row-2",
+          "row-3",
+          "row-4",
+          "column-0",
+          "column-1",
+          "column-2",
+          "column-3",
+          "cell-label-0-0",
+          "cell-label-0-1",
+          "cell-label-0-2",
+          "cell-label-1-0",
+          "cell-label-1-1",
+          "cell-label-1-2",
+          "cell-label-2-0",
+          "cell-label-2-1",
+          "cell-label-2-2",
+          "cell-label-3-0",
+          "cell-label-3-1",
+          "cell-label-3-2",
+          "relationship-note"
         ],
         "colorIndependentDescription": "Meaning is carried by written labels, position, line style, and shape; color is supplementary.",
         "controlInstructions": [],
         "reducedMotion": "not-applicable",
         "staticFallbackEquivalent": true
       },
-      "sourceFingerprint": "bvlp1-ac1ea4c6",
+      "sourceFingerprint": "bvlp1-0e0fa8ed",
       "visibility": "public"
     },
     {
       "id": "algebra-a0-2-v2",
       "sourceVisualId": "algebra-a0-2-v2",
+      "isFunctionGraph": false,
       "selectedRenderer": "static-svg",
       "hydration": "none",
       "staticAsset": {
-        "path": "/visuals/v1/algebra-a0-2-v2.84c6a92e879b8094.svg",
-        "sha256": "84c6a92e879b8094a6908a733bd36e5ed603f7855e945aeb8ca6a88a913de43b",
-        "bytes": 7690,
+        "path": "/visuals/v1/algebra-a0-2-v2.b1d69fd230434b31.svg",
+        "sha256": "b1d69fd230434b310c43c734057696a23f60221e201a99dcecfaeef891df91dc",
+        "bytes": 9969,
         "width": 960,
         "height": 558
       },
@@ -447,7 +534,7 @@
         "segments": [
           {
             "kind": "text",
-            "text": "A0.2 · Mechanism"
+            "text": "Whole-number operations and estimation · Array/area interpretation of multiplication and division."
           }
         ]
       },
@@ -455,42 +542,48 @@
         "segments": [
           {
             "kind": "text",
-            "text": "Array/area interpretation of multiplication and division. This mechanism figure supports Use place value, the four operations, rounding, and order of magnitude to judge whether exact output is plausible."
+            "text": "Array/area interpretation of multiplication and division. This figure supports Use place value, the four operations, rounding, and order of magnitude to judge whether exact output is plausible."
           }
         ]
       },
       "learningPurpose": "Use the visible structure in “Array/area interpretation of multiplication and division.” to connect the opening context to the lesson outcome: Use place value, the four operations, rounding, and order of magnitude to judge whether exact output is plausible.",
-      "longDescription": "Mechanism figure for Whole-number operations and estimation: Array/area interpretation of multiplication and division. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.2-V2.",
+      "longDescription": "Figure for Whole-number operations and estimation: Array/area interpretation of multiplication and division. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.2-V2.",
       "accessibility": {
-        "ariaLabel": "Mechanism figure for Whole-number operations and estimation: Array/area interpretation of multiplication and division.",
-        "summary": "Array/area interpretation of multiplication and division. This mechanism figure supports Use place value, the four operations, rounding, and order of magnitude to judge whether exact output is plausible.. The reading order follows the visible labels and mathematical objects.",
+        "ariaLabel": "Figure for Whole-number operations and estimation: Array/area interpretation of multiplication and division.",
+        "summary": "Array/area interpretation of multiplication and division. This figure supports Use place value, the four operations, rounding, and order of magnitude to judge whether exact output is plausible.. The reading order follows the visible labels and mathematical objects.",
         "readingOrder": [
-          "context-box",
-          "context-label",
-          "context-arrow",
-          "structure-box",
-          "structure-label",
-          "structure-arrow",
-          "meaning-box",
-          "meaning-label"
+          "lesson-label",
+          "step-card-1",
+          "step-number-1",
+          "step-1-line-1",
+          "flow-arrow-1",
+          "step-card-2",
+          "step-number-2",
+          "step-2-line-1",
+          "flow-arrow-2",
+          "step-card-3",
+          "step-number-3",
+          "step-3-line-1",
+          "relationship-note-1"
         ],
         "colorIndependentDescription": "Meaning is carried by written labels, position, line style, and shape; color is supplementary.",
         "controlInstructions": [],
         "reducedMotion": "not-applicable",
         "staticFallbackEquivalent": true
       },
-      "sourceFingerprint": "bvlp1-11fbc98e",
+      "sourceFingerprint": "bvlp1-ffcdbace",
       "visibility": "public"
     },
     {
       "id": "algebra-a0-2-v3",
       "sourceVisualId": "algebra-a0-2-v3",
+      "isFunctionGraph": false,
       "selectedRenderer": "static-svg",
       "hydration": "none",
       "staticAsset": {
-        "path": "/visuals/v1/algebra-a0-2-v3.16ea1a67534466df.svg",
-        "sha256": "16ea1a67534466df16bf0aceb6ea3517f058aaa46dae6cd211e712c8ad52fc73",
-        "bytes": 7606,
+        "path": "/visuals/v1/algebra-a0-2-v3.ce052c292f7ca6d2.svg",
+        "sha256": "ce052c292f7ca6d273504a33f846b9b50efcf85530df83ec9208780e510fb5c9",
+        "bytes": 14526,
         "width": 960,
         "height": 558
       },
@@ -498,7 +591,7 @@
         "segments": [
           {
             "kind": "text",
-            "text": "A0.2 · Representation"
+            "text": "Whole-number operations and estimation · Estimate-exact-calculator comparison panel."
           }
         ]
       },
@@ -506,42 +599,59 @@
         "segments": [
           {
             "kind": "text",
-            "text": "Estimate-exact-calculator comparison panel. This representation figure supports Use place value, the four operations, rounding, and order of magnitude to judge whether exact output is plausible."
+            "text": "Estimate-exact-calculator comparison panel. This figure supports Use place value, the four operations, rounding, and order of magnitude to judge whether exact output is plausible."
           }
         ]
       },
       "learningPurpose": "Use the visible structure in “Estimate-exact-calculator comparison panel.” to connect the opening context to the lesson outcome: Use place value, the four operations, rounding, and order of magnitude to judge whether exact output is plausible.",
-      "longDescription": "Representation figure for Whole-number operations and estimation: Estimate-exact-calculator comparison panel. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.2-V3.",
+      "longDescription": "Figure for Whole-number operations and estimation: Estimate-exact-calculator comparison panel. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.2-V3.",
       "accessibility": {
-        "ariaLabel": "Representation figure for Whole-number operations and estimation: Estimate-exact-calculator comparison panel.",
-        "summary": "Estimate-exact-calculator comparison panel. This representation figure supports Use place value, the four operations, rounding, and order of magnitude to judge whether exact output is plausible.. The reading order follows the visible labels and mathematical objects.",
+        "ariaLabel": "Figure for Whole-number operations and estimation: Estimate-exact-calculator comparison panel.",
+        "summary": "Estimate-exact-calculator comparison panel. This figure supports Use place value, the four operations, rounding, and order of magnitude to judge whether exact output is plausible.. The reading order follows the visible labels and mathematical objects.",
         "readingOrder": [
-          "context-box",
-          "context-label",
-          "context-arrow",
-          "structure-box",
-          "structure-label",
-          "structure-arrow",
-          "meaning-box",
-          "meaning-label"
+          "figure-claim",
+          "lesson-label",
+          "row-0",
+          "row-1",
+          "row-2",
+          "row-3",
+          "row-4",
+          "column-0",
+          "column-1",
+          "column-2",
+          "column-3",
+          "cell-label-0-0",
+          "cell-label-0-1",
+          "cell-label-0-2",
+          "cell-label-1-0",
+          "cell-label-1-1",
+          "cell-label-1-2",
+          "cell-label-2-0",
+          "cell-label-2-1",
+          "cell-label-2-2",
+          "cell-label-3-0",
+          "cell-label-3-1",
+          "cell-label-3-2",
+          "relationship-note"
         ],
         "colorIndependentDescription": "Meaning is carried by written labels, position, line style, and shape; color is supplementary.",
         "controlInstructions": [],
         "reducedMotion": "not-applicable",
         "staticFallbackEquivalent": true
       },
-      "sourceFingerprint": "bvlp1-0b4ca76e",
+      "sourceFingerprint": "bvlp1-fef48811",
       "visibility": "public"
     },
     {
       "id": "algebra-a0-3-v1",
       "sourceVisualId": "algebra-a0-3-v1",
+      "isFunctionGraph": false,
       "selectedRenderer": "static-svg",
       "hydration": "none",
       "staticAsset": {
-        "path": "/visuals/v1/algebra-a0-3-v1.6a8652a88437c4e4.svg",
-        "sha256": "6a8652a88437c4e41fa6dbcb1043e3ca2dd492fd82c6808e83ff80a947226867",
-        "bytes": 7493,
+        "path": "/visuals/v1/algebra-a0-3-v1.95ab67d367b825a1.svg",
+        "sha256": "95ab67d367b825a14f738ef02618537c372f55ada927de48eada2c4a1ea0afe9",
+        "bytes": 10351,
         "width": 960,
         "height": 558
       },
@@ -549,7 +659,7 @@
         "segments": [
           {
             "kind": "text",
-            "text": "A0.3 · Anchor"
+            "text": "Factors, primes, GCF, and LCM · Factor trees and prime-exponent inventory."
           }
         ]
       },
@@ -557,42 +667,51 @@
         "segments": [
           {
             "kind": "text",
-            "text": "Factor trees and prime-exponent inventory. This anchor figure supports Decompose whole numbers multiplicatively and distinguish common-factor questions from common-multiple questions."
+            "text": "Factor trees and prime-exponent inventory. This figure supports Decompose whole numbers multiplicatively and distinguish common-factor questions from common-multiple questions."
           }
         ]
       },
       "learningPurpose": "Use the visible structure in “Factor trees and prime-exponent inventory.” to connect the opening context to the lesson outcome: Decompose whole numbers multiplicatively and distinguish common-factor questions from common-multiple questions.",
-      "longDescription": "Anchor figure for Factors, primes, GCF, and LCM: Factor trees and prime-exponent inventory. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.3-V1.",
+      "longDescription": "Figure for Factors, primes, GCF, and LCM: Factor trees and prime-exponent inventory. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.3-V1.",
       "accessibility": {
-        "ariaLabel": "Anchor figure for Factors, primes, GCF, and LCM: Factor trees and prime-exponent inventory.",
-        "summary": "Factor trees and prime-exponent inventory. This anchor figure supports Decompose whole numbers multiplicatively and distinguish common-factor questions from common-multiple questions.. The reading order follows the visible labels and mathematical objects.",
+        "ariaLabel": "Figure for Factors, primes, GCF, and LCM: Factor trees and prime-exponent inventory.",
+        "summary": "Factor trees and prime-exponent inventory. This figure supports Decompose whole numbers multiplicatively and distinguish common-factor questions from common-multiple questions.. The reading order follows the visible labels and mathematical objects.",
         "readingOrder": [
-          "context-box",
-          "context-label",
-          "context-arrow",
-          "structure-box",
-          "structure-label",
-          "structure-arrow",
-          "meaning-box",
-          "meaning-label"
+          "figure-claim",
+          "root-value",
+          "branch-six",
+          "branch-ten",
+          "factor-six",
+          "factor-ten",
+          "six-two",
+          "six-three",
+          "ten-two",
+          "ten-five",
+          "prime-two-a",
+          "prime-three",
+          "prime-two-b",
+          "prime-five",
+          "factorization",
+          "relationship-note"
         ],
         "colorIndependentDescription": "Meaning is carried by written labels, position, line style, and shape; color is supplementary.",
         "controlInstructions": [],
         "reducedMotion": "not-applicable",
         "staticFallbackEquivalent": true
       },
-      "sourceFingerprint": "bvlp1-6bc7b1b5",
+      "sourceFingerprint": "bvlp1-034834d4",
       "visibility": "public"
     },
     {
       "id": "algebra-a0-3-v2",
       "sourceVisualId": "algebra-a0-3-v2",
+      "isFunctionGraph": false,
       "selectedRenderer": "static-svg",
       "hydration": "none",
       "staticAsset": {
-        "path": "/visuals/v1/algebra-a0-3-v2.d700b68ea5a973fc.svg",
-        "sha256": "d700b68ea5a973fcf85bcbc5ffac1873f15c2d038102e2bff4f9fad0767789d2",
-        "bytes": 7349,
+        "path": "/visuals/v1/algebra-a0-3-v2.a0e23d7a138b2709.svg",
+        "sha256": "a0e23d7a138b27099384ddf5b3c365390dff3f48de8b13d57074126f3ee697bb",
+        "bytes": 14291,
         "width": 960,
         "height": 558
       },
@@ -600,7 +719,7 @@
         "segments": [
           {
             "kind": "text",
-            "text": "A0.3 · Mechanism"
+            "text": "Factors, primes, GCF, and LCM · GCF shared-factor diagram."
           }
         ]
       },
@@ -608,42 +727,59 @@
         "segments": [
           {
             "kind": "text",
-            "text": "GCF shared-factor diagram. This mechanism figure supports Decompose whole numbers multiplicatively and distinguish common-factor questions from common-multiple questions."
+            "text": "GCF shared-factor diagram. This figure supports Decompose whole numbers multiplicatively and distinguish common-factor questions from common-multiple questions."
           }
         ]
       },
       "learningPurpose": "Use the visible structure in “GCF shared-factor diagram.” to connect the opening context to the lesson outcome: Decompose whole numbers multiplicatively and distinguish common-factor questions from common-multiple questions.",
-      "longDescription": "Mechanism figure for Factors, primes, GCF, and LCM: GCF shared-factor diagram. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.3-V2.",
+      "longDescription": "Figure for Factors, primes, GCF, and LCM: GCF shared-factor diagram. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.3-V2.",
       "accessibility": {
-        "ariaLabel": "Mechanism figure for Factors, primes, GCF, and LCM: GCF shared-factor diagram.",
-        "summary": "GCF shared-factor diagram. This mechanism figure supports Decompose whole numbers multiplicatively and distinguish common-factor questions from common-multiple questions.. The reading order follows the visible labels and mathematical objects.",
+        "ariaLabel": "Figure for Factors, primes, GCF, and LCM: GCF shared-factor diagram.",
+        "summary": "GCF shared-factor diagram. This figure supports Decompose whole numbers multiplicatively and distinguish common-factor questions from common-multiple questions.. The reading order follows the visible labels and mathematical objects.",
         "readingOrder": [
-          "context-box",
-          "context-label",
-          "context-arrow",
-          "structure-box",
-          "structure-label",
-          "structure-arrow",
-          "meaning-box",
-          "meaning-label"
+          "figure-claim",
+          "lesson-label",
+          "row-0",
+          "row-1",
+          "row-2",
+          "row-3",
+          "row-4",
+          "column-0",
+          "column-1",
+          "column-2",
+          "column-3",
+          "cell-label-0-0",
+          "cell-label-0-1",
+          "cell-label-0-2",
+          "cell-label-1-0",
+          "cell-label-1-1",
+          "cell-label-1-2",
+          "cell-label-2-0",
+          "cell-label-2-1",
+          "cell-label-2-2",
+          "cell-label-3-0",
+          "cell-label-3-1",
+          "cell-label-3-2",
+          "relationship-note"
         ],
         "colorIndependentDescription": "Meaning is carried by written labels, position, line style, and shape; color is supplementary.",
         "controlInstructions": [],
         "reducedMotion": "not-applicable",
         "staticFallbackEquivalent": true
       },
-      "sourceFingerprint": "bvlp1-5bc1107c",
+      "sourceFingerprint": "bvlp1-676ab6c8",
       "visibility": "public"
     },
     {
       "id": "algebra-a0-3-v3",
       "sourceVisualId": "algebra-a0-3-v3",
+      "isFunctionGraph": false,
       "selectedRenderer": "static-svg",
       "hydration": "none",
       "staticAsset": {
-        "path": "/visuals/v1/algebra-a0-3-v3.54ee1be5b157f6b5.svg",
-        "sha256": "54ee1be5b157f6b5d39da2e1ab2769a02747b6036fab3814d0b458090b7bb586",
-        "bytes": 7619,
+        "path": "/visuals/v1/algebra-a0-3-v3.da938480917b5dc8.svg",
+        "sha256": "da938480917b5dc86286f1e6b9f4fa52a24743313d0755f2ce07461158ae5f33",
+        "bytes": 9730,
         "width": 960,
         "height": 558
       },
@@ -651,7 +787,7 @@
         "segments": [
           {
             "kind": "text",
-            "text": "A0.3 · Representation"
+            "text": "Factors, primes, GCF, and LCM · LCM timeline showing first repeated alignment."
           }
         ]
       },
@@ -659,42 +795,48 @@
         "segments": [
           {
             "kind": "text",
-            "text": "LCM timeline showing first repeated alignment. This representation figure supports Decompose whole numbers multiplicatively and distinguish common-factor questions from common-multiple questions."
+            "text": "LCM timeline showing first repeated alignment. This figure supports Decompose whole numbers multiplicatively and distinguish common-factor questions from common-multiple questions."
           }
         ]
       },
       "learningPurpose": "Use the visible structure in “LCM timeline showing first repeated alignment.” to connect the opening context to the lesson outcome: Decompose whole numbers multiplicatively and distinguish common-factor questions from common-multiple questions.",
-      "longDescription": "Representation figure for Factors, primes, GCF, and LCM: LCM timeline showing first repeated alignment. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.3-V3.",
+      "longDescription": "Figure for Factors, primes, GCF, and LCM: LCM timeline showing first repeated alignment. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.3-V3.",
       "accessibility": {
-        "ariaLabel": "Representation figure for Factors, primes, GCF, and LCM: LCM timeline showing first repeated alignment.",
-        "summary": "LCM timeline showing first repeated alignment. This representation figure supports Decompose whole numbers multiplicatively and distinguish common-factor questions from common-multiple questions.. The reading order follows the visible labels and mathematical objects.",
+        "ariaLabel": "Figure for Factors, primes, GCF, and LCM: LCM timeline showing first repeated alignment.",
+        "summary": "LCM timeline showing first repeated alignment. This figure supports Decompose whole numbers multiplicatively and distinguish common-factor questions from common-multiple questions.. The reading order follows the visible labels and mathematical objects.",
         "readingOrder": [
-          "context-box",
-          "context-label",
-          "context-arrow",
-          "structure-box",
-          "structure-label",
-          "structure-arrow",
-          "meaning-box",
-          "meaning-label"
+          "lesson-label",
+          "step-card-1",
+          "step-number-1",
+          "step-1-line-1",
+          "flow-arrow-1",
+          "step-card-2",
+          "step-number-2",
+          "step-2-line-1",
+          "flow-arrow-2",
+          "step-card-3",
+          "step-number-3",
+          "step-3-line-1",
+          "relationship-note-1"
         ],
         "colorIndependentDescription": "Meaning is carried by written labels, position, line style, and shape; color is supplementary.",
         "controlInstructions": [],
         "reducedMotion": "not-applicable",
         "staticFallbackEquivalent": true
       },
-      "sourceFingerprint": "bvlp1-fb493b3e",
+      "sourceFingerprint": "bvlp1-c0bbd048",
       "visibility": "public"
     },
     {
       "id": "algebra-a0-4-v1",
       "sourceVisualId": "algebra-a0-4-v1",
+      "isFunctionGraph": false,
       "selectedRenderer": "static-svg",
       "hydration": "none",
       "staticAsset": {
-        "path": "/visuals/v1/algebra-a0-4-v1.8e9010210843cc81.svg",
-        "sha256": "8e9010210843cc8113de62ab9fa52a5c303ecba652fb69ec2a159090a6e3efa3",
-        "bytes": 7416,
+        "path": "/visuals/v1/algebra-a0-4-v1.4e7fd0c6aaaaf38d.svg",
+        "sha256": "4e7fd0c6aaaaf38d33ad30d7e85a8d16cda8ab320acaa9f14bdd1e0251fc43b3",
+        "bytes": 9648,
         "width": 960,
         "height": 558
       },
@@ -702,7 +844,7 @@
         "segments": [
           {
             "kind": "text",
-            "text": "A0.4 · Anchor"
+            "text": "Fractions as numbers · Fraction strip aligned to a number line."
           }
         ]
       },
@@ -710,50 +852,56 @@
         "segments": [
           {
             "kind": "text",
-            "text": "Fraction strip aligned to a number line. This anchor figure supports Interpret a fraction as a number, quotient, ratio, and operator and locate it on a number line."
+            "text": "Fraction strip aligned to a number line. This figure supports Interpret a fraction as a number, quotient, ratio, and operator and locate it on a number line."
           }
         ]
       },
       "learningPurpose": "Use the visible structure in “Fraction strip aligned to a number line.” to connect the opening context to the lesson outcome: Interpret a fraction as a number, quotient, ratio, and operator and locate it on a number line.",
-      "longDescription": "Anchor figure for Fractions as numbers: Fraction strip aligned to a number line. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.4-V1.",
+      "longDescription": "Figure for Fractions as numbers: Fraction strip aligned to a number line. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.4-V1.",
       "accessibility": {
-        "ariaLabel": "Anchor figure for Fractions as numbers: Fraction strip aligned to a number line.",
-        "summary": "Fraction strip aligned to a number line. This anchor figure supports Interpret a fraction as a number, quotient, ratio, and operator and locate it on a number line.. The reading order follows the visible labels and mathematical objects.",
+        "ariaLabel": "Figure for Fractions as numbers: Fraction strip aligned to a number line.",
+        "summary": "Fraction strip aligned to a number line. This figure supports Interpret a fraction as a number, quotient, ratio, and operator and locate it on a number line.. The reading order follows the visible labels and mathematical objects.",
         "readingOrder": [
-          "context-box",
-          "context-label",
-          "context-arrow",
-          "structure-box",
-          "structure-label",
-          "structure-arrow",
-          "meaning-box",
-          "meaning-label"
+          "lesson-label",
+          "step-card-1",
+          "step-number-1",
+          "step-1-line-1",
+          "flow-arrow-1",
+          "step-card-2",
+          "step-number-2",
+          "step-2-line-1",
+          "flow-arrow-2",
+          "step-card-3",
+          "step-number-3",
+          "step-3-line-1",
+          "relationship-note-1"
         ],
         "colorIndependentDescription": "Meaning is carried by written labels, position, line style, and shape; color is supplementary.",
         "controlInstructions": [],
         "reducedMotion": "not-applicable",
         "staticFallbackEquivalent": true
       },
-      "sourceFingerprint": "bvlp1-da671aa2",
+      "sourceFingerprint": "bvlp1-1f49402f",
       "visibility": "public"
     },
     {
       "id": "algebra-a0-4-v2",
       "sourceVisualId": "algebra-a0-4-v2",
+      "isFunctionGraph": false,
       "selectedRenderer": "static-svg",
       "hydration": "none",
       "staticAsset": {
-        "path": "/visuals/v1/algebra-a0-4-v2.d43745e1ec631e68.svg",
-        "sha256": "d43745e1ec631e68f3521f4f2235fae102d12891a56fd398f816596508b891bf",
-        "bytes": 7572,
+        "path": "/visuals/v1/algebra-a0-4-v2.9196840474c16683.svg",
+        "sha256": "9196840474c16683a106a2f3440749c9df4f25a93122d8e3b490d0b00aaf5179",
+        "bytes": 10010,
         "width": 960,
-        "height": 558
+        "height": 400
       },
       "title": {
         "segments": [
           {
             "kind": "text",
-            "text": "A0.4 · Mechanism"
+            "text": "Fractions as numbers · Area model and quotient model for the same fraction."
           }
         ]
       },
@@ -761,42 +909,43 @@
         "segments": [
           {
             "kind": "text",
-            "text": "Area model and quotient model for the same fraction. This mechanism figure supports Interpret a fraction as a number, quotient, ratio, and operator and locate it on a number line."
+            "text": "Area model and quotient model for the same fraction. This figure supports Interpret a fraction as a number, quotient, ratio, and operator and locate it on a number line."
           }
         ]
       },
       "learningPurpose": "Use the visible structure in “Area model and quotient model for the same fraction.” to connect the opening context to the lesson outcome: Interpret a fraction as a number, quotient, ratio, and operator and locate it on a number line.",
-      "longDescription": "Mechanism figure for Fractions as numbers: Area model and quotient model for the same fraction. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.4-V2.",
+      "longDescription": "Figure for Fractions as numbers: Area model and quotient model for the same fraction. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.4-V2.",
       "accessibility": {
-        "ariaLabel": "Mechanism figure for Fractions as numbers: Area model and quotient model for the same fraction.",
-        "summary": "Area model and quotient model for the same fraction. This mechanism figure supports Interpret a fraction as a number, quotient, ratio, and operator and locate it on a number line.. The reading order follows the visible labels and mathematical objects.",
+        "ariaLabel": "Figure for Fractions as numbers: Area model and quotient model for the same fraction.",
+        "summary": "Area model and quotient model for the same fraction. This figure supports Interpret a fraction as a number, quotient, ratio, and operator and locate it on a number line.. The reading order follows the visible labels and mathematical objects.",
         "readingOrder": [
-          "context-box",
-          "context-label",
-          "context-arrow",
-          "structure-box",
-          "structure-label",
-          "structure-arrow",
-          "meaning-box",
-          "meaning-label"
+          "number-line",
+          "left-value",
+          "origin",
+          "right-value",
+          "left-label",
+          "center-label",
+          "right-label",
+          "relationship-label"
         ],
         "colorIndependentDescription": "Meaning is carried by written labels, position, line style, and shape; color is supplementary.",
         "controlInstructions": [],
         "reducedMotion": "not-applicable",
         "staticFallbackEquivalent": true
       },
-      "sourceFingerprint": "bvlp1-724837a4",
+      "sourceFingerprint": "bvlp1-bea78f64",
       "visibility": "public"
     },
     {
       "id": "algebra-a0-4-v3",
       "sourceVisualId": "algebra-a0-4-v3",
+      "isFunctionGraph": false,
       "selectedRenderer": "static-svg",
       "hydration": "none",
       "staticAsset": {
-        "path": "/visuals/v1/algebra-a0-4-v3.269ff2c0ba9b0b53.svg",
-        "sha256": "269ff2c0ba9b0b53e687df1940eb9c8bec7a4f4feaa31f2cb847172b4101c465",
-        "bytes": 7646,
+        "path": "/visuals/v1/algebra-a0-4-v3.c164fa7416ecff80.svg",
+        "sha256": "c164fa7416ecff8084751ead8e09673d3b74d721fd4d28689df3db8acdbdfbec",
+        "bytes": 10058,
         "width": 960,
         "height": 558
       },
@@ -804,7 +953,7 @@
         "segments": [
           {
             "kind": "text",
-            "text": "A0.4 · Representation"
+            "text": "Fractions as numbers · Four-meaning panel: number, quotient, ratio, operator."
           }
         ]
       },
@@ -812,42 +961,49 @@
         "segments": [
           {
             "kind": "text",
-            "text": "Four-meaning panel: number, quotient, ratio, operator. This representation figure supports Interpret a fraction as a number, quotient, ratio, and operator and locate it on a number line."
+            "text": "Four-meaning panel: number, quotient, ratio, operator. This figure supports Interpret a fraction as a number, quotient, ratio, and operator and locate it on a number line."
           }
         ]
       },
       "learningPurpose": "Use the visible structure in “Four-meaning panel: number, quotient, ratio, operator.” to connect the opening context to the lesson outcome: Interpret a fraction as a number, quotient, ratio, and operator and locate it on a number line.",
-      "longDescription": "Representation figure for Fractions as numbers: Four-meaning panel: number, quotient, ratio, operator. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.4-V3.",
+      "longDescription": "Figure for Fractions as numbers: Four-meaning panel: number, quotient, ratio, operator. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.4-V3.",
       "accessibility": {
-        "ariaLabel": "Representation figure for Fractions as numbers: Four-meaning panel: number, quotient, ratio, operator.",
-        "summary": "Four-meaning panel: number, quotient, ratio, operator. This representation figure supports Interpret a fraction as a number, quotient, ratio, and operator and locate it on a number line.. The reading order follows the visible labels and mathematical objects.",
+        "ariaLabel": "Figure for Fractions as numbers: Four-meaning panel: number, quotient, ratio, operator.",
+        "summary": "Four-meaning panel: number, quotient, ratio, operator. This figure supports Interpret a fraction as a number, quotient, ratio, and operator and locate it on a number line.. The reading order follows the visible labels and mathematical objects.",
         "readingOrder": [
-          "context-box",
-          "context-label",
-          "context-arrow",
-          "structure-box",
-          "structure-label",
-          "structure-arrow",
-          "meaning-box",
-          "meaning-label"
+          "lesson-label",
+          "step-card-1",
+          "step-number-1",
+          "step-1-line-1",
+          "flow-arrow-1",
+          "step-card-2",
+          "step-number-2",
+          "step-2-line-1",
+          "flow-arrow-2",
+          "step-card-3",
+          "step-number-3",
+          "step-3-line-1",
+          "relationship-note-1",
+          "relationship-note-2"
         ],
         "colorIndependentDescription": "Meaning is carried by written labels, position, line style, and shape; color is supplementary.",
         "controlInstructions": [],
         "reducedMotion": "not-applicable",
         "staticFallbackEquivalent": true
       },
-      "sourceFingerprint": "bvlp1-69b426af",
+      "sourceFingerprint": "bvlp1-9586fef9",
       "visibility": "public"
     },
     {
       "id": "algebra-a0-5-v1",
       "sourceVisualId": "algebra-a0-5-v1",
+      "isFunctionGraph": false,
       "selectedRenderer": "static-svg",
       "hydration": "none",
       "staticAsset": {
-        "path": "/visuals/v1/algebra-a0-5-v1.1918652fe4d1ef56.svg",
-        "sha256": "1918652fe4d1ef565458a8acd169439068de63f43fdfc5b5980afbe2aeb42c4b",
-        "bytes": 7400,
+        "path": "/visuals/v1/algebra-a0-5-v1.c703efbcf68ad6c3.svg",
+        "sha256": "c703efbcf68ad6c356f558b23455892736247f8584d26ed749f215cde8f03445",
+        "bytes": 9585,
         "width": 960,
         "height": 558
       },
@@ -855,7 +1011,7 @@
         "segments": [
           {
             "kind": "text",
-            "text": "A0.5 · Anchor"
+            "text": "Multiplying and dividing fractions · Area model for a product of fractions."
           }
         ]
       },
@@ -863,42 +1019,48 @@
         "segments": [
           {
             "kind": "text",
-            "text": "Area model for a product of fractions. This anchor figure supports Interpret fraction multiplication as scaling and division as measuring how many groups fit."
+            "text": "Area model for a product of fractions. This figure supports Interpret fraction multiplication as scaling and division as measuring how many groups fit."
           }
         ]
       },
       "learningPurpose": "Use the visible structure in “Area model for a product of fractions.” to connect the opening context to the lesson outcome: Interpret fraction multiplication as scaling and division as measuring how many groups fit.",
-      "longDescription": "Anchor figure for Multiplying and dividing fractions: Area model for a product of fractions. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.5-V1.",
+      "longDescription": "Figure for Multiplying and dividing fractions: Area model for a product of fractions. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.5-V1.",
       "accessibility": {
-        "ariaLabel": "Anchor figure for Multiplying and dividing fractions: Area model for a product of fractions.",
-        "summary": "Area model for a product of fractions. This anchor figure supports Interpret fraction multiplication as scaling and division as measuring how many groups fit.. The reading order follows the visible labels and mathematical objects.",
+        "ariaLabel": "Figure for Multiplying and dividing fractions: Area model for a product of fractions.",
+        "summary": "Area model for a product of fractions. This figure supports Interpret fraction multiplication as scaling and division as measuring how many groups fit.. The reading order follows the visible labels and mathematical objects.",
         "readingOrder": [
-          "context-box",
-          "context-label",
-          "context-arrow",
-          "structure-box",
-          "structure-label",
-          "structure-arrow",
-          "meaning-box",
-          "meaning-label"
+          "lesson-label",
+          "step-card-1",
+          "step-number-1",
+          "step-1-line-1",
+          "flow-arrow-1",
+          "step-card-2",
+          "step-number-2",
+          "step-2-line-1",
+          "flow-arrow-2",
+          "step-card-3",
+          "step-number-3",
+          "step-3-line-1",
+          "relationship-note-1"
         ],
         "colorIndependentDescription": "Meaning is carried by written labels, position, line style, and shape; color is supplementary.",
         "controlInstructions": [],
         "reducedMotion": "not-applicable",
         "staticFallbackEquivalent": true
       },
-      "sourceFingerprint": "bvlp1-aba22a32",
+      "sourceFingerprint": "bvlp1-3e118c69",
       "visibility": "public"
     },
     {
       "id": "algebra-a0-5-v2",
       "sourceVisualId": "algebra-a0-5-v2",
+      "isFunctionGraph": false,
       "selectedRenderer": "static-svg",
       "hydration": "none",
       "staticAsset": {
-        "path": "/visuals/v1/algebra-a0-5-v2.d83c52d4f2c61231.svg",
-        "sha256": "d83c52d4f2c612312322d967577e0c219e0ef902ce418e9c5326ae3d53e8063a",
-        "bytes": 7725,
+        "path": "/visuals/v1/algebra-a0-5-v2.f343a1fe68a8a3ee.svg",
+        "sha256": "f343a1fe68a8a3eebf786375d6ebc2bc84f66b04a5a38d4761117414e3fa853e",
+        "bytes": 9833,
         "width": 960,
         "height": 558
       },
@@ -906,7 +1068,7 @@
         "segments": [
           {
             "kind": "text",
-            "text": "A0.5 · Mechanism"
+            "text": "Multiplying and dividing fractions · Scaling machine for multiplication by values above and below one."
           }
         ]
       },
@@ -914,42 +1076,48 @@
         "segments": [
           {
             "kind": "text",
-            "text": "Scaling machine for multiplication by values above and below one. This mechanism figure supports Interpret fraction multiplication as scaling and division as measuring how many groups fit."
+            "text": "Scaling machine for multiplication by values above and below one. This figure supports Interpret fraction multiplication as scaling and division as measuring how many groups fit."
           }
         ]
       },
       "learningPurpose": "Use the visible structure in “Scaling machine for multiplication by values above and below one.” to connect the opening context to the lesson outcome: Interpret fraction multiplication as scaling and division as measuring how many groups fit.",
-      "longDescription": "Mechanism figure for Multiplying and dividing fractions: Scaling machine for multiplication by values above and below one. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.5-V2.",
+      "longDescription": "Figure for Multiplying and dividing fractions: Scaling machine for multiplication by values above and below one. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.5-V2.",
       "accessibility": {
-        "ariaLabel": "Mechanism figure for Multiplying and dividing fractions: Scaling machine for multiplication by values above and below one.",
-        "summary": "Scaling machine for multiplication by values above and below one. This mechanism figure supports Interpret fraction multiplication as scaling and division as measuring how many groups fit.. The reading order follows the visible labels and mathematical objects.",
+        "ariaLabel": "Figure for Multiplying and dividing fractions: Scaling machine for multiplication by values above and below one.",
+        "summary": "Scaling machine for multiplication by values above and below one. This figure supports Interpret fraction multiplication as scaling and division as measuring how many groups fit.. The reading order follows the visible labels and mathematical objects.",
         "readingOrder": [
-          "context-box",
-          "context-label",
-          "context-arrow",
-          "structure-box",
-          "structure-label",
-          "structure-arrow",
-          "meaning-box",
-          "meaning-label"
+          "lesson-label",
+          "step-card-1",
+          "step-number-1",
+          "step-1-line-1",
+          "flow-arrow-1",
+          "step-card-2",
+          "step-number-2",
+          "step-2-line-1",
+          "flow-arrow-2",
+          "step-card-3",
+          "step-number-3",
+          "step-3-line-1",
+          "relationship-note-1"
         ],
         "colorIndependentDescription": "Meaning is carried by written labels, position, line style, and shape; color is supplementary.",
         "controlInstructions": [],
         "reducedMotion": "not-applicable",
         "staticFallbackEquivalent": true
       },
-      "sourceFingerprint": "bvlp1-ef718eec",
+      "sourceFingerprint": "bvlp1-011a9375",
       "visibility": "public"
     },
     {
       "id": "algebra-a0-5-v3",
       "sourceVisualId": "algebra-a0-5-v3",
+      "isFunctionGraph": false,
       "selectedRenderer": "static-svg",
       "hydration": "none",
       "staticAsset": {
-        "path": "/visuals/v1/algebra-a0-5-v3.15f23a579a784752.svg",
-        "sha256": "15f23a579a784752407bb97e784274cf224d3d9b129bfceaef94f0c9607af036",
-        "bytes": 7648,
+        "path": "/visuals/v1/algebra-a0-5-v3.8fe9da21a9421ed2.svg",
+        "sha256": "8fe9da21a9421ed2583e0194771596d7e4ed9a4c86146810c02558d1c03964a8",
+        "bytes": 14482,
         "width": 960,
         "height": 558
       },
@@ -957,7 +1125,7 @@
         "segments": [
           {
             "kind": "text",
-            "text": "A0.5 · Representation"
+            "text": "Multiplying and dividing fractions · Measurement-division diagram for fractional quotients."
           }
         ]
       },
@@ -965,42 +1133,59 @@
         "segments": [
           {
             "kind": "text",
-            "text": "Measurement-division diagram for fractional quotients. This representation figure supports Interpret fraction multiplication as scaling and division as measuring how many groups fit."
+            "text": "Measurement-division diagram for fractional quotients. This figure supports Interpret fraction multiplication as scaling and division as measuring how many groups fit."
           }
         ]
       },
       "learningPurpose": "Use the visible structure in “Measurement-division diagram for fractional quotients.” to connect the opening context to the lesson outcome: Interpret fraction multiplication as scaling and division as measuring how many groups fit.",
-      "longDescription": "Representation figure for Multiplying and dividing fractions: Measurement-division diagram for fractional quotients. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.5-V3.",
+      "longDescription": "Figure for Multiplying and dividing fractions: Measurement-division diagram for fractional quotients. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.5-V3.",
       "accessibility": {
-        "ariaLabel": "Representation figure for Multiplying and dividing fractions: Measurement-division diagram for fractional quotients.",
-        "summary": "Measurement-division diagram for fractional quotients. This representation figure supports Interpret fraction multiplication as scaling and division as measuring how many groups fit.. The reading order follows the visible labels and mathematical objects.",
+        "ariaLabel": "Figure for Multiplying and dividing fractions: Measurement-division diagram for fractional quotients.",
+        "summary": "Measurement-division diagram for fractional quotients. This figure supports Interpret fraction multiplication as scaling and division as measuring how many groups fit.. The reading order follows the visible labels and mathematical objects.",
         "readingOrder": [
-          "context-box",
-          "context-label",
-          "context-arrow",
-          "structure-box",
-          "structure-label",
-          "structure-arrow",
-          "meaning-box",
-          "meaning-label"
+          "figure-claim",
+          "lesson-label",
+          "row-0",
+          "row-1",
+          "row-2",
+          "row-3",
+          "row-4",
+          "column-0",
+          "column-1",
+          "column-2",
+          "column-3",
+          "cell-label-0-0",
+          "cell-label-0-1",
+          "cell-label-0-2",
+          "cell-label-1-0",
+          "cell-label-1-1",
+          "cell-label-1-2",
+          "cell-label-2-0",
+          "cell-label-2-1",
+          "cell-label-2-2",
+          "cell-label-3-0",
+          "cell-label-3-1",
+          "cell-label-3-2",
+          "relationship-note"
         ],
         "colorIndependentDescription": "Meaning is carried by written labels, position, line style, and shape; color is supplementary.",
         "controlInstructions": [],
         "reducedMotion": "not-applicable",
         "staticFallbackEquivalent": true
       },
-      "sourceFingerprint": "bvlp1-540696a3",
+      "sourceFingerprint": "bvlp1-2b891182",
       "visibility": "public"
     },
     {
       "id": "algebra-a0-6-v1",
       "sourceVisualId": "algebra-a0-6-v1",
+      "isFunctionGraph": false,
       "selectedRenderer": "static-svg",
       "hydration": "none",
       "staticAsset": {
-        "path": "/visuals/v1/algebra-a0-6-v1.07a75a46dc1489c4.svg",
-        "sha256": "07a75a46dc1489c4a30e63adf5cf1655da308803b7f436dcb84871f7c5ae17c4",
-        "bytes": 7658,
+        "path": "/visuals/v1/algebra-a0-6-v1.d901005690ed07e4.svg",
+        "sha256": "d901005690ed07e43c638a0a6c457301b71aca4cee7504145880c11760170857",
+        "bytes": 9877,
         "width": 960,
         "height": 558
       },
@@ -1008,7 +1193,7 @@
         "segments": [
           {
             "kind": "text",
-            "text": "A0.6 · Anchor"
+            "text": "Adding, subtracting, and complex fractions · Unlike fraction strips repartitioned into common units."
           }
         ]
       },
@@ -1016,42 +1201,48 @@
         "segments": [
           {
             "kind": "text",
-            "text": "Unlike fraction strips repartitioned into common units. This anchor figure supports Use common-sized parts to combine fractions and simplify expressions containing fractions within fractions."
+            "text": "Unlike fraction strips repartitioned into common units. This figure supports Use common-sized parts to combine fractions and simplify expressions containing fractions within fractions."
           }
         ]
       },
       "learningPurpose": "Use the visible structure in “Unlike fraction strips repartitioned into common units.” to connect the opening context to the lesson outcome: Use common-sized parts to combine fractions and simplify expressions containing fractions within fractions.",
-      "longDescription": "Anchor figure for Adding, subtracting, and complex fractions: Unlike fraction strips repartitioned into common units. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.6-V1.",
+      "longDescription": "Figure for Adding, subtracting, and complex fractions: Unlike fraction strips repartitioned into common units. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.6-V1.",
       "accessibility": {
-        "ariaLabel": "Anchor figure for Adding, subtracting, and complex fractions: Unlike fraction strips repartitioned into common units.",
-        "summary": "Unlike fraction strips repartitioned into common units. This anchor figure supports Use common-sized parts to combine fractions and simplify expressions containing fractions within fractions.. The reading order follows the visible labels and mathematical objects.",
+        "ariaLabel": "Figure for Adding, subtracting, and complex fractions: Unlike fraction strips repartitioned into common units.",
+        "summary": "Unlike fraction strips repartitioned into common units. This figure supports Use common-sized parts to combine fractions and simplify expressions containing fractions within fractions.. The reading order follows the visible labels and mathematical objects.",
         "readingOrder": [
-          "context-box",
-          "context-label",
-          "context-arrow",
-          "structure-box",
-          "structure-label",
-          "structure-arrow",
-          "meaning-box",
-          "meaning-label"
+          "lesson-label",
+          "step-card-1",
+          "step-number-1",
+          "step-1-line-1",
+          "flow-arrow-1",
+          "step-card-2",
+          "step-number-2",
+          "step-2-line-1",
+          "flow-arrow-2",
+          "step-card-3",
+          "step-number-3",
+          "step-3-line-1",
+          "relationship-note-1"
         ],
         "colorIndependentDescription": "Meaning is carried by written labels, position, line style, and shape; color is supplementary.",
         "controlInstructions": [],
         "reducedMotion": "not-applicable",
         "staticFallbackEquivalent": true
       },
-      "sourceFingerprint": "bvlp1-5bff7e75",
+      "sourceFingerprint": "bvlp1-308f0521",
       "visibility": "public"
     },
     {
       "id": "algebra-a0-6-v2",
       "sourceVisualId": "algebra-a0-6-v2",
+      "isFunctionGraph": false,
       "selectedRenderer": "static-svg",
       "hydration": "none",
       "staticAsset": {
-        "path": "/visuals/v1/algebra-a0-6-v2.10d279993620aa9b.svg",
-        "sha256": "10d279993620aa9b528d9b618425547e77a3292407c74ba37dec9e525d4aecd3",
-        "bytes": 7275,
+        "path": "/visuals/v1/algebra-a0-6-v2.6a90d8dca55f013c.svg",
+        "sha256": "6a90d8dca55f013cd54ceb4af90ac45ebaefbf4bf81a4b0a385ce4e9dfd07651",
+        "bytes": 9601,
         "width": 960,
         "height": 558
       },
@@ -1059,7 +1250,7 @@
         "segments": [
           {
             "kind": "text",
-            "text": "A0.6 · Mechanism"
+            "text": "Adding, subtracting, and complex fractions · LCM-to-LCD bridge."
           }
         ]
       },
@@ -1067,42 +1258,48 @@
         "segments": [
           {
             "kind": "text",
-            "text": "LCM-to-LCD bridge. This mechanism figure supports Use common-sized parts to combine fractions and simplify expressions containing fractions within fractions."
+            "text": "LCM-to-LCD bridge. This figure supports Use common-sized parts to combine fractions and simplify expressions containing fractions within fractions."
           }
         ]
       },
       "learningPurpose": "Use the visible structure in “LCM-to-LCD bridge.” to connect the opening context to the lesson outcome: Use common-sized parts to combine fractions and simplify expressions containing fractions within fractions.",
-      "longDescription": "Mechanism figure for Adding, subtracting, and complex fractions: LCM-to-LCD bridge. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.6-V2.",
+      "longDescription": "Figure for Adding, subtracting, and complex fractions: LCM-to-LCD bridge. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.6-V2.",
       "accessibility": {
-        "ariaLabel": "Mechanism figure for Adding, subtracting, and complex fractions: LCM-to-LCD bridge.",
-        "summary": "LCM-to-LCD bridge. This mechanism figure supports Use common-sized parts to combine fractions and simplify expressions containing fractions within fractions.. The reading order follows the visible labels and mathematical objects.",
+        "ariaLabel": "Figure for Adding, subtracting, and complex fractions: LCM-to-LCD bridge.",
+        "summary": "LCM-to-LCD bridge. This figure supports Use common-sized parts to combine fractions and simplify expressions containing fractions within fractions.. The reading order follows the visible labels and mathematical objects.",
         "readingOrder": [
-          "context-box",
-          "context-label",
-          "context-arrow",
-          "structure-box",
-          "structure-label",
-          "structure-arrow",
-          "meaning-box",
-          "meaning-label"
+          "lesson-label",
+          "step-card-1",
+          "step-number-1",
+          "step-1-line-1",
+          "flow-arrow-1",
+          "step-card-2",
+          "step-number-2",
+          "step-2-line-1",
+          "flow-arrow-2",
+          "step-card-3",
+          "step-number-3",
+          "step-3-line-1",
+          "relationship-note-1"
         ],
         "colorIndependentDescription": "Meaning is carried by written labels, position, line style, and shape; color is supplementary.",
         "controlInstructions": [],
         "reducedMotion": "not-applicable",
         "staticFallbackEquivalent": true
       },
-      "sourceFingerprint": "bvlp1-02c7bda1",
+      "sourceFingerprint": "bvlp1-41447f4e",
       "visibility": "public"
     },
     {
       "id": "algebra-a0-6-v3",
       "sourceVisualId": "algebra-a0-6-v3",
+      "isFunctionGraph": false,
       "selectedRenderer": "static-svg",
       "hydration": "none",
       "staticAsset": {
-        "path": "/visuals/v1/algebra-a0-6-v3.14867ac34942cdb0.svg",
-        "sha256": "14867ac34942cdb00a070f6ee74c157377be39ebe1db0d4ad8decc46709ade44",
-        "bytes": 7855,
+        "path": "/visuals/v1/algebra-a0-6-v3.41ed6f6852285ed0.svg",
+        "sha256": "41ed6f6852285ed09ee5be0c32473886379ea434d7117912c38f90d396217f0e",
+        "bytes": 9890,
         "width": 960,
         "height": 558
       },
@@ -1110,7 +1307,7 @@
         "segments": [
           {
             "kind": "text",
-            "text": "A0.6 · Representation"
+            "text": "Adding, subtracting, and complex fractions · Complex fraction with numerator and denominator grouped explicitly."
           }
         ]
       },
@@ -1118,42 +1315,48 @@
         "segments": [
           {
             "kind": "text",
-            "text": "Complex fraction with numerator and denominator grouped explicitly. This representation figure supports Use common-sized parts to combine fractions and simplify expressions containing fractions within fractions."
+            "text": "Complex fraction with numerator and denominator grouped explicitly. This figure supports Use common-sized parts to combine fractions and simplify expressions containing fractions within fractions."
           }
         ]
       },
       "learningPurpose": "Use the visible structure in “Complex fraction with numerator and denominator grouped explicitly.” to connect the opening context to the lesson outcome: Use common-sized parts to combine fractions and simplify expressions containing fractions within fractions.",
-      "longDescription": "Representation figure for Adding, subtracting, and complex fractions: Complex fraction with numerator and denominator grouped explicitly. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.6-V3.",
+      "longDescription": "Figure for Adding, subtracting, and complex fractions: Complex fraction with numerator and denominator grouped explicitly. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.6-V3.",
       "accessibility": {
-        "ariaLabel": "Representation figure for Adding, subtracting, and complex fractions: Complex fraction with numerator and denominator grouped explicitly.",
-        "summary": "Complex fraction with numerator and denominator grouped explicitly. This representation figure supports Use common-sized parts to combine fractions and simplify expressions containing fractions within fractions.. The reading order follows the visible labels and mathematical objects.",
+        "ariaLabel": "Figure for Adding, subtracting, and complex fractions: Complex fraction with numerator and denominator grouped explicitly.",
+        "summary": "Complex fraction with numerator and denominator grouped explicitly. This figure supports Use common-sized parts to combine fractions and simplify expressions containing fractions within fractions.. The reading order follows the visible labels and mathematical objects.",
         "readingOrder": [
-          "context-box",
-          "context-label",
-          "context-arrow",
-          "structure-box",
-          "structure-label",
-          "structure-arrow",
-          "meaning-box",
-          "meaning-label"
+          "lesson-label",
+          "step-card-1",
+          "step-number-1",
+          "step-1-line-1",
+          "flow-arrow-1",
+          "step-card-2",
+          "step-number-2",
+          "step-2-line-1",
+          "flow-arrow-2",
+          "step-card-3",
+          "step-number-3",
+          "step-3-line-1",
+          "relationship-note-1"
         ],
         "colorIndependentDescription": "Meaning is carried by written labels, position, line style, and shape; color is supplementary.",
         "controlInstructions": [],
         "reducedMotion": "not-applicable",
         "staticFallbackEquivalent": true
       },
-      "sourceFingerprint": "bvlp1-01d4c2bf",
+      "sourceFingerprint": "bvlp1-cdd59f6d",
       "visibility": "public"
     },
     {
       "id": "algebra-a0-7-v1",
       "sourceVisualId": "algebra-a0-7-v1",
+      "isFunctionGraph": false,
       "selectedRenderer": "static-svg",
       "hydration": "none",
       "staticAsset": {
-        "path": "/visuals/v1/algebra-a0-7-v1.3521d11e2e9122e1.svg",
-        "sha256": "3521d11e2e9122e1827bfa454a895e203b51177267b268368ee360d21d5e49f1",
-        "bytes": 7535,
+        "path": "/visuals/v1/algebra-a0-7-v1.9e378eb336f87228.svg",
+        "sha256": "9e378eb336f87228dfd24dcd74fcdc3e50a668bce0c82f3b97d04a598d67ca3e",
+        "bytes": 9722,
         "width": 960,
         "height": 558
       },
@@ -1161,7 +1364,7 @@
         "segments": [
           {
             "kind": "text",
-            "text": "A0.7 · Anchor"
+            "text": "Fractions, decimals, and percents · Hundred grid linked to decimal and percent notation."
           }
         ]
       },
@@ -1169,50 +1372,56 @@
         "segments": [
           {
             "kind": "text",
-            "text": "Hundred grid linked to decimal and percent notation. This anchor figure supports Translate among equivalent representations and choose the form most useful for a question."
+            "text": "Hundred grid linked to decimal and percent notation. This figure supports Translate among equivalent representations and choose the form most useful for a question."
           }
         ]
       },
       "learningPurpose": "Use the visible structure in “Hundred grid linked to decimal and percent notation.” to connect the opening context to the lesson outcome: Translate among equivalent representations and choose the form most useful for a question.",
-      "longDescription": "Anchor figure for Fractions, decimals, and percents: Hundred grid linked to decimal and percent notation. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.7-V1.",
+      "longDescription": "Figure for Fractions, decimals, and percents: Hundred grid linked to decimal and percent notation. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.7-V1.",
       "accessibility": {
-        "ariaLabel": "Anchor figure for Fractions, decimals, and percents: Hundred grid linked to decimal and percent notation.",
-        "summary": "Hundred grid linked to decimal and percent notation. This anchor figure supports Translate among equivalent representations and choose the form most useful for a question.. The reading order follows the visible labels and mathematical objects.",
+        "ariaLabel": "Figure for Fractions, decimals, and percents: Hundred grid linked to decimal and percent notation.",
+        "summary": "Hundred grid linked to decimal and percent notation. This figure supports Translate among equivalent representations and choose the form most useful for a question.. The reading order follows the visible labels and mathematical objects.",
         "readingOrder": [
-          "context-box",
-          "context-label",
-          "context-arrow",
-          "structure-box",
-          "structure-label",
-          "structure-arrow",
-          "meaning-box",
-          "meaning-label"
+          "lesson-label",
+          "step-card-1",
+          "step-number-1",
+          "step-1-line-1",
+          "flow-arrow-1",
+          "step-card-2",
+          "step-number-2",
+          "step-2-line-1",
+          "flow-arrow-2",
+          "step-card-3",
+          "step-number-3",
+          "step-3-line-1",
+          "relationship-note-1"
         ],
         "colorIndependentDescription": "Meaning is carried by written labels, position, line style, and shape; color is supplementary.",
         "controlInstructions": [],
         "reducedMotion": "not-applicable",
         "staticFallbackEquivalent": true
       },
-      "sourceFingerprint": "bvlp1-2d62d777",
+      "sourceFingerprint": "bvlp1-3c411ec0",
       "visibility": "public"
     },
     {
       "id": "algebra-a0-7-v2",
       "sourceVisualId": "algebra-a0-7-v2",
+      "isFunctionGraph": false,
       "selectedRenderer": "static-svg",
       "hydration": "none",
       "staticAsset": {
-        "path": "/visuals/v1/algebra-a0-7-v2.4b6f09bded56a014.svg",
-        "sha256": "4b6f09bded56a014b5046b802419e2939b1f3be3588bdb9024bdeb82f77ef464",
-        "bytes": 7418,
+        "path": "/visuals/v1/algebra-a0-7-v2.9b0266cded0b20e9.svg",
+        "sha256": "9b0266cded0b20e9bb1c85a129384722651effd19d9813f714706f71f60627d2",
+        "bytes": 9882,
         "width": 960,
-        "height": 558
+        "height": 400
       },
       "title": {
         "segments": [
           {
             "kind": "text",
-            "text": "A0.7 · Mechanism"
+            "text": "Fractions, decimals, and percents · Number-line alignment of mixed forms."
           }
         ]
       },
@@ -1220,42 +1429,43 @@
         "segments": [
           {
             "kind": "text",
-            "text": "Number-line alignment of mixed forms. This mechanism figure supports Translate among equivalent representations and choose the form most useful for a question."
+            "text": "Number-line alignment of mixed forms. This figure supports Translate among equivalent representations and choose the form most useful for a question."
           }
         ]
       },
       "learningPurpose": "Use the visible structure in “Number-line alignment of mixed forms.” to connect the opening context to the lesson outcome: Translate among equivalent representations and choose the form most useful for a question.",
-      "longDescription": "Mechanism figure for Fractions, decimals, and percents: Number-line alignment of mixed forms. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.7-V2.",
+      "longDescription": "Figure for Fractions, decimals, and percents: Number-line alignment of mixed forms. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.7-V2.",
       "accessibility": {
-        "ariaLabel": "Mechanism figure for Fractions, decimals, and percents: Number-line alignment of mixed forms.",
-        "summary": "Number-line alignment of mixed forms. This mechanism figure supports Translate among equivalent representations and choose the form most useful for a question.. The reading order follows the visible labels and mathematical objects.",
+        "ariaLabel": "Figure for Fractions, decimals, and percents: Number-line alignment of mixed forms.",
+        "summary": "Number-line alignment of mixed forms. This figure supports Translate among equivalent representations and choose the form most useful for a question.. The reading order follows the visible labels and mathematical objects.",
         "readingOrder": [
-          "context-box",
-          "context-label",
-          "context-arrow",
-          "structure-box",
-          "structure-label",
-          "structure-arrow",
-          "meaning-box",
-          "meaning-label"
+          "number-line",
+          "left-value",
+          "origin",
+          "right-value",
+          "left-label",
+          "center-label",
+          "right-label",
+          "relationship-label"
         ],
         "colorIndependentDescription": "Meaning is carried by written labels, position, line style, and shape; color is supplementary.",
         "controlInstructions": [],
         "reducedMotion": "not-applicable",
         "staticFallbackEquivalent": true
       },
-      "sourceFingerprint": "bvlp1-0a6859d2",
+      "sourceFingerprint": "bvlp1-27719e79",
       "visibility": "public"
     },
     {
       "id": "algebra-a0-7-v3",
       "sourceVisualId": "algebra-a0-7-v3",
+      "isFunctionGraph": false,
       "selectedRenderer": "static-svg",
       "hydration": "none",
       "staticAsset": {
-        "path": "/visuals/v1/algebra-a0-7-v3.a485b7fb747ab489.svg",
-        "sha256": "a485b7fb747ab48979817eb0332ba28d3c12e38ad9a5531d59d6ad24bb8b83fd",
-        "bytes": 7474,
+        "path": "/visuals/v1/algebra-a0-7-v3.a0d5d5525c7d81b9.svg",
+        "sha256": "a0d5d5525c7d81b959edb54f890b73f3bb4df71b0de1bfa66193b05b3ff1ce9d",
+        "bytes": 14291,
         "width": 960,
         "height": 558
       },
@@ -1263,7 +1473,7 @@
         "segments": [
           {
             "kind": "text",
-            "text": "A0.7 · Representation"
+            "text": "Fractions, decimals, and percents · Representation-choice decision panel."
           }
         ]
       },
@@ -1271,42 +1481,59 @@
         "segments": [
           {
             "kind": "text",
-            "text": "Representation-choice decision panel. This representation figure supports Translate among equivalent representations and choose the form most useful for a question."
+            "text": "Representation-choice decision panel. This figure supports Translate among equivalent representations and choose the form most useful for a question."
           }
         ]
       },
       "learningPurpose": "Use the visible structure in “Representation-choice decision panel.” to connect the opening context to the lesson outcome: Translate among equivalent representations and choose the form most useful for a question.",
-      "longDescription": "Representation figure for Fractions, decimals, and percents: Representation-choice decision panel. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.7-V3.",
+      "longDescription": "Figure for Fractions, decimals, and percents: Representation-choice decision panel. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.7-V3.",
       "accessibility": {
-        "ariaLabel": "Representation figure for Fractions, decimals, and percents: Representation-choice decision panel.",
-        "summary": "Representation-choice decision panel. This representation figure supports Translate among equivalent representations and choose the form most useful for a question.. The reading order follows the visible labels and mathematical objects.",
+        "ariaLabel": "Figure for Fractions, decimals, and percents: Representation-choice decision panel.",
+        "summary": "Representation-choice decision panel. This figure supports Translate among equivalent representations and choose the form most useful for a question.. The reading order follows the visible labels and mathematical objects.",
         "readingOrder": [
-          "context-box",
-          "context-label",
-          "context-arrow",
-          "structure-box",
-          "structure-label",
-          "structure-arrow",
-          "meaning-box",
-          "meaning-label"
+          "figure-claim",
+          "lesson-label",
+          "row-0",
+          "row-1",
+          "row-2",
+          "row-3",
+          "row-4",
+          "column-0",
+          "column-1",
+          "column-2",
+          "column-3",
+          "cell-label-0-0",
+          "cell-label-0-1",
+          "cell-label-0-2",
+          "cell-label-1-0",
+          "cell-label-1-1",
+          "cell-label-1-2",
+          "cell-label-2-0",
+          "cell-label-2-1",
+          "cell-label-2-2",
+          "cell-label-3-0",
+          "cell-label-3-1",
+          "cell-label-3-2",
+          "relationship-note"
         ],
         "colorIndependentDescription": "Meaning is carried by written labels, position, line style, and shape; color is supplementary.",
         "controlInstructions": [],
         "reducedMotion": "not-applicable",
         "staticFallbackEquivalent": true
       },
-      "sourceFingerprint": "bvlp1-0a14cf84",
+      "sourceFingerprint": "bvlp1-c4579728",
       "visibility": "public"
     },
     {
       "id": "algebra-a0-8-v1",
       "sourceVisualId": "algebra-a0-8-v1",
+      "isFunctionGraph": false,
       "selectedRenderer": "static-svg",
       "hydration": "none",
       "staticAsset": {
-        "path": "/visuals/v1/algebra-a0-8-v1.38b59420e4dac4ae.svg",
-        "sha256": "38b59420e4dac4ae4275794644c1883335941786423b511c0045ce08c6eda97a",
-        "bytes": 7246,
+        "path": "/visuals/v1/algebra-a0-8-v1.2951875da4f678fe.svg",
+        "sha256": "2951875da4f678fe6e53b2faf80e924086cb41c7d84a92df0acfcf2580d114bc",
+        "bytes": 14393,
         "width": 960,
         "height": 558
       },
@@ -1314,7 +1541,7 @@
         "segments": [
           {
             "kind": "text",
-            "text": "A0.8 · Anchor"
+            "text": "Ratios, rates, proportions, and percent change · Double number line."
           }
         ]
       },
@@ -1322,42 +1549,59 @@
         "segments": [
           {
             "kind": "text",
-            "text": "Double number line. This anchor figure supports Distinguish ratios from rates, build equivalent comparisons, and interpret percent increase or decrease."
+            "text": "Double number line. This figure supports Distinguish ratios from rates, build equivalent comparisons, and interpret percent increase or decrease."
           }
         ]
       },
       "learningPurpose": "Use the visible structure in “Double number line.” to connect the opening context to the lesson outcome: Distinguish ratios from rates, build equivalent comparisons, and interpret percent increase or decrease.",
-      "longDescription": "Anchor figure for Ratios, rates, proportions, and percent change: Double number line. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.8-V1.",
+      "longDescription": "Figure for Ratios, rates, proportions, and percent change: Double number line. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.8-V1.",
       "accessibility": {
-        "ariaLabel": "Anchor figure for Ratios, rates, proportions, and percent change: Double number line.",
-        "summary": "Double number line. This anchor figure supports Distinguish ratios from rates, build equivalent comparisons, and interpret percent increase or decrease.. The reading order follows the visible labels and mathematical objects.",
+        "ariaLabel": "Figure for Ratios, rates, proportions, and percent change: Double number line.",
+        "summary": "Double number line. This figure supports Distinguish ratios from rates, build equivalent comparisons, and interpret percent increase or decrease.. The reading order follows the visible labels and mathematical objects.",
         "readingOrder": [
-          "context-box",
-          "context-label",
-          "context-arrow",
-          "structure-box",
-          "structure-label",
-          "structure-arrow",
-          "meaning-box",
-          "meaning-label"
+          "figure-claim",
+          "lesson-label",
+          "row-0",
+          "row-1",
+          "row-2",
+          "row-3",
+          "row-4",
+          "column-0",
+          "column-1",
+          "column-2",
+          "column-3",
+          "cell-label-0-0",
+          "cell-label-0-1",
+          "cell-label-0-2",
+          "cell-label-1-0",
+          "cell-label-1-1",
+          "cell-label-1-2",
+          "cell-label-2-0",
+          "cell-label-2-1",
+          "cell-label-2-2",
+          "cell-label-3-0",
+          "cell-label-3-1",
+          "cell-label-3-2",
+          "relationship-note"
         ],
         "colorIndependentDescription": "Meaning is carried by written labels, position, line style, and shape; color is supplementary.",
         "controlInstructions": [],
         "reducedMotion": "not-applicable",
         "staticFallbackEquivalent": true
       },
-      "sourceFingerprint": "bvlp1-475020f1",
+      "sourceFingerprint": "bvlp1-b15824ff",
       "visibility": "public"
     },
     {
       "id": "algebra-a0-8-v2",
       "sourceVisualId": "algebra-a0-8-v2",
+      "isFunctionGraph": false,
       "selectedRenderer": "static-svg",
       "hydration": "none",
       "staticAsset": {
-        "path": "/visuals/v1/algebra-a0-8-v2.3f36198084a96fe1.svg",
-        "sha256": "3f36198084a96fe183177dc4b87c4135628b2b562d468b7e5a4ec6d59bdcedb0",
-        "bytes": 7474,
+        "path": "/visuals/v1/algebra-a0-8-v2.b4cdbd060d865b0b.svg",
+        "sha256": "b4cdbd060d865b0bdb96910dac8d7b3201e4b1698f1f0b45a08e7f175ae213ac",
+        "bytes": 9760,
         "width": 960,
         "height": 558
       },
@@ -1365,7 +1609,7 @@
         "segments": [
           {
             "kind": "text",
-            "text": "A0.8 · Mechanism"
+            "text": "Ratios, rates, proportions, and percent change · Ratio table with constant multiplier."
           }
         ]
       },
@@ -1373,42 +1617,48 @@
         "segments": [
           {
             "kind": "text",
-            "text": "Ratio table with constant multiplier. This mechanism figure supports Distinguish ratios from rates, build equivalent comparisons, and interpret percent increase or decrease."
+            "text": "Ratio table with constant multiplier. This figure supports Distinguish ratios from rates, build equivalent comparisons, and interpret percent increase or decrease."
           }
         ]
       },
       "learningPurpose": "Use the visible structure in “Ratio table with constant multiplier.” to connect the opening context to the lesson outcome: Distinguish ratios from rates, build equivalent comparisons, and interpret percent increase or decrease.",
-      "longDescription": "Mechanism figure for Ratios, rates, proportions, and percent change: Ratio table with constant multiplier. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.8-V2.",
+      "longDescription": "Figure for Ratios, rates, proportions, and percent change: Ratio table with constant multiplier. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.8-V2.",
       "accessibility": {
-        "ariaLabel": "Mechanism figure for Ratios, rates, proportions, and percent change: Ratio table with constant multiplier.",
-        "summary": "Ratio table with constant multiplier. This mechanism figure supports Distinguish ratios from rates, build equivalent comparisons, and interpret percent increase or decrease.. The reading order follows the visible labels and mathematical objects.",
+        "ariaLabel": "Figure for Ratios, rates, proportions, and percent change: Ratio table with constant multiplier.",
+        "summary": "Ratio table with constant multiplier. This figure supports Distinguish ratios from rates, build equivalent comparisons, and interpret percent increase or decrease.. The reading order follows the visible labels and mathematical objects.",
         "readingOrder": [
-          "context-box",
-          "context-label",
-          "context-arrow",
-          "structure-box",
-          "structure-label",
-          "structure-arrow",
-          "meaning-box",
-          "meaning-label"
+          "lesson-label",
+          "step-card-1",
+          "step-number-1",
+          "step-1-line-1",
+          "flow-arrow-1",
+          "step-card-2",
+          "step-number-2",
+          "step-2-line-1",
+          "flow-arrow-2",
+          "step-card-3",
+          "step-number-3",
+          "step-3-line-1",
+          "relationship-note-1"
         ],
         "colorIndependentDescription": "Meaning is carried by written labels, position, line style, and shape; color is supplementary.",
         "controlInstructions": [],
         "reducedMotion": "not-applicable",
         "staticFallbackEquivalent": true
       },
-      "sourceFingerprint": "bvlp1-5ece83be",
+      "sourceFingerprint": "bvlp1-0d0ac68e",
       "visibility": "public"
     },
     {
       "id": "algebra-a0-8-v3",
       "sourceVisualId": "algebra-a0-8-v3",
+      "isFunctionGraph": false,
       "selectedRenderer": "static-svg",
       "hydration": "none",
       "staticAsset": {
-        "path": "/visuals/v1/algebra-a0-8-v3.4330bba49b46e471.svg",
-        "sha256": "4330bba49b46e471e4e99fb8dbd1a4efd8d8a5581abbe94e1eafe133d7540376",
-        "bytes": 7531,
+        "path": "/visuals/v1/algebra-a0-8-v3.9ed8405849af4030.svg",
+        "sha256": "9ed8405849af4030bcb6d49a4498afac886a53a68125159ec417ebfb432d4e64",
+        "bytes": 9837,
         "width": 960,
         "height": 558
       },
@@ -1416,7 +1666,7 @@
         "segments": [
           {
             "kind": "text",
-            "text": "A0.8 · Representation"
+            "text": "Ratios, rates, proportions, and percent change · Before-after bars for percent change."
           }
         ]
       },
@@ -1424,42 +1674,48 @@
         "segments": [
           {
             "kind": "text",
-            "text": "Before-after bars for percent change. This representation figure supports Distinguish ratios from rates, build equivalent comparisons, and interpret percent increase or decrease."
+            "text": "Before-after bars for percent change. This figure supports Distinguish ratios from rates, build equivalent comparisons, and interpret percent increase or decrease."
           }
         ]
       },
       "learningPurpose": "Use the visible structure in “Before-after bars for percent change.” to connect the opening context to the lesson outcome: Distinguish ratios from rates, build equivalent comparisons, and interpret percent increase or decrease.",
-      "longDescription": "Representation figure for Ratios, rates, proportions, and percent change: Before-after bars for percent change. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.8-V3.",
+      "longDescription": "Figure for Ratios, rates, proportions, and percent change: Before-after bars for percent change. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.8-V3.",
       "accessibility": {
-        "ariaLabel": "Representation figure for Ratios, rates, proportions, and percent change: Before-after bars for percent change.",
-        "summary": "Before-after bars for percent change. This representation figure supports Distinguish ratios from rates, build equivalent comparisons, and interpret percent increase or decrease.. The reading order follows the visible labels and mathematical objects.",
+        "ariaLabel": "Figure for Ratios, rates, proportions, and percent change: Before-after bars for percent change.",
+        "summary": "Before-after bars for percent change. This figure supports Distinguish ratios from rates, build equivalent comparisons, and interpret percent increase or decrease.. The reading order follows the visible labels and mathematical objects.",
         "readingOrder": [
-          "context-box",
-          "context-label",
-          "context-arrow",
-          "structure-box",
-          "structure-label",
-          "structure-arrow",
-          "meaning-box",
-          "meaning-label"
+          "lesson-label",
+          "step-card-1",
+          "step-number-1",
+          "step-1-line-1",
+          "flow-arrow-1",
+          "step-card-2",
+          "step-number-2",
+          "step-2-line-1",
+          "flow-arrow-2",
+          "step-card-3",
+          "step-number-3",
+          "step-3-line-1",
+          "relationship-note-1"
         ],
         "colorIndependentDescription": "Meaning is carried by written labels, position, line style, and shape; color is supplementary.",
         "controlInstructions": [],
         "reducedMotion": "not-applicable",
         "staticFallbackEquivalent": true
       },
-      "sourceFingerprint": "bvlp1-328764d3",
+      "sourceFingerprint": "bvlp1-3efd1054",
       "visibility": "public"
     },
     {
       "id": "algebra-a0-9-v1",
       "sourceVisualId": "algebra-a0-9-v1",
+      "isFunctionGraph": false,
       "selectedRenderer": "static-svg",
       "hydration": "none",
       "staticAsset": {
-        "path": "/visuals/v1/algebra-a0-9-v1.850386a54baacda9.svg",
-        "sha256": "850386a54baacda93bef733d7e333273a6b557a794ae25e2534d0848768d5571",
-        "bytes": 7222,
+        "path": "/visuals/v1/algebra-a0-9-v1.ad7a5b01d53af476.svg",
+        "sha256": "ad7a5b01d53af4761ad1841df6e7e0bfc69d8495314e1f777ba56f1967ab643f",
+        "bytes": 9554,
         "width": 960,
         "height": 558
       },
@@ -1467,7 +1723,7 @@
         "segments": [
           {
             "kind": "text",
-            "text": "A0.9 · Anchor"
+            "text": "Units and dimensional reasoning · Unit-cancellation chain."
           }
         ]
       },
@@ -1475,42 +1731,48 @@
         "segments": [
           {
             "kind": "text",
-            "text": "Unit-cancellation chain. This anchor figure supports Treat units as multiplicative factors that constrain valid operations and conversions."
+            "text": "Unit-cancellation chain. This figure supports Treat units as multiplicative factors that constrain valid operations and conversions."
           }
         ]
       },
       "learningPurpose": "Use the visible structure in “Unit-cancellation chain.” to connect the opening context to the lesson outcome: Treat units as multiplicative factors that constrain valid operations and conversions.",
-      "longDescription": "Anchor figure for Units and dimensional reasoning: Unit-cancellation chain. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.9-V1.",
+      "longDescription": "Figure for Units and dimensional reasoning: Unit-cancellation chain. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.9-V1.",
       "accessibility": {
-        "ariaLabel": "Anchor figure for Units and dimensional reasoning: Unit-cancellation chain.",
-        "summary": "Unit-cancellation chain. This anchor figure supports Treat units as multiplicative factors that constrain valid operations and conversions.. The reading order follows the visible labels and mathematical objects.",
+        "ariaLabel": "Figure for Units and dimensional reasoning: Unit-cancellation chain.",
+        "summary": "Unit-cancellation chain. This figure supports Treat units as multiplicative factors that constrain valid operations and conversions.. The reading order follows the visible labels and mathematical objects.",
         "readingOrder": [
-          "context-box",
-          "context-label",
-          "context-arrow",
-          "structure-box",
-          "structure-label",
-          "structure-arrow",
-          "meaning-box",
-          "meaning-label"
+          "lesson-label",
+          "step-card-1",
+          "step-number-1",
+          "step-1-line-1",
+          "flow-arrow-1",
+          "step-card-2",
+          "step-number-2",
+          "step-2-line-1",
+          "flow-arrow-2",
+          "step-card-3",
+          "step-number-3",
+          "step-3-line-1",
+          "relationship-note-1"
         ],
         "colorIndependentDescription": "Meaning is carried by written labels, position, line style, and shape; color is supplementary.",
         "controlInstructions": [],
         "reducedMotion": "not-applicable",
         "staticFallbackEquivalent": true
       },
-      "sourceFingerprint": "bvlp1-0de44059",
+      "sourceFingerprint": "bvlp1-d4fcb2ca",
       "visibility": "public"
     },
     {
       "id": "algebra-a0-9-v2",
       "sourceVisualId": "algebra-a0-9-v2",
+      "isFunctionGraph": false,
       "selectedRenderer": "static-svg",
       "hydration": "none",
       "staticAsset": {
-        "path": "/visuals/v1/algebra-a0-9-v2.39354f721dab8d4c.svg",
-        "sha256": "39354f721dab8d4c53738d148a34f74c4ca19506f672d82a621f016f05d5241e",
-        "bytes": 7210,
+        "path": "/visuals/v1/algebra-a0-9-v2.eab636ddb152aad8.svg",
+        "sha256": "eab636ddb152aad800f8c3056df2df8d2204f804629bc1988979abf353de49e0",
+        "bytes": 14180,
         "width": 960,
         "height": 558
       },
@@ -1518,7 +1780,7 @@
         "segments": [
           {
             "kind": "text",
-            "text": "A0.9 · Mechanism"
+            "text": "Units and dimensional reasoning · Conversion network."
           }
         ]
       },
@@ -1526,42 +1788,59 @@
         "segments": [
           {
             "kind": "text",
-            "text": "Conversion network. This mechanism figure supports Treat units as multiplicative factors that constrain valid operations and conversions."
+            "text": "Conversion network. This figure supports Treat units as multiplicative factors that constrain valid operations and conversions."
           }
         ]
       },
       "learningPurpose": "Use the visible structure in “Conversion network.” to connect the opening context to the lesson outcome: Treat units as multiplicative factors that constrain valid operations and conversions.",
-      "longDescription": "Mechanism figure for Units and dimensional reasoning: Conversion network. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.9-V2.",
+      "longDescription": "Figure for Units and dimensional reasoning: Conversion network. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.9-V2.",
       "accessibility": {
-        "ariaLabel": "Mechanism figure for Units and dimensional reasoning: Conversion network.",
-        "summary": "Conversion network. This mechanism figure supports Treat units as multiplicative factors that constrain valid operations and conversions.. The reading order follows the visible labels and mathematical objects.",
+        "ariaLabel": "Figure for Units and dimensional reasoning: Conversion network.",
+        "summary": "Conversion network. This figure supports Treat units as multiplicative factors that constrain valid operations and conversions.. The reading order follows the visible labels and mathematical objects.",
         "readingOrder": [
-          "context-box",
-          "context-label",
-          "context-arrow",
-          "structure-box",
-          "structure-label",
-          "structure-arrow",
-          "meaning-box",
-          "meaning-label"
+          "figure-claim",
+          "lesson-label",
+          "row-0",
+          "row-1",
+          "row-2",
+          "row-3",
+          "row-4",
+          "column-0",
+          "column-1",
+          "column-2",
+          "column-3",
+          "cell-label-0-0",
+          "cell-label-0-1",
+          "cell-label-0-2",
+          "cell-label-1-0",
+          "cell-label-1-1",
+          "cell-label-1-2",
+          "cell-label-2-0",
+          "cell-label-2-1",
+          "cell-label-2-2",
+          "cell-label-3-0",
+          "cell-label-3-1",
+          "cell-label-3-2",
+          "relationship-note"
         ],
         "colorIndependentDescription": "Meaning is carried by written labels, position, line style, and shape; color is supplementary.",
         "controlInstructions": [],
         "reducedMotion": "not-applicable",
         "staticFallbackEquivalent": true
       },
-      "sourceFingerprint": "bvlp1-aad6e071",
+      "sourceFingerprint": "bvlp1-3b1268df",
       "visibility": "public"
     },
     {
       "id": "algebra-a0-9-v3",
       "sourceVisualId": "algebra-a0-9-v3",
+      "isFunctionGraph": false,
       "selectedRenderer": "static-svg",
       "hydration": "none",
       "staticAsset": {
-        "path": "/visuals/v1/algebra-a0-9-v3.20bfba40c84aa81b.svg",
-        "sha256": "20bfba40c84aa81b0282471ec707bc8665c3d692a41bb25ab4727e8a1bf84054",
-        "bytes": 7585,
+        "path": "/visuals/v1/algebra-a0-9-v3.d27bb209616156d0.svg",
+        "sha256": "d27bb209616156d0b08ff2c8867da2af865e18e50443ee0d21fc820437cfa3d9",
+        "bytes": 9640,
         "width": 960,
         "height": 558
       },
@@ -1569,7 +1848,7 @@
         "segments": [
           {
             "kind": "text",
-            "text": "A0.9 · Representation"
+            "text": "Units and dimensional reasoning · Dimensionally valid versus invalid formula panel."
           }
         ]
       },
@@ -1577,42 +1856,48 @@
         "segments": [
           {
             "kind": "text",
-            "text": "Dimensionally valid versus invalid formula panel. This representation figure supports Treat units as multiplicative factors that constrain valid operations and conversions."
+            "text": "Dimensionally valid versus invalid formula panel. This figure supports Treat units as multiplicative factors that constrain valid operations and conversions."
           }
         ]
       },
       "learningPurpose": "Use the visible structure in “Dimensionally valid versus invalid formula panel.” to connect the opening context to the lesson outcome: Treat units as multiplicative factors that constrain valid operations and conversions.",
-      "longDescription": "Representation figure for Units and dimensional reasoning: Dimensionally valid versus invalid formula panel. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.9-V3.",
+      "longDescription": "Figure for Units and dimensional reasoning: Dimensionally valid versus invalid formula panel. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.9-V3.",
       "accessibility": {
-        "ariaLabel": "Representation figure for Units and dimensional reasoning: Dimensionally valid versus invalid formula panel.",
-        "summary": "Dimensionally valid versus invalid formula panel. This representation figure supports Treat units as multiplicative factors that constrain valid operations and conversions.. The reading order follows the visible labels and mathematical objects.",
+        "ariaLabel": "Figure for Units and dimensional reasoning: Dimensionally valid versus invalid formula panel.",
+        "summary": "Dimensionally valid versus invalid formula panel. This figure supports Treat units as multiplicative factors that constrain valid operations and conversions.. The reading order follows the visible labels and mathematical objects.",
         "readingOrder": [
-          "context-box",
-          "context-label",
-          "context-arrow",
-          "structure-box",
-          "structure-label",
-          "structure-arrow",
-          "meaning-box",
-          "meaning-label"
+          "lesson-label",
+          "step-card-1",
+          "step-number-1",
+          "step-1-line-1",
+          "flow-arrow-1",
+          "step-card-2",
+          "step-number-2",
+          "step-2-line-1",
+          "flow-arrow-2",
+          "step-card-3",
+          "step-number-3",
+          "step-3-line-1",
+          "relationship-note-1"
         ],
         "colorIndependentDescription": "Meaning is carried by written labels, position, line style, and shape; color is supplementary.",
         "controlInstructions": [],
         "reducedMotion": "not-applicable",
         "staticFallbackEquivalent": true
       },
-      "sourceFingerprint": "bvlp1-3927255e",
+      "sourceFingerprint": "bvlp1-d2ac1684",
       "visibility": "public"
     },
     {
       "id": "algebra-a0-10-v1",
       "sourceVisualId": "algebra-a0-10-v1",
+      "isFunctionGraph": false,
       "selectedRenderer": "static-svg",
       "hydration": "none",
       "staticAsset": {
-        "path": "/visuals/v1/algebra-a0-10-v1.c71c749f8c94ad40.svg",
-        "sha256": "c71c749f8c94ad40cc356856682af6f1aeb4360dca87754c34b8daae9e1b8cdf",
-        "bytes": 7229,
+        "path": "/visuals/v1/algebra-a0-10-v1.8bd8d5b920a2b280.svg",
+        "sha256": "8bd8d5b920a2b28086520ad44491e9d9a7df1ebdab19455f513cbe566c444030",
+        "bytes": 9498,
         "width": 960,
         "height": 558
       },
@@ -1620,7 +1905,7 @@
         "segments": [
           {
             "kind": "text",
-            "text": "A0.10 · Anchor"
+            "text": "Powers, roots, and scientific notation · Repeated-factor chain."
           }
         ]
       },
@@ -1628,42 +1913,48 @@
         "segments": [
           {
             "kind": "text",
-            "text": "Repeated-factor chain. This anchor figure supports Interpret repeated multiplication, inverse power questions, and orders of magnitude."
+            "text": "Repeated-factor chain. This figure supports Interpret repeated multiplication, inverse power questions, and orders of magnitude."
           }
         ]
       },
       "learningPurpose": "Use the visible structure in “Repeated-factor chain.” to connect the opening context to the lesson outcome: Interpret repeated multiplication, inverse power questions, and orders of magnitude.",
-      "longDescription": "Anchor figure for Powers, roots, and scientific notation: Repeated-factor chain. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.10-V1.",
+      "longDescription": "Figure for Powers, roots, and scientific notation: Repeated-factor chain. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.10-V1.",
       "accessibility": {
-        "ariaLabel": "Anchor figure for Powers, roots, and scientific notation: Repeated-factor chain.",
-        "summary": "Repeated-factor chain. This anchor figure supports Interpret repeated multiplication, inverse power questions, and orders of magnitude.. The reading order follows the visible labels and mathematical objects.",
+        "ariaLabel": "Figure for Powers, roots, and scientific notation: Repeated-factor chain.",
+        "summary": "Repeated-factor chain. This figure supports Interpret repeated multiplication, inverse power questions, and orders of magnitude.. The reading order follows the visible labels and mathematical objects.",
         "readingOrder": [
-          "context-box",
-          "context-label",
-          "context-arrow",
-          "structure-box",
-          "structure-label",
-          "structure-arrow",
-          "meaning-box",
-          "meaning-label"
+          "lesson-label",
+          "step-card-1",
+          "step-number-1",
+          "step-1-line-1",
+          "flow-arrow-1",
+          "step-card-2",
+          "step-number-2",
+          "step-2-line-1",
+          "flow-arrow-2",
+          "step-card-3",
+          "step-number-3",
+          "step-3-line-1",
+          "relationship-note-1"
         ],
         "colorIndependentDescription": "Meaning is carried by written labels, position, line style, and shape; color is supplementary.",
         "controlInstructions": [],
         "reducedMotion": "not-applicable",
         "staticFallbackEquivalent": true
       },
-      "sourceFingerprint": "bvlp1-82f78e3a",
+      "sourceFingerprint": "bvlp1-162362f7",
       "visibility": "public"
     },
     {
       "id": "algebra-a0-10-v2",
       "sourceVisualId": "algebra-a0-10-v2",
+      "isFunctionGraph": false,
       "selectedRenderer": "static-svg",
       "hydration": "none",
       "staticAsset": {
-        "path": "/visuals/v1/algebra-a0-10-v2.0bb3a540b9938e47.svg",
-        "sha256": "0bb3a540b9938e47471cd702556e8caf8ba240a2a146b3159af3589ac15d04eb",
-        "bytes": 7288,
+        "path": "/visuals/v1/algebra-a0-10-v2.4a3d5a651a072c28.svg",
+        "sha256": "4a3d5a651a072c28882425f39ad17495f6d735e377fc39389dfbd363a9b0833b",
+        "bytes": 10068,
         "width": 960,
         "height": 558
       },
@@ -1671,7 +1962,7 @@
         "segments": [
           {
             "kind": "text",
-            "text": "A0.10 · Mechanism"
+            "text": "Powers, roots, and scientific notation · Square and cube geometry."
           }
         ]
       },
@@ -1679,42 +1970,49 @@
         "segments": [
           {
             "kind": "text",
-            "text": "Square and cube geometry. This mechanism figure supports Interpret repeated multiplication, inverse power questions, and orders of magnitude."
+            "text": "Square and cube geometry. This figure supports Interpret repeated multiplication, inverse power questions, and orders of magnitude."
           }
         ]
       },
       "learningPurpose": "Use the visible structure in “Square and cube geometry.” to connect the opening context to the lesson outcome: Interpret repeated multiplication, inverse power questions, and orders of magnitude.",
-      "longDescription": "Mechanism figure for Powers, roots, and scientific notation: Square and cube geometry. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.10-V2.",
+      "longDescription": "Figure for Powers, roots, and scientific notation: Square and cube geometry. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.10-V2.",
       "accessibility": {
-        "ariaLabel": "Mechanism figure for Powers, roots, and scientific notation: Square and cube geometry.",
-        "summary": "Square and cube geometry. This mechanism figure supports Interpret repeated multiplication, inverse power questions, and orders of magnitude.. The reading order follows the visible labels and mathematical objects.",
+        "ariaLabel": "Figure for Powers, roots, and scientific notation: Square and cube geometry.",
+        "summary": "Square and cube geometry. This figure supports Interpret repeated multiplication, inverse power questions, and orders of magnitude.. The reading order follows the visible labels and mathematical objects.",
         "readingOrder": [
-          "context-box",
-          "context-label",
-          "context-arrow",
-          "structure-box",
-          "structure-label",
-          "structure-arrow",
-          "meaning-box",
-          "meaning-label"
+          "lesson-label",
+          "step-card-1",
+          "step-number-1",
+          "step-1-line-1",
+          "flow-arrow-1",
+          "step-card-2",
+          "step-number-2",
+          "step-2-line-1",
+          "step-2-line-2",
+          "flow-arrow-2",
+          "step-card-3",
+          "step-number-3",
+          "step-3-line-1",
+          "relationship-note-1"
         ],
         "colorIndependentDescription": "Meaning is carried by written labels, position, line style, and shape; color is supplementary.",
         "controlInstructions": [],
         "reducedMotion": "not-applicable",
         "staticFallbackEquivalent": true
       },
-      "sourceFingerprint": "bvlp1-4e1a6503",
+      "sourceFingerprint": "bvlp1-4c2321cd",
       "visibility": "public"
     },
     {
       "id": "algebra-a0-10-v3",
       "sourceVisualId": "algebra-a0-10-v3",
+      "isFunctionGraph": false,
       "selectedRenderer": "static-svg",
       "hydration": "none",
       "staticAsset": {
-        "path": "/visuals/v1/algebra-a0-10-v3.b3642258b2a84f49.svg",
-        "sha256": "b3642258b2a84f4979dc4a91185eaaa9bf1af93b0b241d2e2768c5d6a6fd2f9f",
-        "bytes": 7505,
+        "path": "/visuals/v1/algebra-a0-10-v3.194b18fe6368a0d3.svg",
+        "sha256": "194b18fe6368a0d3e95d51556743868c2dc0f6f86981f268a84727e456c1414d",
+        "bytes": 14464,
         "width": 960,
         "height": 558
       },
@@ -1722,7 +2020,7 @@
         "segments": [
           {
             "kind": "text",
-            "text": "A0.10 · Representation"
+            "text": "Powers, roots, and scientific notation · Scientific-notation place-value slider."
           }
         ]
       },
@@ -1730,31 +2028,47 @@
         "segments": [
           {
             "kind": "text",
-            "text": "Scientific-notation place-value slider. This representation figure supports Interpret repeated multiplication, inverse power questions, and orders of magnitude."
+            "text": "Scientific-notation place-value slider. This figure supports Interpret repeated multiplication, inverse power questions, and orders of magnitude."
           }
         ]
       },
       "learningPurpose": "Use the visible structure in “Scientific-notation place-value slider.” to connect the opening context to the lesson outcome: Interpret repeated multiplication, inverse power questions, and orders of magnitude.",
-      "longDescription": "Representation figure for Powers, roots, and scientific notation: Scientific-notation place-value slider. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.10-V3.",
+      "longDescription": "Figure for Powers, roots, and scientific notation: Scientific-notation place-value slider. Read the labels in order, identify what is held fixed and what changes, and compare the representations before drawing a conclusion. The figure is a deterministic BetterGrades rendering of storyboard brief A0.10-V3.",
       "accessibility": {
-        "ariaLabel": "Representation figure for Powers, roots, and scientific notation: Scientific-notation place-value slider.",
-        "summary": "Scientific-notation place-value slider. This representation figure supports Interpret repeated multiplication, inverse power questions, and orders of magnitude.. The reading order follows the visible labels and mathematical objects.",
+        "ariaLabel": "Figure for Powers, roots, and scientific notation: Scientific-notation place-value slider.",
+        "summary": "Scientific-notation place-value slider. This figure supports Interpret repeated multiplication, inverse power questions, and orders of magnitude.. The reading order follows the visible labels and mathematical objects.",
         "readingOrder": [
-          "context-box",
-          "context-label",
-          "context-arrow",
-          "structure-box",
-          "structure-label",
-          "structure-arrow",
-          "meaning-box",
-          "meaning-label"
+          "figure-claim",
+          "lesson-label",
+          "row-0",
+          "row-1",
+          "row-2",
+          "row-3",
+          "row-4",
+          "column-0",
+          "column-1",
+          "column-2",
+          "column-3",
+          "cell-label-0-0",
+          "cell-label-0-1",
+          "cell-label-0-2",
+          "cell-label-1-0",
+          "cell-label-1-1",
+          "cell-label-1-2",
+          "cell-label-2-0",
+          "cell-label-2-1",
+          "cell-label-2-2",
+          "cell-label-3-0",
+          "cell-label-3-1",
+          "cell-label-3-2",
+          "relationship-note"
         ],
         "colorIndependentDescription": "Meaning is carried by written labels, position, line style, and shape; color is supplementary.",
         "controlInstructions": [],
         "reducedMotion": "not-applicable",
         "staticFallbackEquivalent": true
       },
-      "sourceFingerprint": "bvlp1-254776b3",
+      "sourceFingerprint": "bvlp1-252b506d",
       "visibility": "public"
     }
   ]

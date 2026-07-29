@@ -1,13 +1,13 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-28T01:11:18.633Z",
+  "generatedAt": "2026-07-29T01:04:46.770Z",
   "environment": "local-candidate",
   "browser": "Playwright Chromium",
-  "sourceCommit": "f5fd2681a00da07b908859318685fce66b5d79cb",
-  "sourceTree": "51d6ed0bb4749081f0bf24f8f89bfc36d9a77c08",
-  "buildHash": "8d5b2e76e0e12bafb652b2c35dbda5a2b3941908462a56d701c0cd298212c7e5",
-  "testCount": 29,
-  "passedCount": 29,
+  "sourceCommit": "00e9258cf091056e1e77a1e07f1ceec72625f1b5",
+  "sourceTree": "40ab329fca3ac64d32ee79d3aded07bb4c247272",
+  "buildHash": "d2c8f0d8f59705e6662387be847da16f2a77ed8cb241fd19c065fadca8b72f92",
+  "testCount": 39,
+  "passedCount": 39,
   "failedCount": 0,
   "viewportMatrix": [
     {
@@ -77,206 +77,276 @@
   },
   "tests": [
     {
-      "title": "complete Algebra hub exposes all fifteen units and preserves the quick-guide layer",
+      "title": "complete Algebra hub exposes its course portrait and expandable fifteen-unit contents",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 359,
+      "durationMs": 781,
+      "errors": []
+    },
+    {
+      "title": "mobile Algebra contents keep the course portrait and every unit disclosure in bounds",
+      "expectedStatus": "passed",
+      "status": "passed",
+      "durationMs": 556,
       "errors": []
     },
     {
       "title": "interactive Algebra lesson retains three BVLP fallbacks and hydrates only its requested scene",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 348,
+      "durationMs": 694,
       "errors": []
     },
     {
       "title": "static Algebra lesson ships no interactive slot",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 344,
+      "durationMs": 434,
+      "errors": []
+    },
+    {
+      "title": "A0–A2 lessons organize authored practice into usable rounds with optional hints",
+      "expectedStatus": "passed",
+      "status": "passed",
+      "durationMs": 598,
+      "errors": []
+    },
+    {
+      "title": "A0–A2 lessons render accessible KaTeX instead of plain Unicode lookalikes",
+      "expectedStatus": "passed",
+      "status": "passed",
+      "durationMs": 439,
       "errors": []
     },
     {
       "title": "the compact rational-expression guide remains canonical beside the distinct full-course lesson",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 522,
+      "durationMs": 613,
       "errors": []
     },
     {
-      "title": "open-response checks stay locked until an attempt and reveal only a rubric",
+      "title": "open-response checks stay locked until an attempt and then reveal the protected guide",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 2324,
+      "durationMs": 4083,
+      "errors": []
+    },
+    {
+      "title": "remediated Algebra surfaces are complete and bounded at desktop",
+      "expectedStatus": "passed",
+      "status": "passed",
+      "durationMs": 4810,
+      "errors": []
+    },
+    {
+      "title": "remediated Algebra surfaces are complete and bounded at tablet",
+      "expectedStatus": "passed",
+      "status": "passed",
+      "durationMs": 4783,
+      "errors": []
+    },
+    {
+      "title": "remediated Algebra surfaces are complete and bounded at mobile",
+      "expectedStatus": "passed",
+      "status": "passed",
+      "durationMs": 4707,
+      "errors": []
+    },
+    {
+      "title": "remediated Algebra surfaces are complete and bounded at small-mobile",
+      "expectedStatus": "passed",
+      "status": "passed",
+      "durationMs": 4748,
+      "errors": []
+    },
+    {
+      "title": "Algebra lessons remain substantive without JavaScript",
+      "expectedStatus": "passed",
+      "status": "passed",
+      "durationMs": 320,
+      "errors": []
+    },
+    {
+      "title": "Algebra lesson print fallback is bounded and preserves all three figures",
+      "expectedStatus": "passed",
+      "status": "passed",
+      "durationMs": 480,
+      "errors": []
+    },
+    {
+      "title": "all nine bounded Algebra interactives respond to keyboard input",
+      "expectedStatus": "passed",
+      "status": "passed",
+      "durationMs": 3942,
       "errors": []
     },
     {
       "title": "visible search results preserve exact-match rank one",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 929,
+      "durationMs": 997,
       "errors": []
     },
     {
       "title": "desktop navigation and learning-path clicks emit complete analytics dimensions",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 3283,
+      "durationMs": 3484,
       "errors": []
     },
     {
       "title": "real navigation stays immediate and replays delayed analytics identities",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 7362,
+      "durationMs": 7570,
       "errors": []
     },
     {
       "title": "desktop navigation and homepage follow the C2 learner hierarchy",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 814,
+      "durationMs": 1169,
       "errors": []
     },
     {
       "title": "tablet and mobile navigation preserve substantive parity without overflow",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 1358,
+      "durationMs": 1455,
       "errors": []
     },
     {
       "title": "representative C2 surfaces have one main, one h1, no overflow, and no console errors",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 9885,
+      "durationMs": 10203,
       "errors": []
     },
     {
       "title": "no-JavaScript navigation remains crawlable",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 249,
+      "durationMs": 295,
       "errors": []
     },
     {
       "title": "keyboard, dark mode, print, filters, and Do Not Track remain functional",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 1224,
+      "durationMs": 1434,
       "errors": []
     },
     {
       "title": "textbook lesson reaches exposition through one compact objective",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 754,
+      "durationMs": 826,
       "errors": []
     },
     {
       "title": "short article content precedes supporting paths and its outline",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 687,
+      "durationMs": 753,
       "errors": []
     },
     {
       "title": "worked problem begins with the problem and complete solution",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 419,
+      "durationMs": 451,
       "errors": []
     },
     {
       "title": "glossary definition is first and optional vocabulary follows main content",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 386,
+      "durationMs": 434,
       "errors": []
     },
     {
       "title": "tool interface remains in the first major content section",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 357,
+      "durationMs": 360,
       "errors": []
     },
     {
       "title": "320px mobile textbook preserves guidance without horizontal overflow",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 524,
+      "durationMs": 554,
       "errors": []
     },
     {
       "title": "calculus starts collapsed and the Resources menus expose the complete library",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 504,
+      "durationMs": 553,
       "errors": []
     },
     {
       "title": "desktop route matrix renders one complete document without overflow",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 11665,
+      "durationMs": 12366,
       "errors": []
     },
     {
       "title": "tablet route matrix renders one complete document without overflow",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 11655,
+      "durationMs": 12030,
       "errors": []
     },
     {
       "title": "mobile route matrix renders one complete document without overflow",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 11873,
+      "durationMs": 12224,
       "errors": []
     },
     {
       "title": "JavaScript-disabled educational pages preserve static content and suppress controls",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 581,
+      "durationMs": 602,
       "errors": []
     },
     {
       "title": "keyboard focus, dark mode, and print CSS remain usable",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 1312,
+      "durationMs": 1398,
       "errors": []
     },
     {
       "title": "downloads, redirect, answer reveal, and practice controls work",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 1066,
+      "durationMs": 1098,
       "errors": []
     },
     {
       "title": "PDF links use native accessible new tabs and preserve one analytics event pair",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 1776,
+      "durationMs": 1920,
       "errors": []
     },
     {
       "title": "PDF links remain native new-tab anchors when JavaScript is disabled",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 5463,
+      "durationMs": 5574,
       "errors": []
     },
     {
       "title": "every resource analytics event fires through both sinks with safe dimensions and respects Do Not Track",
       "expectedStatus": "passed",
       "status": "passed",
-      "durationMs": 3500,
+      "durationMs": 3787,
       "errors": []
     }
   ],

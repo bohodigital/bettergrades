@@ -5,6 +5,7 @@
 import { FormEvent, useState } from "react";
 import type { AlgebraAssessmentPrompt, AlgebraCoursePage } from "../lib/algebra/algebra-course.mjs";
 import { resources, tools } from "../lib/registry/catalog";
+import { AlgebraMathText } from "./AlgebraMathText";
 import { BetterGradesVisual } from "./BetterGradesVisual";
 
 const pageTypeLabel = (value: string) => value.replaceAll("-", " ").replace(/\b\w/g, (letter) => letter.toUpperCase());
@@ -72,7 +73,7 @@ function AttemptFirstPrompt({ prompt, answerKey = false }: { prompt: AlgebraAsse
 
   return <section className="limits-check algebra-attempt" id={prompt.id} data-check-id={prompt.id}>
     <header><span>{answerKey ? "Attempt-gated response guide" : "Open-response check"}</span><code>{prompt.lessonId}</code></header>
-    <p className="limits-check-prompt">{prompt.prompt}</p>
+    <p className="limits-check-prompt"><AlgebraMathText value={prompt.prompt} display="auto" /></p>
     <form onSubmit={check}>
       <label htmlFor={`${prompt.id}-answer`}>Your method, work, and check</label>
       <textarea id={`${prompt.id}-answer`} value={answer} onChange={(event) => setAnswer(event.target.value)} rows={4} required />
@@ -81,7 +82,7 @@ function AttemptFirstPrompt({ prompt, answerKey = false }: { prompt: AlgebraAsse
     <p className="limits-check-feedback is-uncertain" aria-live="polite">{feedback}</p>
     <details className="limits-disclosure" onToggle={(event) => { if (event.currentTarget.open && attempted && !rubric && !busy) void reveal(); }}>
       <summary>{attempted ? "Compare with the response guide" : "Attempt once to unlock the response guide"}</summary>
-      {rubric ? <p>{rubric}</p> : <p>{attempted ? "Loading the response guide…" : "The source package supplies editorial decision checks, not canonical numerical answers. This route therefore uses an honest rubric instead of pretending prose can be machine-proved."}</p>}
+      {rubric ? <p><AlgebraMathText value={rubric} /></p> : <p>{attempted ? "Loading the response guide…" : "Complete a substantive attempt to unlock the protected solution and scoring criteria."}</p>}
     </details>
   </section>;
 }
@@ -91,13 +92,41 @@ function CourseHub({ page }: { page: AlgebraCoursePage }) {
   const algebraTools = tools.filter((tool) => tool.domainId === "domain-math-algebra");
   return <>
     <section className="limits-unit-map calculus-unit-map algebra-course-map" aria-label="Complete Algebra course map">
-      <header className="limits-map-intro"><div><p className="eyebrow">Complete textbook</p><h2>Fifteen connected units</h2></div><p>Start with the readiness diagnostic, follow the ordered spine, or enter at the exact unit that repairs your current gap.</p></header>
-      <div className="limits-chapter-map">{page.units.map((unit) => <section className="limits-chapter" key={unit.id}>
-        <header><div><span>Unit {unit.code}</span><h3><a href={unit.root}>{unit.title}</a></h3></div><p>{unit.act}</p></header>
-        <aside className="limits-reading-lens limits-map-lens"><span>Governing question</span><p>{unit.governingQuestion}</p></aside>
-        <p>{unit.role}</p>
-        <a className="text-link" href={unit.root}>Open {unit.lessonCount}-lesson unit →</a>
-      </section>)}</div>
+      <header className="limits-map-intro"><div><p className="eyebrow">Complete textbook</p><h2>Fifteen connected units</h2></div><p>Expand any unit to see its complete lesson sequence, review, practice, investigation, mastery check, and response guide.</p></header>
+      <div className="calculus-chapter-list algebra-course-unit-list">
+        {page.units.map((unit) => <details className="calculus-chapter algebra-course-unit" data-unit={unit.code} key={unit.id}>
+          <summary>
+            <span className="calculus-chapter-number">Unit {unit.code}</span>
+            <span className="calculus-chapter-title"><b>{unit.title}</b><small>{unit.role}</small></span>
+            <span className="calculus-chapter-course">{unit.lessonCount} lessons</span>
+            <span className="calculus-chapter-toggle" aria-hidden="true">+</span>
+          </summary>
+          <div className="calculus-chapter-units">
+            <section className="calculus-chapter-unit algebra-course-unit-card">
+              <header>
+                <span>{unit.act}</span>
+                <h3>{unit.title}</h3>
+                <p>{unit.governingQuestion}</p>
+                <a href={unit.root}>Open Unit {unit.code} map <span aria-hidden="true">→</span></a>
+              </header>
+              <nav aria-label={`Unit ${unit.code} lessons`}>
+                {unit.lessons.map((lesson) => <a href={lesson.path} key={lesson.id}>
+                  <span>{String(lesson.sequence).padStart(2, "0")}</span>
+                  <b>{lesson.title}</b>
+                  <i aria-hidden="true">→</i>
+                </a>)}
+              </nav>
+              <nav className="algebra-course-support-links" aria-label={`Unit ${unit.code} review and assessment`}>
+                <a href={unit.reviewRoute}><b>Review</b><i aria-hidden="true">→</i></a>
+                <a href={unit.practiceRoute}><b>Mixed practice</b><i aria-hidden="true">→</i></a>
+                <a href={unit.masteryRoute}><b>Mastery check</b><i aria-hidden="true">→</i></a>
+                {unit.investigationRoute && <a href={unit.investigationRoute}><b>Investigation</b><i aria-hidden="true">→</i></a>}
+                <a href={unit.answerKeyRoute}><b>Response guide</b><i aria-hidden="true">→</i></a>
+              </nav>
+            </section>
+          </div>
+        </details>)}
+      </div>
       <section className="limits-exam-key-callout"><div><p className="eyebrow">Choose a starting point</p><h2>Diagnostic, final exam, and cumulative response guide</h2><p>Checks are attempt-first and deterministic only where the supplied source defines a provable answer. Open explanation prompts return an honest rubric.</p></div><div className="button-row"><a className="button button-ink" href="/subjects/math/algebra/diagnostic/">Take the diagnostic</a><a className="button button-ghost" href="/subjects/math/algebra/final-exam/">Open final exam</a></div></section>
     </section>
     <section className="section-pad algebra-legacy-layer" aria-labelledby="algebra-quick-guides">
@@ -112,10 +141,10 @@ function UnitHub({ page }: { page: AlgebraCoursePage }) {
   if (!page.unit) return null;
   return <section className="limits-unit-map calculus-unit-map algebra-unit-map" aria-label={`Unit ${page.unit.code} map`}>
     <header className="limits-map-intro"><div><p className="eyebrow">{page.unit.act}</p><h2>The {page.unit.lessonCount}-lesson path</h2></div><p>{page.unit.storyArc}</p></header>
-    <section className="calculus-prerequisites"><div><p className="eyebrow">Governing question</p><h3>{page.unit.governingQuestion}</h3><p>{page.unit.role}</p></div><div><p className="eyebrow">Mastery design</p><h3>Know when to continue</h3><p>{page.unit.mastery}</p></div></section>
-    <section className="limits-node limits-node-summary"><header><span>Unit outcomes</span></header><div><ol>{page.unit.outcomes.map((outcome) => <li key={outcome}>{outcome}</li>)}</ol></div></section>
-    <div className="limits-chapter-map"><section className="limits-chapter"><header><div><span>Core sequence</span><h3>Lessons</h3></div><p>Move in order when this material is new; use prerequisites and repair links when entering mid-unit.</p></header><ol>{page.unitLessons.map((lesson) => <li key={lesson.path}><a href={lesson.path}><span>{String(lesson.sequence).padStart(2, "0")}</span><b>{lesson.title}</b><small>{lesson.outcome}</small></a></li>)}</ol></section></div>
-    <header className="limits-map-intro limits-map-support-heading"><div><p className="eyebrow">Practice around the path</p><h2>Review, mixed practice, mastery, and investigation</h2></div><p>Every route states the supplied item-range blueprint and keeps response guidance behind an attempt.</p></header>
+    <section className="calculus-prerequisites"><div><p className="eyebrow">Governing question</p><h3><AlgebraMathText value={page.unit.governingQuestion} /></h3><p><AlgebraMathText value={page.unit.role} /></p></div><div><p className="eyebrow">Mastery design</p><h3>Know when to continue</h3><p><AlgebraMathText value={page.unit.mastery} /></p></div></section>
+    <section className="limits-node limits-node-summary"><header><span>Unit outcomes</span></header><div><ol>{page.unit.outcomes.map((outcome) => <li key={outcome}><AlgebraMathText value={outcome} /></li>)}</ol></div></section>
+    <div className="limits-chapter-map"><section className="limits-chapter"><header><div><span>Core sequence</span><h3>Lessons</h3></div><p>Move in order when this material is new; use prerequisites and repair links when entering mid-unit.</p></header><ol>{page.unitLessons.map((lesson) => <li key={lesson.path}><a href={lesson.path}><span>{String(lesson.sequence).padStart(2, "0")}</span><b>{lesson.title}</b><small><AlgebraMathText value={lesson.outcome} /></small></a></li>)}</ol></section></div>
+    <header className="limits-map-intro limits-map-support-heading"><div><p className="eyebrow">Practice around the path</p><h2>Review, mixed practice, mastery, and investigation</h2></div><p>Every route contains a fixed set of concrete questions, with detailed solutions available after an attempt.</p></header>
     <div className="limits-support-grid">
       <a href={page.unit.reviewRoute}><span>Review</span><b>Cumulative review</b><small>Revisit this unit with prior-unit retrieval.</small></a>
       <a href={page.unit.practiceRoute}><span>Practice</span><b>Mixed practice</b><small>Classify the structure before choosing a method.</small></a>
@@ -126,38 +155,74 @@ function UnitHub({ page }: { page: AlgebraCoursePage }) {
   </section>;
 }
 
-function StoryboardList({ title, label, items }: { title: string; label: string; items: string[] }) {
-  return <section className="limits-node limits-node-exposition"><header><span>{label}</span><h2>{title}</h2></header><div><ol>{items.map((item, index) => <li key={`${index}-${item}`}>{item}</li>)}</ol></div></section>;
+function LessonList({ title, label, items }: { title: string; label: string; items: string[] }) {
+  return <section className="limits-node limits-node-exposition"><header><span>{label}</span><h2>{title}</h2></header><div><ol>{items.map((item, index) => <li key={`${index}-${item}`}><AlgebraMathText value={item} /></li>)}</ol></div></section>;
+}
+
+function LessonPractice({ lesson }: { lesson: NonNullable<AlgebraCoursePage["lesson"]> }) {
+  const authoredTextbook = lesson.textbookEdition?.startsWith("authored-") || lesson.foundationEdition?.startsWith("authored-");
+  if (!authoredTextbook) {
+    return <section className="limits-node limits-node-exercise"><header><span>Practice</span><h2>{lesson.practiceQuestions.length} concrete questions</h2></header><div><div className="algebra-exercise-families">{lesson.practiceQuestions.map((question) => <article key={question.id}><code>{question.id}</code><h3><AlgebraMathText value={question.prompt} display="auto" /></h3><p><AlgebraMathText value={question.hint} /></p><small>{pageTypeLabel(question.purpose ?? "practice")} · {pageTypeLabel(question.difficulty ?? "standard")}</small></article>)}</div></div></section>;
+  }
+
+  const groups = [
+    { title: "Warm-up", label: "Recall and read the structure", questions: lesson.practiceQuestions.slice(0, 4) },
+    { title: "Core practice", label: "Build accuracy one step at a time", questions: lesson.practiceQuestions.slice(4, 12) },
+    { title: "Represent and reason", label: "Explain, compare, and diagnose", questions: lesson.practiceQuestions.slice(12, 16) },
+    { title: "Finish strong", label: "Model, transfer, and verify", questions: lesson.practiceQuestions.slice(16) },
+  ];
+
+  return <section className="limits-node limits-node-exercise algebra-foundation-practice">
+    <header><span>Practice</span><h2>{lesson.practiceQuestions.length} practice questions</h2></header>
+    <div className="algebra-practice-groups">
+      {groups.map((group) => <section className="algebra-practice-group" key={group.title} aria-labelledby={`${lesson.id}-${group.title.replaceAll(" ", "-")}`}>
+        <header><p className="eyebrow">{group.label}</p><h3 id={`${lesson.id}-${group.title.replaceAll(" ", "-")}`}>{group.title}</h3></header>
+        <div className="algebra-exercise-families">
+          {group.questions.map((question) => {
+            const number = lesson.practiceQuestions.indexOf(question) + 1;
+            return <article key={question.id}>
+              <div className="algebra-question-meta"><span>Question {number}</span><small>{pageTypeLabel(question.purpose ?? "practice")} · {pageTypeLabel(question.difficulty ?? "standard")}</small></div>
+              <h4><AlgebraMathText value={question.prompt} display="auto" /></h4>
+              <details className="algebra-question-hint"><summary>Need a hint?</summary><p><AlgebraMathText value={question.hint} /></p></details>
+            </article>;
+          })}
+        </div>
+      </section>)}
+    </div>
+  </section>;
 }
 
 function LessonPage({ page }: { page: AlgebraCoursePage }) {
   const lesson = page.lesson;
   if (!lesson || !page.unit) return null;
-  return <>
-    <aside className="lesson-objective" aria-label="Lesson objective"><span>Lesson {lesson.id} objective</span><p>{lesson.outcome}</p></aside>
-    <section className="limits-node limits-node-application"><header><span>Opening situation</span><h2>Begin with a quantity and a question</h2></header><div><p>{lesson.opening}</p><p>{lesson.storyBeat}</p></div></section>
-    <StoryboardList title="Build the mechanism without skipping the meaning" label="Explanation sequence" items={lesson.expositionBeats} />
-    <section className="algebra-figure-sequence" aria-label={`${lesson.title} figures`}>{lesson.figures.map((figure) => <figure className="limits-graph limits-graph-visual calculus-unit-visual" key={figure.id}>
+  return <div className="algebra-textbook-lesson">
+    <section className="limits-node limits-node-application algebra-lesson-opening"><header><span>Opening situation</span><h2>Start here</h2></header><div><p><AlgebraMathText value={lesson.opening.prompt} /></p><p><AlgebraMathText value={lesson.opening.purpose} /></p></div></section>
+    <LessonList title="Prerequisite check" label="Before this lesson" items={lesson.prerequisiteChecks} />
+    <section className="limits-node limits-node-exposition algebra-lesson-exposition"><header><span>Lesson text</span><h2>Explanation</h2></header><div>{lesson.exposition.map((paragraph) => <p key={paragraph}><AlgebraMathText value={paragraph} /></p>)}</div></section>
+    {lesson.method && <section className="limits-node limits-node-method algebra-authored-method"><header><span>Method</span><h2><AlgebraMathText value={lesson.method.title} /></h2></header><div><ol>{lesson.method.steps.map((step) => <li key={step}><AlgebraMathText value={step} display="auto" /></li>)}</ol><p><strong>Check:</strong> <AlgebraMathText value={lesson.method.check} display="auto" /></p></div></section>}
+    <section className="limits-node limits-node-method algebra-lesson-definitions"><header><span>Reference</span><h2>Definitions and conditions</h2></header><div><dl>{lesson.definitions.map((definition) => <div key={definition.term}><dt><strong><AlgebraMathText value={definition.term} /></strong></dt><dd><AlgebraMathText value={definition.definition} />{definition.conditions && <small><AlgebraMathText value={definition.conditions} /></small>}</dd></div>)}</dl></div></section>
+    {lesson.figures.length > 0 && <section className="algebra-figure-sequence" aria-label={`${lesson.title} function graphs`}>{lesson.figures.map((figure) => <figure className="limits-graph limits-graph-visual calculus-unit-visual" key={figure.id}>
       {figure.visual ? <BetterGradesVisual visual={figure.visual} /> : <p role="alert">This compiled figure is temporarily unavailable.</p>}
-      <figcaption><strong>{figure.role} · {figure.id}</strong><p>{figure.description}</p>{figure.interactive && <small>Bounded interaction with a deterministic SVG fallback.</small>}</figcaption>
-    </figure>)}</section>
-    <StoryboardList title="Worked-example ladder" label="Three levels" items={lesson.examples} />
-    <section className="limits-node limits-node-exercise"><header><span>Practice architecture</span><h2>{lesson.exerciseCount}</h2></header><div><div className="algebra-exercise-families">{lesson.exerciseFamilies.map((family) => <article key={family.id}><code>{family.id}</code><h3>{family.purpose}</h3><p>{family.recommendedCount} recommended items</p></article>)}</div></div></section>
-    <StoryboardList title="Misconceptions to surface and repair" label="Error analysis" items={lesson.misconceptions} />
-    <AttemptFirstPrompt prompt={{ id: `lesson-${lesson.id.toLowerCase().replace(".", "-")}-checkpoint`, lessonId: lesson.id, prompt: lesson.checkpoint }} />
-    <StoryboardList title="Two-item exit check" label="Before continuing" items={lesson.exitCheck} />
-    <section className="limits-node limits-node-bridge"><header><span>Bridge forward</span><h2>Keep the story connected</h2></header><div><p>{lesson.bridgeForward}</p></div></section>
-  </>;
+      <figcaption><strong>{lesson.title} · Figure {figure.id}</strong><p><AlgebraMathText value={figure.description} /></p>{figure.interactive && <small>Use the bounded control to compare states; the initial state remains available as a complete static figure.</small>}</figcaption>
+    </figure>)}</section>}
+    <section className="limits-node limits-node-example algebra-lesson-examples"><header><span>Examples</span><h2>Worked examples</h2></header><div className="algebra-worked-examples">{lesson.examples.map((example) => <article key={example.kind}><p className="eyebrow">{pageTypeLabel(example.kind)}</p><h3><AlgebraMathText value={example.prompt} display="auto" /></h3><ol>{example.steps.map((step) => <li key={step}><AlgebraMathText value={step} display="auto" /></li>)}</ol><p className="algebra-example-answer"><strong>Answer</strong><AlgebraMathText value={example.answer} display="auto" /></p><p><AlgebraMathText value={example.interpretation} /></p></article>)}</div></section>
+    <LessonPractice lesson={lesson} />
+    <section className="limits-node limits-node-caution algebra-lesson-caution"><header><span>Common mistakes</span><h2>Error analysis</h2></header><div>{lesson.misconceptions.map((item) => <article key={item.wrongMove}><p><strong>Wrong move:</strong> <AlgebraMathText value={item.wrongMove} display="auto" /></p><p><strong>Why it fails:</strong> <AlgebraMathText value={item.whyItFails} /></p><p><strong>Repair:</strong> <AlgebraMathText value={item.repair} display="auto" /></p></article>)}</div></section>
+    <AttemptFirstPrompt prompt={{ id: lesson.checkpoint.id, lessonId: lesson.id, prompt: lesson.checkpoint.prompt, responseType: lesson.checkpoint.responseType }} />
+    <LessonList title="Exit check" label="Before continuing" items={lesson.exitCheck.map((id) => lesson.practiceQuestions.find((question) => question.id === id)?.prompt ?? `Complete question ${id} from this lesson’s practice bank.`)} />
+    <section className="limits-node limits-node-bridge algebra-lesson-takeaway"><header><span>Summary</span><h2>What to remember</h2></header><div><p><AlgebraMathText value={lesson.takeaway.summary} /></p><ul>{lesson.takeaway.conditions.map((condition) => <li key={condition}><AlgebraMathText value={condition} /></li>)}</ul><p><a href={lesson.navigation.practice}>Continue to unit practice →</a></p></div></section>
+  </div>;
 }
 
 function AssessmentPage({ page }: { page: AlgebraCoursePage }) {
   const isKey = page.route.pageType === "answer-key";
   return <section className="algebra-assessment-page">
-    <section className="limits-node limits-node-method"><header><span>{isKey ? "Response-guide contract" : "Assessment blueprint"}</span><h2>{page.assessment?.questionCount ?? "Attempt-gated guidance"}</h2></header><div>
+    <section className="limits-node limits-node-method"><header><span>{isKey ? "Response guide" : "Assessment"}</span><h2>{page.assessment?.questionCount ?? page.assessmentPrompts.length} concrete questions</h2></header><div>
       <p><strong>Suggested time:</strong> {page.assessment?.durationMinutes ?? "Work deliberately; no fixed timer supplied."} minutes.</p>
       <p><strong>Grading boundary:</strong> {page.assessment?.grading ?? "Open responses use a supplied rubric after an attempt."}</p>
       <p><strong>Cumulative share:</strong> {page.assessment?.cumulativeShare ?? "Connected to the matching assessment route."}</p>
-      <p>The source package specifies counts, purposes, and decision checks rather than authored numerical items. These prompts therefore preserve the exact lesson outcomes and never fabricate a canonical answer.</p>
+      <p>Each question is fully authored and linked to a lesson skill. Detailed scoring criteria and worked solutions stay protected until a substantive attempt is submitted.</p>
+      {page.assessment && <p><a className="button button-ghost" href={isKey ? page.assessment.path : page.assessment.answerRoute}>{isKey ? "Return to the assessment" : "Open the protected response guide"}</a></p>}
     </div></section>
     <div className="algebra-assessment-prompts">{page.assessmentPrompts.map((prompt) => <AttemptFirstPrompt prompt={prompt} answerKey={isKey} key={prompt.id} />)}</div>
     {page.assessmentPrompts.length === 0 && <p className="honest-note">No public model response is exposed on this route. Open the linked assessment and submit an attempt to retrieve its server-held rubric.</p>}

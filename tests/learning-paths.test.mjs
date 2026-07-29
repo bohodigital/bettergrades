@@ -12,9 +12,10 @@ const root = resolve(import.meta.dirname, "..");
 
 test("every audited instructional article has one explicit C2 decision", async () => {
   const decisions = await readFile(resolve(root, "data/ia/handoff-c2-article-decisions.csv"), "utf8");
-  assert.equal(decisions.trim().split("\n").length - 1, 78);
-  assert.equal(approvedMap.length + deferredMap.length, 78);
-  assert.equal(new Set([...approvedMap, ...deferredMap].map((row) => row.sourceId)).size, 78);
+  const articleCount = graph.nodes.filter((node) => node.nodeType === "article").length;
+  assert.equal(decisions.trim().split("\n").length - 1, articleCount);
+  assert.equal(approvedMap.length + deferredMap.length, articleCount);
+  assert.equal(new Set([...approvedMap, ...deferredMap].map((row) => row.sourceId)).size, articleCount);
 });
 
 test("only the three exact, unique article-to-lesson matches are approved", () => {
@@ -28,12 +29,13 @@ test("only the three exact, unique article-to-lesson matches are approved", () =
 
 test("every textbook lesson is evaluated for all five companion roles", async () => {
   const decisions = await readFile(resolve(root, "data/ia/handoff-c2-lesson-companion-decisions.csv"), "utf8");
-  assert.equal(decisions.trim().split("\n").length - 1, 328 * 5);
+  const lessonCount = graph.nodes.filter((node) => node.nodeType === "textbook-lesson").length;
+  assert.equal(decisions.trim().split("\n").length - 1, lessonCount * 5);
   assert.equal(approvedLessonCompanions.length, 17);
-  assert.equal(approvedLessonCompanions.length + deferredLessonCompanions.length, 328 * 5);
+  assert.equal(approvedLessonCompanions.length + deferredLessonCompanions.length, lessonCount * 5);
   const categoryCounts = Object.groupBy([...approvedLessonCompanions, ...deferredLessonCompanions], (row) => row.category);
   for (const category of ["practice", "quick-explanation", "worked-example", "reference", "tool-or-visual"]) {
-    assert.equal(categoryCounts[category].length, 328);
+    assert.equal(categoryCounts[category].length, lessonCount);
   }
 });
 
