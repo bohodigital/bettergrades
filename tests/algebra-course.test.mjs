@@ -100,9 +100,15 @@ test("every Algebra unit has normalized route, page, assessment, exercise, visua
 test("all 417 visuals compile through BVLP with nine route-local interactives and bounded SVGs", async () => {
   let scenes = 0;
   let interactive = 0;
+  let functionGraphs = 0;
+  let interactiveFunctionGraphs = 0;
   const ids = new Set();
   for (const unit of course.units) {
     const manifest = JSON.parse(await readFile(resolve(root, "content/algebra/units", `unit-${unit.code.toLowerCase()}`, "public-runtime-scenes.server.json"), "utf8"));
+    const specs = JSON.parse(await readFile(resolve(root, "content/algebra/units", `unit-${unit.code.toLowerCase()}`, "visual-specs.v1.json"), "utf8"));
+    const graphIds = new Set(specs.visuals
+      .filter((visual) => visual.kind === "cartesian-2d" && visual.layers.some((layer) => layer.kind === "function"))
+      .map((visual) => visual.id));
     scenes += manifest.sceneCount;
     interactive += manifest.interactiveCount;
     for (const scene of manifest.scenes) {
@@ -111,10 +117,17 @@ test("all 417 visuals compile through BVLP with nine route-local interactives an
       assert.ok(scene.staticAsset.bytes < 50_000, scene.id);
       assert.ok(scene.staticAsset.path.startsWith("/visuals/v1/algebra-"), scene.id);
       assert.equal(Boolean(scene.interactiveScene), scene.hydration !== "none", scene.id);
+      assert.equal(scene.isFunctionGraph, graphIds.has(scene.id), `${scene.id} function-graph classification`);
+      if (scene.isFunctionGraph) {
+        functionGraphs += 1;
+        if (scene.hydration !== "none") interactiveFunctionGraphs += 1;
+      }
     }
   }
   assert.equal(scenes, 417);
   assert.equal(interactive, 9);
+  assert.equal(functionGraphs, 38);
+  assert.equal(interactiveFunctionGraphs, 8);
   assert.equal(ids.size, 417);
 });
 

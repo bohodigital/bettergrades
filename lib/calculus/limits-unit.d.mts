@@ -2,6 +2,7 @@ import type { CompiledScene, PublicCompiledScene } from "../visualization/schema
 
 export type LimitsPublicVisual = {
   id: string;
+  isFunctionGraph?: boolean;
   selectedRenderer: string;
   hydration: string;
   staticAsset: { path: string; sha256: string; bytes: number; width: number; height: number };

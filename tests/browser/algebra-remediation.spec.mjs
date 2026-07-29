@@ -17,7 +17,6 @@ const viewports = [
 ];
 
 const interactiveRoutes = [
-  "/subjects/math/algebra/arithmetic-readiness/number-lines-and-signed-quantities/",
   "/subjects/math/algebra/inequalities-absolute-value/absolute-value-as-distance/",
   "/subjects/math/algebra/linear-relationships/slope-from-graphs-and-tables/",
   "/subjects/math/algebra/linear-relationships/parallel-and-perpendicular-lines/",
@@ -53,22 +52,22 @@ test("Algebra lessons remain substantive without JavaScript", async ({ browser }
   const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 844 } });
   const page = await context.newPage();
   await page.goto("/subjects/math/algebra/arithmetic-readiness/number-lines-and-signed-quantities/");
-  await expect(page.locator("[data-bvlp-visual]")).toHaveCount(3);
-  await expect(page.locator("[data-static-fallback=retained] img")).toHaveCount(3);
+  await expect(page.locator(".algebra-figure-sequence")).toHaveCount(0);
+  await expect(page.locator("[data-bvlp-visual]")).toHaveCount(0);
   await expect(page.locator(".algebra-exercise-families article")).toHaveCount(20);
   expect((await page.locator("main").innerText()).length).toBeGreaterThan(5_000);
   await context.close();
 });
 
-test("Algebra lesson print fallback is bounded and preserves all three figures", async ({ page }) => {
+test("Algebra lesson print layout remains bounded after non-graph figures are removed", async ({ page }) => {
   await page.goto("/subjects/math/algebra/arithmetic-readiness/number-lines-and-signed-quantities/");
   await page.emulateMedia({ media: "print" });
-  await expect(page.locator("[data-static-fallback=retained] img")).toHaveCount(3);
-  await expect(page.locator(".bvlp-interactive-slot")).toBeHidden();
+  await expect(page.locator(".algebra-figure-sequence")).toHaveCount(0);
+  await expect(page.locator("[data-static-fallback=retained] img")).toHaveCount(0);
   expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBeLessThanOrEqual(1);
 });
 
-test("all nine bounded Algebra interactives respond to keyboard input", async ({ page }) => {
+test("all eight retained function-graph interactives respond to keyboard input", async ({ page }) => {
   for (const route of interactiveRoutes) {
     await page.goto(route);
     const renderer = page.locator('[data-bvlp-renderer="bg-interactive-2d"]');

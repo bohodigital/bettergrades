@@ -99,9 +99,12 @@ for (const unitCode of unitCodes) {
     interactiveCount: scenes.filter((scene) => scene.delivery.hydration !== "none").length,
     scenes: manifest.scenes.map((entry) => {
       const scene = entry.compiledScene;
+      const isFunctionGraph = scene.kind === "cartesian-2d"
+        && scene.layers.some((layer) => layer.kind === "function");
       return {
         id: entry.id,
         sourceVisualId: entry.sourceVisualId,
+        isFunctionGraph,
         selectedRenderer: entry.selectedRenderer,
         hydration: entry.hydration,
         staticAsset: entry.staticAsset,

@@ -92,16 +92,6 @@ function CourseHub({ page }: { page: AlgebraCoursePage }) {
   const algebraTools = tools.filter((tool) => tool.domainId === "domain-math-algebra");
   return <>
     <section className="limits-unit-map calculus-unit-map algebra-course-map" aria-label="Complete Algebra course map">
-      <figure className="algebra-course-art">
-        <img
-          src="/og-algebra.png"
-          width="1731"
-          height="909"
-          alt="BetterGrades Algebra learning path from arithmetic readiness through equations, functions, graphs, and logarithms"
-          fetchPriority="high"
-        />
-        <figcaption><span>Course portrait</span><strong>Quantities, equations, and structure form one connected learning path.</strong></figcaption>
-      </figure>
       <header className="limits-map-intro"><div><p className="eyebrow">Complete textbook</p><h2>Fifteen connected units</h2></div><p>Expand any unit to see its complete lesson sequence, review, practice, investigation, mastery check, and response guide.</p></header>
       <div className="calculus-chapter-list algebra-course-unit-list">
         {page.units.map((unit) => <details className="calculus-chapter algebra-course-unit" data-unit={unit.code} key={unit.id}>
@@ -211,10 +201,10 @@ function LessonPage({ page }: { page: AlgebraCoursePage }) {
     <section className="limits-node limits-node-exposition algebra-lesson-exposition"><header><span>Lesson text</span><h2>Explanation</h2></header><div>{lesson.exposition.map((paragraph) => <p key={paragraph}><AlgebraMathText value={paragraph} /></p>)}</div></section>
     {lesson.method && <section className="limits-node limits-node-method algebra-authored-method"><header><span>Method</span><h2><AlgebraMathText value={lesson.method.title} /></h2></header><div><ol>{lesson.method.steps.map((step) => <li key={step}><AlgebraMathText value={step} display="auto" /></li>)}</ol><p><strong>Check:</strong> <AlgebraMathText value={lesson.method.check} display="auto" /></p></div></section>}
     <section className="limits-node limits-node-method algebra-lesson-definitions"><header><span>Reference</span><h2>Definitions and conditions</h2></header><div><dl>{lesson.definitions.map((definition) => <div key={definition.term}><dt><strong><AlgebraMathText value={definition.term} /></strong></dt><dd><AlgebraMathText value={definition.definition} />{definition.conditions && <small><AlgebraMathText value={definition.conditions} /></small>}</dd></div>)}</dl></div></section>
-    <section className="algebra-figure-sequence" aria-label={`${lesson.title} figures`}>{lesson.figures.map((figure) => <figure className="limits-graph limits-graph-visual calculus-unit-visual" key={figure.id}>
+    {lesson.figures.length > 0 && <section className="algebra-figure-sequence" aria-label={`${lesson.title} function graphs`}>{lesson.figures.map((figure) => <figure className="limits-graph limits-graph-visual calculus-unit-visual" key={figure.id}>
       {figure.visual ? <BetterGradesVisual visual={figure.visual} /> : <p role="alert">This compiled figure is temporarily unavailable.</p>}
       <figcaption><strong>{lesson.title} · Figure {figure.id}</strong><p><AlgebraMathText value={figure.description} /></p>{figure.interactive && <small>Use the bounded control to compare states; the initial state remains available as a complete static figure.</small>}</figcaption>
-    </figure>)}</section>
+    </figure>)}</section>}
     <section className="limits-node limits-node-example algebra-lesson-examples"><header><span>Examples</span><h2>Worked examples</h2></header><div className="algebra-worked-examples">{lesson.examples.map((example) => <article key={example.kind}><p className="eyebrow">{pageTypeLabel(example.kind)}</p><h3><AlgebraMathText value={example.prompt} display="auto" /></h3><ol>{example.steps.map((step) => <li key={step}><AlgebraMathText value={step} display="auto" /></li>)}</ol><p className="algebra-example-answer"><strong>Answer</strong><AlgebraMathText value={example.answer} display="auto" /></p><p><AlgebraMathText value={example.interpretation} /></p></article>)}</div></section>
     <LessonPractice lesson={lesson} />
     <section className="limits-node limits-node-caution algebra-lesson-caution"><header><span>Common mistakes</span><h2>Error analysis</h2></header><div>{lesson.misconceptions.map((item) => <article key={item.wrongMove}><p><strong>Wrong move:</strong> <AlgebraMathText value={item.wrongMove} display="auto" /></p><p><strong>Why it fails:</strong> <AlgebraMathText value={item.whyItFails} /></p><p><strong>Repair:</strong> <AlgebraMathText value={item.repair} display="auto" /></p></article>)}</div></section>

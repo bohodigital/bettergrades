@@ -1,12 +1,11 @@
 import { expect, test } from "@playwright/test";
 
-test("complete Algebra hub exposes its course portrait and expandable fifteen-unit contents", async ({ page }) => {
+test("complete Algebra hub omits decorative artwork and exposes expandable fifteen-unit contents", async ({ page }) => {
   await page.goto("/subjects/math/algebra/");
   await expect(page.locator("h1")).toHaveText("Algebra: Quantities, Equations, and Structure");
   const units = page.locator(".algebra-course-unit");
   await expect(units).toHaveCount(15);
-  await expect(page.locator(".algebra-course-art img")).toBeVisible();
-  await expect(page.locator(".algebra-course-art img")).toHaveAttribute("src", "/og-algebra.png");
+  await expect(page.locator(".algebra-course-art")).toHaveCount(0);
   await expect(units.filter({ has: page.locator("summary") }).locator("summary")).toHaveCount(15);
   await expect(page.locator(".algebra-course-unit[open]")).toHaveCount(0);
   await units.first().locator("summary").click();
@@ -18,10 +17,10 @@ test("complete Algebra hub exposes its course portrait and expandable fifteen-un
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
 });
 
-test("mobile Algebra contents keep the course portrait and every unit disclosure in bounds", async ({ page }) => {
+test("mobile Algebra contents keep every unit disclosure in bounds without decorative artwork", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/subjects/math/algebra/");
-  await expect(page.locator(".algebra-course-art img")).toBeVisible();
+  await expect(page.locator(".algebra-course-art")).toHaveCount(0);
   const units = page.locator(".algebra-course-unit");
   await expect(units).toHaveCount(15);
   await units.last().locator("summary").click();
@@ -30,21 +29,28 @@ test("mobile Algebra contents keep the course portrait and every unit disclosure
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
 });
 
-test("interactive Algebra lesson retains three BVLP fallbacks and hydrates only its requested scene", async ({ page }) => {
+test("non-graph Algebra lesson omits its former instructional images", async ({ page }) => {
   await page.goto("/subjects/math/algebra/arithmetic-readiness/number-lines-and-signed-quantities/");
   await expect(page.locator("h1")).toHaveText("Number lines and signed quantities");
-  await expect(page.locator("[data-bvlp-visual]")).toHaveCount(3);
-  await expect(page.locator("[data-static-fallback=retained] img")).toHaveCount(3);
-  await expect(page.locator("[data-bvlp-renderer=bg-interactive-2d]")).toHaveCount(1);
+  await expect(page.locator(".algebra-figure-sequence")).toHaveCount(0);
+  await expect(page.locator("[data-bvlp-visual]")).toHaveCount(0);
   await expect(page.locator(".algebra-exercise-families article")).toHaveCount(20);
   await expect(page.locator("[data-check-id=a0-1-q20]")).toHaveCount(1);
 });
 
-test("static Algebra lesson ships no interactive slot", async ({ page }) => {
+test("static non-graph Algebra lesson ships no figure section or interactive slot", async ({ page }) => {
   await page.goto("/subjects/math/algebra/arithmetic-readiness/whole-number-operations-and-estimation/");
-  await expect(page.locator("[data-bvlp-visual]")).toHaveCount(3);
-  await expect(page.locator("[data-bvlp-renderer=static-svg]")).toHaveCount(3);
+  await expect(page.locator(".algebra-figure-sequence")).toHaveCount(0);
+  await expect(page.locator("[data-bvlp-visual]")).toHaveCount(0);
   await expect(page.locator(".bvlp-interactive-slot")).toHaveCount(0);
+});
+
+test("function-graph Algebra lesson keeps only its actual function graph", async ({ page }) => {
+  await page.goto("/subjects/math/algebra/quadratic-functions/graphing-parabolas/");
+  await expect(page.locator(".algebra-figure-sequence")).toHaveCount(1);
+  await expect(page.locator("[data-bvlp-visual]")).toHaveCount(1);
+  await expect(page.locator("[data-bvlp-visual=algebra-a9-2-v1]")).toHaveCount(1);
+  await expect(page.locator("[data-bvlp-renderer=bg-interactive-2d]")).toHaveCount(1);
 });
 
 test("A0–A2 lessons organize authored practice into usable rounds with optional hints", async ({ page }) => {

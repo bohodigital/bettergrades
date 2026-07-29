@@ -125,11 +125,29 @@ test("subject and course hubs expose the organized math library", async () => {
   assert.match(algebraHtml, /Fifteen connected units/);
   assert.match(algebraHtml, /Arithmetic Readiness and Repair/);
   assert.match(algebraHtml, /Algebra Synthesis and Precalculus Readiness/);
-  assert.match(algebraHtml, /class="algebra-course-art"/);
-  assert.match(algebraHtml, /src="\/og-algebra\.png"/);
+  assert.doesNotMatch(algebraHtml, /class="algebra-course-art"/);
+  assert.doesNotMatch(algebraHtml, /src="\/og-algebra\.png"/);
   assert.equal((algebraHtml.match(/class="calculus-chapter algebra-course-unit"/g) ?? []).length, 15);
   assert.match(algebraHtml, /aria-label="Unit A0 lessons"[\s\S]*Number lines and signed quantities/);
   assert.match(algebraHtml, /Quick-reference layer preserved/);
+});
+
+test("Algebra lessons render only actual function graphs", async () => {
+  const nonGraphResponse = await render("/subjects/math/algebra/arithmetic-readiness/number-lines-and-signed-quantities/");
+  assert.equal(nonGraphResponse.status, 200);
+  const nonGraphHtml = await nonGraphResponse.text();
+  assert.doesNotMatch(nonGraphHtml, /class="algebra-figure-sequence"/);
+  assert.doesNotMatch(nonGraphHtml, /data-bvlp-visual="algebra-/);
+
+  const graphResponse = await render("/subjects/math/algebra/quadratic-functions/graphing-parabolas/");
+  assert.equal(graphResponse.status, 200);
+  const graphHtml = await graphResponse.text();
+  assert.match(graphHtml, /aria-label="Graphing parabolas function graphs"/);
+  assert.deepEqual(
+    [...graphHtml.matchAll(/data-bvlp-visual="(algebra-[^"]+)"/g)].map((match) => match[1]),
+    ["algebra-a9-2-v1"],
+  );
+  assert.doesNotMatch(graphHtml, /algebra-a9-2-v[23]/);
 });
 
 test("sitewide navigation exposes learner paths globally and course hierarchy locally", async () => {
