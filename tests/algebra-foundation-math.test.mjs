@@ -21,6 +21,14 @@ test("foundation prose becomes real LaTeX fragments without consuming surroundin
   assert.deepEqual(foundationMathFragments("Explain the operation in words.")[0], { kind: "text", value: "Explain the operation in words." });
   assert.deepEqual(foundationMathFragments("Record a concise operation history."), [{ kind: "text", value: "Record a concise operation history." }]);
   assert.deepEqual(mathTex("Compare a − b with b − a."), ["a - b", "b - a"]);
+  assert.deepEqual(
+    mathTex("In x(x + 2)/x, x can cancel when x ≠ 0."),
+    [String.raw`\frac{x(x + 2)}{x}, x`, String.raw`x \ne  0`],
+  );
+  assert.deepEqual(
+    mathTex("In (x + 2)/x, no x factor spans the sum x + 2."),
+    [String.raw`\frac{x + 2}{x},`, "x", "x + 2"],
+  );
 });
 
 test("every detected A0–A2 expression is valid strict KaTeX", () => {

@@ -1848,3 +1848,475 @@ h1 em, h2 em { color: var(--brand); font-family: var(--serif); font-weight: 500;
   .worked-solution { break-inside: avoid; }
   .resource-visual img { max-height: 8in; object-fit: contain; }
 }
+
+/* Algebra lessons: compact textbook reading layout */
+.algebra-course-page[data-page-type="lesson"] .limits-unit-hero {
+  width: min(52rem, calc(100% - 48px));
+  padding-top: 1.8rem;
+  padding-bottom: 1.45rem;
+}
+
+.algebra-course-page[data-page-type="lesson"] .limits-unit-hero .breadcrumbs {
+  margin-bottom: 1.15rem;
+  font-size: 0.72rem;
+}
+
+.algebra-course-page[data-page-type="lesson"] .limits-unit-hero > .eyebrow {
+  margin-bottom: 0.5rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.07em;
+}
+
+.algebra-course-page[data-page-type="lesson"] .limits-unit-hero h1 {
+  max-width: 46rem;
+  margin: 0 0 0.7rem;
+  font-size: clamp(1.9rem, 3.8vw, 2.65rem);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.algebra-course-page[data-page-type="lesson"] .limits-unit-hero > p:not(.eyebrow) {
+  max-width: 46rem;
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 1rem;
+  line-height: 1.58;
+  text-wrap: pretty;
+}
+
+.algebra-course-page[data-page-type="lesson"] .lesson-position {
+  max-width: 46rem;
+  margin-top: 1rem;
+  grid-template-columns: 1fr auto;
+}
+
+.algebra-course-page[data-page-type="lesson"] .lesson-position a,
+.algebra-course-page[data-page-type="lesson"] .lesson-position span {
+  min-height: 0;
+  padding: 0.65rem 0;
+  font-size: 0.72rem;
+}
+
+.algebra-course-page[data-page-type="lesson"] .lesson-position span {
+  text-align: right;
+}
+
+.algebra-course-page[data-page-type="lesson"] .limits-unit-layout {
+  padding-top: 2rem;
+  padding-bottom: 3.5rem;
+}
+
+.algebra-course-page[data-page-type="lesson"] .limits-unit-content {
+  width: 100%;
+  max-width: 46rem;
+}
+
+.algebra-textbook-lesson {
+  color: var(--ink);
+}
+
+.algebra-textbook-lesson .limits-node {
+  margin: 2.35rem 0;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.algebra-textbook-lesson .limits-node > header {
+  display: block;
+  padding: 0 0 0.55rem;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+}
+
+.algebra-textbook-lesson .limits-node > header span {
+  display: block;
+  font-size: 0.64rem;
+  letter-spacing: 0.08em;
+}
+
+.algebra-textbook-lesson .limits-node > header h2 {
+  margin: 0.2rem 0 0;
+  font-size: clamp(1.3rem, 2.4vw, 1.65rem);
+  line-height: 1.22;
+  letter-spacing: -0.012em;
+  text-wrap: balance;
+}
+
+.algebra-textbook-lesson .limits-node > div {
+  padding: 0.8rem 0 0;
+}
+
+.algebra-textbook-lesson .limits-node p,
+.algebra-textbook-lesson .limits-node li,
+.algebra-textbook-lesson .limits-node dd {
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.algebra-textbook-lesson .limits-node p {
+  margin: 0 0 0.9rem;
+  text-wrap: pretty;
+}
+
+.algebra-textbook-lesson .limits-node ol,
+.algebra-textbook-lesson .limits-node ul {
+  margin: 0.35rem 0 0;
+  padding-left: 1.4rem;
+}
+
+.algebra-textbook-lesson .limits-node li {
+  margin: 0.38rem 0;
+  padding-left: 0.2rem;
+}
+
+.algebra-textbook-lesson .algebra-lesson-exposition {
+  margin-top: 2.8rem;
+}
+
+.algebra-textbook-lesson .algebra-lesson-exposition > div {
+  padding-top: 1rem;
+}
+
+.algebra-textbook-lesson .algebra-lesson-exposition > div > p {
+  margin: 0;
+  font-size: 1.06rem;
+  line-height: 1.78;
+}
+
+.algebra-textbook-lesson .algebra-lesson-exposition > div > p + p {
+  text-indent: 1.5em;
+}
+
+.algebra-textbook-lesson .algebra-lesson-opening,
+.algebra-textbook-lesson .algebra-authored-method,
+.algebra-textbook-lesson .algebra-lesson-caution {
+  padding-left: 1rem;
+  border-left: 3px solid var(--brand);
+}
+
+.algebra-textbook-lesson .algebra-lesson-opening > div > p + p {
+  text-indent: 1.5em;
+}
+
+.algebra-textbook-lesson .algebra-authored-method > div > ol {
+  gap: 0.65rem;
+}
+
+.algebra-textbook-lesson .algebra-authored-method > div > ol > li {
+  grid-template-columns: 1.65rem minmax(0, 1fr);
+  gap: 0.65rem;
+}
+
+.algebra-textbook-lesson .algebra-authored-method > div > ol > li::before {
+  width: 1.65rem;
+  height: 1.65rem;
+  border-radius: 50%;
+  font-size: 0.7rem;
+}
+
+.algebra-textbook-lesson .algebra-authored-method > div > p {
+  margin-top: 0.9rem;
+  padding-top: 0.75rem;
+}
+
+.algebra-textbook-lesson .algebra-lesson-definitions {
+  border-left: 0;
+}
+
+.algebra-textbook-lesson .algebra-lesson-definitions > div > dl {
+  gap: 0;
+}
+
+.algebra-textbook-lesson .algebra-lesson-definitions > div > dl > div {
+  padding: 0.75rem 0;
+}
+
+.algebra-textbook-lesson .algebra-lesson-definitions dt {
+  font-size: 0.96rem;
+}
+
+.algebra-textbook-lesson .algebra-lesson-definitions dd {
+  margin-top: 0.2rem;
+}
+
+.algebra-textbook-lesson .algebra-lesson-definitions dd small {
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+}
+
+.algebra-textbook-lesson .algebra-figure-sequence {
+  margin: 2.5rem 0;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.algebra-textbook-lesson .limits-graph {
+  margin: 0;
+  padding: 0.85rem;
+  gap: 0.75rem;
+  border-radius: 0.35rem;
+}
+
+.algebra-textbook-lesson .limits-graph-visual {
+  box-shadow: none;
+}
+
+.algebra-textbook-lesson .limits-graph figcaption > strong {
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+}
+
+.algebra-textbook-lesson .limits-graph figcaption > p {
+  margin-top: 0.35rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.algebra-textbook-lesson .algebra-worked-examples {
+  display: grid;
+  gap: 0;
+}
+
+.algebra-textbook-lesson .algebra-worked-examples article {
+  padding: 1.1rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.algebra-textbook-lesson .algebra-worked-examples article:first-child {
+  padding-top: 0.25rem;
+  border-top: 0;
+}
+
+.algebra-textbook-lesson .algebra-worked-examples .eyebrow {
+  margin-bottom: 0.3rem;
+  font-size: 0.63rem;
+}
+
+.algebra-textbook-lesson .algebra-worked-examples h3 {
+  margin: 0 0 0.55rem;
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+.algebra-textbook-lesson .algebra-foundation-practice {
+  margin-top: 2.75rem;
+}
+
+.algebra-textbook-lesson .algebra-practice-groups {
+  gap: 1.7rem;
+}
+
+.algebra-textbook-lesson .algebra-practice-group {
+  padding: 0.95rem 0 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+}
+
+.algebra-textbook-lesson .algebra-practice-group:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.algebra-textbook-lesson .algebra-practice-group > header {
+  margin-bottom: 0.4rem;
+}
+
+.algebra-textbook-lesson .algebra-practice-group > header .eyebrow {
+  margin: 0;
+  font-size: 0.62rem;
+}
+
+.algebra-textbook-lesson .algebra-practice-group > header h3 {
+  margin-top: 0.1rem;
+  font-size: 1.12rem;
+}
+
+.algebra-textbook-lesson .algebra-foundation-practice .algebra-exercise-families {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 1.25rem;
+}
+
+.algebra-textbook-lesson .algebra-foundation-practice .algebra-exercise-families article {
+  min-height: 0;
+  padding: 0.8rem 0;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+}
+
+.algebra-textbook-lesson .algebra-foundation-practice .algebra-exercise-families h4 {
+  margin: 0.4rem 0 0.65rem;
+  font-size: 0.96rem;
+  line-height: 1.5;
+}
+
+.algebra-textbook-lesson .algebra-question-meta {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  justify-content: start;
+  gap: 0.5rem;
+  font-size: 0.7rem;
+}
+
+.algebra-textbook-lesson .algebra-question-meta span {
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
+}
+
+.algebra-textbook-lesson .algebra-question-hint {
+  margin-top: auto;
+  padding-top: 0.5rem;
+}
+
+.algebra-textbook-lesson .algebra-question-hint summary {
+  font-size: 0.78rem;
+}
+
+.algebra-textbook-lesson .algebra-question-hint p {
+  margin-top: 0.45rem;
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.algebra-textbook-lesson .algebra-lesson-caution {
+  border-left-color: var(--warm);
+}
+
+.algebra-textbook-lesson .algebra-lesson-caution article + article {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+}
+
+.algebra-textbook-lesson .limits-check {
+  margin: 2.5rem 0;
+  padding: 1.15rem;
+  border-width: 1px;
+  border-radius: 0.4rem;
+  box-shadow: none;
+}
+
+.algebra-textbook-lesson .limits-check > header {
+  font-size: 0.67rem;
+  letter-spacing: 0.06em;
+}
+
+.algebra-textbook-lesson .limits-check-prompt {
+  margin: 1rem 0;
+  font-size: 1rem !important;
+  line-height: 1.65;
+}
+
+.algebra-textbook-lesson .limits-check form label {
+  font-size: 0.85rem;
+}
+
+.algebra-textbook-lesson .limits-check .button {
+  min-height: 2.5rem;
+}
+
+.algebra-textbook-lesson .algebra-lesson-takeaway {
+  padding-top: 1.4rem;
+  border-top: 2px solid var(--ink);
+}
+
+.algebra-textbook-lesson .algebra-lesson-takeaway > header {
+  border-bottom: 0;
+}
+
+.algebra-course-page[data-page-type="lesson"] .limits-rights {
+  margin-top: 3rem;
+  padding-top: 1rem;
+}
+
+.algebra-course-page[data-page-type="lesson"] .limits-rights .eyebrow {
+  margin: 0;
+  font-size: 0.6rem;
+}
+
+.algebra-course-page[data-page-type="lesson"] .limits-rights h2 {
+  margin: 0.25rem 0;
+  font-size: 0.92rem;
+  line-height: 1.35;
+}
+
+.algebra-course-page[data-page-type="lesson"] .limits-rights p {
+  margin: 0;
+  font-size: 0.76rem !important;
+  line-height: 1.5;
+}
+
+.algebra-course-page[data-page-type="lesson"] .limits-sequence {
+  width: min(50rem, calc(100% - 48px));
+  margin-bottom: 3.5rem;
+  gap: 1.5rem;
+}
+
+.algebra-course-page[data-page-type="lesson"] .limits-sequence a {
+  padding-top: 1rem;
+  font-size: 0.82rem;
+}
+
+@media (max-width: 44rem) {
+  .algebra-course-page[data-page-type="lesson"] .limits-unit-hero,
+  .algebra-course-page[data-page-type="lesson"] .limits-sequence {
+    width: calc(100% - 28px);
+  }
+
+  .algebra-course-page[data-page-type="lesson"] .limits-unit-hero {
+    padding-top: 1.25rem;
+    padding-bottom: 1.1rem;
+  }
+
+  .algebra-course-page[data-page-type="lesson"] .limits-unit-hero h1 {
+    font-size: clamp(1.75rem, 8.5vw, 2.15rem);
+  }
+
+  .algebra-course-page[data-page-type="lesson"] .limits-unit-layout {
+    padding-top: 1.4rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .algebra-textbook-lesson .limits-node {
+    margin: 2rem 0;
+  }
+
+  .algebra-textbook-lesson .algebra-lesson-opening,
+  .algebra-textbook-lesson .algebra-authored-method,
+  .algebra-textbook-lesson .algebra-lesson-caution {
+    padding-left: 0.75rem;
+  }
+
+  .algebra-textbook-lesson .algebra-foundation-practice .algebra-exercise-families {
+    grid-template-columns: 1fr;
+  }
+
+  .algebra-course-page[data-page-type="lesson"] .limits-sequence {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .algebra-course-page[data-page-type="lesson"] .limits-sequence a:last-child {
+    text-align: left;
+  }
+}
+
+@media print {
+  .algebra-course-page[data-page-type="lesson"] .limits-unit-hero,
+  .algebra-course-page[data-page-type="lesson"] .limits-unit-content,
+  .algebra-course-page[data-page-type="lesson"] .limits-sequence {
+    width: 100%;
+    max-width: none;
+  }
+
+  .algebra-textbook-lesson .algebra-foundation-practice .algebra-exercise-families {
+    grid-template-columns: 1fr 1fr;
+  }
+}
