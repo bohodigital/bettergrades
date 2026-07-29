@@ -37,7 +37,7 @@
       "title": "Solutions, solution sets, and checking",
       "path": "/subjects/math/algebra/linear-equations/solutions-solution-sets-and-checking/",
       "outcome": "Determine whether candidate values make an equation true and distinguish a proposed answer from a verified solution.",
-      "foundationEdition": "authored-v1",
+      "foundationEdition": "authored-v2",
       "opening": {
         "prompt": "Test several possible access codes against a condition.",
         "purpose": "Interpret a solution as a value that makes an equation true, represent solution sets, and verify candidates by substitution."
@@ -50,8 +50,26 @@
       "exposition": [
         "An equation asserts that two expressions have the same value. A solution is a value in the stated domain that makes that assertion true. Solving is therefore not a ritual for moving symbols; it is the process of finding every value that survives substitution into the original equation.",
         "A solution set records all solutions. It may contain one value, several values, every value in a domain, or no values at all. The braces in {5} describe a set containing 5; they are not grouping symbols in a calculation. An empty solution set is written ∅.",
-        "Checking closes the reasoning loop. Substitute a candidate into the original equation, simplify each side independently, and compare the results. A check can reject an arithmetic error and can also reveal a domain problem, such as a value that makes a denominator zero."
+        "Checking closes the reasoning loop. Substitute a candidate into the original equation, simplify each side independently, and compare the results. A check can reject an arithmetic error and can also reveal a domain problem, such as a value that makes a denominator zero.",
+        "A solution to an equation is an input that makes the original equality true. It is not simply the number appearing after the last algebraic step. To test x = 4 in 3x − 2 = 10, substitute into both sides: 3(4) − 2 = 10 and 10 = 10. The equality verifies the candidate. If the two sides differ, the candidate is not a solution, even if it emerged from familiar-looking manipulation.",
+        "The solution set records every solution, not merely one example. An equation can have no solutions, one solution, several solutions, or infinitely many solutions. The equation x² = 9 has solution set {−3, 3}; x + 1 = x + 4 has the empty set; and 2(x + 1) = 2x + 2 is true for every real x. Reporting a complete set forces the solver to consider whether the method found all candidates and whether any candidate was invalid.",
+        "Checking belongs in the original equation because transformations can change visible structure and some operations can create extra candidates. Squaring both sides, multiplying by an expression that may be zero, or clearing denominators can enlarge the candidate set. Even equality-preserving linear steps are vulnerable to copied signs or arithmetic errors. Substituting into the original statement tests both the algebra and every original restriction at once.",
+        "An equation can also be understood as an intersection question. The solutions to f(x) = g(x) are the inputs where the graphs y = f(x) and y = g(x) have equal outputs. A table shows the same idea row by row. These representations do not replace symbolic proof, but they can predict the number and approximate location of solutions and reveal when a reported answer contradicts the visible relationship.",
+        "A solution must answer the domain of the problem. If x counts students, a negative or fractional algebraic candidate may fail the context even if it satisfies a related symbolic equation. Distinguish equation restrictions from context restrictions: both matter, but they arise for different reasons. A complete check states the substitution, shows equality, confirms original-domain restrictions, and interprets the value in the situation.",
+        "A solution is a value that makes the original equation true. Solving produces a candidate; substitution decides whether the candidate belongs to the solution set. This distinction matters when later operations can introduce extraneous values or lose restrictions, but it is already useful for linear equations because it catches sign and distribution errors. Substitute into the untouched original equation, simplify the left and right sides independently, and compare them without assuming they must match.",
+        "Solution sets can contain one number, no numbers, many numbers, or—in later work—structured collections. For a one-variable linear equation, write a singleton solution as x = 4 or {4}; do not report the check line 9 = 9 as though 9 were the solution. If a context restricts possible values, intersect the algebraic solution with that domain. A negative length or a fractional number of indivisible objects may solve the symbolic equation but fail the model.",
+        "An equation may also be viewed as an intersection question: for which inputs do the left-hand expression and right-hand expression have the same output? A table can test selected candidates, and a graph can display intersections, but algebra gives an exact solution when the expressions are manageable. Whichever representation is used, the definition is unchanged. A candidate belongs only when both sides evaluate to exactly the same value within the stated number system."
       ],
+      "method": {
+        "title": "Treat every final value as a candidate until checked",
+        "steps": [
+          "Record the original equation and its mathematical and contextual domain.",
+          "Find or test candidate values using symbolic, numerical, tabular, or graphical evidence.",
+          "Substitute each candidate into both sides of the original equation.",
+          "Report the complete solution set and interpret it within the context."
+        ],
+        "check": "A candidate is accepted only when both sides of the original equation evaluate to the same value and all original restrictions are satisfied."
+      },
       "definitions": [
         {
           "term": "solution",
@@ -67,6 +85,16 @@
           "term": "identity",
           "definition": "An equation true for every value in its domain.",
           "conditions": "Its solution set is the entire stated domain."
+        },
+        {
+          "term": "candidate solution",
+          "definition": "A value produced or suggested by a solving process before original-equation verification.",
+          "conditions": "Candidates may be rejected by substitution or domain restrictions."
+        },
+        {
+          "term": "extraneous solution",
+          "definition": "A candidate introduced by a transformation that does not satisfy the original equation.",
+          "conditions": "It must be excluded from the final solution set."
         }
       ],
       "examples": [
@@ -79,7 +107,7 @@
             "Compare 7 with the right side, 7."
           ],
           "answer": "Yes; 7 = 7",
-          "interpretation": "A true substituted statement confirms the candidate."
+          "interpretation": "A true substituted statement confirms the candidate. The substitution check converts a proposed value into a true-or-false statement in the original equation."
         },
         {
           "kind": "representation",
@@ -90,7 +118,7 @@
             "Compare the result with 2."
           ],
           "answer": "Yes; 2 = 2",
-          "interpretation": "Parentheses preserve the sign of a substituted value."
+          "interpretation": "Parentheses preserve the sign of a substituted value. A set notation answer communicates completeness, especially when more than one candidate is possible."
         },
         {
           "kind": "transfer",
@@ -101,7 +129,7 @@
             "State the complete set, not one example."
           ],
           "answer": "All real numbers",
-          "interpretation": "The equation is an identity over the real numbers."
+          "interpretation": "The equation is an identity over the real numbers. Graphical intersection and symbolic substitution describe the same equality from different representations."
         }
       ],
       "figures": [
@@ -144,8 +172,8 @@
         }
       ],
       "checkpoint": {
-        "id": "a2-1-q16",
-        "prompt": "Explain a complete check for x = 6 in 3x − 8 = 10.",
+        "id": "a2-1-q20",
+        "prompt": "A model gives n = −3 for the number of packages. Separate the algebraic and contextual conclusions.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -164,7 +192,11 @@
         "a2-1-q13",
         "a2-1-q14",
         "a2-1-q15",
-        "a2-1-q16"
+        "a2-1-q16",
+        "a2-1-q17",
+        "a2-1-q18",
+        "a2-1-q19",
+        "a2-1-q20"
       ],
       "practiceQuestions": [
         {
@@ -550,11 +582,107 @@
             "variant": 16
           },
           "solutionRef": "solution:a2-1:q16"
+        },
+        {
+          "id": "a2-1-q17",
+          "lessonId": "A2.1",
+          "unitCode": "A2",
+          "prompt": "Test x = −2 and x = 4 in x² − 2x = 8. Report the complete conclusion.",
+          "responseType": "open-response",
+          "skill": "Determine whether candidate values make an equation true and distinguish a proposed answer from a verified solution.",
+          "purpose": "transfer",
+          "difficulty": "transfer",
+          "hint": "Identify the familiar equation structure before changing any symbols.",
+          "errorTags": [
+            "solutions-solution-sets-and-checking-structure",
+            "a2-unchecked-result"
+          ],
+          "remediationPath": "/subjects/math/algebra/linear-equations/solutions-solution-sets-and-checking/",
+          "units": null,
+          "roundingPolicy": "Keep exact form unless the prompt explicitly requests an approximation.",
+          "seedPolicy": {
+            "deterministic": true,
+            "source": "A2.1",
+            "variant": 17
+          },
+          "solutionRef": "solution:a2-1:q17"
+        },
+        {
+          "id": "a2-1-q18",
+          "lessonId": "A2.1",
+          "unitCode": "A2",
+          "prompt": "Use a table of x = 0, 1, 2, 3 to identify which value solves 2x + 1 = 7.",
+          "responseType": "open-response",
+          "skill": "Determine whether candidate values make an equation true and distinguish a proposed answer from a verified solution.",
+          "purpose": "modeling",
+          "difficulty": "transfer",
+          "hint": "Define the unknown and its units before writing the equation.",
+          "errorTags": [
+            "solutions-solution-sets-and-checking-structure",
+            "a2-unchecked-result"
+          ],
+          "remediationPath": "/subjects/math/algebra/linear-equations/solutions-solution-sets-and-checking/",
+          "units": null,
+          "roundingPolicy": "Keep exact form unless the prompt explicitly requests an approximation.",
+          "seedPolicy": {
+            "deterministic": true,
+            "source": "A2.1",
+            "variant": 18
+          },
+          "solutionRef": "solution:a2-1:q18"
+        },
+        {
+          "id": "a2-1-q19",
+          "lessonId": "A2.1",
+          "unitCode": "A2",
+          "prompt": "Explain why checking only the final equation x = 5 does not verify a multistep solution.",
+          "responseType": "open-response",
+          "skill": "Determine whether candidate values make an equation true and distinguish a proposed answer from a verified solution.",
+          "purpose": "error-analysis",
+          "difficulty": "mixed",
+          "hint": "Locate the first line that no longer preserves the original relationship.",
+          "errorTags": [
+            "solutions-solution-sets-and-checking-structure",
+            "a2-unchecked-result"
+          ],
+          "remediationPath": "/subjects/math/algebra/linear-equations/solutions-solution-sets-and-checking/",
+          "units": null,
+          "roundingPolicy": "Keep exact form unless the prompt explicitly requests an approximation.",
+          "seedPolicy": {
+            "deterministic": true,
+            "source": "A2.1",
+            "variant": 19
+          },
+          "solutionRef": "solution:a2-1:q19"
+        },
+        {
+          "id": "a2-1-q20",
+          "lessonId": "A2.1",
+          "unitCode": "A2",
+          "prompt": "A model gives n = −3 for the number of packages. Separate the algebraic and contextual conclusions.",
+          "responseType": "open-response",
+          "skill": "Determine whether candidate values make an equation true and distinguish a proposed answer from a verified solution.",
+          "purpose": "exit",
+          "difficulty": "standard",
+          "hint": "Solve, classify the solution set, and verify against the original equation.",
+          "errorTags": [
+            "solutions-solution-sets-and-checking-structure",
+            "a2-unchecked-result"
+          ],
+          "remediationPath": "/subjects/math/algebra/linear-equations/solutions-solution-sets-and-checking/",
+          "units": null,
+          "roundingPolicy": "Keep exact form unless the prompt explicitly requests an approximation.",
+          "seedPolicy": {
+            "deterministic": true,
+            "source": "A2.1",
+            "variant": 20
+          },
+          "solutionRef": "solution:a2-1:q20"
         }
       ],
       "exitCheck": [
-        "a2-1-q15",
-        "a2-1-q16"
+        "a2-1-q19",
+        "a2-1-q20"
       ],
       "takeaway": {
         "summary": "A solution makes the original equation true.",
@@ -588,7 +716,7 @@
       "title": "Addition and subtraction equations",
       "path": "/subjects/math/algebra/linear-equations/addition-and-subtraction-equations/",
       "outcome": "Use additive inverses to isolate a variable while preserving equality.",
-      "foundationEdition": "authored-v1",
+      "foundationEdition": "authored-v2",
       "opening": {
         "prompt": "Undo a net change in a balance or temperature.",
         "purpose": "Solve addition and subtraction equations by preserving equality with inverse operations."
@@ -601,8 +729,26 @@
       "exposition": [
         "An equation behaves like a balanced scale: changing only one side destroys the equality, while performing the same valid operation on both sides preserves it. For x + 7 = 19, subtracting 7 from both sides isolates x without changing the solution set.",
         "Subtraction equations deserve careful reading. In x − 5 = 9, add 5 to both sides. In 5 − x = 9, the variable is being subtracted, so adding x first or reasoning from the missing subtrahend avoids a sign trap. Written equality steps should show the same operation on both sides.",
-        "The final value is a candidate until it is checked. Substitute into the original equation, not merely the last transformed line. A one-step equation may be quick, but the habits of balance, explanation, and verification scale to every later equation."
+        "The final value is a candidate until it is checked. Substitute into the original equation, not merely the last transformed line. A one-step equation may be quick, but the habits of balance, explanation, and verification scale to every later equation.",
+        "Solving an addition or subtraction equation means isolating the variable while preserving equality. The balance principle says that applying the same operation to both complete sides keeps equal quantities equal. In x + 7 = 19, subtracting 7 from both sides gives x = 12. The subtraction is chosen because it is the inverse of adding 7, not because a term ‘moves’ and changes sign. Writing both operations protects the meaning that every line has the same solution set.",
+        "Subtraction attached to a variable can be rewritten as addition of an opposite. In x − 5 = 11, add 5 to both sides. In 8 − x = 3, the variable term is −x, not x. Subtracting 8 gives −x = −5, and multiplying both sides by −1 gives x = 5. Treating the coefficient of x as −1 prevents the common but unreliable habit of moving x across the equality sign without recording an operation.",
+        "Variables may represent signed quantities, so the inverse operation must be applied accurately with negatives. For x + (−6) = −14, adding 6 to both sides gives x = −8. A number line can verify the result: starting at −8 and applying a change of −6 reaches −14. The visual and symbolic methods agree because both preserve the same signed relationship.",
+        "Efficient solving does not mean skipping justification. Some equations can be read as missing-addend questions, while others are clearer with balance operations. A mental solution is acceptable when the equality check is shown. The important evidence is that the same value replaces x on both sides and makes the original statement true. Long notation is unnecessary, but invisible transformations are difficult to audit and easy to reverse incorrectly.",
+        "A one-step equation is the smallest model of the full solving process: identify the operation acting on the variable, use its inverse on both sides, simplify, and check. Later equations add distribution, like terms, and variables on both sides, but the equality principle does not change. Building a precise one-step habit now prevents ‘sign teleportation’ from becoming a source of errors in longer work.",
+        "Addition and subtraction equations are solved by isolating the variable term with an inverse operation. In x − 7 = 15, adding 7 to both sides creates x + 0 = 22. The balance is preserved because equal quantities remain equal after the same number is added. Writing the operation on both sides is more informative than moving a term across the equals sign and changing its sign, a shortcut that can hide why the new equation is equivalent.",
+        "The variable need not appear on the left. For 18 = y + 5, subtract 5 from both sides to obtain 13 = y, which may be reordered as y = 13 because equality is symmetric. Signed constants require extra care: x + (−8) = 3 is undone by adding 8, while x − (−8) = 3 is first read as x + 8 = 3. A number-line interpretation can check whether the isolated value completes the stated change.",
+        "A one-step equation can model a change from an unknown start or toward an unknown finish. If a temperature rose 11 degrees to reach −2°, then x + 11 = −2 and the starting temperature was −13°. The negative answer is reasonable because the rise crossed toward zero but ended below it. Attach the result to the story and reverse the change: −13 + 11 = −2. This interpretation is a stronger check than arithmetic alone."
       ],
+      "method": {
+        "title": "Undo one additive change on both sides",
+        "steps": [
+          "Rewrite subtraction as addition of an opposite when that makes the variable term clearer.",
+          "Identify the number added to the variable term.",
+          "Add its opposite to both complete sides of the equation.",
+          "Simplify and substitute the result into the original equation."
+        ],
+        "check": "The left and right sides of the original equation must evaluate to the same number after substitution."
+      },
       "definitions": [
         {
           "term": "inverse operations",
@@ -618,6 +764,16 @@
           "term": "isolate",
           "definition": "Rewrite an equation so the target variable stands alone.",
           "conditions": "Isolation must be achieved through equality-preserving operations."
+        },
+        {
+          "term": "additive inverse",
+          "definition": "The number that combines with a value to produce 0.",
+          "conditions": "The additive inverse of a is −a."
+        },
+        {
+          "term": "balance operation",
+          "definition": "An operation applied to both sides of an equation to preserve equality.",
+          "conditions": "It must be defined for the quantities involved."
         }
       ],
       "examples": [
@@ -630,7 +786,7 @@
             "Check 17 + 14 = 31."
           ],
           "answer": "x = 17",
-          "interpretation": "The inverse of adding 14 is subtracting 14."
+          "interpretation": "The inverse of adding 14 is subtracting 14. The balance step is visible on both sides, so the sign change is justified rather than memorized."
         },
         {
           "kind": "representation",
@@ -641,7 +797,7 @@
             "Check 5 − 8 = −3."
           ],
           "answer": "x = 5",
-          "interpretation": "The solution may have a different sign than either visible constant."
+          "interpretation": "The solution may have a different sign than either visible constant. Recognizing −x as a term with coefficient −1 keeps subtraction structure intact."
         },
         {
           "kind": "transfer",
@@ -652,7 +808,7 @@
             "Check 6 − (−4) = 10."
           ],
           "answer": "x = −4",
-          "interpretation": "A variable after a minus sign has coefficient −1."
+          "interpretation": "A variable after a minus sign has coefficient −1. The original-equation check turns the final value back into a true equality."
         }
       ],
       "figures": [
@@ -695,8 +851,8 @@
         }
       ],
       "checkpoint": {
-        "id": "a2-2-q16",
-        "prompt": "Solve and verify 4 − x = −9.",
+        "id": "a2-2-q20",
+        "prompt": "A student solves x + 9 = 2 by adding 9 to both sides. Explain the inverse-operation error.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -715,7 +871,11 @@
         "a2-2-q13",
         "a2-2-q14",
         "a2-2-q15",
-        "a2-2-q16"
+        "a2-2-q16",
+        "a2-2-q17",
+        "a2-2-q18",
+        "a2-2-q19",
+        "a2-2-q20"
       ],
       "practiceQuestions": [
         {
@@ -1101,11 +1261,107 @@
             "variant": 16
           },
           "solutionRef": "solution:a2-2:q16"
+        },
+        {
+          "id": "a2-2-q17",
+          "lessonId": "A2.2",
+          "unitCode": "A2",
+          "prompt": "Solve x − 18 = −27 and verify.",
+          "responseType": "open-response",
+          "skill": "Use additive inverses to isolate a variable while preserving equality.",
+          "purpose": "transfer",
+          "difficulty": "transfer",
+          "hint": "Identify the familiar equation structure before changing any symbols.",
+          "errorTags": [
+            "addition-and-subtraction-equations-structure",
+            "a2-unchecked-result"
+          ],
+          "remediationPath": "/subjects/math/algebra/linear-equations/addition-and-subtraction-equations/",
+          "units": null,
+          "roundingPolicy": "Keep exact form unless the prompt explicitly requests an approximation.",
+          "seedPolicy": {
+            "deterministic": true,
+            "source": "A2.2",
+            "variant": 17
+          },
+          "solutionRef": "solution:a2-2:q17"
+        },
+        {
+          "id": "a2-2-q18",
+          "lessonId": "A2.2",
+          "unitCode": "A2",
+          "prompt": "Solve 14 − y = −5 without moving terms across the equality sign.",
+          "responseType": "open-response",
+          "skill": "Use additive inverses to isolate a variable while preserving equality.",
+          "purpose": "modeling",
+          "difficulty": "transfer",
+          "hint": "Define the unknown and its units before writing the equation.",
+          "errorTags": [
+            "addition-and-subtraction-equations-structure",
+            "a2-unchecked-result"
+          ],
+          "remediationPath": "/subjects/math/algebra/linear-equations/addition-and-subtraction-equations/",
+          "units": null,
+          "roundingPolicy": "Keep exact form unless the prompt explicitly requests an approximation.",
+          "seedPolicy": {
+            "deterministic": true,
+            "source": "A2.2",
+            "variant": 18
+          },
+          "solutionRef": "solution:a2-2:q18"
+        },
+        {
+          "id": "a2-2-q19",
+          "lessonId": "A2.2",
+          "unitCode": "A2",
+          "prompt": "A temperature T plus a change of −11°C equals −4°C. Find the starting temperature and interpret.",
+          "responseType": "open-response",
+          "skill": "Use additive inverses to isolate a variable while preserving equality.",
+          "purpose": "error-analysis",
+          "difficulty": "mixed",
+          "hint": "Locate the first line that no longer preserves the original relationship.",
+          "errorTags": [
+            "addition-and-subtraction-equations-structure",
+            "a2-unchecked-result"
+          ],
+          "remediationPath": "/subjects/math/algebra/linear-equations/addition-and-subtraction-equations/",
+          "units": null,
+          "roundingPolicy": "Keep exact form unless the prompt explicitly requests an approximation.",
+          "seedPolicy": {
+            "deterministic": true,
+            "source": "A2.2",
+            "variant": 19
+          },
+          "solutionRef": "solution:a2-2:q19"
+        },
+        {
+          "id": "a2-2-q20",
+          "lessonId": "A2.2",
+          "unitCode": "A2",
+          "prompt": "A student solves x + 9 = 2 by adding 9 to both sides. Explain the inverse-operation error.",
+          "responseType": "open-response",
+          "skill": "Use additive inverses to isolate a variable while preserving equality.",
+          "purpose": "exit",
+          "difficulty": "standard",
+          "hint": "Solve, classify the solution set, and verify against the original equation.",
+          "errorTags": [
+            "addition-and-subtraction-equations-structure",
+            "a2-unchecked-result"
+          ],
+          "remediationPath": "/subjects/math/algebra/linear-equations/addition-and-subtraction-equations/",
+          "units": null,
+          "roundingPolicy": "Keep exact form unless the prompt explicitly requests an approximation.",
+          "seedPolicy": {
+            "deterministic": true,
+            "source": "A2.2",
+            "variant": 20
+          },
+          "solutionRef": "solution:a2-2:q20"
         }
       ],
       "exitCheck": [
-        "a2-2-q15",
-        "a2-2-q16"
+        "a2-2-q19",
+        "a2-2-q20"
       ],
       "takeaway": {
         "summary": "Preserve equality by applying the same inverse operation to both sides.",
@@ -1142,7 +1398,7 @@
       "title": "Multiplication and division equations",
       "path": "/subjects/math/algebra/linear-equations/multiplication-and-division-equations/",
       "outcome": "Use reciprocals and equal scaling to isolate a variable, with explicit zero restrictions.",
-      "foundationEdition": "authored-v1",
+      "foundationEdition": "authored-v2",
       "opening": {
         "prompt": "Recover a unit quantity from a scaled total.",
         "purpose": "Solve multiplication and division equations using reciprocal operations, with attention to zero restrictions."
@@ -1155,8 +1411,26 @@
       "exposition": [
         "In a multiplication equation such as 7x = 42, the coefficient 7 tells how x is scaled. Dividing both sides by the nonzero coefficient reverses that scaling and preserves equality. Writing x = 42/7 makes the inverse operation visible.",
         "A division equation such as x/5 = 8 can be read as one fifth of x equals 8. Multiplying both sides by 5 clears the division. Fractions are handled the same way: multiplying by the reciprocal of a nonzero coefficient isolates the variable.",
-        "Zero is a structural boundary. Dividing by a coefficient is valid only when that coefficient is not zero. The equation 0x = 5 has no solution, while 0x = 0 is true for every x; neither can be handled by dividing by zero."
+        "Zero is a structural boundary. Dividing by a coefficient is valid only when that coefficient is not zero. The equation 0x = 5 has no solution, while 0x = 0 is true for every x; neither can be handled by dividing by zero.",
+        "In ax = b, multiplication by coefficient a is undone by division by a, provided a ≠ 0. Dividing both sides by the same nonzero number preserves equality and gives x = b/a. The nonzero condition is not optional: division by zero has no real-number value. Write the coefficient, including its sign, as part of the variable term. For −4x = 20, divide by −4 to obtain x = −5.",
+        "A fraction coefficient can be undone by multiplying by its reciprocal. In (3/5)x = 12, multiply both sides by 5/3 to produce x = 20. This is the same operation as dividing by 3/5, expressed in a form that cancels visibly. The coefficient must be nonzero, and the reciprocal must multiply the entire side. Estimating the scale helps: if three-fifths of x is 12, x should be larger than 12.",
+        "Division equations can be rewritten as multiplication equations. In x/7 = −3, multiply both sides by 7 to obtain x = −21. In 7/x = −3, however, x is in the denominator and the equation is not a one-step linear equation of the same form; multiplying by x creates a restriction x ≠ 0 and requires later checking. Reading factor and denominator structure prevents different equation types from being treated as identical.",
+        "The coefficient zero creates a classification problem rather than a division step. The equation 0x = 0 is true for every real x, while 0x = 5 is false for every real x. Dividing by zero would hide this distinction. Before dividing, inspect the coefficient. This early habit prepares the learner to classify equations whose variables later cancel.",
+        "Units can clarify multiplicative equations. If 6 tickets cost $54 at a constant price p, then 6p = $54 and p = $9 per ticket. Dividing dollars by tickets produces dollars per ticket. Substitute the result into the original model and confirm both number and units. A coefficient is often a count, rate, or scale factor, and interpreting it makes the inverse operation more than symbol movement.",
+        "Multiplication and division equations are undone with reciprocal operations. If 7x = 35, divide both sides by the nonzero coefficient 7. If x/5 = 9, multiply both sides by 5. The coefficient includes its sign, so −4x = 20 requires division by −4 and gives x = −5. Separating the sign from the magnitude during a prediction can prevent an answer with the wrong direction.",
+        "Fractional coefficients are often cleared by multiplying by their reciprocal. In (3/5)x = 12, multiplying both sides by 5/3 creates x = 20. The reciprocal exists because 3/5 is nonzero. Alternatively, multiply by 5 and then divide by 3; both paths preserve equality and should agree. Choose the form with fewer opportunities for arithmetic error, then verify by reconstructing the original product or quotient.",
+        "A zero coefficient creates a special case rather than an ordinary division step. In 0x = 0, every real x works; in 0x = 7, no real x works. Dividing by zero is not permitted, so the instruction “divide by the coefficient” always carries a nonzero condition. Recognizing this boundary prepares the later classification of equations and prevents a forbidden operation from being hidden in an otherwise familiar procedure. A final check should therefore inspect both the candidate value and whether every operation used to obtain it was allowed."
       ],
+      "method": {
+        "title": "Undo a nonzero scale factor",
+        "steps": [
+          "Identify the complete coefficient multiplying the variable, including sign and units.",
+          "Confirm the coefficient is nonzero.",
+          "Divide both sides by the coefficient or multiply by its reciprocal.",
+          "Simplify, interpret units, and check in the original equation."
+        ],
+        "check": "Multiply the proposed value by the original coefficient and confirm that it reproduces the original right side exactly."
+      },
       "definitions": [
         {
           "term": "coefficient",
@@ -1172,6 +1446,16 @@
           "term": "zero-product boundary",
           "definition": "The special behavior created when a variable's coefficient is zero.",
           "conditions": "Check the resulting statement instead of dividing by zero."
+        },
+        {
+          "term": "coefficient equation",
+          "definition": "An equation of the form ax = b in which a scales the unknown.",
+          "conditions": "When a ≠ 0, the unique solution is x = b/a."
+        },
+        {
+          "term": "zero coefficient",
+          "definition": "A coefficient equal to 0, making the variable term 0 for every input.",
+          "conditions": "The equation must be classified as always true or always false rather than divided by zero."
         }
       ],
       "examples": [
@@ -1184,7 +1468,7 @@
             "Check −6(−9/2) = 27."
           ],
           "answer": "x = −9/2",
-          "interpretation": "A negative coefficient reverses the sign of the quotient."
+          "interpretation": "A negative coefficient reverses the sign of the quotient. Dividing by the full signed coefficient isolates the variable in one equality-preserving step."
         },
         {
           "kind": "representation",
@@ -1195,7 +1479,7 @@
             "Check (−28)/(−4) = 7."
           ],
           "answer": "x = −28",
-          "interpretation": "Multiplication by the denominator clears division."
+          "interpretation": "Multiplication by the denominator clears division. The reciprocal is justified because its product with a nonzero fraction coefficient is 1."
         },
         {
           "kind": "transfer",
@@ -1206,7 +1490,7 @@
             "Simplify 12·5/3."
           ],
           "answer": "x = 20",
-          "interpretation": "A reciprocal undoes a nonzero fractional coefficient."
+          "interpretation": "A reciprocal undoes a nonzero fractional coefficient. Inspecting a zero coefficient prevents a forbidden division from erasing the equation’s true classification."
         }
       ],
       "figures": [
@@ -1249,8 +1533,8 @@
         }
       ],
       "checkpoint": {
-        "id": "a2-3-q16",
-        "prompt": "Solve and verify (7/4)x = −21.",
+        "id": "a2-3-q20",
+        "prompt": "Five equal containers hold 17.5 liters total. Write and solve a coefficient equation with units.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -1269,7 +1553,11 @@
         "a2-3-q13",
         "a2-3-q14",
         "a2-3-q15",
-        "a2-3-q16"
+        "a2-3-q16",
+        "a2-3-q17",
+        "a2-3-q18",
+        "a2-3-q19",
+        "a2-3-q20"
       ],
       "practiceQuestions": [
         {
@@ -1655,11 +1943,107 @@
             "variant": 16
           },
           "solutionRef": "solution:a2-3:q16"
+        },
+        {
+          "id": "a2-3-q17",
+          "lessonId": "A2.3",
+          "unitCode": "A2",
+          "prompt": "Solve −7x = 35 and check the sign before calculating.",
+          "responseType": "open-response",
+          "skill": "Use reciprocals and equal scaling to isolate a variable, with explicit zero restrictions.",
+          "purpose": "transfer",
+          "difficulty": "transfer",
+          "hint": "Identify the familiar equation structure before changing any symbols.",
+          "errorTags": [
+            "multiplication-and-division-equations-structure",
+            "a2-unchecked-result"
+          ],
+          "remediationPath": "/subjects/math/algebra/linear-equations/multiplication-and-division-equations/",
+          "units": null,
+          "roundingPolicy": "Keep exact form unless the prompt explicitly requests an approximation.",
+          "seedPolicy": {
+            "deterministic": true,
+            "source": "A2.3",
+            "variant": 17
+          },
+          "solutionRef": "solution:a2-3:q17"
+        },
+        {
+          "id": "a2-3-q18",
+          "lessonId": "A2.3",
+          "unitCode": "A2",
+          "prompt": "Solve (−4/9)y = 14.",
+          "responseType": "open-response",
+          "skill": "Use reciprocals and equal scaling to isolate a variable, with explicit zero restrictions.",
+          "purpose": "modeling",
+          "difficulty": "transfer",
+          "hint": "Define the unknown and its units before writing the equation.",
+          "errorTags": [
+            "multiplication-and-division-equations-structure",
+            "a2-unchecked-result"
+          ],
+          "remediationPath": "/subjects/math/algebra/linear-equations/multiplication-and-division-equations/",
+          "units": null,
+          "roundingPolicy": "Keep exact form unless the prompt explicitly requests an approximation.",
+          "seedPolicy": {
+            "deterministic": true,
+            "source": "A2.3",
+            "variant": 18
+          },
+          "solutionRef": "solution:a2-3:q18"
+        },
+        {
+          "id": "a2-3-q19",
+          "lessonId": "A2.3",
+          "unitCode": "A2",
+          "prompt": "Classify 0z = 0 and 0z = −8.",
+          "responseType": "open-response",
+          "skill": "Use reciprocals and equal scaling to isolate a variable, with explicit zero restrictions.",
+          "purpose": "error-analysis",
+          "difficulty": "mixed",
+          "hint": "Locate the first line that no longer preserves the original relationship.",
+          "errorTags": [
+            "multiplication-and-division-equations-structure",
+            "a2-unchecked-result"
+          ],
+          "remediationPath": "/subjects/math/algebra/linear-equations/multiplication-and-division-equations/",
+          "units": null,
+          "roundingPolicy": "Keep exact form unless the prompt explicitly requests an approximation.",
+          "seedPolicy": {
+            "deterministic": true,
+            "source": "A2.3",
+            "variant": 19
+          },
+          "solutionRef": "solution:a2-3:q19"
+        },
+        {
+          "id": "a2-3-q20",
+          "lessonId": "A2.3",
+          "unitCode": "A2",
+          "prompt": "Five equal containers hold 17.5 liters total. Write and solve a coefficient equation with units.",
+          "responseType": "open-response",
+          "skill": "Use reciprocals and equal scaling to isolate a variable, with explicit zero restrictions.",
+          "purpose": "exit",
+          "difficulty": "standard",
+          "hint": "Solve, classify the solution set, and verify against the original equation.",
+          "errorTags": [
+            "multiplication-and-division-equations-structure",
+            "a2-unchecked-result"
+          ],
+          "remediationPath": "/subjects/math/algebra/linear-equations/multiplication-and-division-equations/",
+          "units": null,
+          "roundingPolicy": "Keep exact form unless the prompt explicitly requests an approximation.",
+          "seedPolicy": {
+            "deterministic": true,
+            "source": "A2.3",
+            "variant": 20
+          },
+          "solutionRef": "solution:a2-3:q20"
         }
       ],
       "exitCheck": [
-        "a2-3-q15",
-        "a2-3-q16"
+        "a2-3-q19",
+        "a2-3-q20"
       ],
       "takeaway": {
         "summary": "Undo a nonzero coefficient by division or multiplication by its reciprocal.",
@@ -1696,7 +2080,7 @@
       "title": "Simplifying before solving",
       "path": "/subjects/math/algebra/linear-equations/simplifying-before-solving/",
       "outcome": "Combine like terms and distribute before isolating the variable.",
-      "foundationEdition": "authored-v1",
+      "foundationEdition": "authored-v2",
       "opening": {
         "prompt": "Compare a cluttered equation with its simplified structure.",
         "purpose": "Simplify each side of an equation correctly before choosing operations that isolate the variable."
@@ -1709,8 +2093,26 @@
       "exposition": [
         "Equations often contain removable clutter: like terms, numerical arithmetic, or distributive products on the same side. Simplifying each side first exposes the equation's structure and reduces the number of balance operations required.",
         "Only like terms combine. A term containing x cannot combine with a constant, and x cannot combine with x². Distribution must reach every term inside the grouping symbol, including negative signs. These expression rules happen within a side; equality operations happen to both sides.",
-        "After simplifying, solve the resulting equation and check against the original unsimplified form. That final check is especially valuable because it tests both the simplification and the solving steps."
+        "After simplifying, solve the resulting equation and check against the original unsimplified form. That final check is especially valuable because it tests both the simplification and the solving steps.",
+        "An equation may contain unnecessary complexity on one or both sides. Simplifying each side first can expose the actual balance structure. Distribution removes grouped multiplication, and like terms combine repeated algebraic units. In 3(x + 4) − 2x = 17, distribution gives 3x + 12 − 2x = 17, then like terms give x + 12 = 17. Only after the sides are simplified does the one-step balance become obvious.",
+        "Distribution must reach every term in a group, and a negative factor changes every sign. The expression −2(3x − 5) becomes −6x + 10. A common error changes only the first term or forgets that subtracting a group multiplies the entire group by −1. Rewriting −(x − 4) as (−1)(x − 4) makes the operation visible.",
+        "Like terms are combined within a side, not across the equality sign. The equation 4x + 3 + 2x = 21 becomes 6x + 3 = 21 because 4x and 2x are like terms. The constant 3 remains separate. Moving 3 to the other side is shorthand for subtracting 3 from both sides; keeping simplification and balance operations on separate lines makes each justification clear.",
+        "Different valid simplification orders should agree. One solver may distribute first, while another may divide a common factor from both sides. Efficiency is welcome when the operation applies to every term. For 6x + 12 = 30, dividing both sides by 6 gives x + 2 = 5. Dividing only 6x by 6 would change the left side. A horizontal fraction bar around the entire side can make term-by-term division explicit.",
+        "The original equation remains the final authority. A simplification error can produce a value that correctly solves the wrong simplified equation. Substitution into the original grouped form tests distribution, signs, term combination, and balance operations together. Estimate where possible: if 3(x + 4) − 2x = x + 12, a right side of 17 suggests x near 5 before formal solving begins.",
+        "Simplifying before solving means replacing each side with an equivalent expression, not performing an operation that changes only one side. Distribute through grouping, combine like terms, and reduce numerical fractions while keeping the equality visible. In 3(x + 4) − 2x = 19, the left side becomes 3x + 12 − 2x = x + 12, after which one inverse step isolates x. The simplification reveals that an apparently multistep equation has a simple underlying structure.",
+        "Do not combine across the equals sign. The equation 4x + 3 = 2x + 11 has like terms on different sides, but they belong to different expressions. Subtracting 2x from both sides is an equality-preserving operation; simply calling 4x and 2x “like terms” and replacing them with 2x without showing the balance loses the argument. Keep a vertical equals-sign spine so every line clearly states an equation equivalent to the one above it.",
+        "Fractions and negative coefficients can be simplified before isolation too. In −(x − 6) + 2x = 13, distributing −1 gives −x + 6 + 2x = 13, then combining like terms gives x + 6 = 13. A common error is to change only the first sign inside the parentheses. Writing the hidden coefficient −1 and multiplying it by every term makes the structure explicit and produces an equation that is easier to solve. Circle or underline the terms that are truly like before combining them; coefficients may change, but the shared variable part must remain intact. Constants combine only with other constants on the same side of the equation."
       ],
+      "method": {
+        "title": "Simplify each side, then solve the exposed equation",
+        "steps": [
+          "Distribute every outside factor across every term in its group.",
+          "Combine like terms separately on the left and right sides.",
+          "Use balance operations to isolate the remaining variable term.",
+          "Substitute into the original grouped equation, not only the simplified form."
+        ],
+        "check": "Simplify the original equation by a second valid route or substitute the result into its unsimplified sides and compare exact values."
+      },
       "definitions": [
         {
           "term": "like terms",
@@ -1726,6 +2128,16 @@
           "term": "simplify",
           "definition": "Rewrite an expression in an equivalent, more useful form.",
           "conditions": "Simplifying one side does not require the same rewrite on the other side."
+        },
+        {
+          "term": "simplify within a side",
+          "definition": "Use equivalent-expression properties without changing which quantities are on each side of an equation.",
+          "conditions": "It is distinct from applying a balance operation to both sides."
+        },
+        {
+          "term": "equivalent equation",
+          "definition": "An equation with exactly the same solution set as another equation.",
+          "conditions": "Every reversible balance step preserves equivalence."
         }
       ],
       "examples": [
@@ -1738,7 +2150,7 @@
             "Divide by 7 and check."
           ],
           "answer": "x = 5",
-          "interpretation": "Combining like terms reveals a two-step equation."
+          "interpretation": "Combining like terms reveals a two-step equation. Simplification reveals the one-step equation hidden inside the original grouped form."
         },
         {
           "kind": "representation",
@@ -1749,7 +2161,7 @@
             "Check 3(5+4)=27."
           ],
           "answer": "x = 5",
-          "interpretation": "More than one efficient first step can preserve equivalence."
+          "interpretation": "More than one efficient first step can preserve equivalence. Separating distribution, like-term collection, and balance operations makes every justification inspectable."
         },
         {
           "kind": "transfer",
@@ -1760,7 +2172,7 @@
             "Add 2 and divide by 2."
           ],
           "answer": "x = 7",
-          "interpretation": "Simplification separates expression work from balance work."
+          "interpretation": "Simplification separates expression work from balance work. Checking in the original form detects mistakes that a transformed equation can no longer reveal."
         }
       ],
       "figures": [
@@ -1803,8 +2215,8 @@
         }
       ],
       "checkpoint": {
-        "id": "a2-4-q16",
-        "prompt": "Solve and verify 2(3x − 5) + 4x = 40.",
+        "id": "a2-4-q20",
+        "prompt": "A student simplifies 2(x + 5) − 3x as −x + 5. Locate and repair the first error.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -1823,7 +2235,11 @@
         "a2-4-q13",
         "a2-4-q14",
         "a2-4-q15",
-        "a2-4-q16"
+        "a2-4-q16",
+        "a2-4-q17",
+        "a2-4-q18",
+        "a2-4-q19",
+        "a2-4-q20"
       ],
       "practiceQuestions": [
         {
@@ -2209,11 +2625,107 @@
             "variant": 16
           },
           "solutionRef": "solution:a2-4:q16"
+        },
+        {
+          "id": "a2-4-q17",
+          "lessonId": "A2.4",
+          "unitCode": "A2",
+          "prompt": "Solve 5(2x − 3) − 4x = 27.",
+          "responseType": "open-response",
+          "skill": "Combine like terms and distribute before isolating the variable.",
+          "purpose": "transfer",
+          "difficulty": "transfer",
+          "hint": "Identify the familiar equation structure before changing any symbols.",
+          "errorTags": [
+            "simplifying-before-solving-structure",
+            "a2-unchecked-result"
+          ],
+          "remediationPath": "/subjects/math/algebra/linear-equations/simplifying-before-solving/",
+          "units": null,
+          "roundingPolicy": "Keep exact form unless the prompt explicitly requests an approximation.",
+          "seedPolicy": {
+            "deterministic": true,
+            "source": "A2.4",
+            "variant": 17
+          },
+          "solutionRef": "solution:a2-4:q17"
+        },
+        {
+          "id": "a2-4-q18",
+          "lessonId": "A2.4",
+          "unitCode": "A2",
+          "prompt": "Solve −3(2y + 1) + 5y = 9.",
+          "responseType": "open-response",
+          "skill": "Combine like terms and distribute before isolating the variable.",
+          "purpose": "modeling",
+          "difficulty": "transfer",
+          "hint": "Define the unknown and its units before writing the equation.",
+          "errorTags": [
+            "simplifying-before-solving-structure",
+            "a2-unchecked-result"
+          ],
+          "remediationPath": "/subjects/math/algebra/linear-equations/simplifying-before-solving/",
+          "units": null,
+          "roundingPolicy": "Keep exact form unless the prompt explicitly requests an approximation.",
+          "seedPolicy": {
+            "deterministic": true,
+            "source": "A2.4",
+            "variant": 18
+          },
+          "solutionRef": "solution:a2-4:q18"
+        },
+        {
+          "id": "a2-4-q19",
+          "lessonId": "A2.4",
+          "unitCode": "A2",
+          "prompt": "Solve 4(3x + 6) = 8x + 40 using an efficient first move.",
+          "responseType": "open-response",
+          "skill": "Combine like terms and distribute before isolating the variable.",
+          "purpose": "error-analysis",
+          "difficulty": "mixed",
+          "hint": "Locate the first line that no longer preserves the original relationship.",
+          "errorTags": [
+            "simplifying-before-solving-structure",
+            "a2-unchecked-result"
+          ],
+          "remediationPath": "/subjects/math/algebra/linear-equations/simplifying-before-solving/",
+          "units": null,
+          "roundingPolicy": "Keep exact form unless the prompt explicitly requests an approximation.",
+          "seedPolicy": {
+            "deterministic": true,
+            "source": "A2.4",
+            "variant": 19
+          },
+          "solutionRef": "solution:a2-4:q19"
+        },
+        {
+          "id": "a2-4-q20",
+          "lessonId": "A2.4",
+          "unitCode": "A2",
+          "prompt": "A student simplifies 2(x + 5) − 3x as −x + 5. Locate and repair the first error.",
+          "responseType": "open-response",
+          "skill": "Combine like terms and distribute before isolating the variable.",
+          "purpose": "exit",
+          "difficulty": "standard",
+          "hint": "Solve, classify the solution set, and verify against the original equation.",
+          "errorTags": [
+            "simplifying-before-solving-structure",
+            "a2-unchecked-result"
+          ],
+          "remediationPath": "/subjects/math/algebra/linear-equations/simplifying-before-solving/",
+          "units": null,
+          "roundingPolicy": "Keep exact form unless the prompt explicitly requests an approximation.",
+          "seedPolicy": {
+            "deterministic": true,
+            "source": "A2.4",
+            "variant": 20
+          },
+          "solutionRef": "solution:a2-4:q20"
         }
       ],
       "exitCheck": [
-        "a2-4-q15",
-        "a2-4-q16"
+        "a2-4-q19",
+        "a2-4-q20"
       ],
       "takeaway": {
         "summary": "Simplify within each side before applying balance operations.",
@@ -2250,7 +2762,7 @@
       "title": "Multistep linear equations",
       "path": "/subjects/math/algebra/linear-equations/multistep-linear-equations/",
       "outcome": "Undo layered operations in an order determined by structure.",
-      "foundationEdition": "authored-v1",
+      "foundationEdition": "authored-v2",
       "opening": {
         "prompt": "Reverse a multi-stage fee or measurement process.",
         "purpose": "Solve multistep linear equations with a clear sequence of simplification, balance operations, and verification."
@@ -2263,8 +2775,26 @@
       "exposition": [
         "A multistep equation is a sequence of reversible decisions. First simplify each side, then move variable terms and constants using equality-preserving operations, and finally undo the remaining coefficient. The most useful next step is the one that makes the structure simpler.",
         "There is no law requiring constants to move before variable terms. Good strategy minimizes fractions, negative coefficients, and unnecessary lines. Each written line should be an equation equivalent to the line above, with the operation visible enough to audit.",
-        "A solution statement is not complete without verification. Substitute the value into the original equation, simplify both sides independently, and state that they match. If they do not, trace the first line where equivalence was lost."
+        "A solution statement is not complete without verification. Substitute the value into the original equation, simplify both sides independently, and state that they match. If they do not, trace the first line where equivalence was lost.",
+        "A multistep linear equation is solved by reversing its construction while preserving equality. Before acting, scan the equation for grouping, like terms, fractions, and variables on both sides. Simplify within each side, then choose balance operations that reduce complexity. A fixed slogan such as “always move constants first” is less reliable than reading the actual structure.",
+        "The order of inverse operations is usually the reverse of the operations building the variable expression. In 4x − 7 = 29, x is multiplied by 4 and then 7 is subtracted, so add 7 before dividing by 4. In 4(x − 7) = 28, the grouped expression is multiplied by 4, so dividing by 4 first exposes x − 7. The same numbers require different first moves because their grouping differs.",
+        "Fractions can sometimes be cleared early, and common factors can sometimes be divided out. Efficiency is valid only when the chosen operation reaches every term on both sides. In 6x + 12 = 30, division by 6 is efficient because each term is divisible by 6. In 6x + 11 = 30, dividing only selected terms would not preserve equality, so additive isolation is clearer.",
+        "Every line should be an equivalent equation. This creates an operation history that can be read forward as solving and backward as checking. If 5x + 8 = 3x + 26 becomes 2x + 8 = 26 after subtracting 3x from both sides, the solution set is unchanged. Recording the operation beside the line prevents sign changes from appearing without mathematical cause.",
+        "The final answer is not complete until it is checked in the original equation and interpreted when units or context are present. Estimate the likely scale before solving, especially in models. If five identical monthly payments plus an $8 fee total $38, the payment must be somewhat less than $8. A result of $46 should be rejected before substitution because it conflicts with the relationship’s scale.",
+        "A useful solving strategy works from the outside inward: simplify each side, collect variable terms, collect constants, and scale the remaining coefficient to 1. This is the reverse of evaluating an expression, where the innermost grouping is handled first. For 4(2x − 3) + 5 = 25, distribution and combination give 8x − 7 = 25, then addition isolates 8x, and division isolates x. Writing one justified transformation per line lowers cognitive load.",
+        "Efficiency should not erase reasoning. Some equations permit a helpful first move, such as dividing every term by a common factor or clearing several fractions with one least common denominator. A move is good when it applies to both complete sides and reduces complexity. Before choosing it, scan for distribution, like terms, fraction denominators, and variable terms on both sides. After solving, estimate whether the sign and size of the answer fit the original equation before doing the exact substitution check.",
+        "Keep arithmetic exact while solving. Replacing 1/3 with 0.33 can turn an exact equation into an approximation and make a correct check appear slightly unequal. If decimals are already part of measured data, retain enough precision and use an approximation symbol in the conclusion. Exact symbolic work and approximate numerical modeling are both legitimate, but the notation should tell the reader which claim is being made. In either case, carry extra precision through intermediate steps and round only the interpreted final quantity."
       ],
+      "method": {
+        "title": "Scan, simplify, isolate, and verify",
+        "steps": [
+          "Scan for grouping, like terms, denominators, and variables on both sides.",
+          "Simplify within each side without changing the balance.",
+          "Use efficient inverse operations on both sides to isolate the variable term.",
+          "Undo the final nonzero coefficient and check the original equation."
+        ],
+        "check": "Keep an operation history, then substitute the result into the original unsimplified equation and verify equal side values."
+      },
       "definitions": [
         {
           "term": "balance operation",
@@ -2280,6 +2810,16 @@
           "term": "verification",
           "definition": "Substitution of a candidate into the original equation.",
           "conditions": "Both sides must simplify to the same value."
+        },
+        {
+          "term": "operation history",
+          "definition": "A sequence recording the equality-preserving operation used to create each equivalent equation.",
+          "conditions": "It should be reversible line by line."
+        },
+        {
+          "term": "isolation",
+          "definition": "Rewriting an equation so the target variable appears alone on one side.",
+          "conditions": "The resulting equation must preserve the original solution set."
         }
       ],
       "examples": [
@@ -2292,7 +2832,7 @@
             "Check 5(7)−7=28."
           ],
           "answer": "x = 7",
-          "interpretation": "Undo addition before undoing multiplication."
+          "interpretation": "Undo addition before undoing multiplication. The first move is chosen from the equation’s structure, not from a universal sign-moving rule."
         },
         {
           "kind": "representation",
@@ -2303,7 +2843,7 @@
             "Check 4−3(−5)=19."
           ],
           "answer": "x = −5",
-          "interpretation": "The negative coefficient must be preserved."
+          "interpretation": "The negative coefficient must be preserved. Each line preserves the same solution set, so the operation history is a proof rather than a recipe."
         },
         {
           "kind": "transfer",
@@ -2314,7 +2854,7 @@
             "Divide by 6 and check."
           ],
           "answer": "x = 4",
-          "interpretation": "Simplification turns a nested equation into a familiar form."
+          "interpretation": "Simplification turns a nested equation into a familiar form. A contextual estimate narrows the plausible result before exact solving begins."
         }
       ],
       "figures": [
@@ -2357,8 +2897,8 @@
         }
       ],
       "checkpoint": {
-        "id": "a2-5-q16",
-        "prompt": "Solve and verify 7 − 3(2x + 1) = −20.",
+        "id": "a2-5-q20",
+        "prompt": "A service charges $14 plus $6 per month. The total is $68. Define the variable, solve, and interpret.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -2377,7 +2917,11 @@
         "a2-5-q13",
         "a2-5-q14",
         "a2-5-q15",
-        "a2-5-q16"
+        "a2-5-q16",
+        "a2-5-q17",
+        "a2-5-q18",
+        "a2-5-q19",
+        "a2-5-q20"
       ],
       "practiceQuestions": [
         {
@@ -2763,11 +3307,107 @@
             "variant": 16
           },
           "solutionRef": "solution:a2-5:q16"
+        },
+        {
+          "id": "a2-5-q17",
+          "lessonId": "A2.5",
+          "unitCode": "A2",
+          "prompt": "Solve 7x − 9 = 4x + 24 and verify.",
+          "responseType": "open-response",
+          "skill": "Undo layered operations in an order determined by structure.",
+          "purpose": "transfer",
+          "difficulty": "transfer",
+          "hint": "Identify the familiar equation structure before changing any symbols.",
+          "errorTags": [
+            "multistep-linear-equations-structure",
+            "a2-unchecked-result"
+          ],
+          "remediationPath": "/subjects/math/algebra/linear-equations/multistep-linear-equations/",
+          "units": null,
+          "roundingPolicy": "Keep exact form unless the prompt explicitly requests an approximation.",
+          "seedPolicy": {
+            "deterministic": true,
+            "source": "A2.5",
+            "variant": 17
+          },
+          "solutionRef": "solution:a2-5:q17"
+        },
+        {
+          "id": "a2-5-q18",
+          "lessonId": "A2.5",
+          "unitCode": "A2",
+          "prompt": "Solve 3(2x − 5) + 4 = 25.",
+          "responseType": "open-response",
+          "skill": "Undo layered operations in an order determined by structure.",
+          "purpose": "modeling",
+          "difficulty": "transfer",
+          "hint": "Define the unknown and its units before writing the equation.",
+          "errorTags": [
+            "multistep-linear-equations-structure",
+            "a2-unchecked-result"
+          ],
+          "remediationPath": "/subjects/math/algebra/linear-equations/multistep-linear-equations/",
+          "units": null,
+          "roundingPolicy": "Keep exact form unless the prompt explicitly requests an approximation.",
+          "seedPolicy": {
+            "deterministic": true,
+            "source": "A2.5",
+            "variant": 18
+          },
+          "solutionRef": "solution:a2-5:q18"
+        },
+        {
+          "id": "a2-5-q19",
+          "lessonId": "A2.5",
+          "unitCode": "A2",
+          "prompt": "Solve 8(x + 3) = 4(3x − 1) by choosing an efficient simplification path.",
+          "responseType": "open-response",
+          "skill": "Undo layered operations in an order determined by structure.",
+          "purpose": "error-analysis",
+          "difficulty": "mixed",
+          "hint": "Locate the first line that no longer preserves the original relationship.",
+          "errorTags": [
+            "multistep-linear-equations-structure",
+            "a2-unchecked-result"
+          ],
+          "remediationPath": "/subjects/math/algebra/linear-equations/multistep-linear-equations/",
+          "units": null,
+          "roundingPolicy": "Keep exact form unless the prompt explicitly requests an approximation.",
+          "seedPolicy": {
+            "deterministic": true,
+            "source": "A2.5",
+            "variant": 19
+          },
+          "solutionRef": "solution:a2-5:q19"
+        },
+        {
+          "id": "a2-5-q20",
+          "lessonId": "A2.5",
+          "unitCode": "A2",
+          "prompt": "A service charges $14 plus $6 per month. The total is $68. Define the variable, solve, and interpret.",
+          "responseType": "open-response",
+          "skill": "Undo layered operations in an order determined by structure.",
+          "purpose": "exit",
+          "difficulty": "standard",
+          "hint": "Solve, classify the solution set, and verify against the original equation.",
+          "errorTags": [
+            "multistep-linear-equations-structure",
+            "a2-unchecked-result"
+          ],
+          "remediationPath": "/subjects/math/algebra/linear-equations/multistep-linear-equations/",
+          "units": null,
+          "roundingPolicy": "Keep exact form unless the prompt explicitly requests an approximation.",
+          "seedPolicy": {
+            "deterministic": true,
+            "source": "A2.5",
+            "variant": 20
+          },
+          "solutionRef": "solution:a2-5:q20"
         }
       ],
       "exitCheck": [
-        "a2-5-q15",
-        "a2-5-q16"
+        "a2-5-q19",
+        "a2-5-q20"
       ],
       "takeaway": {
         "summary": "Simplify, choose efficient balance operations, and undo the remaining coefficient.",
@@ -2804,7 +3444,7 @@
       "title": "Equations with fractions and decimals",
       "path": "/subjects/math/algebra/linear-equations/equations-with-fractions-and-decimals/",
       "outcome": "Solve equations with rational coefficients directly or by clearing denominators strategically.",
-      "foundationEdition": "authored-v1",
+      "foundationEdition": "authored-v2",
       "opening": {
         "prompt": "Resolve a formula involving fractional rates.",
         "purpose": "Solve linear equations with fractions and decimals by choosing exact, efficient ways to clear denominators or decimal places."
@@ -2817,8 +3457,26 @@
       "exposition": [
         "Fractions and decimals do not change the logic of solving; they change which first step is efficient. Multiplying every term on both sides by the least common denominator clears fractions while preserving equality. The multiplier must reach every term, not only the terms with denominators.",
         "Terminating decimals can be cleared by multiplying both sides by a suitable power of ten. This is an equality operation, not a decimal-point shortcut. Exact fraction arithmetic is often preferable to early rounding because rounding can change a solution.",
-        "After clearing the notation, solve the resulting integer-coefficient equation and check in the original form. When measurements are approximate, distinguish an exact algebraic result from a deliberately rounded reported value."
+        "After clearing the notation, solve the resulting integer-coefficient equation and check in the original form. When measurements are approximate, distinguish an exact algebraic result from a deliberately rounded reported value.",
+        "Fractions and decimals do not change the logic of a linear equation, but they can hide its structure. A common first move is to multiply every term on both sides by a useful nonzero factor. For fractional coefficients, the least common denominator clears all denominators. For terminating decimals, a power of ten can produce whole-number coefficients. This is an equality-preserving scale operation, not a deletion of fraction bars or decimal points.",
+        "The multiplier must reach every term. In x/3 + 1/4 = 5/6, multiplying by 12 gives 4x + 3 = 10. Omitting the 1/4 term would change the equation. Writing parentheses around each side—12(x/3 + 1/4) = 12(5/6)—makes distribution explicit. Original denominator restrictions remain active even after the visible denominators disappear.",
+        "Decimals can be kept exactly. Multiplying 0.4x − 1.25 = 2.75 by 100 produces 40x − 125 = 275, but multiplying by 20 would also work and may create smaller numbers. Alternatively, solving directly with decimals is valid if place value is handled accurately. Choose the path that minimizes arithmetic risk and keep full precision until the end.",
+        "A fraction in a model often carries units. If 3/4 hour at rate r produces 42 miles, then (3/4 h)r = 42 mi and r has units miles/hour. Multiplying both sides by 4/3 isolates r and cancels hours appropriately. Unit analysis helps distinguish a coefficient from a constant and catches inverted rates.",
+        "Check in the original fractional or decimal equation, not only the cleared version. Clearing denominators can magnify an arithmetic slip, and rounded intermediate values can make a false equality appear close. Use exact fractions whenever possible, show the common multiplier, retain original restrictions, and substitute the exact result back before converting to a requested decimal approximation.",
+        "Equations with decimal coefficients may be solved in decimal form or converted to whole-number coefficients by multiplying every term on both sides by a power of ten. For 0.3x + 1.2 = 2.7, multiplying the entire equation by 10 gives 3x + 12 = 27. The multiplication must reach every term; multiplying only the decimal terms changes the equation. The whole-number version often reduces calculator dependence and makes exact checking easier.",
+        "For fractional coefficients, multiply every term by the least common denominator of all numerical denominators. In x/3 − 1/4 = 5/6, the LCD is 12, so 12(x/3) − 12(1/4) = 12(5/6), giving 4x − 3 = 10. Clearing denominators does not mean canceling terms across addition; it is distribution of one nonzero multiplier across both complete sides. Preserve any original denominator restrictions when variables later appear in denominators.",
+        "After clearing decimals or fractions, the new equation should be equivalent to the original, so either may be used for solving but the original should be used for the final check. Track multiplication with parentheses: 12(x/3 − 1/4) = 12(5/6) makes distribution visible. If every coefficient shares a common integer factor after clearing, divide the entire equation by that factor to reduce the numbers before isolating x. Write the chosen LCD or power of ten explicitly so every transformed coefficient can be audited. Confirm carefully that no term on either side was skipped during complete distribution."
       ],
+      "method": {
+        "title": "Clear number formats without changing the equation",
+        "steps": [
+          "Record denominator restrictions and identify the least useful common multiplier.",
+          "Multiply every term on both sides by that nonzero factor.",
+          "Solve the resulting equivalent equation with visible balance steps.",
+          "Check the exact result in the original fractional or decimal equation."
+        ],
+        "check": "Substitution into the original form must produce exact equality before any requested rounding is applied."
+      },
       "definitions": [
         {
           "term": "least common denominator",
@@ -2834,6 +3492,16 @@
           "term": "exact value",
           "definition": "A value represented without approximation, often as a fraction.",
           "conditions": "Round only when the context requests an approximation."
+        },
+        {
+          "term": "clear denominators",
+          "definition": "Multiply every term in an equation by a common nonzero multiple of its denominators.",
+          "conditions": "Original denominator restrictions remain in force."
+        },
+        {
+          "term": "exact decimal",
+          "definition": "A terminating decimal used as its precise base-ten rational value rather than a rounded approximation.",
+          "conditions": "Avoid unnecessary rounding during solving."
         }
       ],
       "examples": [
@@ -2846,7 +3514,7 @@
             "Solve 4x=7 and check."
           ],
           "answer": "x = 7/4",
-          "interpretation": "Clearing denominators produces an equivalent integer equation."
+          "interpretation": "Clearing denominators produces an equivalent integer equation. The least common denominator removes every fraction in one reversible scaling step."
         },
         {
           "kind": "representation",
@@ -2857,7 +3525,7 @@
             "Check 0.3(12)−1.2=2.4."
           ],
           "answer": "x = 12",
-          "interpretation": "A power of ten can remove terminating decimals cleanly."
+          "interpretation": "A power of ten can remove terminating decimals cleanly. A power of ten is a convenience; the decimal equation remains exact before and after scaling."
         },
         {
           "kind": "transfer",
@@ -2868,7 +3536,7 @@
             "Expand, solve, and verify."
           ],
           "answer": "x = 23",
-          "interpretation": "The LCD clears both compound numerators without cross-multiplication ambiguity."
+          "interpretation": "The LCD clears both compound numerators without cross-multiplication ambiguity. Checking the original form verifies the multiplier distribution and any denominator restrictions."
         }
       ],
       "figures": [
@@ -2911,8 +3579,8 @@
         }
       ],
       "checkpoint": {
-        "id": "a2-6-q16",
-        "prompt": "Solve and verify (3x−2)/4 = (x+6)/2.",
+        "id": "a2-6-q20",
+        "prompt": "A student multiplies x/3 + 2 = 7/6 by 6 and writes 2x + 2 = 7. Repair the distribution.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -2931,7 +3599,11 @@
         "a2-6-q13",
         "a2-6-q14",
         "a2-6-q15",
-        "a2-6-q16"
+        "a2-6-q16",
+        "a2-6-q17",
+        "a2-6-q18",
+        "a2-6-q19",
+        "a2-6-q20"
       ],
       "practiceQuestions": [
         {
@@ -3317,11 +3989,107 @@
             "variant": 16
           },
           "solutionRef": "solution:a2-6:q16"
+        },
+        {
+          "id": "a2-6-q17",
+          "lessonId": "A2.6",
+          "unitCode": "A2",
+          "prompt": "Solve x/4 − x/6 = 5/3.",
+          "responseType": "open-response",
+          "skill": "Solve equations with rational coefficients directly or by clearing denominators strategically.",
+          "purpose": "transfer",
+          "difficulty": "transfer",
+          "hint": "Identify the familiar equation structure before changing any symbols.",
+          "errorTags": [
+            "equations-with-fractions-and-decimals-structure",
+            "a2-unchecked-result"
+          ],
+          "remediationPath": "/subjects/math/algebra/linear-equations/equations-with-fractions-and-decimals/",
+          "units": "Preserve and report the units named in the prompt.",
+          "roundingPolicy": "Keep exact form unless the prompt explicitly requests an approximation.",
+          "seedPolicy": {
+            "deterministic": true,
+            "source": "A2.6",
+            "variant": 17
+          },
+          "solutionRef": "solution:a2-6:q17"
+        },
+        {
+          "id": "a2-6-q18",
+          "lessonId": "A2.6",
+          "unitCode": "A2",
+          "prompt": "Solve 0.35x + 1.2 = 4.7 using a whole-number equivalent equation.",
+          "responseType": "open-response",
+          "skill": "Solve equations with rational coefficients directly or by clearing denominators strategically.",
+          "purpose": "modeling",
+          "difficulty": "transfer",
+          "hint": "Define the unknown and its units before writing the equation.",
+          "errorTags": [
+            "equations-with-fractions-and-decimals-structure",
+            "a2-unchecked-result"
+          ],
+          "remediationPath": "/subjects/math/algebra/linear-equations/equations-with-fractions-and-decimals/",
+          "units": "Preserve and report the units named in the prompt.",
+          "roundingPolicy": "Keep exact form unless the prompt explicitly requests an approximation.",
+          "seedPolicy": {
+            "deterministic": true,
+            "source": "A2.6",
+            "variant": 18
+          },
+          "solutionRef": "solution:a2-6:q18"
+        },
+        {
+          "id": "a2-6-q19",
+          "lessonId": "A2.6",
+          "unitCode": "A2",
+          "prompt": "Solve (2/5)(x − 3) = 6 and compare clearing fractions with using a reciprocal.",
+          "responseType": "open-response",
+          "skill": "Solve equations with rational coefficients directly or by clearing denominators strategically.",
+          "purpose": "error-analysis",
+          "difficulty": "mixed",
+          "hint": "Locate the first line that no longer preserves the original relationship.",
+          "errorTags": [
+            "equations-with-fractions-and-decimals-structure",
+            "a2-unchecked-result"
+          ],
+          "remediationPath": "/subjects/math/algebra/linear-equations/equations-with-fractions-and-decimals/",
+          "units": "Preserve and report the units named in the prompt.",
+          "roundingPolicy": "Keep exact form unless the prompt explicitly requests an approximation.",
+          "seedPolicy": {
+            "deterministic": true,
+            "source": "A2.6",
+            "variant": 19
+          },
+          "solutionRef": "solution:a2-6:q19"
+        },
+        {
+          "id": "a2-6-q20",
+          "lessonId": "A2.6",
+          "unitCode": "A2",
+          "prompt": "A student multiplies x/3 + 2 = 7/6 by 6 and writes 2x + 2 = 7. Repair the distribution.",
+          "responseType": "open-response",
+          "skill": "Solve equations with rational coefficients directly or by clearing denominators strategically.",
+          "purpose": "exit",
+          "difficulty": "standard",
+          "hint": "Solve, classify the solution set, and verify against the original equation.",
+          "errorTags": [
+            "equations-with-fractions-and-decimals-structure",
+            "a2-unchecked-result"
+          ],
+          "remediationPath": "/subjects/math/algebra/linear-equations/equations-with-fractions-and-decimals/",
+          "units": "Preserve and report the units named in the prompt.",
+          "roundingPolicy": "Keep exact form unless the prompt explicitly requests an approximation.",
+          "seedPolicy": {
+            "deterministic": true,
+            "source": "A2.6",
+            "variant": 20
+          },
+          "solutionRef": "solution:a2-6:q20"
         }
       ],
       "exitCheck": [
-        "a2-6-q15",
-        "a2-6-q16"
+        "a2-6-q19",
+        "a2-6-q20"
       ],
       "takeaway": {
         "summary": "Clear fractions or decimals by multiplying every term on both sides by one useful factor.",
@@ -3358,7 +4126,7 @@
       "title": "Variables on both sides",
       "path": "/subjects/math/algebra/linear-equations/variables-on-both-sides/",
       "outcome": "Collect variable terms and constants strategically and interpret the resulting coefficient.",
-      "foundationEdition": "authored-v1",
+      "foundationEdition": "authored-v2",
       "opening": {
         "prompt": "Compare two pricing plans that depend on the same usage variable.",
         "purpose": "Solve linear equations with variables on both sides by collecting variable terms strategically and preserving signs."
@@ -3371,8 +4139,26 @@
       "exposition": [
         "When x appears on both sides, use the addition or subtraction property of equality to collect variable terms on one side. Subtracting the smaller variable term often keeps the remaining coefficient positive, but either direction is valid when signs are handled correctly.",
         "After collecting variable terms, collect constants on the other side and divide by the remaining coefficient. The equals sign should stay aligned conceptually: each new line describes the same solution set, not a collection of terms drifting across a boundary.",
-        "Some equations collapse after collection. A true constant statement signals infinitely many solutions; a false constant statement signals no solution. Do not force a numerical value when the variable disappears."
+        "Some equations collapse after collection. A true constant statement signals infinitely many solutions; a false constant statement signals no solution. Do not force a numerical value when the variable disappears.",
+        "When a variable appears on both sides, the goal is to collect all variable terms on one side and constants on the other. Subtracting the same variable term from both sides preserves equality just as subtracting a number does. In 5x + 4 = 2x + 19, subtract 2x from both sides to obtain 3x + 4 = 19. The variable has not ‘moved’; equal variable quantities were removed from both sides.",
+        "Either side may be chosen, but collecting the variable where its coefficient becomes positive often reduces sign errors. For 3x − 7 = 8x + 13, subtracting 3x gives −7 = 5x + 13 and then −20 = 5x. Subtracting 8x instead is also valid but produces −5x − 7 = 13. Both paths must lead to x = −4. Comparing them demonstrates that method choice affects convenience, not the solution set.",
+        "Simplify each side before collecting across the equation. Distribution and like terms can reveal that apparent variable terms cancel. For 2(x + 3) = 2x + 6, simplification gives 2x + 6 = 2x + 6. Subtracting 2x leaves 6 = 6, a true statement indicating infinitely many solutions. If the remaining statement were false, there would be no solution.",
+        "Coefficient comparison can predict the likely classification. In ax + b = cx + d, unequal coefficients a and c usually produce one solution because a − c remains nonzero. Equal variable coefficients cause the variable to cancel, leaving a comparison of constants. Equal constants yield an identity; unequal constants yield a contradiction. This prediction helps a solver interpret cancellation rather than panic when x disappears.",
+        "The original-equation check remains important. Substitute a one-solution result into both original sides. For identity or contradiction cases, explain why the simplified statement is always true or always false across the domain. A complete answer reports {x}, ∅, or the appropriate full domain—not merely the last constant statement.",
+        "When variables appear on both sides, collect them on the side that makes the arithmetic convenient. In 7x − 4 = 3x + 20, subtracting 3x produces a positive 4x; subtracting 7x would also be valid but creates −4x. Both paths must lead to the same solution if the balance is maintained. There is no rule that variables must move left—only a preference for clear, efficient work.",
+        "After variable terms are collected, the equation may become an ordinary one- or two-step equation, or the variable may disappear. Track the coefficient carefully: subtracting 3x from 7x leaves 4x, while subtracting 7x from 3x leaves −4x. A quick check substitutes the candidate into both original expressions rather than into a simplified line, because the original is the claim the solution must satisfy.",
+        "Grouping can conceal variable terms on both sides. In 2(x + 5) = 3(x − 1), distribute before collecting: 2x + 10 = 3x − 3. Subtracting 2x gives 10 = x − 3, then adding 3 gives x = 13. Substitution confirms both original sides equal 36. The check is particularly valuable because a single missed distribution sign would create a plausible-looking but incorrect candidate. When fractions are present too, clear denominators only after recording restrictions and distributing the common multiplier across every term. The goal is a simpler equivalent equation, not merely fewer visible fraction bars. Keep variable terms on one side and constants on the other only after both sides have been simplified. This order prevents terms hidden inside grouping from being collected prematurely."
       ],
+      "method": {
+        "title": "Collect variable quantities with visible balance steps",
+        "steps": [
+          "Distribute and combine like terms separately within each side.",
+          "Subtract one variable term from both sides, preferably leaving a convenient coefficient.",
+          "Collect constants with an additive inverse and isolate the variable.",
+          "If the variable cancels, classify the remaining statement as true or false."
+        ],
+        "check": "Substitute a unique solution into both original sides, or justify why the original equation is always true or always false."
+      },
       "definitions": [
         {
           "term": "collect variable terms",
@@ -3388,6 +4174,16 @@
           "term": "strategic side",
           "definition": "The side chosen to hold the remaining variable term.",
           "conditions": "Choosing it can reduce negative coefficients but does not change the solution."
+        },
+        {
+          "term": "variable cancellation",
+          "definition": "Removal of equal variable terms from both sides through a balance operation.",
+          "conditions": "It signals that classification depends on the remaining constant statement."
+        },
+        {
+          "term": "contradiction",
+          "definition": "A statement such as 4 = 9 that is false for every input.",
+          "conditions": "An equation simplifying to a contradiction has no solution."
         }
       ],
       "examples": [
@@ -3400,7 +4196,7 @@
             "Check x=6 in both original sides."
           ],
           "answer": "x = 6",
-          "interpretation": "Collecting the smaller variable term keeps a positive coefficient."
+          "interpretation": "Collecting the smaller variable term keeps a positive coefficient. Subtracting equal variable quantities from both sides preserves the balance and explains the apparent movement."
         },
         {
           "kind": "representation",
@@ -3411,7 +4207,7 @@
             "Solve 20=5x and check."
           ],
           "answer": "x = 4",
-          "interpretation": "Variable terms and constants are collected with separate balance operations."
+          "interpretation": "Variable terms and constants are collected with separate balance operations. Choosing the subtraction direction can keep the remaining coefficient positive without changing correctness."
         },
         {
           "kind": "transfer",
@@ -3422,7 +4218,7 @@
             "Subtract 6 and check."
           ],
           "answer": "x = 5",
-          "interpretation": "Simplify before collecting variable terms."
+          "interpretation": "Simplify before collecting variable terms. When the variable cancels, the constant statement—not a guessed value—determines the solution classification."
         }
       ],
       "figures": [
@@ -3465,8 +4261,8 @@
         }
       ],
       "checkpoint": {
-        "id": "a2-7-q16",
-        "prompt": "Solve and verify 5(x−1)+2x = 3(x+7)−2.",
+        "id": "a2-7-q20",
+        "prompt": "A student reaches 0x = 12 and divides by 0 to get x = 0. Repair the classification.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -3485,7 +4281,11 @@
         "a2-7-q13",
         "a2-7-q14",
         "a2-7-q15",
-        "a2-7-q16"
+        "a2-7-q16",
+        "a2-7-q17",
+        "a2-7-q18",
+        "a2-7-q19",
+        "a2-7-q20"
       ],
       "practiceQuestions": [
         {
@@ -3871,11 +4671,107 @@
             "variant": 16
           },
           "solutionRef": "solution:a2-7:q16"
+        },
+        {
+          "id": "a2-7-q17",
+          "lessonId": "A2.7",
+          "unitCode": "A2",
+          "prompt": "Solve 9x − 14 = 5x + 18.",
+          "responseType": "open-response",
+          "skill": "Collect variable terms and constants strategically and interpret the resulting coefficient.",
+          "purpose": "transfer",
+          "difficulty": "transfer",
+          "hint": "Identify the familiar equation structure before changing any symbols.",
+          "errorTags": [
+            "variables-on-both-sides-structure",
+            "a2-unchecked-result"
+          ],
+          "remediationPath": "/subjects/math/algebra/linear-equations/variables-on-both-sides/",
+          "units": "Preserve and report the units named in the prompt.",
+          "roundingPolicy": "Keep exact form unless the prompt explicitly requests an approximation.",
+          "seedPolicy": {
+            "deterministic": true,
+            "source": "A2.7",
+            "variant": 17
+          },
+          "solutionRef": "solution:a2-7:q17"
+        },
+        {
+          "id": "a2-7-q18",
+          "lessonId": "A2.7",
+          "unitCode": "A2",
+          "prompt": "Solve 4 − 3x = 7x + 24 using a path that leaves a positive coefficient.",
+          "responseType": "open-response",
+          "skill": "Collect variable terms and constants strategically and interpret the resulting coefficient.",
+          "purpose": "modeling",
+          "difficulty": "transfer",
+          "hint": "Define the unknown and its units before writing the equation.",
+          "errorTags": [
+            "variables-on-both-sides-structure",
+            "a2-unchecked-result"
+          ],
+          "remediationPath": "/subjects/math/algebra/linear-equations/variables-on-both-sides/",
+          "units": "Preserve and report the units named in the prompt.",
+          "roundingPolicy": "Keep exact form unless the prompt explicitly requests an approximation.",
+          "seedPolicy": {
+            "deterministic": true,
+            "source": "A2.7",
+            "variant": 18
+          },
+          "solutionRef": "solution:a2-7:q18"
+        },
+        {
+          "id": "a2-7-q19",
+          "lessonId": "A2.7",
+          "unitCode": "A2",
+          "prompt": "Classify 6(x − 2) + 5 = 6x − 7.",
+          "responseType": "open-response",
+          "skill": "Collect variable terms and constants strategically and interpret the resulting coefficient.",
+          "purpose": "error-analysis",
+          "difficulty": "mixed",
+          "hint": "Locate the first line that no longer preserves the original relationship.",
+          "errorTags": [
+            "variables-on-both-sides-structure",
+            "a2-unchecked-result"
+          ],
+          "remediationPath": "/subjects/math/algebra/linear-equations/variables-on-both-sides/",
+          "units": "Preserve and report the units named in the prompt.",
+          "roundingPolicy": "Keep exact form unless the prompt explicitly requests an approximation.",
+          "seedPolicy": {
+            "deterministic": true,
+            "source": "A2.7",
+            "variant": 19
+          },
+          "solutionRef": "solution:a2-7:q19"
+        },
+        {
+          "id": "a2-7-q20",
+          "lessonId": "A2.7",
+          "unitCode": "A2",
+          "prompt": "A student reaches 0x = 12 and divides by 0 to get x = 0. Repair the classification.",
+          "responseType": "open-response",
+          "skill": "Collect variable terms and constants strategically and interpret the resulting coefficient.",
+          "purpose": "exit",
+          "difficulty": "standard",
+          "hint": "Solve, classify the solution set, and verify against the original equation.",
+          "errorTags": [
+            "variables-on-both-sides-structure",
+            "a2-unchecked-result"
+          ],
+          "remediationPath": "/subjects/math/algebra/linear-equations/variables-on-both-sides/",
+          "units": "Preserve and report the units named in the prompt.",
+          "roundingPolicy": "Keep exact form unless the prompt explicitly requests an approximation.",
+          "seedPolicy": {
+            "deterministic": true,
+            "source": "A2.7",
+            "variant": 20
+          },
+          "solutionRef": "solution:a2-7:q20"
         }
       ],
       "exitCheck": [
-        "a2-7-q15",
-        "a2-7-q16"
+        "a2-7-q19",
+        "a2-7-q20"
       ],
       "takeaway": {
         "summary": "Collect variable terms with explicit balance operations, then collect constants.",
@@ -3912,7 +4808,7 @@
       "title": "One solution, no solution, or infinitely many",
       "path": "/subjects/math/algebra/linear-equations/one-solution-no-solution-or-infinitely-many/",
       "outcome": "Recognize identities and contradictions produced by simplification.",
-      "foundationEdition": "authored-v1",
+      "foundationEdition": "authored-v2",
       "opening": {
         "prompt": "Compare conditions that describe one value, every value, or no value.",
         "purpose": "Classify linear equations as having one solution, no solution, or infinitely many solutions by interpreting the simplified statement."
@@ -3925,8 +4821,26 @@
       "exposition": [
         "A linear equation in one variable can finish in three fundamentally different ways. If it simplifies to x = a, it has one solution. If the variable cancels and leaves a false statement such as 4 = 9, it has no solution. If it leaves a true statement such as 4 = 4, every value in the domain is a solution.",
         "These outcomes reflect relationships between two linear expressions. Different slopes meet once; equal slopes with different intercepts never meet; identical expressions agree everywhere. The symbolic result and the graph tell the same story.",
-        "The correct response is a solution-set classification, not a forced number. Show enough simplification to reveal the constant statement, state whether it is true or false, and then name the corresponding solution set."
+        "The correct response is a solution-set classification, not a forced number. Show enough simplification to reveal the constant statement, state whether it is true or false, and then name the corresponding solution set.",
+        "A linear equation’s solution count is determined by what remains after equivalent simplification. If a nonzero variable coefficient remains, the equation has one solution. If variable terms cancel and leave a false constant statement, there is no solution. If they cancel and leave a true statement, every value in the original domain is a solution. These are not three unrelated cases; they are the possible outcomes of comparing two linear expressions.",
+        "For ax + b = cx + d, subtracting cx and b gives (a − c)x = d − b. When a − c ≠ 0, division gives one solution. When a = c, the left coefficient is zero. Then b = d produces a true identity and b ≠ d produces a contradiction. This coefficient view allows the classification to be predicted before carrying out every line.",
+        "Graphically, one solution corresponds to two distinct nonparallel lines intersecting once. No solution corresponds to distinct parallel lines with equal slopes and different intercepts. Infinitely many solutions correspond to the same line written in equivalent forms. This visual model is useful, but the equation’s domain still matters: restrictions can remove points even when simplified expressions appear identical.",
+        "The phrase “x cancels” is not an answer. Cancellation is an event that tells the solver to inspect the remaining statement. From 4x + 7 = 4x + 7, subtraction leaves 7 = 7, so all real values work. From 4x + 7 = 4x − 2, it leaves 7 = −2, so none work. Inventing x = 0 or stopping at the constant statement fails to report the solution set.",
+        "Parameters can change classification. The equation kx + 3 = 5x + 3 has infinitely many solutions when k = 5 and one solution when k ≠ 5. There is no parameter value giving no solution because the constants match. Reasoning about coefficients develops a flexible understanding that later supports systems, function intersections, and identity verification.",
+        "If the variable disappears and the remaining statement is true, every value in the stated domain solves the equation. For 2(x + 3) = 2x + 6, distribution produces 2x + 6 = 2x + 6 and subtraction leaves 6 = 6. The equation is an identity. If the remaining statement is false, as in 2(x + 3) = 2x + 9 leading to 6 = 9, no value can make the original sides equal.",
+        "Do not divide by a variable expression in an attempt to avoid these cases. Dividing both sides by x can silently discard x = 0, and dividing by an expression that may equal zero is not an equivalent operation over the full domain. Collect terms using addition or subtraction first. Report the conclusion as a solution set—one value, no solution, or all real numbers in the domain—and explain how the final true or false statement supports it.",
+        "Context can narrow an all-values conclusion. An identity derived from a formula may hold for every value in its algebraic domain but still describe only nonnegative times or positive lengths in the model. Likewise, “no solution” means no allowed value satisfies all stated conditions, not that the algebraic procedure failed. State the relevant domain in the conclusion so the solution set answers the actual problem rather than a broader symbolic version. Testing one input can illustrate an identity, but the simplified true statement explains why all allowed inputs work."
       ],
+      "method": {
+        "title": "Let the remaining statement classify the equation",
+        "steps": [
+          "Simplify both sides completely and compare variable coefficients.",
+          "Collect variable terms with a balance operation.",
+          "If a nonzero coefficient remains, solve for the unique value.",
+          "If the variable disappears, classify the constant statement as true or false and report the full set."
+        ],
+        "check": "Verify one-solution candidates by substitution; verify identity or contradiction claims from the simplified forms and original domain."
+      },
       "definitions": [
         {
           "term": "one solution",
@@ -3942,6 +4856,16 @@
           "term": "infinitely many solutions",
           "definition": "Every value in the stated domain makes the equation true.",
           "conditions": "The equation reduces to a true constant statement."
+        },
+        {
+          "term": "identity equation",
+          "definition": "An equation true for every value in its stated domain.",
+          "conditions": "Equivalent expressions on both sides produce infinitely many solutions."
+        },
+        {
+          "term": "conditional equation",
+          "definition": "An equation true only for particular values of its variable.",
+          "conditions": "A nonzero remaining linear coefficient produces one solution."
         }
       ],
       "examples": [
@@ -3954,7 +4878,7 @@
             "State the solution set {4}."
           ],
           "answer": "One solution: x = 4",
-          "interpretation": "Different variable coefficients lead to one intersection."
+          "interpretation": "Different variable coefficients lead to one intersection. The variable coefficient outcome predicts whether isolation, contradiction, or identity will remain."
         },
         {
           "kind": "representation",
@@ -3965,7 +4889,7 @@
             "Recognize the false statement."
           ],
           "answer": "No solution",
-          "interpretation": "Parallel linear expressions never have equal outputs."
+          "interpretation": "Parallel linear expressions never have equal outputs. The graph interpretation matches the symbolic classification through line intersections."
         },
         {
           "kind": "transfer",
@@ -3976,7 +4900,7 @@
             "Recognize the true statement."
           ],
           "answer": "Infinitely many solutions",
-          "interpretation": "Both sides are the same expression."
+          "interpretation": "Both sides are the same expression. Parameter reasoning shows that solution count is a structural feature, not a label attached after calculation."
         }
       ],
       "figures": [
@@ -4019,8 +4943,8 @@
         }
       ],
       "checkpoint": {
-        "id": "a2-8-q16",
-        "prompt": "Classify and justify 3(2x+5)−x=5x+15.",
+        "id": "a2-8-q20",
+        "prompt": "A student says parallel lines mean an equation has no solution. State the missing qualification.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -4039,7 +4963,11 @@
         "a2-8-q13",
         "a2-8-q14",
         "a2-8-q15",
-        "a2-8-q16"
+        "a2-8-q16",
+        "a2-8-q17",
+        "a2-8-q18",
+        "a2-8-q19",
+        "a2-8-q20"
       ],
       "practiceQuestions": [
         {
@@ -4425,11 +5353,107 @@
             "variant": 16
           },
           "solutionRef": "solution:a2-8:q16"
+        },
+        {
+          "id": "a2-8-q17",
+          "lessonId": "A2.8",
+          "unitCode": "A2",
+          "prompt": "Classify 3(2x + 5) − x = 5x + 15.",
+          "responseType": "open-response",
+          "skill": "Recognize identities and contradictions produced by simplification.",
+          "purpose": "transfer",
+          "difficulty": "transfer",
+          "hint": "Identify the familiar equation structure before changing any symbols.",
+          "errorTags": [
+            "one-solution-no-solution-or-infinitely-many-structure",
+            "a2-unchecked-result"
+          ],
+          "remediationPath": "/subjects/math/algebra/linear-equations/one-solution-no-solution-or-infinitely-many/",
+          "units": null,
+          "roundingPolicy": "Keep exact form unless the prompt explicitly requests an approximation.",
+          "seedPolicy": {
+            "deterministic": true,
+            "source": "A2.8",
+            "variant": 17
+          },
+          "solutionRef": "solution:a2-8:q17"
+        },
+        {
+          "id": "a2-8-q18",
+          "lessonId": "A2.8",
+          "unitCode": "A2",
+          "prompt": "Classify 7(x − 2) + 4 = 7x − 6.",
+          "responseType": "open-response",
+          "skill": "Recognize identities and contradictions produced by simplification.",
+          "purpose": "modeling",
+          "difficulty": "transfer",
+          "hint": "Define the unknown and its units before writing the equation.",
+          "errorTags": [
+            "one-solution-no-solution-or-infinitely-many-structure",
+            "a2-unchecked-result"
+          ],
+          "remediationPath": "/subjects/math/algebra/linear-equations/one-solution-no-solution-or-infinitely-many/",
+          "units": null,
+          "roundingPolicy": "Keep exact form unless the prompt explicitly requests an approximation.",
+          "seedPolicy": {
+            "deterministic": true,
+            "source": "A2.8",
+            "variant": 18
+          },
+          "solutionRef": "solution:a2-8:q18"
+        },
+        {
+          "id": "a2-8-q19",
+          "lessonId": "A2.8",
+          "unitCode": "A2",
+          "prompt": "Find p so px + 8 = 4x + 8 has infinitely many solutions, and describe other p.",
+          "responseType": "open-response",
+          "skill": "Recognize identities and contradictions produced by simplification.",
+          "purpose": "error-analysis",
+          "difficulty": "mixed",
+          "hint": "Locate the first line that no longer preserves the original relationship.",
+          "errorTags": [
+            "one-solution-no-solution-or-infinitely-many-structure",
+            "a2-unchecked-result"
+          ],
+          "remediationPath": "/subjects/math/algebra/linear-equations/one-solution-no-solution-or-infinitely-many/",
+          "units": null,
+          "roundingPolicy": "Keep exact form unless the prompt explicitly requests an approximation.",
+          "seedPolicy": {
+            "deterministic": true,
+            "source": "A2.8",
+            "variant": 19
+          },
+          "solutionRef": "solution:a2-8:q19"
+        },
+        {
+          "id": "a2-8-q20",
+          "lessonId": "A2.8",
+          "unitCode": "A2",
+          "prompt": "A student says parallel lines mean an equation has no solution. State the missing qualification.",
+          "responseType": "open-response",
+          "skill": "Recognize identities and contradictions produced by simplification.",
+          "purpose": "exit",
+          "difficulty": "standard",
+          "hint": "Solve, classify the solution set, and verify against the original equation.",
+          "errorTags": [
+            "one-solution-no-solution-or-infinitely-many-structure",
+            "a2-unchecked-result"
+          ],
+          "remediationPath": "/subjects/math/algebra/linear-equations/one-solution-no-solution-or-infinitely-many/",
+          "units": null,
+          "roundingPolicy": "Keep exact form unless the prompt explicitly requests an approximation.",
+          "seedPolicy": {
+            "deterministic": true,
+            "source": "A2.8",
+            "variant": 20
+          },
+          "solutionRef": "solution:a2-8:q20"
         }
       ],
       "exitCheck": [
-        "a2-8-q15",
-        "a2-8-q16"
+        "a2-8-q19",
+        "a2-8-q20"
       ],
       "takeaway": {
         "summary": "One solution leaves a variable value; no solution leaves a false statement; infinitely many leaves a true statement.",
@@ -4466,7 +5490,7 @@
       "title": "Translating one-variable models",
       "path": "/subjects/math/algebra/linear-equations/translating-one-variable-models/",
       "outcome": "Define a variable and build a linear equation from a verbal or diagrammatic relationship.",
-      "foundationEdition": "authored-v1",
+      "foundationEdition": "authored-v2",
       "opening": {
         "prompt": "Represent a total assembled from a fixed part and a variable part.",
         "purpose": "Translate one-variable situations into linear equations, solve them, and interpret the answer with units and constraints."
@@ -4479,8 +5503,26 @@
       "exposition": [
         "A mathematical model begins with a quantity dictionary: define the variable, attach units, and identify what each number represents. Translation should preserve relationships, not merely turn keywords into operations. The phrase '5 less than a number' is x−5, while '5 less than twice a number' is 2x−5.",
         "Many one-variable models have the form total = fixed amount + rate·quantity. Others compare two totals or express a part-whole relationship. Write the equation before calculating so that another reader can audit how the context became mathematics.",
-        "After solving, return to the situation. State the answer in a sentence with units, check that it satisfies the equation, and reject values that violate a contextual constraint such as a negative count or a fractional number of whole tickets."
+        "After solving, return to the situation. State the answer in a sentence with units, check that it satisfies the equation, and reject values that violate a contextual constraint such as a negative count or a fractional number of whole tickets.",
+        "Translating a one-variable model begins with quantities, not keywords. Define the unknown in a complete sentence with units, identify known values, and state the relationship in ordinary language. Then write an equation whose units agree. In a taxi model with a $4 starting charge and $2.50 per mile totaling $21.50, let m be miles and write 4 + 2.50m = 21.50. The constant and rate have different roles even though both are dollar amounts after multiplication.",
+        "Additive relationships describe a starting amount plus or minus change. Multiplicative relationships describe equal groups, scaling, or a rate applied to an input. Words such as “more than” and “less than” are unreliable when isolated from sentence structure. “Five less than x” is x − 5, while “x is five less than y” becomes x = y − 5. Reading the complete relationship prevents reversal errors.",
+        "Consecutive-number models use structure rather than separate unknowns. If n is the first consecutive integer, the next is n + 1; consecutive odd integers differ by 2. Geometry models require formulas and unit restrictions. A rectangle with width w and length w + 3 has perimeter 2w + 2(w + 3). Drawing and labeling the shape before writing the equation often exposes missing doubled sides.",
+        "A model’s domain can reject an algebraic solution. Counts may require nonnegative whole numbers, lengths must be positive, and elapsed time is usually nonnegative. Rounding must match the question: a bus count may need rounding up even if the equation produces 4.2, while a measured length may be reported to a requested decimal place. State the domain before solving so the interpretation is not improvised afterward.",
+        "Validation uses both substitution and the original story. Substitute into the equation, then reconstruct the quantities described. If m = 7 miles in the taxi model, the variable charge is $17.50 and the total is $21.50. This narrative check catches equations that were solved correctly but translated backward. A final answer includes the value, units, and a sentence answering the original question.",
+        "Translation begins with quantities and relationships, not keywords. Define the unknown with units, then describe how each given quantity is built from it. “Five more than twice a number” is 2x + 5 because the number is doubled before 5 is added; “twice the sum of a number and 5” is 2(x + 5). Reading the finished expression back in words is an effective structure check.",
+        "A good model distinguishes a starting amount, repeated rate, and final amount. A phone plan with a $25 base fee and $8 per gigabyte is C = 25 + 8g. If the bill is $73, the equation 25 + 8g = 73 asks which usage produces that total. Units verify the terms: dollars + (dollars/gigabyte)(gigabytes) = dollars. After solving, interpret g in the context and check constraints such as nonnegativity or whole-number counts.",
+        "Diagrams and tables can expose relationships before symbols are chosen. For consecutive integers, define the first as n and the next as n + 1 rather than assigning unrelated variables. For a perimeter, label each equal side with the same expression and add every side once. The equation should preserve the structure shown in the representation. If the solved value is substituted back into the diagram or table, every given total and relationship should be recovered."
       ],
+      "method": {
+        "title": "Define, relate, solve, and interpret",
+        "steps": [
+          "Define one unknown quantity with its units and contextual domain.",
+          "Express every other quantity in terms of that unknown.",
+          "Write an equation from the complete relationship and verify its units.",
+          "Solve, substitute into the model, and answer the original question in a sentence."
+        ],
+        "check": "Reconstruct every quantity in the story from the proposed value and confirm the totals, units, and domain all agree."
+      },
       "definitions": [
         {
           "term": "quantity dictionary",
@@ -4496,6 +5538,16 @@
           "term": "rate",
           "definition": "An amount per unit of another quantity.",
           "conditions": "Multiplying rate by quantity gives the variable part of a total."
+        },
+        {
+          "term": "variable definition",
+          "definition": "A sentence assigning a symbol to one unknown quantity with units.",
+          "conditions": "It should be written before the equation."
+        },
+        {
+          "term": "contextual domain",
+          "definition": "The set of values meaningful for the modeled quantity.",
+          "conditions": "It may require positivity, whole numbers, or other real-world conditions."
         }
       ],
       "examples": [
@@ -4508,7 +5560,7 @@
             "Subtract 4, divide by 2.50, and interpret."
           ],
           "answer": "6 miles",
-          "interpretation": "The fixed fee and mileage charge combine to the total fare."
+          "interpretation": "The fixed fee and mileage charge combine to the total fare. Defining the variable first fixes the meaning of the coefficient and constant in the model."
         },
         {
           "kind": "representation",
@@ -4519,7 +5571,7 @@
             "Solve w=6 and compute length 9."
           ],
           "answer": "Width 6 cm; length 9 cm",
-          "interpretation": "Both dimensions satisfy the perimeter and comparison."
+          "interpretation": "Both dimensions satisfy the perimeter and comparison. A labeled diagram or quantity list protects against reversed comparisons and missing repeated dimensions."
         },
         {
           "kind": "transfer",
@@ -4530,7 +5582,7 @@
             "Divide and check 20% off $80 is $64."
           ],
           "answer": "$80",
-          "interpretation": "A percent decrease multiplies the original by the remaining percent."
+          "interpretation": "A percent decrease multiplies the original by the remaining percent. The contextual check is independent of symbolic correctness and can reject an otherwise valid algebraic value."
         }
       ],
       "figures": [
@@ -4573,8 +5625,8 @@
         }
       ],
       "checkpoint": {
-        "id": "a2-9-q16",
-        "prompt": "A rental costs $12 plus $4 per hour and totals $36. Solve, check, and interpret.",
+        "id": "a2-9-q20",
+        "prompt": "A van holds 12 people. An equation gives 4.25 vans for 51 people. Interpret the domain and rounding.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -4593,7 +5645,11 @@
         "a2-9-q13",
         "a2-9-q14",
         "a2-9-q15",
-        "a2-9-q16"
+        "a2-9-q16",
+        "a2-9-q17",
+        "a2-9-q18",
+        "a2-9-q19",
+        "a2-9-q20"
       ],
       "practiceQuestions": [
         {
@@ -4979,11 +6035,107 @@
             "variant": 16
           },
           "solutionRef": "solution:a2-9:q16"
+        },
+        {
+          "id": "a2-9-q17",
+          "lessonId": "A2.9",
+          "unitCode": "A2",
+          "prompt": "A gym charges $35 to join and $18 per month. The total paid is $197. Define a variable and find the number of months.",
+          "responseType": "open-response",
+          "skill": "Define a variable and build a linear equation from a verbal or diagrammatic relationship.",
+          "purpose": "transfer",
+          "difficulty": "transfer",
+          "hint": "Identify the familiar equation structure before changing any symbols.",
+          "errorTags": [
+            "translating-one-variable-models-structure",
+            "a2-unchecked-result"
+          ],
+          "remediationPath": "/subjects/math/algebra/linear-equations/translating-one-variable-models/",
+          "units": null,
+          "roundingPolicy": "Keep exact form unless the prompt explicitly requests an approximation.",
+          "seedPolicy": {
+            "deterministic": true,
+            "source": "A2.9",
+            "variant": 17
+          },
+          "solutionRef": "solution:a2-9:q17"
+        },
+        {
+          "id": "a2-9-q18",
+          "lessonId": "A2.9",
+          "unitCode": "A2",
+          "prompt": "The length of a rectangle is 5 cm more than its width and its perimeter is 46 cm. Find both dimensions.",
+          "responseType": "open-response",
+          "skill": "Define a variable and build a linear equation from a verbal or diagrammatic relationship.",
+          "purpose": "modeling",
+          "difficulty": "transfer",
+          "hint": "Define the unknown and its units before writing the equation.",
+          "errorTags": [
+            "translating-one-variable-models-structure",
+            "a2-unchecked-result"
+          ],
+          "remediationPath": "/subjects/math/algebra/linear-equations/translating-one-variable-models/",
+          "units": null,
+          "roundingPolicy": "Keep exact form unless the prompt explicitly requests an approximation.",
+          "seedPolicy": {
+            "deterministic": true,
+            "source": "A2.9",
+            "variant": 18
+          },
+          "solutionRef": "solution:a2-9:q18"
+        },
+        {
+          "id": "a2-9-q19",
+          "lessonId": "A2.9",
+          "unitCode": "A2",
+          "prompt": "Three consecutive odd integers have sum 93. Find them.",
+          "responseType": "open-response",
+          "skill": "Define a variable and build a linear equation from a verbal or diagrammatic relationship.",
+          "purpose": "error-analysis",
+          "difficulty": "mixed",
+          "hint": "Locate the first line that no longer preserves the original relationship.",
+          "errorTags": [
+            "translating-one-variable-models-structure",
+            "a2-unchecked-result"
+          ],
+          "remediationPath": "/subjects/math/algebra/linear-equations/translating-one-variable-models/",
+          "units": null,
+          "roundingPolicy": "Keep exact form unless the prompt explicitly requests an approximation.",
+          "seedPolicy": {
+            "deterministic": true,
+            "source": "A2.9",
+            "variant": 19
+          },
+          "solutionRef": "solution:a2-9:q19"
+        },
+        {
+          "id": "a2-9-q20",
+          "lessonId": "A2.9",
+          "unitCode": "A2",
+          "prompt": "A van holds 12 people. An equation gives 4.25 vans for 51 people. Interpret the domain and rounding.",
+          "responseType": "open-response",
+          "skill": "Define a variable and build a linear equation from a verbal or diagrammatic relationship.",
+          "purpose": "exit",
+          "difficulty": "standard",
+          "hint": "Solve, classify the solution set, and verify against the original equation.",
+          "errorTags": [
+            "translating-one-variable-models-structure",
+            "a2-unchecked-result"
+          ],
+          "remediationPath": "/subjects/math/algebra/linear-equations/translating-one-variable-models/",
+          "units": null,
+          "roundingPolicy": "Keep exact form unless the prompt explicitly requests an approximation.",
+          "seedPolicy": {
+            "deterministic": true,
+            "source": "A2.9",
+            "variant": 20
+          },
+          "solutionRef": "solution:a2-9:q20"
         }
       ],
       "exitCheck": [
-        "a2-9-q15",
-        "a2-9-q16"
+        "a2-9-q19",
+        "a2-9-q20"
       ],
       "takeaway": {
         "summary": "Define the variable and units before translating the relationship.",
@@ -5020,7 +6172,7 @@
       "title": "Linear equation strategy studio",
       "path": "/subjects/math/algebra/linear-equations/linear-equation-strategy-studio/",
       "outcome": "Classify structure, choose a first move, and defend the solution route.",
-      "foundationEdition": "authored-v1",
+      "foundationEdition": "authored-v2",
       "opening": {
         "prompt": "Sort a mixed set of equations with no chapter labels.",
         "purpose": "Select, explain, and verify an efficient strategy across the major forms of one-variable linear equations."
@@ -5033,8 +6185,26 @@
       "exposition": [
         "Equation solving is strategic rather than mechanical. Start by scanning the structure: simplify each side, clear awkward fractions or decimals when useful, collect variable terms, collect constants, and undo the final coefficient. Skip any step the equation does not need.",
         "Efficiency never replaces justification. A strong solution records transformations that preserve equality, explains a non-obvious choice, and avoids moves that create unnecessary complexity. Different valid paths should reach the same solution set.",
-        "The final audit has three parts: classify the solution set, substitute numerical candidates into the original equation when appropriate, and interpret any contextual restrictions. This audit separates a plausible line of algebra from a reliable solution."
+        "The final audit has three parts: classify the solution set, substitute numerical candidates into the original equation when appropriate, and interpret any contextual restrictions. This audit separates a plausible line of algebra from a reliable solution.",
+        "A strategy studio is about choosing, not merely executing, a method. Begin by scanning the equation’s architecture: grouping, denominators, decimals, like terms, variables on both sides, and contextual restrictions. The most efficient first step reduces complexity while preserving equality. Two equations containing the same symbols can require different choices because grouping and coefficient structure differ.",
+        "Simplify before balancing when distribution or like terms obscure the variable terms. Clear fractions when one common multiplier removes several denominators cleanly. Divide a common nonzero factor from both sides when every term shares it. Collect variables where the remaining coefficient is convenient. These are options, not a mandatory order. The governing question is: which reversible step makes the equation easier to read without losing a term or restriction?",
+        "Classification should be anticipated. Compare variable coefficients after simplification. If they are equal, expect the variable to cancel and prepare to inspect the constants. If they differ, expect one solution. In contextual equations, also predict sign, magnitude, and domain. A price, time, or length model often supplies a narrow plausibility range before any algebra is done.",
+        "A polished solution has a visible logic chain. It states restrictions, shows the selected transformation applied to both sides, separates equivalent-expression simplification from balance operations, and reports the solution set. It does not need maximum line count; it needs enough evidence that a reader can identify why each line is equivalent to the one before it.",
+        "The final verification should be chosen independently of the solving path. Substitute into the original equation, compare both sides numerically, inspect units, and interpret the result in context. For identity and contradiction cases, explain the complete domain conclusion. Strategy improves through error analysis: when a method fails, locate whether the defect came from reading structure, choosing an invalid operation, executing arithmetic, or interpreting the result.",
+        "Strategy choice should respond to structure. Clear grouping and combine like terms before trying to isolate a variable; clear fractions when denominators obscure that structure; collect variable terms before deciding whether the equation has one, no, or infinitely many solutions. Annotate the purpose of each move in a margin—“distribute,” “collect x-terms,” “undo +7”—so a long solution remains readable and an error can be traced to its first cause.",
+        "A complete solution has four parts: a defined variable, a sequence of equivalent equations, a verification in the original equation, and an interpreted conclusion. For a contextual problem, the conclusion also checks units and feasibility. For a symbolic problem, the conclusion states the solution set and any restrictions. Comparing two valid solution paths is worthwhile: if both preserve equality, they should converge on the same result, and the shorter or clearer path can inform future strategy without turning into an unexplained shortcut.",
+        "When reviewing work, locate the first line that is not equivalent to the one before it. A wrong final answer is a symptom; the instructional value lies in identifying whether the first failure came from translation, distribution, combining terms, an inverse operation, or arithmetic. Repair that one step and continue from the corrected equation. This error-analysis habit turns a completed solution into feedback and is more effective than erasing the entire attempt and copying a model answer. Record the repaired principle in words so it can guide the next problem, not just the current correction."
       ],
+      "method": {
+        "title": "Choose the first move from the equation’s structure",
+        "steps": [
+          "Scan and annotate grouping, formats, variable locations, and restrictions.",
+          "Predict whether the equation should yield one, no, or infinitely many solutions.",
+          "Choose the reversible step that removes the most complexity with the least arithmetic risk.",
+          "Record a concise operation history and perform an independent original-equation check."
+        ],
+        "check": "Explain why the chosen first move preserves the solution set and why a plausible alternative would be less efficient or more error-prone."
+      },
       "definitions": [
         {
           "term": "structure scan",
@@ -5050,6 +6220,16 @@
           "term": "final audit",
           "definition": "Classification, verification, and interpretation of the result.",
           "conditions": "It uses the original equation and any stated domain."
+        },
+        {
+          "term": "strategy choice",
+          "definition": "Selection of a valid first move based on an equation’s structure and goal.",
+          "conditions": "Different valid choices may produce different-length paths to the same solution set."
+        },
+        {
+          "term": "independent verification",
+          "definition": "A check that does not merely repeat the same sequence used to solve.",
+          "conditions": "Original-equation substitution, graph intersection, or contextual reconstruction can provide independent evidence."
         }
       ],
       "examples": [
@@ -5062,7 +6242,7 @@
             "Solve x=10 and check both sides equal 30."
           ],
           "answer": "x = 10",
-          "interpretation": "A structure scan reveals distribution and variables on both sides."
+          "interpretation": "A structure scan reveals distribution and variables on both sides. The strategy begins with a structural scan, so the selected move is explained rather than imitated."
         },
         {
           "kind": "representation",
@@ -5073,7 +6253,7 @@
             "Simplify, solve x=8, and check."
           ],
           "answer": "x = 8",
-          "interpretation": "Clearing denominators first avoids repeated fraction arithmetic."
+          "interpretation": "Clearing denominators first avoids repeated fraction arithmetic. Predicting solution count prepares the solver to interpret variable cancellation correctly."
         },
         {
           "kind": "transfer",
@@ -5084,7 +6264,7 @@
             "Interpret the false statement 3=4."
           ],
           "answer": "No solution",
-          "interpretation": "The final form, not the presence of x at the start, determines the classification."
+          "interpretation": "The final form, not the presence of x at the start, determines the classification. Independent checking separates a correct conclusion from a repeated version of the same possible error."
         }
       ],
       "figures": [
@@ -5127,8 +6307,8 @@
         }
       ],
       "checkpoint": {
-        "id": "a2-10-q16",
-        "prompt": "Complete a final audit for 4(x−3)+2=2x+10.",
+        "id": "a2-10-q20",
+        "prompt": "Compare two first moves for 6(x + 4) = 18: distribute first or divide by 6 first. Solve and evaluate efficiency.",
         "responseType": "open-response"
       },
       "exercises": [
@@ -5147,7 +6327,11 @@
         "a2-10-q13",
         "a2-10-q14",
         "a2-10-q15",
-        "a2-10-q16"
+        "a2-10-q16",
+        "a2-10-q17",
+        "a2-10-q18",
+        "a2-10-q19",
+        "a2-10-q20"
       ],
       "practiceQuestions": [
         {
@@ -5533,11 +6717,107 @@
             "variant": 16
           },
           "solutionRef": "solution:a2-10:q16"
+        },
+        {
+          "id": "a2-10-q17",
+          "lessonId": "A2.10",
+          "unitCode": "A2",
+          "prompt": "Solve 0.25(8x − 12) = 3x + 5, and justify the first move you choose.",
+          "responseType": "open-response",
+          "skill": "Classify structure, choose a first move, and defend the solution route.",
+          "purpose": "transfer",
+          "difficulty": "transfer",
+          "hint": "Identify the familiar equation structure before changing any symbols.",
+          "errorTags": [
+            "linear-equation-strategy-studio-structure",
+            "a2-unchecked-result"
+          ],
+          "remediationPath": "/subjects/math/algebra/linear-equations/linear-equation-strategy-studio/",
+          "units": "Preserve and report the units named in the prompt.",
+          "roundingPolicy": "Keep exact form unless the prompt explicitly requests an approximation.",
+          "seedPolicy": {
+            "deterministic": true,
+            "source": "A2.10",
+            "variant": 17
+          },
+          "solutionRef": "solution:a2-10:q17"
+        },
+        {
+          "id": "a2-10-q18",
+          "lessonId": "A2.10",
+          "unitCode": "A2",
+          "prompt": "Classify 3(2x − 1) + 7 = 2(3x + 2) without unnecessary isolation steps.",
+          "responseType": "open-response",
+          "skill": "Classify structure, choose a first move, and defend the solution route.",
+          "purpose": "modeling",
+          "difficulty": "transfer",
+          "hint": "Define the unknown and its units before writing the equation.",
+          "errorTags": [
+            "linear-equation-strategy-studio-structure",
+            "a2-unchecked-result"
+          ],
+          "remediationPath": "/subjects/math/algebra/linear-equations/linear-equation-strategy-studio/",
+          "units": "Preserve and report the units named in the prompt.",
+          "roundingPolicy": "Keep exact form unless the prompt explicitly requests an approximation.",
+          "seedPolicy": {
+            "deterministic": true,
+            "source": "A2.10",
+            "variant": 18
+          },
+          "solutionRef": "solution:a2-10:q18"
+        },
+        {
+          "id": "a2-10-q19",
+          "lessonId": "A2.10",
+          "unitCode": "A2",
+          "prompt": "Solve (x − 2)/3 + (x + 1)/2 = 7 and explain why clearing denominators is efficient.",
+          "responseType": "open-response",
+          "skill": "Classify structure, choose a first move, and defend the solution route.",
+          "purpose": "error-analysis",
+          "difficulty": "mixed",
+          "hint": "Locate the first line that no longer preserves the original relationship.",
+          "errorTags": [
+            "linear-equation-strategy-studio-structure",
+            "a2-unchecked-result"
+          ],
+          "remediationPath": "/subjects/math/algebra/linear-equations/linear-equation-strategy-studio/",
+          "units": "Preserve and report the units named in the prompt.",
+          "roundingPolicy": "Keep exact form unless the prompt explicitly requests an approximation.",
+          "seedPolicy": {
+            "deterministic": true,
+            "source": "A2.10",
+            "variant": 19
+          },
+          "solutionRef": "solution:a2-10:q19"
+        },
+        {
+          "id": "a2-10-q20",
+          "lessonId": "A2.10",
+          "unitCode": "A2",
+          "prompt": "Compare two first moves for 6(x + 4) = 18: distribute first or divide by 6 first. Solve and evaluate efficiency.",
+          "responseType": "open-response",
+          "skill": "Classify structure, choose a first move, and defend the solution route.",
+          "purpose": "exit",
+          "difficulty": "standard",
+          "hint": "Solve, classify the solution set, and verify against the original equation.",
+          "errorTags": [
+            "linear-equation-strategy-studio-structure",
+            "a2-unchecked-result"
+          ],
+          "remediationPath": "/subjects/math/algebra/linear-equations/linear-equation-strategy-studio/",
+          "units": "Preserve and report the units named in the prompt.",
+          "roundingPolicy": "Keep exact form unless the prompt explicitly requests an approximation.",
+          "seedPolicy": {
+            "deterministic": true,
+            "source": "A2.10",
+            "variant": 20
+          },
+          "solutionRef": "solution:a2-10:q20"
         }
       ],
       "exitCheck": [
-        "a2-10-q15",
-        "a2-10-q16"
+        "a2-10-q19",
+        "a2-10-q20"
       ],
       "takeaway": {
         "summary": "Scan the equation before choosing a first move; use only the steps its structure needs.",

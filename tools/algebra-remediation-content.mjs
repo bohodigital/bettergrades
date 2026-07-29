@@ -207,11 +207,13 @@ const QUESTION_PURPOSES = [
   "retrieval", "retrieval", "concept", "concept",
   "procedure", "procedure", "procedure", "procedure", "procedure", "procedure",
   "representation", "representation", "error-analysis", "transfer", "modeling", "exit",
+  "transfer", "modeling", "error-analysis", "exit",
 ];
 const QUESTION_DIFFICULTIES = [
   "foundation", "foundation", "standard", "standard",
   "standard", "standard", "mixed", "mixed", "standard", "mixed",
   "mixed", "transfer", "mixed", "transfer", "transfer", "standard",
+  "transfer", "transfer", "mixed", "standard",
 ];
 
 function buildFoundationQuestions(lesson, unit, profile) {
@@ -270,7 +272,7 @@ export function buildLessonArtifacts({ lesson, unit, figures, families, previous
     title: lesson.title,
     path: lesson.path,
     outcome: lesson.outcome,
-    ...(foundationProfile ? { foundationEdition: "authored-v1" } : {}),
+    ...(foundationProfile ? { foundationEdition: "authored-v2" } : {}),
     opening: {
       prompt: sentence(lesson.opening),
       purpose: foundationProfile?.purpose
@@ -286,6 +288,7 @@ export function buildLessonArtifacts({ lesson, unit, figures, families, previous
       `${figureDescriptions[0] ?? `The first figure for ${lesson.title} displays the governing quantities.`} Read the labels as mathematical evidence: identify what is fixed, what changes, and how the objects are related. Then connect that evidence to the symbolic work one justified step at a time. A correct transformation preserves the relevant value, truth set, rate, domain, or geometric feature. If a step changes one of those, it needs a stated condition and a check against the original problem.`,
       `${figureDescriptions[1] ?? `A second representation makes the mechanism visible.`} Use the worked examples to compare symbolic, numerical, and visual forms. Each form should answer the same question, even when it emphasizes a different feature. Finish by interpreting the result in a complete sentence and checking it with substitution, estimation, units, graph position, or an inverse operation. That final check distinguishes a plausible-looking candidate from a supported conclusion.`,
     ],
+    ...(foundationProfile?.method ? { method: foundationProfile.method } : {}),
     definitions: foundationProfile
       ? foundationProfile.definitions.map(([term, definition, conditions]) => ({ term, definition, conditions }))
       : [
@@ -316,13 +319,13 @@ export function buildLessonArtifacts({ lesson, unit, figures, families, previous
       },
       ],
     checkpoint: {
-      id: questions[15].id,
-      prompt: questions[15].prompt,
-      responseType: questions[15].responseType,
+      id: questions.at(-1).id,
+      prompt: questions.at(-1).prompt,
+      responseType: questions.at(-1).responseType,
     },
     exercises: questions.map((question) => question.id),
     practiceQuestions: questions,
-    exitCheck: [questions[14].id, questions[15].id],
+    exitCheck: questions.slice(-2).map((question) => question.id),
     takeaway: {
       summary: foundationProfile
         ? sentence(foundationProfile.takeaway[0])

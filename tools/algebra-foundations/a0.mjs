@@ -169,7 +169,7 @@ export const A0_PROFILES = {
       q("Explain why 2/3 = 8/12.", "Both equal the same point; multiply by 4/4", "Multiplying by 4/4 changes the partition, not the value."),
       q("A student says 3/8 > 3/5 because 8 > 5. Repair the comparison.", "3/8 < 3/5", "With equal numerators, fifths are larger pieces than eighths."),
       q("Find a fraction strictly between 1/3 and 1/2.", "For example, 5/12", "1/3 = 4/12 and 1/2 = 6/12, so 5/12 lies between."),
-      q("State the restriction on a/b and explain it.", "b ≠ 0", "Division by zero is undefined, so a fraction cannot have denominator 0."),
+      q("State the restriction on a/b and explain it.", "b ≠ 0", "Division by zero has no real-number value, so a fraction cannot have denominator 0."),
       q("Use number, quotient, ratio, and operator meanings to describe 3/4.", "0.75; 3÷4; 3 to 4; three-fourths of a quantity", "Each interpretation represents the same fractional value in a different context."),
     ],
     takeaway: ["A fraction is a number with one exact location, even when it also represents a quotient, ratio, or operator.", "Equivalent fractions rename the same value using different unit fractions."],

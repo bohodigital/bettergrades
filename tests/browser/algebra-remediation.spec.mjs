@@ -55,7 +55,7 @@ test("Algebra lessons remain substantive without JavaScript", async ({ browser }
   await page.goto("/subjects/math/algebra/arithmetic-readiness/number-lines-and-signed-quantities/");
   await expect(page.locator("[data-bvlp-visual]")).toHaveCount(3);
   await expect(page.locator("[data-static-fallback=retained] img")).toHaveCount(3);
-  await expect(page.locator(".algebra-exercise-families article")).toHaveCount(16);
+  await expect(page.locator(".algebra-exercise-families article")).toHaveCount(20);
   expect((await page.locator("main").innerText()).length).toBeGreaterThan(5_000);
   await context.close();
 });

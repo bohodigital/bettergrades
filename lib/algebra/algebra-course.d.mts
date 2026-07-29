@@ -60,9 +60,11 @@ export type AlgebraLesson = {
   title: string;
   path: string;
   outcome: string;
+  foundationEdition?: string;
   opening: { prompt: string; purpose: string };
   prerequisiteChecks: string[];
   exposition: string[];
+  method?: { title: string; steps: string[]; check: string };
   definitions: Array<{ term: string; definition: string; conditions?: string }>;
   examples: Array<{ kind: string; prompt: string; steps: string[]; answer: string; interpretation: string }>;
   misconceptions: Array<{ wrongMove: string; whyItFails: string; repair: string }>;

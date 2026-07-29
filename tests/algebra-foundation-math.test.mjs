@@ -4,9 +4,7 @@ import test from "node:test";
 import katex from "katex";
 
 import { foundationMathFragments } from "../lib/algebra/foundation-math.mjs";
-import { A0_PROFILES } from "../tools/algebra-foundations/a0.mjs";
-import { A1_PROFILES } from "../tools/algebra-foundations/a1.mjs";
-import { A2_PROFILES } from "../tools/algebra-foundations/a2.mjs";
+import { FOUNDATION_PROFILES } from "../tools/algebra-foundations/index.mjs";
 
 function mathTex(value) {
   return foundationMathFragments(value)
@@ -21,6 +19,8 @@ test("foundation prose becomes real LaTeX fragments without consuming surroundin
   assert.deepEqual(mathTex("Which of {−2, 0, 2} solve x² = 4?"), [String.raw`\{-2, 0, 2\}`, "x^{2} = 4"]);
   assert.equal(foundationMathFragments("Explain the operation in words.").length, 1);
   assert.deepEqual(foundationMathFragments("Explain the operation in words.")[0], { kind: "text", value: "Explain the operation in words." });
+  assert.deepEqual(foundationMathFragments("Record a concise operation history."), [{ kind: "text", value: "Record a concise operation history." }]);
+  assert.deepEqual(mathTex("Compare a − b with b − a."), ["a - b", "b - a"]);
 });
 
 test("every detected A0–A2 expression is valid strict KaTeX", () => {
@@ -30,7 +30,7 @@ test("every detected A0–A2 expression is valid strict KaTeX", () => {
     else if (Array.isArray(value)) value.forEach(visit);
     else if (value && typeof value === "object") Object.values(value).forEach(visit);
   };
-  visit({ A0_PROFILES, A1_PROFILES, A2_PROFILES });
+  visit(FOUNDATION_PROFILES);
 
   let expressionCount = 0;
   for (const value of strings) {
@@ -43,5 +43,5 @@ test("every detected A0–A2 expression is valid strict KaTeX", () => {
       );
     }
   }
-  assert.ok(expressionCount >= 2_700, `expected comprehensive math coverage, received ${expressionCount}`);
+  assert.ok(expressionCount >= 3_900, `expected comprehensive math coverage, received ${expressionCount}`);
 });

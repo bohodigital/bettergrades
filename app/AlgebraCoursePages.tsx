@@ -170,20 +170,20 @@ function LessonList({ title, label, items }: { title: string; label: string; ite
 }
 
 function LessonPractice({ lesson }: { lesson: NonNullable<AlgebraCoursePage["lesson"]> }) {
-  const authoredFoundation = lesson.foundationEdition === "authored-v1";
+  const authoredFoundation = lesson.foundationEdition?.startsWith("authored-");
   if (!authoredFoundation) {
     return <section className="limits-node limits-node-exercise"><header><span>Practice</span><h2>{lesson.practiceQuestions.length} concrete questions</h2></header><div><div className="algebra-exercise-families">{lesson.practiceQuestions.map((question) => <article key={question.id}><code>{question.id}</code><h3><AlgebraMathText value={question.prompt} /></h3><p><AlgebraMathText value={question.hint} /></p><small>{pageTypeLabel(question.purpose ?? "practice")} · {pageTypeLabel(question.difficulty ?? "standard")}</small></article>)}</div></div></section>;
   }
 
   const groups = [
     { title: "Warm-up", label: "Recall and read the structure", questions: lesson.practiceQuestions.slice(0, 4) },
-    { title: "Core practice", label: "Build accuracy one step at a time", questions: lesson.practiceQuestions.slice(4, 10) },
-    { title: "Represent and reason", label: "Explain, compare, and diagnose", questions: lesson.practiceQuestions.slice(10, 14) },
-    { title: "Finish strong", label: "Model, transfer, and verify", questions: lesson.practiceQuestions.slice(14, 16) },
+    { title: "Core practice", label: "Build accuracy one step at a time", questions: lesson.practiceQuestions.slice(4, 12) },
+    { title: "Represent and reason", label: "Explain, compare, and diagnose", questions: lesson.practiceQuestions.slice(12, 16) },
+    { title: "Finish strong", label: "Model, transfer, and verify", questions: lesson.practiceQuestions.slice(16) },
   ];
 
   return <section className="limits-node limits-node-exercise algebra-foundation-practice">
-    <header><span>Practice</span><h2>Sixteen questions in four deliberate rounds</h2></header>
+    <header><span>Practice</span><h2>{lesson.practiceQuestions.length} questions in four deliberate rounds</h2></header>
     <div className="algebra-practice-groups">
       {groups.map((group) => <section className="algebra-practice-group" key={group.title} aria-labelledby={`${lesson.id}-${group.title.replaceAll(" ", "-")}`}>
         <header><p className="eyebrow">{group.label}</p><h3 id={`${lesson.id}-${group.title.replaceAll(" ", "-")}`}>{group.title}</h3></header>
@@ -210,6 +210,7 @@ function LessonPage({ page }: { page: AlgebraCoursePage }) {
     <section className="limits-node limits-node-application"><header><span>Opening situation</span><h2>Begin with a quantity and a question</h2></header><div><p><AlgebraMathText value={lesson.opening.prompt} /></p><p><AlgebraMathText value={lesson.opening.purpose} /></p></div></section>
     <LessonList title="Check the foundations first" label="Prerequisites" items={lesson.prerequisiteChecks} />
     <section className="limits-node limits-node-exposition"><header><span>Explanation</span><h2>Build meaning one justified step at a time</h2></header><div>{lesson.exposition.map((paragraph) => <p key={paragraph}><AlgebraMathText value={paragraph} /></p>)}</div></section>
+    {lesson.method && <section className="limits-node limits-node-method algebra-authored-method"><header><span>Method</span><h2><AlgebraMathText value={lesson.method.title} /></h2></header><div><ol>{lesson.method.steps.map((step) => <li key={step}><AlgebraMathText value={step} /></li>)}</ol><p><strong>Check:</strong> <AlgebraMathText value={lesson.method.check} /></p></div></section>}
     <section className="limits-node limits-node-method"><header><span>Language</span><h2>Definitions and conditions</h2></header><div><dl>{lesson.definitions.map((definition) => <div key={definition.term}><dt><strong><AlgebraMathText value={definition.term} /></strong></dt><dd><AlgebraMathText value={definition.definition} />{definition.conditions && <small><AlgebraMathText value={definition.conditions} /></small>}</dd></div>)}</dl></div></section>
     <section className="algebra-figure-sequence" aria-label={`${lesson.title} figures`}>{lesson.figures.map((figure) => <figure className="limits-graph limits-graph-visual calculus-unit-visual" key={figure.id}>
       {figure.visual ? <BetterGradesVisual visual={figure.visual} /> : <p role="alert">This compiled figure is temporarily unavailable.</p>}

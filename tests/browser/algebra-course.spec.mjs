@@ -36,8 +36,8 @@ test("interactive Algebra lesson retains three BVLP fallbacks and hydrates only 
   await expect(page.locator("[data-bvlp-visual]")).toHaveCount(3);
   await expect(page.locator("[data-static-fallback=retained] img")).toHaveCount(3);
   await expect(page.locator("[data-bvlp-renderer=bg-interactive-2d]")).toHaveCount(1);
-  await expect(page.locator(".algebra-exercise-families article")).toHaveCount(16);
-  await expect(page.locator("[data-check-id=a0-1-q16]")).toHaveCount(1);
+  await expect(page.locator(".algebra-exercise-families article")).toHaveCount(20);
+  await expect(page.locator("[data-check-id=a0-1-q20]")).toHaveCount(1);
 });
 
 test("static Algebra lesson ships no interactive slot", async ({ page }) => {
@@ -52,7 +52,8 @@ test("A0–A2 lessons organize authored practice into usable rounds with optiona
   await page.goto("/subjects/math/algebra/linear-equations/multistep-linear-equations/");
   const practice = page.locator(".algebra-foundation-practice");
   await expect(practice.locator(".algebra-practice-group")).toHaveCount(4);
-  await expect(practice.locator(".algebra-exercise-families article")).toHaveCount(16);
+  await expect(practice.locator(".algebra-exercise-families article")).toHaveCount(20);
+  await expect(page.locator(".algebra-authored-method li")).toHaveCount(4);
   await expect(practice.locator(".algebra-question-hint[open]")).toHaveCount(0);
   const firstHint = practice.locator(".algebra-question-hint").first();
   await firstHint.locator("summary").click();
@@ -82,9 +83,9 @@ test("the compact rational-expression guide remains canonical beside the distinc
 
 test("open-response checks stay locked until an attempt and then reveal the protected guide", async ({ page }) => {
   await page.goto("/subjects/math/algebra/arithmetic-readiness/number-lines-and-signed-quantities/");
-  const check = page.locator("[data-check-id=a0-1-q16]");
+  const check = page.locator("[data-check-id=a0-1-q20]");
   await expect(check.locator("summary")).toContainText("Attempt once");
-  await check.locator("textarea").fill("I would place the values on one number line, compare their positions, and verify the sign and distance from zero.");
+  await check.locator("textarea").fill("The first error is treating subtraction of a negative as adding another negative. Rewrite −4 − (−9) as −4 + 9, which equals 5, and check that subtracting 9 returns −4.");
   await check.getByRole("button", { name: "Submit attempt" }).click();
   await expect(check.locator(".limits-check-feedback")).toContainText("open response");
   await expect(check.locator("summary")).toContainText("Compare with");

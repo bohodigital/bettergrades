@@ -125,6 +125,72 @@
   margin: 2rem 0;
 }
 
+.algebra-authored-method > div > ol {
+  counter-reset: algebra-method-step;
+  display: grid;
+  gap: 0.85rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.algebra-authored-method > div > ol > li {
+  counter-increment: algebra-method-step;
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  align-items: start;
+  gap: 0.75rem;
+  line-height: 1.55;
+}
+
+.algebra-authored-method > div > ol > li::before {
+  content: counter(algebra-method-step);
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--brand), transparent 42%);
+  border-radius: 999px;
+  background: var(--brand-soft);
+  color: var(--brand);
+  font-size: 0.78rem;
+  font-weight: 850;
+}
+
+.algebra-authored-method > div > p {
+  margin-top: 1.15rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+}
+
+.limits-node-method > div > dl {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+}
+
+.limits-node-method > div > dl > div {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.limits-node-method > div > dl > div:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.limits-node-method dd {
+  margin: 0.3rem 0 0;
+  line-height: 1.55;
+}
+
+.limits-node-method dd small {
+  display: block;
+  margin-top: 0.35rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
 .algebra-exercise-families {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
