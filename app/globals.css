@@ -2308,7 +2308,192 @@ h1 em, h2 em { color: var(--brand); font-family: var(--serif); font-weight: 500;
   font-size: 0.82rem;
 }
 
+.precalculus-course-page .precalculus-course-map .calculus-chapter-title small {
+  max-width: 46rem;
+}
+
+.precalculus-course-map .precalculus-map-intro {
+  display: grid;
+  grid-template-columns: minmax(15rem, 0.9fr) minmax(18rem, 1.1fr);
+  gap: clamp(1.4rem, 3vw, 3rem);
+  align-items: center;
+}
+
+.precalculus-course-map .precalculus-map-intro > img {
+  display: block;
+  width: 100%;
+  border: 1px solid color-mix(in srgb, var(--line) 76%, transparent);
+  border-radius: 0.65rem;
+  box-shadow: 0 1.1rem 2.8rem color-mix(in srgb, var(--ink) 13%, transparent);
+}
+
+.precalculus-course-map .precalculus-map-intro > div > p:last-child {
+  max-width: 42rem;
+  margin-top: 0.9rem;
+  font-family: var(--serif);
+  font-size: 1.02rem;
+  line-height: 1.65;
+}
+
+.precalculus-textbook-lesson .precalculus-concept-reading {
+  margin-top: 3rem;
+}
+
+.precalculus-textbook-lesson .precalculus-concept-reading > div > p {
+  font-size: 1.055rem;
+}
+
+.precalculus-textbook-lesson .precalculus-concept-reading aside {
+  margin-top: 1.25rem;
+  padding: 1rem 1.15rem;
+  border: 1px solid color-mix(in srgb, var(--brand) 30%, var(--line));
+  border-radius: 0.4rem;
+  background: color-mix(in srgb, var(--brand) 5%, var(--paper));
+}
+
+.precalculus-textbook-lesson .precalculus-concept-reading aside > strong {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.065em;
+  text-transform: uppercase;
+}
+
+.precalculus-textbook-lesson .precalculus-concept-reading aside ul {
+  margin-top: 0.55rem;
+}
+
+.precalculus-textbook-lesson .precalculus-lesson-method {
+  padding: 1.2rem 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--brand) 28%, var(--line));
+  border-left: 4px solid var(--brand);
+  border-radius: 0.42rem;
+  background: color-mix(in srgb, var(--brand) 4%, var(--paper));
+}
+
+.precalculus-textbook-lesson .precalculus-lesson-method > header {
+  border-bottom-color: color-mix(in srgb, var(--brand) 25%, var(--line));
+}
+
+.precalculus-textbook-lesson .precalculus-lesson-method > div > ol {
+  display: grid;
+  counter-reset: precalculus-method;
+  padding-left: 0;
+  list-style: none;
+}
+
+.precalculus-textbook-lesson .precalculus-lesson-method > div > ol > li {
+  display: grid;
+  grid-template-columns: 1.85rem minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: start;
+  counter-increment: precalculus-method;
+}
+
+.precalculus-textbook-lesson .precalculus-lesson-method > div > ol > li::before {
+  display: grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  background: var(--brand);
+  color: white;
+  content: counter(precalculus-method);
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 850;
+}
+
+.precalculus-textbook-lesson .precalculus-lesson-method > div > p {
+  margin-bottom: 0;
+  padding-top: 0.85rem;
+  border-top: 1px solid color-mix(in srgb, var(--brand) 20%, var(--line));
+}
+
+.precalculus-textbook-lesson .precalculus-foundation-walkthrough > div > h3 {
+  margin: 0.35rem 0 1rem;
+  font-size: 1.15rem;
+  line-height: 1.5;
+}
+
+.precalculus-textbook-lesson .precalculus-foundation-walkthrough dl {
+  display: grid;
+  gap: 0;
+  margin: 0;
+}
+
+.precalculus-textbook-lesson .precalculus-foundation-walkthrough dl > div {
+  display: grid;
+  grid-template-columns: minmax(6rem, 0.25fr) minmax(0, 1fr);
+  gap: 1rem;
+  padding: 0.8rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.precalculus-textbook-lesson .precalculus-foundation-walkthrough dt {
+  color: var(--brand);
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  font-weight: 850;
+  letter-spacing: 0.065em;
+  text-transform: uppercase;
+}
+
+.precalculus-textbook-lesson .precalculus-foundation-walkthrough dd {
+  margin: 0;
+}
+
+.precalculus-textbook-lesson .algebra-figure-sequence .limits-graph {
+  padding: clamp(0.75rem, 2vw, 1.15rem);
+  border: 1px solid color-mix(in srgb, var(--ink) 13%, var(--line));
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--paper) 96%, white), var(--paper));
+  box-shadow: 0 0.8rem 2.2rem color-mix(in srgb, var(--ink) 7%, transparent);
+}
+
+.precalculus-textbook-lesson .algebra-figure-sequence figcaption {
+  padding-top: 0.2rem;
+}
+
+.precalculus-textbook-lesson .precalculus-practice > div {
+  display: grid;
+  gap: 1rem;
+}
+
+.precalculus-textbook-lesson .precalculus-attempt.is-compact {
+  margin: 0;
+  padding: 1rem;
+  break-inside: avoid;
+}
+
+.precalculus-textbook-lesson .precalculus-attempt.is-compact + .precalculus-attempt.is-compact {
+  margin-top: 0;
+}
+
+.precalculus-textbook-lesson .precalculus-attempt.is-compact textarea {
+  min-height: 5.5rem;
+}
+
+.precalculus-textbook-lesson .limits-rights ul {
+  margin: 0.6rem 0;
+  padding-left: 1.15rem;
+}
+
+.precalculus-textbook-lesson .limits-rights li {
+  margin: 0.2rem 0;
+  font-size: 0.76rem;
+  line-height: 1.45;
+}
+
 @media (max-width: 44rem) {
+  .precalculus-course-map .precalculus-map-intro {
+    grid-template-columns: 1fr;
+  }
+
+  .precalculus-textbook-lesson .precalculus-foundation-walkthrough dl > div {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+
   .algebra-course-page[data-page-type="lesson"] .limits-unit-hero,
   .algebra-course-page[data-page-type="lesson"] .limits-sequence {
     width: calc(100% - 28px);

@@ -10,10 +10,12 @@ import { getPublicLimitsUnitPage } from "../../lib/calculus/limits-unit.mjs";
 import { isCalculusUnitPath } from "../../lib/calculus/calculus-units-index.mjs";
 import { getPublicCalculusUnitPage } from "../../lib/calculus/calculus-unit.mjs";
 import { getPublicAlgebraCoursePage, isAlgebraCoursePath } from "../../lib/algebra/algebra-course.mjs";
+import { getPublicPrecalculusCoursePage, isPrecalculusCoursePath } from "../../lib/precalculus/precalculus-course.mjs";
 import { GlossaryHubPage, MathConventionsPage, MathGlossaryPage } from "../GlossaryPages";
 import { LimitsUnitPageContent } from "../LimitsUnitPages";
 import { CalculusUnitPageContent } from "../CalculusUnitPages";
 import { AlgebraCoursePageContent } from "../AlgebraCoursePages";
+import { PrecalculusCoursePageContent } from "../PrecalculusCoursePages";
 import { ResourceHubPage, ResourceLibraryPage, ResourcePage } from "../ResourcePages";
 function getPath(slug: string[] = []) {
   return `/${slug.join("/")}${slug.length ? "/" : ""}`;
@@ -39,6 +41,16 @@ function getAlgebraUnitSeo(path: string) {
   };
 }
 
+function getPrecalculusSeo(path: string) {
+  const page = getPublicPrecalculusCoursePage(path);
+  if (!page) return undefined;
+  return {
+    name: page.unit?.title ?? "Precalculus: Functions, Models, and Change",
+    topic: page.lesson?.title ?? page.unit?.title ?? "Precalculus course",
+    routeRole: page.route.pageType,
+  };
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ slug?: string[] }> }): Promise<Metadata> {
   const { slug = [] } = await params;
   const path = getPath(slug);
@@ -46,6 +58,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug?: st
   const resource = getPublishedResourcePage(path);
   const unit = getCalculusUnitSeo(path);
   const algebra = getAlgebraUnitSeo(path);
+  const precalculus = getPrecalculusSeo(path);
   const title = algebra?.code && !new RegExp(`\\bUnit ${algebra.code}\\b`).test(meta.title)
     ? `${meta.title} | Unit ${algebra.code}`
     : unit && !new RegExp(`\\bUnit ${unit.code}\\b`).test(meta.title) ? `${meta.title} | Unit ${unit.code}` : meta.title;
@@ -88,6 +101,24 @@ export async function generateMetadata({ params }: { params: Promise<{ slug?: st
       twitter: { card: "summary_large_image" as const, title, description, images: ["/og-algebra.png"] },
       other: { "course-revision-date": "2026-07-28", "course-route-role": getPublicAlgebraCoursePage(path)?.route.pageType ?? "course" },
     } : {}),
+    ...(precalculus ? {
+      keywords: [precalculus.name, precalculus.topic, "Precalculus functions", "Precalculus models", "Precalculus textbook"],
+      openGraph: {
+        type: "article" as const,
+        title,
+        description,
+        url: path,
+        siteName: "Better Grades",
+        images: [{
+          url: "/og-precalculus.png",
+          width: 1731,
+          height: 909,
+          alt: "Better Grades Precalculus: Functions, Models, and Change",
+        }],
+      },
+      twitter: { card: "summary_large_image" as const, title, description, images: ["/og-precalculus.png"] },
+      other: { "course-revision-date": "2026-07-29", "course-route-role": precalculus.routeRole },
+    } : {}),
   };
 }
 
@@ -109,6 +140,7 @@ export default async function CatchAllPage({
   const limitsUnitPage = isLimitsUnitPath(path) ? getPublicLimitsUnitPage(path) : undefined;
   const calculusUnitPage = isCalculusUnitPath(path) ? getPublicCalculusUnitPage(path) : undefined;
   const algebraCoursePage = isAlgebraCoursePath(path) ? getPublicAlgebraCoursePage(path) : undefined;
+  const precalculusCoursePage = isPrecalculusCoursePath(path) ? getPublicPrecalculusCoursePage(path) : undefined;
   const resourcePage = getPublishedResourcePage(path);
   const resourceHub = getResourceHub(path);
   const libraryResources = path === "/resources/"
@@ -128,7 +160,8 @@ export default async function CatchAllPage({
     ? resourcePage.relatedGlossaryTerms.filter((id) => enrichedGlossaryResources.some((resource) => resource.glossaryTermId === id))
     : undefined;
   let routeContent: ReactNode;
-  if (algebraCoursePage) routeContent = <AlgebraCoursePageContent page={algebraCoursePage} />;
+  if (precalculusCoursePage) routeContent = <PrecalculusCoursePageContent page={precalculusCoursePage} />;
+  else if (algebraCoursePage) routeContent = <AlgebraCoursePageContent page={algebraCoursePage} />;
   else if (libraryResources) routeContent = <ResourceLibraryPage resources={libraryResources} />;
   else if (resourceHub) routeContent = <ResourceHubPage hub={resourceHub} resources={hubResources ?? []} />;
   else if (resourcePage) routeContent = <ResourcePage resource={resourcePage} glossaryTerms={glossaryData?.terms} relatedResources={relatedResources ?? []} enrichedGlossaryTermIds={enrichedGlossaryTermIds ?? []} />;

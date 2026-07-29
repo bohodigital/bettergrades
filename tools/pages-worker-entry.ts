@@ -4,6 +4,8 @@ import { POST as algebraCourseRevealPost } from "../app/api/algebra-course-revea
 import { POST as calculusCheckPost } from "../app/api/calculus-check/route";
 import { POST as calculusRevealPost } from "../app/api/calculus-reveal/route";
 import { POST as limitsCheckPost } from "../app/api/limits-check/route";
+import { POST as precalculusCourseCheckPost } from "../app/api/precalculus-course-check/route";
+import { POST as precalculusCourseRevealPost } from "../app/api/precalculus-course-reveal/route";
 
 type PagesEnvironment = {
   ASSETS: { fetch(request: Request): Promise<Response> };
@@ -16,6 +18,8 @@ const apiHandlers = new Map<string, (request: Request) => Promise<Response>>([
   ["/api/calculus-check", calculusCheckPost],
   ["/api/calculus-reveal", calculusRevealPost],
   ["/api/limits-check", limitsCheckPost],
+  ["/api/precalculus-course-check", precalculusCourseCheckPost],
+  ["/api/precalculus-course-reveal", precalculusCourseRevealPost],
 ]);
 
 const securityHeaders = {

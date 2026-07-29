@@ -8,6 +8,7 @@ import { build } from "esbuild";
 
 import course from "../content/algebra/course.public.json" with { type: "json" };
 import collisions from "../content/algebra/route-collision-report.json" with { type: "json" };
+import precalculusCourse from "../content/precalculus/course.public.json" with { type: "json" };
 import baseline from "../data/ia/page-inventory.json" with { type: "json" };
 
 const root = resolve(import.meta.dirname, "..");
@@ -64,13 +65,17 @@ test("the fourth collision preserves the compact guide and gives the course less
   assert.equal(collisions.collisions.find((collision) => collision.path === compact)?.replacementCoursePath, fullLesson);
 });
 
-test("all current 509 canonicals survive and the combined registry is exactly 732 unique routes", () => {
+test("all current 509 canonicals survive and the expanded registry is exactly 825 unique routes", () => {
   assert.equal(baseline.routeCount, 509);
-  assert.equal(routing.publicRoutes.length, 732);
-  assert.equal(routing.registryRoutes.length, 732);
-  assert.equal(new Set(routing.publicRoutes).size, 732);
+  assert.equal(precalculusCourse.routes.length, 93);
+  const expectedRouteCount = collisions.expectedFinalCanonicalRouteCount + precalculusCourse.routes.length;
+  assert.equal(expectedRouteCount, 825);
+  assert.equal(routing.publicRoutes.length, expectedRouteCount);
+  assert.equal(routing.registryRoutes.length, expectedRouteCount);
+  assert.equal(new Set(routing.publicRoutes).size, expectedRouteCount);
   const routes = new Set(routing.publicRoutes);
   for (const page of baseline.routes) assert.ok(routes.has(page.route), `preserved route ${page.route}`);
+  for (const route of precalculusCourse.routes) assert.ok(routes.has(route.path), `Precalculus route ${route.path}`);
 });
 
 test("every Algebra unit has normalized route, page, assessment, exercise, visual, and provenance artifacts", async () => {

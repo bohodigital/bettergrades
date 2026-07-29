@@ -1,6 +1,8 @@
 import auditInventory from "../../data/ia/page-inventory.json" with { type: "json" };
 import { algebraCourse } from "../algebra/algebra-course.mjs";
 import { algebraCourseRoutes } from "../algebra/algebra-course-index.mjs";
+import { precalculusCourse } from "../precalculus/precalculus-course.mjs";
+import { precalculusCourseRoutes } from "../precalculus/precalculus-course-index.mjs";
 import { calculusUnitRoutes, calculusUnits } from "../calculus/calculus-units-index.mjs";
 import { limitsUnitRoutes } from "../calculus/limits-unit-index.mjs";
 import { publishedResourcePages, resourceHubs } from "../resources/catalog.mjs";
@@ -19,6 +21,7 @@ for (const record of siteSearchRecords) {
 const unitRouteByPath = new Map(calculusUnitRoutes.map((route: { path: string }) => [route.path, route]));
 const algebraRouteByPath = new Map(algebraCourseRoutes.map((route: { path: string }) => [route.path, route]));
 const algebraPageByPath = new Map(algebraCourse.pages.map((page: { route: { path: string } }) => [page.route.path, page]));
+const precalculusRouteByPath = new Map(precalculusCourseRoutes.map((route: { path: string }) => [route.path, route]));
 const limitsRouteByPath = new Map(limitsUnitRoutes.map((route: { path: string }) => [route.path, route]));
 const publishingByPath = new Map(publishedResourcePages.map((resource) => [resource.canonicalPath, resource]));
 const hubByPath = new Map(resourceHubs.map((hub) => [hub.path, hub]));
@@ -55,6 +58,7 @@ function stableNodeId(path: string, role: string): string {
     "/subjects/math/": "subject.math",
     "/subjects/math/algebra/": "course.math.algebra",
     "/subjects/math/calculus/": "course.math.calculus",
+    "/subjects/math/precalculus/": "course.math.precalculus",
     "/glossary/": "resource-hub.glossaries",
     "/glossary/math/": "resource-hub.glossary.math",
     "/practice/math/": "resource-hub.practice.math",
@@ -81,6 +85,8 @@ function stableNodeId(path: string, role: string): string {
 }
 
 function unitIdFor(path: string) {
+  const precalculusRoute = precalculusRouteByPath.get(path) as { unitId?: string | null } | undefined;
+  if (precalculusRoute?.unitId) return `unit.math.precalculus.${semanticToken(precalculusRoute.unitId)}`;
   const algebraRoute = algebraRouteByPath.get(path) as { unitCode?: string | null } | undefined;
   if (algebraRoute?.unitCode) return `unit.math.algebra.${semanticToken(algebraRoute.unitCode)}`;
   const route = unitRouteByPath.get(path) as { unitId?: string } | undefined;
@@ -90,6 +96,46 @@ function unitIdFor(path: string) {
   }
   if (path.includes("/limits-continuity/")) return "unit.calculus.1";
   return null;
+}
+
+function precalculusNodeId(route: { id: string; pageType: string; unitId?: string | null; lessonId?: string | null }) {
+  if (route.pageType === "course-hub") return "course.math.precalculus";
+  if (route.pageType === "unit-hub") return `unit.math.precalculus.${semanticToken(route.unitId ?? route.id)}`;
+  return `textbook-lesson.math.precalculus.${semanticToken(route.lessonId ?? route.id)}`;
+}
+
+function buildPrecalculusNode(route: {
+  id: string;
+  path: string;
+  title: string;
+  pageType: string;
+  unitId?: string | null;
+  lessonId?: string | null;
+  description: string;
+  indexable: boolean;
+}): LearningNode {
+  const unit = precalculusCourse.units.find((candidate: { id: string }) => candidate.id === route.unitId);
+  const lesson = precalculusCourse.lessons.find((candidate: { id: string }) => candidate.id === route.lessonId);
+  const pageRole = route.pageType === "course-hub" ? "course-hub" : route.pageType === "unit-hub" ? "unit-hub" : "textbook-lesson";
+  return {
+    id: precalculusNodeId(route),
+    nodeType: roleToType[pageRole],
+    pageRole,
+    title: route.title,
+    shortTitle: route.title,
+    canonicalPath: route.path,
+    subjectId: "subject.math",
+    courseId: "course.math.precalculus",
+    unitId: route.unitId ? `unit.math.precalculus.${semanticToken(route.unitId)}` : null,
+    topicIds: unit ? [`topic.math.precalculus.${semanticToken(unit.title)}`] : [],
+    primaryConceptId: conceptId(lesson?.outcome ?? unit?.title ?? "Precalculus"),
+    secondaryConceptIds: [],
+    skillIds: Array.from(new Set([route.title, route.description, unit?.title ?? ""].map(skillId).filter((value): value is string => Boolean(value)))),
+    indexPolicy: route.indexable ? "index" : "noindex",
+    status: "review",
+    searchAliases: Array.from(new Set([route.title, route.description, unit?.title ?? "Precalculus"].filter(Boolean))),
+    formerPaths: [],
+  };
 }
 
 function algebraNodeId(route: { id: string; pageType: string; unitCode?: string | null; lessonId?: string | null }) {
@@ -208,6 +254,11 @@ export function adaptCurrentRegistries(sourceCommit: string, sourceTree: string)
   const exclusions: LearningGraph["exclusions"] = [];
   const nodes: LearningNode[] = [];
   for (const route of registryRoutes.filter((candidate) => candidate.indexable && !redirectSources.has(candidate.path))) {
+    const precalculusRoute = precalculusRouteByPath.get(route.path) as Parameters<typeof buildPrecalculusNode>[0] | undefined;
+    if (precalculusRoute) {
+      nodes.push(buildPrecalculusNode(precalculusRoute));
+      continue;
+    }
     const algebraRoute = algebraRouteByPath.get(route.path) as Parameters<typeof buildAlgebraNode>[0] | undefined;
     if (algebraRoute) {
       nodes.push(buildAlgebraNode(algebraRoute));
@@ -287,6 +338,65 @@ export function adaptCurrentRegistries(sourceCommit: string, sourceTree: string)
       source: "content/algebra/storyboard-v2/learning_graph_seed.csv",
       editorialStatus: seed.public ? "approved" : "provisional",
       placement: "algebra-course-navigation",
+      anchorText: target.shortTitle,
+      reciprocalRequired: false,
+    });
+  }
+  const precalculusCourseNode = nodeByPath.get("/subjects/math/precalculus/");
+  for (const unit of precalculusCourse.units as ReadonlyArray<{ id: string; root: string; lessons: Array<{ path: string }> }>) {
+    const unitNode = nodeByPath.get(unit.root);
+    if (precalculusCourseNode && unitNode) {
+      const key = `${unitNode.id}\0${precalculusCourseNode.id}\0belongs_to`;
+      if (!seen.has(key)) {
+        seen.add(key);
+        relationships.push({
+          sourceId: unitNode.id,
+          targetId: precalculusCourseNode.id,
+          type: "belongs_to",
+          confidence: "high",
+          source: "content/precalculus/course.public.json",
+          editorialStatus: "approved",
+          placement: "precalculus-course-navigation",
+          anchorText: precalculusCourseNode.shortTitle,
+          reciprocalRequired: false,
+        });
+      }
+    }
+    for (const lesson of unit.lessons) {
+      const lessonNode = nodeByPath.get(lesson.path);
+      if (!lessonNode || !unitNode) continue;
+      const key = `${lessonNode.id}\0${unitNode.id}\0belongs_to`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      relationships.push({
+        sourceId: lessonNode.id,
+        targetId: unitNode.id,
+        type: "belongs_to",
+        confidence: "high",
+        source: "content/precalculus/course.public.json",
+        editorialStatus: "approved",
+        placement: "precalculus-unit-navigation",
+        anchorText: unitNode.shortTitle,
+        reciprocalRequired: false,
+      });
+    }
+  }
+  const precalculusLessons = precalculusCourse.lessons as ReadonlyArray<{ path: string }>;
+  for (let index = 0; index < precalculusLessons.length - 1; index += 1) {
+    const source = nodeByPath.get(precalculusLessons[index].path);
+    const target = nodeByPath.get(precalculusLessons[index + 1].path);
+    if (!source || !target) continue;
+    const key = `${source.id}\0${target.id}\0prerequisite_for`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    relationships.push({
+      sourceId: source.id,
+      targetId: target.id,
+      type: "prerequisite_for",
+      confidence: "high",
+      source: "content/precalculus/course.public.json",
+      editorialStatus: "approved",
+      placement: "precalculus-lesson-sequence",
       anchorText: target.shortTitle,
       reciprocalRequired: false,
     });

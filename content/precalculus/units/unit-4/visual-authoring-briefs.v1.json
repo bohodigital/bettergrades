@@ -1,0 +1,1179 @@
+{
+  "schemaVersion": 1,
+  "unitId": "precalculus-unit-4",
+  "figures": [
+    {
+      "id": "precalculus-u4-l1-v1",
+      "sequence": 1,
+      "role": "Anchor figure",
+      "title": "Two-stage machine",
+      "description": "Depict the foundation problem exactly: Coupon d(p)=p-20 and tax t(q)=1.06q at p=100. Show the quantities, axes, intervals, or algebraic objects needed to reach this conclusion: t(d(100))=84.80, while d(t(100))=86.",
+      "caption": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: A fixed coupon and percentage tax do not commute.",
+      "anchorProblem": "Coupon d(p)=p-20 and tax t(q)=1.06q at p=100.",
+      "anchorConclusion": "t(d(100))=84.80, while d(t(100))=86.",
+      "anchorInterpretation": "A fixed coupon and percentage tax do not commute.",
+      "mechanism": "Trace the original input through the first function, name the intermediate quantity, and feed it to the second function.",
+      "validStructure": "The intermediate output must lie in the outer function's domain and have compatible units.",
+      "invalidMove": "A frequent error is reading f composed with g from left to right as though f acts first.",
+      "lessonId": "precalculus-u4-l1",
+      "lessonSequence": 1,
+      "lessonTitle": "Composition as sequential processing",
+      "lessonOutcome": "Interpret f composed with g as applying g first and then f, and explain why order generally matters.",
+      "lessonGuide": {
+        "application": "Many real models are built in stages—a conversion followed by a cost rule, or a measurement followed by a calibration. Composition records that order, while inverse reasoning asks whether the stages can be undone.",
+        "bigIdea": [
+          "Composition and inversion are about information flow. A composite sends an input through stages in a fixed order; an inverse reverses that flow only when each output identifies a unique input.",
+          "This lesson narrows that lens to one goal: interpret f composed with g as applying g first and then f, and explain why order generally matters. The point is not to memorize an isolated trick; it is to know what evidence makes the conclusion valid and how a second representation can check it."
+        ],
+        "method": [
+          "1. Trace the original input through the first function.",
+          "2. Name the intermediate quantity.",
+          "3. Feed it to the second function."
+        ],
+        "questions": [
+          "Which function acts first?",
+          "Is the intermediate output allowed?",
+          "Can the process be reversed without ambiguity?"
+        ],
+        "verification": "Name the intermediate quantity, enforce its domain, and verify an inverse with composition. Units are especially useful because the output unit of one stage must match the input unit of the next.",
+        "foundationWalkthrough": {
+          "problem": "Coupon d(p)=p-20 and tax t(q)=1.06q at p=100.",
+          "plan": "Start by identifying the mathematical structure in the prompt. Then use the lesson method rather than guessing from appearance: Trace the original input through the first function, name the intermediate quantity, and feed it to the second function.",
+          "conclusion": "t(d(100))=84.80, while d(t(100))=86.",
+          "check": "A fixed coupon and percentage tax do not commute."
+        }
+      },
+      "route": "/subjects/math/precalculus/composition-inverses-and-modeling/composition-as-sequential-processing/"
+    },
+    {
+      "id": "precalculus-u4-l1-v2",
+      "sequence": 2,
+      "role": "Mechanism figure",
+      "title": "Order comparison",
+      "description": "Visualize the mechanism explicitly: Trace the original input through the first function, name the intermediate quantity, and feed it to the second function. The figure must show intermediate states or mappings, not merely the final formula.",
+      "caption": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for composition as sequential processing.",
+      "anchorProblem": "Coupon d(p)=p-20 and tax t(q)=1.06q at p=100.",
+      "anchorConclusion": "t(d(100))=84.80, while d(t(100))=86.",
+      "anchorInterpretation": "A fixed coupon and percentage tax do not commute.",
+      "mechanism": "Trace the original input through the first function, name the intermediate quantity, and feed it to the second function.",
+      "validStructure": "The intermediate output must lie in the outer function's domain and have compatible units.",
+      "invalidMove": "A frequent error is reading f composed with g from left to right as though f acts first.",
+      "lessonId": "precalculus-u4-l1",
+      "lessonSequence": 1,
+      "lessonTitle": "Composition as sequential processing",
+      "lessonOutcome": "Interpret f composed with g as applying g first and then f, and explain why order generally matters.",
+      "lessonGuide": {
+        "application": "Many real models are built in stages—a conversion followed by a cost rule, or a measurement followed by a calibration. Composition records that order, while inverse reasoning asks whether the stages can be undone.",
+        "bigIdea": [
+          "Composition and inversion are about information flow. A composite sends an input through stages in a fixed order; an inverse reverses that flow only when each output identifies a unique input.",
+          "This lesson narrows that lens to one goal: interpret f composed with g as applying g first and then f, and explain why order generally matters. The point is not to memorize an isolated trick; it is to know what evidence makes the conclusion valid and how a second representation can check it."
+        ],
+        "method": [
+          "1. Trace the original input through the first function.",
+          "2. Name the intermediate quantity.",
+          "3. Feed it to the second function."
+        ],
+        "questions": [
+          "Which function acts first?",
+          "Is the intermediate output allowed?",
+          "Can the process be reversed without ambiguity?"
+        ],
+        "verification": "Name the intermediate quantity, enforce its domain, and verify an inverse with composition. Units are especially useful because the output unit of one stage must match the input unit of the next.",
+        "foundationWalkthrough": {
+          "problem": "Coupon d(p)=p-20 and tax t(q)=1.06q at p=100.",
+          "plan": "Start by identifying the mathematical structure in the prompt. Then use the lesson method rather than guessing from appearance: Trace the original input through the first function, name the intermediate quantity, and feed it to the second function.",
+          "conclusion": "t(d(100))=84.80, while d(t(100))=86.",
+          "check": "A fixed coupon and percentage tax do not commute."
+        }
+      },
+      "route": "/subjects/math/precalculus/composition-inverses-and-modeling/composition-as-sequential-processing/"
+    },
+    {
+      "id": "precalculus-u4-l1-v3",
+      "sequence": 3,
+      "role": "Comparison and error figure",
+      "title": "Unit compatibility",
+      "description": "Place the correct structure beside the invalid move described here: A frequent error is reading f composed with g from left to right as though f acts first. Mark the first point where the conclusions diverge.",
+      "caption": "Compare the valid path with the tempting shortcut. The figure shows why reading f composed with g from left to right as though f acts first leads to a false conclusion.",
+      "anchorProblem": "Coupon d(p)=p-20 and tax t(q)=1.06q at p=100.",
+      "anchorConclusion": "t(d(100))=84.80, while d(t(100))=86.",
+      "anchorInterpretation": "A fixed coupon and percentage tax do not commute.",
+      "mechanism": "Trace the original input through the first function, name the intermediate quantity, and feed it to the second function.",
+      "validStructure": "The intermediate output must lie in the outer function's domain and have compatible units.",
+      "invalidMove": "A frequent error is reading f composed with g from left to right as though f acts first.",
+      "lessonId": "precalculus-u4-l1",
+      "lessonSequence": 1,
+      "lessonTitle": "Composition as sequential processing",
+      "lessonOutcome": "Interpret f composed with g as applying g first and then f, and explain why order generally matters.",
+      "lessonGuide": {
+        "application": "Many real models are built in stages—a conversion followed by a cost rule, or a measurement followed by a calibration. Composition records that order, while inverse reasoning asks whether the stages can be undone.",
+        "bigIdea": [
+          "Composition and inversion are about information flow. A composite sends an input through stages in a fixed order; an inverse reverses that flow only when each output identifies a unique input.",
+          "This lesson narrows that lens to one goal: interpret f composed with g as applying g first and then f, and explain why order generally matters. The point is not to memorize an isolated trick; it is to know what evidence makes the conclusion valid and how a second representation can check it."
+        ],
+        "method": [
+          "1. Trace the original input through the first function.",
+          "2. Name the intermediate quantity.",
+          "3. Feed it to the second function."
+        ],
+        "questions": [
+          "Which function acts first?",
+          "Is the intermediate output allowed?",
+          "Can the process be reversed without ambiguity?"
+        ],
+        "verification": "Name the intermediate quantity, enforce its domain, and verify an inverse with composition. Units are especially useful because the output unit of one stage must match the input unit of the next.",
+        "foundationWalkthrough": {
+          "problem": "Coupon d(p)=p-20 and tax t(q)=1.06q at p=100.",
+          "plan": "Start by identifying the mathematical structure in the prompt. Then use the lesson method rather than guessing from appearance: Trace the original input through the first function, name the intermediate quantity, and feed it to the second function.",
+          "conclusion": "t(d(100))=84.80, while d(t(100))=86.",
+          "check": "A fixed coupon and percentage tax do not commute."
+        }
+      },
+      "route": "/subjects/math/precalculus/composition-inverses-and-modeling/composition-as-sequential-processing/"
+    },
+    {
+      "id": "precalculus-u4-l2-v1",
+      "sequence": 1,
+      "role": "Anchor figure",
+      "title": "Substitution slots",
+      "description": "Depict the foundation problem exactly: f=x^2-1,g=3x+2. Show the quantities, axes, intervals, or algebraic objects needed to reach this conclusion: f(g(x))=9x^2+12x+3.",
+      "caption": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The entire linear expression is squared.",
+      "anchorProblem": "f=x^2-1,g=3x+2.",
+      "anchorConclusion": "f(g(x))=9x^2+12x+3.",
+      "anchorInterpretation": "The entire linear expression is squared.",
+      "mechanism": "Write the substitution with parentheses before simplifying and determine both inner and outer domain conditions.",
+      "validStructure": "Simplification may hide restrictions inherited from an intermediate stage.",
+      "invalidMove": "A frequent error is substituting into only one term or dropping grouping symbols.",
+      "lessonId": "precalculus-u4-l2",
+      "lessonSequence": 2,
+      "lessonTitle": "Composition from formulas",
+      "lessonOutcome": "Evaluate and simplify composite functions symbolically while preserving grouping and domain conditions.",
+      "lessonGuide": {
+        "application": "Many real models are built in stages—a conversion followed by a cost rule, or a measurement followed by a calibration. Composition records that order, while inverse reasoning asks whether the stages can be undone.",
+        "bigIdea": [
+          "Composition and inversion are about information flow. A composite sends an input through stages in a fixed order; an inverse reverses that flow only when each output identifies a unique input.",
+          "This lesson narrows that lens to one goal: evaluate and simplify composite functions symbolically while preserving grouping and domain conditions. The point is not to memorize an isolated trick; it is to know what evidence makes the conclusion valid and how a second representation can check it."
+        ],
+        "method": [
+          "1. Write the substitution with parentheses before simplifying.",
+          "2. Determine both inner.",
+          "3. Outer domain conditions."
+        ],
+        "questions": [
+          "Which function acts first?",
+          "Is the intermediate output allowed?",
+          "Can the process be reversed without ambiguity?"
+        ],
+        "verification": "Name the intermediate quantity, enforce its domain, and verify an inverse with composition. Units are especially useful because the output unit of one stage must match the input unit of the next.",
+        "foundationWalkthrough": {
+          "problem": "f=x^2-1,g=3x+2.",
+          "plan": "Start by identifying the mathematical structure in the prompt. Then use the lesson method rather than guessing from appearance: Write the substitution with parentheses before simplifying and determine both inner and outer domain conditions.",
+          "conclusion": "f(g(x))=9x^2+12x+3.",
+          "check": "The entire linear expression is squared."
+        }
+      },
+      "route": "/subjects/math/precalculus/composition-inverses-and-modeling/composition-from-formulas/"
+    },
+    {
+      "id": "precalculus-u4-l2-v2",
+      "sequence": 2,
+      "role": "Mechanism figure",
+      "title": "Expression trees",
+      "description": "Visualize the mechanism explicitly: Write the substitution with parentheses before simplifying and determine both inner and outer domain conditions. The figure must show intermediate states or mappings, not merely the final formula.",
+      "caption": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for composition from formulas.",
+      "anchorProblem": "f=x^2-1,g=3x+2.",
+      "anchorConclusion": "f(g(x))=9x^2+12x+3.",
+      "anchorInterpretation": "The entire linear expression is squared.",
+      "mechanism": "Write the substitution with parentheses before simplifying and determine both inner and outer domain conditions.",
+      "validStructure": "Simplification may hide restrictions inherited from an intermediate stage.",
+      "invalidMove": "A frequent error is substituting into only one term or dropping grouping symbols.",
+      "lessonId": "precalculus-u4-l2",
+      "lessonSequence": 2,
+      "lessonTitle": "Composition from formulas",
+      "lessonOutcome": "Evaluate and simplify composite functions symbolically while preserving grouping and domain conditions.",
+      "lessonGuide": {
+        "application": "Many real models are built in stages—a conversion followed by a cost rule, or a measurement followed by a calibration. Composition records that order, while inverse reasoning asks whether the stages can be undone.",
+        "bigIdea": [
+          "Composition and inversion are about information flow. A composite sends an input through stages in a fixed order; an inverse reverses that flow only when each output identifies a unique input.",
+          "This lesson narrows that lens to one goal: evaluate and simplify composite functions symbolically while preserving grouping and domain conditions. The point is not to memorize an isolated trick; it is to know what evidence makes the conclusion valid and how a second representation can check it."
+        ],
+        "method": [
+          "1. Write the substitution with parentheses before simplifying.",
+          "2. Determine both inner.",
+          "3. Outer domain conditions."
+        ],
+        "questions": [
+          "Which function acts first?",
+          "Is the intermediate output allowed?",
+          "Can the process be reversed without ambiguity?"
+        ],
+        "verification": "Name the intermediate quantity, enforce its domain, and verify an inverse with composition. Units are especially useful because the output unit of one stage must match the input unit of the next.",
+        "foundationWalkthrough": {
+          "problem": "f=x^2-1,g=3x+2.",
+          "plan": "Start by identifying the mathematical structure in the prompt. Then use the lesson method rather than guessing from appearance: Write the substitution with parentheses before simplifying and determine both inner and outer domain conditions.",
+          "conclusion": "f(g(x))=9x^2+12x+3.",
+          "check": "The entire linear expression is squared."
+        }
+      },
+      "route": "/subjects/math/precalculus/composition-inverses-and-modeling/composition-from-formulas/"
+    },
+    {
+      "id": "precalculus-u4-l2-v3",
+      "sequence": 3,
+      "role": "Comparison and error figure",
+      "title": "Outer restriction preimage",
+      "description": "Place the correct structure beside the invalid move described here: A frequent error is substituting into only one term or dropping grouping symbols. Mark the first point where the conclusions diverge.",
+      "caption": "Compare the valid path with the tempting shortcut. The figure shows why substituting into only one term or dropping grouping symbols leads to a false conclusion.",
+      "anchorProblem": "f=x^2-1,g=3x+2.",
+      "anchorConclusion": "f(g(x))=9x^2+12x+3.",
+      "anchorInterpretation": "The entire linear expression is squared.",
+      "mechanism": "Write the substitution with parentheses before simplifying and determine both inner and outer domain conditions.",
+      "validStructure": "Simplification may hide restrictions inherited from an intermediate stage.",
+      "invalidMove": "A frequent error is substituting into only one term or dropping grouping symbols.",
+      "lessonId": "precalculus-u4-l2",
+      "lessonSequence": 2,
+      "lessonTitle": "Composition from formulas",
+      "lessonOutcome": "Evaluate and simplify composite functions symbolically while preserving grouping and domain conditions.",
+      "lessonGuide": {
+        "application": "Many real models are built in stages—a conversion followed by a cost rule, or a measurement followed by a calibration. Composition records that order, while inverse reasoning asks whether the stages can be undone.",
+        "bigIdea": [
+          "Composition and inversion are about information flow. A composite sends an input through stages in a fixed order; an inverse reverses that flow only when each output identifies a unique input.",
+          "This lesson narrows that lens to one goal: evaluate and simplify composite functions symbolically while preserving grouping and domain conditions. The point is not to memorize an isolated trick; it is to know what evidence makes the conclusion valid and how a second representation can check it."
+        ],
+        "method": [
+          "1. Write the substitution with parentheses before simplifying.",
+          "2. Determine both inner.",
+          "3. Outer domain conditions."
+        ],
+        "questions": [
+          "Which function acts first?",
+          "Is the intermediate output allowed?",
+          "Can the process be reversed without ambiguity?"
+        ],
+        "verification": "Name the intermediate quantity, enforce its domain, and verify an inverse with composition. Units are especially useful because the output unit of one stage must match the input unit of the next.",
+        "foundationWalkthrough": {
+          "problem": "f=x^2-1,g=3x+2.",
+          "plan": "Start by identifying the mathematical structure in the prompt. Then use the lesson method rather than guessing from appearance: Write the substitution with parentheses before simplifying and determine both inner and outer domain conditions.",
+          "conclusion": "f(g(x))=9x^2+12x+3.",
+          "check": "The entire linear expression is squared."
+        }
+      },
+      "route": "/subjects/math/precalculus/composition-inverses-and-modeling/composition-from-formulas/"
+    },
+    {
+      "id": "precalculus-u4-l3-v1",
+      "sequence": 1,
+      "role": "Anchor figure",
+      "title": "Table lookup chain",
+      "description": "Depict the foundation problem exactly: g(2)=4 and f(4)=7. Show the quantities, axes, intervals, or algebraic objects needed to reach this conclusion: f(g(2))=7.",
+      "caption": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The intermediate value becomes the next input.",
+      "anchorProblem": "g(2)=4 and f(4)=7.",
+      "anchorConclusion": "f(g(2))=7.",
+      "anchorInterpretation": "The intermediate value becomes the next input.",
+      "mechanism": "Find the inner output, then use it as the outer input, preserving approximation when a graph is read visually.",
+      "validStructure": "A missing table entry is not automatically an excluded domain value; distinguish insufficient data from undefinedness.",
+      "invalidMove": "A frequent error is using the original input in both functions.",
+      "lessonId": "precalculus-u4-l3",
+      "lessonSequence": 3,
+      "lessonTitle": "Composition from tables and graphs",
+      "lessonOutcome": "Evaluate composite functions when one or both functions are represented numerically or graphically.",
+      "lessonGuide": {
+        "application": "Many real models are built in stages—a conversion followed by a cost rule, or a measurement followed by a calibration. Composition records that order, while inverse reasoning asks whether the stages can be undone.",
+        "bigIdea": [
+          "Composition and inversion are about information flow. A composite sends an input through stages in a fixed order; an inverse reverses that flow only when each output identifies a unique input.",
+          "This lesson narrows that lens to one goal: evaluate composite functions when one or both functions are represented numerically or graphically. The point is not to memorize an isolated trick; it is to know what evidence makes the conclusion valid and how a second representation can check it."
+        ],
+        "method": [
+          "1. Find the inner output.",
+          "2. Then use it as the outer input.",
+          "3. Preserving approximation when a graph is read visually."
+        ],
+        "questions": [
+          "Which function acts first?",
+          "Is the intermediate output allowed?",
+          "Can the process be reversed without ambiguity?"
+        ],
+        "verification": "Name the intermediate quantity, enforce its domain, and verify an inverse with composition. Units are especially useful because the output unit of one stage must match the input unit of the next.",
+        "foundationWalkthrough": {
+          "problem": "g(2)=4 and f(4)=7.",
+          "plan": "Start by identifying the mathematical structure in the prompt. Then use the lesson method rather than guessing from appearance: Find the inner output, then use it as the outer input, preserving approximation when a graph is read visually.",
+          "conclusion": "f(g(2))=7.",
+          "check": "The intermediate value becomes the next input."
+        }
+      },
+      "route": "/subjects/math/precalculus/composition-inverses-and-modeling/composition-from-tables-and-graphs/"
+    },
+    {
+      "id": "precalculus-u4-l3-v2",
+      "sequence": 2,
+      "role": "Mechanism figure",
+      "title": "Graph-to-graph trace",
+      "description": "Visualize the mechanism explicitly: Find the inner output, then use it as the outer input, preserving approximation when a graph is read visually. The figure must show intermediate states or mappings, not merely the final formula.",
+      "caption": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for composition from tables and graphs.",
+      "anchorProblem": "g(2)=4 and f(4)=7.",
+      "anchorConclusion": "f(g(2))=7.",
+      "anchorInterpretation": "The intermediate value becomes the next input.",
+      "mechanism": "Find the inner output, then use it as the outer input, preserving approximation when a graph is read visually.",
+      "validStructure": "A missing table entry is not automatically an excluded domain value; distinguish insufficient data from undefinedness.",
+      "invalidMove": "A frequent error is using the original input in both functions.",
+      "lessonId": "precalculus-u4-l3",
+      "lessonSequence": 3,
+      "lessonTitle": "Composition from tables and graphs",
+      "lessonOutcome": "Evaluate composite functions when one or both functions are represented numerically or graphically.",
+      "lessonGuide": {
+        "application": "Many real models are built in stages—a conversion followed by a cost rule, or a measurement followed by a calibration. Composition records that order, while inverse reasoning asks whether the stages can be undone.",
+        "bigIdea": [
+          "Composition and inversion are about information flow. A composite sends an input through stages in a fixed order; an inverse reverses that flow only when each output identifies a unique input.",
+          "This lesson narrows that lens to one goal: evaluate composite functions when one or both functions are represented numerically or graphically. The point is not to memorize an isolated trick; it is to know what evidence makes the conclusion valid and how a second representation can check it."
+        ],
+        "method": [
+          "1. Find the inner output.",
+          "2. Then use it as the outer input.",
+          "3. Preserving approximation when a graph is read visually."
+        ],
+        "questions": [
+          "Which function acts first?",
+          "Is the intermediate output allowed?",
+          "Can the process be reversed without ambiguity?"
+        ],
+        "verification": "Name the intermediate quantity, enforce its domain, and verify an inverse with composition. Units are especially useful because the output unit of one stage must match the input unit of the next.",
+        "foundationWalkthrough": {
+          "problem": "g(2)=4 and f(4)=7.",
+          "plan": "Start by identifying the mathematical structure in the prompt. Then use the lesson method rather than guessing from appearance: Find the inner output, then use it as the outer input, preserving approximation when a graph is read visually.",
+          "conclusion": "f(g(2))=7.",
+          "check": "The intermediate value becomes the next input."
+        }
+      },
+      "route": "/subjects/math/precalculus/composition-inverses-and-modeling/composition-from-tables-and-graphs/"
+    },
+    {
+      "id": "precalculus-u4-l3-v3",
+      "sequence": 3,
+      "role": "Comparison and error figure",
+      "title": "Undefined versus insufficient data",
+      "description": "Place the correct structure beside the invalid move described here: A frequent error is using the original input in both functions. Mark the first point where the conclusions diverge.",
+      "caption": "Compare the valid path with the tempting shortcut. The figure shows why using the original input in both functions leads to a false conclusion.",
+      "anchorProblem": "g(2)=4 and f(4)=7.",
+      "anchorConclusion": "f(g(2))=7.",
+      "anchorInterpretation": "The intermediate value becomes the next input.",
+      "mechanism": "Find the inner output, then use it as the outer input, preserving approximation when a graph is read visually.",
+      "validStructure": "A missing table entry is not automatically an excluded domain value; distinguish insufficient data from undefinedness.",
+      "invalidMove": "A frequent error is using the original input in both functions.",
+      "lessonId": "precalculus-u4-l3",
+      "lessonSequence": 3,
+      "lessonTitle": "Composition from tables and graphs",
+      "lessonOutcome": "Evaluate composite functions when one or both functions are represented numerically or graphically.",
+      "lessonGuide": {
+        "application": "Many real models are built in stages—a conversion followed by a cost rule, or a measurement followed by a calibration. Composition records that order, while inverse reasoning asks whether the stages can be undone.",
+        "bigIdea": [
+          "Composition and inversion are about information flow. A composite sends an input through stages in a fixed order; an inverse reverses that flow only when each output identifies a unique input.",
+          "This lesson narrows that lens to one goal: evaluate composite functions when one or both functions are represented numerically or graphically. The point is not to memorize an isolated trick; it is to know what evidence makes the conclusion valid and how a second representation can check it."
+        ],
+        "method": [
+          "1. Find the inner output.",
+          "2. Then use it as the outer input.",
+          "3. Preserving approximation when a graph is read visually."
+        ],
+        "questions": [
+          "Which function acts first?",
+          "Is the intermediate output allowed?",
+          "Can the process be reversed without ambiguity?"
+        ],
+        "verification": "Name the intermediate quantity, enforce its domain, and verify an inverse with composition. Units are especially useful because the output unit of one stage must match the input unit of the next.",
+        "foundationWalkthrough": {
+          "problem": "g(2)=4 and f(4)=7.",
+          "plan": "Start by identifying the mathematical structure in the prompt. Then use the lesson method rather than guessing from appearance: Find the inner output, then use it as the outer input, preserving approximation when a graph is read visually.",
+          "conclusion": "f(g(2))=7.",
+          "check": "The intermediate value becomes the next input."
+        }
+      },
+      "route": "/subjects/math/precalculus/composition-inverses-and-modeling/composition-from-tables-and-graphs/"
+    },
+    {
+      "id": "precalculus-u4-l4-v1",
+      "sequence": 1,
+      "role": "Anchor figure",
+      "title": "Composite-domain pipeline",
+      "description": "Depict the foundation problem exactly: f=sqrt(u),g=x^2-9. Show the quantities, axes, intervals, or algebraic objects needed to reach this conclusion: Domain x≤-3 or x≥3.",
+      "caption": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The outer root condition becomes x^2-9≥0.",
+      "anchorProblem": "f=sqrt(u),g=x^2-9.",
+      "anchorConclusion": "Domain x≤-3 or x≥3.",
+      "anchorInterpretation": "The outer root condition becomes x^2-9≥0.",
+      "mechanism": "Translate outer restrictions into equations or inequalities involving the inner output, then intersect them with the inner domain.",
+      "validStructure": "One forbidden outer input can have several original preimages.",
+      "invalidMove": "A frequent error is simply intersecting the written domains of f and g as though they used the same stage variable.",
+      "lessonId": "precalculus-u4-l4",
+      "lessonSequence": 4,
+      "lessonTitle": "Domains of composite functions",
+      "lessonOutcome": "Determine the domain of a composite by enforcing both inner-function and outer-input conditions.",
+      "lessonGuide": {
+        "application": "Many real models are built in stages—a conversion followed by a cost rule, or a measurement followed by a calibration. Composition records that order, while inverse reasoning asks whether the stages can be undone.",
+        "bigIdea": [
+          "Composition and inversion are about information flow. A composite sends an input through stages in a fixed order; an inverse reverses that flow only when each output identifies a unique input.",
+          "This lesson narrows that lens to one goal: determine the domain of a composite by enforcing both inner-function and outer-input conditions. The point is not to memorize an isolated trick; it is to know what evidence makes the conclusion valid and how a second representation can check it."
+        ],
+        "method": [
+          "1. Translate outer restrictions into equations or inequalities involving the inner output.",
+          "2. Then intersect them with the inner domain.",
+          "3. Can the process be reversed without ambiguity?."
+        ],
+        "questions": [
+          "Which function acts first?",
+          "Is the intermediate output allowed?",
+          "Can the process be reversed without ambiguity?"
+        ],
+        "verification": "Name the intermediate quantity, enforce its domain, and verify an inverse with composition. Units are especially useful because the output unit of one stage must match the input unit of the next.",
+        "foundationWalkthrough": {
+          "problem": "f=sqrt(u),g=x^2-9.",
+          "plan": "Start by identifying the mathematical structure in the prompt. Then use the lesson method rather than guessing from appearance: Translate outer restrictions into equations or inequalities involving the inner output, then intersect them with the inner domain.",
+          "conclusion": "Domain x≤-3 or x≥3.",
+          "check": "The outer root condition becomes x^2-9≥0."
+        }
+      },
+      "route": "/subjects/math/precalculus/composition-inverses-and-modeling/domains-of-composite-functions/"
+    },
+    {
+      "id": "precalculus-u4-l4-v2",
+      "sequence": 2,
+      "role": "Mechanism figure",
+      "title": "Preimage of forbidden value",
+      "description": "Visualize the mechanism explicitly: Translate outer restrictions into equations or inequalities involving the inner output, then intersect them with the inner domain. The figure must show intermediate states or mappings, not merely the final formula.",
+      "caption": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for domains of composite functions.",
+      "anchorProblem": "f=sqrt(u),g=x^2-9.",
+      "anchorConclusion": "Domain x≤-3 or x≥3.",
+      "anchorInterpretation": "The outer root condition becomes x^2-9≥0.",
+      "mechanism": "Translate outer restrictions into equations or inequalities involving the inner output, then intersect them with the inner domain.",
+      "validStructure": "One forbidden outer input can have several original preimages.",
+      "invalidMove": "A frequent error is simply intersecting the written domains of f and g as though they used the same stage variable.",
+      "lessonId": "precalculus-u4-l4",
+      "lessonSequence": 4,
+      "lessonTitle": "Domains of composite functions",
+      "lessonOutcome": "Determine the domain of a composite by enforcing both inner-function and outer-input conditions.",
+      "lessonGuide": {
+        "application": "Many real models are built in stages—a conversion followed by a cost rule, or a measurement followed by a calibration. Composition records that order, while inverse reasoning asks whether the stages can be undone.",
+        "bigIdea": [
+          "Composition and inversion are about information flow. A composite sends an input through stages in a fixed order; an inverse reverses that flow only when each output identifies a unique input.",
+          "This lesson narrows that lens to one goal: determine the domain of a composite by enforcing both inner-function and outer-input conditions. The point is not to memorize an isolated trick; it is to know what evidence makes the conclusion valid and how a second representation can check it."
+        ],
+        "method": [
+          "1. Translate outer restrictions into equations or inequalities involving the inner output.",
+          "2. Then intersect them with the inner domain.",
+          "3. Can the process be reversed without ambiguity?."
+        ],
+        "questions": [
+          "Which function acts first?",
+          "Is the intermediate output allowed?",
+          "Can the process be reversed without ambiguity?"
+        ],
+        "verification": "Name the intermediate quantity, enforce its domain, and verify an inverse with composition. Units are especially useful because the output unit of one stage must match the input unit of the next.",
+        "foundationWalkthrough": {
+          "problem": "f=sqrt(u),g=x^2-9.",
+          "plan": "Start by identifying the mathematical structure in the prompt. Then use the lesson method rather than guessing from appearance: Translate outer restrictions into equations or inequalities involving the inner output, then intersect them with the inner domain.",
+          "conclusion": "Domain x≤-3 or x≥3.",
+          "check": "The outer root condition becomes x^2-9≥0."
+        }
+      },
+      "route": "/subjects/math/precalculus/composition-inverses-and-modeling/domains-of-composite-functions/"
+    },
+    {
+      "id": "precalculus-u4-l4-v3",
+      "sequence": 3,
+      "role": "Comparison and error figure",
+      "title": "Hidden restriction",
+      "description": "Place the correct structure beside the invalid move described here: A frequent error is simply intersecting the written domains of f and g as though they used the same stage variable. Mark the first point where the conclusions diverge.",
+      "caption": "Compare the valid path with the tempting shortcut. The figure shows why simply intersecting the written domains of f and g as though they used the same stage variable leads to a false conclusion.",
+      "anchorProblem": "f=sqrt(u),g=x^2-9.",
+      "anchorConclusion": "Domain x≤-3 or x≥3.",
+      "anchorInterpretation": "The outer root condition becomes x^2-9≥0.",
+      "mechanism": "Translate outer restrictions into equations or inequalities involving the inner output, then intersect them with the inner domain.",
+      "validStructure": "One forbidden outer input can have several original preimages.",
+      "invalidMove": "A frequent error is simply intersecting the written domains of f and g as though they used the same stage variable.",
+      "lessonId": "precalculus-u4-l4",
+      "lessonSequence": 4,
+      "lessonTitle": "Domains of composite functions",
+      "lessonOutcome": "Determine the domain of a composite by enforcing both inner-function and outer-input conditions.",
+      "lessonGuide": {
+        "application": "Many real models are built in stages—a conversion followed by a cost rule, or a measurement followed by a calibration. Composition records that order, while inverse reasoning asks whether the stages can be undone.",
+        "bigIdea": [
+          "Composition and inversion are about information flow. A composite sends an input through stages in a fixed order; an inverse reverses that flow only when each output identifies a unique input.",
+          "This lesson narrows that lens to one goal: determine the domain of a composite by enforcing both inner-function and outer-input conditions. The point is not to memorize an isolated trick; it is to know what evidence makes the conclusion valid and how a second representation can check it."
+        ],
+        "method": [
+          "1. Translate outer restrictions into equations or inequalities involving the inner output.",
+          "2. Then intersect them with the inner domain.",
+          "3. Can the process be reversed without ambiguity?."
+        ],
+        "questions": [
+          "Which function acts first?",
+          "Is the intermediate output allowed?",
+          "Can the process be reversed without ambiguity?"
+        ],
+        "verification": "Name the intermediate quantity, enforce its domain, and verify an inverse with composition. Units are especially useful because the output unit of one stage must match the input unit of the next.",
+        "foundationWalkthrough": {
+          "problem": "f=sqrt(u),g=x^2-9.",
+          "plan": "Start by identifying the mathematical structure in the prompt. Then use the lesson method rather than guessing from appearance: Translate outer restrictions into equations or inequalities involving the inner output, then intersect them with the inner domain.",
+          "conclusion": "Domain x≤-3 or x≥3.",
+          "check": "The outer root condition becomes x^2-9≥0."
+        }
+      },
+      "route": "/subjects/math/precalculus/composition-inverses-and-modeling/domains-of-composite-functions/"
+    },
+    {
+      "id": "precalculus-u4-l5-v1",
+      "sequence": 1,
+      "role": "Anchor figure",
+      "title": "Horizontal-line test",
+      "description": "Depict the foundation problem exactly: Is x^2 one-to-one on all real numbers? Show the quantities, axes, intervals, or algebraic objects needed to reach this conclusion: No; x and -x share outputs. Restrict to x≥0 or x≤0.",
+      "caption": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: A branch restriction restores reverse uniqueness.",
+      "anchorProblem": "Is x^2 one-to-one on all real numbers?",
+      "anchorConclusion": "No; x and -x share outputs. Restrict to x≥0 or x≤0.",
+      "anchorInterpretation": "A branch restriction restores reverse uniqueness.",
+      "mechanism": "Check repeated outputs, use the horizontal-line test, or prove f(a)=f(b) implies a=b.",
+      "validStructure": "A function that fails globally may be restricted to a monotonic interval.",
+      "invalidMove": "A frequent error is confusing the ordinary function condition with one-to-one behavior.",
+      "lessonId": "precalculus-u4-l5",
+      "lessonSequence": 5,
+      "lessonTitle": "One-to-one functions",
+      "lessonOutcome": "Determine whether a function is one-to-one and explain why one-to-one behavior is required for an inverse function.",
+      "lessonGuide": {
+        "application": "Many real models are built in stages—a conversion followed by a cost rule, or a measurement followed by a calibration. Composition records that order, while inverse reasoning asks whether the stages can be undone.",
+        "bigIdea": [
+          "Composition and inversion are about information flow. A composite sends an input through stages in a fixed order; an inverse reverses that flow only when each output identifies a unique input.",
+          "This lesson narrows that lens to one goal: determine whether a function is one-to-one and explain why one-to-one behavior is required for an inverse function. The point is not to memorize an isolated trick; it is to know what evidence makes the conclusion valid and how a second representation can check it."
+        ],
+        "method": [
+          "1. Check repeated outputs.",
+          "2. Use the horizontal-line test.",
+          "3. Or prove f(a)=f(b) implies a=b."
+        ],
+        "questions": [
+          "Which function acts first?",
+          "Is the intermediate output allowed?",
+          "Can the process be reversed without ambiguity?"
+        ],
+        "verification": "Name the intermediate quantity, enforce its domain, and verify an inverse with composition. Units are especially useful because the output unit of one stage must match the input unit of the next.",
+        "foundationWalkthrough": {
+          "problem": "Is x^2 one-to-one on all real numbers?",
+          "plan": "Start by identifying the mathematical structure in the prompt. Then use the lesson method rather than guessing from appearance: Check repeated outputs, use the horizontal-line test, or prove f(a)=f(b) implies a=b.",
+          "conclusion": "No; x and -x share outputs. Restrict to x≥0 or x≤0.",
+          "check": "A branch restriction restores reverse uniqueness."
+        }
+      },
+      "route": "/subjects/math/precalculus/composition-inverses-and-modeling/one-to-one-functions/"
+    },
+    {
+      "id": "precalculus-u4-l5-v2",
+      "sequence": 2,
+      "role": "Mechanism figure",
+      "title": "Reverse mapping failure",
+      "description": "Visualize the mechanism explicitly: Check repeated outputs, use the horizontal-line test, or prove f(a)=f(b) implies a=b. The figure must show intermediate states or mappings, not merely the final formula.",
+      "caption": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for one-to-one functions.",
+      "anchorProblem": "Is x^2 one-to-one on all real numbers?",
+      "anchorConclusion": "No; x and -x share outputs. Restrict to x≥0 or x≤0.",
+      "anchorInterpretation": "A branch restriction restores reverse uniqueness.",
+      "mechanism": "Check repeated outputs, use the horizontal-line test, or prove f(a)=f(b) implies a=b.",
+      "validStructure": "A function that fails globally may be restricted to a monotonic interval.",
+      "invalidMove": "A frequent error is confusing the ordinary function condition with one-to-one behavior.",
+      "lessonId": "precalculus-u4-l5",
+      "lessonSequence": 5,
+      "lessonTitle": "One-to-one functions",
+      "lessonOutcome": "Determine whether a function is one-to-one and explain why one-to-one behavior is required for an inverse function.",
+      "lessonGuide": {
+        "application": "Many real models are built in stages—a conversion followed by a cost rule, or a measurement followed by a calibration. Composition records that order, while inverse reasoning asks whether the stages can be undone.",
+        "bigIdea": [
+          "Composition and inversion are about information flow. A composite sends an input through stages in a fixed order; an inverse reverses that flow only when each output identifies a unique input.",
+          "This lesson narrows that lens to one goal: determine whether a function is one-to-one and explain why one-to-one behavior is required for an inverse function. The point is not to memorize an isolated trick; it is to know what evidence makes the conclusion valid and how a second representation can check it."
+        ],
+        "method": [
+          "1. Check repeated outputs.",
+          "2. Use the horizontal-line test.",
+          "3. Or prove f(a)=f(b) implies a=b."
+        ],
+        "questions": [
+          "Which function acts first?",
+          "Is the intermediate output allowed?",
+          "Can the process be reversed without ambiguity?"
+        ],
+        "verification": "Name the intermediate quantity, enforce its domain, and verify an inverse with composition. Units are especially useful because the output unit of one stage must match the input unit of the next.",
+        "foundationWalkthrough": {
+          "problem": "Is x^2 one-to-one on all real numbers?",
+          "plan": "Start by identifying the mathematical structure in the prompt. Then use the lesson method rather than guessing from appearance: Check repeated outputs, use the horizontal-line test, or prove f(a)=f(b) implies a=b.",
+          "conclusion": "No; x and -x share outputs. Restrict to x≥0 or x≤0.",
+          "check": "A branch restriction restores reverse uniqueness."
+        }
+      },
+      "route": "/subjects/math/precalculus/composition-inverses-and-modeling/one-to-one-functions/"
+    },
+    {
+      "id": "precalculus-u4-l5-v3",
+      "sequence": 3,
+      "role": "Comparison and error figure",
+      "title": "Quadratic branch restrictions",
+      "description": "Place the correct structure beside the invalid move described here: A frequent error is confusing the ordinary function condition with one-to-one behavior. Mark the first point where the conclusions diverge.",
+      "caption": "Compare the valid path with the tempting shortcut. The figure shows why confusing the ordinary function condition with one-to-one behavior leads to a false conclusion.",
+      "anchorProblem": "Is x^2 one-to-one on all real numbers?",
+      "anchorConclusion": "No; x and -x share outputs. Restrict to x≥0 or x≤0.",
+      "anchorInterpretation": "A branch restriction restores reverse uniqueness.",
+      "mechanism": "Check repeated outputs, use the horizontal-line test, or prove f(a)=f(b) implies a=b.",
+      "validStructure": "A function that fails globally may be restricted to a monotonic interval.",
+      "invalidMove": "A frequent error is confusing the ordinary function condition with one-to-one behavior.",
+      "lessonId": "precalculus-u4-l5",
+      "lessonSequence": 5,
+      "lessonTitle": "One-to-one functions",
+      "lessonOutcome": "Determine whether a function is one-to-one and explain why one-to-one behavior is required for an inverse function.",
+      "lessonGuide": {
+        "application": "Many real models are built in stages—a conversion followed by a cost rule, or a measurement followed by a calibration. Composition records that order, while inverse reasoning asks whether the stages can be undone.",
+        "bigIdea": [
+          "Composition and inversion are about information flow. A composite sends an input through stages in a fixed order; an inverse reverses that flow only when each output identifies a unique input.",
+          "This lesson narrows that lens to one goal: determine whether a function is one-to-one and explain why one-to-one behavior is required for an inverse function. The point is not to memorize an isolated trick; it is to know what evidence makes the conclusion valid and how a second representation can check it."
+        ],
+        "method": [
+          "1. Check repeated outputs.",
+          "2. Use the horizontal-line test.",
+          "3. Or prove f(a)=f(b) implies a=b."
+        ],
+        "questions": [
+          "Which function acts first?",
+          "Is the intermediate output allowed?",
+          "Can the process be reversed without ambiguity?"
+        ],
+        "verification": "Name the intermediate quantity, enforce its domain, and verify an inverse with composition. Units are especially useful because the output unit of one stage must match the input unit of the next.",
+        "foundationWalkthrough": {
+          "problem": "Is x^2 one-to-one on all real numbers?",
+          "plan": "Start by identifying the mathematical structure in the prompt. Then use the lesson method rather than guessing from appearance: Check repeated outputs, use the horizontal-line test, or prove f(a)=f(b) implies a=b.",
+          "conclusion": "No; x and -x share outputs. Restrict to x≥0 or x≤0.",
+          "check": "A branch restriction restores reverse uniqueness."
+        }
+      },
+      "route": "/subjects/math/precalculus/composition-inverses-and-modeling/one-to-one-functions/"
+    },
+    {
+      "id": "precalculus-u4-l6-v1",
+      "sequence": 1,
+      "role": "Anchor figure",
+      "title": "Coordinate reversal",
+      "description": "Depict the foundation problem exactly: Find inverse of 3x-7. Show the quantities, axes, intervals, or algebraic objects needed to reach this conclusion: f^{-1}(x)=(x+7)/3.",
+      "caption": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The inverse reverses the operations in reverse order.",
+      "anchorProblem": "Find inverse of 3x-7.",
+      "anchorConclusion": "f^{-1}(x)=(x+7)/3.",
+      "anchorInterpretation": "The inverse reverses the operations in reverse order.",
+      "mechanism": "Write y=f(x), exchange x and y, solve for y, and state the swapped domain and range.",
+      "validStructure": "The original function must be one-to-one on its stated domain, and a restricted branch determines any root sign.",
+      "invalidMove": "A frequent error is keeping both plus and minus branches and producing an inverse relation rather than a function.",
+      "lessonId": "precalculus-u4-l6",
+      "lessonSequence": 6,
+      "lessonTitle": "Constructing inverse functions",
+      "lessonOutcome": "Construct an inverse function algebraically and state the swapped domain and range.",
+      "lessonGuide": {
+        "application": "Many real models are built in stages—a conversion followed by a cost rule, or a measurement followed by a calibration. Composition records that order, while inverse reasoning asks whether the stages can be undone.",
+        "bigIdea": [
+          "Composition and inversion are about information flow. A composite sends an input through stages in a fixed order; an inverse reverses that flow only when each output identifies a unique input.",
+          "This lesson narrows that lens to one goal: construct an inverse function algebraically and state the swapped domain and range. The point is not to memorize an isolated trick; it is to know what evidence makes the conclusion valid and how a second representation can check it."
+        ],
+        "method": [
+          "1. Write y=f(x).",
+          "2. Exchange x.",
+          "3. Y.",
+          "4. Solve for y."
+        ],
+        "questions": [
+          "Which function acts first?",
+          "Is the intermediate output allowed?",
+          "Can the process be reversed without ambiguity?"
+        ],
+        "verification": "Name the intermediate quantity, enforce its domain, and verify an inverse with composition. Units are especially useful because the output unit of one stage must match the input unit of the next.",
+        "foundationWalkthrough": {
+          "problem": "Find inverse of 3x-7.",
+          "plan": "Start by identifying the mathematical structure in the prompt. Then use the lesson method rather than guessing from appearance: Write y=f(x), exchange x and y, solve for y, and state the swapped domain and range.",
+          "conclusion": "f^{-1}(x)=(x+7)/3.",
+          "check": "The inverse reverses the operations in reverse order."
+        }
+      },
+      "route": "/subjects/math/precalculus/composition-inverses-and-modeling/constructing-inverse-functions/"
+    },
+    {
+      "id": "precalculus-u4-l6-v2",
+      "sequence": 2,
+      "role": "Mechanism figure",
+      "title": "Algebraic inversion",
+      "description": "Visualize the mechanism explicitly: Write y=f(x), exchange x and y, solve for y, and state the swapped domain and range. The figure must show intermediate states or mappings, not merely the final formula.",
+      "caption": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for constructing inverse functions.",
+      "anchorProblem": "Find inverse of 3x-7.",
+      "anchorConclusion": "f^{-1}(x)=(x+7)/3.",
+      "anchorInterpretation": "The inverse reverses the operations in reverse order.",
+      "mechanism": "Write y=f(x), exchange x and y, solve for y, and state the swapped domain and range.",
+      "validStructure": "The original function must be one-to-one on its stated domain, and a restricted branch determines any root sign.",
+      "invalidMove": "A frequent error is keeping both plus and minus branches and producing an inverse relation rather than a function.",
+      "lessonId": "precalculus-u4-l6",
+      "lessonSequence": 6,
+      "lessonTitle": "Constructing inverse functions",
+      "lessonOutcome": "Construct an inverse function algebraically and state the swapped domain and range.",
+      "lessonGuide": {
+        "application": "Many real models are built in stages—a conversion followed by a cost rule, or a measurement followed by a calibration. Composition records that order, while inverse reasoning asks whether the stages can be undone.",
+        "bigIdea": [
+          "Composition and inversion are about information flow. A composite sends an input through stages in a fixed order; an inverse reverses that flow only when each output identifies a unique input.",
+          "This lesson narrows that lens to one goal: construct an inverse function algebraically and state the swapped domain and range. The point is not to memorize an isolated trick; it is to know what evidence makes the conclusion valid and how a second representation can check it."
+        ],
+        "method": [
+          "1. Write y=f(x).",
+          "2. Exchange x.",
+          "3. Y.",
+          "4. Solve for y."
+        ],
+        "questions": [
+          "Which function acts first?",
+          "Is the intermediate output allowed?",
+          "Can the process be reversed without ambiguity?"
+        ],
+        "verification": "Name the intermediate quantity, enforce its domain, and verify an inverse with composition. Units are especially useful because the output unit of one stage must match the input unit of the next.",
+        "foundationWalkthrough": {
+          "problem": "Find inverse of 3x-7.",
+          "plan": "Start by identifying the mathematical structure in the prompt. Then use the lesson method rather than guessing from appearance: Write y=f(x), exchange x and y, solve for y, and state the swapped domain and range.",
+          "conclusion": "f^{-1}(x)=(x+7)/3.",
+          "check": "The inverse reverses the operations in reverse order."
+        }
+      },
+      "route": "/subjects/math/precalculus/composition-inverses-and-modeling/constructing-inverse-functions/"
+    },
+    {
+      "id": "precalculus-u4-l6-v3",
+      "sequence": 3,
+      "role": "Comparison and error figure",
+      "title": "Inverse versus reciprocal",
+      "description": "Place the correct structure beside the invalid move described here: A frequent error is keeping both plus and minus branches and producing an inverse relation rather than a function. Mark the first point where the conclusions diverge.",
+      "caption": "Compare the valid path with the tempting shortcut. The figure shows why keeping both plus and minus branches and producing an inverse relation rather than a function leads to a false conclusion.",
+      "anchorProblem": "Find inverse of 3x-7.",
+      "anchorConclusion": "f^{-1}(x)=(x+7)/3.",
+      "anchorInterpretation": "The inverse reverses the operations in reverse order.",
+      "mechanism": "Write y=f(x), exchange x and y, solve for y, and state the swapped domain and range.",
+      "validStructure": "The original function must be one-to-one on its stated domain, and a restricted branch determines any root sign.",
+      "invalidMove": "A frequent error is keeping both plus and minus branches and producing an inverse relation rather than a function.",
+      "lessonId": "precalculus-u4-l6",
+      "lessonSequence": 6,
+      "lessonTitle": "Constructing inverse functions",
+      "lessonOutcome": "Construct an inverse function algebraically and state the swapped domain and range.",
+      "lessonGuide": {
+        "application": "Many real models are built in stages—a conversion followed by a cost rule, or a measurement followed by a calibration. Composition records that order, while inverse reasoning asks whether the stages can be undone.",
+        "bigIdea": [
+          "Composition and inversion are about information flow. A composite sends an input through stages in a fixed order; an inverse reverses that flow only when each output identifies a unique input.",
+          "This lesson narrows that lens to one goal: construct an inverse function algebraically and state the swapped domain and range. The point is not to memorize an isolated trick; it is to know what evidence makes the conclusion valid and how a second representation can check it."
+        ],
+        "method": [
+          "1. Write y=f(x).",
+          "2. Exchange x.",
+          "3. Y.",
+          "4. Solve for y."
+        ],
+        "questions": [
+          "Which function acts first?",
+          "Is the intermediate output allowed?",
+          "Can the process be reversed without ambiguity?"
+        ],
+        "verification": "Name the intermediate quantity, enforce its domain, and verify an inverse with composition. Units are especially useful because the output unit of one stage must match the input unit of the next.",
+        "foundationWalkthrough": {
+          "problem": "Find inverse of 3x-7.",
+          "plan": "Start by identifying the mathematical structure in the prompt. Then use the lesson method rather than guessing from appearance: Write y=f(x), exchange x and y, solve for y, and state the swapped domain and range.",
+          "conclusion": "f^{-1}(x)=(x+7)/3.",
+          "check": "The inverse reverses the operations in reverse order."
+        }
+      },
+      "route": "/subjects/math/precalculus/composition-inverses-and-modeling/constructing-inverse-functions/"
+    },
+    {
+      "id": "precalculus-u4-l7-v1",
+      "sequence": 1,
+      "role": "Anchor figure",
+      "title": "Inverse reflection",
+      "description": "Depict the foundation problem exactly: Verify f=3x-2 and g=(x+2)/3. Show the quantities, axes, intervals, or algebraic objects needed to reach this conclusion: Both compositions simplify to x.",
+      "caption": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The functions undo each other.",
+      "anchorProblem": "Verify f=3x-2 and g=(x+2)/3.",
+      "anchorConclusion": "Both compositions simplify to x.",
+      "anchorInterpretation": "The functions undo each other.",
+      "mechanism": "Compute f(f^{-1}(x)) and f^{-1}(f(x)), preserving their valid domains, and compare graph point pairs.",
+      "validStructure": "The two compositions begin on different domains: the original range and original domain.",
+      "invalidMove": "A frequent error is simplifying sqrt(x^2) to x without the branch restriction.",
+      "lessonId": "precalculus-u4-l7",
+      "lessonSequence": 7,
+      "lessonTitle": "Graphs and verification of inverses",
+      "lessonOutcome": "Verify inverse functions using composition and graph symmetry across y=x.",
+      "lessonGuide": {
+        "application": "Many real models are built in stages—a conversion followed by a cost rule, or a measurement followed by a calibration. Composition records that order, while inverse reasoning asks whether the stages can be undone.",
+        "bigIdea": [
+          "Composition and inversion are about information flow. A composite sends an input through stages in a fixed order; an inverse reverses that flow only when each output identifies a unique input.",
+          "This lesson narrows that lens to one goal: verify inverse functions using composition and graph symmetry across y=x. The point is not to memorize an isolated trick; it is to know what evidence makes the conclusion valid and how a second representation can check it."
+        ],
+        "method": [
+          "1. Compute f(f^{-1}(x)).",
+          "2. F^{-1}(f(x)).",
+          "3. Preserving their valid domains.",
+          "4. Compare graph point pairs."
+        ],
+        "questions": [
+          "Which function acts first?",
+          "Is the intermediate output allowed?",
+          "Can the process be reversed without ambiguity?"
+        ],
+        "verification": "Name the intermediate quantity, enforce its domain, and verify an inverse with composition. Units are especially useful because the output unit of one stage must match the input unit of the next.",
+        "foundationWalkthrough": {
+          "problem": "Verify f=3x-2 and g=(x+2)/3.",
+          "plan": "Start by identifying the mathematical structure in the prompt. Then use the lesson method rather than guessing from appearance: Compute f(f^{-1}(x)) and f^{-1}(f(x)), preserving their valid domains, and compare graph point pairs.",
+          "conclusion": "Both compositions simplify to x.",
+          "check": "The functions undo each other."
+        }
+      },
+      "route": "/subjects/math/precalculus/composition-inverses-and-modeling/graphs-and-verification-of-inverses/"
+    },
+    {
+      "id": "precalculus-u4-l7-v2",
+      "sequence": 2,
+      "role": "Mechanism figure",
+      "title": "Composition loop",
+      "description": "Visualize the mechanism explicitly: Compute f(f^{-1}(x)) and f^{-1}(f(x)), preserving their valid domains, and compare graph point pairs. The figure must show intermediate states or mappings, not merely the final formula.",
+      "caption": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for graphs and verification of inverses.",
+      "anchorProblem": "Verify f=3x-2 and g=(x+2)/3.",
+      "anchorConclusion": "Both compositions simplify to x.",
+      "anchorInterpretation": "The functions undo each other.",
+      "mechanism": "Compute f(f^{-1}(x)) and f^{-1}(f(x)), preserving their valid domains, and compare graph point pairs.",
+      "validStructure": "The two compositions begin on different domains: the original range and original domain.",
+      "invalidMove": "A frequent error is simplifying sqrt(x^2) to x without the branch restriction.",
+      "lessonId": "precalculus-u4-l7",
+      "lessonSequence": 7,
+      "lessonTitle": "Graphs and verification of inverses",
+      "lessonOutcome": "Verify inverse functions using composition and graph symmetry across y=x.",
+      "lessonGuide": {
+        "application": "Many real models are built in stages—a conversion followed by a cost rule, or a measurement followed by a calibration. Composition records that order, while inverse reasoning asks whether the stages can be undone.",
+        "bigIdea": [
+          "Composition and inversion are about information flow. A composite sends an input through stages in a fixed order; an inverse reverses that flow only when each output identifies a unique input.",
+          "This lesson narrows that lens to one goal: verify inverse functions using composition and graph symmetry across y=x. The point is not to memorize an isolated trick; it is to know what evidence makes the conclusion valid and how a second representation can check it."
+        ],
+        "method": [
+          "1. Compute f(f^{-1}(x)).",
+          "2. F^{-1}(f(x)).",
+          "3. Preserving their valid domains.",
+          "4. Compare graph point pairs."
+        ],
+        "questions": [
+          "Which function acts first?",
+          "Is the intermediate output allowed?",
+          "Can the process be reversed without ambiguity?"
+        ],
+        "verification": "Name the intermediate quantity, enforce its domain, and verify an inverse with composition. Units are especially useful because the output unit of one stage must match the input unit of the next.",
+        "foundationWalkthrough": {
+          "problem": "Verify f=3x-2 and g=(x+2)/3.",
+          "plan": "Start by identifying the mathematical structure in the prompt. Then use the lesson method rather than guessing from appearance: Compute f(f^{-1}(x)) and f^{-1}(f(x)), preserving their valid domains, and compare graph point pairs.",
+          "conclusion": "Both compositions simplify to x.",
+          "check": "The functions undo each other."
+        }
+      },
+      "route": "/subjects/math/precalculus/composition-inverses-and-modeling/graphs-and-verification-of-inverses/"
+    },
+    {
+      "id": "precalculus-u4-l7-v3",
+      "sequence": 3,
+      "role": "Comparison and error figure",
+      "title": "Domain-range swap",
+      "description": "Place the correct structure beside the invalid move described here: A frequent error is simplifying sqrt(x^2) to x without the branch restriction. Mark the first point where the conclusions diverge.",
+      "caption": "Compare the valid path with the tempting shortcut. The figure shows why simplifying sqrt(x^2) to x without the branch restriction leads to a false conclusion.",
+      "anchorProblem": "Verify f=3x-2 and g=(x+2)/3.",
+      "anchorConclusion": "Both compositions simplify to x.",
+      "anchorInterpretation": "The functions undo each other.",
+      "mechanism": "Compute f(f^{-1}(x)) and f^{-1}(f(x)), preserving their valid domains, and compare graph point pairs.",
+      "validStructure": "The two compositions begin on different domains: the original range and original domain.",
+      "invalidMove": "A frequent error is simplifying sqrt(x^2) to x without the branch restriction.",
+      "lessonId": "precalculus-u4-l7",
+      "lessonSequence": 7,
+      "lessonTitle": "Graphs and verification of inverses",
+      "lessonOutcome": "Verify inverse functions using composition and graph symmetry across y=x.",
+      "lessonGuide": {
+        "application": "Many real models are built in stages—a conversion followed by a cost rule, or a measurement followed by a calibration. Composition records that order, while inverse reasoning asks whether the stages can be undone.",
+        "bigIdea": [
+          "Composition and inversion are about information flow. A composite sends an input through stages in a fixed order; an inverse reverses that flow only when each output identifies a unique input.",
+          "This lesson narrows that lens to one goal: verify inverse functions using composition and graph symmetry across y=x. The point is not to memorize an isolated trick; it is to know what evidence makes the conclusion valid and how a second representation can check it."
+        ],
+        "method": [
+          "1. Compute f(f^{-1}(x)).",
+          "2. F^{-1}(f(x)).",
+          "3. Preserving their valid domains.",
+          "4. Compare graph point pairs."
+        ],
+        "questions": [
+          "Which function acts first?",
+          "Is the intermediate output allowed?",
+          "Can the process be reversed without ambiguity?"
+        ],
+        "verification": "Name the intermediate quantity, enforce its domain, and verify an inverse with composition. Units are especially useful because the output unit of one stage must match the input unit of the next.",
+        "foundationWalkthrough": {
+          "problem": "Verify f=3x-2 and g=(x+2)/3.",
+          "plan": "Start by identifying the mathematical structure in the prompt. Then use the lesson method rather than guessing from appearance: Compute f(f^{-1}(x)) and f^{-1}(f(x)), preserving their valid domains, and compare graph point pairs.",
+          "conclusion": "Both compositions simplify to x.",
+          "check": "The functions undo each other."
+        }
+      },
+      "route": "/subjects/math/precalculus/composition-inverses-and-modeling/graphs-and-verification-of-inverses/"
+    },
+    {
+      "id": "precalculus-u4-l8-v1",
+      "sequence": 1,
+      "role": "Anchor figure",
+      "title": "Principal root versus equation roots",
+      "description": "Depict the foundation problem exactly: Solve sqrt(x+6)=x. Show the quantities, axes, intervals, or algebraic objects needed to reach this conclusion: Candidates are 3 and -2; only x=3 satisfies the original equation.",
+      "caption": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The domain removes the extraneous value.",
+      "anchorProblem": "Solve sqrt(x+6)=x.",
+      "anchorConclusion": "Candidates are 3 and -2; only x=3 satisfies the original equation.",
+      "anchorInterpretation": "The domain removes the extraneous value.",
+      "mechanism": "Extract perfect powers, convert between radical and rational-exponent notation, isolate a radical in an equation, raise both sides to a power, and check every candidate.",
+      "validStructure": "Negative rational exponents also require a nonzero base. Squaring is not reversible without sign and domain checks.",
+      "invalidMove": "A frequent error is replacing sqrt(x^2) with x for negative inputs or omitting the final check.",
+      "lessonId": "precalculus-u4-l8",
+      "lessonSequence": 8,
+      "lessonTitle": "Domain restrictions and radical inverses",
+      "lessonOutcome": "Restrict power functions to one-to-one branches and connect those branches to principal radical functions.",
+      "lessonGuide": {
+        "application": "Many real models are built in stages—a conversion followed by a cost rule, or a measurement followed by a calibration. Composition records that order, while inverse reasoning asks whether the stages can be undone.",
+        "bigIdea": [
+          "Composition and inversion are about information flow. A composite sends an input through stages in a fixed order; an inverse reverses that flow only when each output identifies a unique input.",
+          "This lesson narrows that lens to one goal: restrict power functions to one-to-one branches and connect those branches to principal radical functions. The point is not to memorize an isolated trick; it is to know what evidence makes the conclusion valid and how a second representation can check it."
+        ],
+        "method": [
+          "1. Extract perfect powers.",
+          "2. Convert between radical.",
+          "3. Rational-exponent notation.",
+          "4. Isolate a radical in an equation."
+        ],
+        "questions": [
+          "Which function acts first?",
+          "Is the intermediate output allowed?",
+          "Can the process be reversed without ambiguity?"
+        ],
+        "verification": "Name the intermediate quantity, enforce its domain, and verify an inverse with composition. Units are especially useful because the output unit of one stage must match the input unit of the next.",
+        "foundationWalkthrough": {
+          "problem": "Solve sqrt(x+6)=x.",
+          "plan": "Start by identifying the mathematical structure in the prompt. Then use the lesson method rather than guessing from appearance: Extract perfect powers, convert between radical and rational-exponent notation, isolate a radical in an equation, raise both sides to a power, and check every candidate.",
+          "conclusion": "Candidates are 3 and -2; only x=3 satisfies the original equation.",
+          "check": "The domain removes the extraneous value."
+        }
+      },
+      "route": "/subjects/math/precalculus/composition-inverses-and-modeling/domain-restrictions-and-radical-inverses/"
+    },
+    {
+      "id": "precalculus-u4-l8-v2",
+      "sequence": 2,
+      "role": "Mechanism figure",
+      "title": "Radical-exponent equivalence",
+      "description": "Visualize the mechanism explicitly: Extract perfect powers, convert between radical and rational-exponent notation, isolate a radical in an equation, raise both sides to a power, and check every candidate. The figure must show intermediate states or mappings, not merely the final formula.",
+      "caption": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for domain restrictions and radical inverses.",
+      "anchorProblem": "Solve sqrt(x+6)=x.",
+      "anchorConclusion": "Candidates are 3 and -2; only x=3 satisfies the original equation.",
+      "anchorInterpretation": "The domain removes the extraneous value.",
+      "mechanism": "Extract perfect powers, convert between radical and rational-exponent notation, isolate a radical in an equation, raise both sides to a power, and check every candidate.",
+      "validStructure": "Negative rational exponents also require a nonzero base. Squaring is not reversible without sign and domain checks.",
+      "invalidMove": "A frequent error is replacing sqrt(x^2) with x for negative inputs or omitting the final check.",
+      "lessonId": "precalculus-u4-l8",
+      "lessonSequence": 8,
+      "lessonTitle": "Domain restrictions and radical inverses",
+      "lessonOutcome": "Restrict power functions to one-to-one branches and connect those branches to principal radical functions.",
+      "lessonGuide": {
+        "application": "Many real models are built in stages—a conversion followed by a cost rule, or a measurement followed by a calibration. Composition records that order, while inverse reasoning asks whether the stages can be undone.",
+        "bigIdea": [
+          "Composition and inversion are about information flow. A composite sends an input through stages in a fixed order; an inverse reverses that flow only when each output identifies a unique input.",
+          "This lesson narrows that lens to one goal: restrict power functions to one-to-one branches and connect those branches to principal radical functions. The point is not to memorize an isolated trick; it is to know what evidence makes the conclusion valid and how a second representation can check it."
+        ],
+        "method": [
+          "1. Extract perfect powers.",
+          "2. Convert between radical.",
+          "3. Rational-exponent notation.",
+          "4. Isolate a radical in an equation."
+        ],
+        "questions": [
+          "Which function acts first?",
+          "Is the intermediate output allowed?",
+          "Can the process be reversed without ambiguity?"
+        ],
+        "verification": "Name the intermediate quantity, enforce its domain, and verify an inverse with composition. Units are especially useful because the output unit of one stage must match the input unit of the next.",
+        "foundationWalkthrough": {
+          "problem": "Solve sqrt(x+6)=x.",
+          "plan": "Start by identifying the mathematical structure in the prompt. Then use the lesson method rather than guessing from appearance: Extract perfect powers, convert between radical and rational-exponent notation, isolate a radical in an equation, raise both sides to a power, and check every candidate.",
+          "conclusion": "Candidates are 3 and -2; only x=3 satisfies the original equation.",
+          "check": "The domain removes the extraneous value."
+        }
+      },
+      "route": "/subjects/math/precalculus/composition-inverses-and-modeling/domain-restrictions-and-radical-inverses/"
+    },
+    {
+      "id": "precalculus-u4-l8-v3",
+      "sequence": 3,
+      "role": "Comparison and error figure",
+      "title": "Extraneous-solution map",
+      "description": "Place the correct structure beside the invalid move described here: A frequent error is replacing sqrt(x^2) with x for negative inputs or omitting the final check. Mark the first point where the conclusions diverge.",
+      "caption": "Compare the valid path with the tempting shortcut. The figure shows why replacing sqrt(x^2) with x for negative inputs or omitting the final check leads to a false conclusion.",
+      "anchorProblem": "Solve sqrt(x+6)=x.",
+      "anchorConclusion": "Candidates are 3 and -2; only x=3 satisfies the original equation.",
+      "anchorInterpretation": "The domain removes the extraneous value.",
+      "mechanism": "Extract perfect powers, convert between radical and rational-exponent notation, isolate a radical in an equation, raise both sides to a power, and check every candidate.",
+      "validStructure": "Negative rational exponents also require a nonzero base. Squaring is not reversible without sign and domain checks.",
+      "invalidMove": "A frequent error is replacing sqrt(x^2) with x for negative inputs or omitting the final check.",
+      "lessonId": "precalculus-u4-l8",
+      "lessonSequence": 8,
+      "lessonTitle": "Domain restrictions and radical inverses",
+      "lessonOutcome": "Restrict power functions to one-to-one branches and connect those branches to principal radical functions.",
+      "lessonGuide": {
+        "application": "Many real models are built in stages—a conversion followed by a cost rule, or a measurement followed by a calibration. Composition records that order, while inverse reasoning asks whether the stages can be undone.",
+        "bigIdea": [
+          "Composition and inversion are about information flow. A composite sends an input through stages in a fixed order; an inverse reverses that flow only when each output identifies a unique input.",
+          "This lesson narrows that lens to one goal: restrict power functions to one-to-one branches and connect those branches to principal radical functions. The point is not to memorize an isolated trick; it is to know what evidence makes the conclusion valid and how a second representation can check it."
+        ],
+        "method": [
+          "1. Extract perfect powers.",
+          "2. Convert between radical.",
+          "3. Rational-exponent notation.",
+          "4. Isolate a radical in an equation."
+        ],
+        "questions": [
+          "Which function acts first?",
+          "Is the intermediate output allowed?",
+          "Can the process be reversed without ambiguity?"
+        ],
+        "verification": "Name the intermediate quantity, enforce its domain, and verify an inverse with composition. Units are especially useful because the output unit of one stage must match the input unit of the next.",
+        "foundationWalkthrough": {
+          "problem": "Solve sqrt(x+6)=x.",
+          "plan": "Start by identifying the mathematical structure in the prompt. Then use the lesson method rather than guessing from appearance: Extract perfect powers, convert between radical and rational-exponent notation, isolate a radical in an equation, raise both sides to a power, and check every candidate.",
+          "conclusion": "Candidates are 3 and -2; only x=3 satisfies the original equation.",
+          "check": "The domain removes the extraneous value."
+        }
+      },
+      "route": "/subjects/math/precalculus/composition-inverses-and-modeling/domain-restrictions-and-radical-inverses/"
+    },
+    {
+      "id": "precalculus-u4-l9-v1",
+      "sequence": 1,
+      "role": "Anchor figure",
+      "title": "Modeling cycle",
+      "description": "Depict the foundation problem exactly: Costs 65,90,115,140 for 1-4 hours. Show the quantities, axes, intervals, or algebraic objects needed to reach this conclusion: C(h)=40+25h.",
+      "caption": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The fixed fee and hourly rate are interpretable.",
+      "anchorProblem": "Costs 65,90,115,140 for 1-4 hours.",
+      "anchorConclusion": "C(h)=40+25h.",
+      "anchorInterpretation": "The fixed fee and hourly rate are interpretable.",
+      "mechanism": "Define quantities, choose a family, estimate parameters, state domain and assumptions, inspect residuals, and revise or reject when evidence disagrees.",
+      "validStructure": "Interpolation and extrapolation must be distinguished, and causation requires evidence beyond correlation.",
+      "invalidMove": "A frequent error is choosing the smoothest graph or highest fit statistic without checking meaning.",
+      "lessonId": "precalculus-u4-l9",
+      "lessonSequence": 9,
+      "lessonTitle": "Model construction and validation",
+      "lessonOutcome": "Build a multi-stage function model, state its domain and assumptions, and evaluate whether an inverse interpretation is meaningful.",
+      "lessonGuide": {
+        "application": "Many real models are built in stages—a conversion followed by a cost rule, or a measurement followed by a calibration. Composition records that order, while inverse reasoning asks whether the stages can be undone.",
+        "bigIdea": [
+          "Composition and inversion are about information flow. A composite sends an input through stages in a fixed order; an inverse reverses that flow only when each output identifies a unique input.",
+          "This lesson narrows that lens to one goal: build a multi-stage function model, state its domain and assumptions, and evaluate whether an inverse interpretation is meaningful. The point is not to memorize an isolated trick; it is to know what evidence makes the conclusion valid and how a second representation can check it."
+        ],
+        "method": [
+          "1. Define quantities.",
+          "2. Choose a family.",
+          "3. Estimate parameters.",
+          "4. State domain."
+        ],
+        "questions": [
+          "Which function acts first?",
+          "Is the intermediate output allowed?",
+          "Can the process be reversed without ambiguity?"
+        ],
+        "verification": "Name the intermediate quantity, enforce its domain, and verify an inverse with composition. Units are especially useful because the output unit of one stage must match the input unit of the next.",
+        "foundationWalkthrough": {
+          "problem": "Costs 65,90,115,140 for 1-4 hours.",
+          "plan": "Start by identifying the mathematical structure in the prompt. Then use the lesson method rather than guessing from appearance: Define quantities, choose a family, estimate parameters, state domain and assumptions, inspect residuals, and revise or reject when evidence disagrees.",
+          "conclusion": "C(h)=40+25h.",
+          "check": "The fixed fee and hourly rate are interpretable."
+        }
+      },
+      "route": "/subjects/math/precalculus/composition-inverses-and-modeling/model-construction-and-validation/"
+    },
+    {
+      "id": "precalculus-u4-l9-v2",
+      "sequence": 2,
+      "role": "Mechanism figure",
+      "title": "Competing extrapolations",
+      "description": "Visualize the mechanism explicitly: Define quantities, choose a family, estimate parameters, state domain and assumptions, inspect residuals, and revise or reject when evidence disagrees. The figure must show intermediate states or mappings, not merely the final formula.",
+      "caption": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for model construction and validation.",
+      "anchorProblem": "Costs 65,90,115,140 for 1-4 hours.",
+      "anchorConclusion": "C(h)=40+25h.",
+      "anchorInterpretation": "The fixed fee and hourly rate are interpretable.",
+      "mechanism": "Define quantities, choose a family, estimate parameters, state domain and assumptions, inspect residuals, and revise or reject when evidence disagrees.",
+      "validStructure": "Interpolation and extrapolation must be distinguished, and causation requires evidence beyond correlation.",
+      "invalidMove": "A frequent error is choosing the smoothest graph or highest fit statistic without checking meaning.",
+      "lessonId": "precalculus-u4-l9",
+      "lessonSequence": 9,
+      "lessonTitle": "Model construction and validation",
+      "lessonOutcome": "Build a multi-stage function model, state its domain and assumptions, and evaluate whether an inverse interpretation is meaningful.",
+      "lessonGuide": {
+        "application": "Many real models are built in stages—a conversion followed by a cost rule, or a measurement followed by a calibration. Composition records that order, while inverse reasoning asks whether the stages can be undone.",
+        "bigIdea": [
+          "Composition and inversion are about information flow. A composite sends an input through stages in a fixed order; an inverse reverses that flow only when each output identifies a unique input.",
+          "This lesson narrows that lens to one goal: build a multi-stage function model, state its domain and assumptions, and evaluate whether an inverse interpretation is meaningful. The point is not to memorize an isolated trick; it is to know what evidence makes the conclusion valid and how a second representation can check it."
+        ],
+        "method": [
+          "1. Define quantities.",
+          "2. Choose a family.",
+          "3. Estimate parameters.",
+          "4. State domain."
+        ],
+        "questions": [
+          "Which function acts first?",
+          "Is the intermediate output allowed?",
+          "Can the process be reversed without ambiguity?"
+        ],
+        "verification": "Name the intermediate quantity, enforce its domain, and verify an inverse with composition. Units are especially useful because the output unit of one stage must match the input unit of the next.",
+        "foundationWalkthrough": {
+          "problem": "Costs 65,90,115,140 for 1-4 hours.",
+          "plan": "Start by identifying the mathematical structure in the prompt. Then use the lesson method rather than guessing from appearance: Define quantities, choose a family, estimate parameters, state domain and assumptions, inspect residuals, and revise or reject when evidence disagrees.",
+          "conclusion": "C(h)=40+25h.",
+          "check": "The fixed fee and hourly rate are interpretable."
+        }
+      },
+      "route": "/subjects/math/precalculus/composition-inverses-and-modeling/model-construction-and-validation/"
+    },
+    {
+      "id": "precalculus-u4-l9-v3",
+      "sequence": 3,
+      "role": "Comparison and error figure",
+      "title": "Residual plot",
+      "description": "Place the correct structure beside the invalid move described here: A frequent error is choosing the smoothest graph or highest fit statistic without checking meaning. Mark the first point where the conclusions diverge.",
+      "caption": "Compare the valid path with the tempting shortcut. The figure shows why choosing the smoothest graph or highest fit statistic without checking meaning leads to a false conclusion.",
+      "anchorProblem": "Costs 65,90,115,140 for 1-4 hours.",
+      "anchorConclusion": "C(h)=40+25h.",
+      "anchorInterpretation": "The fixed fee and hourly rate are interpretable.",
+      "mechanism": "Define quantities, choose a family, estimate parameters, state domain and assumptions, inspect residuals, and revise or reject when evidence disagrees.",
+      "validStructure": "Interpolation and extrapolation must be distinguished, and causation requires evidence beyond correlation.",
+      "invalidMove": "A frequent error is choosing the smoothest graph or highest fit statistic without checking meaning.",
+      "lessonId": "precalculus-u4-l9",
+      "lessonSequence": 9,
+      "lessonTitle": "Model construction and validation",
+      "lessonOutcome": "Build a multi-stage function model, state its domain and assumptions, and evaluate whether an inverse interpretation is meaningful.",
+      "lessonGuide": {
+        "application": "Many real models are built in stages—a conversion followed by a cost rule, or a measurement followed by a calibration. Composition records that order, while inverse reasoning asks whether the stages can be undone.",
+        "bigIdea": [
+          "Composition and inversion are about information flow. A composite sends an input through stages in a fixed order; an inverse reverses that flow only when each output identifies a unique input.",
+          "This lesson narrows that lens to one goal: build a multi-stage function model, state its domain and assumptions, and evaluate whether an inverse interpretation is meaningful. The point is not to memorize an isolated trick; it is to know what evidence makes the conclusion valid and how a second representation can check it."
+        ],
+        "method": [
+          "1. Define quantities.",
+          "2. Choose a family.",
+          "3. Estimate parameters.",
+          "4. State domain."
+        ],
+        "questions": [
+          "Which function acts first?",
+          "Is the intermediate output allowed?",
+          "Can the process be reversed without ambiguity?"
+        ],
+        "verification": "Name the intermediate quantity, enforce its domain, and verify an inverse with composition. Units are especially useful because the output unit of one stage must match the input unit of the next.",
+        "foundationWalkthrough": {
+          "problem": "Costs 65,90,115,140 for 1-4 hours.",
+          "plan": "Start by identifying the mathematical structure in the prompt. Then use the lesson method rather than guessing from appearance: Define quantities, choose a family, estimate parameters, state domain and assumptions, inspect residuals, and revise or reject when evidence disagrees.",
+          "conclusion": "C(h)=40+25h.",
+          "check": "The fixed fee and hourly rate are interpretable."
+        }
+      },
+      "route": "/subjects/math/precalculus/composition-inverses-and-modeling/model-construction-and-validation/"
+    }
+  ]
+}

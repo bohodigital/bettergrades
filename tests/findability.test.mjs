@@ -4,6 +4,8 @@ import { test } from "node:test";
 import { resolve } from "node:path";
 import graph from "../data/learning-graph/graph.json" with { type: "json" };
 import auditInventory from "../data/ia/page-inventory.json" with { type: "json" };
+import algebraCourse from "../content/algebra/course.public.json" with { type: "json" };
+import precalculusCourse from "../content/precalculus/course.public.json" with { type: "json" };
 
 const root = resolve(import.meta.dirname, "..");
 
@@ -11,7 +13,14 @@ test("every canonical audit route is mapped or explicitly excluded", () => {
   const covered = new Set([...graph.nodes.map((node) => node.canonicalPath), ...graph.exclusions.map((item) => item.canonicalPath)]);
   assert.equal(auditInventory.routes.filter((route) => !covered.has(route.route)).length, 0);
   assert.equal(auditInventory.routeCount, 509);
-  assert.equal(covered.size, 732);
+  const expected = new Set([
+    ...auditInventory.routes.map((route) => route.route),
+    ...algebraCourse.routes.map((route) => route.path),
+    ...precalculusCourse.routes.map((route) => route.path),
+  ]);
+  assert.equal(expected.size, 825);
+  assert.equal(covered.size, expected.size);
+  for (const route of expected) assert.ok(covered.has(route), route);
 });
 
 test("graph ids and canonical paths are unique", () => {

@@ -1,6 +1,7 @@
 import { limitsUnitSearchRecords } from "./calculus/limits-unit-index.mjs";
 import { calculusUnitRoutes, calculusUnitSearchRecords, supersededCalculusPaths } from "./calculus/calculus-units-index.mjs";
 import { algebraCourseSearchRecords } from "./algebra/algebra-course-search.mjs";
+import { precalculusCourseSearchRecords } from "./precalculus/precalculus-course-search.mjs";
 import { problems } from "./content";
 import { domains, resourceFormatLabel, resources, tools, topics } from "./registry/catalog";
 import { assessments } from "./registry/practice";
@@ -50,8 +51,9 @@ const topicFor = (topicId: string) => topics.find((topic) => topic.id === topicI
 
 const calculusUnitPaths = new Set(calculusUnitRoutes.map((route) => route.path));
 const algebraCoursePaths = new Set((algebraCourseSearchRecords as SiteSearchRecord[]).map((record) => record.path));
+const precalculusCoursePaths = new Set((precalculusCourseSearchRecords as SiteSearchRecord[]).map((record) => record.path));
 const supersededCalculusRoutePaths = new Set(supersededCalculusPaths);
-const guideRecords: SiteSearchRecord[] = resources.filter((resource) => !algebraCoursePaths.has(resource.path) && !calculusUnitPaths.has(resource.path) && !supersededCalculusRoutePaths.has(resource.path)).map((resource) => {
+const guideRecords: SiteSearchRecord[] = resources.filter((resource) => !algebraCoursePaths.has(resource.path) && !precalculusCoursePaths.has(resource.path) && !calculusUnitPaths.has(resource.path) && !supersededCalculusRoutePaths.has(resource.path)).map((resource) => {
   const domain = domainFor(resource.domainId)!;
   const topic = topicFor(resource.topicId)!;
   return {
@@ -70,7 +72,7 @@ const guideRecords: SiteSearchRecord[] = resources.filter((resource) => !algebra
 });
 
 const topicRecords: SiteSearchRecord[] = [
-  ...domains.filter((domain) => !algebraCoursePaths.has(domain.path)).map((domain) => ({
+  ...domains.filter((domain) => !algebraCoursePaths.has(domain.path) && !precalculusCoursePaths.has(domain.path)).map((domain) => ({
     id: domain.id,
     kind: "topic" as const,
     title: `${domain.name} course map`,
@@ -82,7 +84,7 @@ const topicRecords: SiteSearchRecord[] = [
     keywords: [domain.name, "course", "syllabus", "topics", "learn"],
     priority: 82,
   })),
-  ...topics.filter((topic) => !algebraCoursePaths.has(topic.path) && !calculusUnitPaths.has(topic.path) && !supersededCalculusRoutePaths.has(topic.path)).map((topic) => {
+  ...topics.filter((topic) => !algebraCoursePaths.has(topic.path) && !precalculusCoursePaths.has(topic.path) && !calculusUnitPaths.has(topic.path) && !supersededCalculusRoutePaths.has(topic.path)).map((topic) => {
     const domain = domainFor(topic.domainId)!;
     return {
       id: topic.id,
@@ -214,6 +216,7 @@ const criticalFindabilityRecords: SiteSearchRecord[] = [
 export const siteSearchRecords: SiteSearchRecord[] = [
   ...criticalFindabilityRecords,
   ...(algebraCourseSearchRecords as SiteSearchRecord[]),
+  ...(precalculusCourseSearchRecords as SiteSearchRecord[]),
   ...limitsUnitSearchRecords,
   ...(calculusUnitSearchRecords as SiteSearchRecord[]),
   ...guideRecords,

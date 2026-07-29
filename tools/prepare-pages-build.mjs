@@ -5,6 +5,7 @@ import { pathToFileURL } from "node:url";
 import { build as esbuildBuild } from "esbuild";
 import resourceCatalog from "../content/calculus/resources/catalog.json" with { type: "json" };
 import algebraCourse from "../content/algebra/course.public.json" with { type: "json" };
+import precalculusCourse from "../content/precalculus/course.public.json" with { type: "json" };
 
 const root = process.cwd();
 const client = resolve(root, "dist", "client");
@@ -115,6 +116,7 @@ const xmlEscape = (value) => value.replaceAll("&", "&amp;").replaceAll("<", "&lt
 const revisionDate = execFileSync("git", ["log", "-1", "--format=%cs"], { cwd: root, encoding: "utf8" }).trim();
 if (!/^\d{4}-\d{2}-\d{2}$/.test(revisionDate)) throw new Error(`Could not derive a real revision date from Git: ${revisionDate}`);
 const algebraRouteRoles = new Map(algebraCourse.routes.map((route) => [route.path, route.pageType]));
+const precalculusRouteRoles = new Map(precalculusCourse.routes.map((route) => [route.path, route.pageType]));
 const unitRoots = [
   "/subjects/math/calculus/limits-continuity/",
   "/subjects/math/calculus/limits-continuity/unit/",
@@ -144,6 +146,7 @@ const groups = {
 };
 for (const route of indexableRoutes) {
   const algebraRole = algebraRouteRoles.get(route);
+  const precalculusRole = precalculusRouteRoles.get(route);
   if (algebraRole === "course-hub") groups["sitemap-course-hubs.xml"].push(route);
   else if (algebraRole === "unit-hub") groups["sitemap-unit-hubs.xml"].push(route);
   else if (algebraRole === "lesson") groups["sitemap-lessons.xml"].push(route);
@@ -151,6 +154,9 @@ for (const route of indexableRoutes) {
   else if (algebraRole === "mastery-check") groups["sitemap-mastery-checks.xml"].push(route);
   else if (algebraRole === "investigation") groups["sitemap-investigations.xml"].push(route);
   else if (algebraRole === "answer-key") groups["sitemap-answer-keys.xml"].push(route);
+  else if (precalculusRole === "course-hub") groups["sitemap-course-hubs.xml"].push(route);
+  else if (precalculusRole === "unit-hub") groups["sitemap-unit-hubs.xml"].push(route);
+  else if (precalculusRole === "lesson") groups["sitemap-lessons.xml"].push(route);
   else if (route.startsWith("/subjects/math/calculus/worksheets/") && route !== "/subjects/math/calculus/worksheets/") groups["sitemap-worksheets.xml"].push(route);
   else if (route.startsWith("/subjects/math/calculus/practice-exams/") && route !== "/subjects/math/calculus/practice-exams/") groups["sitemap-practice-exams.xml"].push(route);
   else if (route.startsWith("/subjects/math/calculus/formula-sheets/") && route !== "/subjects/math/calculus/formula-sheets/") groups["sitemap-formula-sheets.xml"].push(route);

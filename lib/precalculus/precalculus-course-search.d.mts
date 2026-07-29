@@ -1,0 +1,1 @@
+export const precalculusCourseSearchRecords: unknown[];

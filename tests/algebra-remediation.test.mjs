@@ -112,7 +112,7 @@ test("all 139 exact lesson titles rank first in the generated search index", asy
     await build({ entryPoints: [resolve(root, "lib/site-search.ts")], outfile: output, bundle: true, platform: "node", format: "esm", logLevel: "silent" });
     const { searchSite } = await import(`${pathToFileURL(output).href}?v=${Date.now()}`);
     for (const page of course.pages.filter((candidate) => candidate.lesson)) {
-      assert.equal(searchSite(page.lesson.title)[0]?.path, page.route.path, page.lesson.id);
+      assert.equal(searchSite(page.lesson.title, { domain: "algebra" })[0]?.path, page.route.path, page.lesson.id);
     }
   } finally {
     await rm(output, { force: true });
