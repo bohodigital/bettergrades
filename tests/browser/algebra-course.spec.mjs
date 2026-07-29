@@ -61,6 +61,16 @@ test("A0–A2 lessons organize authored practice into usable rounds with optiona
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
 });
 
+test("A0–A2 lessons render accessible KaTeX instead of plain Unicode lookalikes", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/subjects/math/algebra/linear-equations/multistep-linear-equations/");
+  const math = page.locator(".algebra-course-page .latex-inline");
+  expect(await math.count()).toBeGreaterThanOrEqual(50);
+  await expect(math.first().locator(".katex")).toHaveCount(1);
+  await expect(math.first().locator(".katex-mathml math")).toHaveCount(1);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
+});
+
 test("the compact rational-expression guide remains canonical beside the distinct full-course lesson", async ({ page }) => {
   await page.goto("/subjects/math/algebra/rational-expressions/simplifying-rational-expressions/");
   await expect(page.locator("h1")).toContainText("Simplifying rational expressions by factors");

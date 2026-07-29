@@ -71,6 +71,23 @@ test("rendered Algebra pages expose finished instruction, unique metadata, and t
   assert.equal(descriptions.size, 226);
 });
 
+test("representative A0–A2 lessons render textbook mathematics through KaTeX and MathML", async () => {
+  const paths = [
+    "/subjects/math/algebra/arithmetic-readiness/fractions-as-numbers/",
+    "/subjects/math/algebra/quantities-variables/variables-and-changing-quantities/",
+    "/subjects/math/algebra/linear-equations/multistep-linear-equations/",
+  ];
+  for (const path of paths) {
+    const html = await readFile(resolve(pages, path.slice(1), "index.html"), "utf8");
+    const visibleHtml = html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "");
+    const latexCount = (visibleHtml.match(/class="latex latex-inline/g) ?? []).length;
+    assert.ok(latexCount >= 50, `${path} rendered only ${latexCount} LaTeX expressions`);
+    assert.match(visibleHtml, /class="katex-mathml"/, path);
+    assert.match(visibleHtml, /encoding="application\/x-tex"/, path);
+    assert.doesNotMatch(visibleHtml, /class="katex-error"/, path);
+  }
+});
+
 test("all 139 exact lesson titles rank first in the generated search index", async () => {
   const output = resolve(tmpdir(), `bettergrades-algebra-remediation-search-${process.pid}.mjs`);
   try {
