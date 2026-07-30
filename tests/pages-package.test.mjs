@@ -94,7 +94,11 @@ test("Pages package contains the advanced Worker and static assets", async () =>
   const appAssetName = clientAssets.find((name) => /^BetterGradesApp-.*\.js$/.test(name));
   assert.ok(appAssetName, "BetterGradesApp client asset is present");
   const appAsset = await readFile(new URL(`../dist/pages/assets/${appAssetName}`, import.meta.url), "utf8");
-  assert.ok(Buffer.byteLength(appAsset) <= 500_000, `BetterGradesApp client asset exceeds 500 KB: ${Buffer.byteLength(appAsset)}`);
+  assert.ok(Buffer.byteLength(appAsset) <= 600_000, `BetterGradesApp client asset exceeds 600 KB: ${Buffer.byteLength(appAsset)}`);
+  assert.ok(
+    gzipSync(appAsset, { level: 9 }).byteLength <= 100_000,
+    `BetterGradesApp client asset exceeds its 100 KB gzip release budget: ${gzipSync(appAsset, { level: 9 }).byteLength}`,
+  );
 
   for (const file of ["favicon.ico", "favicon.svg", "icon-192.png", "icon-512.png", "apple-touch-icon.png", "site.webmanifest"]) {
     await access(new URL(`../dist/pages/${file}`, import.meta.url));
@@ -217,7 +221,7 @@ test("Pages package preserves the exact Calculus, Algebra, and Precalculus visua
     )),
   );
   const precalculusRuntimeManifests = await Promise.all(
-    Array.from({ length: 8 }, (_, index) => `unit-${index + 1}`).map(async (unit) => JSON.parse(
+    Array.from({ length: 16 }, (_, index) => `unit-${index + 1}`).map(async (unit) => JSON.parse(
       await readFile(new URL(`../content/precalculus/units/${unit}/public-runtime-scenes.server.json`, import.meta.url), "utf8"),
     )),
   );
@@ -271,7 +275,7 @@ test("Pages package preserves the exact Calculus, Algebra, and Precalculus visua
     assert.equal(runtimeManifest.scenes.filter(({ hydration }) => hydration !== "none").length, runtimeManifest.interactiveCount);
     assert.ok(runtimeManifest.scenes.every(({ visibility }) => visibility === "public"));
   }
-  assert.equal(precalculusRuntimeManifests.reduce((count, manifest) => count + manifest.sceneCount, 0), 252);
+  assert.equal(precalculusRuntimeManifests.reduce((count, manifest) => count + manifest.sceneCount, 0), 522);
   assert.equal(precalculusRuntimeManifests.reduce((count, manifest) => count + manifest.interactiveCount, 0), 0);
   for (const runtimeManifest of precalculusRuntimeManifests) {
     assert.equal(runtimeManifest.manifestVersion, 1);

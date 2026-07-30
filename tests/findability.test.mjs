@@ -18,7 +18,7 @@ test("every canonical audit route is mapped or explicitly excluded", () => {
     ...algebraCourse.routes.map((route) => route.path),
     ...precalculusCourse.routes.map((route) => route.path),
   ]);
-  assert.equal(expected.size, 825);
+  assert.equal(expected.size, 923);
   assert.equal(covered.size, expected.size);
   for (const route of expected) assert.ok(covered.has(route), route);
 });

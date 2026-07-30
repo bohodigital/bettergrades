@@ -37,6 +37,17 @@ export type PrecalculusPrompt = {
   prompt: string;
 };
 
+export type PrecalculusTextbookBlock =
+  | { type: "paragraph" | "subheading"; text: string }
+  | { type: "callout"; label: string; text: string }
+  | { type: "list"; items: string[] };
+
+export type PrecalculusTextbookSection = {
+  kind: "reading" | "figures" | "checkpoint" | "practice" | "sources";
+  heading: string;
+  blocks: PrecalculusTextbookBlock[];
+};
+
 export type PrecalculusLesson = PrecalculusLessonSummary & {
   unitId: string;
   unitSequence: number;
@@ -58,6 +69,7 @@ export type PrecalculusLesson = PrecalculusLessonSummary & {
   practice: PrecalculusPrompt[];
   close: string;
   sources: string[];
+  textbookSections?: PrecalculusTextbookSection[];
   previous: { title: string; path: string } | null;
   next: { title: string; path: string } | null;
 };

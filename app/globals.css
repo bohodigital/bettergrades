@@ -2484,6 +2484,68 @@ h1 em, h2 em { color: var(--brand); font-family: var(--serif); font-weight: 500;
   line-height: 1.45;
 }
 
+.precalculus-full-manuscript {
+  display: grid;
+  gap: 30px;
+}
+
+.precalculus-full-manuscript .precalculus-manuscript-section {
+  margin: 0;
+}
+
+.precalculus-manuscript-blocks {
+  display: grid;
+  gap: 0;
+}
+
+.precalculus-manuscript-blocks > p {
+  margin: 0 0 22px;
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.78;
+}
+
+.precalculus-manuscript-blocks > h3 {
+  margin: 34px 0 16px;
+  font-size: clamp(1.35rem, 2.4vw, 1.8rem);
+  line-height: 1.15;
+}
+
+.precalculus-manuscript-blocks > ol {
+  margin: 0 0 24px;
+  padding-left: 1.35rem;
+}
+
+.precalculus-manuscript-blocks > ol li {
+  margin: 12px 0;
+  padding-left: 6px;
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.68;
+}
+
+.precalculus-manuscript-callout {
+  margin: 8px 0 24px;
+  padding: 20px 22px;
+  border-left: 3px solid var(--brand);
+  background: color-mix(in srgb, var(--brand-soft), transparent 35%);
+}
+
+.precalculus-manuscript-callout .eyebrow {
+  margin-bottom: 10px;
+}
+
+.precalculus-manuscript-callout > p:last-child {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.precalculus-textbook-figures {
+  margin-block: 8px;
+}
+
 @media (max-width: 44rem) {
   .precalculus-course-map .precalculus-map-intro {
     grid-template-columns: 1fr;
