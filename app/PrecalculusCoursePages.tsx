@@ -3,7 +3,7 @@
 /* eslint-disable @next/next/no-html-link-for-pages -- canonical course navigation uses document navigation */
 
 import { FormEvent, useState } from "react";
-import type { PrecalculusCoursePage, PrecalculusPrompt } from "../lib/precalculus/precalculus-course.mjs";
+import type { PrecalculusCoursePage, PrecalculusLesson, PrecalculusPrompt, PrecalculusTextbookBlock } from "../lib/precalculus/precalculus-course.mjs";
 import { AlgebraMathText } from "./AlgebraMathText";
 import { BetterGradesVisual } from "./BetterGradesVisual";
 
@@ -134,9 +134,56 @@ function UnitHub({ page }: { page: PrecalculusCoursePage }) {
   </section>;
 }
 
+function PhaseBBlocks({ blocks }: { blocks: PrecalculusTextbookBlock[] }) {
+  return <div className="precalculus-manuscript-blocks">{blocks.map((block, index) => {
+    const key = `${block.type}-${index}`;
+    if (block.type === "subheading") return <h3 key={key}><AlgebraMathText value={block.text} /></h3>;
+    if (block.type === "callout") return <article className="precalculus-manuscript-callout" key={key}>
+      <p className="eyebrow">{block.label}</p>
+      <p><AlgebraMathText value={block.text} display="auto" /></p>
+    </article>;
+    if (block.type === "list") return <ol key={key}>{block.items.map((item) => <li key={item}><AlgebraMathText value={item} /></li>)}</ol>;
+    return <p key={key}><AlgebraMathText value={block.text} /></p>;
+  })}</div>;
+}
+
+function PhaseBFigures({ lesson }: { lesson: PrecalculusLesson }) {
+  return <section className="algebra-figure-sequence precalculus-textbook-figures" aria-label={`${lesson.title} mathematical figures`}>{lesson.figures.map((figure) => <figure className="limits-graph limits-graph-visual calculus-unit-visual" key={figure.id}>
+    {figure.visual ? <BetterGradesVisual visual={figure.visual} /> : <p role="alert">This compiled figure is temporarily unavailable.</p>}
+    <figcaption><strong>{figure.role} · {figure.title}</strong><p><AlgebraMathText value={figure.caption} /></p></figcaption>
+  </figure>)}</section>;
+}
+
+function PhaseBPractice({ lesson }: { lesson: PrecalculusLesson }) {
+  return <section className="limits-node limits-node-exercise algebra-foundation-practice precalculus-practice"><header><span>Practice</span><h2>Ten concrete questions</h2></header><div className="algebra-practice-groups">
+    {lesson.practice.map((prompt) => <AttemptFirstPrompt prompt={prompt} label={`Practice ${prompt.sequence}`} compact key={prompt.id} />)}
+  </div></section>;
+}
+
+function PhaseBSources({ lesson }: { lesson: PrecalculusLesson }) {
+  return <section className="limits-rights"><p className="eyebrow">Source record</p><h2>Original BetterGrades manuscript, rights-separated references.</h2><ul>{lesson.sources.map((source) => <li key={source}>{source}</li>)}</ul><p>No long source passage is reproduced.</p></section>;
+}
+
+function FullTextbookLesson({ lesson }: { lesson: PrecalculusLesson }) {
+  return <div className="algebra-textbook-lesson precalculus-textbook-lesson precalculus-full-manuscript">
+    {lesson.textbookSections?.map((section, index) => {
+      if (section.kind === "figures") return <PhaseBFigures lesson={lesson} key={`${section.kind}-${index}`} />;
+      if (section.kind === "checkpoint") return <AttemptFirstPrompt prompt={lesson.checkpoint} label="Check yourself" key={`${section.kind}-${index}`} />;
+      if (section.kind === "practice") return <PhaseBPractice lesson={lesson} key={`${section.kind}-${index}`} />;
+      if (section.kind === "sources") return <PhaseBSources lesson={lesson} key={`${section.kind}-${index}`} />;
+      return <section className="limits-node limits-node-exposition precalculus-manuscript-section" key={`${section.kind}-${section.heading}`}>
+        <header><span>Textbook reading</span><h2>{section.heading}</h2></header>
+        <PhaseBBlocks blocks={section.blocks} />
+      </section>;
+    })}
+    <noscript><p className="honest-note">The complete practice prompts remain printable without JavaScript. Enable JavaScript to submit an attempt and retrieve the protected exact answers.</p></noscript>
+  </div>;
+}
+
 function LessonPage({ page }: { page: PrecalculusCoursePage }) {
   if (!page.lesson) return null;
   const lesson = page.lesson;
+  if (lesson.textbookSections?.length) return <FullTextbookLesson lesson={lesson} />;
   return <div className="algebra-textbook-lesson precalculus-textbook-lesson">
     <section className="limits-node limits-node-application algebra-lesson-opening"><header><span>Opening</span><h2>Start with the situation</h2></header><div>
       <p><AlgebraMathText value={lesson.opening[0]} /></p>

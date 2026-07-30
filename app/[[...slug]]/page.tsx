@@ -117,7 +117,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug?: st
         }],
       },
       twitter: { card: "summary_large_image" as const, title, description, images: ["/og-precalculus.png"] },
-      other: { "course-revision-date": "2026-07-29", "course-route-role": precalculus.routeRole },
+      other: { "course-revision-date": "2026-07-30", "course-route-role": precalculus.routeRole },
     } : {}),
   };
 }

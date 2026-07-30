@@ -6,6 +6,28 @@ Stop before production work and read:
 /srv/local1/hub/ops/runbooks/sites-cloudflare-pages.md
 ```
 
+## Current owner-authorized Precalculus Phase B release
+
+On 2026-07-30, the owner supplied the complete second-half Precalculus textbook
+package and instructed the team to get it live. The authorized scope is to add
+the eight supplied units to the existing eight-unit Precalculus course, retain
+the exact source package and protected answer boundary, publish the expanded
+course routes and search inventory, and deliver polished, deterministic
+textbook figures for the new lessons. The established site shell, first-half
+course, production domains, and release pipeline remain unchanged.
+
+```text
+Source package: content/precalculus/source-package-phase-b/
+Review branch: codex/precalculus-phase-b-full-textbook-20260730
+Owner-visible private preview: https://better-grades.mankopoppi.chatgpt.site/
+Approval instruction: get it live
+Release evidence: exact commit, Sites version, pull request, Cloudflare deployment, and live checks are recorded in the release handoff
+```
+
+Production must be built from the merged tree for this release, and that tree
+must match the validated private-preview source tree. Any content or design
+change beyond this scope requires another private preview and approval.
+
 ## Current owner-authorized release
 
 On 2026-07-16, the owner authorized this final Limits and Continuity release and

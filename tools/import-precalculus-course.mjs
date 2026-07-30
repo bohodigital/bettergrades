@@ -2,8 +2,11 @@ import { createHash } from "node:crypto";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 
+import { loadPhaseBLessons } from "./precalculus-phase-b.mjs";
+
 const root = resolve(import.meta.dirname, "..");
 const sourceDirectory = resolve(root, "content/precalculus/source-package");
+const phaseBSourceDirectory = resolve(root, "content/precalculus/source-package-phase-b");
 const outputDirectory = resolve(root, "content/precalculus");
 const checkOnly = process.argv.includes("--check");
 const courseRoot = "/subjects/math/precalculus/";
@@ -17,6 +20,14 @@ const unitProfiles = [
   { sourceCode: "P5", sequence: 6, title: "Rational Functions", slug: "rational-functions" },
   { sourceCode: "P6", sequence: 7, title: "Exponential and Logarithmic Functions", slug: "exponential-and-logarithmic-functions" },
   { sourceCode: "P7", sequence: 8, title: "Systems, Matrices, and Multivariable Models", slug: "systems-matrices-and-multivariable-models" },
+  { sourceCode: "P8", sequence: 9, title: "Angles, Radians, and the Unit Circle", slug: "angles-radians-and-the-unit-circle" },
+  { sourceCode: "P9", sequence: 10, title: "Trigonometric Functions and Periodic Models", slug: "trigonometric-functions-and-periodic-models" },
+  { sourceCode: "P10", sequence: 11, title: "Trigonometric Identities and Equations", slug: "trigonometric-identities-and-equations" },
+  { sourceCode: "P11", sequence: 12, title: "Triangle Trigonometry and Vectors", slug: "triangle-trigonometry-and-vectors" },
+  { sourceCode: "P12", sequence: 13, title: "Conic Sections and Implicit Relations", slug: "conic-sections-and-implicit-relations" },
+  { sourceCode: "P13", sequence: 14, title: "Parametric, Polar, and Complex Representations", slug: "parametric-polar-and-complex-representations" },
+  { sourceCode: "P14", sequence: 15, title: "Sequences, Series, and Discrete Models", slug: "sequences-series-and-discrete-models" },
+  { sourceCode: "P15", sequence: 16, title: "Calculus Readiness and Function Synthesis", slug: "calculus-readiness-and-function-synthesis" },
 ];
 
 function slugify(value) {
@@ -101,6 +112,7 @@ function methodSteps(sourceLesson, profile) {
 }
 
 function editorialGuide(sourceLesson, unitSequence) {
+  if (sourceLesson.guide) return sourceLesson.guide;
   const profile = editorialProfiles[unitSequence];
   const foundation = sourceLesson.examples[0];
   return {
@@ -122,6 +134,7 @@ function editorialGuide(sourceLesson, unitSequence) {
 }
 
 function expandedPractice(sourceLesson, guide) {
+  if (sourceLesson.preservePractice) return sourceLesson.practice;
   const original = sourceLesson.practice.slice(0, 4);
   const [foundation, representation, transfer] = sourceLesson.examples;
   const additions = [
@@ -161,7 +174,7 @@ function learnerFigureCaption(sourceLesson, figure, index) {
     return `Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for ${sourceLesson.title.toLowerCase()}.`;
   }
   const shortcut = sourceLesson.commonMistake
-    .replace(/^A frequent error is\s+/i, "")
+    .replace(/^A (?:frequent|common) error is\s+/i, "")
     .replace(/[.!?]+$/, "");
   return `Compare the valid path with the tempting shortcut. The figure shows why ${lowerInitial(shortcut)} leads to a false conclusion.`;
 }
@@ -170,10 +183,10 @@ async function loadJson(path) {
   return JSON.parse(await readFile(path, "utf8"));
 }
 
-async function assertPackageIntegrity() {
-  const manifest = await loadJson(resolve(sourceDirectory, "package_manifest.json"));
+async function assertPackageIntegrity(directory) {
+  const manifest = await loadJson(resolve(directory, "package_manifest.json"));
   for (const file of manifest.files) {
-    const body = await readFile(resolve(sourceDirectory, file.path));
+    const body = await readFile(resolve(directory, file.path));
     const digest = createHash("sha256").update(body).digest("hex");
     if (body.byteLength !== file.bytes || digest !== file.sha256) {
       throw new Error(`Precalculus source package integrity failed for ${file.path}.`);
@@ -195,12 +208,23 @@ async function writeOrCheck(path, value, label) {
   await writeFile(path, expected, "utf8");
 }
 
-const packageManifest = await assertPackageIntegrity();
-const sourceLessons = await loadJson(resolve(sourceDirectory, "data/lessons.json"));
+const packageManifest = await assertPackageIntegrity(sourceDirectory);
+const phaseBPackageManifest = await assertPackageIntegrity(phaseBSourceDirectory);
+const phaseALessons = await loadJson(resolve(sourceDirectory, "data/lessons.json"));
+const phaseBLessons = await loadPhaseBLessons(phaseBSourceDirectory);
+const sourceLessons = [...phaseALessons, ...phaseBLessons];
 const qa = await loadJson(resolve(sourceDirectory, "qa/QA_REPORT.json"));
+const phaseBQa = await loadJson(resolve(phaseBSourceDirectory, "qa/QA_REPORT.json"));
 
-if (!Array.isArray(sourceLessons) || sourceLessons.length !== 84 || qa.status !== "PASS") {
-  throw new Error("The approved Precalculus package must contain exactly 84 QA-passing lessons.");
+if (
+  !Array.isArray(sourceLessons)
+  || phaseALessons.length !== 84
+  || phaseBLessons.length !== 90
+  || sourceLessons.length !== 174
+  || qa.status !== "PASS"
+  || phaseBQa.status !== "PASS"
+) {
+  throw new Error("The approved Precalculus packages must contain exactly 174 QA-passing lessons.");
 }
 
 const unitsBySourceCode = new Map(unitProfiles.map((unit) => [unit.sourceCode, unit]));
@@ -248,7 +272,7 @@ for (const sourceLesson of sourceLessons) {
     anchorProblem: sourceLesson.examples[0].problem,
     anchorConclusion: sourceLesson.examples[0].solution,
     anchorInterpretation: sourceLesson.examples[0].interpretation,
-    mechanism: sourceLesson.exposition[0],
+    mechanism: sourceLesson.visualMechanism ?? sourceLesson.exposition[0],
     validStructure: sourceLesson.exposition[1],
     invalidMove: sourceLesson.commonMistake,
   }));
@@ -272,12 +296,16 @@ for (const sourceLesson of sourceLessons) {
     practice,
     close: sourceLesson.close,
     sources: sourceLesson.sources,
+    ...(sourceLesson.textbookSections ? { textbookSections: sourceLesson.textbookSections } : {}),
   });
+  const packageDirectory = sourceLesson.sourcePackageDirectory ?? "source-package";
+  const packageSourcePrefix = sourceLesson.sourcePackageLessonPath ?? `units/${sourceLesson.unit.toLowerCase()}_`;
+  const sourceManifest = packageDirectory === "source-package-phase-b" ? phaseBPackageManifest : packageManifest;
   provenanceLessons.push({
     publicLessonId,
     sourceLessonId: sourceLesson.id,
     sourceUnitCode: sourceLesson.unit,
-    sourceFile: `content/precalculus/source-package/units/${packageManifest.files.find((file) => file.path.startsWith(`units/${sourceLesson.unit.toLowerCase()}_`))?.path.split("/").at(-1) ?? "unknown"}`,
+    sourceFile: `content/precalculus/${packageDirectory}/units/${sourceManifest.files.find((file) => file.path.startsWith(packageSourcePrefix))?.path.split("/").at(-1) ?? "unknown"}`,
     sources: sourceLesson.sources,
   });
 }
@@ -382,13 +410,25 @@ const course = {
 
 const provenance = {
   schemaVersion: 1,
-  package: packageManifest.package,
-  packageManifestSha256: createHash("sha256")
-    .update(await readFile(resolve(sourceDirectory, "package_manifest.json")))
-    .digest("hex"),
-  masterManuscript: "content/precalculus/source-package/BETTERGRADES_PRECALCULUS_P0_P7_EXACT_STORYBOARD.md",
-  sourceUseMap: "content/precalculus/source-package/manifests/SOURCE_USE_MAP.md",
-  qaReport: "content/precalculus/source-package/qa/QA_REPORT.json",
+  package: "bettergrades-precalculus-complete-course",
+  packages: [
+    {
+      name: packageManifest.package,
+      packageManifestSha256: createHash("sha256")
+        .update(await readFile(resolve(sourceDirectory, "package_manifest.json")))
+        .digest("hex"),
+      masterManuscript: "content/precalculus/source-package/BETTERGRADES_PRECALCULUS_P0_P7_EXACT_STORYBOARD.md",
+      qaReport: "content/precalculus/source-package/qa/QA_REPORT.json",
+    },
+    {
+      name: phaseBPackageManifest.package,
+      packageManifestSha256: createHash("sha256")
+        .update(await readFile(resolve(phaseBSourceDirectory, "package_manifest.json")))
+        .digest("hex"),
+      masterManuscript: "content/precalculus/source-package-phase-b/BETTERGRADES_PRECALCULUS_P8_P15_FULL_TEXTBOOK_MANUSCRIPT.md",
+      qaReport: "content/precalculus/source-package-phase-b/qa/QA_REPORT.json",
+    },
+  ],
   publicCopyAdaptations: [{
     source: "Use function notation from P0.",
     public: "Use function notation from the algebra and function readiness unit.",
@@ -398,14 +438,14 @@ const provenance = {
 };
 
 const publicText = JSON.stringify({ course, searchRecords });
-const splitLanguage = publicText.match(/\bP[0-7](?:\.\d+)?\b|phase(?:[\s_-]+a)\b|p0(?:[\s_-]+p7)\b|first (?:internal production )?half/i);
+const splitLanguage = publicText.match(/\bP(?:[0-9]|1[0-5])(?:\.\d+)?\b|phase(?:[\s_-]+[ab])\b|p0(?:[\s_-]+p15)\b|(?:first|second) (?:internal production )?half/i);
 if (splitLanguage) {
   throw new Error(`Internal Precalculus production-split language leaked into a public artifact: ${splitLanguage[0]}.`);
 }
-if (course.counts.figures !== 252 || course.counts.practiceItems !== 840) {
-  throw new Error("The public Precalculus inventory must contain 252 figures and 840 practice items.");
+if (course.counts.figures !== 522 || course.counts.practiceItems !== 1_740) {
+  throw new Error("The public Precalculus inventory must contain 522 figures and 1,740 practice items.");
 }
-if (solutions.length !== 924) throw new Error("The protected Precalculus answer inventory must contain 84 checkpoints and 840 practice answers.");
+if (solutions.length !== 1_914) throw new Error("The protected Precalculus answer inventory must contain 174 checkpoints and 1,740 practice answers.");
 if (new Set(routes.map((route) => route.path)).size !== routes.length) {
   throw new Error("The Precalculus route inventory contains a duplicate path.");
 }

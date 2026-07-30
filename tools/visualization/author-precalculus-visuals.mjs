@@ -122,6 +122,27 @@ const series = (id, fn, min, max, content, token = "visual-primary", lineStyle =
     presentation: style(token, `${content}; ${lineStyle} curve.`, { lineStyle }),
   };
 };
+const parametricSeries = (id, xFn, yFn, min, max, content, token = "visual-primary", lineStyle = "solid", count = 121) => {
+  const xValues = [];
+  const yValues = [];
+  for (let index = 0; index < count; index += 1) {
+    const parameter = min + ((max - min) * index) / (count - 1);
+    const x = xFn(parameter);
+    const y = yFn(parameter);
+    if (Number.isFinite(x) && Number.isFinite(y)) {
+      xValues.push(Number(x.toFixed(6)));
+      yValues.push(Number(y.toFixed(6)));
+    }
+  }
+  return {
+    id,
+    kind: "sampled-series",
+    zIndex: 20,
+    label: rich(content),
+    geometry: { xValues, yValues, connect: true },
+    presentation: style(token, `${content}; ${lineStyle} curve.`, { lineStyle }),
+  };
+};
 
 function addWrapped(layers, prefix, content, x, top, length = 27, limit = 4, spacing = 0.45, token = "visual-ink") {
   for (const [index, line] of wrap(content, length, limit).entries()) {
@@ -385,6 +406,233 @@ function systemsScene(brief) {
   return diagram(layers);
 }
 
+function angleAndCircleScene(brief) {
+  const angle = [225, 60, 120, 135, 45, 300, 150, 30, 210, 240][(brief.lessonSequence - 1) % 10] * Math.PI / 180;
+  const x = Math.cos(angle);
+  const y = Math.sin(angle);
+  const layers = [
+    parametricSeries("unit-circle", Math.cos, Math.sin, 0, 2 * Math.PI, "unit circle x²+y²=1", "visual-guide", "solid"),
+    parametricSeries("directed-arc", (t) => 0.72 * Math.cos(t), (t) => 0.72 * Math.sin(t), 0, angle, "directed arc records signed rotation", "visual-emphasis", "solid", 81),
+    arrow("terminal-ray", 0, 0, x, y, "terminal ray from the origin", "visual-primary"),
+    point("terminal-point", x, y, `terminal point (${x.toFixed(2)}, ${y.toFixed(2)})`, "visual-emphasis", "diamond"),
+    segment("cosine-coordinate", x, 0, x, y, "vertical coordinate segment gives sine", "visual-secondary", "dashed"),
+    segment("sine-coordinate", 0, 0, x, 0, "horizontal coordinate segment gives cosine", "visual-secondary", "dashed"),
+    label("circle-title", -1.42, 1.37, compact(brief.title, 64), "visual-primary"),
+    label("angle-label", 0.22, 0.28, `θ = ${Math.round(angle * 180 / Math.PI)}°`),
+    label("meaning", -1.42, -1.35, compact(brief.anchorInterpretation, 76), "visual-ink"),
+  ];
+  return graph({ xMin: -1.55, xMax: 1.55, yMin: -1.55, yMax: 1.55 }, layers, "cos θ", "sin θ");
+}
+
+function periodicScene(brief) {
+  const sequence = brief.lessonSequence;
+  if (sequence === 7) {
+    return graph({ xMin: -1.6, xMax: 1.6, yMin: -5, yMax: 5 }, [
+      series("tangent", Math.tan, -1.4, 1.4, "y=tan(x)", "visual-primary"),
+      segment("left-asymptote", -Math.PI / 2, -5, -Math.PI / 2, 5, "vertical asymptote x=−π/2", "visual-guide", "dashed"),
+      segment("right-asymptote", Math.PI / 2, -5, Math.PI / 2, 5, "vertical asymptote x=π/2", "visual-guide", "dashed"),
+      point("origin", 0, 0, "tangent crosses the origin", "visual-emphasis", "diamond"),
+      label("title", -1.48, 4.4, compact(brief.title, 58), "visual-primary"),
+    ], "angle x", "tan x");
+  }
+  if (sequence === 8) {
+    return graph({ xMin: -Math.PI, xMax: Math.PI, yMin: -4, yMax: 4 }, [
+      series("cosine", Math.cos, -Math.PI, Math.PI, "y=cos(x)", "visual-guide", "dashed"),
+      series("secant-center", (x) => 1 / Math.cos(x), -1.35, 1.35, "y=sec(x)", "visual-primary"),
+      segment("asymptote-left", -Math.PI / 2, -4, -Math.PI / 2, 4, "secant asymptote", "visual-emphasis", "dashed"),
+      segment("asymptote-right", Math.PI / 2, -4, Math.PI / 2, 4, "secant asymptote", "visual-emphasis", "dashed"),
+      label("title", -2.9, 3.5, compact(brief.title, 62), "visual-primary"),
+    ], "angle x", "output");
+  }
+  if (sequence === 10) {
+    return graph({ xMin: -1.2, xMax: 1.2, yMin: -1.9, yMax: 1.9 }, [
+      series("arcsine", Math.asin, -1, 1, "y=arcsin(x) on its principal branch", "visual-primary"),
+      segment("range-low", -1.1, -Math.PI / 2, 1.1, -Math.PI / 2, "lower branch boundary −π/2", "visual-guide", "dashed"),
+      segment("range-high", -1.1, Math.PI / 2, 1.1, Math.PI / 2, "upper branch boundary π/2", "visual-guide", "dashed"),
+      label("title", -1.08, 1.7, compact(brief.title, 60), "visual-primary"),
+    ], "ratio x", "principal angle");
+  }
+  const amplitude = sequence >= 3 ? 2 : 1;
+  const phase = sequence >= 5 ? Math.PI / 3 : 0;
+  const midline = sequence >= 3 ? 1 : 0;
+  return graph({ xMin: -Math.PI, xMax: 3 * Math.PI, yMin: -2.2, yMax: 4.2 }, [
+    series("periodic-model", (x) => midline + amplitude * Math.sin(x - phase), -Math.PI, 3 * Math.PI, "modeled sinusoid", "visual-primary"),
+    segment("midline", -Math.PI, midline, 3 * Math.PI, midline, `midline y=${midline}`, "visual-guide", "dashed"),
+    segment("one-period", phase, -1.7, phase + 2 * Math.PI, -1.7, "one complete period spans 2π", "visual-emphasis"),
+    point("maximum", phase + Math.PI / 2, midline + amplitude, "maximum identifies amplitude", "visual-emphasis", "diamond"),
+    label("title", -2.85, 3.75, compact(brief.title, 66), "visual-primary"),
+  ], "angle or time", "periodic output");
+}
+
+function identityScene(brief) {
+  const layers = [
+    label("title", 0.55, 6.45, compact(brief.title, 68), "visual-primary"),
+    card("given", 0.55, 2.0, 3.15, 3.4, "Start from one side and preserve equality.", "visual-secondary", "dots"),
+    card("identity", 4.4, 2.0, 3.15, 3.4, "Use a fundamental identity as a reversible substitution.", "visual-emphasis", "diagonal"),
+    card("target", 8.25, 2.0, 3.15, 3.4, "Arrive at the target form without assuming it.", "visual-primary", "crosshatch"),
+    arrow("step-one", 3.78, 3.7, 4.3, 3.7, "Rewrite with a known identity."),
+    arrow("step-two", 7.63, 3.7, 8.15, 3.7, "Simplify to the target."),
+    label("given-form", 1.0, 4.65, "1 − cos²θ"),
+    label("identity-form", 4.8, 4.65, "sin²θ + cos²θ = 1"),
+    label("target-form", 8.7, 4.65, "sin²θ"),
+    label("guardrail", 1.0, 1.18, "An identity is true on the common domain; an equation is true only at its solutions."),
+    label("meaning", 1.0, 0.55, compact(brief.anchorInterpretation, 88), "visual-ink"),
+  ];
+  return diagram(layers);
+}
+
+function triangleAndVectorScene(brief) {
+  const vectorLesson = brief.lessonSequence >= 8;
+  const layers = vectorLesson
+    ? [
+      arrow("vector-u", 1.2, 1.2, 6.0, 4.9, "vector u has horizontal and vertical components", "visual-primary"),
+      arrow("vector-v", 1.2, 1.2, 9.4, 2.6, "vector v has a different direction", "visual-secondary"),
+      segment("u-horizontal", 1.2, 1.2, 6.0, 1.2, "horizontal component of u", "visual-guide", "dashed"),
+      segment("u-vertical", 6.0, 1.2, 6.0, 4.9, "vertical component of u", "visual-guide", "dashed"),
+      point("origin", 1.2, 1.2, "common vector tail", "visual-emphasis", "diamond"),
+      label("u-label", 5.3, 5.35, "u = ⟨u₁,u₂⟩", "visual-primary"),
+      label("v-label", 9.35, 2.95, "v", "visual-secondary"),
+      label("dot-note", 2.2, 0.55, "u·v = |u||v|cos θ connects components, magnitude, angle, and projection."),
+    ]
+    : [
+      segment("base", 1.4, 1.2, 10.2, 1.2, "triangle base c", "visual-primary"),
+      segment("left-side", 1.4, 1.2, 7.1, 5.8, "triangle side b", "visual-secondary"),
+      segment("right-side", 7.1, 5.8, 10.2, 1.2, "triangle side a", "visual-emphasis"),
+      point("vertex-a", 1.4, 1.2, "vertex A", "visual-primary", "diamond"),
+      point("vertex-b", 10.2, 1.2, "vertex B", "visual-secondary", "square"),
+      point("vertex-c", 7.1, 5.8, "vertex C", "visual-emphasis", "circle"),
+      label("angle-a", 2.0, 1.65, "A"),
+      label("angle-b", 9.35, 1.65, "B"),
+      label("angle-c", 7.0, 5.2, "C"),
+      label("law", 3.4, 0.55, brief.lessonSequence <= 4 ? "a / sin A = b / sin B = c / sin C" : "c² = a² + b² − 2ab cos C", "visual-primary"),
+    ];
+  layers.unshift(label("title", 0.55, 6.45, compact(brief.title, 68), "visual-primary"));
+  return diagram(layers);
+}
+
+function conicScene(brief) {
+  const sequence = brief.lessonSequence;
+  const layers = [label("title", -5.5, 5.35, compact(brief.title, 62), "visual-primary")];
+  if (sequence === 2) {
+    layers.push(
+      series("parabola", (x) => x * x / 4, -4, 4, "points equidistant from focus and directrix", "visual-primary"),
+      segment("directrix", -5, -1, 5, -1, "directrix y=−1", "visual-guide", "dashed"),
+      point("focus", 0, 1, "focus (0,1)", "visual-emphasis", "diamond"),
+      point("sample", 3, 2.25, "sample point on parabola", "visual-secondary", "circle"),
+    );
+  } else if (sequence === 4) {
+    layers.push(
+      parametricSeries("right-hyperbola", (t) => 2 / Math.cos(t), (t) => Math.tan(t), -1.05, 1.05, "right branch", "visual-primary"),
+      parametricSeries("left-hyperbola", (t) => -2 / Math.cos(t), (t) => Math.tan(t), -1.05, 1.05, "left branch", "visual-secondary"),
+      segment("asymptote-one", -5, -2.5, 5, 2.5, "asymptote y=x/2", "visual-guide", "dashed"),
+      segment("asymptote-two", -5, 2.5, 5, -2.5, "asymptote y=−x/2", "visual-guide", "dashed"),
+      point("focus-left", -Math.sqrt(5), 0, "left focus", "visual-emphasis", "square"),
+      point("focus-right", Math.sqrt(5), 0, "right focus", "visual-emphasis", "diamond"),
+    );
+  } else {
+    layers.push(
+      parametricSeries("ellipse", (t) => 4 * Math.cos(t), (t) => 2.5 * Math.sin(t), 0, 2 * Math.PI, "ellipse x²/16+y²/6.25=1", "visual-primary"),
+      point("focus-left", -Math.sqrt(9.75), 0, "left focus", "visual-emphasis", "square"),
+      point("focus-right", Math.sqrt(9.75), 0, "right focus", "visual-emphasis", "diamond"),
+      segment("major-axis", -4, 0, 4, 0, "major axis", "visual-guide", "dashed"),
+      label("locus-note", -5.5, -4.9, "A conic is organized by a geometric locus condition, not by appearance alone."),
+    );
+  }
+  return graph({ xMin: -6, xMax: 6, yMin: -5.5, yMax: 6 }, layers);
+}
+
+function parametricPolarComplexScene(brief) {
+  const sequence = brief.lessonSequence;
+  if (sequence >= 10) {
+    const angle = sequence === 12 ? 2 * Math.PI / 3 : Math.PI / 4;
+    const x = 3.5 * Math.cos(angle);
+    const y = 3.5 * Math.sin(angle);
+    return graph({ xMin: -5, xMax: 5, yMin: -5, yMax: 5 }, [
+      arrow("complex-vector", 0, 0, x, y, "complex number in polar form r(cos θ+i sin θ)", "visual-primary"),
+      parametricSeries("modulus-circle", (t) => 3.5 * Math.cos(t), (t) => 3.5 * Math.sin(t), 0, 2 * Math.PI, "constant modulus circle", "visual-guide", "dashed"),
+      point("complex-point", x, y, "complex number endpoint", "visual-emphasis", "diamond"),
+      label("title", -4.6, 4.45, compact(brief.title, 62), "visual-primary"),
+      label("polar-label", 0.5, 0.65, `r=3.5, θ=${Math.round(angle * 180 / Math.PI)}°`),
+    ], "real axis", "imaginary axis");
+  }
+  if (sequence >= 5) {
+    return graph({ xMin: -4.5, xMax: 4.5, yMin: -4.5, yMax: 4.5 }, [
+      parametricSeries("polar-curve", (t) => 3 * Math.cos(3 * t) * Math.cos(t), (t) => 3 * Math.cos(3 * t) * Math.sin(t), 0, 2 * Math.PI, "polar rose r=3cos(3θ)", "visual-primary"),
+      point("pole", 0, 0, "pole", "visual-emphasis", "diamond"),
+      label("title", -4.1, 4.0, compact(brief.title, 62), "visual-primary"),
+      label("tracing", -4.1, -4.0, "Angle controls direction; signed radius controls distance and orientation."),
+    ], "x=r cos θ", "y=r sin θ");
+  }
+  return graph({ xMin: -1, xMax: 7, yMin: -1, yMax: 10 }, [
+    parametricSeries("parametric-path", (t) => t, (t) => 0.2 * t * (6 - t) + t / 2, 0, 6, "oriented parametric path", "visual-primary"),
+    point("start", 0, 0, "t=0 start", "visual-emphasis", "diamond"),
+    point("middle", 3, 2.7, "t=3", "visual-secondary", "square"),
+    point("end", 6, 3, "t=6 end", "visual-emphasis", "circle"),
+    arrow("orientation", 2.1, 2.25, 3.8, 3.0, "increasing parameter gives orientation"),
+    label("title", -0.65, 9.2, compact(brief.title, 62), "visual-primary"),
+  ], "x(t)", "y(t)");
+}
+
+function sequenceSeriesScene(brief) {
+  const geometric = brief.lessonSequence >= 4 && brief.lessonSequence <= 9;
+  const pascal = brief.lessonSequence >= 11;
+  const layers = [label("title", 0.55, 6.45, compact(brief.title, 70), "visual-primary")];
+  if (pascal) {
+    const rows = [[1], [1, 1], [1, 2, 1], [1, 3, 3, 1], [1, 4, 6, 4, 1]];
+    for (const [rowIndex, row] of rows.entries()) {
+      const y = 5.5 - rowIndex;
+      const start = 6 - (row.length - 1) * 0.75;
+      for (const [index, value] of row.entries()) {
+        layers.push(label(`pascal-${rowIndex}-${index}`, start + index * 1.5, y, String(value), rowIndex === rows.length - 1 ? "visual-primary" : "visual-ink"));
+      }
+    }
+    layers.push(label("rule", 2.25, 0.72, "Each interior entry is the sum of the two entries above it."));
+    return diagram(layers);
+  }
+  for (let n = 1; n <= 8; n += 1) {
+    const value = geometric ? 5 * 0.72 ** (n - 1) : 0.55 * n + 0.8;
+    layers.push(segment(`stem-${n}`, n + 0.6, 0.9, n + 0.6, value + 0.9, `term ${n} has value ${value.toFixed(2)}`, "visual-guide"));
+    layers.push(withoutCanvasLabel(point(`term-${n}`, n + 0.6, value + 0.9, `a_${n}=${value.toFixed(2)}`, n === 8 ? "visual-emphasis" : "visual-primary", n % 2 ? "circle" : "square")));
+    layers.push(label(`n-${n}`, n + 0.48, 0.55, String(n), "visual-ink"));
+  }
+  layers.push(label("rule", 0.75, 0.1, geometric ? "Equal index steps multiply by a common ratio." : "A sequence is a function whose inputs are discrete indices."));
+  return diagram(layers);
+}
+
+function calculusReadinessScene(brief) {
+  const sequence = brief.lessonSequence;
+  if (sequence >= 11) {
+    const layers = [
+      series("curve", (x) => 0.12 * x * x + 0.6, 0, 6, "curved boundary f(x)", "visual-primary"),
+      label("title", 0.25, 5.35, compact(brief.title, 64), "visual-primary"),
+    ];
+    for (let index = 0; index < 6; index += 1) {
+      const height = 0.12 * (index + 1) ** 2 + 0.6;
+      layers.push(card(`rectangle-${index}`, index, 0, 1, height, `rectangle ${index + 1} approximates accumulated area`, index % 2 ? "visual-secondary" : "visual-emphasis", index % 2 ? "dots" : "diagonal"));
+    }
+    return graph({ xMin: -0.3, xMax: 6.5, yMin: -0.3, yMax: 5.8 }, layers, "input x", "accumulated height");
+  }
+  if (sequence >= 7) {
+    return graph({ xMin: -4, xMax: 4, yMin: -4, yMax: 7 }, [
+      series("left-piece", (x) => (x * x - 1) / (x - 1), -3.5, 0.92, "simplified branch y=x+1", "visual-primary"),
+      series("right-piece", (x) => (x * x - 1) / (x - 1), 1.08, 3.5, "simplified branch y=x+1", "visual-primary"),
+      openPoint("hole", 1, 2, "excluded point creates a hole"),
+      segment("vertical-guide", 1, -4, 1, 7, "inspect behavior as x approaches 1", "visual-guide", "dashed"),
+      label("title", -3.6, 6.35, compact(brief.title, 62), "visual-primary"),
+      label("limit-note", -3.6, 5.45, "Nearby values approach 2 even though the original expression is undefined at x=1."),
+    ]);
+  }
+  return graph({ xMin: -3.2, xMax: 4.2, yMin: -2, yMax: 10 }, [
+    series("function", (x) => x * x, -3, 3, "f(x)=x²", "visual-primary"),
+    segment("secant", 0.5, 0.25, 2.5, 6.25, "secant line through two curve points", "visual-secondary", "dashed"),
+    segment("tangent", -0.5, -2, 3.5, 6, "tangent approximation at x=1", "visual-emphasis"),
+    point("base-point", 1, 1, "base point (1,1)", "visual-emphasis", "diamond"),
+    point("nearby-point", 2.5, 6.25, "nearby point", "visual-secondary", "square"),
+    label("title", -2.9, 9.15, compact(brief.title, 62), "visual-primary"),
+    label("rate-note", -2.9, 8.25, "Average rate over an interval becomes local as the interval narrows."),
+  ]);
+}
+
 function anchorScene(brief) {
   if (brief.unitSequence === 1) return readinessScene(brief);
   if (brief.unitSequence === 2) return brief.lessonSequence === 2 ? mappingScene(brief) : functionScene(brief);
@@ -393,7 +641,15 @@ function anchorScene(brief) {
   if (brief.unitSequence === 5) return polynomialScene(brief);
   if (brief.unitSequence === 6) return rationalScene(brief);
   if (brief.unitSequence === 7) return exponentialScene(brief);
-  return systemsScene(brief);
+  if (brief.unitSequence === 8) return systemsScene(brief);
+  if (brief.unitSequence === 9) return angleAndCircleScene(brief);
+  if (brief.unitSequence === 10) return periodicScene(brief);
+  if (brief.unitSequence === 11) return identityScene(brief);
+  if (brief.unitSequence === 12) return triangleAndVectorScene(brief);
+  if (brief.unitSequence === 13) return conicScene(brief);
+  if (brief.unitSequence === 14) return parametricPolarComplexScene(brief);
+  if (brief.unitSequence === 15) return sequenceSeriesScene(brief);
+  return calculusReadinessScene(brief);
 }
 
 function mechanismSteps(value) {

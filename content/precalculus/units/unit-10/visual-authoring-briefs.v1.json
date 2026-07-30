@@ -1,0 +1,1554 @@
+{
+  "schemaVersion": 1,
+  "unitId": "precalculus-unit-10",
+  "figures": [
+    {
+      "id": "precalculus-u10-l1-v1",
+      "sequence": 1,
+      "role": "Anchor figure",
+      "title": "Linked unit-circle point and sine graph",
+      "description": "Anchor visual. Establish the quantities, coordinate system, interval, or geometric condition used in the opening problem. Mathematical mechanism: The graph is not an arbitrary wave. Every point (t,sin t) is paired with the same input’s position on the circle. The rising and falling portions correspond to the point moving upward or downward. Opening context: Building the sine graph from circular motion.",
+      "caption": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The graph is not an arbitrary wave. Every point (t,sin t) is paired with the same input’s position on the circle. The rising and falling portions correspond to the point moving upward or downward. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "anchorProblem": "A point starts at (1,0) and rotates counterclockwise one revolution in 8 seconds. Sketch its vertical coordinate against time and label zeros, extrema, and period.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Build a key-point table at multiples of pi/2, plot one cycle, use symmetry and periodicity to extend, and label zeros, extrema, and intervals of increase or decrease. The relevant conditions are not optional bookkeeping: The input axis represents angle or time-scaled angle, not horizontal position on the circle. Following that structure gives A sine wave with zeros at 0,4,8 seconds; maximum at 2; minimum at 6.",
+      "anchorInterpretation": "The graph is not an arbitrary wave. Every point (t,sin t) is paired with the same input’s position on the circle. The rising and falling portions correspond to the point moving upward or downward. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "The graph is not an arbitrary wave. Every point (t,sin t) is paired with the same input’s position on the circle. The rising and falling portions correspond to the point moving upward or downward.",
+      "validStructure": "At quarter-turn intervals, sine moves through 0,1,0,-1,0. Connecting these values smoothly according to circular motion produces a periodic wave with range [-1,1], period 2pi, zeros at integer multiples of pi, and odd symmetry.",
+      "invalidMove": "A common error is to plot the circular x-coordinate as sine or to place the first maximum at t=0.",
+      "lessonId": "precalculus-u10-l1",
+      "lessonSequence": 1,
+      "lessonTitle": "Building the sine graph from circular motion",
+      "lessonOutcome": "Construct y=sin t from the vertical coordinate of a rotating unit-circle point.",
+      "lessonGuide": {
+        "application": "Sine models vertical projection, alternating current, sound, tides, and repeated motion.",
+        "bigIdea": [
+          "The sine graph records the vertical coordinate of a unit-circle point as the real input t increases.",
+          "At quarter-turn intervals, sine moves through 0,1,0,-1,0. Connecting these values smoothly according to circular motion produces a periodic wave with range [-1,1], period 2pi, zeros at integer multiples of pi, and odd symmetry."
+        ],
+        "method": [
+          "1. Build a key-point table at multiples of pi/2, plot one cycle, use symmetry and periodicity to extend, and label zeros, extrema, and intervals of increase or decrease.",
+          "2. The input axis represents angle or time-scaled angle, not horizontal position on the circle.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls building the sine graph from circular motion?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "The input axis represents angle or time-scaled angle, not horizontal position on the circle.",
+        "foundationWalkthrough": {
+          "problem": "A point starts at (1,0) and rotates counterclockwise one revolution in 8 seconds. Sketch its vertical coordinate against time and label zeros, extrema, and period.",
+          "plan": "Build a key-point table at multiples of pi/2, plot one cycle, use symmetry and periodicity to extend, and label zeros, extrema, and intervals of increase or decrease. The input axis represents angle or time-scaled angle, not horizontal position on the circle.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Build a key-point table at multiples of pi/2, plot one cycle, use symmetry and periodicity to extend, and label zeros, extrema, and intervals of increase or decrease. The relevant conditions are not optional bookkeeping: The input axis represents angle or time-scaled angle, not horizontal position on the circle. Following that structure gives A sine wave with zeros at 0,4,8 seconds; maximum at 2; minimum at 6.",
+          "check": "The graph is not an arbitrary wave. Every point (t,sin t) is paired with the same input’s position on the circle. The rising and falling portions correspond to the point moving upward or downward. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-functions-and-periodic-models/building-the-sine-graph-from-circular-motion/"
+    },
+    {
+      "id": "precalculus-u10-l1-v2",
+      "sequence": 2,
+      "role": "Mechanism figure",
+      "title": "Quarter-cycle table-to-curve construction",
+      "description": "Mechanism visual. Show the derivation, mapping, or changing parameter that makes the central relationship true. Mathematical mechanism: The graph is not an arbitrary wave. Every point (t,sin t) is paired with the same input’s position on the circle. The rising and falling portions correspond to the point moving upward or downward. Opening context: Building the sine graph from circular motion.",
+      "caption": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for building the sine graph from circular motion.",
+      "anchorProblem": "A point starts at (1,0) and rotates counterclockwise one revolution in 8 seconds. Sketch its vertical coordinate against time and label zeros, extrema, and period.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Build a key-point table at multiples of pi/2, plot one cycle, use symmetry and periodicity to extend, and label zeros, extrema, and intervals of increase or decrease. The relevant conditions are not optional bookkeeping: The input axis represents angle or time-scaled angle, not horizontal position on the circle. Following that structure gives A sine wave with zeros at 0,4,8 seconds; maximum at 2; minimum at 6.",
+      "anchorInterpretation": "The graph is not an arbitrary wave. Every point (t,sin t) is paired with the same input’s position on the circle. The rising and falling portions correspond to the point moving upward or downward. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "The graph is not an arbitrary wave. Every point (t,sin t) is paired with the same input’s position on the circle. The rising and falling portions correspond to the point moving upward or downward.",
+      "validStructure": "At quarter-turn intervals, sine moves through 0,1,0,-1,0. Connecting these values smoothly according to circular motion produces a periodic wave with range [-1,1], period 2pi, zeros at integer multiples of pi, and odd symmetry.",
+      "invalidMove": "A common error is to plot the circular x-coordinate as sine or to place the first maximum at t=0.",
+      "lessonId": "precalculus-u10-l1",
+      "lessonSequence": 1,
+      "lessonTitle": "Building the sine graph from circular motion",
+      "lessonOutcome": "Construct y=sin t from the vertical coordinate of a rotating unit-circle point.",
+      "lessonGuide": {
+        "application": "Sine models vertical projection, alternating current, sound, tides, and repeated motion.",
+        "bigIdea": [
+          "The sine graph records the vertical coordinate of a unit-circle point as the real input t increases.",
+          "At quarter-turn intervals, sine moves through 0,1,0,-1,0. Connecting these values smoothly according to circular motion produces a periodic wave with range [-1,1], period 2pi, zeros at integer multiples of pi, and odd symmetry."
+        ],
+        "method": [
+          "1. Build a key-point table at multiples of pi/2, plot one cycle, use symmetry and periodicity to extend, and label zeros, extrema, and intervals of increase or decrease.",
+          "2. The input axis represents angle or time-scaled angle, not horizontal position on the circle.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls building the sine graph from circular motion?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "The input axis represents angle or time-scaled angle, not horizontal position on the circle.",
+        "foundationWalkthrough": {
+          "problem": "A point starts at (1,0) and rotates counterclockwise one revolution in 8 seconds. Sketch its vertical coordinate against time and label zeros, extrema, and period.",
+          "plan": "Build a key-point table at multiples of pi/2, plot one cycle, use symmetry and periodicity to extend, and label zeros, extrema, and intervals of increase or decrease. The input axis represents angle or time-scaled angle, not horizontal position on the circle.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Build a key-point table at multiples of pi/2, plot one cycle, use symmetry and periodicity to extend, and label zeros, extrema, and intervals of increase or decrease. The relevant conditions are not optional bookkeeping: The input axis represents angle or time-scaled angle, not horizontal position on the circle. Following that structure gives A sine wave with zeros at 0,4,8 seconds; maximum at 2; minimum at 6.",
+          "check": "The graph is not an arbitrary wave. Every point (t,sin t) is paired with the same input’s position on the circle. The rising and falling portions correspond to the point moving upward or downward. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-functions-and-periodic-models/building-the-sine-graph-from-circular-motion/"
+    },
+    {
+      "id": "precalculus-u10-l1-v3",
+      "sequence": 3,
+      "role": "Comparison and error figure",
+      "title": "Odd-symmetry visual across the origin",
+      "description": "Comparison visual. Place the valid structure beside the common misconception and mark the first point where they diverge. Mathematical mechanism: The graph is not an arbitrary wave. Every point (t,sin t) is paired with the same input’s position on the circle. The rising and falling portions correspond to the point moving upward or downward. Opening context: Building the sine graph from circular motion.",
+      "caption": "Compare the valid path with the tempting shortcut. The figure shows why to plot the circular x-coordinate as sine or to place the first maximum at t=0 leads to a false conclusion.",
+      "anchorProblem": "A point starts at (1,0) and rotates counterclockwise one revolution in 8 seconds. Sketch its vertical coordinate against time and label zeros, extrema, and period.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Build a key-point table at multiples of pi/2, plot one cycle, use symmetry and periodicity to extend, and label zeros, extrema, and intervals of increase or decrease. The relevant conditions are not optional bookkeeping: The input axis represents angle or time-scaled angle, not horizontal position on the circle. Following that structure gives A sine wave with zeros at 0,4,8 seconds; maximum at 2; minimum at 6.",
+      "anchorInterpretation": "The graph is not an arbitrary wave. Every point (t,sin t) is paired with the same input’s position on the circle. The rising and falling portions correspond to the point moving upward or downward. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "The graph is not an arbitrary wave. Every point (t,sin t) is paired with the same input’s position on the circle. The rising and falling portions correspond to the point moving upward or downward.",
+      "validStructure": "At quarter-turn intervals, sine moves through 0,1,0,-1,0. Connecting these values smoothly according to circular motion produces a periodic wave with range [-1,1], period 2pi, zeros at integer multiples of pi, and odd symmetry.",
+      "invalidMove": "A common error is to plot the circular x-coordinate as sine or to place the first maximum at t=0.",
+      "lessonId": "precalculus-u10-l1",
+      "lessonSequence": 1,
+      "lessonTitle": "Building the sine graph from circular motion",
+      "lessonOutcome": "Construct y=sin t from the vertical coordinate of a rotating unit-circle point.",
+      "lessonGuide": {
+        "application": "Sine models vertical projection, alternating current, sound, tides, and repeated motion.",
+        "bigIdea": [
+          "The sine graph records the vertical coordinate of a unit-circle point as the real input t increases.",
+          "At quarter-turn intervals, sine moves through 0,1,0,-1,0. Connecting these values smoothly according to circular motion produces a periodic wave with range [-1,1], period 2pi, zeros at integer multiples of pi, and odd symmetry."
+        ],
+        "method": [
+          "1. Build a key-point table at multiples of pi/2, plot one cycle, use symmetry and periodicity to extend, and label zeros, extrema, and intervals of increase or decrease.",
+          "2. The input axis represents angle or time-scaled angle, not horizontal position on the circle.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls building the sine graph from circular motion?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "The input axis represents angle or time-scaled angle, not horizontal position on the circle.",
+        "foundationWalkthrough": {
+          "problem": "A point starts at (1,0) and rotates counterclockwise one revolution in 8 seconds. Sketch its vertical coordinate against time and label zeros, extrema, and period.",
+          "plan": "Build a key-point table at multiples of pi/2, plot one cycle, use symmetry and periodicity to extend, and label zeros, extrema, and intervals of increase or decrease. The input axis represents angle or time-scaled angle, not horizontal position on the circle.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Build a key-point table at multiples of pi/2, plot one cycle, use symmetry and periodicity to extend, and label zeros, extrema, and intervals of increase or decrease. The relevant conditions are not optional bookkeeping: The input axis represents angle or time-scaled angle, not horizontal position on the circle. Following that structure gives A sine wave with zeros at 0,4,8 seconds; maximum at 2; minimum at 6.",
+          "check": "The graph is not an arbitrary wave. Every point (t,sin t) is paired with the same input’s position on the circle. The rising and falling portions correspond to the point moving upward or downward. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-functions-and-periodic-models/building-the-sine-graph-from-circular-motion/"
+    },
+    {
+      "id": "precalculus-u10-l2-v1",
+      "sequence": 1,
+      "role": "Anchor figure",
+      "title": "Linked unit-circle and cosine graph",
+      "description": "Anchor visual. Establish the quantities, coordinate system, interval, or geometric condition used in the opening problem. Mathematical mechanism: Comparing sine and cosine on the same axes reveals that they describe perpendicular projections of one rotating point rather than unrelated formulas. Opening context: Building the cosine graph from circular motion.",
+      "caption": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Comparing sine and cosine on the same axes reveals that they describe perpendicular projections of one rotating point rather than unrelated formulas. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "anchorProblem": "A rotating point begins at (1,0). At what inputs does its horizontal coordinate equal its vertical coordinate during one revolution?",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Construct cosine from unit-circle key points, identify its extrema and zeros, and compare its graph to sine by horizontal translation. The relevant conditions are not optional bookkeeping: Equivalent phase-shift descriptions are not unique; adding whole periods produces the same function. Following that structure gives t=pi/4 and 5pi/4.",
+      "anchorInterpretation": "Comparing sine and cosine on the same axes reveals that they describe perpendicular projections of one rotating point rather than unrelated formulas. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "Comparing sine and cosine on the same axes reveals that they describe perpendicular projections of one rotating point rather than unrelated formulas.",
+      "validStructure": "Cosine begins at 1, moves through 0,-1,0,1, and repeats every 2pi. It is even because the points reached at t and -t have the same horizontal coordinate. Cosine is a phase-shifted sine: cos t=sin(t+pi/2).",
+      "invalidMove": "A common error is to assume cosine has a different period or to shift in the wrong direction when rewriting it as sine.",
+      "lessonId": "precalculus-u10-l2",
+      "lessonSequence": 2,
+      "lessonTitle": "Building the cosine graph from circular motion",
+      "lessonOutcome": "Construct y=cos t from the horizontal coordinate of circular motion and compare it with sine.",
+      "lessonGuide": {
+        "application": "Cosine naturally models quantities that begin at a maximum or minimum.",
+        "bigIdea": [
+          "The cosine graph records the horizontal coordinate of unit-circle motion.",
+          "Cosine begins at 1, moves through 0,-1,0,1, and repeats every 2pi. It is even because the points reached at t and -t have the same horizontal coordinate. Cosine is a phase-shifted sine: cos t=sin(t+pi/2)."
+        ],
+        "method": [
+          "1. Construct cosine from unit-circle key points, identify its extrema and zeros, and compare its graph to sine by horizontal translation.",
+          "2. Equivalent phase-shift descriptions are not unique; adding whole periods produces the same function.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls building the cosine graph from circular motion?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "Equivalent phase-shift descriptions are not unique; adding whole periods produces the same function.",
+        "foundationWalkthrough": {
+          "problem": "A rotating point begins at (1,0). At what inputs does its horizontal coordinate equal its vertical coordinate during one revolution?",
+          "plan": "Construct cosine from unit-circle key points, identify its extrema and zeros, and compare its graph to sine by horizontal translation. Equivalent phase-shift descriptions are not unique; adding whole periods produces the same function.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Construct cosine from unit-circle key points, identify its extrema and zeros, and compare its graph to sine by horizontal translation. The relevant conditions are not optional bookkeeping: Equivalent phase-shift descriptions are not unique; adding whole periods produces the same function. Following that structure gives t=pi/4 and 5pi/4.",
+          "check": "Comparing sine and cosine on the same axes reveals that they describe perpendicular projections of one rotating point rather than unrelated formulas. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-functions-and-periodic-models/building-the-cosine-graph-from-circular-motion/"
+    },
+    {
+      "id": "precalculus-u10-l2-v2",
+      "sequence": 2,
+      "role": "Mechanism figure",
+      "title": "Sine-cosine phase overlay",
+      "description": "Mechanism visual. Show the derivation, mapping, or changing parameter that makes the central relationship true. Mathematical mechanism: Comparing sine and cosine on the same axes reveals that they describe perpendicular projections of one rotating point rather than unrelated formulas. Opening context: Building the cosine graph from circular motion.",
+      "caption": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for building the cosine graph from circular motion.",
+      "anchorProblem": "A rotating point begins at (1,0). At what inputs does its horizontal coordinate equal its vertical coordinate during one revolution?",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Construct cosine from unit-circle key points, identify its extrema and zeros, and compare its graph to sine by horizontal translation. The relevant conditions are not optional bookkeeping: Equivalent phase-shift descriptions are not unique; adding whole periods produces the same function. Following that structure gives t=pi/4 and 5pi/4.",
+      "anchorInterpretation": "Comparing sine and cosine on the same axes reveals that they describe perpendicular projections of one rotating point rather than unrelated formulas. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "Comparing sine and cosine on the same axes reveals that they describe perpendicular projections of one rotating point rather than unrelated formulas.",
+      "validStructure": "Cosine begins at 1, moves through 0,-1,0,1, and repeats every 2pi. It is even because the points reached at t and -t have the same horizontal coordinate. Cosine is a phase-shifted sine: cos t=sin(t+pi/2).",
+      "invalidMove": "A common error is to assume cosine has a different period or to shift in the wrong direction when rewriting it as sine.",
+      "lessonId": "precalculus-u10-l2",
+      "lessonSequence": 2,
+      "lessonTitle": "Building the cosine graph from circular motion",
+      "lessonOutcome": "Construct y=cos t from the horizontal coordinate of circular motion and compare it with sine.",
+      "lessonGuide": {
+        "application": "Cosine naturally models quantities that begin at a maximum or minimum.",
+        "bigIdea": [
+          "The cosine graph records the horizontal coordinate of unit-circle motion.",
+          "Cosine begins at 1, moves through 0,-1,0,1, and repeats every 2pi. It is even because the points reached at t and -t have the same horizontal coordinate. Cosine is a phase-shifted sine: cos t=sin(t+pi/2)."
+        ],
+        "method": [
+          "1. Construct cosine from unit-circle key points, identify its extrema and zeros, and compare its graph to sine by horizontal translation.",
+          "2. Equivalent phase-shift descriptions are not unique; adding whole periods produces the same function.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls building the cosine graph from circular motion?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "Equivalent phase-shift descriptions are not unique; adding whole periods produces the same function.",
+        "foundationWalkthrough": {
+          "problem": "A rotating point begins at (1,0). At what inputs does its horizontal coordinate equal its vertical coordinate during one revolution?",
+          "plan": "Construct cosine from unit-circle key points, identify its extrema and zeros, and compare its graph to sine by horizontal translation. Equivalent phase-shift descriptions are not unique; adding whole periods produces the same function.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Construct cosine from unit-circle key points, identify its extrema and zeros, and compare its graph to sine by horizontal translation. The relevant conditions are not optional bookkeeping: Equivalent phase-shift descriptions are not unique; adding whole periods produces the same function. Following that structure gives t=pi/4 and 5pi/4.",
+          "check": "Comparing sine and cosine on the same axes reveals that they describe perpendicular projections of one rotating point rather than unrelated formulas. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-functions-and-periodic-models/building-the-cosine-graph-from-circular-motion/"
+    },
+    {
+      "id": "precalculus-u10-l2-v3",
+      "sequence": 3,
+      "role": "Comparison and error figure",
+      "title": "Even-symmetry reflection across y-axis",
+      "description": "Comparison visual. Place the valid structure beside the common misconception and mark the first point where they diverge. Mathematical mechanism: Comparing sine and cosine on the same axes reveals that they describe perpendicular projections of one rotating point rather than unrelated formulas. Opening context: Building the cosine graph from circular motion.",
+      "caption": "Compare the valid path with the tempting shortcut. The figure shows why to assume cosine has a different period or to shift in the wrong direction when rewriting it as sine leads to a false conclusion.",
+      "anchorProblem": "A rotating point begins at (1,0). At what inputs does its horizontal coordinate equal its vertical coordinate during one revolution?",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Construct cosine from unit-circle key points, identify its extrema and zeros, and compare its graph to sine by horizontal translation. The relevant conditions are not optional bookkeeping: Equivalent phase-shift descriptions are not unique; adding whole periods produces the same function. Following that structure gives t=pi/4 and 5pi/4.",
+      "anchorInterpretation": "Comparing sine and cosine on the same axes reveals that they describe perpendicular projections of one rotating point rather than unrelated formulas. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "Comparing sine and cosine on the same axes reveals that they describe perpendicular projections of one rotating point rather than unrelated formulas.",
+      "validStructure": "Cosine begins at 1, moves through 0,-1,0,1, and repeats every 2pi. It is even because the points reached at t and -t have the same horizontal coordinate. Cosine is a phase-shifted sine: cos t=sin(t+pi/2).",
+      "invalidMove": "A common error is to assume cosine has a different period or to shift in the wrong direction when rewriting it as sine.",
+      "lessonId": "precalculus-u10-l2",
+      "lessonSequence": 2,
+      "lessonTitle": "Building the cosine graph from circular motion",
+      "lessonOutcome": "Construct y=cos t from the horizontal coordinate of circular motion and compare it with sine.",
+      "lessonGuide": {
+        "application": "Cosine naturally models quantities that begin at a maximum or minimum.",
+        "bigIdea": [
+          "The cosine graph records the horizontal coordinate of unit-circle motion.",
+          "Cosine begins at 1, moves through 0,-1,0,1, and repeats every 2pi. It is even because the points reached at t and -t have the same horizontal coordinate. Cosine is a phase-shifted sine: cos t=sin(t+pi/2)."
+        ],
+        "method": [
+          "1. Construct cosine from unit-circle key points, identify its extrema and zeros, and compare its graph to sine by horizontal translation.",
+          "2. Equivalent phase-shift descriptions are not unique; adding whole periods produces the same function.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls building the cosine graph from circular motion?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "Equivalent phase-shift descriptions are not unique; adding whole periods produces the same function.",
+        "foundationWalkthrough": {
+          "problem": "A rotating point begins at (1,0). At what inputs does its horizontal coordinate equal its vertical coordinate during one revolution?",
+          "plan": "Construct cosine from unit-circle key points, identify its extrema and zeros, and compare its graph to sine by horizontal translation. Equivalent phase-shift descriptions are not unique; adding whole periods produces the same function.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Construct cosine from unit-circle key points, identify its extrema and zeros, and compare its graph to sine by horizontal translation. The relevant conditions are not optional bookkeeping: Equivalent phase-shift descriptions are not unique; adding whole periods produces the same function. Following that structure gives t=pi/4 and 5pi/4.",
+          "check": "Comparing sine and cosine on the same axes reveals that they describe perpendicular projections of one rotating point rather than unrelated formulas. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-functions-and-periodic-models/building-the-cosine-graph-from-circular-motion/"
+    },
+    {
+      "id": "precalculus-u10-l3-v1",
+      "sequence": 1,
+      "role": "Anchor figure",
+      "title": "Maximum-minimum-midline diagram",
+      "description": "Anchor visual. Establish the quantities, coordinate system, interval, or geometric condition used in the opening problem. Mathematical mechanism: Amplitude is a distance, so it is nonnegative. The midline is the average of the maximum and minimum, and amplitude is half their difference. Opening context: Amplitude, reflection, and midline.",
+      "caption": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Amplitude is a distance, so it is nonnegative. The midline is the average of the maximum and minimum, and amplitude is half their difference. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "anchorProblem": "An ocean buoy moves between 1.2 and 4.8 meters above a reference level. Find the midline and amplitude.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Read extrema from a graph or context, compute D=(max+min)/2 and |A|=(max-min)/2, then use the sign of A to match the starting direction or phase. The relevant conditions are not optional bookkeeping: This interpretation assumes a sinusoid with symmetric extrema about a constant midline. Following that structure gives Midline 3.0 meters; amplitude 1.8 meters.",
+      "anchorInterpretation": "Amplitude is a distance, so it is nonnegative. The midline is the average of the maximum and minimum, and amplitude is half their difference. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "Amplitude is a distance, so it is nonnegative. The midline is the average of the maximum and minimum, and amplitude is half their difference.",
+      "validStructure": "The maximum is D+|A| and the minimum is D-|A|. A negative A reflects the wave across its midline without making amplitude negative.",
+      "invalidMove": "A common error is to call A the amplitude when A is negative or to confuse the midline with the y-intercept.",
+      "lessonId": "precalculus-u10-l3",
+      "lessonSequence": 3,
+      "lessonTitle": "Amplitude, reflection, and midline",
+      "lessonOutcome": "Interpret A and D in y=A sin x+D or y=A cos x+D.",
+      "lessonGuide": {
+        "application": "Amplitude and midline describe tides, temperatures, voltage, vibration, and circular height.",
+        "bigIdea": [
+          "In y=A sin x+D or y=A cos x+D, |A| is the amplitude and y=D is the midline.",
+          "The maximum is D+|A| and the minimum is D-|A|. A negative A reflects the wave across its midline without making amplitude negative."
+        ],
+        "method": [
+          "1. Read extrema from a graph or context, compute D=(max+min)/2 and |A|=(max-min)/2, then use the sign of A to match the starting direction or phase.",
+          "2. This interpretation assumes a sinusoid with symmetric extrema about a constant midline.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls amplitude, reflection, and midline?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "This interpretation assumes a sinusoid with symmetric extrema about a constant midline.",
+        "foundationWalkthrough": {
+          "problem": "An ocean buoy moves between 1.2 and 4.8 meters above a reference level. Find the midline and amplitude.",
+          "plan": "Read extrema from a graph or context, compute D=(max+min)/2 and |A|=(max-min)/2, then use the sign of A to match the starting direction or phase. This interpretation assumes a sinusoid with symmetric extrema about a constant midline.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Read extrema from a graph or context, compute D=(max+min)/2 and |A|=(max-min)/2, then use the sign of A to match the starting direction or phase. The relevant conditions are not optional bookkeeping: This interpretation assumes a sinusoid with symmetric extrema about a constant midline. Following that structure gives Midline 3.0 meters; amplitude 1.8 meters.",
+          "check": "Amplitude is a distance, so it is nonnegative. The midline is the average of the maximum and minimum, and amplitude is half their difference. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-functions-and-periodic-models/amplitude-reflection-and-midline/"
+    },
+    {
+      "id": "precalculus-u10-l3-v2",
+      "sequence": 2,
+      "role": "Mechanism figure",
+      "title": "Positive and negative A comparison",
+      "description": "Mechanism visual. Show the derivation, mapping, or changing parameter that makes the central relationship true. Mathematical mechanism: Amplitude is a distance, so it is nonnegative. The midline is the average of the maximum and minimum, and amplitude is half their difference. Opening context: Amplitude, reflection, and midline.",
+      "caption": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for amplitude, reflection, and midline.",
+      "anchorProblem": "An ocean buoy moves between 1.2 and 4.8 meters above a reference level. Find the midline and amplitude.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Read extrema from a graph or context, compute D=(max+min)/2 and |A|=(max-min)/2, then use the sign of A to match the starting direction or phase. The relevant conditions are not optional bookkeeping: This interpretation assumes a sinusoid with symmetric extrema about a constant midline. Following that structure gives Midline 3.0 meters; amplitude 1.8 meters.",
+      "anchorInterpretation": "Amplitude is a distance, so it is nonnegative. The midline is the average of the maximum and minimum, and amplitude is half their difference. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "Amplitude is a distance, so it is nonnegative. The midline is the average of the maximum and minimum, and amplitude is half their difference.",
+      "validStructure": "The maximum is D+|A| and the minimum is D-|A|. A negative A reflects the wave across its midline without making amplitude negative.",
+      "invalidMove": "A common error is to call A the amplitude when A is negative or to confuse the midline with the y-intercept.",
+      "lessonId": "precalculus-u10-l3",
+      "lessonSequence": 3,
+      "lessonTitle": "Amplitude, reflection, and midline",
+      "lessonOutcome": "Interpret A and D in y=A sin x+D or y=A cos x+D.",
+      "lessonGuide": {
+        "application": "Amplitude and midline describe tides, temperatures, voltage, vibration, and circular height.",
+        "bigIdea": [
+          "In y=A sin x+D or y=A cos x+D, |A| is the amplitude and y=D is the midline.",
+          "The maximum is D+|A| and the minimum is D-|A|. A negative A reflects the wave across its midline without making amplitude negative."
+        ],
+        "method": [
+          "1. Read extrema from a graph or context, compute D=(max+min)/2 and |A|=(max-min)/2, then use the sign of A to match the starting direction or phase.",
+          "2. This interpretation assumes a sinusoid with symmetric extrema about a constant midline.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls amplitude, reflection, and midline?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "This interpretation assumes a sinusoid with symmetric extrema about a constant midline.",
+        "foundationWalkthrough": {
+          "problem": "An ocean buoy moves between 1.2 and 4.8 meters above a reference level. Find the midline and amplitude.",
+          "plan": "Read extrema from a graph or context, compute D=(max+min)/2 and |A|=(max-min)/2, then use the sign of A to match the starting direction or phase. This interpretation assumes a sinusoid with symmetric extrema about a constant midline.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Read extrema from a graph or context, compute D=(max+min)/2 and |A|=(max-min)/2, then use the sign of A to match the starting direction or phase. The relevant conditions are not optional bookkeeping: This interpretation assumes a sinusoid with symmetric extrema about a constant midline. Following that structure gives Midline 3.0 meters; amplitude 1.8 meters.",
+          "check": "Amplitude is a distance, so it is nonnegative. The midline is the average of the maximum and minimum, and amplitude is half their difference. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-functions-and-periodic-models/amplitude-reflection-and-midline/"
+    },
+    {
+      "id": "precalculus-u10-l3-v3",
+      "sequence": 3,
+      "role": "Comparison and error figure",
+      "title": "Vertical transformation coordinate mapping",
+      "description": "Comparison visual. Place the valid structure beside the common misconception and mark the first point where they diverge. Mathematical mechanism: Amplitude is a distance, so it is nonnegative. The midline is the average of the maximum and minimum, and amplitude is half their difference. Opening context: Amplitude, reflection, and midline.",
+      "caption": "Compare the valid path with the tempting shortcut. The figure shows why to call A the amplitude when A is negative or to confuse the midline with the y-intercept leads to a false conclusion.",
+      "anchorProblem": "An ocean buoy moves between 1.2 and 4.8 meters above a reference level. Find the midline and amplitude.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Read extrema from a graph or context, compute D=(max+min)/2 and |A|=(max-min)/2, then use the sign of A to match the starting direction or phase. The relevant conditions are not optional bookkeeping: This interpretation assumes a sinusoid with symmetric extrema about a constant midline. Following that structure gives Midline 3.0 meters; amplitude 1.8 meters.",
+      "anchorInterpretation": "Amplitude is a distance, so it is nonnegative. The midline is the average of the maximum and minimum, and amplitude is half their difference. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "Amplitude is a distance, so it is nonnegative. The midline is the average of the maximum and minimum, and amplitude is half their difference.",
+      "validStructure": "The maximum is D+|A| and the minimum is D-|A|. A negative A reflects the wave across its midline without making amplitude negative.",
+      "invalidMove": "A common error is to call A the amplitude when A is negative or to confuse the midline with the y-intercept.",
+      "lessonId": "precalculus-u10-l3",
+      "lessonSequence": 3,
+      "lessonTitle": "Amplitude, reflection, and midline",
+      "lessonOutcome": "Interpret A and D in y=A sin x+D or y=A cos x+D.",
+      "lessonGuide": {
+        "application": "Amplitude and midline describe tides, temperatures, voltage, vibration, and circular height.",
+        "bigIdea": [
+          "In y=A sin x+D or y=A cos x+D, |A| is the amplitude and y=D is the midline.",
+          "The maximum is D+|A| and the minimum is D-|A|. A negative A reflects the wave across its midline without making amplitude negative."
+        ],
+        "method": [
+          "1. Read extrema from a graph or context, compute D=(max+min)/2 and |A|=(max-min)/2, then use the sign of A to match the starting direction or phase.",
+          "2. This interpretation assumes a sinusoid with symmetric extrema about a constant midline.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls amplitude, reflection, and midline?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "This interpretation assumes a sinusoid with symmetric extrema about a constant midline.",
+        "foundationWalkthrough": {
+          "problem": "An ocean buoy moves between 1.2 and 4.8 meters above a reference level. Find the midline and amplitude.",
+          "plan": "Read extrema from a graph or context, compute D=(max+min)/2 and |A|=(max-min)/2, then use the sign of A to match the starting direction or phase. This interpretation assumes a sinusoid with symmetric extrema about a constant midline.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Read extrema from a graph or context, compute D=(max+min)/2 and |A|=(max-min)/2, then use the sign of A to match the starting direction or phase. The relevant conditions are not optional bookkeeping: This interpretation assumes a sinusoid with symmetric extrema about a constant midline. Following that structure gives Midline 3.0 meters; amplitude 1.8 meters.",
+          "check": "Amplitude is a distance, so it is nonnegative. The midline is the average of the maximum and minimum, and amplitude is half their difference. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-functions-and-periodic-models/amplitude-reflection-and-midline/"
+    },
+    {
+      "id": "precalculus-u10-l4-v1",
+      "sequence": 1,
+      "role": "Anchor figure",
+      "title": "Cycle-length graph with one period marked",
+      "description": "Anchor visual. Establish the quantities, coordinate system, interval, or geometric condition used in the opening problem. Mathematical mechanism: For a time model, angular frequency omega=2pi f=2pi/T. The units distinguish cycles per second, seconds per cycle, and radians per second. Opening context: Period, frequency, and angular frequency.",
+      "caption": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: For a time model, angular frequency omega=2pi f=2pi/T. The units distinguish cycles per second, seconds per cycle, and radians per second. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "anchorProblem": "A piston completes 15 cycles in 6 seconds. Find frequency, period, and angular frequency.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Identify the coefficient of the entire input, compute period, then convert to frequency or angular frequency as requested. The relevant conditions are not optional bookkeeping: A model must state the input unit. A period of 12 could mean seconds, months, or meters. Following that structure gives Frequency 2.5 Hz; period 0.4 s; angular frequency 5pi rad/s.",
+      "anchorInterpretation": "For a time model, angular frequency omega=2pi f=2pi/T. The units distinguish cycles per second, seconds per cycle, and radians per second. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "For a time model, angular frequency omega=2pi f=2pi/T. The units distinguish cycles per second, seconds per cycle, and radians per second.",
+      "validStructure": "The inside multiplier changes how quickly the input completes a full 2pi cycle. If B is larger, the graph completes more cycles in the same horizontal distance.",
+      "invalidMove": "A common error is to use 2pi B as the period rather than dividing by |B|.",
+      "lessonId": "precalculus-u10-l4",
+      "lessonSequence": 4,
+      "lessonTitle": "Period, frequency, and angular frequency",
+      "lessonOutcome": "Relate inside scale B to period, ordinary frequency, and angular frequency.",
+      "lessonGuide": {
+        "application": "Frequency parameters model music, rotation, seasonal cycles, waves, and machinery.",
+        "bigIdea": [
+          "For sin(Bx) or cos(Bx), the period is 2pi/|B|. Ordinary frequency is the reciprocal of period, while angular frequency measures radians per unit time.",
+          "The inside multiplier changes how quickly the input completes a full 2pi cycle. If B is larger, the graph completes more cycles in the same horizontal distance."
+        ],
+        "method": [
+          "1. Identify the coefficient of the entire input, compute period, then convert to frequency or angular frequency as requested.",
+          "2. A model must state the input unit. A period of 12 could mean seconds, months, or meters.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls period, frequency, and angular frequency?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "A model must state the input unit. A period of 12 could mean seconds, months, or meters.",
+        "foundationWalkthrough": {
+          "problem": "A piston completes 15 cycles in 6 seconds. Find frequency, period, and angular frequency.",
+          "plan": "Identify the coefficient of the entire input, compute period, then convert to frequency or angular frequency as requested. A model must state the input unit. A period of 12 could mean seconds, months, or meters.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Identify the coefficient of the entire input, compute period, then convert to frequency or angular frequency as requested. The relevant conditions are not optional bookkeeping: A model must state the input unit. A period of 12 could mean seconds, months, or meters. Following that structure gives Frequency 2.5 Hz; period 0.4 s; angular frequency 5pi rad/s.",
+          "check": "For a time model, angular frequency omega=2pi f=2pi/T. The units distinguish cycles per second, seconds per cycle, and radians per second. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-functions-and-periodic-models/period-frequency-and-angular-frequency/"
+    },
+    {
+      "id": "precalculus-u10-l4-v2",
+      "sequence": 2,
+      "role": "Mechanism figure",
+      "title": "Frequency-period reciprocal diagram",
+      "description": "Mechanism visual. Show the derivation, mapping, or changing parameter that makes the central relationship true. Mathematical mechanism: For a time model, angular frequency omega=2pi f=2pi/T. The units distinguish cycles per second, seconds per cycle, and radians per second. Opening context: Period, frequency, and angular frequency.",
+      "caption": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for period, frequency, and angular frequency.",
+      "anchorProblem": "A piston completes 15 cycles in 6 seconds. Find frequency, period, and angular frequency.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Identify the coefficient of the entire input, compute period, then convert to frequency or angular frequency as requested. The relevant conditions are not optional bookkeeping: A model must state the input unit. A period of 12 could mean seconds, months, or meters. Following that structure gives Frequency 2.5 Hz; period 0.4 s; angular frequency 5pi rad/s.",
+      "anchorInterpretation": "For a time model, angular frequency omega=2pi f=2pi/T. The units distinguish cycles per second, seconds per cycle, and radians per second. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "For a time model, angular frequency omega=2pi f=2pi/T. The units distinguish cycles per second, seconds per cycle, and radians per second.",
+      "validStructure": "The inside multiplier changes how quickly the input completes a full 2pi cycle. If B is larger, the graph completes more cycles in the same horizontal distance.",
+      "invalidMove": "A common error is to use 2pi B as the period rather than dividing by |B|.",
+      "lessonId": "precalculus-u10-l4",
+      "lessonSequence": 4,
+      "lessonTitle": "Period, frequency, and angular frequency",
+      "lessonOutcome": "Relate inside scale B to period, ordinary frequency, and angular frequency.",
+      "lessonGuide": {
+        "application": "Frequency parameters model music, rotation, seasonal cycles, waves, and machinery.",
+        "bigIdea": [
+          "For sin(Bx) or cos(Bx), the period is 2pi/|B|. Ordinary frequency is the reciprocal of period, while angular frequency measures radians per unit time.",
+          "The inside multiplier changes how quickly the input completes a full 2pi cycle. If B is larger, the graph completes more cycles in the same horizontal distance."
+        ],
+        "method": [
+          "1. Identify the coefficient of the entire input, compute period, then convert to frequency or angular frequency as requested.",
+          "2. A model must state the input unit. A period of 12 could mean seconds, months, or meters.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls period, frequency, and angular frequency?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "A model must state the input unit. A period of 12 could mean seconds, months, or meters.",
+        "foundationWalkthrough": {
+          "problem": "A piston completes 15 cycles in 6 seconds. Find frequency, period, and angular frequency.",
+          "plan": "Identify the coefficient of the entire input, compute period, then convert to frequency or angular frequency as requested. A model must state the input unit. A period of 12 could mean seconds, months, or meters.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Identify the coefficient of the entire input, compute period, then convert to frequency or angular frequency as requested. The relevant conditions are not optional bookkeeping: A model must state the input unit. A period of 12 could mean seconds, months, or meters. Following that structure gives Frequency 2.5 Hz; period 0.4 s; angular frequency 5pi rad/s.",
+          "check": "For a time model, angular frequency omega=2pi f=2pi/T. The units distinguish cycles per second, seconds per cycle, and radians per second. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-functions-and-periodic-models/period-frequency-and-angular-frequency/"
+    },
+    {
+      "id": "precalculus-u10-l4-v3",
+      "sequence": 3,
+      "role": "Comparison and error figure",
+      "title": "Ordinary versus angular frequency unit chart",
+      "description": "Comparison visual. Place the valid structure beside the common misconception and mark the first point where they diverge. Mathematical mechanism: For a time model, angular frequency omega=2pi f=2pi/T. The units distinguish cycles per second, seconds per cycle, and radians per second. Opening context: Period, frequency, and angular frequency.",
+      "caption": "Compare the valid path with the tempting shortcut. The figure shows why to use 2pi B as the period rather than dividing by |B| leads to a false conclusion.",
+      "anchorProblem": "A piston completes 15 cycles in 6 seconds. Find frequency, period, and angular frequency.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Identify the coefficient of the entire input, compute period, then convert to frequency or angular frequency as requested. The relevant conditions are not optional bookkeeping: A model must state the input unit. A period of 12 could mean seconds, months, or meters. Following that structure gives Frequency 2.5 Hz; period 0.4 s; angular frequency 5pi rad/s.",
+      "anchorInterpretation": "For a time model, angular frequency omega=2pi f=2pi/T. The units distinguish cycles per second, seconds per cycle, and radians per second. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "For a time model, angular frequency omega=2pi f=2pi/T. The units distinguish cycles per second, seconds per cycle, and radians per second.",
+      "validStructure": "The inside multiplier changes how quickly the input completes a full 2pi cycle. If B is larger, the graph completes more cycles in the same horizontal distance.",
+      "invalidMove": "A common error is to use 2pi B as the period rather than dividing by |B|.",
+      "lessonId": "precalculus-u10-l4",
+      "lessonSequence": 4,
+      "lessonTitle": "Period, frequency, and angular frequency",
+      "lessonOutcome": "Relate inside scale B to period, ordinary frequency, and angular frequency.",
+      "lessonGuide": {
+        "application": "Frequency parameters model music, rotation, seasonal cycles, waves, and machinery.",
+        "bigIdea": [
+          "For sin(Bx) or cos(Bx), the period is 2pi/|B|. Ordinary frequency is the reciprocal of period, while angular frequency measures radians per unit time.",
+          "The inside multiplier changes how quickly the input completes a full 2pi cycle. If B is larger, the graph completes more cycles in the same horizontal distance."
+        ],
+        "method": [
+          "1. Identify the coefficient of the entire input, compute period, then convert to frequency or angular frequency as requested.",
+          "2. A model must state the input unit. A period of 12 could mean seconds, months, or meters.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls period, frequency, and angular frequency?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "A model must state the input unit. A period of 12 could mean seconds, months, or meters.",
+        "foundationWalkthrough": {
+          "problem": "A piston completes 15 cycles in 6 seconds. Find frequency, period, and angular frequency.",
+          "plan": "Identify the coefficient of the entire input, compute period, then convert to frequency or angular frequency as requested. A model must state the input unit. A period of 12 could mean seconds, months, or meters.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Identify the coefficient of the entire input, compute period, then convert to frequency or angular frequency as requested. The relevant conditions are not optional bookkeeping: A model must state the input unit. A period of 12 could mean seconds, months, or meters. Following that structure gives Frequency 2.5 Hz; period 0.4 s; angular frequency 5pi rad/s.",
+          "check": "For a time model, angular frequency omega=2pi f=2pi/T. The units distinguish cycles per second, seconds per cycle, and radians per second. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-functions-and-periodic-models/period-frequency-and-angular-frequency/"
+    },
+    {
+      "id": "precalculus-u10-l5-v1",
+      "sequence": 1,
+      "role": "Anchor figure",
+      "title": "Feature timing map for maxima and crossings",
+      "description": "Anchor visual. Establish the quantities, coordinate system, interval, or geometric condition used in the opening problem. Mathematical mechanism: Sine and cosine forms can model the same cycle with different phase choices. The best form often places a known maximum, minimum, or midline crossing at a simple input. Opening context: Phase shift and timing.",
+      "caption": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Sine and cosine forms can model the same cycle with different phase choices. The best form often places a known maximum, minimum, or midline crossing at a simple input. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "anchorProblem": "A seasonal temperature reaches its maximum on day 205 of a 365-day cycle. Write a cosine model phase term with the maximum at day 205.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Determine the period first, choose an anchor feature, write B(x-C), and verify at least one additional feature a quarter-period away. The relevant conditions are not optional bookkeeping: Phase shift is defined modulo a full period. Many values of C describe the same function. Following that structure gives Use cos[2pi(t-205)/365].",
+      "anchorInterpretation": "Sine and cosine forms can model the same cycle with different phase choices. The best form often places a known maximum, minimum, or midline crossing at a simple input. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "Sine and cosine forms can model the same cycle with different phase choices. The best form often places a known maximum, minimum, or midline crossing at a simple input.",
+      "validStructure": "In B(x-C), the parent input is zero when x=C, so the graph’s anchor feature occurs at C. Factoring B from an expanded inside expression is necessary before reading the shift.",
+      "invalidMove": "A common error is to read x+3 as a right shift or to ignore an inside scale, as in sin(2x-6).",
+      "lessonId": "precalculus-u10-l5",
+      "lessonSequence": 5,
+      "lessonTitle": "Phase shift and timing",
+      "lessonOutcome": "Interpret B(x-C) as a horizontal timing shift and recover C from graph or context.",
+      "lessonGuide": {
+        "application": "Phase aligns a periodic model with calendar dates, starting positions, or delayed signals.",
+        "bigIdea": [
+          "A phase shift relocates the timing of every feature of a periodic graph.",
+          "In B(x-C), the parent input is zero when x=C, so the graph’s anchor feature occurs at C. Factoring B from an expanded inside expression is necessary before reading the shift."
+        ],
+        "method": [
+          "1. Determine the period first, choose an anchor feature, write B(x-C), and verify at least one additional feature a quarter-period away.",
+          "2. Phase shift is defined modulo a full period. Many values of C describe the same function.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls phase shift and timing?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "Phase shift is defined modulo a full period. Many values of C describe the same function.",
+        "foundationWalkthrough": {
+          "problem": "A seasonal temperature reaches its maximum on day 205 of a 365-day cycle. Write a cosine model phase term with the maximum at day 205.",
+          "plan": "Determine the period first, choose an anchor feature, write B(x-C), and verify at least one additional feature a quarter-period away. Phase shift is defined modulo a full period. Many values of C describe the same function.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Determine the period first, choose an anchor feature, write B(x-C), and verify at least one additional feature a quarter-period away. The relevant conditions are not optional bookkeeping: Phase shift is defined modulo a full period. Many values of C describe the same function. Following that structure gives Use cos[2pi(t-205)/365].",
+          "check": "Sine and cosine forms can model the same cycle with different phase choices. The best form often places a known maximum, minimum, or midline crossing at a simple input. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-functions-and-periodic-models/phase-shift-and-timing/"
+    },
+    {
+      "id": "precalculus-u10-l5-v2",
+      "sequence": 2,
+      "role": "Mechanism figure",
+      "title": "Coordinate-mapping derivation of C",
+      "description": "Mechanism visual. Show the derivation, mapping, or changing parameter that makes the central relationship true. Mathematical mechanism: Sine and cosine forms can model the same cycle with different phase choices. The best form often places a known maximum, minimum, or midline crossing at a simple input. Opening context: Phase shift and timing.",
+      "caption": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for phase shift and timing.",
+      "anchorProblem": "A seasonal temperature reaches its maximum on day 205 of a 365-day cycle. Write a cosine model phase term with the maximum at day 205.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Determine the period first, choose an anchor feature, write B(x-C), and verify at least one additional feature a quarter-period away. The relevant conditions are not optional bookkeeping: Phase shift is defined modulo a full period. Many values of C describe the same function. Following that structure gives Use cos[2pi(t-205)/365].",
+      "anchorInterpretation": "Sine and cosine forms can model the same cycle with different phase choices. The best form often places a known maximum, minimum, or midline crossing at a simple input. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "Sine and cosine forms can model the same cycle with different phase choices. The best form often places a known maximum, minimum, or midline crossing at a simple input.",
+      "validStructure": "In B(x-C), the parent input is zero when x=C, so the graph’s anchor feature occurs at C. Factoring B from an expanded inside expression is necessary before reading the shift.",
+      "invalidMove": "A common error is to read x+3 as a right shift or to ignore an inside scale, as in sin(2x-6).",
+      "lessonId": "precalculus-u10-l5",
+      "lessonSequence": 5,
+      "lessonTitle": "Phase shift and timing",
+      "lessonOutcome": "Interpret B(x-C) as a horizontal timing shift and recover C from graph or context.",
+      "lessonGuide": {
+        "application": "Phase aligns a periodic model with calendar dates, starting positions, or delayed signals.",
+        "bigIdea": [
+          "A phase shift relocates the timing of every feature of a periodic graph.",
+          "In B(x-C), the parent input is zero when x=C, so the graph’s anchor feature occurs at C. Factoring B from an expanded inside expression is necessary before reading the shift."
+        ],
+        "method": [
+          "1. Determine the period first, choose an anchor feature, write B(x-C), and verify at least one additional feature a quarter-period away.",
+          "2. Phase shift is defined modulo a full period. Many values of C describe the same function.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls phase shift and timing?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "Phase shift is defined modulo a full period. Many values of C describe the same function.",
+        "foundationWalkthrough": {
+          "problem": "A seasonal temperature reaches its maximum on day 205 of a 365-day cycle. Write a cosine model phase term with the maximum at day 205.",
+          "plan": "Determine the period first, choose an anchor feature, write B(x-C), and verify at least one additional feature a quarter-period away. Phase shift is defined modulo a full period. Many values of C describe the same function.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Determine the period first, choose an anchor feature, write B(x-C), and verify at least one additional feature a quarter-period away. The relevant conditions are not optional bookkeeping: Phase shift is defined modulo a full period. Many values of C describe the same function. Following that structure gives Use cos[2pi(t-205)/365].",
+          "check": "Sine and cosine forms can model the same cycle with different phase choices. The best form often places a known maximum, minimum, or midline crossing at a simple input. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-functions-and-periodic-models/phase-shift-and-timing/"
+    },
+    {
+      "id": "precalculus-u10-l5-v3",
+      "sequence": 3,
+      "role": "Comparison and error figure",
+      "title": "Equivalent sine and cosine timing forms",
+      "description": "Comparison visual. Place the valid structure beside the common misconception and mark the first point where they diverge. Mathematical mechanism: Sine and cosine forms can model the same cycle with different phase choices. The best form often places a known maximum, minimum, or midline crossing at a simple input. Opening context: Phase shift and timing.",
+      "caption": "Compare the valid path with the tempting shortcut. The figure shows why to read x+3 as a right shift or to ignore an inside scale, as in sin(2x-6) leads to a false conclusion.",
+      "anchorProblem": "A seasonal temperature reaches its maximum on day 205 of a 365-day cycle. Write a cosine model phase term with the maximum at day 205.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Determine the period first, choose an anchor feature, write B(x-C), and verify at least one additional feature a quarter-period away. The relevant conditions are not optional bookkeeping: Phase shift is defined modulo a full period. Many values of C describe the same function. Following that structure gives Use cos[2pi(t-205)/365].",
+      "anchorInterpretation": "Sine and cosine forms can model the same cycle with different phase choices. The best form often places a known maximum, minimum, or midline crossing at a simple input. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "Sine and cosine forms can model the same cycle with different phase choices. The best form often places a known maximum, minimum, or midline crossing at a simple input.",
+      "validStructure": "In B(x-C), the parent input is zero when x=C, so the graph’s anchor feature occurs at C. Factoring B from an expanded inside expression is necessary before reading the shift.",
+      "invalidMove": "A common error is to read x+3 as a right shift or to ignore an inside scale, as in sin(2x-6).",
+      "lessonId": "precalculus-u10-l5",
+      "lessonSequence": 5,
+      "lessonTitle": "Phase shift and timing",
+      "lessonOutcome": "Interpret B(x-C) as a horizontal timing shift and recover C from graph or context.",
+      "lessonGuide": {
+        "application": "Phase aligns a periodic model with calendar dates, starting positions, or delayed signals.",
+        "bigIdea": [
+          "A phase shift relocates the timing of every feature of a periodic graph.",
+          "In B(x-C), the parent input is zero when x=C, so the graph’s anchor feature occurs at C. Factoring B from an expanded inside expression is necessary before reading the shift."
+        ],
+        "method": [
+          "1. Determine the period first, choose an anchor feature, write B(x-C), and verify at least one additional feature a quarter-period away.",
+          "2. Phase shift is defined modulo a full period. Many values of C describe the same function.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls phase shift and timing?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "Phase shift is defined modulo a full period. Many values of C describe the same function.",
+        "foundationWalkthrough": {
+          "problem": "A seasonal temperature reaches its maximum on day 205 of a 365-day cycle. Write a cosine model phase term with the maximum at day 205.",
+          "plan": "Determine the period first, choose an anchor feature, write B(x-C), and verify at least one additional feature a quarter-period away. Phase shift is defined modulo a full period. Many values of C describe the same function.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Determine the period first, choose an anchor feature, write B(x-C), and verify at least one additional feature a quarter-period away. The relevant conditions are not optional bookkeeping: Phase shift is defined modulo a full period. Many values of C describe the same function. Following that structure gives Use cos[2pi(t-205)/365].",
+          "check": "Sine and cosine forms can model the same cycle with different phase choices. The best form often places a known maximum, minimum, or midline crossing at a simple input. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-functions-and-periodic-models/phase-shift-and-timing/"
+    },
+    {
+      "id": "precalculus-u10-l6-v1",
+      "sequence": 1,
+      "role": "Anchor figure",
+      "title": "Five-parameter sinusoid dashboard",
+      "description": "Anchor visual. Establish the quantities, coordinate system, interval, or geometric condition used in the opening problem. Mathematical mechanism: The same sinusoid has infinitely many equivalent sine and cosine forms. Equivalence can be checked by graph features or identities. Opening context: The general sinusoidal function.",
+      "caption": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The same sinusoid has infinitely many equivalent sine and cosine forms. Equivalence can be checked by graph features or identities. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "anchorProblem": "A Ferris wheel ranges from 2 to 38 meters, has period 60 seconds, and begins at its lowest point. Write a height model.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Extract maximum, minimum, period, and a timed feature. Compute A,D,B, select sine or cosine based on the anchor, and verify against another point. The relevant conditions are not optional bookkeeping: Real periodic data may drift, damp, or contain noise; the model is an approximation unless derived from ideal circular motion. Following that structure gives H(t)=20-18 cos(pi t/30).",
+      "anchorInterpretation": "The same sinusoid has infinitely many equivalent sine and cosine forms. Equivalence can be checked by graph features or identities. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "The same sinusoid has infinitely many equivalent sine and cosine forms. Equivalence can be checked by graph features or identities.",
+      "validStructure": "The parameters encode amplitude |A|, period 2pi/|B|, phase anchor C, and midline D. A complete model also needs a meaningful domain and units.",
+      "invalidMove": "A common error is to use the period itself as B or to set C equal to the first data point without matching the chosen parent feature.",
+      "lessonId": "precalculus-u10-l6",
+      "lessonSequence": 6,
+      "lessonTitle": "The general sinusoidal function",
+      "lessonOutcome": "Build and analyze y=A sin(B(x-C))+D and equivalent cosine forms.",
+      "lessonGuide": {
+        "application": "General sinusoidal models describe Ferris wheels, daylight, tides, seasons, and rotating sensors.",
+        "bigIdea": [
+          "The general sinusoidal model y=A sin(B(x-C))+D or its cosine equivalent combines vertical range, horizontal cycle, and timing.",
+          "The parameters encode amplitude |A|, period 2pi/|B|, phase anchor C, and midline D. A complete model also needs a meaningful domain and units."
+        ],
+        "method": [
+          "1. Extract maximum, minimum, period, and a timed feature. Compute A,D,B, select sine or cosine based on the anchor, and verify against another point.",
+          "2. Real periodic data may drift, damp, or contain noise; the model is an approximation unless derived from ideal circular motion.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls the general sinusoidal function?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "Real periodic data may drift, damp, or contain noise; the model is an approximation unless derived from ideal circular motion.",
+        "foundationWalkthrough": {
+          "problem": "A Ferris wheel ranges from 2 to 38 meters, has period 60 seconds, and begins at its lowest point. Write a height model.",
+          "plan": "Extract maximum, minimum, period, and a timed feature. Compute A,D,B, select sine or cosine based on the anchor, and verify against another point. Real periodic data may drift, damp, or contain noise; the model is an approximation unless derived from ideal circular motion.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Extract maximum, minimum, period, and a timed feature. Compute A,D,B, select sine or cosine based on the anchor, and verify against another point. The relevant conditions are not optional bookkeeping: Real periodic data may drift, damp, or contain noise; the model is an approximation unless derived from ideal circular motion. Following that structure gives H(t)=20-18 cos(pi t/30).",
+          "check": "The same sinusoid has infinitely many equivalent sine and cosine forms. Equivalence can be checked by graph features or identities. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-functions-and-periodic-models/the-general-sinusoidal-function/"
+    },
+    {
+      "id": "precalculus-u10-l6-v2",
+      "sequence": 2,
+      "role": "Mechanism figure",
+      "title": "Feature-to-parameter construction diagram",
+      "description": "Mechanism visual. Show the derivation, mapping, or changing parameter that makes the central relationship true. Mathematical mechanism: The same sinusoid has infinitely many equivalent sine and cosine forms. Equivalence can be checked by graph features or identities. Opening context: The general sinusoidal function.",
+      "caption": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for the general sinusoidal function.",
+      "anchorProblem": "A Ferris wheel ranges from 2 to 38 meters, has period 60 seconds, and begins at its lowest point. Write a height model.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Extract maximum, minimum, period, and a timed feature. Compute A,D,B, select sine or cosine based on the anchor, and verify against another point. The relevant conditions are not optional bookkeeping: Real periodic data may drift, damp, or contain noise; the model is an approximation unless derived from ideal circular motion. Following that structure gives H(t)=20-18 cos(pi t/30).",
+      "anchorInterpretation": "The same sinusoid has infinitely many equivalent sine and cosine forms. Equivalence can be checked by graph features or identities. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "The same sinusoid has infinitely many equivalent sine and cosine forms. Equivalence can be checked by graph features or identities.",
+      "validStructure": "The parameters encode amplitude |A|, period 2pi/|B|, phase anchor C, and midline D. A complete model also needs a meaningful domain and units.",
+      "invalidMove": "A common error is to use the period itself as B or to set C equal to the first data point without matching the chosen parent feature.",
+      "lessonId": "precalculus-u10-l6",
+      "lessonSequence": 6,
+      "lessonTitle": "The general sinusoidal function",
+      "lessonOutcome": "Build and analyze y=A sin(B(x-C))+D and equivalent cosine forms.",
+      "lessonGuide": {
+        "application": "General sinusoidal models describe Ferris wheels, daylight, tides, seasons, and rotating sensors.",
+        "bigIdea": [
+          "The general sinusoidal model y=A sin(B(x-C))+D or its cosine equivalent combines vertical range, horizontal cycle, and timing.",
+          "The parameters encode amplitude |A|, period 2pi/|B|, phase anchor C, and midline D. A complete model also needs a meaningful domain and units."
+        ],
+        "method": [
+          "1. Extract maximum, minimum, period, and a timed feature. Compute A,D,B, select sine or cosine based on the anchor, and verify against another point.",
+          "2. Real periodic data may drift, damp, or contain noise; the model is an approximation unless derived from ideal circular motion.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls the general sinusoidal function?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "Real periodic data may drift, damp, or contain noise; the model is an approximation unless derived from ideal circular motion.",
+        "foundationWalkthrough": {
+          "problem": "A Ferris wheel ranges from 2 to 38 meters, has period 60 seconds, and begins at its lowest point. Write a height model.",
+          "plan": "Extract maximum, minimum, period, and a timed feature. Compute A,D,B, select sine or cosine based on the anchor, and verify against another point. Real periodic data may drift, damp, or contain noise; the model is an approximation unless derived from ideal circular motion.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Extract maximum, minimum, period, and a timed feature. Compute A,D,B, select sine or cosine based on the anchor, and verify against another point. The relevant conditions are not optional bookkeeping: Real periodic data may drift, damp, or contain noise; the model is an approximation unless derived from ideal circular motion. Following that structure gives H(t)=20-18 cos(pi t/30).",
+          "check": "The same sinusoid has infinitely many equivalent sine and cosine forms. Equivalence can be checked by graph features or identities. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-functions-and-periodic-models/the-general-sinusoidal-function/"
+    },
+    {
+      "id": "precalculus-u10-l6-v3",
+      "sequence": 3,
+      "role": "Comparison and error figure",
+      "title": "Equivalent sine/cosine overlay",
+      "description": "Comparison visual. Place the valid structure beside the common misconception and mark the first point where they diverge. Mathematical mechanism: The same sinusoid has infinitely many equivalent sine and cosine forms. Equivalence can be checked by graph features or identities. Opening context: The general sinusoidal function.",
+      "caption": "Compare the valid path with the tempting shortcut. The figure shows why to use the period itself as B or to set C equal to the first data point without matching the chosen parent feature leads to a false conclusion.",
+      "anchorProblem": "A Ferris wheel ranges from 2 to 38 meters, has period 60 seconds, and begins at its lowest point. Write a height model.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Extract maximum, minimum, period, and a timed feature. Compute A,D,B, select sine or cosine based on the anchor, and verify against another point. The relevant conditions are not optional bookkeeping: Real periodic data may drift, damp, or contain noise; the model is an approximation unless derived from ideal circular motion. Following that structure gives H(t)=20-18 cos(pi t/30).",
+      "anchorInterpretation": "The same sinusoid has infinitely many equivalent sine and cosine forms. Equivalence can be checked by graph features or identities. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "The same sinusoid has infinitely many equivalent sine and cosine forms. Equivalence can be checked by graph features or identities.",
+      "validStructure": "The parameters encode amplitude |A|, period 2pi/|B|, phase anchor C, and midline D. A complete model also needs a meaningful domain and units.",
+      "invalidMove": "A common error is to use the period itself as B or to set C equal to the first data point without matching the chosen parent feature.",
+      "lessonId": "precalculus-u10-l6",
+      "lessonSequence": 6,
+      "lessonTitle": "The general sinusoidal function",
+      "lessonOutcome": "Build and analyze y=A sin(B(x-C))+D and equivalent cosine forms.",
+      "lessonGuide": {
+        "application": "General sinusoidal models describe Ferris wheels, daylight, tides, seasons, and rotating sensors.",
+        "bigIdea": [
+          "The general sinusoidal model y=A sin(B(x-C))+D or its cosine equivalent combines vertical range, horizontal cycle, and timing.",
+          "The parameters encode amplitude |A|, period 2pi/|B|, phase anchor C, and midline D. A complete model also needs a meaningful domain and units."
+        ],
+        "method": [
+          "1. Extract maximum, minimum, period, and a timed feature. Compute A,D,B, select sine or cosine based on the anchor, and verify against another point.",
+          "2. Real periodic data may drift, damp, or contain noise; the model is an approximation unless derived from ideal circular motion.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls the general sinusoidal function?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "Real periodic data may drift, damp, or contain noise; the model is an approximation unless derived from ideal circular motion.",
+        "foundationWalkthrough": {
+          "problem": "A Ferris wheel ranges from 2 to 38 meters, has period 60 seconds, and begins at its lowest point. Write a height model.",
+          "plan": "Extract maximum, minimum, period, and a timed feature. Compute A,D,B, select sine or cosine based on the anchor, and verify against another point. Real periodic data may drift, damp, or contain noise; the model is an approximation unless derived from ideal circular motion.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Extract maximum, minimum, period, and a timed feature. Compute A,D,B, select sine or cosine based on the anchor, and verify against another point. The relevant conditions are not optional bookkeeping: Real periodic data may drift, damp, or contain noise; the model is an approximation unless derived from ideal circular motion. Following that structure gives H(t)=20-18 cos(pi t/30).",
+          "check": "The same sinusoid has infinitely many equivalent sine and cosine forms. Equivalence can be checked by graph features or identities. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-functions-and-periodic-models/the-general-sinusoidal-function/"
+    },
+    {
+      "id": "precalculus-u10-l7-v1",
+      "sequence": 1,
+      "role": "Anchor figure",
+      "title": "Sine/cosine quotient sign chart aligned to tangent graph",
+      "description": "Anchor visual. Establish the quantities, coordinate system, interval, or geometric condition used in the opening problem. Mathematical mechanism: The half-turn period follows because both sine and cosine change sign after pi, leaving their ratio unchanged. Opening context: Tangent and cotangent graphs.",
+      "caption": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The half-turn period follows because both sine and cosine change sign after pi, leaving their ratio unchanged. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "anchorProblem": "Sketch tan x on (-pi/2,3pi/2) using sine and cosine signs rather than memory.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Mark asymptotes first, place zeros midway between them, use exact values at pi/4 offsets, and apply transformations to the branch structure. The relevant conditions are not optional bookkeeping: A transformed tangent’s vertical shift is a center line, not a horizontal asymptote. Following that structure gives Zeros at 0 and pi; asymptotes at -pi/2, pi/2, 3pi/2; increasing branches.",
+      "anchorInterpretation": "The half-turn period follows because both sine and cosine change sign after pi, leaving their ratio unchanged. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "The half-turn period follows because both sine and cosine change sign after pi, leaving their ratio unchanged.",
+      "validStructure": "Tangent has zeros where sine is zero, vertical asymptotes where cosine is zero, range all real numbers, and period pi. Each branch increases from negative infinity to positive infinity.",
+      "invalidMove": "A common error is to connect branches across an asymptote or to give tangent the 2pi period of sine.",
+      "lessonId": "precalculus-u10-l7",
+      "lessonSequence": 7,
+      "lessonTitle": "Tangent and cotangent graphs",
+      "lessonOutcome": "Derive tangent and cotangent graphs from quotient definitions, zeros, asymptotes, and period pi.",
+      "lessonGuide": {
+        "application": "Tangent models slopes, perspective, periodic blow-up behavior, and phase response.",
+        "bigIdea": [
+          "Tangent is sin x/cos x and therefore records the slope of the terminal ray when cosine is nonzero. Cotangent is its reciprocal ratio.",
+          "Tangent has zeros where sine is zero, vertical asymptotes where cosine is zero, range all real numbers, and period pi. Each branch increases from negative infinity to positive infinity."
+        ],
+        "method": [
+          "1. Mark asymptotes first, place zeros midway between them, use exact values at pi/4 offsets, and apply transformations to the branch structure.",
+          "2. A transformed tangent’s vertical shift is a center line, not a horizontal asymptote.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls tangent and cotangent graphs?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "A transformed tangent’s vertical shift is a center line, not a horizontal asymptote.",
+        "foundationWalkthrough": {
+          "problem": "Sketch tan x on (-pi/2,3pi/2) using sine and cosine signs rather than memory.",
+          "plan": "Mark asymptotes first, place zeros midway between them, use exact values at pi/4 offsets, and apply transformations to the branch structure. A transformed tangent’s vertical shift is a center line, not a horizontal asymptote.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Mark asymptotes first, place zeros midway between them, use exact values at pi/4 offsets, and apply transformations to the branch structure. The relevant conditions are not optional bookkeeping: A transformed tangent’s vertical shift is a center line, not a horizontal asymptote. Following that structure gives Zeros at 0 and pi; asymptotes at -pi/2, pi/2, 3pi/2; increasing branches.",
+          "check": "The half-turn period follows because both sine and cosine change sign after pi, leaving their ratio unchanged. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-functions-and-periodic-models/tangent-and-cotangent-graphs/"
+    },
+    {
+      "id": "precalculus-u10-l7-v2",
+      "sequence": 2,
+      "role": "Mechanism figure",
+      "title": "Terminal-ray slope interpretation",
+      "description": "Mechanism visual. Show the derivation, mapping, or changing parameter that makes the central relationship true. Mathematical mechanism: The half-turn period follows because both sine and cosine change sign after pi, leaving their ratio unchanged. Opening context: Tangent and cotangent graphs.",
+      "caption": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for tangent and cotangent graphs.",
+      "anchorProblem": "Sketch tan x on (-pi/2,3pi/2) using sine and cosine signs rather than memory.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Mark asymptotes first, place zeros midway between them, use exact values at pi/4 offsets, and apply transformations to the branch structure. The relevant conditions are not optional bookkeeping: A transformed tangent’s vertical shift is a center line, not a horizontal asymptote. Following that structure gives Zeros at 0 and pi; asymptotes at -pi/2, pi/2, 3pi/2; increasing branches.",
+      "anchorInterpretation": "The half-turn period follows because both sine and cosine change sign after pi, leaving their ratio unchanged. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "The half-turn period follows because both sine and cosine change sign after pi, leaving their ratio unchanged.",
+      "validStructure": "Tangent has zeros where sine is zero, vertical asymptotes where cosine is zero, range all real numbers, and period pi. Each branch increases from negative infinity to positive infinity.",
+      "invalidMove": "A common error is to connect branches across an asymptote or to give tangent the 2pi period of sine.",
+      "lessonId": "precalculus-u10-l7",
+      "lessonSequence": 7,
+      "lessonTitle": "Tangent and cotangent graphs",
+      "lessonOutcome": "Derive tangent and cotangent graphs from quotient definitions, zeros, asymptotes, and period pi.",
+      "lessonGuide": {
+        "application": "Tangent models slopes, perspective, periodic blow-up behavior, and phase response.",
+        "bigIdea": [
+          "Tangent is sin x/cos x and therefore records the slope of the terminal ray when cosine is nonzero. Cotangent is its reciprocal ratio.",
+          "Tangent has zeros where sine is zero, vertical asymptotes where cosine is zero, range all real numbers, and period pi. Each branch increases from negative infinity to positive infinity."
+        ],
+        "method": [
+          "1. Mark asymptotes first, place zeros midway between them, use exact values at pi/4 offsets, and apply transformations to the branch structure.",
+          "2. A transformed tangent’s vertical shift is a center line, not a horizontal asymptote.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls tangent and cotangent graphs?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "A transformed tangent’s vertical shift is a center line, not a horizontal asymptote.",
+        "foundationWalkthrough": {
+          "problem": "Sketch tan x on (-pi/2,3pi/2) using sine and cosine signs rather than memory.",
+          "plan": "Mark asymptotes first, place zeros midway between them, use exact values at pi/4 offsets, and apply transformations to the branch structure. A transformed tangent’s vertical shift is a center line, not a horizontal asymptote.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Mark asymptotes first, place zeros midway between them, use exact values at pi/4 offsets, and apply transformations to the branch structure. The relevant conditions are not optional bookkeeping: A transformed tangent’s vertical shift is a center line, not a horizontal asymptote. Following that structure gives Zeros at 0 and pi; asymptotes at -pi/2, pi/2, 3pi/2; increasing branches.",
+          "check": "The half-turn period follows because both sine and cosine change sign after pi, leaving their ratio unchanged. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-functions-and-periodic-models/tangent-and-cotangent-graphs/"
+    },
+    {
+      "id": "precalculus-u10-l7-v3",
+      "sequence": 3,
+      "role": "Comparison and error figure",
+      "title": "Transformed tangent branch with asymptotes",
+      "description": "Comparison visual. Place the valid structure beside the common misconception and mark the first point where they diverge. Mathematical mechanism: The half-turn period follows because both sine and cosine change sign after pi, leaving their ratio unchanged. Opening context: Tangent and cotangent graphs.",
+      "caption": "Compare the valid path with the tempting shortcut. The figure shows why to connect branches across an asymptote or to give tangent the 2pi period of sine leads to a false conclusion.",
+      "anchorProblem": "Sketch tan x on (-pi/2,3pi/2) using sine and cosine signs rather than memory.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Mark asymptotes first, place zeros midway between them, use exact values at pi/4 offsets, and apply transformations to the branch structure. The relevant conditions are not optional bookkeeping: A transformed tangent’s vertical shift is a center line, not a horizontal asymptote. Following that structure gives Zeros at 0 and pi; asymptotes at -pi/2, pi/2, 3pi/2; increasing branches.",
+      "anchorInterpretation": "The half-turn period follows because both sine and cosine change sign after pi, leaving their ratio unchanged. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "The half-turn period follows because both sine and cosine change sign after pi, leaving their ratio unchanged.",
+      "validStructure": "Tangent has zeros where sine is zero, vertical asymptotes where cosine is zero, range all real numbers, and period pi. Each branch increases from negative infinity to positive infinity.",
+      "invalidMove": "A common error is to connect branches across an asymptote or to give tangent the 2pi period of sine.",
+      "lessonId": "precalculus-u10-l7",
+      "lessonSequence": 7,
+      "lessonTitle": "Tangent and cotangent graphs",
+      "lessonOutcome": "Derive tangent and cotangent graphs from quotient definitions, zeros, asymptotes, and period pi.",
+      "lessonGuide": {
+        "application": "Tangent models slopes, perspective, periodic blow-up behavior, and phase response.",
+        "bigIdea": [
+          "Tangent is sin x/cos x and therefore records the slope of the terminal ray when cosine is nonzero. Cotangent is its reciprocal ratio.",
+          "Tangent has zeros where sine is zero, vertical asymptotes where cosine is zero, range all real numbers, and period pi. Each branch increases from negative infinity to positive infinity."
+        ],
+        "method": [
+          "1. Mark asymptotes first, place zeros midway between them, use exact values at pi/4 offsets, and apply transformations to the branch structure.",
+          "2. A transformed tangent’s vertical shift is a center line, not a horizontal asymptote.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls tangent and cotangent graphs?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "A transformed tangent’s vertical shift is a center line, not a horizontal asymptote.",
+        "foundationWalkthrough": {
+          "problem": "Sketch tan x on (-pi/2,3pi/2) using sine and cosine signs rather than memory.",
+          "plan": "Mark asymptotes first, place zeros midway between them, use exact values at pi/4 offsets, and apply transformations to the branch structure. A transformed tangent’s vertical shift is a center line, not a horizontal asymptote.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Mark asymptotes first, place zeros midway between them, use exact values at pi/4 offsets, and apply transformations to the branch structure. The relevant conditions are not optional bookkeeping: A transformed tangent’s vertical shift is a center line, not a horizontal asymptote. Following that structure gives Zeros at 0 and pi; asymptotes at -pi/2, pi/2, 3pi/2; increasing branches.",
+          "check": "The half-turn period follows because both sine and cosine change sign after pi, leaving their ratio unchanged. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-functions-and-periodic-models/tangent-and-cotangent-graphs/"
+    },
+    {
+      "id": "precalculus-u10-l8-v1",
+      "sequence": 1,
+      "role": "Anchor figure",
+      "title": "Cosine and secant overlay with reciprocal points",
+      "description": "Anchor visual. Establish the quantities, coordinate system, interval, or geometric condition used in the opening problem. Mathematical mechanism: The reciprocal graph cannot cross the interval (-1,1), so its range is (-infinity,-1] union [1,infinity) before transformations. Opening context: Secant and cosecant graphs.",
+      "caption": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The reciprocal graph cannot cross the interval (-1,1), so its range is (-infinity,-1] union [1,infinity) before transformations. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "anchorProblem": "Use the graph of cos x to sketch sec x on [0,2pi], marking all vertices and asymptotes.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Graph the underlying sine or cosine lightly, draw asymptotes at its zeros, plot reciprocal vertices at extrema, and sketch branches away from the forbidden band. The relevant conditions are not optional bookkeeping: Transformations change the forbidden band and vertex levels. Solve inequalities carefully to state the range. Following that structure gives Vertices at (0,1),(pi,-1),(2pi,1); asymptotes at pi/2 and 3pi/2.",
+      "anchorInterpretation": "The reciprocal graph cannot cross the interval (-1,1), so its range is (-infinity,-1] union [1,infinity) before transformations. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "The reciprocal graph cannot cross the interval (-1,1), so its range is (-infinity,-1] union [1,infinity) before transformations.",
+      "validStructure": "Where the parent sine or cosine equals zero, the reciprocal is undefined and has a vertical asymptote. Where the parent reaches 1 or -1, the reciprocal reaches corresponding vertices 1 or -1.",
+      "invalidMove": "A common error is to draw U-shaped branches through asymptotes or to place vertices at parent zeros.",
+      "lessonId": "precalculus-u10-l8",
+      "lessonSequence": 8,
+      "lessonTitle": "Secant and cosecant graphs",
+      "lessonOutcome": "Construct secant and cosecant graphs as reciprocals of cosine and sine.",
+      "lessonGuide": {
+        "application": "Reciprocal trig graphs appear in optics, wave geometry, and analytic identities.",
+        "bigIdea": [
+          "Secant and cosecant are the reciprocals of cosine and sine.",
+          "Where the parent sine or cosine equals zero, the reciprocal is undefined and has a vertical asymptote. Where the parent reaches 1 or -1, the reciprocal reaches corresponding vertices 1 or -1."
+        ],
+        "method": [
+          "1. Graph the underlying sine or cosine lightly, draw asymptotes at its zeros, plot reciprocal vertices at extrema, and sketch branches away from the forbidden band.",
+          "2. Transformations change the forbidden band and vertex levels. Solve inequalities carefully to state the range.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls secant and cosecant graphs?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "Transformations change the forbidden band and vertex levels. Solve inequalities carefully to state the range.",
+        "foundationWalkthrough": {
+          "problem": "Use the graph of cos x to sketch sec x on [0,2pi], marking all vertices and asymptotes.",
+          "plan": "Graph the underlying sine or cosine lightly, draw asymptotes at its zeros, plot reciprocal vertices at extrema, and sketch branches away from the forbidden band. Transformations change the forbidden band and vertex levels. Solve inequalities carefully to state the range.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Graph the underlying sine or cosine lightly, draw asymptotes at its zeros, plot reciprocal vertices at extrema, and sketch branches away from the forbidden band. The relevant conditions are not optional bookkeeping: Transformations change the forbidden band and vertex levels. Solve inequalities carefully to state the range. Following that structure gives Vertices at (0,1),(pi,-1),(2pi,1); asymptotes at pi/2 and 3pi/2.",
+          "check": "The reciprocal graph cannot cross the interval (-1,1), so its range is (-infinity,-1] union [1,infinity) before transformations. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-functions-and-periodic-models/secant-and-cosecant-graphs/"
+    },
+    {
+      "id": "precalculus-u10-l8-v2",
+      "sequence": 2,
+      "role": "Mechanism figure",
+      "title": "Sine and cosecant overlay",
+      "description": "Mechanism visual. Show the derivation, mapping, or changing parameter that makes the central relationship true. Mathematical mechanism: The reciprocal graph cannot cross the interval (-1,1), so its range is (-infinity,-1] union [1,infinity) before transformations. Opening context: Secant and cosecant graphs.",
+      "caption": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for secant and cosecant graphs.",
+      "anchorProblem": "Use the graph of cos x to sketch sec x on [0,2pi], marking all vertices and asymptotes.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Graph the underlying sine or cosine lightly, draw asymptotes at its zeros, plot reciprocal vertices at extrema, and sketch branches away from the forbidden band. The relevant conditions are not optional bookkeeping: Transformations change the forbidden band and vertex levels. Solve inequalities carefully to state the range. Following that structure gives Vertices at (0,1),(pi,-1),(2pi,1); asymptotes at pi/2 and 3pi/2.",
+      "anchorInterpretation": "The reciprocal graph cannot cross the interval (-1,1), so its range is (-infinity,-1] union [1,infinity) before transformations. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "The reciprocal graph cannot cross the interval (-1,1), so its range is (-infinity,-1] union [1,infinity) before transformations.",
+      "validStructure": "Where the parent sine or cosine equals zero, the reciprocal is undefined and has a vertical asymptote. Where the parent reaches 1 or -1, the reciprocal reaches corresponding vertices 1 or -1.",
+      "invalidMove": "A common error is to draw U-shaped branches through asymptotes or to place vertices at parent zeros.",
+      "lessonId": "precalculus-u10-l8",
+      "lessonSequence": 8,
+      "lessonTitle": "Secant and cosecant graphs",
+      "lessonOutcome": "Construct secant and cosecant graphs as reciprocals of cosine and sine.",
+      "lessonGuide": {
+        "application": "Reciprocal trig graphs appear in optics, wave geometry, and analytic identities.",
+        "bigIdea": [
+          "Secant and cosecant are the reciprocals of cosine and sine.",
+          "Where the parent sine or cosine equals zero, the reciprocal is undefined and has a vertical asymptote. Where the parent reaches 1 or -1, the reciprocal reaches corresponding vertices 1 or -1."
+        ],
+        "method": [
+          "1. Graph the underlying sine or cosine lightly, draw asymptotes at its zeros, plot reciprocal vertices at extrema, and sketch branches away from the forbidden band.",
+          "2. Transformations change the forbidden band and vertex levels. Solve inequalities carefully to state the range.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls secant and cosecant graphs?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "Transformations change the forbidden band and vertex levels. Solve inequalities carefully to state the range.",
+        "foundationWalkthrough": {
+          "problem": "Use the graph of cos x to sketch sec x on [0,2pi], marking all vertices and asymptotes.",
+          "plan": "Graph the underlying sine or cosine lightly, draw asymptotes at its zeros, plot reciprocal vertices at extrema, and sketch branches away from the forbidden band. Transformations change the forbidden band and vertex levels. Solve inequalities carefully to state the range.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Graph the underlying sine or cosine lightly, draw asymptotes at its zeros, plot reciprocal vertices at extrema, and sketch branches away from the forbidden band. The relevant conditions are not optional bookkeeping: Transformations change the forbidden band and vertex levels. Solve inequalities carefully to state the range. Following that structure gives Vertices at (0,1),(pi,-1),(2pi,1); asymptotes at pi/2 and 3pi/2.",
+          "check": "The reciprocal graph cannot cross the interval (-1,1), so its range is (-infinity,-1] union [1,infinity) before transformations. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-functions-and-periodic-models/secant-and-cosecant-graphs/"
+    },
+    {
+      "id": "precalculus-u10-l8-v3",
+      "sequence": 3,
+      "role": "Comparison and error figure",
+      "title": "Error panel preventing branch connections across asymptotes",
+      "description": "Comparison visual. Place the valid structure beside the common misconception and mark the first point where they diverge. Mathematical mechanism: The reciprocal graph cannot cross the interval (-1,1), so its range is (-infinity,-1] union [1,infinity) before transformations. Opening context: Secant and cosecant graphs.",
+      "caption": "Compare the valid path with the tempting shortcut. The figure shows why to draw U-shaped branches through asymptotes or to place vertices at parent zeros leads to a false conclusion.",
+      "anchorProblem": "Use the graph of cos x to sketch sec x on [0,2pi], marking all vertices and asymptotes.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Graph the underlying sine or cosine lightly, draw asymptotes at its zeros, plot reciprocal vertices at extrema, and sketch branches away from the forbidden band. The relevant conditions are not optional bookkeeping: Transformations change the forbidden band and vertex levels. Solve inequalities carefully to state the range. Following that structure gives Vertices at (0,1),(pi,-1),(2pi,1); asymptotes at pi/2 and 3pi/2.",
+      "anchorInterpretation": "The reciprocal graph cannot cross the interval (-1,1), so its range is (-infinity,-1] union [1,infinity) before transformations. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "The reciprocal graph cannot cross the interval (-1,1), so its range is (-infinity,-1] union [1,infinity) before transformations.",
+      "validStructure": "Where the parent sine or cosine equals zero, the reciprocal is undefined and has a vertical asymptote. Where the parent reaches 1 or -1, the reciprocal reaches corresponding vertices 1 or -1.",
+      "invalidMove": "A common error is to draw U-shaped branches through asymptotes or to place vertices at parent zeros.",
+      "lessonId": "precalculus-u10-l8",
+      "lessonSequence": 8,
+      "lessonTitle": "Secant and cosecant graphs",
+      "lessonOutcome": "Construct secant and cosecant graphs as reciprocals of cosine and sine.",
+      "lessonGuide": {
+        "application": "Reciprocal trig graphs appear in optics, wave geometry, and analytic identities.",
+        "bigIdea": [
+          "Secant and cosecant are the reciprocals of cosine and sine.",
+          "Where the parent sine or cosine equals zero, the reciprocal is undefined and has a vertical asymptote. Where the parent reaches 1 or -1, the reciprocal reaches corresponding vertices 1 or -1."
+        ],
+        "method": [
+          "1. Graph the underlying sine or cosine lightly, draw asymptotes at its zeros, plot reciprocal vertices at extrema, and sketch branches away from the forbidden band.",
+          "2. Transformations change the forbidden band and vertex levels. Solve inequalities carefully to state the range.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls secant and cosecant graphs?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "Transformations change the forbidden band and vertex levels. Solve inequalities carefully to state the range.",
+        "foundationWalkthrough": {
+          "problem": "Use the graph of cos x to sketch sec x on [0,2pi], marking all vertices and asymptotes.",
+          "plan": "Graph the underlying sine or cosine lightly, draw asymptotes at its zeros, plot reciprocal vertices at extrema, and sketch branches away from the forbidden band. Transformations change the forbidden band and vertex levels. Solve inequalities carefully to state the range.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Graph the underlying sine or cosine lightly, draw asymptotes at its zeros, plot reciprocal vertices at extrema, and sketch branches away from the forbidden band. The relevant conditions are not optional bookkeeping: Transformations change the forbidden band and vertex levels. Solve inequalities carefully to state the range. Following that structure gives Vertices at (0,1),(pi,-1),(2pi,1); asymptotes at pi/2 and 3pi/2.",
+          "check": "The reciprocal graph cannot cross the interval (-1,1), so its range is (-infinity,-1] union [1,infinity) before transformations. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-functions-and-periodic-models/secant-and-cosecant-graphs/"
+    },
+    {
+      "id": "precalculus-u10-l9-v1",
+      "sequence": 1,
+      "role": "Anchor figure",
+      "title": "Six-function comparison matrix",
+      "description": "Anchor visual. Establish the quantities, coordinate system, interval, or geometric condition used in the opening problem. Mathematical mechanism: A comparison table makes reciprocal and quotient relationships visible and supports rapid graph identification. Opening context: Symmetry, periodicity, and the six-function family.",
+      "caption": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: A comparison table makes reciprocal and quotient relationships visible and supports rapid graph identification. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "anchorProblem": "Without graphing, decide which trig functions satisfy f(-x)=-f(x) and which satisfy f(-x)=f(x).",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Classify a function by its defining ratio, then derive features rather than memorizing six unrelated lists. The relevant conditions are not optional bookkeeping: Transformations can alter visible symmetry about the coordinate axes even though the parent parity remains a reference. Following that structure gives Cosine and secant are even; sine, tangent, cotangent, and cosecant are odd.",
+      "anchorInterpretation": "A comparison table makes reciprocal and quotient relationships visible and supports rapid graph identification. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "A comparison table makes reciprocal and quotient relationships visible and supports rapid graph identification.",
+      "validStructure": "Sine and cosine have period 2pi; tangent and cotangent have period pi; secant and cosecant inherit 2pi. Cosine and secant are even; the other four are odd.",
+      "invalidMove": "A common error is to transfer one function’s domain or period to its reciprocal or quotient partner without checking.",
+      "lessonId": "precalculus-u10-l9",
+      "lessonSequence": 9,
+      "lessonTitle": "Symmetry, periodicity, and the six-function family",
+      "lessonOutcome": "Compare domains, ranges, parity, periods, zeros, and asymptotes of all six trig functions.",
+      "lessonGuide": {
+        "application": "The family comparison is essential for identities and equation solving.",
+        "bigIdea": [
+          "The six trigonometric functions share a unit-circle origin but differ in domain, range, parity, period, zeros, and asymptotes.",
+          "Sine and cosine have period 2pi; tangent and cotangent have period pi; secant and cosecant inherit 2pi. Cosine and secant are even; the other four are odd."
+        ],
+        "method": [
+          "1. Classify a function by its defining ratio, then derive features rather than memorizing six unrelated lists.",
+          "2. Transformations can alter visible symmetry about the coordinate axes even though the parent parity remains a reference.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls symmetry, periodicity, and the six-function family?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "Transformations can alter visible symmetry about the coordinate axes even though the parent parity remains a reference.",
+        "foundationWalkthrough": {
+          "problem": "Without graphing, decide which trig functions satisfy f(-x)=-f(x) and which satisfy f(-x)=f(x).",
+          "plan": "Classify a function by its defining ratio, then derive features rather than memorizing six unrelated lists. Transformations can alter visible symmetry about the coordinate axes even though the parent parity remains a reference.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Classify a function by its defining ratio, then derive features rather than memorizing six unrelated lists. The relevant conditions are not optional bookkeeping: Transformations can alter visible symmetry about the coordinate axes even though the parent parity remains a reference. Following that structure gives Cosine and secant are even; sine, tangent, cotangent, and cosecant are odd.",
+          "check": "A comparison table makes reciprocal and quotient relationships visible and supports rapid graph identification. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-functions-and-periodic-models/symmetry-periodicity-and-the-six-function-family/"
+    },
+    {
+      "id": "precalculus-u10-l9-v2",
+      "sequence": 2,
+      "role": "Mechanism figure",
+      "title": "Even/odd graph overlays",
+      "description": "Mechanism visual. Show the derivation, mapping, or changing parameter that makes the central relationship true. Mathematical mechanism: A comparison table makes reciprocal and quotient relationships visible and supports rapid graph identification. Opening context: Symmetry, periodicity, and the six-function family.",
+      "caption": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for symmetry, periodicity, and the six-function family.",
+      "anchorProblem": "Without graphing, decide which trig functions satisfy f(-x)=-f(x) and which satisfy f(-x)=f(x).",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Classify a function by its defining ratio, then derive features rather than memorizing six unrelated lists. The relevant conditions are not optional bookkeeping: Transformations can alter visible symmetry about the coordinate axes even though the parent parity remains a reference. Following that structure gives Cosine and secant are even; sine, tangent, cotangent, and cosecant are odd.",
+      "anchorInterpretation": "A comparison table makes reciprocal and quotient relationships visible and supports rapid graph identification. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "A comparison table makes reciprocal and quotient relationships visible and supports rapid graph identification.",
+      "validStructure": "Sine and cosine have period 2pi; tangent and cotangent have period pi; secant and cosecant inherit 2pi. Cosine and secant are even; the other four are odd.",
+      "invalidMove": "A common error is to transfer one function’s domain or period to its reciprocal or quotient partner without checking.",
+      "lessonId": "precalculus-u10-l9",
+      "lessonSequence": 9,
+      "lessonTitle": "Symmetry, periodicity, and the six-function family",
+      "lessonOutcome": "Compare domains, ranges, parity, periods, zeros, and asymptotes of all six trig functions.",
+      "lessonGuide": {
+        "application": "The family comparison is essential for identities and equation solving.",
+        "bigIdea": [
+          "The six trigonometric functions share a unit-circle origin but differ in domain, range, parity, period, zeros, and asymptotes.",
+          "Sine and cosine have period 2pi; tangent and cotangent have period pi; secant and cosecant inherit 2pi. Cosine and secant are even; the other four are odd."
+        ],
+        "method": [
+          "1. Classify a function by its defining ratio, then derive features rather than memorizing six unrelated lists.",
+          "2. Transformations can alter visible symmetry about the coordinate axes even though the parent parity remains a reference.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls symmetry, periodicity, and the six-function family?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "Transformations can alter visible symmetry about the coordinate axes even though the parent parity remains a reference.",
+        "foundationWalkthrough": {
+          "problem": "Without graphing, decide which trig functions satisfy f(-x)=-f(x) and which satisfy f(-x)=f(x).",
+          "plan": "Classify a function by its defining ratio, then derive features rather than memorizing six unrelated lists. Transformations can alter visible symmetry about the coordinate axes even though the parent parity remains a reference.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Classify a function by its defining ratio, then derive features rather than memorizing six unrelated lists. The relevant conditions are not optional bookkeeping: Transformations can alter visible symmetry about the coordinate axes even though the parent parity remains a reference. Following that structure gives Cosine and secant are even; sine, tangent, cotangent, and cosecant are odd.",
+          "check": "A comparison table makes reciprocal and quotient relationships visible and supports rapid graph identification. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-functions-and-periodic-models/symmetry-periodicity-and-the-six-function-family/"
+    },
+    {
+      "id": "precalculus-u10-l9-v3",
+      "sequence": 3,
+      "role": "Comparison and error figure",
+      "title": "Period tiles showing repeated intervals",
+      "description": "Comparison visual. Place the valid structure beside the common misconception and mark the first point where they diverge. Mathematical mechanism: A comparison table makes reciprocal and quotient relationships visible and supports rapid graph identification. Opening context: Symmetry, periodicity, and the six-function family.",
+      "caption": "Compare the valid path with the tempting shortcut. The figure shows why to transfer one function’s domain or period to its reciprocal or quotient partner without checking leads to a false conclusion.",
+      "anchorProblem": "Without graphing, decide which trig functions satisfy f(-x)=-f(x) and which satisfy f(-x)=f(x).",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Classify a function by its defining ratio, then derive features rather than memorizing six unrelated lists. The relevant conditions are not optional bookkeeping: Transformations can alter visible symmetry about the coordinate axes even though the parent parity remains a reference. Following that structure gives Cosine and secant are even; sine, tangent, cotangent, and cosecant are odd.",
+      "anchorInterpretation": "A comparison table makes reciprocal and quotient relationships visible and supports rapid graph identification. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "A comparison table makes reciprocal and quotient relationships visible and supports rapid graph identification.",
+      "validStructure": "Sine and cosine have period 2pi; tangent and cotangent have period pi; secant and cosecant inherit 2pi. Cosine and secant are even; the other four are odd.",
+      "invalidMove": "A common error is to transfer one function’s domain or period to its reciprocal or quotient partner without checking.",
+      "lessonId": "precalculus-u10-l9",
+      "lessonSequence": 9,
+      "lessonTitle": "Symmetry, periodicity, and the six-function family",
+      "lessonOutcome": "Compare domains, ranges, parity, periods, zeros, and asymptotes of all six trig functions.",
+      "lessonGuide": {
+        "application": "The family comparison is essential for identities and equation solving.",
+        "bigIdea": [
+          "The six trigonometric functions share a unit-circle origin but differ in domain, range, parity, period, zeros, and asymptotes.",
+          "Sine and cosine have period 2pi; tangent and cotangent have period pi; secant and cosecant inherit 2pi. Cosine and secant are even; the other four are odd."
+        ],
+        "method": [
+          "1. Classify a function by its defining ratio, then derive features rather than memorizing six unrelated lists.",
+          "2. Transformations can alter visible symmetry about the coordinate axes even though the parent parity remains a reference.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls symmetry, periodicity, and the six-function family?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "Transformations can alter visible symmetry about the coordinate axes even though the parent parity remains a reference.",
+        "foundationWalkthrough": {
+          "problem": "Without graphing, decide which trig functions satisfy f(-x)=-f(x) and which satisfy f(-x)=f(x).",
+          "plan": "Classify a function by its defining ratio, then derive features rather than memorizing six unrelated lists. Transformations can alter visible symmetry about the coordinate axes even though the parent parity remains a reference.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Classify a function by its defining ratio, then derive features rather than memorizing six unrelated lists. The relevant conditions are not optional bookkeeping: Transformations can alter visible symmetry about the coordinate axes even though the parent parity remains a reference. Following that structure gives Cosine and secant are even; sine, tangent, cotangent, and cosecant are odd.",
+          "check": "A comparison table makes reciprocal and quotient relationships visible and supports rapid graph identification. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-functions-and-periodic-models/symmetry-periodicity-and-the-six-function-family/"
+    },
+    {
+      "id": "precalculus-u10-l10-v1",
+      "sequence": 1,
+      "role": "Anchor figure",
+      "title": "Restricted sine/cosine/tangent branches",
+      "description": "Anchor visual. Establish the quantities, coordinate system, interval, or geometric condition used in the opening problem. Mathematical mechanism: The inverse domains are the original ranges: arcsin and arccos accept [-1,1], while arctan accepts all real inputs. Opening context: Inverse trigonometric functions and branch restrictions.",
+      "caption": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The inverse domains are the original ranges: arcsin and arccos accept [-1,1], while arctan accepts all real inputs. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "anchorProblem": "Why can sin x not have an inverse on all real numbers, and why is [-pi/2,pi/2] a useful restricted domain?",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Evaluate exact values by finding the principal angle in the required range. For compositions such as sin(arccos u), draw a right triangle or use identities with sign determined by the principal range. The relevant conditions are not optional bookkeeping: The notation sin^{-1} x means inverse sine, not reciprocal sine. The reciprocal is csc x. Following that structure gives Sine repeats outputs globally; on [-pi/2,pi/2] it is one-to-one and covers [-1,1].",
+      "anchorInterpretation": "The inverse domains are the original ranges: arcsin and arccos accept [-1,1], while arctan accepts all real inputs. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "The inverse domains are the original ranges: arcsin and arccos accept [-1,1], while arctan accepts all real inputs.",
+      "validStructure": "Arcsine uses sine on [-pi/2,pi/2], arccosine uses cosine on [0,pi], and arctangent uses tangent on (-pi/2,pi/2). These ranges are principal-value conventions chosen to make each restricted function one-to-one while covering its natural range.",
+      "invalidMove": "A common error is to return a coterminal angle outside the principal inverse range.",
+      "lessonId": "precalculus-u10-l10",
+      "lessonSequence": 10,
+      "lessonTitle": "Inverse trigonometric functions and branch restrictions",
+      "lessonOutcome": "Define inverse sine, cosine, and tangent using one-to-one branches and principal-value ranges.",
+      "lessonGuide": {
+        "application": "Inverse trig functions recover angles in triangles, equations, vectors, and numerical models.",
+        "bigIdea": [
+          "Inverse trigonometric functions reverse restricted one-to-one branches of sine, cosine, and tangent.",
+          "Arcsine uses sine on [-pi/2,pi/2], arccosine uses cosine on [0,pi], and arctangent uses tangent on (-pi/2,pi/2). These ranges are principal-value conventions chosen to make each restricted function one-to-one while covering its natural range."
+        ],
+        "method": [
+          "1. Evaluate exact values by finding the principal angle in the required range. For compositions such as sin(arccos u), draw a right triangle or use identities with sign determined by the principal range.",
+          "2. The notation sin^{-1} x means inverse sine, not reciprocal sine. The reciprocal is csc x.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls inverse trigonometric functions and branch restrictions?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "The notation sin^{-1} x means inverse sine, not reciprocal sine. The reciprocal is csc x.",
+        "foundationWalkthrough": {
+          "problem": "Why can sin x not have an inverse on all real numbers, and why is [-pi/2,pi/2] a useful restricted domain?",
+          "plan": "Evaluate exact values by finding the principal angle in the required range. For compositions such as sin(arccos u), draw a right triangle or use identities with sign determined by the principal range. The notation sin^{-1} x means inverse sine, not reciprocal sine. The reciprocal is csc x.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Evaluate exact values by finding the principal angle in the required range. For compositions such as sin(arccos u), draw a right triangle or use identities with sign determined by the principal range. The relevant conditions are not optional bookkeeping: The notation sin^{-1} x means inverse sine, not reciprocal sine. The reciprocal is csc x. Following that structure gives Sine repeats outputs globally; on [-pi/2,pi/2] it is one-to-one and covers [-1,1].",
+          "check": "The inverse domains are the original ranges: arcsin and arccos accept [-1,1], while arctan accepts all real inputs. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-functions-and-periodic-models/inverse-trigonometric-functions-and-branch-restrictions/"
+    },
+    {
+      "id": "precalculus-u10-l10-v2",
+      "sequence": 2,
+      "role": "Mechanism figure",
+      "title": "Inverse reflection across y=x",
+      "description": "Mechanism visual. Show the derivation, mapping, or changing parameter that makes the central relationship true. Mathematical mechanism: The inverse domains are the original ranges: arcsin and arccos accept [-1,1], while arctan accepts all real inputs. Opening context: Inverse trigonometric functions and branch restrictions.",
+      "caption": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for inverse trigonometric functions and branch restrictions.",
+      "anchorProblem": "Why can sin x not have an inverse on all real numbers, and why is [-pi/2,pi/2] a useful restricted domain?",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Evaluate exact values by finding the principal angle in the required range. For compositions such as sin(arccos u), draw a right triangle or use identities with sign determined by the principal range. The relevant conditions are not optional bookkeeping: The notation sin^{-1} x means inverse sine, not reciprocal sine. The reciprocal is csc x. Following that structure gives Sine repeats outputs globally; on [-pi/2,pi/2] it is one-to-one and covers [-1,1].",
+      "anchorInterpretation": "The inverse domains are the original ranges: arcsin and arccos accept [-1,1], while arctan accepts all real inputs. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "The inverse domains are the original ranges: arcsin and arccos accept [-1,1], while arctan accepts all real inputs.",
+      "validStructure": "Arcsine uses sine on [-pi/2,pi/2], arccosine uses cosine on [0,pi], and arctangent uses tangent on (-pi/2,pi/2). These ranges are principal-value conventions chosen to make each restricted function one-to-one while covering its natural range.",
+      "invalidMove": "A common error is to return a coterminal angle outside the principal inverse range.",
+      "lessonId": "precalculus-u10-l10",
+      "lessonSequence": 10,
+      "lessonTitle": "Inverse trigonometric functions and branch restrictions",
+      "lessonOutcome": "Define inverse sine, cosine, and tangent using one-to-one branches and principal-value ranges.",
+      "lessonGuide": {
+        "application": "Inverse trig functions recover angles in triangles, equations, vectors, and numerical models.",
+        "bigIdea": [
+          "Inverse trigonometric functions reverse restricted one-to-one branches of sine, cosine, and tangent.",
+          "Arcsine uses sine on [-pi/2,pi/2], arccosine uses cosine on [0,pi], and arctangent uses tangent on (-pi/2,pi/2). These ranges are principal-value conventions chosen to make each restricted function one-to-one while covering its natural range."
+        ],
+        "method": [
+          "1. Evaluate exact values by finding the principal angle in the required range. For compositions such as sin(arccos u), draw a right triangle or use identities with sign determined by the principal range.",
+          "2. The notation sin^{-1} x means inverse sine, not reciprocal sine. The reciprocal is csc x.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls inverse trigonometric functions and branch restrictions?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "The notation sin^{-1} x means inverse sine, not reciprocal sine. The reciprocal is csc x.",
+        "foundationWalkthrough": {
+          "problem": "Why can sin x not have an inverse on all real numbers, and why is [-pi/2,pi/2] a useful restricted domain?",
+          "plan": "Evaluate exact values by finding the principal angle in the required range. For compositions such as sin(arccos u), draw a right triangle or use identities with sign determined by the principal range. The notation sin^{-1} x means inverse sine, not reciprocal sine. The reciprocal is csc x.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Evaluate exact values by finding the principal angle in the required range. For compositions such as sin(arccos u), draw a right triangle or use identities with sign determined by the principal range. The relevant conditions are not optional bookkeeping: The notation sin^{-1} x means inverse sine, not reciprocal sine. The reciprocal is csc x. Following that structure gives Sine repeats outputs globally; on [-pi/2,pi/2] it is one-to-one and covers [-1,1].",
+          "check": "The inverse domains are the original ranges: arcsin and arccos accept [-1,1], while arctan accepts all real inputs. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-functions-and-periodic-models/inverse-trigonometric-functions-and-branch-restrictions/"
+    },
+    {
+      "id": "precalculus-u10-l10-v3",
+      "sequence": 3,
+      "role": "Comparison and error figure",
+      "title": "Inverse-versus-reciprocal comparison",
+      "description": "Comparison visual. Place the valid structure beside the common misconception and mark the first point where they diverge. Mathematical mechanism: The inverse domains are the original ranges: arcsin and arccos accept [-1,1], while arctan accepts all real inputs. Opening context: Inverse trigonometric functions and branch restrictions.",
+      "caption": "Compare the valid path with the tempting shortcut. The figure shows why to return a coterminal angle outside the principal inverse range leads to a false conclusion.",
+      "anchorProblem": "Why can sin x not have an inverse on all real numbers, and why is [-pi/2,pi/2] a useful restricted domain?",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Evaluate exact values by finding the principal angle in the required range. For compositions such as sin(arccos u), draw a right triangle or use identities with sign determined by the principal range. The relevant conditions are not optional bookkeeping: The notation sin^{-1} x means inverse sine, not reciprocal sine. The reciprocal is csc x. Following that structure gives Sine repeats outputs globally; on [-pi/2,pi/2] it is one-to-one and covers [-1,1].",
+      "anchorInterpretation": "The inverse domains are the original ranges: arcsin and arccos accept [-1,1], while arctan accepts all real inputs. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "The inverse domains are the original ranges: arcsin and arccos accept [-1,1], while arctan accepts all real inputs.",
+      "validStructure": "Arcsine uses sine on [-pi/2,pi/2], arccosine uses cosine on [0,pi], and arctangent uses tangent on (-pi/2,pi/2). These ranges are principal-value conventions chosen to make each restricted function one-to-one while covering its natural range.",
+      "invalidMove": "A common error is to return a coterminal angle outside the principal inverse range.",
+      "lessonId": "precalculus-u10-l10",
+      "lessonSequence": 10,
+      "lessonTitle": "Inverse trigonometric functions and branch restrictions",
+      "lessonOutcome": "Define inverse sine, cosine, and tangent using one-to-one branches and principal-value ranges.",
+      "lessonGuide": {
+        "application": "Inverse trig functions recover angles in triangles, equations, vectors, and numerical models.",
+        "bigIdea": [
+          "Inverse trigonometric functions reverse restricted one-to-one branches of sine, cosine, and tangent.",
+          "Arcsine uses sine on [-pi/2,pi/2], arccosine uses cosine on [0,pi], and arctangent uses tangent on (-pi/2,pi/2). These ranges are principal-value conventions chosen to make each restricted function one-to-one while covering its natural range."
+        ],
+        "method": [
+          "1. Evaluate exact values by finding the principal angle in the required range. For compositions such as sin(arccos u), draw a right triangle or use identities with sign determined by the principal range.",
+          "2. The notation sin^{-1} x means inverse sine, not reciprocal sine. The reciprocal is csc x.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls inverse trigonometric functions and branch restrictions?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "The notation sin^{-1} x means inverse sine, not reciprocal sine. The reciprocal is csc x.",
+        "foundationWalkthrough": {
+          "problem": "Why can sin x not have an inverse on all real numbers, and why is [-pi/2,pi/2] a useful restricted domain?",
+          "plan": "Evaluate exact values by finding the principal angle in the required range. For compositions such as sin(arccos u), draw a right triangle or use identities with sign determined by the principal range. The notation sin^{-1} x means inverse sine, not reciprocal sine. The reciprocal is csc x.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Evaluate exact values by finding the principal angle in the required range. For compositions such as sin(arccos u), draw a right triangle or use identities with sign determined by the principal range. The relevant conditions are not optional bookkeeping: The notation sin^{-1} x means inverse sine, not reciprocal sine. The reciprocal is csc x. Following that structure gives Sine repeats outputs globally; on [-pi/2,pi/2] it is one-to-one and covers [-1,1].",
+          "check": "The inverse domains are the original ranges: arcsin and arccos accept [-1,1], while arctan accepts all real inputs. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-functions-and-periodic-models/inverse-trigonometric-functions-and-branch-restrictions/"
+    },
+    {
+      "id": "precalculus-u10-l11-v1",
+      "sequence": 1,
+      "role": "Anchor figure",
+      "title": "Horizontal-line intersections with periodic graphs",
+      "description": "Anchor visual. Establish the quantities, coordinate system, interval, or geometric condition used in the opening problem. Mathematical mechanism: Exact unit-circle values should be used when possible. Otherwise find a principal inverse angle and use graph symmetry to generate the remaining branch before adding periods. Opening context: Basic trigonometric equations.",
+      "caption": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Exact unit-circle values should be used when possible. Otherwise find a principal inverse angle and use graph symmetry to generate the remaining branch before adding periods. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "anchorProblem": "Solve sin x=1/2 for all real x and then list solutions on [-pi,3pi].",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. State general solutions with an integer parameter, then filter them into a requested interval. Keep degree or radian mode consistent. The relevant conditions are not optional bookkeeping: Sine and cosine have no real solution when |k|>1. Reciprocal functions impose additional domain exclusions. Following that structure gives x=pi/6+2kpi or 5pi/6+2kpi; interval solutions follow from those families.",
+      "anchorInterpretation": "Exact unit-circle values should be used when possible. Otherwise find a principal inverse angle and use graph symmetry to generate the remaining branch before adding periods. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "Exact unit-circle values should be used when possible. Otherwise find a principal inverse angle and use graph symmetry to generate the remaining branch before adding periods.",
+      "validStructure": "On one period, a horizontal line may meet sine or cosine twice and tangent once. Periodicity then generates all real solutions.",
+      "invalidMove": "A common error is to report only the calculator’s principal inverse value.",
+      "lessonId": "precalculus-u10-l11",
+      "lessonSequence": 11,
+      "lessonTitle": "Basic trigonometric equations",
+      "lessonOutcome": "Solve sin x=k, cos x=k, and tan x=k using exact values, inverse functions, periodicity, and interval restrictions.",
+      "lessonGuide": {
+        "application": "Basic equations locate times, angles, phases, and intersections in periodic models.",
+        "bigIdea": [
+          "A basic trigonometric equation asks for every input whose function value equals a given constant.",
+          "On one period, a horizontal line may meet sine or cosine twice and tangent once. Periodicity then generates all real solutions."
+        ],
+        "method": [
+          "1. State general solutions with an integer parameter, then filter them into a requested interval. Keep degree or radian mode consistent.",
+          "2. Sine and cosine have no real solution when |k|>1. Reciprocal functions impose additional domain exclusions.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls basic trigonometric equations?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "Sine and cosine have no real solution when |k|>1. Reciprocal functions impose additional domain exclusions.",
+        "foundationWalkthrough": {
+          "problem": "Solve sin x=1/2 for all real x and then list solutions on [-pi,3pi].",
+          "plan": "State general solutions with an integer parameter, then filter them into a requested interval. Keep degree or radian mode consistent. Sine and cosine have no real solution when |k|>1. Reciprocal functions impose additional domain exclusions.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. State general solutions with an integer parameter, then filter them into a requested interval. Keep degree or radian mode consistent. The relevant conditions are not optional bookkeeping: Sine and cosine have no real solution when |k|>1. Reciprocal functions impose additional domain exclusions. Following that structure gives x=pi/6+2kpi or 5pi/6+2kpi; interval solutions follow from those families.",
+          "check": "Exact unit-circle values should be used when possible. Otherwise find a principal inverse angle and use graph symmetry to generate the remaining branch before adding periods. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-functions-and-periodic-models/basic-trigonometric-equations/"
+    },
+    {
+      "id": "precalculus-u10-l11-v2",
+      "sequence": 2,
+      "role": "Mechanism figure",
+      "title": "Unit-circle solution families",
+      "description": "Mechanism visual. Show the derivation, mapping, or changing parameter that makes the central relationship true. Mathematical mechanism: Exact unit-circle values should be used when possible. Otherwise find a principal inverse angle and use graph symmetry to generate the remaining branch before adding periods. Opening context: Basic trigonometric equations.",
+      "caption": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for basic trigonometric equations.",
+      "anchorProblem": "Solve sin x=1/2 for all real x and then list solutions on [-pi,3pi].",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. State general solutions with an integer parameter, then filter them into a requested interval. Keep degree or radian mode consistent. The relevant conditions are not optional bookkeeping: Sine and cosine have no real solution when |k|>1. Reciprocal functions impose additional domain exclusions. Following that structure gives x=pi/6+2kpi or 5pi/6+2kpi; interval solutions follow from those families.",
+      "anchorInterpretation": "Exact unit-circle values should be used when possible. Otherwise find a principal inverse angle and use graph symmetry to generate the remaining branch before adding periods. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "Exact unit-circle values should be used when possible. Otherwise find a principal inverse angle and use graph symmetry to generate the remaining branch before adding periods.",
+      "validStructure": "On one period, a horizontal line may meet sine or cosine twice and tangent once. Periodicity then generates all real solutions.",
+      "invalidMove": "A common error is to report only the calculator’s principal inverse value.",
+      "lessonId": "precalculus-u10-l11",
+      "lessonSequence": 11,
+      "lessonTitle": "Basic trigonometric equations",
+      "lessonOutcome": "Solve sin x=k, cos x=k, and tan x=k using exact values, inverse functions, periodicity, and interval restrictions.",
+      "lessonGuide": {
+        "application": "Basic equations locate times, angles, phases, and intersections in periodic models.",
+        "bigIdea": [
+          "A basic trigonometric equation asks for every input whose function value equals a given constant.",
+          "On one period, a horizontal line may meet sine or cosine twice and tangent once. Periodicity then generates all real solutions."
+        ],
+        "method": [
+          "1. State general solutions with an integer parameter, then filter them into a requested interval. Keep degree or radian mode consistent.",
+          "2. Sine and cosine have no real solution when |k|>1. Reciprocal functions impose additional domain exclusions.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls basic trigonometric equations?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "Sine and cosine have no real solution when |k|>1. Reciprocal functions impose additional domain exclusions.",
+        "foundationWalkthrough": {
+          "problem": "Solve sin x=1/2 for all real x and then list solutions on [-pi,3pi].",
+          "plan": "State general solutions with an integer parameter, then filter them into a requested interval. Keep degree or radian mode consistent. Sine and cosine have no real solution when |k|>1. Reciprocal functions impose additional domain exclusions.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. State general solutions with an integer parameter, then filter them into a requested interval. Keep degree or radian mode consistent. The relevant conditions are not optional bookkeeping: Sine and cosine have no real solution when |k|>1. Reciprocal functions impose additional domain exclusions. Following that structure gives x=pi/6+2kpi or 5pi/6+2kpi; interval solutions follow from those families.",
+          "check": "Exact unit-circle values should be used when possible. Otherwise find a principal inverse angle and use graph symmetry to generate the remaining branch before adding periods. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-functions-and-periodic-models/basic-trigonometric-equations/"
+    },
+    {
+      "id": "precalculus-u10-l11-v3",
+      "sequence": 3,
+      "role": "Comparison and error figure",
+      "title": "General-solution number line",
+      "description": "Comparison visual. Place the valid structure beside the common misconception and mark the first point where they diverge. Mathematical mechanism: Exact unit-circle values should be used when possible. Otherwise find a principal inverse angle and use graph symmetry to generate the remaining branch before adding periods. Opening context: Basic trigonometric equations.",
+      "caption": "Compare the valid path with the tempting shortcut. The figure shows why to report only the calculator’s principal inverse value leads to a false conclusion.",
+      "anchorProblem": "Solve sin x=1/2 for all real x and then list solutions on [-pi,3pi].",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. State general solutions with an integer parameter, then filter them into a requested interval. Keep degree or radian mode consistent. The relevant conditions are not optional bookkeeping: Sine and cosine have no real solution when |k|>1. Reciprocal functions impose additional domain exclusions. Following that structure gives x=pi/6+2kpi or 5pi/6+2kpi; interval solutions follow from those families.",
+      "anchorInterpretation": "Exact unit-circle values should be used when possible. Otherwise find a principal inverse angle and use graph symmetry to generate the remaining branch before adding periods. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "Exact unit-circle values should be used when possible. Otherwise find a principal inverse angle and use graph symmetry to generate the remaining branch before adding periods.",
+      "validStructure": "On one period, a horizontal line may meet sine or cosine twice and tangent once. Periodicity then generates all real solutions.",
+      "invalidMove": "A common error is to report only the calculator’s principal inverse value.",
+      "lessonId": "precalculus-u10-l11",
+      "lessonSequence": 11,
+      "lessonTitle": "Basic trigonometric equations",
+      "lessonOutcome": "Solve sin x=k, cos x=k, and tan x=k using exact values, inverse functions, periodicity, and interval restrictions.",
+      "lessonGuide": {
+        "application": "Basic equations locate times, angles, phases, and intersections in periodic models.",
+        "bigIdea": [
+          "A basic trigonometric equation asks for every input whose function value equals a given constant.",
+          "On one period, a horizontal line may meet sine or cosine twice and tangent once. Periodicity then generates all real solutions."
+        ],
+        "method": [
+          "1. State general solutions with an integer parameter, then filter them into a requested interval. Keep degree or radian mode consistent.",
+          "2. Sine and cosine have no real solution when |k|>1. Reciprocal functions impose additional domain exclusions.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls basic trigonometric equations?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "Sine and cosine have no real solution when |k|>1. Reciprocal functions impose additional domain exclusions.",
+        "foundationWalkthrough": {
+          "problem": "Solve sin x=1/2 for all real x and then list solutions on [-pi,3pi].",
+          "plan": "State general solutions with an integer parameter, then filter them into a requested interval. Keep degree or radian mode consistent. Sine and cosine have no real solution when |k|>1. Reciprocal functions impose additional domain exclusions.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. State general solutions with an integer parameter, then filter them into a requested interval. Keep degree or radian mode consistent. The relevant conditions are not optional bookkeeping: Sine and cosine have no real solution when |k|>1. Reciprocal functions impose additional domain exclusions. Following that structure gives x=pi/6+2kpi or 5pi/6+2kpi; interval solutions follow from those families.",
+          "check": "Exact unit-circle values should be used when possible. Otherwise find a principal inverse angle and use graph symmetry to generate the remaining branch before adding periods. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-functions-and-periodic-models/basic-trigonometric-equations/"
+    },
+    {
+      "id": "precalculus-u10-l12-v1",
+      "sequence": 1,
+      "role": "Anchor figure",
+      "title": "Data scatter with fitted sinusoid and residuals",
+      "description": "Anchor visual. Establish the quantities, coordinate system, interval, or geometric condition used in the opening problem. Mathematical mechanism: Residuals should be small and patternless if the sinusoidal form captures the main structure. Changing amplitude, drifting midline, multiple frequencies, or irregular timing produce systematic residuals. Opening context: Sinusoidal modeling and regression.",
+      "caption": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Residuals should be small and patternless if the sinusoidal form captures the main structure. Changing amplitude, drifting midline, multiple frequencies, or irregular timing produce systematic residuals. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "anchorProblem": "Monthly daylight hours range from 9.1 to 15.3, with a maximum near day 172. Build a first sinusoidal model with period 365.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Estimate parameters from the graph or use regression, interpret units, state the evidence-supported domain, compare sine and cosine forms, and inspect residuals. The relevant conditions are not optional bookkeeping: Extrapolation assumes the cycle remains stable. Seasonal and biological systems may change over time. Following that structure gives D(t)=12.2+3.1 cos[2pi(t-172)/365].",
+      "anchorInterpretation": "Residuals should be small and patternless if the sinusoidal form captures the main structure. Changing amplitude, drifting midline, multiple frequencies, or irregular timing produce systematic residuals. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "Residuals should be small and patternless if the sinusoidal form captures the main structure. Changing amplitude, drifting midline, multiple frequencies, or irregular timing produce systematic residuals.",
+      "validStructure": "Amplitude, midline, period, and phase carry direct contextual meanings. Regression selects parameters that best fit noisy data but does not prove exact periodicity.",
+      "invalidMove": "A common error is to fit a sinusoid merely because data rise and fall once.",
+      "lessonId": "precalculus-u10-l12",
+      "lessonSequence": 12,
+      "lessonTitle": "Sinusoidal modeling and regression",
+      "lessonOutcome": "Fit and critique sinusoidal models using amplitude, midline, period, phase, residuals, and domain.",
+      "lessonGuide": {
+        "application": "Periodic regression supports climate, tides, daylight, acoustics, and mechanical monitoring.",
+        "bigIdea": [
+          "Sinusoidal modeling estimates a periodic relationship from observed extrema, timing, or regression.",
+          "Amplitude, midline, period, and phase carry direct contextual meanings. Regression selects parameters that best fit noisy data but does not prove exact periodicity."
+        ],
+        "method": [
+          "1. Estimate parameters from the graph or use regression, interpret units, state the evidence-supported domain, compare sine and cosine forms, and inspect residuals.",
+          "2. Extrapolation assumes the cycle remains stable. Seasonal and biological systems may change over time.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls sinusoidal modeling and regression?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "Extrapolation assumes the cycle remains stable. Seasonal and biological systems may change over time.",
+        "foundationWalkthrough": {
+          "problem": "Monthly daylight hours range from 9.1 to 15.3, with a maximum near day 172. Build a first sinusoidal model with period 365.",
+          "plan": "Estimate parameters from the graph or use regression, interpret units, state the evidence-supported domain, compare sine and cosine forms, and inspect residuals. Extrapolation assumes the cycle remains stable. Seasonal and biological systems may change over time.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Estimate parameters from the graph or use regression, interpret units, state the evidence-supported domain, compare sine and cosine forms, and inspect residuals. The relevant conditions are not optional bookkeeping: Extrapolation assumes the cycle remains stable. Seasonal and biological systems may change over time. Following that structure gives D(t)=12.2+3.1 cos[2pi(t-172)/365].",
+          "check": "Residuals should be small and patternless if the sinusoidal form captures the main structure. Changing amplitude, drifting midline, multiple frequencies, or irregular timing produce systematic residuals. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-functions-and-periodic-models/sinusoidal-modeling-and-regression/"
+    },
+    {
+      "id": "precalculus-u10-l12-v2",
+      "sequence": 2,
+      "role": "Mechanism figure",
+      "title": "Parameter meanings on one annual cycle",
+      "description": "Mechanism visual. Show the derivation, mapping, or changing parameter that makes the central relationship true. Mathematical mechanism: Residuals should be small and patternless if the sinusoidal form captures the main structure. Changing amplitude, drifting midline, multiple frequencies, or irregular timing produce systematic residuals. Opening context: Sinusoidal modeling and regression.",
+      "caption": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for sinusoidal modeling and regression.",
+      "anchorProblem": "Monthly daylight hours range from 9.1 to 15.3, with a maximum near day 172. Build a first sinusoidal model with period 365.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Estimate parameters from the graph or use regression, interpret units, state the evidence-supported domain, compare sine and cosine forms, and inspect residuals. The relevant conditions are not optional bookkeeping: Extrapolation assumes the cycle remains stable. Seasonal and biological systems may change over time. Following that structure gives D(t)=12.2+3.1 cos[2pi(t-172)/365].",
+      "anchorInterpretation": "Residuals should be small and patternless if the sinusoidal form captures the main structure. Changing amplitude, drifting midline, multiple frequencies, or irregular timing produce systematic residuals. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "Residuals should be small and patternless if the sinusoidal form captures the main structure. Changing amplitude, drifting midline, multiple frequencies, or irregular timing produce systematic residuals.",
+      "validStructure": "Amplitude, midline, period, and phase carry direct contextual meanings. Regression selects parameters that best fit noisy data but does not prove exact periodicity.",
+      "invalidMove": "A common error is to fit a sinusoid merely because data rise and fall once.",
+      "lessonId": "precalculus-u10-l12",
+      "lessonSequence": 12,
+      "lessonTitle": "Sinusoidal modeling and regression",
+      "lessonOutcome": "Fit and critique sinusoidal models using amplitude, midline, period, phase, residuals, and domain.",
+      "lessonGuide": {
+        "application": "Periodic regression supports climate, tides, daylight, acoustics, and mechanical monitoring.",
+        "bigIdea": [
+          "Sinusoidal modeling estimates a periodic relationship from observed extrema, timing, or regression.",
+          "Amplitude, midline, period, and phase carry direct contextual meanings. Regression selects parameters that best fit noisy data but does not prove exact periodicity."
+        ],
+        "method": [
+          "1. Estimate parameters from the graph or use regression, interpret units, state the evidence-supported domain, compare sine and cosine forms, and inspect residuals.",
+          "2. Extrapolation assumes the cycle remains stable. Seasonal and biological systems may change over time.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls sinusoidal modeling and regression?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "Extrapolation assumes the cycle remains stable. Seasonal and biological systems may change over time.",
+        "foundationWalkthrough": {
+          "problem": "Monthly daylight hours range from 9.1 to 15.3, with a maximum near day 172. Build a first sinusoidal model with period 365.",
+          "plan": "Estimate parameters from the graph or use regression, interpret units, state the evidence-supported domain, compare sine and cosine forms, and inspect residuals. Extrapolation assumes the cycle remains stable. Seasonal and biological systems may change over time.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Estimate parameters from the graph or use regression, interpret units, state the evidence-supported domain, compare sine and cosine forms, and inspect residuals. The relevant conditions are not optional bookkeeping: Extrapolation assumes the cycle remains stable. Seasonal and biological systems may change over time. Following that structure gives D(t)=12.2+3.1 cos[2pi(t-172)/365].",
+          "check": "Residuals should be small and patternless if the sinusoidal form captures the main structure. Changing amplitude, drifting midline, multiple frequencies, or irregular timing produce systematic residuals. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-functions-and-periodic-models/sinusoidal-modeling-and-regression/"
+    },
+    {
+      "id": "precalculus-u10-l12-v3",
+      "sequence": 3,
+      "role": "Comparison and error figure",
+      "title": "Damped or modulated waveform comparison",
+      "description": "Comparison visual. Place the valid structure beside the common misconception and mark the first point where they diverge. Mathematical mechanism: Residuals should be small and patternless if the sinusoidal form captures the main structure. Changing amplitude, drifting midline, multiple frequencies, or irregular timing produce systematic residuals. Opening context: Sinusoidal modeling and regression.",
+      "caption": "Compare the valid path with the tempting shortcut. The figure shows why to fit a sinusoid merely because data rise and fall once leads to a false conclusion.",
+      "anchorProblem": "Monthly daylight hours range from 9.1 to 15.3, with a maximum near day 172. Build a first sinusoidal model with period 365.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Estimate parameters from the graph or use regression, interpret units, state the evidence-supported domain, compare sine and cosine forms, and inspect residuals. The relevant conditions are not optional bookkeeping: Extrapolation assumes the cycle remains stable. Seasonal and biological systems may change over time. Following that structure gives D(t)=12.2+3.1 cos[2pi(t-172)/365].",
+      "anchorInterpretation": "Residuals should be small and patternless if the sinusoidal form captures the main structure. Changing amplitude, drifting midline, multiple frequencies, or irregular timing produce systematic residuals. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "Residuals should be small and patternless if the sinusoidal form captures the main structure. Changing amplitude, drifting midline, multiple frequencies, or irregular timing produce systematic residuals.",
+      "validStructure": "Amplitude, midline, period, and phase carry direct contextual meanings. Regression selects parameters that best fit noisy data but does not prove exact periodicity.",
+      "invalidMove": "A common error is to fit a sinusoid merely because data rise and fall once.",
+      "lessonId": "precalculus-u10-l12",
+      "lessonSequence": 12,
+      "lessonTitle": "Sinusoidal modeling and regression",
+      "lessonOutcome": "Fit and critique sinusoidal models using amplitude, midline, period, phase, residuals, and domain.",
+      "lessonGuide": {
+        "application": "Periodic regression supports climate, tides, daylight, acoustics, and mechanical monitoring.",
+        "bigIdea": [
+          "Sinusoidal modeling estimates a periodic relationship from observed extrema, timing, or regression.",
+          "Amplitude, midline, period, and phase carry direct contextual meanings. Regression selects parameters that best fit noisy data but does not prove exact periodicity."
+        ],
+        "method": [
+          "1. Estimate parameters from the graph or use regression, interpret units, state the evidence-supported domain, compare sine and cosine forms, and inspect residuals.",
+          "2. Extrapolation assumes the cycle remains stable. Seasonal and biological systems may change over time.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls sinusoidal modeling and regression?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "Extrapolation assumes the cycle remains stable. Seasonal and biological systems may change over time.",
+        "foundationWalkthrough": {
+          "problem": "Monthly daylight hours range from 9.1 to 15.3, with a maximum near day 172. Build a first sinusoidal model with period 365.",
+          "plan": "Estimate parameters from the graph or use regression, interpret units, state the evidence-supported domain, compare sine and cosine forms, and inspect residuals. Extrapolation assumes the cycle remains stable. Seasonal and biological systems may change over time.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Estimate parameters from the graph or use regression, interpret units, state the evidence-supported domain, compare sine and cosine forms, and inspect residuals. The relevant conditions are not optional bookkeeping: Extrapolation assumes the cycle remains stable. Seasonal and biological systems may change over time. Following that structure gives D(t)=12.2+3.1 cos[2pi(t-172)/365].",
+          "check": "Residuals should be small and patternless if the sinusoidal form captures the main structure. Changing amplitude, drifting midline, multiple frequencies, or irregular timing produce systematic residuals. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-functions-and-periodic-models/sinusoidal-modeling-and-regression/"
+    }
+  ]
+}

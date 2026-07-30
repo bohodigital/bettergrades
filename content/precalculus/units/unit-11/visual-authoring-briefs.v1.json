@@ -1,0 +1,1554 @@
+{
+  "schemaVersion": 1,
+  "unitId": "precalculus-unit-11",
+  "figures": [
+    {
+      "id": "precalculus-u11-l1-v1",
+      "sequence": 1,
+      "role": "Anchor figure",
+      "title": "Identity-versus-equation truth-set diagram",
+      "description": "Anchor visual. Establish the quantities, coordinate system, interval, or geometric condition used in the opening problem. Mathematical mechanism: The common domain matters because algebraic simplification can remove a factor that was originally zero or introduce a reciprocal that excludes additional inputs. Opening context: Identities, equations, and proof strategy.",
+      "caption": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The common domain matters because algebraic simplification can remove a factor that was originally zero or introduce a reciprocal that excludes additional inputs. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "anchorProblem": "Is (1-cos^2 x)/sin x=sin x an identity? State the exact common domain on which the equality is valid.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Begin with the more complicated side, preserve equality through each step, name the identity or algebraic operation used, and stop when the other side appears. Do not begin by assuming the two sides are equal. The relevant conditions are not optional bookkeeping: A proof is valid only where each written expression is defined. If the original statement has a restricted common domain, state it. Following that structure gives Yes where sin x is nonzero; the left side is undefined at integer multiples of pi.",
+      "anchorInterpretation": "The common domain matters because algebraic simplification can remove a factor that was originally zero or introduce a reciprocal that excludes additional inputs. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "The common domain matters because algebraic simplification can remove a factor that was originally zero or introduce a reciprocal that excludes additional inputs.",
+      "validStructure": "Identity verification is a proof task: the goal is to transform one expression through valid equivalences until it matches the other. Substituting sample values can detect false statements but cannot prove an identity over infinitely many inputs.",
+      "invalidMove": "A common error is circular reasoning: using the identity being proved, or multiplying both sides together in a way that assumes equality.",
+      "lessonId": "precalculus-u11-l1",
+      "lessonSequence": 1,
+      "lessonTitle": "Identities, equations, and proof strategy",
+      "lessonOutcome": "Distinguish identities from conditional equations and use valid one-sided transformation strategies.",
+      "lessonGuide": {
+        "application": "Identity reasoning supports simplification, equation solving, signal analysis, and later calculus manipulations.",
+        "bigIdea": [
+          "A trigonometric identity is an equation true for every input in the common domain of both sides. A conditional equation is true only for selected inputs.",
+          "Identity verification is a proof task: the goal is to transform one expression through valid equivalences until it matches the other. Substituting sample values can detect false statements but cannot prove an identity over infinitely many inputs."
+        ],
+        "method": [
+          "1. Begin with the more complicated side, preserve equality through each step, name the identity or algebraic operation used, and stop when the other side appears. Do not begin by assuming the two sides are equal.",
+          "2. A proof is valid only where each written expression is defined. If the original statement has a restricted common domain, state it.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls identities, equations, and proof strategy?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "A proof is valid only where each written expression is defined. If the original statement has a restricted common domain, state it.",
+        "foundationWalkthrough": {
+          "problem": "Is (1-cos^2 x)/sin x=sin x an identity? State the exact common domain on which the equality is valid.",
+          "plan": "Begin with the more complicated side, preserve equality through each step, name the identity or algebraic operation used, and stop when the other side appears. Do not begin by assuming the two sides are equal. A proof is valid only where each written expression is defined. If the original statement has a restricted common domain, state it.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Begin with the more complicated side, preserve equality through each step, name the identity or algebraic operation used, and stop when the other side appears. Do not begin by assuming the two sides are equal. The relevant conditions are not optional bookkeeping: A proof is valid only where each written expression is defined. If the original statement has a restricted common domain, state it. Following that structure gives Yes where sin x is nonzero; the left side is undefined at integer multiples of pi.",
+          "check": "The common domain matters because algebraic simplification can remove a factor that was originally zero or introduce a reciprocal that excludes additional inputs. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-identities-and-equations/identities-equations-and-proof-strategy/"
+    },
+    {
+      "id": "precalculus-u11-l1-v2",
+      "sequence": 2,
+      "role": "Mechanism figure",
+      "title": "Common-domain overlay",
+      "description": "Mechanism visual. Show the derivation, mapping, or changing parameter that makes the central relationship true. Mathematical mechanism: The common domain matters because algebraic simplification can remove a factor that was originally zero or introduce a reciprocal that excludes additional inputs. Opening context: Identities, equations, and proof strategy.",
+      "caption": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for identities, equations, and proof strategy.",
+      "anchorProblem": "Is (1-cos^2 x)/sin x=sin x an identity? State the exact common domain on which the equality is valid.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Begin with the more complicated side, preserve equality through each step, name the identity or algebraic operation used, and stop when the other side appears. Do not begin by assuming the two sides are equal. The relevant conditions are not optional bookkeeping: A proof is valid only where each written expression is defined. If the original statement has a restricted common domain, state it. Following that structure gives Yes where sin x is nonzero; the left side is undefined at integer multiples of pi.",
+      "anchorInterpretation": "The common domain matters because algebraic simplification can remove a factor that was originally zero or introduce a reciprocal that excludes additional inputs. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "The common domain matters because algebraic simplification can remove a factor that was originally zero or introduce a reciprocal that excludes additional inputs.",
+      "validStructure": "Identity verification is a proof task: the goal is to transform one expression through valid equivalences until it matches the other. Substituting sample values can detect false statements but cannot prove an identity over infinitely many inputs.",
+      "invalidMove": "A common error is circular reasoning: using the identity being proved, or multiplying both sides together in a way that assumes equality.",
+      "lessonId": "precalculus-u11-l1",
+      "lessonSequence": 1,
+      "lessonTitle": "Identities, equations, and proof strategy",
+      "lessonOutcome": "Distinguish identities from conditional equations and use valid one-sided transformation strategies.",
+      "lessonGuide": {
+        "application": "Identity reasoning supports simplification, equation solving, signal analysis, and later calculus manipulations.",
+        "bigIdea": [
+          "A trigonometric identity is an equation true for every input in the common domain of both sides. A conditional equation is true only for selected inputs.",
+          "Identity verification is a proof task: the goal is to transform one expression through valid equivalences until it matches the other. Substituting sample values can detect false statements but cannot prove an identity over infinitely many inputs."
+        ],
+        "method": [
+          "1. Begin with the more complicated side, preserve equality through each step, name the identity or algebraic operation used, and stop when the other side appears. Do not begin by assuming the two sides are equal.",
+          "2. A proof is valid only where each written expression is defined. If the original statement has a restricted common domain, state it.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls identities, equations, and proof strategy?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "A proof is valid only where each written expression is defined. If the original statement has a restricted common domain, state it.",
+        "foundationWalkthrough": {
+          "problem": "Is (1-cos^2 x)/sin x=sin x an identity? State the exact common domain on which the equality is valid.",
+          "plan": "Begin with the more complicated side, preserve equality through each step, name the identity or algebraic operation used, and stop when the other side appears. Do not begin by assuming the two sides are equal. A proof is valid only where each written expression is defined. If the original statement has a restricted common domain, state it.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Begin with the more complicated side, preserve equality through each step, name the identity or algebraic operation used, and stop when the other side appears. Do not begin by assuming the two sides are equal. The relevant conditions are not optional bookkeeping: A proof is valid only where each written expression is defined. If the original statement has a restricted common domain, state it. Following that structure gives Yes where sin x is nonzero; the left side is undefined at integer multiples of pi.",
+          "check": "The common domain matters because algebraic simplification can remove a factor that was originally zero or introduce a reciprocal that excludes additional inputs. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-identities-and-equations/identities-equations-and-proof-strategy/"
+    },
+    {
+      "id": "precalculus-u11-l1-v3",
+      "sequence": 3,
+      "role": "Comparison and error figure",
+      "title": "Valid one-sided proof versus circular proof",
+      "description": "Comparison visual. Place the valid structure beside the common misconception and mark the first point where they diverge. Mathematical mechanism: The common domain matters because algebraic simplification can remove a factor that was originally zero or introduce a reciprocal that excludes additional inputs. Opening context: Identities, equations, and proof strategy.",
+      "caption": "Compare the valid path with the tempting shortcut. The figure shows why circular reasoning: using the identity being proved, or multiplying both sides together in a way that assumes equality leads to a false conclusion.",
+      "anchorProblem": "Is (1-cos^2 x)/sin x=sin x an identity? State the exact common domain on which the equality is valid.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Begin with the more complicated side, preserve equality through each step, name the identity or algebraic operation used, and stop when the other side appears. Do not begin by assuming the two sides are equal. The relevant conditions are not optional bookkeeping: A proof is valid only where each written expression is defined. If the original statement has a restricted common domain, state it. Following that structure gives Yes where sin x is nonzero; the left side is undefined at integer multiples of pi.",
+      "anchorInterpretation": "The common domain matters because algebraic simplification can remove a factor that was originally zero or introduce a reciprocal that excludes additional inputs. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "The common domain matters because algebraic simplification can remove a factor that was originally zero or introduce a reciprocal that excludes additional inputs.",
+      "validStructure": "Identity verification is a proof task: the goal is to transform one expression through valid equivalences until it matches the other. Substituting sample values can detect false statements but cannot prove an identity over infinitely many inputs.",
+      "invalidMove": "A common error is circular reasoning: using the identity being proved, or multiplying both sides together in a way that assumes equality.",
+      "lessonId": "precalculus-u11-l1",
+      "lessonSequence": 1,
+      "lessonTitle": "Identities, equations, and proof strategy",
+      "lessonOutcome": "Distinguish identities from conditional equations and use valid one-sided transformation strategies.",
+      "lessonGuide": {
+        "application": "Identity reasoning supports simplification, equation solving, signal analysis, and later calculus manipulations.",
+        "bigIdea": [
+          "A trigonometric identity is an equation true for every input in the common domain of both sides. A conditional equation is true only for selected inputs.",
+          "Identity verification is a proof task: the goal is to transform one expression through valid equivalences until it matches the other. Substituting sample values can detect false statements but cannot prove an identity over infinitely many inputs."
+        ],
+        "method": [
+          "1. Begin with the more complicated side, preserve equality through each step, name the identity or algebraic operation used, and stop when the other side appears. Do not begin by assuming the two sides are equal.",
+          "2. A proof is valid only where each written expression is defined. If the original statement has a restricted common domain, state it.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls identities, equations, and proof strategy?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "A proof is valid only where each written expression is defined. If the original statement has a restricted common domain, state it.",
+        "foundationWalkthrough": {
+          "problem": "Is (1-cos^2 x)/sin x=sin x an identity? State the exact common domain on which the equality is valid.",
+          "plan": "Begin with the more complicated side, preserve equality through each step, name the identity or algebraic operation used, and stop when the other side appears. Do not begin by assuming the two sides are equal. A proof is valid only where each written expression is defined. If the original statement has a restricted common domain, state it.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Begin with the more complicated side, preserve equality through each step, name the identity or algebraic operation used, and stop when the other side appears. Do not begin by assuming the two sides are equal. The relevant conditions are not optional bookkeeping: A proof is valid only where each written expression is defined. If the original statement has a restricted common domain, state it. Following that structure gives Yes where sin x is nonzero; the left side is undefined at integer multiples of pi.",
+          "check": "The common domain matters because algebraic simplification can remove a factor that was originally zero or introduce a reciprocal that excludes additional inputs. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-identities-and-equations/identities-equations-and-proof-strategy/"
+    },
+    {
+      "id": "precalculus-u11-l2-v1",
+      "sequence": 1,
+      "role": "Anchor figure",
+      "title": "Unit-circle identity triangle",
+      "description": "Anchor visual. Establish the quantities, coordinate system, interval, or geometric condition used in the opening problem. Mathematical mechanism: These identities are function equalities on common domains, so division-based versions exclude inputs where the divisor is zero. Opening context: Reciprocal, quotient, and Pythagorean identities.",
+      "caption": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: These identities are function equalities on common domains, so division-based versions exclude inputs where the divisor is zero. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "anchorProblem": "Starting from sin^2 x+cos^2 x=1, derive 1+tan^2 x=sec^2 x and state its domain.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. When simplifying, choose the identity that replaces the most complicated structure. Converting everything to sine and cosine is reliable but not always shortest. The relevant conditions are not optional bookkeeping: Squared notation means (sin x)^2, not sin(x^2). Following that structure gives Divide by cos^2 x where cos x is nonzero.",
+      "anchorInterpretation": "These identities are function equalities on common domains, so division-based versions exclude inputs where the divisor is zero. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "These identities are function equalities on common domains, so division-based versions exclude inputs where the divisor is zero.",
+      "validStructure": "Reciprocal identities follow from definitions. Quotient identities are tan=sin/cos and cot=cos/sin. The Pythagorean identity sin^2+cos^2=1 comes from the unit circle, and division by cos^2 or sin^2 yields the tangent-secant and cotangent-cosecant forms.",
+      "invalidMove": "A common error is to write sin^2 x+cos^2 x as (sin x+cos x)^2 or to omit the cross term when reversing.",
+      "lessonId": "precalculus-u11-l2",
+      "lessonSequence": 2,
+      "lessonTitle": "Reciprocal, quotient, and Pythagorean identities",
+      "lessonOutcome": "Derive and apply the fundamental trig identities from unit-circle coordinates.",
+      "lessonGuide": {
+        "application": "The identities provide the algebraic vocabulary for every later trig proof and equation.",
+        "bigIdea": [
+          "The fundamental identities connect the six trigonometric functions through reciprocal, quotient, and unit-circle relationships.",
+          "Reciprocal identities follow from definitions. Quotient identities are tan=sin/cos and cot=cos/sin. The Pythagorean identity sin^2+cos^2=1 comes from the unit circle, and division by cos^2 or sin^2 yields the tangent-secant and cotangent-cosecant forms."
+        ],
+        "method": [
+          "1. When simplifying, choose the identity that replaces the most complicated structure. Converting everything to sine and cosine is reliable but not always shortest.",
+          "2. Squared notation means (sin x)^2, not sin(x^2).",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls reciprocal, quotient, and pythagorean identities?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "Squared notation means (sin x)^2, not sin(x^2).",
+        "foundationWalkthrough": {
+          "problem": "Starting from sin^2 x+cos^2 x=1, derive 1+tan^2 x=sec^2 x and state its domain.",
+          "plan": "When simplifying, choose the identity that replaces the most complicated structure. Converting everything to sine and cosine is reliable but not always shortest. Squared notation means (sin x)^2, not sin(x^2).",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. When simplifying, choose the identity that replaces the most complicated structure. Converting everything to sine and cosine is reliable but not always shortest. The relevant conditions are not optional bookkeeping: Squared notation means (sin x)^2, not sin(x^2). Following that structure gives Divide by cos^2 x where cos x is nonzero.",
+          "check": "These identities are function equalities on common domains, so division-based versions exclude inputs where the divisor is zero. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-identities-and-equations/reciprocal-quotient-and-pythagorean-identities/"
+    },
+    {
+      "id": "precalculus-u11-l2-v2",
+      "sequence": 2,
+      "role": "Mechanism figure",
+      "title": "Division derivations with domain notes",
+      "description": "Mechanism visual. Show the derivation, mapping, or changing parameter that makes the central relationship true. Mathematical mechanism: These identities are function equalities on common domains, so division-based versions exclude inputs where the divisor is zero. Opening context: Reciprocal, quotient, and Pythagorean identities.",
+      "caption": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for reciprocal, quotient, and pythagorean identities.",
+      "anchorProblem": "Starting from sin^2 x+cos^2 x=1, derive 1+tan^2 x=sec^2 x and state its domain.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. When simplifying, choose the identity that replaces the most complicated structure. Converting everything to sine and cosine is reliable but not always shortest. The relevant conditions are not optional bookkeeping: Squared notation means (sin x)^2, not sin(x^2). Following that structure gives Divide by cos^2 x where cos x is nonzero.",
+      "anchorInterpretation": "These identities are function equalities on common domains, so division-based versions exclude inputs where the divisor is zero. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "These identities are function equalities on common domains, so division-based versions exclude inputs where the divisor is zero.",
+      "validStructure": "Reciprocal identities follow from definitions. Quotient identities are tan=sin/cos and cot=cos/sin. The Pythagorean identity sin^2+cos^2=1 comes from the unit circle, and division by cos^2 or sin^2 yields the tangent-secant and cotangent-cosecant forms.",
+      "invalidMove": "A common error is to write sin^2 x+cos^2 x as (sin x+cos x)^2 or to omit the cross term when reversing.",
+      "lessonId": "precalculus-u11-l2",
+      "lessonSequence": 2,
+      "lessonTitle": "Reciprocal, quotient, and Pythagorean identities",
+      "lessonOutcome": "Derive and apply the fundamental trig identities from unit-circle coordinates.",
+      "lessonGuide": {
+        "application": "The identities provide the algebraic vocabulary for every later trig proof and equation.",
+        "bigIdea": [
+          "The fundamental identities connect the six trigonometric functions through reciprocal, quotient, and unit-circle relationships.",
+          "Reciprocal identities follow from definitions. Quotient identities are tan=sin/cos and cot=cos/sin. The Pythagorean identity sin^2+cos^2=1 comes from the unit circle, and division by cos^2 or sin^2 yields the tangent-secant and cotangent-cosecant forms."
+        ],
+        "method": [
+          "1. When simplifying, choose the identity that replaces the most complicated structure. Converting everything to sine and cosine is reliable but not always shortest.",
+          "2. Squared notation means (sin x)^2, not sin(x^2).",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls reciprocal, quotient, and pythagorean identities?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "Squared notation means (sin x)^2, not sin(x^2).",
+        "foundationWalkthrough": {
+          "problem": "Starting from sin^2 x+cos^2 x=1, derive 1+tan^2 x=sec^2 x and state its domain.",
+          "plan": "When simplifying, choose the identity that replaces the most complicated structure. Converting everything to sine and cosine is reliable but not always shortest. Squared notation means (sin x)^2, not sin(x^2).",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. When simplifying, choose the identity that replaces the most complicated structure. Converting everything to sine and cosine is reliable but not always shortest. The relevant conditions are not optional bookkeeping: Squared notation means (sin x)^2, not sin(x^2). Following that structure gives Divide by cos^2 x where cos x is nonzero.",
+          "check": "These identities are function equalities on common domains, so division-based versions exclude inputs where the divisor is zero. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-identities-and-equations/reciprocal-quotient-and-pythagorean-identities/"
+    },
+    {
+      "id": "precalculus-u11-l2-v3",
+      "sequence": 3,
+      "role": "Comparison and error figure",
+      "title": "Reciprocal-quotient identity web",
+      "description": "Comparison visual. Place the valid structure beside the common misconception and mark the first point where they diverge. Mathematical mechanism: These identities are function equalities on common domains, so division-based versions exclude inputs where the divisor is zero. Opening context: Reciprocal, quotient, and Pythagorean identities.",
+      "caption": "Compare the valid path with the tempting shortcut. The figure shows why to write sin^2 x+cos^2 x as (sin x+cos x)^2 or to omit the cross term when reversing leads to a false conclusion.",
+      "anchorProblem": "Starting from sin^2 x+cos^2 x=1, derive 1+tan^2 x=sec^2 x and state its domain.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. When simplifying, choose the identity that replaces the most complicated structure. Converting everything to sine and cosine is reliable but not always shortest. The relevant conditions are not optional bookkeeping: Squared notation means (sin x)^2, not sin(x^2). Following that structure gives Divide by cos^2 x where cos x is nonzero.",
+      "anchorInterpretation": "These identities are function equalities on common domains, so division-based versions exclude inputs where the divisor is zero. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "These identities are function equalities on common domains, so division-based versions exclude inputs where the divisor is zero.",
+      "validStructure": "Reciprocal identities follow from definitions. Quotient identities are tan=sin/cos and cot=cos/sin. The Pythagorean identity sin^2+cos^2=1 comes from the unit circle, and division by cos^2 or sin^2 yields the tangent-secant and cotangent-cosecant forms.",
+      "invalidMove": "A common error is to write sin^2 x+cos^2 x as (sin x+cos x)^2 or to omit the cross term when reversing.",
+      "lessonId": "precalculus-u11-l2",
+      "lessonSequence": 2,
+      "lessonTitle": "Reciprocal, quotient, and Pythagorean identities",
+      "lessonOutcome": "Derive and apply the fundamental trig identities from unit-circle coordinates.",
+      "lessonGuide": {
+        "application": "The identities provide the algebraic vocabulary for every later trig proof and equation.",
+        "bigIdea": [
+          "The fundamental identities connect the six trigonometric functions through reciprocal, quotient, and unit-circle relationships.",
+          "Reciprocal identities follow from definitions. Quotient identities are tan=sin/cos and cot=cos/sin. The Pythagorean identity sin^2+cos^2=1 comes from the unit circle, and division by cos^2 or sin^2 yields the tangent-secant and cotangent-cosecant forms."
+        ],
+        "method": [
+          "1. When simplifying, choose the identity that replaces the most complicated structure. Converting everything to sine and cosine is reliable but not always shortest.",
+          "2. Squared notation means (sin x)^2, not sin(x^2).",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls reciprocal, quotient, and pythagorean identities?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "Squared notation means (sin x)^2, not sin(x^2).",
+        "foundationWalkthrough": {
+          "problem": "Starting from sin^2 x+cos^2 x=1, derive 1+tan^2 x=sec^2 x and state its domain.",
+          "plan": "When simplifying, choose the identity that replaces the most complicated structure. Converting everything to sine and cosine is reliable but not always shortest. Squared notation means (sin x)^2, not sin(x^2).",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. When simplifying, choose the identity that replaces the most complicated structure. Converting everything to sine and cosine is reliable but not always shortest. The relevant conditions are not optional bookkeeping: Squared notation means (sin x)^2, not sin(x^2). Following that structure gives Divide by cos^2 x where cos x is nonzero.",
+          "check": "These identities are function equalities on common domains, so division-based versions exclude inputs where the divisor is zero. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-identities-and-equations/reciprocal-quotient-and-pythagorean-identities/"
+    },
+    {
+      "id": "precalculus-u11-l3-v1",
+      "sequence": 1,
+      "role": "Anchor figure",
+      "title": "Strategy decision tree",
+      "description": "Anchor visual. Establish the quantities, coordinate system, interval, or geometric condition used in the opening problem. Mathematical mechanism: Working from the more complicated side avoids replacing a simple target with a larger expression. Sometimes both sides may be transformed independently to the same third expression, but the logic must remain clear. Opening context: Verifying identities strategically.",
+      "caption": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Working from the more complicated side avoids replacing a simple target with a larger expression. Sometimes both sides may be transformed independently to the same third expression, but the logic must remain clear. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "anchorProblem": "Verify (1-cos x)/sin x=sin x/(1+cos x) on the common domain.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Before writing steps, inventory reciprocals, quotients, Pythagorean pairs, factorizations, and conjugate patterns. After each step, check that it is reversible on the stated domain. The relevant conditions are not optional bookkeeping: There is rarely one unique proof. A shorter proof is not automatically better if it hides a domain restriction or unexplained step. Following that structure gives Multiply the left side by (1+cos x)/(1+cos x) and use 1-cos^2 x=sin^2 x.",
+      "anchorInterpretation": "Working from the more complicated side avoids replacing a simple target with a larger expression. Sometimes both sides may be transformed independently to the same third expression, but the logic must remain clear. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "Working from the more complicated side avoids replacing a simple target with a larger expression. Sometimes both sides may be transformed independently to the same third expression, but the logic must remain clear.",
+      "validStructure": "A proof usually becomes easier when one expression is converted into a common function language or when a denominator is rationalized using a conjugate. The choice depends on visible structure.",
+      "invalidMove": "A common error is cancelling across addition, such as removing sin x from sin x+1 over sin x.",
+      "lessonId": "precalculus-u11-l3",
+      "lessonSequence": 3,
+      "lessonTitle": "Verifying identities strategically",
+      "lessonOutcome": "Select factoring, common denominators, conjugates, or sine-cosine conversion to verify identities.",
+      "lessonGuide": {
+        "application": "Proof strategy trains the same structure recognition used in algebra, calculus, and mathematical writing.",
+        "bigIdea": [
+          "Strategic identity verification combines trigonometric identities with factoring, common denominators, conjugates, and algebraic simplification.",
+          "A proof usually becomes easier when one expression is converted into a common function language or when a denominator is rationalized using a conjugate. The choice depends on visible structure."
+        ],
+        "method": [
+          "1. Before writing steps, inventory reciprocals, quotients, Pythagorean pairs, factorizations, and conjugate patterns. After each step, check that it is reversible on the stated domain.",
+          "2. There is rarely one unique proof. A shorter proof is not automatically better if it hides a domain restriction or unexplained step.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls verifying identities strategically?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "There is rarely one unique proof. A shorter proof is not automatically better if it hides a domain restriction or unexplained step.",
+        "foundationWalkthrough": {
+          "problem": "Verify (1-cos x)/sin x=sin x/(1+cos x) on the common domain.",
+          "plan": "Before writing steps, inventory reciprocals, quotients, Pythagorean pairs, factorizations, and conjugate patterns. After each step, check that it is reversible on the stated domain. There is rarely one unique proof. A shorter proof is not automatically better if it hides a domain restriction or unexplained step.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Before writing steps, inventory reciprocals, quotients, Pythagorean pairs, factorizations, and conjugate patterns. After each step, check that it is reversible on the stated domain. The relevant conditions are not optional bookkeeping: There is rarely one unique proof. A shorter proof is not automatically better if it hides a domain restriction or unexplained step. Following that structure gives Multiply the left side by (1+cos x)/(1+cos x) and use 1-cos^2 x=sin^2 x.",
+          "check": "Working from the more complicated side avoids replacing a simple target with a larger expression. Sometimes both sides may be transformed independently to the same third expression, but the logic must remain clear. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-identities-and-equations/verifying-identities-strategically/"
+    },
+    {
+      "id": "precalculus-u11-l3-v2",
+      "sequence": 2,
+      "role": "Mechanism figure",
+      "title": "Conjugate multiplication mechanism",
+      "description": "Mechanism visual. Show the derivation, mapping, or changing parameter that makes the central relationship true. Mathematical mechanism: Working from the more complicated side avoids replacing a simple target with a larger expression. Sometimes both sides may be transformed independently to the same third expression, but the logic must remain clear. Opening context: Verifying identities strategically.",
+      "caption": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for verifying identities strategically.",
+      "anchorProblem": "Verify (1-cos x)/sin x=sin x/(1+cos x) on the common domain.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Before writing steps, inventory reciprocals, quotients, Pythagorean pairs, factorizations, and conjugate patterns. After each step, check that it is reversible on the stated domain. The relevant conditions are not optional bookkeeping: There is rarely one unique proof. A shorter proof is not automatically better if it hides a domain restriction or unexplained step. Following that structure gives Multiply the left side by (1+cos x)/(1+cos x) and use 1-cos^2 x=sin^2 x.",
+      "anchorInterpretation": "Working from the more complicated side avoids replacing a simple target with a larger expression. Sometimes both sides may be transformed independently to the same third expression, but the logic must remain clear. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "Working from the more complicated side avoids replacing a simple target with a larger expression. Sometimes both sides may be transformed independently to the same third expression, but the logic must remain clear.",
+      "validStructure": "A proof usually becomes easier when one expression is converted into a common function language or when a denominator is rationalized using a conjugate. The choice depends on visible structure.",
+      "invalidMove": "A common error is cancelling across addition, such as removing sin x from sin x+1 over sin x.",
+      "lessonId": "precalculus-u11-l3",
+      "lessonSequence": 3,
+      "lessonTitle": "Verifying identities strategically",
+      "lessonOutcome": "Select factoring, common denominators, conjugates, or sine-cosine conversion to verify identities.",
+      "lessonGuide": {
+        "application": "Proof strategy trains the same structure recognition used in algebra, calculus, and mathematical writing.",
+        "bigIdea": [
+          "Strategic identity verification combines trigonometric identities with factoring, common denominators, conjugates, and algebraic simplification.",
+          "A proof usually becomes easier when one expression is converted into a common function language or when a denominator is rationalized using a conjugate. The choice depends on visible structure."
+        ],
+        "method": [
+          "1. Before writing steps, inventory reciprocals, quotients, Pythagorean pairs, factorizations, and conjugate patterns. After each step, check that it is reversible on the stated domain.",
+          "2. There is rarely one unique proof. A shorter proof is not automatically better if it hides a domain restriction or unexplained step.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls verifying identities strategically?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "There is rarely one unique proof. A shorter proof is not automatically better if it hides a domain restriction or unexplained step.",
+        "foundationWalkthrough": {
+          "problem": "Verify (1-cos x)/sin x=sin x/(1+cos x) on the common domain.",
+          "plan": "Before writing steps, inventory reciprocals, quotients, Pythagorean pairs, factorizations, and conjugate patterns. After each step, check that it is reversible on the stated domain. There is rarely one unique proof. A shorter proof is not automatically better if it hides a domain restriction or unexplained step.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Before writing steps, inventory reciprocals, quotients, Pythagorean pairs, factorizations, and conjugate patterns. After each step, check that it is reversible on the stated domain. The relevant conditions are not optional bookkeeping: There is rarely one unique proof. A shorter proof is not automatically better if it hides a domain restriction or unexplained step. Following that structure gives Multiply the left side by (1+cos x)/(1+cos x) and use 1-cos^2 x=sin^2 x.",
+          "check": "Working from the more complicated side avoids replacing a simple target with a larger expression. Sometimes both sides may be transformed independently to the same third expression, but the logic must remain clear. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-identities-and-equations/verifying-identities-strategically/"
+    },
+    {
+      "id": "precalculus-u11-l3-v3",
+      "sequence": 3,
+      "role": "Comparison and error figure",
+      "title": "Before-and-after complexity comparison",
+      "description": "Comparison visual. Place the valid structure beside the common misconception and mark the first point where they diverge. Mathematical mechanism: Working from the more complicated side avoids replacing a simple target with a larger expression. Sometimes both sides may be transformed independently to the same third expression, but the logic must remain clear. Opening context: Verifying identities strategically.",
+      "caption": "Compare the valid path with the tempting shortcut. The figure shows why cancelling across addition, such as removing sin x from sin x+1 over sin x leads to a false conclusion.",
+      "anchorProblem": "Verify (1-cos x)/sin x=sin x/(1+cos x) on the common domain.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Before writing steps, inventory reciprocals, quotients, Pythagorean pairs, factorizations, and conjugate patterns. After each step, check that it is reversible on the stated domain. The relevant conditions are not optional bookkeeping: There is rarely one unique proof. A shorter proof is not automatically better if it hides a domain restriction or unexplained step. Following that structure gives Multiply the left side by (1+cos x)/(1+cos x) and use 1-cos^2 x=sin^2 x.",
+      "anchorInterpretation": "Working from the more complicated side avoids replacing a simple target with a larger expression. Sometimes both sides may be transformed independently to the same third expression, but the logic must remain clear. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "Working from the more complicated side avoids replacing a simple target with a larger expression. Sometimes both sides may be transformed independently to the same third expression, but the logic must remain clear.",
+      "validStructure": "A proof usually becomes easier when one expression is converted into a common function language or when a denominator is rationalized using a conjugate. The choice depends on visible structure.",
+      "invalidMove": "A common error is cancelling across addition, such as removing sin x from sin x+1 over sin x.",
+      "lessonId": "precalculus-u11-l3",
+      "lessonSequence": 3,
+      "lessonTitle": "Verifying identities strategically",
+      "lessonOutcome": "Select factoring, common denominators, conjugates, or sine-cosine conversion to verify identities.",
+      "lessonGuide": {
+        "application": "Proof strategy trains the same structure recognition used in algebra, calculus, and mathematical writing.",
+        "bigIdea": [
+          "Strategic identity verification combines trigonometric identities with factoring, common denominators, conjugates, and algebraic simplification.",
+          "A proof usually becomes easier when one expression is converted into a common function language or when a denominator is rationalized using a conjugate. The choice depends on visible structure."
+        ],
+        "method": [
+          "1. Before writing steps, inventory reciprocals, quotients, Pythagorean pairs, factorizations, and conjugate patterns. After each step, check that it is reversible on the stated domain.",
+          "2. There is rarely one unique proof. A shorter proof is not automatically better if it hides a domain restriction or unexplained step.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls verifying identities strategically?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "There is rarely one unique proof. A shorter proof is not automatically better if it hides a domain restriction or unexplained step.",
+        "foundationWalkthrough": {
+          "problem": "Verify (1-cos x)/sin x=sin x/(1+cos x) on the common domain.",
+          "plan": "Before writing steps, inventory reciprocals, quotients, Pythagorean pairs, factorizations, and conjugate patterns. After each step, check that it is reversible on the stated domain. There is rarely one unique proof. A shorter proof is not automatically better if it hides a domain restriction or unexplained step.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Before writing steps, inventory reciprocals, quotients, Pythagorean pairs, factorizations, and conjugate patterns. After each step, check that it is reversible on the stated domain. The relevant conditions are not optional bookkeeping: There is rarely one unique proof. A shorter proof is not automatically better if it hides a domain restriction or unexplained step. Following that structure gives Multiply the left side by (1+cos x)/(1+cos x) and use 1-cos^2 x=sin^2 x.",
+          "check": "Working from the more complicated side avoids replacing a simple target with a larger expression. Sometimes both sides may be transformed independently to the same third expression, but the logic must remain clear. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-identities-and-equations/verifying-identities-strategically/"
+    },
+    {
+      "id": "precalculus-u11-l4-v1",
+      "sequence": 1,
+      "role": "Anchor figure",
+      "title": "Geometric derivation using rotated vectors",
+      "description": "Anchor visual. Establish the quantities, coordinate system, interval, or geometric condition used in the opening problem. Mathematical mechanism: The formulas preserve both magnitude and sign interactions; they are not obtained by distributing sine or cosine across addition. Opening context: Sum and difference formulas.",
+      "caption": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The formulas preserve both magnitude and sign interactions; they are not obtained by distributing sine or cosine across addition. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "anchorProblem": "Find cos 15 degrees exactly without a calculator.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Choose angles with known exact values, apply the correct formula with parentheses, simplify radicals, and use quadrant reasoning to check the sign. The relevant conditions are not optional bookkeeping: Tangent sum formulas require denominators to be nonzero and should be used only where all expressions are defined. Following that structure gives cos(45-30)=(sqrt(6)+sqrt(2))/4.",
+      "anchorInterpretation": "The formulas preserve both magnitude and sign interactions; they are not obtained by distributing sine or cosine across addition. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "The formulas preserve both magnitude and sign interactions; they are not obtained by distributing sine or cosine across addition.",
+      "validStructure": "The cosine difference formula can be derived from distances or dot products between unit-circle points. The other formulas follow by substitutions, cofunction relationships, and quotient definitions.",
+      "invalidMove": "A common error is writing sin(a+b)=sin a+sin b or losing the negative sign in cosine’s formula.",
+      "lessonId": "precalculus-u11-l4",
+      "lessonSequence": 4,
+      "lessonTitle": "Sum and difference formulas",
+      "lessonOutcome": "Derive and apply sine, cosine, and tangent sum and difference formulas.",
+      "lessonGuide": {
+        "application": "Angle addition supports exact values, rotations, signal combination, and derivation of double-angle formulas.",
+        "bigIdea": [
+          "Sum and difference formulas express trig values of combined angles in terms of the separate angles.",
+          "The cosine difference formula can be derived from distances or dot products between unit-circle points. The other formulas follow by substitutions, cofunction relationships, and quotient definitions."
+        ],
+        "method": [
+          "1. Choose angles with known exact values, apply the correct formula with parentheses, simplify radicals, and use quadrant reasoning to check the sign.",
+          "2. Tangent sum formulas require denominators to be nonzero and should be used only where all expressions are defined.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls sum and difference formulas?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "Tangent sum formulas require denominators to be nonzero and should be used only where all expressions are defined.",
+        "foundationWalkthrough": {
+          "problem": "Find cos 15 degrees exactly without a calculator.",
+          "plan": "Choose angles with known exact values, apply the correct formula with parentheses, simplify radicals, and use quadrant reasoning to check the sign. Tangent sum formulas require denominators to be nonzero and should be used only where all expressions are defined.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Choose angles with known exact values, apply the correct formula with parentheses, simplify radicals, and use quadrant reasoning to check the sign. The relevant conditions are not optional bookkeeping: Tangent sum formulas require denominators to be nonzero and should be used only where all expressions are defined. Following that structure gives cos(45-30)=(sqrt(6)+sqrt(2))/4.",
+          "check": "The formulas preserve both magnitude and sign interactions; they are not obtained by distributing sine or cosine across addition. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-identities-and-equations/sum-and-difference-formulas/"
+    },
+    {
+      "id": "precalculus-u11-l4-v2",
+      "sequence": 2,
+      "role": "Mechanism figure",
+      "title": "Exact-angle decomposition map",
+      "description": "Mechanism visual. Show the derivation, mapping, or changing parameter that makes the central relationship true. Mathematical mechanism: The formulas preserve both magnitude and sign interactions; they are not obtained by distributing sine or cosine across addition. Opening context: Sum and difference formulas.",
+      "caption": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for sum and difference formulas.",
+      "anchorProblem": "Find cos 15 degrees exactly without a calculator.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Choose angles with known exact values, apply the correct formula with parentheses, simplify radicals, and use quadrant reasoning to check the sign. The relevant conditions are not optional bookkeeping: Tangent sum formulas require denominators to be nonzero and should be used only where all expressions are defined. Following that structure gives cos(45-30)=(sqrt(6)+sqrt(2))/4.",
+      "anchorInterpretation": "The formulas preserve both magnitude and sign interactions; they are not obtained by distributing sine or cosine across addition. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "The formulas preserve both magnitude and sign interactions; they are not obtained by distributing sine or cosine across addition.",
+      "validStructure": "The cosine difference formula can be derived from distances or dot products between unit-circle points. The other formulas follow by substitutions, cofunction relationships, and quotient definitions.",
+      "invalidMove": "A common error is writing sin(a+b)=sin a+sin b or losing the negative sign in cosine’s formula.",
+      "lessonId": "precalculus-u11-l4",
+      "lessonSequence": 4,
+      "lessonTitle": "Sum and difference formulas",
+      "lessonOutcome": "Derive and apply sine, cosine, and tangent sum and difference formulas.",
+      "lessonGuide": {
+        "application": "Angle addition supports exact values, rotations, signal combination, and derivation of double-angle formulas.",
+        "bigIdea": [
+          "Sum and difference formulas express trig values of combined angles in terms of the separate angles.",
+          "The cosine difference formula can be derived from distances or dot products between unit-circle points. The other formulas follow by substitutions, cofunction relationships, and quotient definitions."
+        ],
+        "method": [
+          "1. Choose angles with known exact values, apply the correct formula with parentheses, simplify radicals, and use quadrant reasoning to check the sign.",
+          "2. Tangent sum formulas require denominators to be nonzero and should be used only where all expressions are defined.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls sum and difference formulas?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "Tangent sum formulas require denominators to be nonzero and should be used only where all expressions are defined.",
+        "foundationWalkthrough": {
+          "problem": "Find cos 15 degrees exactly without a calculator.",
+          "plan": "Choose angles with known exact values, apply the correct formula with parentheses, simplify radicals, and use quadrant reasoning to check the sign. Tangent sum formulas require denominators to be nonzero and should be used only where all expressions are defined.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Choose angles with known exact values, apply the correct formula with parentheses, simplify radicals, and use quadrant reasoning to check the sign. The relevant conditions are not optional bookkeeping: Tangent sum formulas require denominators to be nonzero and should be used only where all expressions are defined. Following that structure gives cos(45-30)=(sqrt(6)+sqrt(2))/4.",
+          "check": "The formulas preserve both magnitude and sign interactions; they are not obtained by distributing sine or cosine across addition. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-identities-and-equations/sum-and-difference-formulas/"
+    },
+    {
+      "id": "precalculus-u11-l4-v3",
+      "sequence": 3,
+      "role": "Comparison and error figure",
+      "title": "Signal phase-combination diagram",
+      "description": "Comparison visual. Place the valid structure beside the common misconception and mark the first point where they diverge. Mathematical mechanism: The formulas preserve both magnitude and sign interactions; they are not obtained by distributing sine or cosine across addition. Opening context: Sum and difference formulas.",
+      "caption": "Compare the valid path with the tempting shortcut. The figure shows why writing sin(a+b)=sin a+sin b or losing the negative sign in cosine’s formula leads to a false conclusion.",
+      "anchorProblem": "Find cos 15 degrees exactly without a calculator.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Choose angles with known exact values, apply the correct formula with parentheses, simplify radicals, and use quadrant reasoning to check the sign. The relevant conditions are not optional bookkeeping: Tangent sum formulas require denominators to be nonzero and should be used only where all expressions are defined. Following that structure gives cos(45-30)=(sqrt(6)+sqrt(2))/4.",
+      "anchorInterpretation": "The formulas preserve both magnitude and sign interactions; they are not obtained by distributing sine or cosine across addition. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "The formulas preserve both magnitude and sign interactions; they are not obtained by distributing sine or cosine across addition.",
+      "validStructure": "The cosine difference formula can be derived from distances or dot products between unit-circle points. The other formulas follow by substitutions, cofunction relationships, and quotient definitions.",
+      "invalidMove": "A common error is writing sin(a+b)=sin a+sin b or losing the negative sign in cosine’s formula.",
+      "lessonId": "precalculus-u11-l4",
+      "lessonSequence": 4,
+      "lessonTitle": "Sum and difference formulas",
+      "lessonOutcome": "Derive and apply sine, cosine, and tangent sum and difference formulas.",
+      "lessonGuide": {
+        "application": "Angle addition supports exact values, rotations, signal combination, and derivation of double-angle formulas.",
+        "bigIdea": [
+          "Sum and difference formulas express trig values of combined angles in terms of the separate angles.",
+          "The cosine difference formula can be derived from distances or dot products between unit-circle points. The other formulas follow by substitutions, cofunction relationships, and quotient definitions."
+        ],
+        "method": [
+          "1. Choose angles with known exact values, apply the correct formula with parentheses, simplify radicals, and use quadrant reasoning to check the sign.",
+          "2. Tangent sum formulas require denominators to be nonzero and should be used only where all expressions are defined.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls sum and difference formulas?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "Tangent sum formulas require denominators to be nonzero and should be used only where all expressions are defined.",
+        "foundationWalkthrough": {
+          "problem": "Find cos 15 degrees exactly without a calculator.",
+          "plan": "Choose angles with known exact values, apply the correct formula with parentheses, simplify radicals, and use quadrant reasoning to check the sign. Tangent sum formulas require denominators to be nonzero and should be used only where all expressions are defined.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Choose angles with known exact values, apply the correct formula with parentheses, simplify radicals, and use quadrant reasoning to check the sign. The relevant conditions are not optional bookkeeping: Tangent sum formulas require denominators to be nonzero and should be used only where all expressions are defined. Following that structure gives cos(45-30)=(sqrt(6)+sqrt(2))/4.",
+          "check": "The formulas preserve both magnitude and sign interactions; they are not obtained by distributing sine or cosine across addition. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-identities-and-equations/sum-and-difference-formulas/"
+    },
+    {
+      "id": "precalculus-u11-l5-v1",
+      "sequence": 1,
+      "role": "Anchor figure",
+      "title": "Double-angle derivation from sum formulas",
+      "description": "Anchor visual. Establish the quantities, coordinate system, interval, or geometric condition used in the opening problem. Mathematical mechanism: Different cosine forms are useful depending on which function must be eliminated. Opening context: Double-angle formulas.",
+      "caption": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Different cosine forms are useful depending on which function must be eliminated. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "anchorProblem": "Given sin theta=3/5 in quadrant II, find sin 2theta and cos 2theta exactly.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Determine the quadrant of x and 2x when signs matter, select the form matching known data, and preserve exact values. The relevant conditions are not optional bookkeeping: Knowing sin x alone may not determine cos x without quadrant information. Following that structure gives sin 2theta=-24/25; cos 2theta=7/25.",
+      "anchorInterpretation": "Different cosine forms are useful depending on which function must be eliminated. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "Different cosine forms are useful depending on which function must be eliminated.",
+      "validStructure": "Substituting alpha=beta=x into the sum formulas gives sin2x=2sin x cos x and cos2x=cos^2 x-sin^2 x. Pythagorean substitution creates the alternative cosine forms 1-2sin^2 x and 2cos^2 x-1.",
+      "invalidMove": "A common error is to interpret sin2x as 2sin x or to square the angle instead of the function value.",
+      "lessonId": "precalculus-u11-l5",
+      "lessonSequence": 5,
+      "lessonTitle": "Double-angle formulas",
+      "lessonOutcome": "Derive and use double-angle identities, including three equivalent cosine forms.",
+      "lessonGuide": {
+        "application": "Double angles appear in geometry, signal harmonics, power reduction, and equation solving.",
+        "bigIdea": [
+          "Double-angle formulas describe trig values at 2x using values at x.",
+          "Substituting alpha=beta=x into the sum formulas gives sin2x=2sin x cos x and cos2x=cos^2 x-sin^2 x. Pythagorean substitution creates the alternative cosine forms 1-2sin^2 x and 2cos^2 x-1."
+        ],
+        "method": [
+          "1. Determine the quadrant of x and 2x when signs matter, select the form matching known data, and preserve exact values.",
+          "2. Knowing sin x alone may not determine cos x without quadrant information.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls double-angle formulas?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "Knowing sin x alone may not determine cos x without quadrant information.",
+        "foundationWalkthrough": {
+          "problem": "Given sin theta=3/5 in quadrant II, find sin 2theta and cos 2theta exactly.",
+          "plan": "Determine the quadrant of x and 2x when signs matter, select the form matching known data, and preserve exact values. Knowing sin x alone may not determine cos x without quadrant information.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Determine the quadrant of x and 2x when signs matter, select the form matching known data, and preserve exact values. The relevant conditions are not optional bookkeeping: Knowing sin x alone may not determine cos x without quadrant information. Following that structure gives sin 2theta=-24/25; cos 2theta=7/25.",
+          "check": "Different cosine forms are useful depending on which function must be eliminated. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-identities-and-equations/double-angle-formulas/"
+    },
+    {
+      "id": "precalculus-u11-l5-v2",
+      "sequence": 2,
+      "role": "Mechanism figure",
+      "title": "Three-form cosine identity selector",
+      "description": "Mechanism visual. Show the derivation, mapping, or changing parameter that makes the central relationship true. Mathematical mechanism: Different cosine forms are useful depending on which function must be eliminated. Opening context: Double-angle formulas.",
+      "caption": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for double-angle formulas.",
+      "anchorProblem": "Given sin theta=3/5 in quadrant II, find sin 2theta and cos 2theta exactly.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Determine the quadrant of x and 2x when signs matter, select the form matching known data, and preserve exact values. The relevant conditions are not optional bookkeeping: Knowing sin x alone may not determine cos x without quadrant information. Following that structure gives sin 2theta=-24/25; cos 2theta=7/25.",
+      "anchorInterpretation": "Different cosine forms are useful depending on which function must be eliminated. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "Different cosine forms are useful depending on which function must be eliminated.",
+      "validStructure": "Substituting alpha=beta=x into the sum formulas gives sin2x=2sin x cos x and cos2x=cos^2 x-sin^2 x. Pythagorean substitution creates the alternative cosine forms 1-2sin^2 x and 2cos^2 x-1.",
+      "invalidMove": "A common error is to interpret sin2x as 2sin x or to square the angle instead of the function value.",
+      "lessonId": "precalculus-u11-l5",
+      "lessonSequence": 5,
+      "lessonTitle": "Double-angle formulas",
+      "lessonOutcome": "Derive and use double-angle identities, including three equivalent cosine forms.",
+      "lessonGuide": {
+        "application": "Double angles appear in geometry, signal harmonics, power reduction, and equation solving.",
+        "bigIdea": [
+          "Double-angle formulas describe trig values at 2x using values at x.",
+          "Substituting alpha=beta=x into the sum formulas gives sin2x=2sin x cos x and cos2x=cos^2 x-sin^2 x. Pythagorean substitution creates the alternative cosine forms 1-2sin^2 x and 2cos^2 x-1."
+        ],
+        "method": [
+          "1. Determine the quadrant of x and 2x when signs matter, select the form matching known data, and preserve exact values.",
+          "2. Knowing sin x alone may not determine cos x without quadrant information.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls double-angle formulas?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "Knowing sin x alone may not determine cos x without quadrant information.",
+        "foundationWalkthrough": {
+          "problem": "Given sin theta=3/5 in quadrant II, find sin 2theta and cos 2theta exactly.",
+          "plan": "Determine the quadrant of x and 2x when signs matter, select the form matching known data, and preserve exact values. Knowing sin x alone may not determine cos x without quadrant information.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Determine the quadrant of x and 2x when signs matter, select the form matching known data, and preserve exact values. The relevant conditions are not optional bookkeeping: Knowing sin x alone may not determine cos x without quadrant information. Following that structure gives sin 2theta=-24/25; cos 2theta=7/25.",
+          "check": "Different cosine forms are useful depending on which function must be eliminated. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-identities-and-equations/double-angle-formulas/"
+    },
+    {
+      "id": "precalculus-u11-l5-v3",
+      "sequence": 3,
+      "role": "Comparison and error figure",
+      "title": "Unit-circle angle-doubling geometry",
+      "description": "Comparison visual. Place the valid structure beside the common misconception and mark the first point where they diverge. Mathematical mechanism: Different cosine forms are useful depending on which function must be eliminated. Opening context: Double-angle formulas.",
+      "caption": "Compare the valid path with the tempting shortcut. The figure shows why to interpret sin2x as 2sin x or to square the angle instead of the function value leads to a false conclusion.",
+      "anchorProblem": "Given sin theta=3/5 in quadrant II, find sin 2theta and cos 2theta exactly.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Determine the quadrant of x and 2x when signs matter, select the form matching known data, and preserve exact values. The relevant conditions are not optional bookkeeping: Knowing sin x alone may not determine cos x without quadrant information. Following that structure gives sin 2theta=-24/25; cos 2theta=7/25.",
+      "anchorInterpretation": "Different cosine forms are useful depending on which function must be eliminated. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "Different cosine forms are useful depending on which function must be eliminated.",
+      "validStructure": "Substituting alpha=beta=x into the sum formulas gives sin2x=2sin x cos x and cos2x=cos^2 x-sin^2 x. Pythagorean substitution creates the alternative cosine forms 1-2sin^2 x and 2cos^2 x-1.",
+      "invalidMove": "A common error is to interpret sin2x as 2sin x or to square the angle instead of the function value.",
+      "lessonId": "precalculus-u11-l5",
+      "lessonSequence": 5,
+      "lessonTitle": "Double-angle formulas",
+      "lessonOutcome": "Derive and use double-angle identities, including three equivalent cosine forms.",
+      "lessonGuide": {
+        "application": "Double angles appear in geometry, signal harmonics, power reduction, and equation solving.",
+        "bigIdea": [
+          "Double-angle formulas describe trig values at 2x using values at x.",
+          "Substituting alpha=beta=x into the sum formulas gives sin2x=2sin x cos x and cos2x=cos^2 x-sin^2 x. Pythagorean substitution creates the alternative cosine forms 1-2sin^2 x and 2cos^2 x-1."
+        ],
+        "method": [
+          "1. Determine the quadrant of x and 2x when signs matter, select the form matching known data, and preserve exact values.",
+          "2. Knowing sin x alone may not determine cos x without quadrant information.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls double-angle formulas?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "Knowing sin x alone may not determine cos x without quadrant information.",
+        "foundationWalkthrough": {
+          "problem": "Given sin theta=3/5 in quadrant II, find sin 2theta and cos 2theta exactly.",
+          "plan": "Determine the quadrant of x and 2x when signs matter, select the form matching known data, and preserve exact values. Knowing sin x alone may not determine cos x without quadrant information.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Determine the quadrant of x and 2x when signs matter, select the form matching known data, and preserve exact values. The relevant conditions are not optional bookkeeping: Knowing sin x alone may not determine cos x without quadrant information. Following that structure gives sin 2theta=-24/25; cos 2theta=7/25.",
+          "check": "Different cosine forms are useful depending on which function must be eliminated. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-identities-and-equations/double-angle-formulas/"
+    },
+    {
+      "id": "precalculus-u11-l6-v1",
+      "sequence": 1,
+      "role": "Anchor figure",
+      "title": "Half-angle location map",
+      "description": "Anchor visual. Establish the quantities, coordinate system, interval, or geometric condition used in the opening problem. Mathematical mechanism: Power reduction is especially useful when squared functions must be compared, averaged, or later integrated. Opening context: Half-angle and power-reduction formulas.",
+      "caption": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Power reduction is especially useful when squared functions must be compared, averaged, or later integrated. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "anchorProblem": "Given cos theta=-5/13 and theta in quadrant III, find sin(theta/2) and cos(theta/2).",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Locate the half-angle before selecting a sign, substitute the known full-angle value, simplify the nested radical, and check the result against the expected range. The relevant conditions are not optional bookkeeping: A full-angle quadrant does not automatically determine the half-angle quadrant without considering the specified interval for x. Following that structure gives theta/2 lies in quadrant II; sin(theta/2)=3sqrt(13)/13 and cos(theta/2)=-2sqrt(13)/13.",
+      "anchorInterpretation": "Power reduction is especially useful when squared functions must be compared, averaged, or later integrated. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "Power reduction is especially useful when squared functions must be compared, averaged, or later integrated.",
+      "validStructure": "Solving the cosine double-angle formulas for sin^2(x/2) and cos^2(x/2) introduces square roots. The sign must be selected from the quadrant containing x/2.",
+      "invalidMove": "A common error is to attach both plus and minus signs to a function value even though the angle’s quadrant selects one.",
+      "lessonId": "precalculus-u11-l6",
+      "lessonSequence": 6,
+      "lessonTitle": "Half-angle and power-reduction formulas",
+      "lessonOutcome": "Derive half-angle and power-reduction identities and select signs using quadrant information.",
+      "lessonGuide": {
+        "application": "Half-angle identities support exact values, equations, and repeated angle subdivision.",
+        "bigIdea": [
+          "Half-angle formulas recover trig values of x/2 from values at x. Power-reduction formulas rewrite squared trig functions using first powers of cosine at double angle.",
+          "Solving the cosine double-angle formulas for sin^2(x/2) and cos^2(x/2) introduces square roots. The sign must be selected from the quadrant containing x/2."
+        ],
+        "method": [
+          "1. Locate the half-angle before selecting a sign, substitute the known full-angle value, simplify the nested radical, and check the result against the expected range.",
+          "2. A full-angle quadrant does not automatically determine the half-angle quadrant without considering the specified interval for x.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls half-angle and power-reduction formulas?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "A full-angle quadrant does not automatically determine the half-angle quadrant without considering the specified interval for x.",
+        "foundationWalkthrough": {
+          "problem": "Given cos theta=-5/13 and theta in quadrant III, find sin(theta/2) and cos(theta/2).",
+          "plan": "Locate the half-angle before selecting a sign, substitute the known full-angle value, simplify the nested radical, and check the result against the expected range. A full-angle quadrant does not automatically determine the half-angle quadrant without considering the specified interval for x.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Locate the half-angle before selecting a sign, substitute the known full-angle value, simplify the nested radical, and check the result against the expected range. The relevant conditions are not optional bookkeeping: A full-angle quadrant does not automatically determine the half-angle quadrant without considering the specified interval for x. Following that structure gives theta/2 lies in quadrant II; sin(theta/2)=3sqrt(13)/13 and cos(theta/2)=-2sqrt(13)/13.",
+          "check": "Power reduction is especially useful when squared functions must be compared, averaged, or later integrated. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-identities-and-equations/half-angle-and-power-reduction-formulas/"
+    },
+    {
+      "id": "precalculus-u11-l6-v2",
+      "sequence": 2,
+      "role": "Mechanism figure",
+      "title": "Power-reduction derivation",
+      "description": "Mechanism visual. Show the derivation, mapping, or changing parameter that makes the central relationship true. Mathematical mechanism: Power reduction is especially useful when squared functions must be compared, averaged, or later integrated. Opening context: Half-angle and power-reduction formulas.",
+      "caption": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for half-angle and power-reduction formulas.",
+      "anchorProblem": "Given cos theta=-5/13 and theta in quadrant III, find sin(theta/2) and cos(theta/2).",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Locate the half-angle before selecting a sign, substitute the known full-angle value, simplify the nested radical, and check the result against the expected range. The relevant conditions are not optional bookkeeping: A full-angle quadrant does not automatically determine the half-angle quadrant without considering the specified interval for x. Following that structure gives theta/2 lies in quadrant II; sin(theta/2)=3sqrt(13)/13 and cos(theta/2)=-2sqrt(13)/13.",
+      "anchorInterpretation": "Power reduction is especially useful when squared functions must be compared, averaged, or later integrated. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "Power reduction is especially useful when squared functions must be compared, averaged, or later integrated.",
+      "validStructure": "Solving the cosine double-angle formulas for sin^2(x/2) and cos^2(x/2) introduces square roots. The sign must be selected from the quadrant containing x/2.",
+      "invalidMove": "A common error is to attach both plus and minus signs to a function value even though the angle’s quadrant selects one.",
+      "lessonId": "precalculus-u11-l6",
+      "lessonSequence": 6,
+      "lessonTitle": "Half-angle and power-reduction formulas",
+      "lessonOutcome": "Derive half-angle and power-reduction identities and select signs using quadrant information.",
+      "lessonGuide": {
+        "application": "Half-angle identities support exact values, equations, and repeated angle subdivision.",
+        "bigIdea": [
+          "Half-angle formulas recover trig values of x/2 from values at x. Power-reduction formulas rewrite squared trig functions using first powers of cosine at double angle.",
+          "Solving the cosine double-angle formulas for sin^2(x/2) and cos^2(x/2) introduces square roots. The sign must be selected from the quadrant containing x/2."
+        ],
+        "method": [
+          "1. Locate the half-angle before selecting a sign, substitute the known full-angle value, simplify the nested radical, and check the result against the expected range.",
+          "2. A full-angle quadrant does not automatically determine the half-angle quadrant without considering the specified interval for x.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls half-angle and power-reduction formulas?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "A full-angle quadrant does not automatically determine the half-angle quadrant without considering the specified interval for x.",
+        "foundationWalkthrough": {
+          "problem": "Given cos theta=-5/13 and theta in quadrant III, find sin(theta/2) and cos(theta/2).",
+          "plan": "Locate the half-angle before selecting a sign, substitute the known full-angle value, simplify the nested radical, and check the result against the expected range. A full-angle quadrant does not automatically determine the half-angle quadrant without considering the specified interval for x.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Locate the half-angle before selecting a sign, substitute the known full-angle value, simplify the nested radical, and check the result against the expected range. The relevant conditions are not optional bookkeeping: A full-angle quadrant does not automatically determine the half-angle quadrant without considering the specified interval for x. Following that structure gives theta/2 lies in quadrant II; sin(theta/2)=3sqrt(13)/13 and cos(theta/2)=-2sqrt(13)/13.",
+          "check": "Power reduction is especially useful when squared functions must be compared, averaged, or later integrated. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-identities-and-equations/half-angle-and-power-reduction-formulas/"
+    },
+    {
+      "id": "precalculus-u11-l6-v3",
+      "sequence": 3,
+      "role": "Comparison and error figure",
+      "title": "Sign-choice error panel",
+      "description": "Comparison visual. Place the valid structure beside the common misconception and mark the first point where they diverge. Mathematical mechanism: Power reduction is especially useful when squared functions must be compared, averaged, or later integrated. Opening context: Half-angle and power-reduction formulas.",
+      "caption": "Compare the valid path with the tempting shortcut. The figure shows why to attach both plus and minus signs to a function value even though the angle’s quadrant selects one leads to a false conclusion.",
+      "anchorProblem": "Given cos theta=-5/13 and theta in quadrant III, find sin(theta/2) and cos(theta/2).",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Locate the half-angle before selecting a sign, substitute the known full-angle value, simplify the nested radical, and check the result against the expected range. The relevant conditions are not optional bookkeeping: A full-angle quadrant does not automatically determine the half-angle quadrant without considering the specified interval for x. Following that structure gives theta/2 lies in quadrant II; sin(theta/2)=3sqrt(13)/13 and cos(theta/2)=-2sqrt(13)/13.",
+      "anchorInterpretation": "Power reduction is especially useful when squared functions must be compared, averaged, or later integrated. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "Power reduction is especially useful when squared functions must be compared, averaged, or later integrated.",
+      "validStructure": "Solving the cosine double-angle formulas for sin^2(x/2) and cos^2(x/2) introduces square roots. The sign must be selected from the quadrant containing x/2.",
+      "invalidMove": "A common error is to attach both plus and minus signs to a function value even though the angle’s quadrant selects one.",
+      "lessonId": "precalculus-u11-l6",
+      "lessonSequence": 6,
+      "lessonTitle": "Half-angle and power-reduction formulas",
+      "lessonOutcome": "Derive half-angle and power-reduction identities and select signs using quadrant information.",
+      "lessonGuide": {
+        "application": "Half-angle identities support exact values, equations, and repeated angle subdivision.",
+        "bigIdea": [
+          "Half-angle formulas recover trig values of x/2 from values at x. Power-reduction formulas rewrite squared trig functions using first powers of cosine at double angle.",
+          "Solving the cosine double-angle formulas for sin^2(x/2) and cos^2(x/2) introduces square roots. The sign must be selected from the quadrant containing x/2."
+        ],
+        "method": [
+          "1. Locate the half-angle before selecting a sign, substitute the known full-angle value, simplify the nested radical, and check the result against the expected range.",
+          "2. A full-angle quadrant does not automatically determine the half-angle quadrant without considering the specified interval for x.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls half-angle and power-reduction formulas?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "A full-angle quadrant does not automatically determine the half-angle quadrant without considering the specified interval for x.",
+        "foundationWalkthrough": {
+          "problem": "Given cos theta=-5/13 and theta in quadrant III, find sin(theta/2) and cos(theta/2).",
+          "plan": "Locate the half-angle before selecting a sign, substitute the known full-angle value, simplify the nested radical, and check the result against the expected range. A full-angle quadrant does not automatically determine the half-angle quadrant without considering the specified interval for x.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Locate the half-angle before selecting a sign, substitute the known full-angle value, simplify the nested radical, and check the result against the expected range. The relevant conditions are not optional bookkeeping: A full-angle quadrant does not automatically determine the half-angle quadrant without considering the specified interval for x. Following that structure gives theta/2 lies in quadrant II; sin(theta/2)=3sqrt(13)/13 and cos(theta/2)=-2sqrt(13)/13.",
+          "check": "Power reduction is especially useful when squared functions must be compared, averaged, or later integrated. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-identities-and-equations/half-angle-and-power-reduction-formulas/"
+    },
+    {
+      "id": "precalculus-u11-l7-v1",
+      "sequence": 1,
+      "role": "Anchor figure",
+      "title": "Identity derivation grid",
+      "description": "Anchor visual. Establish the quantities, coordinate system, interval, or geometric condition used in the opening problem. Mathematical mechanism: The two forms emphasize different structure: sums show component frequencies, while products reveal amplitude envelopes and zeros. Opening context: Product-to-sum and sum-to-product formulas.",
+      "caption": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The two forms emphasize different structure: sums show component frequencies, while products reveal amplitude envelopes and zeros. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "anchorProblem": "Rewrite cos 7x+cos 3x as a product and identify the fast and slow factors.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Identify the formula family, track the average and half-difference carefully, and verify with a simple angle or graph. The relevant conditions are not optional bookkeeping: These identities are lower-frequency tools and should be used when they simplify a real task rather than because a problem heading demands them. Following that structure gives 2cos 5x cos 2x.",
+      "anchorInterpretation": "The two forms emphasize different structure: sums show component frequencies, while products reveal amplitude envelopes and zeros. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "The two forms emphasize different structure: sums show component frequencies, while products reveal amplitude envelopes and zeros.",
+      "validStructure": "Adding and subtracting angle-sum formulas isolates products such as sin a sin b or cos a cos b. Reversing those identities expresses sums as products involving average and half-difference angles.",
+      "invalidMove": "A common error is to omit the factor of 2 or to use full differences instead of half-differences.",
+      "lessonId": "precalculus-u11-l7",
+      "lessonSequence": 7,
+      "lessonTitle": "Product-to-sum and sum-to-product formulas",
+      "lessonOutcome": "Convert products and sums of trig functions to alternate forms and interpret signal combinations.",
+      "lessonGuide": {
+        "application": "The formulas explain beats, interference, Fourier-style signal structure, and certain equation transformations.",
+        "bigIdea": [
+          "Product-to-sum and sum-to-product identities translate between multiplicative and additive combinations of trig functions.",
+          "Adding and subtracting angle-sum formulas isolates products such as sin a sin b or cos a cos b. Reversing those identities expresses sums as products involving average and half-difference angles."
+        ],
+        "method": [
+          "1. Identify the formula family, track the average and half-difference carefully, and verify with a simple angle or graph.",
+          "2. These identities are lower-frequency tools and should be used when they simplify a real task rather than because a problem heading demands them.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls product-to-sum and sum-to-product formulas?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "These identities are lower-frequency tools and should be used when they simplify a real task rather than because a problem heading demands them.",
+        "foundationWalkthrough": {
+          "problem": "Rewrite cos 7x+cos 3x as a product and identify the fast and slow factors.",
+          "plan": "Identify the formula family, track the average and half-difference carefully, and verify with a simple angle or graph. These identities are lower-frequency tools and should be used when they simplify a real task rather than because a problem heading demands them.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Identify the formula family, track the average and half-difference carefully, and verify with a simple angle or graph. The relevant conditions are not optional bookkeeping: These identities are lower-frequency tools and should be used when they simplify a real task rather than because a problem heading demands them. Following that structure gives 2cos 5x cos 2x.",
+          "check": "The two forms emphasize different structure: sums show component frequencies, while products reveal amplitude envelopes and zeros. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-identities-and-equations/product-to-sum-and-sum-to-product-formulas/"
+    },
+    {
+      "id": "precalculus-u11-l7-v2",
+      "sequence": 2,
+      "role": "Mechanism figure",
+      "title": "Wave addition and envelope visualization",
+      "description": "Mechanism visual. Show the derivation, mapping, or changing parameter that makes the central relationship true. Mathematical mechanism: The two forms emphasize different structure: sums show component frequencies, while products reveal amplitude envelopes and zeros. Opening context: Product-to-sum and sum-to-product formulas.",
+      "caption": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for product-to-sum and sum-to-product formulas.",
+      "anchorProblem": "Rewrite cos 7x+cos 3x as a product and identify the fast and slow factors.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Identify the formula family, track the average and half-difference carefully, and verify with a simple angle or graph. The relevant conditions are not optional bookkeeping: These identities are lower-frequency tools and should be used when they simplify a real task rather than because a problem heading demands them. Following that structure gives 2cos 5x cos 2x.",
+      "anchorInterpretation": "The two forms emphasize different structure: sums show component frequencies, while products reveal amplitude envelopes and zeros. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "The two forms emphasize different structure: sums show component frequencies, while products reveal amplitude envelopes and zeros.",
+      "validStructure": "Adding and subtracting angle-sum formulas isolates products such as sin a sin b or cos a cos b. Reversing those identities expresses sums as products involving average and half-difference angles.",
+      "invalidMove": "A common error is to omit the factor of 2 or to use full differences instead of half-differences.",
+      "lessonId": "precalculus-u11-l7",
+      "lessonSequence": 7,
+      "lessonTitle": "Product-to-sum and sum-to-product formulas",
+      "lessonOutcome": "Convert products and sums of trig functions to alternate forms and interpret signal combinations.",
+      "lessonGuide": {
+        "application": "The formulas explain beats, interference, Fourier-style signal structure, and certain equation transformations.",
+        "bigIdea": [
+          "Product-to-sum and sum-to-product identities translate between multiplicative and additive combinations of trig functions.",
+          "Adding and subtracting angle-sum formulas isolates products such as sin a sin b or cos a cos b. Reversing those identities expresses sums as products involving average and half-difference angles."
+        ],
+        "method": [
+          "1. Identify the formula family, track the average and half-difference carefully, and verify with a simple angle or graph.",
+          "2. These identities are lower-frequency tools and should be used when they simplify a real task rather than because a problem heading demands them.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls product-to-sum and sum-to-product formulas?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "These identities are lower-frequency tools and should be used when they simplify a real task rather than because a problem heading demands them.",
+        "foundationWalkthrough": {
+          "problem": "Rewrite cos 7x+cos 3x as a product and identify the fast and slow factors.",
+          "plan": "Identify the formula family, track the average and half-difference carefully, and verify with a simple angle or graph. These identities are lower-frequency tools and should be used when they simplify a real task rather than because a problem heading demands them.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Identify the formula family, track the average and half-difference carefully, and verify with a simple angle or graph. The relevant conditions are not optional bookkeeping: These identities are lower-frequency tools and should be used when they simplify a real task rather than because a problem heading demands them. Following that structure gives 2cos 5x cos 2x.",
+          "check": "The two forms emphasize different structure: sums show component frequencies, while products reveal amplitude envelopes and zeros. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-identities-and-equations/product-to-sum-and-sum-to-product-formulas/"
+    },
+    {
+      "id": "precalculus-u11-l7-v3",
+      "sequence": 3,
+      "role": "Comparison and error figure",
+      "title": "Product-sum conversion map",
+      "description": "Comparison visual. Place the valid structure beside the common misconception and mark the first point where they diverge. Mathematical mechanism: The two forms emphasize different structure: sums show component frequencies, while products reveal amplitude envelopes and zeros. Opening context: Product-to-sum and sum-to-product formulas.",
+      "caption": "Compare the valid path with the tempting shortcut. The figure shows why to omit the factor of 2 or to use full differences instead of half-differences leads to a false conclusion.",
+      "anchorProblem": "Rewrite cos 7x+cos 3x as a product and identify the fast and slow factors.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Identify the formula family, track the average and half-difference carefully, and verify with a simple angle or graph. The relevant conditions are not optional bookkeeping: These identities are lower-frequency tools and should be used when they simplify a real task rather than because a problem heading demands them. Following that structure gives 2cos 5x cos 2x.",
+      "anchorInterpretation": "The two forms emphasize different structure: sums show component frequencies, while products reveal amplitude envelopes and zeros. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "The two forms emphasize different structure: sums show component frequencies, while products reveal amplitude envelopes and zeros.",
+      "validStructure": "Adding and subtracting angle-sum formulas isolates products such as sin a sin b or cos a cos b. Reversing those identities expresses sums as products involving average and half-difference angles.",
+      "invalidMove": "A common error is to omit the factor of 2 or to use full differences instead of half-differences.",
+      "lessonId": "precalculus-u11-l7",
+      "lessonSequence": 7,
+      "lessonTitle": "Product-to-sum and sum-to-product formulas",
+      "lessonOutcome": "Convert products and sums of trig functions to alternate forms and interpret signal combinations.",
+      "lessonGuide": {
+        "application": "The formulas explain beats, interference, Fourier-style signal structure, and certain equation transformations.",
+        "bigIdea": [
+          "Product-to-sum and sum-to-product identities translate between multiplicative and additive combinations of trig functions.",
+          "Adding and subtracting angle-sum formulas isolates products such as sin a sin b or cos a cos b. Reversing those identities expresses sums as products involving average and half-difference angles."
+        ],
+        "method": [
+          "1. Identify the formula family, track the average and half-difference carefully, and verify with a simple angle or graph.",
+          "2. These identities are lower-frequency tools and should be used when they simplify a real task rather than because a problem heading demands them.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls product-to-sum and sum-to-product formulas?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "These identities are lower-frequency tools and should be used when they simplify a real task rather than because a problem heading demands them.",
+        "foundationWalkthrough": {
+          "problem": "Rewrite cos 7x+cos 3x as a product and identify the fast and slow factors.",
+          "plan": "Identify the formula family, track the average and half-difference carefully, and verify with a simple angle or graph. These identities are lower-frequency tools and should be used when they simplify a real task rather than because a problem heading demands them.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Identify the formula family, track the average and half-difference carefully, and verify with a simple angle or graph. The relevant conditions are not optional bookkeeping: These identities are lower-frequency tools and should be used when they simplify a real task rather than because a problem heading demands them. Following that structure gives 2cos 5x cos 2x.",
+          "check": "The two forms emphasize different structure: sums show component frequencies, while products reveal amplitude envelopes and zeros. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-identities-and-equations/product-to-sum-and-sum-to-product-formulas/"
+    },
+    {
+      "id": "precalculus-u11-l8-v1",
+      "sequence": 1,
+      "role": "Anchor figure",
+      "title": "Equation-to-one-function conversion",
+      "description": "Anchor visual. Establish the quantities, coordinate system, interval, or geometric condition used in the opening problem. Mathematical mechanism: The solution process remains two-stage: solve an algebraic condition in function values, then solve the resulting basic trig equations over the required interval or over all reals. Opening context: Equations using fundamental identities.",
+      "caption": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The solution process remains two-stage: solve an algebraic condition in function values, then solve the resulting basic trig equations over the required interval or over all reals. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "anchorProblem": "Solve sec x=2cos x on [0,2pi).",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Record domain restrictions first, convert functions deliberately, factor, solve each factor, and check any values that make an original reciprocal undefined. The relevant conditions are not optional bookkeeping: Multiplying by a trig expression can create candidates at its zeros, just as clearing denominators does in rational equations. Following that structure gives 1/cos x=2cos x gives cos^2 x=1/2; x=pi/4,3pi/4,5pi/4,7pi/4.",
+      "anchorInterpretation": "The solution process remains two-stage: solve an algebraic condition in function values, then solve the resulting basic trig equations over the required interval or over all reals. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "The solution process remains two-stage: solve an algebraic condition in function values, then solve the resulting basic trig equations over the required interval or over all reals.",
+      "validStructure": "Reciprocal and quotient functions often create domain exclusions. A Pythagorean substitution can reduce an equation to one function before factoring.",
+      "invalidMove": "A common error is to divide by sin x or cos x and lose the solutions where that divisor is zero.",
+      "lessonId": "precalculus-u11-l8",
+      "lessonSequence": 8,
+      "lessonTitle": "Equations using fundamental identities",
+      "lessonOutcome": "Solve trig equations by converting functions, factoring, and applying fundamental identities.",
+      "lessonGuide": {
+        "application": "Identity equations arise in waves, geometry, and transformed periodic models.",
+        "bigIdea": [
+          "Identity-based trig equations are solved by rewriting all terms into compatible functions and then applying ordinary algebra.",
+          "Reciprocal and quotient functions often create domain exclusions. A Pythagorean substitution can reduce an equation to one function before factoring."
+        ],
+        "method": [
+          "1. Record domain restrictions first, convert functions deliberately, factor, solve each factor, and check any values that make an original reciprocal undefined.",
+          "2. Multiplying by a trig expression can create candidates at its zeros, just as clearing denominators does in rational equations.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls equations using fundamental identities?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "Multiplying by a trig expression can create candidates at its zeros, just as clearing denominators does in rational equations.",
+        "foundationWalkthrough": {
+          "problem": "Solve sec x=2cos x on [0,2pi).",
+          "plan": "Record domain restrictions first, convert functions deliberately, factor, solve each factor, and check any values that make an original reciprocal undefined. Multiplying by a trig expression can create candidates at its zeros, just as clearing denominators does in rational equations.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Record domain restrictions first, convert functions deliberately, factor, solve each factor, and check any values that make an original reciprocal undefined. The relevant conditions are not optional bookkeeping: Multiplying by a trig expression can create candidates at its zeros, just as clearing denominators does in rational equations. Following that structure gives 1/cos x=2cos x gives cos^2 x=1/2; x=pi/4,3pi/4,5pi/4,7pi/4.",
+          "check": "The solution process remains two-stage: solve an algebraic condition in function values, then solve the resulting basic trig equations over the required interval or over all reals. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-identities-and-equations/equations-using-fundamental-identities/"
+    },
+    {
+      "id": "precalculus-u11-l8-v2",
+      "sequence": 2,
+      "role": "Mechanism figure",
+      "title": "Factor-and-zero-product path",
+      "description": "Mechanism visual. Show the derivation, mapping, or changing parameter that makes the central relationship true. Mathematical mechanism: The solution process remains two-stage: solve an algebraic condition in function values, then solve the resulting basic trig equations over the required interval or over all reals. Opening context: Equations using fundamental identities.",
+      "caption": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for equations using fundamental identities.",
+      "anchorProblem": "Solve sec x=2cos x on [0,2pi).",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Record domain restrictions first, convert functions deliberately, factor, solve each factor, and check any values that make an original reciprocal undefined. The relevant conditions are not optional bookkeeping: Multiplying by a trig expression can create candidates at its zeros, just as clearing denominators does in rational equations. Following that structure gives 1/cos x=2cos x gives cos^2 x=1/2; x=pi/4,3pi/4,5pi/4,7pi/4.",
+      "anchorInterpretation": "The solution process remains two-stage: solve an algebraic condition in function values, then solve the resulting basic trig equations over the required interval or over all reals. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "The solution process remains two-stage: solve an algebraic condition in function values, then solve the resulting basic trig equations over the required interval or over all reals.",
+      "validStructure": "Reciprocal and quotient functions often create domain exclusions. A Pythagorean substitution can reduce an equation to one function before factoring.",
+      "invalidMove": "A common error is to divide by sin x or cos x and lose the solutions where that divisor is zero.",
+      "lessonId": "precalculus-u11-l8",
+      "lessonSequence": 8,
+      "lessonTitle": "Equations using fundamental identities",
+      "lessonOutcome": "Solve trig equations by converting functions, factoring, and applying fundamental identities.",
+      "lessonGuide": {
+        "application": "Identity equations arise in waves, geometry, and transformed periodic models.",
+        "bigIdea": [
+          "Identity-based trig equations are solved by rewriting all terms into compatible functions and then applying ordinary algebra.",
+          "Reciprocal and quotient functions often create domain exclusions. A Pythagorean substitution can reduce an equation to one function before factoring."
+        ],
+        "method": [
+          "1. Record domain restrictions first, convert functions deliberately, factor, solve each factor, and check any values that make an original reciprocal undefined.",
+          "2. Multiplying by a trig expression can create candidates at its zeros, just as clearing denominators does in rational equations.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls equations using fundamental identities?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "Multiplying by a trig expression can create candidates at its zeros, just as clearing denominators does in rational equations.",
+        "foundationWalkthrough": {
+          "problem": "Solve sec x=2cos x on [0,2pi).",
+          "plan": "Record domain restrictions first, convert functions deliberately, factor, solve each factor, and check any values that make an original reciprocal undefined. Multiplying by a trig expression can create candidates at its zeros, just as clearing denominators does in rational equations.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Record domain restrictions first, convert functions deliberately, factor, solve each factor, and check any values that make an original reciprocal undefined. The relevant conditions are not optional bookkeeping: Multiplying by a trig expression can create candidates at its zeros, just as clearing denominators does in rational equations. Following that structure gives 1/cos x=2cos x gives cos^2 x=1/2; x=pi/4,3pi/4,5pi/4,7pi/4.",
+          "check": "The solution process remains two-stage: solve an algebraic condition in function values, then solve the resulting basic trig equations over the required interval or over all reals. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-identities-and-equations/equations-using-fundamental-identities/"
+    },
+    {
+      "id": "precalculus-u11-l8-v3",
+      "sequence": 3,
+      "role": "Comparison and error figure",
+      "title": "Domain filter for reciprocal functions",
+      "description": "Comparison visual. Place the valid structure beside the common misconception and mark the first point where they diverge. Mathematical mechanism: The solution process remains two-stage: solve an algebraic condition in function values, then solve the resulting basic trig equations over the required interval or over all reals. Opening context: Equations using fundamental identities.",
+      "caption": "Compare the valid path with the tempting shortcut. The figure shows why to divide by sin x or cos x and lose the solutions where that divisor is zero leads to a false conclusion.",
+      "anchorProblem": "Solve sec x=2cos x on [0,2pi).",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Record domain restrictions first, convert functions deliberately, factor, solve each factor, and check any values that make an original reciprocal undefined. The relevant conditions are not optional bookkeeping: Multiplying by a trig expression can create candidates at its zeros, just as clearing denominators does in rational equations. Following that structure gives 1/cos x=2cos x gives cos^2 x=1/2; x=pi/4,3pi/4,5pi/4,7pi/4.",
+      "anchorInterpretation": "The solution process remains two-stage: solve an algebraic condition in function values, then solve the resulting basic trig equations over the required interval or over all reals. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "The solution process remains two-stage: solve an algebraic condition in function values, then solve the resulting basic trig equations over the required interval or over all reals.",
+      "validStructure": "Reciprocal and quotient functions often create domain exclusions. A Pythagorean substitution can reduce an equation to one function before factoring.",
+      "invalidMove": "A common error is to divide by sin x or cos x and lose the solutions where that divisor is zero.",
+      "lessonId": "precalculus-u11-l8",
+      "lessonSequence": 8,
+      "lessonTitle": "Equations using fundamental identities",
+      "lessonOutcome": "Solve trig equations by converting functions, factoring, and applying fundamental identities.",
+      "lessonGuide": {
+        "application": "Identity equations arise in waves, geometry, and transformed periodic models.",
+        "bigIdea": [
+          "Identity-based trig equations are solved by rewriting all terms into compatible functions and then applying ordinary algebra.",
+          "Reciprocal and quotient functions often create domain exclusions. A Pythagorean substitution can reduce an equation to one function before factoring."
+        ],
+        "method": [
+          "1. Record domain restrictions first, convert functions deliberately, factor, solve each factor, and check any values that make an original reciprocal undefined.",
+          "2. Multiplying by a trig expression can create candidates at its zeros, just as clearing denominators does in rational equations.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls equations using fundamental identities?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "Multiplying by a trig expression can create candidates at its zeros, just as clearing denominators does in rational equations.",
+        "foundationWalkthrough": {
+          "problem": "Solve sec x=2cos x on [0,2pi).",
+          "plan": "Record domain restrictions first, convert functions deliberately, factor, solve each factor, and check any values that make an original reciprocal undefined. Multiplying by a trig expression can create candidates at its zeros, just as clearing denominators does in rational equations.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Record domain restrictions first, convert functions deliberately, factor, solve each factor, and check any values that make an original reciprocal undefined. The relevant conditions are not optional bookkeeping: Multiplying by a trig expression can create candidates at its zeros, just as clearing denominators does in rational equations. Following that structure gives 1/cos x=2cos x gives cos^2 x=1/2; x=pi/4,3pi/4,5pi/4,7pi/4.",
+          "check": "The solution process remains two-stage: solve an algebraic condition in function values, then solve the resulting basic trig equations over the required interval or over all reals. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-identities-and-equations/equations-using-fundamental-identities/"
+    },
+    {
+      "id": "precalculus-u11-l9-v1",
+      "sequence": 1,
+      "role": "Anchor figure",
+      "title": "Trig-function substitution pipeline",
+      "description": "Anchor visual. Establish the quantities, coordinate system, interval, or geometric condition used in the opening problem. Mathematical mechanism: After filtering, each accepted function value generates one or more periodic angle families. Opening context: Quadratic-form trigonometric equations.",
+      "caption": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: After filtering, each accepted function value generates one or more periodic angle families. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "anchorProblem": "Solve 2sin^2 x-3sin x+1=0 on [0,2pi).",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Move all terms to one side, substitute, factor or use the quadratic formula, reject impossible function values, then solve every remaining basic trig equation. The relevant conditions are not optional bookkeeping: The requested interval controls which branches and endpoints are included. Following that structure gives sin x=1 or 1/2; x=pi/2,pi/6,5pi/6.",
+      "anchorInterpretation": "After filtering, each accepted function value generates one or more periodic angle families. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "After filtering, each accepted function value generates one or more periodic angle families.",
+      "validStructure": "Algebraic roots must be filtered through the range of the trig function. Sine and cosine values must lie in [-1,1], while tangent may take any real value where defined.",
+      "invalidMove": "A common error is to accept an algebraic root such as sin x=2 or to stop after finding the value of sin x rather than the angles.",
+      "lessonId": "precalculus-u11-l9",
+      "lessonSequence": 9,
+      "lessonTitle": "Quadratic-form trigonometric equations",
+      "lessonOutcome": "Use substitution and algebraic solving for equations quadratic in a trig function.",
+      "lessonGuide": {
+        "application": "Quadratic forms appear naturally after identities, harmonic combinations, and substitutions.",
+        "bigIdea": [
+          "A quadratic-form trig equation becomes an ordinary quadratic after substituting u=sin x, cos x, tan x, or another single trig expression.",
+          "Algebraic roots must be filtered through the range of the trig function. Sine and cosine values must lie in [-1,1], while tangent may take any real value where defined."
+        ],
+        "method": [
+          "1. Move all terms to one side, substitute, factor or use the quadratic formula, reject impossible function values, then solve every remaining basic trig equation.",
+          "2. The requested interval controls which branches and endpoints are included.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls quadratic-form trigonometric equations?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "The requested interval controls which branches and endpoints are included.",
+        "foundationWalkthrough": {
+          "problem": "Solve 2sin^2 x-3sin x+1=0 on [0,2pi).",
+          "plan": "Move all terms to one side, substitute, factor or use the quadratic formula, reject impossible function values, then solve every remaining basic trig equation. The requested interval controls which branches and endpoints are included.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Move all terms to one side, substitute, factor or use the quadratic formula, reject impossible function values, then solve every remaining basic trig equation. The relevant conditions are not optional bookkeeping: The requested interval controls which branches and endpoints are included. Following that structure gives sin x=1 or 1/2; x=pi/2,pi/6,5pi/6.",
+          "check": "After filtering, each accepted function value generates one or more periodic angle families. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-identities-and-equations/quadratic-form-trigonometric-equations/"
+    },
+    {
+      "id": "precalculus-u11-l9-v2",
+      "sequence": 2,
+      "role": "Mechanism figure",
+      "title": "Allowed-value filter [-1,1] for sine/cosine",
+      "description": "Mechanism visual. Show the derivation, mapping, or changing parameter that makes the central relationship true. Mathematical mechanism: After filtering, each accepted function value generates one or more periodic angle families. Opening context: Quadratic-form trigonometric equations.",
+      "caption": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for quadratic-form trigonometric equations.",
+      "anchorProblem": "Solve 2sin^2 x-3sin x+1=0 on [0,2pi).",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Move all terms to one side, substitute, factor or use the quadratic formula, reject impossible function values, then solve every remaining basic trig equation. The relevant conditions are not optional bookkeeping: The requested interval controls which branches and endpoints are included. Following that structure gives sin x=1 or 1/2; x=pi/2,pi/6,5pi/6.",
+      "anchorInterpretation": "After filtering, each accepted function value generates one or more periodic angle families. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "After filtering, each accepted function value generates one or more periodic angle families.",
+      "validStructure": "Algebraic roots must be filtered through the range of the trig function. Sine and cosine values must lie in [-1,1], while tangent may take any real value where defined.",
+      "invalidMove": "A common error is to accept an algebraic root such as sin x=2 or to stop after finding the value of sin x rather than the angles.",
+      "lessonId": "precalculus-u11-l9",
+      "lessonSequence": 9,
+      "lessonTitle": "Quadratic-form trigonometric equations",
+      "lessonOutcome": "Use substitution and algebraic solving for equations quadratic in a trig function.",
+      "lessonGuide": {
+        "application": "Quadratic forms appear naturally after identities, harmonic combinations, and substitutions.",
+        "bigIdea": [
+          "A quadratic-form trig equation becomes an ordinary quadratic after substituting u=sin x, cos x, tan x, or another single trig expression.",
+          "Algebraic roots must be filtered through the range of the trig function. Sine and cosine values must lie in [-1,1], while tangent may take any real value where defined."
+        ],
+        "method": [
+          "1. Move all terms to one side, substitute, factor or use the quadratic formula, reject impossible function values, then solve every remaining basic trig equation.",
+          "2. The requested interval controls which branches and endpoints are included.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls quadratic-form trigonometric equations?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "The requested interval controls which branches and endpoints are included.",
+        "foundationWalkthrough": {
+          "problem": "Solve 2sin^2 x-3sin x+1=0 on [0,2pi).",
+          "plan": "Move all terms to one side, substitute, factor or use the quadratic formula, reject impossible function values, then solve every remaining basic trig equation. The requested interval controls which branches and endpoints are included.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Move all terms to one side, substitute, factor or use the quadratic formula, reject impossible function values, then solve every remaining basic trig equation. The relevant conditions are not optional bookkeeping: The requested interval controls which branches and endpoints are included. Following that structure gives sin x=1 or 1/2; x=pi/2,pi/6,5pi/6.",
+          "check": "After filtering, each accepted function value generates one or more periodic angle families. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-identities-and-equations/quadratic-form-trigonometric-equations/"
+    },
+    {
+      "id": "precalculus-u11-l9-v3",
+      "sequence": 3,
+      "role": "Comparison and error figure",
+      "title": "Algebraic roots mapped to periodic angles",
+      "description": "Comparison visual. Place the valid structure beside the common misconception and mark the first point where they diverge. Mathematical mechanism: After filtering, each accepted function value generates one or more periodic angle families. Opening context: Quadratic-form trigonometric equations.",
+      "caption": "Compare the valid path with the tempting shortcut. The figure shows why to accept an algebraic root such as sin x=2 or to stop after finding the value of sin x rather than the angles leads to a false conclusion.",
+      "anchorProblem": "Solve 2sin^2 x-3sin x+1=0 on [0,2pi).",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Move all terms to one side, substitute, factor or use the quadratic formula, reject impossible function values, then solve every remaining basic trig equation. The relevant conditions are not optional bookkeeping: The requested interval controls which branches and endpoints are included. Following that structure gives sin x=1 or 1/2; x=pi/2,pi/6,5pi/6.",
+      "anchorInterpretation": "After filtering, each accepted function value generates one or more periodic angle families. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "After filtering, each accepted function value generates one or more periodic angle families.",
+      "validStructure": "Algebraic roots must be filtered through the range of the trig function. Sine and cosine values must lie in [-1,1], while tangent may take any real value where defined.",
+      "invalidMove": "A common error is to accept an algebraic root such as sin x=2 or to stop after finding the value of sin x rather than the angles.",
+      "lessonId": "precalculus-u11-l9",
+      "lessonSequence": 9,
+      "lessonTitle": "Quadratic-form trigonometric equations",
+      "lessonOutcome": "Use substitution and algebraic solving for equations quadratic in a trig function.",
+      "lessonGuide": {
+        "application": "Quadratic forms appear naturally after identities, harmonic combinations, and substitutions.",
+        "bigIdea": [
+          "A quadratic-form trig equation becomes an ordinary quadratic after substituting u=sin x, cos x, tan x, or another single trig expression.",
+          "Algebraic roots must be filtered through the range of the trig function. Sine and cosine values must lie in [-1,1], while tangent may take any real value where defined."
+        ],
+        "method": [
+          "1. Move all terms to one side, substitute, factor or use the quadratic formula, reject impossible function values, then solve every remaining basic trig equation.",
+          "2. The requested interval controls which branches and endpoints are included.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls quadratic-form trigonometric equations?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "The requested interval controls which branches and endpoints are included.",
+        "foundationWalkthrough": {
+          "problem": "Solve 2sin^2 x-3sin x+1=0 on [0,2pi).",
+          "plan": "Move all terms to one side, substitute, factor or use the quadratic formula, reject impossible function values, then solve every remaining basic trig equation. The requested interval controls which branches and endpoints are included.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Move all terms to one side, substitute, factor or use the quadratic formula, reject impossible function values, then solve every remaining basic trig equation. The relevant conditions are not optional bookkeeping: The requested interval controls which branches and endpoints are included. Following that structure gives sin x=1 or 1/2; x=pi/2,pi/6,5pi/6.",
+          "check": "After filtering, each accepted function value generates one or more periodic angle families. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-identities-and-equations/quadratic-form-trigonometric-equations/"
+    },
+    {
+      "id": "precalculus-u11-l10-v1",
+      "sequence": 1,
+      "role": "Anchor figure",
+      "title": "Angle-multiplication solution map",
+      "description": "Anchor visual. Establish the quantities, coordinate system, interval, or geometric condition used in the opening problem. Mathematical mechanism: This interval expansion explains why sin(3x)=k can have six solutions on [0,2pi) even though sin u=k has only two per u-period. Opening context: Multiple-angle equations.",
+      "caption": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: This interval expansion explains why sin(3x)=k can have six solutions on [0,2pi) even though sin u=k has only two per u-period. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "anchorProblem": "Solve sin(3x)=sqrt(3)/2 on [0,2pi).",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Rename u=nx if helpful, solve in the correctly expanded interval, divide, and remove duplicates. The relevant conditions are not optional bookkeeping: If n is negative, division reverses interval order but does not change the underlying solution set after it is rewritten consistently. Following that structure gives 3x=pi/3+2kpi or 2pi/3+2kpi; divide and list six solutions in the interval.",
+      "anchorInterpretation": "This interval expansion explains why sin(3x)=k can have six solutions on [0,2pi) even though sin u=k has only two per u-period. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "This interval expansion explains why sin(3x)=k can have six solutions on [0,2pi) even though sin u=k has only two per u-period.",
+      "validStructure": "Solve the basic equation for the full set of values of nx, then divide every solution family by n. On a restricted x-interval, the corresponding nx-interval is n times as wide and may contain more cycles.",
+      "invalidMove": "A common error is to divide only the principal inverse angle and lose the other branches and periods.",
+      "lessonId": "precalculus-u11-l10",
+      "lessonSequence": 10,
+      "lessonTitle": "Multiple-angle equations",
+      "lessonOutcome": "Solve equations involving sin(nx), cos(nx), or tan(nx) and translate solution families back to x.",
+      "lessonGuide": {
+        "application": "Multiple-angle equations model higher harmonics, repeated rotations, and oscillations with increased frequency.",
+        "bigIdea": [
+          "A multiple-angle equation treats nx as the temporary angle variable.",
+          "Solve the basic equation for the full set of values of nx, then divide every solution family by n. On a restricted x-interval, the corresponding nx-interval is n times as wide and may contain more cycles."
+        ],
+        "method": [
+          "1. Rename u=nx if helpful, solve in the correctly expanded interval, divide, and remove duplicates.",
+          "2. If n is negative, division reverses interval order but does not change the underlying solution set after it is rewritten consistently.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls multiple-angle equations?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "If n is negative, division reverses interval order but does not change the underlying solution set after it is rewritten consistently.",
+        "foundationWalkthrough": {
+          "problem": "Solve sin(3x)=sqrt(3)/2 on [0,2pi).",
+          "plan": "Rename u=nx if helpful, solve in the correctly expanded interval, divide, and remove duplicates. If n is negative, division reverses interval order but does not change the underlying solution set after it is rewritten consistently.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Rename u=nx if helpful, solve in the correctly expanded interval, divide, and remove duplicates. The relevant conditions are not optional bookkeeping: If n is negative, division reverses interval order but does not change the underlying solution set after it is rewritten consistently. Following that structure gives 3x=pi/3+2kpi or 2pi/3+2kpi; divide and list six solutions in the interval.",
+          "check": "This interval expansion explains why sin(3x)=k can have six solutions on [0,2pi) even though sin u=k has only two per u-period. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-identities-and-equations/multiple-angle-equations/"
+    },
+    {
+      "id": "precalculus-u11-l10-v2",
+      "sequence": 2,
+      "role": "Mechanism figure",
+      "title": "Expanded interval for nx before dividing",
+      "description": "Mechanism visual. Show the derivation, mapping, or changing parameter that makes the central relationship true. Mathematical mechanism: This interval expansion explains why sin(3x)=k can have six solutions on [0,2pi) even though sin u=k has only two per u-period. Opening context: Multiple-angle equations.",
+      "caption": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for multiple-angle equations.",
+      "anchorProblem": "Solve sin(3x)=sqrt(3)/2 on [0,2pi).",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Rename u=nx if helpful, solve in the correctly expanded interval, divide, and remove duplicates. The relevant conditions are not optional bookkeeping: If n is negative, division reverses interval order but does not change the underlying solution set after it is rewritten consistently. Following that structure gives 3x=pi/3+2kpi or 2pi/3+2kpi; divide and list six solutions in the interval.",
+      "anchorInterpretation": "This interval expansion explains why sin(3x)=k can have six solutions on [0,2pi) even though sin u=k has only two per u-period. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "This interval expansion explains why sin(3x)=k can have six solutions on [0,2pi) even though sin u=k has only two per u-period.",
+      "validStructure": "Solve the basic equation for the full set of values of nx, then divide every solution family by n. On a restricted x-interval, the corresponding nx-interval is n times as wide and may contain more cycles.",
+      "invalidMove": "A common error is to divide only the principal inverse angle and lose the other branches and periods.",
+      "lessonId": "precalculus-u11-l10",
+      "lessonSequence": 10,
+      "lessonTitle": "Multiple-angle equations",
+      "lessonOutcome": "Solve equations involving sin(nx), cos(nx), or tan(nx) and translate solution families back to x.",
+      "lessonGuide": {
+        "application": "Multiple-angle equations model higher harmonics, repeated rotations, and oscillations with increased frequency.",
+        "bigIdea": [
+          "A multiple-angle equation treats nx as the temporary angle variable.",
+          "Solve the basic equation for the full set of values of nx, then divide every solution family by n. On a restricted x-interval, the corresponding nx-interval is n times as wide and may contain more cycles."
+        ],
+        "method": [
+          "1. Rename u=nx if helpful, solve in the correctly expanded interval, divide, and remove duplicates.",
+          "2. If n is negative, division reverses interval order but does not change the underlying solution set after it is rewritten consistently.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls multiple-angle equations?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "If n is negative, division reverses interval order but does not change the underlying solution set after it is rewritten consistently.",
+        "foundationWalkthrough": {
+          "problem": "Solve sin(3x)=sqrt(3)/2 on [0,2pi).",
+          "plan": "Rename u=nx if helpful, solve in the correctly expanded interval, divide, and remove duplicates. If n is negative, division reverses interval order but does not change the underlying solution set after it is rewritten consistently.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Rename u=nx if helpful, solve in the correctly expanded interval, divide, and remove duplicates. The relevant conditions are not optional bookkeeping: If n is negative, division reverses interval order but does not change the underlying solution set after it is rewritten consistently. Following that structure gives 3x=pi/3+2kpi or 2pi/3+2kpi; divide and list six solutions in the interval.",
+          "check": "This interval expansion explains why sin(3x)=k can have six solutions on [0,2pi) even though sin u=k has only two per u-period. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-identities-and-equations/multiple-angle-equations/"
+    },
+    {
+      "id": "precalculus-u11-l10-v3",
+      "sequence": 3,
+      "role": "Comparison and error figure",
+      "title": "Common error panel showing lost periodic branches",
+      "description": "Comparison visual. Place the valid structure beside the common misconception and mark the first point where they diverge. Mathematical mechanism: This interval expansion explains why sin(3x)=k can have six solutions on [0,2pi) even though sin u=k has only two per u-period. Opening context: Multiple-angle equations.",
+      "caption": "Compare the valid path with the tempting shortcut. The figure shows why to divide only the principal inverse angle and lose the other branches and periods leads to a false conclusion.",
+      "anchorProblem": "Solve sin(3x)=sqrt(3)/2 on [0,2pi).",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Rename u=nx if helpful, solve in the correctly expanded interval, divide, and remove duplicates. The relevant conditions are not optional bookkeeping: If n is negative, division reverses interval order but does not change the underlying solution set after it is rewritten consistently. Following that structure gives 3x=pi/3+2kpi or 2pi/3+2kpi; divide and list six solutions in the interval.",
+      "anchorInterpretation": "This interval expansion explains why sin(3x)=k can have six solutions on [0,2pi) even though sin u=k has only two per u-period. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "This interval expansion explains why sin(3x)=k can have six solutions on [0,2pi) even though sin u=k has only two per u-period.",
+      "validStructure": "Solve the basic equation for the full set of values of nx, then divide every solution family by n. On a restricted x-interval, the corresponding nx-interval is n times as wide and may contain more cycles.",
+      "invalidMove": "A common error is to divide only the principal inverse angle and lose the other branches and periods.",
+      "lessonId": "precalculus-u11-l10",
+      "lessonSequence": 10,
+      "lessonTitle": "Multiple-angle equations",
+      "lessonOutcome": "Solve equations involving sin(nx), cos(nx), or tan(nx) and translate solution families back to x.",
+      "lessonGuide": {
+        "application": "Multiple-angle equations model higher harmonics, repeated rotations, and oscillations with increased frequency.",
+        "bigIdea": [
+          "A multiple-angle equation treats nx as the temporary angle variable.",
+          "Solve the basic equation for the full set of values of nx, then divide every solution family by n. On a restricted x-interval, the corresponding nx-interval is n times as wide and may contain more cycles."
+        ],
+        "method": [
+          "1. Rename u=nx if helpful, solve in the correctly expanded interval, divide, and remove duplicates.",
+          "2. If n is negative, division reverses interval order but does not change the underlying solution set after it is rewritten consistently.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls multiple-angle equations?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "If n is negative, division reverses interval order but does not change the underlying solution set after it is rewritten consistently.",
+        "foundationWalkthrough": {
+          "problem": "Solve sin(3x)=sqrt(3)/2 on [0,2pi).",
+          "plan": "Rename u=nx if helpful, solve in the correctly expanded interval, divide, and remove duplicates. If n is negative, division reverses interval order but does not change the underlying solution set after it is rewritten consistently.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Rename u=nx if helpful, solve in the correctly expanded interval, divide, and remove duplicates. The relevant conditions are not optional bookkeeping: If n is negative, division reverses interval order but does not change the underlying solution set after it is rewritten consistently. Following that structure gives 3x=pi/3+2kpi or 2pi/3+2kpi; divide and list six solutions in the interval.",
+          "check": "This interval expansion explains why sin(3x)=k can have six solutions on [0,2pi) even though sin u=k has only two per u-period. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-identities-and-equations/multiple-angle-equations/"
+    },
+    {
+      "id": "precalculus-u11-l11-v1",
+      "sequence": 1,
+      "role": "Anchor figure",
+      "title": "General-solution families on an infinite number line",
+      "description": "Anchor visual. Establish the quantities, coordinate system, interval, or geometric condition used in the opening problem. Mathematical mechanism: To extract solutions on an interval, solve inequalities for the integer parameter or generate nearby values systematically. Closed endpoints must be checked for duplicate coterminal representations. Opening context: General solutions and interval restrictions.",
+      "caption": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: To extract solutions on an interval, solve inequalities for the integer parameter or generate nearby values systematically. Closed endpoints must be checked for duplicate coterminal representations. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "anchorProblem": "Write all real solutions to cos x=-1/2, then list those in [-2pi,3pi].",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Write the general families first, state k is an integer, then enumerate only the values in the requested interval. The relevant conditions are not optional bookkeeping: A finite interval answer and a general solution answer are different deliverables and should not be mixed. Following that structure gives x=2pi/3+2kpi or 4pi/3+2kpi; enumerate k values producing interval solutions.",
+      "anchorInterpretation": "To extract solutions on an interval, solve inequalities for the integer parameter or generate nearby values systematically. Closed endpoints must be checked for duplicate coterminal representations. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "To extract solutions on an interval, solve inequalities for the integer parameter or generate nearby values systematically. Closed endpoints must be checked for duplicate coterminal representations.",
+      "validStructure": "Sine and cosine usually require two branch families per period, while tangent requires one because its period is pi. Equivalent families may look different but describe the same set.",
+      "invalidMove": "A common error is to list a pattern with ellipses but no formula, or to omit one sine/cosine branch.",
+      "lessonId": "precalculus-u11-l11",
+      "lessonSequence": 11,
+      "lessonTitle": "General solutions and interval restrictions",
+      "lessonOutcome": "Write complete periodic solution families and extract all solutions from specified intervals.",
+      "lessonGuide": {
+        "application": "General solutions are essential for periodic models and later differential equations.",
+        "bigIdea": [
+          "General solutions use an integer parameter to represent infinitely many periodic angle values.",
+          "Sine and cosine usually require two branch families per period, while tangent requires one because its period is pi. Equivalent families may look different but describe the same set."
+        ],
+        "method": [
+          "1. Write the general families first, state k is an integer, then enumerate only the values in the requested interval.",
+          "2. A finite interval answer and a general solution answer are different deliverables and should not be mixed.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls general solutions and interval restrictions?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "A finite interval answer and a general solution answer are different deliverables and should not be mixed.",
+        "foundationWalkthrough": {
+          "problem": "Write all real solutions to cos x=-1/2, then list those in [-2pi,3pi].",
+          "plan": "Write the general families first, state k is an integer, then enumerate only the values in the requested interval. A finite interval answer and a general solution answer are different deliverables and should not be mixed.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Write the general families first, state k is an integer, then enumerate only the values in the requested interval. The relevant conditions are not optional bookkeeping: A finite interval answer and a general solution answer are different deliverables and should not be mixed. Following that structure gives x=2pi/3+2kpi or 4pi/3+2kpi; enumerate k values producing interval solutions.",
+          "check": "To extract solutions on an interval, solve inequalities for the integer parameter or generate nearby values systematically. Closed endpoints must be checked for duplicate coterminal representations. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-identities-and-equations/general-solutions-and-interval-restrictions/"
+    },
+    {
+      "id": "precalculus-u11-l11-v2",
+      "sequence": 2,
+      "role": "Mechanism figure",
+      "title": "Unit-circle branch-to-family map",
+      "description": "Mechanism visual. Show the derivation, mapping, or changing parameter that makes the central relationship true. Mathematical mechanism: To extract solutions on an interval, solve inequalities for the integer parameter or generate nearby values systematically. Closed endpoints must be checked for duplicate coterminal representations. Opening context: General solutions and interval restrictions.",
+      "caption": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for general solutions and interval restrictions.",
+      "anchorProblem": "Write all real solutions to cos x=-1/2, then list those in [-2pi,3pi].",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Write the general families first, state k is an integer, then enumerate only the values in the requested interval. The relevant conditions are not optional bookkeeping: A finite interval answer and a general solution answer are different deliverables and should not be mixed. Following that structure gives x=2pi/3+2kpi or 4pi/3+2kpi; enumerate k values producing interval solutions.",
+      "anchorInterpretation": "To extract solutions on an interval, solve inequalities for the integer parameter or generate nearby values systematically. Closed endpoints must be checked for duplicate coterminal representations. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "To extract solutions on an interval, solve inequalities for the integer parameter or generate nearby values systematically. Closed endpoints must be checked for duplicate coterminal representations.",
+      "validStructure": "Sine and cosine usually require two branch families per period, while tangent requires one because its period is pi. Equivalent families may look different but describe the same set.",
+      "invalidMove": "A common error is to list a pattern with ellipses but no formula, or to omit one sine/cosine branch.",
+      "lessonId": "precalculus-u11-l11",
+      "lessonSequence": 11,
+      "lessonTitle": "General solutions and interval restrictions",
+      "lessonOutcome": "Write complete periodic solution families and extract all solutions from specified intervals.",
+      "lessonGuide": {
+        "application": "General solutions are essential for periodic models and later differential equations.",
+        "bigIdea": [
+          "General solutions use an integer parameter to represent infinitely many periodic angle values.",
+          "Sine and cosine usually require two branch families per period, while tangent requires one because its period is pi. Equivalent families may look different but describe the same set."
+        ],
+        "method": [
+          "1. Write the general families first, state k is an integer, then enumerate only the values in the requested interval.",
+          "2. A finite interval answer and a general solution answer are different deliverables and should not be mixed.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls general solutions and interval restrictions?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "A finite interval answer and a general solution answer are different deliverables and should not be mixed.",
+        "foundationWalkthrough": {
+          "problem": "Write all real solutions to cos x=-1/2, then list those in [-2pi,3pi].",
+          "plan": "Write the general families first, state k is an integer, then enumerate only the values in the requested interval. A finite interval answer and a general solution answer are different deliverables and should not be mixed.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Write the general families first, state k is an integer, then enumerate only the values in the requested interval. The relevant conditions are not optional bookkeeping: A finite interval answer and a general solution answer are different deliverables and should not be mixed. Following that structure gives x=2pi/3+2kpi or 4pi/3+2kpi; enumerate k values producing interval solutions.",
+          "check": "To extract solutions on an interval, solve inequalities for the integer parameter or generate nearby values systematically. Closed endpoints must be checked for duplicate coterminal representations. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-identities-and-equations/general-solutions-and-interval-restrictions/"
+    },
+    {
+      "id": "precalculus-u11-l11-v3",
+      "sequence": 3,
+      "role": "Comparison and error figure",
+      "title": "Endpoint inclusion and duplicate control",
+      "description": "Comparison visual. Place the valid structure beside the common misconception and mark the first point where they diverge. Mathematical mechanism: To extract solutions on an interval, solve inequalities for the integer parameter or generate nearby values systematically. Closed endpoints must be checked for duplicate coterminal representations. Opening context: General solutions and interval restrictions.",
+      "caption": "Compare the valid path with the tempting shortcut. The figure shows why to list a pattern with ellipses but no formula, or to omit one sine/cosine branch leads to a false conclusion.",
+      "anchorProblem": "Write all real solutions to cos x=-1/2, then list those in [-2pi,3pi].",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Write the general families first, state k is an integer, then enumerate only the values in the requested interval. The relevant conditions are not optional bookkeeping: A finite interval answer and a general solution answer are different deliverables and should not be mixed. Following that structure gives x=2pi/3+2kpi or 4pi/3+2kpi; enumerate k values producing interval solutions.",
+      "anchorInterpretation": "To extract solutions on an interval, solve inequalities for the integer parameter or generate nearby values systematically. Closed endpoints must be checked for duplicate coterminal representations. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "To extract solutions on an interval, solve inequalities for the integer parameter or generate nearby values systematically. Closed endpoints must be checked for duplicate coterminal representations.",
+      "validStructure": "Sine and cosine usually require two branch families per period, while tangent requires one because its period is pi. Equivalent families may look different but describe the same set.",
+      "invalidMove": "A common error is to list a pattern with ellipses but no formula, or to omit one sine/cosine branch.",
+      "lessonId": "precalculus-u11-l11",
+      "lessonSequence": 11,
+      "lessonTitle": "General solutions and interval restrictions",
+      "lessonOutcome": "Write complete periodic solution families and extract all solutions from specified intervals.",
+      "lessonGuide": {
+        "application": "General solutions are essential for periodic models and later differential equations.",
+        "bigIdea": [
+          "General solutions use an integer parameter to represent infinitely many periodic angle values.",
+          "Sine and cosine usually require two branch families per period, while tangent requires one because its period is pi. Equivalent families may look different but describe the same set."
+        ],
+        "method": [
+          "1. Write the general families first, state k is an integer, then enumerate only the values in the requested interval.",
+          "2. A finite interval answer and a general solution answer are different deliverables and should not be mixed.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls general solutions and interval restrictions?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "A finite interval answer and a general solution answer are different deliverables and should not be mixed.",
+        "foundationWalkthrough": {
+          "problem": "Write all real solutions to cos x=-1/2, then list those in [-2pi,3pi].",
+          "plan": "Write the general families first, state k is an integer, then enumerate only the values in the requested interval. A finite interval answer and a general solution answer are different deliverables and should not be mixed.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Write the general families first, state k is an integer, then enumerate only the values in the requested interval. The relevant conditions are not optional bookkeeping: A finite interval answer and a general solution answer are different deliverables and should not be mixed. Following that structure gives x=2pi/3+2kpi or 4pi/3+2kpi; enumerate k values producing interval solutions.",
+          "check": "To extract solutions on an interval, solve inequalities for the integer parameter or generate nearby values systematically. Closed endpoints must be checked for duplicate coterminal representations. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-identities-and-equations/general-solutions-and-interval-restrictions/"
+    },
+    {
+      "id": "precalculus-u11-l12-v1",
+      "sequence": 1,
+      "role": "Anchor figure",
+      "title": "Graph intersections with bracketed roots",
+      "description": "Anchor visual. Establish the quantities, coordinate system, interval, or geometric condition used in the opening problem. Mathematical mechanism: A numerical answer should include units, angle mode, interval, precision, and a residual or substitution check. Opening context: Exact and numerical trigonometric equation solving.",
+      "caption": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: A numerical answer should include units, angle mode, interval, precision, and a residual or substitution check. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "anchorProblem": "Solve sin x=0.3x on [0,6] to three decimals.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Graph the difference function, bracket each visible root, refine to the requested precision, and check that no roots are missed by the interval or graph window. The relevant conditions are not optional bookkeeping: Tangencies may produce roots without sign changes, so graph shape or local minimization must supplement bisection. Following that structure gives Solutions include x=0 and additional numerical intersections; compute with graph/bracketing software and verify residuals.",
+      "anchorInterpretation": "A numerical answer should include units, angle mode, interval, precision, and a residual or substitution check. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "A numerical answer should include units, angle mode, interval, precision, and a residual or substitution check.",
+      "validStructure": "Graphs locate intersections and estimate root counts. Bracketing methods preserve evidence that a root lies in an interval, while faster iterative methods require good starting values and may converge to unexpected roots.",
+      "invalidMove": "A common error is to report only the first calculator intersection or to work in degree mode while the equation uses radian input.",
+      "lessonId": "precalculus-u11-l12",
+      "lessonSequence": 12,
+      "lessonTitle": "Exact and numerical trigonometric equation solving",
+      "lessonOutcome": "Use graphing, bracketing, and numerical methods for trig equations without convenient exact solutions.",
+      "lessonGuide": {
+        "application": "Numerical trig equations appear in engineering, signal timing, navigation, and nonlinear models.",
+        "bigIdea": [
+          "Most realistic trigonometric equations require numerical approximation rather than exact unit-circle values.",
+          "Graphs locate intersections and estimate root counts. Bracketing methods preserve evidence that a root lies in an interval, while faster iterative methods require good starting values and may converge to unexpected roots."
+        ],
+        "method": [
+          "1. Graph the difference function, bracket each visible root, refine to the requested precision, and check that no roots are missed by the interval or graph window.",
+          "2. Tangencies may produce roots without sign changes, so graph shape or local minimization must supplement bisection.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls exact and numerical trigonometric equation solving?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "Tangencies may produce roots without sign changes, so graph shape or local minimization must supplement bisection.",
+        "foundationWalkthrough": {
+          "problem": "Solve sin x=0.3x on [0,6] to three decimals.",
+          "plan": "Graph the difference function, bracket each visible root, refine to the requested precision, and check that no roots are missed by the interval or graph window. Tangencies may produce roots without sign changes, so graph shape or local minimization must supplement bisection.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Graph the difference function, bracket each visible root, refine to the requested precision, and check that no roots are missed by the interval or graph window. The relevant conditions are not optional bookkeeping: Tangencies may produce roots without sign changes, so graph shape or local minimization must supplement bisection. Following that structure gives Solutions include x=0 and additional numerical intersections; compute with graph/bracketing software and verify residuals.",
+          "check": "A numerical answer should include units, angle mode, interval, precision, and a residual or substitution check. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-identities-and-equations/exact-and-numerical-trigonometric-equation-solving/"
+    },
+    {
+      "id": "precalculus-u11-l12-v2",
+      "sequence": 2,
+      "role": "Mechanism figure",
+      "title": "Residual table at numerical solutions",
+      "description": "Mechanism visual. Show the derivation, mapping, or changing parameter that makes the central relationship true. Mathematical mechanism: A numerical answer should include units, angle mode, interval, precision, and a residual or substitution check. Opening context: Exact and numerical trigonometric equation solving.",
+      "caption": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for exact and numerical trigonometric equation solving.",
+      "anchorProblem": "Solve sin x=0.3x on [0,6] to three decimals.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Graph the difference function, bracket each visible root, refine to the requested precision, and check that no roots are missed by the interval or graph window. The relevant conditions are not optional bookkeeping: Tangencies may produce roots without sign changes, so graph shape or local minimization must supplement bisection. Following that structure gives Solutions include x=0 and additional numerical intersections; compute with graph/bracketing software and verify residuals.",
+      "anchorInterpretation": "A numerical answer should include units, angle mode, interval, precision, and a residual or substitution check. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "A numerical answer should include units, angle mode, interval, precision, and a residual or substitution check.",
+      "validStructure": "Graphs locate intersections and estimate root counts. Bracketing methods preserve evidence that a root lies in an interval, while faster iterative methods require good starting values and may converge to unexpected roots.",
+      "invalidMove": "A common error is to report only the first calculator intersection or to work in degree mode while the equation uses radian input.",
+      "lessonId": "precalculus-u11-l12",
+      "lessonSequence": 12,
+      "lessonTitle": "Exact and numerical trigonometric equation solving",
+      "lessonOutcome": "Use graphing, bracketing, and numerical methods for trig equations without convenient exact solutions.",
+      "lessonGuide": {
+        "application": "Numerical trig equations appear in engineering, signal timing, navigation, and nonlinear models.",
+        "bigIdea": [
+          "Most realistic trigonometric equations require numerical approximation rather than exact unit-circle values.",
+          "Graphs locate intersections and estimate root counts. Bracketing methods preserve evidence that a root lies in an interval, while faster iterative methods require good starting values and may converge to unexpected roots."
+        ],
+        "method": [
+          "1. Graph the difference function, bracket each visible root, refine to the requested precision, and check that no roots are missed by the interval or graph window.",
+          "2. Tangencies may produce roots without sign changes, so graph shape or local minimization must supplement bisection.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls exact and numerical trigonometric equation solving?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "Tangencies may produce roots without sign changes, so graph shape or local minimization must supplement bisection.",
+        "foundationWalkthrough": {
+          "problem": "Solve sin x=0.3x on [0,6] to three decimals.",
+          "plan": "Graph the difference function, bracket each visible root, refine to the requested precision, and check that no roots are missed by the interval or graph window. Tangencies may produce roots without sign changes, so graph shape or local minimization must supplement bisection.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Graph the difference function, bracket each visible root, refine to the requested precision, and check that no roots are missed by the interval or graph window. The relevant conditions are not optional bookkeeping: Tangencies may produce roots without sign changes, so graph shape or local minimization must supplement bisection. Following that structure gives Solutions include x=0 and additional numerical intersections; compute with graph/bracketing software and verify residuals.",
+          "check": "A numerical answer should include units, angle mode, interval, precision, and a residual or substitution check. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-identities-and-equations/exact-and-numerical-trigonometric-equation-solving/"
+    },
+    {
+      "id": "precalculus-u11-l12-v3",
+      "sequence": 3,
+      "role": "Comparison and error figure",
+      "title": "Calculator mode error comparison",
+      "description": "Comparison visual. Place the valid structure beside the common misconception and mark the first point where they diverge. Mathematical mechanism: A numerical answer should include units, angle mode, interval, precision, and a residual or substitution check. Opening context: Exact and numerical trigonometric equation solving.",
+      "caption": "Compare the valid path with the tempting shortcut. The figure shows why to report only the first calculator intersection or to work in degree mode while the equation uses radian input leads to a false conclusion.",
+      "anchorProblem": "Solve sin x=0.3x on [0,6] to three decimals.",
+      "anchorConclusion": "Begin by identifying the mathematical object and the information that fixes it. Graph the difference function, bracket each visible root, refine to the requested precision, and check that no roots are missed by the interval or graph window. The relevant conditions are not optional bookkeeping: Tangencies may produce roots without sign changes, so graph shape or local minimization must supplement bisection. Following that structure gives Solutions include x=0 and additional numerical intersections; compute with graph/bracketing software and verify residuals.",
+      "anchorInterpretation": "A numerical answer should include units, angle mode, interval, precision, and a residual or substitution check. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "mechanism": "A numerical answer should include units, angle mode, interval, precision, and a residual or substitution check.",
+      "validStructure": "Graphs locate intersections and estimate root counts. Bracketing methods preserve evidence that a root lies in an interval, while faster iterative methods require good starting values and may converge to unexpected roots.",
+      "invalidMove": "A common error is to report only the first calculator intersection or to work in degree mode while the equation uses radian input.",
+      "lessonId": "precalculus-u11-l12",
+      "lessonSequence": 12,
+      "lessonTitle": "Exact and numerical trigonometric equation solving",
+      "lessonOutcome": "Use graphing, bracketing, and numerical methods for trig equations without convenient exact solutions.",
+      "lessonGuide": {
+        "application": "Numerical trig equations appear in engineering, signal timing, navigation, and nonlinear models.",
+        "bigIdea": [
+          "Most realistic trigonometric equations require numerical approximation rather than exact unit-circle values.",
+          "Graphs locate intersections and estimate root counts. Bracketing methods preserve evidence that a root lies in an interval, while faster iterative methods require good starting values and may converge to unexpected roots."
+        ],
+        "method": [
+          "1. Graph the difference function, bracket each visible root, refine to the requested precision, and check that no roots are missed by the interval or graph window.",
+          "2. Tangencies may produce roots without sign changes, so graph shape or local minimization must supplement bisection.",
+          "3. Verify the result in a second representation and explain what it means in the original setting."
+        ],
+        "questions": [
+          "Which definition or geometric structure controls exact and numerical trigonometric equation solving?",
+          "Which conditions or branch restrictions must remain visible?",
+          "How can a second representation verify the conclusion?"
+        ],
+        "verification": "Tangencies may produce roots without sign changes, so graph shape or local minimization must supplement bisection.",
+        "foundationWalkthrough": {
+          "problem": "Solve sin x=0.3x on [0,6] to three decimals.",
+          "plan": "Graph the difference function, bracket each visible root, refine to the requested precision, and check that no roots are missed by the interval or graph window. Tangencies may produce roots without sign changes, so graph shape or local minimization must supplement bisection.",
+          "conclusion": "Begin by identifying the mathematical object and the information that fixes it. Graph the difference function, bracket each visible root, refine to the requested precision, and check that no roots are missed by the interval or graph window. The relevant conditions are not optional bookkeeping: Tangencies may produce roots without sign changes, so graph shape or local minimization must supplement bisection. Following that structure gives Solutions include x=0 and additional numerical intersections; compute with graph/bracketing software and verify residuals.",
+          "check": "A numerical answer should include units, angle mode, interval, precision, and a residual or substitution check. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion."
+        }
+      },
+      "route": "/subjects/math/precalculus/trigonometric-identities-and-equations/exact-and-numerical-trigonometric-equation-solving/"
+    }
+  ]
+}
