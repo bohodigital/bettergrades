@@ -408,20 +408,28 @@ function systemsScene(brief) {
 
 function angleAndCircleScene(brief) {
   const angle = [225, 60, 120, 135, 45, 300, 150, 30, 210, 240][(brief.lessonSequence - 1) % 10] * Math.PI / 180;
-  const x = Math.cos(angle);
-  const y = Math.sin(angle);
+  const cosine = Math.cos(angle);
+  const sine = Math.sin(angle);
+  const centerX = 6.15;
+  const centerY = 3.45;
+  const radius = 2.25;
+  const terminalX = centerX + radius * cosine;
+  const terminalY = centerY + radius * sine;
   const layers = [
-    parametricSeries("unit-circle", Math.cos, Math.sin, 0, 2 * Math.PI, "unit circle x²+y²=1", "visual-guide", "solid"),
-    parametricSeries("directed-arc", (t) => 0.72 * Math.cos(t), (t) => 0.72 * Math.sin(t), 0, angle, "directed arc records signed rotation", "visual-emphasis", "solid", 81),
-    arrow("terminal-ray", 0, 0, x, y, "terminal ray from the origin", "visual-primary"),
-    point("terminal-point", x, y, `terminal point (${x.toFixed(2)}, ${y.toFixed(2)})`, "visual-emphasis", "diamond"),
-    segment("cosine-coordinate", x, 0, x, y, "vertical coordinate segment gives sine", "visual-secondary", "dashed"),
-    segment("sine-coordinate", 0, 0, x, 0, "horizontal coordinate segment gives cosine", "visual-secondary", "dashed"),
-    label("circle-title", -1.42, 1.37, compact(brief.title, 64), "visual-primary"),
-    label("angle-label", 0.22, 0.28, `θ = ${Math.round(angle * 180 / Math.PI)}°`),
-    label("meaning", -1.42, -1.35, compact(brief.anchorInterpretation, 76), "visual-ink"),
+    label("figure-kicker", 0.55, 6.45, compact(brief.title, 72), "visual-primary"),
+    segment("horizontal-axis", centerX - radius - 0.55, centerY, centerX + radius + 0.55, centerY, "horizontal cosine axis", "visual-guide"),
+    segment("vertical-axis", centerX, centerY - radius - 0.45, centerX, centerY + radius + 0.45, "vertical sine axis", "visual-guide"),
+    parametricSeries("unit-circle", (t) => centerX + radius * Math.cos(t), (t) => centerY + radius * Math.sin(t), 0, 2 * Math.PI, "unit circle x²+y²=1", "visual-guide", "solid"),
+    parametricSeries("directed-arc", (t) => centerX + 1.45 * Math.cos(t), (t) => centerY + 1.45 * Math.sin(t), 0, angle, "directed arc records signed rotation", "visual-emphasis", "solid", 81),
+    arrow("terminal-ray", centerX, centerY, terminalX, terminalY, "terminal ray from the origin", "visual-primary"),
+    withoutCanvasLabel(point("terminal-point", terminalX, terminalY, `terminal point (${cosine.toFixed(2)}, ${sine.toFixed(2)})`, "visual-emphasis", "diamond")),
+    segment("sine-coordinate", terminalX, centerY, terminalX, terminalY, "vertical projection gives sine", "visual-secondary", "dashed"),
+    segment("cosine-coordinate", centerX, centerY, terminalX, centerY, "horizontal projection gives cosine", "visual-secondary", "dashed"),
+    label("angle-label", centerX + 0.35, centerY + 0.45, `θ = ${Math.round(angle * 180 / Math.PI)}°`),
+    label("positive-direction", 0.7, 0.72, "CCW: +  ·  CW: −"),
+    label("coordinate-meaning", 7.05, 0.72, `P(θ) = (${cosine.toFixed(2)}, ${sine.toFixed(2)})`, "visual-primary"),
   ];
-  return graph({ xMin: -1.55, xMax: 1.55, yMin: -1.55, yMax: 1.55 }, layers, "cos θ", "sin θ");
+  return diagram(layers);
 }
 
 function periodicScene(brief) {
@@ -512,7 +520,7 @@ function triangleAndVectorScene(brief) {
 
 function conicScene(brief) {
   const sequence = brief.lessonSequence;
-  const layers = [label("title", -5.5, 5.35, compact(brief.title, 62), "visual-primary")];
+  const layers = [label("title", -9.15, 5.35, compact(brief.title, 62), "visual-primary")];
   if (sequence === 2) {
     layers.push(
       series("parabola", (x) => x * x / 4, -4, 4, "points equidistant from focus and directrix", "visual-primary"),
@@ -535,10 +543,10 @@ function conicScene(brief) {
       point("focus-left", -Math.sqrt(9.75), 0, "left focus", "visual-emphasis", "square"),
       point("focus-right", Math.sqrt(9.75), 0, "right focus", "visual-emphasis", "diamond"),
       segment("major-axis", -4, 0, 4, 0, "major axis", "visual-guide", "dashed"),
-      label("locus-note", -5.5, -4.9, "A conic is organized by a geometric locus condition, not by appearance alone."),
+      label("locus-note", -9.15, -4.9, "A conic is organized by a geometric locus condition, not by appearance alone."),
     );
   }
-  return graph({ xMin: -6, xMax: 6, yMin: -5.5, yMax: 6 }, layers);
+  return graph({ xMin: -9.9, xMax: 9.9, yMin: -5.5, yMax: 6 }, layers);
 }
 
 function parametricPolarComplexScene(brief) {
@@ -547,20 +555,20 @@ function parametricPolarComplexScene(brief) {
     const angle = sequence === 12 ? 2 * Math.PI / 3 : Math.PI / 4;
     const x = 3.5 * Math.cos(angle);
     const y = 3.5 * Math.sin(angle);
-    return graph({ xMin: -5, xMax: 5, yMin: -5, yMax: 5 }, [
+    return graph({ xMin: -8.6, xMax: 8.6, yMin: -5, yMax: 5 }, [
       arrow("complex-vector", 0, 0, x, y, "complex number in polar form r(cos θ+i sin θ)", "visual-primary"),
       parametricSeries("modulus-circle", (t) => 3.5 * Math.cos(t), (t) => 3.5 * Math.sin(t), 0, 2 * Math.PI, "constant modulus circle", "visual-guide", "dashed"),
       point("complex-point", x, y, "complex number endpoint", "visual-emphasis", "diamond"),
-      label("title", -4.6, 4.45, compact(brief.title, 62), "visual-primary"),
+      label("title", -7.95, 4.45, compact(brief.title, 62), "visual-primary"),
       label("polar-label", 0.5, 0.65, `r=3.5, θ=${Math.round(angle * 180 / Math.PI)}°`),
     ], "real axis", "imaginary axis");
   }
   if (sequence >= 5) {
-    return graph({ xMin: -4.5, xMax: 4.5, yMin: -4.5, yMax: 4.5 }, [
+    return graph({ xMin: -7.74, xMax: 7.74, yMin: -4.5, yMax: 4.5 }, [
       parametricSeries("polar-curve", (t) => 3 * Math.cos(3 * t) * Math.cos(t), (t) => 3 * Math.cos(3 * t) * Math.sin(t), 0, 2 * Math.PI, "polar rose r=3cos(3θ)", "visual-primary"),
       point("pole", 0, 0, "pole", "visual-emphasis", "diamond"),
-      label("title", -4.1, 4.0, compact(brief.title, 62), "visual-primary"),
-      label("tracing", -4.1, -4.0, "Angle controls direction; signed radius controls distance and orientation."),
+      label("title", -7.15, 4.0, compact(brief.title, 62), "visual-primary"),
+      label("tracing", -7.15, -4.0, "Angle controls direction; signed radius controls distance and orientation."),
     ], "x=r cos θ", "y=r sin θ");
   }
   return graph({ xMin: -1, xMax: 7, yMin: -1, yMax: 10 }, [
