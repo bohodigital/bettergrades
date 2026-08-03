@@ -10,25 +10,45 @@ import searchIndex from "../content/precalculus/search.public.json" with { type:
 import solutions from "../content/precalculus/solutions.server.json" with { type: "json" };
 import sourceLessons from "../content/precalculus/source-package/data/lessons.json" with { type: "json" };
 import phaseBSourceLessons from "../content/precalculus/source-package-phase-b/data/lessons.json" with { type: "json" };
-import { getPrecalculusAssessmentRecord, normalizePrecalculusAnswer, validatePrecalculusAssessmentAnswer } from "../lib/precalculus/precalculus-course.server.mjs";
+import { evaluatePrecalculusAssessmentAnswer, getPrecalculusAssessmentRecord, normalizePrecalculusAnswer, validatePrecalculusAssessmentAnswer } from "../lib/precalculus/precalculus-course.server.mjs";
 import { getPublicPrecalculusCoursePage } from "../lib/precalculus/precalculus-course.mjs";
 import { precalculusCourseSearchRecords } from "../lib/precalculus/precalculus-course-search.mjs";
 
 test("Precalculus imports the exact approved learner inventory without public production-split language", () => {
-  assert.deepEqual(course.counts, { units: 16, lessons: 174, figures: 522, practiceItems: 1_740 });
+  assert.deepEqual(course.counts, { units: 16, lessons: 174, figures: 522, practiceItems: 1_740, assessmentRoutes: 65, assessmentPlacements: 2_013 });
   assert.equal(course.units.length, 16);
   assert.equal(course.lessons.length, 174);
-  assert.equal(course.routes.length, 191);
-  assert.equal(routeIndex.routes.length, 191);
-  assert.equal(searchIndex.records.length, 191);
+  assert.equal(course.routes.length, 256);
+  assert.equal(routeIndex.routes.length, 256);
+  assert.equal(searchIndex.records.length, 256);
   assert.equal(solutions.solutions.length, 1_914);
-  assert.equal(new Set(course.routes.map((route) => route.path)).size, 191);
+  assert.equal(new Set(course.routes.map((route) => route.path)).size, 256);
   assert.equal(new Set(course.lessons.map((lesson) => lesson.id)).size, 174);
   assert.doesNotMatch(
     JSON.stringify({ course, routes: routeIndex, search: searchIndex }),
     /\bP(?:[0-9]|1[0-5])(?:\.\d+)?\b|phase(?:[\s_-]+[ab])\b|p0(?:[\s_-]+p15)\b|(?:first|second) (?:internal production )?half/i,
   );
   assert.ok(course.routes.every((route) => route.path.startsWith("/subjects/math/precalculus/")));
+});
+
+test("every unit publishes concrete review, practice, mastery, and investigation routes plus a cumulative final", () => {
+  assert.equal(course.assessments.length, 65);
+  for (const unit of course.units) {
+    assert.deepEqual(unit.assessments.map((assessment) => assessment.type), ["unit-review", "flexible-practice", "mastery-check", "investigation"]);
+    const records = course.assessments.filter((assessment) => assessment.unitId === unit.id);
+    assert.ok(records.find((assessment) => assessment.type === "unit-review").items.length >= 40);
+    assert.equal(records.find((assessment) => assessment.type === "flexible-practice").items.length, 32);
+    assert.ok(records.find((assessment) => assessment.type === "mastery-check").items.length >= 28);
+    assert.ok(records.find((assessment) => assessment.type === "investigation").items.length >= 4);
+    for (const assessment of records) {
+      const page = getPublicPrecalculusCoursePage(assessment.path);
+      assert.ok(page.assessment.items.every((item) => item.prompt && item.responseType && item.expectedAnswerPolicy && item.hint && item.remediationTarget));
+      assert.ok(assessment.navigation.parent.path === unit.root);
+    }
+  }
+  const final = course.assessments.find((assessment) => assessment.type === "final-assessment");
+  assert.equal(final.items.length, 64);
+  assert.equal(new Set(final.items.map((item) => item.sourceLessonId.split("-l")[0])).size, 16);
 });
 
 test("Every exact lesson field is preserved and every protected answer stays out of public prompt records", () => {
@@ -149,12 +169,49 @@ test("Precalculus search and protected validation use public IDs without bundlin
   const storage = { get: async (id) => solutions.solutions.find((record) => record.id === id) };
   const record = await getPrecalculusAssessmentRecord(storage, firstPractice.id);
   assert.equal(record.answer, sourceAnswer);
-  assert.equal(validatePrecalculusAssessmentAnswer(record, sourceAnswer), true);
-  assert.equal(validatePrecalculusAssessmentAnswer(record, "anything nonempty"), false);
+  assert.equal(await validatePrecalculusAssessmentAnswer(record, sourceAnswer), true);
+  assert.equal(await validatePrecalculusAssessmentAnswer(record, "anything nonempty"), false);
   assert.equal(normalizePrecalculusAnswer(" Identity; all real numbers. "), "identityallrealnumbers");
-  assert.equal(precalculusCourseSearchRecords.length, 191);
+  assert.equal(precalculusCourseSearchRecords.length, 256);
   assert.ok(precalculusCourseSearchRecords.some((record) => record.path === lesson.path && record.title === lesson.title));
   assert.doesNotMatch(firstPractice.id, /\bP[0-7](?:\.\d+)?\b/);
+});
+
+test("all 1,914 Precalculus records enforce an explicit validation and reveal policy", async () => {
+  const policyCounts = new Map();
+  for (const record of solutions.solutions) {
+    assert.ok(["numeric", "symbolic", "multipart", "exact_text", "manual_rubric"].includes(record.validation.type), `${record.id} has a declared policy`);
+    policyCounts.set(record.validation.type, (policyCounts.get(record.validation.type) ?? 0) + 1);
+
+    const correct = await evaluatePrecalculusAssessmentAnswer(record, record.answer);
+    if (record.validation.type === "manual_rubric") {
+      assert.equal(correct.status, "manual_review", `${record.id} must not be called automatically correct`);
+      assert.equal(correct.revealAllowed, true, `${record.id} permits model comparison after substantive work`);
+    } else {
+      assert.equal(correct.status, "correct", `${record.id} accepts its canonical correct corpus`);
+      assert.equal(correct.revealAllowed, true);
+    }
+
+    const arbitrary = await evaluatePrecalculusAssessmentAnswer(record, "anything nonempty");
+    assert.notEqual(arbitrary.status, "correct", `${record.id} rejects arbitrary nonempty text as correct`);
+    assert.equal(arbitrary.revealAllowed, false, `${record.id} does not reveal for arbitrary nonempty text`);
+  }
+  assert.deepEqual(Object.fromEntries([...policyCounts].sort()), {
+    exact_text: 327,
+    manual_rubric: 1261,
+    multipart: 23,
+    numeric: 70,
+    symbolic: 233,
+  });
+});
+
+test("numeric, symbolic, multipart, and manual policies enforce their distinct semantics", async () => {
+  assert.equal((await evaluatePrecalculusAssessmentAnswer({ answer: "1/2", validation: { type: "numeric", tolerance: 1e-9 } }, "0.5")).status, "correct");
+  assert.equal((await evaluatePrecalculusAssessmentAnswer({ answer: "(x-2)(x-3)", validation: { type: "symbolic" } }, "x^2-5x+6")).status, "correct");
+  assert.equal((await evaluatePrecalculusAssessmentAnswer({ answer: "2; 3", validation: { type: "multipart", separator: ";", components: [{ type: "numeric" }, { type: "numeric" }] } }, "2")).status, "incorrect");
+  const manual = await evaluatePrecalculusAssessmentAnswer({ answer: "A model response with complete reasoning.", validation: { type: "manual_rubric", revealPolicy: "attempt_then_model", minimumAttemptLength: 24 } }, "I used the domain restriction and checked the result by substitution.");
+  assert.equal(manual.status, "manual_review");
+  assert.equal(manual.revealAllowed, true);
 });
 
 test("Precalculus source package remains byte-verified by its own checksum inventory", async () => {

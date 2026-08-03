@@ -69,6 +69,51 @@ function publicLearnerText(value) {
     : value;
 }
 
+const explanationPrompt = /\b(?:explain|justify|describe|interpret|compare|analy[sz]e|why|defend|discuss|write a|construct an argument|show that|prove)\b/i;
+const numericAnswer = /^[+-]?(?:(?:\d+(?:\.\d*)?|\.\d+)(?:\s*\/\s*[+-]?(?:\d+(?:\.\d*)?|\.\d+))?)(?:\s*%)?\.?$/;
+const allowedSymbolicWord = /^(?:[a-z]|pi|sqrt|sin|cos|tan|sec|csc|cot|log|ln|exp|abs)$/i;
+
+function directValidationPolicy(answer) {
+  const source = answer.trim();
+  if (numericAnswer.test(source)) return { type: "numeric", tolerance: 1e-9 };
+  const words = source.match(/[A-Za-z]+/g) ?? [];
+  const symbolic = source.length <= 120
+    && /[=<>^/()+*\-√πθ≠≤≥]|\d[A-Za-z]|[A-Za-z]\d/.test(source)
+    && words.every((word) => allowedSymbolicWord.test(word));
+  return symbolic ? { type: "symbolic" } : { type: "exact_text" };
+}
+
+function validationPolicy(prompt, answer) {
+  const source = answer.trim();
+  if (source.length > 80 || (explanationPrompt.test(prompt) && source.length > 40)) {
+    return {
+      type: "manual_rubric",
+      revealPolicy: "attempt_then_model",
+      contentPolicy: "nonprotected_model_response",
+      minimumAttemptLength: 24,
+    };
+  }
+  const components = source.split(";").map((value) => value.trim()).filter(Boolean);
+  if (components.length > 1) {
+    return {
+      type: "multipart",
+      separator: ";",
+      components: components.map(directValidationPolicy),
+    };
+  }
+  return directValidationPolicy(source);
+}
+
+function publicPolicy(validation) {
+  return {
+    responseType: validation.type,
+    expectedAnswerPolicy: validation.type === "manual_rubric" ? "rubric_guided_model_comparison" : validation.type,
+    acceptedEquivalentForms: validation.type === "symbolic" ? "mathematically_equivalent_expression" : validation.type === "numeric" ? "equivalent_finite_number" : "declared_server_policy",
+    unitsAndRoundingPolicy: "Follow the units, exactness, and rounding requested in the prompt; otherwise preserve the exact form.",
+    randomizationPolicy: "fixed_source_authored_item",
+  };
+}
+
 const editorialProfiles = {
   1: {
     lens: "Precalculus is unforgiving about hidden algebra errors. The useful habit is to separate reversible algebra from steps that can create candidates, and to keep domain restrictions beside the work instead of trying to remember them at the end.",
@@ -273,6 +318,7 @@ for (const sourceLesson of sourceLessons) {
   const guide = editorialGuide(sourceLesson, profile.sequence);
   const practice = expandedPractice(sourceLesson, guide).map((item, index) => {
     const id = `${publicLessonId}-practice-${String(index + 1).padStart(2, "0")}`;
+    const validation = validationPolicy(item.prompt, item.answer);
     solutions.push({
       id,
       lessonId: publicLessonId,
@@ -280,9 +326,11 @@ for (const sourceLesson of sourceLessons) {
       sequence: index + 1,
       prompt: item.prompt,
       answer: item.answer,
+      validation,
     });
-    return { id, sequence: index + 1, prompt: item.prompt };
+    return { id, sequence: index + 1, prompt: item.prompt, ...publicPolicy(validation) };
   });
+  const checkpointValidation = validationPolicy(sourceLesson.checkpoint.prompt, sourceLesson.checkpoint.answer);
   solutions.push({
     id: checkpointId,
     lessonId: publicLessonId,
@@ -290,6 +338,7 @@ for (const sourceLesson of sourceLessons) {
     sequence: 0,
     prompt: sourceLesson.checkpoint.prompt,
     answer: sourceLesson.checkpoint.answer,
+    validation: checkpointValidation,
   });
   const figures = sourceLesson.figures.map((figure, index) => ({
     id: `${publicLessonId}-v${index + 1}`,
@@ -321,7 +370,7 @@ for (const sourceLesson of sourceLessons) {
     commonMistake: sourceLesson.commonMistake,
     examples: sourceLesson.examples,
     figures,
-    checkpoint: { id: checkpointId, prompt: sourceLesson.checkpoint.prompt },
+    checkpoint: { id: checkpointId, prompt: sourceLesson.checkpoint.prompt, ...publicPolicy(checkpointValidation) },
     practice,
     close: sourceLesson.close,
     sources: sourceLesson.sources,
@@ -364,6 +413,92 @@ const publicUnits = unitProfiles.map((profile) => {
   };
 });
 
+function assessmentItem(lesson, prompt, sequence) {
+  return {
+    id: prompt.id,
+    sequence,
+    hint: lesson.guide.questions[0],
+    errorTags: [`unit-${lesson.unitSequence}-concept`, prompt.responseType === "manual_rubric" ? "reasoning-incomplete" : "answer-form"],
+    remediationTarget: lesson.path,
+    sourceLessonId: lesson.id,
+  };
+}
+
+function takeEvenly(items, count) {
+  if (items.length <= count) return items;
+  return Array.from({ length: count }, (_, index) => items[Math.floor(index * items.length / count)]);
+}
+
+const assessments = [];
+for (const unit of publicUnits) {
+  const lessons = publicLessons.filter((lesson) => lesson.unitId === unit.id);
+  const practicePool = lessons.flatMap((lesson) => lesson.practice.map((prompt) => ({ lesson, prompt })));
+  const reviewPool = lessons.flatMap((lesson) => lesson.practice.slice(0, 5).map((prompt) => ({ lesson, prompt })));
+  const masteryPool = lessons.flatMap((lesson) => [lesson.checkpoint, ...lesson.practice.slice(0, 3)].map((prompt) => ({ lesson, prompt })));
+  const investigationPool = takeEvenly(practicePool.filter(({ prompt }) => prompt.responseType === "manual_rubric"), 5);
+  const fallbackInvestigationPool = investigationPool.length >= 4 ? investigationPool : takeEvenly(practicePool, 5);
+  const definitions = [
+    { type: "unit-review", slug: "review", title: `Unit ${unit.sequence} Review`, description: "A 40–50 item cumulative unit review.", selected: takeEvenly(reviewPool, Math.min(50, Math.max(40, reviewPool.length))) },
+    { type: "flexible-practice", slug: "practice", title: `Unit ${unit.sequence} Flexible Practice`, description: "A 32-item mixed practice set with repair links.", selected: takeEvenly(practicePool, 32) },
+    { type: "mastery-check", slug: "mastery-check", title: `Unit ${unit.sequence} Mastery Check`, description: "A 28–36 item check spanning every unit lesson.", selected: masteryPool.slice(0, 36) },
+    { type: "investigation", slug: "investigation", title: `Unit ${unit.sequence} Investigation`, description: "A multistage representation and verification task.", selected: fallbackInvestigationPool },
+  ];
+  const unitAssessments = definitions.map((definition) => {
+    const id = `${unit.id}-${definition.type}`;
+    const path = `${unit.root}${definition.slug}/`;
+    const items = definition.selected.map(({ lesson, prompt }, index) => assessmentItem(lesson, prompt, index + 1));
+    return {
+      id,
+      unitId: unit.id,
+      type: definition.type,
+      title: definition.title,
+      description: definition.description,
+      path,
+      items,
+      rubric: definition.type === "investigation" ? {
+        stages: ["represent the situation", "perform valid mathematical work", "interpret the result", "verify with a second representation"],
+        modelResponsePolicy: "server_held_attempt_then_model_comparison",
+      } : null,
+    };
+  });
+  unit.assessments = unitAssessments.map(({ id, type, title, path, items }) => ({ id, type, title, path, itemCount: items.length }));
+  assessments.push(...unitAssessments);
+}
+
+const finalPool = publicUnits.flatMap((unit) => {
+  const lessons = publicLessons.filter((lesson) => lesson.unitId === unit.id);
+  return takeEvenly(lessons.flatMap((lesson) => lesson.practice.map((prompt) => ({ lesson, prompt }))), 4);
+});
+const finalAssessment = {
+  id: "precalculus-final-assessment",
+  unitId: null,
+  type: "final-assessment",
+  title: "Precalculus Final Assessment",
+  description: "A 64-item cumulative assessment spanning all sixteen Precalculus units.",
+  path: `${courseRoot}final-assessment/`,
+  items: finalPool.map(({ lesson, prompt }, index) => assessmentItem(lesson, prompt, index + 1)),
+  rubric: null,
+};
+assessments.push(finalAssessment);
+
+for (const unit of publicUnits) {
+  const unitAssessments = assessments.filter((assessment) => assessment.unitId === unit.id);
+  for (const [index, assessment] of unitAssessments.entries()) {
+    assessment.navigation = {
+      parent: { title: unit.title, path: unit.root },
+      previous: index > 0 ? { title: unitAssessments[index - 1].title, path: unitAssessments[index - 1].path } : { title: unit.title, path: unit.root },
+      next: index < unitAssessments.length - 1 ? { title: unitAssessments[index + 1].title, path: unitAssessments[index + 1].path } : { title: "Precalculus course map", path: courseRoot },
+      courseProgress: { title: "Continue through the Precalculus course", path: courseRoot },
+    };
+  }
+}
+finalAssessment.navigation = {
+  parent: { title: "Precalculus course map", path: courseRoot },
+  previous: { title: publicUnits.at(-1).title, path: publicUnits.at(-1).root },
+  next: { title: "Precalculus course map", path: courseRoot },
+  courseProgress: { title: "Review the complete course map", path: courseRoot },
+};
+
 const courseRoute = {
   id: "precalculus-course",
   path: courseRoot,
@@ -394,7 +529,18 @@ const lessonRoutes = publicLessons.map((lesson) => ({
   unitId: lesson.unitId,
   lessonId: lesson.id,
 }));
-const routes = [courseRoute, ...unitRoutes, ...lessonRoutes];
+const assessmentRoutes = assessments.map((assessment) => ({
+  id: assessment.id,
+  path: assessment.path,
+  title: assessment.title,
+  description: assessment.description,
+  pageType: assessment.type,
+  indexable: true,
+  unitId: assessment.unitId,
+  lessonId: null,
+  assessmentId: assessment.id,
+}));
+const routes = [courseRoute, ...unitRoutes, ...lessonRoutes, ...assessmentRoutes];
 
 const searchRecords = routes.map((route) => {
   const unit = publicUnits.find((candidate) => candidate.id === route.unitId);
@@ -408,7 +554,7 @@ const searchRecords = routes.map((route) => {
     domainSlug: "precalculus",
     domainName: "Precalculus",
     topicName: unit?.title ?? "Precalculus course",
-    label: route.pageType === "course-hub" ? "Course map" : route.pageType === "unit-hub" ? "Unit map" : "Lesson",
+    label: route.pageType === "course-hub" ? "Course map" : route.pageType === "unit-hub" ? "Unit map" : route.pageType === "lesson" ? "Lesson" : "Assessment",
     keywords: [
       route.title,
       route.description,
@@ -431,9 +577,12 @@ const course = {
     lessons: publicLessons.length,
     figures: publicLessons.reduce((sum, lesson) => sum + lesson.figures.length, 0),
     practiceItems: publicLessons.reduce((sum, lesson) => sum + lesson.practice.length, 0),
+    assessmentRoutes: assessments.length,
+    assessmentPlacements: assessments.reduce((sum, assessment) => sum + assessment.items.length, 0),
   },
   units: publicUnits,
   lessons: publicLessons,
+  assessments,
   routes,
 };
 
@@ -515,5 +664,6 @@ for (const unit of publicUnits) {
 console.log(
   `${checkOnly ? "Verified" : "Imported"} Precalculus: ${course.counts.units} available units, `
   + `${course.counts.lessons} exact lessons, ${course.counts.figures} semantic figures, `
-  + `${course.counts.practiceItems} practice items, and ${solutions.length} protected answer records.`,
+  + `${course.counts.practiceItems} practice items, ${course.counts.assessmentRoutes} assessment routes, `
+  + `and ${solutions.length} declared answer-policy records.`,
 );

@@ -1,4 +1,4 @@
-import { getPrecalculusAssessmentRecord, validatePrecalculusAssessmentAnswer } from "../../../lib/precalculus/precalculus-course.server.mjs";
+import { evaluatePrecalculusAssessmentAnswer, getPrecalculusAssessmentRecord } from "../../../lib/precalculus/precalculus-course.server.mjs";
 
 const MAX_ID_LENGTH = 160;
 const MAX_ANSWER_LENGTH = 8_000;
@@ -26,9 +26,17 @@ export async function POST(request: Request, environment: PrecalculusEnvironment
   if (!environment.PRECALCULUS_SOLUTIONS) return Response.json({ error: "Protected answer validation is temporarily unavailable." }, { status: 503 });
   const record = await getPrecalculusAssessmentRecord(environment.PRECALCULUS_SOLUTIONS, id);
   if (!record) return Response.json({ error: "That Precalculus practice item is not available." }, { status: 404 });
-  const correct = validatePrecalculusAssessmentAnswer(record, answer);
-  return Response.json(correct
-    ? { status: "correct", feedback: "Correct. You can now compare your work with the response guide." }
-    : { status: "incorrect", feedback: "That attempt does not match the protected answer. Recheck the requested form, restrictions, units, and reasoning." },
-  { status: correct ? 200 : 422 });
+  const evaluation = await evaluatePrecalculusAssessmentAnswer(record, answer);
+  if (evaluation.status === "correct") {
+    return Response.json({ status: "correct", revealAllowed: true, feedback: "Correct. You can now compare your work with the response guide." });
+  }
+  if (evaluation.status === "manual_review") {
+    return Response.json({ status: "manual_review", revealAllowed: true, feedback: "This explanation is not labeled correct by automation. Your substantive attempt is ready for rubric-guided comparison." });
+  }
+  const feedback = evaluation.status === "insufficient"
+    ? "Add a substantive method, explanation, or mathematical setup before opening the model response."
+    : evaluation.status === "uncertain"
+      ? "The bounded checker could not prove or disprove equivalence. Recheck the requested form and try a clearer equivalent form."
+      : "That attempt does not match the protected answer. Recheck the requested form, restrictions, units, and reasoning.";
+  return Response.json({ status: evaluation.status, revealAllowed: false, feedback }, { status: 422 });
 }

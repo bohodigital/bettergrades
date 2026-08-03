@@ -5,6 +5,8 @@ const routes = [
   ["course-hub", "/subjects/math/precalculus/"],
   ...course.units.map((unit) => [`unit-${unit.sequence}-hub`, unit.root]),
   ["lesson", "/subjects/math/precalculus/angles-radians-and-the-unit-circle/directed-rotation-and-coterminal-angles/"],
+  ...course.units[0].assessments.map((assessment) => [assessment.type, assessment.path]),
+  ["final-assessment", "/subjects/math/precalculus/final-assessment/"],
 ];
 const viewports = [
   { width: 1440, height: 900 },
@@ -25,9 +27,9 @@ for (const javaScriptEnabled of [true, false]) {
         await expect(page.locator("main"), `${role} ${viewport.width}px`).toHaveCount(1);
         expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth), `${role} ${viewport.width}px overflow`).toBeLessThanOrEqual(1);
         expect((await page.locator("main").innerText()).length, `${role} ${viewport.width}px content`).toBeGreaterThan(500);
-        if (!javaScriptEnabled && role === "lesson") {
+        if (!javaScriptEnabled && (role === "lesson" || role.includes("review") || role.includes("practice") || role.includes("mastery") || role.includes("investigation") || role === "final-assessment")) {
           await expect(page.locator(".precalculus-attempt form")).toHaveCount(0);
-          await expect(page.locator(".precalculus-attempt .limits-check-prompt")).toHaveCount(11);
+          expect(await page.locator(".precalculus-attempt .limits-check-prompt").count()).toBeGreaterThan(0);
         }
       }
       await context.close();

@@ -133,6 +133,7 @@ test("Pages Worker rejects wrong Precalculus attempts and reveals only after exa
   const record = {
     id: "precalculus-u1-l1-checkpoint",
     answer: "Identity; all real numbers. Factorization: (x-2)(x-3); exclusion: x!=7; evaluation: -2.",
+    validation: { type: "exact_text" },
   };
   const environment = {
     ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) },

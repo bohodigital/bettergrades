@@ -67,9 +67,9 @@ test("the fourth collision preserves the compact guide and gives the course less
 
 test("all current 509 canonicals survive and the expanded registry has the exact course inventory", () => {
   assert.equal(baseline.routeCount, 509);
-  assert.equal(precalculusCourse.routes.length, 191);
+  assert.equal(precalculusCourse.routes.length, 256);
   const expectedRouteCount = collisions.expectedFinalCanonicalRouteCount + precalculusCourse.routes.length;
-  assert.equal(expectedRouteCount, 923);
+  assert.equal(expectedRouteCount, 988);
   assert.equal(routing.publicRoutes.length, expectedRouteCount);
   assert.equal(routing.registryRoutes.length, expectedRouteCount);
   assert.equal(new Set(routing.publicRoutes).size, expectedRouteCount);
