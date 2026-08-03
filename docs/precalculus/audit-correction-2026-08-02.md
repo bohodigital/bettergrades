@@ -7,7 +7,7 @@
 - Governing constitutions: `boho.company` v0.1.0 and `boho.operations-agents` v0.1.0
 - Owning repository: `bettergrades`
 - Implementation branch: `codex/precalculus-audit-correction-20260802`
-- Current implementation commit: `be2ac4cdef8e1b673320b0664ca2d5cfaebab81e`, tree `dc612f2cd39803d401d139ccf5e1c82523f97226`
+- Current implementation commit: `5ceff411da534d078cb0ee1c7a844492d0129794`, tree `0386ddac7357e39972c29b38e0178b1948af8d0b`
 - Reconciled canonical baseline: commit `de3ef3acd6e8de72c987bb8cce9e1cdba5a25ee4`, tree `afc841c32d0a42a9143916f4a55f193531331acf`
 - Accepted audit Markdown SHA-256: `c84576796bcebf4f69647842db72d03e839d79645ed49fd1197b48c2617dda1c`
 - Accepted audit JSON SHA-256: `5325b325bdc60d9ddbf7e6d0d5b59a07c2315fe37e634955d15531025ddd79db`
@@ -31,7 +31,7 @@ Contain the protected-answer defect, correct the exact audited mathematics and m
 - Added regression coverage proving all 2,454 public IDs are absent from `_worker.js`.
 - Removed inert no-JavaScript forms. Prompts remain server-rendered, readable, and printable; controls appear only after hydration.
 
-All 2,454 records now declare one bounded policy: 70 numerical, 233 symbolic, 23 multipart, 315 exact-text, and 1,813 manual-rubric/model-comparison records. Numerical answers use finite value comparison with declared tolerance; symbolic answers use the existing bounded server-only equivalence checker; multipart answers require every component; exact text is normalized deterministically; and explanatory work is never called automatically correct. A substantive manual response may unlock an explicitly declared model comparison while retaining `manual_review` status.
+All 2,454 records now declare one bounded policy: 70 numerical, 233 symbolic, 23 multipart, 330 exact-text, and 1,798 manual-rubric/model-comparison records. Numerical answers use finite value comparison with declared tolerance; symbolic answers use the existing bounded server-only equivalence checker; multipart answers require every component; exact text is normalized deterministically; and explanatory work is never called automatically correct. A substantive manual response may unlock an explicitly declared model comparison while retaining `manual_review` status.
 
 The generated correct corpus passes every machine-gradeable policy. Arbitrary nonempty text is not accepted as correct or reveal-authorized for any record, including manual-policy records.
 
@@ -51,6 +51,10 @@ The generated correct corpus passes every machine-gradeable policy. Arbitrary no
 - Added public exercise type, difficulty, and provenance labels and updated the learner-facing practice count.
 - Added `content/precalculus/exercise-inventory.server.json`, with per-unit and per-lesson counts by type, difficulty, response policy, and provenance.
 - The generated P8–P15 inventory has zero normalized duplicate prompt groups, zero duplicate placements, and zero authoring-instruction-only items.
+- Removed 270 generic response guides that told learners to use the lesson method without completing or bounding the requested reasoning.
+- Every one of the 1,440 P8–P15 practice records now has a distinct response guide; the only repeated answers in the complete second-half protected set are the intentional checkpoint mirrors.
+- Bounded every P8–P15 prompt to at most 400 characters; the generated maximum is 345 characters.
+- Added failing quality gates for generic non-answer guides, overlong prompts, and worked-solution scaffold leakage into prompts. All three inventories are zero.
 
 This closes the repository-level duplication rewrite. Independent mathematics and editorial sampling remain acceptance gates; this implementation does not substitute machine completeness for independent review.
 
@@ -90,6 +94,7 @@ Machine completeness is established. Independent mathematical contact-sheet revi
 - protected KV export smoke test: pass; 2,454 unique records, outside repository, mode `0600`
 - protected-answer Worker scan: pass; 2,454/2,454 IDs absent
 - P8–P15 concrete exercise audit: pass; 1,440/1,440 typed items, zero normalized duplicate groups, zero authoring-only placeholders
+- P8–P15 response-guide audit: pass; zero generic non-answer guides, zero prompts over 400 characters, zero solution-scaffold prompt leaks
 - client release budget: pass; `BetterGradesApp` 596,628 bytes raw, within the 600,000-byte gate
 - audited math regression checks: pass
 - 522-manifest completeness checks: pass
