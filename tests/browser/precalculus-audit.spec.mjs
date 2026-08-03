@@ -63,3 +63,16 @@ test("P8–P15 lessons visibly render sixteen classified exercises without gener
   const prompts = await exercises.locator(".limits-check-prompt").allTextContents();
   expect(prompts.join("\n")).not.toMatch(/Use the method developed in the lesson|Following that structure gives|The relevant conditions are not optional bookkeeping/i);
 });
+
+test("Precalculus course artwork renders as a wide banner instead of a portrait card", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto("/subjects/math/precalculus/", { waitUntil: "networkidle" });
+  const banner = page.locator(".precalculus-map-intro > img");
+  await expect(banner).toBeVisible();
+  const dimensions = await banner.evaluate((image) => {
+    const bounds = image.getBoundingClientRect();
+    return { width: bounds.width, height: bounds.height };
+  });
+  expect(dimensions.width).toBeGreaterThan(1000);
+  expect(dimensions.width / dimensions.height).toBeGreaterThan(1.85);
+});

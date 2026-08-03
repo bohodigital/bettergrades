@@ -2312,19 +2312,30 @@ h1 em, h2 em { color: var(--brand); font-family: var(--serif); font-weight: 500;
   max-width: 46rem;
 }
 
+.precalculus-course-page[data-page-type="course-hub"] .limits-unit-layout {
+  grid-template-columns: minmax(0, 76rem);
+}
+
 .precalculus-course-map .precalculus-map-intro {
   display: grid;
-  grid-template-columns: minmax(15rem, 0.9fr) minmax(18rem, 1.1fr);
-  gap: clamp(1.4rem, 3vw, 3rem);
-  align-items: center;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(1rem, 2vw, 1.5rem);
+  align-items: start;
 }
 
 .precalculus-course-map .precalculus-map-intro > img {
   display: block;
   width: 100%;
-  border: 1px solid color-mix(in srgb, var(--line) 76%, transparent);
-  border-radius: 0.65rem;
-  box-shadow: 0 1.1rem 2.8rem color-mix(in srgb, var(--ink) 13%, transparent);
+  height: auto;
+  aspect-ratio: 1200 / 630;
+  object-fit: cover;
+  border: 0;
+  border-radius: clamp(0.45rem, 1vw, 0.8rem);
+  box-shadow: 0 1rem 2.5rem color-mix(in srgb, var(--ink) 12%, transparent);
+}
+
+.precalculus-course-map .precalculus-map-intro > div {
+  max-width: 52rem;
 }
 
 .precalculus-course-map .precalculus-map-intro > div > p:last-child {
