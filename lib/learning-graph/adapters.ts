@@ -101,7 +101,8 @@ function unitIdFor(path: string) {
 function precalculusNodeId(route: { id: string; pageType: string; unitId?: string | null; lessonId?: string | null }) {
   if (route.pageType === "course-hub") return "course.math.precalculus";
   if (route.pageType === "unit-hub") return `unit.math.precalculus.${semanticToken(route.unitId ?? route.id)}`;
-  return `textbook-lesson.math.precalculus.${semanticToken(route.lessonId ?? route.id)}`;
+  if (route.pageType === "lesson") return `textbook-lesson.math.precalculus.${semanticToken(route.lessonId ?? route.id)}`;
+  return `assessment.math.precalculus.${semanticToken(route.id)}`;
 }
 
 function buildPrecalculusNode(route: {
@@ -116,7 +117,7 @@ function buildPrecalculusNode(route: {
 }): LearningNode {
   const unit = precalculusCourse.units.find((candidate: { id: string }) => candidate.id === route.unitId);
   const lesson = precalculusCourse.lessons.find((candidate: { id: string }) => candidate.id === route.lessonId);
-  const pageRole = route.pageType === "course-hub" ? "course-hub" : route.pageType === "unit-hub" ? "unit-hub" : "textbook-lesson";
+  const pageRole = route.pageType === "course-hub" ? "course-hub" : route.pageType === "unit-hub" ? "unit-hub" : route.pageType === "lesson" ? "textbook-lesson" : "assessment";
   return {
     id: precalculusNodeId(route),
     nodeType: roleToType[pageRole],
