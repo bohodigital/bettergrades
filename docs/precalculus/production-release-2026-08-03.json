@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-08-03T16:53:02Z",
+  "release": "BetterGrades Precalculus audit correction",
+  "source": {
+    "implementationPullRequest": 61,
+    "hotfixPullRequest": 62,
+    "productionMergeCommit": "907748d80136f572277be6447e7ae52db30169fd"
+  },
+  "deployment": {
+    "providerId": "8c3c7a33-d902-4776-a2cc-e420c95404e6",
+    "immutableUrl": "https://8c3c7a33.bettergrades-vhc.pages.dev",
+    "stableUrl": "https://bettergrades-vhc.pages.dev",
+    "apexUrl": "https://bettergrades.net",
+    "wwwUrl": "https://www.bettergrades.net",
+    "productionBranch": "main",
+    "domainsActive": true
+  },
+  "protectedStorage": {
+    "binding": "PRECALCULUS_SOLUTIONS",
+    "namespaceTitle": "bettergrades-precalculus-solutions-production",
+    "namespaceId": "a50750ebee8244dca1cc3b8d93319bc7",
+    "recordCount": 2454,
+    "previewBound": true,
+    "productionBound": true
+  },
+  "security": {
+    "sitesBypassCredentialRotated": true,
+    "priorSitesCredentialsInvalidated": true,
+    "credentialValueRecorded": false,
+    "exactCachePurgeUrlCount": 8,
+    "fullZonePurge": false,
+    "publicAnswerLeakCount": 0
+  },
+  "validation": {
+    "fullTestsPassed": 337,
+    "fullTestsFailed": 0,
+    "renderedRouteCount": 988,
+    "redirectCount": 135,
+    "liveWrongCheckStatus": 422,
+    "liveLockedRevealStatus": 403,
+    "liveCorrectCheckStatus": 200,
+    "liveCorrectRevealStatus": 200,
+    "desktopHorizontalOverflow": false,
+    "mobileHorizontalOverflow": false,
+    "brokenImageCount": 0,
+    "browserWarningErrorCount": 0
+  },
+  "rejectedDeployment": {
+    "providerId": "84e60266-3796-4907-b76c-471ffa1175c1",
+    "immutableUrl": "https://84e60266.bettergrades-vhc.pages.dev",
+    "reason": "KV binding was absent from the Wrangler deployment snapshot; protected APIs failed closed with 503"
+  },
+  "rollback": {
+    "commit": "de3ef3acd6e8de72c987bb8cce9e1cdba5a25ee4",
+    "providerId": "0455dda4-8ef6-4947-904b-bf2dfbde2e66",
+    "immutableUrl": "https://0455dda4.bettergrades-vhc.pages.dev"
+  },
+  "productionReleaseComplete": true,
+  "projectComplete": false
+}
