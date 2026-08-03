@@ -7,7 +7,7 @@
 - Governing constitutions: `boho.company` v0.1.0 and `boho.operations-agents` v0.1.0
 - Owning repository: `bettergrades`
 - Implementation branch: `codex/precalculus-audit-correction-20260802`
-- Current implementation commit: `3a76fd2c720ffcdd0b5bb96916d22b56a955c07b`, tree `ca5b8ebc6c894af8f7dc3e9f6c17c0ec3e7acb32`
+- Current implementation commit: `7470a609d14d7be32822fccd4179cbf6b9225e2a`, tree `236f9cd623ba2dc5dc12a3d04bba31376ad4d1c1`
 - Reconciled canonical baseline: commit `de3ef3acd6e8de72c987bb8cce9e1cdba5a25ee4`, tree `afc841c32d0a42a9143916f4a55f193531331acf`
 - Accepted audit Markdown SHA-256: `c84576796bcebf4f69647842db72d03e839d79645ed49fd1197b48c2617dda1c`
 - Accepted audit JSON SHA-256: `5325b325bdc60d9ddbf7e6d0d5b59a07c2315fe37e634955d15531025ddd79db`
@@ -83,6 +83,8 @@ Machine completeness is established. Independent mathematical contact-sheet revi
 
 - Replaced the stale hard-coded homepage count with an explicit current course inventory: Algebra, Precalculus, and Calculus.
 - Promoted the Precalculus course artwork from a narrow side card to a full-width 1.9:1 course banner, preserving its natural composition and removing the portrait-style border treatment.
+- Corrected the 521–800 pixel unit-map breakpoint so long lesson outcomes wrap beneath lesson titles instead of painting over them. The outcome column now has an explicit minimum width boundary and readable line height.
+- Added rendered-text guards for replacement glyphs, leaked raw math source, KaTeX failures, and measured lesson-title/outcome collisions across every Precalculus unit hub at tablet width.
 - Added course hub, all 16 unit hubs, and representative lesson checks at 1440, 768, 390, and 320 widths with JavaScript on and off.
 - Added keyboard focus, dark mode, reduced motion, print, no-overflow, prompt preservation, and no-inert-form assertions.
 - Made the rendered-DOM runner resumable and deterministically shardable, with a strict shard combiner.
@@ -101,7 +103,7 @@ Machine completeness is established. Independent mathematical contact-sheet revi
 - audited math regression checks: pass
 - 522-manifest completeness checks: pass
 - 11 corrected anchor-scene checks: pass
-- full Playwright browser suite: pass; 52/52, including the Precalculus accessibility/no-JavaScript matrix, Phase B classified-exercise rendering, and the course-banner geometry check
+- full Playwright browser suite: pass; 53/53, including the Precalculus accessibility/no-JavaScript matrix, text-integrity checks, measured tablet collision regression, Phase B classified-exercise rendering, and the course-banner geometry check
 - rendered-DOM audit: 988/988, zero failures; evidence source commit and tree match the implementation commit above
 
 ## Intentionally not completed and release blockers
