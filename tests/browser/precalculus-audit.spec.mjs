@@ -8,6 +8,7 @@ const routes = [
   ...course.units[0].assessments.map((assessment) => [assessment.type, assessment.path]),
   ["final-assessment", "/subjects/math/precalculus/final-assessment/"],
 ];
+const phaseBLessonRoute = routes.find(([role]) => role === "lesson")[1];
 const viewports = [
   { width: 1440, height: 900 },
   { width: 768, height: 1024 },
@@ -41,7 +42,7 @@ test("Precalculus lesson preserves keyboard focus, dark mode, reduced motion, an
   const context = await browser.newContext({ viewport: { width: 390, height: 844 }, colorScheme: "dark", reducedMotion: "reduce" });
   await context.addInitScript(() => localStorage.setItem("bg-theme", "dark"));
   const page = await context.newPage();
-  await page.goto(routes[2][1], { waitUntil: "networkidle" });
+  await page.goto(phaseBLessonRoute, { waitUntil: "networkidle" });
   await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
   await page.keyboard.press("Tab");
   await expect(page.locator(":focus")).toBeVisible();
@@ -53,7 +54,7 @@ test("Precalculus lesson preserves keyboard focus, dark mode, reduced motion, an
 });
 
 test("P8–P15 lessons visibly render sixteen classified exercises without generic guidance", async ({ page }) => {
-  await page.goto(routes[2][1], { waitUntil: "networkidle" });
+  await page.goto(phaseBLessonRoute, { waitUntil: "networkidle" });
   await expect(page.locator(".precalculus-practice h2")).toHaveText("16 concrete questions");
   const exercises = page.locator(".precalculus-practice .precalculus-attempt");
   await expect(exercises).toHaveCount(16);
