@@ -51,3 +51,14 @@ test("Precalculus lesson preserves keyboard focus, dark mode, reduced motion, an
   expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBeLessThanOrEqual(1);
   await context.close();
 });
+
+test("P8–P15 lessons visibly render sixteen classified exercises without generic guidance", async ({ page }) => {
+  await page.goto(routes[2][1], { waitUntil: "networkidle" });
+  await expect(page.locator(".precalculus-practice h2")).toHaveText("16 concrete questions");
+  const exercises = page.locator(".precalculus-practice .precalculus-attempt");
+  await expect(exercises).toHaveCount(16);
+  const labels = await exercises.locator("header span").allTextContents();
+  expect(labels.every((label) => /Practice \d+ · [a-z ]+ · (?:foundational|developing|transfer)/i.test(label))).toBe(true);
+  const prompts = await exercises.locator(".limits-check-prompt").allTextContents();
+  expect(prompts.join("\n")).not.toMatch(/Use the method developed in the lesson|Following that structure gives|The relevant conditions are not optional bookkeeping/i);
+});
