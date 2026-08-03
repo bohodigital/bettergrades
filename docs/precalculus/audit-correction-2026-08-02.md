@@ -7,7 +7,7 @@
 - Governing constitutions: `boho.company` v0.1.0 and `boho.operations-agents` v0.1.0
 - Owning repository: `bettergrades`
 - Implementation branch: `codex/precalculus-audit-correction-20260802`
-- Current implementation commit: `5ceff411da534d078cb0ee1c7a844492d0129794`, tree `0386ddac7357e39972c29b38e0178b1948af8d0b`
+- Current implementation commit: `0d6d49b2877d90d978d6ca690c749f3233e7e114`, tree `36f75fa6efac8738a37f81073d207d3d280d6d20`
 - Reconciled canonical baseline: commit `de3ef3acd6e8de72c987bb8cce9e1cdba5a25ee4`, tree `afc841c32d0a42a9143916f4a55f193531331acf`
 - Accepted audit Markdown SHA-256: `c84576796bcebf4f69647842db72d03e839d79645ed49fd1197b48c2617dda1c`
 - Accepted audit JSON SHA-256: `5325b325bdc60d9ddbf7e6d0d5b59a07c2315fe37e634955d15531025ddd79db`
@@ -55,6 +55,7 @@ The generated correct corpus passes every machine-gradeable policy. Arbitrary no
 - Every one of the 1,440 P8–P15 practice records now has a distinct response guide; the only repeated answers in the complete second-half protected set are the intentional checkpoint mirrors.
 - Bounded every P8–P15 prompt to at most 400 characters; the generated maximum is 345 characters.
 - Added failing quality gates for generic non-answer guides, overlong prompts, and worked-solution scaffold leakage into prompts. All three inventories are zero.
+- Added a learner-facing browser regression proving the actual Phase B lesson route renders 16 classified exercises and none of the rejected guidance patterns. This also corrected an older route-index bug that had aimed the keyboard/dark-mode lesson check at a unit hub.
 
 This closes the repository-level duplication rewrite. Independent mathematics and editorial sampling remain acceptance gates; this implementation does not substitute machine completeness for independent review.
 
@@ -99,7 +100,7 @@ Machine completeness is established. Independent mathematical contact-sheet revi
 - audited math regression checks: pass
 - 522-manifest completeness checks: pass
 - 11 corrected anchor-scene checks: pass
-- full Playwright browser suite: pass; 50/50, including the Precalculus accessibility/no-JavaScript matrix
+- full Playwright browser suite: pass; 51/51, including the Precalculus accessibility/no-JavaScript matrix and the Phase B classified-exercise rendering check
 - rendered-DOM audit: 988/988, zero failures; evidence source commit and tree match the implementation commit above
 
 ## Intentionally not completed and release blockers
