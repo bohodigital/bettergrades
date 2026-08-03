@@ -1,7 +1,7 @@
 {
   "config": {
-    "configFile": "/Users/darksmarskin/Documents/local2/worktrees/bettergrades-algebra-remediation-v3/playwright.config.mjs",
-    "rootDir": "/Users/darksmarskin/Documents/local2/worktrees/bettergrades-algebra-remediation-v3/tests/browser",
+    "configFile": "/Users/darksmarskin/Documents/local2/repos/bettergrades/playwright.config.mjs",
+    "rootDir": "/Users/darksmarskin/Documents/local2/repos/bettergrades/tests/browser",
     "forbidOnly": false,
     "fullyParallel": false,
     "globalSetup": null,
@@ -16,7 +16,7 @@
     "preserveOutput": "always",
     "projects": [
       {
-        "outputDir": "/Users/darksmarskin/Documents/local2/worktrees/bettergrades-algebra-remediation-v3/artifacts/browser/playwright-output",
+        "outputDir": "/Users/darksmarskin/Documents/local2/repos/bettergrades/artifacts/browser/playwright-output",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
@@ -24,7 +24,7 @@
         },
         "id": "",
         "name": "",
-        "testDir": "/Users/darksmarskin/Documents/local2/worktrees/bettergrades-algebra-remediation-v3/tests/browser",
+        "testDir": "/Users/darksmarskin/Documents/local2/repos/bettergrades/tests/browser",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -74,7 +74,7 @@
       "line": 0,
       "specs": [
         {
-          "title": "complete Algebra hub exposes its course portrait and expandable fifteen-unit contents",
+          "title": "complete Algebra hub omits decorative artwork and exposes expandable fifteen-unit contents",
           "ok": true,
           "tags": [],
           "tests": [
@@ -89,12 +89,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 781,
+                  "duration": 645,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-29T01:04:47.842Z",
+                  "startTime": "2026-08-03T00:05:22.542Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -102,13 +102,13 @@
               "status": "expected"
             }
           ],
-          "id": "3c6710dbf81a45d22a83-015db8fbc6776677c1a3",
+          "id": "3c6710dbf81a45d22a83-462f4a0c9c2c36e653e8",
           "file": "algebra-course.spec.mjs",
           "line": 3,
           "column": 1
         },
         {
-          "title": "mobile Algebra contents keep the course portrait and every unit disclosure in bounds",
+          "title": "mobile Algebra contents keep every unit disclosure in bounds without decorative artwork",
           "ok": true,
           "tags": [],
           "tests": [
@@ -123,12 +123,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 556,
+                  "duration": 521,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-29T01:04:49.462Z",
+                  "startTime": "2026-08-03T00:05:23.795Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -136,13 +136,13 @@
               "status": "expected"
             }
           ],
-          "id": "3c6710dbf81a45d22a83-876d9f3f6926162cce21",
+          "id": "3c6710dbf81a45d22a83-64bbba2781701a8f1ab5",
           "file": "algebra-course.spec.mjs",
-          "line": 21,
+          "line": 20,
           "column": 1
         },
         {
-          "title": "interactive Algebra lesson retains three BVLP fallbacks and hydrates only its requested scene",
+          "title": "non-graph Algebra lesson omits its former instructional images",
           "ok": true,
           "tags": [],
           "tests": [
@@ -157,12 +157,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 694,
+                  "duration": 490,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-29T01:04:50.026Z",
+                  "startTime": "2026-08-03T00:05:24.325Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -170,81 +170,13 @@
               "status": "expected"
             }
           ],
-          "id": "3c6710dbf81a45d22a83-b45000c60409f698b19c",
+          "id": "3c6710dbf81a45d22a83-82ee787fa7c44e56daf9",
           "file": "algebra-course.spec.mjs",
-          "line": 33,
+          "line": 32,
           "column": 1
         },
         {
-          "title": "static Algebra lesson ships no interactive slot",
-          "ok": true,
-          "tags": [],
-          "tests": [
-            {
-              "timeout": 45000,
-              "annotations": [],
-              "expectedStatus": "passed",
-              "projectId": "",
-              "projectName": "",
-              "results": [
-                {
-                  "workerIndex": 0,
-                  "parallelIndex": 0,
-                  "status": "passed",
-                  "duration": 434,
-                  "errors": [],
-                  "stdout": [],
-                  "stderr": [],
-                  "retry": 0,
-                  "startTime": "2026-07-29T01:04:50.729Z",
-                  "annotations": [],
-                  "attachments": []
-                }
-              ],
-              "status": "expected"
-            }
-          ],
-          "id": "3c6710dbf81a45d22a83-9e39268fc5dfa63c35dd",
-          "file": "algebra-course.spec.mjs",
-          "line": 43,
-          "column": 1
-        },
-        {
-          "title": "A0–A2 lessons organize authored practice into usable rounds with optional hints",
-          "ok": true,
-          "tags": [],
-          "tests": [
-            {
-              "timeout": 45000,
-              "annotations": [],
-              "expectedStatus": "passed",
-              "projectId": "",
-              "projectName": "",
-              "results": [
-                {
-                  "workerIndex": 0,
-                  "parallelIndex": 0,
-                  "status": "passed",
-                  "duration": 598,
-                  "errors": [],
-                  "stdout": [],
-                  "stderr": [],
-                  "retry": 0,
-                  "startTime": "2026-07-29T01:04:51.170Z",
-                  "annotations": [],
-                  "attachments": []
-                }
-              ],
-              "status": "expected"
-            }
-          ],
-          "id": "3c6710dbf81a45d22a83-0a428686116a6af499f7",
-          "file": "algebra-course.spec.mjs",
-          "line": 50,
-          "column": 1
-        },
-        {
-          "title": "A0–A2 lessons render accessible KaTeX instead of plain Unicode lookalikes",
+          "title": "static non-graph Algebra lesson ships no figure section or interactive slot",
           "ok": true,
           "tags": [],
           "tests": [
@@ -264,7 +196,109 @@
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-29T01:04:51.776Z",
+                  "startTime": "2026-08-03T00:05:24.823Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3c6710dbf81a45d22a83-12ab963593c88fbbdd59",
+          "file": "algebra-course.spec.mjs",
+          "line": 41,
+          "column": 1
+        },
+        {
+          "title": "function-graph Algebra lesson keeps only its actual function graph",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 477,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-08-03T00:05:25.270Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3c6710dbf81a45d22a83-68abebbfbac09c4ff8bb",
+          "file": "algebra-course.spec.mjs",
+          "line": 48,
+          "column": 1
+        },
+        {
+          "title": "A0–A2 lessons organize authored practice into usable rounds with optional hints",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 599,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-08-03T00:05:25.755Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3c6710dbf81a45d22a83-0a428686116a6af499f7",
+          "file": "algebra-course.spec.mjs",
+          "line": 56,
+          "column": 1
+        },
+        {
+          "title": "A0–A2 lessons render accessible KaTeX instead of plain Unicode lookalikes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 456,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-08-03T00:05:26.363Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -274,7 +308,41 @@
           ],
           "id": "3c6710dbf81a45d22a83-98a8abac9f8a1c6cf44c",
           "file": "algebra-course.spec.mjs",
-          "line": 65,
+          "line": 71,
+          "column": 1
+        },
+        {
+          "title": "A3–A14 each render as complete, restrained textbook lessons",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4596,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-08-03T00:05:26.827Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3c6710dbf81a45d22a83-94148b7ee11441175292",
+          "file": "algebra-course.spec.mjs",
+          "line": 81,
           "column": 1
         },
         {
@@ -293,12 +361,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 613,
+                  "duration": 733,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-29T01:04:52.223Z",
+                  "startTime": "2026-08-03T00:05:31.430Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -308,7 +376,7 @@
           ],
           "id": "3c6710dbf81a45d22a83-ecb53760fab5d8edf3b7",
           "file": "algebra-course.spec.mjs",
-          "line": 75,
+          "line": 123,
           "column": 1
         },
         {
@@ -327,12 +395,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 4083,
+                  "duration": 4138,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-29T01:04:52.844Z",
+                  "startTime": "2026-08-03T00:05:32.171Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -342,7 +410,7 @@
           ],
           "id": "3c6710dbf81a45d22a83-56455115f3f5a60643cc",
           "file": "algebra-course.spec.mjs",
-          "line": 84,
+          "line": 132,
           "column": 1
         }
       ]
@@ -369,12 +437,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 4810,
+                  "duration": 4814,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-29T01:04:56.943Z",
+                  "startTime": "2026-08-03T00:05:36.338Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -384,7 +452,7 @@
           ],
           "id": "4e4fbc396443197a3b7a-252949d80335b22c2f53",
           "file": "algebra-remediation.spec.mjs",
-          "line": 32,
+          "line": 31,
           "column": 3
         },
         {
@@ -403,12 +471,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 4783,
+                  "duration": 4793,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-29T01:05:01.760Z",
+                  "startTime": "2026-08-03T00:05:41.160Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -418,7 +486,7 @@
           ],
           "id": "4e4fbc396443197a3b7a-32716410d4c46bbd3d81",
           "file": "algebra-remediation.spec.mjs",
-          "line": 32,
+          "line": 31,
           "column": 3
         },
         {
@@ -437,12 +505,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 4707,
+                  "duration": 4751,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-29T01:05:06.550Z",
+                  "startTime": "2026-08-03T00:05:45.960Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -452,7 +520,7 @@
           ],
           "id": "4e4fbc396443197a3b7a-8db83735f50bc1e3878c",
           "file": "algebra-remediation.spec.mjs",
-          "line": 32,
+          "line": 31,
           "column": 3
         },
         {
@@ -471,12 +539,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 4748,
+                  "duration": 4754,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-29T01:05:11.265Z",
+                  "startTime": "2026-08-03T00:05:50.718Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -486,7 +554,7 @@
           ],
           "id": "4e4fbc396443197a3b7a-b0861f6d178ee3cf60d8",
           "file": "algebra-remediation.spec.mjs",
-          "line": 32,
+          "line": 31,
           "column": 3
         },
         {
@@ -505,12 +573,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 320,
+                  "duration": 339,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-29T01:05:16.022Z",
+                  "startTime": "2026-08-03T00:05:55.479Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -520,11 +588,11 @@
           ],
           "id": "4e4fbc396443197a3b7a-583ad037333594291832",
           "file": "algebra-remediation.spec.mjs",
-          "line": 52,
+          "line": 51,
           "column": 1
         },
         {
-          "title": "Algebra lesson print fallback is bounded and preserves all three figures",
+          "title": "Algebra lesson print layout remains bounded after non-graph figures are removed",
           "ok": true,
           "tags": [],
           "tests": [
@@ -539,12 +607,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 480,
+                  "duration": 495,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-29T01:05:16.347Z",
+                  "startTime": "2026-08-03T00:05:55.824Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -552,13 +620,13 @@
               "status": "expected"
             }
           ],
-          "id": "4e4fbc396443197a3b7a-a586822501fa8c87323c",
+          "id": "4e4fbc396443197a3b7a-9d5a30af2435d1aea576",
           "file": "algebra-remediation.spec.mjs",
-          "line": 63,
+          "line": 62,
           "column": 1
         },
         {
-          "title": "all nine bounded Algebra interactives respond to keyboard input",
+          "title": "all eight retained function-graph interactives respond to keyboard input",
           "ok": true,
           "tags": [],
           "tests": [
@@ -573,12 +641,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3942,
+                  "duration": 4216,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-29T01:05:16.834Z",
+                  "startTime": "2026-08-03T00:05:56.327Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -586,9 +654,9 @@
               "status": "expected"
             }
           ],
-          "id": "4e4fbc396443197a3b7a-6572eb54429932c4c08b",
+          "id": "4e4fbc396443197a3b7a-e51bdefcadeca9cb0fe5",
           "file": "algebra-remediation.spec.mjs",
-          "line": 71,
+          "line": 70,
           "column": 1
         }
       ]
@@ -615,12 +683,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 997,
+                  "duration": 946,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-29T01:05:20.793Z",
+                  "startTime": "2026-08-03T00:06:00.560Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -649,12 +717,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3484,
+                  "duration": 3602,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-29T01:05:21.797Z",
+                  "startTime": "2026-08-03T00:06:01.513Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -683,12 +751,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 7570,
+                  "duration": 7634,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-29T01:05:25.288Z",
+                  "startTime": "2026-08-03T00:06:05.123Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -725,12 +793,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1169,
+                  "duration": 849,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-29T01:05:32.873Z",
+                  "startTime": "2026-08-03T00:06:12.773Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -759,12 +827,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1455,
+                  "duration": 1543,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-29T01:05:34.050Z",
+                  "startTime": "2026-08-03T00:06:13.630Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -774,7 +842,7 @@
           ],
           "id": "576105208f32ea5e0933-4e0de77623c097f2fac4",
           "file": "handoff-c2.spec.mjs",
-          "line": 32,
+          "line": 39,
           "column": 1
         },
         {
@@ -793,12 +861,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 10203,
+                  "duration": 10267,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-29T01:05:35.513Z",
+                  "startTime": "2026-08-03T00:06:15.180Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -808,7 +876,7 @@
           ],
           "id": "576105208f32ea5e0933-d30e9da5db305b8b6b23",
           "file": "handoff-c2.spec.mjs",
-          "line": 47,
+          "line": 54,
           "column": 1
         },
         {
@@ -827,12 +895,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 295,
+                  "duration": 281,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-29T01:05:45.723Z",
+                  "startTime": "2026-08-03T00:06:25.455Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -842,7 +910,7 @@
           ],
           "id": "576105208f32ea5e0933-69c48aaebe9895b08b15",
           "file": "handoff-c2.spec.mjs",
-          "line": 64,
+          "line": 71,
           "column": 1
         },
         {
@@ -861,12 +929,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1434,
+                  "duration": 1478,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-29T01:05:46.025Z",
+                  "startTime": "2026-08-03T00:06:25.741Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -876,7 +944,7 @@
           ],
           "id": "576105208f32ea5e0933-cd6135894b8ad5186af4",
           "file": "handoff-c2.spec.mjs",
-          "line": 74,
+          "line": 81,
           "column": 1
         }
       ]
@@ -903,12 +971,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 826,
+                  "duration": 823,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-29T01:05:47.473Z",
+                  "startTime": "2026-08-03T00:06:27.232Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -937,12 +1005,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 753,
+                  "duration": 732,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-29T01:05:48.306Z",
+                  "startTime": "2026-08-03T00:06:28.063Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -971,12 +1039,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 451,
+                  "duration": 464,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-29T01:05:49.065Z",
+                  "startTime": "2026-08-03T00:06:28.802Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1005,12 +1073,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 434,
+                  "duration": 427,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-29T01:05:49.524Z",
+                  "startTime": "2026-08-03T00:06:29.273Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1039,12 +1107,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 360,
+                  "duration": 373,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-29T01:05:49.965Z",
+                  "startTime": "2026-08-03T00:06:29.707Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1073,12 +1141,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 554,
+                  "duration": 578,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-29T01:05:50.332Z",
+                  "startTime": "2026-08-03T00:06:30.091Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1089,6 +1157,320 @@
           "id": "81f9aab7badd167f3630-4aad7726f52ffecefa35",
           "file": "handoff-c3.spec.mjs",
           "line": 68,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "precalculus-audit.spec.mjs",
+      "file": "precalculus-audit.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Precalculus course, all unit hubs, and a lesson pass at 1440px with JavaScript on",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4017,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-08-03T00:06:30.700Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "99ff86f7d18c3d117dac-7c52303f9331a69d52dc",
+          "file": "precalculus-audit.spec.mjs",
+          "line": 18,
+          "column": 5
+        },
+        {
+          "title": "Precalculus course, all unit hubs, and a lesson pass at 768px with JavaScript on",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4059,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-08-03T00:06:34.724Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "99ff86f7d18c3d117dac-15d57eef2a19cb5e2b8b",
+          "file": "precalculus-audit.spec.mjs",
+          "line": 18,
+          "column": 5
+        },
+        {
+          "title": "Precalculus course, all unit hubs, and a lesson pass at 390px with JavaScript on",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3905,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-08-03T00:06:38.790Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "99ff86f7d18c3d117dac-73cc44b34ee87b746ca3",
+          "file": "precalculus-audit.spec.mjs",
+          "line": 18,
+          "column": 5
+        },
+        {
+          "title": "Precalculus course, all unit hubs, and a lesson pass at 320px with JavaScript on",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3779,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-08-03T00:06:42.702Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "99ff86f7d18c3d117dac-386162fa193207ec9ff7",
+          "file": "precalculus-audit.spec.mjs",
+          "line": 18,
+          "column": 5
+        },
+        {
+          "title": "Precalculus course, all unit hubs, and a lesson pass at 1440px with JavaScript off",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1770,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-08-03T00:06:46.487Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "99ff86f7d18c3d117dac-fb1e595d1965328c3d99",
+          "file": "precalculus-audit.spec.mjs",
+          "line": 18,
+          "column": 5
+        },
+        {
+          "title": "Precalculus course, all unit hubs, and a lesson pass at 768px with JavaScript off",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1683,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-08-03T00:06:48.264Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "99ff86f7d18c3d117dac-a14dbcfec8cfe8400a78",
+          "file": "precalculus-audit.spec.mjs",
+          "line": 18,
+          "column": 5
+        },
+        {
+          "title": "Precalculus course, all unit hubs, and a lesson pass at 390px with JavaScript off",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1580,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-08-03T00:06:49.954Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "99ff86f7d18c3d117dac-a37c49f0ae7d7925ae99",
+          "file": "precalculus-audit.spec.mjs",
+          "line": 18,
+          "column": 5
+        },
+        {
+          "title": "Precalculus course, all unit hubs, and a lesson pass at 320px with JavaScript off",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1679,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-08-03T00:06:51.541Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "99ff86f7d18c3d117dac-7465fc8b791de22f7227",
+          "file": "precalculus-audit.spec.mjs",
+          "line": 18,
+          "column": 5
+        },
+        {
+          "title": "Precalculus lesson preserves keyboard focus, dark mode, reduced motion, and print",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 913,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-08-03T00:06:53.227Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "99ff86f7d18c3d117dac-e3a30fc91d44d060e8f6",
+          "file": "precalculus-audit.spec.mjs",
+          "line": 38,
           "column": 1
         }
       ]
@@ -1115,12 +1497,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 553,
+                  "duration": 550,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-29T01:05:50.903Z",
+                  "startTime": "2026-08-03T00:06:54.157Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1149,12 +1531,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 12366,
+                  "duration": 12119,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-29T01:05:51.467Z",
+                  "startTime": "2026-08-03T00:06:54.713Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1183,12 +1565,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 12030,
+                  "duration": 11916,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-29T01:06:03.840Z",
+                  "startTime": "2026-08-03T00:07:06.840Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1217,12 +1599,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 12224,
+                  "duration": 12154,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-29T01:06:15.877Z",
+                  "startTime": "2026-08-03T00:07:18.762Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1251,12 +1633,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 602,
+                  "duration": 606,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-29T01:06:28.108Z",
+                  "startTime": "2026-08-03T00:07:30.924Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1285,12 +1667,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1398,
+                  "duration": 1449,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-29T01:06:28.717Z",
+                  "startTime": "2026-08-03T00:07:31.537Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1319,12 +1701,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1098,
+                  "duration": 1053,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-29T01:06:30.123Z",
+                  "startTime": "2026-08-03T00:07:32.993Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1353,12 +1735,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1920,
+                  "duration": 1824,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-29T01:06:31.228Z",
+                  "startTime": "2026-08-03T00:07:34.052Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1387,12 +1769,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 5574,
+                  "duration": 5471,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-29T01:06:33.155Z",
+                  "startTime": "2026-08-03T00:07:35.884Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1421,12 +1803,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3787,
+                  "duration": 3797,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-07-29T01:06:38.737Z",
+                  "startTime": "2026-08-03T00:07:41.361Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1444,9 +1826,9 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-07-29T01:04:46.770Z",
-    "duration": 117047.658,
-    "expected": 39,
+    "startTime": "2026-08-03T00:05:21.413Z",
+    "duration": 143991.984,
+    "expected": 50,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0

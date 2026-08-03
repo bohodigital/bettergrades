@@ -7,6 +7,7 @@
 - Governing constitutions: `boho.company` v0.1.0 and `boho.operations-agents` v0.1.0
 - Owning repository: `bettergrades`
 - Implementation branch: `codex/precalculus-audit-correction-20260802`
+- Implementation commit: `8ae4c172b04f55369054dd6611e89f76aac37a13`, tree `32ac01b88dfbcba1666cf25596022e46a44ce7c7`
 - Reconciled canonical baseline: commit `de3ef3acd6e8de72c987bb8cce9e1cdba5a25ee4`, tree `afc841c32d0a42a9143916f4a55f193531331acf`
 - Accepted audit Markdown SHA-256: `c84576796bcebf4f69647842db72d03e839d79645ed49fd1197b48c2617dda1c`
 - Accepted audit JSON SHA-256: `5325b325bdc60d9ddbf7e6d0d5b59a07c2315fe37e634955d15531025ddd79db`
@@ -58,20 +59,20 @@ Machine completeness is established. Independent mathematical contact-sheet revi
 - Added course hub, all 16 unit hubs, and representative lesson checks at 1440, 768, 390, and 320 widths with JavaScript on and off.
 - Added keyboard focus, dark mode, reduced motion, print, no-overflow, prompt preservation, and no-inert-form assertions.
 - Made the rendered-DOM runner resumable and deterministically shardable, with a strict shard combiner.
-- Completed all 923 routes with zero failures after rerunning only incomplete/failed routes.
+- Completed a fresh, non-resumed audit of all 923 routes with zero failures, bound to the implementation commit and tree above.
 
 ## Validation completed
 
 - `corepack pnpm run build:pages`: pass; 923 canonical HTML routes and 135 redirects built
-- `corepack pnpm test`: pass at the implementation checkpoint (328/328); rerun required after the final evidence commit
+- `corepack pnpm test`: pass; 330/330
 - `corepack pnpm run graph:check`: pass; 909 nodes and 4,486 relationships
 - protected KV export smoke test: pass; 1,914 unique records, outside repository, mode `0600`
 - protected-answer Worker scan: pass; 1,914/1,914 IDs absent
 - audited math regression checks: pass
 - 522-manifest completeness checks: pass
 - 11 corrected anchor-scene checks: pass
-- Precalculus accessibility/no-JavaScript matrix: pass in focused execution
-- rendered-DOM audit: 923/923, zero failures
+- full Playwright browser suite: pass; 50/50, including the Precalculus accessibility/no-JavaScript matrix
+- rendered-DOM audit: 923/923, zero failures; evidence source commit and tree match the implementation commit above
 
 ## Intentionally not completed and release blockers
 
