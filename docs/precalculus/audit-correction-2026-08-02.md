@@ -7,7 +7,7 @@
 - Governing constitutions: `boho.company` v0.1.0 and `boho.operations-agents` v0.1.0
 - Owning repository: `bettergrades`
 - Implementation branch: `codex/precalculus-audit-correction-20260802`
-- Implementation commit: `8ae4c172b04f55369054dd6611e89f76aac37a13`, tree `32ac01b88dfbcba1666cf25596022e46a44ce7c7`
+- Current implementation commit: `a956163ac3dce169feb98fbaf8e913e57465d0d7`, tree `a7a4d8677e2cd94597200173025f17d72a86ec05`
 - Reconciled canonical baseline: commit `de3ef3acd6e8de72c987bb8cce9e1cdba5a25ee4`, tree `afc841c32d0a42a9143916f4a55f193531331acf`
 - Accepted audit Markdown SHA-256: `c84576796bcebf4f69647842db72d03e839d79645ed49fd1197b48c2617dda1c`
 - Accepted audit JSON SHA-256: `5325b325bdc60d9ddbf7e6d0d5b59a07c2315fe37e634955d15531025ddd79db`
@@ -31,7 +31,17 @@ Contain the protected-answer defect, correct the exact audited mathematics and m
 - Added regression coverage proving all 1,914 public IDs are absent from `_worker.js`.
 - Removed inert no-JavaScript forms. Prompts remain server-rendered, readable, and printable; controls appear only after hydration.
 
-The present declared validator is normalized exact-answer matching. It closes the universal-any-nonempty gate and supports the exact correct-answer corpus, but it does not yet provide approved symbolic equivalence or rubric evaluation for every response class. Production release remains blocked until records are classified and the required numerical, symbolic, multipart, and rubric policies are implemented and independently tested.
+All 1,914 records now declare one bounded policy: 70 numerical, 233 symbolic, 23 multipart, 327 exact-text, and 1,261 manual-rubric/model-comparison records. Numerical answers use finite value comparison with declared tolerance; symbolic answers use the existing bounded server-only equivalence checker; multipart answers require every component; exact text is normalized deterministically; and explanatory work is never called automatically correct. A substantive manual response may unlock an explicitly declared model comparison while retaining `manual_review` status.
+
+The generated correct corpus passes every machine-gradeable policy. Arbitrary nonempty text is not accepted as correct or reveal-authorized for any record, including manual-policy records.
+
+### Assessment and navigation surfaces
+
+- Added review, flexible-practice, mastery-check, and investigation routes for each of 16 units.
+- Added one 64-item cumulative final assessment.
+- Added 65 canonical assessment routes and 2,013 source-traced assessment placements without duplicating protected answer values.
+- Every placement has a stable source ID, declared response policy, fixed randomization policy, hint, error tags, repair target, unit/course navigation, and server-held answer or model-response boundary.
+- Assessment nodes are classified as assessments in the learning graph rather than textbook lessons.
 
 ### Exact mathematics corrections
 
@@ -59,30 +69,29 @@ Machine completeness is established. Independent mathematical contact-sheet revi
 - Added course hub, all 16 unit hubs, and representative lesson checks at 1440, 768, 390, and 320 widths with JavaScript on and off.
 - Added keyboard focus, dark mode, reduced motion, print, no-overflow, prompt preservation, and no-inert-form assertions.
 - Made the rendered-DOM runner resumable and deterministically shardable, with a strict shard combiner.
-- Completed a fresh, non-resumed audit of all 923 routes with zero failures, bound to the implementation commit and tree above.
+- Completed a fresh, non-resumed audit of all 988 routes with zero failures, bound to the implementation commit and tree above.
 
 ## Validation completed
 
-- `corepack pnpm run build:pages`: pass; 923 canonical HTML routes and 135 redirects built
-- `corepack pnpm test`: pass; 330/330
-- `corepack pnpm run graph:check`: pass; 909 nodes and 4,486 relationships
+- `corepack pnpm run build:pages`: pass; 988 canonical HTML routes and 135 redirects built
+- `corepack pnpm test`: pass; 333/333
+- `corepack pnpm run graph:check`: pass; 974 nodes and 4,486 relationships
 - protected KV export smoke test: pass; 1,914 unique records, outside repository, mode `0600`
 - protected-answer Worker scan: pass; 1,914/1,914 IDs absent
 - audited math regression checks: pass
 - 522-manifest completeness checks: pass
 - 11 corrected anchor-scene checks: pass
 - full Playwright browser suite: pass; 50/50, including the Precalculus accessibility/no-JavaScript matrix
-- rendered-DOM audit: 923/923, zero failures; evidence source commit and tree match the implementation commit above
+- rendered-DOM audit: 988/988, zero failures; evidence source commit and tree match the implementation commit above
 
 ## Intentionally not completed and release blockers
 
-1. `P0-01` is contained in candidate code but not production-accepted. Cloudflare protected storage must be created/bound and populated without exposing the export. Symbolic, numerical, multipart, and rubric policy classification remains incomplete.
+1. `P0-01` is implemented and corpus-tested locally but not production-accepted. Cloudflare protected storage must be created, bound, and populated without exposing the export; the exact preview must then repeat the public-leak and behavioral corpus checks.
 2. `P0-02` belongs to the provider/connector security boundary, not this repository. The credential class must be identified, usage audited, credential rotated, and response sanitizer fixed under a separately protected security record. No secret was read or copied during this work.
-3. Precalculus still lacks dedicated review, flexible-practice, mastery-check, investigation, answer-key, resource, and final-assessment route types. These require approved editorial content rather than generated placeholders.
-4. P8-P15 still require a reviewed exercise rewrite. The audit found 45.0%-46.7% normalized duplication; this implementation did not manufacture template variants to inflate counts.
-5. Full independent mathematics review across P0-P15 and independent review of all 522 visuals remain outstanding.
-6. No private noindex preview has been created or approved.
-7. No release merge, Cloudflare deployment, cache purge, provider UUID capture, new release binding, rollback exercise, or independent post-release audit has occurred.
+3. P8-P15 still require a reviewed lesson-level exercise rewrite. The audit found 45.0%-46.7% normalized duplication; the new assessment routes reuse source-traced concrete prompts and do not pretend that placement reuse closes that editorial defect.
+4. Full independent mathematics review across P0-P15, policy sampling, assessment editorial review, and independent review of all 522 visuals remain outstanding.
+5. No private noindex preview has been created or approved.
+6. No release merge, Cloudflare deployment, cache purge, provider UUID capture, new release binding, rollback exercise, or independent post-release audit has occurred.
 
 ## SEO, security, privacy, and rollback
 
@@ -94,14 +103,15 @@ Machine completeness is established. Independent mathematical contact-sheet revi
 
 1. Authorize and provision the protected Cloudflare storage binding, then import the 1,914-record export through a protected Pi runtime path.
 2. Authorize the separate credential incident/rotation work for `P0-02`.
-3. Approve an editorial work order for the missing assessment routes and P8-P15 exercise rewrite.
+3. Approve an editorial review/rewrite work order for the remaining P8-P15 lesson-level duplication.
 4. Assign independent mathematics and visual reviewers.
 5. After those gates pass, build an exact private noindex preview, bind it to commit/tree/digests/inventories/rollback, and obtain owner approval before any production action.
 
 ## Completion classification
 
-- Local correction stage: partially complete and committed for review.
-- P0 containment implementation: complete locally, externally unbound.
+- Local repository correction stage: implemented and committed for review.
+- P0 validation implementation: complete locally and corpus-tested, externally unbound.
+- Assessment/navigation implementation: complete locally and awaiting independent editorial review.
 - Full implementation: incomplete.
 - Production accepted: no.
 - Project complete: no.
