@@ -1,7 +1,7 @@
 {
   "manifestVersion": 1,
   "collectionId": "precalculus-unit-15-visuals",
-  "sourceSha256": "4d479a2f5b68d581cb286aaad3d72fc5258db7ccaca7cf8128dde42697f0b1f5",
+  "sourceSha256": "1f9dff4e832793ea176cbfa912ad98200657b11ff20024a40fc453e1f6ba1f6e",
   "compilerVersion": "bvlp-compiler-v1",
   "assetPrefix": "/visuals/v1",
   "sceneCount": 36,
@@ -13,9 +13,9 @@
       "selectedRenderer": "static-svg",
       "hydration": "none",
       "staticAsset": {
-        "path": "/visuals/v1/precalculus-u15-l1-v1.e0c9ff50630ec27d.svg",
-        "sha256": "e0c9ff50630ec27d1ce32755b55994a9776cc74f6c3fe902d38831afdf61d91b",
-        "bytes": 13378,
+        "path": "/visuals/v1/precalculus-u15-l1-v1.e6243adc56c2d656.svg",
+        "sha256": "e6243adc56c2d656a89b902dff5e5a3f8b0c69afccca467b74e4f7966e865711",
+        "bytes": 14063,
         "width": 960,
         "height": 558
       },
@@ -23,7 +23,7 @@
         "compiledSceneVersion": 1,
         "sourceSpecVersion": 1,
         "id": "precalculus-u15-l1-v1",
-        "kind": "geometry-2d",
+        "kind": "cartesian-2d",
         "title": {
           "segments": [
             {
@@ -43,149 +43,84 @@
         "learningPurpose": "Use the mathematical objects in this figure to support the lesson outcome: Interpret a sequence as a function on an integer index set.",
         "longDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: A formula, table, recurrence, graph, or verbal process may describe the same sequence. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
         "coordinateSpace": {
-          "type": "diagram-2d",
+          "type": "cartesian-2d",
           "variables": [
-            "horizontal",
-            "vertical"
+            "x",
+            "y"
           ],
           "unitsRequired": false
         },
         "viewport": {
           "xMin": 0,
-          "xMax": 12,
+          "xMax": 6,
           "yMin": 0,
-          "yMax": 7,
+          "yMax": 32,
           "aspectRatio": 1.72,
-          "padding": 0.045
+          "padding": 0.065
         },
         "axes": {
-          "mode": "none",
-          "reason": "The labeled mathematical structure, arrows, and spatial grouping carry the meaning."
+          "mode": "explicit",
+          "axes": [
+            {
+              "id": "x-axis",
+              "orientation": "x",
+              "label": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "index n"
+                  }
+                ]
+              },
+              "scale": "linear",
+              "tickMode": "automatic",
+              "showGrid": true
+            },
+            {
+              "id": "y-axis",
+              "orientation": "y",
+              "label": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "term a_n"
+                  }
+                ]
+              },
+              "scale": "linear",
+              "tickMode": "automatic",
+              "showGrid": true
+            }
+          ]
         },
         "panels": [],
         "layers": [
           {
-            "id": "title",
-            "visible": true,
-            "zIndex": 40,
-            "presentation": {
-              "strokeToken": "visual-primary",
-              "lineStyle": "solid",
-              "markerShape": "none",
-              "pattern": "none",
-              "colorIndependentCue": "Label: Discrete stem plot."
-            },
-            "references": [],
-            "kind": "label",
-            "geometry": {
-              "position": {
-                "x": 0.55,
-                "y": 6.45
-              },
-              "content": {
-                "segments": [
-                  {
-                    "kind": "text",
-                    "text": "Discrete stem plot"
-                  }
-                ]
-              }
-            }
-          },
-          {
-            "id": "stem-1",
-            "visible": true,
-            "zIndex": 10,
-            "presentation": {
-              "strokeToken": "visual-guide",
-              "lineStyle": "solid",
-              "markerShape": "none",
-              "pattern": "none",
-              "colorIndependentCue": "term 1 has value 1.35"
-            },
-            "references": [],
-            "kind": "segment",
-            "geometry": {
-              "start": {
-                "x": 1.6,
-                "y": 0.9
-              },
-              "end": {
-                "x": 1.6,
-                "y": 2.25
-              }
-            }
-          },
-          {
             "id": "term-1",
             "visible": true,
             "zIndex": 30,
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "a_1=4"
+                }
+              ]
+            },
             "presentation": {
               "strokeToken": "visual-primary",
               "fillToken": "visual-primary",
               "lineStyle": "solid",
               "markerShape": "circle",
               "pattern": "none",
-              "colorIndependentCue": "Filled circle marks a_1=1.35."
+              "colorIndependentCue": "Filled circle marks a_1=4."
             },
             "references": [],
             "kind": "closed-point",
             "geometry": {
               "position": {
-                "x": 1.6,
-                "y": 2.25
-              }
-            }
-          },
-          {
-            "id": "n-1",
-            "visible": true,
-            "zIndex": 40,
-            "presentation": {
-              "strokeToken": "visual-ink",
-              "lineStyle": "solid",
-              "markerShape": "none",
-              "pattern": "none",
-              "colorIndependentCue": "Label: 1."
-            },
-            "references": [],
-            "kind": "label",
-            "geometry": {
-              "position": {
-                "x": 1.48,
-                "y": 0.55
-              },
-              "content": {
-                "segments": [
-                  {
-                    "kind": "text",
-                    "text": "1"
-                  }
-                ]
-              }
-            }
-          },
-          {
-            "id": "stem-2",
-            "visible": true,
-            "zIndex": 10,
-            "presentation": {
-              "strokeToken": "visual-guide",
-              "lineStyle": "solid",
-              "markerShape": "none",
-              "pattern": "none",
-              "colorIndependentCue": "term 2 has value 1.90"
-            },
-            "references": [],
-            "kind": "segment",
-            "geometry": {
-              "start": {
-                "x": 2.6,
-                "y": 0.9
-              },
-              "end": {
-                "x": 2.6,
-                "y": 2.8000000000000003
+                "x": 1,
+                "y": 4
               }
             }
           },
@@ -193,72 +128,28 @@
             "id": "term-2",
             "visible": true,
             "zIndex": 30,
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "a_2=7"
+                }
+              ]
+            },
             "presentation": {
               "strokeToken": "visual-primary",
               "fillToken": "visual-primary",
               "lineStyle": "solid",
               "markerShape": "square",
               "pattern": "none",
-              "colorIndependentCue": "Filled square marks a_2=1.90."
+              "colorIndependentCue": "Filled square marks a_2=7."
             },
             "references": [],
             "kind": "closed-point",
             "geometry": {
               "position": {
-                "x": 2.6,
-                "y": 2.8000000000000003
-              }
-            }
-          },
-          {
-            "id": "n-2",
-            "visible": true,
-            "zIndex": 40,
-            "presentation": {
-              "strokeToken": "visual-ink",
-              "lineStyle": "solid",
-              "markerShape": "none",
-              "pattern": "none",
-              "colorIndependentCue": "Label: 2."
-            },
-            "references": [],
-            "kind": "label",
-            "geometry": {
-              "position": {
-                "x": 2.48,
-                "y": 0.55
-              },
-              "content": {
-                "segments": [
-                  {
-                    "kind": "text",
-                    "text": "2"
-                  }
-                ]
-              }
-            }
-          },
-          {
-            "id": "stem-3",
-            "visible": true,
-            "zIndex": 10,
-            "presentation": {
-              "strokeToken": "visual-guide",
-              "lineStyle": "solid",
-              "markerShape": "none",
-              "pattern": "none",
-              "colorIndependentCue": "term 3 has value 2.45"
-            },
-            "references": [],
-            "kind": "segment",
-            "geometry": {
-              "start": {
-                "x": 3.6,
-                "y": 0.9
-              },
-              "end": {
-                "x": 3.6,
-                "y": 3.35
+                "x": 2,
+                "y": 7
               }
             }
           },
@@ -266,72 +157,28 @@
             "id": "term-3",
             "visible": true,
             "zIndex": 30,
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "a_3=12"
+                }
+              ]
+            },
             "presentation": {
               "strokeToken": "visual-primary",
               "fillToken": "visual-primary",
               "lineStyle": "solid",
               "markerShape": "circle",
               "pattern": "none",
-              "colorIndependentCue": "Filled circle marks a_3=2.45."
+              "colorIndependentCue": "Filled circle marks a_3=12."
             },
             "references": [],
             "kind": "closed-point",
             "geometry": {
               "position": {
-                "x": 3.6,
-                "y": 3.35
-              }
-            }
-          },
-          {
-            "id": "n-3",
-            "visible": true,
-            "zIndex": 40,
-            "presentation": {
-              "strokeToken": "visual-ink",
-              "lineStyle": "solid",
-              "markerShape": "none",
-              "pattern": "none",
-              "colorIndependentCue": "Label: 3."
-            },
-            "references": [],
-            "kind": "label",
-            "geometry": {
-              "position": {
-                "x": 3.48,
-                "y": 0.55
-              },
-              "content": {
-                "segments": [
-                  {
-                    "kind": "text",
-                    "text": "3"
-                  }
-                ]
-              }
-            }
-          },
-          {
-            "id": "stem-4",
-            "visible": true,
-            "zIndex": 10,
-            "presentation": {
-              "strokeToken": "visual-guide",
-              "lineStyle": "solid",
-              "markerShape": "none",
-              "pattern": "none",
-              "colorIndependentCue": "term 4 has value 3.00"
-            },
-            "references": [],
-            "kind": "segment",
-            "geometry": {
-              "start": {
-                "x": 4.6,
-                "y": 0.9
-              },
-              "end": {
-                "x": 4.6,
-                "y": 3.9
+                "x": 3,
+                "y": 12
               }
             }
           },
@@ -339,72 +186,28 @@
             "id": "term-4",
             "visible": true,
             "zIndex": 30,
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "a_4=19"
+                }
+              ]
+            },
             "presentation": {
               "strokeToken": "visual-primary",
               "fillToken": "visual-primary",
               "lineStyle": "solid",
               "markerShape": "square",
               "pattern": "none",
-              "colorIndependentCue": "Filled square marks a_4=3.00."
+              "colorIndependentCue": "Filled square marks a_4=19."
             },
             "references": [],
             "kind": "closed-point",
             "geometry": {
               "position": {
-                "x": 4.6,
-                "y": 3.9
-              }
-            }
-          },
-          {
-            "id": "n-4",
-            "visible": true,
-            "zIndex": 40,
-            "presentation": {
-              "strokeToken": "visual-ink",
-              "lineStyle": "solid",
-              "markerShape": "none",
-              "pattern": "none",
-              "colorIndependentCue": "Label: 4."
-            },
-            "references": [],
-            "kind": "label",
-            "geometry": {
-              "position": {
-                "x": 4.48,
-                "y": 0.55
-              },
-              "content": {
-                "segments": [
-                  {
-                    "kind": "text",
-                    "text": "4"
-                  }
-                ]
-              }
-            }
-          },
-          {
-            "id": "stem-5",
-            "visible": true,
-            "zIndex": 10,
-            "presentation": {
-              "strokeToken": "visual-guide",
-              "lineStyle": "solid",
-              "markerShape": "none",
-              "pattern": "none",
-              "colorIndependentCue": "term 5 has value 3.55"
-            },
-            "references": [],
-            "kind": "segment",
-            "geometry": {
-              "start": {
-                "x": 5.6,
-                "y": 0.9
-              },
-              "end": {
-                "x": 5.6,
-                "y": 4.45
+                "x": 4,
+                "y": 19
               }
             }
           },
@@ -412,293 +215,82 @@
             "id": "term-5",
             "visible": true,
             "zIndex": 30,
-            "presentation": {
-              "strokeToken": "visual-primary",
-              "fillToken": "visual-primary",
-              "lineStyle": "solid",
-              "markerShape": "circle",
-              "pattern": "none",
-              "colorIndependentCue": "Filled circle marks a_5=3.55."
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "a_5=28"
+                }
+              ]
             },
-            "references": [],
-            "kind": "closed-point",
-            "geometry": {
-              "position": {
-                "x": 5.6,
-                "y": 4.45
-              }
-            }
-          },
-          {
-            "id": "n-5",
-            "visible": true,
-            "zIndex": 40,
-            "presentation": {
-              "strokeToken": "visual-ink",
-              "lineStyle": "solid",
-              "markerShape": "none",
-              "pattern": "none",
-              "colorIndependentCue": "Label: 5."
-            },
-            "references": [],
-            "kind": "label",
-            "geometry": {
-              "position": {
-                "x": 5.48,
-                "y": 0.55
-              },
-              "content": {
-                "segments": [
-                  {
-                    "kind": "text",
-                    "text": "5"
-                  }
-                ]
-              }
-            }
-          },
-          {
-            "id": "stem-6",
-            "visible": true,
-            "zIndex": 10,
-            "presentation": {
-              "strokeToken": "visual-guide",
-              "lineStyle": "solid",
-              "markerShape": "none",
-              "pattern": "none",
-              "colorIndependentCue": "term 6 has value 4.10"
-            },
-            "references": [],
-            "kind": "segment",
-            "geometry": {
-              "start": {
-                "x": 6.6,
-                "y": 0.9
-              },
-              "end": {
-                "x": 6.6,
-                "y": 5.000000000000001
-              }
-            }
-          },
-          {
-            "id": "term-6",
-            "visible": true,
-            "zIndex": 30,
-            "presentation": {
-              "strokeToken": "visual-primary",
-              "fillToken": "visual-primary",
-              "lineStyle": "solid",
-              "markerShape": "square",
-              "pattern": "none",
-              "colorIndependentCue": "Filled square marks a_6=4.10."
-            },
-            "references": [],
-            "kind": "closed-point",
-            "geometry": {
-              "position": {
-                "x": 6.6,
-                "y": 5.000000000000001
-              }
-            }
-          },
-          {
-            "id": "n-6",
-            "visible": true,
-            "zIndex": 40,
-            "presentation": {
-              "strokeToken": "visual-ink",
-              "lineStyle": "solid",
-              "markerShape": "none",
-              "pattern": "none",
-              "colorIndependentCue": "Label: 6."
-            },
-            "references": [],
-            "kind": "label",
-            "geometry": {
-              "position": {
-                "x": 6.48,
-                "y": 0.55
-              },
-              "content": {
-                "segments": [
-                  {
-                    "kind": "text",
-                    "text": "6"
-                  }
-                ]
-              }
-            }
-          },
-          {
-            "id": "stem-7",
-            "visible": true,
-            "zIndex": 10,
-            "presentation": {
-              "strokeToken": "visual-guide",
-              "lineStyle": "solid",
-              "markerShape": "none",
-              "pattern": "none",
-              "colorIndependentCue": "term 7 has value 4.65"
-            },
-            "references": [],
-            "kind": "segment",
-            "geometry": {
-              "start": {
-                "x": 7.6,
-                "y": 0.9
-              },
-              "end": {
-                "x": 7.6,
-                "y": 5.550000000000001
-              }
-            }
-          },
-          {
-            "id": "term-7",
-            "visible": true,
-            "zIndex": 30,
-            "presentation": {
-              "strokeToken": "visual-primary",
-              "fillToken": "visual-primary",
-              "lineStyle": "solid",
-              "markerShape": "circle",
-              "pattern": "none",
-              "colorIndependentCue": "Filled circle marks a_7=4.65."
-            },
-            "references": [],
-            "kind": "closed-point",
-            "geometry": {
-              "position": {
-                "x": 7.6,
-                "y": 5.550000000000001
-              }
-            }
-          },
-          {
-            "id": "n-7",
-            "visible": true,
-            "zIndex": 40,
-            "presentation": {
-              "strokeToken": "visual-ink",
-              "lineStyle": "solid",
-              "markerShape": "none",
-              "pattern": "none",
-              "colorIndependentCue": "Label: 7."
-            },
-            "references": [],
-            "kind": "label",
-            "geometry": {
-              "position": {
-                "x": 7.48,
-                "y": 0.55
-              },
-              "content": {
-                "segments": [
-                  {
-                    "kind": "text",
-                    "text": "7"
-                  }
-                ]
-              }
-            }
-          },
-          {
-            "id": "stem-8",
-            "visible": true,
-            "zIndex": 10,
-            "presentation": {
-              "strokeToken": "visual-guide",
-              "lineStyle": "solid",
-              "markerShape": "none",
-              "pattern": "none",
-              "colorIndependentCue": "term 8 has value 5.20"
-            },
-            "references": [],
-            "kind": "segment",
-            "geometry": {
-              "start": {
-                "x": 8.6,
-                "y": 0.9
-              },
-              "end": {
-                "x": 8.6,
-                "y": 6.1000000000000005
-              }
-            }
-          },
-          {
-            "id": "term-8",
-            "visible": true,
-            "zIndex": 30,
             "presentation": {
               "strokeToken": "visual-emphasis",
               "fillToken": "visual-emphasis",
               "lineStyle": "solid",
-              "markerShape": "square",
+              "markerShape": "circle",
               "pattern": "none",
-              "colorIndependentCue": "Filled square marks a_8=5.20."
+              "colorIndependentCue": "Filled circle marks a_5=28."
             },
             "references": [],
             "kind": "closed-point",
             "geometry": {
               "position": {
-                "x": 8.6,
-                "y": 6.1000000000000005
+                "x": 5,
+                "y": 28
               }
             }
           },
           {
-            "id": "n-8",
+            "id": "formula",
             "visible": true,
             "zIndex": 40,
             "presentation": {
-              "strokeToken": "visual-ink",
+              "strokeToken": "visual-primary",
               "lineStyle": "solid",
               "markerShape": "none",
               "pattern": "none",
-              "colorIndependentCue": "Label: 8."
-            },
-            "references": [],
-            "kind": "label",
-            "geometry": {
-              "position": {
-                "x": 8.48,
-                "y": 0.55
-              },
-              "content": {
-                "segments": [
-                  {
-                    "kind": "text",
-                    "text": "8"
-                  }
-                ]
-              }
-            }
-          },
-          {
-            "id": "rule",
-            "visible": true,
-            "zIndex": 40,
-            "presentation": {
-              "strokeToken": "visual-ink",
-              "lineStyle": "solid",
-              "markerShape": "none",
-              "pattern": "none",
-              "colorIndependentCue": "Label: A sequence is a function whose inputs are discrete indices.."
+              "colorIndependentCue": "Label: a_n=n^2+3, n=1,2,...."
             },
             "references": [],
             "kind": "label",
             "geometry": {
               "position": {
                 "x": 0.75,
-                "y": 0.1
+                "y": 30
               },
               "content": {
                 "segments": [
                   {
                     "kind": "text",
-                    "text": "A sequence is a function whose inputs are discrete indices."
+                    "text": "a_n=n^2+3, n=1,2,..."
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "discrete",
+            "visible": true,
+            "zIndex": 40,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Label: Discrete points are not connected; only positive integer inputs belong to the sequence.."
+            },
+            "references": [],
+            "kind": "label",
+            "geometry": {
+              "position": {
+                "x": 0.75,
+                "y": 26
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "Discrete points are not connected; only positive integer inputs belong to the sequence."
                   }
                 ]
               }
@@ -710,32 +302,13 @@
           "ariaLabel": "Discrete stem plot. Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: A formula, table, recurrence, graph, or verbal process may describe the same sequence. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
           "summary": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: A formula, table, recurrence, graph, or verbal process may describe the same sequence. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
           "readingOrder": [
-            "title",
-            "stem-1",
             "term-1",
-            "n-1",
-            "stem-2",
             "term-2",
-            "n-2",
-            "stem-3",
             "term-3",
-            "n-3",
-            "stem-4",
             "term-4",
-            "n-4",
-            "stem-5",
             "term-5",
-            "n-5",
-            "stem-6",
-            "term-6",
-            "n-6",
-            "stem-7",
-            "term-7",
-            "n-7",
-            "stem-8",
-            "term-8",
-            "n-8",
-            "rule"
+            "formula",
+            "discrete"
           ],
           "colorIndependentDescription": "Labels, point shapes, line styles, arrows, and position carry the mathematical meaning; color is supplementary.",
           "controlInstructions": [],
@@ -768,7 +341,7 @@
         },
         "requiredCapabilities": [
           "annotations",
-          "geometry-primitives",
+          "cartesian-axes",
           "open-closed-points",
           "static-fallback"
         ],
@@ -785,7 +358,7 @@
           "route": "/subjects/math/precalculus/sequences-series-and-discrete-models/sequences-as-discrete-functions/",
           "sourceFile": "content/precalculus/units/unit-15/visual-specs.v1.json",
           "sourceVisualId": "precalculus-u15-l1-v1",
-          "sourceFingerprint": "bvlp1-aebeb5a4",
+          "sourceFingerprint": "bvlp1-f017eb98",
           "compilerVersion": "bvlp-compiler-v1",
           "visibility": "public"
         }

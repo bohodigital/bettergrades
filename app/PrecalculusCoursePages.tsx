@@ -2,7 +2,7 @@
 
 /* eslint-disable @next/next/no-html-link-for-pages -- canonical course navigation uses document navigation */
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import type { PrecalculusCoursePage, PrecalculusLesson, PrecalculusPrompt, PrecalculusTextbookBlock } from "../lib/precalculus/precalculus-course.mjs";
 import { AlgebraMathText } from "./AlgebraMathText";
 import { BetterGradesVisual } from "./BetterGradesVisual";
@@ -37,6 +37,8 @@ function AttemptFirstPrompt({
   const [feedback, setFeedback] = useState("Write a complete attempt before opening the exact answer.");
   const [answer, setAnswer] = useState<string>();
   const [busy, setBusy] = useState(false);
+  const [hydrated, setHydrated] = useState(false);
+  useEffect(() => setHydrated(true), []);
 
   async function check(event: FormEvent) {
     event.preventDefault();
@@ -48,9 +50,9 @@ function AttemptFirstPrompt({
         body: JSON.stringify({ id: prompt.id, answer: responseText }),
       });
       const result = await response.json() as { status?: string; feedback?: string; error?: string };
-      if (!response.ok) throw new Error(result.error ?? "The checker could not review this response.");
-      setAttempted(result.status !== "empty");
-      setFeedback(result.feedback ?? "Compare your work with the exact answer.");
+      if (!response.ok && response.status !== 422) throw new Error(result.error ?? "The checker could not review this response.");
+      setAttempted(result.status === "correct");
+      setFeedback(result.feedback ?? "Review your work and try again.");
     } catch (error) {
       setFeedback(error instanceof Error ? error.message : "The checker could not be reached.");
     } finally {
@@ -60,7 +62,7 @@ function AttemptFirstPrompt({
 
   async function reveal() {
     if (!attempted) {
-      setFeedback("Submit a real attempt first. A partial setup is enough to unlock the answer.");
+      setFeedback("Submit a correct answer before opening the response guide.");
       return;
     }
     setBusy(true);
@@ -83,18 +85,18 @@ function AttemptFirstPrompt({
   return <section className={`limits-check algebra-attempt precalculus-attempt${compact ? " is-compact" : ""}`} id={prompt.id}>
     <header><span>{label}</span>{prompt.sequence ? <code>{String(prompt.sequence).padStart(2, "0")}</code> : null}</header>
     <p className="limits-check-prompt"><AlgebraMathText value={prompt.prompt} display="auto" /></p>
-    <form onSubmit={check}>
+    {hydrated ? <><form onSubmit={check}>
       <label htmlFor={`${prompt.id}-answer`}>Your answer and supporting work</label>
       <textarea id={`${prompt.id}-answer`} value={responseText} onChange={(event) => setResponseText(event.target.value)} rows={compact ? 3 : 4} required />
       <button className="button button-ink" type="submit" disabled={busy}>{busy ? "Reviewing…" : "Submit attempt"}</button>
     </form>
     <p className="limits-check-feedback is-uncertain" aria-live="polite">{feedback}</p>
     <details className="limits-disclosure" onToggle={(event) => { if (event.currentTarget.open && attempted && !answer && !busy) void reveal(); }}>
-      <summary>{attempted ? "Compare with the exact answer" : "Attempt once to unlock the answer"}</summary>
+      <summary>{attempted ? "Compare with the exact answer" : "Correct answer required to unlock"}</summary>
       {answer
         ? <p><AlgebraMathText value={answer} display="auto" /></p>
-        : <p>{attempted ? "Loading the exact answer…" : "Complete a substantive attempt before revealing the server-held answer."}</p>}
-    </details>
+        : <p>{attempted ? "Loading the exact answer…" : "Submit a correct answer before revealing the server-held response guide."}</p>}
+    </details></> : <p className="honest-note">Answer checking and protected response guides require JavaScript; the complete prompt remains readable and printable.</p>}
   </section>;
 }
 
@@ -176,7 +178,6 @@ function FullTextbookLesson({ lesson }: { lesson: PrecalculusLesson }) {
         <PhaseBBlocks blocks={section.blocks} />
       </section>;
     })}
-    <noscript><p className="honest-note">The complete practice prompts remain printable without JavaScript. Enable JavaScript to submit an attempt and retrieve the protected exact answers.</p></noscript>
   </div>;
 }
 
@@ -222,7 +223,6 @@ function LessonPage({ page }: { page: PrecalculusCoursePage }) {
     <section className="limits-node limits-node-exercise algebra-foundation-practice precalculus-practice"><header><span>Practice</span><h2>Ten concrete questions</h2></header><div className="algebra-practice-groups">
       {lesson.practice.map((prompt) => <AttemptFirstPrompt prompt={prompt} label={`Practice ${prompt.sequence}`} compact key={prompt.id} />)}
     </div></section>
-    <noscript><p className="honest-note">The complete practice prompts remain printable without JavaScript. Enable JavaScript to submit an attempt and retrieve the protected exact answers.</p></noscript>
     <section className="limits-node limits-node-bridge algebra-lesson-takeaway"><header><span>Lesson close</span><h2>Connect forward</h2></header><div><p><AlgebraMathText value={lesson.close} /></p></div></section>
     <section className="limits-rights"><p className="eyebrow">Source record</p><h2>Original BetterGrades manuscript, rights-separated references.</h2><ul>{lesson.sources.map((source) => <li key={source}>{source}</li>)}</ul><p>No long source passage is reproduced.</p></section>
   </div>;

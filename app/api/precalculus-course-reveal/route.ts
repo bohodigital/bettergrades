@@ -1,9 +1,13 @@
-import { getPrecalculusAssessmentAnswer } from "../../../lib/precalculus/precalculus-course.server.mjs";
+import { getPrecalculusAssessmentRecord, validatePrecalculusAssessmentAnswer } from "../../../lib/precalculus/precalculus-course.server.mjs";
 
 const MAX_ID_LENGTH = 160;
 const MAX_ATTEMPT_LENGTH = 8_000;
 
-export async function POST(request: Request) {
+type PrecalculusEnvironment = {
+  PRECALCULUS_SOLUTIONS?: { get(key: string, type: "json"): Promise<unknown> };
+};
+
+export async function POST(request: Request, environment: PrecalculusEnvironment = {}) {
   let body: unknown;
   try {
     body = await request.json();
@@ -18,7 +22,11 @@ export async function POST(request: Request) {
   if (typeof attempt !== "string" || !attempt.trim() || attempt.length > MAX_ATTEMPT_LENGTH) {
     return Response.json({ error: "Write a real attempt before opening the response guide." }, { status: 400 });
   }
-  const answer = getPrecalculusAssessmentAnswer(id);
-  if (!answer) return Response.json({ error: "That Precalculus response guide is not available." }, { status: 404 });
-  return Response.json({ answer });
+  if (!environment.PRECALCULUS_SOLUTIONS) return Response.json({ error: "Protected answer validation is temporarily unavailable." }, { status: 503 });
+  const record = await getPrecalculusAssessmentRecord(environment.PRECALCULUS_SOLUTIONS, id);
+  if (!record) return Response.json({ error: "That Precalculus response guide is not available." }, { status: 404 });
+  if (!validatePrecalculusAssessmentAnswer(record, attempt)) {
+    return Response.json({ error: "The response guide remains locked because the submitted answer is not correct." }, { status: 403 });
+  }
+  return Response.json({ answer: `Answer: ${record.answer}` });
 }

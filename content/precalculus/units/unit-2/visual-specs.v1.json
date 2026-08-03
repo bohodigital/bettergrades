@@ -34,10 +34,10 @@
         "unitsRequired": false
       },
       "viewport": {
-        "xMin": -3.4,
-        "xMax": 3.4,
-        "yMin": -2,
-        "yMax": 8,
+        "xMin": -0.5,
+        "xMax": 6.5,
+        "yMin": 0,
+        "yMax": 68,
         "aspectRatio": 1.72,
         "padding": 0.065
       },
@@ -51,7 +51,7 @@
               "segments": [
                 {
                   "kind": "text",
-                  "text": "input x"
+                  "text": "hours h"
                 }
               ]
             },
@@ -66,7 +66,7 @@
               "segments": [
                 {
                   "kind": "text",
-                  "text": "output y"
+                  "text": "cost C(h), dollars"
                 }
               ]
             },
@@ -79,59 +79,19 @@
       "panels": [],
       "layers": [
         {
-          "id": "function",
+          "id": "rental-cost",
           "kind": "sampled-series",
           "zIndex": 20,
           "label": {
             "segments": [
               {
                 "kind": "text",
-                "text": "f(x) = x² − 1"
+                "text": "C(h)=18+7h dollars"
               }
             ]
           },
           "geometry": {
             "xValues": [
-              -3,
-              -2.925,
-              -2.85,
-              -2.775,
-              -2.7,
-              -2.625,
-              -2.55,
-              -2.475,
-              -2.4,
-              -2.325,
-              -2.25,
-              -2.175,
-              -2.1,
-              -2.025,
-              -1.95,
-              -1.875,
-              -1.8,
-              -1.725,
-              -1.65,
-              -1.575,
-              -1.5,
-              -1.425,
-              -1.35,
-              -1.275,
-              -1.2,
-              -1.125,
-              -1.05,
-              -0.975,
-              -0.9,
-              -0.825,
-              -0.75,
-              -0.675,
-              -0.6,
-              -0.525,
-              -0.45,
-              -0.375,
-              -0.3,
-              -0.225,
-              -0.15,
-              -0.075,
               0,
               0.075,
               0.15,
@@ -172,90 +132,130 @@
               2.775,
               2.85,
               2.925,
-              3
+              3,
+              3.075,
+              3.15,
+              3.225,
+              3.3,
+              3.375,
+              3.45,
+              3.525,
+              3.6,
+              3.675,
+              3.75,
+              3.825,
+              3.9,
+              3.975,
+              4.05,
+              4.125,
+              4.2,
+              4.275,
+              4.35,
+              4.425,
+              4.5,
+              4.575,
+              4.65,
+              4.725,
+              4.8,
+              4.875,
+              4.95,
+              5.025,
+              5.1,
+              5.175,
+              5.25,
+              5.325,
+              5.4,
+              5.475,
+              5.55,
+              5.625,
+              5.7,
+              5.775,
+              5.85,
+              5.925,
+              6
             ],
             "yValues": [
-              8,
-              7.555625,
-              7.1225,
-              6.700625,
-              6.29,
-              5.890625,
-              5.5025,
-              5.125625,
-              4.76,
-              4.405625,
-              4.0625,
-              3.730625,
-              3.41,
-              3.100625,
-              2.8025,
-              2.515625,
-              2.24,
-              1.975625,
-              1.7225,
-              1.480625,
-              1.25,
-              1.030625,
-              0.8225,
-              0.625625,
-              0.44,
-              0.265625,
-              0.1025,
-              -0.049375,
-              -0.19,
-              -0.319375,
-              -0.4375,
-              -0.544375,
-              -0.64,
-              -0.724375,
-              -0.7975,
-              -0.859375,
-              -0.91,
-              -0.949375,
-              -0.9775,
-              -0.994375,
-              -1,
-              -0.994375,
-              -0.9775,
-              -0.949375,
-              -0.91,
-              -0.859375,
-              -0.7975,
-              -0.724375,
-              -0.64,
-              -0.544375,
-              -0.4375,
-              -0.319375,
-              -0.19,
-              -0.049375,
-              0.1025,
-              0.265625,
-              0.44,
-              0.625625,
-              0.8225,
-              1.030625,
-              1.25,
-              1.480625,
-              1.7225,
-              1.975625,
-              2.24,
-              2.515625,
-              2.8025,
-              3.100625,
-              3.41,
-              3.730625,
-              4.0625,
-              4.405625,
-              4.76,
-              5.125625,
-              5.5025,
-              5.890625,
-              6.29,
-              6.700625,
-              7.1225,
-              7.555625,
-              8
+              18,
+              18.525,
+              19.05,
+              19.575,
+              20.1,
+              20.625,
+              21.15,
+              21.675,
+              22.2,
+              22.725,
+              23.25,
+              23.775,
+              24.3,
+              24.825,
+              25.35,
+              25.875,
+              26.4,
+              26.925,
+              27.45,
+              27.975,
+              28.5,
+              29.025,
+              29.55,
+              30.075,
+              30.6,
+              31.125,
+              31.65,
+              32.175,
+              32.7,
+              33.225,
+              33.75,
+              34.275,
+              34.8,
+              35.325,
+              35.85,
+              36.375,
+              36.9,
+              37.425,
+              37.95,
+              38.475,
+              39,
+              39.525,
+              40.05,
+              40.575,
+              41.1,
+              41.625,
+              42.15,
+              42.675,
+              43.2,
+              43.725,
+              44.25,
+              44.775,
+              45.3,
+              45.825,
+              46.35,
+              46.875,
+              47.4,
+              47.925,
+              48.45,
+              48.975,
+              49.5,
+              50.025,
+              50.55,
+              51.075,
+              51.6,
+              52.125,
+              52.65,
+              53.175,
+              53.7,
+              54.225,
+              54.75,
+              55.275,
+              55.8,
+              56.325,
+              56.85,
+              57.375,
+              57.9,
+              58.425,
+              58.95,
+              59.475,
+              60
             ],
             "connect": true
           },
@@ -264,52 +264,25 @@
             "lineStyle": "solid",
             "markerShape": "none",
             "pattern": "none",
-            "colorIndependentCue": "f(x) = x² − 1; solid curve."
+            "colorIndependentCue": "C(h)=18+7h dollars; solid curve."
           }
         },
         {
-          "id": "left-point",
+          "id": "fixed-fee",
           "kind": "closed-point",
           "zIndex": 30,
           "label": {
             "segments": [
               {
                 "kind": "text",
-                "text": "input -2 gives output 3"
-              }
-            ]
-          },
-          "geometry": {
-            "position": {
-              "x": -2,
-              "y": 3
-            }
-          },
-          "presentation": {
-            "strokeToken": "visual-secondary",
-            "lineStyle": "solid",
-            "markerShape": "square",
-            "pattern": "none",
-            "colorIndependentCue": "Filled square marks input -2 gives output 3.",
-            "fillToken": "visual-secondary"
-          }
-        },
-        {
-          "id": "vertex",
-          "kind": "closed-point",
-          "zIndex": 30,
-          "label": {
-            "segments": [
-              {
-                "kind": "text",
-                "text": "minimum output -1"
+                "text": "At zero hours the fixed fee is 18 dollars."
               }
             ]
           },
           "geometry": {
             "position": {
               "x": 0,
-              "y": -1
+              "y": 18
             }
           },
           "presentation": {
@@ -317,49 +290,49 @@
             "lineStyle": "solid",
             "markerShape": "diamond",
             "pattern": "none",
-            "colorIndependentCue": "Filled diamond marks minimum output -1.",
+            "colorIndependentCue": "Filled diamond marks At zero hours the fixed fee is 18 dollars..",
             "fillToken": "visual-emphasis"
           }
         },
         {
-          "id": "right-point",
+          "id": "one-hour",
           "kind": "closed-point",
           "zIndex": 30,
           "label": {
             "segments": [
               {
                 "kind": "text",
-                "text": "input 2 gives output 3"
+                "text": "One hour costs 25 dollars."
               }
             ]
           },
           "geometry": {
             "position": {
-              "x": 2,
-              "y": 3
+              "x": 1,
+              "y": 25
             }
           },
           "presentation": {
             "strokeToken": "visual-secondary",
             "lineStyle": "solid",
-            "markerShape": "circle",
+            "markerShape": "square",
             "pattern": "none",
-            "colorIndependentCue": "Filled circle marks input 2 gives output 3.",
+            "colorIndependentCue": "Filled square marks One hour costs 25 dollars..",
             "fillToken": "visual-secondary"
           }
         },
         {
-          "id": "domain-guide",
+          "id": "rate-rise",
           "kind": "segment",
           "zIndex": 10,
           "geometry": {
             "start": {
-              "x": -2,
-              "y": 3
+              "x": 0,
+              "y": 18
             },
             "end": {
-              "x": 2,
-              "y": 3
+              "x": 1,
+              "y": 25
             }
           },
           "presentation": {
@@ -367,23 +340,23 @@
             "lineStyle": "dashed",
             "markerShape": "none",
             "pattern": "none",
-            "colorIndependentCue": "Repeated output 3 is allowed."
+            "colorIndependentCue": "A one-hour increase raises cost by 7 dollars."
           }
         },
         {
-          "id": "reading",
+          "id": "formula",
           "kind": "label",
           "zIndex": 40,
           "geometry": {
             "position": {
-              "x": -2.75,
-              "y": 7.35
+              "x": 0.2,
+              "y": 61
             },
             "content": {
               "segments": [
                 {
                   "kind": "text",
-                  "text": "A rental costs $18 plus $7 per hour."
+                  "text": "C(h)=18+7h"
                 }
               ]
             }
@@ -393,33 +366,33 @@
             "lineStyle": "solid",
             "markerShape": "none",
             "pattern": "none",
-            "colorIndependentCue": "Label: A rental costs $18 plus $7 per hour.."
+            "colorIndependentCue": "Label: C(h)=18+7h."
           }
         },
         {
-          "id": "result",
+          "id": "meaning",
           "kind": "label",
           "zIndex": 40,
           "geometry": {
             "position": {
-              "x": -2.75,
-              "y": 6.55
+              "x": 0.2,
+              "y": 55
             },
             "content": {
               "segments": [
                 {
                   "kind": "text",
-                  "text": "C(h)=18+7h dollars."
+                  "text": "18 dollars fixed + 7 dollars per hour"
                 }
               ]
             }
           },
           "presentation": {
-            "strokeToken": "visual-primary",
+            "strokeToken": "visual-ink",
             "lineStyle": "solid",
             "markerShape": "none",
             "pattern": "none",
-            "colorIndependentCue": "Label: C(h)=18+7h dollars.."
+            "colorIndependentCue": "Label: 18 dollars fixed + 7 dollars per hour."
           }
         }
       ],
@@ -428,13 +401,12 @@
         "ariaLabel": "Quantity dependency map. Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The fixed fee and hourly rate have different parameter meanings.",
         "summary": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The fixed fee and hourly rate have different parameter meanings.",
         "readingOrder": [
-          "function",
-          "left-point",
-          "vertex",
-          "right-point",
-          "domain-guide",
-          "reading",
-          "result"
+          "rental-cost",
+          "fixed-fee",
+          "one-hour",
+          "rate-rise",
+          "formula",
+          "meaning"
         ],
         "colorIndependentDescription": "Labels, point shapes, line styles, arrows, and position carry the mathematical meaning; color is supplementary.",
         "controlInstructions": [],

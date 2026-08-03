@@ -42,6 +42,7 @@
     "algebra:visuals:check": "node tools/visualization/author-algebra-visuals.mjs --check && node tools/visualization/compile-algebra-visuals.mjs --check",
     "precalculus:import": "node tools/import-precalculus-course.mjs",
     "precalculus:check": "node tools/import-precalculus-course.mjs --check",
+    "precalculus:solutions:kv": "node tools/export-precalculus-solutions-kv.mjs",
     "precalculus:visuals:author": "node tools/visualization/author-precalculus-visuals.mjs",
     "precalculus:visuals:compile": "node tools/visualization/compile-precalculus-visuals.mjs",
     "precalculus:visuals:check": "node tools/visualization/author-precalculus-visuals.mjs --check && node tools/visualization/compile-precalculus-visuals.mjs --check",
@@ -60,6 +61,7 @@
     "test:math": "node --test tests/calculus-resources.test.mjs",
     "test:browser": "playwright test --config=playwright.config.mjs && node tools/summarize-browser-results.mjs",
     "test:rendered-dom": "node tools/rendered-dom-audit.mjs",
+    "test:rendered-dom:combine": "node tools/combine-rendered-dom-audit.mjs",
     "test": "corepack pnpm run build:pages && node --test --test-concurrency=1 tests/*.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --ignore-pattern .wrangler --ignore-pattern worker-configuration.d.ts",
     "db:generate": "drizzle-kit generate"

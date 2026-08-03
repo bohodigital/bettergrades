@@ -11,6 +11,29 @@ const outputDirectory = resolve(root, "content/precalculus");
 const checkOnly = process.argv.includes("--check");
 const courseRoot = "/subjects/math/precalculus/";
 
+const auditCorrections = [
+  {
+    sourceLessonId: "P12.1",
+    source: "(x+2)^2+(y-3)^2=25; solve with y=0 or x=0.",
+    corrected: "(x+2)^2+(y-3)^2=25; x-intercepts (-6,0) and (2,0); y-intercepts (0,3-sqrt(21)) and (0,3+sqrt(21)).",
+    reason: "The accepted live audit found that the worked conclusion omitted every requested intercept.",
+  },
+  {
+    sourceLessonId: "P13.1",
+    source: "Endpoints (-5,4),(5,9); eliminate t=(x+1)/2 to get y=(x+1)^2/4 with restricted segment and direction.",
+    corrected: "Endpoints (-5,4) and (5,9); eliminate t=(x+1)/2 to get y=(x+1)^2/4 with -5<=x<=5, traced from left to right as t increases from -2 to 3.",
+    reason: "The accepted live audit found that the Cartesian conclusion omitted the exact x-domain and direction.",
+  },
+];
+
+function applyAuditCorrections(sourceLesson) {
+  const correction = auditCorrections.find((candidate) => candidate.sourceLessonId === sourceLesson.id);
+  if (!correction) return sourceLesson;
+  const serialized = JSON.stringify(sourceLesson);
+  if (!serialized.includes(correction.source)) throw new Error(`Expected audited source statement is missing from ${sourceLesson.id}.`);
+  return JSON.parse(serialized.replaceAll(correction.source, correction.corrected));
+}
+
 const unitProfiles = [
   { sourceCode: "P0", sequence: 1, title: "Algebra and Function Readiness", slug: "algebra-and-function-readiness" },
   { sourceCode: "P1", sequence: 2, title: "Functions and Multiple Representations", slug: "functions-and-multiple-representations" },
@@ -179,6 +202,12 @@ function learnerFigureCaption(sourceLesson, figure, index) {
   return `Compare the valid path with the tempting shortcut. The figure shows why ${lowerInitial(shortcut)} leads to a false conclusion.`;
 }
 
+function learnerFigureTitle(value) {
+  return value
+    .replace(/\banimation\b/gi, "diagram")
+    .replace(/\bmoving point\b/gi, "directed point sequence");
+}
+
 async function loadJson(path) {
   return JSON.parse(await readFile(path, "utf8"));
 }
@@ -212,7 +241,7 @@ const packageManifest = await assertPackageIntegrity(sourceDirectory);
 const phaseBPackageManifest = await assertPackageIntegrity(phaseBSourceDirectory);
 const phaseALessons = await loadJson(resolve(sourceDirectory, "data/lessons.json"));
 const phaseBLessons = await loadPhaseBLessons(phaseBSourceDirectory);
-const sourceLessons = [...phaseALessons, ...phaseBLessons];
+const sourceLessons = [...phaseALessons, ...phaseBLessons].map(applyAuditCorrections);
 const qa = await loadJson(resolve(sourceDirectory, "qa/QA_REPORT.json"));
 const phaseBQa = await loadJson(resolve(phaseBSourceDirectory, "qa/QA_REPORT.json"));
 
@@ -266,7 +295,7 @@ for (const sourceLesson of sourceLessons) {
     id: `${publicLessonId}-v${index + 1}`,
     sequence: index + 1,
     role: figure.role,
-    title: figure.title,
+    title: learnerFigureTitle(figure.title),
     description: figure.description,
     caption: learnerFigureCaption(sourceLesson, figure, index),
     anchorProblem: sourceLesson.examples[0].problem,
@@ -433,7 +462,12 @@ const provenance = {
     source: "Use function notation from P0.",
     public: "Use function notation from the algebra and function readiness unit.",
     reason: "The approved install prompt forbids exposing internal production identifiers in learner-facing copy.",
-  }],
+  }, ...auditCorrections.map((correction) => ({
+    sourceLessonId: correction.sourceLessonId,
+    source: correction.source,
+    public: correction.corrected,
+    reason: correction.reason,
+  }))],
   lessons: provenanceLessons,
 };
 

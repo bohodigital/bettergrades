@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "auditWorkOrder": "WO-2026-07-30-BETTERGRADES-PRECALCULUS-LIVE-AUDIT-001",
+  "sourceBaselineCommit": "de3ef3acd6e8de72c987bb8cce9e1cdba5a25ee4",
+  "corrections": [
+    {
+      "unit": "P12",
+      "route": "/subjects/math/precalculus/conic-sections-and-implicit-relations/conics-as-loci-and-the-circle-foundation/",
+      "defect": "The worked conclusion requested intercepts but omitted their values.",
+      "correction": "x-intercepts (-6,0) and (2,0); y-intercepts (0,3-sqrt(21)) and (0,3+sqrt(21)).",
+      "verification": "Substitute y=0 and x=0 into (x+2)^2+(y-3)^2=25; importer and generated-copy regression tests.",
+      "regressionTest": "tests/precalculus-course.test.mjs",
+      "reviewStatus": "machine-verified; independent reviewer pending"
+    },
+    {
+      "unit": "P13",
+      "route": "/subjects/math/precalculus/parametric-polar-and-complex-representations/parametric-equations-and-orientation/",
+      "defect": "The Cartesian relation omitted the exact restriction and direction inherited from -2<=t<=3.",
+      "correction": "y=(x+1)^2/4 with -5<=x<=5, traced left to right as t increases from -2 to 3.",
+      "verification": "Eliminate t=(x+1)/2 and map the interval endpoints; importer and generated-copy regression tests.",
+      "regressionTest": "tests/precalculus-course.test.mjs",
+      "reviewStatus": "machine-verified; independent reviewer pending"
+    }
+  ]
+}

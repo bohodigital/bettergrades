@@ -48,19 +48,19 @@
       "panels": [],
       "layers": [
         {
-          "id": "figure-kicker",
+          "id": "title",
           "kind": "label",
           "zIndex": 40,
           "geometry": {
             "position": {
               "x": 0.55,
-              "y": 6.5
+              "y": 6.45
             },
             "content": {
               "segments": [
                 {
                   "kind": "text",
-                  "text": "WORK THE STRUCTURE, THEN CHECK THE ORIGINAL"
+                  "text": "ROUTE EACH READINESS STRAND FROM ITS OWN EVIDENCE"
                 }
               ]
             }
@@ -70,30 +70,30 @@
             "lineStyle": "solid",
             "markerShape": "none",
             "pattern": "none",
-            "colorIndependentCue": "Label: WORK THE STRUCTURE, THEN CHECK THE ORIGINAL."
+            "colorIndependentCue": "Label: ROUTE EACH READINESS STRAND FROM ITS OWN EVIDENCE."
           }
         },
         {
-          "id": "given",
+          "id": "equation-evidence",
           "kind": "polygon",
           "zIndex": 5,
           "geometry": {
             "points": [
               {
-                "x": 0.55,
-                "y": 3.05
+                "x": 0.6,
+                "y": 2.2
               },
               {
-                "x": 2.9000000000000004,
-                "y": 3.05
+                "x": 3.7,
+                "y": 2.2
               },
               {
-                "x": 2.9000000000000004,
-                "y": 5.6
+                "x": 3.7,
+                "y": 5.45
               },
               {
-                "x": 0.55,
-                "y": 5.6
+                "x": 0.6,
+                "y": 5.45
               }
             ],
             "closed": true
@@ -103,31 +103,31 @@
             "lineStyle": "solid",
             "markerShape": "none",
             "pattern": "dots",
-            "colorIndependentCue": "The original problem is the source of every restriction.",
+            "colorIndependentCue": "Linear equations are solved correctly.",
             "fillToken": "visual-secondary"
           }
         },
         {
-          "id": "structure",
+          "id": "rational-evidence",
           "kind": "polygon",
           "zIndex": 5,
           "geometry": {
             "points": [
               {
-                "x": 3.5,
-                "y": 3.05
+                "x": 4.45,
+                "y": 2.2
               },
               {
-                "x": 5.85,
-                "y": 3.05
+                "x": 7.550000000000001,
+                "y": 2.2
               },
               {
-                "x": 5.85,
-                "y": 5.6
+                "x": 7.550000000000001,
+                "y": 5.45
               },
               {
-                "x": 3.5,
-                "y": 5.6
+                "x": 4.45,
+                "y": 5.45
               }
             ],
             "closed": true
@@ -136,66 +136,32 @@
             "strokeToken": "visual-emphasis",
             "lineStyle": "solid",
             "markerShape": "none",
-            "pattern": "diagonal",
-            "colorIndependentCue": "Classify the algebraic family and expose its structure.",
+            "pattern": "crosshatch",
+            "colorIndependentCue": "Cancellation loses denominator restrictions.",
             "fillToken": "visual-emphasis"
           }
         },
         {
-          "id": "solve",
+          "id": "route",
           "kind": "polygon",
           "zIndex": 5,
           "geometry": {
             "points": [
               {
-                "x": 6.45,
-                "y": 3.05
+                "x": 8.3,
+                "y": 2.2
               },
               {
-                "x": 8.8,
-                "y": 3.05
+                "x": 11.4,
+                "y": 2.2
               },
               {
-                "x": 8.8,
-                "y": 5.6
+                "x": 11.4,
+                "y": 5.45
               },
               {
-                "x": 6.45,
-                "y": 5.6
-              }
-            ],
-            "closed": true
-          },
-          "presentation": {
-            "strokeToken": "visual-secondary",
-            "lineStyle": "solid",
-            "markerShape": "none",
-            "pattern": "crosshatch",
-            "colorIndependentCue": "Use valid transformations and record candidates.",
-            "fillToken": "visual-secondary"
-          }
-        },
-        {
-          "id": "check",
-          "kind": "polygon",
-          "zIndex": 5,
-          "geometry": {
-            "points": [
-              {
-                "x": 9.4,
-                "y": 3.05
-              },
-              {
-                "x": 11.45,
-                "y": 3.05
-              },
-              {
-                "x": 11.45,
-                "y": 5.6
-              },
-              {
-                "x": 9.4,
-                "y": 5.6
+                "x": 8.3,
+                "y": 5.45
               }
             ],
             "closed": true
@@ -205,116 +171,68 @@
             "lineStyle": "solid",
             "markerShape": "none",
             "pattern": "diagonal",
-            "colorIndependentCue": "Check the original statement and its domain.",
+            "colorIndependentCue": "Keep equation solving ready; repair rational expressions.",
             "fillToken": "visual-primary"
           }
         },
         {
-          "id": "a",
+          "id": "equation-route",
           "kind": "direction-arrow",
           "zIndex": 12,
           "geometry": {
             "start": {
-              "x": 2.95,
-              "y": 4.3
-            },
-            "end": {
-              "x": 3.4,
-              "y": 4.3
-            }
-          },
-          "presentation": {
-            "strokeToken": "visual-guide",
-            "lineStyle": "solid",
-            "markerShape": "none",
-            "pattern": "none",
-            "colorIndependentCue": "Move from the given statement to its structure."
-          }
-        },
-        {
-          "id": "b",
-          "kind": "direction-arrow",
-          "zIndex": 12,
-          "geometry": {
-            "start": {
-              "x": 5.9,
-              "y": 4.3
-            },
-            "end": {
-              "x": 6.35,
-              "y": 4.3
-            }
-          },
-          "presentation": {
-            "strokeToken": "visual-guide",
-            "lineStyle": "solid",
-            "markerShape": "none",
-            "pattern": "none",
-            "colorIndependentCue": "Move from structure to candidate solutions."
-          }
-        },
-        {
-          "id": "c",
-          "kind": "direction-arrow",
-          "zIndex": 12,
-          "geometry": {
-            "start": {
-              "x": 8.85,
-              "y": 4.3
-            },
-            "end": {
-              "x": 9.3,
-              "y": 4.3
-            }
-          },
-          "presentation": {
-            "strokeToken": "visual-guide",
-            "lineStyle": "solid",
-            "markerShape": "none",
-            "pattern": "none",
-            "colorIndependentCue": "Return candidates to the original statement."
-          }
-        },
-        {
-          "id": "given-heading",
-          "kind": "label",
-          "zIndex": 40,
-          "geometry": {
-            "position": {
-              "x": 0.85,
-              "y": 5.15
-            },
-            "content": {
-              "segments": [
-                {
-                  "kind": "text",
-                  "text": "01 · GIVEN"
-                }
-              ]
-            }
-          },
-          "presentation": {
-            "strokeToken": "visual-ink",
-            "lineStyle": "solid",
-            "markerShape": "none",
-            "pattern": "none",
-            "colorIndependentCue": "Label: 01 · GIVEN."
-          }
-        },
-        {
-          "id": "structure-heading",
-          "kind": "label",
-          "zIndex": 40,
-          "geometry": {
-            "position": {
               "x": 3.8,
-              "y": 5.15
+              "y": 4.45
+            },
+            "end": {
+              "x": 8.15,
+              "y": 4.45
+            }
+          },
+          "presentation": {
+            "strokeToken": "visual-secondary",
+            "lineStyle": "solid",
+            "markerShape": "none",
+            "pattern": "none",
+            "colorIndependentCue": "Successful equation evidence remains ready."
+          }
+        },
+        {
+          "id": "rational-route",
+          "kind": "direction-arrow",
+          "zIndex": 12,
+          "geometry": {
+            "start": {
+              "x": 7.65,
+              "y": 3.25
+            },
+            "end": {
+              "x": 8.15,
+              "y": 3.25
+            }
+          },
+          "presentation": {
+            "strokeToken": "visual-emphasis",
+            "lineStyle": "solid",
+            "markerShape": "none",
+            "pattern": "none",
+            "colorIndependentCue": "The rational-expression error routes to repair."
+          }
+        },
+        {
+          "id": "equation-label",
+          "kind": "label",
+          "zIndex": 40,
+          "geometry": {
+            "position": {
+              "x": 1,
+              "y": 4.9
             },
             "content": {
               "segments": [
                 {
                   "kind": "text",
-                  "text": "02 · STRUCTURE"
+                  "text": "EQUATION STRAND: READY"
                 }
               ]
             }
@@ -324,23 +242,23 @@
             "lineStyle": "solid",
             "markerShape": "none",
             "pattern": "none",
-            "colorIndependentCue": "Label: 02 · STRUCTURE."
+            "colorIndependentCue": "Label: EQUATION STRAND: READY."
           }
         },
         {
-          "id": "solve-heading",
+          "id": "rational-label",
           "kind": "label",
           "zIndex": 40,
           "geometry": {
             "position": {
-              "x": 6.75,
-              "y": 5.15
+              "x": 4.85,
+              "y": 4.9
             },
             "content": {
               "segments": [
                 {
                   "kind": "text",
-                  "text": "03 · SOLVE"
+                  "text": "RATIONAL STRAND: REPAIR"
                 }
               ]
             }
@@ -350,225 +268,17 @@
             "lineStyle": "solid",
             "markerShape": "none",
             "pattern": "none",
-            "colorIndependentCue": "Label: 03 · SOLVE."
+            "colorIndependentCue": "Label: RATIONAL STRAND: REPAIR."
           }
         },
         {
-          "id": "check-heading",
+          "id": "principle",
           "kind": "label",
           "zIndex": 40,
           "geometry": {
             "position": {
-              "x": 9.7,
-              "y": 5.15
-            },
-            "content": {
-              "segments": [
-                {
-                  "kind": "text",
-                  "text": "04 · VERIFY"
-                }
-              ]
-            }
-          },
-          "presentation": {
-            "strokeToken": "visual-ink",
-            "lineStyle": "solid",
-            "markerShape": "none",
-            "pattern": "none",
-            "colorIndependentCue": "Label: 04 · VERIFY."
-          }
-        },
-        {
-          "id": "problem-1",
-          "kind": "label",
-          "zIndex": 40,
-          "geometry": {
-            "position": {
-              "x": 0.85,
-              "y": 4.55
-            },
-            "content": {
-              "segments": [
-                {
-                  "kind": "text",
-                  "text": "A learner solves every"
-                }
-              ]
-            }
-          },
-          "presentation": {
-            "strokeToken": "visual-ink",
-            "lineStyle": "solid",
-            "markerShape": "none",
-            "pattern": "none",
-            "colorIndependentCue": "Label: A learner solves every."
-          }
-        },
-        {
-          "id": "problem-2",
-          "kind": "label",
-          "zIndex": 40,
-          "geometry": {
-            "position": {
-              "x": 0.85,
-              "y": 4.1
-            },
-            "content": {
-              "segments": [
-                {
-                  "kind": "text",
-                  "text": "linear equation but"
-                }
-              ]
-            }
-          },
-          "presentation": {
-            "strokeToken": "visual-ink",
-            "lineStyle": "solid",
-            "markerShape": "none",
-            "pattern": "none",
-            "colorIndependentCue": "Label: linear equation but."
-          }
-        },
-        {
-          "id": "problem-3",
-          "kind": "label",
-          "zIndex": 40,
-          "geometry": {
-            "position": {
-              "x": 0.85,
-              "y": 3.65
-            },
-            "content": {
-              "segments": [
-                {
-                  "kind": "text",
-                  "text": "cancels terms illegally…"
-                }
-              ]
-            }
-          },
-          "presentation": {
-            "strokeToken": "visual-ink",
-            "lineStyle": "solid",
-            "markerShape": "none",
-            "pattern": "none",
-            "colorIndependentCue": "Label: cancels terms illegally…."
-          }
-        },
-        {
-          "id": "conclusion-1",
-          "kind": "label",
-          "zIndex": 40,
-          "geometry": {
-            "position": {
-              "x": 9.7,
-              "y": 4.55
-            },
-            "content": {
-              "segments": [
-                {
-                  "kind": "text",
-                  "text": "Mark equation"
-                }
-              ]
-            }
-          },
-          "presentation": {
-            "strokeToken": "visual-ink",
-            "lineStyle": "solid",
-            "markerShape": "none",
-            "pattern": "none",
-            "colorIndependentCue": "Label: Mark equation."
-          }
-        },
-        {
-          "id": "conclusion-2",
-          "kind": "label",
-          "zIndex": 40,
-          "geometry": {
-            "position": {
-              "x": 9.7,
-              "y": 4.1
-            },
-            "content": {
-              "segments": [
-                {
-                  "kind": "text",
-                  "text": "solving ready and"
-                }
-              ]
-            }
-          },
-          "presentation": {
-            "strokeToken": "visual-ink",
-            "lineStyle": "solid",
-            "markerShape": "none",
-            "pattern": "none",
-            "colorIndependentCue": "Label: solving ready and."
-          }
-        },
-        {
-          "id": "conclusion-3",
-          "kind": "label",
-          "zIndex": 40,
-          "geometry": {
-            "position": {
-              "x": 9.7,
-              "y": 3.65
-            },
-            "content": {
-              "segments": [
-                {
-                  "kind": "text",
-                  "text": "route only the"
-                }
-              ]
-            }
-          },
-          "presentation": {
-            "strokeToken": "visual-ink",
-            "lineStyle": "solid",
-            "markerShape": "none",
-            "pattern": "none",
-            "colorIndependentCue": "Label: route only the."
-          }
-        },
-        {
-          "id": "conclusion-4",
-          "kind": "label",
-          "zIndex": 40,
-          "geometry": {
-            "position": {
-              "x": 9.7,
-              "y": 3.1999999999999997
-            },
-            "content": {
-              "segments": [
-                {
-                  "kind": "text",
-                  "text": "rational-expressio…"
-                }
-              ]
-            }
-          },
-          "presentation": {
-            "strokeToken": "visual-ink",
-            "lineStyle": "solid",
-            "markerShape": "none",
-            "pattern": "none",
-            "colorIndependentCue": "Label: rational-expressio…."
-          }
-        },
-        {
-          "id": "meaning-1",
-          "kind": "label",
-          "zIndex": 40,
-          "geometry": {
-            "position": {
-              "x": 0.65,
-              "y": 1.85
+              "x": 1.1,
+              "y": 1.25
             },
             "content": {
               "segments": [
@@ -593,26 +303,15 @@
         "ariaLabel": "Readiness strand map. Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Different error patterns require different instruction.",
         "summary": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Different error patterns require different instruction.",
         "readingOrder": [
-          "figure-kicker",
-          "given",
-          "structure",
-          "solve",
-          "check",
-          "a",
-          "b",
-          "c",
-          "given-heading",
-          "structure-heading",
-          "solve-heading",
-          "check-heading",
-          "problem-1",
-          "problem-2",
-          "problem-3",
-          "conclusion-1",
-          "conclusion-2",
-          "conclusion-3",
-          "conclusion-4",
-          "meaning-1"
+          "title",
+          "equation-evidence",
+          "rational-evidence",
+          "route",
+          "equation-route",
+          "rational-route",
+          "equation-label",
+          "rational-label",
+          "principle"
         ],
         "colorIndependentDescription": "Labels, point shapes, line styles, arrows, and position carry the mathematical meaning; color is supplementary.",
         "controlInstructions": [],

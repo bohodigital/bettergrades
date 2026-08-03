@@ -1,5 +1,5 @@
 import { execFileSync, spawn } from "node:child_process";
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { chromium } from "@playwright/test";
 import { pagesPackageHash } from "../lib/seo/build-hash.mjs";
@@ -7,7 +7,36 @@ import { pagesPackageHash } from "../lib/seo/build-hash.mjs";
 const root = resolve(import.meta.dirname, "..");
 const port = 4174;
 const baseURL = `http://127.0.0.1:${port}`;
-const artifactPath = resolve(root, "artifacts", "seo", "final-rendered-dom-audit.json");
+function integerArgument(name, fallback) {
+  const inline = process.argv.find((argument) => argument.startsWith(`${name}=`));
+  const value = Number(inline?.slice(name.length + 1) ?? fallback);
+  if (!Number.isInteger(value)) throw new Error(`${name} must be an integer.`);
+  return value;
+}
+
+const shardCount = integerArgument("--shard-count", 1);
+const shardIndex = integerArgument("--shard-index", 0);
+const resume = process.argv.includes("--resume");
+if (shardCount < 1 || shardIndex < 0 || shardIndex >= shardCount) throw new Error("Rendered-DOM shard coordinates are invalid.");
+const artifactName = shardCount === 1
+  ? "final-rendered-dom-audit.json"
+  : `final-rendered-dom-audit.shard-${String(shardIndex).padStart(3, "0")}-of-${String(shardCount).padStart(3, "0")}.json`;
+const artifactPath = resolve(root, "artifacts", "seo", artifactName);
+function routePasses(entry) {
+  return entry
+    && !entry.error
+    && entry.status === 200
+    && entry.h1Count === 1
+    && entry.mainCount === 1
+    && entry.noscriptCount === 0
+    && entry.overflowPixels <= 1
+    && entry.visibleTextLength >= 80
+    && !entry.softError
+    && !entry.malformedMath
+    && !entry.editorialLeak
+    && entry.consoleErrors?.length === 0
+    && entry.failedRequests?.length === 0;
+}
 const server = spawn(process.execPath, ["tools/serve-pages-preview.mjs"], {
   cwd: root,
   env: { ...process.env, PORT: String(port) },
@@ -35,9 +64,16 @@ try {
     if (!response.ok) throw new Error(`Sitemap ${path} returned ${response.status}`);
     return response.text();
   }));
-  const routes = sitemapBodies.flatMap((body) => [...body.matchAll(/<loc>https:\/\/bettergrades\.net([^<]+)<\/loc>/g)].map((match) => match[1]));
-  if (routes.length === 0) throw new Error("Expected at least one sitemap route");
-  if (new Set(routes).size !== routes.length) throw new Error("Expected every sitemap route to be unique");
+  const allRoutes = sitemapBodies.flatMap((body) => [...body.matchAll(/<loc>https:\/\/bettergrades\.net([^<]+)<\/loc>/g)].map((match) => match[1]));
+  if (allRoutes.length === 0) throw new Error("Expected at least one sitemap route");
+  if (new Set(allRoutes).size !== allRoutes.length) throw new Error("Expected every sitemap route to be unique");
+  const routes = allRoutes.filter((_, index) => index % shardCount === shardIndex);
+  const priorReport = resume
+    ? JSON.parse(await readFile(artifactPath, "utf8").catch(() => "{}"))
+    : {};
+  const priorByPath = new Map(Array.isArray(priorReport.routes)
+    ? priorReport.routes.filter(routePasses).map((entry) => [entry.path, entry])
+    : []);
 
   browser = await chromium.launch();
   const context = await browser.newContext({ viewport: { width: 390, height: 844 } });
@@ -55,6 +91,10 @@ try {
       const index = cursor;
       cursor += 1;
       const path = routes[index];
+      if (priorByPath.has(path)) {
+        results[index] = priorByPath.get(path);
+        continue;
+      }
       pageConsoleErrors.length = 0;
       const failedRequests = [];
       const requestFailure = (request) => {
@@ -70,7 +110,7 @@ try {
           noscriptCount: document.querySelectorAll("noscript").length,
           overflowPixels: document.documentElement.scrollWidth - document.documentElement.clientWidth,
           visibleTextLength: document.body.innerText.length,
-          softError: /internal server error|service unavailable|resource limit|error code 1102/i.test(document.body.innerText),
+          softError: /internal server error|service unavailable|resource limit reached|error code 1102/i.test(document.body.innerText),
           malformedMath: /(?:\bfrac(?:13|56|311)\b|\\(?:frac|sum|prod|lim|int|cdots|ldots)\b)/i.test(document.body.innerText),
           editorialLeak: /Preserve the misconception control|implementation note|author instruction|developer note|\/Users\/|\/srv\/local1\//i.test(document.body.innerText),
         }));
@@ -98,18 +138,7 @@ try {
   }));
   await context.close();
 
-  const failures = results.filter((entry) => entry.error
-    || entry.status !== 200
-    || entry.h1Count !== 1
-    || entry.mainCount !== 1
-    || entry.noscriptCount !== 0
-    || entry.overflowPixels > 1
-    || entry.visibleTextLength < 80
-    || entry.softError
-    || entry.malformedMath
-    || entry.editorialLeak
-    || entry.consoleErrors.length
-    || entry.failedRequests.length);
+  const failures = results.filter((entry) => !routePasses(entry));
   const report = {
     schemaVersion: 2,
     label: "final-local",
@@ -119,7 +148,10 @@ try {
     sourceCommit: execFileSync("git", ["rev-parse", "HEAD"], { cwd: root, encoding: "utf8" }).trim(),
     sourceTree: execFileSync("git", ["rev-parse", "HEAD^{tree}"], { cwd: root, encoding: "utf8" }).trim(),
     buildHash: await pagesPackageHash(resolve(root, "dist", "pages")),
+    totalSiteRouteCount: allRoutes.length,
     routeCount: routes.length,
+    shard: { index: shardIndex, count: shardCount, partition: "sitemap-order-index-modulo" },
+    resumedPassingRoutes: priorByPath.size,
     concurrency: 4,
     expectations: {
       status: 200,

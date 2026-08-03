@@ -10,7 +10,7 @@ import searchIndex from "../content/precalculus/search.public.json" with { type:
 import solutions from "../content/precalculus/solutions.server.json" with { type: "json" };
 import sourceLessons from "../content/precalculus/source-package/data/lessons.json" with { type: "json" };
 import phaseBSourceLessons from "../content/precalculus/source-package-phase-b/data/lessons.json" with { type: "json" };
-import { getPrecalculusAssessmentAnswer } from "../lib/precalculus/precalculus-course.server.mjs";
+import { getPrecalculusAssessmentRecord, normalizePrecalculusAnswer, validatePrecalculusAssessmentAnswer } from "../lib/precalculus/precalculus-course.server.mjs";
 import { getPublicPrecalculusCoursePage } from "../lib/precalculus/precalculus-course.mjs";
 import { precalculusCourseSearchRecords } from "../lib/precalculus/precalculus-course-search.mjs";
 
@@ -54,7 +54,18 @@ test("Every exact lesson field is preserved and every protected answer stays out
     assert.equal(lesson.close, source.close);
     assert.deepEqual(lesson.sources, source.sources);
   }
-  assert.equal(provenance.publicCopyAdaptations.length, 1);
+  assert.equal(provenance.publicCopyAdaptations.length, 3);
+  assert.deepEqual(
+    provenance.publicCopyAdaptations.slice(1).map((correction) => correction.sourceLessonId),
+    ["P12.1", "P13.1"],
+  );
+});
+
+test("accepted P12 and P13 mathematical findings remain corrected in generated learner copy", () => {
+  const circleLesson = course.lessons.find((lesson) => lesson.title === "Conics as loci and the circle foundation");
+  const parametricLesson = course.lessons.find((lesson) => lesson.title === "Parametric equations and orientation");
+  assert.match(JSON.stringify(circleLesson), /x-intercepts \(-6,0\) and \(2,0\).*y-intercepts \(0,3-sqrt\(21\)\) and \(0,3\+sqrt\(21\)\)/);
+  assert.match(JSON.stringify(parametricLesson), /-5<=x<=5, traced from left to right as t increases from -2 to 3/);
 });
 
 test("The full second-half manuscript renders as structured textbook reading while answers remain server-held", () => {
@@ -91,11 +102,56 @@ test("All Precalculus figures resolve to deterministic static BVLP assets", asyn
   }
 });
 
-test("Precalculus search and answer services use public IDs and exact protected answers", () => {
+test("all 522 Precalculus scenes carry complete semantic and multimode manifests", async () => {
+  const manifests = [];
+  for (let unit = 1; unit <= 16; unit += 1) {
+    const artifact = JSON.parse(await readFile(new URL(`../content/precalculus/units/unit-${unit}/visual-semantic-manifests.v1.json`, import.meta.url), "utf8"));
+    manifests.push(...artifact.manifests);
+  }
+  assert.equal(manifests.length, 522);
+  const requiredFields = [
+    "mathematicalClaim", "requiredMathematicalObjects", "requiredLabelsAndUnits", "domainAndExcludedCases",
+    "visibleRelationships", "forbiddenMisleadingStates", "renderer", "fallbackRenderer", "keyboardInteraction",
+    "initialState", "reducedMotionBehavior", "darkModeBehavior", "responsive320Behavior", "printBehavior",
+    "accessibleShortDescription", "accessibleLongDescription", "machineVerifiableAssertions",
+  ];
+  for (const manifest of manifests) {
+    for (const field of requiredFields) assert.ok(Object.hasOwn(manifest, field), `${manifest.id} lacks ${field}`);
+    assert.equal(manifest.renderer, "static-svg");
+    assert.equal(manifest.machineVerifiableAssertions.length, 4);
+  }
+});
+
+test("the eleven audited anchor mismatches compile to their route-specific mathematical objects", async () => {
+  const expectations = new Map([
+    [1, /rational-expression error routes to repair/i],
+    [2, /C\(h\)=18\+7h/],
+    [3, /square-root endpoint/i],
+    [5, /y=-2x\^4/],
+    [6, /vertical asymptote x=-2/],
+    [7, /each equal step multiplies by 3/i],
+    [10, /period is 8 seconds/i],
+    [12, /Horizontal run 7\.2 meters/],
+    [13, /x-intercept \(-6,0\)/],
+    [14, /-5<=x<=5/],
+    [16, /shifted exponential decay/i],
+  ]);
+  for (const [unit, pattern] of expectations) {
+    const artifact = await readFile(new URL(`../content/precalculus/units/unit-${unit}/compiled-scenes.v1.json`, import.meta.url), "utf8");
+    assert.match(artifact, pattern, `unit ${unit} anchor must match its audited route claim`);
+  }
+});
+
+test("Precalculus search and protected validation use public IDs without bundling answer data", async () => {
   const lesson = course.lessons[0];
   const firstPractice = lesson.practice[0];
   const sourceAnswer = sourceLessons[0].practice[0].answer;
-  assert.equal(getPrecalculusAssessmentAnswer(firstPractice.id), `Answer: ${sourceAnswer}`);
+  const storage = { get: async (id) => solutions.solutions.find((record) => record.id === id) };
+  const record = await getPrecalculusAssessmentRecord(storage, firstPractice.id);
+  assert.equal(record.answer, sourceAnswer);
+  assert.equal(validatePrecalculusAssessmentAnswer(record, sourceAnswer), true);
+  assert.equal(validatePrecalculusAssessmentAnswer(record, "anything nonempty"), false);
+  assert.equal(normalizePrecalculusAnswer(" Identity; all real numbers. "), "identityallrealnumbers");
   assert.equal(precalculusCourseSearchRecords.length, 191);
   assert.ok(precalculusCourseSearchRecords.some((record) => record.path === lesson.path && record.title === lesson.title));
   assert.doesNotMatch(firstPractice.id, /\bP[0-7](?:\.\d+)?\b/);

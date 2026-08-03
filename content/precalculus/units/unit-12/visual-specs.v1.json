@@ -48,21 +48,17 @@
       "panels": [],
       "layers": [
         {
-          "id": "title",
-          "kind": "label",
-          "zIndex": 40,
+          "id": "run",
+          "kind": "segment",
+          "zIndex": 10,
           "geometry": {
-            "position": {
-              "x": 0.55,
-              "y": 6.45
+            "start": {
+              "x": 1.25,
+              "y": 1.25
             },
-            "content": {
-              "segments": [
-                {
-                  "kind": "text",
-                  "text": "Similar right triangles with equal acute angle"
-                }
-              ]
+            "end": {
+              "x": 10.25,
+              "y": 1.25
             }
           },
           "presentation": {
@@ -70,43 +66,21 @@
             "lineStyle": "solid",
             "markerShape": "none",
             "pattern": "none",
-            "colorIndependentCue": "Label: Similar right triangles with equal acute angle."
+            "colorIndependentCue": "Horizontal run 7.2 meters."
           }
         },
         {
-          "id": "base",
+          "id": "rise",
           "kind": "segment",
           "zIndex": 10,
           "geometry": {
             "start": {
-              "x": 1.4,
-              "y": 1.2
+              "x": 10.25,
+              "y": 1.25
             },
             "end": {
-              "x": 10.2,
-              "y": 1.2
-            }
-          },
-          "presentation": {
-            "strokeToken": "visual-primary",
-            "lineStyle": "solid",
-            "markerShape": "none",
-            "pattern": "none",
-            "colorIndependentCue": "triangle base c"
-          }
-        },
-        {
-          "id": "left-side",
-          "kind": "segment",
-          "zIndex": 10,
-          "geometry": {
-            "start": {
-              "x": 1.4,
-              "y": 1.2
-            },
-            "end": {
-              "x": 7.1,
-              "y": 5.8
+              "x": 10.25,
+              "y": 4.25
             }
           },
           "presentation": {
@@ -114,21 +88,21 @@
             "lineStyle": "solid",
             "markerShape": "none",
             "pattern": "none",
-            "colorIndependentCue": "triangle side b"
+            "colorIndependentCue": "Vertical rise 0.84 meter."
           }
         },
         {
-          "id": "right-side",
+          "id": "ramp",
           "kind": "segment",
           "zIndex": 10,
           "geometry": {
             "start": {
-              "x": 7.1,
-              "y": 5.8
+              "x": 1.25,
+              "y": 1.25
             },
             "end": {
-              "x": 10.2,
-              "y": 1.2
+              "x": 10.25,
+              "y": 4.25
             }
           },
           "presentation": {
@@ -136,104 +110,67 @@
             "lineStyle": "solid",
             "markerShape": "none",
             "pattern": "none",
-            "colorIndependentCue": "triangle side a"
+            "colorIndependentCue": "Ramp length approximately 7.249 meters."
           }
         },
         {
-          "id": "vertex-a",
-          "kind": "closed-point",
-          "zIndex": 30,
-          "label": {
-            "segments": [
-              {
-                "kind": "text",
-                "text": "vertex A"
-              }
-            ]
-          },
+          "id": "right-angle-horizontal",
+          "kind": "segment",
+          "zIndex": 10,
           "geometry": {
-            "position": {
-              "x": 1.4,
-              "y": 1.2
+            "start": {
+              "x": 9.75,
+              "y": 1.25
+            },
+            "end": {
+              "x": 9.75,
+              "y": 1.75
             }
           },
           "presentation": {
-            "strokeToken": "visual-primary",
+            "strokeToken": "visual-guide",
             "lineStyle": "solid",
-            "markerShape": "diamond",
+            "markerShape": "none",
             "pattern": "none",
-            "colorIndependentCue": "Filled diamond marks vertex A.",
-            "fillToken": "visual-primary"
+            "colorIndependentCue": "Right-angle marker vertical leg."
           }
         },
         {
-          "id": "vertex-b",
-          "kind": "closed-point",
-          "zIndex": 30,
-          "label": {
-            "segments": [
-              {
-                "kind": "text",
-                "text": "vertex B"
-              }
-            ]
-          },
+          "id": "right-angle-vertical",
+          "kind": "segment",
+          "zIndex": 10,
           "geometry": {
-            "position": {
-              "x": 10.2,
-              "y": 1.2
+            "start": {
+              "x": 9.75,
+              "y": 1.75
+            },
+            "end": {
+              "x": 10.25,
+              "y": 1.75
             }
           },
           "presentation": {
-            "strokeToken": "visual-secondary",
+            "strokeToken": "visual-guide",
             "lineStyle": "solid",
-            "markerShape": "square",
+            "markerShape": "none",
             "pattern": "none",
-            "colorIndependentCue": "Filled square marks vertex B.",
-            "fillToken": "visual-secondary"
+            "colorIndependentCue": "Right-angle marker horizontal leg."
           }
         },
         {
-          "id": "vertex-c",
-          "kind": "closed-point",
-          "zIndex": 30,
-          "label": {
-            "segments": [
-              {
-                "kind": "text",
-                "text": "vertex C"
-              }
-            ]
-          },
-          "geometry": {
-            "position": {
-              "x": 7.1,
-              "y": 5.8
-            }
-          },
-          "presentation": {
-            "strokeToken": "visual-emphasis",
-            "lineStyle": "solid",
-            "markerShape": "circle",
-            "pattern": "none",
-            "colorIndependentCue": "Filled circle marks vertex C.",
-            "fillToken": "visual-emphasis"
-          }
-        },
-        {
-          "id": "angle-a",
+          "id": "run-label",
           "kind": "label",
           "zIndex": 40,
           "geometry": {
             "position": {
-              "x": 2,
-              "y": 1.65
+              "x": 4.5,
+              "y": 0.75
             },
             "content": {
               "segments": [
                 {
                   "kind": "text",
-                  "text": "A"
+                  "text": "7.2 m run"
                 }
               ]
             }
@@ -243,23 +180,23 @@
             "lineStyle": "solid",
             "markerShape": "none",
             "pattern": "none",
-            "colorIndependentCue": "Label: A."
+            "colorIndependentCue": "Label: 7.2 m run."
           }
         },
         {
-          "id": "angle-b",
+          "id": "rise-label",
           "kind": "label",
           "zIndex": 40,
           "geometry": {
             "position": {
-              "x": 9.35,
-              "y": 1.65
+              "x": 10.45,
+              "y": 2.5
             },
             "content": {
               "segments": [
                 {
                   "kind": "text",
-                  "text": "B"
+                  "text": "0.84 m rise"
                 }
               ]
             }
@@ -269,23 +206,23 @@
             "lineStyle": "solid",
             "markerShape": "none",
             "pattern": "none",
-            "colorIndependentCue": "Label: B."
+            "colorIndependentCue": "Label: 0.84 m rise."
           }
         },
         {
-          "id": "angle-c",
+          "id": "angle",
           "kind": "label",
           "zIndex": 40,
           "geometry": {
             "position": {
-              "x": 7,
-              "y": 5.2
+              "x": 2.15,
+              "y": 1.62
             },
             "content": {
               "segments": [
                 {
                   "kind": "text",
-                  "text": "C"
+                  "text": "theta = arctan(0.84/7.2) ~= 6.65 degrees"
                 }
               ]
             }
@@ -295,23 +232,23 @@
             "lineStyle": "solid",
             "markerShape": "none",
             "pattern": "none",
-            "colorIndependentCue": "Label: C."
+            "colorIndependentCue": "Label: theta = arctan(0.84/7.2) ~= 6.65 degrees."
           }
         },
         {
-          "id": "law",
+          "id": "length",
           "kind": "label",
           "zIndex": 40,
           "geometry": {
             "position": {
-              "x": 3.4,
-              "y": 0.55
+              "x": 4.8,
+              "y": 3.25
             },
             "content": {
               "segments": [
                 {
                   "kind": "text",
-                  "text": "a / sin A = b / sin B = c / sin C"
+                  "text": "length ~= 7.249 m"
                 }
               ]
             }
@@ -321,7 +258,7 @@
             "lineStyle": "solid",
             "markerShape": "none",
             "pattern": "none",
-            "colorIndependentCue": "Label: a / sin A = b / sin B = c / sin C."
+            "colorIndependentCue": "Label: length ~= 7.249 m."
           }
         }
       ],
@@ -330,17 +267,15 @@
         "ariaLabel": "Similar right triangles with equal acute angle. Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: A triangle problem is determined by enough independent side and angle information, together with the right angle. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
         "summary": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: A triangle problem is determined by enough independent side and angle information, together with the right angle. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
         "readingOrder": [
-          "title",
-          "base",
-          "left-side",
-          "right-side",
-          "vertex-a",
-          "vertex-b",
-          "vertex-c",
-          "angle-a",
-          "angle-b",
-          "angle-c",
-          "law"
+          "run",
+          "rise",
+          "ramp",
+          "right-angle-horizontal",
+          "right-angle-vertical",
+          "run-label",
+          "rise-label",
+          "angle",
+          "length"
         ],
         "colorIndependentDescription": "Labels, point shapes, line styles, arrows, and position carry the mathematical meaning; color is supplementary.",
         "controlInstructions": [],
@@ -380,7 +315,6 @@
       "requiredCapabilities": [
         "static-fallback",
         "geometry-primitives",
-        "open-closed-points",
         "annotations"
       ],
       "preferredRenderer": "prefer-static"

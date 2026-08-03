@@ -1,7 +1,7 @@
 {
   "manifestVersion": 1,
   "collectionId": "precalculus-unit-16-visuals",
-  "sourceSha256": "9b790234868b53b111d243a29d6d211a539917b4135a959ac447ebc87a752ebc",
+  "sourceSha256": "304d38fd64ec3ccf22a28efea109c000c0972d1d1a5ec624397f44ffa0474837",
   "compilerVersion": "bvlp-compiler-v1",
   "assetPrefix": "/visuals/v1",
   "sceneCount": 36,
@@ -13,9 +13,9 @@
       "selectedRenderer": "static-svg",
       "hydration": "none",
       "staticAsset": {
-        "path": "/visuals/v1/precalculus-u16-l1-v1.092b9fa33d731ccf.svg",
-        "sha256": "092b9fa33d731ccf4eac0f5960496c61d15225a07febca84e84a4e000b0d626e",
-        "bytes": 14376,
+        "path": "/visuals/v1/precalculus-u16-l1-v1.4d25f011dc538865.svg",
+        "sha256": "4d25f011dc538865bd4c9716ec93224f81d89cb3eee87e195f3fa05eb12de7b8",
+        "bytes": 15025,
         "width": 960,
         "height": 558
       },
@@ -51,10 +51,10 @@
           "unitsRequired": false
         },
         "viewport": {
-          "xMin": -3.2,
-          "xMax": 4.2,
-          "yMin": -2,
-          "yMax": 10,
+          "xMin": -4,
+          "xMax": 8,
+          "yMin": 1.5,
+          "yMax": 15,
           "aspectRatio": 1.72,
           "padding": 0.065
         },
@@ -96,14 +96,14 @@
         "panels": [],
         "layers": [
           {
-            "id": "function",
+            "id": "shifted-decay",
             "visible": true,
             "zIndex": 20,
             "label": {
               "segments": [
                 {
                   "kind": "text",
-                  "text": "f(x)=x²"
+                  "text": "example shifted exponential decay y=2+3(0.5)^x"
                 }
               ]
             },
@@ -112,237 +112,213 @@
               "lineStyle": "solid",
               "markerShape": "none",
               "pattern": "none",
-              "colorIndependentCue": "f(x)=x²; solid curve."
+              "colorIndependentCue": "example shifted exponential decay y=2+3(0.5)^x; solid curve."
             },
             "references": [],
             "kind": "sampled-series",
             "geometry": {
               "xValues": [
-                -3,
-                -2.925,
-                -2.85,
-                -2.775,
-                -2.7,
-                -2.625,
-                -2.55,
-                -2.475,
-                -2.4,
-                -2.325,
-                -2.25,
-                -2.175,
-                -2.1,
-                -2.025,
-                -1.95,
+                -2,
                 -1.875,
-                -1.8,
-                -1.725,
-                -1.65,
-                -1.575,
+                -1.75,
+                -1.625,
                 -1.5,
-                -1.425,
-                -1.35,
-                -1.275,
-                -1.2,
+                -1.375,
+                -1.25,
                 -1.125,
-                -1.05,
-                -0.975,
-                -0.9,
-                -0.825,
+                -1,
+                -0.875,
                 -0.75,
-                -0.675,
-                -0.6,
-                -0.525,
-                -0.45,
+                -0.625,
+                -0.5,
                 -0.375,
-                -0.3,
-                -0.225,
-                -0.15,
-                -0.075,
+                -0.25,
+                -0.125,
                 0,
-                0.075,
-                0.15,
-                0.225,
-                0.3,
+                0.125,
+                0.25,
                 0.375,
-                0.45,
-                0.525,
-                0.6,
-                0.675,
+                0.5,
+                0.625,
                 0.75,
-                0.825,
-                0.9,
-                0.975,
-                1.05,
+                0.875,
+                1,
                 1.125,
-                1.2,
-                1.275,
-                1.35,
-                1.425,
+                1.25,
+                1.375,
                 1.5,
-                1.575,
-                1.65,
-                1.725,
-                1.8,
+                1.625,
+                1.75,
                 1.875,
-                1.95,
-                2.025,
-                2.1,
-                2.175,
+                2,
+                2.125,
                 2.25,
-                2.325,
-                2.4,
-                2.475,
-                2.55,
+                2.375,
+                2.5,
                 2.625,
-                2.7,
-                2.775,
-                2.85,
-                2.925,
-                3
+                2.75,
+                2.875,
+                3,
+                3.125,
+                3.25,
+                3.375,
+                3.5,
+                3.625,
+                3.75,
+                3.875,
+                4,
+                4.125,
+                4.25,
+                4.375,
+                4.5,
+                4.625,
+                4.75,
+                4.875,
+                5,
+                5.125,
+                5.25,
+                5.375,
+                5.5,
+                5.625,
+                5.75,
+                5.875,
+                6,
+                6.125,
+                6.25,
+                6.375,
+                6.5,
+                6.625,
+                6.75,
+                6.875,
+                7,
+                7.125,
+                7.25,
+                7.375,
+                7.5,
+                7.625,
+                7.75,
+                7.875,
+                8
               ],
               "yValues": [
-                9,
-                8.555625,
-                8.1225,
-                7.700625,
-                7.29,
-                6.890625,
-                6.5025,
-                6.125625,
-                5.76,
-                5.405625,
-                5.0625,
-                4.730625,
-                4.41,
-                4.100625,
-                3.8025,
-                3.515625,
-                3.24,
-                2.975625,
-                2.7225,
-                2.480625,
-                2.25,
-                2.030625,
-                1.8225,
-                1.625625,
-                1.44,
-                1.265625,
-                1.1025,
-                0.950625,
-                0.81,
-                0.680625,
-                0.5625,
-                0.455625,
-                0.36,
-                0.275625,
-                0.2025,
-                0.140625,
-                0.09,
-                0.050625,
-                0.0225,
-                0.005625,
-                0,
-                0.005625,
-                0.0225,
-                0.050625,
-                0.09,
-                0.140625,
-                0.2025,
-                0.275625,
-                0.36,
-                0.455625,
-                0.5625,
-                0.680625,
-                0.81,
-                0.950625,
-                1.1025,
-                1.265625,
-                1.44,
-                1.625625,
-                1.8225,
-                2.030625,
-                2.25,
-                2.480625,
-                2.7225,
-                2.975625,
-                3.24,
-                3.515625,
-                3.8025,
-                4.100625,
-                4.41,
-                4.730625,
-                5.0625,
-                5.405625,
-                5.76,
-                6.125625,
-                6.5025,
-                6.890625,
-                7.29,
-                7.700625,
-                8.1225,
-                8.555625,
-                9
+                14,
+                13.004049,
+                12.090757,
+                11.253265,
+                10.485281,
+                9.781037,
+                9.135243,
+                8.543046,
+                8,
+                7.502024,
+                7.045378,
+                6.626632,
+                6.242641,
+                5.890519,
+                5.567621,
+                5.271523,
+                5,
+                4.751012,
+                4.522689,
+                4.313316,
+                4.12132,
+                3.945259,
+                3.783811,
+                3.635762,
+                3.5,
+                3.375506,
+                3.261345,
+                3.156658,
+                3.06066,
+                2.97263,
+                2.891905,
+                2.817881,
+                2.75,
+                2.687753,
+                2.630672,
+                2.578329,
+                2.53033,
+                2.486315,
+                2.445953,
+                2.40894,
+                2.375,
+                2.343877,
+                2.315336,
+                2.289165,
+                2.265165,
+                2.243157,
+                2.222976,
+                2.20447,
+                2.1875,
+                2.171938,
+                2.157668,
+                2.144582,
+                2.132583,
+                2.121579,
+                2.111488,
+                2.102235,
+                2.09375,
+                2.085969,
+                2.078834,
+                2.072291,
+                2.066291,
+                2.060789,
+                2.055744,
+                2.051118,
+                2.046875,
+                2.042985,
+                2.039417,
+                2.036146,
+                2.033146,
+                2.030395,
+                2.027872,
+                2.025559,
+                2.023438,
+                2.021492,
+                2.019709,
+                2.018073,
+                2.016573,
+                2.015197,
+                2.013936,
+                2.012779,
+                2.011719
               ],
               "connect": true
             }
           },
           {
-            "id": "secant",
+            "id": "asymptote",
             "visible": true,
             "zIndex": 10,
             "presentation": {
-              "strokeToken": "visual-secondary",
+              "strokeToken": "visual-guide",
               "lineStyle": "dashed",
               "markerShape": "none",
               "pattern": "none",
-              "colorIndependentCue": "secant line through two curve points"
+              "colorIndependentCue": "horizontal asymptote y=2"
             },
             "references": [],
             "kind": "segment",
             "geometry": {
               "start": {
-                "x": 0.5,
-                "y": 0.25
+                "x": -4,
+                "y": 2
               },
               "end": {
-                "x": 2.5,
-                "y": 6.25
+                "x": 8,
+                "y": 2
               }
             }
           },
           {
-            "id": "tangent",
-            "visible": true,
-            "zIndex": 10,
-            "presentation": {
-              "strokeToken": "visual-emphasis",
-              "lineStyle": "solid",
-              "markerShape": "none",
-              "pattern": "none",
-              "colorIndependentCue": "tangent approximation at x=1"
-            },
-            "references": [],
-            "kind": "segment",
-            "geometry": {
-              "start": {
-                "x": -0.5,
-                "y": -2
-              },
-              "end": {
-                "x": 3.5,
-                "y": 6
-              }
-            }
-          },
-          {
-            "id": "base-point",
+            "id": "intercept",
             "visible": true,
             "zIndex": 30,
             "label": {
               "segments": [
                 {
                   "kind": "text",
-                  "text": "base point (1,1)"
+                  "text": "Example y-intercept (0,5)."
                 }
               ]
             },
@@ -352,76 +328,19 @@
               "lineStyle": "solid",
               "markerShape": "diamond",
               "pattern": "none",
-              "colorIndependentCue": "Filled diamond marks base point (1,1)."
+              "colorIndependentCue": "Filled diamond marks Example y-intercept (0,5).."
             },
             "references": [],
             "kind": "closed-point",
             "geometry": {
               "position": {
-                "x": 1,
-                "y": 1
+                "x": 0,
+                "y": 5
               }
             }
           },
           {
-            "id": "nearby-point",
-            "visible": true,
-            "zIndex": 30,
-            "label": {
-              "segments": [
-                {
-                  "kind": "text",
-                  "text": "nearby point"
-                }
-              ]
-            },
-            "presentation": {
-              "strokeToken": "visual-secondary",
-              "fillToken": "visual-secondary",
-              "lineStyle": "solid",
-              "markerShape": "square",
-              "pattern": "none",
-              "colorIndependentCue": "Filled square marks nearby point."
-            },
-            "references": [],
-            "kind": "closed-point",
-            "geometry": {
-              "position": {
-                "x": 2.5,
-                "y": 6.25
-              }
-            }
-          },
-          {
-            "id": "title",
-            "visible": true,
-            "zIndex": 40,
-            "presentation": {
-              "strokeToken": "visual-primary",
-              "lineStyle": "solid",
-              "markerShape": "none",
-              "pattern": "none",
-              "colorIndependentCue": "Label: Cross-family feature matrix."
-            },
-            "references": [],
-            "kind": "label",
-            "geometry": {
-              "position": {
-                "x": -2.9,
-                "y": 9.15
-              },
-              "content": {
-                "segments": [
-                  {
-                    "kind": "text",
-                    "text": "Cross-family feature matrix"
-                  }
-                ]
-              }
-            }
-          },
-          {
-            "id": "rate-note",
+            "id": "features",
             "visible": true,
             "zIndex": 40,
             "presentation": {
@@ -429,20 +348,48 @@
               "lineStyle": "solid",
               "markerShape": "none",
               "pattern": "none",
-              "colorIndependentCue": "Label: Average rate over an interval becomes local as the interval narrows.."
+              "colorIndependentCue": "Label: Positive · decreasing · concave up · all-real domain · approaches y=2."
             },
             "references": [],
             "kind": "label",
             "geometry": {
               "position": {
-                "x": -2.9,
-                "y": 8.25
+                "x": -3.6,
+                "y": 13.7
               },
               "content": {
                 "segments": [
                   {
                     "kind": "text",
-                    "text": "Average rate over an interval becomes local as the interval narrows."
+                    "text": "Positive · decreasing · concave up · all-real domain · approaches y=2"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "evidence",
+            "visible": true,
+            "zIndex": 40,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Label: A second point or constant-ratio evidence is still needed to confirm the family.."
+            },
+            "references": [],
+            "kind": "label",
+            "geometry": {
+              "position": {
+                "x": -3.6,
+                "y": 12.6
+              },
+              "content": {
+                "segments": [
+                  {
+                    "kind": "text",
+                    "text": "A second point or constant-ratio evidence is still needed to confirm the family."
                   }
                 ]
               }
@@ -454,13 +401,11 @@
           "ariaLabel": "Cross-family feature matrix. Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: A formula may combine families, and a graph may be piecewise, parametric, polar, or discrete rather than one ordinary elementary function. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
           "summary": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: A formula may combine families, and a graph may be piecewise, parametric, polar, or discrete rather than one ordinary elementary function. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
           "readingOrder": [
-            "function",
-            "secant",
-            "tangent",
-            "base-point",
-            "nearby-point",
-            "title",
-            "rate-note"
+            "shifted-decay",
+            "asymptote",
+            "intercept",
+            "features",
+            "evidence"
           ],
           "colorIndependentDescription": "Labels, point shapes, line styles, arrows, and position carry the mathematical meaning; color is supplementary.",
           "controlInstructions": [],
@@ -511,7 +456,7 @@
           "route": "/subjects/math/precalculus/calculus-readiness-and-function-synthesis/function-family-classification/",
           "sourceFile": "content/precalculus/units/unit-16/visual-specs.v1.json",
           "sourceVisualId": "precalculus-u16-l1-v1",
-          "sourceFingerprint": "bvlp1-45e1d1a3",
+          "sourceFingerprint": "bvlp1-95fe0225",
           "compilerVersion": "bvlp-compiler-v1",
           "visibility": "public"
         }
