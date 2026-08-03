@@ -42,6 +42,9 @@ export type PrecalculusPrompt = {
   acceptedEquivalentForms: string;
   unitsAndRoundingPolicy: string;
   randomizationPolicy: string;
+  exerciseType?: string;
+  difficulty?: "foundational" | "developing" | "transfer";
+  provenance?: "source-authored" | "editorial-expansion" | "audit-remediation";
   hint?: string;
   errorTags?: string[];
   remediationTarget?: string;

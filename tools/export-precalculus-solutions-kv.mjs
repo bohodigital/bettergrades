@@ -15,8 +15,8 @@ const records = solutions.solutions.map((record) => ({
   key: record.id,
   value: JSON.stringify(record),
 }));
-if (records.length !== 1_914 || new Set(records.map((record) => record.key)).size !== records.length) {
-  throw new Error("The protected Precalculus KV export must contain exactly 1,914 unique records.");
+if (records.length !== 2_454 || new Set(records.map((record) => record.key)).size !== records.length) {
+  throw new Error("The protected Precalculus KV export must contain exactly 2,454 unique records.");
 }
 await mkdir(resolve(output, ".."), { recursive: true, mode: 0o700 });
 await writeFile(output, `${JSON.stringify(records)}\n`, { encoding: "utf8", mode: 0o600 });

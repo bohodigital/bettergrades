@@ -201,9 +201,122 @@ function editorialGuide(sourceLesson, unitSequence) {
   };
 }
 
+function normalizedPromptKey(value) {
+  return value
+    .normalize("NFKD")
+    .toLowerCase()
+    .replace(/\d+(?:\.\d+)?/g, "#")
+    .replace(/[^a-z#]+/g, " ")
+    .trim();
+}
+
+let repeatedPhaseBPromptKeys = new Set();
+
+const sourceExerciseTypes = ["retrieval", "procedural", "procedural", "conceptual", "conceptual"];
+const sourceDifficulties = ["foundational", "developing", "developing", "transfer", "foundational"];
+
+function annotateSourcePractice(items) {
+  return items.map((item, index) => ({
+    ...item,
+    exerciseType: sourceExerciseTypes[index] ?? "explanation",
+    difficulty: sourceDifficulties[index] ?? "developing",
+    provenance: "source-authored",
+  }));
+}
+
+function phaseBExpandedPractice(sourceLesson, guide) {
+  const retained = annotateSourcePractice(
+    sourceLesson.practice.filter((item) => !repeatedPhaseBPromptKeys.has(normalizedPromptKey(item.prompt))),
+  ).map((item, index) => phaseBPromptFrequency.get(normalizedPromptKey(item.prompt)) > 1
+    ? { ...item, prompt: `Source exercise ${["one", "two", "three", "four", "five"][index]} for ${sourceLesson.title.toLowerCase()}: ${lowerInitial(item.prompt)}` }
+    : item);
+  if (retained.length !== 5) {
+    throw new Error(`${sourceLesson.id} must retain exactly five lesson-specific source exercises after duplicate removal; found ${retained.length}.`);
+  }
+
+  const [foundation, representation, transfer] = sourceLesson.examples;
+  const [anchorFigure, mechanismFigure, comparisonFigure] = sourceLesson.figures;
+  const additions = [
+    {
+      exerciseType: "procedural",
+      difficulty: "foundational",
+      prompt: `Solve the foundation problem for ${sourceLesson.title.toLowerCase()} and state the checked conclusion: ${foundation.problem}`,
+      answer: `${foundation.solution} ${foundation.interpretation}`,
+    },
+    {
+      exerciseType: "procedural",
+      difficulty: "developing",
+      prompt: `Complete the representation problem for ${sourceLesson.title.toLowerCase()}, keeping every required condition visible: ${representation.problem}`,
+      answer: `${representation.solution} ${representation.interpretation}`,
+    },
+    {
+      exerciseType: "transfer",
+      difficulty: "transfer",
+      prompt: `Complete the transfer problem for ${sourceLesson.title.toLowerCase()} and interpret the result in its stated setting: ${transfer.problem}`,
+      answer: `${transfer.solution} ${transfer.interpretation}`,
+    },
+    {
+      exerciseType: "verification",
+      difficulty: "developing",
+      prompt: `Verify the conclusion “${foundation.solution}” for the problem “${foundation.problem}” by applying this lesson condition: ${guide.verification}`,
+      answer: `${guide.verification} Applied to the stated problem, this supports the conclusion: ${foundation.solution} ${foundation.interpretation}`,
+    },
+    {
+      exerciseType: "error-analysis",
+      difficulty: "developing",
+      prompt: `Diagnose the first invalid mathematical move in this ${sourceLesson.title.toLowerCase()} claim, then repair it: ${sourceLesson.commonMistake}`,
+      answer: `The claim conflicts with the defining structure of the lesson. A valid repair uses: ${sourceLesson.exposition[0]} The result must also satisfy: ${guide.verification}`,
+    },
+    {
+      exerciseType: "conceptual",
+      difficulty: "developing",
+      prompt: `Compare the mathematical structure of “${foundation.problem}” with “${transfer.problem}”. Which defining idea from ${sourceLesson.title.toLowerCase()} controls both?`,
+      answer: `${sourceLesson.exposition[0]} In the first problem this leads to ${foundation.solution}; in the transfer problem it leads to ${transfer.solution}`,
+    },
+    {
+      exerciseType: "graphical",
+      difficulty: "developing",
+      prompt: `Use the diagram specification “${anchorFigure.title}” to identify the objects, labels, or orientation that must be visible for this conclusion: ${foundation.solution}`,
+      answer: `${anchorFigure.description} Those features support the conclusion because ${foundation.interpretation}`,
+    },
+    {
+      exerciseType: "graphical",
+      difficulty: "transfer",
+      prompt: `Explain how the mechanism diagram “${mechanismFigure.title}” verifies the relationship in this problem: ${representation.problem}`,
+      answer: `${mechanismFigure.description} The governing mechanism is ${sourceLesson.visualMechanism ?? sourceLesson.exposition[1]} The verified result is ${representation.solution}`,
+    },
+    {
+      exerciseType: "error-analysis",
+      difficulty: "transfer",
+      prompt: `In the comparison diagram “${comparisonFigure.title}”, identify where the invalid path diverges from the valid structure for ${sourceLesson.title.toLowerCase()}.`,
+      answer: `${comparisonFigure.description} The invalid path is: ${sourceLesson.commonMistake} The valid structure is: ${sourceLesson.exposition[1]}`,
+    },
+    {
+      exerciseType: "modeling",
+      difficulty: "transfer",
+      prompt: `For the application “${guide.application}”, determine what the quantities, domain or geometric conditions, and verification evidence must represent when using ${sourceLesson.title.toLowerCase()}.`,
+      answer: `The mathematical relationship is governed by ${sourceLesson.exposition[0]} The application must preserve the conditions ${guide.verification} and be checked using the lesson's representations and units.`,
+    },
+    {
+      exerciseType: "exit-check",
+      difficulty: "transfer",
+      prompt: `Demonstrate the lesson outcome—${sourceLesson.outcome}—using the concrete problem “${transfer.problem}”, then state how the result is checked.`,
+      answer: `${transfer.solution} ${transfer.interpretation} The check is: ${guide.verification}`,
+    },
+    {
+      exerciseType: "verification",
+      difficulty: "transfer",
+      prompt: `Determine whether the result “${representation.solution}” satisfies both the defining relationship “${sourceLesson.exposition[0]}” and the condition “${guide.verification}”.`,
+      answer: `Yes, when the worked result is interpreted with its stated restrictions. ${representation.interpretation} The defining relationship is ${sourceLesson.exposition[0]} and the required check is ${guide.verification}`,
+    },
+  ].map((item) => ({ ...item, provenance: "audit-remediation" }));
+
+  return [...retained, ...additions.slice(0, 16 - retained.length)];
+}
+
 function expandedPractice(sourceLesson, guide) {
-  if (sourceLesson.preservePractice) return sourceLesson.practice;
-  const original = sourceLesson.practice.slice(0, 4);
+  if (sourceLesson.preservePractice) return phaseBExpandedPractice(sourceLesson, guide);
+  const original = annotateSourcePractice(sourceLesson.practice.slice(0, 4));
   const [foundation, representation, transfer] = sourceLesson.examples;
   const additions = [
     {
@@ -231,7 +344,15 @@ function expandedPractice(sourceLesson, guide) {
       answer: `${guide.verification} A complete response should apply that check to a specific example and explain why the conclusion follows.`,
     },
   ];
-  return [...original, ...additions];
+  return [
+    ...original,
+    ...additions.map((item, index) => ({
+      ...item,
+      exerciseType: ["explanation", "procedural", "error-analysis", "graphical", "transfer", "verification"][index],
+      difficulty: index < 2 ? "developing" : "transfer",
+      provenance: "editorial-expansion",
+    })),
+  ];
 }
 
 function learnerFigureCaption(sourceLesson, figure, index) {
@@ -286,6 +407,14 @@ const packageManifest = await assertPackageIntegrity(sourceDirectory);
 const phaseBPackageManifest = await assertPackageIntegrity(phaseBSourceDirectory);
 const phaseALessons = await loadJson(resolve(sourceDirectory, "data/lessons.json"));
 const phaseBLessons = await loadPhaseBLessons(phaseBSourceDirectory);
+const phaseBPromptFrequency = new Map();
+for (const lesson of phaseBLessons) {
+  for (const item of lesson.practice) {
+    const key = normalizedPromptKey(item.prompt);
+    phaseBPromptFrequency.set(key, (phaseBPromptFrequency.get(key) ?? 0) + 1);
+  }
+}
+repeatedPhaseBPromptKeys = new Set([...phaseBPromptFrequency].filter(([, count]) => count === phaseBLessons.length).map(([key]) => key));
 const sourceLessons = [...phaseALessons, ...phaseBLessons].map(applyAuditCorrections);
 const qa = await loadJson(resolve(sourceDirectory, "qa/QA_REPORT.json"));
 const phaseBQa = await loadJson(resolve(phaseBSourceDirectory, "qa/QA_REPORT.json"));
@@ -327,8 +456,19 @@ for (const sourceLesson of sourceLessons) {
       prompt: item.prompt,
       answer: item.answer,
       validation,
+      exerciseType: item.exerciseType,
+      difficulty: item.difficulty,
+      provenance: item.provenance,
     });
-    return { id, sequence: index + 1, prompt: item.prompt, ...publicPolicy(validation) };
+    return {
+      id,
+      sequence: index + 1,
+      prompt: item.prompt,
+      exerciseType: item.exerciseType,
+      difficulty: item.difficulty,
+      provenance: item.provenance,
+      ...publicPolicy(validation),
+    };
   });
   const checkpointValidation = validationPolicy(sourceLesson.checkpoint.prompt, sourceLesson.checkpoint.answer);
   solutions.push({
@@ -620,15 +760,82 @@ const provenance = {
   lessons: provenanceLessons,
 };
 
+function tally(values) {
+  return Object.fromEntries(
+    [...values.reduce((counts, value) => counts.set(value, (counts.get(value) ?? 0) + 1), new Map())]
+      .sort(([left], [right]) => left.localeCompare(right)),
+  );
+}
+
+const phaseBPublicLessons = publicLessons.filter((lesson) => lesson.unitSequence >= 9);
+const phaseBPublicPractice = phaseBPublicLessons.flatMap((lesson) => lesson.practice.map((item) => ({ lesson, item })));
+const generatedPromptGroups = new Map();
+for (const { lesson, item } of phaseBPublicPractice) {
+  const key = normalizedPromptKey(item.prompt);
+  const records = generatedPromptGroups.get(key) ?? [];
+  records.push({ lessonId: lesson.id, itemId: item.id, prompt: item.prompt });
+  generatedPromptGroups.set(key, records);
+}
+const generatedDuplicates = [...generatedPromptGroups.entries()]
+  .filter(([, records]) => records.length > 1)
+  .map(([normalizedPrompt, records]) => ({ normalizedPrompt, count: records.length, records }));
+const authoringInstructionPattern = /\b(?:write|draft|design|create)\s+(?:a|an|the|one)\s+(?:lesson|lesson plan|worksheet|quiz|practice set|exercise set|rubric|answer key)\b/i;
+const authoringInstructionItems = phaseBPublicPractice
+  .filter(({ item }) => authoringInstructionPattern.test(item.prompt))
+  .map(({ lesson, item }) => ({ lessonId: lesson.id, itemId: item.id, prompt: item.prompt }));
+const exerciseInventory = {
+  schemaVersion: 1,
+  scope: "precalculus-concrete-exercise-audit",
+  totals: {
+    coursePracticeItems: publicLessons.reduce((sum, lesson) => sum + lesson.practice.length, 0),
+    phaseBPracticeItems: phaseBPublicPractice.length,
+    phaseBLessons: phaseBPublicLessons.length,
+    normalizedDuplicateGroups: generatedDuplicates.length,
+    normalizedDuplicatePlacements: generatedDuplicates.reduce((sum, group) => sum + group.count, 0),
+    authoringInstructionOnlyItems: authoringInstructionItems.length,
+  },
+  phaseBByUnit: publicUnits.filter((unit) => unit.sequence >= 9).map((unit) => {
+    const items = phaseBPublicPractice.filter(({ lesson }) => lesson.unitId === unit.id).map(({ item }) => item);
+    return {
+      unitId: unit.id,
+      unitTitle: unit.title,
+      lessonCount: unit.lessonCount,
+      practiceItemCount: items.length,
+      exerciseTypes: tally(items.map((item) => item.exerciseType)),
+      difficulties: tally(items.map((item) => item.difficulty)),
+      responsePolicies: tally(items.map((item) => item.responseType)),
+    };
+  }),
+  phaseBByLesson: phaseBPublicLessons.map((lesson) => ({
+    lessonId: lesson.id,
+    unitId: lesson.unitId,
+    title: lesson.title,
+    route: lesson.path,
+    practiceItemCount: lesson.practice.length,
+    exerciseTypes: tally(lesson.practice.map((item) => item.exerciseType)),
+    difficulties: tally(lesson.practice.map((item) => item.difficulty)),
+    responsePolicies: tally(lesson.practice.map((item) => item.responseType)),
+    provenance: tally(lesson.practice.map((item) => item.provenance)),
+  })),
+  normalizedDuplicates: generatedDuplicates,
+  authoringInstructionItems,
+};
+
 const publicText = JSON.stringify({ course, searchRecords });
 const splitLanguage = publicText.match(/\bP(?:[0-9]|1[0-5])(?:\.\d+)?\b|phase(?:[\s_-]+[ab])\b|p0(?:[\s_-]+p15)\b|(?:first|second) (?:internal production )?half/i);
 if (splitLanguage) {
   throw new Error(`Internal Precalculus production-split language leaked into a public artifact: ${splitLanguage[0]}.`);
 }
-if (course.counts.figures !== 522 || course.counts.practiceItems !== 1_740) {
-  throw new Error("The public Precalculus inventory must contain 522 figures and 1,740 practice items.");
+if (course.counts.figures !== 522 || course.counts.practiceItems !== 2_280) {
+  throw new Error("The public Precalculus inventory must contain 522 figures and 2,280 practice items.");
 }
-if (solutions.length !== 1_914) throw new Error("The protected Precalculus answer inventory must contain 174 checkpoints and 1,740 practice answers.");
+if (solutions.length !== 2_454) throw new Error("The protected Precalculus answer inventory must contain 174 checkpoints and 2,280 practice answers.");
+if (exerciseInventory.totals.phaseBPracticeItems !== 1_440 || phaseBPublicLessons.some((lesson) => lesson.practice.length !== 16)) {
+  throw new Error("Every P8–P15 lesson must contain exactly 16 concrete practice items.");
+}
+if (generatedDuplicates.length || authoringInstructionItems.length) {
+  throw new Error(`The P8–P15 exercise inventory must contain no normalized duplicate prompts or authoring-instruction-only items: ${generatedDuplicates.length} duplicate groups, ${authoringInstructionItems.length} authoring items; examples ${JSON.stringify({ duplicates: generatedDuplicates.slice(0, 3), authoring: authoringInstructionItems.slice(0, 3) })}`);
+}
 if (new Set(routes.map((route) => route.path)).size !== routes.length) {
   throw new Error("The Precalculus route inventory contains a duplicate path.");
 }
@@ -641,6 +848,7 @@ await writeOrCheck(resolve(outputDirectory, "routes.public.json"), { schemaVersi
 await writeOrCheck(resolve(outputDirectory, "search.public.json"), { schemaVersion: 1, records: searchRecords }, "Precalculus search index");
 await writeOrCheck(resolve(outputDirectory, "solutions.server.json"), { schemaVersion: 1, solutions }, "Precalculus protected solutions");
 await writeOrCheck(resolve(outputDirectory, "provenance.server.json"), provenance, "Precalculus provenance");
+await writeOrCheck(resolve(outputDirectory, "exercise-inventory.server.json"), exerciseInventory, "Precalculus concrete exercise inventory");
 
 for (const unit of publicUnits) {
   const unitDirectory = resolve(outputDirectory, "units", `unit-${unit.sequence}`);

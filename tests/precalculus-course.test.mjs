@@ -4,6 +4,7 @@ import { resolve } from "node:path";
 import test from "node:test";
 
 import course from "../content/precalculus/course.public.json" with { type: "json" };
+import exerciseInventory from "../content/precalculus/exercise-inventory.server.json" with { type: "json" };
 import provenance from "../content/precalculus/provenance.server.json" with { type: "json" };
 import routeIndex from "../content/precalculus/routes.public.json" with { type: "json" };
 import searchIndex from "../content/precalculus/search.public.json" with { type: "json" };
@@ -15,13 +16,13 @@ import { getPublicPrecalculusCoursePage } from "../lib/precalculus/precalculus-c
 import { precalculusCourseSearchRecords } from "../lib/precalculus/precalculus-course-search.mjs";
 
 test("Precalculus imports the exact approved learner inventory without public production-split language", () => {
-  assert.deepEqual(course.counts, { units: 16, lessons: 174, figures: 522, practiceItems: 1_740, assessmentRoutes: 65, assessmentPlacements: 2_013 });
+  assert.deepEqual(course.counts, { units: 16, lessons: 174, figures: 522, practiceItems: 2_280, assessmentRoutes: 65, assessmentPlacements: 2_013 });
   assert.equal(course.units.length, 16);
   assert.equal(course.lessons.length, 174);
   assert.equal(course.routes.length, 256);
   assert.equal(routeIndex.routes.length, 256);
   assert.equal(searchIndex.records.length, 256);
-  assert.equal(solutions.solutions.length, 1_914);
+  assert.equal(solutions.solutions.length, 2_454);
   assert.equal(new Set(course.routes.map((route) => route.path)).size, 256);
   assert.equal(new Set(course.lessons.map((lesson) => lesson.id)).size, 174);
   assert.doesNotMatch(
@@ -94,7 +95,7 @@ test("The full second-half manuscript renders as structured textbook reading whi
   for (const [index, source] of phaseBSourceLessons.entries()) {
     const lesson = installedLessons[index];
     assert.equal(lesson.title, source.title);
-    assert.equal(lesson.practice.length, 10);
+    assert.equal(lesson.practice.length, 16);
     assert.equal(lesson.figures.length, 3);
     assert.ok(lesson.textbookSections.length >= 10);
     assert.ok(lesson.textbookSections.some((section) => section.kind === "figures"));
@@ -177,7 +178,24 @@ test("Precalculus search and protected validation use public IDs without bundlin
   assert.doesNotMatch(firstPractice.id, /\bP[0-7](?:\.\d+)?\b/);
 });
 
-test("all 1,914 Precalculus records enforce an explicit validation and reveal policy", async () => {
+test("P8–P15 publishes a typed, difficulty-balanced, duplication-free concrete exercise inventory", () => {
+  assert.deepEqual(exerciseInventory.totals, {
+    coursePracticeItems: 2_280,
+    phaseBPracticeItems: 1_440,
+    phaseBLessons: 90,
+    normalizedDuplicateGroups: 0,
+    normalizedDuplicatePlacements: 0,
+    authoringInstructionOnlyItems: 0,
+  });
+  assert.equal(exerciseInventory.phaseBByLesson.length, 90);
+  assert.ok(exerciseInventory.phaseBByLesson.every((lesson) => lesson.practiceItemCount === 16));
+  assert.ok(exerciseInventory.phaseBByLesson.every((lesson) => Object.keys(lesson.exerciseTypes).length >= 7));
+  assert.ok(exerciseInventory.phaseBByLesson.every((lesson) => Object.keys(lesson.difficulties).length === 3));
+  assert.deepEqual(exerciseInventory.normalizedDuplicates, []);
+  assert.deepEqual(exerciseInventory.authoringInstructionItems, []);
+});
+
+test("all 2,454 Precalculus records enforce an explicit validation and reveal policy", async () => {
   const policyCounts = new Map();
   for (const record of solutions.solutions) {
     assert.ok(["numeric", "symbolic", "multipart", "exact_text", "manual_rubric"].includes(record.validation.type), `${record.id} has a declared policy`);
@@ -197,8 +215,8 @@ test("all 1,914 Precalculus records enforce an explicit validation and reveal po
     assert.equal(arbitrary.revealAllowed, false, `${record.id} does not reveal for arbitrary nonempty text`);
   }
   assert.deepEqual(Object.fromEntries([...policyCounts].sort()), {
-    exact_text: 327,
-    manual_rubric: 1261,
+    exact_text: 315,
+    manual_rubric: 1813,
     multipart: 23,
     numeric: 70,
     symbolic: 233,

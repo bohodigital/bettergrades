@@ -89,7 +89,7 @@ function AttemptFirstPrompt({
   }
 
   return <section className={`limits-check algebra-attempt precalculus-attempt${compact ? " is-compact" : ""}`} id={prompt.id}>
-    <header><span>{label}</span>{prompt.sequence ? <code>{String(prompt.sequence).padStart(2, "0")}</code> : null}</header>
+    <header><span>{label}{prompt.exerciseType && prompt.difficulty ? ` · ${prompt.exerciseType.replaceAll("-", " ")} · ${prompt.difficulty}` : ""}</span>{prompt.sequence ? <code>{String(prompt.sequence).padStart(2, "0")}</code> : null}</header>
     <p className="limits-check-prompt"><AlgebraMathText value={prompt.prompt} display="auto" /></p>
     {hydrated ? <><form onSubmit={check}>
       <label htmlFor={`${prompt.id}-answer`}>Your answer and supporting work</label>
@@ -127,7 +127,7 @@ function PhaseBFigures({ lesson }: { lesson: PrecalculusLesson }) {
 }
 
 function PhaseBPractice({ lesson }: { lesson: PrecalculusLesson }) {
-  return <section className="limits-node limits-node-exercise algebra-foundation-practice precalculus-practice"><header><span>Practice</span><h2>Ten concrete questions</h2></header><div className="algebra-practice-groups">
+  return <section className="limits-node limits-node-exercise algebra-foundation-practice precalculus-practice"><header><span>Practice</span><h2>{lesson.practice.length} concrete questions</h2></header><div className="algebra-practice-groups">
     {lesson.practice.map((prompt) => <AttemptFirstPrompt prompt={prompt} label={`Practice ${prompt.sequence}`} compact key={prompt.id} />)}
   </div></section>;
 }
@@ -190,7 +190,7 @@ function LessonPage({ page }: { page: PrecalculusCoursePage }) {
     </figure>)}</section>
     <section className="limits-node limits-node-caution algebra-lesson-caution"><header><span>Common mistake</span><h2>Find the first invalid move</h2></header><div><p><AlgebraMathText value={lesson.commonMistake} /></p></div></section>
     <AttemptFirstPrompt prompt={lesson.checkpoint} label="Check yourself" />
-    <section className="limits-node limits-node-exercise algebra-foundation-practice precalculus-practice"><header><span>Practice</span><h2>Ten concrete questions</h2></header><div className="algebra-practice-groups">
+    <section className="limits-node limits-node-exercise algebra-foundation-practice precalculus-practice"><header><span>Practice</span><h2>{lesson.practice.length} concrete questions</h2></header><div className="algebra-practice-groups">
       {lesson.practice.map((prompt) => <AttemptFirstPrompt prompt={prompt} label={`Practice ${prompt.sequence}`} compact key={prompt.id} />)}
     </div></section>
     <section className="limits-node limits-node-bridge algebra-lesson-takeaway"><header><span>Lesson close</span><h2>Connect forward</h2></header><div><p><AlgebraMathText value={lesson.close} /></p></div></section>
