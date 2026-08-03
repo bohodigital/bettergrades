@@ -1477,7 +1477,7 @@ h1 em, h2 em { color: var(--brand); font-family: var(--serif); font-weight: 500;
 .limits-chapter li a { padding: 12px 0; border-top: 1px solid var(--line); display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; gap: 12px; align-items: baseline; }
 .limits-chapter li span, .limits-support-grid span { color: var(--brand); font-size: 11px; font-weight: 850; text-transform: uppercase; }
 .limits-chapter li b, .limits-support-grid b { min-width: 0; font-size: 14px; }
-.limits-chapter li small { color: var(--muted); font-size: 9px; text-transform: uppercase; }
+.limits-chapter li small { min-width: 0; color: var(--muted); font-size: 9px; line-height: 1.45; text-transform: uppercase; }
 .limits-map-support-heading { margin-top: 74px; }
 .limits-editorial-intro { margin-bottom: 56px; border: 1px solid var(--line); border-radius: 20px; overflow: hidden; background: var(--surface); box-shadow: var(--shadow); }
 .lesson-objective { margin: 0 0 30px; padding: 16px 18px; border-left: 4px solid var(--brand); background: var(--brand-soft); }
@@ -1616,6 +1616,8 @@ h1 em, h2 em { color: var(--brand); font-family: var(--serif); font-weight: 500;
   .lesson-guidance article:last-child { grid-column: auto; }
   .calculus-prerequisites { grid-template-columns: 1fr; }
   .calculus-unit-switcher { grid-template-columns: 1fr; }
+  .limits-chapter li a { grid-template-columns: 30px minmax(0, 1fr); align-items: start; }
+  .limits-chapter li small { grid-column: 2; }
 }
 
 @media (max-width: 520px) {
@@ -1633,8 +1635,6 @@ h1 em, h2 em { color: var(--brand); font-family: var(--serif); font-weight: 500;
   .limits-map-stats { grid-template-columns: 1fr; }
   .limits-map-stats span { border-left: 0; border-top: 1px solid var(--line); padding-left: 0; }
   .limits-map-stats span:first-child { border-top: 0; }
-  .limits-chapter li a { grid-template-columns: 30px minmax(0, 1fr); }
-  .limits-chapter li small { grid-column: 2; }
   .limits-answer-key li { grid-template-columns: 38px minmax(0, 1fr); padding: 17px 15px; gap: 12px; }
   .limits-answer-key li > strong { width: 36px; height: 36px; }
   .limits-reading-lens, .limits-map-lens { grid-template-columns: 1fr; gap: 7px; }
@@ -2312,19 +2312,30 @@ h1 em, h2 em { color: var(--brand); font-family: var(--serif); font-weight: 500;
   max-width: 46rem;
 }
 
+.precalculus-course-page[data-page-type="course-hub"] .limits-unit-layout {
+  grid-template-columns: minmax(0, 76rem);
+}
+
 .precalculus-course-map .precalculus-map-intro {
   display: grid;
-  grid-template-columns: minmax(15rem, 0.9fr) minmax(18rem, 1.1fr);
-  gap: clamp(1.4rem, 3vw, 3rem);
-  align-items: center;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(1rem, 2vw, 1.5rem);
+  align-items: start;
 }
 
 .precalculus-course-map .precalculus-map-intro > img {
   display: block;
   width: 100%;
-  border: 1px solid color-mix(in srgb, var(--line) 76%, transparent);
-  border-radius: 0.65rem;
-  box-shadow: 0 1.1rem 2.8rem color-mix(in srgb, var(--ink) 13%, transparent);
+  height: auto;
+  aspect-ratio: 1200 / 630;
+  object-fit: cover;
+  border: 0;
+  border-radius: clamp(0.45rem, 1vw, 0.8rem);
+  box-shadow: 0 1rem 2.5rem color-mix(in srgb, var(--ink) 12%, transparent);
+}
+
+.precalculus-course-map .precalculus-map-intro > div {
+  max-width: 52rem;
 }
 
 .precalculus-course-map .precalculus-map-intro > div > p:last-child {

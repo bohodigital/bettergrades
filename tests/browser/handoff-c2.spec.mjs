@@ -18,12 +18,19 @@ const representativeRoutes = [
 ];
 
 test("desktop navigation and homepage follow the C2 learner hierarchy", async ({ page }) => {
+  const expectedCourseHrefs = [
+    "/subjects/math/algebra/",
+    "/subjects/math/precalculus/",
+    "/subjects/math/calculus/",
+  ];
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto("/");
   await expect(page.locator("h1")).toHaveText("Better Grades");
   await expect(page.locator(".hero .search-box")).toBeVisible();
   await expect(page.locator(".paths .path-row")).toHaveCount(3);
-  await expect(page.locator(".course-home-card")).toHaveCount(2);
+  await expect(page.locator(".course-home-card")).toHaveCount(expectedCourseHrefs.length);
+  expect((await page.locator(".course-home-card").evaluateAll((cards) => cards.map((card) => card.getAttribute("href")))).sort())
+    .toEqual([...expectedCourseHrefs].sort());
   await expect(page.locator(".desktop-nav > details > summary")).toHaveText([/Learn/, /Practice/, /Resources/]);
   await expect(page.locator('.desktop-nav > a[href="/search/"]')).toBeVisible();
   await page.screenshot({ path: "artifacts/browser/handoff-c2-home-desktop.png", fullPage: true });

@@ -7,19 +7,123 @@
       "lessonId": "precalculus-u13-l1",
       "route": "/subjects/math/precalculus/conic-sections-and-implicit-relations/conics-as-loci-and-the-circle-foundation/",
       "role": "Anchor figure",
-      "title": "Distance locus animation",
+      "title": "Distance locus diagram",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Completing squares converts general quadratic expressions into center-radius form and reveals whether the relation is a circle, a point, or an empty set. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
       "learnerOutcome": "Define loci by distance conditions and derive the standard circle equation.",
+      "mathematicalClaim": "Begin by identifying the mathematical object and the information that fixes it. Identify the distance condition, write the equation before expanding, and use systems with x=0 or y=0 to find intercepts. The relevant conditions are not optional bookkeeping: The radius must be nonnegative. A negative squared-radius value produces no real points, while radius zero produces one point. Following that structure gives (x+2)^2+(y-3)^2=25; x-intercepts (-6,0) and (2,0); y-intercepts (0,3-sqrt(21)) and (0,3+sqrt(21)).",
+      "requiredMathematicalObjects": [
+        {
+          "id": "circle",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "center",
+          "kind": "closed-point"
+        },
+        {
+          "id": "x-left",
+          "kind": "closed-point"
+        },
+        {
+          "id": "x-right",
+          "kind": "closed-point"
+        },
+        {
+          "id": "y-low",
+          "kind": "closed-point"
+        },
+        {
+          "id": "y-high",
+          "kind": "closed-point"
+        },
+        {
+          "id": "radius",
+          "kind": "segment"
+        },
+        {
+          "id": "equation",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "equation"
+        ],
+        "coordinateVariables": [
+          "x",
+          "y"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": -8,
+          "xMax": 4,
+          "yMin": -3,
+          "yMax": 9,
+          "aspectRatio": 1.72,
+          "padding": 0.065
+        },
+        "validStructure": "Applying the distance formula and squaring gives (x-h)^2+(y-k)^2=r^2. The equation is usually an implicit relation rather than one function y=f(x), because most x-values inside the circle correspond to two y-values.",
+        "invalidOrExcludedState": "A common error is to forget that the center coordinates appear with opposite signs inside the squared factors."
+      },
+      "visibleRelationships": [
+        "Completing squares converts general quadratic expressions into center-radius form and reveals whether the relation is a circle, a point, or an empty set. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "Completing squares converts general quadratic expressions into center-radius form and reveals whether the relation is a circle, a point, or an empty set."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is to forget that the center coordinates appear with opposite signs inside the squared factors.",
+        "The figure must not contradict this claim: Begin by identifying the mathematical object and the information that fixes it. Identify the distance condition, write the equation before expanding, and use systems with x=0 or y=0 to find intercepts. The relevant conditions are not optional bookkeeping: The radius must be nonnegative. A negative squared-radius value produces no real points, while radius zero produces one point. Following that structure gives (x+2)^2+(y-3)^2=25; x-intercepts (-6,0) and (2,0); y-intercepts (0,3-sqrt(21)) and (0,3+sqrt(21))."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Completing squares converts general quadratic expressions into center-radius form and reveals whether the relation is a circle, a point, or an empty set. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Completing squares converts general quadratic expressions into center-radius form and reveals whether the relation is a circle, a point, or an empty set. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
-        "title",
-        "ellipse",
-        "focus-left",
-        "focus-right",
-        "major-axis",
-        "locus-note"
+        "circle",
+        "center",
+        "x-left",
+        "x-right",
+        "y-low",
+        "y-high",
+        "radius",
+        "equation"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "circle",
+            "center",
+            "x-left",
+            "x-right",
+            "y-low",
+            "y-high",
+            "radius",
+            "equation"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u13-l1-v2",
@@ -29,6 +133,125 @@
       "title": "Center-radius equation diagram",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for conics as loci and the circle foundation.",
       "learnerOutcome": "Define loci by distance conditions and derive the standard circle equation.",
+      "mathematicalClaim": "Completing squares converts general quadratic expressions into center-radius form and reveals whether the relation is a circle, a point, or an empty set.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Applying the distance formula and squaring gives (x-h)^2+(y-k)^2=r^2. The equation is usually an implicit relation rather than one function y=f(x), because most x-values inside the circle correspond to two y-values.",
+        "invalidOrExcludedState": "A common error is to forget that the center coordinates appear with opposite signs inside the squared factors."
+      },
+      "visibleRelationships": [
+        "Completing squares converts general quadratic expressions into center-radius form and reveals whether the relation is a circle, a point, or an empty set. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "Completing squares converts general quadratic expressions into center-radius form and reveals whether the relation is a circle, a point, or an empty set."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is to forget that the center coordinates appear with opposite signs inside the squared factors.",
+        "The figure must not contradict this claim: Completing squares converts general quadratic expressions into center-radius form and reveals whether the relation is a circle, a point, or an empty set."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for conics as loci and the circle foundation.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for conics as loci and the circle foundation. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -49,7 +272,43 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u13-l1-v3",
@@ -59,6 +318,108 @@
       "title": "General-form completion-of-squares panel",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why to forget that the center coordinates appear with opposite signs inside the squared factors leads to a false conclusion.",
       "learnerOutcome": "Define loci by distance conditions and derive the standard circle equation.",
+      "mathematicalClaim": "Applying the distance formula and squaring gives (x-h)^2+(y-k)^2=r^2. The equation is usually an implicit relation rather than one function y=f(x), because most x-values inside the circle correspond to two y-values.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "valid-copy-2",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Applying the distance formula and squaring gives (x-h)^2+(y-k)^2=r^2. The equation is usually an implicit relation rather than one function y=f(x), because most x-values inside the circle correspond to two y-values.",
+        "invalidOrExcludedState": "A common error is to forget that the center coordinates appear with opposite signs inside the squared factors."
+      },
+      "visibleRelationships": [
+        "Completing squares converts general quadratic expressions into center-radius form and reveals whether the relation is a circle, a point, or an empty set. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "Completing squares converts general quadratic expressions into center-radius form and reveals whether the relation is a circle, a point, or an empty set."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is to forget that the center coordinates appear with opposite signs inside the squared factors.",
+        "The figure must not contradict this claim: Applying the distance formula and squaring gives (x-h)^2+(y-k)^2=r^2. The equation is usually an implicit relation rather than one function y=f(x), because most x-values inside the circle correspond to two y-values."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why to forget that the center coordinates appear with opposite signs inside the squared factors leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why to forget that the center coordinates appear with opposite signs inside the squared factors leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -75,7 +436,39 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "valid-copy-2",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u13-l2-v1",
@@ -85,6 +478,69 @@
       "title": "Focus-directrix distance construction",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The sign of p determines opening direction. The focus and directrix are equally distant from the vertex on opposite sides. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
       "learnerOutcome": "Derive and analyze parabolas as points equidistant from a focus and directrix.",
+      "mathematicalClaim": "Begin by identifying the mathematical object and the information that fixes it. Identify orientation, place the vertex halfway between focus and directrix, write the standard form, and verify one point using the distance condition. The relevant conditions are not optional bookkeeping: A parabola may be a function of x or y depending on orientation, but the conic definition itself is coordinate-independent. Following that structure gives x^2=12y.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "parabola",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "directrix",
+          "kind": "segment"
+        },
+        {
+          "id": "focus",
+          "kind": "closed-point"
+        },
+        {
+          "id": "sample",
+          "kind": "closed-point"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title"
+        ],
+        "coordinateVariables": [
+          "x",
+          "y"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": -9.9,
+          "xMax": 9.9,
+          "yMin": -5.5,
+          "yMax": 6,
+          "aspectRatio": 1.72,
+          "padding": 0.065
+        },
+        "validStructure": "Equating point-to-focus distance with perpendicular distance to the directrix and simplifying produces (x-h)^2=4p(y-k) or (y-k)^2=4p(x-h). The parameter p is the directed distance from the vertex to the focus.",
+        "invalidOrExcludedState": "A common error is to use p rather than 4p as the coefficient or to place the directrix on the same side as the focus."
+      },
+      "visibleRelationships": [
+        "The sign of p determines opening direction. The focus and directrix are equally distant from the vertex on opposite sides. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "The sign of p determines opening direction. The focus and directrix are equally distant from the vertex on opposite sides."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is to use p rather than 4p as the coefficient or to place the directrix on the same side as the focus.",
+        "The figure must not contradict this claim: Begin by identifying the mathematical object and the information that fixes it. Identify orientation, place the vertex halfway between focus and directrix, write the standard form, and verify one point using the distance condition. The relevant conditions are not optional bookkeeping: A parabola may be a function of x or y depending on orientation, but the conic definition itself is coordinate-independent. Following that structure gives x^2=12y."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The sign of p determines opening direction. The focus and directrix are equally distant from the vertex on opposite sides. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The sign of p determines opening direction. The focus and directrix are equally distant from the vertex on opposite sides. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "parabola",
@@ -93,7 +549,31 @@
         "sample"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "parabola",
+            "directrix",
+            "focus",
+            "sample"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u13-l2-v2",
@@ -103,6 +583,125 @@
       "title": "Vertical and horizontal standard forms",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for parabolas from focus and directrix.",
       "learnerOutcome": "Derive and analyze parabolas as points equidistant from a focus and directrix.",
+      "mathematicalClaim": "The sign of p determines opening direction. The focus and directrix are equally distant from the vertex on opposite sides.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Equating point-to-focus distance with perpendicular distance to the directrix and simplifying produces (x-h)^2=4p(y-k) or (y-k)^2=4p(x-h). The parameter p is the directed distance from the vertex to the focus.",
+        "invalidOrExcludedState": "A common error is to use p rather than 4p as the coefficient or to place the directrix on the same side as the focus."
+      },
+      "visibleRelationships": [
+        "The sign of p determines opening direction. The focus and directrix are equally distant from the vertex on opposite sides. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "The sign of p determines opening direction. The focus and directrix are equally distant from the vertex on opposite sides."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is to use p rather than 4p as the coefficient or to place the directrix on the same side as the focus.",
+        "The figure must not contradict this claim: The sign of p determines opening direction. The focus and directrix are equally distant from the vertex on opposite sides."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for parabolas from focus and directrix.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for parabolas from focus and directrix. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -123,7 +722,43 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u13-l2-v3",
@@ -133,6 +768,108 @@
       "title": "Reflective-ray property diagram",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why to use p rather than 4p as the coefficient or to place the directrix on the same side as the focus leads to a false conclusion.",
       "learnerOutcome": "Derive and analyze parabolas as points equidistant from a focus and directrix.",
+      "mathematicalClaim": "Equating point-to-focus distance with perpendicular distance to the directrix and simplifying produces (x-h)^2=4p(y-k) or (y-k)^2=4p(x-h). The parameter p is the directed distance from the vertex to the focus.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "valid-copy-2",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Equating point-to-focus distance with perpendicular distance to the directrix and simplifying produces (x-h)^2=4p(y-k) or (y-k)^2=4p(x-h). The parameter p is the directed distance from the vertex to the focus.",
+        "invalidOrExcludedState": "A common error is to use p rather than 4p as the coefficient or to place the directrix on the same side as the focus."
+      },
+      "visibleRelationships": [
+        "The sign of p determines opening direction. The focus and directrix are equally distant from the vertex on opposite sides. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "The sign of p determines opening direction. The focus and directrix are equally distant from the vertex on opposite sides."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is to use p rather than 4p as the coefficient or to place the directrix on the same side as the focus.",
+        "The figure must not contradict this claim: Equating point-to-focus distance with perpendicular distance to the directrix and simplifying produces (x-h)^2=4p(y-k) or (y-k)^2=4p(x-h). The parameter p is the directed distance from the vertex to the focus."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why to use p rather than 4p as the coefficient or to place the directrix on the same side as the focus leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why to use p rather than 4p as the coefficient or to place the directrix on the same side as the focus leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -149,7 +886,39 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "valid-copy-2",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u13-l3-v1",
@@ -159,6 +928,74 @@
       "title": "String-and-pins ellipse locus",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The circle is the special case c=0 and a=b. As c approaches a, the ellipse becomes more elongated. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
       "learnerOutcome": "Analyze ellipses from constant-sum distance and standard equations.",
+      "mathematicalClaim": "Begin by identifying the mathematical object and the information that fixes it. Read center and denominators, determine orientation, calculate c, and list vertices, covertices, foci, and axis lengths. The relevant conditions are not optional bookkeeping: The standard equation assumes positive denominators and right side 1. Translated forms require center shifts before features are read. Following that structure gives a=5,c=4,b=3; x^2/25+y^2/9=1.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "ellipse",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "focus-left",
+          "kind": "closed-point"
+        },
+        {
+          "id": "focus-right",
+          "kind": "closed-point"
+        },
+        {
+          "id": "major-axis",
+          "kind": "segment"
+        },
+        {
+          "id": "locus-note",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "locus-note"
+        ],
+        "coordinateVariables": [
+          "x",
+          "y"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": -9.9,
+          "xMax": 9.9,
+          "yMin": -5.5,
+          "yMax": 6,
+          "aspectRatio": 1.72,
+          "padding": 0.065
+        },
+        "validStructure": "In standard form, a is the semimajor axis, b the semiminor axis, and c the center-to-focus distance, with c^2=a^2-b^2. The larger denominator identifies the major-axis direction.",
+        "invalidOrExcludedState": "A common error is placing the foci using b instead of c or assuming the larger denominator always belongs under x."
+      },
+      "visibleRelationships": [
+        "The circle is the special case c=0 and a=b. As c approaches a, the ellipse becomes more elongated. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "The circle is the special case c=0 and a=b. As c approaches a, the ellipse becomes more elongated."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is placing the foci using b instead of c or assuming the larger denominator always belongs under x.",
+        "The figure must not contradict this claim: Begin by identifying the mathematical object and the information that fixes it. Read center and denominators, determine orientation, calculate c, and list vertices, covertices, foci, and axis lengths. The relevant conditions are not optional bookkeeping: The standard equation assumes positive denominators and right side 1. Translated forms require center shifts before features are read. Following that structure gives a=5,c=4,b=3; x^2/25+y^2/9=1."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The circle is the special case c=0 and a=b. As c approaches a, the ellipse becomes more elongated. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The circle is the special case c=0 and a=b. As c approaches a, the ellipse becomes more elongated. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "ellipse",
@@ -168,7 +1005,32 @@
         "locus-note"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "ellipse",
+            "focus-left",
+            "focus-right",
+            "major-axis",
+            "locus-note"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u13-l3-v2",
@@ -178,6 +1040,125 @@
       "title": "Axis/focus parameter map",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for ellipses.",
       "learnerOutcome": "Analyze ellipses from constant-sum distance and standard equations.",
+      "mathematicalClaim": "The circle is the special case c=0 and a=b. As c approaches a, the ellipse becomes more elongated.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "In standard form, a is the semimajor axis, b the semiminor axis, and c the center-to-focus distance, with c^2=a^2-b^2. The larger denominator identifies the major-axis direction.",
+        "invalidOrExcludedState": "A common error is placing the foci using b instead of c or assuming the larger denominator always belongs under x."
+      },
+      "visibleRelationships": [
+        "The circle is the special case c=0 and a=b. As c approaches a, the ellipse becomes more elongated. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "The circle is the special case c=0 and a=b. As c approaches a, the ellipse becomes more elongated."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is placing the foci using b instead of c or assuming the larger denominator always belongs under x.",
+        "The figure must not contradict this claim: The circle is the special case c=0 and a=b. As c approaches a, the ellipse becomes more elongated."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for ellipses.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for ellipses. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -198,7 +1179,43 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u13-l3-v3",
@@ -208,6 +1225,108 @@
       "title": "Circle-to-ellipse comparison",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why placing the foci using b instead of c or assuming the larger denominator always belongs under x leads to a false conclusion.",
       "learnerOutcome": "Analyze ellipses from constant-sum distance and standard equations.",
+      "mathematicalClaim": "In standard form, a is the semimajor axis, b the semiminor axis, and c the center-to-focus distance, with c^2=a^2-b^2. The larger denominator identifies the major-axis direction.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "valid-copy-2",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "In standard form, a is the semimajor axis, b the semiminor axis, and c the center-to-focus distance, with c^2=a^2-b^2. The larger denominator identifies the major-axis direction.",
+        "invalidOrExcludedState": "A common error is placing the foci using b instead of c or assuming the larger denominator always belongs under x."
+      },
+      "visibleRelationships": [
+        "The circle is the special case c=0 and a=b. As c approaches a, the ellipse becomes more elongated. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "The circle is the special case c=0 and a=b. As c approaches a, the ellipse becomes more elongated."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is placing the foci using b instead of c or assuming the larger denominator always belongs under x.",
+        "The figure must not contradict this claim: In standard form, a is the semimajor axis, b the semiminor axis, and c the center-to-focus distance, with c^2=a^2-b^2. The larger denominator identifies the major-axis direction."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why placing the foci using b instead of c or assuming the larger denominator always belongs under x leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why placing the foci using b instead of c or assuming the larger denominator always belongs under x leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -224,7 +1343,39 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "valid-copy-2",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u13-l4-v1",
@@ -234,6 +1385,77 @@
       "title": "Constant-difference locus",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Asymptotes pass through the center and follow the diagonals of the fundamental rectangle with semiaxes a and b. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
       "learnerOutcome": "Analyze hyperbolas from constant-difference distance and standard equations.",
+      "mathematicalClaim": "Begin by identifying the mathematical object and the information that fixes it. Determine center and orientation, locate vertices, compute c, draw the fundamental rectangle, and sketch branches approaching the asymptotes. The relevant conditions are not optional bookkeeping: The two branches are separate components of one relation. The asymptotes guide end behavior but are not part of the hyperbola. Following that structure gives a=3,c=5,b=4; x^2/9-y^2/16=1; y=±4x/3.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "right-hyperbola",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "left-hyperbola",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "asymptote-one",
+          "kind": "segment"
+        },
+        {
+          "id": "asymptote-two",
+          "kind": "segment"
+        },
+        {
+          "id": "focus-left",
+          "kind": "closed-point"
+        },
+        {
+          "id": "focus-right",
+          "kind": "closed-point"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title"
+        ],
+        "coordinateVariables": [
+          "x",
+          "y"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": -9.9,
+          "xMax": 9.9,
+          "yMin": -5.5,
+          "yMax": 6,
+          "aspectRatio": 1.72,
+          "padding": 0.065
+        },
+        "validStructure": "Its standard forms contain one positive squared term and one negative squared term. The positive term identifies the transverse-axis direction. The focal relationship is c^2=a^2+b^2.",
+        "invalidOrExcludedState": "A common error is using the ellipse relation c^2=a^2-b^2 or orienting the branches by the larger denominator rather than the positive term."
+      },
+      "visibleRelationships": [
+        "Asymptotes pass through the center and follow the diagonals of the fundamental rectangle with semiaxes a and b. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "Asymptotes pass through the center and follow the diagonals of the fundamental rectangle with semiaxes a and b."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is using the ellipse relation c^2=a^2-b^2 or orienting the branches by the larger denominator rather than the positive term.",
+        "The figure must not contradict this claim: Begin by identifying the mathematical object and the information that fixes it. Determine center and orientation, locate vertices, compute c, draw the fundamental rectangle, and sketch branches approaching the asymptotes. The relevant conditions are not optional bookkeeping: The two branches are separate components of one relation. The asymptotes guide end behavior but are not part of the hyperbola. Following that structure gives a=3,c=5,b=4; x^2/9-y^2/16=1; y=±4x/3."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Asymptotes pass through the center and follow the diagonals of the fundamental rectangle with semiaxes a and b. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Asymptotes pass through the center and follow the diagonals of the fundamental rectangle with semiaxes a and b. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "right-hyperbola",
@@ -244,7 +1466,33 @@
         "focus-right"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "right-hyperbola",
+            "left-hyperbola",
+            "asymptote-one",
+            "asymptote-two",
+            "focus-left",
+            "focus-right"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u13-l4-v2",
@@ -254,6 +1502,125 @@
       "title": "Fundamental rectangle and asymptotes",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for hyperbolas.",
       "learnerOutcome": "Analyze hyperbolas from constant-difference distance and standard equations.",
+      "mathematicalClaim": "Asymptotes pass through the center and follow the diagonals of the fundamental rectangle with semiaxes a and b.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Its standard forms contain one positive squared term and one negative squared term. The positive term identifies the transverse-axis direction. The focal relationship is c^2=a^2+b^2.",
+        "invalidOrExcludedState": "A common error is using the ellipse relation c^2=a^2-b^2 or orienting the branches by the larger denominator rather than the positive term."
+      },
+      "visibleRelationships": [
+        "Asymptotes pass through the center and follow the diagonals of the fundamental rectangle with semiaxes a and b. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "Asymptotes pass through the center and follow the diagonals of the fundamental rectangle with semiaxes a and b."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is using the ellipse relation c^2=a^2-b^2 or orienting the branches by the larger denominator rather than the positive term.",
+        "The figure must not contradict this claim: Asymptotes pass through the center and follow the diagonals of the fundamental rectangle with semiaxes a and b."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for hyperbolas.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for hyperbolas. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -274,7 +1641,43 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u13-l4-v3",
@@ -284,6 +1687,108 @@
       "title": "Horizontal-versus-vertical form comparison",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why using the ellipse relation c^2=a^2-b^2 or orienting the branches by the larger denominator rather than the positive term leads to a false conclusion.",
       "learnerOutcome": "Analyze hyperbolas from constant-difference distance and standard equations.",
+      "mathematicalClaim": "Its standard forms contain one positive squared term and one negative squared term. The positive term identifies the transverse-axis direction. The focal relationship is c^2=a^2+b^2.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "valid-copy-2",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Its standard forms contain one positive squared term and one negative squared term. The positive term identifies the transverse-axis direction. The focal relationship is c^2=a^2+b^2.",
+        "invalidOrExcludedState": "A common error is using the ellipse relation c^2=a^2-b^2 or orienting the branches by the larger denominator rather than the positive term."
+      },
+      "visibleRelationships": [
+        "Asymptotes pass through the center and follow the diagonals of the fundamental rectangle with semiaxes a and b. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "Asymptotes pass through the center and follow the diagonals of the fundamental rectangle with semiaxes a and b."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is using the ellipse relation c^2=a^2-b^2 or orienting the branches by the larger denominator rather than the positive term.",
+        "The figure must not contradict this claim: Its standard forms contain one positive squared term and one negative squared term. The positive term identifies the transverse-axis direction. The focal relationship is c^2=a^2+b^2."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why using the ellipse relation c^2=a^2-b^2 or orienting the branches by the larger denominator rather than the positive term leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why using the ellipse relation c^2=a^2-b^2 or orienting the branches by the larger denominator rather than the positive term leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -300,7 +1805,39 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "valid-copy-2",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u13-l5-v1",
@@ -310,6 +1847,74 @@
       "title": "Two-variable completion ledger",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Both variable groups and the equation’s right side must remain balanced. The final constant determines scale and may reveal a degenerate or empty relation. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
       "learnerOutcome": "Convert general quadratic relations to standard conic form by completing squares.",
+      "mathematicalClaim": "Begin by identifying the mathematical object and the information that fixes it. Collect x and y terms, move constants, factor leading coefficients, complete each square, combine constants, and normalize the right side when needed. The relevant conditions are not optional bookkeeping: If a squared coefficient is negative, factoring changes the sign of the completion constant and must be tracked carefully. Following that structure gives (x+3)^2+4(y-1)^2=24, an ellipse.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "ellipse",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "focus-left",
+          "kind": "closed-point"
+        },
+        {
+          "id": "focus-right",
+          "kind": "closed-point"
+        },
+        {
+          "id": "major-axis",
+          "kind": "segment"
+        },
+        {
+          "id": "locus-note",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "locus-note"
+        ],
+        "coordinateVariables": [
+          "x",
+          "y"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": -9.9,
+          "xMax": 9.9,
+          "yMin": -5.5,
+          "yMax": 6,
+          "aspectRatio": 1.72,
+          "padding": 0.065
+        },
+        "validStructure": "For x^2+Bx, add (B/2)^2 inside a balanced equation. When a coefficient multiplies x^2 or y^2, factor it from the entire variable group before completing the square.",
+        "invalidOrExcludedState": "A common error is adding a completion term inside a factored group without multiplying its contribution correctly on the other side."
+      },
+      "visibleRelationships": [
+        "Both variable groups and the equation’s right side must remain balanced. The final constant determines scale and may reveal a degenerate or empty relation. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "Both variable groups and the equation’s right side must remain balanced. The final constant determines scale and may reveal a degenerate or empty relation."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is adding a completion term inside a factored group without multiplying its contribution correctly on the other side.",
+        "The figure must not contradict this claim: Begin by identifying the mathematical object and the information that fixes it. Collect x and y terms, move constants, factor leading coefficients, complete each square, combine constants, and normalize the right side when needed. The relevant conditions are not optional bookkeeping: If a squared coefficient is negative, factoring changes the sign of the completion constant and must be tracked carefully. Following that structure gives (x+3)^2+4(y-1)^2=24, an ellipse."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Both variable groups and the equation’s right side must remain balanced. The final constant determines scale and may reveal a degenerate or empty relation. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Both variable groups and the equation’s right side must remain balanced. The final constant determines scale and may reveal a degenerate or empty relation. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "ellipse",
@@ -319,7 +1924,32 @@
         "locus-note"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "ellipse",
+            "focus-left",
+            "focus-right",
+            "major-axis",
+            "locus-note"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u13-l5-v2",
@@ -329,6 +1959,125 @@
       "title": "Geometric square-completion blocks",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for completing squares in two variables.",
       "learnerOutcome": "Convert general quadratic relations to standard conic form by completing squares.",
+      "mathematicalClaim": "Both variable groups and the equation’s right side must remain balanced. The final constant determines scale and may reveal a degenerate or empty relation.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "For x^2+Bx, add (B/2)^2 inside a balanced equation. When a coefficient multiplies x^2 or y^2, factor it from the entire variable group before completing the square.",
+        "invalidOrExcludedState": "A common error is adding a completion term inside a factored group without multiplying its contribution correctly on the other side."
+      },
+      "visibleRelationships": [
+        "Both variable groups and the equation’s right side must remain balanced. The final constant determines scale and may reveal a degenerate or empty relation. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "Both variable groups and the equation’s right side must remain balanced. The final constant determines scale and may reveal a degenerate or empty relation."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is adding a completion term inside a factored group without multiplying its contribution correctly on the other side.",
+        "The figure must not contradict this claim: Both variable groups and the equation’s right side must remain balanced. The final constant determines scale and may reveal a degenerate or empty relation."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for completing squares in two variables.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for completing squares in two variables. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -349,7 +2098,43 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u13-l5-v3",
@@ -359,6 +2144,108 @@
       "title": "General-to-standard transformation",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why adding a completion term inside a factored group without multiplying its contribution correctly on the other side leads to a false conclusion.",
       "learnerOutcome": "Convert general quadratic relations to standard conic form by completing squares.",
+      "mathematicalClaim": "For x^2+Bx, add (B/2)^2 inside a balanced equation. When a coefficient multiplies x^2 or y^2, factor it from the entire variable group before completing the square.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "valid-copy-2",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "For x^2+Bx, add (B/2)^2 inside a balanced equation. When a coefficient multiplies x^2 or y^2, factor it from the entire variable group before completing the square.",
+        "invalidOrExcludedState": "A common error is adding a completion term inside a factored group without multiplying its contribution correctly on the other side."
+      },
+      "visibleRelationships": [
+        "Both variable groups and the equation’s right side must remain balanced. The final constant determines scale and may reveal a degenerate or empty relation. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "Both variable groups and the equation’s right side must remain balanced. The final constant determines scale and may reveal a degenerate or empty relation."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is adding a completion term inside a factored group without multiplying its contribution correctly on the other side.",
+        "The figure must not contradict this claim: For x^2+Bx, add (B/2)^2 inside a balanced equation. When a coefficient multiplies x^2 or y^2, factor it from the entire variable group before completing the square."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why adding a completion term inside a factored group without multiplying its contribution correctly on the other side leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why adding a completion term inside a factored group without multiplying its contribution correctly on the other side leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -375,7 +2262,39 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "valid-copy-2",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u13-l6-v1",
@@ -385,6 +2304,74 @@
       "title": "Classification decision matrix",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Completing squares provides center or vertex translations. Dividing by the final constant normalizes the equation to standard form. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
       "learnerOutcome": "Classify translated conics and recover all geometric features from standard form.",
+      "mathematicalClaim": "Begin by identifying the mathematical object and the information that fixes it. Use coefficient signs only as an initial classifier, then complete squares and inspect the normalized result before asserting a real nondegenerate graph. The relevant conditions are not optional bookkeeping: Cross terms xy indicate a rotated conic and lie outside the main computational spine unless a rotation analysis is explicitly introduced. Following that structure gives Complete squares to obtain (x-3)^2/4+(y+2)^2/9=1.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "ellipse",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "focus-left",
+          "kind": "closed-point"
+        },
+        {
+          "id": "focus-right",
+          "kind": "closed-point"
+        },
+        {
+          "id": "major-axis",
+          "kind": "segment"
+        },
+        {
+          "id": "locus-note",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "locus-note"
+        ],
+        "coordinateVariables": [
+          "x",
+          "y"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": -9.9,
+          "xMax": 9.9,
+          "yMin": -5.5,
+          "yMax": 6,
+          "aspectRatio": 1.72,
+          "padding": 0.065
+        },
+        "validStructure": "Same-sign equal coefficients suggest a circle, same-sign unequal coefficients an ellipse, one squared variable a parabola, and opposite signs a hyperbola, subject to degeneracy.",
+        "invalidOrExcludedState": "A common error is classifying solely from the larger coefficient or denominator while ignoring sign and normalization."
+      },
+      "visibleRelationships": [
+        "Completing squares provides center or vertex translations. Dividing by the final constant normalizes the equation to standard form. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "Completing squares provides center or vertex translations. Dividing by the final constant normalizes the equation to standard form."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is classifying solely from the larger coefficient or denominator while ignoring sign and normalization.",
+        "The figure must not contradict this claim: Begin by identifying the mathematical object and the information that fixes it. Use coefficient signs only as an initial classifier, then complete squares and inspect the normalized result before asserting a real nondegenerate graph. The relevant conditions are not optional bookkeeping: Cross terms xy indicate a rotated conic and lie outside the main computational spine unless a rotation analysis is explicitly introduced. Following that structure gives Complete squares to obtain (x-3)^2/4+(y+2)^2/9=1."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Completing squares provides center or vertex translations. Dividing by the final constant normalizes the equation to standard form. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Completing squares provides center or vertex translations. Dividing by the final constant normalizes the equation to standard form. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "ellipse",
@@ -394,7 +2381,32 @@
         "locus-note"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "ellipse",
+            "focus-left",
+            "focus-right",
+            "major-axis",
+            "locus-note"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u13-l6-v2",
@@ -404,6 +2416,125 @@
       "title": "Translated coordinate axes",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for translated conics and general equations.",
       "learnerOutcome": "Classify translated conics and recover all geometric features from standard form.",
+      "mathematicalClaim": "Completing squares provides center or vertex translations. Dividing by the final constant normalizes the equation to standard form.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Same-sign equal coefficients suggest a circle, same-sign unequal coefficients an ellipse, one squared variable a parabola, and opposite signs a hyperbola, subject to degeneracy.",
+        "invalidOrExcludedState": "A common error is classifying solely from the larger coefficient or denominator while ignoring sign and normalization."
+      },
+      "visibleRelationships": [
+        "Completing squares provides center or vertex translations. Dividing by the final constant normalizes the equation to standard form. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "Completing squares provides center or vertex translations. Dividing by the final constant normalizes the equation to standard form."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is classifying solely from the larger coefficient or denominator while ignoring sign and normalization.",
+        "The figure must not contradict this claim: Completing squares provides center or vertex translations. Dividing by the final constant normalizes the equation to standard form."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for translated conics and general equations.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for translated conics and general equations. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -424,7 +2555,43 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u13-l6-v3",
@@ -434,6 +2601,108 @@
       "title": "Coefficient-sign comparison",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why classifying solely from the larger coefficient or denominator while ignoring sign and normalization leads to a false conclusion.",
       "learnerOutcome": "Classify translated conics and recover all geometric features from standard form.",
+      "mathematicalClaim": "Same-sign equal coefficients suggest a circle, same-sign unequal coefficients an ellipse, one squared variable a parabola, and opposite signs a hyperbola, subject to degeneracy.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "valid-copy-2",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Same-sign equal coefficients suggest a circle, same-sign unequal coefficients an ellipse, one squared variable a parabola, and opposite signs a hyperbola, subject to degeneracy.",
+        "invalidOrExcludedState": "A common error is classifying solely from the larger coefficient or denominator while ignoring sign and normalization."
+      },
+      "visibleRelationships": [
+        "Completing squares provides center or vertex translations. Dividing by the final constant normalizes the equation to standard form. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "Completing squares provides center or vertex translations. Dividing by the final constant normalizes the equation to standard form."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is classifying solely from the larger coefficient or denominator while ignoring sign and normalization.",
+        "The figure must not contradict this claim: Same-sign equal coefficients suggest a circle, same-sign unequal coefficients an ellipse, one squared variable a parabola, and opposite signs a hyperbola, subject to degeneracy."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why classifying solely from the larger coefficient or denominator while ignoring sign and normalization leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why classifying solely from the larger coefficient or denominator while ignoring sign and normalization leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -450,7 +2719,39 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "valid-copy-2",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u13-l7-v1",
@@ -460,6 +2761,74 @@
       "title": "Degenerate conic gallery",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: A circle form with squared radius zero gives one point; a negative squared radius gives no real points. Similar threshold behavior occurs in ellipses and hyperbolas. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
       "learnerOutcome": "Identify point, line, pair-of-lines, empty-set, and other degenerate quadratic relations.",
+      "mathematicalClaim": "Begin by identifying the mathematical object and the information that fixes it. Convert to a transparent form, determine whether real points exist, and describe every component of the solution set. The relevant conditions are not optional bookkeeping: Classification should refer to the actual locus, not merely the pattern of squared terms before constants are considered. Following that structure gives (x+2)^2+(y-3)^2=0, a single point (-2,3).",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "ellipse",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "focus-left",
+          "kind": "closed-point"
+        },
+        {
+          "id": "focus-right",
+          "kind": "closed-point"
+        },
+        {
+          "id": "major-axis",
+          "kind": "segment"
+        },
+        {
+          "id": "locus-note",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "locus-note"
+        ],
+        "coordinateVariables": [
+          "x",
+          "y"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": -9.9,
+          "xMax": 9.9,
+          "yMin": -5.5,
+          "yMax": 6,
+          "aspectRatio": 1.72,
+          "padding": 0.065
+        },
+        "validStructure": "Factorization and completed-square form reveal these cases. For example, x^2-y^2=0 factors into (x-y)(x+y)=0, the union of two lines.",
+        "invalidOrExcludedState": "A common error is forcing every quadratic equation into the name of a nondegenerate conic."
+      },
+      "visibleRelationships": [
+        "A circle form with squared radius zero gives one point; a negative squared radius gives no real points. Similar threshold behavior occurs in ellipses and hyperbolas. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "A circle form with squared radius zero gives one point; a negative squared radius gives no real points. Similar threshold behavior occurs in ellipses and hyperbolas."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is forcing every quadratic equation into the name of a nondegenerate conic.",
+        "The figure must not contradict this claim: Begin by identifying the mathematical object and the information that fixes it. Convert to a transparent form, determine whether real points exist, and describe every component of the solution set. The relevant conditions are not optional bookkeeping: Classification should refer to the actual locus, not merely the pattern of squared terms before constants are considered. Following that structure gives (x+2)^2+(y-3)^2=0, a single point (-2,3)."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: A circle form with squared radius zero gives one point; a negative squared radius gives no real points. Similar threshold behavior occurs in ellipses and hyperbolas. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: A circle form with squared radius zero gives one point; a negative squared radius gives no real points. Similar threshold behavior occurs in ellipses and hyperbolas. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "ellipse",
@@ -469,7 +2838,32 @@
         "locus-note"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "ellipse",
+            "focus-left",
+            "focus-right",
+            "major-axis",
+            "locus-note"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u13-l7-v2",
@@ -479,6 +2873,125 @@
       "title": "Parameter threshold from ordinary to degenerate",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for degenerate conics and classification.",
       "learnerOutcome": "Identify point, line, pair-of-lines, empty-set, and other degenerate quadratic relations.",
+      "mathematicalClaim": "A circle form with squared radius zero gives one point; a negative squared radius gives no real points. Similar threshold behavior occurs in ellipses and hyperbolas.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Factorization and completed-square form reveal these cases. For example, x^2-y^2=0 factors into (x-y)(x+y)=0, the union of two lines.",
+        "invalidOrExcludedState": "A common error is forcing every quadratic equation into the name of a nondegenerate conic."
+      },
+      "visibleRelationships": [
+        "A circle form with squared radius zero gives one point; a negative squared radius gives no real points. Similar threshold behavior occurs in ellipses and hyperbolas. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "A circle form with squared radius zero gives one point; a negative squared radius gives no real points. Similar threshold behavior occurs in ellipses and hyperbolas."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is forcing every quadratic equation into the name of a nondegenerate conic.",
+        "The figure must not contradict this claim: A circle form with squared radius zero gives one point; a negative squared radius gives no real points. Similar threshold behavior occurs in ellipses and hyperbolas."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for degenerate conics and classification.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for degenerate conics and classification. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -499,7 +3012,43 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u13-l7-v3",
@@ -509,6 +3058,108 @@
       "title": "Algebraic factorization of line pairs",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why forcing every quadratic equation into the name of a nondegenerate conic leads to a false conclusion.",
       "learnerOutcome": "Identify point, line, pair-of-lines, empty-set, and other degenerate quadratic relations.",
+      "mathematicalClaim": "Factorization and completed-square form reveal these cases. For example, x^2-y^2=0 factors into (x-y)(x+y)=0, the union of two lines.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "valid-copy-2",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Factorization and completed-square form reveal these cases. For example, x^2-y^2=0 factors into (x-y)(x+y)=0, the union of two lines.",
+        "invalidOrExcludedState": "A common error is forcing every quadratic equation into the name of a nondegenerate conic."
+      },
+      "visibleRelationships": [
+        "A circle form with squared radius zero gives one point; a negative squared radius gives no real points. Similar threshold behavior occurs in ellipses and hyperbolas. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "A circle form with squared radius zero gives one point; a negative squared radius gives no real points. Similar threshold behavior occurs in ellipses and hyperbolas."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is forcing every quadratic equation into the name of a nondegenerate conic.",
+        "The figure must not contradict this claim: Factorization and completed-square form reveal these cases. For example, x^2-y^2=0 factors into (x-y)(x+y)=0, the union of two lines."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why forcing every quadratic equation into the name of a nondegenerate conic leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why forcing every quadratic equation into the name of a nondegenerate conic leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -525,7 +3176,39 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "valid-copy-2",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u13-l8-v1",
@@ -535,6 +3218,74 @@
       "title": "Focus-directrix ratio construction",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: For standard ellipses and hyperbolas, e=c/a. Increasing e stretches an ellipse toward a parabola and opens a hyperbola more strongly relative to its vertex distance. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
       "learnerOutcome": "Use eccentricity to compare circles, ellipses, parabolas, and hyperbolas.",
+      "mathematicalClaim": "Begin by identifying the mathematical object and the information that fixes it. Write the focus-directrix distance equation, square carefully, and compare the resulting standard form or compute e from known a and c. The relevant conditions are not optional bookkeeping: Eccentricity is nonnegative and geometric. Sign changes in an equation do not make eccentricity negative. Following that structure gives It is an ellipse; set distance to focus equal to one-half distance to directrix and simplify.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "ellipse",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "focus-left",
+          "kind": "closed-point"
+        },
+        {
+          "id": "focus-right",
+          "kind": "closed-point"
+        },
+        {
+          "id": "major-axis",
+          "kind": "segment"
+        },
+        {
+          "id": "locus-note",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "locus-note"
+        ],
+        "coordinateVariables": [
+          "x",
+          "y"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": -9.9,
+          "xMax": 9.9,
+          "yMin": -5.5,
+          "yMax": 6,
+          "aspectRatio": 1.72,
+          "padding": 0.065
+        },
+        "validStructure": "The ratio distinguishes conic families: 0<e<1 gives an ellipse, e=1 a parabola, and e>1 a hyperbola. A circle is the limiting symmetric case e=0.",
+        "invalidOrExcludedState": "A common error is using b/a or confusing the directrix distance with the focal distance c."
+      },
+      "visibleRelationships": [
+        "For standard ellipses and hyperbolas, e=c/a. Increasing e stretches an ellipse toward a parabola and opens a hyperbola more strongly relative to its vertex distance. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "For standard ellipses and hyperbolas, e=c/a. Increasing e stretches an ellipse toward a parabola and opens a hyperbola more strongly relative to its vertex distance."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is using b/a or confusing the directrix distance with the focal distance c.",
+        "The figure must not contradict this claim: Begin by identifying the mathematical object and the information that fixes it. Write the focus-directrix distance equation, square carefully, and compare the resulting standard form or compute e from known a and c. The relevant conditions are not optional bookkeeping: Eccentricity is nonnegative and geometric. Sign changes in an equation do not make eccentricity negative. Following that structure gives It is an ellipse; set distance to focus equal to one-half distance to directrix and simplify."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: For standard ellipses and hyperbolas, e=c/a. Increasing e stretches an ellipse toward a parabola and opens a hyperbola more strongly relative to its vertex distance. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: For standard ellipses and hyperbolas, e=c/a. Increasing e stretches an ellipse toward a parabola and opens a hyperbola more strongly relative to its vertex distance. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "ellipse",
@@ -544,7 +3295,32 @@
         "locus-note"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "ellipse",
+            "focus-left",
+            "focus-right",
+            "major-axis",
+            "locus-note"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u13-l8-v2",
@@ -554,6 +3330,125 @@
       "title": "Eccentricity family morph",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for eccentricity and unified conic structure.",
       "learnerOutcome": "Use eccentricity to compare circles, ellipses, parabolas, and hyperbolas.",
+      "mathematicalClaim": "For standard ellipses and hyperbolas, e=c/a. Increasing e stretches an ellipse toward a parabola and opens a hyperbola more strongly relative to its vertex distance.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "The ratio distinguishes conic families: 0<e<1 gives an ellipse, e=1 a parabola, and e>1 a hyperbola. A circle is the limiting symmetric case e=0.",
+        "invalidOrExcludedState": "A common error is using b/a or confusing the directrix distance with the focal distance c."
+      },
+      "visibleRelationships": [
+        "For standard ellipses and hyperbolas, e=c/a. Increasing e stretches an ellipse toward a parabola and opens a hyperbola more strongly relative to its vertex distance. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "For standard ellipses and hyperbolas, e=c/a. Increasing e stretches an ellipse toward a parabola and opens a hyperbola more strongly relative to its vertex distance."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is using b/a or confusing the directrix distance with the focal distance c.",
+        "The figure must not contradict this claim: For standard ellipses and hyperbolas, e=c/a. Increasing e stretches an ellipse toward a parabola and opens a hyperbola more strongly relative to its vertex distance."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for eccentricity and unified conic structure.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for eccentricity and unified conic structure. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -574,7 +3469,43 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u13-l8-v3",
@@ -584,6 +3515,108 @@
       "title": "Parameter ranges by conic type",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why using b/a or confusing the directrix distance with the focal distance c leads to a false conclusion.",
       "learnerOutcome": "Use eccentricity to compare circles, ellipses, parabolas, and hyperbolas.",
+      "mathematicalClaim": "The ratio distinguishes conic families: 0<e<1 gives an ellipse, e=1 a parabola, and e>1 a hyperbola. A circle is the limiting symmetric case e=0.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "valid-copy-2",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "The ratio distinguishes conic families: 0<e<1 gives an ellipse, e=1 a parabola, and e>1 a hyperbola. A circle is the limiting symmetric case e=0.",
+        "invalidOrExcludedState": "A common error is using b/a or confusing the directrix distance with the focal distance c."
+      },
+      "visibleRelationships": [
+        "For standard ellipses and hyperbolas, e=c/a. Increasing e stretches an ellipse toward a parabola and opens a hyperbola more strongly relative to its vertex distance. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "For standard ellipses and hyperbolas, e=c/a. Increasing e stretches an ellipse toward a parabola and opens a hyperbola more strongly relative to its vertex distance."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is using b/a or confusing the directrix distance with the focal distance c.",
+        "The figure must not contradict this claim: The ratio distinguishes conic families: 0<e<1 gives an ellipse, e=1 a parabola, and e>1 a hyperbola. A circle is the limiting symmetric case e=0."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why using b/a or confusing the directrix distance with the focal distance c leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why using b/a or confusing the directrix distance with the focal distance c leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -600,7 +3633,39 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "valid-copy-2",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u13-l9-v1",
@@ -610,6 +3675,74 @@
       "title": "Conic intersection gallery",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The resulting polynomial degree predicts possible intersection counts. Repeated roots often indicate tangency, while nonreal roots indicate no real intersection. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
       "learnerOutcome": "Solve and interpret intersections of lines, circles, parabolas, ellipses, and hyperbolas.",
+      "mathematicalClaim": "Begin by identifying the mathematical object and the information that fixes it. Choose elimination or substitution from structure, solve the reduced equation, recover paired coordinates, and verify every point in both original relations. The relevant conditions are not optional bookkeeping: Numerical methods may be needed for intersections with transcendental functions or high-degree substitutions. Following that structure gives Substitute to get 2x^2+2x-24=0; x=3 or -4, giving (3,4),(-4,-3).",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "ellipse",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "focus-left",
+          "kind": "closed-point"
+        },
+        {
+          "id": "focus-right",
+          "kind": "closed-point"
+        },
+        {
+          "id": "major-axis",
+          "kind": "segment"
+        },
+        {
+          "id": "locus-note",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "locus-note"
+        ],
+        "coordinateVariables": [
+          "x",
+          "y"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": -9.9,
+          "xMax": 9.9,
+          "yMin": -5.5,
+          "yMax": 6,
+          "aspectRatio": 1.72,
+          "padding": 0.065
+        },
+        "validStructure": "Substitution is effective when one relation isolates a variable. Subtraction can eliminate matching x^2 and y^2 terms in two circles or related conics.",
+        "invalidOrExcludedState": "A common error is pairing each recovered x-value with every y-value rather than preserving the correct substitution relation."
+      },
+      "visibleRelationships": [
+        "The resulting polynomial degree predicts possible intersection counts. Repeated roots often indicate tangency, while nonreal roots indicate no real intersection. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "The resulting polynomial degree predicts possible intersection counts. Repeated roots often indicate tangency, while nonreal roots indicate no real intersection."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is pairing each recovered x-value with every y-value rather than preserving the correct substitution relation.",
+        "The figure must not contradict this claim: Begin by identifying the mathematical object and the information that fixes it. Choose elimination or substitution from structure, solve the reduced equation, recover paired coordinates, and verify every point in both original relations. The relevant conditions are not optional bookkeeping: Numerical methods may be needed for intersections with transcendental functions or high-degree substitutions. Following that structure gives Substitute to get 2x^2+2x-24=0; x=3 or -4, giving (3,4),(-4,-3)."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The resulting polynomial degree predicts possible intersection counts. Repeated roots often indicate tangency, while nonreal roots indicate no real intersection. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The resulting polynomial degree predicts possible intersection counts. Repeated roots often indicate tangency, while nonreal roots indicate no real intersection. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "ellipse",
@@ -619,7 +3752,32 @@
         "locus-note"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "ellipse",
+            "focus-left",
+            "focus-right",
+            "major-axis",
+            "locus-note"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u13-l9-v2",
@@ -629,6 +3787,125 @@
       "title": "Subtract-to-eliminate squared terms",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for nonlinear systems involving conics.",
       "learnerOutcome": "Solve and interpret intersections of lines, circles, parabolas, ellipses, and hyperbolas.",
+      "mathematicalClaim": "The resulting polynomial degree predicts possible intersection counts. Repeated roots often indicate tangency, while nonreal roots indicate no real intersection.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Substitution is effective when one relation isolates a variable. Subtraction can eliminate matching x^2 and y^2 terms in two circles or related conics.",
+        "invalidOrExcludedState": "A common error is pairing each recovered x-value with every y-value rather than preserving the correct substitution relation."
+      },
+      "visibleRelationships": [
+        "The resulting polynomial degree predicts possible intersection counts. Repeated roots often indicate tangency, while nonreal roots indicate no real intersection. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "The resulting polynomial degree predicts possible intersection counts. Repeated roots often indicate tangency, while nonreal roots indicate no real intersection."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is pairing each recovered x-value with every y-value rather than preserving the correct substitution relation.",
+        "The figure must not contradict this claim: The resulting polynomial degree predicts possible intersection counts. Repeated roots often indicate tangency, while nonreal roots indicate no real intersection."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for nonlinear systems involving conics.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for nonlinear systems involving conics. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -649,7 +3926,43 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u13-l9-v3",
@@ -659,6 +3972,108 @@
       "title": "Tangency and multiplicity comparison",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why pairing each recovered x-value with every y-value rather than preserving the correct substitution relation leads to a false conclusion.",
       "learnerOutcome": "Solve and interpret intersections of lines, circles, parabolas, ellipses, and hyperbolas.",
+      "mathematicalClaim": "Substitution is effective when one relation isolates a variable. Subtraction can eliminate matching x^2 and y^2 terms in two circles or related conics.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "valid-copy-2",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Substitution is effective when one relation isolates a variable. Subtraction can eliminate matching x^2 and y^2 terms in two circles or related conics.",
+        "invalidOrExcludedState": "A common error is pairing each recovered x-value with every y-value rather than preserving the correct substitution relation."
+      },
+      "visibleRelationships": [
+        "The resulting polynomial degree predicts possible intersection counts. Repeated roots often indicate tangency, while nonreal roots indicate no real intersection. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "The resulting polynomial degree predicts possible intersection counts. Repeated roots often indicate tangency, while nonreal roots indicate no real intersection."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is pairing each recovered x-value with every y-value rather than preserving the correct substitution relation.",
+        "The figure must not contradict this claim: Substitution is effective when one relation isolates a variable. Subtraction can eliminate matching x^2 and y^2 terms in two circles or related conics."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why pairing each recovered x-value with every y-value rather than preserving the correct substitution relation leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why pairing each recovered x-value with every y-value rather than preserving the correct substitution relation leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -675,7 +4090,39 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "valid-copy-2",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u13-l10-v1",
@@ -685,6 +4132,74 @@
       "title": "Parabolic reflector ray diagram",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Real structures approximate ideal conics over selected regions. Materials, loading, thickness, measurement error, and three-dimensional effects limit the model. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
       "learnerOutcome": "Construct and critique conic models in reflection, orbit, architecture, and navigation settings.",
+      "mathematicalClaim": "Begin by identifying the mathematical object and the information that fixes it. Define coordinates around a natural center or vertex, translate physical dimensions into conic parameters, derive the equation, and test predicted dimensions. The relevant conditions are not optional bookkeeping: A good fit over a finite section does not prove the entire object or process is exactly conic. Following that structure gives Using y=x^2/(4p), edge point (1.8,0.45) gives p=1.8 meters.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "ellipse",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "focus-left",
+          "kind": "closed-point"
+        },
+        {
+          "id": "focus-right",
+          "kind": "closed-point"
+        },
+        {
+          "id": "major-axis",
+          "kind": "segment"
+        },
+        {
+          "id": "locus-note",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "locus-note"
+        ],
+        "coordinateVariables": [
+          "x",
+          "y"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": -9.9,
+          "xMax": 9.9,
+          "yMin": -5.5,
+          "yMax": 6,
+          "aspectRatio": 1.72,
+          "padding": 0.065
+        },
+        "validStructure": "A parabolic reflector’s focal distance follows from width and depth. Ellipse foci explain whispering-gallery paths, and hyperbolic differences support navigation methods.",
+        "invalidOrExcludedState": "A common error is choosing a conic because its picture resembles the object without checking the defining geometric property."
+      },
+      "visibleRelationships": [
+        "Real structures approximate ideal conics over selected regions. Materials, loading, thickness, measurement error, and three-dimensional effects limit the model. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "Real structures approximate ideal conics over selected regions. Materials, loading, thickness, measurement error, and three-dimensional effects limit the model."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is choosing a conic because its picture resembles the object without checking the defining geometric property.",
+        "The figure must not contradict this claim: Begin by identifying the mathematical object and the information that fixes it. Define coordinates around a natural center or vertex, translate physical dimensions into conic parameters, derive the equation, and test predicted dimensions. The relevant conditions are not optional bookkeeping: A good fit over a finite section does not prove the entire object or process is exactly conic. Following that structure gives Using y=x^2/(4p), edge point (1.8,0.45) gives p=1.8 meters."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Real structures approximate ideal conics over selected regions. Materials, loading, thickness, measurement error, and three-dimensional effects limit the model. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Real structures approximate ideal conics over selected regions. Materials, loading, thickness, measurement error, and three-dimensional effects limit the model. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "ellipse",
@@ -694,7 +4209,32 @@
         "locus-note"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "ellipse",
+            "focus-left",
+            "focus-right",
+            "major-axis",
+            "locus-note"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u13-l10-v2",
@@ -704,6 +4244,125 @@
       "title": "Ellipse focal reflection",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for conic models and applications.",
       "learnerOutcome": "Construct and critique conic models in reflection, orbit, architecture, and navigation settings.",
+      "mathematicalClaim": "Real structures approximate ideal conics over selected regions. Materials, loading, thickness, measurement error, and three-dimensional effects limit the model.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "A parabolic reflector’s focal distance follows from width and depth. Ellipse foci explain whispering-gallery paths, and hyperbolic differences support navigation methods.",
+        "invalidOrExcludedState": "A common error is choosing a conic because its picture resembles the object without checking the defining geometric property."
+      },
+      "visibleRelationships": [
+        "Real structures approximate ideal conics over selected regions. Materials, loading, thickness, measurement error, and three-dimensional effects limit the model. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "Real structures approximate ideal conics over selected regions. Materials, loading, thickness, measurement error, and three-dimensional effects limit the model."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is choosing a conic because its picture resembles the object without checking the defining geometric property.",
+        "The figure must not contradict this claim: Real structures approximate ideal conics over selected regions. Materials, loading, thickness, measurement error, and three-dimensional effects limit the model."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for conic models and applications.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for conic models and applications. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -724,7 +4383,43 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u13-l10-v3",
@@ -734,6 +4429,108 @@
       "title": "Model-versus-measured-structure residual overlay",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why choosing a conic because its picture resembles the object without checking the defining geometric property leads to a false conclusion.",
       "learnerOutcome": "Construct and critique conic models in reflection, orbit, architecture, and navigation settings.",
+      "mathematicalClaim": "A parabolic reflector’s focal distance follows from width and depth. Ellipse foci explain whispering-gallery paths, and hyperbolic differences support navigation methods.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "valid-copy-2",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "A parabolic reflector’s focal distance follows from width and depth. Ellipse foci explain whispering-gallery paths, and hyperbolic differences support navigation methods.",
+        "invalidOrExcludedState": "A common error is choosing a conic because its picture resembles the object without checking the defining geometric property."
+      },
+      "visibleRelationships": [
+        "Real structures approximate ideal conics over selected regions. Materials, loading, thickness, measurement error, and three-dimensional effects limit the model. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "Real structures approximate ideal conics over selected regions. Materials, loading, thickness, measurement error, and three-dimensional effects limit the model."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is choosing a conic because its picture resembles the object without checking the defining geometric property.",
+        "The figure must not contradict this claim: A parabolic reflector’s focal distance follows from width and depth. Ellipse foci explain whispering-gallery paths, and hyperbolic differences support navigation methods."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why choosing a conic because its picture resembles the object without checking the defining geometric property leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why choosing a conic because its picture resembles the object without checking the defining geometric property leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -750,7 +4547,39 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "valid-copy-2",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     }
   ]
 }

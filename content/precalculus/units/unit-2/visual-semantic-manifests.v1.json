@@ -10,17 +10,109 @@
       "title": "Quantity dependency map",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The fixed fee and hourly rate have different parameter meanings.",
       "learnerOutcome": "Identify the input, output, parameters, and units in a quantitative relationship and explain how the quantities depend on one another.",
+      "mathematicalClaim": "C(h)=18+7h dollars.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "rental-cost",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "fixed-fee",
+          "kind": "closed-point"
+        },
+        {
+          "id": "one-hour",
+          "kind": "closed-point"
+        },
+        {
+          "id": "rate-rise",
+          "kind": "segment"
+        },
+        {
+          "id": "formula",
+          "kind": "label"
+        },
+        {
+          "id": "meaning",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "formula",
+          "meaning"
+        ],
+        "coordinateVariables": [
+          "x",
+          "y"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": -0.5,
+          "xMax": 6.5,
+          "yMin": 0,
+          "yMax": 68,
+          "aspectRatio": 1.72,
+          "padding": 0.065
+        },
+        "validStructure": "The same symbol can play different roles in different models; the context determines whether it is input, output, or parameter.",
+        "invalidOrExcludedState": "A frequent error is manipulating symbols before defining what they measure."
+      },
+      "visibleRelationships": [
+        "The fixed fee and hourly rate have different parameter meanings.",
+        "Define every quantity and unit, identify the direction of dependency, and check that terms combined in a formula have compatible units."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is manipulating symbols before defining what they measure.",
+        "The figure must not contradict this claim: C(h)=18+7h dollars."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The fixed fee and hourly rate have different parameter meanings.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The fixed fee and hourly rate have different parameter meanings. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
-        "function",
-        "left-point",
-        "vertex",
-        "right-point",
-        "domain-guide",
-        "reading",
-        "result"
+        "rental-cost",
+        "fixed-fee",
+        "one-hour",
+        "rate-rise",
+        "formula",
+        "meaning"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "rental-cost",
+            "fixed-fee",
+            "one-hour",
+            "rate-rise",
+            "formula",
+            "meaning"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u2-l1-v2",
@@ -30,6 +122,147 @@
       "title": "Parameter family graph",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for quantities, variables, and dependency.",
       "learnerOutcome": "Identify the input, output, parameters, and units in a quantitative relationship and explain how the quantities depend on one another.",
+      "mathematicalClaim": "Define every quantity and unit, identify the direction of dependency, and check that terms combined in a formula have compatible units.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-3",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-4",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-4",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "number-copy-4",
+          "step-copy-4",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "The same symbol can play different roles in different models; the context determines whether it is input, output, or parameter.",
+        "invalidOrExcludedState": "A frequent error is manipulating symbols before defining what they measure."
+      },
+      "visibleRelationships": [
+        "The fixed fee and hourly rate have different parameter meanings.",
+        "Define every quantity and unit, identify the direction of dependency, and check that terms combined in a formula have compatible units."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is manipulating symbols before defining what they measure.",
+        "The figure must not contradict this claim: Define every quantity and unit, identify the direction of dependency, and check that terms combined in a formula have compatible units."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for quantities, variables, and dependency.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for quantities, variables, and dependency. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -55,7 +288,48 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "arrow-3",
+            "step-4",
+            "number-4",
+            "number-copy-4",
+            "step-copy-4",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u2-l1-v3",
@@ -65,6 +339,108 @@
       "title": "Unit consistency ledger",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why manipulating symbols before defining what they measure leads to a false conclusion.",
       "learnerOutcome": "Identify the input, output, parameters, and units in a quantitative relationship and explain how the quantities depend on one another.",
+      "mathematicalClaim": "The same symbol can play different roles in different models; the context determines whether it is input, output, or parameter.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "valid-copy-2",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "The same symbol can play different roles in different models; the context determines whether it is input, output, or parameter.",
+        "invalidOrExcludedState": "A frequent error is manipulating symbols before defining what they measure."
+      },
+      "visibleRelationships": [
+        "The fixed fee and hourly rate have different parameter meanings.",
+        "Define every quantity and unit, identify the direction of dependency, and check that terms combined in a formula have compatible units."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is manipulating symbols before defining what they measure.",
+        "The figure must not contradict this claim: The same symbol can play different roles in different models; the context determines whether it is input, output, or parameter."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why manipulating symbols before defining what they measure leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why manipulating symbols before defining what they measure leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -81,7 +457,39 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "valid-copy-2",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u2-l2-v1",
@@ -91,6 +499,155 @@
       "title": "Mapping comparison",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Repeated output 5 is allowed.",
       "learnerOutcome": "Determine whether a relation is a function by applying the rule that each allowed input has exactly one output.",
+      "mathematicalClaim": "Yes. Every input has one output.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "inputs",
+          "kind": "label"
+        },
+        {
+          "id": "outputs",
+          "kind": "label"
+        },
+        {
+          "id": "input-spine",
+          "kind": "segment"
+        },
+        {
+          "id": "output-spine",
+          "kind": "segment"
+        },
+        {
+          "id": "input-0",
+          "kind": "closed-point"
+        },
+        {
+          "id": "input-label-0",
+          "kind": "label"
+        },
+        {
+          "id": "input-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "input-label-1",
+          "kind": "label"
+        },
+        {
+          "id": "input-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "input-label-2",
+          "kind": "label"
+        },
+        {
+          "id": "input-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "input-label-3",
+          "kind": "label"
+        },
+        {
+          "id": "output-0",
+          "kind": "closed-point"
+        },
+        {
+          "id": "output-label-0",
+          "kind": "label"
+        },
+        {
+          "id": "output-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "output-label-1",
+          "kind": "label"
+        },
+        {
+          "id": "output-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "output-label-2",
+          "kind": "label"
+        },
+        {
+          "id": "mapping-0",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "mapping-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "mapping-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "mapping-3",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "repeat-note",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "inputs",
+          "outputs",
+          "input-label-0",
+          "input-label-1",
+          "input-label-2",
+          "input-label-3",
+          "output-label-0",
+          "output-label-1",
+          "output-label-2",
+          "repeat-note"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "The function condition applies only to inputs in the domain. One-to-one behavior is a separate stronger property.",
+        "invalidOrExcludedState": "A frequent error is rejecting a many-to-one function because an output repeats."
+      },
+      "visibleRelationships": [
+        "Repeated output 5 is allowed.",
+        "Check repeated inputs in a table, outgoing arrows in a mapping, vertical intersections in a graph, or the rule stated by a context."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is rejecting a many-to-one function because an output repeats.",
+        "The figure must not contradict this claim: Yes. Every input has one output."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Repeated output 5 is allowed.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Repeated output 5 is allowed. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "inputs",
@@ -118,7 +675,50 @@
         "repeat-note"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "inputs",
+            "outputs",
+            "input-spine",
+            "output-spine",
+            "input-0",
+            "input-label-0",
+            "input-1",
+            "input-label-1",
+            "input-2",
+            "input-label-2",
+            "input-3",
+            "input-label-3",
+            "output-0",
+            "output-label-0",
+            "output-1",
+            "output-label-1",
+            "output-2",
+            "output-label-2",
+            "mapping-0",
+            "mapping-1",
+            "mapping-2",
+            "mapping-3",
+            "repeat-note"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u2-l2-v2",
@@ -128,6 +728,147 @@
       "title": "Vertical-line derivation",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for relations and functions.",
       "learnerOutcome": "Determine whether a relation is a function by applying the rule that each allowed input has exactly one output.",
+      "mathematicalClaim": "Check repeated inputs in a table, outgoing arrows in a mapping, vertical intersections in a graph, or the rule stated by a context.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-3",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-4",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-4",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "number-copy-4",
+          "step-copy-4",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "The function condition applies only to inputs in the domain. One-to-one behavior is a separate stronger property.",
+        "invalidOrExcludedState": "A frequent error is rejecting a many-to-one function because an output repeats."
+      },
+      "visibleRelationships": [
+        "Repeated output 5 is allowed.",
+        "Check repeated inputs in a table, outgoing arrows in a mapping, vertical intersections in a graph, or the rule stated by a context."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is rejecting a many-to-one function because an output repeats.",
+        "The figure must not contradict this claim: Check repeated inputs in a table, outgoing arrows in a mapping, vertical intersections in a graph, or the rule stated by a context."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for relations and functions.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for relations and functions. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -153,7 +894,48 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "arrow-3",
+            "step-4",
+            "number-4",
+            "number-copy-4",
+            "step-copy-4",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u2-l2-v3",
@@ -163,6 +945,103 @@
       "title": "Discrete and continuous functions",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why rejecting a many-to-one function because an output repeats leads to a false conclusion.",
       "learnerOutcome": "Determine whether a relation is a function by applying the rule that each allowed input has exactly one output.",
+      "mathematicalClaim": "The function condition applies only to inputs in the domain. One-to-one behavior is a separate stronger property.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "The function condition applies only to inputs in the domain. One-to-one behavior is a separate stronger property.",
+        "invalidOrExcludedState": "A frequent error is rejecting a many-to-one function because an output repeats."
+      },
+      "visibleRelationships": [
+        "Repeated output 5 is allowed.",
+        "Check repeated inputs in a table, outgoing arrows in a mapping, vertical intersections in a graph, or the rule stated by a context."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is rejecting a many-to-one function because an output repeats.",
+        "The figure must not contradict this claim: The function condition applies only to inputs in the domain. One-to-one behavior is a separate stronger property."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why rejecting a many-to-one function because an output repeats leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why rejecting a many-to-one function because an output repeats leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -178,7 +1057,38 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u2-l3-v1",
@@ -188,6 +1098,78 @@
       "title": "Vertical versus horizontal tracing",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Parentheses preserve the negative input.",
       "learnerOutcome": "Use function notation accurately and distinguish finding an output from finding inputs that produce a chosen output.",
+      "mathematicalClaim": "14.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "function",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "left-point",
+          "kind": "closed-point"
+        },
+        {
+          "id": "vertex",
+          "kind": "closed-point"
+        },
+        {
+          "id": "right-point",
+          "kind": "closed-point"
+        },
+        {
+          "id": "domain-guide",
+          "kind": "segment"
+        },
+        {
+          "id": "reading",
+          "kind": "label"
+        },
+        {
+          "id": "result",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "reading",
+          "result"
+        ],
+        "coordinateVariables": [
+          "x",
+          "y"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": -3.4,
+          "xMax": 3.4,
+          "yMin": -2,
+          "yMax": 8,
+          "aspectRatio": 1.72,
+          "padding": 0.065
+        },
+        "validStructure": "A function produces at most one output for an allowed input, but a fixed output may have several inputs.",
+        "invalidOrExcludedState": "A frequent error is confusing f(a) with the equation f(x)=a."
+      },
+      "visibleRelationships": [
+        "Parentheses preserve the negative input.",
+        "Substitute the entire input with parentheses or trace the input through a table or graph. For f(x)=k, solve for every preimage."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is confusing f(a) with the equation f(x)=a.",
+        "The figure must not contradict this claim: 14."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Parentheses preserve the negative input.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Parentheses preserve the negative input. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "function",
         "left-point",
@@ -198,7 +1180,33 @@
         "result"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "function",
+            "left-point",
+            "vertex",
+            "right-point",
+            "domain-guide",
+            "reading",
+            "result"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u2-l3-v2",
@@ -208,6 +1216,125 @@
       "title": "Substitution grouping",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for function notation, evaluation, and solving.",
       "learnerOutcome": "Use function notation accurately and distinguish finding an output from finding inputs that produce a chosen output.",
+      "mathematicalClaim": "Substitute the entire input with parentheses or trace the input through a table or graph. For f(x)=k, solve for every preimage.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "A function produces at most one output for an allowed input, but a fixed output may have several inputs.",
+        "invalidOrExcludedState": "A frequent error is confusing f(a) with the equation f(x)=a."
+      },
+      "visibleRelationships": [
+        "Parentheses preserve the negative input.",
+        "Substitute the entire input with parentheses or trace the input through a table or graph. For f(x)=k, solve for every preimage."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is confusing f(a) with the equation f(x)=a.",
+        "The figure must not contradict this claim: Substitute the entire input with parentheses or trace the input through a table or graph. For f(x)=k, solve for every preimage."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for function notation, evaluation, and solving.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for function notation, evaluation, and solving. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -228,7 +1355,43 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u2-l3-v3",
@@ -238,6 +1401,103 @@
       "title": "Preimage set",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why confusing f(a) with the equation f(x)=a leads to a false conclusion.",
       "learnerOutcome": "Use function notation accurately and distinguish finding an output from finding inputs that produce a chosen output.",
+      "mathematicalClaim": "A function produces at most one output for an allowed input, but a fixed output may have several inputs.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "A function produces at most one output for an allowed input, but a fixed output may have several inputs.",
+        "invalidOrExcludedState": "A frequent error is confusing f(a) with the equation f(x)=a."
+      },
+      "visibleRelationships": [
+        "Parentheses preserve the negative input.",
+        "Substitute the entire input with parentheses or trace the input through a table or graph. For f(x)=k, solve for every preimage."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is confusing f(a) with the equation f(x)=a.",
+        "The figure must not contradict this claim: A function produces at most one output for an allowed input, but a fixed output may have several inputs."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why confusing f(a) with the equation f(x)=a leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why confusing f(a) with the equation f(x)=a leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -253,7 +1513,38 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u2-l4-v1",
@@ -263,6 +1554,78 @@
       "title": "Four-representation dashboard",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Constant first differences support the candidate.",
       "learnerOutcome": "Translate a function relationship among verbal, tabular, graphical, and algebraic representations while preserving quantities, units, and domain.",
+      "mathematicalClaim": "A linear candidate is f(x)=3x+5.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "function",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "left-point",
+          "kind": "closed-point"
+        },
+        {
+          "id": "vertex",
+          "kind": "closed-point"
+        },
+        {
+          "id": "right-point",
+          "kind": "closed-point"
+        },
+        {
+          "id": "domain-guide",
+          "kind": "segment"
+        },
+        {
+          "id": "reading",
+          "kind": "label"
+        },
+        {
+          "id": "result",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "reading",
+          "result"
+        ],
+        "coordinateVariables": [
+          "x",
+          "y"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": -3.4,
+          "xMax": 3.4,
+          "yMin": -2,
+          "yMax": 8,
+          "aspectRatio": 1.72,
+          "padding": 0.065
+        },
+        "validStructure": "Connecting data points claims that intermediate inputs are meaningful, and fitting a formula does not make it an exact law.",
+        "invalidOrExcludedState": "A frequent error is inventing continuity or a unique formula from a small table."
+      },
+      "visibleRelationships": [
+        "Constant first differences support the candidate.",
+        "Translate one representation at a time while preserving input, output, units, and domain; then verify agreement at shared values."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is inventing continuity or a unique formula from a small table.",
+        "The figure must not contradict this claim: A linear candidate is f(x)=3x+5."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Constant first differences support the candidate.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Constant first differences support the candidate. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "function",
         "left-point",
@@ -273,7 +1636,33 @@
         "result"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "function",
+            "left-point",
+            "vertex",
+            "right-point",
+            "domain-guide",
+            "reading",
+            "result"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u2-l4-v2",
@@ -283,6 +1672,147 @@
       "title": "Discrete versus continuous connection",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for words, tables, graphs, and formulas.",
       "learnerOutcome": "Translate a function relationship among verbal, tabular, graphical, and algebraic representations while preserving quantities, units, and domain.",
+      "mathematicalClaim": "Translate one representation at a time while preserving input, output, units, and domain; then verify agreement at shared values.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-3",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-4",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-4",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "number-copy-4",
+          "step-copy-4",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Connecting data points claims that intermediate inputs are meaningful, and fitting a formula does not make it an exact law.",
+        "invalidOrExcludedState": "A frequent error is inventing continuity or a unique formula from a small table."
+      },
+      "visibleRelationships": [
+        "Constant first differences support the candidate.",
+        "Translate one representation at a time while preserving input, output, units, and domain; then verify agreement at shared values."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is inventing continuity or a unique formula from a small table.",
+        "The figure must not contradict this claim: Translate one representation at a time while preserving input, output, units, and domain; then verify agreement at shared values."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for words, tables, graphs, and formulas.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for words, tables, graphs, and formulas. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -308,7 +1838,48 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "arrow-3",
+            "step-4",
+            "number-4",
+            "number-copy-4",
+            "step-copy-4",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u2-l4-v3",
@@ -318,6 +1889,108 @@
       "title": "Exact rule versus fitted model",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why inventing continuity or a unique formula from a small table leads to a false conclusion.",
       "learnerOutcome": "Translate a function relationship among verbal, tabular, graphical, and algebraic representations while preserving quantities, units, and domain.",
+      "mathematicalClaim": "Connecting data points claims that intermediate inputs are meaningful, and fitting a formula does not make it an exact law.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "valid-copy-2",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Connecting data points claims that intermediate inputs are meaningful, and fitting a formula does not make it an exact law.",
+        "invalidOrExcludedState": "A frequent error is inventing continuity or a unique formula from a small table."
+      },
+      "visibleRelationships": [
+        "Constant first differences support the candidate.",
+        "Translate one representation at a time while preserving input, output, units, and domain; then verify agreement at shared values."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is inventing continuity or a unique formula from a small table.",
+        "The figure must not contradict this claim: Connecting data points claims that intermediate inputs are meaningful, and fitting a formula does not make it an exact law."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why inventing continuity or a unique formula from a small table leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why inventing continuity or a unique formula from a small table leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -334,7 +2007,39 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "valid-copy-2",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u2-l5-v1",
@@ -344,6 +2049,78 @@
       "title": "Restriction icons",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The logarithm and denominator-root conditions are intersected.",
       "learnerOutcome": "Determine the real domain of a function by combining denominator, even-root, logarithm, and composition restrictions.",
+      "mathematicalClaim": "x>1.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "function",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "left-point",
+          "kind": "closed-point"
+        },
+        {
+          "id": "vertex",
+          "kind": "closed-point"
+        },
+        {
+          "id": "right-point",
+          "kind": "closed-point"
+        },
+        {
+          "id": "domain-guide",
+          "kind": "segment"
+        },
+        {
+          "id": "reading",
+          "kind": "label"
+        },
+        {
+          "id": "result",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "reading",
+          "result"
+        ],
+        "coordinateVariables": [
+          "x",
+          "y"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": -3.4,
+          "xMax": 3.4,
+          "yMin": -2,
+          "yMax": 8,
+          "aspectRatio": 1.72,
+          "padding": 0.065
+        },
+        "validStructure": "A square root in a denominator requires a strictly positive radicand, while an ordinary square root allows zero.",
+        "invalidOrExcludedState": "A frequent error is checking only one restriction or using the simplified formula's larger domain."
+      },
+      "visibleRelationships": [
+        "The logarithm and denominator-root conditions are intersected.",
+        "Write each restriction separately, solve it, intersect the solution sets, and retain exclusions hidden by cancellation."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is checking only one restriction or using the simplified formula's larger domain.",
+        "The figure must not contradict this claim: x>1."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The logarithm and denominator-root conditions are intersected.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The logarithm and denominator-root conditions are intersected. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "function",
         "left-point",
@@ -354,7 +2131,33 @@
         "result"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "function",
+            "left-point",
+            "vertex",
+            "right-point",
+            "domain-guide",
+            "reading",
+            "result"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u2-l5-v2",
@@ -364,6 +2167,147 @@
       "title": "Condition intersection",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for domain from formulas.",
       "learnerOutcome": "Determine the real domain of a function by combining denominator, even-root, logarithm, and composition restrictions.",
+      "mathematicalClaim": "Write each restriction separately, solve it, intersect the solution sets, and retain exclusions hidden by cancellation.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-3",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-4",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-4",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "number-copy-4",
+          "step-copy-4",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "A square root in a denominator requires a strictly positive radicand, while an ordinary square root allows zero.",
+        "invalidOrExcludedState": "A frequent error is checking only one restriction or using the simplified formula's larger domain."
+      },
+      "visibleRelationships": [
+        "The logarithm and denominator-root conditions are intersected.",
+        "Write each restriction separately, solve it, intersect the solution sets, and retain exclusions hidden by cancellation."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is checking only one restriction or using the simplified formula's larger domain.",
+        "The figure must not contradict this claim: Write each restriction separately, solve it, intersect the solution sets, and retain exclusions hidden by cancellation."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for domain from formulas.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for domain from formulas. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -389,7 +2333,48 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "arrow-3",
+            "step-4",
+            "number-4",
+            "number-copy-4",
+            "step-copy-4",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u2-l5-v3",
@@ -399,6 +2384,108 @@
       "title": "Retained hole",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why checking only one restriction or using the simplified formula's larger domain leads to a false conclusion.",
       "learnerOutcome": "Determine the real domain of a function by combining denominator, even-root, logarithm, and composition restrictions.",
+      "mathematicalClaim": "A square root in a denominator requires a strictly positive radicand, while an ordinary square root allows zero.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "valid-copy-2",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "A square root in a denominator requires a strictly positive radicand, while an ordinary square root allows zero.",
+        "invalidOrExcludedState": "A frequent error is checking only one restriction or using the simplified formula's larger domain."
+      },
+      "visibleRelationships": [
+        "The logarithm and denominator-root conditions are intersected.",
+        "Write each restriction separately, solve it, intersect the solution sets, and retain exclusions hidden by cancellation."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is checking only one restriction or using the simplified formula's larger domain.",
+        "The figure must not contradict this claim: A square root in a denominator requires a strictly positive radicand, while an ordinary square root allows zero."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why checking only one restriction or using the simplified formula's larger domain leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why checking only one restriction or using the simplified formula's larger domain leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -415,7 +2502,39 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "valid-copy-2",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u2-l6-v1",
@@ -425,6 +2544,78 @@
       "title": "Nested domains",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Ticket count is discrete and capacity bounded.",
       "learnerOutcome": "Distinguish the algebraic domain of a formula from the inputs that are meaningful in a model.",
+      "mathematicalClaim": "n is an integer from 0 through 240.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "function",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "left-point",
+          "kind": "closed-point"
+        },
+        {
+          "id": "vertex",
+          "kind": "closed-point"
+        },
+        {
+          "id": "right-point",
+          "kind": "closed-point"
+        },
+        {
+          "id": "domain-guide",
+          "kind": "segment"
+        },
+        {
+          "id": "reading",
+          "kind": "label"
+        },
+        {
+          "id": "result",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "reading",
+          "result"
+        ],
+        "coordinateVariables": [
+          "x",
+          "y"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": -3.4,
+          "xMax": 3.4,
+          "yMin": -2,
+          "yMax": 8,
+          "aspectRatio": 1.72,
+          "padding": 0.065
+        },
+        "validStructure": "Extrapolation outside observed inputs is an additional assumption even when the formula continues.",
+        "invalidOrExcludedState": "A frequent error is reporting all real numbers for a model involving time, length, population, or counts."
+      },
+      "visibleRelationships": [
+        "Ticket count is discrete and capacity bounded.",
+        "Begin with the algebraic domain, then apply nonnegativity, capacity, integer, safety, time-window, and evidence-range restrictions."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is reporting all real numbers for a model involving time, length, population, or counts.",
+        "The figure must not contradict this claim: n is an integer from 0 through 240."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Ticket count is discrete and capacity bounded.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Ticket count is discrete and capacity bounded. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "function",
         "left-point",
@@ -435,7 +2626,33 @@
         "result"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "function",
+            "left-point",
+            "vertex",
+            "right-point",
+            "domain-guide",
+            "reading",
+            "result"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u2-l6-v2",
@@ -445,6 +2662,147 @@
       "title": "Discrete versus continuous domains",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for domain from context.",
       "learnerOutcome": "Distinguish the algebraic domain of a formula from the inputs that are meaningful in a model.",
+      "mathematicalClaim": "Begin with the algebraic domain, then apply nonnegativity, capacity, integer, safety, time-window, and evidence-range restrictions.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-3",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-4",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-4",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "number-copy-4",
+          "step-copy-4",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Extrapolation outside observed inputs is an additional assumption even when the formula continues.",
+        "invalidOrExcludedState": "A frequent error is reporting all real numbers for a model involving time, length, population, or counts."
+      },
+      "visibleRelationships": [
+        "Ticket count is discrete and capacity bounded.",
+        "Begin with the algebraic domain, then apply nonnegativity, capacity, integer, safety, time-window, and evidence-range restrictions."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is reporting all real numbers for a model involving time, length, population, or counts.",
+        "The figure must not contradict this claim: Begin with the algebraic domain, then apply nonnegativity, capacity, integer, safety, time-window, and evidence-range restrictions."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for domain from context.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for domain from context. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -470,7 +2828,48 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "arrow-3",
+            "step-4",
+            "number-4",
+            "number-copy-4",
+            "step-copy-4",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u2-l6-v3",
@@ -480,6 +2879,108 @@
       "title": "Extrapolation warning",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why reporting all real numbers for a model involving time, length, population, or counts leads to a false conclusion.",
       "learnerOutcome": "Distinguish the algebraic domain of a formula from the inputs that are meaningful in a model.",
+      "mathematicalClaim": "Extrapolation outside observed inputs is an additional assumption even when the formula continues.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "valid-copy-2",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Extrapolation outside observed inputs is an additional assumption even when the formula continues.",
+        "invalidOrExcludedState": "A frequent error is reporting all real numbers for a model involving time, length, population, or counts."
+      },
+      "visibleRelationships": [
+        "Ticket count is discrete and capacity bounded.",
+        "Begin with the algebraic domain, then apply nonnegativity, capacity, integer, safety, time-window, and evidence-range restrictions."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is reporting all real numbers for a model involving time, length, population, or counts.",
+        "The figure must not contradict this claim: Extrapolation outside observed inputs is an additional assumption even when the formula continues."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why reporting all real numbers for a model involving time, length, population, or counts leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why reporting all real numbers for a model involving time, length, population, or counts leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -496,7 +2997,39 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "valid-copy-2",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u2-l7-v1",
@@ -506,6 +3039,78 @@
       "title": "Domain-range projections",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The bracket records the attained minimum.",
       "learnerOutcome": "Read range, intercepts, extrema, boundedness, symmetry, and intervals of increase or decrease from a graph.",
+      "mathematicalClaim": "Range [-3,∞).",
+      "requiredMathematicalObjects": [
+        {
+          "id": "function",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "left-point",
+          "kind": "closed-point"
+        },
+        {
+          "id": "vertex",
+          "kind": "closed-point"
+        },
+        {
+          "id": "right-point",
+          "kind": "closed-point"
+        },
+        {
+          "id": "domain-guide",
+          "kind": "segment"
+        },
+        {
+          "id": "reading",
+          "kind": "label"
+        },
+        {
+          "id": "result",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "reading",
+          "result"
+        ],
+        "coordinateVariables": [
+          "x",
+          "y"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": -3.4,
+          "xMax": 3.4,
+          "yMin": -2,
+          "yMax": 8,
+          "aspectRatio": 1.72,
+          "padding": 0.065
+        },
+        "validStructure": "Open endpoints, arrows, asymptotes, and missing points affect whether boundary values belong to the range.",
+        "invalidOrExcludedState": "A frequent error is writing outputs as intervals of increase or calling every local peak an absolute maximum."
+      },
+      "visibleRelationships": [
+        "The bracket records the attained minimum.",
+        "Project onto the axes for domain and range, label intercepts as points, and report increase or decrease intervals with input values."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is writing outputs as intervals of increase or calling every local peak an absolute maximum.",
+        "The figure must not contradict this claim: Range [-3,∞)."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The bracket records the attained minimum.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The bracket records the attained minimum. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "function",
         "left-point",
@@ -516,7 +3121,33 @@
         "result"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "function",
+            "left-point",
+            "vertex",
+            "right-point",
+            "domain-guide",
+            "reading",
+            "result"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u2-l7-v2",
@@ -526,6 +3157,147 @@
       "title": "Behavior intervals",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for range and global graph behavior.",
       "learnerOutcome": "Read range, intercepts, extrema, boundedness, symmetry, and intervals of increase or decrease from a graph.",
+      "mathematicalClaim": "Project onto the axes for domain and range, label intercepts as points, and report increase or decrease intervals with input values.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-3",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-4",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-4",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "number-copy-4",
+          "step-copy-4",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Open endpoints, arrows, asymptotes, and missing points affect whether boundary values belong to the range.",
+        "invalidOrExcludedState": "A frequent error is writing outputs as intervals of increase or calling every local peak an absolute maximum."
+      },
+      "visibleRelationships": [
+        "The bracket records the attained minimum.",
+        "Project onto the axes for domain and range, label intercepts as points, and report increase or decrease intervals with input values."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is writing outputs as intervals of increase or calling every local peak an absolute maximum.",
+        "The figure must not contradict this claim: Project onto the axes for domain and range, label intercepts as points, and report increase or decrease intervals with input values."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for range and global graph behavior.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for range and global graph behavior. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -551,7 +3323,48 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "arrow-3",
+            "step-4",
+            "number-4",
+            "number-copy-4",
+            "step-copy-4",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u2-l7-v3",
@@ -561,6 +3374,108 @@
       "title": "Local versus absolute extrema",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why writing outputs as intervals of increase or calling every local peak an absolute maximum leads to a false conclusion.",
       "learnerOutcome": "Read range, intercepts, extrema, boundedness, symmetry, and intervals of increase or decrease from a graph.",
+      "mathematicalClaim": "Open endpoints, arrows, asymptotes, and missing points affect whether boundary values belong to the range.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "valid-copy-2",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Open endpoints, arrows, asymptotes, and missing points affect whether boundary values belong to the range.",
+        "invalidOrExcludedState": "A frequent error is writing outputs as intervals of increase or calling every local peak an absolute maximum."
+      },
+      "visibleRelationships": [
+        "The bracket records the attained minimum.",
+        "Project onto the axes for domain and range, label intercepts as points, and report increase or decrease intervals with input values."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is writing outputs as intervals of increase or calling every local peak an absolute maximum.",
+        "The figure must not contradict this claim: Open endpoints, arrows, asymptotes, and missing points affect whether boundary values belong to the range."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why writing outputs as intervals of increase or calling every local peak an absolute maximum leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why writing outputs as intervals of increase or calling every local peak an absolute maximum leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -577,7 +3492,39 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "valid-copy-2",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u2-l8-v1",
@@ -587,6 +3534,78 @@
       "title": "Piecewise rule selector",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The boundary belongs to the second rule.",
       "learnerOutcome": "Evaluate, graph, and interpret functions that use different rules on different parts of the domain.",
+      "mathematicalClaim": "-1,1,4.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "function",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "left-point",
+          "kind": "closed-point"
+        },
+        {
+          "id": "vertex",
+          "kind": "closed-point"
+        },
+        {
+          "id": "right-point",
+          "kind": "closed-point"
+        },
+        {
+          "id": "domain-guide",
+          "kind": "segment"
+        },
+        {
+          "id": "reading",
+          "kind": "label"
+        },
+        {
+          "id": "result",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "reading",
+          "result"
+        ],
+        "coordinateVariables": [
+          "x",
+          "y"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": -3.4,
+          "xMax": 3.4,
+          "yMin": -2,
+          "yMax": 8,
+          "aspectRatio": 1.72,
+          "padding": 0.065
+        },
+        "validStructure": "At a boundary, continuity requires both one-sided behaviors and the defined value to agree.",
+        "invalidOrExcludedState": "A frequent error is evaluating every formula or including both boundary points."
+      },
+      "visibleRelationships": [
+        "The boundary belongs to the second rule.",
+        "Locate the input interval first, evaluate with that rule, and graph each restricted piece with correct open or closed endpoints."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is evaluating every formula or including both boundary points.",
+        "The figure must not contradict this claim: -1,1,4."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The boundary belongs to the second rule.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The boundary belongs to the second rule. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "function",
         "left-point",
@@ -597,7 +3616,33 @@
         "result"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "function",
+            "left-point",
+            "vertex",
+            "right-point",
+            "domain-guide",
+            "reading",
+            "result"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u2-l8-v2",
@@ -607,6 +3652,125 @@
       "title": "Endpoint gallery",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for piecewise-defined functions.",
       "learnerOutcome": "Evaluate, graph, and interpret functions that use different rules on different parts of the domain.",
+      "mathematicalClaim": "Locate the input interval first, evaluate with that rule, and graph each restricted piece with correct open or closed endpoints.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "At a boundary, continuity requires both one-sided behaviors and the defined value to agree.",
+        "invalidOrExcludedState": "A frequent error is evaluating every formula or including both boundary points."
+      },
+      "visibleRelationships": [
+        "The boundary belongs to the second rule.",
+        "Locate the input interval first, evaluate with that rule, and graph each restricted piece with correct open or closed endpoints."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is evaluating every formula or including both boundary points.",
+        "The figure must not contradict this claim: Locate the input interval first, evaluate with that rule, and graph each restricted piece with correct open or closed endpoints."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for piecewise-defined functions.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for piecewise-defined functions. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -627,7 +3791,43 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u2-l8-v3",
@@ -637,6 +3837,103 @@
       "title": "Boundary behavior comparison",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why evaluating every formula or including both boundary points leads to a false conclusion.",
       "learnerOutcome": "Evaluate, graph, and interpret functions that use different rules on different parts of the domain.",
+      "mathematicalClaim": "At a boundary, continuity requires both one-sided behaviors and the defined value to agree.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "At a boundary, continuity requires both one-sided behaviors and the defined value to agree.",
+        "invalidOrExcludedState": "A frequent error is evaluating every formula or including both boundary points."
+      },
+      "visibleRelationships": [
+        "The boundary belongs to the second rule.",
+        "Locate the input interval first, evaluate with that rule, and graph each restricted piece with correct open or closed endpoints."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is evaluating every formula or including both boundary points.",
+        "The figure must not contradict this claim: At a boundary, continuity requires both one-sided behaviors and the defined value to agree."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why evaluating every formula or including both boundary points leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why evaluating every formula or including both boundary points leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -652,7 +3949,38 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u2-l9-v1",
@@ -662,6 +3990,78 @@
       "title": "Movable secant",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The secant rises 15 over a run of 3.",
       "learnerOutcome": "Calculate and interpret average rate of change as output change per input change and as the slope of a secant line.",
+      "mathematicalClaim": "5.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "function",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "left-point",
+          "kind": "closed-point"
+        },
+        {
+          "id": "vertex",
+          "kind": "closed-point"
+        },
+        {
+          "id": "right-point",
+          "kind": "closed-point"
+        },
+        {
+          "id": "domain-guide",
+          "kind": "segment"
+        },
+        {
+          "id": "reading",
+          "kind": "label"
+        },
+        {
+          "id": "result",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "reading",
+          "result"
+        ],
+        "coordinateVariables": [
+          "x",
+          "y"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": -3.4,
+          "xMax": 3.4,
+          "yMin": -2,
+          "yMax": 8,
+          "aspectRatio": 1.72,
+          "padding": 0.065
+        },
+        "validStructure": "The inputs must be distinct, and the rate summarizes the interval rather than every interior moment.",
+        "invalidOrExcludedState": "A frequent error is reversing only one difference or omitting units."
+      },
+      "visibleRelationships": [
+        "The secant rises 15 over a run of 3.",
+        "Evaluate both endpoints, subtract in matching order, simplify, attach compound units, and interpret the sign over the interval."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is reversing only one difference or omitting units.",
+        "The figure must not contradict this claim: 5."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The secant rises 15 over a run of 3.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The secant rises 15 over a run of 3. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "function",
         "left-point",
@@ -672,7 +4072,33 @@
         "result"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "function",
+            "left-point",
+            "vertex",
+            "right-point",
+            "domain-guide",
+            "reading",
+            "result"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u2-l9-v2",
@@ -682,6 +4108,147 @@
       "title": "Same average, different paths",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for average rate of change.",
       "learnerOutcome": "Calculate and interpret average rate of change as output change per input change and as the slope of a secant line.",
+      "mathematicalClaim": "Evaluate both endpoints, subtract in matching order, simplify, attach compound units, and interpret the sign over the interval.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-3",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-4",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-4",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "number-copy-4",
+          "step-copy-4",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "The inputs must be distinct, and the rate summarizes the interval rather than every interior moment.",
+        "invalidOrExcludedState": "A frequent error is reversing only one difference or omitting units."
+      },
+      "visibleRelationships": [
+        "The secant rises 15 over a run of 3.",
+        "Evaluate both endpoints, subtract in matching order, simplify, attach compound units, and interpret the sign over the interval."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is reversing only one difference or omitting units.",
+        "The figure must not contradict this claim: Evaluate both endpoints, subtract in matching order, simplify, attach compound units, and interpret the sign over the interval."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for average rate of change.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for average rate of change. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -707,7 +4274,48 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "arrow-3",
+            "step-4",
+            "number-4",
+            "number-copy-4",
+            "step-copy-4",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u2-l9-v3",
@@ -717,6 +4325,103 @@
       "title": "Interval-dependent secants",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why reversing only one difference or omitting units leads to a false conclusion.",
       "learnerOutcome": "Calculate and interpret average rate of change as output change per input change and as the slope of a secant line.",
+      "mathematicalClaim": "The inputs must be distinct, and the rate summarizes the interval rather than every interior moment.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "The inputs must be distinct, and the rate summarizes the interval rather than every interior moment.",
+        "invalidOrExcludedState": "A frequent error is reversing only one difference or omitting units."
+      },
+      "visibleRelationships": [
+        "The secant rises 15 over a run of 3.",
+        "Evaluate both endpoints, subtract in matching order, simplify, attach compound units, and interpret the sign over the interval."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is reversing only one difference or omitting units.",
+        "The figure must not contradict this claim: The inputs must be distinct, and the rate summarizes the interval rather than every interior moment."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why reversing only one difference or omitting units leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why reversing only one difference or omitting units leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -732,7 +4437,38 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u2-l10-v1",
@@ -742,6 +4478,78 @@
       "title": "Modeling cycle",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The fixed fee and hourly rate are interpretable.",
       "learnerOutcome": "Construct, compare, and defend function representations while stating assumptions, domain, units, and limitations.",
+      "mathematicalClaim": "C(h)=40+25h.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "function",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "left-point",
+          "kind": "closed-point"
+        },
+        {
+          "id": "vertex",
+          "kind": "closed-point"
+        },
+        {
+          "id": "right-point",
+          "kind": "closed-point"
+        },
+        {
+          "id": "domain-guide",
+          "kind": "segment"
+        },
+        {
+          "id": "reading",
+          "kind": "label"
+        },
+        {
+          "id": "result",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "reading",
+          "result"
+        ],
+        "coordinateVariables": [
+          "x",
+          "y"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": -3.4,
+          "xMax": 3.4,
+          "yMin": -2,
+          "yMax": 8,
+          "aspectRatio": 1.72,
+          "padding": 0.065
+        },
+        "validStructure": "Interpolation and extrapolation must be distinguished, and causation requires evidence beyond correlation.",
+        "invalidOrExcludedState": "A frequent error is choosing the smoothest graph or highest fit statistic without checking meaning."
+      },
+      "visibleRelationships": [
+        "The fixed fee and hourly rate are interpretable.",
+        "Define quantities, choose a family, estimate parameters, state domain and assumptions, inspect residuals, and revise or reject when evidence disagrees."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is choosing the smoothest graph or highest fit statistic without checking meaning.",
+        "The figure must not contradict this claim: C(h)=40+25h."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The fixed fee and hourly rate are interpretable.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The fixed fee and hourly rate are interpretable. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "function",
         "left-point",
@@ -752,7 +4560,33 @@
         "result"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "function",
+            "left-point",
+            "vertex",
+            "right-point",
+            "domain-guide",
+            "reading",
+            "result"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u2-l10-v2",
@@ -762,6 +4596,147 @@
       "title": "Competing extrapolations",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for function representation and modeling studio.",
       "learnerOutcome": "Construct, compare, and defend function representations while stating assumptions, domain, units, and limitations.",
+      "mathematicalClaim": "Define quantities, choose a family, estimate parameters, state domain and assumptions, inspect residuals, and revise or reject when evidence disagrees.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-3",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-4",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-4",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "number-copy-4",
+          "step-copy-4",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Interpolation and extrapolation must be distinguished, and causation requires evidence beyond correlation.",
+        "invalidOrExcludedState": "A frequent error is choosing the smoothest graph or highest fit statistic without checking meaning."
+      },
+      "visibleRelationships": [
+        "The fixed fee and hourly rate are interpretable.",
+        "Define quantities, choose a family, estimate parameters, state domain and assumptions, inspect residuals, and revise or reject when evidence disagrees."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is choosing the smoothest graph or highest fit statistic without checking meaning.",
+        "The figure must not contradict this claim: Define quantities, choose a family, estimate parameters, state domain and assumptions, inspect residuals, and revise or reject when evidence disagrees."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for function representation and modeling studio.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for function representation and modeling studio. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -787,7 +4762,48 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "arrow-3",
+            "step-4",
+            "number-4",
+            "number-copy-4",
+            "step-copy-4",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u2-l10-v3",
@@ -797,6 +4813,108 @@
       "title": "Residual plot",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why choosing the smoothest graph or highest fit statistic without checking meaning leads to a false conclusion.",
       "learnerOutcome": "Construct, compare, and defend function representations while stating assumptions, domain, units, and limitations.",
+      "mathematicalClaim": "Interpolation and extrapolation must be distinguished, and causation requires evidence beyond correlation.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "valid-copy-2",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Interpolation and extrapolation must be distinguished, and causation requires evidence beyond correlation.",
+        "invalidOrExcludedState": "A frequent error is choosing the smoothest graph or highest fit statistic without checking meaning."
+      },
+      "visibleRelationships": [
+        "The fixed fee and hourly rate are interpretable.",
+        "Define quantities, choose a family, estimate parameters, state domain and assumptions, inspect residuals, and revise or reject when evidence disagrees."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is choosing the smoothest graph or highest fit statistic without checking meaning.",
+        "The figure must not contradict this claim: Interpolation and extrapolation must be distinguished, and causation requires evidence beyond correlation."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why choosing the smoothest graph or highest fit statistic without checking meaning leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why choosing the smoothest graph or highest fit statistic without checking meaning leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -813,7 +4931,39 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "valid-copy-2",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     }
   ]
 }

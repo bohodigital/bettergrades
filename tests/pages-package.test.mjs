@@ -127,28 +127,47 @@ test("Pages package contains the advanced Worker and static assets", async () =>
   );
 });
 
-test("Pages Worker serves both bounded Precalculus answer APIs", async () => {
+test("Pages Worker rejects wrong Precalculus attempts and reveals only after exact protected validation", async () => {
   const workerUrl = new URL(`../dist/pages/_worker.js?precalculus-test=${Date.now()}`, import.meta.url);
   const { default: worker } = await import(workerUrl);
-  const environment = { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } };
-  const attempt = "I distributed both sides and checked the resulting identity.";
+  const record = {
+    id: "precalculus-u1-l1-checkpoint",
+    answer: "Identity; all real numbers. Factorization: (x-2)(x-3); exclusion: x!=7; evaluation: -2.",
+    validation: { type: "exact_text" },
+  };
+  const environment = {
+    ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) },
+    PRECALCULUS_SOLUTIONS: { get: async (id) => id === record.id ? record : null },
+  };
+  const wrongAttempt = "I distributed both sides and checked the resulting identity.";
 
   const checkResponse = await worker.fetch(
     new Request("https://bettergrades.net/api/precalculus-course-check", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ id: "precalculus-u1-l1-checkpoint", answer: attempt }),
+      body: JSON.stringify({ id: record.id, answer: wrongAttempt }),
     }),
     environment,
   );
-  assert.equal(checkResponse.status, 200);
-  assert.equal((await checkResponse.json()).status, "uncertain");
+  assert.equal(checkResponse.status, 422);
+  assert.equal((await checkResponse.json()).status, "incorrect");
+
+  const lockedReveal = await worker.fetch(
+    new Request("https://bettergrades.net/api/precalculus-course-reveal", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ id: record.id, attempt: wrongAttempt }),
+    }),
+    environment,
+  );
+  assert.equal(lockedReveal.status, 403);
+  assert.equal(Object.hasOwn(await lockedReveal.json(), "answer"), false);
 
   const revealResponse = await worker.fetch(
     new Request("https://bettergrades.net/api/precalculus-course-reveal", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ id: "precalculus-u1-l1-checkpoint", attempt }),
+      body: JSON.stringify({ id: record.id, attempt: record.answer }),
     }),
     environment,
   );

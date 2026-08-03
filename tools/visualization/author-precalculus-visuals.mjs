@@ -231,6 +231,19 @@ function base(brief, scene) {
 }
 
 function readinessScene(brief) {
+  if (brief.lessonSequence === 1) {
+    return diagram([
+      label("title", 0.55, 6.45, "ROUTE EACH READINESS STRAND FROM ITS OWN EVIDENCE", "visual-primary"),
+      card("equation-evidence", 0.6, 2.2, 3.1, 3.25, "Linear equations are solved correctly.", "visual-secondary", "dots"),
+      card("rational-evidence", 4.45, 2.2, 3.1, 3.25, "Cancellation loses denominator restrictions.", "visual-emphasis", "crosshatch"),
+      card("route", 8.3, 2.2, 3.1, 3.25, "Keep equation solving ready; repair rational expressions.", "visual-primary", "diagonal"),
+      arrow("equation-route", 3.8, 4.45, 8.15, 4.45, "Successful equation evidence remains ready.", "visual-secondary"),
+      arrow("rational-route", 7.65, 3.25, 8.15, 3.25, "The rational-expression error routes to repair.", "visual-emphasis"),
+      label("equation-label", 1.0, 4.9, "EQUATION STRAND: READY"),
+      label("rational-label", 4.85, 4.9, "RATIONAL STRAND: REPAIR"),
+      label("principle", 1.1, 1.25, "Different error patterns require different instruction."),
+    ]);
+  }
   const layers = [
     label("figure-kicker", 0.55, 6.5, "WORK THE STRUCTURE, THEN CHECK THE ORIGINAL", "visual-primary"),
     card("given", 0.55, 3.05, 2.35, 2.55, "The original problem is the source of every restriction.", "visual-secondary", "dots"),
@@ -280,6 +293,16 @@ function mappingScene(brief) {
 }
 
 function functionScene(brief) {
+  if (brief.lessonSequence === 1) {
+    return graph({ xMin: -0.5, xMax: 6.5, yMin: 0, yMax: 68 }, [
+      series("rental-cost", (h) => 18 + 7 * h, 0, 6, "C(h)=18+7h dollars", "visual-primary"),
+      point("fixed-fee", 0, 18, "At zero hours the fixed fee is 18 dollars.", "visual-emphasis", "diamond"),
+      point("one-hour", 1, 25, "One hour costs 25 dollars.", "visual-secondary", "square"),
+      segment("rate-rise", 0, 18, 1, 25, "A one-hour increase raises cost by 7 dollars.", "visual-guide", "dashed"),
+      label("formula", 0.2, 61, "C(h)=18+7h"),
+      label("meaning", 0.2, 55, "18 dollars fixed + 7 dollars per hour"),
+    ], "hours h", "cost C(h), dollars");
+  }
   const layers = [
     series("function", (x) => x * x - 1, -3, 3, "f(x) = x² − 1", "visual-primary"),
     point("left-point", -2, 3, "input -2 gives output 3", "visual-secondary", "square"),
@@ -293,6 +316,16 @@ function functionScene(brief) {
 }
 
 function transformationScene(brief) {
+  if (brief.lessonSequence === 1) {
+    return graph({ xMin: -1, xMax: 9, yMin: -1, yMax: 4 }, [
+      series("square-root", (x) => Math.sqrt(x), 0, 9, "y=sqrt(x), x at least 0", "visual-primary"),
+      point("endpoint", 0, 0, "Square-root endpoint and domain boundary (0,0).", "visual-emphasis", "diamond"),
+      point("landmark-one", 1, 1, "Landmark (1,1).", "visual-secondary", "square"),
+      point("landmark-four", 4, 2, "Landmark (4,2).", "visual-secondary", "circle"),
+      label("domain", 0.25, 3.55, "Domain x>=0; starts at the origin; increases while flattening."),
+      label("family", 5.1, 0.55, "SQUARE-ROOT FAMILY", "visual-primary"),
+    ]);
+  }
   const layers = [
     series("parent", (x) => x * x, -2.3, 2.3, "parent y = x²", "visual-guide", "dashed"),
     series("transformed", (x) => -2 * Math.abs(x - 3) + 5, -0.5, 6.5, "transformed y = −2|x−3|+5", "visual-primary"),
@@ -326,6 +359,16 @@ function compositionScene() {
 }
 
 function polynomialScene(brief) {
+  if (brief.lessonSequence === 1) {
+    return graph({ xMin: -2, xMax: 2, yMin: -33, yMax: 3 }, [
+      series("negative-even-power", (x) => -2 * x ** 4, -2, 2, "y=-2x^4", "visual-primary"),
+      point("maximum", 0, 0, "Global maximum at (0,0).", "visual-emphasis", "diamond"),
+      point("left", -1, -2, "Point (-1,-2).", "visual-secondary", "square"),
+      point("right", 1, -2, "Point (1,-2).", "visual-secondary", "circle"),
+      label("parity", -1.8, -5, "Even symmetry; both ends down."),
+      label("range", -1.8, -9, "Domain: all reals · Range: (-infinity,0]"),
+    ]);
+  }
   const layers = [
     series("polynomial", (x) => x ** 3 - 4 * x, -2.7, 2.7, "P(x) = x³ − 4x", "visual-primary"),
     point("zero-left", -2, 0, "zero -2", "visual-emphasis", "diamond"),
@@ -338,7 +381,18 @@ function polynomialScene(brief) {
   return graph({ xMin: -3.2, xMax: 3.2, yMin: -9, yMax: 9.5 }, layers);
 }
 
-function rationalScene() {
+function rationalScene(brief) {
+  if (brief.lessonSequence === 1) {
+    return graph({ xMin: -6, xMax: 7, yMin: -5, yMax: 5 }, [
+      series("left", (x) => x / ((x - 3) * (x + 2)), -6, -2.15, "left branch", "visual-primary"),
+      series("middle", (x) => x / ((x - 3) * (x + 2)), -1.85, 2.85, "middle branch", "visual-primary"),
+      series("right", (x) => x / ((x - 3) * (x + 2)), 3.15, 7, "right branch", "visual-primary"),
+      segment("asymptote-negative-two", -2, -5, -2, 5, "Excluded input and vertical asymptote x=-2.", "visual-emphasis", "dashed"),
+      segment("asymptote-three", 3, -5, 3, 5, "Excluded input and vertical asymptote x=3.", "visual-emphasis", "dashed"),
+      segment("horizontal-asymptote", -6, 0, 7, 0, "Horizontal asymptote y=0.", "visual-guide", "dotted"),
+      label("domain", -5.7, 4.35, "Domain excludes x=-2 and x=3; three continuity intervals."),
+    ]);
+  }
   const layers = [
     series("left-branch", (x) => (x + 1) / (x - 2), -5, 1.82, "left branch of (x+1)/(x−2)", "visual-primary"),
     series("right-branch", (x) => (x + 1) / (x - 2), 2.18, 7, "right branch of (x+1)/(x−2)", "visual-primary"),
@@ -363,6 +417,16 @@ function exponentialScene(brief) {
       point("log-point", 8, 3, "log₂(8)=3", "visual-emphasis", "square"),
       label("inverse-note", -4.1, 5.8, "Exponentials and logarithms reverse input and output."),
     ], "x", "y");
+  }
+  if (brief.lessonSequence === 1) {
+    return graph({ xMin: -0.5, xMax: 3.5, yMin: 0, yMax: 145 }, [
+      series("ratio-three", (x) => 5 * 3 ** x, 0, 3, "y=5 times 3^x", "visual-primary"),
+      point("value-five", 0, 5, "First value 5.", "visual-emphasis", "diamond"),
+      point("value-fifteen", 1, 15, "Second value 15.", "visual-secondary", "square"),
+      point("value-forty-five", 2, 45, "Third value 45.", "visual-secondary", "circle"),
+      point("value-135", 3, 135, "Fourth value 135.", "visual-emphasis", "diamond"),
+      label("ratio", -0.25, 125, "5 -> 15 -> 45 -> 135: each equal step multiplies by 3."),
+    ], "step n", "value");
   }
   return graph({ xMin: -2.5, xMax: 4.5, yMin: -1, yMax: 22 }, [
     series("exponential", (x) => 5 * 1.6 ** x, -2, 3, "multiplicative model 5(1.6)^x", "visual-primary"),
@@ -434,6 +498,18 @@ function angleAndCircleScene(brief) {
 
 function periodicScene(brief) {
   const sequence = brief.lessonSequence;
+  if (sequence === 1) {
+    return graph({ xMin: 0, xMax: 8, yMin: -1.4, yMax: 1.4 }, [
+      series("period-eight-sine", (t) => Math.sin(Math.PI * t / 4), 0, 8, "vertical coordinate sin(pi t/4)", "visual-primary"),
+      point("zero-start", 0, 0, "Zero at 0 seconds.", "visual-secondary", "square"),
+      point("maximum", 2, 1, "Maximum at 2 seconds.", "visual-emphasis", "diamond"),
+      point("zero-middle", 4, 0, "Zero at 4 seconds.", "visual-secondary", "circle"),
+      point("minimum", 6, -1, "Minimum at 6 seconds.", "visual-emphasis", "diamond"),
+      point("zero-end", 8, 0, "Zero at 8 seconds; one period complete.", "visual-secondary", "square"),
+      segment("period", 0, -1.25, 8, -1.25, "One complete period is 8 seconds.", "visual-guide"),
+      label("period-label", 2.65, -1.12, "PERIOD = 8 SECONDS"),
+    ], "time t, seconds", "vertical coordinate");
+  }
   if (sequence === 7) {
     return graph({ xMin: -1.6, xMax: 1.6, yMin: -5, yMax: 5 }, [
       series("tangent", Math.tan, -1.4, 1.4, "y=tan(x)", "visual-primary"),
@@ -491,6 +567,19 @@ function identityScene(brief) {
 
 function triangleAndVectorScene(brief) {
   const vectorLesson = brief.lessonSequence >= 8;
+  if (brief.lessonSequence === 1) {
+    return diagram([
+      segment("run", 1.25, 1.25, 10.25, 1.25, "Horizontal run 7.2 meters.", "visual-primary"),
+      segment("rise", 10.25, 1.25, 10.25, 4.25, "Vertical rise 0.84 meter.", "visual-secondary"),
+      segment("ramp", 1.25, 1.25, 10.25, 4.25, "Ramp length approximately 7.249 meters.", "visual-emphasis"),
+      segment("right-angle-horizontal", 9.75, 1.25, 9.75, 1.75, "Right-angle marker vertical leg.", "visual-guide"),
+      segment("right-angle-vertical", 9.75, 1.75, 10.25, 1.75, "Right-angle marker horizontal leg.", "visual-guide"),
+      label("run-label", 4.5, 0.75, "7.2 m run"),
+      label("rise-label", 10.45, 2.5, "0.84 m rise"),
+      label("angle", 2.15, 1.62, "theta = arctan(0.84/7.2) ~= 6.65 degrees"),
+      label("length", 4.8, 3.25, "length ~= 7.249 m", "visual-primary"),
+    ]);
+  }
   const layers = vectorLesson
     ? [
       arrow("vector-u", 1.2, 1.2, 6.0, 4.9, "vector u has horizontal and vertical components", "visual-primary"),
@@ -519,6 +608,18 @@ function triangleAndVectorScene(brief) {
 }
 
 function conicScene(brief) {
+  if (brief.lessonSequence === 1) {
+    return graph({ xMin: -8, xMax: 4, yMin: -3, yMax: 9 }, [
+      parametricSeries("circle", (t) => -2 + 5 * Math.cos(t), (t) => 3 + 5 * Math.sin(t), 0, 2 * Math.PI, "circle centered at (-2,3) with radius 5", "visual-primary", "solid"),
+      point("center", -2, 3, "Center (-2,3).", "visual-emphasis", "diamond"),
+      point("x-left", -6, 0, "x-intercept (-6,0).", "visual-secondary", "square"),
+      point("x-right", 2, 0, "x-intercept (2,0).", "visual-secondary", "circle"),
+      point("y-low", 0, 3 - Math.sqrt(21), "lower y-intercept (0,3-sqrt(21)).", "visual-secondary", "square"),
+      point("y-high", 0, 3 + Math.sqrt(21), "upper y-intercept (0,3+sqrt(21)).", "visual-secondary", "circle"),
+      segment("radius", -2, 3, 2, 0, "Radius 5 from the center to (2,0).", "visual-guide", "dashed"),
+      label("equation", -7.6, 8.35, "(x+2)^2+(y-3)^2=25"),
+    ]);
+  }
   const sequence = brief.lessonSequence;
   const layers = [label("title", -9.15, 5.35, compact(brief.title, 62), "visual-primary")];
   if (sequence === 2) {
@@ -550,6 +651,17 @@ function conicScene(brief) {
 }
 
 function parametricPolarComplexScene(brief) {
+  if (brief.lessonSequence === 1) {
+    return graph({ xMin: -6, xMax: 6, yMin: -1, yMax: 10 }, [
+      parametricSeries("restricted-parabola", (t) => 2 * t - 1, (t) => t * t, -2, 3, "x=2t-1, y=t^2 for -2<=t<=3", "visual-primary", "solid"),
+      point("start", -5, 4, "Included start point (-5,4) at t=-2.", "visual-emphasis", "square"),
+      point("vertex", -1, 0, "Vertex (-1,0) at t=0.", "visual-secondary", "diamond"),
+      point("end", 5, 9, "Included end point (5,9) at t=3.", "visual-emphasis", "circle"),
+      arrow("direction-left", -4.6, 3.4, -2.0, 0.55, "As t increases, the point moves right toward the vertex.", "visual-guide"),
+      arrow("direction-right", -0.5, 0.2, 4.5, 7.7, "As t continues increasing, the point moves right toward (5,9).", "visual-guide"),
+      label("relation", -5.6, 9.35, "y=(x+1)^2/4 with -5<=x<=5; trace left to right."),
+    ]);
+  }
   const sequence = brief.lessonSequence;
   if (sequence >= 10) {
     const angle = sequence === 12 ? 2 * Math.PI / 3 : Math.PI / 4;
@@ -582,6 +694,13 @@ function parametricPolarComplexScene(brief) {
 }
 
 function sequenceSeriesScene(brief) {
+  if (brief.lessonSequence === 1) {
+    const values = [4, 7, 12, 19, 28];
+    const layers = values.map((value, index) => point(`term-${index + 1}`, index + 1, value, `a_${index + 1}=${value}`, index === 4 ? "visual-emphasis" : "visual-primary", index % 2 ? "square" : "circle"));
+    layers.push(label("formula", 0.75, 30, "a_n=n^2+3, n=1,2,...", "visual-primary"));
+    layers.push(label("discrete", 0.75, 26, "Discrete points are not connected; only positive integer inputs belong to the sequence."));
+    return graph({ xMin: 0, xMax: 6, yMin: 0, yMax: 32 }, layers, "index n", "term a_n");
+  }
   const geometric = brief.lessonSequence >= 4 && brief.lessonSequence <= 9;
   const pascal = brief.lessonSequence >= 11;
   const layers = [label("title", 0.55, 6.45, compact(brief.title, 70), "visual-primary")];
@@ -609,6 +728,15 @@ function sequenceSeriesScene(brief) {
 
 function calculusReadinessScene(brief) {
   const sequence = brief.lessonSequence;
+  if (sequence === 1) {
+    return graph({ xMin: -4, xMax: 8, yMin: 1.5, yMax: 15 }, [
+      series("shifted-decay", (x) => 2 + 3 * 0.5 ** x, -2, 8, "example shifted exponential decay y=2+3(0.5)^x", "visual-primary"),
+      segment("asymptote", -4, 2, 8, 2, "horizontal asymptote y=2", "visual-guide", "dashed"),
+      point("intercept", 0, 5, "Example y-intercept (0,5).", "visual-emphasis", "diamond"),
+      label("features", -3.6, 13.7, "Positive · decreasing · concave up · all-real domain · approaches y=2"),
+      label("evidence", -3.6, 12.6, "A second point or constant-ratio evidence is still needed to confirm the family."),
+    ]);
+  }
   if (sequence >= 11) {
     const layers = [
       series("curve", (x) => 0.12 * x * x + 0.6, 0, 6, "curved boundary f(x)", "visual-primary"),
@@ -731,18 +859,54 @@ for (const unitSequence of unitSequences) {
   const semanticManifest = {
     schemaVersion: 1,
     unitId: `precalculus-unit-${unitSequence}`,
-    manifests: briefs.map((brief) => ({
-      id: brief.id,
-      lessonId: brief.lessonId,
-      route: brief.route,
-      role: brief.role,
-      title: brief.title,
-      description: brief.caption,
-      learnerOutcome: brief.lessonOutcome,
-      readingOrder: visuals.find((visual) => visual.id === brief.id).accessibility.readingOrder,
-      colorIndependent: true,
-      printEquivalent: true,
-    })),
+    manifests: briefs.map((brief) => {
+      const visual = visuals.find((candidate) => candidate.id === brief.id);
+      const mathematicalClaim = brief.role === "Anchor figure"
+        ? brief.anchorConclusion
+        : brief.role === "Mechanism figure" ? brief.mechanism : brief.validStructure;
+      return {
+        id: brief.id,
+        lessonId: brief.lessonId,
+        route: brief.route,
+        role: brief.role,
+        title: brief.title,
+        description: brief.caption,
+        learnerOutcome: brief.lessonOutcome,
+        mathematicalClaim,
+        requiredMathematicalObjects: visual.layers.map((layer) => ({ id: layer.id, kind: layer.kind })),
+        requiredLabelsAndUnits: {
+          labelIds: visual.layers.filter((layer) => layer.kind === "label" || layer.kind === "annotation").map((layer) => layer.id),
+          coordinateVariables: visual.coordinateSpace.variables,
+          unitsPolicy: visual.coordinateSpace.unitsRequired ? "Explicit units required." : "Dimensionless unless the lesson prompt declares units.",
+        },
+        domainAndExcludedCases: {
+          viewport: visual.viewport,
+          validStructure: brief.validStructure,
+          invalidOrExcludedState: brief.invalidMove,
+        },
+        visibleRelationships: [brief.anchorInterpretation, brief.mechanism],
+        forbiddenMisleadingStates: [brief.invalidMove, `The figure must not contradict this claim: ${mathematicalClaim}`],
+        renderer: "static-svg",
+        fallbackRenderer: "static-svg",
+        keyboardInteraction: "No interactive controls; the complete mathematical state is present in reading order.",
+        initialState: "Complete deterministic static state.",
+        reducedMotionBehavior: "No motion is used.",
+        darkModeBehavior: "Theme tokens preserve labels, line styles, and non-color cues.",
+        responsive320Behavior: "Responsive SVG scales to its container without removing labels or mathematical objects.",
+        printBehavior: "Generated grayscale-safe SVG and caption remain together where possible.",
+        accessibleShortDescription: visual.accessibility.summary,
+        accessibleLongDescription: visual.longDescription,
+        readingOrder: visual.accessibility.readingOrder,
+        colorIndependent: true,
+        printEquivalent: true,
+        machineVerifiableAssertions: [
+          { assertion: "reading-order-complete", expectedLayerIds: visual.layers.map((layer) => layer.id) },
+          { assertion: "static-fallback-equivalent", expected: true },
+          { assertion: "grayscale-safe", expected: true },
+          { assertion: "public-renderer", expected: "static-svg" },
+        ],
+      };
+    }),
   };
   for (const [name, value] of [
     ["visual-specs.v1.json", collection],

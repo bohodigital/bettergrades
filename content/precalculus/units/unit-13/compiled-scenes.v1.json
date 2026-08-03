@@ -1,7 +1,7 @@
 {
   "manifestVersion": 1,
   "collectionId": "precalculus-unit-13-visuals",
-  "sourceSha256": "7fcacc7e2ae59f7cafc7d65f1ade7ce5749e82590f5565d5785fec5bf9b3e249",
+  "sourceSha256": "2e2536c51cbf086d7008c0a67b6fd5a754cba0d5842c565de6e1fadd406265e1",
   "compilerVersion": "bvlp-compiler-v1",
   "assetPrefix": "/visuals/v1",
   "sceneCount": 30,
@@ -13,9 +13,9 @@
       "selectedRenderer": "static-svg",
       "hydration": "none",
       "staticAsset": {
-        "path": "/visuals/v1/precalculus-u13-l1-v1.794e0889a8e18ae6.svg",
-        "sha256": "794e0889a8e18ae604e2aae58b96ad369fd096736d2521e73a2a0117bfdd6f36",
-        "bytes": 14506,
+        "path": "/visuals/v1/precalculus-u13-l1-v1.aa031a2426905e83.svg",
+        "sha256": "aa031a2426905e83c525262201bf2a4cf9aebc075bdfbc808b858f40b6d58d3c",
+        "bytes": 17425,
         "width": 960,
         "height": 558
       },
@@ -28,7 +28,7 @@
           "segments": [
             {
               "kind": "text",
-              "text": "Conics as loci and the circle foundation · Distance locus animation"
+              "text": "Conics as loci and the circle foundation · Distance locus diagram"
             }
           ]
         },
@@ -51,10 +51,10 @@
           "unitsRequired": false
         },
         "viewport": {
-          "xMin": -9.9,
-          "xMax": 9.9,
-          "yMin": -5.5,
-          "yMax": 6,
+          "xMin": -8,
+          "xMax": 4,
+          "yMin": -3,
+          "yMax": 9,
           "aspectRatio": 1.72,
           "padding": 0.065
         },
@@ -96,42 +96,14 @@
         "panels": [],
         "layers": [
           {
-            "id": "title",
-            "visible": true,
-            "zIndex": 40,
-            "presentation": {
-              "strokeToken": "visual-primary",
-              "lineStyle": "solid",
-              "markerShape": "none",
-              "pattern": "none",
-              "colorIndependentCue": "Label: Distance locus animation."
-            },
-            "references": [],
-            "kind": "label",
-            "geometry": {
-              "position": {
-                "x": -9.15,
-                "y": 5.35
-              },
-              "content": {
-                "segments": [
-                  {
-                    "kind": "text",
-                    "text": "Distance locus animation"
-                  }
-                ]
-              }
-            }
-          },
-          {
-            "id": "ellipse",
+            "id": "circle",
             "visible": true,
             "zIndex": 20,
             "label": {
               "segments": [
                 {
                   "kind": "text",
-                  "text": "ellipse x²/16+y²/6.25=1"
+                  "text": "circle centered at (-2,3) with radius 5"
                 }
               ]
             },
@@ -140,298 +112,269 @@
               "lineStyle": "solid",
               "markerShape": "none",
               "pattern": "none",
-              "colorIndependentCue": "ellipse x²/16+y²/6.25=1; solid curve."
+              "colorIndependentCue": "circle centered at (-2,3) with radius 5; solid curve."
             },
             "references": [],
             "kind": "sampled-series",
             "geometry": {
               "xValues": [
-                4,
-                3.994518,
-                3.978088,
-                3.950753,
-                3.91259,
-                3.863703,
-                3.804226,
-                3.734322,
-                3.654182,
-                3.564026,
-                3.464102,
-                3.354682,
-                3.236068,
-                3.108584,
-                2.972579,
-                2.828427,
-                2.676522,
-                2.517282,
-                2.351141,
-                2.178556,
-                2,
-                1.815962,
-                1.626947,
-                1.433472,
-                1.236068,
-                1.035276,
-                0.831647,
-                0.625738,
-                0.418114,
-                0.209344,
-                0,
-                -0.209344,
-                -0.418114,
-                -0.625738,
-                -0.831647,
-                -1.035276,
-                -1.236068,
-                -1.433472,
-                -1.626947,
-                -1.815962,
+                3,
+                2.993148,
+                2.972609,
+                2.938442,
+                2.890738,
+                2.829629,
+                2.755283,
+                2.667902,
+                2.567727,
+                2.455033,
+                2.330127,
+                2.193353,
+                2.045085,
+                1.88573,
+                1.715724,
+                1.535534,
+                1.345653,
+                1.146602,
+                0.938926,
+                0.723195,
+                0.5,
+                0.269952,
+                0.033683,
+                -0.20816,
+                -0.454915,
+                -0.705905,
+                -0.960442,
+                -1.217828,
+                -1.477358,
+                -1.73832,
                 -2,
-                -2.178556,
-                -2.351141,
-                -2.517282,
-                -2.676522,
-                -2.828427,
-                -2.972579,
-                -3.108584,
-                -3.236068,
-                -3.354682,
-                -3.464102,
-                -3.564026,
-                -3.654182,
-                -3.734322,
-                -3.804226,
-                -3.863703,
-                -3.91259,
-                -3.950753,
-                -3.978088,
-                -3.994518,
-                -4,
-                -3.994518,
-                -3.978088,
-                -3.950753,
-                -3.91259,
-                -3.863703,
-                -3.804226,
-                -3.734322,
-                -3.654182,
-                -3.564026,
-                -3.464102,
-                -3.354682,
-                -3.236068,
-                -3.108584,
-                -2.972579,
-                -2.828427,
-                -2.676522,
-                -2.517282,
-                -2.351141,
-                -2.178556,
+                -2.26168,
+                -2.522642,
+                -2.782172,
+                -3.039558,
+                -3.294095,
+                -3.545085,
+                -3.79184,
+                -4.033683,
+                -4.269952,
+                -4.5,
+                -4.723195,
+                -4.938926,
+                -5.146602,
+                -5.345653,
+                -5.535534,
+                -5.715724,
+                -5.88573,
+                -6.045085,
+                -6.193353,
+                -6.330127,
+                -6.455033,
+                -6.567727,
+                -6.667902,
+                -6.755283,
+                -6.829629,
+                -6.890738,
+                -6.938442,
+                -6.972609,
+                -6.993148,
+                -7,
+                -6.993148,
+                -6.972609,
+                -6.938442,
+                -6.890738,
+                -6.829629,
+                -6.755283,
+                -6.667902,
+                -6.567727,
+                -6.455033,
+                -6.330127,
+                -6.193353,
+                -6.045085,
+                -5.88573,
+                -5.715724,
+                -5.535534,
+                -5.345653,
+                -5.146602,
+                -4.938926,
+                -4.723195,
+                -4.5,
+                -4.269952,
+                -4.033683,
+                -3.79184,
+                -3.545085,
+                -3.294095,
+                -3.039558,
+                -2.782172,
+                -2.522642,
+                -2.26168,
                 -2,
-                -1.815962,
-                -1.626947,
-                -1.433472,
-                -1.236068,
-                -1.035276,
-                -0.831647,
-                -0.625738,
-                -0.418114,
-                -0.209344,
-                0,
-                0.209344,
-                0.418114,
-                0.625738,
-                0.831647,
-                1.035276,
-                1.236068,
-                1.433472,
-                1.626947,
-                1.815962,
-                2,
-                2.178556,
-                2.351141,
-                2.517282,
-                2.676522,
-                2.828427,
-                2.972579,
-                3.108584,
-                3.236068,
-                3.354682,
-                3.464102,
-                3.564026,
-                3.654182,
-                3.734322,
-                3.804226,
-                3.863703,
-                3.91259,
-                3.950753,
-                3.978088,
-                3.994518,
-                4
+                -1.73832,
+                -1.477358,
+                -1.217828,
+                -0.960442,
+                -0.705905,
+                -0.454915,
+                -0.20816,
+                0.033683,
+                0.269952,
+                0.5,
+                0.723195,
+                0.938926,
+                1.146602,
+                1.345653,
+                1.535534,
+                1.715724,
+                1.88573,
+                2.045085,
+                2.193353,
+                2.330127,
+                2.455033,
+                2.567727,
+                2.667902,
+                2.755283,
+                2.829629,
+                2.890738,
+                2.938442,
+                2.972609,
+                2.993148,
+                3
               ],
               "yValues": [
-                0,
-                0.13084,
-                0.261321,
-                0.391086,
-                0.519779,
-                0.647048,
-                0.772542,
-                0.89592,
-                1.016842,
-                1.134976,
-                1.25,
-                1.361598,
-                1.469463,
-                1.573301,
-                1.672827,
-                1.767767,
-                1.857862,
-                1.942865,
-                2.022542,
-                2.096676,
-                2.165064,
-                2.227516,
-                2.283864,
-                2.333951,
-                2.377641,
-                2.414815,
-                2.445369,
-                2.469221,
-                2.486305,
-                2.496574,
-                2.5,
-                2.496574,
-                2.486305,
-                2.469221,
-                2.445369,
-                2.414815,
-                2.377641,
-                2.333951,
-                2.283864,
-                2.227516,
-                2.165064,
-                2.096676,
-                2.022542,
-                1.942865,
-                1.857862,
-                1.767767,
-                1.672827,
-                1.573301,
-                1.469463,
-                1.361598,
-                1.25,
-                1.134976,
-                1.016842,
-                0.89592,
-                0.772542,
-                0.647048,
-                0.519779,
-                0.391086,
-                0.261321,
-                0.13084,
-                0,
-                -0.13084,
-                -0.261321,
-                -0.391086,
-                -0.519779,
-                -0.647048,
-                -0.772542,
-                -0.89592,
-                -1.016842,
-                -1.134976,
-                -1.25,
-                -1.361598,
-                -1.469463,
-                -1.573301,
-                -1.672827,
-                -1.767767,
-                -1.857862,
-                -1.942865,
-                -2.022542,
-                -2.096676,
-                -2.165064,
-                -2.227516,
-                -2.283864,
-                -2.333951,
-                -2.377641,
-                -2.414815,
-                -2.445369,
-                -2.469221,
-                -2.486305,
-                -2.496574,
-                -2.5,
-                -2.496574,
-                -2.486305,
-                -2.469221,
-                -2.445369,
-                -2.414815,
-                -2.377641,
-                -2.333951,
-                -2.283864,
-                -2.227516,
-                -2.165064,
-                -2.096676,
-                -2.022542,
-                -1.942865,
-                -1.857862,
-                -1.767767,
-                -1.672827,
-                -1.573301,
-                -1.469463,
-                -1.361598,
-                -1.25,
-                -1.134976,
-                -1.016842,
-                -0.89592,
-                -0.772542,
-                -0.647048,
-                -0.519779,
-                -0.391086,
-                -0.261321,
-                -0.13084,
-                0
+                3,
+                3.26168,
+                3.522642,
+                3.782172,
+                4.039558,
+                4.294095,
+                4.545085,
+                4.79184,
+                5.033683,
+                5.269952,
+                5.5,
+                5.723195,
+                5.938926,
+                6.146602,
+                6.345653,
+                6.535534,
+                6.715724,
+                6.88573,
+                7.045085,
+                7.193353,
+                7.330127,
+                7.455033,
+                7.567727,
+                7.667902,
+                7.755283,
+                7.829629,
+                7.890738,
+                7.938442,
+                7.972609,
+                7.993148,
+                8,
+                7.993148,
+                7.972609,
+                7.938442,
+                7.890738,
+                7.829629,
+                7.755283,
+                7.667902,
+                7.567727,
+                7.455033,
+                7.330127,
+                7.193353,
+                7.045085,
+                6.88573,
+                6.715724,
+                6.535534,
+                6.345653,
+                6.146602,
+                5.938926,
+                5.723195,
+                5.5,
+                5.269952,
+                5.033683,
+                4.79184,
+                4.545085,
+                4.294095,
+                4.039558,
+                3.782172,
+                3.522642,
+                3.26168,
+                3,
+                2.73832,
+                2.477358,
+                2.217828,
+                1.960442,
+                1.705905,
+                1.454915,
+                1.20816,
+                0.966317,
+                0.730048,
+                0.5,
+                0.276805,
+                0.061074,
+                -0.146602,
+                -0.345653,
+                -0.535534,
+                -0.715724,
+                -0.88573,
+                -1.045085,
+                -1.193353,
+                -1.330127,
+                -1.455033,
+                -1.567727,
+                -1.667902,
+                -1.755283,
+                -1.829629,
+                -1.890738,
+                -1.938442,
+                -1.972609,
+                -1.993148,
+                -2,
+                -1.993148,
+                -1.972609,
+                -1.938442,
+                -1.890738,
+                -1.829629,
+                -1.755283,
+                -1.667902,
+                -1.567727,
+                -1.455033,
+                -1.330127,
+                -1.193353,
+                -1.045085,
+                -0.88573,
+                -0.715724,
+                -0.535534,
+                -0.345653,
+                -0.146602,
+                0.061074,
+                0.276805,
+                0.5,
+                0.730048,
+                0.966317,
+                1.20816,
+                1.454915,
+                1.705905,
+                1.960442,
+                2.217828,
+                2.477358,
+                2.73832,
+                3
               ],
               "connect": true
             }
           },
           {
-            "id": "focus-left",
+            "id": "center",
             "visible": true,
             "zIndex": 30,
             "label": {
               "segments": [
                 {
                   "kind": "text",
-                  "text": "left focus"
-                }
-              ]
-            },
-            "presentation": {
-              "strokeToken": "visual-emphasis",
-              "fillToken": "visual-emphasis",
-              "lineStyle": "solid",
-              "markerShape": "square",
-              "pattern": "none",
-              "colorIndependentCue": "Filled square marks left focus."
-            },
-            "references": [],
-            "kind": "closed-point",
-            "geometry": {
-              "position": {
-                "x": -3.122498999199199,
-                "y": 0
-              }
-            }
-          },
-          {
-            "id": "focus-right",
-            "visible": true,
-            "zIndex": 30,
-            "label": {
-              "segments": [
-                {
-                  "kind": "text",
-                  "text": "right focus"
+                  "text": "Center (-2,3)."
                 }
               ]
             },
@@ -441,19 +384,135 @@
               "lineStyle": "solid",
               "markerShape": "diamond",
               "pattern": "none",
-              "colorIndependentCue": "Filled diamond marks right focus."
+              "colorIndependentCue": "Filled diamond marks Center (-2,3).."
             },
             "references": [],
             "kind": "closed-point",
             "geometry": {
               "position": {
-                "x": 3.122498999199199,
+                "x": -2,
+                "y": 3
+              }
+            }
+          },
+          {
+            "id": "x-left",
+            "visible": true,
+            "zIndex": 30,
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "x-intercept (-6,0)."
+                }
+              ]
+            },
+            "presentation": {
+              "strokeToken": "visual-secondary",
+              "fillToken": "visual-secondary",
+              "lineStyle": "solid",
+              "markerShape": "square",
+              "pattern": "none",
+              "colorIndependentCue": "Filled square marks x-intercept (-6,0).."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": -6,
                 "y": 0
               }
             }
           },
           {
-            "id": "major-axis",
+            "id": "x-right",
+            "visible": true,
+            "zIndex": 30,
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "x-intercept (2,0)."
+                }
+              ]
+            },
+            "presentation": {
+              "strokeToken": "visual-secondary",
+              "fillToken": "visual-secondary",
+              "lineStyle": "solid",
+              "markerShape": "circle",
+              "pattern": "none",
+              "colorIndependentCue": "Filled circle marks x-intercept (2,0).."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 2,
+                "y": 0
+              }
+            }
+          },
+          {
+            "id": "y-low",
+            "visible": true,
+            "zIndex": 30,
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "lower y-intercept (0,3-sqrt(21))."
+                }
+              ]
+            },
+            "presentation": {
+              "strokeToken": "visual-secondary",
+              "fillToken": "visual-secondary",
+              "lineStyle": "solid",
+              "markerShape": "square",
+              "pattern": "none",
+              "colorIndependentCue": "Filled square marks lower y-intercept (0,3-sqrt(21)).."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 0,
+                "y": -1.5825756949558398
+              }
+            }
+          },
+          {
+            "id": "y-high",
+            "visible": true,
+            "zIndex": 30,
+            "label": {
+              "segments": [
+                {
+                  "kind": "text",
+                  "text": "upper y-intercept (0,3+sqrt(21))."
+                }
+              ]
+            },
+            "presentation": {
+              "strokeToken": "visual-secondary",
+              "fillToken": "visual-secondary",
+              "lineStyle": "solid",
+              "markerShape": "circle",
+              "pattern": "none",
+              "colorIndependentCue": "Filled circle marks upper y-intercept (0,3+sqrt(21)).."
+            },
+            "references": [],
+            "kind": "closed-point",
+            "geometry": {
+              "position": {
+                "x": 0,
+                "y": 7.58257569495584
+              }
+            }
+          },
+          {
+            "id": "radius",
             "visible": true,
             "zIndex": 10,
             "presentation": {
@@ -461,23 +520,23 @@
               "lineStyle": "dashed",
               "markerShape": "none",
               "pattern": "none",
-              "colorIndependentCue": "major axis"
+              "colorIndependentCue": "Radius 5 from the center to (2,0)."
             },
             "references": [],
             "kind": "segment",
             "geometry": {
               "start": {
-                "x": -4,
-                "y": 0
+                "x": -2,
+                "y": 3
               },
               "end": {
-                "x": 4,
+                "x": 2,
                 "y": 0
               }
             }
           },
           {
-            "id": "locus-note",
+            "id": "equation",
             "visible": true,
             "zIndex": 40,
             "presentation": {
@@ -485,20 +544,20 @@
               "lineStyle": "solid",
               "markerShape": "none",
               "pattern": "none",
-              "colorIndependentCue": "Label: A conic is organized by a geometric locus condition, not by appearance alone.."
+              "colorIndependentCue": "Label: (x+2)^2+(y-3)^2=25."
             },
             "references": [],
             "kind": "label",
             "geometry": {
               "position": {
-                "x": -9.15,
-                "y": -4.9
+                "x": -7.6,
+                "y": 8.35
               },
               "content": {
                 "segments": [
                   {
                     "kind": "text",
-                    "text": "A conic is organized by a geometric locus condition, not by appearance alone."
+                    "text": "(x+2)^2+(y-3)^2=25"
                   }
                 ]
               }
@@ -507,15 +566,17 @@
         ],
         "controls": [],
         "accessibility": {
-          "ariaLabel": "Distance locus animation. Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Completing squares converts general quadratic expressions into center-radius form and reveals whether the relation is a circle, a point, or an empty set. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+          "ariaLabel": "Distance locus diagram. Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Completing squares converts general quadratic expressions into center-radius form and reveals whether the relation is a circle, a point, or an empty set. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
           "summary": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Completing squares converts general quadratic expressions into center-radius form and reveals whether the relation is a circle, a point, or an empty set. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
           "readingOrder": [
-            "title",
-            "ellipse",
-            "focus-left",
-            "focus-right",
-            "major-axis",
-            "locus-note"
+            "circle",
+            "center",
+            "x-left",
+            "x-right",
+            "y-low",
+            "y-high",
+            "radius",
+            "equation"
           ],
           "colorIndependentDescription": "Labels, point shapes, line styles, arrows, and position carry the mathematical meaning; color is supplementary.",
           "controlInstructions": [],
@@ -566,7 +627,7 @@
           "route": "/subjects/math/precalculus/conic-sections-and-implicit-relations/conics-as-loci-and-the-circle-foundation/",
           "sourceFile": "content/precalculus/units/unit-13/visual-specs.v1.json",
           "sourceVisualId": "precalculus-u13-l1-v1",
-          "sourceFingerprint": "bvlp1-ee32db95",
+          "sourceFingerprint": "bvlp1-d23137e5",
           "compilerVersion": "bvlp-compiler-v1",
           "visibility": "public"
         }

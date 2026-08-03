@@ -10,6 +10,73 @@
       "title": "System representation triangle",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The lines intersect once.",
       "learnerOutcome": "Interpret a system solution as an input-output point satisfying every equation and solve two-variable systems graphically and algebraically.",
+      "mathematicalClaim": "(2,5).",
+      "requiredMathematicalObjects": [
+        {
+          "id": "line-one",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "line-two",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "intersection",
+          "kind": "closed-point"
+        },
+        {
+          "id": "x-guide",
+          "kind": "segment"
+        },
+        {
+          "id": "y-guide",
+          "kind": "segment"
+        },
+        {
+          "id": "meaning",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "meaning"
+        ],
+        "coordinateVariables": [
+          "x",
+          "y"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": -1,
+          "xMax": 7,
+          "yMin": -2,
+          "yMax": 10,
+          "aspectRatio": 1.72,
+          "padding": 0.065
+        },
+        "validStructure": "Parallel lines have no solution and coincident lines have infinitely many solutions.",
+        "invalidOrExcludedState": "A frequent error is accepting a point that satisfies only one equation."
+      },
+      "visibleRelationships": [
+        "The lines intersect once.",
+        "Choose graphing, substitution, or elimination from the visible structure and verify the ordered pair in every equation."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is accepting a point that satisfies only one equation.",
+        "The figure must not contradict this claim: (2,5)."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The lines intersect once.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The lines intersect once. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "line-one",
         "line-two",
@@ -19,7 +86,32 @@
         "meaning"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "line-one",
+            "line-two",
+            "intersection",
+            "x-guide",
+            "y-guide",
+            "meaning"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u8-l1-v2",
@@ -29,6 +121,147 @@
       "title": "Line solution-count gallery",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for systems as intersections and models.",
       "learnerOutcome": "Interpret a system solution as an input-output point satisfying every equation and solve two-variable systems graphically and algebraically.",
+      "mathematicalClaim": "Choose graphing, substitution, or elimination from the visible structure and verify the ordered pair in every equation.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-3",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-4",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-4",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "number-copy-4",
+          "step-copy-4",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Parallel lines have no solution and coincident lines have infinitely many solutions.",
+        "invalidOrExcludedState": "A frequent error is accepting a point that satisfies only one equation."
+      },
+      "visibleRelationships": [
+        "The lines intersect once.",
+        "Choose graphing, substitution, or elimination from the visible structure and verify the ordered pair in every equation."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is accepting a point that satisfies only one equation.",
+        "The figure must not contradict this claim: Choose graphing, substitution, or elimination from the visible structure and verify the ordered pair in every equation."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for systems as intersections and models.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for systems as intersections and models. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -54,7 +287,48 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "arrow-3",
+            "step-4",
+            "number-4",
+            "number-copy-4",
+            "step-copy-4",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u8-l1-v3",
@@ -64,6 +338,103 @@
       "title": "Method-choice map",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why accepting a point that satisfies only one equation leads to a false conclusion.",
       "learnerOutcome": "Interpret a system solution as an input-output point satisfying every equation and solve two-variable systems graphically and algebraically.",
+      "mathematicalClaim": "Parallel lines have no solution and coincident lines have infinitely many solutions.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Parallel lines have no solution and coincident lines have infinitely many solutions.",
+        "invalidOrExcludedState": "A frequent error is accepting a point that satisfies only one equation."
+      },
+      "visibleRelationships": [
+        "The lines intersect once.",
+        "Choose graphing, substitution, or elimination from the visible structure and verify the ordered pair in every equation."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is accepting a point that satisfies only one equation.",
+        "The figure must not contradict this claim: Parallel lines have no solution and coincident lines have infinitely many solutions."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why accepting a point that satisfies only one equation leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why accepting a point that satisfies only one equation leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -79,7 +450,38 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u8-l2-v1",
@@ -89,6 +491,73 @@
       "title": "Nonlinear intersection gallery",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The repeated root represents tangency.",
       "learnerOutcome": "Solve systems involving lines, quadratics, circles, rational, exponential, or other nonlinear functions and interpret all real intersections.",
+      "mathematicalClaim": "(1,1).",
+      "requiredMathematicalObjects": [
+        {
+          "id": "line-one",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "line-two",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "intersection",
+          "kind": "closed-point"
+        },
+        {
+          "id": "x-guide",
+          "kind": "segment"
+        },
+        {
+          "id": "y-guide",
+          "kind": "segment"
+        },
+        {
+          "id": "meaning",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "meaning"
+        ],
+        "coordinateVariables": [
+          "x",
+          "y"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": -1,
+          "xMax": 7,
+          "yMin": -2,
+          "yMax": 10,
+          "aspectRatio": 1.72,
+          "padding": 0.065
+        },
+        "validStructure": "A repeated root often represents tangency; a negative discriminant can show no real line-parabola intersections.",
+        "invalidOrExcludedState": "A frequent error is listing only x-values instead of complete intersection points."
+      },
+      "visibleRelationships": [
+        "The repeated root represents tangency.",
+        "Substitute an isolated equation, solve the resulting one-variable equation, recover the other coordinate, and check every candidate."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is listing only x-values instead of complete intersection points.",
+        "The figure must not contradict this claim: (1,1)."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The repeated root represents tangency.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The repeated root represents tangency. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "line-one",
         "line-two",
@@ -98,7 +567,32 @@
         "meaning"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "line-one",
+            "line-two",
+            "intersection",
+            "x-guide",
+            "y-guide",
+            "meaning"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u8-l2-v2",
@@ -108,6 +602,147 @@
       "title": "Substitution workflow",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for nonlinear systems.",
       "learnerOutcome": "Solve systems involving lines, quadratics, circles, rational, exponential, or other nonlinear functions and interpret all real intersections.",
+      "mathematicalClaim": "Substitute an isolated equation, solve the resulting one-variable equation, recover the other coordinate, and check every candidate.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-3",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-4",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-4",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "number-copy-4",
+          "step-copy-4",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "A repeated root often represents tangency; a negative discriminant can show no real line-parabola intersections.",
+        "invalidOrExcludedState": "A frequent error is listing only x-values instead of complete intersection points."
+      },
+      "visibleRelationships": [
+        "The repeated root represents tangency.",
+        "Substitute an isolated equation, solve the resulting one-variable equation, recover the other coordinate, and check every candidate."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is listing only x-values instead of complete intersection points.",
+        "The figure must not contradict this claim: Substitute an isolated equation, solve the resulting one-variable equation, recover the other coordinate, and check every candidate."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for nonlinear systems.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for nonlinear systems. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -133,7 +768,48 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "arrow-3",
+            "step-4",
+            "number-4",
+            "number-copy-4",
+            "step-copy-4",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u8-l2-v3",
@@ -143,6 +819,103 @@
       "title": "Repeated root as tangency",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why listing only x-values instead of complete intersection points leads to a false conclusion.",
       "learnerOutcome": "Solve systems involving lines, quadratics, circles, rational, exponential, or other nonlinear functions and interpret all real intersections.",
+      "mathematicalClaim": "A repeated root often represents tangency; a negative discriminant can show no real line-parabola intersections.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "A repeated root often represents tangency; a negative discriminant can show no real line-parabola intersections.",
+        "invalidOrExcludedState": "A frequent error is listing only x-values instead of complete intersection points."
+      },
+      "visibleRelationships": [
+        "The repeated root represents tangency.",
+        "Substitute an isolated equation, solve the resulting one-variable equation, recover the other coordinate, and check every candidate."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is listing only x-values instead of complete intersection points.",
+        "The figure must not contradict this claim: A repeated root often represents tangency; a negative discriminant can show no real line-parabola intersections."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why listing only x-values instead of complete intersection points leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why listing only x-values instead of complete intersection points leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -158,7 +931,38 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u8-l3-v1",
@@ -168,6 +972,73 @@
       "title": "Layered half-planes",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The constraints form a feasible polygon.",
       "learnerOutcome": "Graph simultaneous inequalities, identify feasible regions, and interpret boundaries and vertices.",
+      "mathematicalClaim": "Vertices (0,0),(0,10),(4,6),(7,0).",
+      "requiredMathematicalObjects": [
+        {
+          "id": "line-one",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "line-two",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "intersection",
+          "kind": "closed-point"
+        },
+        {
+          "id": "x-guide",
+          "kind": "segment"
+        },
+        {
+          "id": "y-guide",
+          "kind": "segment"
+        },
+        {
+          "id": "meaning",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "meaning"
+        ],
+        "coordinateVariables": [
+          "x",
+          "y"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": -1,
+          "xMax": 7,
+          "yMin": -2,
+          "yMax": 10,
+          "aspectRatio": 1.72,
+          "padding": 0.065
+        },
+        "validStructure": "Solid boundaries are included; dashed boundaries are excluded. Feasible regions may be bounded, unbounded, or empty.",
+        "invalidOrExcludedState": "A frequent error is using the union of regions instead of their overlap."
+      },
+      "visibleRelationships": [
+        "The constraints form a feasible polygon.",
+        "Graph each boundary, shade the correct side, include contextual constraints, find vertices, and evaluate an objective when requested."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is using the union of regions instead of their overlap.",
+        "The figure must not contradict this claim: Vertices (0,0),(0,10),(4,6),(7,0)."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The constraints form a feasible polygon.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The constraints form a feasible polygon. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "line-one",
         "line-two",
@@ -177,7 +1048,32 @@
         "meaning"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "line-one",
+            "line-two",
+            "intersection",
+            "x-guide",
+            "y-guide",
+            "meaning"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u8-l3-v2",
@@ -187,6 +1083,147 @@
       "title": "Boundary inclusion",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for systems of inequalities and feasible regions.",
       "learnerOutcome": "Graph simultaneous inequalities, identify feasible regions, and interpret boundaries and vertices.",
+      "mathematicalClaim": "Graph each boundary, shade the correct side, include contextual constraints, find vertices, and evaluate an objective when requested.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-3",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-4",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-4",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "number-copy-4",
+          "step-copy-4",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Solid boundaries are included; dashed boundaries are excluded. Feasible regions may be bounded, unbounded, or empty.",
+        "invalidOrExcludedState": "A frequent error is using the union of regions instead of their overlap."
+      },
+      "visibleRelationships": [
+        "The constraints form a feasible polygon.",
+        "Graph each boundary, shade the correct side, include contextual constraints, find vertices, and evaluate an objective when requested."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is using the union of regions instead of their overlap.",
+        "The figure must not contradict this claim: Graph each boundary, shade the correct side, include contextual constraints, find vertices, and evaluate an objective when requested."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for systems of inequalities and feasible regions.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for systems of inequalities and feasible regions. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -212,7 +1249,48 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "arrow-3",
+            "step-4",
+            "number-4",
+            "number-copy-4",
+            "step-copy-4",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u8-l3-v3",
@@ -222,6 +1300,103 @@
       "title": "Vertex objective table",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why using the union of regions instead of their overlap leads to a false conclusion.",
       "learnerOutcome": "Graph simultaneous inequalities, identify feasible regions, and interpret boundaries and vertices.",
+      "mathematicalClaim": "Solid boundaries are included; dashed boundaries are excluded. Feasible regions may be bounded, unbounded, or empty.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Solid boundaries are included; dashed boundaries are excluded. Feasible regions may be bounded, unbounded, or empty.",
+        "invalidOrExcludedState": "A frequent error is using the union of regions instead of their overlap."
+      },
+      "visibleRelationships": [
+        "The constraints form a feasible polygon.",
+        "Graph each boundary, shade the correct side, include contextual constraints, find vertices, and evaluate an objective when requested."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is using the union of regions instead of their overlap.",
+        "The figure must not contradict this claim: Solid boundaries are included; dashed boundaries are excluded. Feasible regions may be bounded, unbounded, or empty."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why using the union of regions instead of their overlap leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why using the union of regions instead of their overlap leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -237,7 +1412,38 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u8-l4-v1",
@@ -247,6 +1453,128 @@
       "title": "Three-plane gallery",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Pairwise subtraction isolates variables.",
       "learnerOutcome": "Solve and classify three-variable linear systems and interpret their solutions as intersections of planes.",
+      "mathematicalClaim": "(1,2,3).",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "matrix",
+          "kind": "polygon"
+        },
+        {
+          "id": "operations",
+          "kind": "polygon"
+        },
+        {
+          "id": "meaning",
+          "kind": "polygon"
+        },
+        {
+          "id": "matrix-to-operations",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "operations-to-meaning",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "matrix-title",
+          "kind": "label"
+        },
+        {
+          "id": "matrix-row-one",
+          "kind": "label"
+        },
+        {
+          "id": "matrix-row-two",
+          "kind": "label"
+        },
+        {
+          "id": "matrix-row-three",
+          "kind": "label"
+        },
+        {
+          "id": "operation-one",
+          "kind": "label"
+        },
+        {
+          "id": "operation-two",
+          "kind": "label"
+        },
+        {
+          "id": "operation-three",
+          "kind": "label"
+        },
+        {
+          "id": "meaning-one",
+          "kind": "label"
+        },
+        {
+          "id": "meaning-two",
+          "kind": "label"
+        },
+        {
+          "id": "meaning-three",
+          "kind": "label"
+        },
+        {
+          "id": "answer",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "matrix-title",
+          "matrix-row-one",
+          "matrix-row-two",
+          "matrix-row-three",
+          "operation-one",
+          "operation-two",
+          "operation-three",
+          "meaning-one",
+          "meaning-two",
+          "meaning-three",
+          "answer"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "A contradiction means no solution; a free variable produces an infinite family.",
+        "invalidOrExcludedState": "A frequent error is performing elimination on only one pair and stopping with insufficient information."
+      },
+      "visibleRelationships": [
+        "Pairwise subtraction isolates variables.",
+        "Eliminate one variable from two equation pairs, solve the reduced system, and back-substitute."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is performing elimination on only one pair and stopping with insufficient information.",
+        "The figure must not contradict this claim: (1,2,3)."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Pairwise subtraction isolates variables.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Pairwise subtraction isolates variables. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "matrix",
@@ -267,7 +1595,43 @@
         "answer"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "matrix",
+            "operations",
+            "meaning",
+            "matrix-to-operations",
+            "operations-to-meaning",
+            "matrix-title",
+            "matrix-row-one",
+            "matrix-row-two",
+            "matrix-row-three",
+            "operation-one",
+            "operation-two",
+            "operation-three",
+            "meaning-one",
+            "meaning-two",
+            "meaning-three",
+            "answer"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u8-l4-v2",
@@ -277,6 +1641,125 @@
       "title": "Elimination ladder",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for systems in three variables.",
       "learnerOutcome": "Solve and classify three-variable linear systems and interpret their solutions as intersections of planes.",
+      "mathematicalClaim": "Eliminate one variable from two equation pairs, solve the reduced system, and back-substitute.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "A contradiction means no solution; a free variable produces an infinite family.",
+        "invalidOrExcludedState": "A frequent error is performing elimination on only one pair and stopping with insufficient information."
+      },
+      "visibleRelationships": [
+        "Pairwise subtraction isolates variables.",
+        "Eliminate one variable from two equation pairs, solve the reduced system, and back-substitute."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is performing elimination on only one pair and stopping with insufficient information.",
+        "The figure must not contradict this claim: Eliminate one variable from two equation pairs, solve the reduced system, and back-substitute."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for systems in three variables.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for systems in three variables. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -297,7 +1780,43 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u8-l4-v3",
@@ -307,6 +1826,103 @@
       "title": "Parameterized solution line",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why performing elimination on only one pair and stopping with insufficient information leads to a false conclusion.",
       "learnerOutcome": "Solve and classify three-variable linear systems and interpret their solutions as intersections of planes.",
+      "mathematicalClaim": "A contradiction means no solution; a free variable produces an infinite family.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "A contradiction means no solution; a free variable produces an infinite family.",
+        "invalidOrExcludedState": "A frequent error is performing elimination on only one pair and stopping with insufficient information."
+      },
+      "visibleRelationships": [
+        "Pairwise subtraction isolates variables.",
+        "Eliminate one variable from two equation pairs, solve the reduced system, and back-substitute."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is performing elimination on only one pair and stopping with insufficient information.",
+        "The figure must not contradict this claim: A contradiction means no solution; a free variable produces an infinite family."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why performing elimination on only one pair and stopping with insufficient information leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why performing elimination on only one pair and stopping with insufficient information leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -322,7 +1938,38 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u8-l5-v1",
@@ -332,6 +1979,128 @@
       "title": "Matrix anatomy",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Each output entry is a row-column dot product.",
       "learnerOutcome": "Represent rectangular arrays with matrices and perform dimension-compatible addition, scalar multiplication, and matrix multiplication.",
+      "mathematicalClaim": "[[14],[15]].",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "matrix",
+          "kind": "polygon"
+        },
+        {
+          "id": "operations",
+          "kind": "polygon"
+        },
+        {
+          "id": "meaning",
+          "kind": "polygon"
+        },
+        {
+          "id": "matrix-to-operations",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "operations-to-meaning",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "matrix-title",
+          "kind": "label"
+        },
+        {
+          "id": "matrix-row-one",
+          "kind": "label"
+        },
+        {
+          "id": "matrix-row-two",
+          "kind": "label"
+        },
+        {
+          "id": "matrix-row-three",
+          "kind": "label"
+        },
+        {
+          "id": "operation-one",
+          "kind": "label"
+        },
+        {
+          "id": "operation-two",
+          "kind": "label"
+        },
+        {
+          "id": "operation-three",
+          "kind": "label"
+        },
+        {
+          "id": "meaning-one",
+          "kind": "label"
+        },
+        {
+          "id": "meaning-two",
+          "kind": "label"
+        },
+        {
+          "id": "meaning-three",
+          "kind": "label"
+        },
+        {
+          "id": "answer",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "matrix-title",
+          "matrix-row-one",
+          "matrix-row-two",
+          "matrix-row-three",
+          "operation-one",
+          "operation-two",
+          "operation-three",
+          "meaning-one",
+          "meaning-two",
+          "meaning-three",
+          "answer"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Matrix multiplication is generally not commutative, and one order may be undefined.",
+        "invalidOrExcludedState": "A frequent error is multiplying corresponding entries instead of using dot products."
+      },
+      "visibleRelationships": [
+        "Each output entry is a row-column dot product.",
+        "Add corresponding entries, scale every entry, and multiply using row-column dot products when inner dimensions match."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is multiplying corresponding entries instead of using dot products.",
+        "The figure must not contradict this claim: [[14],[15]]."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Each output entry is a row-column dot product.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Each output entry is a row-column dot product. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "matrix",
@@ -352,7 +2121,43 @@
         "answer"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "matrix",
+            "operations",
+            "meaning",
+            "matrix-to-operations",
+            "operations-to-meaning",
+            "matrix-title",
+            "matrix-row-one",
+            "matrix-row-two",
+            "matrix-row-three",
+            "operation-one",
+            "operation-two",
+            "operation-three",
+            "meaning-one",
+            "meaning-two",
+            "meaning-three",
+            "answer"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u8-l5-v2",
@@ -362,6 +2167,125 @@
       "title": "Dimension compatibility",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for matrix notation and operations.",
       "learnerOutcome": "Represent rectangular arrays with matrices and perform dimension-compatible addition, scalar multiplication, and matrix multiplication.",
+      "mathematicalClaim": "Add corresponding entries, scale every entry, and multiply using row-column dot products when inner dimensions match.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Matrix multiplication is generally not commutative, and one order may be undefined.",
+        "invalidOrExcludedState": "A frequent error is multiplying corresponding entries instead of using dot products."
+      },
+      "visibleRelationships": [
+        "Each output entry is a row-column dot product.",
+        "Add corresponding entries, scale every entry, and multiply using row-column dot products when inner dimensions match."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is multiplying corresponding entries instead of using dot products.",
+        "The figure must not contradict this claim: Add corresponding entries, scale every entry, and multiply using row-column dot products when inner dimensions match."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for matrix notation and operations.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for matrix notation and operations. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -382,7 +2306,43 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u8-l5-v3",
@@ -392,6 +2352,108 @@
       "title": "Row-column dot product",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why multiplying corresponding entries instead of using dot products leads to a false conclusion.",
       "learnerOutcome": "Represent rectangular arrays with matrices and perform dimension-compatible addition, scalar multiplication, and matrix multiplication.",
+      "mathematicalClaim": "Matrix multiplication is generally not commutative, and one order may be undefined.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "valid-copy-2",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Matrix multiplication is generally not commutative, and one order may be undefined.",
+        "invalidOrExcludedState": "A frequent error is multiplying corresponding entries instead of using dot products."
+      },
+      "visibleRelationships": [
+        "Each output entry is a row-column dot product.",
+        "Add corresponding entries, scale every entry, and multiply using row-column dot products when inner dimensions match."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is multiplying corresponding entries instead of using dot products.",
+        "The figure must not contradict this claim: Matrix multiplication is generally not commutative, and one order may be undefined."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why multiplying corresponding entries instead of using dot products leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why multiplying corresponding entries instead of using dot products leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -408,7 +2470,39 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "valid-copy-2",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u8-l6-v1",
@@ -418,6 +2512,128 @@
       "title": "System-to-matrix translation",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The zero preserves the y-column.",
       "learnerOutcome": "Translate linear systems into augmented matrices and justify elementary row operations as equivalent-system transformations.",
+      "mathematicalClaim": "[1,0,3|8].",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "matrix",
+          "kind": "polygon"
+        },
+        {
+          "id": "operations",
+          "kind": "polygon"
+        },
+        {
+          "id": "meaning",
+          "kind": "polygon"
+        },
+        {
+          "id": "matrix-to-operations",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "operations-to-meaning",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "matrix-title",
+          "kind": "label"
+        },
+        {
+          "id": "matrix-row-one",
+          "kind": "label"
+        },
+        {
+          "id": "matrix-row-two",
+          "kind": "label"
+        },
+        {
+          "id": "matrix-row-three",
+          "kind": "label"
+        },
+        {
+          "id": "operation-one",
+          "kind": "label"
+        },
+        {
+          "id": "operation-two",
+          "kind": "label"
+        },
+        {
+          "id": "operation-three",
+          "kind": "label"
+        },
+        {
+          "id": "meaning-one",
+          "kind": "label"
+        },
+        {
+          "id": "meaning-two",
+          "kind": "label"
+        },
+        {
+          "id": "meaning-three",
+          "kind": "label"
+        },
+        {
+          "id": "answer",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "matrix-title",
+          "matrix-row-one",
+          "matrix-row-two",
+          "matrix-row-three",
+          "operation-one",
+          "operation-two",
+          "operation-three",
+          "meaning-one",
+          "meaning-two",
+          "meaning-three",
+          "answer"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Multiplying a row by zero is forbidden because it erases a constraint.",
+        "invalidOrExcludedState": "A frequent error is changing coefficients without changing the constant term."
+      },
+      "visibleRelationships": [
+        "The zero preserves the y-column.",
+        "Include zero coefficients, translate each equation into a row, and use row swap, nonzero scaling, or row replacement to preserve the solution set."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is changing coefficients without changing the constant term.",
+        "The figure must not contradict this claim: [1,0,3|8]."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The zero preserves the y-column.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The zero preserves the y-column. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "matrix",
@@ -438,7 +2654,43 @@
         "answer"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "matrix",
+            "operations",
+            "meaning",
+            "matrix-to-operations",
+            "operations-to-meaning",
+            "matrix-title",
+            "matrix-row-one",
+            "matrix-row-two",
+            "matrix-row-three",
+            "operation-one",
+            "operation-two",
+            "operation-three",
+            "meaning-one",
+            "meaning-two",
+            "meaning-three",
+            "answer"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u8-l6-v2",
@@ -448,6 +2700,147 @@
       "title": "Row-operation meanings",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for augmented matrices and row operations.",
       "learnerOutcome": "Translate linear systems into augmented matrices and justify elementary row operations as equivalent-system transformations.",
+      "mathematicalClaim": "Include zero coefficients, translate each equation into a row, and use row swap, nonzero scaling, or row replacement to preserve the solution set.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-3",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-4",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-4",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "number-copy-4",
+          "step-copy-4",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Multiplying a row by zero is forbidden because it erases a constraint.",
+        "invalidOrExcludedState": "A frequent error is changing coefficients without changing the constant term."
+      },
+      "visibleRelationships": [
+        "The zero preserves the y-column.",
+        "Include zero coefficients, translate each equation into a row, and use row swap, nonzero scaling, or row replacement to preserve the solution set."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is changing coefficients without changing the constant term.",
+        "The figure must not contradict this claim: Include zero coefficients, translate each equation into a row, and use row swap, nonzero scaling, or row replacement to preserve the solution set."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for augmented matrices and row operations.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for augmented matrices and row operations. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -473,7 +2866,48 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "arrow-3",
+            "step-4",
+            "number-4",
+            "number-copy-4",
+            "step-copy-4",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u8-l6-v3",
@@ -483,6 +2917,103 @@
       "title": "Forbidden zero scaling",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why changing coefficients without changing the constant term leads to a false conclusion.",
       "learnerOutcome": "Translate linear systems into augmented matrices and justify elementary row operations as equivalent-system transformations.",
+      "mathematicalClaim": "Multiplying a row by zero is forbidden because it erases a constraint.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Multiplying a row by zero is forbidden because it erases a constraint.",
+        "invalidOrExcludedState": "A frequent error is changing coefficients without changing the constant term."
+      },
+      "visibleRelationships": [
+        "The zero preserves the y-column.",
+        "Include zero coefficients, translate each equation into a row, and use row swap, nonzero scaling, or row replacement to preserve the solution set."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is changing coefficients without changing the constant term.",
+        "The figure must not contradict this claim: Multiplying a row by zero is forbidden because it erases a constraint."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why changing coefficients without changing the constant term leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why changing coefficients without changing the constant term leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -498,7 +3029,38 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u8-l7-v1",
@@ -508,6 +3070,128 @@
       "title": "Echelon staircase",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The second row is 0=5.",
       "learnerOutcome": "Use forward elimination to reach row-echelon form and solve by back-substitution.",
+      "mathematicalClaim": "No solution.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "matrix",
+          "kind": "polygon"
+        },
+        {
+          "id": "operations",
+          "kind": "polygon"
+        },
+        {
+          "id": "meaning",
+          "kind": "polygon"
+        },
+        {
+          "id": "matrix-to-operations",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "operations-to-meaning",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "matrix-title",
+          "kind": "label"
+        },
+        {
+          "id": "matrix-row-one",
+          "kind": "label"
+        },
+        {
+          "id": "matrix-row-two",
+          "kind": "label"
+        },
+        {
+          "id": "matrix-row-three",
+          "kind": "label"
+        },
+        {
+          "id": "operation-one",
+          "kind": "label"
+        },
+        {
+          "id": "operation-two",
+          "kind": "label"
+        },
+        {
+          "id": "operation-three",
+          "kind": "label"
+        },
+        {
+          "id": "meaning-one",
+          "kind": "label"
+        },
+        {
+          "id": "meaning-two",
+          "kind": "label"
+        },
+        {
+          "id": "meaning-three",
+          "kind": "label"
+        },
+        {
+          "id": "answer",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "matrix-title",
+          "matrix-row-one",
+          "matrix-row-two",
+          "matrix-row-three",
+          "operation-one",
+          "operation-two",
+          "operation-three",
+          "meaning-one",
+          "meaning-two",
+          "meaning-three",
+          "answer"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Contradiction rows mean no solution; zero rows may reveal free variables.",
+        "invalidOrExcludedState": "A frequent error is losing the row-operation audit trail in arithmetic clutter."
+      },
+      "visibleRelationships": [
+        "The second row is 0=5.",
+        "Choose a pivot, eliminate below it, move to the lower submatrix, and back-substitute from the final pivot row."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is losing the row-operation audit trail in arithmetic clutter.",
+        "The figure must not contradict this claim: No solution."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The second row is 0=5.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The second row is 0=5. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "matrix",
@@ -528,7 +3212,43 @@
         "answer"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "matrix",
+            "operations",
+            "meaning",
+            "matrix-to-operations",
+            "operations-to-meaning",
+            "matrix-title",
+            "matrix-row-one",
+            "matrix-row-two",
+            "matrix-row-three",
+            "operation-one",
+            "operation-two",
+            "operation-three",
+            "meaning-one",
+            "meaning-two",
+            "meaning-three",
+            "answer"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u8-l7-v2",
@@ -538,6 +3258,147 @@
       "title": "Forward elimination stages",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for gaussian elimination and echelon form.",
       "learnerOutcome": "Use forward elimination to reach row-echelon form and solve by back-substitution.",
+      "mathematicalClaim": "Choose a pivot, eliminate below it, move to the lower submatrix, and back-substitute from the final pivot row.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-3",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-4",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-4",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "number-copy-4",
+          "step-copy-4",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Contradiction rows mean no solution; zero rows may reveal free variables.",
+        "invalidOrExcludedState": "A frequent error is losing the row-operation audit trail in arithmetic clutter."
+      },
+      "visibleRelationships": [
+        "The second row is 0=5.",
+        "Choose a pivot, eliminate below it, move to the lower submatrix, and back-substitute from the final pivot row."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is losing the row-operation audit trail in arithmetic clutter.",
+        "The figure must not contradict this claim: Choose a pivot, eliminate below it, move to the lower submatrix, and back-substitute from the final pivot row."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for gaussian elimination and echelon form.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for gaussian elimination and echelon form. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -563,7 +3424,48 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "arrow-3",
+            "step-4",
+            "number-4",
+            "number-copy-4",
+            "step-copy-4",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u8-l7-v3",
@@ -573,6 +3475,103 @@
       "title": "Terminal row classifier",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why losing the row-operation audit trail in arithmetic clutter leads to a false conclusion.",
       "learnerOutcome": "Use forward elimination to reach row-echelon form and solve by back-substitution.",
+      "mathematicalClaim": "Contradiction rows mean no solution; zero rows may reveal free variables.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Contradiction rows mean no solution; zero rows may reveal free variables.",
+        "invalidOrExcludedState": "A frequent error is losing the row-operation audit trail in arithmetic clutter."
+      },
+      "visibleRelationships": [
+        "The second row is 0=5.",
+        "Choose a pivot, eliminate below it, move to the lower submatrix, and back-substitute from the final pivot row."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is losing the row-operation audit trail in arithmetic clutter.",
+        "The figure must not contradict this claim: Contradiction rows mean no solution; zero rows may reveal free variables."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why losing the row-operation audit trail in arithmetic clutter leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why losing the row-operation audit trail in arithmetic clutter leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -588,7 +3587,38 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u8-l8-v1",
@@ -598,6 +3628,128 @@
       "title": "RREF checklist",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Rank is smaller than the variable count.",
       "learnerOutcome": "Reduce matrices to RREF and interpret pivots, free variables, rank, and consistency directly.",
+      "mathematicalClaim": "One free variable and infinitely many solutions.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "matrix",
+          "kind": "polygon"
+        },
+        {
+          "id": "operations",
+          "kind": "polygon"
+        },
+        {
+          "id": "meaning",
+          "kind": "polygon"
+        },
+        {
+          "id": "matrix-to-operations",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "operations-to-meaning",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "matrix-title",
+          "kind": "label"
+        },
+        {
+          "id": "matrix-row-one",
+          "kind": "label"
+        },
+        {
+          "id": "matrix-row-two",
+          "kind": "label"
+        },
+        {
+          "id": "matrix-row-three",
+          "kind": "label"
+        },
+        {
+          "id": "operation-one",
+          "kind": "label"
+        },
+        {
+          "id": "operation-two",
+          "kind": "label"
+        },
+        {
+          "id": "operation-three",
+          "kind": "label"
+        },
+        {
+          "id": "meaning-one",
+          "kind": "label"
+        },
+        {
+          "id": "meaning-two",
+          "kind": "label"
+        },
+        {
+          "id": "meaning-three",
+          "kind": "label"
+        },
+        {
+          "id": "answer",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "matrix-title",
+          "matrix-row-one",
+          "matrix-row-two",
+          "matrix-row-three",
+          "operation-one",
+          "operation-two",
+          "operation-three",
+          "meaning-one",
+          "meaning-two",
+          "meaning-three",
+          "answer"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "RREF is unique for a matrix.",
+        "invalidOrExcludedState": "A frequent error is calling a matrix reduced before clearing above pivots."
+      },
+      "visibleRelationships": [
+        "Rank is smaller than the variable count.",
+        "Continue elimination above pivots, identify basic and free variables, and use rank to classify consistent systems."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is calling a matrix reduced before clearing above pivots.",
+        "The figure must not contradict this claim: One free variable and infinitely many solutions."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Rank is smaller than the variable count.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Rank is smaller than the variable count. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "matrix",
@@ -618,7 +3770,43 @@
         "answer"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "matrix",
+            "operations",
+            "meaning",
+            "matrix-to-operations",
+            "operations-to-meaning",
+            "matrix-title",
+            "matrix-row-one",
+            "matrix-row-two",
+            "matrix-row-three",
+            "operation-one",
+            "operation-two",
+            "operation-three",
+            "meaning-one",
+            "meaning-two",
+            "meaning-three",
+            "answer"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u8-l8-v2",
@@ -628,6 +3816,147 @@
       "title": "Pivot-free map",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for gauss-jordan elimination and reduced row-echelon form.",
       "learnerOutcome": "Reduce matrices to RREF and interpret pivots, free variables, rank, and consistency directly.",
+      "mathematicalClaim": "Continue elimination above pivots, identify basic and free variables, and use rank to classify consistent systems.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-3",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-4",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-4",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "number-copy-4",
+          "step-copy-4",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "RREF is unique for a matrix.",
+        "invalidOrExcludedState": "A frequent error is calling a matrix reduced before clearing above pivots."
+      },
+      "visibleRelationships": [
+        "Rank is smaller than the variable count.",
+        "Continue elimination above pivots, identify basic and free variables, and use rank to classify consistent systems."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is calling a matrix reduced before clearing above pivots.",
+        "The figure must not contradict this claim: Continue elimination above pivots, identify basic and free variables, and use rank to classify consistent systems."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for gauss-jordan elimination and reduced row-echelon form.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for gauss-jordan elimination and reduced row-echelon form. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -653,7 +3982,48 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "arrow-3",
+            "step-4",
+            "number-4",
+            "number-copy-4",
+            "step-copy-4",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u8-l8-v3",
@@ -663,6 +4033,103 @@
       "title": "Rank classification table",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why calling a matrix reduced before clearing above pivots leads to a false conclusion.",
       "learnerOutcome": "Reduce matrices to RREF and interpret pivots, free variables, rank, and consistency directly.",
+      "mathematicalClaim": "RREF is unique for a matrix.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "RREF is unique for a matrix.",
+        "invalidOrExcludedState": "A frequent error is calling a matrix reduced before clearing above pivots."
+      },
+      "visibleRelationships": [
+        "Rank is smaller than the variable count.",
+        "Continue elimination above pivots, identify basic and free variables, and use rank to classify consistent systems."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is calling a matrix reduced before clearing above pivots.",
+        "The figure must not contradict this claim: RREF is unique for a matrix."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why calling a matrix reduced before clearing above pivots leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why calling a matrix reduced before clearing above pivots leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -678,7 +4145,38 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u8-l9-v1",
@@ -688,6 +4186,128 @@
       "title": "Determinant as area scale",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The rows are dependent and area collapses.",
       "learnerOutcome": "Compute and interpret determinants, identify singular matrices, and solve suitable systems with inverse matrices.",
+      "mathematicalClaim": "0; singular.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "matrix",
+          "kind": "polygon"
+        },
+        {
+          "id": "operations",
+          "kind": "polygon"
+        },
+        {
+          "id": "meaning",
+          "kind": "polygon"
+        },
+        {
+          "id": "matrix-to-operations",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "operations-to-meaning",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "matrix-title",
+          "kind": "label"
+        },
+        {
+          "id": "matrix-row-one",
+          "kind": "label"
+        },
+        {
+          "id": "matrix-row-two",
+          "kind": "label"
+        },
+        {
+          "id": "matrix-row-three",
+          "kind": "label"
+        },
+        {
+          "id": "operation-one",
+          "kind": "label"
+        },
+        {
+          "id": "operation-two",
+          "kind": "label"
+        },
+        {
+          "id": "operation-three",
+          "kind": "label"
+        },
+        {
+          "id": "meaning-one",
+          "kind": "label"
+        },
+        {
+          "id": "meaning-two",
+          "kind": "label"
+        },
+        {
+          "id": "meaning-three",
+          "kind": "label"
+        },
+        {
+          "id": "answer",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "matrix-title",
+          "matrix-row-one",
+          "matrix-row-two",
+          "matrix-row-three",
+          "operation-one",
+          "operation-two",
+          "operation-three",
+          "meaning-one",
+          "meaning-two",
+          "meaning-three",
+          "answer"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "The absolute determinant is the two-dimensional area scale, and a negative sign reverses orientation.",
+        "invalidOrExcludedState": "A frequent error is attempting to divide by a zero determinant."
+      },
+      "visibleRelationships": [
+        "The rows are dependent and area collapses.",
+        "For [[a,b],[c,d]], compute ad-bc; nonzero means invertible and zero means singular."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is attempting to divide by a zero determinant.",
+        "The figure must not contradict this claim: 0; singular."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The rows are dependent and area collapses.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The rows are dependent and area collapses. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "matrix",
@@ -708,7 +4328,43 @@
         "answer"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "matrix",
+            "operations",
+            "meaning",
+            "matrix-to-operations",
+            "operations-to-meaning",
+            "matrix-title",
+            "matrix-row-one",
+            "matrix-row-two",
+            "matrix-row-three",
+            "operation-one",
+            "operation-two",
+            "operation-three",
+            "meaning-one",
+            "meaning-two",
+            "meaning-three",
+            "answer"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u8-l9-v2",
@@ -718,6 +4374,125 @@
       "title": "Singular collapse",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for determinants, singularity, and inverse matrices.",
       "learnerOutcome": "Compute and interpret determinants, identify singular matrices, and solve suitable systems with inverse matrices.",
+      "mathematicalClaim": "For [[a,b],[c,d]], compute ad-bc; nonzero means invertible and zero means singular.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "The absolute determinant is the two-dimensional area scale, and a negative sign reverses orientation.",
+        "invalidOrExcludedState": "A frequent error is attempting to divide by a zero determinant."
+      },
+      "visibleRelationships": [
+        "The rows are dependent and area collapses.",
+        "For [[a,b],[c,d]], compute ad-bc; nonzero means invertible and zero means singular."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is attempting to divide by a zero determinant.",
+        "The figure must not contradict this claim: For [[a,b],[c,d]], compute ad-bc; nonzero means invertible and zero means singular."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for determinants, singularity, and inverse matrices.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for determinants, singularity, and inverse matrices. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -738,7 +4513,43 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u8-l9-v3",
@@ -748,6 +4559,108 @@
       "title": "Inverse verification",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why attempting to divide by a zero determinant leads to a false conclusion.",
       "learnerOutcome": "Compute and interpret determinants, identify singular matrices, and solve suitable systems with inverse matrices.",
+      "mathematicalClaim": "The absolute determinant is the two-dimensional area scale, and a negative sign reverses orientation.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "valid-copy-2",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "The absolute determinant is the two-dimensional area scale, and a negative sign reverses orientation.",
+        "invalidOrExcludedState": "A frequent error is attempting to divide by a zero determinant."
+      },
+      "visibleRelationships": [
+        "The rows are dependent and area collapses.",
+        "For [[a,b],[c,d]], compute ad-bc; nonzero means invertible and zero means singular."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is attempting to divide by a zero determinant.",
+        "The figure must not contradict this claim: The absolute determinant is the two-dimensional area scale, and a negative sign reverses orientation."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why attempting to divide by a zero determinant leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why attempting to divide by a zero determinant leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -764,7 +4677,39 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "valid-copy-2",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u8-l10-v1",
@@ -774,6 +4719,128 @@
       "title": "Basis-vector explorer",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The output is four first columns minus one second column.",
       "learnerOutcome": "Interpret matrices as transformations of vectors and construct a complete multivariable model using equations, inequalities, and matrices.",
+      "mathematicalClaim": "(7,-3).",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "matrix",
+          "kind": "polygon"
+        },
+        {
+          "id": "operations",
+          "kind": "polygon"
+        },
+        {
+          "id": "meaning",
+          "kind": "polygon"
+        },
+        {
+          "id": "matrix-to-operations",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "operations-to-meaning",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "matrix-title",
+          "kind": "label"
+        },
+        {
+          "id": "matrix-row-one",
+          "kind": "label"
+        },
+        {
+          "id": "matrix-row-two",
+          "kind": "label"
+        },
+        {
+          "id": "matrix-row-three",
+          "kind": "label"
+        },
+        {
+          "id": "operation-one",
+          "kind": "label"
+        },
+        {
+          "id": "operation-two",
+          "kind": "label"
+        },
+        {
+          "id": "operation-three",
+          "kind": "label"
+        },
+        {
+          "id": "meaning-one",
+          "kind": "label"
+        },
+        {
+          "id": "meaning-two",
+          "kind": "label"
+        },
+        {
+          "id": "meaning-three",
+          "kind": "label"
+        },
+        {
+          "id": "answer",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "matrix-title",
+          "matrix-row-one",
+          "matrix-row-two",
+          "matrix-row-three",
+          "operation-one",
+          "operation-two",
+          "operation-three",
+          "meaning-one",
+          "meaning-two",
+          "meaning-three",
+          "answer"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "A matrix model must keep rows, columns, units, and input meanings consistent.",
+        "invalidOrExcludedState": "A frequent error is switching the row and column interpretations halfway through a model."
+      },
+      "visibleRelationships": [
+        "The output is four first columns minus one second column.",
+        "Read the column images, express an input vector as a basis combination, and form the same combination of output columns."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is switching the row and column interpretations halfway through a model.",
+        "The figure must not contradict this claim: (7,-3)."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The output is four first columns minus one second column.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The output is four first columns minus one second column. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "matrix",
@@ -794,7 +4861,43 @@
         "answer"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "matrix",
+            "operations",
+            "meaning",
+            "matrix-to-operations",
+            "operations-to-meaning",
+            "matrix-title",
+            "matrix-row-one",
+            "matrix-row-two",
+            "matrix-row-three",
+            "operation-one",
+            "operation-two",
+            "operation-three",
+            "meaning-one",
+            "meaning-two",
+            "meaning-three",
+            "answer"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u8-l10-v2",
@@ -804,6 +4907,125 @@
       "title": "Transformation gallery",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for linear transformations and multivariable modeling.",
       "learnerOutcome": "Interpret matrices as transformations of vectors and construct a complete multivariable model using equations, inequalities, and matrices.",
+      "mathematicalClaim": "Read the column images, express an input vector as a basis combination, and form the same combination of output columns.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "A matrix model must keep rows, columns, units, and input meanings consistent.",
+        "invalidOrExcludedState": "A frequent error is switching the row and column interpretations halfway through a model."
+      },
+      "visibleRelationships": [
+        "The output is four first columns minus one second column.",
+        "Read the column images, express an input vector as a basis combination, and form the same combination of output columns."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is switching the row and column interpretations halfway through a model.",
+        "The figure must not contradict this claim: Read the column images, express an input vector as a basis combination, and form the same combination of output columns."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for linear transformations and multivariable modeling.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for linear transformations and multivariable modeling. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -824,7 +5046,43 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u8-l10-v3",
@@ -834,6 +5092,108 @@
       "title": "Multivariable model pipeline",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why switching the row and column interpretations halfway through a model leads to a false conclusion.",
       "learnerOutcome": "Interpret matrices as transformations of vectors and construct a complete multivariable model using equations, inequalities, and matrices.",
+      "mathematicalClaim": "A matrix model must keep rows, columns, units, and input meanings consistent.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "valid-copy-2",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "A matrix model must keep rows, columns, units, and input meanings consistent.",
+        "invalidOrExcludedState": "A frequent error is switching the row and column interpretations halfway through a model."
+      },
+      "visibleRelationships": [
+        "The output is four first columns minus one second column.",
+        "Read the column images, express an input vector as a basis combination, and form the same combination of output columns."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is switching the row and column interpretations halfway through a model.",
+        "The figure must not contradict this claim: A matrix model must keep rows, columns, units, and input meanings consistent."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why switching the row and column interpretations halfway through a model leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why switching the row and column interpretations halfway through a model leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -850,7 +5210,39 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "valid-copy-2",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     }
   ]
 }

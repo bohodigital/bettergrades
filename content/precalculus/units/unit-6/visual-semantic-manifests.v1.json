@@ -10,18 +10,114 @@
       "title": "Numerator-denominator role map",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The denominator creates three continuity intervals.",
       "learnerOutcome": "Identify rational functions and determine all excluded inputs from the original denominator before simplifying.",
+      "mathematicalClaim": "x≠3,-2.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "left",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "middle",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "right",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "asymptote-negative-two",
+          "kind": "segment"
+        },
+        {
+          "id": "asymptote-three",
+          "kind": "segment"
+        },
+        {
+          "id": "horizontal-asymptote",
+          "kind": "segment"
+        },
+        {
+          "id": "domain",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "domain"
+        ],
+        "coordinateVariables": [
+          "x",
+          "y"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": -6,
+          "xMax": 7,
+          "yMin": -5,
+          "yMax": 5,
+          "aspectRatio": 1.72,
+          "padding": 0.065
+        },
+        "validStructure": "A rational function can have all-real domain when its denominator has no real zero.",
+        "invalidOrExcludedState": "A frequent error is simplifying before recording the original exclusions."
+      },
+      "visibleRelationships": [
+        "The denominator creates three continuity intervals.",
+        "Factor the denominator, solve Q=0, record exclusions, and partition the domain into intervals of continuity."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is simplifying before recording the original exclusions.",
+        "The figure must not contradict this claim: x≠3,-2."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The denominator creates three continuity intervals.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The denominator creates three continuity intervals. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
-        "left-branch",
-        "right-branch",
-        "vertical-asymptote",
+        "left",
+        "middle",
+        "right",
+        "asymptote-negative-two",
+        "asymptote-three",
         "horizontal-asymptote",
-        "x-intercept",
-        "y-intercept",
-        "domain",
-        "structure"
+        "domain"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "left",
+            "middle",
+            "right",
+            "asymptote-negative-two",
+            "asymptote-three",
+            "horizontal-asymptote",
+            "domain"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u6-l1-v2",
@@ -31,6 +127,147 @@
       "title": "Domain intervals",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for rational functions and their domains.",
       "learnerOutcome": "Identify rational functions and determine all excluded inputs from the original denominator before simplifying.",
+      "mathematicalClaim": "Factor the denominator, solve Q=0, record exclusions, and partition the domain into intervals of continuity.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-3",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-4",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-4",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "number-copy-4",
+          "step-copy-4",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "A rational function can have all-real domain when its denominator has no real zero.",
+        "invalidOrExcludedState": "A frequent error is simplifying before recording the original exclusions."
+      },
+      "visibleRelationships": [
+        "The denominator creates three continuity intervals.",
+        "Factor the denominator, solve Q=0, record exclusions, and partition the domain into intervals of continuity."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is simplifying before recording the original exclusions.",
+        "The figure must not contradict this claim: Factor the denominator, solve Q=0, record exclusions, and partition the domain into intervals of continuity."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for rational functions and their domains.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for rational functions and their domains. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -56,7 +293,48 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "arrow-3",
+            "step-4",
+            "number-4",
+            "number-copy-4",
+            "step-copy-4",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u6-l1-v3",
@@ -66,6 +344,108 @@
       "title": "No-real-zero denominator",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why simplifying before recording the original exclusions leads to a false conclusion.",
       "learnerOutcome": "Identify rational functions and determine all excluded inputs from the original denominator before simplifying.",
+      "mathematicalClaim": "A rational function can have all-real domain when its denominator has no real zero.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "valid-copy-2",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "A rational function can have all-real domain when its denominator has no real zero.",
+        "invalidOrExcludedState": "A frequent error is simplifying before recording the original exclusions."
+      },
+      "visibleRelationships": [
+        "The denominator creates three continuity intervals.",
+        "Factor the denominator, solve Q=0, record exclusions, and partition the domain into intervals of continuity."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is simplifying before recording the original exclusions.",
+        "The figure must not contradict this claim: A rational function can have all-real domain when its denominator has no real zero."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why simplifying before recording the original exclusions leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why simplifying before recording the original exclusions leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -82,7 +462,39 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "valid-copy-2",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u6-l2-v1",
@@ -92,6 +504,82 @@
       "title": "Cancellation with domain memory",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The original denominator excludes 3.",
       "learnerOutcome": "Identify removable discontinuities caused by common factors and distinguish formula equivalence from function equality.",
+      "mathematicalClaim": "Line y=x+3 with hole (3,6).",
+      "requiredMathematicalObjects": [
+        {
+          "id": "left-branch",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "right-branch",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "vertical-asymptote",
+          "kind": "segment"
+        },
+        {
+          "id": "horizontal-asymptote",
+          "kind": "segment"
+        },
+        {
+          "id": "x-intercept",
+          "kind": "closed-point"
+        },
+        {
+          "id": "y-intercept",
+          "kind": "closed-point"
+        },
+        {
+          "id": "domain",
+          "kind": "label"
+        },
+        {
+          "id": "structure",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "domain",
+          "structure"
+        ],
+        "coordinateVariables": [
+          "x",
+          "y"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": -5.3,
+          "xMax": 7.3,
+          "yMin": -7.5,
+          "yMax": 7.5,
+          "aspectRatio": 1.72,
+          "padding": 0.065
+        },
+        "validStructure": "Two formulas define the same function only when both domains and values match.",
+        "invalidOrExcludedState": "A frequent error is filling the hole because the simplified formula has a value there."
+      },
+      "visibleRelationships": [
+        "The original denominator excludes 3.",
+        "Factor, retain original exclusions, cancel, and evaluate the simplified formula at the cancelled input to locate the hole."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is filling the hole because the simplified formula has a value there.",
+        "The figure must not contradict this claim: Line y=x+3 with hole (3,6)."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The original denominator excludes 3.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The original denominator excludes 3. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "left-branch",
         "right-branch",
@@ -103,7 +591,34 @@
         "structure"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "left-branch",
+            "right-branch",
+            "vertical-asymptote",
+            "horizontal-asymptote",
+            "x-intercept",
+            "y-intercept",
+            "domain",
+            "structure"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u6-l2-v2",
@@ -113,6 +628,147 @@
       "title": "Hole coordinate construction",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for equivalent formulas, different functions, and holes.",
       "learnerOutcome": "Identify removable discontinuities caused by common factors and distinguish formula equivalence from function equality.",
+      "mathematicalClaim": "Factor, retain original exclusions, cancel, and evaluate the simplified formula at the cancelled input to locate the hole.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-3",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-4",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-4",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "number-copy-4",
+          "step-copy-4",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Two formulas define the same function only when both domains and values match.",
+        "invalidOrExcludedState": "A frequent error is filling the hole because the simplified formula has a value there."
+      },
+      "visibleRelationships": [
+        "The original denominator excludes 3.",
+        "Factor, retain original exclusions, cancel, and evaluate the simplified formula at the cancelled input to locate the hole."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is filling the hole because the simplified formula has a value there.",
+        "The figure must not contradict this claim: Factor, retain original exclusions, cancel, and evaluate the simplified formula at the cancelled input to locate the hole."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for equivalent formulas, different functions, and holes.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for equivalent formulas, different functions, and holes. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -138,7 +794,48 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "arrow-3",
+            "step-4",
+            "number-4",
+            "number-copy-4",
+            "step-copy-4",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u6-l2-v3",
@@ -148,6 +845,103 @@
       "title": "Equal expressions versus functions",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why filling the hole because the simplified formula has a value there leads to a false conclusion.",
       "learnerOutcome": "Identify removable discontinuities caused by common factors and distinguish formula equivalence from function equality.",
+      "mathematicalClaim": "Two formulas define the same function only when both domains and values match.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Two formulas define the same function only when both domains and values match.",
+        "invalidOrExcludedState": "A frequent error is filling the hole because the simplified formula has a value there."
+      },
+      "visibleRelationships": [
+        "The original denominator excludes 3.",
+        "Factor, retain original exclusions, cancel, and evaluate the simplified formula at the cancelled input to locate the hole."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is filling the hole because the simplified formula has a value there.",
+        "The figure must not contradict this claim: Two formulas define the same function only when both domains and values match."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why filling the hole because the simplified formula has a value there leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why filling the hole because the simplified formula has a value there leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -163,7 +957,38 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u6-l3-v1",
@@ -173,6 +998,82 @@
       "title": "One-sided arrows",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The first-power denominator changes sign.",
       "learnerOutcome": "Determine vertical asymptotes and describe one-sided behavior from factor signs and multiplicity.",
+      "mathematicalClaim": "Left -∞, right +∞.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "left-branch",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "right-branch",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "vertical-asymptote",
+          "kind": "segment"
+        },
+        {
+          "id": "horizontal-asymptote",
+          "kind": "segment"
+        },
+        {
+          "id": "x-intercept",
+          "kind": "closed-point"
+        },
+        {
+          "id": "y-intercept",
+          "kind": "closed-point"
+        },
+        {
+          "id": "domain",
+          "kind": "label"
+        },
+        {
+          "id": "structure",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "domain",
+          "structure"
+        ],
+        "coordinateVariables": [
+          "x",
+          "y"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": -5.3,
+          "xMax": 7.3,
+          "yMin": -7.5,
+          "yMax": 7.5,
+          "aspectRatio": 1.72,
+          "padding": 0.065
+        },
+        "validStructure": "Odd denominator multiplicity changes sign; even multiplicity preserves sign.",
+        "invalidOrExcludedState": "A frequent error is treating an asymptote as a function point or assuming both sides behave alike."
+      },
+      "visibleRelationships": [
+        "The first-power denominator changes sign.",
+        "Simplify common factors, identify remaining denominator zeros, and use local factor signs and multiplicity to state each side."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is treating an asymptote as a function point or assuming both sides behave alike.",
+        "The figure must not contradict this claim: Left -∞, right +∞."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The first-power denominator changes sign.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The first-power denominator changes sign. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "left-branch",
         "right-branch",
@@ -184,7 +1085,34 @@
         "structure"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "left-branch",
+            "right-branch",
+            "vertical-asymptote",
+            "horizontal-asymptote",
+            "x-intercept",
+            "y-intercept",
+            "domain",
+            "structure"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u6-l3-v2",
@@ -194,6 +1122,147 @@
       "title": "Multiplicity comparison",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for vertical asymptotes and local behavior.",
       "learnerOutcome": "Determine vertical asymptotes and describe one-sided behavior from factor signs and multiplicity.",
+      "mathematicalClaim": "Simplify common factors, identify remaining denominator zeros, and use local factor signs and multiplicity to state each side.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-3",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-4",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-4",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "number-copy-4",
+          "step-copy-4",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Odd denominator multiplicity changes sign; even multiplicity preserves sign.",
+        "invalidOrExcludedState": "A frequent error is treating an asymptote as a function point or assuming both sides behave alike."
+      },
+      "visibleRelationships": [
+        "The first-power denominator changes sign.",
+        "Simplify common factors, identify remaining denominator zeros, and use local factor signs and multiplicity to state each side."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is treating an asymptote as a function point or assuming both sides behave alike.",
+        "The figure must not contradict this claim: Simplify common factors, identify remaining denominator zeros, and use local factor signs and multiplicity to state each side."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for vertical asymptotes and local behavior.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for vertical asymptotes and local behavior. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -219,7 +1288,48 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "arrow-3",
+            "step-4",
+            "number-4",
+            "number-copy-4",
+            "step-copy-4",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u6-l3-v3",
@@ -229,6 +1339,108 @@
       "title": "Local sign ledger",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why treating an asymptote as a function point or assuming both sides behave alike leads to a false conclusion.",
       "learnerOutcome": "Determine vertical asymptotes and describe one-sided behavior from factor signs and multiplicity.",
+      "mathematicalClaim": "Odd denominator multiplicity changes sign; even multiplicity preserves sign.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "valid-copy-2",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Odd denominator multiplicity changes sign; even multiplicity preserves sign.",
+        "invalidOrExcludedState": "A frequent error is treating an asymptote as a function point or assuming both sides behave alike."
+      },
+      "visibleRelationships": [
+        "The first-power denominator changes sign.",
+        "Simplify common factors, identify remaining denominator zeros, and use local factor signs and multiplicity to state each side."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is treating an asymptote as a function point or assuming both sides behave alike.",
+        "The figure must not contradict this claim: Odd denominator multiplicity changes sign; even multiplicity preserves sign."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why treating an asymptote as a function point or assuming both sides behave alike leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why treating an asymptote as a function point or assuming both sides behave alike leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -245,7 +1457,39 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "valid-copy-2",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u6-l4-v1",
@@ -255,6 +1499,82 @@
       "title": "Degree comparison chart",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Equal degrees use leading coefficient ratio.",
       "learnerOutcome": "Determine horizontal asymptotes from degree comparison and interpret them as long-run output behavior.",
+      "mathematicalClaim": "Horizontal asymptote y=5/2.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "left-branch",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "right-branch",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "vertical-asymptote",
+          "kind": "segment"
+        },
+        {
+          "id": "horizontal-asymptote",
+          "kind": "segment"
+        },
+        {
+          "id": "x-intercept",
+          "kind": "closed-point"
+        },
+        {
+          "id": "y-intercept",
+          "kind": "closed-point"
+        },
+        {
+          "id": "domain",
+          "kind": "label"
+        },
+        {
+          "id": "structure",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "domain",
+          "structure"
+        ],
+        "coordinateVariables": [
+          "x",
+          "y"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": -5.3,
+          "xMax": 7.3,
+          "yMin": -7.5,
+          "yMax": 7.5,
+          "aspectRatio": 1.72,
+          "padding": 0.065
+        },
+        "validStructure": "Horizontal asymptotes can be crossed at finite inputs.",
+        "invalidOrExcludedState": "A frequent error is applying the equal-degree ratio to unequal degrees."
+      },
+      "visibleRelationships": [
+        "Equal degrees use leading coefficient ratio.",
+        "Use y=0 when numerator degree is lower, leading coefficient ratio when degrees match, and division when numerator degree is higher."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is applying the equal-degree ratio to unequal degrees.",
+        "The figure must not contradict this claim: Horizontal asymptote y=5/2."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Equal degrees use leading coefficient ratio.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Equal degrees use leading coefficient ratio. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "left-branch",
         "right-branch",
@@ -266,7 +1586,34 @@
         "structure"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "left-branch",
+            "right-branch",
+            "vertical-asymptote",
+            "horizontal-asymptote",
+            "x-intercept",
+            "y-intercept",
+            "domain",
+            "structure"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u6-l4-v2",
@@ -276,6 +1623,125 @@
       "title": "Leading-term quotient",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for horizontal asymptotes and end behavior.",
       "learnerOutcome": "Determine horizontal asymptotes from degree comparison and interpret them as long-run output behavior.",
+      "mathematicalClaim": "Use y=0 when numerator degree is lower, leading coefficient ratio when degrees match, and division when numerator degree is higher.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Horizontal asymptotes can be crossed at finite inputs.",
+        "invalidOrExcludedState": "A frequent error is applying the equal-degree ratio to unequal degrees."
+      },
+      "visibleRelationships": [
+        "Equal degrees use leading coefficient ratio.",
+        "Use y=0 when numerator degree is lower, leading coefficient ratio when degrees match, and division when numerator degree is higher."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is applying the equal-degree ratio to unequal degrees.",
+        "The figure must not contradict this claim: Use y=0 when numerator degree is lower, leading coefficient ratio when degrees match, and division when numerator degree is higher."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for horizontal asymptotes and end behavior.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for horizontal asymptotes and end behavior. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -296,7 +1762,43 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u6-l4-v3",
@@ -306,6 +1808,108 @@
       "title": "Asymptote crossing",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why applying the equal-degree ratio to unequal degrees leads to a false conclusion.",
       "learnerOutcome": "Determine horizontal asymptotes from degree comparison and interpret them as long-run output behavior.",
+      "mathematicalClaim": "Horizontal asymptotes can be crossed at finite inputs.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "valid-copy-2",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Horizontal asymptotes can be crossed at finite inputs.",
+        "invalidOrExcludedState": "A frequent error is applying the equal-degree ratio to unequal degrees."
+      },
+      "visibleRelationships": [
+        "Equal degrees use leading coefficient ratio.",
+        "Use y=0 when numerator degree is lower, leading coefficient ratio when degrees match, and division when numerator degree is higher."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is applying the equal-degree ratio to unequal degrees.",
+        "The figure must not contradict this claim: Horizontal asymptotes can be crossed at finite inputs."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why applying the equal-degree ratio to unequal degrees leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why applying the equal-degree ratio to unequal degrees leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -322,7 +1926,39 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "valid-copy-2",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u6-l5-v1",
@@ -332,6 +1968,82 @@
       "title": "Division decomposition",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The remainder measures the gap.",
       "learnerOutcome": "Use polynomial division to determine nonhorizontal asymptotes and describe the shrinking remainder term.",
+      "mathematicalClaim": "x+1+2/(x-1), so asymptote y=x+1.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "left-branch",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "right-branch",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "vertical-asymptote",
+          "kind": "segment"
+        },
+        {
+          "id": "horizontal-asymptote",
+          "kind": "segment"
+        },
+        {
+          "id": "x-intercept",
+          "kind": "closed-point"
+        },
+        {
+          "id": "y-intercept",
+          "kind": "closed-point"
+        },
+        {
+          "id": "domain",
+          "kind": "label"
+        },
+        {
+          "id": "structure",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "domain",
+          "structure"
+        ],
+        "coordinateVariables": [
+          "x",
+          "y"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": -5.3,
+          "xMax": 7.3,
+          "yMin": -7.5,
+          "yMax": 7.5,
+          "aspectRatio": 1.72,
+          "padding": 0.065
+        },
+        "validStructure": "Degree difference one gives a slant line; larger differences can give higher-degree asymptotes.",
+        "invalidOrExcludedState": "A frequent error is claiming the rational function equals the quotient everywhere."
+      },
+      "visibleRelationships": [
+        "The remainder measures the gap.",
+        "Write R=Q+remainder/divisor; the graph approaches y=Q as the proper remainder term approaches zero."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is claiming the rational function equals the quotient everywhere.",
+        "The figure must not contradict this claim: x+1+2/(x-1), so asymptote y=x+1."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The remainder measures the gap.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The remainder measures the gap. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "left-branch",
         "right-branch",
@@ -343,7 +2055,34 @@
         "structure"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "left-branch",
+            "right-branch",
+            "vertical-asymptote",
+            "horizontal-asymptote",
+            "x-intercept",
+            "y-intercept",
+            "domain",
+            "structure"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u6-l5-v2",
@@ -353,6 +2092,125 @@
       "title": "Slant approach",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for slant and polynomial asymptotes.",
       "learnerOutcome": "Use polynomial division to determine nonhorizontal asymptotes and describe the shrinking remainder term.",
+      "mathematicalClaim": "Write R=Q+remainder/divisor; the graph approaches y=Q as the proper remainder term approaches zero.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Degree difference one gives a slant line; larger differences can give higher-degree asymptotes.",
+        "invalidOrExcludedState": "A frequent error is claiming the rational function equals the quotient everywhere."
+      },
+      "visibleRelationships": [
+        "The remainder measures the gap.",
+        "Write R=Q+remainder/divisor; the graph approaches y=Q as the proper remainder term approaches zero."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is claiming the rational function equals the quotient everywhere.",
+        "The figure must not contradict this claim: Write R=Q+remainder/divisor; the graph approaches y=Q as the proper remainder term approaches zero."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for slant and polynomial asymptotes.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for slant and polynomial asymptotes. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -373,7 +2231,43 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u6-l5-v3",
@@ -383,6 +2277,103 @@
       "title": "Polynomial asymptote",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why claiming the rational function equals the quotient everywhere leads to a false conclusion.",
       "learnerOutcome": "Use polynomial division to determine nonhorizontal asymptotes and describe the shrinking remainder term.",
+      "mathematicalClaim": "Degree difference one gives a slant line; larger differences can give higher-degree asymptotes.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Degree difference one gives a slant line; larger differences can give higher-degree asymptotes.",
+        "invalidOrExcludedState": "A frequent error is claiming the rational function equals the quotient everywhere."
+      },
+      "visibleRelationships": [
+        "The remainder measures the gap.",
+        "Write R=Q+remainder/divisor; the graph approaches y=Q as the proper remainder term approaches zero."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is claiming the rational function equals the quotient everywhere.",
+        "The figure must not contradict this claim: Degree difference one gives a slant line; larger differences can give higher-degree asymptotes."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why claiming the rational function equals the quotient everywhere leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why claiming the rational function equals the quotient everywhere leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -398,7 +2389,38 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u6-l6-v1",
@@ -408,6 +2430,82 @@
       "title": "Rational sign chart",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Critical values split the sign intervals.",
       "learnerOutcome": "Find rational intercepts and determine positive and negative intervals using factored sign structure.",
+      "mathematicalClaim": "Positive, negative, positive across -2 and 1.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "left-branch",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "right-branch",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "vertical-asymptote",
+          "kind": "segment"
+        },
+        {
+          "id": "horizontal-asymptote",
+          "kind": "segment"
+        },
+        {
+          "id": "x-intercept",
+          "kind": "closed-point"
+        },
+        {
+          "id": "y-intercept",
+          "kind": "closed-point"
+        },
+        {
+          "id": "domain",
+          "kind": "label"
+        },
+        {
+          "id": "structure",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "domain",
+          "structure"
+        ],
+        "coordinateVariables": [
+          "x",
+          "y"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": -5.3,
+          "xMax": 7.3,
+          "yMin": -7.5,
+          "yMax": 7.5,
+          "aspectRatio": 1.72,
+          "padding": 0.065
+        },
+        "validStructure": "Even multiplicity preserves sign; odd multiplicity changes sign.",
+        "invalidOrExcludedState": "A frequent error is counting a cancelled numerator zero as an intercept."
+      },
+      "visibleRelationships": [
+        "Critical values split the sign intervals.",
+        "Factor, classify zeros as intercepts, holes, or asymptotes, test one input per interval, and calculate the y-intercept if allowed."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is counting a cancelled numerator zero as an intercept.",
+        "The figure must not contradict this claim: Positive, negative, positive across -2 and 1."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Critical values split the sign intervals.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Critical values split the sign intervals. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "left-branch",
         "right-branch",
@@ -419,7 +2517,34 @@
         "structure"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "left-branch",
+            "right-branch",
+            "vertical-asymptote",
+            "horizontal-asymptote",
+            "x-intercept",
+            "y-intercept",
+            "domain",
+            "structure"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u6-l6-v2",
@@ -429,6 +2554,147 @@
       "title": "Intercept versus hole",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for intercepts and sign charts.",
       "learnerOutcome": "Find rational intercepts and determine positive and negative intervals using factored sign structure.",
+      "mathematicalClaim": "Factor, classify zeros as intercepts, holes, or asymptotes, test one input per interval, and calculate the y-intercept if allowed.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-3",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-4",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-4",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "number-copy-4",
+          "step-copy-4",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Even multiplicity preserves sign; odd multiplicity changes sign.",
+        "invalidOrExcludedState": "A frequent error is counting a cancelled numerator zero as an intercept."
+      },
+      "visibleRelationships": [
+        "Critical values split the sign intervals.",
+        "Factor, classify zeros as intercepts, holes, or asymptotes, test one input per interval, and calculate the y-intercept if allowed."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is counting a cancelled numerator zero as an intercept.",
+        "The figure must not contradict this claim: Factor, classify zeros as intercepts, holes, or asymptotes, test one input per interval, and calculate the y-intercept if allowed."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for intercepts and sign charts.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for intercepts and sign charts. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -454,7 +2720,48 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "arrow-3",
+            "step-4",
+            "number-4",
+            "number-copy-4",
+            "step-copy-4",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u6-l6-v3",
@@ -464,6 +2771,108 @@
       "title": "Multiplicity at rational zero",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why counting a cancelled numerator zero as an intercept leads to a false conclusion.",
       "learnerOutcome": "Find rational intercepts and determine positive and negative intervals using factored sign structure.",
+      "mathematicalClaim": "Even multiplicity preserves sign; odd multiplicity changes sign.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "valid-copy-2",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Even multiplicity preserves sign; odd multiplicity changes sign.",
+        "invalidOrExcludedState": "A frequent error is counting a cancelled numerator zero as an intercept."
+      },
+      "visibleRelationships": [
+        "Critical values split the sign intervals.",
+        "Factor, classify zeros as intercepts, holes, or asymptotes, test one input per interval, and calculate the y-intercept if allowed."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is counting a cancelled numerator zero as an intercept.",
+        "The figure must not contradict this claim: Even multiplicity preserves sign; odd multiplicity changes sign."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why counting a cancelled numerator zero as an intercept leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why counting a cancelled numerator zero as an intercept leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -480,7 +2889,39 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "valid-copy-2",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u6-l7-v1",
@@ -490,6 +2931,82 @@
       "title": "Complete checklist",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The features determine two branches.",
       "learnerOutcome": "Construct a complete rational graph using domain, discontinuities, asymptotes, intercepts, signs, and selected values.",
+      "mathematicalClaim": "VA x=2, HA y=1, x-intercept -1, y-intercept -1/2, signs +,-,+.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "left-branch",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "right-branch",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "vertical-asymptote",
+          "kind": "segment"
+        },
+        {
+          "id": "horizontal-asymptote",
+          "kind": "segment"
+        },
+        {
+          "id": "x-intercept",
+          "kind": "closed-point"
+        },
+        {
+          "id": "y-intercept",
+          "kind": "closed-point"
+        },
+        {
+          "id": "domain",
+          "kind": "label"
+        },
+        {
+          "id": "structure",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "domain",
+          "structure"
+        ],
+        "coordinateVariables": [
+          "x",
+          "y"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": -5.3,
+          "xMax": 7.3,
+          "yMin": -7.5,
+          "yMax": 7.5,
+          "aspectRatio": 1.72,
+          "padding": 0.065
+        },
+        "validStructure": "A graph must not connect across an excluded input, and range claims may require algebra.",
+        "invalidOrExcludedState": "A frequent error is omitting a hole or connecting branches across a vertical asymptote."
+      },
+      "visibleRelationships": [
+        "The features determine two branches.",
+        "Build a feature ledger, sketch each continuity interval separately, state one-sided behavior, and verify with technology."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is omitting a hole or connecting branches across a vertical asymptote.",
+        "The figure must not contradict this claim: VA x=2, HA y=1, x-intercept -1, y-intercept -1/2, signs +,-,+."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The features determine two branches.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The features determine two branches. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "left-branch",
         "right-branch",
@@ -501,7 +3018,34 @@
         "structure"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "left-branch",
+            "right-branch",
+            "vertical-asymptote",
+            "horizontal-asymptote",
+            "x-intercept",
+            "y-intercept",
+            "domain",
+            "structure"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u6-l7-v2",
@@ -511,6 +3055,147 @@
       "title": "Branch assembly",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for complete rational graph construction.",
       "learnerOutcome": "Construct a complete rational graph using domain, discontinuities, asymptotes, intercepts, signs, and selected values.",
+      "mathematicalClaim": "Build a feature ledger, sketch each continuity interval separately, state one-sided behavior, and verify with technology.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-3",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-4",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-4",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "number-copy-4",
+          "step-copy-4",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "A graph must not connect across an excluded input, and range claims may require algebra.",
+        "invalidOrExcludedState": "A frequent error is omitting a hole or connecting branches across a vertical asymptote."
+      },
+      "visibleRelationships": [
+        "The features determine two branches.",
+        "Build a feature ledger, sketch each continuity interval separately, state one-sided behavior, and verify with technology."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is omitting a hole or connecting branches across a vertical asymptote.",
+        "The figure must not contradict this claim: Build a feature ledger, sketch each continuity interval separately, state one-sided behavior, and verify with technology."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for complete rational graph construction.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for complete rational graph construction. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -536,7 +3221,48 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "arrow-3",
+            "step-4",
+            "number-4",
+            "number-copy-4",
+            "step-copy-4",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u6-l7-v3",
@@ -546,6 +3272,103 @@
       "title": "Window failure comparison",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why omitting a hole or connecting branches across a vertical asymptote leads to a false conclusion.",
       "learnerOutcome": "Construct a complete rational graph using domain, discontinuities, asymptotes, intercepts, signs, and selected values.",
+      "mathematicalClaim": "A graph must not connect across an excluded input, and range claims may require algebra.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "A graph must not connect across an excluded input, and range claims may require algebra.",
+        "invalidOrExcludedState": "A frequent error is omitting a hole or connecting branches across a vertical asymptote."
+      },
+      "visibleRelationships": [
+        "The features determine two branches.",
+        "Build a feature ledger, sketch each continuity interval separately, state one-sided behavior, and verify with technology."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is omitting a hole or connecting branches across a vertical asymptote.",
+        "The figure must not contradict this claim: A graph must not connect across an excluded input, and range claims may require algebra."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why omitting a hole or connecting branches across a vertical asymptote leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why omitting a hole or connecting branches across a vertical asymptote leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -561,7 +3384,38 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u6-l8-v1",
@@ -571,6 +3425,82 @@
       "title": "Intersection equation",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The transformed equation exists where the original does not.",
       "learnerOutcome": "Solve rational equations and intersections exactly or numerically while rejecting excluded candidates.",
+      "mathematicalClaim": "Candidate x=2 is excluded, so no solution.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "left-branch",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "right-branch",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "vertical-asymptote",
+          "kind": "segment"
+        },
+        {
+          "id": "horizontal-asymptote",
+          "kind": "segment"
+        },
+        {
+          "id": "x-intercept",
+          "kind": "closed-point"
+        },
+        {
+          "id": "y-intercept",
+          "kind": "closed-point"
+        },
+        {
+          "id": "domain",
+          "kind": "label"
+        },
+        {
+          "id": "structure",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "domain",
+          "structure"
+        ],
+        "coordinateVariables": [
+          "x",
+          "y"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": -5.3,
+          "xMax": 7.3,
+          "yMin": -7.5,
+          "yMax": 7.5,
+          "aspectRatio": 1.72,
+          "padding": 0.065
+        },
+        "validStructure": "An excluded candidate can arise because the clearing multiplier is zero where the original equation is undefined.",
+        "invalidOrExcludedState": "A frequent error is accepting every solution of the cleared equation."
+      },
+      "visibleRelationships": [
+        "The transformed equation exists where the original does not.",
+        "Record restrictions, multiply every term by an LCD, solve the resulting equation, and reject excluded candidates."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is accepting every solution of the cleared equation.",
+        "The figure must not contradict this claim: Candidate x=2 is excluded, so no solution."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The transformed equation exists where the original does not.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The transformed equation exists where the original does not. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "left-branch",
         "right-branch",
@@ -582,7 +3512,34 @@
         "structure"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "left-branch",
+            "right-branch",
+            "vertical-asymptote",
+            "horizontal-asymptote",
+            "x-intercept",
+            "y-intercept",
+            "domain",
+            "structure"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u6-l8-v2",
@@ -592,6 +3549,147 @@
       "title": "Candidate filter",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for rational equations and function intersections.",
       "learnerOutcome": "Solve rational equations and intersections exactly or numerically while rejecting excluded candidates.",
+      "mathematicalClaim": "Record restrictions, multiply every term by an LCD, solve the resulting equation, and reject excluded candidates.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-3",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-4",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-4",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "number-copy-4",
+          "step-copy-4",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "An excluded candidate can arise because the clearing multiplier is zero where the original equation is undefined.",
+        "invalidOrExcludedState": "A frequent error is accepting every solution of the cleared equation."
+      },
+      "visibleRelationships": [
+        "The transformed equation exists where the original does not.",
+        "Record restrictions, multiply every term by an LCD, solve the resulting equation, and reject excluded candidates."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is accepting every solution of the cleared equation.",
+        "The figure must not contradict this claim: Record restrictions, multiply every term by an LCD, solve the resulting equation, and reject excluded candidates."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for rational equations and function intersections.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for rational equations and function intersections. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -617,7 +3715,48 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "arrow-3",
+            "step-4",
+            "number-4",
+            "number-copy-4",
+            "step-copy-4",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u6-l8-v3",
@@ -627,6 +3766,108 @@
       "title": "Exact-numerical method tree",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why accepting every solution of the cleared equation leads to a false conclusion.",
       "learnerOutcome": "Solve rational equations and intersections exactly or numerically while rejecting excluded candidates.",
+      "mathematicalClaim": "An excluded candidate can arise because the clearing multiplier is zero where the original equation is undefined.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "valid-copy-2",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "An excluded candidate can arise because the clearing multiplier is zero where the original equation is undefined.",
+        "invalidOrExcludedState": "A frequent error is accepting every solution of the cleared equation."
+      },
+      "visibleRelationships": [
+        "The transformed equation exists where the original does not.",
+        "Record restrictions, multiply every term by an LCD, solve the resulting equation, and reject excluded candidates."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is accepting every solution of the cleared equation.",
+        "The figure must not contradict this claim: An excluded candidate can arise because the clearing multiplier is zero where the original equation is undefined."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why accepting every solution of the cleared equation leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why accepting every solution of the cleared equation leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -643,7 +3884,39 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "valid-copy-2",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u6-l9-v1",
@@ -653,6 +3926,82 @@
       "title": "Inequality sign chart",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Include the zero, exclude the asymptote.",
       "learnerOutcome": "Solve rational inequalities using critical values, sign intervals, and correct endpoint inclusion.",
+      "mathematicalClaim": "[-3,4).",
+      "requiredMathematicalObjects": [
+        {
+          "id": "left-branch",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "right-branch",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "vertical-asymptote",
+          "kind": "segment"
+        },
+        {
+          "id": "horizontal-asymptote",
+          "kind": "segment"
+        },
+        {
+          "id": "x-intercept",
+          "kind": "closed-point"
+        },
+        {
+          "id": "y-intercept",
+          "kind": "closed-point"
+        },
+        {
+          "id": "domain",
+          "kind": "label"
+        },
+        {
+          "id": "structure",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "domain",
+          "structure"
+        ],
+        "coordinateVariables": [
+          "x",
+          "y"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": -5.3,
+          "xMax": 7.3,
+          "yMin": -7.5,
+          "yMax": 7.5,
+          "aspectRatio": 1.72,
+          "padding": 0.065
+        },
+        "validStructure": "Allowed numerator zeros may be included for non-strict inequalities; denominator zeros never are.",
+        "invalidOrExcludedState": "A frequent error is multiplying by a denominator whose sign changes across the domain."
+      },
+      "visibleRelationships": [
+        "Include the zero, exclude the asymptote.",
+        "Move all terms to one side, combine and factor, list numerator and denominator zeros, test intervals, and apply endpoint rules."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is multiplying by a denominator whose sign changes across the domain.",
+        "The figure must not contradict this claim: [-3,4)."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Include the zero, exclude the asymptote.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Include the zero, exclude the asymptote. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "left-branch",
         "right-branch",
@@ -664,7 +4013,34 @@
         "structure"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "left-branch",
+            "right-branch",
+            "vertical-asymptote",
+            "horizontal-asymptote",
+            "x-intercept",
+            "y-intercept",
+            "domain",
+            "structure"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u6-l9-v2",
@@ -674,6 +4050,147 @@
       "title": "Endpoint rules",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for rational inequalities.",
       "learnerOutcome": "Solve rational inequalities using critical values, sign intervals, and correct endpoint inclusion.",
+      "mathematicalClaim": "Move all terms to one side, combine and factor, list numerator and denominator zeros, test intervals, and apply endpoint rules.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-3",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-4",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-4",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "number-copy-4",
+          "step-copy-4",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Allowed numerator zeros may be included for non-strict inequalities; denominator zeros never are.",
+        "invalidOrExcludedState": "A frequent error is multiplying by a denominator whose sign changes across the domain."
+      },
+      "visibleRelationships": [
+        "Include the zero, exclude the asymptote.",
+        "Move all terms to one side, combine and factor, list numerator and denominator zeros, test intervals, and apply endpoint rules."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is multiplying by a denominator whose sign changes across the domain.",
+        "The figure must not contradict this claim: Move all terms to one side, combine and factor, list numerator and denominator zeros, test intervals, and apply endpoint rules."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for rational inequalities.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for rational inequalities. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -699,7 +4216,48 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "arrow-3",
+            "step-4",
+            "number-4",
+            "number-copy-4",
+            "step-copy-4",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u6-l9-v3",
@@ -709,6 +4267,103 @@
       "title": "Function comparison",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why multiplying by a denominator whose sign changes across the domain leads to a false conclusion.",
       "learnerOutcome": "Solve rational inequalities using critical values, sign intervals, and correct endpoint inclusion.",
+      "mathematicalClaim": "Allowed numerator zeros may be included for non-strict inequalities; denominator zeros never are.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Allowed numerator zeros may be included for non-strict inequalities; denominator zeros never are.",
+        "invalidOrExcludedState": "A frequent error is multiplying by a denominator whose sign changes across the domain."
+      },
+      "visibleRelationships": [
+        "Include the zero, exclude the asymptote.",
+        "Move all terms to one side, combine and factor, list numerator and denominator zeros, test intervals, and apply endpoint rules."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is multiplying by a denominator whose sign changes across the domain.",
+        "The figure must not contradict this claim: Allowed numerator zeros may be included for non-strict inequalities; denominator zeros never are."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why multiplying by a denominator whose sign changes across the domain leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why multiplying by a denominator whose sign changes across the domain leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -724,7 +4379,38 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u6-l10-v1",
@@ -734,6 +4420,82 @@
       "title": "Variation relationship map",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The product xy remains constant.",
       "learnerOutcome": "Build and interpret direct, inverse, joint, and combined variation models with meaningful parameters and domains.",
+      "mathematicalClaim": "y=40/x.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "left-branch",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "right-branch",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "vertical-asymptote",
+          "kind": "segment"
+        },
+        {
+          "id": "horizontal-asymptote",
+          "kind": "segment"
+        },
+        {
+          "id": "x-intercept",
+          "kind": "closed-point"
+        },
+        {
+          "id": "y-intercept",
+          "kind": "closed-point"
+        },
+        {
+          "id": "domain",
+          "kind": "label"
+        },
+        {
+          "id": "structure",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "domain",
+          "structure"
+        ],
+        "coordinateVariables": [
+          "x",
+          "y"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": -5.3,
+          "xMax": 7.3,
+          "yMin": -7.5,
+          "yMax": 7.5,
+          "aspectRatio": 1.72,
+          "padding": 0.065
+        },
+        "validStructure": "Inverse models exclude zero and often use positive contextual domains. Inverse variation is not an inverse function.",
+        "invalidOrExcludedState": "A frequent error is placing a factor in the numerator or denominator contrary to the wording."
+      },
+      "visibleRelationships": [
+        "The product xy remains constant.",
+        "Translate the wording into a formula with constant k, use a known data point to find k, and interpret how output responds to input changes."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is placing a factor in the numerator or denominator contrary to the wording.",
+        "The figure must not contradict this claim: y=40/x."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The product xy remains constant.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The product xy remains constant. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "left-branch",
         "right-branch",
@@ -745,7 +4507,34 @@
         "structure"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "left-branch",
+            "right-branch",
+            "vertical-asymptote",
+            "horizontal-asymptote",
+            "x-intercept",
+            "y-intercept",
+            "domain",
+            "structure"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u6-l10-v2",
@@ -755,6 +4544,125 @@
       "title": "Positive-domain inverse model",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for variation and rational models.",
       "learnerOutcome": "Build and interpret direct, inverse, joint, and combined variation models with meaningful parameters and domains.",
+      "mathematicalClaim": "Translate the wording into a formula with constant k, use a known data point to find k, and interpret how output responds to input changes.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Inverse models exclude zero and often use positive contextual domains. Inverse variation is not an inverse function.",
+        "invalidOrExcludedState": "A frequent error is placing a factor in the numerator or denominator contrary to the wording."
+      },
+      "visibleRelationships": [
+        "The product xy remains constant.",
+        "Translate the wording into a formula with constant k, use a known data point to find k, and interpret how output responds to input changes."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is placing a factor in the numerator or denominator contrary to the wording.",
+        "The figure must not contradict this claim: Translate the wording into a formula with constant k, use a known data point to find k, and interpret how output responds to input changes."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for variation and rational models.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for variation and rational models. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -775,7 +4683,43 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u6-l10-v3",
@@ -785,6 +4729,103 @@
       "title": "Units of k",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why placing a factor in the numerator or denominator contrary to the wording leads to a false conclusion.",
       "learnerOutcome": "Build and interpret direct, inverse, joint, and combined variation models with meaningful parameters and domains.",
+      "mathematicalClaim": "Inverse models exclude zero and often use positive contextual domains. Inverse variation is not an inverse function.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Inverse models exclude zero and often use positive contextual domains. Inverse variation is not an inverse function.",
+        "invalidOrExcludedState": "A frequent error is placing a factor in the numerator or denominator contrary to the wording."
+      },
+      "visibleRelationships": [
+        "The product xy remains constant.",
+        "Translate the wording into a formula with constant k, use a known data point to find k, and interpret how output responds to input changes."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is placing a factor in the numerator or denominator contrary to the wording.",
+        "The figure must not contradict this claim: Inverse models exclude zero and often use positive contextual domains. Inverse variation is not an inverse function."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why placing a factor in the numerator or denominator contrary to the wording leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why placing a factor in the numerator or denominator contrary to the wording leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -800,7 +4841,38 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u6-l11-v1",
@@ -810,6 +4882,82 @@
       "title": "Denominator-component map",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Recombination returns the original fraction.",
       "learnerOutcome": "Decompose proper rational functions with factorable denominators into simpler component fractions and verify recombination.",
+      "mathematicalClaim": "1/x-1/(x+1).",
+      "requiredMathematicalObjects": [
+        {
+          "id": "left-branch",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "right-branch",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "vertical-asymptote",
+          "kind": "segment"
+        },
+        {
+          "id": "horizontal-asymptote",
+          "kind": "segment"
+        },
+        {
+          "id": "x-intercept",
+          "kind": "closed-point"
+        },
+        {
+          "id": "y-intercept",
+          "kind": "closed-point"
+        },
+        {
+          "id": "domain",
+          "kind": "label"
+        },
+        {
+          "id": "structure",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "domain",
+          "structure"
+        ],
+        "coordinateVariables": [
+          "x",
+          "y"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": -5.3,
+          "xMax": 7.3,
+          "yMin": -7.5,
+          "yMax": 7.5,
+          "aspectRatio": 1.72,
+          "padding": 0.065
+        },
+        "validStructure": "Repeated linear factors need every power; irreducible quadratics need a linear numerator.",
+        "invalidOrExcludedState": "A frequent error is omitting a repeated-power term."
+      },
+      "visibleRelationships": [
+        "Recombination returns the original fraction.",
+        "Divide first if needed, factor the denominator, write every required component, clear denominators, solve coefficients, and recombine to verify."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is omitting a repeated-power term.",
+        "The figure must not contradict this claim: 1/x-1/(x+1)."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Recombination returns the original fraction.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Recombination returns the original fraction. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "left-branch",
         "right-branch",
@@ -821,7 +4969,34 @@
         "structure"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "left-branch",
+            "right-branch",
+            "vertical-asymptote",
+            "horizontal-asymptote",
+            "x-intercept",
+            "y-intercept",
+            "domain",
+            "structure"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u6-l11-v2",
@@ -831,6 +5006,147 @@
       "title": "Strategic substitution",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for partial-fraction structure.",
       "learnerOutcome": "Decompose proper rational functions with factorable denominators into simpler component fractions and verify recombination.",
+      "mathematicalClaim": "Divide first if needed, factor the denominator, write every required component, clear denominators, solve coefficients, and recombine to verify.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-3",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-4",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-4",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "number-copy-4",
+          "step-copy-4",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Repeated linear factors need every power; irreducible quadratics need a linear numerator.",
+        "invalidOrExcludedState": "A frequent error is omitting a repeated-power term."
+      },
+      "visibleRelationships": [
+        "Recombination returns the original fraction.",
+        "Divide first if needed, factor the denominator, write every required component, clear denominators, solve coefficients, and recombine to verify."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is omitting a repeated-power term.",
+        "The figure must not contradict this claim: Divide first if needed, factor the denominator, write every required component, clear denominators, solve coefficients, and recombine to verify."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for partial-fraction structure.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for partial-fraction structure. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -856,7 +5172,48 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "arrow-3",
+            "step-4",
+            "number-4",
+            "number-copy-4",
+            "step-copy-4",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u6-l11-v3",
@@ -866,6 +5223,103 @@
       "title": "Recombination check",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why omitting a repeated-power term leads to a false conclusion.",
       "learnerOutcome": "Decompose proper rational functions with factorable denominators into simpler component fractions and verify recombination.",
+      "mathematicalClaim": "Repeated linear factors need every power; irreducible quadratics need a linear numerator.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "valid-copy-2",
+          "invalid-copy-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Repeated linear factors need every power; irreducible quadratics need a linear numerator.",
+        "invalidOrExcludedState": "A frequent error is omitting a repeated-power term."
+      },
+      "visibleRelationships": [
+        "Recombination returns the original fraction.",
+        "Divide first if needed, factor the denominator, write every required component, clear denominators, solve coefficients, and recombine to verify."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is omitting a repeated-power term.",
+        "The figure must not contradict this claim: Repeated linear factors need every power; irreducible quadratics need a linear numerator."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why omitting a repeated-power term leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why omitting a repeated-power term leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -881,7 +5335,38 @@
         "invalid-copy-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "valid-copy-2",
+            "invalid-copy-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     }
   ]
 }

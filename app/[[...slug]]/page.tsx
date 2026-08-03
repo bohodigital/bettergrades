@@ -1,6 +1,6 @@
 import { BetterGradesApp } from "../BetterGradesApp";
 import type { Metadata } from "next";
-import type { ReactNode } from "react";
+import { lazy, type ReactNode } from "react";
 import { notFound } from "next/navigation";
 import { getRoute, publicRoutes } from "../../lib/registry";
 import { enrichedGlossaryResources, getPublishedResourcePage, getResourceHub, getResourcesForHub, publishedResourcePages } from "../../lib/resources/catalog.mjs";
@@ -15,8 +15,12 @@ import { GlossaryHubPage, MathConventionsPage, MathGlossaryPage } from "../Gloss
 import { LimitsUnitPageContent } from "../LimitsUnitPages";
 import { CalculusUnitPageContent } from "../CalculusUnitPages";
 import { AlgebraCoursePageContent } from "../AlgebraCoursePages";
-import { PrecalculusCoursePageContent } from "../PrecalculusCoursePages";
 import { ResourceHubPage, ResourceLibraryPage, ResourcePage } from "../ResourcePages";
+
+const PrecalculusCoursePageContent = lazy(async () => {
+  const module = await import("../PrecalculusCoursePages");
+  return { default: module.PrecalculusCoursePageContent };
+});
 function getPath(slug: string[] = []) {
   return `/${slug.join("/")}${slug.length ? "/" : ""}`;
 }

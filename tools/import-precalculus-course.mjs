@@ -11,6 +11,29 @@ const outputDirectory = resolve(root, "content/precalculus");
 const checkOnly = process.argv.includes("--check");
 const courseRoot = "/subjects/math/precalculus/";
 
+const auditCorrections = [
+  {
+    sourceLessonId: "P12.1",
+    source: "(x+2)^2+(y-3)^2=25; solve with y=0 or x=0.",
+    corrected: "(x+2)^2+(y-3)^2=25; x-intercepts (-6,0) and (2,0); y-intercepts (0,3-sqrt(21)) and (0,3+sqrt(21)).",
+    reason: "The accepted live audit found that the worked conclusion omitted every requested intercept.",
+  },
+  {
+    sourceLessonId: "P13.1",
+    source: "Endpoints (-5,4),(5,9); eliminate t=(x+1)/2 to get y=(x+1)^2/4 with restricted segment and direction.",
+    corrected: "Endpoints (-5,4) and (5,9); eliminate t=(x+1)/2 to get y=(x+1)^2/4 with -5<=x<=5, traced from left to right as t increases from -2 to 3.",
+    reason: "The accepted live audit found that the Cartesian conclusion omitted the exact x-domain and direction.",
+  },
+];
+
+function applyAuditCorrections(sourceLesson) {
+  const correction = auditCorrections.find((candidate) => candidate.sourceLessonId === sourceLesson.id);
+  if (!correction) return sourceLesson;
+  const serialized = JSON.stringify(sourceLesson);
+  if (!serialized.includes(correction.source)) throw new Error(`Expected audited source statement is missing from ${sourceLesson.id}.`);
+  return JSON.parse(serialized.replaceAll(correction.source, correction.corrected));
+}
+
 const unitProfiles = [
   { sourceCode: "P0", sequence: 1, title: "Algebra and Function Readiness", slug: "algebra-and-function-readiness" },
   { sourceCode: "P1", sequence: 2, title: "Functions and Multiple Representations", slug: "functions-and-multiple-representations" },
@@ -44,6 +67,51 @@ function publicLearnerText(value) {
   return value === "Use function notation from P0."
     ? "Use function notation from the algebra and function readiness unit."
     : value;
+}
+
+const explanationPrompt = /\b(?:explain|justify|describe|interpret|compare|analy[sz]e|why|defend|discuss|write a|construct an argument|show that|prove)\b/i;
+const numericAnswer = /^[+-]?(?:(?:\d+(?:\.\d*)?|\.\d+)(?:\s*\/\s*[+-]?(?:\d+(?:\.\d*)?|\.\d+))?)(?:\s*%)?\.?$/;
+const allowedSymbolicWord = /^(?:[a-z]|pi|sqrt|sin|cos|tan|sec|csc|cot|log|ln|exp|abs)$/i;
+
+function directValidationPolicy(answer) {
+  const source = answer.trim();
+  if (numericAnswer.test(source)) return { type: "numeric", tolerance: 1e-9 };
+  const words = source.match(/[A-Za-z]+/g) ?? [];
+  const symbolic = source.length <= 120
+    && /[=<>^/()+*\-√πθ≠≤≥]|\d[A-Za-z]|[A-Za-z]\d/.test(source)
+    && words.every((word) => allowedSymbolicWord.test(word));
+  return symbolic ? { type: "symbolic" } : { type: "exact_text" };
+}
+
+function validationPolicy(prompt, answer) {
+  const source = answer.trim();
+  if (source.length > 80 || (explanationPrompt.test(prompt) && source.length > 40)) {
+    return {
+      type: "manual_rubric",
+      revealPolicy: "attempt_then_model",
+      contentPolicy: "nonprotected_model_response",
+      minimumAttemptLength: 24,
+    };
+  }
+  const components = source.split(";").map((value) => value.trim()).filter(Boolean);
+  if (components.length > 1) {
+    return {
+      type: "multipart",
+      separator: ";",
+      components: components.map(directValidationPolicy),
+    };
+  }
+  return directValidationPolicy(source);
+}
+
+function publicPolicy(validation) {
+  return {
+    responseType: validation.type,
+    expectedAnswerPolicy: validation.type === "manual_rubric" ? "rubric_guided_model_comparison" : validation.type,
+    acceptedEquivalentForms: validation.type === "symbolic" ? "mathematically_equivalent_expression" : validation.type === "numeric" ? "equivalent_finite_number" : "declared_server_policy",
+    unitsAndRoundingPolicy: "Follow the units, exactness, and rounding requested in the prompt; otherwise preserve the exact form.",
+    randomizationPolicy: "fixed_source_authored_item",
+  };
 }
 
 const editorialProfiles = {
@@ -133,9 +201,129 @@ function editorialGuide(sourceLesson, unitSequence) {
   };
 }
 
+function normalizedPromptKey(value) {
+  return value
+    .normalize("NFKD")
+    .toLowerCase()
+    .replace(/\d+(?:\.\d+)?/g, "#")
+    .replace(/[^a-z#]+/g, " ")
+    .trim();
+}
+
+const sourceExerciseTypes = ["retrieval", "procedural", "procedural", "conceptual", "conceptual"];
+const sourceDifficulties = ["foundational", "developing", "developing", "transfer", "foundational"];
+
+function annotateSourcePractice(items) {
+  return items.map((item, index) => ({
+    ...item,
+    exerciseType: sourceExerciseTypes[index] ?? "explanation",
+    difficulty: sourceDifficulties[index] ?? "developing",
+    provenance: "source-authored",
+  }));
+}
+
+function phaseBExpandedPractice(sourceLesson, guide) {
+  const retainedProfiles = [
+    { index: 0, exerciseType: "retrieval", difficulty: "foundational" },
+    { index: 4, exerciseType: "conceptual", difficulty: "foundational" },
+    { index: 5, exerciseType: "verification", difficulty: "developing", contextualize: true },
+    { index: 6, exerciseType: "error-analysis", difficulty: "developing", contextualize: true },
+    { index: 9, exerciseType: "synthesis", difficulty: "transfer", contextualize: true },
+  ];
+  const retained = retainedProfiles.map((profile) => {
+    const item = sourceLesson.practice[profile.index];
+    return {
+      ...item,
+      prompt: profile.contextualize
+        ? `For ${sourceLesson.title.toLowerCase()}, ${lowerInitial(item.prompt)}`
+        : item.prompt,
+      exerciseType: profile.exerciseType,
+      difficulty: profile.difficulty,
+      provenance: "source-authored",
+    };
+  });
+  const [foundation, representation, transfer] = sourceLesson.examples;
+  const [anchorFigure, mechanismFigure, comparisonFigure] = sourceLesson.figures;
+  const conclusionMarker = "Following that structure gives ";
+  const conclusionStart = foundation.solution.lastIndexOf(conclusionMarker);
+  if (conclusionStart < 0) throw new Error(`${sourceLesson.id} lacks an exact foundation conclusion.`);
+  const foundationConclusion = foundation.solution.slice(conclusionStart + conclusionMarker.length).trim();
+  const firstMethodStep = guide.method[0].replace(/^\d+\.\s*/, "");
+  const additions = [
+    {
+      exerciseType: "procedural",
+      difficulty: "foundational",
+      prompt: `Solve this ${sourceLesson.title.toLowerCase()} problem and state the final result: ${foundation.problem}`,
+      answer: `${foundationConclusion} Check: ${foundation.interpretation}`,
+    },
+    {
+      exerciseType: "procedural",
+      difficulty: "developing",
+      prompt: `In ${sourceLesson.title.toLowerCase()}, for “${representation.problem}”, identify the first valid mathematical step and the condition that must remain visible.`,
+      answer: `First step: ${firstMethodStep} Required condition: ${guide.verification}`,
+    },
+    {
+      exerciseType: "transfer",
+      difficulty: "transfer",
+      prompt: `For “${transfer.problem}”, identify the governing definition or relationship and what a complete conclusion must include.`,
+      answer: `Governing relationship: ${sourceLesson.exposition[0]} A complete conclusion must satisfy ${guide.verification} Interpretation: ${transfer.interpretation}`,
+    },
+    {
+      exerciseType: "verification",
+      difficulty: "developing",
+      prompt: `Verify “${foundationConclusion}” using the required condition for ${sourceLesson.title.toLowerCase()}.`,
+      answer: `Required condition: ${guide.verification} Applying it to the opening problem confirms ${foundationConclusion}`,
+    },
+    {
+      exerciseType: "explanation",
+      difficulty: "developing",
+      prompt: `Explain why “${foundationConclusion}” follows from this lesson’s mathematical mechanism.`,
+      answer: `${sourceLesson.visualMechanism ?? sourceLesson.exposition[1]} Therefore ${foundationConclusion}`,
+    },
+    {
+      exerciseType: "conceptual",
+      difficulty: "developing",
+      prompt: `What mathematical structure is shared by the opening problem and “${transfer.problem}”?`,
+      answer: `${sourceLesson.exposition[0]} The opening result is ${foundationConclusion} The transfer problem must preserve the same defining structure.`,
+    },
+    {
+      exerciseType: "graphical",
+      difficulty: "developing",
+      prompt: `In “${anchorFigure.title}”, which mathematical objects or labels must be visible to support “${foundationConclusion}”?`,
+      answer: `${anchorFigure.description} These features support the conclusion because ${foundation.interpretation}`,
+    },
+    {
+      exerciseType: "graphical",
+      difficulty: "transfer",
+      prompt: `How should “${mechanismFigure.title}” make the governing relationship in “${representation.problem}” visible?`,
+      answer: `${mechanismFigure.description} Governing mechanism: ${sourceLesson.visualMechanism ?? sourceLesson.exposition[1]}`,
+    },
+    {
+      exerciseType: "error-analysis",
+      difficulty: "transfer",
+      prompt: `In “${comparisonFigure.title}”, identify the first point where the misconception diverges from valid ${sourceLesson.title.toLowerCase()} reasoning.`,
+      answer: `${comparisonFigure.description} The invalid path is: ${sourceLesson.commonMistake} The valid structure is: ${sourceLesson.exposition[1]}`,
+    },
+    {
+      exerciseType: "modeling",
+      difficulty: "transfer",
+      prompt: `In the application “${guide.application}”, what quantities or geometric objects must be identified, and what condition makes the model valid?`,
+      answer: `The governing relationship is ${sourceLesson.exposition[0]} The model must preserve ${guide.verification}`,
+    },
+    {
+      exerciseType: "exit-check",
+      difficulty: "transfer",
+      prompt: `Answer “${sourceLesson.practice[0].prompt}” and name the condition used to check the result.`,
+      answer: `${sourceLesson.practice[0].answer} Check: ${guide.verification}`,
+    },
+  ].map((item) => ({ ...item, provenance: "audit-remediation" }));
+
+  return [...retained, ...additions];
+}
+
 function expandedPractice(sourceLesson, guide) {
-  if (sourceLesson.preservePractice) return sourceLesson.practice;
-  const original = sourceLesson.practice.slice(0, 4);
+  if (sourceLesson.preservePractice) return phaseBExpandedPractice(sourceLesson, guide);
+  const original = annotateSourcePractice(sourceLesson.practice.slice(0, 4));
   const [foundation, representation, transfer] = sourceLesson.examples;
   const additions = [
     {
@@ -163,7 +351,15 @@ function expandedPractice(sourceLesson, guide) {
       answer: `${guide.verification} A complete response should apply that check to a specific example and explain why the conclusion follows.`,
     },
   ];
-  return [...original, ...additions];
+  return [
+    ...original,
+    ...additions.map((item, index) => ({
+      ...item,
+      exerciseType: ["explanation", "procedural", "error-analysis", "graphical", "transfer", "verification"][index],
+      difficulty: index < 2 ? "developing" : "transfer",
+      provenance: "editorial-expansion",
+    })),
+  ];
 }
 
 function learnerFigureCaption(sourceLesson, figure, index) {
@@ -177,6 +373,12 @@ function learnerFigureCaption(sourceLesson, figure, index) {
     .replace(/^A (?:frequent|common) error is\s+/i, "")
     .replace(/[.!?]+$/, "");
   return `Compare the valid path with the tempting shortcut. The figure shows why ${lowerInitial(shortcut)} leads to a false conclusion.`;
+}
+
+function learnerFigureTitle(value) {
+  return value
+    .replace(/\banimation\b/gi, "diagram")
+    .replace(/\bmoving point\b/gi, "directed point sequence");
 }
 
 async function loadJson(path) {
@@ -212,7 +414,7 @@ const packageManifest = await assertPackageIntegrity(sourceDirectory);
 const phaseBPackageManifest = await assertPackageIntegrity(phaseBSourceDirectory);
 const phaseALessons = await loadJson(resolve(sourceDirectory, "data/lessons.json"));
 const phaseBLessons = await loadPhaseBLessons(phaseBSourceDirectory);
-const sourceLessons = [...phaseALessons, ...phaseBLessons];
+const sourceLessons = [...phaseALessons, ...phaseBLessons].map(applyAuditCorrections);
 const qa = await loadJson(resolve(sourceDirectory, "qa/QA_REPORT.json"));
 const phaseBQa = await loadJson(resolve(phaseBSourceDirectory, "qa/QA_REPORT.json"));
 
@@ -244,6 +446,7 @@ for (const sourceLesson of sourceLessons) {
   const guide = editorialGuide(sourceLesson, profile.sequence);
   const practice = expandedPractice(sourceLesson, guide).map((item, index) => {
     const id = `${publicLessonId}-practice-${String(index + 1).padStart(2, "0")}`;
+    const validation = validationPolicy(item.prompt, item.answer);
     solutions.push({
       id,
       lessonId: publicLessonId,
@@ -251,9 +454,22 @@ for (const sourceLesson of sourceLessons) {
       sequence: index + 1,
       prompt: item.prompt,
       answer: item.answer,
+      validation,
+      exerciseType: item.exerciseType,
+      difficulty: item.difficulty,
+      provenance: item.provenance,
     });
-    return { id, sequence: index + 1, prompt: item.prompt };
+    return {
+      id,
+      sequence: index + 1,
+      prompt: item.prompt,
+      exerciseType: item.exerciseType,
+      difficulty: item.difficulty,
+      provenance: item.provenance,
+      ...publicPolicy(validation),
+    };
   });
+  const checkpointValidation = validationPolicy(sourceLesson.checkpoint.prompt, sourceLesson.checkpoint.answer);
   solutions.push({
     id: checkpointId,
     lessonId: publicLessonId,
@@ -261,12 +477,13 @@ for (const sourceLesson of sourceLessons) {
     sequence: 0,
     prompt: sourceLesson.checkpoint.prompt,
     answer: sourceLesson.checkpoint.answer,
+    validation: checkpointValidation,
   });
   const figures = sourceLesson.figures.map((figure, index) => ({
     id: `${publicLessonId}-v${index + 1}`,
     sequence: index + 1,
     role: figure.role,
-    title: figure.title,
+    title: learnerFigureTitle(figure.title),
     description: figure.description,
     caption: learnerFigureCaption(sourceLesson, figure, index),
     anchorProblem: sourceLesson.examples[0].problem,
@@ -292,7 +509,7 @@ for (const sourceLesson of sourceLessons) {
     commonMistake: sourceLesson.commonMistake,
     examples: sourceLesson.examples,
     figures,
-    checkpoint: { id: checkpointId, prompt: sourceLesson.checkpoint.prompt },
+    checkpoint: { id: checkpointId, prompt: sourceLesson.checkpoint.prompt, ...publicPolicy(checkpointValidation) },
     practice,
     close: sourceLesson.close,
     sources: sourceLesson.sources,
@@ -335,6 +552,92 @@ const publicUnits = unitProfiles.map((profile) => {
   };
 });
 
+function assessmentItem(lesson, prompt, sequence) {
+  return {
+    id: prompt.id,
+    sequence,
+    hint: lesson.guide.questions[0],
+    errorTags: [`unit-${lesson.unitSequence}-concept`, prompt.responseType === "manual_rubric" ? "reasoning-incomplete" : "answer-form"],
+    remediationTarget: lesson.path,
+    sourceLessonId: lesson.id,
+  };
+}
+
+function takeEvenly(items, count) {
+  if (items.length <= count) return items;
+  return Array.from({ length: count }, (_, index) => items[Math.floor(index * items.length / count)]);
+}
+
+const assessments = [];
+for (const unit of publicUnits) {
+  const lessons = publicLessons.filter((lesson) => lesson.unitId === unit.id);
+  const practicePool = lessons.flatMap((lesson) => lesson.practice.map((prompt) => ({ lesson, prompt })));
+  const reviewPool = lessons.flatMap((lesson) => lesson.practice.slice(0, 5).map((prompt) => ({ lesson, prompt })));
+  const masteryPool = lessons.flatMap((lesson) => [lesson.checkpoint, ...lesson.practice.slice(0, 3)].map((prompt) => ({ lesson, prompt })));
+  const investigationPool = takeEvenly(practicePool.filter(({ prompt }) => prompt.responseType === "manual_rubric"), 5);
+  const fallbackInvestigationPool = investigationPool.length >= 4 ? investigationPool : takeEvenly(practicePool, 5);
+  const definitions = [
+    { type: "unit-review", slug: "review", title: `Unit ${unit.sequence} Review`, description: "A 40–50 item cumulative unit review.", selected: takeEvenly(reviewPool, Math.min(50, Math.max(40, reviewPool.length))) },
+    { type: "flexible-practice", slug: "practice", title: `Unit ${unit.sequence} Flexible Practice`, description: "A 32-item mixed practice set with repair links.", selected: takeEvenly(practicePool, 32) },
+    { type: "mastery-check", slug: "mastery-check", title: `Unit ${unit.sequence} Mastery Check`, description: "A 28–36 item check spanning every unit lesson.", selected: masteryPool.slice(0, 36) },
+    { type: "investigation", slug: "investigation", title: `Unit ${unit.sequence} Investigation`, description: "A multistage representation and verification task.", selected: fallbackInvestigationPool },
+  ];
+  const unitAssessments = definitions.map((definition) => {
+    const id = `${unit.id}-${definition.type}`;
+    const path = `${unit.root}${definition.slug}/`;
+    const items = definition.selected.map(({ lesson, prompt }, index) => assessmentItem(lesson, prompt, index + 1));
+    return {
+      id,
+      unitId: unit.id,
+      type: definition.type,
+      title: definition.title,
+      description: definition.description,
+      path,
+      items,
+      rubric: definition.type === "investigation" ? {
+        stages: ["represent the situation", "perform valid mathematical work", "interpret the result", "verify with a second representation"],
+        modelResponsePolicy: "server_held_attempt_then_model_comparison",
+      } : null,
+    };
+  });
+  unit.assessments = unitAssessments.map(({ id, type, title, path, items }) => ({ id, type, title, path, itemCount: items.length }));
+  assessments.push(...unitAssessments);
+}
+
+const finalPool = publicUnits.flatMap((unit) => {
+  const lessons = publicLessons.filter((lesson) => lesson.unitId === unit.id);
+  return takeEvenly(lessons.flatMap((lesson) => lesson.practice.map((prompt) => ({ lesson, prompt }))), 4);
+});
+const finalAssessment = {
+  id: "precalculus-final-assessment",
+  unitId: null,
+  type: "final-assessment",
+  title: "Precalculus Final Assessment",
+  description: "A 64-item cumulative assessment spanning all sixteen Precalculus units.",
+  path: `${courseRoot}final-assessment/`,
+  items: finalPool.map(({ lesson, prompt }, index) => assessmentItem(lesson, prompt, index + 1)),
+  rubric: null,
+};
+assessments.push(finalAssessment);
+
+for (const unit of publicUnits) {
+  const unitAssessments = assessments.filter((assessment) => assessment.unitId === unit.id);
+  for (const [index, assessment] of unitAssessments.entries()) {
+    assessment.navigation = {
+      parent: { title: unit.title, path: unit.root },
+      previous: index > 0 ? { title: unitAssessments[index - 1].title, path: unitAssessments[index - 1].path } : { title: unit.title, path: unit.root },
+      next: index < unitAssessments.length - 1 ? { title: unitAssessments[index + 1].title, path: unitAssessments[index + 1].path } : { title: "Precalculus course map", path: courseRoot },
+      courseProgress: { title: "Continue through the Precalculus course", path: courseRoot },
+    };
+  }
+}
+finalAssessment.navigation = {
+  parent: { title: "Precalculus course map", path: courseRoot },
+  previous: { title: publicUnits.at(-1).title, path: publicUnits.at(-1).root },
+  next: { title: "Precalculus course map", path: courseRoot },
+  courseProgress: { title: "Review the complete course map", path: courseRoot },
+};
+
 const courseRoute = {
   id: "precalculus-course",
   path: courseRoot,
@@ -365,7 +668,18 @@ const lessonRoutes = publicLessons.map((lesson) => ({
   unitId: lesson.unitId,
   lessonId: lesson.id,
 }));
-const routes = [courseRoute, ...unitRoutes, ...lessonRoutes];
+const assessmentRoutes = assessments.map((assessment) => ({
+  id: assessment.id,
+  path: assessment.path,
+  title: assessment.title,
+  description: assessment.description,
+  pageType: assessment.type,
+  indexable: true,
+  unitId: assessment.unitId,
+  lessonId: null,
+  assessmentId: assessment.id,
+}));
+const routes = [courseRoute, ...unitRoutes, ...lessonRoutes, ...assessmentRoutes];
 
 const searchRecords = routes.map((route) => {
   const unit = publicUnits.find((candidate) => candidate.id === route.unitId);
@@ -379,7 +693,7 @@ const searchRecords = routes.map((route) => {
     domainSlug: "precalculus",
     domainName: "Precalculus",
     topicName: unit?.title ?? "Precalculus course",
-    label: route.pageType === "course-hub" ? "Course map" : route.pageType === "unit-hub" ? "Unit map" : "Lesson",
+    label: route.pageType === "course-hub" ? "Course map" : route.pageType === "unit-hub" ? "Unit map" : route.pageType === "lesson" ? "Lesson" : "Assessment",
     keywords: [
       route.title,
       route.description,
@@ -402,9 +716,12 @@ const course = {
     lessons: publicLessons.length,
     figures: publicLessons.reduce((sum, lesson) => sum + lesson.figures.length, 0),
     practiceItems: publicLessons.reduce((sum, lesson) => sum + lesson.practice.length, 0),
+    assessmentRoutes: assessments.length,
+    assessmentPlacements: assessments.reduce((sum, assessment) => sum + assessment.items.length, 0),
   },
   units: publicUnits,
   lessons: publicLessons,
+  assessments,
   routes,
 };
 
@@ -433,8 +750,93 @@ const provenance = {
     source: "Use function notation from P0.",
     public: "Use function notation from the algebra and function readiness unit.",
     reason: "The approved install prompt forbids exposing internal production identifiers in learner-facing copy.",
-  }],
+  }, ...auditCorrections.map((correction) => ({
+    sourceLessonId: correction.sourceLessonId,
+    source: correction.source,
+    public: correction.corrected,
+    reason: correction.reason,
+  }))],
   lessons: provenanceLessons,
+};
+
+function tally(values) {
+  return Object.fromEntries(
+    [...values.reduce((counts, value) => counts.set(value, (counts.get(value) ?? 0) + 1), new Map())]
+      .sort(([left], [right]) => left.localeCompare(right)),
+  );
+}
+
+const phaseBPublicLessons = publicLessons.filter((lesson) => lesson.unitSequence >= 9);
+const phaseBPublicPractice = phaseBPublicLessons.flatMap((lesson) => lesson.practice.map((item) => ({ lesson, item })));
+const generatedPromptGroups = new Map();
+for (const { lesson, item } of phaseBPublicPractice) {
+  const key = normalizedPromptKey(item.prompt);
+  const records = generatedPromptGroups.get(key) ?? [];
+  records.push({ lessonId: lesson.id, itemId: item.id, prompt: item.prompt });
+  generatedPromptGroups.set(key, records);
+}
+const generatedDuplicates = [...generatedPromptGroups.entries()]
+  .filter(([, records]) => records.length > 1)
+  .map(([normalizedPrompt, records]) => ({ normalizedPrompt, count: records.length, records }));
+const authoringInstructionPattern = /\b(?:write|draft|design|create)\s+(?:a|an|the|one)\s+(?:lesson|lesson plan|worksheet|quiz|practice set|exercise set|rubric|answer key)\b/i;
+const authoringInstructionItems = phaseBPublicPractice
+  .filter(({ item }) => authoringInstructionPattern.test(item.prompt))
+  .map(({ lesson, item }) => ({ lessonId: lesson.id, itemId: item.id, prompt: item.prompt }));
+const phaseBSolutionIds = new Set(phaseBPublicPractice.map(({ item }) => item.id));
+const genericNonAnswerPattern = /\bUse the method developed in the lesson\b|\bBegin by identifying the mathematical object\b|\bFollowing that structure gives\b/i;
+const genericNonAnswerGuides = solutions
+  .filter((record) => phaseBSolutionIds.has(record.id) && genericNonAnswerPattern.test(record.answer))
+  .map((record) => ({ lessonId: record.lessonId, itemId: record.id, answer: record.answer }));
+const overlongPrompts = phaseBPublicPractice
+  .filter(({ item }) => item.prompt.length > 400)
+  .map(({ lesson, item }) => ({ lessonId: lesson.id, itemId: item.id, characters: item.prompt.length }));
+const solutionScaffoldPromptLeaks = phaseBPublicPractice
+  .filter(({ item }) => /\bFollowing that structure gives\b|\bThe relevant conditions are not optional bookkeeping\b/i.test(item.prompt))
+  .map(({ lesson, item }) => ({ lessonId: lesson.id, itemId: item.id, prompt: item.prompt }));
+const exerciseInventory = {
+  schemaVersion: 1,
+  scope: "precalculus-concrete-exercise-audit",
+  totals: {
+    coursePracticeItems: publicLessons.reduce((sum, lesson) => sum + lesson.practice.length, 0),
+    phaseBPracticeItems: phaseBPublicPractice.length,
+    phaseBLessons: phaseBPublicLessons.length,
+    normalizedDuplicateGroups: generatedDuplicates.length,
+    normalizedDuplicatePlacements: generatedDuplicates.reduce((sum, group) => sum + group.count, 0),
+    authoringInstructionOnlyItems: authoringInstructionItems.length,
+    genericNonAnswerGuides: genericNonAnswerGuides.length,
+    overlongPrompts: overlongPrompts.length,
+    solutionScaffoldPromptLeaks: solutionScaffoldPromptLeaks.length,
+  },
+  phaseBByUnit: publicUnits.filter((unit) => unit.sequence >= 9).map((unit) => {
+    const items = phaseBPublicPractice.filter(({ lesson }) => lesson.unitId === unit.id).map(({ item }) => item);
+    return {
+      unitId: unit.id,
+      unitTitle: unit.title,
+      lessonCount: unit.lessonCount,
+      practiceItemCount: items.length,
+      exerciseTypes: tally(items.map((item) => item.exerciseType)),
+      difficulties: tally(items.map((item) => item.difficulty)),
+      responsePolicies: tally(items.map((item) => item.responseType)),
+    };
+  }),
+  phaseBByLesson: phaseBPublicLessons.map((lesson) => ({
+    lessonId: lesson.id,
+    unitId: lesson.unitId,
+    title: lesson.title,
+    route: lesson.path,
+    practiceItemCount: lesson.practice.length,
+    exerciseTypes: tally(lesson.practice.map((item) => item.exerciseType)),
+    difficulties: tally(lesson.practice.map((item) => item.difficulty)),
+    responsePolicies: tally(lesson.practice.map((item) => item.responseType)),
+    provenance: tally(lesson.practice.map((item) => item.provenance)),
+  })),
+  normalizedDuplicates: generatedDuplicates,
+  authoringInstructionItems,
+  qualityFindings: {
+    genericNonAnswerGuides,
+    overlongPrompts,
+    solutionScaffoldPromptLeaks,
+  },
 };
 
 const publicText = JSON.stringify({ course, searchRecords });
@@ -442,10 +844,16 @@ const splitLanguage = publicText.match(/\bP(?:[0-9]|1[0-5])(?:\.\d+)?\b|phase(?:
 if (splitLanguage) {
   throw new Error(`Internal Precalculus production-split language leaked into a public artifact: ${splitLanguage[0]}.`);
 }
-if (course.counts.figures !== 522 || course.counts.practiceItems !== 1_740) {
-  throw new Error("The public Precalculus inventory must contain 522 figures and 1,740 practice items.");
+if (course.counts.figures !== 522 || course.counts.practiceItems !== 2_280) {
+  throw new Error("The public Precalculus inventory must contain 522 figures and 2,280 practice items.");
 }
-if (solutions.length !== 1_914) throw new Error("The protected Precalculus answer inventory must contain 174 checkpoints and 1,740 practice answers.");
+if (solutions.length !== 2_454) throw new Error("The protected Precalculus answer inventory must contain 174 checkpoints and 2,280 practice answers.");
+if (exerciseInventory.totals.phaseBPracticeItems !== 1_440 || phaseBPublicLessons.some((lesson) => lesson.practice.length !== 16)) {
+  throw new Error("Every P8–P15 lesson must contain exactly 16 concrete practice items.");
+}
+if (generatedDuplicates.length || authoringInstructionItems.length || genericNonAnswerGuides.length || overlongPrompts.length || solutionScaffoldPromptLeaks.length) {
+  throw new Error(`The P8–P15 exercise inventory failed its concrete-quality contract: ${generatedDuplicates.length} duplicate groups, ${authoringInstructionItems.length} authoring items, ${genericNonAnswerGuides.length} generic guides, ${overlongPrompts.length} overlong prompts, and ${solutionScaffoldPromptLeaks.length} solution-scaffold leaks.`);
+}
 if (new Set(routes.map((route) => route.path)).size !== routes.length) {
   throw new Error("The Precalculus route inventory contains a duplicate path.");
 }
@@ -458,6 +866,7 @@ await writeOrCheck(resolve(outputDirectory, "routes.public.json"), { schemaVersi
 await writeOrCheck(resolve(outputDirectory, "search.public.json"), { schemaVersion: 1, records: searchRecords }, "Precalculus search index");
 await writeOrCheck(resolve(outputDirectory, "solutions.server.json"), { schemaVersion: 1, solutions }, "Precalculus protected solutions");
 await writeOrCheck(resolve(outputDirectory, "provenance.server.json"), provenance, "Precalculus provenance");
+await writeOrCheck(resolve(outputDirectory, "exercise-inventory.server.json"), exerciseInventory, "Precalculus concrete exercise inventory");
 
 for (const unit of publicUnits) {
   const unitDirectory = resolve(outputDirectory, "units", `unit-${unit.sequence}`);
@@ -481,5 +890,6 @@ for (const unit of publicUnits) {
 console.log(
   `${checkOnly ? "Verified" : "Imported"} Precalculus: ${course.counts.units} available units, `
   + `${course.counts.lessons} exact lessons, ${course.counts.figures} semantic figures, `
-  + `${course.counts.practiceItems} practice items, and ${solutions.length} protected answer records.`,
+  + `${course.counts.practiceItems} practice items, ${course.counts.assessmentRoutes} assessment routes, `
+  + `and ${solutions.length} declared answer-policy records.`,
 );

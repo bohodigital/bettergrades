@@ -5,10 +5,11 @@ export type PrecalculusRoute = {
   path: string;
   title: string;
   description: string;
-  pageType: "course-hub" | "unit-hub" | "lesson";
+  pageType: "course-hub" | "unit-hub" | "lesson" | "unit-review" | "flexible-practice" | "mastery-check" | "investigation" | "final-assessment";
   indexable: boolean;
   unitId: string | null;
   lessonId: string | null;
+  assessmentId?: string;
 };
 
 export type PrecalculusLessonSummary = {
@@ -29,12 +30,41 @@ export type PrecalculusUnit = {
   outcomes: string[];
   sources: string[];
   lessons: PrecalculusLessonSummary[];
+  assessments: Array<{ id: string; type: string; title: string; path: string; itemCount: number }>;
 };
 
 export type PrecalculusPrompt = {
   id: string;
   sequence?: number;
   prompt: string;
+  responseType: "numeric" | "symbolic" | "multipart" | "exact_text" | "manual_rubric";
+  expectedAnswerPolicy: string;
+  acceptedEquivalentForms: string;
+  unitsAndRoundingPolicy: string;
+  randomizationPolicy: string;
+  exerciseType?: string;
+  difficulty?: "foundational" | "developing" | "transfer";
+  provenance?: "source-authored" | "editorial-expansion" | "audit-remediation";
+  hint?: string;
+  errorTags?: string[];
+  remediationTarget?: string;
+};
+
+export type PrecalculusAssessment = {
+  id: string;
+  unitId: string | null;
+  type: "unit-review" | "flexible-practice" | "mastery-check" | "investigation" | "final-assessment";
+  title: string;
+  description: string;
+  path: string;
+  items: PrecalculusPrompt[];
+  rubric: { stages: string[]; modelResponsePolicy: string } | null;
+  navigation: {
+    parent: { title: string; path: string };
+    previous: { title: string; path: string };
+    next: { title: string; path: string };
+    courseProgress: { title: string; path: string };
+  };
 };
 
 export type PrecalculusTextbookBlock =
@@ -78,6 +108,7 @@ export type PrecalculusCoursePage = {
   route: PrecalculusRoute;
   unit: PrecalculusUnit | null;
   lesson: PrecalculusLesson | null;
+  assessment: PrecalculusAssessment | null;
   unitLessons: PrecalculusLesson[];
   units: PrecalculusUnit[];
   breadcrumbs: Array<{ name: string; path: string }>;
@@ -92,6 +123,7 @@ export const precalculusCourse: {
   counts: Record<string, number>;
   units: PrecalculusUnit[];
   lessons: PrecalculusLesson[];
+  assessments: PrecalculusAssessment[];
   routes: PrecalculusRoute[];
 };
 export const precalculusUnits: PrecalculusUnit[];

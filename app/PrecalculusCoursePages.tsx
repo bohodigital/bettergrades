@@ -2,16 +2,22 @@
 
 /* eslint-disable @next/next/no-html-link-for-pages -- canonical course navigation uses document navigation */
 
-import { FormEvent, useState } from "react";
+import { FormEvent, lazy, useEffect, useState } from "react";
 import type { PrecalculusCoursePage, PrecalculusLesson, PrecalculusPrompt, PrecalculusTextbookBlock } from "../lib/precalculus/precalculus-course.mjs";
 import { AlgebraMathText } from "./AlgebraMathText";
 import { BetterGradesVisual } from "./BetterGradesVisual";
+
+const PrecalculusMapOrAssessmentPage = lazy(() => import("./PrecalculusMapOrAssessmentPage"));
 
 function Breadcrumbs({ page }: { page: PrecalculusCoursePage }) {
   return <nav className="breadcrumbs" aria-label="Breadcrumb">{page.breadcrumbs.map((crumb, index) => <span key={`${crumb.path}-${index}`}>{index > 0 && <i>/</i>}<a href={crumb.path}>{crumb.name}</a></span>)}</nav>;
 }
 
 function Sequence({ page }: { page: PrecalculusCoursePage }) {
+  if (page.assessment) return <nav className="limits-sequence" aria-label="Precalculus assessment sequence">
+    <a href={page.assessment.navigation.previous.path}><small>← Previous</small><b>{page.assessment.navigation.previous.title}</b></a>
+    <a href={page.assessment.navigation.next.path}><small>Next →</small><b>{page.assessment.navigation.next.title}</b></a>
+  </nav>;
   if (!page.lesson || !page.unit) return null;
   return <nav className="limits-sequence" aria-label="Precalculus lesson sequence">
     {page.lesson.previous
@@ -37,6 +43,8 @@ function AttemptFirstPrompt({
   const [feedback, setFeedback] = useState("Write a complete attempt before opening the exact answer.");
   const [answer, setAnswer] = useState<string>();
   const [busy, setBusy] = useState(false);
+  const [hydrated, setHydrated] = useState(false);
+  useEffect(() => setHydrated(true), []);
 
   async function check(event: FormEvent) {
     event.preventDefault();
@@ -47,10 +55,10 @@ function AttemptFirstPrompt({
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ id: prompt.id, answer: responseText }),
       });
-      const result = await response.json() as { status?: string; feedback?: string; error?: string };
-      if (!response.ok) throw new Error(result.error ?? "The checker could not review this response.");
-      setAttempted(result.status !== "empty");
-      setFeedback(result.feedback ?? "Compare your work with the exact answer.");
+      const result = await response.json() as { status?: string; revealAllowed?: boolean; feedback?: string; error?: string };
+      if (!response.ok && response.status !== 422) throw new Error(result.error ?? "The checker could not review this response.");
+      setAttempted(result.revealAllowed === true);
+      setFeedback(result.feedback ?? "Review your work and try again.");
     } catch (error) {
       setFeedback(error instanceof Error ? error.message : "The checker could not be reached.");
     } finally {
@@ -60,7 +68,7 @@ function AttemptFirstPrompt({
 
   async function reveal() {
     if (!attempted) {
-      setFeedback("Submit a real attempt first. A partial setup is enough to unlock the answer.");
+      setFeedback("Submit work that satisfies this prompt's validation policy before opening the response guide.");
       return;
     }
     setBusy(true);
@@ -81,56 +89,20 @@ function AttemptFirstPrompt({
   }
 
   return <section className={`limits-check algebra-attempt precalculus-attempt${compact ? " is-compact" : ""}`} id={prompt.id}>
-    <header><span>{label}</span>{prompt.sequence ? <code>{String(prompt.sequence).padStart(2, "0")}</code> : null}</header>
+    <header><span>{label}{prompt.exerciseType && prompt.difficulty ? ` · ${prompt.exerciseType.replaceAll("-", " ")} · ${prompt.difficulty}` : ""}</span>{prompt.sequence ? <code>{String(prompt.sequence).padStart(2, "0")}</code> : null}</header>
     <p className="limits-check-prompt"><AlgebraMathText value={prompt.prompt} display="auto" /></p>
-    <form onSubmit={check}>
+    {hydrated ? <><form onSubmit={check}>
       <label htmlFor={`${prompt.id}-answer`}>Your answer and supporting work</label>
       <textarea id={`${prompt.id}-answer`} value={responseText} onChange={(event) => setResponseText(event.target.value)} rows={compact ? 3 : 4} required />
       <button className="button button-ink" type="submit" disabled={busy}>{busy ? "Reviewing…" : "Submit attempt"}</button>
     </form>
     <p className="limits-check-feedback is-uncertain" aria-live="polite">{feedback}</p>
     <details className="limits-disclosure" onToggle={(event) => { if (event.currentTarget.open && attempted && !answer && !busy) void reveal(); }}>
-      <summary>{attempted ? "Compare with the exact answer" : "Attempt once to unlock the answer"}</summary>
+      <summary>{attempted ? "Compare with the response guide" : "Validated attempt required to unlock"}</summary>
       {answer
         ? <p><AlgebraMathText value={answer} display="auto" /></p>
-        : <p>{attempted ? "Loading the exact answer…" : "Complete a substantive attempt before revealing the server-held answer."}</p>}
-    </details>
-  </section>;
-}
-
-function CourseHub({ page }: { page: PrecalculusCoursePage }) {
-  return <section className="limits-unit-map calculus-unit-map algebra-course-map precalculus-course-map" aria-label="Precalculus course map">
-    <header className="limits-map-intro precalculus-map-intro">
-      <img src="/og-precalculus.png" alt="Precalculus: Functions, Models, and Change, illustrated with a function curve and coordinate grid" />
-      <div><p className="eyebrow">Continuous course</p><h2>Functions, models, and change</h2><p>Open a unit to follow its lesson sequence. Each lesson now combines a conceptual reading, a reusable method, worked reasoning, mathematical figures, and practice that asks for more than recall.</p></div>
-    </header>
-    <div className="calculus-chapter-list algebra-course-unit-list">
-      {page.units.map((unit) => <details className="calculus-chapter algebra-course-unit" key={unit.id}>
-        <summary>
-          <span className="calculus-chapter-number">Unit {unit.sequence}</span>
-          <span className="calculus-chapter-title"><b>{unit.title}</b><small>{unit.description}</small></span>
-          <span className="calculus-chapter-course">{unit.lessonCount} lessons</span>
-          <span className="calculus-chapter-toggle" aria-hidden="true">+</span>
-        </summary>
-        <div className="calculus-chapter-units">
-          <section className="calculus-chapter-unit algebra-course-unit-card">
-            <header><span>Precalculus</span><h3>{unit.title}</h3><p>{unit.description}</p><a href={unit.root}>Open the unit map <span aria-hidden="true">→</span></a></header>
-            <nav aria-label={`${unit.title} lessons`}>
-              {unit.lessons.map((lesson) => <a href={lesson.path} key={lesson.id}><span>{String(lesson.sequence).padStart(2, "0")}</span><b>{lesson.title}</b><i aria-hidden="true">→</i></a>)}
-            </nav>
-          </section>
-        </div>
-      </details>)}
-    </div>
-  </section>;
-}
-
-function UnitHub({ page }: { page: PrecalculusCoursePage }) {
-  if (!page.unit) return null;
-  return <section className="limits-unit-map calculus-unit-map algebra-unit-map precalculus-unit-map" aria-label={`${page.unit.title} map`}>
-    <header className="limits-map-intro"><div><p className="eyebrow">Precalculus · Unit {page.unit.sequence}</p><h2>The lesson path</h2></div><p>{page.unit.description}</p></header>
-    <div className="limits-chapter-map"><section className="limits-chapter"><header><div><span>Core sequence</span><h3>{page.unit.title}</h3></div><p>Move in order when the material is new, or enter at the exact skill you need.</p></header><ol>{page.unit.lessons.map((lesson) => <li key={lesson.path}><a href={lesson.path}><span>{String(lesson.sequence).padStart(2, "0")}</span><b>{lesson.title}</b><small><AlgebraMathText value={lesson.outcome} /></small></a></li>)}</ol></section></div>
-    <section className="limits-node limits-node-summary"><header><span>Source record</span><h2>References used for this unit</h2></header><div><ul>{page.unit.sources.map((source) => <li key={source}>{source}</li>)}</ul><p>The learner copy is original BetterGrades material informed by these rights-separated references; no long source passage is reproduced.</p></div></section>
+        : <p>{attempted ? "Loading the response guide…" : "Submit an answer or substantive explanation that satisfies the declared policy before revealing the server-held guide."}</p>}
+    </details></> : <p className="honest-note">Answer checking and protected response guides require JavaScript; the complete prompt remains readable and printable.</p>}
   </section>;
 }
 
@@ -155,7 +127,7 @@ function PhaseBFigures({ lesson }: { lesson: PrecalculusLesson }) {
 }
 
 function PhaseBPractice({ lesson }: { lesson: PrecalculusLesson }) {
-  return <section className="limits-node limits-node-exercise algebra-foundation-practice precalculus-practice"><header><span>Practice</span><h2>Ten concrete questions</h2></header><div className="algebra-practice-groups">
+  return <section className="limits-node limits-node-exercise algebra-foundation-practice precalculus-practice"><header><span>Practice</span><h2>{lesson.practice.length} concrete questions</h2></header><div className="algebra-practice-groups">
     {lesson.practice.map((prompt) => <AttemptFirstPrompt prompt={prompt} label={`Practice ${prompt.sequence}`} compact key={prompt.id} />)}
   </div></section>;
 }
@@ -176,7 +148,6 @@ function FullTextbookLesson({ lesson }: { lesson: PrecalculusLesson }) {
         <PhaseBBlocks blocks={section.blocks} />
       </section>;
     })}
-    <noscript><p className="honest-note">The complete practice prompts remain printable without JavaScript. Enable JavaScript to submit an attempt and retrieve the protected exact answers.</p></noscript>
   </div>;
 }
 
@@ -219,10 +190,9 @@ function LessonPage({ page }: { page: PrecalculusCoursePage }) {
     </figure>)}</section>
     <section className="limits-node limits-node-caution algebra-lesson-caution"><header><span>Common mistake</span><h2>Find the first invalid move</h2></header><div><p><AlgebraMathText value={lesson.commonMistake} /></p></div></section>
     <AttemptFirstPrompt prompt={lesson.checkpoint} label="Check yourself" />
-    <section className="limits-node limits-node-exercise algebra-foundation-practice precalculus-practice"><header><span>Practice</span><h2>Ten concrete questions</h2></header><div className="algebra-practice-groups">
+    <section className="limits-node limits-node-exercise algebra-foundation-practice precalculus-practice"><header><span>Practice</span><h2>{lesson.practice.length} concrete questions</h2></header><div className="algebra-practice-groups">
       {lesson.practice.map((prompt) => <AttemptFirstPrompt prompt={prompt} label={`Practice ${prompt.sequence}`} compact key={prompt.id} />)}
     </div></section>
-    <noscript><p className="honest-note">The complete practice prompts remain printable without JavaScript. Enable JavaScript to submit an attempt and retrieve the protected exact answers.</p></noscript>
     <section className="limits-node limits-node-bridge algebra-lesson-takeaway"><header><span>Lesson close</span><h2>Connect forward</h2></header><div><p><AlgebraMathText value={lesson.close} /></p></div></section>
     <section className="limits-rights"><p className="eyebrow">Source record</p><h2>Original BetterGrades manuscript, rights-separated references.</h2><ul>{lesson.sources.map((source) => <li key={source}>{source}</li>)}</ul><p>No long source passage is reproduced.</p></section>
   </div>;
@@ -241,9 +211,9 @@ export function PrecalculusCoursePageContent({ page }: { page: PrecalculusCourse
     ],
   };
   return <article className="limits-unit-page calculus-unit-page algebra-course-page precalculus-course-page" data-page-type={page.route.pageType}>
-    <header className="limits-unit-hero section-pad"><Breadcrumbs page={page} /><p className="eyebrow">BetterGrades Precalculus{page.unit ? ` · Unit ${page.unit.sequence}` : ""} · {page.route.pageType === "course-hub" ? "Course map" : page.route.pageType === "unit-hub" ? "Unit map" : "Lesson"}</p><h1>{page.route.title}</h1><p>{page.route.description}</p>{page.lesson && <nav className="lesson-position"><a href={page.unit?.root}>Unit {page.unit?.sequence} map</a><span>Lesson {page.lesson.sequence}</span></nav>}</header>
+    <header className="limits-unit-hero section-pad"><Breadcrumbs page={page} /><p className="eyebrow">BetterGrades Precalculus{page.unit ? ` · Unit ${page.unit.sequence}` : ""} · {page.route.pageType === "course-hub" ? "Course map" : page.route.pageType === "unit-hub" ? "Unit map" : page.route.pageType === "lesson" ? "Lesson" : "Assessment"}</p><h1>{page.route.title}</h1><p>{page.route.description}</p>{page.lesson && <nav className="lesson-position"><a href={page.unit?.root}>Unit {page.unit?.sequence} map</a><span>Lesson {page.lesson.sequence}</span></nav>}</header>
     <div className="limits-unit-layout section-pad"><div className="limits-unit-content">
-      {page.route.pageType === "course-hub" ? <CourseHub page={page} /> : page.route.pageType === "unit-hub" ? <UnitHub page={page} /> : <LessonPage page={page} />}
+      {page.route.pageType === "lesson" ? <LessonPage page={page} /> : <PrecalculusMapOrAssessmentPage page={page} />}
     </div></div>
     <Sequence page={page} />
     <script type="application/ld+json">{JSON.stringify(schema)}</script>

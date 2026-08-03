@@ -9,9 +9,10 @@ import { POST as precalculusCourseRevealPost } from "../app/api/precalculus-cour
 
 type PagesEnvironment = {
   ASSETS: { fetch(request: Request): Promise<Response> };
+  PRECALCULUS_SOLUTIONS?: { get(key: string, type: "json"): Promise<unknown> };
 };
 
-const apiHandlers = new Map<string, (request: Request) => Promise<Response>>([
+const apiHandlers = new Map<string, (request: Request, env: PagesEnvironment) => Promise<Response>>([
   ["/api/algebra", algebraPost],
   ["/api/algebra-course-check", algebraCourseCheckPost],
   ["/api/algebra-course-reveal", algebraCourseRevealPost],
@@ -43,7 +44,7 @@ const worker = {
     const handler = apiHandlers.get(url.pathname);
     if (!handler) return secure(Response.json({ error: "Not found." }, { status: 404 }));
     if (request.method !== "POST") return secure(Response.json({ error: "Method not allowed." }, { status: 405, headers: { allow: "POST" } }));
-    return secure(await handler(request));
+    return secure(await handler(request, env));
   },
 };
 

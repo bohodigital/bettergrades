@@ -10,17 +10,109 @@
       "title": "Parent-function gallery",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The endpoint and domain are decisive.",
       "learnerOutcome": "Recognize benchmark function families by domain, range, symmetry, intercepts, end behavior, and rate patterns.",
+      "mathematicalClaim": "Square-root family.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "square-root",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "endpoint",
+          "kind": "closed-point"
+        },
+        {
+          "id": "landmark-one",
+          "kind": "closed-point"
+        },
+        {
+          "id": "landmark-four",
+          "kind": "closed-point"
+        },
+        {
+          "id": "domain",
+          "kind": "label"
+        },
+        {
+          "id": "family",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "domain",
+          "family"
+        ],
+        "coordinateVariables": [
+          "x",
+          "y"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": -1,
+          "xMax": 9,
+          "yMin": -1,
+          "yMax": 4,
+          "aspectRatio": 1.72,
+          "padding": 0.065
+        },
+        "validStructure": "A graph window can hide asymptotes or end behavior, so classification should use more than silhouette.",
+        "invalidOrExcludedState": "A frequent error is naming a family from appearance without checking restrictions."
+      },
+      "visibleRelationships": [
+        "The endpoint and domain are decisive.",
+        "Compare benchmark families on common axes and use numerical differences or ratios as additional evidence."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is naming a family from appearance without checking restrictions.",
+        "The figure must not contradict this claim: Square-root family."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The endpoint and domain are decisive.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The endpoint and domain are decisive. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
-        "parent",
-        "transformed",
-        "parent-landmark",
-        "new-landmark",
-        "landmark-map",
-        "inside",
-        "outside"
+        "square-root",
+        "endpoint",
+        "landmark-one",
+        "landmark-four",
+        "domain",
+        "family"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "square-root",
+            "endpoint",
+            "landmark-one",
+            "landmark-four",
+            "domain",
+            "family"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u3-l1-v2",
@@ -30,6 +122,125 @@
       "title": "Feature table",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for parent-function atlas.",
       "learnerOutcome": "Recognize benchmark function families by domain, range, symmetry, intercepts, end behavior, and rate patterns.",
+      "mathematicalClaim": "Compare benchmark families on common axes and use numerical differences or ratios as additional evidence.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "A graph window can hide asymptotes or end behavior, so classification should use more than silhouette.",
+        "invalidOrExcludedState": "A frequent error is naming a family from appearance without checking restrictions."
+      },
+      "visibleRelationships": [
+        "The endpoint and domain are decisive.",
+        "Compare benchmark families on common axes and use numerical differences or ratios as additional evidence."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is naming a family from appearance without checking restrictions.",
+        "The figure must not contradict this claim: Compare benchmark families on common axes and use numerical differences or ratios as additional evidence."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for parent-function atlas.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for parent-function atlas. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -50,7 +261,43 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u3-l1-v3",
@@ -60,6 +307,103 @@
       "title": "Pattern detector",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why naming a family from appearance without checking restrictions leads to a false conclusion.",
       "learnerOutcome": "Recognize benchmark function families by domain, range, symmetry, intercepts, end behavior, and rate patterns.",
+      "mathematicalClaim": "A graph window can hide asymptotes or end behavior, so classification should use more than silhouette.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "A graph window can hide asymptotes or end behavior, so classification should use more than silhouette.",
+        "invalidOrExcludedState": "A frequent error is naming a family from appearance without checking restrictions."
+      },
+      "visibleRelationships": [
+        "The endpoint and domain are decisive.",
+        "Compare benchmark families on common axes and use numerical differences or ratios as additional evidence."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is naming a family from appearance without checking restrictions.",
+        "The figure must not contradict this claim: A graph window can hide asymptotes or end behavior, so classification should use more than silhouette."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why naming a family from appearance without checking restrictions leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why naming a family from appearance without checking restrictions leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -75,7 +419,38 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u3-l2-v1",
@@ -85,6 +460,78 @@
       "title": "Input-output machine",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Horizontal coordinates divide by 4.",
       "learnerOutcome": "Derive graph transformations by tracking how input-output pairs move.",
+      "mathematicalClaim": "(2,3).",
+      "requiredMathematicalObjects": [
+        {
+          "id": "parent",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "transformed",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "parent-landmark",
+          "kind": "closed-point"
+        },
+        {
+          "id": "new-landmark",
+          "kind": "closed-point"
+        },
+        {
+          "id": "landmark-map",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "inside",
+          "kind": "label"
+        },
+        {
+          "id": "outside",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "inside",
+          "outside"
+        ],
+        "coordinateVariables": [
+          "x",
+          "y"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": -3.2,
+          "xMax": 7,
+          "yMin": -4,
+          "yMax": 9.5,
+          "aspectRatio": 1.72,
+          "padding": 0.065
+        },
+        "validStructure": "For a f(b(x-h))+k, the map is (u,v) to (h+u/b,av+k).",
+        "invalidOrExcludedState": "A frequent error is applying an inside parameter directly instead of using its reciprocal on x-coordinates."
+      },
+      "visibleRelationships": [
+        "Horizontal coordinates divide by 4.",
+        "Outside operations alter v; inside operations determine the new x by solving the inside expression equal to u."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is applying an inside parameter directly instead of using its reciprocal on x-coordinates.",
+        "The figure must not contradict this claim: (2,3)."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Horizontal coordinates divide by 4.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Horizontal coordinates divide by 4. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "parent",
         "transformed",
@@ -95,7 +542,33 @@
         "outside"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "parent",
+            "transformed",
+            "parent-landmark",
+            "new-landmark",
+            "landmark-map",
+            "inside",
+            "outside"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u3-l2-v2",
@@ -105,6 +578,125 @@
       "title": "Coordinate mapping table",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for coordinate mappings and transformation logic.",
       "learnerOutcome": "Derive graph transformations by tracking how input-output pairs move.",
+      "mathematicalClaim": "Outside operations alter v; inside operations determine the new x by solving the inside expression equal to u.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "For a f(b(x-h))+k, the map is (u,v) to (h+u/b,av+k).",
+        "invalidOrExcludedState": "A frequent error is applying an inside parameter directly instead of using its reciprocal on x-coordinates."
+      },
+      "visibleRelationships": [
+        "Horizontal coordinates divide by 4.",
+        "Outside operations alter v; inside operations determine the new x by solving the inside expression equal to u."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is applying an inside parameter directly instead of using its reciprocal on x-coordinates.",
+        "The figure must not contradict this claim: Outside operations alter v; inside operations determine the new x by solving the inside expression equal to u."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for coordinate mappings and transformation logic.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for coordinate mappings and transformation logic. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -125,7 +717,43 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u3-l2-v3",
@@ -135,6 +763,103 @@
       "title": "Horizontal sign-reversal derivation",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why applying an inside parameter directly instead of using its reciprocal on x-coordinates leads to a false conclusion.",
       "learnerOutcome": "Derive graph transformations by tracking how input-output pairs move.",
+      "mathematicalClaim": "For a f(b(x-h))+k, the map is (u,v) to (h+u/b,av+k).",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "For a f(b(x-h))+k, the map is (u,v) to (h+u/b,av+k).",
+        "invalidOrExcludedState": "A frequent error is applying an inside parameter directly instead of using its reciprocal on x-coordinates."
+      },
+      "visibleRelationships": [
+        "Horizontal coordinates divide by 4.",
+        "Outside operations alter v; inside operations determine the new x by solving the inside expression equal to u."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is applying an inside parameter directly instead of using its reciprocal on x-coordinates.",
+        "The figure must not contradict this claim: For a f(b(x-h))+k, the map is (u,v) to (h+u/b,av+k)."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why applying an inside parameter directly instead of using its reciprocal on x-coordinates leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why applying an inside parameter directly instead of using its reciprocal on x-coordinates leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -150,7 +875,38 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u3-l3-v1",
@@ -160,6 +916,78 @@
       "title": "Vertical point mapping",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The parabola shifts down 5.",
       "learnerOutcome": "Analyze how adding a constant outside a function changes outputs, range, intercepts, extrema, and asymptotes.",
+      "mathematicalClaim": "Vertex (0,-5), range [-5,∞), zeros ±sqrt(5).",
+      "requiredMathematicalObjects": [
+        {
+          "id": "parent",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "transformed",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "parent-landmark",
+          "kind": "closed-point"
+        },
+        {
+          "id": "new-landmark",
+          "kind": "closed-point"
+        },
+        {
+          "id": "landmark-map",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "inside",
+          "kind": "label"
+        },
+        {
+          "id": "outside",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "inside",
+          "outside"
+        ],
+        "coordinateVariables": [
+          "x",
+          "y"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": -3.2,
+          "xMax": 7,
+          "yMin": -4,
+          "yMax": 9.5,
+          "aspectRatio": 1.72,
+          "padding": 0.065
+        },
+        "validStructure": "The domain and input locations of extrema remain unchanged.",
+        "invalidOrExcludedState": "A frequent error is moving x-coordinates or assuming x-intercepts simply shift vertically."
+      },
+      "visibleRelationships": [
+        "The parabola shifts down 5.",
+        "Map (a,b) to (a,b+k), translate the range and horizontal asymptote, and recompute zeros."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is moving x-coordinates or assuming x-intercepts simply shift vertically.",
+        "The figure must not contradict this claim: Vertex (0,-5), range [-5,∞), zeros ±sqrt(5)."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The parabola shifts down 5.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The parabola shifts down 5. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "parent",
         "transformed",
@@ -170,7 +998,33 @@
         "outside"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "parent",
+            "transformed",
+            "parent-landmark",
+            "new-landmark",
+            "landmark-map",
+            "inside",
+            "outside"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u3-l3-v2",
@@ -180,6 +1034,147 @@
       "title": "Feature ledger",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for vertical translations.",
       "learnerOutcome": "Analyze how adding a constant outside a function changes outputs, range, intercepts, extrema, and asymptotes.",
+      "mathematicalClaim": "Map (a,b) to (a,b+k), translate the range and horizontal asymptote, and recompute zeros.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-3",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-4",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-4",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "number-copy-4",
+          "step-copy-4",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "The domain and input locations of extrema remain unchanged.",
+        "invalidOrExcludedState": "A frequent error is moving x-coordinates or assuming x-intercepts simply shift vertically."
+      },
+      "visibleRelationships": [
+        "The parabola shifts down 5.",
+        "Map (a,b) to (a,b+k), translate the range and horizontal asymptote, and recompute zeros."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is moving x-coordinates or assuming x-intercepts simply shift vertically.",
+        "The figure must not contradict this claim: Map (a,b) to (a,b+k), translate the range and horizontal asymptote, and recompute zeros."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for vertical translations.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for vertical translations. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -205,7 +1200,48 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "arrow-3",
+            "step-4",
+            "number-4",
+            "number-copy-4",
+            "step-copy-4",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u3-l3-v3",
@@ -215,6 +1251,103 @@
       "title": "Baseline interpretation",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why moving x-coordinates or assuming x-intercepts simply shift vertically leads to a false conclusion.",
       "learnerOutcome": "Analyze how adding a constant outside a function changes outputs, range, intercepts, extrema, and asymptotes.",
+      "mathematicalClaim": "The domain and input locations of extrema remain unchanged.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "The domain and input locations of extrema remain unchanged.",
+        "invalidOrExcludedState": "A frequent error is moving x-coordinates or assuming x-intercepts simply shift vertically."
+      },
+      "visibleRelationships": [
+        "The parabola shifts down 5.",
+        "Map (a,b) to (a,b+k), translate the range and horizontal asymptote, and recompute zeros."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is moving x-coordinates or assuming x-intercepts simply shift vertically.",
+        "The figure must not contradict this claim: The domain and input locations of extrema remain unchanged."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why moving x-coordinates or assuming x-intercepts simply shift vertically leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why moving x-coordinates or assuming x-intercepts simply shift vertically leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -230,7 +1363,38 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u3-l4-v1",
@@ -240,6 +1404,78 @@
       "title": "Input relocation",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The root graph shifts right 4.",
       "learnerOutcome": "Analyze how replacing x by x-h changes input locations, domain, intercepts, extrema, and vertical asymptotes.",
+      "mathematicalClaim": "Endpoint (4,0), domain [4,∞).",
+      "requiredMathematicalObjects": [
+        {
+          "id": "parent",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "transformed",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "parent-landmark",
+          "kind": "closed-point"
+        },
+        {
+          "id": "new-landmark",
+          "kind": "closed-point"
+        },
+        {
+          "id": "landmark-map",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "inside",
+          "kind": "label"
+        },
+        {
+          "id": "outside",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "inside",
+          "outside"
+        ],
+        "coordinateVariables": [
+          "x",
+          "y"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": -3.2,
+          "xMax": 7,
+          "yMin": -4,
+          "yMax": 9.5,
+          "aspectRatio": 1.72,
+          "padding": 0.065
+        },
+        "validStructure": "The range remains unchanged because the same outputs occur at new inputs.",
+        "invalidOrExcludedState": "A frequent error is reading the inside sign literally without solving for the old input."
+      },
+      "visibleRelationships": [
+        "The root graph shifts right 4.",
+        "Solve the inside equation for the new x-coordinate; translate domain endpoints, zeros, extrema, and vertical asymptotes."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is reading the inside sign literally without solving for the old input.",
+        "The figure must not contradict this claim: Endpoint (4,0), domain [4,∞)."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The root graph shifts right 4.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The root graph shifts right 4. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "parent",
         "transformed",
@@ -250,7 +1486,33 @@
         "outside"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "parent",
+            "transformed",
+            "parent-landmark",
+            "new-landmark",
+            "landmark-map",
+            "inside",
+            "outside"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u3-l4-v2",
@@ -260,6 +1522,147 @@
       "title": "Domain interval translation",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for horizontal translations.",
       "learnerOutcome": "Analyze how replacing x by x-h changes input locations, domain, intercepts, extrema, and vertical asymptotes.",
+      "mathematicalClaim": "Solve the inside equation for the new x-coordinate; translate domain endpoints, zeros, extrema, and vertical asymptotes.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-3",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-4",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-4",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "number-copy-4",
+          "step-copy-4",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "The range remains unchanged because the same outputs occur at new inputs.",
+        "invalidOrExcludedState": "A frequent error is reading the inside sign literally without solving for the old input."
+      },
+      "visibleRelationships": [
+        "The root graph shifts right 4.",
+        "Solve the inside equation for the new x-coordinate; translate domain endpoints, zeros, extrema, and vertical asymptotes."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is reading the inside sign literally without solving for the old input.",
+        "The figure must not contradict this claim: Solve the inside equation for the new x-coordinate; translate domain endpoints, zeros, extrema, and vertical asymptotes."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for horizontal translations.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for horizontal translations. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -285,7 +1688,48 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "arrow-3",
+            "step-4",
+            "number-4",
+            "number-copy-4",
+            "step-copy-4",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u3-l4-v3",
@@ -295,6 +1739,103 @@
       "title": "Delay interpretation",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why reading the inside sign literally without solving for the old input leads to a false conclusion.",
       "learnerOutcome": "Analyze how replacing x by x-h changes input locations, domain, intercepts, extrema, and vertical asymptotes.",
+      "mathematicalClaim": "The range remains unchanged because the same outputs occur at new inputs.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "The range remains unchanged because the same outputs occur at new inputs.",
+        "invalidOrExcludedState": "A frequent error is reading the inside sign literally without solving for the old input."
+      },
+      "visibleRelationships": [
+        "The root graph shifts right 4.",
+        "Solve the inside equation for the new x-coordinate; translate domain endpoints, zeros, extrema, and vertical asymptotes."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is reading the inside sign literally without solving for the old input.",
+        "The figure must not contradict this claim: The range remains unchanged because the same outputs occur at new inputs."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why reading the inside sign literally without solving for the old input leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why reading the inside sign literally without solving for the old input leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -310,7 +1851,38 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u3-l5-v1",
@@ -320,6 +1892,78 @@
       "title": "Axis reflection mappings",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Substituting -x leaves the formula unchanged.",
       "learnerOutcome": "Reflect function graphs across coordinate axes and connect reflection rules with even and odd symmetry.",
+      "mathematicalClaim": "Even.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "parent",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "transformed",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "parent-landmark",
+          "kind": "closed-point"
+        },
+        {
+          "id": "new-landmark",
+          "kind": "closed-point"
+        },
+        {
+          "id": "landmark-map",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "inside",
+          "kind": "label"
+        },
+        {
+          "id": "outside",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "inside",
+          "outside"
+        ],
+        "coordinateVariables": [
+          "x",
+          "y"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": -3.2,
+          "xMax": 7,
+          "yMin": -4,
+          "yMax": 9.5,
+          "aspectRatio": 1.72,
+          "padding": 0.065
+        },
+        "validStructure": "Symmetry claims require a domain symmetric about zero.",
+        "invalidOrExcludedState": "A frequent error is confusing -f(x) with f(-x)."
+      },
+      "visibleRelationships": [
+        "Substituting -x leaves the formula unchanged.",
+        "Negate output coordinates or input coordinates, then test f(-x)=f(x) for even symmetry and f(-x)=-f(x) for odd symmetry."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is confusing -f(x) with f(-x).",
+        "The figure must not contradict this claim: Even."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Substituting -x leaves the formula unchanged.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Substituting -x leaves the formula unchanged. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "parent",
         "transformed",
@@ -330,7 +1974,33 @@
         "outside"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "parent",
+            "transformed",
+            "parent-landmark",
+            "new-landmark",
+            "landmark-map",
+            "inside",
+            "outside"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u3-l5-v2",
@@ -340,6 +2010,125 @@
       "title": "Even-odd-neither gallery",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for reflections and symmetry.",
       "learnerOutcome": "Reflect function graphs across coordinate axes and connect reflection rules with even and odd symmetry.",
+      "mathematicalClaim": "Negate output coordinates or input coordinates, then test f(-x)=f(x) for even symmetry and f(-x)=-f(x) for odd symmetry.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Symmetry claims require a domain symmetric about zero.",
+        "invalidOrExcludedState": "A frequent error is confusing -f(x) with f(-x)."
+      },
+      "visibleRelationships": [
+        "Substituting -x leaves the formula unchanged.",
+        "Negate output coordinates or input coordinates, then test f(-x)=f(x) for even symmetry and f(-x)=-f(x) for odd symmetry."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is confusing -f(x) with f(-x).",
+        "The figure must not contradict this claim: Negate output coordinates or input coordinates, then test f(-x)=f(x) for even symmetry and f(-x)=-f(x) for odd symmetry."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for reflections and symmetry.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for reflections and symmetry. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -360,7 +2149,43 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u3-l5-v3",
@@ -370,6 +2195,103 @@
       "title": "Symmetry table",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why confusing -f(x) with f(-x) leads to a false conclusion.",
       "learnerOutcome": "Reflect function graphs across coordinate axes and connect reflection rules with even and odd symmetry.",
+      "mathematicalClaim": "Symmetry claims require a domain symmetric about zero.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "valid-copy-2",
+          "invalid-copy-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Symmetry claims require a domain symmetric about zero.",
+        "invalidOrExcludedState": "A frequent error is confusing -f(x) with f(-x)."
+      },
+      "visibleRelationships": [
+        "Substituting -x leaves the formula unchanged.",
+        "Negate output coordinates or input coordinates, then test f(-x)=f(x) for even symmetry and f(-x)=-f(x) for odd symmetry."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is confusing -f(x) with f(-x).",
+        "The figure must not contradict this claim: Symmetry claims require a domain symmetric about zero."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why confusing -f(x) with f(-x) leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why confusing -f(x) with f(-x) leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -385,7 +2307,38 @@
         "invalid-copy-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "valid-copy-2",
+            "invalid-copy-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u3-l6-v1",
@@ -395,6 +2348,78 @@
       "title": "Scaling point grid",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Inputs divide by 3; outputs multiply by -2.",
       "learnerOutcome": "Distinguish output scaling from input scaling and determine the resulting stretches, compressions, domains, and ranges.",
+      "mathematicalClaim": "(2,-8).",
+      "requiredMathematicalObjects": [
+        {
+          "id": "parent",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "transformed",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "parent-landmark",
+          "kind": "closed-point"
+        },
+        {
+          "id": "new-landmark",
+          "kind": "closed-point"
+        },
+        {
+          "id": "landmark-map",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "inside",
+          "kind": "label"
+        },
+        {
+          "id": "outside",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "inside",
+          "outside"
+        ],
+        "coordinateVariables": [
+          "x",
+          "y"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": -3.2,
+          "xMax": 7,
+          "yMin": -4,
+          "yMax": 9.5,
+          "aspectRatio": 1.72,
+          "padding": 0.065
+        },
+        "validStructure": "Negative scale factors also reflect, and domain boundaries follow the x-coordinate map.",
+        "invalidOrExcludedState": "A frequent error is multiplying horizontal coordinates by c instead of dividing."
+      },
+      "visibleRelationships": [
+        "Inputs divide by 3; outputs multiply by -2.",
+        "Use (a,b) to (a,cb) for cf(x) and (a/c,b) for f(cx)."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is multiplying horizontal coordinates by c instead of dividing.",
+        "The figure must not contradict this claim: (2,-8)."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Inputs divide by 3; outputs multiply by -2.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Inputs divide by 3; outputs multiply by -2. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "parent",
         "transformed",
@@ -405,7 +2430,33 @@
         "outside"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "parent",
+            "transformed",
+            "parent-landmark",
+            "new-landmark",
+            "landmark-map",
+            "inside",
+            "outside"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u3-l6-v2",
@@ -415,6 +2466,125 @@
       "title": "Parabola scale comparison",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for vertical and horizontal scaling.",
       "learnerOutcome": "Distinguish output scaling from input scaling and determine the resulting stretches, compressions, domains, and ranges.",
+      "mathematicalClaim": "Use (a,b) to (a,cb) for cf(x) and (a/c,b) for f(cx).",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Negative scale factors also reflect, and domain boundaries follow the x-coordinate map.",
+        "invalidOrExcludedState": "A frequent error is multiplying horizontal coordinates by c instead of dividing."
+      },
+      "visibleRelationships": [
+        "Inputs divide by 3; outputs multiply by -2.",
+        "Use (a,b) to (a,cb) for cf(x) and (a/c,b) for f(cx)."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is multiplying horizontal coordinates by c instead of dividing.",
+        "The figure must not contradict this claim: Use (a,b) to (a,cb) for cf(x) and (a/c,b) for f(cx)."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for vertical and horizontal scaling.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for vertical and horizontal scaling. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -435,7 +2605,43 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u3-l6-v3",
@@ -445,6 +2651,108 @@
       "title": "Boundary scaling",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why multiplying horizontal coordinates by c instead of dividing leads to a false conclusion.",
       "learnerOutcome": "Distinguish output scaling from input scaling and determine the resulting stretches, compressions, domains, and ranges.",
+      "mathematicalClaim": "Negative scale factors also reflect, and domain boundaries follow the x-coordinate map.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "valid-copy-2",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Negative scale factors also reflect, and domain boundaries follow the x-coordinate map.",
+        "invalidOrExcludedState": "A frequent error is multiplying horizontal coordinates by c instead of dividing."
+      },
+      "visibleRelationships": [
+        "Inputs divide by 3; outputs multiply by -2.",
+        "Use (a,b) to (a,cb) for cf(x) and (a/c,b) for f(cx)."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is multiplying horizontal coordinates by c instead of dividing.",
+        "The figure must not contradict this claim: Negative scale factors also reflect, and domain boundaries follow the x-coordinate map."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why multiplying horizontal coordinates by c instead of dividing leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why multiplying horizontal coordinates by c instead of dividing leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -461,7 +2769,39 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "valid-copy-2",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u3-l7-v1",
@@ -471,6 +2811,78 @@
       "title": "General coordinate map",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The vertex and symmetric points anchor the graph.",
       "learnerOutcome": "Analyze and graph functions with several transformations by tracking inputs, outputs, and key features.",
+      "mathematicalClaim": "Vertex (3,5), range (-∞,5], reflected and stretched.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "parent",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "transformed",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "parent-landmark",
+          "kind": "closed-point"
+        },
+        {
+          "id": "new-landmark",
+          "kind": "closed-point"
+        },
+        {
+          "id": "landmark-map",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "inside",
+          "kind": "label"
+        },
+        {
+          "id": "outside",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "inside",
+          "outside"
+        ],
+        "coordinateVariables": [
+          "x",
+          "y"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": -3.2,
+          "xMax": 7,
+          "yMin": -4,
+          "yMax": 9.5,
+          "aspectRatio": 1.72,
+          "padding": 0.065
+        },
+        "validStructure": "Equivalent algebraic forms may describe the same final map through different verbal sequences.",
+        "invalidOrExcludedState": "A frequent error is plotting many points before mapping the defining features."
+      },
+      "visibleRelationships": [
+        "The vertex and symmetric points anchor the graph.",
+        "For a f(b(x-h))+k, map (u,v) to (h+u/b,av+k), beginning with vertices, endpoints, zeros, or asymptotes."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is plotting many points before mapping the defining features.",
+        "The figure must not contradict this claim: Vertex (3,5), range (-∞,5], reflected and stretched."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The vertex and symmetric points anchor the graph.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The vertex and symmetric points anchor the graph. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "parent",
         "transformed",
@@ -481,7 +2893,33 @@
         "outside"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "parent",
+            "transformed",
+            "parent-landmark",
+            "new-landmark",
+            "landmark-map",
+            "inside",
+            "outside"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u3-l7-v2",
@@ -491,6 +2929,147 @@
       "title": "Feature-first builder",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for combined transformations.",
       "learnerOutcome": "Analyze and graph functions with several transformations by tracking inputs, outputs, and key features.",
+      "mathematicalClaim": "For a f(b(x-h))+k, map (u,v) to (h+u/b,av+k), beginning with vertices, endpoints, zeros, or asymptotes.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-3",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-4",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-4",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "number-copy-4",
+          "step-copy-4",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Equivalent algebraic forms may describe the same final map through different verbal sequences.",
+        "invalidOrExcludedState": "A frequent error is plotting many points before mapping the defining features."
+      },
+      "visibleRelationships": [
+        "The vertex and symmetric points anchor the graph.",
+        "For a f(b(x-h))+k, map (u,v) to (h+u/b,av+k), beginning with vertices, endpoints, zeros, or asymptotes."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is plotting many points before mapping the defining features.",
+        "The figure must not contradict this claim: For a f(b(x-h))+k, map (u,v) to (h+u/b,av+k), beginning with vertices, endpoints, zeros, or asymptotes."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for combined transformations.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for combined transformations. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -516,7 +3095,48 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "arrow-3",
+            "step-4",
+            "number-4",
+            "number-copy-4",
+            "step-copy-4",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u3-l7-v3",
@@ -526,6 +3146,108 @@
       "title": "Equivalent sequences",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why plotting many points before mapping the defining features leads to a false conclusion.",
       "learnerOutcome": "Analyze and graph functions with several transformations by tracking inputs, outputs, and key features.",
+      "mathematicalClaim": "Equivalent algebraic forms may describe the same final map through different verbal sequences.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "valid-copy-2",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Equivalent algebraic forms may describe the same final map through different verbal sequences.",
+        "invalidOrExcludedState": "A frequent error is plotting many points before mapping the defining features."
+      },
+      "visibleRelationships": [
+        "The vertex and symmetric points anchor the graph.",
+        "For a f(b(x-h))+k, map (u,v) to (h+u/b,av+k), beginning with vertices, endpoints, zeros, or asymptotes."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is plotting many points before mapping the defining features.",
+        "The figure must not contradict this claim: Equivalent algebraic forms may describe the same final map through different verbal sequences."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why plotting many points before mapping the defining features leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why plotting many points before mapping the defining features leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -542,7 +3264,39 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "valid-copy-2",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u3-l8-v1",
@@ -552,6 +3306,78 @@
       "title": "Pointwise addition",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: A difference function represents net value.",
       "learnerOutcome": "Add and subtract functions pointwise, determine the common domain, and interpret combined outputs.",
+      "mathematicalClaim": "Profit 12q-500.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "parent",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "transformed",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "parent-landmark",
+          "kind": "closed-point"
+        },
+        {
+          "id": "new-landmark",
+          "kind": "closed-point"
+        },
+        {
+          "id": "landmark-map",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "inside",
+          "kind": "label"
+        },
+        {
+          "id": "outside",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "inside",
+          "outside"
+        ],
+        "coordinateVariables": [
+          "x",
+          "y"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": -3.2,
+          "xMax": 7,
+          "yMin": -4,
+          "yMax": 9.5,
+          "aspectRatio": 1.72,
+          "padding": 0.065
+        },
+        "validStructure": "Units must be compatible, and subtraction order matters.",
+        "invalidOrExcludedState": "A frequent error is confusing f(x)+g(x) with composition f(x+g(x))."
+      },
+      "visibleRelationships": [
+        "A difference function represents net value.",
+        "Compute f(x) and g(x), add or subtract them pointwise, and intersect the original domains."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is confusing f(x)+g(x) with composition f(x+g(x)).",
+        "The figure must not contradict this claim: Profit 12q-500."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: A difference function represents net value.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: A difference function represents net value. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "parent",
         "transformed",
@@ -562,7 +3388,33 @@
         "outside"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "parent",
+            "transformed",
+            "parent-landmark",
+            "new-landmark",
+            "landmark-map",
+            "inside",
+            "outside"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u3-l8-v2",
@@ -572,6 +3424,147 @@
       "title": "Domain intersection",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for sums and differences of functions.",
       "learnerOutcome": "Add and subtract functions pointwise, determine the common domain, and interpret combined outputs.",
+      "mathematicalClaim": "Compute f(x) and g(x), add or subtract them pointwise, and intersect the original domains.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-3",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-4",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-4",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "number-copy-4",
+          "step-copy-4",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Units must be compatible, and subtraction order matters.",
+        "invalidOrExcludedState": "A frequent error is confusing f(x)+g(x) with composition f(x+g(x))."
+      },
+      "visibleRelationships": [
+        "A difference function represents net value.",
+        "Compute f(x) and g(x), add or subtract them pointwise, and intersect the original domains."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is confusing f(x)+g(x) with composition f(x+g(x)).",
+        "The figure must not contradict this claim: Compute f(x) and g(x), add or subtract them pointwise, and intersect the original domains."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for sums and differences of functions.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for sums and differences of functions. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -597,7 +3590,48 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "arrow-3",
+            "step-4",
+            "number-4",
+            "number-copy-4",
+            "step-copy-4",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u3-l8-v3",
@@ -607,6 +3641,108 @@
       "title": "Revenue-cost-profit gap",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why confusing f(x)+g(x) with composition f(x+g(x)) leads to a false conclusion.",
       "learnerOutcome": "Add and subtract functions pointwise, determine the common domain, and interpret combined outputs.",
+      "mathematicalClaim": "Units must be compatible, and subtraction order matters.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "valid-copy-2",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Units must be compatible, and subtraction order matters.",
+        "invalidOrExcludedState": "A frequent error is confusing f(x)+g(x) with composition f(x+g(x))."
+      },
+      "visibleRelationships": [
+        "A difference function represents net value.",
+        "Compute f(x) and g(x), add or subtract them pointwise, and intersect the original domains."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is confusing f(x)+g(x) with composition f(x+g(x)).",
+        "The figure must not contradict this claim: Units must be compatible, and subtraction order matters."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why confusing f(x)+g(x) with composition f(x+g(x)) leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why confusing f(x)+g(x) with composition f(x+g(x)) leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -623,7 +3759,39 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "valid-copy-2",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u3-l9-v1",
@@ -633,6 +3801,78 @@
       "title": "Pointwise multiplication",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Cancellation preserves the excluded input.",
       "learnerOutcome": "Multiply and divide functions pointwise while analyzing zeros, restrictions, and combined graph behavior.",
+      "mathematicalClaim": "f/g=x+1 for x≠1, with a hole at (1,2).",
+      "requiredMathematicalObjects": [
+        {
+          "id": "parent",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "transformed",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "parent-landmark",
+          "kind": "closed-point"
+        },
+        {
+          "id": "new-landmark",
+          "kind": "closed-point"
+        },
+        {
+          "id": "landmark-map",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "inside",
+          "kind": "label"
+        },
+        {
+          "id": "outside",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "inside",
+          "outside"
+        ],
+        "coordinateVariables": [
+          "x",
+          "y"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": -3.2,
+          "xMax": 7,
+          "yMin": -4,
+          "yMax": 9.5,
+          "aspectRatio": 1.72,
+          "padding": 0.065
+        },
+        "validStructure": "A cancelled denominator factor still excludes its original input.",
+        "invalidOrExcludedState": "A frequent error is forgetting the extra quotient condition g(x)≠0."
+      },
+      "visibleRelationships": [
+        "Cancellation preserves the excluded input.",
+        "Intersect domains, factor, locate product zeros, add quotient restrictions, and use signs to analyze the graph."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is forgetting the extra quotient condition g(x)≠0.",
+        "The figure must not contradict this claim: f/g=x+1 for x≠1, with a hole at (1,2)."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Cancellation preserves the excluded input.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Cancellation preserves the excluded input. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "parent",
         "transformed",
@@ -643,7 +3883,33 @@
         "outside"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "parent",
+            "transformed",
+            "parent-landmark",
+            "new-landmark",
+            "landmark-map",
+            "inside",
+            "outside"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u3-l9-v2",
@@ -653,6 +3919,147 @@
       "title": "Zero-set union",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for products and quotients of functions.",
       "learnerOutcome": "Multiply and divide functions pointwise while analyzing zeros, restrictions, and combined graph behavior.",
+      "mathematicalClaim": "Intersect domains, factor, locate product zeros, add quotient restrictions, and use signs to analyze the graph.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-3",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-4",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-4",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "number-copy-4",
+          "step-copy-4",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "A cancelled denominator factor still excludes its original input.",
+        "invalidOrExcludedState": "A frequent error is forgetting the extra quotient condition g(x)≠0."
+      },
+      "visibleRelationships": [
+        "Cancellation preserves the excluded input.",
+        "Intersect domains, factor, locate product zeros, add quotient restrictions, and use signs to analyze the graph."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is forgetting the extra quotient condition g(x)≠0.",
+        "The figure must not contradict this claim: Intersect domains, factor, locate product zeros, add quotient restrictions, and use signs to analyze the graph."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for products and quotients of functions.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for products and quotients of functions. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -678,7 +4085,48 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "arrow-3",
+            "step-4",
+            "number-4",
+            "number-copy-4",
+            "step-copy-4",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u3-l9-v3",
@@ -688,6 +4136,108 @@
       "title": "Hole-asymptote preview",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why forgetting the extra quotient condition g(x)≠0 leads to a false conclusion.",
       "learnerOutcome": "Multiply and divide functions pointwise while analyzing zeros, restrictions, and combined graph behavior.",
+      "mathematicalClaim": "A cancelled denominator factor still excludes its original input.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "valid-copy-2",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "A cancelled denominator factor still excludes its original input.",
+        "invalidOrExcludedState": "A frequent error is forgetting the extra quotient condition g(x)≠0."
+      },
+      "visibleRelationships": [
+        "Cancellation preserves the excluded input.",
+        "Intersect domains, factor, locate product zeros, add quotient restrictions, and use signs to analyze the graph."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is forgetting the extra quotient condition g(x)≠0.",
+        "The figure must not contradict this claim: A cancelled denominator factor still excludes its original input."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why forgetting the extra quotient condition g(x)≠0 leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why forgetting the extra quotient condition g(x)≠0 leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -704,7 +4254,39 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "valid-copy-2",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u3-l10-v1",
@@ -714,6 +4296,78 @@
       "title": "Feature-to-form map",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The vertex fixes h,k and the point fixes a.",
       "learnerOutcome": "Use parent-family features, transformations, and one or more data points to construct and verify a function formula.",
+      "mathematicalClaim": "f(x)=2(x-2)^2-3.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "parent",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "transformed",
+          "kind": "sampled-series"
+        },
+        {
+          "id": "parent-landmark",
+          "kind": "closed-point"
+        },
+        {
+          "id": "new-landmark",
+          "kind": "closed-point"
+        },
+        {
+          "id": "landmark-map",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "inside",
+          "kind": "label"
+        },
+        {
+          "id": "outside",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "inside",
+          "outside"
+        ],
+        "coordinateVariables": [
+          "x",
+          "y"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": -3.2,
+          "xMax": 7,
+          "yMin": -4,
+          "yMax": 9.5,
+          "aspectRatio": 1.72,
+          "padding": 0.065
+        },
+        "validStructure": "A finite point set does not determine a unique family without structural evidence.",
+        "invalidOrExcludedState": "A frequent error is guessing from appearance and never checking a second point or domain."
+      },
+      "visibleRelationships": [
+        "The vertex fixes h,k and the point fixes a.",
+        "Choose a family from vertex, endpoint, or asymptote structure, write a feature-based form, solve its scale parameter, and verify."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is guessing from appearance and never checking a second point or domain.",
+        "The figure must not contradict this claim: f(x)=2(x-2)^2-3."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The vertex fixes h,k and the point fixes a.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The vertex fixes h,k and the point fixes a. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "parent",
         "transformed",
@@ -724,7 +4378,33 @@
         "outside"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "parent",
+            "transformed",
+            "parent-landmark",
+            "new-landmark",
+            "landmark-map",
+            "inside",
+            "outside"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u3-l10-v2",
@@ -734,6 +4414,147 @@
       "title": "Parameter recovery",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for reconstructing formulas from transformed graphs.",
       "learnerOutcome": "Use parent-family features, transformations, and one or more data points to construct and verify a function formula.",
+      "mathematicalClaim": "Choose a family from vertex, endpoint, or asymptote structure, write a feature-based form, solve its scale parameter, and verify.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-3",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-4",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-4",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-4",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "number-copy-4",
+          "step-copy-4",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "A finite point set does not determine a unique family without structural evidence.",
+        "invalidOrExcludedState": "A frequent error is guessing from appearance and never checking a second point or domain."
+      },
+      "visibleRelationships": [
+        "The vertex fixes h,k and the point fixes a.",
+        "Choose a family from vertex, endpoint, or asymptote structure, write a feature-based form, solve its scale parameter, and verify."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is guessing from appearance and never checking a second point or domain.",
+        "The figure must not contradict this claim: Choose a family from vertex, endpoint, or asymptote structure, write a feature-based form, solve its scale parameter, and verify."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for reconstructing formulas from transformed graphs.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for reconstructing formulas from transformed graphs. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -759,7 +4580,48 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "arrow-3",
+            "step-4",
+            "number-4",
+            "number-copy-4",
+            "step-copy-4",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u3-l10-v3",
@@ -769,6 +4631,108 @@
       "title": "Competing formulas",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why guessing from appearance and never checking a second point or domain leads to a false conclusion.",
       "learnerOutcome": "Use parent-family features, transformations, and one or more data points to construct and verify a function formula.",
+      "mathematicalClaim": "A finite point set does not determine a unique family without structural evidence.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "valid-copy-2",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "A finite point set does not determine a unique family without structural evidence.",
+        "invalidOrExcludedState": "A frequent error is guessing from appearance and never checking a second point or domain."
+      },
+      "visibleRelationships": [
+        "The vertex fixes h,k and the point fixes a.",
+        "Choose a family from vertex, endpoint, or asymptote structure, write a feature-based form, solve its scale parameter, and verify."
+      ],
+      "forbiddenMisleadingStates": [
+        "A frequent error is guessing from appearance and never checking a second point or domain.",
+        "The figure must not contradict this claim: A finite point set does not determine a unique family without structural evidence."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why guessing from appearance and never checking a second point or domain leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why guessing from appearance and never checking a second point or domain leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -785,7 +4749,39 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "valid-copy-2",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     }
   ]
 }

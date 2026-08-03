@@ -1,7 +1,7 @@
 {
   "manifestVersion": 1,
   "collectionId": "precalculus-unit-14-visuals",
-  "sourceSha256": "73fd23e75be3e4f175086da81379e9c5e6d3589b45f0e0b91aca8f9bf3594608",
+  "sourceSha256": "de6d5dd5c2466e467101c3c72ea5a3c75c568a7fef2ef9ca28eb4c81458aa7c4",
   "compilerVersion": "bvlp-compiler-v1",
   "assetPrefix": "/visuals/v1",
   "sceneCount": 36,
@@ -13,9 +13,9 @@
       "selectedRenderer": "static-svg",
       "hydration": "none",
       "staticAsset": {
-        "path": "/visuals/v1/precalculus-u14-l1-v1.747e8d2eff6e3b1d.svg",
-        "sha256": "747e8d2eff6e3b1dcd1aed60b8e2db4a6a9fe2250d98f5172a994556be181c1a",
-        "bytes": 14401,
+        "path": "/visuals/v1/precalculus-u14-l1-v1.084ef5bd5907125a.svg",
+        "sha256": "084ef5bd5907125a2d96ea57d08eaff26c711a601ac22f297da1a70b38bc035f",
+        "bytes": 16944,
         "width": 960,
         "height": 558
       },
@@ -28,7 +28,7 @@
           "segments": [
             {
               "kind": "text",
-              "text": "Parametric equations and orientation · Parametric tracer with moving point"
+              "text": "Parametric equations and orientation · Parametric tracer with directed point sequence"
             }
           ]
         },
@@ -51,8 +51,8 @@
           "unitsRequired": false
         },
         "viewport": {
-          "xMin": -1,
-          "xMax": 7,
+          "xMin": -6,
+          "xMax": 6,
           "yMin": -1,
           "yMax": 10,
           "aspectRatio": 1.72,
@@ -68,7 +68,7 @@
                 "segments": [
                   {
                     "kind": "text",
-                    "text": "x(t)"
+                    "text": "input x"
                   }
                 ]
               },
@@ -83,7 +83,7 @@
                 "segments": [
                   {
                     "kind": "text",
-                    "text": "y(t)"
+                    "text": "output y"
                   }
                 ]
               },
@@ -96,14 +96,14 @@
         "panels": [],
         "layers": [
           {
-            "id": "parametric-path",
+            "id": "restricted-parabola",
             "visible": true,
             "zIndex": 20,
             "label": {
               "segments": [
                 {
                   "kind": "text",
-                  "text": "oriented parametric path"
+                  "text": "x=2t-1, y=t^2 for -2<=t<=3"
                 }
               ]
             },
@@ -112,256 +112,256 @@
               "lineStyle": "solid",
               "markerShape": "none",
               "pattern": "none",
-              "colorIndependentCue": "oriented parametric path; solid curve."
+              "colorIndependentCue": "x=2t-1, y=t^2 for -2<=t<=3; solid curve."
             },
             "references": [],
             "kind": "sampled-series",
             "geometry": {
               "xValues": [
+                -5,
+                -4.916667,
+                -4.833333,
+                -4.75,
+                -4.666667,
+                -4.583333,
+                -4.5,
+                -4.416667,
+                -4.333333,
+                -4.25,
+                -4.166667,
+                -4.083333,
+                -4,
+                -3.916667,
+                -3.833333,
+                -3.75,
+                -3.666667,
+                -3.583333,
+                -3.5,
+                -3.416667,
+                -3.333333,
+                -3.25,
+                -3.166667,
+                -3.083333,
+                -3,
+                -2.916667,
+                -2.833333,
+                -2.75,
+                -2.666667,
+                -2.583333,
+                -2.5,
+                -2.416667,
+                -2.333333,
+                -2.25,
+                -2.166667,
+                -2.083333,
+                -2,
+                -1.916667,
+                -1.833333,
+                -1.75,
+                -1.666667,
+                -1.583333,
+                -1.5,
+                -1.416667,
+                -1.333333,
+                -1.25,
+                -1.166667,
+                -1.083333,
+                -1,
+                -0.916667,
+                -0.833333,
+                -0.75,
+                -0.666667,
+                -0.583333,
+                -0.5,
+                -0.416667,
+                -0.333333,
+                -0.25,
+                -0.166667,
+                -0.083333,
                 0,
-                0.05,
-                0.1,
-                0.15,
-                0.2,
+                0.083333,
+                0.166667,
                 0.25,
-                0.3,
-                0.35,
-                0.4,
-                0.45,
+                0.333333,
+                0.416667,
                 0.5,
-                0.55,
-                0.6,
-                0.65,
-                0.7,
+                0.583333,
+                0.666667,
                 0.75,
-                0.8,
-                0.85,
-                0.9,
-                0.95,
+                0.833333,
+                0.916667,
                 1,
-                1.05,
-                1.1,
-                1.15,
-                1.2,
+                1.083333,
+                1.166667,
                 1.25,
-                1.3,
-                1.35,
-                1.4,
-                1.45,
+                1.333333,
+                1.416667,
                 1.5,
-                1.55,
-                1.6,
-                1.65,
-                1.7,
+                1.583333,
+                1.666667,
                 1.75,
-                1.8,
-                1.85,
-                1.9,
-                1.95,
+                1.833333,
+                1.916667,
                 2,
-                2.05,
-                2.1,
-                2.15,
-                2.2,
+                2.083333,
+                2.166667,
                 2.25,
-                2.3,
-                2.35,
-                2.4,
-                2.45,
+                2.333333,
+                2.416667,
                 2.5,
-                2.55,
-                2.6,
-                2.65,
-                2.7,
+                2.583333,
+                2.666667,
                 2.75,
-                2.8,
-                2.85,
-                2.9,
-                2.95,
+                2.833333,
+                2.916667,
                 3,
-                3.05,
-                3.1,
-                3.15,
-                3.2,
+                3.083333,
+                3.166667,
                 3.25,
-                3.3,
-                3.35,
-                3.4,
-                3.45,
+                3.333333,
+                3.416667,
                 3.5,
-                3.55,
-                3.6,
-                3.65,
-                3.7,
+                3.583333,
+                3.666667,
                 3.75,
-                3.8,
-                3.85,
-                3.9,
-                3.95,
+                3.833333,
+                3.916667,
                 4,
-                4.05,
-                4.1,
-                4.15,
-                4.2,
+                4.083333,
+                4.166667,
                 4.25,
-                4.3,
-                4.35,
-                4.4,
-                4.45,
+                4.333333,
+                4.416667,
                 4.5,
-                4.55,
-                4.6,
-                4.65,
-                4.7,
+                4.583333,
+                4.666667,
                 4.75,
-                4.8,
-                4.85,
-                4.9,
-                4.95,
-                5,
-                5.05,
-                5.1,
-                5.15,
-                5.2,
-                5.25,
-                5.3,
-                5.35,
-                5.4,
-                5.45,
-                5.5,
-                5.55,
-                5.6,
-                5.65,
-                5.7,
-                5.75,
-                5.8,
-                5.85,
-                5.9,
-                5.95,
-                6
+                4.833333,
+                4.916667,
+                5
               ],
               "yValues": [
+                4,
+                3.835069,
+                3.673611,
+                3.515625,
+                3.361111,
+                3.210069,
+                3.0625,
+                2.918403,
+                2.777778,
+                2.640625,
+                2.506944,
+                2.376736,
+                2.25,
+                2.126736,
+                2.006944,
+                1.890625,
+                1.777778,
+                1.668403,
+                1.5625,
+                1.460069,
+                1.361111,
+                1.265625,
+                1.173611,
+                1.085069,
+                1,
+                0.918403,
+                0.840278,
+                0.765625,
+                0.694444,
+                0.626736,
+                0.5625,
+                0.501736,
+                0.444444,
+                0.390625,
+                0.340278,
+                0.293403,
+                0.25,
+                0.210069,
+                0.173611,
+                0.140625,
+                0.111111,
+                0.085069,
+                0.0625,
+                0.043403,
+                0.027778,
+                0.015625,
+                0.006944,
+                0.001736,
                 0,
-                0.0845,
-                0.168,
-                0.2505,
-                0.332,
-                0.4125,
-                0.492,
-                0.5705,
-                0.648,
-                0.7245,
-                0.8,
-                0.8745,
-                0.948,
-                1.0205,
-                1.092,
-                1.1625,
-                1.232,
-                1.3005,
-                1.368,
-                1.4345,
-                1.5,
-                1.5645,
-                1.628,
-                1.6905,
-                1.752,
-                1.8125,
-                1.872,
-                1.9305,
-                1.988,
-                2.0445,
-                2.1,
-                2.1545,
-                2.208,
-                2.2605,
-                2.312,
-                2.3625,
-                2.412,
-                2.4605,
-                2.508,
-                2.5545,
-                2.6,
-                2.6445,
-                2.688,
-                2.7305,
-                2.772,
-                2.8125,
-                2.852,
-                2.8905,
-                2.928,
-                2.9645,
-                3,
-                3.0345,
-                3.068,
-                3.1005,
-                3.132,
-                3.1625,
-                3.192,
-                3.2205,
-                3.248,
-                3.2745,
-                3.3,
-                3.3245,
-                3.348,
-                3.3705,
-                3.392,
-                3.4125,
-                3.432,
-                3.4505,
-                3.468,
-                3.4845,
-                3.5,
-                3.5145,
-                3.528,
-                3.5405,
-                3.552,
-                3.5625,
-                3.572,
-                3.5805,
-                3.588,
-                3.5945,
-                3.6,
-                3.6045,
-                3.608,
-                3.6105,
-                3.612,
-                3.6125,
-                3.612,
-                3.6105,
-                3.608,
-                3.6045,
-                3.6,
-                3.5945,
-                3.588,
-                3.5805,
-                3.572,
-                3.5625,
-                3.552,
-                3.5405,
-                3.528,
-                3.5145,
-                3.5,
-                3.4845,
-                3.468,
-                3.4505,
-                3.432,
-                3.4125,
-                3.392,
-                3.3705,
-                3.348,
-                3.3245,
-                3.3,
-                3.2745,
-                3.248,
-                3.2205,
-                3.192,
-                3.1625,
-                3.132,
-                3.1005,
-                3.068,
-                3.0345,
-                3
+                0.001736,
+                0.006944,
+                0.015625,
+                0.027778,
+                0.043403,
+                0.0625,
+                0.085069,
+                0.111111,
+                0.140625,
+                0.173611,
+                0.210069,
+                0.25,
+                0.293403,
+                0.340278,
+                0.390625,
+                0.444444,
+                0.501736,
+                0.5625,
+                0.626736,
+                0.694444,
+                0.765625,
+                0.840278,
+                0.918403,
+                1,
+                1.085069,
+                1.173611,
+                1.265625,
+                1.361111,
+                1.460069,
+                1.5625,
+                1.668403,
+                1.777778,
+                1.890625,
+                2.006944,
+                2.126736,
+                2.25,
+                2.376736,
+                2.506944,
+                2.640625,
+                2.777778,
+                2.918403,
+                3.0625,
+                3.210069,
+                3.361111,
+                3.515625,
+                3.673611,
+                3.835069,
+                4,
+                4.168403,
+                4.340278,
+                4.515625,
+                4.694444,
+                4.876736,
+                5.0625,
+                5.251736,
+                5.444444,
+                5.640625,
+                5.840278,
+                6.043403,
+                6.25,
+                6.460069,
+                6.673611,
+                6.890625,
+                7.111111,
+                7.335069,
+                7.5625,
+                7.793403,
+                8.027778,
+                8.265625,
+                8.506944,
+                8.751736,
+                9
               ],
               "connect": true
             }
@@ -374,7 +374,7 @@
               "segments": [
                 {
                   "kind": "text",
-                  "text": "t=0 start"
+                  "text": "Included start point (-5,4) at t=-2."
                 }
               ]
             },
@@ -382,28 +382,28 @@
               "strokeToken": "visual-emphasis",
               "fillToken": "visual-emphasis",
               "lineStyle": "solid",
-              "markerShape": "diamond",
+              "markerShape": "square",
               "pattern": "none",
-              "colorIndependentCue": "Filled diamond marks t=0 start."
+              "colorIndependentCue": "Filled square marks Included start point (-5,4) at t=-2.."
             },
             "references": [],
             "kind": "closed-point",
             "geometry": {
               "position": {
-                "x": 0,
-                "y": 0
+                "x": -5,
+                "y": 4
               }
             }
           },
           {
-            "id": "middle",
+            "id": "vertex",
             "visible": true,
             "zIndex": 30,
             "label": {
               "segments": [
                 {
                   "kind": "text",
-                  "text": "t=3"
+                  "text": "Vertex (-1,0) at t=0."
                 }
               ]
             },
@@ -411,16 +411,16 @@
               "strokeToken": "visual-secondary",
               "fillToken": "visual-secondary",
               "lineStyle": "solid",
-              "markerShape": "square",
+              "markerShape": "diamond",
               "pattern": "none",
-              "colorIndependentCue": "Filled square marks t=3."
+              "colorIndependentCue": "Filled diamond marks Vertex (-1,0) at t=0.."
             },
             "references": [],
             "kind": "closed-point",
             "geometry": {
               "position": {
-                "x": 3,
-                "y": 2.7
+                "x": -1,
+                "y": 0
               }
             }
           },
@@ -432,7 +432,7 @@
               "segments": [
                 {
                   "kind": "text",
-                  "text": "t=6 end"
+                  "text": "Included end point (5,9) at t=3."
                 }
               ]
             },
@@ -442,19 +442,19 @@
               "lineStyle": "solid",
               "markerShape": "circle",
               "pattern": "none",
-              "colorIndependentCue": "Filled circle marks t=6 end."
+              "colorIndependentCue": "Filled circle marks Included end point (5,9) at t=3.."
             },
             "references": [],
             "kind": "closed-point",
             "geometry": {
               "position": {
-                "x": 6,
-                "y": 3
+                "x": 5,
+                "y": 9
               }
             }
           },
           {
-            "id": "orientation",
+            "id": "direction-left",
             "visible": true,
             "zIndex": 12,
             "presentation": {
@@ -462,44 +462,68 @@
               "lineStyle": "solid",
               "markerShape": "none",
               "pattern": "none",
-              "colorIndependentCue": "increasing parameter gives orientation"
+              "colorIndependentCue": "As t increases, the point moves right toward the vertex."
             },
             "references": [],
             "kind": "direction-arrow",
             "geometry": {
               "start": {
-                "x": 2.1,
-                "y": 2.25
+                "x": -4.6,
+                "y": 3.4
               },
               "end": {
-                "x": 3.8,
-                "y": 3
+                "x": -2,
+                "y": 0.55
               }
             }
           },
           {
-            "id": "title",
+            "id": "direction-right",
             "visible": true,
-            "zIndex": 40,
+            "zIndex": 12,
             "presentation": {
-              "strokeToken": "visual-primary",
+              "strokeToken": "visual-guide",
               "lineStyle": "solid",
               "markerShape": "none",
               "pattern": "none",
-              "colorIndependentCue": "Label: Parametric tracer with moving point."
+              "colorIndependentCue": "As t continues increasing, the point moves right toward (5,9)."
+            },
+            "references": [],
+            "kind": "direction-arrow",
+            "geometry": {
+              "start": {
+                "x": -0.5,
+                "y": 0.2
+              },
+              "end": {
+                "x": 4.5,
+                "y": 7.7
+              }
+            }
+          },
+          {
+            "id": "relation",
+            "visible": true,
+            "zIndex": 40,
+            "presentation": {
+              "strokeToken": "visual-ink",
+              "lineStyle": "solid",
+              "markerShape": "none",
+              "pattern": "none",
+              "colorIndependentCue": "Label: y=(x+1)^2/4 with -5<=x<=5; trace left to right.."
             },
             "references": [],
             "kind": "label",
             "geometry": {
               "position": {
-                "x": -0.65,
-                "y": 9.2
+                "x": -5.6,
+                "y": 9.35
               },
               "content": {
                 "segments": [
                   {
                     "kind": "text",
-                    "text": "Parametric tracer with moving point"
+                    "text": "y=(x+1)^2/4 with -5<=x<=5; trace left to right."
                   }
                 ]
               }
@@ -508,15 +532,16 @@
         ],
         "controls": [],
         "accessibility": {
-          "ariaLabel": "Parametric tracer with moving point. Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: A table of t-values reveals ordered positions. Arrows on the curve preserve orientation information that is absent from an ordinary Cartesian equation. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+          "ariaLabel": "Parametric tracer with directed point sequence. Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: A table of t-values reveals ordered positions. Arrows on the curve preserve orientation information that is absent from an ordinary Cartesian equation. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
           "summary": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: A table of t-values reveals ordered positions. Arrows on the curve preserve orientation information that is absent from an ordinary Cartesian equation. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
           "readingOrder": [
-            "parametric-path",
+            "restricted-parabola",
             "start",
-            "middle",
+            "vertex",
             "end",
-            "orientation",
-            "title"
+            "direction-left",
+            "direction-right",
+            "relation"
           ],
           "colorIndependentDescription": "Labels, point shapes, line styles, arrows, and position carry the mathematical meaning; color is supplementary.",
           "controlInstructions": [],
@@ -567,7 +592,7 @@
           "route": "/subjects/math/precalculus/parametric-polar-and-complex-representations/parametric-equations-and-orientation/",
           "sourceFile": "content/precalculus/units/unit-14/visual-specs.v1.json",
           "sourceVisualId": "precalculus-u14-l1-v1",
-          "sourceFingerprint": "bvlp1-59263e86",
+          "sourceFingerprint": "bvlp1-1b723588",
           "compilerVersion": "bvlp-compiler-v1",
           "visibility": "public"
         }
@@ -10522,9 +10547,9 @@
       "selectedRenderer": "static-svg",
       "hydration": "none",
       "staticAsset": {
-        "path": "/visuals/v1/precalculus-u14-l7-v2.dccf2226169b20df.svg",
-        "sha256": "dccf2226169b20df459ada20c6c9a6b673f23cb750de5ba3a994d33fcc8b29ab",
-        "bytes": 11870,
+        "path": "/visuals/v1/precalculus-u14-l7-v2.fab8b3058c245ae8.svg",
+        "sha256": "fab8b3058c245ae8d46f9d0fc41156955fe0227dd4a3eed6f2562ddef5a15690",
+        "bytes": 11866,
         "width": 960,
         "height": 558
       },
@@ -10537,7 +10562,7 @@
           "segments": [
             {
               "kind": "text",
-              "text": "Graphing polar equations · Signed-radius animation"
+              "text": "Graphing polar equations · Signed-radius diagram"
             }
           ]
         },
@@ -11047,7 +11072,7 @@
         ],
         "controls": [],
         "accessibility": {
-          "ariaLabel": "Signed-radius animation. Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for graphing polar equations.",
+          "ariaLabel": "Signed-radius diagram. Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for graphing polar equations.",
           "summary": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for graphing polar equations.",
           "readingOrder": [
             "title",
@@ -11116,7 +11141,7 @@
           "route": "/subjects/math/precalculus/parametric-polar-and-complex-representations/graphing-polar-equations/",
           "sourceFile": "content/precalculus/units/unit-14/visual-specs.v1.json",
           "sourceVisualId": "precalculus-u14-l7-v2",
-          "sourceFingerprint": "bvlp1-c55e10c2",
+          "sourceFingerprint": "bvlp1-9e0084d6",
           "compilerVersion": "bvlp-compiler-v1",
           "visibility": "public"
         }

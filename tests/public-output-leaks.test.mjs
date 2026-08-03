@@ -2,6 +2,8 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 
+import solutions from "../content/precalculus/solutions.server.json" with { type: "json" };
+
 test("public-output leak scanner completed during the Pages build", async () => {
   const allowlist = JSON.parse(
     await readFile(new URL("../data/seo/public-output-leak-allowlist.json", import.meta.url), "utf8"),
@@ -17,4 +19,11 @@ test("public-output leak scanner completed during the Pages build", async () => 
   assert.doesNotMatch(geometricSeries, /Preserve the misconception control|described in (?:the lesson and )?storyboard/i);
   assert.doesNotMatch(visibleText, /\b(?:frac13|frac56|frac311|cdots|ldots)\b/i);
   assert.doesNotMatch(geometricSeries, /\/Users\/|\/srv\/local1\/|mankopoppi\.chatgpt\.site/i);
+});
+
+test("the public Pages Worker contains no Precalculus protected-answer records", async () => {
+  const worker = await readFile(new URL("../dist/pages/_worker.js", import.meta.url), "utf8");
+  for (const record of solutions.solutions) {
+    assert.equal(worker.includes(record.id), false, `worker must not contain protected record ${record.id}`);
+  }
 });

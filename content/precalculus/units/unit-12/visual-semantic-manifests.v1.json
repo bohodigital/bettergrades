@@ -10,21 +10,129 @@
       "title": "Similar right triangles with equal acute angle",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: A triangle problem is determined by enough independent side and angle information, together with the right angle. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
       "learnerOutcome": "Connect unit-circle trig definitions with ratios in similar right triangles.",
+      "mathematicalClaim": "Begin by identifying the mathematical object and the information that fixes it. Draw and label the triangle relative to the chosen angle, select the ratio containing the known and unknown quantities, solve algebraically, and check that the side ordering matches the angle sizes. The relevant conditions are not optional bookkeeping: Inverse trig functions return acute angles in right-triangle contexts. Measurement data usually require decimal approximations and units. Following that structure gives Angle arctan(0.84/7.2)≈6.65 degrees; length≈7.249 meters.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "run",
+          "kind": "segment"
+        },
+        {
+          "id": "rise",
+          "kind": "segment"
+        },
+        {
+          "id": "ramp",
+          "kind": "segment"
+        },
+        {
+          "id": "right-angle-horizontal",
+          "kind": "segment"
+        },
+        {
+          "id": "right-angle-vertical",
+          "kind": "segment"
+        },
+        {
+          "id": "run-label",
+          "kind": "label"
+        },
+        {
+          "id": "rise-label",
+          "kind": "label"
+        },
+        {
+          "id": "angle",
+          "kind": "label"
+        },
+        {
+          "id": "length",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "run-label",
+          "rise-label",
+          "angle",
+          "length"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "All right triangles sharing an acute angle are similar, so opposite/hypotenuse, adjacent/hypotenuse, and opposite/adjacent ratios remain constant. These ratios agree with unit-circle sine, cosine, and tangent in the first quadrant.",
+        "invalidOrExcludedState": "A common error is to label opposite and adjacent globally rather than relative to the chosen acute angle."
+      },
+      "visibleRelationships": [
+        "A triangle problem is determined by enough independent side and angle information, together with the right angle. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "A triangle problem is determined by enough independent side and angle information, together with the right angle."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is to label opposite and adjacent globally rather than relative to the chosen acute angle.",
+        "The figure must not contradict this claim: Begin by identifying the mathematical object and the information that fixes it. Draw and label the triangle relative to the chosen angle, select the ratio containing the known and unknown quantities, solve algebraically, and check that the side ordering matches the angle sizes. The relevant conditions are not optional bookkeeping: Inverse trig functions return acute angles in right-triangle contexts. Measurement data usually require decimal approximations and units. Following that structure gives Angle arctan(0.84/7.2)≈6.65 degrees; length≈7.249 meters."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: A triangle problem is determined by enough independent side and angle information, together with the right angle. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: A triangle problem is determined by enough independent side and angle information, together with the right angle. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
-        "title",
-        "base",
-        "left-side",
-        "right-side",
-        "vertex-a",
-        "vertex-b",
-        "vertex-c",
-        "angle-a",
-        "angle-b",
-        "angle-c",
-        "law"
+        "run",
+        "rise",
+        "ramp",
+        "right-angle-horizontal",
+        "right-angle-vertical",
+        "run-label",
+        "rise-label",
+        "angle",
+        "length"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "run",
+            "rise",
+            "ramp",
+            "right-angle-horizontal",
+            "right-angle-vertical",
+            "run-label",
+            "rise-label",
+            "angle",
+            "length"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u12-l1-v2",
@@ -34,6 +142,125 @@
       "title": "Unit-circle triangle scaled by hypotenuse",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for right triangles and trigonometric ratios.",
       "learnerOutcome": "Connect unit-circle trig definitions with ratios in similar right triangles.",
+      "mathematicalClaim": "A triangle problem is determined by enough independent side and angle information, together with the right angle.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "All right triangles sharing an acute angle are similar, so opposite/hypotenuse, adjacent/hypotenuse, and opposite/adjacent ratios remain constant. These ratios agree with unit-circle sine, cosine, and tangent in the first quadrant.",
+        "invalidOrExcludedState": "A common error is to label opposite and adjacent globally rather than relative to the chosen acute angle."
+      },
+      "visibleRelationships": [
+        "A triangle problem is determined by enough independent side and angle information, together with the right angle. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "A triangle problem is determined by enough independent side and angle information, together with the right angle."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is to label opposite and adjacent globally rather than relative to the chosen acute angle.",
+        "The figure must not contradict this claim: A triangle problem is determined by enough independent side and angle information, together with the right angle."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for right triangles and trigonometric ratios.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for right triangles and trigonometric ratios. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -54,7 +281,43 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u12-l1-v3",
@@ -64,6 +327,108 @@
       "title": "Opposite-adjacent-hypotenuse role diagram",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why to label opposite and adjacent globally rather than relative to the chosen acute angle leads to a false conclusion.",
       "learnerOutcome": "Connect unit-circle trig definitions with ratios in similar right triangles.",
+      "mathematicalClaim": "All right triangles sharing an acute angle are similar, so opposite/hypotenuse, adjacent/hypotenuse, and opposite/adjacent ratios remain constant. These ratios agree with unit-circle sine, cosine, and tangent in the first quadrant.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "valid-copy-2",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "All right triangles sharing an acute angle are similar, so opposite/hypotenuse, adjacent/hypotenuse, and opposite/adjacent ratios remain constant. These ratios agree with unit-circle sine, cosine, and tangent in the first quadrant.",
+        "invalidOrExcludedState": "A common error is to label opposite and adjacent globally rather than relative to the chosen acute angle."
+      },
+      "visibleRelationships": [
+        "A triangle problem is determined by enough independent side and angle information, together with the right angle. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "A triangle problem is determined by enough independent side and angle information, together with the right angle."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is to label opposite and adjacent globally rather than relative to the chosen acute angle.",
+        "The figure must not contradict this claim: All right triangles sharing an acute angle are similar, so opposite/hypotenuse, adjacent/hypotenuse, and opposite/adjacent ratios remain constant. These ratios agree with unit-circle sine, cosine, and tangent in the first quadrant."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why to label opposite and adjacent globally rather than relative to the chosen acute angle leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why to label opposite and adjacent globally rather than relative to the chosen acute angle leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -80,7 +445,39 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "valid-copy-2",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u12-l2-v1",
@@ -90,6 +487,97 @@
       "title": "Accurate angle-of-elevation diagram",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Instrument height, ground slope, observer position, and line of sight may create offsets that must be added after the triangle calculation. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
       "learnerOutcome": "Model heights, distances, slopes, and angles of elevation or depression.",
+      "mathematicalClaim": "Begin by identifying the mathematical object and the information that fixes it. Define the target quantity, draw a scale-independent diagram, label measured versus calculated values, select a trig ratio, solve, and interpret precision. The relevant conditions are not optional bookkeeping: The model commonly assumes straight sight lines, level ground, and accurate angle measurement. Small angle errors can cause large height errors at long distances. Following that structure gives 1.6+80tan37 degrees≈61.9 meters.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "base",
+          "kind": "segment"
+        },
+        {
+          "id": "left-side",
+          "kind": "segment"
+        },
+        {
+          "id": "right-side",
+          "kind": "segment"
+        },
+        {
+          "id": "vertex-a",
+          "kind": "closed-point"
+        },
+        {
+          "id": "vertex-b",
+          "kind": "closed-point"
+        },
+        {
+          "id": "vertex-c",
+          "kind": "closed-point"
+        },
+        {
+          "id": "angle-a",
+          "kind": "label"
+        },
+        {
+          "id": "angle-b",
+          "kind": "label"
+        },
+        {
+          "id": "angle-c",
+          "kind": "label"
+        },
+        {
+          "id": "law",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "angle-a",
+          "angle-b",
+          "angle-c",
+          "law"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Angles of elevation and depression are measured from horizontal lines. Parallel horizontals often create equal alternate interior angles, but the diagram must show why.",
+        "invalidOrExcludedState": "A common error is to use the full building height as the triangle’s opposite side when the instrument is above ground."
+      },
+      "visibleRelationships": [
+        "Instrument height, ground slope, observer position, and line of sight may create offsets that must be added after the triangle calculation. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "Instrument height, ground slope, observer position, and line of sight may create offsets that must be added after the triangle calculation."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is to use the full building height as the triangle’s opposite side when the instrument is above ground.",
+        "The figure must not contradict this claim: Begin by identifying the mathematical object and the information that fixes it. Define the target quantity, draw a scale-independent diagram, label measured versus calculated values, select a trig ratio, solve, and interpret precision. The relevant conditions are not optional bookkeeping: The model commonly assumes straight sight lines, level ground, and accurate angle measurement. Small angle errors can cause large height errors at long distances. Following that structure gives 1.6+80tan37 degrees≈61.9 meters."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Instrument height, ground slope, observer position, and line of sight may create offsets that must be added after the triangle calculation. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Instrument height, ground slope, observer position, and line of sight may create offsets that must be added after the triangle calculation. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "base",
@@ -104,7 +592,37 @@
         "law"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "base",
+            "left-side",
+            "right-side",
+            "vertex-a",
+            "vertex-b",
+            "vertex-c",
+            "angle-a",
+            "angle-b",
+            "angle-c",
+            "law"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u12-l2-v2",
@@ -114,6 +632,125 @@
       "title": "Parallel horizontal lines showing equal alternate angles",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for right-triangle applications.",
       "learnerOutcome": "Model heights, distances, slopes, and angles of elevation or depression.",
+      "mathematicalClaim": "Instrument height, ground slope, observer position, and line of sight may create offsets that must be added after the triangle calculation.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Angles of elevation and depression are measured from horizontal lines. Parallel horizontals often create equal alternate interior angles, but the diagram must show why.",
+        "invalidOrExcludedState": "A common error is to use the full building height as the triangle’s opposite side when the instrument is above ground."
+      },
+      "visibleRelationships": [
+        "Instrument height, ground slope, observer position, and line of sight may create offsets that must be added after the triangle calculation. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "Instrument height, ground slope, observer position, and line of sight may create offsets that must be added after the triangle calculation."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is to use the full building height as the triangle’s opposite side when the instrument is above ground.",
+        "The figure must not contradict this claim: Instrument height, ground slope, observer position, and line of sight may create offsets that must be added after the triangle calculation."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for right-triangle applications.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for right-triangle applications. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -134,7 +771,43 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u12-l2-v3",
@@ -144,6 +817,108 @@
       "title": "Measurement-error comparison rays",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why to use the full building height as the triangle’s opposite side when the instrument is above ground leads to a false conclusion.",
       "learnerOutcome": "Model heights, distances, slopes, and angles of elevation or depression.",
+      "mathematicalClaim": "Angles of elevation and depression are measured from horizontal lines. Parallel horizontals often create equal alternate interior angles, but the diagram must show why.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "valid-copy-2",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Angles of elevation and depression are measured from horizontal lines. Parallel horizontals often create equal alternate interior angles, but the diagram must show why.",
+        "invalidOrExcludedState": "A common error is to use the full building height as the triangle’s opposite side when the instrument is above ground."
+      },
+      "visibleRelationships": [
+        "Instrument height, ground slope, observer position, and line of sight may create offsets that must be added after the triangle calculation. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "Instrument height, ground slope, observer position, and line of sight may create offsets that must be added after the triangle calculation."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is to use the full building height as the triangle’s opposite side when the instrument is above ground.",
+        "The figure must not contradict this claim: Angles of elevation and depression are measured from horizontal lines. Parallel horizontals often create equal alternate interior angles, but the diagram must show why."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why to use the full building height as the triangle’s opposite side when the instrument is above ground leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why to use the full building height as the triangle’s opposite side when the instrument is above ground leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -160,7 +935,39 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "valid-copy-2",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u12-l3-v1",
@@ -170,6 +977,97 @@
       "title": "Altitude derivation in an oblique triangle",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The law is most direct for ASA and AAS data because the third angle is known and an opposite pair is available. SSA requires a separate ambiguity analysis. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
       "learnerOutcome": "Derive and apply the Law of Sines to ASA, AAS, and suitable SSA triangles.",
+      "mathematicalClaim": "Begin by identifying the mathematical object and the information that fixes it. Match every side with its opposite angle, compute the missing angle sum if appropriate, and delay rounding until the end. The relevant conditions are not optional bookkeeping: No triangle exists if the angle sum or side ordering is impossible. Larger sides must face larger angles. Following that structure gives C=67 degrees; b=18sin71/sin42; c=18sin67/sin42.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "base",
+          "kind": "segment"
+        },
+        {
+          "id": "left-side",
+          "kind": "segment"
+        },
+        {
+          "id": "right-side",
+          "kind": "segment"
+        },
+        {
+          "id": "vertex-a",
+          "kind": "closed-point"
+        },
+        {
+          "id": "vertex-b",
+          "kind": "closed-point"
+        },
+        {
+          "id": "vertex-c",
+          "kind": "closed-point"
+        },
+        {
+          "id": "angle-a",
+          "kind": "label"
+        },
+        {
+          "id": "angle-b",
+          "kind": "label"
+        },
+        {
+          "id": "angle-c",
+          "kind": "label"
+        },
+        {
+          "id": "law",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "angle-a",
+          "angle-b",
+          "angle-c",
+          "law"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "An altitude derivation shows that different expressions for the same height lead to a/sin A=b/sin B. The common value also equals the circumcircle diameter 2R.",
+        "invalidOrExcludedState": "A common error is pairing a side with an adjacent rather than opposite angle."
+      },
+      "visibleRelationships": [
+        "The law is most direct for ASA and AAS data because the third angle is known and an opposite pair is available. SSA requires a separate ambiguity analysis. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "The law is most direct for ASA and AAS data because the third angle is known and an opposite pair is available. SSA requires a separate ambiguity analysis."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is pairing a side with an adjacent rather than opposite angle.",
+        "The figure must not contradict this claim: Begin by identifying the mathematical object and the information that fixes it. Match every side with its opposite angle, compute the missing angle sum if appropriate, and delay rounding until the end. The relevant conditions are not optional bookkeeping: No triangle exists if the angle sum or side ordering is impossible. Larger sides must face larger angles. Following that structure gives C=67 degrees; b=18sin71/sin42; c=18sin67/sin42."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The law is most direct for ASA and AAS data because the third angle is known and an opposite pair is available. SSA requires a separate ambiguity analysis. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The law is most direct for ASA and AAS data because the third angle is known and an opposite pair is available. SSA requires a separate ambiguity analysis. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "base",
@@ -184,7 +1082,37 @@
         "law"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "base",
+            "left-side",
+            "right-side",
+            "vertex-a",
+            "vertex-b",
+            "vertex-c",
+            "angle-a",
+            "angle-b",
+            "angle-c",
+            "law"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u12-l3-v2",
@@ -194,6 +1122,125 @@
       "title": "Circumcircle interpretation",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for the law of sines.",
       "learnerOutcome": "Derive and apply the Law of Sines to ASA, AAS, and suitable SSA triangles.",
+      "mathematicalClaim": "The law is most direct for ASA and AAS data because the third angle is known and an opposite pair is available. SSA requires a separate ambiguity analysis.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "An altitude derivation shows that different expressions for the same height lead to a/sin A=b/sin B. The common value also equals the circumcircle diameter 2R.",
+        "invalidOrExcludedState": "A common error is pairing a side with an adjacent rather than opposite angle."
+      },
+      "visibleRelationships": [
+        "The law is most direct for ASA and AAS data because the third angle is known and an opposite pair is available. SSA requires a separate ambiguity analysis. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "The law is most direct for ASA and AAS data because the third angle is known and an opposite pair is available. SSA requires a separate ambiguity analysis."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is pairing a side with an adjacent rather than opposite angle.",
+        "The figure must not contradict this claim: The law is most direct for ASA and AAS data because the third angle is known and an opposite pair is available. SSA requires a separate ambiguity analysis."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for the law of sines.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for the law of sines. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -214,7 +1261,43 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u12-l3-v3",
@@ -224,6 +1307,108 @@
       "title": "Given-information case sorter",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why pairing a side with an adjacent rather than opposite angle leads to a false conclusion.",
       "learnerOutcome": "Derive and apply the Law of Sines to ASA, AAS, and suitable SSA triangles.",
+      "mathematicalClaim": "An altitude derivation shows that different expressions for the same height lead to a/sin A=b/sin B. The common value also equals the circumcircle diameter 2R.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "valid-copy-2",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "An altitude derivation shows that different expressions for the same height lead to a/sin A=b/sin B. The common value also equals the circumcircle diameter 2R.",
+        "invalidOrExcludedState": "A common error is pairing a side with an adjacent rather than opposite angle."
+      },
+      "visibleRelationships": [
+        "The law is most direct for ASA and AAS data because the third angle is known and an opposite pair is available. SSA requires a separate ambiguity analysis. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "The law is most direct for ASA and AAS data because the third angle is known and an opposite pair is available. SSA requires a separate ambiguity analysis."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is pairing a side with an adjacent rather than opposite angle.",
+        "The figure must not contradict this claim: An altitude derivation shows that different expressions for the same height lead to a/sin A=b/sin B. The common value also equals the circumcircle diameter 2R."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why pairing a side with an adjacent rather than opposite angle leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why pairing a side with an adjacent rather than opposite angle leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -240,7 +1425,39 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "valid-copy-2",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u12-l4-v1",
@@ -250,6 +1467,97 @@
       "title": "SSA altitude-case explorer",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Inverse sine returns only one principal angle. A second candidate 180 degrees-B may also satisfy the same sine value, but only if the full angle sum remains below 180 degrees. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
       "learnerOutcome": "Determine whether SSA data produce zero, one, or two triangles.",
+      "mathematicalClaim": "Begin by identifying the mathematical object and the information that fixes it. Use a geometric altitude check before computing, then test both inverse-sine branches and complete each valid triangle. The relevant conditions are not optional bookkeeping: When the given angle is obtuse, the opposite side must be the longest; this usually allows at most one triangle. Following that structure gives Compute h=b sin A≈6.883; since h<a<b, two triangles exist.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "base",
+          "kind": "segment"
+        },
+        {
+          "id": "left-side",
+          "kind": "segment"
+        },
+        {
+          "id": "right-side",
+          "kind": "segment"
+        },
+        {
+          "id": "vertex-a",
+          "kind": "closed-point"
+        },
+        {
+          "id": "vertex-b",
+          "kind": "closed-point"
+        },
+        {
+          "id": "vertex-c",
+          "kind": "closed-point"
+        },
+        {
+          "id": "angle-a",
+          "kind": "label"
+        },
+        {
+          "id": "angle-b",
+          "kind": "label"
+        },
+        {
+          "id": "angle-c",
+          "kind": "label"
+        },
+        {
+          "id": "law",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "angle-a",
+          "angle-b",
+          "angle-c",
+          "law"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "For acute A with known opposite side a and adjacent-known side b, the altitude h=b sin A classifies possibilities: a<h gives no triangle, a=h one right triangle, h<a<b two triangles, and a>=b one triangle.",
+        "invalidOrExcludedState": "A common error is to accept only the calculator’s acute arcsine value or to accept a supplementary angle that makes the angle sum impossible."
+      },
+      "visibleRelationships": [
+        "Inverse sine returns only one principal angle. A second candidate 180 degrees-B may also satisfy the same sine value, but only if the full angle sum remains below 180 degrees. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "Inverse sine returns only one principal angle. A second candidate 180 degrees-B may also satisfy the same sine value, but only if the full angle sum remains below 180 degrees."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is to accept only the calculator’s acute arcsine value or to accept a supplementary angle that makes the angle sum impossible.",
+        "The figure must not contradict this claim: Begin by identifying the mathematical object and the information that fixes it. Use a geometric altitude check before computing, then test both inverse-sine branches and complete each valid triangle. The relevant conditions are not optional bookkeeping: When the given angle is obtuse, the opposite side must be the longest; this usually allows at most one triangle. Following that structure gives Compute h=b sin A≈6.883; since h<a<b, two triangles exist."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Inverse sine returns only one principal angle. A second candidate 180 degrees-B may also satisfy the same sine value, but only if the full angle sum remains below 180 degrees. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Inverse sine returns only one principal angle. A second candidate 180 degrees-B may also satisfy the same sine value, but only if the full angle sum remains below 180 degrees. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "base",
@@ -264,7 +1572,37 @@
         "law"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "base",
+            "left-side",
+            "right-side",
+            "vertex-a",
+            "vertex-b",
+            "vertex-c",
+            "angle-a",
+            "angle-b",
+            "angle-c",
+            "law"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u12-l4-v2",
@@ -274,6 +1612,125 @@
       "title": "Two possible triangles sharing data",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for the ambiguous ssa case.",
       "learnerOutcome": "Determine whether SSA data produce zero, one, or two triangles.",
+      "mathematicalClaim": "Inverse sine returns only one principal angle. A second candidate 180 degrees-B may also satisfy the same sine value, but only if the full angle sum remains below 180 degrees.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "For acute A with known opposite side a and adjacent-known side b, the altitude h=b sin A classifies possibilities: a<h gives no triangle, a=h one right triangle, h<a<b two triangles, and a>=b one triangle.",
+        "invalidOrExcludedState": "A common error is to accept only the calculator’s acute arcsine value or to accept a supplementary angle that makes the angle sum impossible."
+      },
+      "visibleRelationships": [
+        "Inverse sine returns only one principal angle. A second candidate 180 degrees-B may also satisfy the same sine value, but only if the full angle sum remains below 180 degrees. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "Inverse sine returns only one principal angle. A second candidate 180 degrees-B may also satisfy the same sine value, but only if the full angle sum remains below 180 degrees."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is to accept only the calculator’s acute arcsine value or to accept a supplementary angle that makes the angle sum impossible.",
+        "The figure must not contradict this claim: Inverse sine returns only one principal angle. A second candidate 180 degrees-B may also satisfy the same sine value, but only if the full angle sum remains below 180 degrees."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for the ambiguous ssa case.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for the ambiguous ssa case. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -294,7 +1751,43 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u12-l4-v3",
@@ -304,6 +1797,108 @@
       "title": "Inverse-sine branch and angle-sum filter",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why to accept only the calculator’s acute arcsine value or to accept a supplementary angle that makes the angle sum impossible leads to a false conclusion.",
       "learnerOutcome": "Determine whether SSA data produce zero, one, or two triangles.",
+      "mathematicalClaim": "For acute A with known opposite side a and adjacent-known side b, the altitude h=b sin A classifies possibilities: a<h gives no triangle, a=h one right triangle, h<a<b two triangles, and a>=b one triangle.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "valid-copy-2",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "For acute A with known opposite side a and adjacent-known side b, the altitude h=b sin A classifies possibilities: a<h gives no triangle, a=h one right triangle, h<a<b two triangles, and a>=b one triangle.",
+        "invalidOrExcludedState": "A common error is to accept only the calculator’s acute arcsine value or to accept a supplementary angle that makes the angle sum impossible."
+      },
+      "visibleRelationships": [
+        "Inverse sine returns only one principal angle. A second candidate 180 degrees-B may also satisfy the same sine value, but only if the full angle sum remains below 180 degrees. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "Inverse sine returns only one principal angle. A second candidate 180 degrees-B may also satisfy the same sine value, but only if the full angle sum remains below 180 degrees."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is to accept only the calculator’s acute arcsine value or to accept a supplementary angle that makes the angle sum impossible.",
+        "The figure must not contradict this claim: For acute A with known opposite side a and adjacent-known side b, the altitude h=b sin A classifies possibilities: a<h gives no triangle, a=h one right triangle, h<a<b two triangles, and a>=b one triangle."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why to accept only the calculator’s acute arcsine value or to accept a supplementary angle that makes the angle sum impossible leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why to accept only the calculator’s acute arcsine value or to accept a supplementary angle that makes the angle sum impossible leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -320,7 +1915,39 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "valid-copy-2",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u12-l5-v1",
@@ -330,6 +1957,97 @@
       "title": "Coordinate derivation",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: SAS data determine the opposite side; SSS data determine angles. For SSS, finding the largest angle first provides a useful validity and rounding check. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
       "learnerOutcome": "Use the Law of Cosines for SAS and SSS data and connect it to the Pythagorean theorem.",
+      "mathematicalClaim": "Begin by identifying the mathematical object and the information that fixes it. Identify the included angle or opposite side correctly, substitute with grouped products, solve, and check side-angle ordering. The relevant conditions are not optional bookkeeping: When solving for an angle, the computed cosine must lie in [-1,1]. Rounding intermediate side values may distort later angles. Following that structure gives c=sqrt(11^2+16^2-2(11)(16)cos124 degrees)≈22.41.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "base",
+          "kind": "segment"
+        },
+        {
+          "id": "left-side",
+          "kind": "segment"
+        },
+        {
+          "id": "right-side",
+          "kind": "segment"
+        },
+        {
+          "id": "vertex-a",
+          "kind": "closed-point"
+        },
+        {
+          "id": "vertex-b",
+          "kind": "closed-point"
+        },
+        {
+          "id": "vertex-c",
+          "kind": "closed-point"
+        },
+        {
+          "id": "angle-a",
+          "kind": "label"
+        },
+        {
+          "id": "angle-b",
+          "kind": "label"
+        },
+        {
+          "id": "angle-c",
+          "kind": "label"
+        },
+        {
+          "id": "law",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "angle-a",
+          "angle-b",
+          "angle-c",
+          "law"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "In c^2=a^2+b^2-2ab cos C, the correction term accounts for the included angle. At C=90 degrees, cosine is zero and the Pythagorean theorem returns.",
+        "invalidOrExcludedState": "A common error is pairing the included angle with the wrong opposite side or omitting the factor 2ab."
+      },
+      "visibleRelationships": [
+        "SAS data determine the opposite side; SSS data determine angles. For SSS, finding the largest angle first provides a useful validity and rounding check. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "SAS data determine the opposite side; SSS data determine angles. For SSS, finding the largest angle first provides a useful validity and rounding check."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is pairing the included angle with the wrong opposite side or omitting the factor 2ab.",
+        "The figure must not contradict this claim: Begin by identifying the mathematical object and the information that fixes it. Identify the included angle or opposite side correctly, substitute with grouped products, solve, and check side-angle ordering. The relevant conditions are not optional bookkeeping: When solving for an angle, the computed cosine must lie in [-1,1]. Rounding intermediate side values may distort later angles. Following that structure gives c=sqrt(11^2+16^2-2(11)(16)cos124 degrees)≈22.41."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: SAS data determine the opposite side; SSS data determine angles. For SSS, finding the largest angle first provides a useful validity and rounding check. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: SAS data determine the opposite side; SSS data determine angles. For SSS, finding the largest angle first provides a useful validity and rounding check. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "base",
@@ -344,7 +2062,37 @@
         "law"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "base",
+            "left-side",
+            "right-side",
+            "vertex-a",
+            "vertex-b",
+            "vertex-c",
+            "angle-a",
+            "angle-b",
+            "angle-c",
+            "law"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u12-l5-v2",
@@ -354,6 +2102,125 @@
       "title": "SAS and SSS case diagrams",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for the law of cosines.",
       "learnerOutcome": "Use the Law of Cosines for SAS and SSS data and connect it to the Pythagorean theorem.",
+      "mathematicalClaim": "SAS data determine the opposite side; SSS data determine angles. For SSS, finding the largest angle first provides a useful validity and rounding check.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "In c^2=a^2+b^2-2ab cos C, the correction term accounts for the included angle. At C=90 degrees, cosine is zero and the Pythagorean theorem returns.",
+        "invalidOrExcludedState": "A common error is pairing the included angle with the wrong opposite side or omitting the factor 2ab."
+      },
+      "visibleRelationships": [
+        "SAS data determine the opposite side; SSS data determine angles. For SSS, finding the largest angle first provides a useful validity and rounding check. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "SAS data determine the opposite side; SSS data determine angles. For SSS, finding the largest angle first provides a useful validity and rounding check."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is pairing the included angle with the wrong opposite side or omitting the factor 2ab.",
+        "The figure must not contradict this claim: SAS data determine the opposite side; SSS data determine angles. For SSS, finding the largest angle first provides a useful validity and rounding check."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for the law of cosines.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for the law of cosines. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -374,7 +2241,43 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u12-l5-v3",
@@ -384,6 +2287,108 @@
       "title": "Pythagorean special-case overlay",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why pairing the included angle with the wrong opposite side or omitting the factor 2ab leads to a false conclusion.",
       "learnerOutcome": "Use the Law of Cosines for SAS and SSS data and connect it to the Pythagorean theorem.",
+      "mathematicalClaim": "In c^2=a^2+b^2-2ab cos C, the correction term accounts for the included angle. At C=90 degrees, cosine is zero and the Pythagorean theorem returns.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "valid-copy-2",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "In c^2=a^2+b^2-2ab cos C, the correction term accounts for the included angle. At C=90 degrees, cosine is zero and the Pythagorean theorem returns.",
+        "invalidOrExcludedState": "A common error is pairing the included angle with the wrong opposite side or omitting the factor 2ab."
+      },
+      "visibleRelationships": [
+        "SAS data determine the opposite side; SSS data determine angles. For SSS, finding the largest angle first provides a useful validity and rounding check. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "SAS data determine the opposite side; SSS data determine angles. For SSS, finding the largest angle first provides a useful validity and rounding check."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is pairing the included angle with the wrong opposite side or omitting the factor 2ab.",
+        "The figure must not contradict this claim: In c^2=a^2+b^2-2ab cos C, the correction term accounts for the included angle. At C=90 degrees, cosine is zero and the Pythagorean theorem returns."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why pairing the included angle with the wrong opposite side or omitting the factor 2ab leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why pairing the included angle with the wrong opposite side or omitting the factor 2ab leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -400,7 +2405,39 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "valid-copy-2",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u12-l6-v1",
@@ -410,6 +2447,97 @@
       "title": "Altitude derivation",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The sine formula reveals that two different included angles with the same sine can produce the same area, subject to triangle validity. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
       "learnerOutcome": "Use K=(1/2)ab sin C and compare with base-height and Heron forms.",
+      "mathematicalClaim": "Begin by identifying the mathematical object and the information that fixes it. Choose the area formula matching the available information, retain exact trig values where possible, and report square units. The relevant conditions are not optional bookkeeping: Heron’s formula can be numerically sensitive for very thin triangles; an equivalent stable form or higher precision may be needed in technical work. Following that structure gives K=(1/2)(9)(14)sin52 degrees≈49.65 square units.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "base",
+          "kind": "segment"
+        },
+        {
+          "id": "left-side",
+          "kind": "segment"
+        },
+        {
+          "id": "right-side",
+          "kind": "segment"
+        },
+        {
+          "id": "vertex-a",
+          "kind": "closed-point"
+        },
+        {
+          "id": "vertex-b",
+          "kind": "closed-point"
+        },
+        {
+          "id": "vertex-c",
+          "kind": "closed-point"
+        },
+        {
+          "id": "angle-a",
+          "kind": "label"
+        },
+        {
+          "id": "angle-b",
+          "kind": "label"
+        },
+        {
+          "id": "angle-c",
+          "kind": "label"
+        },
+        {
+          "id": "law",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "angle-a",
+          "angle-b",
+          "angle-c",
+          "law"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Dropping an altitude gives height b sin C, so ordinary one-half base times height becomes the sine-area formula. Heron’s formula uses all three sides through the semiperimeter.",
+        "invalidOrExcludedState": "A common error is using a non-included angle with the chosen two sides."
+      },
+      "visibleRelationships": [
+        "The sine formula reveals that two different included angles with the same sine can produce the same area, subject to triangle validity. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "The sine formula reveals that two different included angles with the same sine can produce the same area, subject to triangle validity."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is using a non-included angle with the chosen two sides.",
+        "The figure must not contradict this claim: Begin by identifying the mathematical object and the information that fixes it. Choose the area formula matching the available information, retain exact trig values where possible, and report square units. The relevant conditions are not optional bookkeeping: Heron’s formula can be numerically sensitive for very thin triangles; an equivalent stable form or higher precision may be needed in technical work. Following that structure gives K=(1/2)(9)(14)sin52 degrees≈49.65 square units."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The sine formula reveals that two different included angles with the same sine can produce the same area, subject to triangle validity. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: The sine formula reveals that two different included angles with the same sine can produce the same area, subject to triangle validity. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "base",
@@ -424,7 +2552,37 @@
         "law"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "base",
+            "left-side",
+            "right-side",
+            "vertex-a",
+            "vertex-b",
+            "vertex-c",
+            "angle-a",
+            "angle-b",
+            "angle-c",
+            "law"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u12-l6-v2",
@@ -434,6 +2592,125 @@
       "title": "Area-formula selection chart",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for triangle area formulas.",
       "learnerOutcome": "Use K=(1/2)ab sin C and compare with base-height and Heron forms.",
+      "mathematicalClaim": "The sine formula reveals that two different included angles with the same sine can produce the same area, subject to triangle validity.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Dropping an altitude gives height b sin C, so ordinary one-half base times height becomes the sine-area formula. Heron’s formula uses all three sides through the semiperimeter.",
+        "invalidOrExcludedState": "A common error is using a non-included angle with the chosen two sides."
+      },
+      "visibleRelationships": [
+        "The sine formula reveals that two different included angles with the same sine can produce the same area, subject to triangle validity. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "The sine formula reveals that two different included angles with the same sine can produce the same area, subject to triangle validity."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is using a non-included angle with the chosen two sides.",
+        "The figure must not contradict this claim: The sine formula reveals that two different included angles with the same sine can produce the same area, subject to triangle validity."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for triangle area formulas.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for triangle area formulas. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -454,7 +2731,43 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u12-l6-v3",
@@ -464,6 +2777,108 @@
       "title": "Thin-triangle numerical sensitivity diagram",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why using a non-included angle with the chosen two sides leads to a false conclusion.",
       "learnerOutcome": "Use K=(1/2)ab sin C and compare with base-height and Heron forms.",
+      "mathematicalClaim": "Dropping an altitude gives height b sin C, so ordinary one-half base times height becomes the sine-area formula. Heron’s formula uses all three sides through the semiperimeter.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "valid-copy-2",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Dropping an altitude gives height b sin C, so ordinary one-half base times height becomes the sine-area formula. Heron’s formula uses all three sides through the semiperimeter.",
+        "invalidOrExcludedState": "A common error is using a non-included angle with the chosen two sides."
+      },
+      "visibleRelationships": [
+        "The sine formula reveals that two different included angles with the same sine can produce the same area, subject to triangle validity. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "The sine formula reveals that two different included angles with the same sine can produce the same area, subject to triangle validity."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is using a non-included angle with the chosen two sides.",
+        "The figure must not contradict this claim: Dropping an altitude gives height b sin C, so ordinary one-half base times height becomes the sine-area formula. Heron’s formula uses all three sides through the semiperimeter."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why using a non-included angle with the chosen two sides leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why using a non-included angle with the chosen two sides leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -480,7 +2895,39 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "valid-copy-2",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u12-l7-v1",
@@ -490,6 +2937,97 @@
       "title": "Bearing compass with all conventions",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Quadrant bearings such as N35E specify an acute angle measured from a named north-south ray toward east or west. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
       "learnerOutcome": "Translate among standard angles, quadrant bearings, headings, and triangle or component models.",
+      "mathematicalClaim": "Begin by identifying the mathematical object and the information that fixes it. Draw a compass, convert each direction consistently, resolve components, sum, and convert the resultant back to the requested convention. The relevant conditions are not optional bookkeeping: Wind, current, and vehicle velocity must be identified as vectors relative to the same frame. Following that structure gives Resolve components, add, then compute magnitude and quadrant-aware bearing.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "base",
+          "kind": "segment"
+        },
+        {
+          "id": "left-side",
+          "kind": "segment"
+        },
+        {
+          "id": "right-side",
+          "kind": "segment"
+        },
+        {
+          "id": "vertex-a",
+          "kind": "closed-point"
+        },
+        {
+          "id": "vertex-b",
+          "kind": "closed-point"
+        },
+        {
+          "id": "vertex-c",
+          "kind": "closed-point"
+        },
+        {
+          "id": "angle-a",
+          "kind": "label"
+        },
+        {
+          "id": "angle-b",
+          "kind": "label"
+        },
+        {
+          "id": "angle-c",
+          "kind": "label"
+        },
+        {
+          "id": "law",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "angle-a",
+          "angle-b",
+          "angle-c",
+          "law"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "A navigation path can be solved with triangle laws or vector components. Components are often more reliable for several legs because they preserve signed east-west and north-south contributions.",
+        "invalidOrExcludedState": "A common error is measuring a bearing from east or assigning the wrong sign to a westward or southward component."
+      },
+      "visibleRelationships": [
+        "Quadrant bearings such as N35E specify an acute angle measured from a named north-south ray toward east or west. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "Quadrant bearings such as N35E specify an acute angle measured from a named north-south ray toward east or west."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is measuring a bearing from east or assigning the wrong sign to a westward or southward component.",
+        "The figure must not contradict this claim: Begin by identifying the mathematical object and the information that fixes it. Draw a compass, convert each direction consistently, resolve components, sum, and convert the resultant back to the requested convention. The relevant conditions are not optional bookkeeping: Wind, current, and vehicle velocity must be identified as vectors relative to the same frame. Following that structure gives Resolve components, add, then compute magnitude and quadrant-aware bearing."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Quadrant bearings such as N35E specify an acute angle measured from a named north-south ray toward east or west. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Quadrant bearings such as N35E specify an acute angle measured from a named north-south ray toward east or west. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "base",
@@ -504,7 +3042,37 @@
         "law"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "base",
+            "left-side",
+            "right-side",
+            "vertex-a",
+            "vertex-b",
+            "vertex-c",
+            "angle-a",
+            "angle-b",
+            "angle-c",
+            "law"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u12-l7-v2",
@@ -514,6 +3082,125 @@
       "title": "Two-leg route and resultant",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for bearings and navigation.",
       "learnerOutcome": "Translate among standard angles, quadrant bearings, headings, and triangle or component models.",
+      "mathematicalClaim": "Quadrant bearings such as N35E specify an acute angle measured from a named north-south ray toward east or west.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "A navigation path can be solved with triangle laws or vector components. Components are often more reliable for several legs because they preserve signed east-west and north-south contributions.",
+        "invalidOrExcludedState": "A common error is measuring a bearing from east or assigning the wrong sign to a westward or southward component."
+      },
+      "visibleRelationships": [
+        "Quadrant bearings such as N35E specify an acute angle measured from a named north-south ray toward east or west. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "Quadrant bearings such as N35E specify an acute angle measured from a named north-south ray toward east or west."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is measuring a bearing from east or assigning the wrong sign to a westward or southward component.",
+        "The figure must not contradict this claim: Quadrant bearings such as N35E specify an acute angle measured from a named north-south ray toward east or west."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for bearings and navigation.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for bearings and navigation. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -534,7 +3221,43 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u12-l7-v3",
@@ -544,6 +3267,108 @@
       "title": "Component table with east/north signs",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why measuring a bearing from east or assigning the wrong sign to a westward or southward component leads to a false conclusion.",
       "learnerOutcome": "Translate among standard angles, quadrant bearings, headings, and triangle or component models.",
+      "mathematicalClaim": "A navigation path can be solved with triangle laws or vector components. Components are often more reliable for several legs because they preserve signed east-west and north-south contributions.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "valid-copy-2",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "A navigation path can be solved with triangle laws or vector components. Components are often more reliable for several legs because they preserve signed east-west and north-south contributions.",
+        "invalidOrExcludedState": "A common error is measuring a bearing from east or assigning the wrong sign to a westward or southward component."
+      },
+      "visibleRelationships": [
+        "Quadrant bearings such as N35E specify an acute angle measured from a named north-south ray toward east or west. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "Quadrant bearings such as N35E specify an acute angle measured from a named north-south ray toward east or west."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is measuring a bearing from east or assigning the wrong sign to a westward or southward component.",
+        "The figure must not contradict this claim: A navigation path can be solved with triangle laws or vector components. Components are often more reliable for several legs because they preserve signed east-west and north-south contributions."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why measuring a bearing from east or assigning the wrong sign to a westward or southward component leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why measuring a bearing from east or assigning the wrong sign to a westward or southward component leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -560,7 +3385,39 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "valid-copy-2",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u12-l8-v1",
@@ -570,6 +3427,88 @@
       "title": "Head-to-tail and parallelogram addition",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: A vector of magnitude M at standard angle theta has components <M cos theta,M sin theta>. Recover magnitude with the distance formula and direction with quadrant-aware inverse tangent. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
       "learnerOutcome": "Represent vectors by magnitude and direction, add them geometrically, and convert to components.",
+      "mathematicalClaim": "Begin by identifying the mathematical object and the information that fixes it. Distinguish points from vectors, choose a consistent coordinate frame, add components, and interpret the resultant. The relevant conditions are not optional bookkeeping: The zero vector has no unique direction. Direction angles should be normalized to the requested interval or bearing convention. Following that structure gives <80cos135,80sin135>=<-40sqrt(2),40sqrt(2)> N.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "vector-u",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "vector-v",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "u-horizontal",
+          "kind": "segment"
+        },
+        {
+          "id": "u-vertical",
+          "kind": "segment"
+        },
+        {
+          "id": "origin",
+          "kind": "closed-point"
+        },
+        {
+          "id": "u-label",
+          "kind": "label"
+        },
+        {
+          "id": "v-label",
+          "kind": "label"
+        },
+        {
+          "id": "dot-note",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "u-label",
+          "v-label",
+          "dot-note"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Vector addition combines displacements or effects. The head-to-tail and parallelogram constructions are geometric versions of componentwise addition.",
+        "invalidOrExcludedState": "A common error is using arctan(y/x) without correcting the quadrant."
+      },
+      "visibleRelationships": [
+        "A vector of magnitude M at standard angle theta has components <M cos theta,M sin theta>. Recover magnitude with the distance formula and direction with quadrant-aware inverse tangent. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "A vector of magnitude M at standard angle theta has components <M cos theta,M sin theta>. Recover magnitude with the distance formula and direction with quadrant-aware inverse tangent."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is using arctan(y/x) without correcting the quadrant.",
+        "The figure must not contradict this claim: Begin by identifying the mathematical object and the information that fixes it. Distinguish points from vectors, choose a consistent coordinate frame, add components, and interpret the resultant. The relevant conditions are not optional bookkeeping: The zero vector has no unique direction. Direction angles should be normalized to the requested interval or bearing convention. Following that structure gives <80cos135,80sin135>=<-40sqrt(2),40sqrt(2)> N."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: A vector of magnitude M at standard angle theta has components <M cos theta,M sin theta>. Recover magnitude with the distance formula and direction with quadrant-aware inverse tangent. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: A vector of magnitude M at standard angle theta has components <M cos theta,M sin theta>. Recover magnitude with the distance formula and direction with quadrant-aware inverse tangent. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "vector-u",
@@ -582,7 +3521,35 @@
         "dot-note"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "vector-u",
+            "vector-v",
+            "u-horizontal",
+            "u-vertical",
+            "origin",
+            "u-label",
+            "v-label",
+            "dot-note"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u12-l8-v2",
@@ -592,6 +3559,125 @@
       "title": "Component projections",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for vectors geometrically and in components.",
       "learnerOutcome": "Represent vectors by magnitude and direction, add them geometrically, and convert to components.",
+      "mathematicalClaim": "A vector of magnitude M at standard angle theta has components <M cos theta,M sin theta>. Recover magnitude with the distance formula and direction with quadrant-aware inverse tangent.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Vector addition combines displacements or effects. The head-to-tail and parallelogram constructions are geometric versions of componentwise addition.",
+        "invalidOrExcludedState": "A common error is using arctan(y/x) without correcting the quadrant."
+      },
+      "visibleRelationships": [
+        "A vector of magnitude M at standard angle theta has components <M cos theta,M sin theta>. Recover magnitude with the distance formula and direction with quadrant-aware inverse tangent. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "A vector of magnitude M at standard angle theta has components <M cos theta,M sin theta>. Recover magnitude with the distance formula and direction with quadrant-aware inverse tangent."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is using arctan(y/x) without correcting the quadrant.",
+        "The figure must not contradict this claim: A vector of magnitude M at standard angle theta has components <M cos theta,M sin theta>. Recover magnitude with the distance formula and direction with quadrant-aware inverse tangent."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for vectors geometrically and in components.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for vectors geometrically and in components. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -612,7 +3698,43 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u12-l8-v3",
@@ -622,6 +3744,108 @@
       "title": "Point-versus-vector distinction",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why using arctan(y/x) without correcting the quadrant leads to a false conclusion.",
       "learnerOutcome": "Represent vectors by magnitude and direction, add them geometrically, and convert to components.",
+      "mathematicalClaim": "Vector addition combines displacements or effects. The head-to-tail and parallelogram constructions are geometric versions of componentwise addition.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "valid-copy-2",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Vector addition combines displacements or effects. The head-to-tail and parallelogram constructions are geometric versions of componentwise addition.",
+        "invalidOrExcludedState": "A common error is using arctan(y/x) without correcting the quadrant."
+      },
+      "visibleRelationships": [
+        "A vector of magnitude M at standard angle theta has components <M cos theta,M sin theta>. Recover magnitude with the distance formula and direction with quadrant-aware inverse tangent. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "A vector of magnitude M at standard angle theta has components <M cos theta,M sin theta>. Recover magnitude with the distance formula and direction with quadrant-aware inverse tangent."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is using arctan(y/x) without correcting the quadrant.",
+        "The figure must not contradict this claim: Vector addition combines displacements or effects. The head-to-tail and parallelogram constructions are geometric versions of componentwise addition."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why using arctan(y/x) without correcting the quadrant leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why using arctan(y/x) without correcting the quadrant leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -638,7 +3862,39 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "valid-copy-2",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u12-l9-v1",
@@ -648,6 +3904,88 @@
       "title": "Vector scaling gallery",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Resolving a vector along chosen directions decomposes one effect into components that sum to the original vector. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
       "learnerOutcome": "Use scalar multiplication, normalization, and component resolution.",
+      "mathematicalClaim": "Begin by identifying the mathematical object and the information that fixes it. Compute magnitude first, verify it is nonzero, divide components, and check that the resulting unit vector has magnitude one. The relevant conditions are not optional bookkeeping: Perpendicular or nonstandard component directions require projection or a system rather than simple x-y reading. Following that structure gives Magnitude 200 N; unit vector <3/5,4/5>.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "vector-u",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "vector-v",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "u-horizontal",
+          "kind": "segment"
+        },
+        {
+          "id": "u-vertical",
+          "kind": "segment"
+        },
+        {
+          "id": "origin",
+          "kind": "closed-point"
+        },
+        {
+          "id": "u-label",
+          "kind": "label"
+        },
+        {
+          "id": "v-label",
+          "kind": "label"
+        },
+        {
+          "id": "dot-note",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "u-label",
+          "v-label",
+          "dot-note"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Normalize a nonzero vector v by dividing by ||v||. Multiplying that unit vector by a desired magnitude constructs a vector in the same direction.",
+        "invalidOrExcludedState": "A common error is dividing by the squared magnitude or attempting to normalize the zero vector."
+      },
+      "visibleRelationships": [
+        "Resolving a vector along chosen directions decomposes one effect into components that sum to the original vector. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "Resolving a vector along chosen directions decomposes one effect into components that sum to the original vector."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is dividing by the squared magnitude or attempting to normalize the zero vector.",
+        "The figure must not contradict this claim: Begin by identifying the mathematical object and the information that fixes it. Compute magnitude first, verify it is nonzero, divide components, and check that the resulting unit vector has magnitude one. The relevant conditions are not optional bookkeeping: Perpendicular or nonstandard component directions require projection or a system rather than simple x-y reading. Following that structure gives Magnitude 200 N; unit vector <3/5,4/5>."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Resolving a vector along chosen directions decomposes one effect into components that sum to the original vector. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Resolving a vector along chosen directions decomposes one effect into components that sum to the original vector. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "vector-u",
@@ -660,7 +3998,35 @@
         "dot-note"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "vector-u",
+            "vector-v",
+            "u-horizontal",
+            "u-vertical",
+            "origin",
+            "u-label",
+            "v-label",
+            "dot-note"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u12-l9-v2",
@@ -670,6 +4036,125 @@
       "title": "Normalization to unit circle",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for vector operations, magnitude, direction, and unit vectors.",
       "learnerOutcome": "Use scalar multiplication, normalization, and component resolution.",
+      "mathematicalClaim": "Resolving a vector along chosen directions decomposes one effect into components that sum to the original vector.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Normalize a nonzero vector v by dividing by ||v||. Multiplying that unit vector by a desired magnitude constructs a vector in the same direction.",
+        "invalidOrExcludedState": "A common error is dividing by the squared magnitude or attempting to normalize the zero vector."
+      },
+      "visibleRelationships": [
+        "Resolving a vector along chosen directions decomposes one effect into components that sum to the original vector. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "Resolving a vector along chosen directions decomposes one effect into components that sum to the original vector."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is dividing by the squared magnitude or attempting to normalize the zero vector.",
+        "The figure must not contradict this claim: Resolving a vector along chosen directions decomposes one effect into components that sum to the original vector."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for vector operations, magnitude, direction, and unit vectors.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for vector operations, magnitude, direction, and unit vectors. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -690,7 +4175,43 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u12-l9-v3",
@@ -700,6 +4221,108 @@
       "title": "Parallel/perpendicular component decomposition",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why dividing by the squared magnitude or attempting to normalize the zero vector leads to a false conclusion.",
       "learnerOutcome": "Use scalar multiplication, normalization, and component resolution.",
+      "mathematicalClaim": "Normalize a nonzero vector v by dividing by ||v||. Multiplying that unit vector by a desired magnitude constructs a vector in the same direction.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "valid-copy-2",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "Normalize a nonzero vector v by dividing by ||v||. Multiplying that unit vector by a desired magnitude constructs a vector in the same direction.",
+        "invalidOrExcludedState": "A common error is dividing by the squared magnitude or attempting to normalize the zero vector."
+      },
+      "visibleRelationships": [
+        "Resolving a vector along chosen directions decomposes one effect into components that sum to the original vector. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "Resolving a vector along chosen directions decomposes one effect into components that sum to the original vector."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is dividing by the squared magnitude or attempting to normalize the zero vector.",
+        "The figure must not contradict this claim: Normalize a nonzero vector v by dividing by ||v||. Multiplying that unit vector by a desired magnitude constructs a vector in the same direction."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why dividing by the squared magnitude or attempting to normalize the zero vector leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why dividing by the squared magnitude or attempting to normalize the zero vector leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -716,7 +4339,39 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "valid-copy-2",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u12-l10-v1",
@@ -726,6 +4381,88 @@
       "title": "Dot product as aligned component sum",
       "description": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Projection measures the part of one vector aligned with another. The scalar projection is u·v/||v||, and the vector projection is (u·v/||v||^2)v. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
       "learnerOutcome": "Use the dot product to find angles, test orthogonality, and calculate projections.",
+      "mathematicalClaim": "Begin by identifying the mathematical object and the information that fixes it. Compute the dot product and magnitudes, solve for the angle with a clamped cosine ratio when using numerical data, and state whether a scalar or vector projection is requested. The relevant conditions are not optional bookkeeping: The angle formula requires nonzero vectors. Rounding can push a computed cosine slightly outside [-1,1], requiring numerical care. Following that structure gives u·v=3; cos theta=3/(sqrt29 sqrt17), so theta≈82.3 degrees.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "vector-u",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "vector-v",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "u-horizontal",
+          "kind": "segment"
+        },
+        {
+          "id": "u-vertical",
+          "kind": "segment"
+        },
+        {
+          "id": "origin",
+          "kind": "closed-point"
+        },
+        {
+          "id": "u-label",
+          "kind": "label"
+        },
+        {
+          "id": "v-label",
+          "kind": "label"
+        },
+        {
+          "id": "dot-note",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "u-label",
+          "v-label",
+          "dot-note"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "The two forms connect algebra with geometry. A positive dot product indicates an acute angle, zero indicates perpendicular vectors, and a negative value indicates an obtuse angle.",
+        "invalidOrExcludedState": "A common error is dividing the vector projection by ||v|| instead of ||v|| squared."
+      },
+      "visibleRelationships": [
+        "Projection measures the part of one vector aligned with another. The scalar projection is u·v/||v||, and the vector projection is (u·v/||v||^2)v. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "Projection measures the part of one vector aligned with another. The scalar projection is u·v/||v||, and the vector projection is (u·v/||v||^2)v."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is dividing the vector projection by ||v|| instead of ||v|| squared.",
+        "The figure must not contradict this claim: Begin by identifying the mathematical object and the information that fixes it. Compute the dot product and magnitudes, solve for the angle with a clamped cosine ratio when using numerical data, and state whether a scalar or vector projection is requested. The relevant conditions are not optional bookkeeping: The angle formula requires nonzero vectors. Rounding can push a computed cosine slightly outside [-1,1], requiring numerical care. Following that structure gives u·v=3; cos theta=3/(sqrt29 sqrt17), so theta≈82.3 degrees."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Projection measures the part of one vector aligned with another. The scalar projection is u·v/||v||, and the vector projection is (u·v/||v||^2)v. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+      "accessibleLongDescription": "Follow the foundation example from its given information to the conclusion. The labels identify the mathematical feature that makes the result valid: Projection measures the part of one vector aligned with another. The scalar projection is u·v/||v||, and the vector projection is (u·v/||v||^2)v. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "vector-u",
@@ -738,7 +4475,35 @@
         "dot-note"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "vector-u",
+            "vector-v",
+            "u-horizontal",
+            "u-vertical",
+            "origin",
+            "u-label",
+            "v-label",
+            "dot-note"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u12-l10-v2",
@@ -748,6 +4513,125 @@
       "title": "Projection shadow diagram",
       "description": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for dot product, angles, and projection.",
       "learnerOutcome": "Use the dot product to find angles, test orthogonality, and calculate projections.",
+      "mathematicalClaim": "Projection measures the part of one vector aligned with another. The scalar projection is u·v/||v||, and the vector projection is (u·v/||v||^2)v.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "context",
+          "kind": "label"
+        },
+        {
+          "id": "step-1",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-1",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-1",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-2",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-2",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "arrow-2",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "step-3",
+          "kind": "polygon"
+        },
+        {
+          "id": "number-3",
+          "kind": "closed-point"
+        },
+        {
+          "id": "number-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "step-copy-3",
+          "kind": "label"
+        },
+        {
+          "id": "check-1",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "context",
+          "number-copy-1",
+          "step-copy-1",
+          "number-copy-2",
+          "step-copy-2",
+          "number-copy-3",
+          "step-copy-3",
+          "check-1"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "The two forms connect algebra with geometry. A positive dot product indicates an acute angle, zero indicates perpendicular vectors, and a negative value indicates an obtuse angle.",
+        "invalidOrExcludedState": "A common error is dividing the vector projection by ||v|| instead of ||v|| squared."
+      },
+      "visibleRelationships": [
+        "Projection measures the part of one vector aligned with another. The scalar projection is u·v/||v||, and the vector projection is (u·v/||v||^2)v. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "Projection measures the part of one vector aligned with another. The scalar projection is u·v/||v||, and the vector projection is (u·v/||v||^2)v."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is dividing the vector projection by ||v|| instead of ||v|| squared.",
+        "The figure must not contradict this claim: Projection measures the part of one vector aligned with another. The scalar projection is u·v/||v||, and the vector projection is (u·v/||v||^2)v."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for dot product, angles, and projection.",
+      "accessibleLongDescription": "Read the numbered reasoning path in order. Each stage preserves the quantities, restrictions, or structural conditions needed for dot product, angles, and projection. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "context",
@@ -768,7 +4652,43 @@
         "check-1"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "context",
+            "step-1",
+            "number-1",
+            "number-copy-1",
+            "step-copy-1",
+            "arrow-1",
+            "step-2",
+            "number-2",
+            "number-copy-2",
+            "step-copy-2",
+            "arrow-2",
+            "step-3",
+            "number-3",
+            "number-copy-3",
+            "step-copy-3",
+            "check-1"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     },
     {
       "id": "precalculus-u12-l10-v3",
@@ -778,6 +4698,108 @@
       "title": "Angle and orthogonality comparison",
       "description": "Compare the valid path with the tempting shortcut. The figure shows why dividing the vector projection by ||v|| instead of ||v|| squared leads to a false conclusion.",
       "learnerOutcome": "Use the dot product to find angles, test orthogonality, and calculate projections.",
+      "mathematicalClaim": "The two forms connect algebra with geometry. A positive dot product indicates an acute angle, zero indicates perpendicular vectors, and a negative value indicates an obtuse angle.",
+      "requiredMathematicalObjects": [
+        {
+          "id": "title",
+          "kind": "label"
+        },
+        {
+          "id": "decision",
+          "kind": "polygon"
+        },
+        {
+          "id": "decision-label",
+          "kind": "label"
+        },
+        {
+          "id": "valid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "invalid-branch",
+          "kind": "direction-arrow"
+        },
+        {
+          "id": "valid",
+          "kind": "polygon"
+        },
+        {
+          "id": "invalid",
+          "kind": "polygon"
+        },
+        {
+          "id": "valid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-heading",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "valid-copy-2",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-1",
+          "kind": "label"
+        },
+        {
+          "id": "invalid-copy-2",
+          "kind": "label"
+        }
+      ],
+      "requiredLabelsAndUnits": {
+        "labelIds": [
+          "title",
+          "decision-label",
+          "valid-heading",
+          "invalid-heading",
+          "valid-copy-1",
+          "valid-copy-2",
+          "invalid-copy-1",
+          "invalid-copy-2"
+        ],
+        "coordinateVariables": [
+          "horizontal",
+          "vertical"
+        ],
+        "unitsPolicy": "Dimensionless unless the lesson prompt declares units."
+      },
+      "domainAndExcludedCases": {
+        "viewport": {
+          "xMin": 0,
+          "xMax": 12,
+          "yMin": 0,
+          "yMax": 7,
+          "aspectRatio": 1.72,
+          "padding": 0.045
+        },
+        "validStructure": "The two forms connect algebra with geometry. A positive dot product indicates an acute angle, zero indicates perpendicular vectors, and a negative value indicates an obtuse angle.",
+        "invalidOrExcludedState": "A common error is dividing the vector projection by ||v|| instead of ||v|| squared."
+      },
+      "visibleRelationships": [
+        "Projection measures the part of one vector aligned with another. The scalar projection is u·v/||v||, and the vector projection is (u·v/||v||^2)v. The calculation and the representation should agree, so a graph, diagram, table, or substitution check should support the same conclusion.",
+        "Projection measures the part of one vector aligned with another. The scalar projection is u·v/||v||, and the vector projection is (u·v/||v||^2)v."
+      ],
+      "forbiddenMisleadingStates": [
+        "A common error is dividing the vector projection by ||v|| instead of ||v|| squared.",
+        "The figure must not contradict this claim: The two forms connect algebra with geometry. A positive dot product indicates an acute angle, zero indicates perpendicular vectors, and a negative value indicates an obtuse angle."
+      ],
+      "renderer": "static-svg",
+      "fallbackRenderer": "static-svg",
+      "keyboardInteraction": "No interactive controls; the complete mathematical state is present in reading order.",
+      "initialState": "Complete deterministic static state.",
+      "reducedMotionBehavior": "No motion is used.",
+      "darkModeBehavior": "Theme tokens preserve labels, line styles, and non-color cues.",
+      "responsive320Behavior": "Responsive SVG scales to its container without removing labels or mathematical objects.",
+      "printBehavior": "Generated grayscale-safe SVG and caption remain together where possible.",
+      "accessibleShortDescription": "Compare the valid path with the tempting shortcut. The figure shows why dividing the vector projection by ||v|| instead of ||v|| squared leads to a false conclusion.",
+      "accessibleLongDescription": "Compare the valid path with the tempting shortcut. The figure shows why dividing the vector projection by ||v|| instead of ||v|| squared leads to a false conclusion. The figure uses concrete points, curves, arrows, intervals, or matrix structure instead of relying on color alone.",
       "readingOrder": [
         "title",
         "decision",
@@ -794,7 +4816,39 @@
         "invalid-copy-2"
       ],
       "colorIndependent": true,
-      "printEquivalent": true
+      "printEquivalent": true,
+      "machineVerifiableAssertions": [
+        {
+          "assertion": "reading-order-complete",
+          "expectedLayerIds": [
+            "title",
+            "decision",
+            "decision-label",
+            "valid-branch",
+            "invalid-branch",
+            "valid",
+            "invalid",
+            "valid-heading",
+            "invalid-heading",
+            "valid-copy-1",
+            "valid-copy-2",
+            "invalid-copy-1",
+            "invalid-copy-2"
+          ]
+        },
+        {
+          "assertion": "static-fallback-equivalent",
+          "expected": true
+        },
+        {
+          "assertion": "grayscale-safe",
+          "expected": true
+        },
+        {
+          "assertion": "public-renderer",
+          "expected": "static-svg"
+        }
+      ]
     }
   ]
 }
