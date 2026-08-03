@@ -4,6 +4,7 @@ import test from "node:test";
 
 
 const source = await readFile(new URL("../tools/provision_precalculus_solutions.py", import.meta.url), "utf8");
+const wrangler = JSON.parse(await readFile(new URL("../wrangler.jsonc", import.meta.url), "utf8"));
 
 test("Precalculus provisioning wrapper is fixed to one protected Cloudflare boundary", () => {
   assert.match(source, /REFERENCE = "boho-digital-services\.cloudflare\.primary-management"/);
@@ -21,6 +22,15 @@ test("Precalculus provisioning preserves other KV bindings and verifies both env
   assert.match(source, /for environment in \("preview", "production"\)/);
   assert.match(source, /if actual_keys != expected_keys:/);
   assert.match(source, /if not all\(bindings\.values\(\)\):/);
+});
+
+test("Pages deployment config carries the protected KV binding into each deployment", () => {
+  assert.deepEqual(wrangler.kv_namespaces, [
+    {
+      binding: "PRECALCULUS_SOLUTIONS",
+      id: "a50750ebee8244dca1cc3b8d93319bc7",
+    },
+  ]);
 });
 
 test("Precalculus provisioning keeps credentials and answer values out of output and Git", () => {
