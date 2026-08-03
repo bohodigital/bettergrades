@@ -7,7 +7,7 @@
 - Governing constitutions: `boho.company` v0.1.0 and `boho.operations-agents` v0.1.0
 - Owning repository: `bettergrades`
 - Implementation branch: `codex/precalculus-audit-correction-20260802`
-- Current implementation commit: `a956163ac3dce169feb98fbaf8e913e57465d0d7`, tree `a7a4d8677e2cd94597200173025f17d72a86ec05`
+- Current implementation commit: `be2ac4cdef8e1b673320b0664ca2d5cfaebab81e`, tree `dc612f2cd39803d401d139ccf5e1c82523f97226`
 - Reconciled canonical baseline: commit `de3ef3acd6e8de72c987bb8cce9e1cdba5a25ee4`, tree `afc841c32d0a42a9143916f4a55f193531331acf`
 - Accepted audit Markdown SHA-256: `c84576796bcebf4f69647842db72d03e839d79645ed49fd1197b48c2617dda1c`
 - Accepted audit JSON SHA-256: `5325b325bdc60d9ddbf7e6d0d5b59a07c2315fe37e634955d15531025ddd79db`
@@ -27,11 +27,11 @@ Contain the protected-answer defect, correct the exact audited mathematics and m
 - Changed both Precalculus endpoints so arbitrary nonempty attempts are rejected.
 - A reveal now requires the same answer validation as the check endpoint.
 - Missing protected storage returns `503`; unknown records return `404`; wrong attempts return `422` or `403` without an answer field.
-- Added a protected KV bulk-export tool. It requires an absolute outside-repository output path, writes mode `0600`, and verifies exactly 1,914 unique records.
-- Added regression coverage proving all 1,914 public IDs are absent from `_worker.js`.
+- Added a protected KV bulk-export tool. It requires an absolute outside-repository output path, writes mode `0600`, and verifies exactly 2,454 unique records.
+- Added regression coverage proving all 2,454 public IDs are absent from `_worker.js`.
 - Removed inert no-JavaScript forms. Prompts remain server-rendered, readable, and printable; controls appear only after hydration.
 
-All 1,914 records now declare one bounded policy: 70 numerical, 233 symbolic, 23 multipart, 327 exact-text, and 1,261 manual-rubric/model-comparison records. Numerical answers use finite value comparison with declared tolerance; symbolic answers use the existing bounded server-only equivalence checker; multipart answers require every component; exact text is normalized deterministically; and explanatory work is never called automatically correct. A substantive manual response may unlock an explicitly declared model comparison while retaining `manual_review` status.
+All 2,454 records now declare one bounded policy: 70 numerical, 233 symbolic, 23 multipart, 315 exact-text, and 1,813 manual-rubric/model-comparison records. Numerical answers use finite value comparison with declared tolerance; symbolic answers use the existing bounded server-only equivalence checker; multipart answers require every component; exact text is normalized deterministically; and explanatory work is never called automatically correct. A substantive manual response may unlock an explicitly declared model comparison while retaining `manual_review` status.
 
 The generated correct corpus passes every machine-gradeable policy. Arbitrary nonempty text is not accepted as correct or reveal-authorized for any record, including manual-policy records.
 
@@ -42,6 +42,17 @@ The generated correct corpus passes every machine-gradeable policy. Arbitrary no
 - Added 65 canonical assessment routes and 2,013 source-traced assessment placements without duplicating protected answer values.
 - Every placement has a stable source ID, declared response policy, fixed randomization policy, hint, error tags, repair target, unit/course navigation, and server-held answer or model-response boundary.
 - Assessment nodes are classified as assessments in the learning graph rather than textbook lessons.
+
+### P8–P15 concrete exercise rewrite
+
+- Replaced the five generic prompts repeated across every P8–P15 lesson with lesson-specific procedural, conceptual, graphical, error-analysis, verification, transfer, modeling, and exit-check work.
+- Preserved the immutable approved Phase B source package; all rewrite adaptations occur in the deterministic import layer.
+- Expanded all 90 P8–P15 lessons from 10 to 16 concrete practice exercises, for 1,440 second-half items and 2,280 course practice items overall.
+- Added public exercise type, difficulty, and provenance labels and updated the learner-facing practice count.
+- Added `content/precalculus/exercise-inventory.server.json`, with per-unit and per-lesson counts by type, difficulty, response policy, and provenance.
+- The generated P8–P15 inventory has zero normalized duplicate prompt groups, zero duplicate placements, and zero authoring-instruction-only items.
+
+This closes the repository-level duplication rewrite. Independent mathematics and editorial sampling remain acceptance gates; this implementation does not substitute machine completeness for independent review.
 
 ### Exact mathematics corrections
 
@@ -74,10 +85,12 @@ Machine completeness is established. Independent mathematical contact-sheet revi
 ## Validation completed
 
 - `corepack pnpm run build:pages`: pass; 988 canonical HTML routes and 135 redirects built
-- `corepack pnpm test`: pass; 333/333
+- `corepack pnpm test`: pass; 334/334
 - `corepack pnpm run graph:check`: pass; 974 nodes and 4,486 relationships
-- protected KV export smoke test: pass; 1,914 unique records, outside repository, mode `0600`
-- protected-answer Worker scan: pass; 1,914/1,914 IDs absent
+- protected KV export smoke test: pass; 2,454 unique records, outside repository, mode `0600`
+- protected-answer Worker scan: pass; 2,454/2,454 IDs absent
+- P8–P15 concrete exercise audit: pass; 1,440/1,440 typed items, zero normalized duplicate groups, zero authoring-only placeholders
+- client release budget: pass; `BetterGradesApp` 596,628 bytes raw, within the 600,000-byte gate
 - audited math regression checks: pass
 - 522-manifest completeness checks: pass
 - 11 corrected anchor-scene checks: pass
@@ -88,10 +101,9 @@ Machine completeness is established. Independent mathematical contact-sheet revi
 
 1. `P0-01` is implemented and corpus-tested locally but not production-accepted. Cloudflare protected storage must be created, bound, and populated without exposing the export; the exact preview must then repeat the public-leak and behavioral corpus checks.
 2. `P0-02` belongs to the provider/connector security boundary, not this repository. The credential class must be identified, usage audited, credential rotated, and response sanitizer fixed under a separately protected security record. No secret was read or copied during this work.
-3. P8-P15 still require a reviewed lesson-level exercise rewrite. The audit found 45.0%-46.7% normalized duplication; the new assessment routes reuse source-traced concrete prompts and do not pretend that placement reuse closes that editorial defect.
-4. Full independent mathematics review across P0-P15, policy sampling, assessment editorial review, and independent review of all 522 visuals remain outstanding.
-5. No private noindex preview has been created or approved.
-6. No release merge, Cloudflare deployment, cache purge, provider UUID capture, new release binding, rollback exercise, or independent post-release audit has occurred.
+3. Full independent mathematics review across P0-P15, protected-policy sampling, P8–P15 exercise editorial sampling, assessment editorial review, and independent review of all 522 visuals remain outstanding.
+4. No private noindex preview has been created or approved.
+5. No release merge, Cloudflare deployment, cache purge, provider UUID capture, new release binding, rollback exercise, or independent post-release audit has occurred.
 
 ## SEO, security, privacy, and rollback
 
@@ -101,17 +113,16 @@ Machine completeness is established. Independent mathematical contact-sheet revi
 
 ## Required human actions and next stage
 
-1. Authorize and provision the protected Cloudflare storage binding, then import the 1,914-record export through a protected Pi runtime path.
+1. Authorize and provision the protected Cloudflare storage binding, then import the 2,454-record export through a protected Pi runtime path.
 2. Authorize the separate credential incident/rotation work for `P0-02`.
-3. Approve an editorial review/rewrite work order for the remaining P8-P15 lesson-level duplication.
-4. Assign independent mathematics and visual reviewers.
-5. After those gates pass, build an exact private noindex preview, bind it to commit/tree/digests/inventories/rollback, and obtain owner approval before any production action.
+3. Assign independent mathematics, P8–P15 exercise editorial, assessment-policy, and visual reviewers.
+4. After those gates pass, build an exact private noindex preview, bind it to commit/tree/digests/inventories/rollback, and obtain owner approval before any production action.
 
 ## Completion classification
 
-- Local repository correction stage: implemented and committed for review.
+- Local repository correction stage: complete and committed for review.
 - P0 validation implementation: complete locally and corpus-tested, externally unbound.
 - Assessment/navigation implementation: complete locally and awaiting independent editorial review.
-- Full implementation: incomplete.
+- Repository implementation: complete locally; external security, protected-storage, independent-review, preview, and release gates remain open.
 - Production accepted: no.
 - Project complete: no.
