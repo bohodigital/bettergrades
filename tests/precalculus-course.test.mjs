@@ -186,6 +186,9 @@ test("P8–P15 publishes a typed, difficulty-balanced, duplication-free concrete
     normalizedDuplicateGroups: 0,
     normalizedDuplicatePlacements: 0,
     authoringInstructionOnlyItems: 0,
+    genericNonAnswerGuides: 0,
+    overlongPrompts: 0,
+    solutionScaffoldPromptLeaks: 0,
   });
   assert.equal(exerciseInventory.phaseBByLesson.length, 90);
   assert.ok(exerciseInventory.phaseBByLesson.every((lesson) => lesson.practiceItemCount === 16));
@@ -193,6 +196,11 @@ test("P8–P15 publishes a typed, difficulty-balanced, duplication-free concrete
   assert.ok(exerciseInventory.phaseBByLesson.every((lesson) => Object.keys(lesson.difficulties).length === 3));
   assert.deepEqual(exerciseInventory.normalizedDuplicates, []);
   assert.deepEqual(exerciseInventory.authoringInstructionItems, []);
+  assert.deepEqual(exerciseInventory.qualityFindings, {
+    genericNonAnswerGuides: [],
+    overlongPrompts: [],
+    solutionScaffoldPromptLeaks: [],
+  });
 });
 
 test("all 2,454 Precalculus records enforce an explicit validation and reveal policy", async () => {
@@ -215,8 +223,8 @@ test("all 2,454 Precalculus records enforce an explicit validation and reveal po
     assert.equal(arbitrary.revealAllowed, false, `${record.id} does not reveal for arbitrary nonempty text`);
   }
   assert.deepEqual(Object.fromEntries([...policyCounts].sort()), {
-    exact_text: 315,
-    manual_rubric: 1813,
+    exact_text: 330,
+    manual_rubric: 1798,
     multipart: 23,
     numeric: 70,
     symbolic: 233,
