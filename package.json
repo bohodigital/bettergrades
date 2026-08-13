@@ -35,6 +35,8 @@
     "test:navigation": "node --test tests/navigation.test.mjs",
     "audit:ia": "node tools/ia-audit.mjs",
     "audit:ia:test": "node --test tests/ia-audit.test.mjs",
+    "seo:architecture": "node tools/generate-seo-architecture.mjs",
+    "seo:architecture:check": "node tools/generate-seo-architecture.mjs --check",
     "algebra:import": "node tools/import-algebra-course.mjs",
     "algebra:check": "node tools/import-algebra-course.mjs --check",
     "algebra:visuals:author": "node tools/visualization/author-algebra-visuals.mjs",

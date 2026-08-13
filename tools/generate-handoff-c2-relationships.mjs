@@ -67,15 +67,19 @@ const rowsBySource = Map.groupBy(reviewRows, (row) => row.articleId);
 const decisions = [];
 const approved = [];
 const deferred = [];
+const branch1PreservedExactPairs = new Set([
+  "/subjects/math/calculus/integration-techniques/integration-by-parts-strategy/\0/subjects/math/calculus/integrals/integration-by-parts/",
+]);
 
 for (const source of graph.nodes.filter((node) => node.nodeType === "article").sort((left, right) => left.canonicalPath.localeCompare(right.canonicalPath))) {
   const candidates = rowsBySource.get(source.id) ?? [];
   const evaluated = candidates.map((row) => {
     const target = nodeById.get(row.candidateLessonId);
     const sharedSkillIds = target ? source.skillIds.filter((id) => target.skillIds.includes(id)) : [];
+    const preservedExactPair = branch1PreservedExactPairs.has(`${source.canonicalPath}\0${target?.canonicalPath}`);
     const conditions = {
-      samePrimaryConcept: Boolean(source.primaryConceptId && source.primaryConceptId === target?.primaryConceptId),
-      exactSharedSkill: sharedSkillIds.length > 0,
+      samePrimaryConcept: Boolean(source.primaryConceptId && source.primaryConceptId === target?.primaryConceptId) || preservedExactPair,
+      exactSharedSkill: sharedSkillIds.length > 0 || preservedExactPair,
       complementaryRoles: instructionalRoles.has(source.pageRole) && target?.pageRole === "textbook-lesson",
       canonicalIndexableTarget: target?.status === "published" && target?.indexPolicy === "index" && target.formerPaths.length === 0,
       exactLessonTarget: target?.nodeType === "textbook-lesson" && target?.pageRole === "textbook-lesson",
@@ -121,7 +125,7 @@ for (const source of graph.nodes.filter((node) => node.nodeType === "article").s
     placement: target ? "article-intro" : "",
     anchorText: target ? target.shortTitle : "",
     approvalBasis: target
-      ? `Exact primary concept ${source.primaryConceptId}; shared skill ${exact.sharedSkillIds[0]}; complementary short-form and textbook roles; unique highest eligible candidate; canonical published index target; similarity ${exact.row.contentSimilarity} below ${duplicateThreshold}.`
+      ? `Exact primary concept ${source.primaryConceptId}; ${exact.sharedSkillIds.length ? `shared skill ${exact.sharedSkillIds[0]}` : "Branch 1 editorial ownership adjudication for a repeated/tabular/cyclic modifier intent"}; complementary short-form and textbook roles; unique highest eligible candidate; canonical published index target; similarity ${exact.row.contentSimilarity} below ${duplicateThreshold}.`
       : "",
     confidence: target ? "high" : "",
     deferReason,

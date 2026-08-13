@@ -18,7 +18,7 @@ export const systemsArticles = [
   }),
   algebraArticle({
     slug: "substitution-systems", topicSlug: "systems-inequalities", archetype: "method",
-    title: "Solving systems by substitution", shortTitle: "Substitution method",
+    title: "When should you use substitution for a system?", shortTitle: "When to use substitution",
     deck: "Replace one variable with an equal expression, solve the resulting one-variable equation, then recover and verify the second coordinate.",
     course: "Algebra I", difficulty: "Intermediate", minutes: 9,
     formula: String.raw`y=f(x),\quad g(x)+y=c\Rightarrow g(x)+f(x)=c`,
@@ -33,7 +33,7 @@ export const systemsArticles = [
   }),
   algebraArticle({
     slug: "elimination-systems", topicSlug: "systems-inequalities", archetype: "method",
-    title: "Solving systems by elimination", shortTitle: "Elimination method",
+    title: "When should you use elimination for a system?", shortTitle: "When to use elimination",
     deck: "Align like terms, create opposite coefficients, add the equations, and recover the variable that was deliberately removed.",
     course: "Algebra I", difficulty: "Intermediate", minutes: 10,
     formula: String.raw`\begin{aligned}ax+by&=c\\-ax+dy&=e\end{aligned}\Rightarrow(b+d)y=c+e`,
@@ -62,7 +62,7 @@ export const systemsArticles = [
   }),
   algebraArticle({
     slug: "compound-inequalities", topicSlug: "systems-inequalities", archetype: "method",
-    title: "Compound inequalities: and, or, and the sign flip", shortTitle: "Compound inequalities",
+    title: "And vs. or in compound inequalities: unions, intersections, and sign flips", shortTitle: "And vs. or inequalities",
     deck: "Solve each condition, reverse the inequality only when multiplying or dividing by a negative, then combine by intersection or union.",
     course: "Algebra I", difficulty: "Intermediate", minutes: 10,
     formula: String.raw`a<x<b\qquad x<a\ \text{or}\ x>b`, immediate: { label: "Logic", text: "And means both conditions must hold, so keep the overlap. Or means either condition may hold, so keep the combined regions." },

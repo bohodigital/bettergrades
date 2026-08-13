@@ -375,7 +375,7 @@ function SecCubedLatexPage() {
           </ol>
 
           <h2>What to do next</h2>
-          <div className="related-grid"><Link href="/learn/calculus/integration-by-parts/"><span>LEARN THE METHOD</span><b>Integration by parts</b><small>Recognition, setup, and when not to use it →</small></Link><Link href="/practice/math/calculus/quizzes/integration-method-selection/"><span>PRACTICE</span><b>Choose the first move</b><small>Targeted feedback on method choice →</small></Link><Link href="/practice/math/calculus/challenges/integration-bee/"><span>COMPETE</span><b>Integration Bee</b><small>Try the integral under a little pressure →</small></Link></div>
+          <div className="related-grid"><Link href="/learn/calculus/integration-by-parts/"><span>LEARN THE METHOD</span><b>When to use integration by parts</b><small>Recognition, setup, and when not to use it →</small></Link><Link href="/practice/math/calculus/quizzes/integration-method-selection/"><span>PRACTICE</span><b>Choose the first move</b><small>Targeted feedback on method choice →</small></Link><Link href="/practice/math/calculus/challenges/integration-bee/"><span>COMPETE</span><b>Integration Bee</b><small>Try the integral under a little pressure →</small></Link></div>
         </section>
       </article>
     </Shell>
@@ -387,7 +387,7 @@ function LearnLatexPage() {
     <Shell narrow>
       <article className="article lesson">
         <nav className="breadcrumbs"><Link href="/">Learn</Link><span>/</span><Link href="/subjects/math/calculus/">Calculus</Link><span>/</span><span>Integration by parts</span></nav>
-        <header className="article-header"><Eyebrow>Method guide · Calculus II</Eyebrow><h1>Integration by parts, without the guessing game.</h1><p className="article-kicker">Reverse the product rule. Choose the factor that gets simpler.</p></header>
+        <header className="article-header"><Eyebrow>Method guide · Calculus II</Eyebrow><h1>When should you use integration by parts?</h1><p className="article-kicker">Recognize the product-rule signal, then choose the factor that gets simpler.</p></header>
         <section className="lesson-intro"><div className="formula-card"><span>THE FORMULA</span><Math tex={String.raw`\int u\,dv=uv-\int v\,du`} display className="formula-card-equation" /></div><p>Integration by parts trades one integral for another. It is useful when a product contains a factor that becomes simpler after differentiation—like <Math tex="x" />, <Math tex={String.raw`\ln x`} />, or an inverse trig function.</p></section>
         <LearningPathLinks sourcePath="/learn/calculus/integration-by-parts/" placement="article-intro" variant="primary" />
         <section className="article-body">

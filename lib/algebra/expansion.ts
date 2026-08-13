@@ -57,7 +57,7 @@ export const algebraExpansionArticles = [
   }),
   algebraArticle({
     slug: "completing-the-square", topicSlug: "polynomials-factoring", archetype: "method",
-    title: "Completing the square without guessing", shortTitle: "Complete the square",
+    title: "How to find the missing term when completing the square", shortTitle: "Find the completing-square term",
     deck: "Add the exact term that turns a quadratic expression into a perfect-square trinomial, while preserving the equation's value.",
     course: "Algebra II", difficulty: "Intermediate", minutes: 10,
     formula: String.raw`x^2+bx+\left(\frac b2\right)^2=\left(x+\frac b2\right)^2`,

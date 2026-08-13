@@ -179,6 +179,12 @@ export function LibraryArticleContent({ article }: { article: CourseArticle }) {
   );
 }
 
+export function OwnedLibraryArticleContent({ domainSlug, topicSlug, articleSlug, ownerHref }: { domainSlug: string; topicSlug: string; articleSlug: string; ownerHref: string }) {
+  const article = getCourseArticle(domainSlug, topicSlug, articleSlug);
+  if (!article) return null;
+  return <><LibraryArticleContent article={article} /><aside className="callout seo-ownership-links" aria-label="Related complete lesson"><span>RELATED LEARNING PATH</span><h2>Choose the depth that matches your goal.</h2><a href={ownerHref}>Study the complete textbook lesson →</a></aside></>;
+}
+
 export function CourseHubContent({ domainSlug }: { domainSlug: string }) {
   const course = getCourseLibrary(domainSlug);
   if (!course) return null;
