@@ -2,6 +2,7 @@ import { mkdir, readFile, readdir, stat, writeFile } from "node:fs/promises";
 import { resolve, relative } from "node:path";
 import {
   algebraCompactOwners,
+  calculusCollisionAdjudications,
   calculusClusters,
   crossCourseOwnership,
   duplicatePrimaryResolutions,
@@ -59,7 +60,7 @@ function inferIntent(node, page) {
   if (/calculator|\btool\b|checker|finder/.test(haystack)) return "tool";
   if (/visual|flowchart/.test(haystack)) return "visual-guide";
   if (/common[- ]errors?|error gallery/.test(haystack)) return "error-prevention";
-  if (/mixed[- ]practice|practice problems|\/practice\//.test(haystack)) return "practice";
+  if (/cumulative[- ]practice|mixed[- ]practice|practice problems|\/practice\//.test(haystack)) return "practice";
   if (/\breview\b/.test(haystack)) return "review";
   if (/quick[- ]answer|^what is |^why (is|does)|\?$/.test(`${node.pageRole} ${page.h1}`.toLowerCase())) return "quick-answer";
   if (/decision[- ]guide|choose|choosing|\bvs\.?\b|which method|strategy/.test(haystack)) return "method-selection";
@@ -76,6 +77,7 @@ const allPolicyPaths = [
   ...algebraCompactOwners.flatMap(([left, right]) => [left, right].filter(Boolean)),
   ...crossCourseOwnership.flatMap((row) => [row.genericOwner, ...row.secondaryUrls]),
   ...calculusClusters.map(([, owner]) => owner),
+  ...calculusCollisionAdjudications.flatMap((row) => [row.leftUrl, row.rightUrl]),
   ...duplicatePrimaryResolutions.flatMap(([, owner, secondary]) => [owner, secondary]),
 ];
 for (const path of allPolicyPaths) if (!nodeByPath.has(path)) throw new Error(`SEO ownership policy references missing graph route: ${path}`);
@@ -182,6 +184,8 @@ function scorePair(left, right, curated = false) {
 function adjudicate(left, right, result, curated) {
   const leftIntent = inferIntent(left, rendered.get(left.canonicalPath));
   const rightIntent = inferIntent(right, rendered.get(right.canonicalPath));
+  const explicit = calculusCollisionByPair.get([left.canonicalPath, right.canonicalPath].sort().join("\0"));
+  if (explicit) return { disposition: explicit.disposition, adjudicationReason: explicit.reason, ownerUrl: explicit.ownerUrl };
   if (curated) return { disposition: "DISTINCT_PAGE_ROLE", adjudicationReason: "Reviewed compact-guide versus complete-textbook ownership policy.", ownerUrl: curated[1] || curated[0] };
   if (courseLevel(left) !== courseLevel(right)) return { disposition: "DISTINCT_COURSE_LEVEL", adjudicationReason: "Pages teach different course stages; cross-course policy preserves the qualified role.", ownerUrl: crossByPath.get(left.canonicalPath)?.primaryUrl ?? crossByPath.get(right.canonicalPath)?.primaryUrl ?? "" };
   if ([leftIntent, rightIntent].includes("worked-example")) return { disposition: "WORKED_EXAMPLE", adjudicationReason: "A worked example solves a specific problem and supports rather than replaces the lesson.", ownerUrl: leftIntent === "worked-example" ? right.canonicalPath : left.canonicalPath };
@@ -193,6 +197,7 @@ function adjudicate(left, right, result, curated) {
   return { disposition: "FALSE_POSITIVE", adjudicationReason: "Similarity is below the high-risk decision threshold after role and subtopic review.", ownerUrl: "" };
 }
 const compactPolicyByPair = new Map(algebraCompactOwners.filter(([, owner]) => owner).map((row) => [[row[0], row[1]].sort().join("\0"), row]));
+const calculusCollisionByPair = new Map(calculusCollisionAdjudications.map((row) => [[row.leftUrl, row.rightUrl].sort().join("\0"), row]));
 const candidates = [];
 const seenPairs = new Set();
 function addPair(left, right, curatedRow = null) {
@@ -343,9 +348,12 @@ await output(resolve(outputDirectory, "current-content-similarity.json"), json({
 await output(resolve(outputDirectory, "BRANCH1_QA_REPORT.json"), json(qa));
 
 const dispositionSummary = Object.entries(qa.collisionDispositionCounts).map(([name, count]) => `- ${name}: ${count}`).join("\n");
-await output(resolve(docsDirectory, "CANNIBALIZATION_LEDGER.md"), `# Branch 1 Cannibalization Ledger\n\nEvery generated candidate is adjudicated. Candidate similarity is an audit signal, not a redirect instruction.\n\n${dispositionSummary}\n\nUnexplained high-risk pairs: **${qa.unexplainedHighRisk}**. Cases requiring GSC/canonical/backlink evidence: **${qa.externalEvidenceOnly}**; these remain preserved and are isolated in the Branch 4 queue.\n`);
+const externalEvidenceStatus = qa.externalEvidenceOnly
+  ? `${qa.externalEvidenceOnly} preserved cases remain isolated in the Branch 4 queue.`
+  : "No case remains dependent on external evidence; the Branch 4 queue is empty.";
+await output(resolve(docsDirectory, "CANNIBALIZATION_LEDGER.md"), `# Branch 1 Cannibalization Ledger\n\nEvery generated candidate is adjudicated. Candidate similarity is an audit signal, not a redirect instruction.\n\n${dispositionSummary}\n\nUnexplained high-risk pairs: **${qa.unexplainedHighRisk}**. ${externalEvidenceStatus}\n`);
 await output(resolve(docsDirectory, "CROSS_COURSE_OWNERSHIP.md"), `# Cross-course Search Intent Ownership\n\nThe machine-readable source contains ${crossCourseOwnership.length} rules. Each rule names one generic owner, its legitimate course-qualified satellites, and the distinction that titles, descriptions, anchors, and tests must preserve. See \`data/seo/CROSS_COURSE_OWNERSHIP.json\`.\n`);
-await output(resolve(docsDirectory, "BRANCH1_SEO_ARCHITECTURE_AUDIT.md"), `# BetterGrades Branch 1 SEO Architecture Audit\n\n## Phase 2 result\n\n- Ownership registry: ${registry.length} indexable mathematical routes\n- Collision candidates: ${candidates.length}; unexplained high-risk: ${qa.unexplainedHighRisk}\n- Duplicate primary ownership keys: ${qa.duplicatePrimaryOwners}\n- Algebra compact guides reviewed: ${algebraAudit.length}\n- Precalculus lesson titles reviewed: ${precalculusAudit.length}\n- Calculus clusters reviewed: ${calculusAudit.length}\n- Cross-course ownership rules: ${crossCourseOwnership.length}\n- Redirects deeply verified: ${redirectsLedger.filter((row) => row.validationResult === "PASS").length}/${redirectsLedger.length}\n- Branch 2 / Branch 3 queue rows: ${branch2.length} / ${branch3.length}\n\nNo redirect, noindex, merge, deployment, or destructive consolidation was added. External-evidence-only decisions remain isolated for Branch 4.\n`);
+await output(resolve(docsDirectory, "BRANCH1_SEO_ARCHITECTURE_AUDIT.md"), `# BetterGrades Branch 1 SEO Architecture Audit\n\n## Phase 2 result\n\n- Ownership registry: ${registry.length} indexable mathematical routes\n- Collision candidates: ${candidates.length}; unexplained high-risk: ${qa.unexplainedHighRisk}\n- Duplicate primary ownership keys: ${qa.duplicatePrimaryOwners}\n- External-evidence-only cases: ${qa.externalEvidenceOnly}\n- Algebra compact guides reviewed: ${algebraAudit.length}\n- Precalculus lesson titles reviewed: ${precalculusAudit.length}\n- Calculus clusters reviewed: ${calculusAudit.length}\n- Cross-course ownership rules: ${crossCourseOwnership.length}\n- Redirects deeply verified: ${redirectsLedger.filter((row) => row.validationResult === "PASS").length}/${redirectsLedger.length}\n- Branch 2 / Branch 3 queue rows: ${branch2.length} / ${branch3.length}\n\nNo redirect, noindex, merge, deployment, or destructive consolidation was added. ${externalEvidenceStatus}\n`);
 await output(resolve(docsDirectory, "IMPLEMENTATION_REPORT.md"), `# Branch 1 Phase 2 Implementation Report\n\nStatus: correction pass implemented on the draft PR branch; production acceptance, merge, and deployment are not claimed.\n\nThe H1-derived target model was replaced by explicit concept/query-family/intent ownership. All collision candidates now carry a closed disposition and rationale. Sitewide ownership links, exhaustive course audits, deep redirect checks, complete handoff schemas, and explicit graph provenance are machine-readable and regression-tested.\n`);
 
 console.log(`${check ? "Verified" : "Generated"} Phase 2 SEO architecture: ${registry.length} ownership records, ${candidates.length} adjudicated candidates, ${algebraAudit.length} Algebra guides, ${precalculusAudit.length} Precalculus titles, ${calculusAudit.length} Calculus clusters.`);

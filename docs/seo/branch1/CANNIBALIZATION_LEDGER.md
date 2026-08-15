@@ -2,12 +2,11 @@
 
 Every generated candidate is adjudicated. Candidate similarity is an audit signal, not a redirect instruction.
 
-- ASSESSMENT_INTENT: 705
+- ASSESSMENT_INTENT: 712
 - DISTINCT_COURSE_LEVEL: 46
-- DISTINCT_PAGE_ROLE: 190
-- DISTINCT_SUBTOPIC: 162
-- NEEDS_EXTERNAL_EVIDENCE: 2
+- DISTINCT_PAGE_ROLE: 187
+- DISTINCT_SUBTOPIC: 159
 - REFERENCE_OR_GLOSSARY: 8
 - WORKED_EXAMPLE: 61
 
-Unexplained high-risk pairs: **0**. Cases requiring GSC/canonical/backlink evidence: **2**; these remain preserved and are isolated in the Branch 4 queue.
+Unexplained high-risk pairs: **0**. No case remains dependent on external evidence; the Branch 4 queue is empty.

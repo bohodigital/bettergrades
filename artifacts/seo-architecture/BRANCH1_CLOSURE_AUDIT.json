@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-15T21:54:22.054Z",
+  "generatedAt": "2026-08-15T22:38:27.933Z",
   "auditMethod": "Independent acceptance-gate recomputation from generated registry, collision ledger, rendered QA, course audits, and handoff queues.",
-  "verdict": "BLOCKED_ONLY_BY_EXTERNAL_EVIDENCE",
+  "verdict": "CLOSED",
   "checks": {
     "registryCoversGraph": true,
     "uniquePrimaryOwnership": true,
@@ -23,24 +23,11 @@
   "counts": {
     "graphNodes": 974,
     "registryRows": 974,
-    "collisionCandidates": 1174,
+    "collisionCandidates": 1173,
     "unexplainedHighRisk": 0,
     "duplicateOwnerKeys": 0,
-    "externalEvidenceOnly": 2
+    "externalEvidenceOnly": 0
   },
-  "externalEvidenceCases": [
-    {
-      "leftUrl": "/subjects/math/calculus/integrals/common-errors/",
-      "rightUrl": "/subjects/math/calculus/integration-applications/common-errors/",
-      "disposition": "NEEDS_EXTERNAL_EVIDENCE",
-      "reason": "Same course, role, and query family; consolidation requires GSC/canonical/backlink evidence."
-    },
-    {
-      "leftUrl": "/subjects/math/calculus/integrals/cumulative-practice/",
-      "rightUrl": "/subjects/math/calculus/integration-applications/cumulative-practice/",
-      "disposition": "NEEDS_EXTERNAL_EVIDENCE",
-      "reason": "Same course, role, and query family; consolidation requires GSC/canonical/backlink evidence."
-    }
-  ],
+  "externalEvidenceCases": [],
   "releaseStatus": "PR remains draft; merge and deployment are not authorized by this audit."
 }

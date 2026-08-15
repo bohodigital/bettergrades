@@ -44,6 +44,32 @@ test("all collision candidates have an approved explicit disposition", async () 
   assert.equal(similarity.candidates.filter((row) => row.disposition === "MANUAL_REVIEW").length, 0);
 });
 
+test("adjacent Calculus units preserve their distinct common-error and cumulative-practice intents", async () => {
+  const similarity = await readJson("artifacts/seo-architecture/current-content-similarity.json");
+  const pair = (leftUrl, rightUrl) => similarity.candidates.find((row) => [row.leftUrl, row.rightUrl].sort().join("\0") === [leftUrl, rightUrl].sort().join("\0"));
+  const techniqueErrors = "/subjects/math/calculus/integrals/common-errors/";
+  const applicationErrors = "/subjects/math/calculus/integration-applications/common-errors/";
+  const foundationsPractice = "/subjects/math/calculus/integrals/cumulative-practice/";
+  const applicationsPractice = "/subjects/math/calculus/integration-applications/cumulative-practice/";
+
+  assert.equal(pair(techniqueErrors, applicationErrors)?.disposition, "DISTINCT_SUBTOPIC");
+  assert.equal(pair(foundationsPractice, applicationsPractice)?.disposition, "ASSESSMENT_INTENT");
+  assert.match(await rendered(techniqueErrors), /<h1[^>]*>Common Integration Technique Errors and How to Fix Them<\/h1>/i);
+  assert.match(await rendered(applicationErrors), /<h1[^>]*>Common Applications of Integration Errors and How to Fix Them<\/h1>/i);
+  assert.match(await rendered(foundationsPractice), /<h1[^>]*>Integral Foundations and Techniques: Unit 3A Cumulative Practice<\/h1>/i);
+  assert.match(await rendered(applicationsPractice), /<h1[^>]*>Applications of Integration: Unit 3B Cumulative Practice<\/h1>/i);
+});
+
+test("Branch 1 has no remaining external-evidence queue and independently audits CLOSED", async () => {
+  const branch4 = (await readFile(resolve(root, "data/seo/BRANCH4_GSC_EVIDENCE_REQUESTS.csv"), "utf8")).trim().split(/\r?\n/);
+  const closure = await readJson("artifacts/seo-architecture/BRANCH1_CLOSURE_AUDIT.json");
+  const report = await readFile(resolve(root, "docs/seo/branch1/INDEPENDENT_CLOSURE_AUDIT.md"), "utf8");
+  assert.equal(branch4.length, 1);
+  assert.equal(closure.verdict, "CLOSED");
+  assert.equal(closure.counts.externalEvidenceOnly, 0);
+  assert.match(report, /Branch 1 is closed at this audited state\./);
+});
+
 test("course audits and handoffs are exhaustive", async () => {
   const csvRows = async (path) => (await readFile(resolve(root, path), "utf8")).trim().split(/\r?\n/);
   assert.equal((await csvRows("data/seo/ALGEBRA_COMPACT_GUIDE_AUDIT.csv")).length, 37);

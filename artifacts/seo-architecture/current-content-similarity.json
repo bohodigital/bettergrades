@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-15T21:49:16.349Z",
+  "generatedAt": "2026-08-15T22:38:27.676Z",
   "allowedDispositions": [
     "SAME_INTENT_COLLISION",
     "DISTINCT_PAGE_ROLE",
@@ -1449,8 +1449,8 @@
       "rightIntent": "error-prevention",
       "score": 14,
       "sameConcept": true,
-      "semanticSimilarity": 0.587,
-      "titleSimilarity": 0.6667,
+      "semanticSimilarity": 0.5845,
+      "titleSimilarity": 0.7143,
       "signals": {
         "sameGenericHeadQuery": true,
         "sameRole": true,
@@ -1458,31 +1458,8 @@
         "nearIdenticalTitleH1": true,
         "bothIndexable": true
       },
-      "disposition": "NEEDS_EXTERNAL_EVIDENCE",
-      "adjudicationReason": "Same course, role, and query family; consolidation requires GSC/canonical/backlink evidence.",
-      "ownerUrl": "",
-      "explained": true
-    },
-    {
-      "leftUrl": "/subjects/math/calculus/integrals/cumulative-practice/",
-      "rightUrl": "/subjects/math/calculus/integration-applications/cumulative-practice/",
-      "leftRole": "textbook-lesson",
-      "rightRole": "textbook-lesson",
-      "leftIntent": "learn-deep",
-      "rightIntent": "learn-deep",
-      "score": 14,
-      "sameConcept": true,
-      "semanticSimilarity": 0.48,
-      "titleSimilarity": 1,
-      "signals": {
-        "sameGenericHeadQuery": true,
-        "sameRole": true,
-        "semanticOverlap": true,
-        "nearIdenticalTitleH1": true,
-        "bothIndexable": true
-      },
-      "disposition": "NEEDS_EXTERNAL_EVIDENCE",
-      "adjudicationReason": "Same course, role, and query family; consolidation requires GSC/canonical/backlink evidence.",
+      "disposition": "DISTINCT_SUBTOPIC",
+      "adjudicationReason": "Unit 3A repairs antiderivative, FTC, substitution, technique-selection, numerical, and improper-integral errors; Unit 3B repairs application setup, slice, bounds, units, and interpretation errors.",
       "ownerUrl": "",
       "explained": true
     },
@@ -1790,7 +1767,7 @@
       "rightUrl": "/subjects/math/calculus/limits-continuity/unit/limits/practice-exam-a/",
       "leftRole": "textbook-lesson",
       "rightRole": "textbook-lesson",
-      "leftIntent": "learn-deep",
+      "leftIntent": "practice",
       "rightIntent": "practice-exam",
       "score": 14,
       "sameConcept": true,
@@ -1805,7 +1782,7 @@
       },
       "disposition": "ASSESSMENT_INTENT",
       "adjudicationReason": "Assessment, practice, review, and answer-key modifiers identify a distinct student task.",
-      "ownerUrl": "/subjects/math/calculus/limits-continuity/unit/limits/cumulative-practice/",
+      "ownerUrl": "",
       "explained": true
     },
     {
@@ -1813,7 +1790,7 @@
       "rightUrl": "/subjects/math/calculus/limits-continuity/unit/limits/practice-exam-b/",
       "leftRole": "textbook-lesson",
       "rightRole": "textbook-lesson",
-      "leftIntent": "learn-deep",
+      "leftIntent": "practice",
       "rightIntent": "practice-exam",
       "score": 14,
       "sameConcept": true,
@@ -1828,7 +1805,7 @@
       },
       "disposition": "ASSESSMENT_INTENT",
       "adjudicationReason": "Assessment, practice, review, and answer-key modifiers identify a distinct student task.",
-      "ownerUrl": "/subjects/math/calculus/limits-continuity/unit/limits/cumulative-practice/",
+      "ownerUrl": "",
       "explained": true
     },
     {
@@ -5562,7 +5539,7 @@
       "rightUrl": "/subjects/math/calculus/derivative-applications/practice-exam-a/",
       "leftRole": "textbook-lesson",
       "rightRole": "textbook-lesson",
-      "leftIntent": "learn-deep",
+      "leftIntent": "practice",
       "rightIntent": "practice-exam",
       "score": 12,
       "sameConcept": true,
@@ -5577,7 +5554,7 @@
       },
       "disposition": "ASSESSMENT_INTENT",
       "adjudicationReason": "Assessment, practice, review, and answer-key modifiers identify a distinct student task.",
-      "ownerUrl": "/subjects/math/calculus/derivative-applications/cumulative-practice/",
+      "ownerUrl": "",
       "explained": true
     },
     {
@@ -5585,7 +5562,7 @@
       "rightUrl": "/subjects/math/calculus/derivative-applications/practice-exam-b/",
       "leftRole": "textbook-lesson",
       "rightRole": "textbook-lesson",
-      "leftIntent": "learn-deep",
+      "leftIntent": "practice",
       "rightIntent": "practice-exam",
       "score": 12,
       "sameConcept": true,
@@ -5600,7 +5577,7 @@
       },
       "disposition": "ASSESSMENT_INTENT",
       "adjudicationReason": "Assessment, practice, review, and answer-key modifiers identify a distinct student task.",
-      "ownerUrl": "/subjects/math/calculus/derivative-applications/cumulative-practice/",
+      "ownerUrl": "",
       "explained": true
     },
     {
@@ -8392,7 +8369,7 @@
       "leftRole": "textbook-lesson",
       "rightRole": "textbook-lesson",
       "leftIntent": "learn-deep",
-      "rightIntent": "learn-deep",
+      "rightIntent": "practice",
       "score": 12,
       "sameConcept": true,
       "semanticSimilarity": 0.2944,
@@ -8404,9 +8381,9 @@
         "nearIdenticalTitleH1": false,
         "bothIndexable": true
       },
-      "disposition": "DISTINCT_SUBTOPIC",
-      "adjudicationReason": "Shared concept taxonomy, but route-specific subtopics and titles identify different instructional questions.",
-      "ownerUrl": "",
+      "disposition": "ASSESSMENT_INTENT",
+      "adjudicationReason": "Assessment, practice, review, and answer-key modifiers identify a distinct student task.",
+      "ownerUrl": "/subjects/math/calculus/derivatives/derivative-at-a-point/",
       "explained": true
     },
     {
@@ -8691,7 +8668,7 @@
       "leftRole": "textbook-lesson",
       "rightRole": "textbook-lesson",
       "leftIntent": "learn-deep",
-      "rightIntent": "learn-deep",
+      "rightIntent": "practice",
       "score": 12,
       "sameConcept": true,
       "semanticSimilarity": 0.3247,
@@ -8703,9 +8680,9 @@
         "nearIdenticalTitleH1": false,
         "bothIndexable": true
       },
-      "disposition": "DISTINCT_SUBTOPIC",
-      "adjudicationReason": "Shared concept taxonomy, but route-specific subtopics and titles identify different instructional questions.",
-      "ownerUrl": "",
+      "disposition": "ASSESSMENT_INTENT",
+      "adjudicationReason": "Assessment, practice, review, and answer-key modifiers identify a distinct student task.",
+      "ownerUrl": "/subjects/math/calculus/derivatives/derivative-function/",
       "explained": true
     },
     {
@@ -10599,7 +10576,7 @@
       "rightUrl": "/subjects/math/calculus/derivatives/unit-2a-practice-exam-a/",
       "leftRole": "textbook-lesson",
       "rightRole": "textbook-lesson",
-      "leftIntent": "learn-deep",
+      "leftIntent": "practice",
       "rightIntent": "practice-exam",
       "score": 12,
       "sameConcept": true,
@@ -10614,7 +10591,7 @@
       },
       "disposition": "ASSESSMENT_INTENT",
       "adjudicationReason": "Assessment, practice, review, and answer-key modifiers identify a distinct student task.",
-      "ownerUrl": "/subjects/math/calculus/derivatives/unit-2a-cumulative-practice/",
+      "ownerUrl": "",
       "explained": true
     },
     {
@@ -10622,7 +10599,7 @@
       "rightUrl": "/subjects/math/calculus/derivatives/unit-2a-practice-exam-b/",
       "leftRole": "textbook-lesson",
       "rightRole": "textbook-lesson",
-      "leftIntent": "learn-deep",
+      "leftIntent": "practice",
       "rightIntent": "practice-exam",
       "score": 12,
       "sameConcept": true,
@@ -10637,7 +10614,7 @@
       },
       "disposition": "ASSESSMENT_INTENT",
       "adjudicationReason": "Assessment, practice, review, and answer-key modifiers identify a distinct student task.",
-      "ownerUrl": "/subjects/math/calculus/derivatives/unit-2a-cumulative-practice/",
+      "ownerUrl": "",
       "explained": true
     },
     {
@@ -10645,8 +10622,8 @@
       "rightUrl": "/subjects/math/calculus/derivative-applications/cumulative-practice/",
       "leftRole": "textbook-lesson",
       "rightRole": "textbook-lesson",
-      "leftIntent": "learn-deep",
-      "rightIntent": "learn-deep",
+      "leftIntent": "practice",
+      "rightIntent": "practice",
       "score": 12,
       "sameConcept": true,
       "semanticSimilarity": 0.5423,
@@ -10658,8 +10635,8 @@
         "nearIdenticalTitleH1": false,
         "bothIndexable": true
       },
-      "disposition": "DISTINCT_SUBTOPIC",
-      "adjudicationReason": "Shared concept taxonomy, but route-specific subtopics and titles identify different instructional questions.",
+      "disposition": "ASSESSMENT_INTENT",
+      "adjudicationReason": "Assessment, practice, review, and answer-key modifiers identify a distinct student task.",
       "ownerUrl": "",
       "explained": true
     },
@@ -10668,7 +10645,7 @@
       "rightUrl": "/subjects/math/calculus/derivative-applications/practice-exam-a/",
       "leftRole": "textbook-lesson",
       "rightRole": "textbook-lesson",
-      "leftIntent": "learn-deep",
+      "leftIntent": "practice",
       "rightIntent": "practice-exam",
       "score": 12,
       "sameConcept": true,
@@ -10683,7 +10660,7 @@
       },
       "disposition": "ASSESSMENT_INTENT",
       "adjudicationReason": "Assessment, practice, review, and answer-key modifiers identify a distinct student task.",
-      "ownerUrl": "/subjects/math/calculus/derivatives/unit-2a-cumulative-practice/",
+      "ownerUrl": "",
       "explained": true
     },
     {
@@ -10691,7 +10668,7 @@
       "rightUrl": "/subjects/math/calculus/derivative-applications/practice-exam-b/",
       "leftRole": "textbook-lesson",
       "rightRole": "textbook-lesson",
-      "leftIntent": "learn-deep",
+      "leftIntent": "practice",
       "rightIntent": "practice-exam",
       "score": 12,
       "sameConcept": true,
@@ -10706,7 +10683,7 @@
       },
       "disposition": "ASSESSMENT_INTENT",
       "adjudicationReason": "Assessment, practice, review, and answer-key modifiers identify a distinct student task.",
-      "ownerUrl": "/subjects/math/calculus/derivatives/unit-2a-cumulative-practice/",
+      "ownerUrl": "",
       "explained": true
     },
     {
@@ -10715,7 +10692,7 @@
       "leftRole": "textbook-lesson",
       "rightRole": "textbook-lesson",
       "leftIntent": "practice-exam",
-      "rightIntent": "learn-deep",
+      "rightIntent": "practice",
       "score": 12,
       "sameConcept": true,
       "semanticSimilarity": 0.3026,
@@ -10729,7 +10706,7 @@
       },
       "disposition": "ASSESSMENT_INTENT",
       "adjudicationReason": "Assessment, practice, review, and answer-key modifiers identify a distinct student task.",
-      "ownerUrl": "/subjects/math/calculus/derivative-applications/cumulative-practice/",
+      "ownerUrl": "",
       "explained": true
     },
     {
@@ -10784,7 +10761,7 @@
       "leftRole": "textbook-lesson",
       "rightRole": "textbook-lesson",
       "leftIntent": "practice-exam",
-      "rightIntent": "learn-deep",
+      "rightIntent": "practice",
       "score": 12,
       "sameConcept": true,
       "semanticSimilarity": 0.2956,
@@ -10798,7 +10775,7 @@
       },
       "disposition": "ASSESSMENT_INTENT",
       "adjudicationReason": "Assessment, practice, review, and answer-key modifiers identify a distinct student task.",
-      "ownerUrl": "/subjects/math/calculus/derivative-applications/cumulative-practice/",
+      "ownerUrl": "",
       "explained": true
     },
     {
@@ -10964,15 +10941,15 @@
     },
     {
       "leftUrl": "/subjects/math/calculus/integrals/cumulative-practice/",
-      "rightUrl": "/subjects/math/calculus/integrals/practice-exam-a/",
+      "rightUrl": "/subjects/math/calculus/integrals/review/",
       "leftRole": "textbook-lesson",
       "rightRole": "textbook-lesson",
-      "leftIntent": "learn-deep",
-      "rightIntent": "practice-exam",
+      "leftIntent": "practice",
+      "rightIntent": "review",
       "score": 12,
       "sameConcept": true,
-      "semanticSimilarity": 0.5994,
-      "titleSimilarity": 0.3333,
+      "semanticSimilarity": 0.6258,
+      "titleSimilarity": 0.5,
       "signals": {
         "sameGenericHeadQuery": true,
         "sameRole": true,
@@ -10982,20 +10959,20 @@
       },
       "disposition": "ASSESSMENT_INTENT",
       "adjudicationReason": "Assessment, practice, review, and answer-key modifiers identify a distinct student task.",
-      "ownerUrl": "/subjects/math/calculus/integrals/cumulative-practice/",
+      "ownerUrl": "",
       "explained": true
     },
     {
       "leftUrl": "/subjects/math/calculus/integrals/cumulative-practice/",
-      "rightUrl": "/subjects/math/calculus/integrals/practice-exam-b/",
+      "rightUrl": "/subjects/math/calculus/integration-applications/cumulative-practice/",
       "leftRole": "textbook-lesson",
       "rightRole": "textbook-lesson",
-      "leftIntent": "learn-deep",
-      "rightIntent": "practice-exam",
+      "leftIntent": "practice",
+      "rightIntent": "practice",
       "score": 12,
       "sameConcept": true,
-      "semanticSimilarity": 0.6632,
-      "titleSimilarity": 0.3333,
+      "semanticSimilarity": 0.4545,
+      "titleSimilarity": 0.2857,
       "signals": {
         "sameGenericHeadQuery": true,
         "sameRole": true,
@@ -11004,54 +10981,8 @@
         "bothIndexable": true
       },
       "disposition": "ASSESSMENT_INTENT",
-      "adjudicationReason": "Assessment, practice, review, and answer-key modifiers identify a distinct student task.",
-      "ownerUrl": "/subjects/math/calculus/integrals/cumulative-practice/",
-      "explained": true
-    },
-    {
-      "leftUrl": "/subjects/math/calculus/integrals/cumulative-practice/",
-      "rightUrl": "/subjects/math/calculus/integration-applications/practice-exam-a/",
-      "leftRole": "textbook-lesson",
-      "rightRole": "textbook-lesson",
-      "leftIntent": "learn-deep",
-      "rightIntent": "practice-exam",
-      "score": 12,
-      "sameConcept": true,
-      "semanticSimilarity": 0.4472,
-      "titleSimilarity": 0.3333,
-      "signals": {
-        "sameGenericHeadQuery": true,
-        "sameRole": true,
-        "semanticOverlap": true,
-        "nearIdenticalTitleH1": false,
-        "bothIndexable": true
-      },
-      "disposition": "ASSESSMENT_INTENT",
-      "adjudicationReason": "Assessment, practice, review, and answer-key modifiers identify a distinct student task.",
-      "ownerUrl": "/subjects/math/calculus/integrals/cumulative-practice/",
-      "explained": true
-    },
-    {
-      "leftUrl": "/subjects/math/calculus/integrals/cumulative-practice/",
-      "rightUrl": "/subjects/math/calculus/integration-applications/practice-exam-b/",
-      "leftRole": "textbook-lesson",
-      "rightRole": "textbook-lesson",
-      "leftIntent": "learn-deep",
-      "rightIntent": "practice-exam",
-      "score": 12,
-      "sameConcept": true,
-      "semanticSimilarity": 0.4365,
-      "titleSimilarity": 0.3333,
-      "signals": {
-        "sameGenericHeadQuery": true,
-        "sameRole": true,
-        "semanticOverlap": true,
-        "nearIdenticalTitleH1": false,
-        "bothIndexable": true
-      },
-      "disposition": "ASSESSMENT_INTENT",
-      "adjudicationReason": "Assessment, practice, review, and answer-key modifiers identify a distinct student task.",
-      "ownerUrl": "/subjects/math/calculus/integrals/cumulative-practice/",
+      "adjudicationReason": "These are separate cumulative assessments: Unit 3A tests integral foundations and techniques, while Unit 3B tests applications of integration.",
+      "ownerUrl": "",
       "explained": true
     },
     {
@@ -11263,29 +11194,6 @@
     },
     {
       "leftUrl": "/subjects/math/calculus/integrals/practice-exam-a/",
-      "rightUrl": "/subjects/math/calculus/integration-applications/cumulative-practice/",
-      "leftRole": "textbook-lesson",
-      "rightRole": "textbook-lesson",
-      "leftIntent": "practice-exam",
-      "rightIntent": "learn-deep",
-      "score": 12,
-      "sameConcept": true,
-      "semanticSimilarity": 0.3455,
-      "titleSimilarity": 0.3333,
-      "signals": {
-        "sameGenericHeadQuery": true,
-        "sameRole": true,
-        "semanticOverlap": true,
-        "nearIdenticalTitleH1": false,
-        "bothIndexable": true
-      },
-      "disposition": "ASSESSMENT_INTENT",
-      "adjudicationReason": "Assessment, practice, review, and answer-key modifiers identify a distinct student task.",
-      "ownerUrl": "/subjects/math/calculus/integration-applications/cumulative-practice/",
-      "explained": true
-    },
-    {
-      "leftUrl": "/subjects/math/calculus/integrals/practice-exam-a/",
       "rightUrl": "/subjects/math/calculus/integration-applications/practice-exam-a-answer-key/",
       "leftRole": "textbook-lesson",
       "rightRole": "textbook-lesson",
@@ -11401,29 +11309,6 @@
     },
     {
       "leftUrl": "/subjects/math/calculus/integrals/practice-exam-b/",
-      "rightUrl": "/subjects/math/calculus/integration-applications/cumulative-practice/",
-      "leftRole": "textbook-lesson",
-      "rightRole": "textbook-lesson",
-      "leftIntent": "practice-exam",
-      "rightIntent": "learn-deep",
-      "score": 12,
-      "sameConcept": true,
-      "semanticSimilarity": 0.3546,
-      "titleSimilarity": 0.3333,
-      "signals": {
-        "sameGenericHeadQuery": true,
-        "sameRole": true,
-        "semanticOverlap": true,
-        "nearIdenticalTitleH1": false,
-        "bothIndexable": true
-      },
-      "disposition": "ASSESSMENT_INTENT",
-      "adjudicationReason": "Assessment, practice, review, and answer-key modifiers identify a distinct student task.",
-      "ownerUrl": "/subjects/math/calculus/integration-applications/cumulative-practice/",
-      "explained": true
-    },
-    {
-      "leftUrl": "/subjects/math/calculus/integrals/practice-exam-b/",
       "rightUrl": "/subjects/math/calculus/integration-applications/practice-exam-a-answer-key/",
       "leftRole": "textbook-lesson",
       "rightRole": "textbook-lesson",
@@ -11515,16 +11400,16 @@
       "explained": true
     },
     {
-      "leftUrl": "/subjects/math/calculus/integration-applications/cumulative-practice/",
-      "rightUrl": "/subjects/math/calculus/integration-applications/practice-exam-a/",
+      "leftUrl": "/subjects/math/calculus/integration-applications/common-errors/",
+      "rightUrl": "/subjects/math/calculus/integration-applications/cumulative-practice/",
       "leftRole": "textbook-lesson",
       "rightRole": "textbook-lesson",
-      "leftIntent": "learn-deep",
-      "rightIntent": "practice-exam",
+      "leftIntent": "error-prevention",
+      "rightIntent": "practice",
       "score": 12,
       "sameConcept": true,
-      "semanticSimilarity": 0.5447,
-      "titleSimilarity": 0.3333,
+      "semanticSimilarity": 0.5062,
+      "titleSimilarity": 0.25,
       "signals": {
         "sameGenericHeadQuery": true,
         "sameRole": true,
@@ -11534,20 +11419,43 @@
       },
       "disposition": "ASSESSMENT_INTENT",
       "adjudicationReason": "Assessment, practice, review, and answer-key modifiers identify a distinct student task.",
-      "ownerUrl": "/subjects/math/calculus/integration-applications/cumulative-practice/",
+      "ownerUrl": "",
+      "explained": true
+    },
+    {
+      "leftUrl": "/subjects/math/calculus/integration-applications/common-errors/",
+      "rightUrl": "/subjects/math/calculus/integration-applications/review/",
+      "leftRole": "textbook-lesson",
+      "rightRole": "textbook-lesson",
+      "leftIntent": "error-prevention",
+      "rightIntent": "review",
+      "score": 12,
+      "sameConcept": true,
+      "semanticSimilarity": 0.5333,
+      "titleSimilarity": 0.2857,
+      "signals": {
+        "sameGenericHeadQuery": true,
+        "sameRole": true,
+        "semanticOverlap": true,
+        "nearIdenticalTitleH1": false,
+        "bothIndexable": true
+      },
+      "disposition": "ASSESSMENT_INTENT",
+      "adjudicationReason": "Assessment, practice, review, and answer-key modifiers identify a distinct student task.",
+      "ownerUrl": "",
       "explained": true
     },
     {
       "leftUrl": "/subjects/math/calculus/integration-applications/cumulative-practice/",
-      "rightUrl": "/subjects/math/calculus/integration-applications/practice-exam-b/",
+      "rightUrl": "/subjects/math/calculus/integration-applications/review/",
       "leftRole": "textbook-lesson",
       "rightRole": "textbook-lesson",
-      "leftIntent": "learn-deep",
-      "rightIntent": "practice-exam",
+      "leftIntent": "practice",
+      "rightIntent": "review",
       "score": 12,
       "sameConcept": true,
-      "semanticSimilarity": 0.5782,
-      "titleSimilarity": 0.3333,
+      "semanticSimilarity": 0.625,
+      "titleSimilarity": 0.4,
       "signals": {
         "sameGenericHeadQuery": true,
         "sameRole": true,
@@ -11557,7 +11465,7 @@
       },
       "disposition": "ASSESSMENT_INTENT",
       "adjudicationReason": "Assessment, practice, review, and answer-key modifiers identify a distinct student task.",
-      "ownerUrl": "/subjects/math/calculus/integration-applications/cumulative-practice/",
+      "ownerUrl": "",
       "explained": true
     },
     {
@@ -11911,7 +11819,7 @@
       "leftRole": "textbook-lesson",
       "rightRole": "textbook-lesson",
       "leftIntent": "practice",
-      "rightIntent": "learn-deep",
+      "rightIntent": "practice",
       "score": 12,
       "sameConcept": true,
       "semanticSimilarity": 0.5828,
@@ -11925,7 +11833,7 @@
       },
       "disposition": "ASSESSMENT_INTENT",
       "adjudicationReason": "Assessment, practice, review, and answer-key modifiers identify a distinct student task.",
-      "ownerUrl": "/subjects/math/calculus/limits-continuity/unit/limits/cumulative-practice/",
+      "ownerUrl": "",
       "explained": true
     },
     {
@@ -12324,7 +12232,7 @@
       "rightUrl": "/subjects/math/calculus/limits-continuity/unit/limits/infinite-behavior-practice/",
       "leftRole": "textbook-lesson",
       "rightRole": "textbook-lesson",
-      "leftIntent": "learn-deep",
+      "leftIntent": "practice",
       "rightIntent": "learn-deep",
       "score": 12,
       "sameConcept": true,
@@ -12337,9 +12245,9 @@
         "nearIdenticalTitleH1": false,
         "bothIndexable": true
       },
-      "disposition": "DISTINCT_SUBTOPIC",
-      "adjudicationReason": "Shared concept taxonomy, but route-specific subtopics and titles identify different instructional questions.",
-      "ownerUrl": "",
+      "disposition": "ASSESSMENT_INTENT",
+      "adjudicationReason": "Assessment, practice, review, and answer-key modifiers identify a distinct student task.",
+      "ownerUrl": "/subjects/math/calculus/limits-continuity/unit/limits/infinite-behavior-practice/",
       "explained": true
     },
     {
@@ -12347,7 +12255,7 @@
       "rightUrl": "/subjects/math/calculus/limits-continuity/unit/limits/practice-exam-a/answer-key/",
       "leftRole": "textbook-lesson",
       "rightRole": "textbook-lesson",
-      "leftIntent": "learn-deep",
+      "leftIntent": "practice",
       "rightIntent": "answer-key",
       "score": 12,
       "sameConcept": true,
@@ -12362,7 +12270,7 @@
       },
       "disposition": "ASSESSMENT_INTENT",
       "adjudicationReason": "Assessment, practice, review, and answer-key modifiers identify a distinct student task.",
-      "ownerUrl": "/subjects/math/calculus/limits-continuity/unit/limits/cumulative-practice/",
+      "ownerUrl": "",
       "explained": true
     },
     {
@@ -12370,7 +12278,7 @@
       "rightUrl": "/subjects/math/calculus/limits-continuity/unit/limits/practice-exam-b/answer-key/",
       "leftRole": "textbook-lesson",
       "rightRole": "textbook-lesson",
-      "leftIntent": "learn-deep",
+      "leftIntent": "practice",
       "rightIntent": "answer-key",
       "score": 12,
       "sameConcept": true,
@@ -12385,7 +12293,7 @@
       },
       "disposition": "ASSESSMENT_INTENT",
       "adjudicationReason": "Assessment, practice, review, and answer-key modifiers identify a distinct student task.",
-      "ownerUrl": "/subjects/math/calculus/limits-continuity/unit/limits/cumulative-practice/",
+      "ownerUrl": "",
       "explained": true
     },
     {
@@ -12393,7 +12301,7 @@
       "rightUrl": "/subjects/math/calculus/limits-continuity/unit/limits/unit-review/",
       "leftRole": "textbook-lesson",
       "rightRole": "textbook-lesson",
-      "leftIntent": "learn-deep",
+      "leftIntent": "practice",
       "rightIntent": "review",
       "score": 12,
       "sameConcept": true,
@@ -12408,7 +12316,7 @@
       },
       "disposition": "ASSESSMENT_INTENT",
       "adjudicationReason": "Assessment, practice, review, and answer-key modifiers identify a distinct student task.",
-      "ownerUrl": "/subjects/math/calculus/limits-continuity/unit/limits/cumulative-practice/",
+      "ownerUrl": "",
       "explained": true
     },
     {
@@ -18714,6 +18622,29 @@
       "explained": true
     },
     {
+      "leftUrl": "/subjects/math/calculus/integrals/cumulative-practice/",
+      "rightUrl": "/subjects/math/calculus/integrals/",
+      "leftRole": "textbook-lesson",
+      "rightRole": "unit-hub",
+      "leftIntent": "practice",
+      "rightIntent": "navigation-hub",
+      "score": 11,
+      "sameConcept": true,
+      "semanticSimilarity": 0.3225,
+      "titleSimilarity": 0.6,
+      "signals": {
+        "sameGenericHeadQuery": true,
+        "sameRole": false,
+        "semanticOverlap": true,
+        "nearIdenticalTitleH1": true,
+        "bothIndexable": true
+      },
+      "disposition": "ASSESSMENT_INTENT",
+      "adjudicationReason": "Assessment, practice, review, and answer-key modifiers identify a distinct student task.",
+      "ownerUrl": "",
+      "explained": true
+    },
+    {
       "leftUrl": "/subjects/math/calculus/integrals/review/",
       "rightUrl": "/subjects/math/calculus/integrals/",
       "leftRole": "textbook-lesson",
@@ -18722,7 +18653,7 @@
       "rightIntent": "navigation-hub",
       "score": 11,
       "sameConcept": true,
-      "semanticSimilarity": 0.3532,
+      "semanticSimilarity": 0.3515,
       "titleSimilarity": 0.75,
       "signals": {
         "sameGenericHeadQuery": true,
@@ -18768,7 +18699,7 @@
       "rightIntent": "navigation-hub",
       "score": 11,
       "sameConcept": true,
-      "semanticSimilarity": 0.3771,
+      "semanticSimilarity": 0.3744,
       "titleSimilarity": 0.6667,
       "signals": {
         "sameGenericHeadQuery": true,
@@ -20953,7 +20884,7 @@
       "rightIntent": "navigation-hub",
       "score": 9,
       "sameConcept": true,
-      "semanticSimilarity": 0.2363,
+      "semanticSimilarity": 0.2343,
       "titleSimilarity": 0.25,
       "signals": {
         "sameGenericHeadQuery": true,
@@ -21846,7 +21777,7 @@
       "rightUrl": "/subjects/math/calculus/derivative-applications/",
       "leftRole": "textbook-lesson",
       "rightRole": "unit-hub",
-      "leftIntent": "learn-deep",
+      "leftIntent": "practice",
       "rightIntent": "navigation-hub",
       "score": 9,
       "sameConcept": true,
@@ -21859,9 +21790,9 @@
         "nearIdenticalTitleH1": false,
         "bothIndexable": true
       },
-      "disposition": "DISTINCT_PAGE_ROLE",
-      "adjudicationReason": "Explicit roles differ (learn-deep versus navigation-hub).",
-      "ownerUrl": "/subjects/math/calculus/derivative-applications/cumulative-practice/",
+      "disposition": "ASSESSMENT_INTENT",
+      "adjudicationReason": "Assessment, practice, review, and answer-key modifiers identify a distinct student task.",
+      "ownerUrl": "",
       "explained": true
     },
     {
@@ -23204,7 +23135,7 @@
       "leftRole": "quick-answer",
       "rightRole": "textbook-lesson",
       "leftIntent": "quick-answer",
-      "rightIntent": "learn-deep",
+      "rightIntent": "practice",
       "score": 9,
       "sameConcept": true,
       "semanticSimilarity": 0.2945,
@@ -23216,9 +23147,9 @@
         "nearIdenticalTitleH1": false,
         "bothIndexable": true
       },
-      "disposition": "DISTINCT_PAGE_ROLE",
-      "adjudicationReason": "Explicit roles differ (quick-answer versus learn-deep).",
-      "ownerUrl": "/subjects/math/calculus/derivatives/unit-2a-cumulative-practice/",
+      "disposition": "ASSESSMENT_INTENT",
+      "adjudicationReason": "Assessment, practice, review, and answer-key modifiers identify a distinct student task.",
+      "ownerUrl": "",
       "explained": true
     },
     {
@@ -23920,7 +23851,7 @@
       "rightIntent": "navigation-hub",
       "score": 9,
       "sameConcept": true,
-      "semanticSimilarity": 0.2264,
+      "semanticSimilarity": 0.225,
       "titleSimilarity": 0.25,
       "signals": {
         "sameGenericHeadQuery": true,
@@ -24093,6 +24024,52 @@
       "disposition": "DISTINCT_PAGE_ROLE",
       "adjudicationReason": "Explicit roles differ (learn-deep versus learn-deep).",
       "ownerUrl": "/subjects/math/calculus/integration-applications/average-value-of-a-function/",
+      "explained": true
+    },
+    {
+      "leftUrl": "/subjects/math/calculus/integration-applications/common-errors/",
+      "rightUrl": "/subjects/math/calculus/integration-applications/",
+      "leftRole": "textbook-lesson",
+      "rightRole": "unit-hub",
+      "leftIntent": "error-prevention",
+      "rightIntent": "navigation-hub",
+      "score": 9,
+      "sameConcept": true,
+      "semanticSimilarity": 0.3607,
+      "titleSimilarity": 0.3333,
+      "signals": {
+        "sameGenericHeadQuery": true,
+        "sameRole": false,
+        "semanticOverlap": true,
+        "nearIdenticalTitleH1": false,
+        "bothIndexable": true
+      },
+      "disposition": "DISTINCT_PAGE_ROLE",
+      "adjudicationReason": "Explicit roles differ (error-prevention versus navigation-hub).",
+      "ownerUrl": "",
+      "explained": true
+    },
+    {
+      "leftUrl": "/subjects/math/calculus/integration-applications/cumulative-practice/",
+      "rightUrl": "/subjects/math/calculus/integration-applications/",
+      "leftRole": "textbook-lesson",
+      "rightRole": "unit-hub",
+      "leftIntent": "practice",
+      "rightIntent": "navigation-hub",
+      "score": 9,
+      "sameConcept": true,
+      "semanticSimilarity": 0.3464,
+      "titleSimilarity": 0.5,
+      "signals": {
+        "sameGenericHeadQuery": true,
+        "sameRole": false,
+        "semanticOverlap": true,
+        "nearIdenticalTitleH1": false,
+        "bothIndexable": true
+      },
+      "disposition": "ASSESSMENT_INTENT",
+      "adjudicationReason": "Assessment, practice, review, and answer-key modifiers identify a distinct student task.",
+      "ownerUrl": "",
       "explained": true
     },
     {
@@ -24837,7 +24814,7 @@
       "leftRole": "decision-guide",
       "rightRole": "textbook-lesson",
       "leftIntent": "method-selection",
-      "rightIntent": "learn-deep",
+      "rightIntent": "practice",
       "score": 9,
       "sameConcept": true,
       "semanticSimilarity": 0.3317,
@@ -24849,9 +24826,9 @@
         "nearIdenticalTitleH1": false,
         "bothIndexable": true
       },
-      "disposition": "DISTINCT_PAGE_ROLE",
-      "adjudicationReason": "Explicit roles differ (method-selection versus learn-deep).",
-      "ownerUrl": "/subjects/math/calculus/limits-continuity/unit/limits/cumulative-practice/",
+      "disposition": "ASSESSMENT_INTENT",
+      "adjudicationReason": "Assessment, practice, review, and answer-key modifiers identify a distinct student task.",
+      "ownerUrl": "",
       "explained": true
     },
     {
@@ -25043,7 +25020,7 @@
       "rightUrl": "/subjects/math/calculus/limits-continuity/",
       "leftRole": "textbook-lesson",
       "rightRole": "unit-hub",
-      "leftIntent": "learn-deep",
+      "leftIntent": "practice",
       "rightIntent": "navigation-hub",
       "score": 9,
       "sameConcept": true,
@@ -25056,9 +25033,9 @@
         "nearIdenticalTitleH1": false,
         "bothIndexable": true
       },
-      "disposition": "DISTINCT_PAGE_ROLE",
-      "adjudicationReason": "Explicit roles differ (learn-deep versus navigation-hub).",
-      "ownerUrl": "/subjects/math/calculus/limits-continuity/unit/limits/cumulative-practice/",
+      "disposition": "ASSESSMENT_INTENT",
+      "adjudicationReason": "Assessment, practice, review, and answer-key modifiers identify a distinct student task.",
+      "ownerUrl": "",
       "explained": true
     },
     {
@@ -27002,7 +26979,7 @@
       "rightIntent": "navigation-hub",
       "score": 9,
       "sameConcept": true,
-      "semanticSimilarity": 0.2129,
+      "semanticSimilarity": 0.2113,
       "titleSimilarity": 0.25,
       "signals": {
         "sameGenericHeadQuery": true,

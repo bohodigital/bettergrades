@@ -78,6 +78,25 @@ export const calculusClusters = [
   ["radius and interval of convergence", "/subjects/math/calculus/power-series-and-taylor-series/radius-and-interval-of-convergence/", ["radius", "interval-of-convergence", "interval of convergence"]],
 ];
 
+// Same-slug pages in adjacent Calculus units require explicit editorial review;
+// slug equality alone is not evidence that one should be consolidated.
+export const calculusCollisionAdjudications = [
+  {
+    leftUrl: "/subjects/math/calculus/integrals/common-errors/",
+    rightUrl: "/subjects/math/calculus/integration-applications/common-errors/",
+    disposition: "DISTINCT_SUBTOPIC",
+    ownerUrl: "",
+    reason: "Unit 3A repairs antiderivative, FTC, substitution, technique-selection, numerical, and improper-integral errors; Unit 3B repairs application setup, slice, bounds, units, and interpretation errors.",
+  },
+  {
+    leftUrl: "/subjects/math/calculus/integrals/cumulative-practice/",
+    rightUrl: "/subjects/math/calculus/integration-applications/cumulative-practice/",
+    disposition: "ASSESSMENT_INTENT",
+    ownerUrl: "",
+    reason: "These are separate cumulative assessments: Unit 3A tests integral foundations and techniques, while Unit 3B tests applications of integration.",
+  },
+];
+
 export const duplicatePrimaryResolutions = [
   ["growth and decay models", "/subjects/math/algebra/exponential-logarithmic/growth-and-decay-models/", "/subjects/math/precalculus/exponential-and-logarithmic-functions/growth-and-decay-models/", "Advanced Growth and Decay Models in Precalculus"],
   ["logarithm laws", "/subjects/math/algebra/exponential-logarithmic/logarithm-laws/", "/subjects/math/precalculus/exponential-and-logarithmic-functions/logarithm-laws/", "Applying Logarithm Laws in Precalculus Models"],
