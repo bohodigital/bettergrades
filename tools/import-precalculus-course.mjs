@@ -57,12 +57,17 @@ const unitProfiles = [
 // package title remains the slug input; these labels control rendered H1 and metadata.
 const lessonTitleOverrides = new Map(Object.entries({
   "P1.1": "Quantities, Variables, and Dependency in Functions",
+  "P1.2": "Relations and Functions Across Multiple Representations",
   "P1.4": "Representing Functions with Words, Tables, Graphs, and Formulas",
+  "P1.8": "Piecewise Functions Across Multiple Representations",
   "P2.2": "Coordinate Mappings for Function Transformations",
   "P3.1": "Function Composition as Sequential Processing",
   "P5.2": "Equivalent Rational Formulas, Different Domains, and Holes",
   "P5.11": "Partial-Fraction Structure in Rational Functions",
   "P6.1": "Additive vs. Multiplicative Change in Function Models",
+  "P6.4": "Advanced Growth and Decay Models in Precalculus",
+  "P6.11": "Applying Logarithm Laws in Precalculus Models",
+  "P6.12": "Solving Exponential Equations in Precalculus Models",
   "P8.2": "Degree Measure and Angular Coordinates",
   "P8.3": "Radians as Normalized Arc Length",
   "P8.6": "Wrapping the Real Line Around the Unit Circle",

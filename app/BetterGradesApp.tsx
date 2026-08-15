@@ -21,6 +21,8 @@ import { PageGlossaryTerms } from "./PageGlossaryTerms";
 import { LearningPathLinks } from "./LearningPathLinks";
 
 const PathContext = createContext("/");
+type OwnershipLink = { href: string; relationship: string; label: string };
+const OwnershipLinksContext = createContext<OwnershipLink[]>([]);
 
 function Link({ href, children, className = "" }: { href: string; children: ReactNode; className?: string }) {
   return <a href={href} className={className}>{children}</a>;
@@ -171,9 +173,15 @@ function Footer() {
   );
 }
 
+function OwnershipLinks() {
+  const links = useContext(OwnershipLinksContext);
+  if (!links.length) return null;
+  return <aside className="callout seo-ownership-links" aria-label="Related learning paths"><span>RELATED LEARNING PATHS</span><h2>Choose the depth that matches your goal.</h2>{links.map((link) => <a href={link.href} data-relationship={link.relationship} key={`${link.relationship}:${link.href}`}>{link.label} →</a>)}</aside>;
+}
+
 function Shell({ children, narrow = false }: { children: ReactNode; narrow?: boolean }) {
   const path = useContext(PathContext);
-  return <><Header /><main className={narrow ? "narrow-main" : ""}>{children}</main><PageGlossaryTerms path={path} /><Footer /></>;
+  return <><Header /><main className={narrow ? "narrow-main" : ""}>{children}</main><PageGlossaryTerms path={path} /><OwnershipLinks /><Footer /></>;
 }
 
 function Eyebrow({ children, warm = false }: { children: ReactNode; warm?: boolean }) {
@@ -511,6 +519,6 @@ function BetterGradesRoute({ path, routeContent }: { path: string; routeContent?
   return <NotFound />;
 }
 
-export function BetterGradesApp({ path, routeContent }: { path: string; routeContent?: ReactNode }) {
-  return <PathContext.Provider value={path}><BetterGradesRoute path={path} routeContent={routeContent} /></PathContext.Provider>;
+export function BetterGradesApp({ path, routeContent, ownershipLinks = [] }: { path: string; routeContent?: ReactNode; ownershipLinks?: OwnershipLink[] }) {
+  return <PathContext.Provider value={path}><OwnershipLinksContext.Provider value={ownershipLinks}><BetterGradesRoute path={path} routeContent={routeContent} /></OwnershipLinksContext.Provider></PathContext.Provider>;
 }

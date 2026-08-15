@@ -19,6 +19,7 @@ import { ResourceHubPage, ResourceLibraryPage, ResourcePage } from "../ResourceP
 import { OwnedLibraryArticleContent } from "../LibraryPages";
 import articleOwners from "../../data/seo/branch1-article-to-textbook.json";
 import textbookCompanions from "../../data/seo/branch1-textbook-to-article.json";
+import sitewideOwnershipLinks from "../../data/seo/sitewide-ownership-links.json";
 
 const PrecalculusCoursePageContent = lazy(async () => {
   const precalculusModule = await import("../PrecalculusCoursePages");
@@ -185,5 +186,6 @@ export default async function CatchAllPage({
   return <BetterGradesApp
     path={path}
     routeContent={routeContent}
+    ownershipLinks={sitewideOwnershipLinks[path as keyof typeof sitewideOwnershipLinks] ?? []}
   />;
 }

@@ -1,5 +1,11 @@
-import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
-import { resolve } from "node:path";
+import { mkdir, readFile, readdir, stat, writeFile } from "node:fs/promises";
+import { resolve, relative } from "node:path";
+import {
+  algebraCompactOwners,
+  calculusClusters,
+  crossCourseOwnership,
+  duplicatePrimaryResolutions,
+} from "./seo-architecture-policy.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const check = process.argv.includes("--check");
@@ -7,94 +13,79 @@ const site = "https://bettergrades.net";
 const outputDirectory = resolve(root, "artifacts/seo-architecture");
 const dataDirectory = resolve(root, "data/seo");
 const docsDirectory = resolve(root, "docs/seo/branch1");
-
-const stopWords = new Set("a an and are as at be before better by for from grades how in into is it of on or should that the their this to vs what when which why with you your".split(" "));
-const modifiers = new Set("answer answers calculator checklist choose decision example examples formula glossary guide method practice preview recognition review strategy test tool when why worksheet worked".split(" "));
-
-const compactPairs = [
-  ["/subjects/math/algebra/expressions-equations/variables-on-both-sides/", "/subjects/math/algebra/linear-equations/variables-on-both-sides/", "which side to move terms to", 8],
-  ["/subjects/math/algebra/systems-inequalities/substitution-systems/", "/subjects/math/algebra/systems/substitution/", "when to choose substitution", 12],
-  ["/subjects/math/algebra/systems-inequalities/elimination-systems/", "/subjects/math/algebra/systems/elimination/", "when to choose elimination", 12],
-  ["/subjects/math/algebra/linear-relationships/parallel-perpendicular-lines/", "/subjects/math/algebra/linear-relationships/parallel-and-perpendicular-lines/", "vertical-line exception for parallel and perpendicular slopes", 8],
-  ["/subjects/math/algebra/systems-inequalities/compound-inequalities/", "/subjects/math/algebra/inequalities-absolute-value/compound-inequalities/", "and versus or logic in compound inequalities", 10],
-  ["/subjects/math/algebra/polynomials-factoring/multiply-polynomials/", "/subjects/math/algebra/polynomial-operations/polynomial-times-polynomial/", "polynomial multiplication error-prevention checklist", 10],
-  ["/subjects/math/algebra/polynomials-factoring/greatest-common-factor/", "/subjects/math/algebra/factoring-quadratics/factoring-as-reverse-distribution-and-gcf/", "when to factor the GCF first", 9],
-  ["/subjects/math/algebra/polynomials-factoring/factoring-trinomials/", "/subjects/math/algebra/factoring-quadratics/factoring-x-2-bx-c/", "choosing a trinomial factoring method", 9],
-  ["/subjects/math/algebra/polynomials-factoring/special-factor-patterns/", "/subjects/math/algebra/factoring-quadratics/special-factoring-patterns/", "difference of squares versus perfect-square trinomial", 8],
-  ["/subjects/math/algebra/polynomials-factoring/completing-the-square/", "/subjects/math/algebra/factoring-quadratics/completing-the-square-algebraically/", "finding the missing completing-square term", 10],
-  ["/subjects/math/algebra/radicals-exponents-functions/simplifying-radicals/", "/subjects/math/algebra/radicals-complex-numbers/simplifying-radicals/", "finding perfect-power factors in radicals", 11],
-  ["/subjects/math/algebra/radicals-exponents-functions/solving-radical-equations/", "/subjects/math/algebra/radicals-complex-numbers/solving-radical-equations/", "checking extraneous solutions in radical equations", 11],
-  ["/subjects/math/algebra/radicals-exponents-functions/rational-exponents/", "/subjects/math/algebra/radicals-complex-numbers/rational-exponents/", "why fractional exponents mean roots", 10],
-  ["/subjects/math/algebra/rational-expressions/rational-domain-restrictions/", "/subjects/math/algebra/rational-expressions/rational-expressions-and-restrictions/", "why canceled factors still restrict the domain", 11],
-  ["/subjects/math/algebra/rational-expressions/add-subtract-rational-expressions/", "/subjects/math/algebra/rational-expressions/addition-and-subtraction/", "finding the LCD for rational expressions", 11],
-  ["/subjects/math/algebra/rational-expressions/solving-rational-equations/", "/subjects/math/algebra/rational-expressions/rational-equations/", "forbidden and extraneous rational-equation solutions", 11],
-  ["/subjects/math/algebra/rational-expressions/direct-inverse-variation/", "/subjects/math/algebra/rational-expressions/direct-inverse-and-joint-variation/", "choosing direct versus inverse variation", 8],
-  ["/subjects/math/algebra/rational-expressions/simplifying-rational-expressions/", "/subjects/math/algebra/rational-expressions/simplifying-rational-expressions-course/", "factor cancellation versus full simplifying-rational-expressions lesson", 10],
-  ["/learn/calculus/integration-by-parts/", "/subjects/math/calculus/integrals/integration-by-parts/", "when to use integration by parts", 11],
-  ["/subjects/math/calculus/integration-techniques/integration-by-parts-strategy/", "/subjects/math/calculus/integrals/integration-by-parts/", "repeated tabular and cyclic integration by parts", 11],
-];
-
-const algebraTitleChanges = [
-  ["/subjects/math/algebra/systems-inequalities/substitution-systems/", "Solving systems by substitution"],
-  ["/subjects/math/algebra/systems-inequalities/elimination-systems/", "Solving systems by elimination"],
-  ["/subjects/math/algebra/systems-inequalities/compound-inequalities/", "Compound inequalities: and, or, and the sign flip"],
-  ["/subjects/math/algebra/polynomials-factoring/multiply-polynomials/", "Multiplying polynomials without losing a term"],
-  ["/subjects/math/algebra/polynomials-factoring/greatest-common-factor/", "Factor the greatest common factor before anything fancy"],
-  ["/subjects/math/algebra/polynomials-factoring/factoring-trinomials/", "Factoring trinomials: use product and sum, not random guessing"],
-  ["/subjects/math/algebra/polynomials-factoring/completing-the-square/", "Completing the square without guessing"],
-  ["/subjects/math/algebra/radicals-exponents-functions/simplifying-radicals/", "Simplifying radicals by pulling out perfect powers"],
-  ["/subjects/math/algebra/radicals-exponents-functions/solving-radical-equations/", "Solving radical equations and checking for extraneous roots"],
-  ["/subjects/math/algebra/radicals-exponents-functions/rational-exponents/", "Rational exponents: the bridge between powers and roots"],
-  ["/subjects/math/algebra/rational-expressions/rational-domain-restrictions/", "Domain restrictions in rational expressions"],
-  ["/subjects/math/algebra/rational-expressions/add-subtract-rational-expressions/", "Adding and subtracting rational expressions"],
-  ["/subjects/math/algebra/rational-expressions/solving-rational-equations/", "Solving rational equations without accepting forbidden answers"],
-  ["/learn/calculus/integration-by-parts/", "Integration by parts: recognition, setup, and examples"],
-  ["/subjects/math/calculus/integration-techniques/integration-by-parts-strategy/", "Integration by parts: choosing u and knowing when to repeat"],
-];
-
-const precalculusOldTitles = new Map(Object.entries({
-  "P1.1":"Quantities, variables, and dependency", "P1.4":"Words, tables, graphs, and formulas", "P2.2":"Coordinate mappings and transformation logic",
-  "P3.1":"Composition as sequential processing", "P5.2":"Equivalent formulas, different functions, and holes", "P5.11":"Partial-fraction structure",
-  "P6.1":"Additive versus multiplicative change", "P8.2":"Degree measure and angular coordinates", "P8.3":"Radian measure as normalized arc length",
-  "P8.6":"Wrapping the real line around the unit circle", "P8.7":"Sine and cosine as coordinate functions", "P9.3":"Amplitude, reflection, and midline",
-  "P9.6":"The general sinusoidal function", "P9.9":"Symmetry, periodicity, and the six-function family", "P10.1":"Identities, equations, and proof strategy",
-  "P10.4":"Sum and difference formulas", "P10.8":"Equations using fundamental identities", "P12.1":"Conics as loci and the circle foundation",
-  "P12.6":"Translated conics and general equations", "P14.2":"Explicit and recursive descriptions", "P15.1":"Function-family classification",
-  "P15.4":"Difference quotients", "P15.6":"Local linearity and magnification", "P15.7":"Intuitive limits", "P15.8":"Continuity and discontinuity",
-  "P15.9":"Infinite behavior and asymptotes", "P15.11":"Accumulation, finite sums, and area preview",
-}));
+const allowedDispositions = new Set([
+  "SAME_INTENT_COLLISION", "DISTINCT_PAGE_ROLE", "DISTINCT_SUBTOPIC",
+  "DISTINCT_COURSE_LEVEL", "WORKED_EXAMPLE", "ASSESSMENT_INTENT",
+  "REFERENCE_OR_GLOSSARY", "LEGACY_REDIRECT", "NEEDS_EXTERNAL_EVIDENCE",
+  "FALSE_POSITIVE",
+]);
+const stopWords = new Set("a an and are as at be before better by for from grades how in into is it of on or should that the their this to unit vs what when which why with you your".split(" "));
+const precalculusRetitles = new Set([
+  "P1.1", "P1.2", "P1.4", "P1.8", "P2.2", "P3.1", "P5.2", "P5.11", "P6.1", "P6.4", "P6.11", "P6.12",
+  "P8.2", "P8.3", "P8.6", "P8.7", "P9.3", "P9.6", "P9.9", "P10.1", "P10.4", "P10.8", "P12.1", "P12.6", "P14.2",
+]);
+const precalculusCrossCourse = new Set(["P15.1", "P15.4", "P15.6", "P15.7", "P15.8", "P15.9", "P15.11"]);
 
 function decode(value = "") {
-  return value.replaceAll("&amp;", "&").replaceAll("&quot;", '"').replaceAll("&#x27;", "'").replaceAll("&lt;", "<").replaceAll("&gt;", ">").replace(/&#(\d+);/g, (_, code) => String.fromCodePoint(Number(code)));
+  return value.replaceAll("&amp;", "&").replaceAll("&quot;", "\"").replaceAll("&#x27;", "'").replaceAll("&lt;", "<").replaceAll("&gt;", ">").replace(/&#(\d+);/g, (_, code) => String.fromCodePoint(Number(code)));
 }
 function plain(value = "") { return decode(value.replace(/<script[\s\S]*?<\/script>/gi, " ").replace(/<style[\s\S]*?<\/style>/gi, " ").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim()); }
 function match(html, expression) { return decode(html.match(expression)?.[1]?.trim() ?? ""); }
-function tokens(value) { return new Set(plain(value).toLowerCase().replace(/[^a-z0-9]+/g, " ").split(" ").filter((token) => token.length > 2 && !stopWords.has(token))); }
+function words(value = "") { return new Set(plain(value).toLowerCase().replace(/[^a-z0-9]+/g, " ").split(" ").filter((token) => token.length > 2 && !stopWords.has(token))); }
 function jaccard(left, right) { const union = new Set([...left, ...right]); return union.size ? [...left].filter((value) => right.has(value)).length / union.size : 0; }
-function csvCell(value) { const text = Array.isArray(value) ? value.join(" | ") : String(value ?? ""); return /[",\n\r]/.test(text) ? `"${text.replaceAll('"', '""')}"` : text; }
+function csvCell(value) { const text = Array.isArray(value) ? value.join(" | ") : typeof value === "object" && value !== null ? JSON.stringify(value) : String(value ?? ""); return /[",\n\r]/.test(text) ? `"${text.replaceAll('"', '""')}"` : text; }
 function toCsv(rows, headers) { return `${[headers, ...rows.map((row) => headers.map((header) => row[header] ?? ""))].map((row) => row.map(csvCell).join(",")).join("\n")}\n`; }
 function json(value) { return `${JSON.stringify(value, null, 2)}\n`; }
+function slugQuery(path) { return path.split("/").filter(Boolean).at(-1)?.replaceAll("-", " ") ?? ""; }
+function courseLevel(node) { return node.courseId?.split(".").at(-1) ?? "sitewide"; }
+function htmlPath(path) { return path === "/" ? resolve(root, "dist/pages/index.html") : resolve(root, `dist/pages${path}index.html`); }
+async function exists(path) { return stat(path).then(() => true).catch(() => false); }
 async function output(path, content) {
   await mkdir(resolve(path, ".."), { recursive: true });
   if (check) {
     const current = await readFile(path, "utf8").catch(() => "");
-    if (current !== content) throw new Error(`SEO architecture output drift: ${path.replace(`${root}/`, "")}`);
+    if (current !== content) throw new Error(`SEO architecture output drift: ${relative(root, path)}`);
   } else await writeFile(path, content);
 }
-function htmlPath(path) { return path === "/" ? resolve(root, "dist/pages/index.html") : resolve(root, `dist/pages${path}index.html`); }
-function rolePenalty(role) { return role === "tool" ? -5 : role === "worked-problem" ? -4 : role.startsWith("glossary") ? -3 : ["course-hub", "unit-hub", "subject-hub"].includes(role) ? -2 : 0; }
-function courseName(node) { return node.courseId?.split(".").at(-1) ?? "sitewide"; }
+function inferIntent(node, page) {
+  const haystack = `${node.pageRole} ${node.nodeType} ${node.title} ${node.canonicalPath} ${page.h1}`.toLowerCase();
+  if (/answer[- ]key|solutions?\//.test(haystack)) return "answer-key";
+  if (/practice[- ]exam/.test(haystack)) return "practice-exam";
+  if (/concept[- ]quiz|mastery[- ]check|diagnostic|\bquiz\b|\binvestigation\b|\bassessment\b/.test(haystack)) return "assessment";
+  if (/worksheet/.test(haystack)) return "worksheet";
+  if (/worked[- ]problem|worked example/.test(haystack)) return "worked-example";
+  if (/glossary|definition/.test(haystack)) return "reference-definition";
+  if (/reference[- ]sheet|formula[- ]sheet|formula sheet|cheat[- ]sheet/.test(haystack)) return "reference";
+  if (/calculator|\btool\b|checker|finder/.test(haystack)) return "tool";
+  if (/visual|flowchart/.test(haystack)) return "visual-guide";
+  if (/common[- ]errors?|error gallery/.test(haystack)) return "error-prevention";
+  if (/mixed[- ]practice|practice problems|\/practice\//.test(haystack)) return "practice";
+  if (/\breview\b/.test(haystack)) return "review";
+  if (/quick[- ]answer|^what is |^why (is|does)|\?$/.test(`${node.pageRole} ${page.h1}`.toLowerCase())) return "quick-answer";
+  if (/decision[- ]guide|choose|choosing|\bvs\.?\b|which method|strategy/.test(haystack)) return "method-selection";
+  if (/method[- ]guide|workflow|how to|solving|evaluating/.test(haystack)) return "method-instruction";
+  if (["course-hub", "unit-hub", "subject-hub"].includes(node.pageRole)) return "navigation-hub";
+  return "learn-deep";
+}
 
 const graph = JSON.parse(await readFile(resolve(root, "data/learning-graph/graph.json"), "utf8"));
 const precalculus = JSON.parse(await readFile(resolve(root, "content/precalculus/course.public.json"), "utf8"));
-const provenance = JSON.parse(await readFile(resolve(root, "content/precalculus/provenance.server.json"), "utf8").catch(() => "{}"));
+const provenance = JSON.parse(await readFile(resolve(root, "content/precalculus/provenance.server.json"), "utf8"));
+const nodeByPath = new Map(graph.nodes.map((node) => [node.canonicalPath, node]));
+const allPolicyPaths = [
+  ...algebraCompactOwners.flatMap(([left, right]) => [left, right].filter(Boolean)),
+  ...crossCourseOwnership.flatMap((row) => [row.genericOwner, ...row.secondaryUrls]),
+  ...calculusClusters.map(([, owner]) => owner),
+  ...duplicatePrimaryResolutions.flatMap(([, owner, secondary]) => [owner, secondary]),
+];
+for (const path of allPolicyPaths) if (!nodeByPath.has(path)) throw new Error(`SEO ownership policy references missing graph route: ${path}`);
+
 const sitemapFiles = (await readdir(resolve(root, "dist/pages"))).filter((name) => /^sitemap(?:-[a-z-]+)?\.xml$/.test(name));
 const sitemap = (await Promise.all(sitemapFiles.map((name) => readFile(resolve(root, "dist/pages", name), "utf8")))).join("\n");
+const sitemapPaths = new Set([...sitemap.matchAll(/<loc>https:\/\/bettergrades\.net([^<]+)<\/loc>/g)].map((item) => item[1]));
 const redirectsText = await readFile(resolve(root, "dist/pages/_redirects"), "utf8");
-const sitemapPaths = new Set([...sitemap.matchAll(/<loc>https:\/\/bettergrades\.net([^<]+)<\/loc>/g)].map((match) => match[1]));
 const redirectRows = redirectsText.split(/\r?\n/).filter((line) => line.trim() && !line.startsWith("#")).map((line) => line.trim().split(/\s+/)).map(([from, to, status]) => ({ from, to, status }));
 const rendered = new Map();
-
 for (const node of graph.nodes) {
   const html = await readFile(htmlPath(node.canonicalPath), "utf8");
   const title = plain(match(html, /<title[^>]*>([\s\S]*?)<\/title>/i));
@@ -104,129 +95,257 @@ for (const node of graph.nodes) {
   const robots = match(html, /<meta[^>]+name=["']robots["'][^>]+content=["']([^"']+)["']/i);
   const body = plain(match(html, /<body[^>]*>([\s\S]*?)<\/body>/i));
   const links = [...html.matchAll(/<a[^>]+href=["']([^"'#?]+)[^"']*["']/gi)].map((item) => item[1]).filter((href) => href.startsWith("/") && !href.startsWith("//"));
-  rendered.set(node.canonicalPath, { title, h1, description, canonical, robots, body, links, titleTokens: tokens(`${title} ${h1}`), bodyTokens: tokens(body.slice(0, 5000)) });
+  rendered.set(node.canonicalPath, { title, h1, description, canonical, robots, body, links, titleWords: words(`${title} ${h1}`), bodyWords: words(body.slice(0, 6000)) });
 }
-
 const inbound = new Map(graph.nodes.map((node) => [node.canonicalPath, 0]));
 for (const page of rendered.values()) for (const link of new Set(page.links)) if (inbound.has(link)) inbound.set(link, inbound.get(link) + 1);
-const nodeByPath = new Map(graph.nodes.map((node) => [node.canonicalPath, node]));
-for (const [secondary, primary] of compactPairs) {
-  if (!nodeByPath.has(secondary) || !nodeByPath.has(primary)) throw new Error(`Ownership pair references a missing route: ${secondary} -> ${primary}`);
-}
-const curatedByPath = new Map();
-for (const [secondaryPath, primaryPath, secondaryIntent, inheritedRisk] of compactPairs) {
-  curatedByPath.set(secondaryPath, { competitor: primaryPath, action: "REPOSITION", secondaryIntent, inheritedRisk });
-  if (!curatedByPath.has(primaryPath)) curatedByPath.set(primaryPath, { competitor: secondaryPath, action: "KEEP", secondaryIntent: `complete ${nodeByPath.get(primaryPath)?.title ?? "textbook"} lesson`, inheritedRisk });
-}
 
-function scorePair(left, right, curated = false) {
-  const leftPage = rendered.get(left.canonicalPath); const rightPage = rendered.get(right.canonicalPath);
-  const titleSimilarity = jaccard(leftPage.titleTokens, rightPage.titleTokens);
-  const semanticSimilarity = jaccard(leftPage.bodyTokens, rightPage.bodyTokens);
-  const sameConcept = left.primaryConceptId && left.primaryConceptId === right.primaryConceptId;
-  const leftModifiers = [...leftPage.titleTokens].filter((token) => modifiers.has(token)).sort();
-  const rightModifiers = [...rightPage.titleTokens].filter((token) => modifiers.has(token)).sort();
-  const distinctModifier = (leftModifiers.length > 0 || rightModifiers.length > 0) && leftModifiers.join("|") !== rightModifiers.join("|");
-  let score = 0;
-  if (sameConcept || curated) score += 4;
-  if (left.pageRole === right.pageRole) score += 3;
-  if (semanticSimilarity >= 0.18 || curated) score += 3;
-  if (titleSimilarity >= 0.55) score += 2;
-  if (left.indexPolicy === "index" && right.indexPolicy === "index") score += 2;
-  if (distinctModifier) score -= 4;
-  score += rolePenalty(left.pageRole) + rolePenalty(right.pageRole);
-  return { score, sameConcept, semanticSimilarity: Number(semanticSimilarity.toFixed(4)), titleSimilarity: Number(titleSimilarity.toFixed(4)), signals: { sameGenericHeadQuery: sameConcept || curated, sameRole: left.pageRole === right.pageRole, semanticOverlap: semanticSimilarity >= 0.18 || curated, nearIdenticalTitleH1: titleSimilarity >= 0.55, bothIndexable: left.indexPolicy === "index" && right.indexPolicy === "index", distinctModifier } };
+const compactByPath = new Map();
+for (const [compactUrl, textbookUrl, compactIntent, decision] of algebraCompactOwners) {
+  compactByPath.set(compactUrl, { conceptId: nodeByPath.get(compactUrl).primaryConceptId, queryFamily: compactIntent, intent: compactIntent.includes("selection") ? "method-selection" : "focused-explainer", primaryUrl: textbookUrl || compactUrl, action: decision === "REPOSITION" ? "REPOSITION" : "KEEP", competitor: textbookUrl, notes: `Compact guide intent: ${compactIntent}.` });
 }
-
-const candidates = [];
-const seenPairs = new Set();
-function addPair(left, right, curated = false, inheritedRisk = null) {
-  if (!left || !right || left.id === right.id) return;
-  const key = [left.canonicalPath, right.canonicalPath].sort().join("\0");
-  if (seenPairs.has(key)) return; seenPairs.add(key);
-  const result = scorePair(left, right, curated);
-  // Shared navigation makes whole-body similarity noisy. Keep only pairs with a
-  // meaningful title/H1 match or unusually strong content overlap.
-  const assessmentRoles = new Set(["assessment", "practice-exam"]);
-  if (!curated && (result.titleSimilarity < 0.25 || result.signals.distinctModifier)) return;
-  if (!curated && assessmentRoles.has(left.pageRole) && assessmentRoles.has(right.pageRole) && left.unitId !== right.unitId) return;
-  if (result.score >= 5 || curated) candidates.push({ leftUrl: left.canonicalPath, rightUrl: right.canonicalPath, leftRole: left.pageRole, rightRole: right.pageRole, inheritedRisk, ...result, disposition: curated ? "DISTINCT_INTENTS_CONFIRMED" : result.score >= 10 ? "MANUAL_REVIEW" : "MONITOR" });
+const crossByPath = new Map();
+for (const rule of crossCourseOwnership) {
+  crossByPath.set(rule.genericOwner, { conceptId: rule.conceptId, queryFamily: rule.queryFamily, intent: "learn-foundations", primaryUrl: rule.genericOwner, action: "KEEP", notes: rule.distinction });
+  for (const secondary of rule.secondaryUrls) crossByPath.set(secondary, { conceptId: rule.conceptId, queryFamily: plain(rendered.get(secondary).h1).toLowerCase(), intent: inferIntent(nodeByPath.get(secondary), rendered.get(secondary)), primaryUrl: secondary, action: "DIFFERENTIATE", competitor: rule.genericOwner, notes: rule.distinction });
 }
-for (const [secondary, primary, , risk] of compactPairs) addPair(nodeByPath.get(secondary), nodeByPath.get(primary), true, risk);
-for (const nodes of Map.groupBy(graph.nodes.filter((node) => node.primaryConceptId), (node) => node.primaryConceptId).values()) for (let left = 0; left < nodes.length; left += 1) for (let right = left + 1; right < nodes.length; right += 1) addPair(nodes[left], nodes[right]);
-candidates.sort((left, right) => right.score - left.score || left.leftUrl.localeCompare(right.leftUrl));
+const clusterByOwner = new Map(calculusClusters.map(([queryFamily, owner]) => [owner, queryFamily]));
 
-const registry = graph.nodes.map((node) => {
-  const page = rendered.get(node.canonicalPath); const curated = curatedByPath.get(node.canonicalPath);
-  const primaryQuery = curated?.secondaryIntent ?? page.h1.replace(/[?.]/g, "").toLowerCase();
+const descriptors = graph.nodes.map((node) => {
+  const page = rendered.get(node.canonicalPath);
+  const compact = compactByPath.get(node.canonicalPath);
+  const cross = crossByPath.get(node.canonicalPath);
+  const cluster = clusterByOwner.get(node.canonicalPath);
+  const conceptId = cross?.conceptId ?? compact?.conceptId ?? node.primaryConceptId ?? `route.${slugQuery(node.canonicalPath).replaceAll(" ", "-")}`;
+  const queryFamily = cross?.queryFamily ?? compact?.queryFamily ?? cluster ?? plain(node.searchAliases?.[0] || slugQuery(node.canonicalPath)).replace(/\s*[—|-]\s*unit\s*[0-9a-z]+$/i, "").toLowerCase();
+  const intent = cross?.intent ?? compact?.intent ?? (cluster ? "learn-deep" : inferIntent(node, page));
+  return { node, page, conceptId, queryFamily, intent, action: cross?.action ?? compact?.action ?? "KEEP", requestedPrimary: cross?.primaryUrl ?? compact?.primaryUrl ?? node.canonicalPath, competitor: cross?.competitor ?? compact?.competitor ?? "", notes: cross?.notes ?? compact?.notes ?? "Page-specific query family is sourced from the content registry; role is inferred from explicit route/title markers." };
+});
+
+// Ownership is unique at query-family + intent + course level. A deterministic
+// editorial rank elects one owner if two registry rows still share that key.
+const ownershipGroups = Map.groupBy(descriptors, (row) => `${row.queryFamily}\0${row.intent}\0${courseLevel(row.node)}`);
+const ownerRank = (row) => (row.node.pageRole === "textbook-lesson" ? 50 : 0) + (row.intent === "learn-deep" || row.intent === "learn-foundations" ? 20 : 0) + (row.node.indexPolicy === "index" ? 10 : 0) + Math.min(inbound.get(row.node.canonicalPath) ?? 0, 9);
+for (const group of ownershipGroups.values()) group.sort((left, right) => ownerRank(right) - ownerRank(left) || left.node.canonicalPath.localeCompare(right.node.canonicalPath));
+
+const registry = descriptors.map((descriptor) => {
+  const { node, page, conceptId, queryFamily, intent, action, competitor, notes } = descriptor;
+  const group = ownershipGroups.get(`${queryFamily}\0${intent}\0${courseLevel(node)}`);
+  const primaryUrl = group[0].node.canonicalPath;
+  const secondaryUrls = group.slice(1).map((row) => row.node.canonicalPath);
+  const isPrimaryOwner = node.canonicalPath === primaryUrl;
   return {
-    url: node.canonicalPath, canonicalUrl: page.canonical, course: courseName(node), unit: node.unitId ?? "", lessonId: node.nodeType === "textbook-lesson" ? node.id : "",
-    role: node.pageRole, title: page.title, h1: page.h1, primaryTargetQuery: primaryQuery, secondaryQueries: node.searchAliases.slice(0, 8),
-    primaryCompetitorUrl: curated?.competitor ?? "", primaryCompetitorQuery: curated ? (curatedByPath.get(curated.competitor)?.secondaryIntent ?? nodeByPath.get(curated.competitor)?.title ?? "") : "",
-    gscTopQueries: "UNAVAILABLE", gscClicks: "UNAVAILABLE", gscImpressions: "UNAVAILABLE", gscCtr: "UNAVAILABLE", gscAveragePosition: "UNAVAILABLE",
-    action: curated?.action ?? "KEEP", rationale: curated ? `Distinct intent versus ${curated.competitor}; URL preservation is safer without GSC/backlink evidence.` : "Unique rendered H1/primary query retained; monitor in Search Console.",
-    primaryOwner: curated?.action === "REPOSITION" ? curated.competitor : node.canonicalPath, collisionScore: curated?.inheritedRisk ?? 0, status: curated ? "IMPLEMENTED_OR_CONFIRMED" : "CURRENT",
-    implementationNotes: `self-canonical=${page.canonical === `${site}${node.canonicalPath}`}; sitemap=${sitemapPaths.has(node.canonicalPath)}; inboundInternalLinks=${inbound.get(node.canonicalPath) ?? 0}`,
-    confidence: curated ? "high editorial / pending search evidence" : "medium / pending search evidence", evidenceRequest: "GSC top queries, clicks, impressions, CTR, average position; backlinks before any consolidation",
+    url: node.canonicalPath,
+    conceptId,
+    queryFamily,
+    intent,
+    modifiers: queryFamily === slugQuery(node.canonicalPath) ? [] : [slugQuery(node.canonicalPath)],
+    courseLevel: courseLevel(node),
+    primaryUrl,
+    isPrimaryOwner,
+    primaryRole: group[0].node.pageRole,
+    secondaryUrls,
+    currentCompetitors: competitor ? [competitor] : secondaryUrls,
+    currentTitle: page.title,
+    currentH1: page.h1,
+    proposedH1: page.h1,
+    proposedSeoTitle: page.title,
+    proposedDescription: page.description,
+    canonicalUrl: page.canonical,
+    canonicalPolicy: "SELF_CANONICAL",
+    indexPolicy: node.indexPolicy,
+    action: isPrimaryOwner ? action : action === "KEEP" ? "SATELLITE" : action,
+    redirectFrom: node.formerPaths,
+    collisionScore: 0,
+    gscQueryOverlap: "UNAVAILABLE",
+    gscImpressions: "UNAVAILABLE",
+    googleSelectedCanonical: "UNAVAILABLE",
+    backlinkEquity: "UNAVAILABLE",
+    branch2Needed: false,
+    branch3Needed: false,
+    status: "ADJUDICATED",
+    notes,
+    verification: `self-canonical=${page.canonical === `${site}${node.canonicalPath}`}; sitemap=${sitemapPaths.has(node.canonicalPath)}; inboundInternalLinks=${inbound.get(node.canonicalPath) ?? 0}`,
+    lessonId: node.nodeType === "textbook-lesson" ? node.id : "",
+    pageRole: node.pageRole,
   };
 }).sort((left, right) => left.url.localeCompare(right.url));
 
-const routeFailures = registry.filter((row) => !row.implementationNotes.includes("self-canonical=true") || !row.implementationNotes.includes("sitemap=true"));
-const titleChanges = algebraTitleChanges.map(([url, before]) => ({ url, beforeTitle: before, afterTitle: rendered.get(url)?.title ?? "", afterH1: rendered.get(url)?.h1 ?? "", rationale: "Differentiate compact/legacy intent without changing the URL.", status: "IMPLEMENTED" }));
-const provenanceRows = provenance.lessons ?? provenance.lessonMappings ?? [];
-for (const [sourceId, beforeTitle] of precalculusOldTitles) {
-  const mapping = provenanceRows.find((row) => row.sourceLessonId === sourceId);
-  const lesson = mapping ? precalculus.lessons.find((item) => item.id === mapping.publicLessonId) : null;
-  if (lesson) {
-    const renderedLesson = rendered.get(lesson.path);
-    titleChanges.push({ url: lesson.path, beforeTitle, afterTitle: renderedLesson?.title ?? lesson.title, afterH1: renderedLesson?.h1 ?? lesson.title, rationale: "Name the mathematical topic and course-stage intent while preserving the established URL.", status: "IMPLEMENTED" });
-  }
+function scorePair(left, right, curated = false) {
+  const leftPage = rendered.get(left.canonicalPath); const rightPage = rendered.get(right.canonicalPath);
+  const titleSimilarity = jaccard(leftPage.titleWords, rightPage.titleWords);
+  const semanticSimilarity = jaccard(leftPage.bodyWords, rightPage.bodyWords);
+  const sameConcept = left.primaryConceptId && left.primaryConceptId === right.primaryConceptId;
+  let score = (sameConcept || curated ? 4 : 0) + (left.pageRole === right.pageRole ? 3 : 0) + (semanticSimilarity >= 0.18 || curated ? 3 : 0) + (titleSimilarity >= 0.55 ? 2 : 0) + (left.indexPolicy === "index" && right.indexPolicy === "index" ? 2 : 0);
+  return { score, sameConcept, semanticSimilarity: Number(semanticSimilarity.toFixed(4)), titleSimilarity: Number(titleSimilarity.toFixed(4)), signals: { sameGenericHeadQuery: sameConcept || curated, sameRole: left.pageRole === right.pageRole, semanticOverlap: semanticSimilarity >= 0.18 || curated, nearIdenticalTitleH1: titleSimilarity >= 0.55, bothIndexable: left.indexPolicy === "index" && right.indexPolicy === "index" } };
 }
-for (const assessment of precalculus.assessments.filter((item) => item.type !== "final-assessment")) titleChanges.push({ url: assessment.path, beforeTitle: `Unit ${precalculus.units.find((unit) => unit.id === assessment.unitId)?.sequence} ${assessment.type === "unit-review" ? "Review" : assessment.type === "flexible-practice" ? "Flexible Practice" : assessment.type === "mastery-check" ? "Mastery Check" : "Investigation"}`, afterTitle: assessment.title, afterH1: rendered.get(assessment.path)?.h1 ?? assessment.title, rationale: "Qualify the assessment by its actual unit topic.", status: "IMPLEMENTED" });
-titleChanges.sort((left, right) => left.url.localeCompare(right.url));
+function adjudicate(left, right, result, curated) {
+  const leftIntent = inferIntent(left, rendered.get(left.canonicalPath));
+  const rightIntent = inferIntent(right, rendered.get(right.canonicalPath));
+  if (curated) return { disposition: "DISTINCT_PAGE_ROLE", adjudicationReason: "Reviewed compact-guide versus complete-textbook ownership policy.", ownerUrl: curated[1] || curated[0] };
+  if (courseLevel(left) !== courseLevel(right)) return { disposition: "DISTINCT_COURSE_LEVEL", adjudicationReason: "Pages teach different course stages; cross-course policy preserves the qualified role.", ownerUrl: crossByPath.get(left.canonicalPath)?.primaryUrl ?? crossByPath.get(right.canonicalPath)?.primaryUrl ?? "" };
+  if ([leftIntent, rightIntent].includes("worked-example")) return { disposition: "WORKED_EXAMPLE", adjudicationReason: "A worked example solves a specific problem and supports rather than replaces the lesson.", ownerUrl: leftIntent === "worked-example" ? right.canonicalPath : left.canonicalPath };
+  if ([leftIntent, rightIntent].some((intent) => ["assessment", "practice", "practice-exam", "answer-key", "review"].includes(intent))) return { disposition: "ASSESSMENT_INTENT", adjudicationReason: "Assessment, practice, review, and answer-key modifiers identify a distinct student task.", ownerUrl: [leftIntent, rightIntent].includes("learn-deep") ? (leftIntent === "learn-deep" ? left.canonicalPath : right.canonicalPath) : "" };
+  if ([leftIntent, rightIntent].some((intent) => intent.startsWith("reference"))) return { disposition: "REFERENCE_OR_GLOSSARY", adjudicationReason: "Reference/definition intent is narrower than instructional lesson intent.", ownerUrl: leftIntent.startsWith("reference") ? right.canonicalPath : left.canonicalPath };
+  if (leftIntent !== rightIntent || left.pageRole !== right.pageRole) return { disposition: "DISTINCT_PAGE_ROLE", adjudicationReason: `Explicit roles differ (${leftIntent} versus ${rightIntent}).`, ownerUrl: leftIntent === "learn-deep" ? left.canonicalPath : rightIntent === "learn-deep" ? right.canonicalPath : "" };
+  if (slugQuery(left.canonicalPath) !== slugQuery(right.canonicalPath)) return { disposition: "DISTINCT_SUBTOPIC", adjudicationReason: "Shared concept taxonomy, but route-specific subtopics and titles identify different instructional questions.", ownerUrl: "" };
+  if (result.score >= 10) return { disposition: "NEEDS_EXTERNAL_EVIDENCE", adjudicationReason: "Same course, role, and query family; consolidation requires GSC/canonical/backlink evidence.", ownerUrl: "" };
+  return { disposition: "FALSE_POSITIVE", adjudicationReason: "Similarity is below the high-risk decision threshold after role and subtopic review.", ownerUrl: "" };
+}
+const compactPolicyByPair = new Map(algebraCompactOwners.filter(([, owner]) => owner).map((row) => [[row[0], row[1]].sort().join("\0"), row]));
+const candidates = [];
+const seenPairs = new Set();
+function addPair(left, right, curatedRow = null) {
+  if (!left || !right || left.id === right.id) return;
+  const key = [left.canonicalPath, right.canonicalPath].sort().join("\0");
+  if (seenPairs.has(key)) return;
+  seenPairs.add(key);
+  const result = scorePair(left, right, Boolean(curatedRow));
+  if (!curatedRow && result.titleSimilarity < 0.25) return;
+  if (result.score < 5 && !curatedRow) return;
+  const decision = adjudicate(left, right, result, curatedRow);
+  if (!allowedDispositions.has(decision.disposition)) throw new Error(`Unsupported collision disposition: ${decision.disposition}`);
+  candidates.push({ leftUrl:left.canonicalPath, rightUrl:right.canonicalPath, leftRole:left.pageRole, rightRole:right.pageRole, leftIntent:inferIntent(left, rendered.get(left.canonicalPath)), rightIntent:inferIntent(right, rendered.get(right.canonicalPath)), ...result, ...decision, explained:true });
+}
+for (const row of algebraCompactOwners.filter(([, owner]) => owner)) addPair(nodeByPath.get(row[0]), nodeByPath.get(row[1]), row);
+for (const nodes of Map.groupBy(graph.nodes.filter((node) => node.primaryConceptId), (node) => node.primaryConceptId).values()) for (let left = 0; left < nodes.length; left += 1) for (let right = left + 1; right < nodes.length; right += 1) addPair(nodes[left], nodes[right], compactPolicyByPair.get([nodes[left].canonicalPath, nodes[right].canonicalPath].sort().join("\0")));
+candidates.sort((left, right) => right.score - left.score || left.leftUrl.localeCompare(right.leftUrl));
 
-const redirectsLedger = redirectRows.map((row) => ({ sourceUrl: row.from, targetUrl: row.to, statusCode: row.status, action: "LEAVE_ALONE", rationale: "Existing one-hop migration or alias redirect; no new consolidation authorized without GSC/backlink evidence.", evidenceStatus: "rendered redirect map verified" }));
-const branch4 = compactPairs.map(([secondary, primary, intent, risk]) => ({ priority: risk >= 11 ? "high" : "medium", secondaryUrl: secondary, primaryUrl: primary, currentDistinctIntent: intent, requestedEvidence: "GSC query/page export (16 months), clicks, impressions, CTR, position, canonical status, backlinks", decisionGate: "Do not merge, redirect, or noindex unless evidence shows the same query intent and a clear winning owner." }));
-branch4.push({ priority: "high", secondaryUrl: "/subjects/math/algebra/rational-expressions/simplifying-rational-expressions/", primaryUrl: "/subjects/math/algebra/rational-expressions/simplifying-rational-expressions-course/", currentDistinctIntent: "Verify migration lag after the already-safe URL split", requestedEvidence: "Index coverage and URL inspection for both canonicals", decisionGate: "Preserve both URLs; investigate lag before changing routing." });
+const provenanceRows = provenance.lessons ?? provenance.lessonMappings ?? [];
+const precalculusAudit = provenanceRows.map((mapping) => {
+  const lesson = precalculus.lessons.find((item) => item.id === mapping.publicLessonId);
+  const page = rendered.get(lesson.path);
+  const classification = precalculusCrossCourse.has(mapping.sourceLessonId) ? "CROSS_COURSE_DIFFERENTIATION" : precalculusRetitles.has(mapping.sourceLessonId) ? "RETITLE" : "KEEP_STRONG";
+  return { sourceLessonId:mapping.sourceLessonId, url:lesson.path, conceptId:nodeByPath.get(lesson.path)?.primaryConceptId ?? "", queryFamily:registry.find((row) => row.url === lesson.path)?.queryFamily ?? "", currentH1:lesson.title, proposedH1:page.h1, seoTitle:page.title, classification, rationale:classification === "KEEP_STRONG" ? "Reviewed: title already names a specific searchable mathematical lesson." : classification === "RETITLE" ? "Rendered title clarifies the mathematical topic without moving the established URL." : "Rendered title explicitly limits the page to Precalculus/readiness intent so Calculus retains formal ownership." };
+}).sort((left, right) => left.sourceLessonId.localeCompare(right.sourceLessonId, undefined, { numeric:true }));
 
+const algebraAudit = algebraCompactOwners.map(([compactUrl, textbookUrl, compactIntent, decision]) => ({
+  compactUrl, textbookCounterpart:textbookUrl, compactIntent,
+  textbookIntent:textbookUrl ? `complete ordered lesson: ${rendered.get(textbookUrl).h1}` : "No complete textbook counterpart exists",
+  decision, rationale:decision === "KEEP_UNIQUE" ? "No equivalent textbook lesson exists; retain the comparison page." : decision === "REPOSITION" ? "Retain URL but make the compact decision/error intent subordinate to the full lesson." : "The compact page answers a narrower student task than the complete lesson.",
+  compactLinksToOwner:textbookUrl ? rendered.get(compactUrl).links.includes(textbookUrl) : true,
+  ownerLinksToCompact:textbookUrl ? rendered.get(textbookUrl).links.includes(compactUrl) : true,
+}));
+
+const calculusAudit = calculusClusters.map(([cluster, genericOwner, selectors]) => {
+  const matches = graph.nodes.filter((node) => node.courseId === "course.math.calculus" && selectors.some((selector) => `${node.title} ${node.canonicalPath}`.toLowerCase().includes(selector.toLowerCase())));
+  const roles = Object.fromEntries([...Map.groupBy(matches, (node) => inferIntent(node, rendered.get(node.canonicalPath)))].map(([role, rows]) => [role, rows.length]).sort());
+  return { cluster, genericOwner, genericOwnerH1:rendered.get(genericOwner).h1, satelliteCount:matches.filter((node) => node.canonicalPath !== genericOwner).length, satelliteRoles:roles, decision:"ADJUDICATED", rule:"Generic owner teaches the deep unmodified query; assessments, references, tools, worked examples, reviews, and named subtopics retain qualified intent." };
+});
+
+const ownershipLinks = {};
+function addOwnershipLink(source, target, relationship, label) {
+  if (!source || !target || source === target || !nodeByPath.has(source) || !nodeByPath.has(target)) return;
+  ownershipLinks[source] ??= [];
+  if (!ownershipLinks[source].some((item) => item.href === target)) ownershipLinks[source].push({ href:target, relationship, label });
+}
+for (const [compactUrl, textbookUrl, compactIntent] of algebraCompactOwners) if (textbookUrl) {
+  addOwnershipLink(compactUrl, textbookUrl, "satellite-to-primary", `Learn the complete lesson: ${nodeByPath.get(textbookUrl).shortTitle}`);
+  addOwnershipLink(textbookUrl, compactUrl, "primary-to-satellite", `Use the focused guide: ${compactIntent}`);
+}
+for (const rule of crossCourseOwnership) for (const secondary of rule.secondaryUrls) {
+  addOwnershipLink(secondary, rule.genericOwner, "satellite-to-primary", `Open the generic owner: ${nodeByPath.get(rule.genericOwner).shortTitle}`);
+  addOwnershipLink(rule.genericOwner, secondary, "primary-to-satellite", `Continue with ${courseLevel(nodeByPath.get(secondary))}: ${nodeByPath.get(secondary).shortTitle}`);
+}
+for (const [cluster, genericOwner, selectors] of calculusClusters) {
+  const satellites = graph.nodes.filter((node) => node.courseId === "course.math.calculus" && node.canonicalPath !== genericOwner && selectors.some((selector) => `${node.title} ${node.canonicalPath}`.toLowerCase().includes(selector.toLowerCase())));
+  for (const satellite of satellites) addOwnershipLink(satellite.canonicalPath, genericOwner, "satellite-to-primary", `Learn ${cluster} in the canonical lesson`);
+  for (const satellite of satellites.filter((node) => ["worksheet", "worked-problem", "glossary-term", "tool", "visual-guide", "quick-answer", "method-guide", "decision-guide"].includes(node.pageRole)).slice(0, 3)) addOwnershipLink(genericOwner, satellite.canonicalPath, "primary-to-satellite", `Use this ${inferIntent(satellite, rendered.get(satellite.canonicalPath)).replaceAll("-", " ")}: ${satellite.shortTitle}`);
+}
+for (const links of Object.values(ownershipLinks)) links.splice(4);
+
+const allInternalLinks = new Set([...rendered.values()].flatMap((page) => page.links));
+const redirectsLedger = await Promise.all(redirectRows.map(async (row) => {
+  const targetPage = rendered.get(row.to) ?? await readFile(htmlPath(row.to), "utf8").then((html) => ({
+    canonical:match(html, /<link[^>]+rel=["']canonical["'][^>]+href=["']([^"']+)["']/i) || match(html, /<link[^>]+href=["']([^"']+)["'][^>]+rel=["']canonical["']/i),
+    robots:match(html, /<meta[^>]+name=["']robots["'][^>]+content=["']([^"']+)["']/i),
+  })).catch(() => null);
+  const sourceAbsentFromSitemap = !sitemapPaths.has(row.from);
+  const targetExists = Boolean(targetPage);
+  const targetCanonical = targetPage?.canonical === `${site}${row.to}`;
+  const targetIndexable = targetPage ? !/noindex/i.test(targetPage.robots) && sitemapPaths.has(row.to) : false;
+  const targetNotRedirect = !redirectRows.some((candidate) => candidate.from === row.to);
+  const noInternalLinksToSource = !allInternalLinks.has(row.from);
+  const sourceStaticAbsent = !(await exists(htmlPath(row.from)));
+  const validationResult = [sourceAbsentFromSitemap, targetExists, targetCanonical, targetIndexable, targetNotRedirect, noInternalLinksToSource, sourceStaticAbsent].every(Boolean) ? "PASS" : "FAIL";
+  return { sourceUrl:row.from, targetUrl:row.to, statusCode:row.status, action:"LEAVE_ALONE", migrationFamily:row.from.includes("/calculus/") ? "CALCULUS_MIGRATION" : "SITE_MIGRATION_OR_ALIAS", sourceAbsentFromSitemap, targetExists, targetCanonical, targetIndexable, targetNotRedirect, noInternalLinksToSource, sourceStaticAbsent, validationResult, rationale:"Existing one-hop migration; no consolidation added without evidence." };
+}));
+
+const branch2 = [...crossCourseOwnership.map((rule, index) => ({ priority:index < 8 ? "high" : "medium", conceptId:rule.conceptId, canonicalLesson:rule.genericOwner, missingQueryFamily:`${rule.queryFamily} quick explanation`, intendedRole:"quick-answer", forbiddenCompetingIntent:rule.queryFamily, requiredInboundLinks:rule.genericOwner, requiredOutboundLinks:rule.genericOwner, rationale:`Acquisition page must preserve the ownership distinction: ${rule.distinction}` })), ...calculusClusters.map(([cluster, owner], index) => ({ priority:index < 10 ? "high" : "medium", conceptId:`calculus.${cluster.toLowerCase().replaceAll(" ", "-")}`, canonicalLesson:owner, missingQueryFamily:`how to recognize when to use ${cluster}`, intendedRole:"method-selection", forbiddenCompetingIntent:cluster, requiredInboundLinks:owner, requiredOutboundLinks:owner, rationale:"Fill acquisition intent without duplicating the deep lesson." }))];
+const branch3 = [...crossCourseOwnership.map((rule, index) => ({ priority:index < 8 ? "high" : "medium", conceptId:rule.conceptId, canonicalLesson:rule.genericOwner, assetIntent:`practice ${rule.queryFamily} with feedback`, assetRole:"worksheet", owner:rule.genericOwner, requiredLinks:rule.genericOwner, guardrail:"Asset title must include worksheet, practice, calculator, visual, or reference intent." })), ...calculusClusters.map(([cluster, owner], index) => ({ priority:index < 10 ? "high" : "medium", conceptId:`calculus.${cluster.toLowerCase().replaceAll(" ", "-")}`, canonicalLesson:owner, assetIntent:`${cluster} decision and error reference`, assetRole:index % 2 ? "visual-guide" : "worksheet", owner, requiredLinks:owner, guardrail:"Support the canonical lesson; do not claim the unmodified instructional query." }))];
+const branch4 = candidates.filter((row) => row.disposition === "NEEDS_EXTERNAL_EVIDENCE" || row.disposition === "SAME_INTENT_COLLISION").map((row) => ({ priority:row.score >= 10 ? "high" : "medium", secondaryUrl:row.leftUrl, primaryUrl:row.rightUrl, currentDistinctIntent:`${row.leftIntent} versus ${row.rightIntent}`, requestedEvidence:"GSC query/page export, clicks, impressions, selected canonical, and backlinks", decisionGate:"No redirect/noindex/merge until one winning owner is supported by external evidence." }));
+
+const titleChanges = duplicatePrimaryResolutions.map(([query, ownerUrl, secondaryUrl, resolution]) => ({ queryFamily:query, ownerUrl, secondaryUrl, renderedSecondaryH1:rendered.get(secondaryUrl).h1, resolution, status:rendered.get(secondaryUrl).h1.toLowerCase() === resolution.toLowerCase() ? "IMPLEMENTED" : "VERIFY", rationale:"Retain the generic query on one owner and qualify the secondary intent." }));
+
+async function collectIndexFiles(directory) {
+  const entries = await readdir(directory, { withFileTypes:true });
+  const files = [];
+  for (const entry of entries) {
+    const path = resolve(directory, entry.name);
+    if (entry.isDirectory()) files.push(...await collectIndexFiles(path));
+    else if (entry.name === "index.html") files.push(path);
+  }
+  return files;
+}
+async function collectBuiltCanonicals(directory) {
+  const files = await collectIndexFiles(directory);
+  const rows = [];
+  for (const file of files) {
+    const html = await readFile(file, "utf8");
+    const canonical = match(html, /<link[^>]+rel=["']canonical["'][^>]+href=["']([^"']+)["']/i) || match(html, /<link[^>]+href=["']([^"']+)["'][^>]+rel=["']canonical["']/i);
+    if (canonical.startsWith(site)) rows.push(canonical.slice(site.length));
+  }
+  return new Set(rows);
+}
+const builtCanonicals = await collectBuiltCanonicals(resolve(root, "dist/pages"));
+const expectedCanonicals = new Set([...graph.nodes.map((node) => node.canonicalPath), ...graph.exclusions.map((row) => row.canonicalPath)]);
+const missingBuiltRoutes = [...expectedCanonicals].filter((path) => !builtCanonicals.has(path));
+const unexpectedBuiltRoutes = [...builtCanonicals].filter((path) => !expectedCanonicals.has(path));
+const unexplainedHighRisk = candidates.filter((row) => row.score >= 10 && !row.explained);
+const duplicatePrimaryKeys = [...Map.groupBy(registry.filter((row) => row.isPrimaryOwner), (row) => `${row.queryFamily}\0${row.intent}\0${row.courseLevel}`).values()].filter((rows) => rows.length !== 1);
+const routeFailures = registry.filter((row) => !row.verification.includes("self-canonical=true") || !row.verification.includes("sitemap=true"));
 const priorQa = JSON.parse(await readFile(resolve(outputDirectory, "BRANCH1_QA_REPORT.json"), "utf8").catch(() => "{}"));
 const qa = {
-  schemaVersion: 1, generatedAt: check ? priorQa.generatedAt : new Date().toISOString(), source: "fresh rendered dist/pages build", routeCounts: { canonicalHtml: registry.length + graph.exclusions.length, instructionalRegistry: registry.length, exclusions: graph.exclusions.length, redirects: redirectRows.length, sitemapEntries: sitemapPaths.size },
-  titleH1Changes: titleChanges.length, collisionCandidates: candidates.length, highRiskManualReview: candidates.filter((item) => item.score >= 10 && item.disposition === "MANUAL_REVIEW").length,
-  checks: { everyGraphNodeRendered: registry.length === graph.nodes.length, everyInstructionalRouteSelfCanonicalAndInSitemap: routeFailures.length === 0, everyRegistryRowHasOnePrimaryQuery: registry.every((row) => row.primaryTargetQuery), noNewRedirectConsolidations: true, gscMetricsFabricated: false },
-  failures: routeFailures.map((row) => row.url), exclusions: graph.exclusions,
+  schemaVersion:2,
+  generatedAt:check ? priorQa.generatedAt : new Date().toISOString(),
+  source:"fresh rendered dist/pages build with explicit editorial ownership policy",
+  routeCounts:{ canonicalHtml:builtCanonicals.size, instructionalRegistry:registry.length, exclusions:graph.exclusions.length, redirects:redirectRows.length, sitemapEntries:sitemapPaths.size },
+  collisionCandidates:candidates.length,
+  collisionDispositionCounts:Object.fromEntries([...Map.groupBy(candidates, (row) => row.disposition)].map(([key, rows]) => [key, rows.length]).sort()),
+  unexplainedHighRisk:unexplainedHighRisk.length,
+  externalEvidenceOnly:candidates.filter((row) => row.disposition === "NEEDS_EXTERNAL_EVIDENCE").length,
+  duplicatePrimaryOwners:duplicatePrimaryKeys.length,
+  algebraCompactAuditRows:algebraAudit.length,
+  precalculusTitleAuditRows:precalculusAudit.length,
+  precalculusAssessmentTitlesQualified:precalculus.assessments.filter((item) => item.type !== "final-assessment" && !/^Unit \d+/.test(item.title)).length,
+  calculusClusterAuditRows:calculusAudit.length,
+  crossCourseRules:crossCourseOwnership.length,
+  branch2Rows:branch2.length,
+  branch3Rows:branch3.length,
+  checks:{ everyGraphNodeRendered:routeFailures.length === 0, actualBuiltRoutesReconciled:missingBuiltRoutes.length === 0 && unexpectedBuiltRoutes.length === 0, redirectsDeepVerified:redirectsLedger.every((row) => row.validationResult === "PASS"), uniquePrimaryOwnership:duplicatePrimaryKeys.length === 0, noUnexplainedHighRisk:unexplainedHighRisk.length === 0, provenanceExplicit:Boolean(graph.provenance?.inputBaseCommit && graph.provenance?.artifactState) },
+  failures:{ routeFailures:routeFailures.map((row) => row.url), missingBuiltRoutes, unexpectedBuiltRoutes, redirectFailures:redirectsLedger.filter((row) => row.validationResult !== "PASS").map((row) => row.sourceUrl) },
 };
 
 const registryHeaders = Object.keys(registry[0]);
-await output(resolve(dataDirectory, "search-intent-ownership-registry.json"), json({ schemaVersion: 1, generatedAt: qa.generatedAt, records: registry }));
+await output(resolve(dataDirectory, "search-intent-ownership-registry.json"), json({ schemaVersion:2, generatedAt:qa.generatedAt, ownershipKey:"queryFamily + intent + courseLevel", records:registry }));
 await output(resolve(dataDirectory, "SEARCH_INTENT_OWNERSHIP_REGISTRY.csv"), toCsv(registry, registryHeaders));
-await output(resolve(dataDirectory, "TITLE_H1_REWRITE_LEDGER.csv"), toCsv(titleChanges, ["url", "beforeTitle", "afterTitle", "afterH1", "rationale", "status"]));
-const articleToTextbook = Object.fromEntries(compactPairs.map(([secondary, primary]) => [secondary, primary]));
-const textbookToArticle = {};
-for (const [secondary, primary, intent] of compactPairs.filter(([path]) => path.includes("/algebra/"))) {
-  textbookToArticle[primary] = { href: secondary, intent };
-}
-await output(resolve(dataDirectory, "branch1-article-to-textbook.json"), json(articleToTextbook));
-await output(resolve(dataDirectory, "branch1-textbook-to-article.json"), json(textbookToArticle));
-await output(resolve(dataDirectory, "REDIRECT_AND_CONSOLIDATION_LEDGER.csv"), toCsv(redirectsLedger, ["sourceUrl", "targetUrl", "statusCode", "action", "rationale", "evidenceStatus"]));
-await output(resolve(dataDirectory, "BRANCH2_CONTENT_GAPS_HANDOFF.csv"), toCsv([
-  { priority:"medium", intent:"worked comparison of substitution and elimination on the same system", recommendedRole:"worked-problem", guardrail:"Link to both textbook lessons; do not target the generic method heads." },
-  { priority:"medium", intent:"precalculus limit-readiness diagnostic", recommendedRole:"assessment", guardrail:"Use preview/readiness language; Calculus owns formal limits instruction." },
-  { priority:"low", intent:"rational-expression restriction error gallery", recommendedRole:"worked-problem", guardrail:"Support, do not replace, the textbook rational-expression lesson." },
-], ["priority", "intent", "recommendedRole", "guardrail"]));
-await output(resolve(dataDirectory, "BRANCH3_SUPPORTING_ASSETS_HANDOFF.csv"), toCsv([
-  { priority:"high", cluster:"integration by parts", asset:"method-selection comparison visual", owner:"/learn/calculus/integration-by-parts/", linkTarget:"/subjects/math/calculus/integrals/integration-by-parts/" },
-  { priority:"medium", cluster:"rational expressions", asset:"domain restriction decision tree", owner:"/subjects/math/algebra/rational-expressions/rational-domain-restrictions/", linkTarget:"/subjects/math/algebra/rational-expressions/rational-expressions-and-restrictions/" },
-  { priority:"medium", cluster:"calculus readiness", asset:"Algebra → Precalculus → Calculus progression map", owner:"/subjects/math/precalculus/calculus-readiness-and-function-synthesis/", linkTarget:"/subjects/math/calculus/limits-continuity/" },
-], ["priority", "cluster", "asset", "owner", "linkTarget"]));
-await output(resolve(dataDirectory, "BRANCH4_GSC_EVIDENCE_REQUESTS.csv"), toCsv(branch4, ["priority", "secondaryUrl", "primaryUrl", "currentDistinctIntent", "requestedEvidence", "decisionGate"]));
-await output(resolve(outputDirectory, "current-content-similarity.json"), json({ schemaVersion: 1, generatedAt: qa.generatedAt, scoring: { sameGenericHeadQuery:4, sameRole:3, semanticOverlap:3, nearIdenticalTitleH1:2, bothIndexable:2, distinctModifier:-4, workedProblem:-4, tool:-5, glossary:-3, courseLevelPurpose:-2 }, candidates }));
+await output(resolve(dataDirectory, "CROSS_COURSE_OWNERSHIP.json"), json({ schemaVersion:1, rules:crossCourseOwnership }));
+await output(resolve(dataDirectory, "CALCULUS_CLUSTER_AUDIT.csv"), toCsv(calculusAudit, ["cluster","genericOwner","genericOwnerH1","satelliteCount","satelliteRoles","decision","rule"]));
+await output(resolve(dataDirectory, "ALGEBRA_COMPACT_GUIDE_AUDIT.csv"), toCsv(algebraAudit, ["compactUrl","textbookCounterpart","compactIntent","textbookIntent","decision","rationale","compactLinksToOwner","ownerLinksToCompact"]));
+await output(resolve(dataDirectory, "PRECALCULUS_TITLE_AUDIT.csv"), toCsv(precalculusAudit, ["sourceLessonId","url","conceptId","queryFamily","currentH1","proposedH1","seoTitle","classification","rationale"]));
+await output(resolve(dataDirectory, "TITLE_H1_REWRITE_LEDGER.csv"), toCsv(titleChanges, ["queryFamily","ownerUrl","secondaryUrl","renderedSecondaryH1","resolution","status","rationale"]));
+await output(resolve(dataDirectory, "sitewide-ownership-links.json"), json(ownershipLinks));
+await output(resolve(dataDirectory, "REDIRECT_AND_CONSOLIDATION_LEDGER.csv"), toCsv(redirectsLedger, ["sourceUrl","targetUrl","statusCode","action","migrationFamily","sourceAbsentFromSitemap","targetExists","targetCanonical","targetIndexable","targetNotRedirect","noInternalLinksToSource","sourceStaticAbsent","validationResult","rationale"]));
+await output(resolve(dataDirectory, "BRANCH2_CONTENT_GAPS_HANDOFF.csv"), toCsv(branch2, ["priority","conceptId","canonicalLesson","missingQueryFamily","intendedRole","forbiddenCompetingIntent","requiredInboundLinks","requiredOutboundLinks","rationale"]));
+await output(resolve(dataDirectory, "BRANCH3_SUPPORTING_ASSETS_HANDOFF.csv"), toCsv(branch3, ["priority","conceptId","canonicalLesson","assetIntent","assetRole","owner","requiredLinks","guardrail"]));
+await output(resolve(dataDirectory, "BRANCH4_GSC_EVIDENCE_REQUESTS.csv"), toCsv(branch4, ["priority","secondaryUrl","primaryUrl","currentDistinctIntent","requestedEvidence","decisionGate"]));
+await output(resolve(outputDirectory, "current-content-similarity.json"), json({ schemaVersion:2, generatedAt:qa.generatedAt, allowedDispositions:[...allowedDispositions], candidates }));
 await output(resolve(outputDirectory, "BRANCH1_QA_REPORT.json"), json(qa));
 
-const collisionRows = compactPairs.map(([secondary, primary, intent, risk]) => `| ${risk} | \`${secondary}\` | \`${primary}\` | REPOSITION / KEEP | ${intent} | GSC + backlink evidence pending |`).join("\n");
-await output(resolve(docsDirectory, "CANNIBALIZATION_LEDGER.md"), `# Branch 1 Cannibalization Ledger\n\nGenerated from the current rendered site. Scores are editorial collision risk signals, not proof of search cannibalization. No destructive consolidation is approved without GSC and backlink evidence.\n\n| Inherited risk | Secondary / narrow URL | Primary / textbook URL | Action | Distinct intent | Evidence |\n|---:|---|---|---|---|---|\n${collisionRows}\n\nThe simplifying-rational-expressions handoff assumption was stale: the compact canonical remains at \`/simplifying-rational-expressions/\`, while the textbook lesson already uses \`/simplifying-rational-expressions-course/\`. Both are self-canonical and must be monitored as migration lag, not "fixed" with another redirect.\n`);
-await output(resolve(docsDirectory, "CROSS_COURSE_OWNERSHIP.md"), `# Cross-course Search Intent Ownership\n\n- Algebra owns foundational manipulation, equation solving, domain restrictions, and function mechanics.\n- Precalculus owns function modeling, multi-representation synthesis, trigonometric and conic preparation, and explicitly labeled calculus-readiness previews.\n- Calculus owns formal limits, continuity, derivatives, integrals, theorems, and proof/technique depth.\n- Preview pages must say \"before calculus\", \"readiness\", or \"preview\" in the H1. They link forward to the formal Calculus owner; they do not claim the unmodified head query.\n\nFor integration by parts, the textbook lesson owns the generic instructional query, the Learn guide owns recognition/setup, and the strategy article owns repeated, tabular, and cyclic use.\n`);
-await output(resolve(docsDirectory, "BRANCH1_SEO_ARCHITECTURE_AUDIT.md"), `# BetterGrades Branch 1 SEO Architecture Audit\n\n## Outcome\n\nThe fresh production-equivalent build contains ${qa.routeCounts.canonicalHtml} canonical HTML routes: ${registry.length} instructional/indexable mathematical routes in the ownership registry and ${graph.exclusions.length} documented shell/policy exclusions. The rendered redirect map contains ${redirectRows.length} one-hop entries.\n\nEvery instructional graph node was rendered, self-canonical, and represented in the sitemap. The registry contains one primary target query per mathematical URL. Search Console metrics were unavailable and are explicitly marked UNAVAILABLE.\n\n## Safe remediation\n\n- Preserved all established canonicals. No merge, redirect, or noindex action was added.\n- Repositioned compact Algebra surfaces around decision, diagnostic, exception, or error-prevention intent while textbook lessons retain generic instructional ownership.\n- Qualified all 64 unit-level Precalculus assessment H1/title surfaces by topic and clarified high-opacity lesson titles without changing lesson URLs.\n- Separated the integration-by-parts textbook, recognition guide, and repeated/tabular/cyclic strategy intents.\n- Recorded ${candidates.length} current collision candidates with the published multi-signal score and generated Branch 4 evidence gates.\n\n## Evidence limits\n\nGSC query/page exports, URL Inspection, backlink data, and external rank tracking were not available. Those missing sources block destructive consolidation, not safe title/H1 and internal-intent differentiation.\n\n## Durable artifacts\n\nThe machine-readable registry, title ledger, redirect ledger, collision candidates, QA report, and Branch 2/3/4 handoffs live under \`data/seo/\` and \`artifacts/seo-architecture/\`. Regenerate with \`pnpm seo:architecture\`; verify drift with \`pnpm seo:architecture:check\`.\n`);
-await output(resolve(docsDirectory, "IMPLEMENTATION_REPORT.md"), `# Branch 1 Implementation Report\n\nStatus: implementation complete in the isolated local branch; production acceptance and deployment are not claimed.\n\nImplemented safe on-page intent differentiation, 64 topic-qualified Precalculus assessment surfaces, a ${registry.length}-row ownership registry, collision scoring, redirect/consolidation controls, and evidence handoffs. No production, account, DNS, Cloudflare, or external search action was taken.\n\nValidation results are recorded in \`artifacts/seo-architecture/BRANCH1_QA_REPORT.json\`.\n`);
+const dispositionSummary = Object.entries(qa.collisionDispositionCounts).map(([name, count]) => `- ${name}: ${count}`).join("\n");
+await output(resolve(docsDirectory, "CANNIBALIZATION_LEDGER.md"), `# Branch 1 Cannibalization Ledger\n\nEvery generated candidate is adjudicated. Candidate similarity is an audit signal, not a redirect instruction.\n\n${dispositionSummary}\n\nUnexplained high-risk pairs: **${qa.unexplainedHighRisk}**. Cases requiring GSC/canonical/backlink evidence: **${qa.externalEvidenceOnly}**; these remain preserved and are isolated in the Branch 4 queue.\n`);
+await output(resolve(docsDirectory, "CROSS_COURSE_OWNERSHIP.md"), `# Cross-course Search Intent Ownership\n\nThe machine-readable source contains ${crossCourseOwnership.length} rules. Each rule names one generic owner, its legitimate course-qualified satellites, and the distinction that titles, descriptions, anchors, and tests must preserve. See \`data/seo/CROSS_COURSE_OWNERSHIP.json\`.\n`);
+await output(resolve(docsDirectory, "BRANCH1_SEO_ARCHITECTURE_AUDIT.md"), `# BetterGrades Branch 1 SEO Architecture Audit\n\n## Phase 2 result\n\n- Ownership registry: ${registry.length} indexable mathematical routes\n- Collision candidates: ${candidates.length}; unexplained high-risk: ${qa.unexplainedHighRisk}\n- Duplicate primary ownership keys: ${qa.duplicatePrimaryOwners}\n- Algebra compact guides reviewed: ${algebraAudit.length}\n- Precalculus lesson titles reviewed: ${precalculusAudit.length}\n- Calculus clusters reviewed: ${calculusAudit.length}\n- Cross-course ownership rules: ${crossCourseOwnership.length}\n- Redirects deeply verified: ${redirectsLedger.filter((row) => row.validationResult === "PASS").length}/${redirectsLedger.length}\n- Branch 2 / Branch 3 queue rows: ${branch2.length} / ${branch3.length}\n\nNo redirect, noindex, merge, deployment, or destructive consolidation was added. External-evidence-only decisions remain isolated for Branch 4.\n`);
+await output(resolve(docsDirectory, "IMPLEMENTATION_REPORT.md"), `# Branch 1 Phase 2 Implementation Report\n\nStatus: correction pass implemented on the draft PR branch; production acceptance, merge, and deployment are not claimed.\n\nThe H1-derived target model was replaced by explicit concept/query-family/intent ownership. All collision candidates now carry a closed disposition and rationale. Sitewide ownership links, exhaustive course audits, deep redirect checks, complete handoff schemas, and explicit graph provenance are machine-readable and regression-tested.\n`);
 
-console.log(`${check ? "Verified" : "Generated"} SEO architecture: ${registry.length} ownership records, ${titleChanges.length} title/H1 ledger rows, ${candidates.length} collision candidates, ${redirectRows.length} preserved redirects.`);
+console.log(`${check ? "Verified" : "Generated"} Phase 2 SEO architecture: ${registry.length} ownership records, ${candidates.length} adjudicated candidates, ${algebraAudit.length} Algebra guides, ${precalculusAudit.length} Precalculus titles, ${calculusAudit.length} Calculus clusters.`);

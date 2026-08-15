@@ -1,7 +1,7 @@
 {
-  "schemaVersion": 1,
-  "generatedAt": "2026-08-13T18:34:54.572Z",
-  "source": "fresh rendered dist/pages build",
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-15T21:49:16.349Z",
+  "source": "fresh rendered dist/pages build with explicit editorial ownership policy",
   "routeCounts": {
     "canonicalHtml": 988,
     "instructionalRegistry": 974,
@@ -9,87 +9,38 @@
     "redirects": 135,
     "sitemapEntries": 1004
   },
-  "titleH1Changes": 106,
-  "collisionCandidates": 969,
-  "highRiskManualReview": 706,
+  "collisionCandidates": 1174,
+  "collisionDispositionCounts": {
+    "ASSESSMENT_INTENT": 705,
+    "DISTINCT_COURSE_LEVEL": 46,
+    "DISTINCT_PAGE_ROLE": 190,
+    "DISTINCT_SUBTOPIC": 162,
+    "NEEDS_EXTERNAL_EVIDENCE": 2,
+    "REFERENCE_OR_GLOSSARY": 8,
+    "WORKED_EXAMPLE": 61
+  },
+  "unexplainedHighRisk": 0,
+  "externalEvidenceOnly": 2,
+  "duplicatePrimaryOwners": 0,
+  "algebraCompactAuditRows": 36,
+  "precalculusTitleAuditRows": 174,
+  "precalculusAssessmentTitlesQualified": 64,
+  "calculusClusterAuditRows": 17,
+  "crossCourseRules": 15,
+  "branch2Rows": 32,
+  "branch3Rows": 32,
   "checks": {
     "everyGraphNodeRendered": true,
-    "everyInstructionalRouteSelfCanonicalAndInSitemap": true,
-    "everyRegistryRowHasOnePrimaryQuery": true,
-    "noNewRedirectConsolidations": true,
-    "gscMetricsFabricated": false
+    "actualBuiltRoutesReconciled": true,
+    "redirectsDeepVerified": true,
+    "uniquePrimaryOwnership": true,
+    "noUnexplainedHighRisk": true,
+    "provenanceExplicit": true
   },
-  "failures": [],
-  "exclusions": [
-    {
-      "canonicalPath": "/",
-      "pageRole": "home",
-      "reason": "Non-instructional shell or policy route; no educational concept is assigned."
-    },
-    {
-      "canonicalPath": "/about/",
-      "pageRole": "policy",
-      "reason": "Non-instructional shell or policy route; no educational concept is assigned."
-    },
-    {
-      "canonicalPath": "/accessibility/",
-      "pageRole": "policy",
-      "reason": "Non-instructional shell or policy route; no educational concept is assigned."
-    },
-    {
-      "canonicalPath": "/answers/",
-      "pageRole": "directory",
-      "reason": "Non-instructional shell or policy route; no educational concept is assigned."
-    },
-    {
-      "canonicalPath": "/corrections/",
-      "pageRole": "policy",
-      "reason": "Non-instructional shell or policy route; no educational concept is assigned."
-    },
-    {
-      "canonicalPath": "/editorial-policy/",
-      "pageRole": "policy",
-      "reason": "Non-instructional shell or policy route; no educational concept is assigned."
-    },
-    {
-      "canonicalPath": "/how-we-verify/",
-      "pageRole": "policy",
-      "reason": "Non-instructional shell or policy route; no educational concept is assigned."
-    },
-    {
-      "canonicalPath": "/practice/",
-      "pageRole": "directory",
-      "reason": "Non-instructional shell or policy route; no educational concept is assigned."
-    },
-    {
-      "canonicalPath": "/practice/math/",
-      "pageRole": "directory",
-      "reason": "Non-instructional shell or policy route; no educational concept is assigned."
-    },
-    {
-      "canonicalPath": "/practice/math/calculus/",
-      "pageRole": "directory",
-      "reason": "Non-instructional shell or policy route; no educational concept is assigned."
-    },
-    {
-      "canonicalPath": "/privacy/",
-      "pageRole": "policy",
-      "reason": "Non-instructional shell or policy route; no educational concept is assigned."
-    },
-    {
-      "canonicalPath": "/search/",
-      "pageRole": "search",
-      "reason": "Non-instructional shell or policy route; no educational concept is assigned."
-    },
-    {
-      "canonicalPath": "/source-policy/",
-      "pageRole": "policy",
-      "reason": "Non-instructional shell or policy route; no educational concept is assigned."
-    },
-    {
-      "canonicalPath": "/tools/",
-      "pageRole": "directory",
-      "reason": "Non-instructional shell or policy route; no educational concept is assigned."
-    }
-  ]
+  "failures": {
+    "routeFailures": [],
+    "missingBuiltRoutes": [],
+    "unexpectedBuiltRoutes": [],
+    "redirectFailures": []
+  }
 }

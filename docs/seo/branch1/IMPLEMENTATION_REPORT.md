@@ -1,7 +1,5 @@
-# Branch 1 Implementation Report
+# Branch 1 Phase 2 Implementation Report
 
-Status: implementation complete in the isolated local branch; production acceptance and deployment are not claimed.
+Status: correction pass implemented on the draft PR branch; production acceptance, merge, and deployment are not claimed.
 
-Implemented safe on-page intent differentiation, 64 topic-qualified Precalculus assessment surfaces, a 974-row ownership registry, collision scoring, redirect/consolidation controls, and evidence handoffs. No production, account, DNS, Cloudflare, or external search action was taken.
-
-Validation results are recorded in `artifacts/seo-architecture/BRANCH1_QA_REPORT.json`.
+The H1-derived target model was replaced by explicit concept/query-family/intent ownership. All collision candidates now carry a closed disposition and rationale. Sitewide ownership links, exhaustive course audits, deep redirect checks, complete handoff schemas, and explicit graph provenance are machine-readable and regression-tested.

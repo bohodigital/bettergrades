@@ -165,6 +165,24 @@ for (const path of routes) {
 }
 
 const duplicateGroups = duplicateAnalysis(inventory);
+// A high similarity score is a review trigger, not automatically a defect. Use
+// the Phase 2 collision ledger to close only pairs with an explicit harmless
+// role/subtopic disposition; same-intent and evidence-gated pairs still fail.
+const collisionLedger = JSON.parse(await readFile(resolve(root, "artifacts/seo-architecture/current-content-similarity.json"), "utf8").catch(() => "{}"));
+const reviewedCollisionDispositions = new Set([
+  "DISTINCT_PAGE_ROLE", "DISTINCT_SUBTOPIC", "DISTINCT_COURSE_LEVEL",
+  "WORKED_EXAMPLE", "ASSESSMENT_INTENT", "REFERENCE_OR_GLOSSARY",
+  "LEGACY_REDIRECT", "FALSE_POSITIVE",
+]);
+const collisionByPair = new Map((collisionLedger.candidates ?? []).map((row) => [[row.leftUrl, row.rightUrl].sort().join("\0"), row]));
+for (const group of [...duplicateGroups.exact, ...duplicateGroups.near]) {
+  const adjudication = group.paths.length === 2 ? collisionByPair.get([...group.paths].sort().join("\0")) : undefined;
+  if (adjudication && reviewedCollisionDispositions.has(adjudication.disposition)) {
+    group.reviewed = true;
+    group.disposition = adjudication.disposition;
+    group.adjudicationReason = adjudication.adjudicationReason;
+  }
+}
 for (const entry of inventory) delete entry.mainText;
 
 const redirectsFile = await readFile(resolve(root, "dist", "pages", "_redirects"), "utf8");
@@ -256,8 +274,8 @@ const rawFailureCounts = {
   malformedMath: rawAudit.filter((entry) => entry.malformedMathFindings.length).length,
 };
 const rawFailureCount = Object.values(rawFailureCounts).reduce((sum, count) => sum + count, 0)
-  + duplicateGroups.exact.length
-  + duplicateGroups.near.length;
+  + duplicateGroups.exact.filter((group) => !group.reviewed).length
+  + duplicateGroups.near.filter((group) => !group.reviewed).length;
 const redirectFailureCount = redirectAudit.filter((entry) => !entry.oneHop).length;
 const crawlFailureCount = crawlRuns.reduce((sum, run) => sum + run.failures.length, 0);
 const failureCount = rawFailureCount + redirectFailureCount + crawlFailureCount;

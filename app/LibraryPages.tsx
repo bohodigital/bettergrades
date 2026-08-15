@@ -140,11 +140,21 @@ export function LibraryArticleContent({ article }: { article: CourseArticle }) {
   const isUnit3aArticle = article.domainSlug === "calculus" && article.topicSlug === "integration-techniques";
   const isUnit3bArticle = article.domainSlug === "calculus" && article.topicSlug === "integration-applications";
   const articleUnit = isUnit2aArticle ? "2A" : isUnit2bArticle ? "2B" : isUnit3aArticle ? "3A" : isUnit3bArticle ? "3B" : undefined;
+  const legacySeriesTargets: Record<string, string> = {
+    "/subjects/math/calculus/sequences-series/geometric-series/": "/subjects/math/calculus/sequences-and-series/geometric-series/",
+    "/subjects/math/calculus/sequences-series/choosing-convergence-test/": "/subjects/math/calculus/sequences-and-series/choosing-a-convergence-test/",
+    "/subjects/math/calculus/sequences-series/power-series-interval-of-convergence/": "/subjects/math/calculus/power-series-and-taylor-series/radius-and-interval-of-convergence/",
+    "/subjects/math/calculus/sequences-series/taylor-series-remainder/": "/subjects/math/calculus/power-series-and-taylor-series/taylor-remainder-theorem/",
+  };
+  const articleHref = (candidate: CourseArticle) => legacySeriesTargets[libraryArticleHref(candidate)] ?? libraryArticleHref(candidate);
+  const topicHref = article.domainSlug === "calculus" && article.topicSlug === "sequences-series"
+    ? "/subjects/math/calculus/sequences-and-series/"
+    : `/subjects/math/${course.slug}/${topic.slug}/`;
 
   return (
     <article className="library-article">
       <header className="library-article-header">
-        <nav className="breadcrumbs" aria-label="Article location"><a href={`/subjects/math/${course.slug}/`}>{course.name}</a><span>/</span><a href={`/subjects/math/${course.slug}/${topic.slug}/`}>{topic.shortName}</a></nav>
+        <nav className="breadcrumbs" aria-label="Article location"><a href={`/subjects/math/${course.slug}/`}>{course.name}</a><span>/</span><a href={topicHref}>{topic.shortName}</a></nav>
         <p className="article-meta-line"><span>{archetype.label}</span><span>Calculus I · {articleUnit ? `Unit ${articleUnit}` : article.course}</span><span>{article.difficulty}</span></p>
         <h1>{article.title}</h1>
         <p>{article.deck}</p>
@@ -164,7 +174,7 @@ export function LibraryArticleContent({ article }: { article: CourseArticle }) {
           </details>
           <div className="latex-article-links">
             <span>Put it to work</span>
-            <a href={`/subjects/math/${course.slug}/${topic.slug}/`}><small>Topic map</small><b>{topic.name}</b></a>
+            <a href={topicHref}><small>Topic map</small><b>{topic.name}</b></a>
             {articleTools.slice(0, 1).map((tool) => <a href={tool!.path} key={tool!.id}><small>Tool</small><b>{tool!.title}</b></a>)}
             {articleAssessments.slice(0, 1).map((assessment) => <a href={assessment!.path} key={assessment!.id}><small>Practice</small><b>{assessment!.title}</b></a>)}
           </div>
@@ -172,8 +182,8 @@ export function LibraryArticleContent({ article }: { article: CourseArticle }) {
       </div>
 
       <nav className="article-sequence" aria-label="Adjacent articles">
-        {previous ? <a href={libraryArticleHref(previous)}><small>← Previous in {topic.shortName}</small><b>{previous.shortTitle}</b></a> : <a href={`/subjects/math/${course.slug}/${topic.slug}/`}><small>← Topic overview</small><b>{topic.name}</b></a>}
-        {next ? <a href={libraryArticleHref(next)}><small>Next in {topic.shortName} →</small><b>{next.shortTitle}</b></a> : nextTopic ? <a href={`/subjects/math/${course.slug}/${nextTopic.slug}/`}><small>Next topic →</small><b>{nextTopic.name}</b></a> : <a href={`/subjects/math/${course.slug}/`}><small>Course overview →</small><b>All {course.name.toLowerCase()} topics</b></a>}
+        {previous ? <a href={articleHref(previous)}><small>← Previous in {topic.shortName}</small><b>{previous.shortTitle}</b></a> : <a href={topicHref}><small>← Topic overview</small><b>{topic.name}</b></a>}
+        {next ? <a href={articleHref(next)}><small>Next in {topic.shortName} →</small><b>{next.shortTitle}</b></a> : nextTopic ? <a href={`/subjects/math/${course.slug}/${nextTopic.slug}/`}><small>Next topic →</small><b>{nextTopic.name}</b></a> : <a href={`/subjects/math/${course.slug}/`}><small>Course overview →</small><b>All {course.name.toLowerCase()} topics</b></a>}
       </nav>
     </article>
   );

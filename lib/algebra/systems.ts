@@ -48,7 +48,7 @@ export const systemsArticles = [
   }),
   algebraArticle({
     slug: "no-one-infinite-solutions", topicSlug: "systems-inequalities", archetype: "concept",
-    title: "One solution, no solution, or infinitely many?", shortTitle: "Count system solutions",
+    title: "How many solutions can a system of equations have?", shortTitle: "Count system solutions",
     deck: "For two linear equations, the coefficient pattern determines whether the graphs intersect once, never meet, or are actually the same line.",
     course: "Algebra I", difficulty: "Intermediate", minutes: 8,
     formula: String.raw`\text{intersecting}\;|\;\text{parallel}\;|\;\text{identical}`, immediate: { label: "Three cases", text: "A consistent independent system has one solution, an inconsistent system has none, and a dependent system has infinitely many." },
