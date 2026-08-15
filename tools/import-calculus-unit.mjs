@@ -201,7 +201,32 @@ function normalizeRouteText(value) {
     .trim();
 }
 
+const routeSeoOverrides = new Map([
+  ["subjects/math/calculus/integrals/common-errors", {
+    title: "Common Integration Technique Errors and How to Fix Them",
+    description: "Identify and fix common antiderivative, Fundamental Theorem, substitution, technique-selection, numerical, and improper-integral errors.",
+  }],
+  ["subjects/math/calculus/integration-applications/common-errors", {
+    title: "Common Applications of Integration Errors and How to Fix Them",
+    description: "Identify and fix applications of integration errors involving slices, bounds, radii, density, work, pressure, units, and interpretation.",
+  }],
+  ["subjects/math/calculus/integrals/cumulative-practice", {
+    title: "Integral Foundations and Techniques: Unit 3A Cumulative Practice",
+    description: "Practice Unit 3A integral foundations and techniques, including antiderivatives, the Fundamental Theorem, substitution, numerical methods, and improper integrals.",
+  }],
+  ["subjects/math/calculus/integration-applications/cumulative-practice", {
+    title: "Applications of Integration: Unit 3B Cumulative Practice",
+    description: "Practice Unit 3B applications of integration, including area, volume, mass, work, hydrostatic force, marginal quantities, and probability.",
+  }],
+]);
+
+function titleFor(route) {
+  return routeSeoOverrides.get(route.route_id)?.title ?? normalizeRouteText(route.title);
+}
+
 function descriptionFor(route) {
+  const override = routeSeoOverrides.get(route.route_id)?.description;
+  if (override) return override;
   const raw = normalizeRouteText(route.seo?.meta_description ?? route.meta_description).replace(/\.{3,}|…/g, ".");
   if (requested === "unit-4a" || requested === "unit-4b") return raw;
   if (requested === "unit-3b" && route.page_type === "hub") return "Learn applications of integration through area, volume, length, mass, work, fluids, marginal quantities, probability, worked examples, visual reasoning, practice, and published exam keys.";
@@ -225,7 +250,7 @@ function breadcrumbsFor(route) {
     { name: "Calculus", path: "/subjects/math/calculus/" },
     { name: unitName, path: canonicalRoot },
   ];
-  if (route.url !== canonicalRoot) crumbs.push({ name: normalizeRouteText(route.title), path: route.url });
+  if (route.url !== canonicalRoot) crumbs.push({ name: titleFor(route), path: route.url });
   return crumbs;
 }
 
@@ -387,7 +412,7 @@ const routes = sourceRoutes.map((route) => {
     unitId,
     path: route.url,
     slug: route.slug,
-    title: normalizeRouteText(route.title),
+    title: titleFor(route),
     description: descriptionFor(route),
     pageType: route.page_type.replaceAll("_", "-"),
     sequenceIndex: route.sequence_index,
@@ -401,7 +426,7 @@ const routes = sourceRoutes.map((route) => {
     previousCorePath: route.previous_core ? pathForSlug(route.previous_core) : null,
     nextCorePath: route.next_core ? pathForSlug(route.next_core) : null,
     visualIds: visualIdsFor(route),
-    searchTerms: [normalizeRouteText(route.seo?.primary_intent ?? route.primary_query), normalizeRouteText(route.title), section[1], expected.shortTitle ?? normalizeRouteText(index.short_title)],
+    searchTerms: [normalizeRouteText(route.seo?.primary_intent ?? route.primary_query), titleFor(route), section[1], expected.shortTitle ?? normalizeRouteText(index.short_title)],
     relatedPaths: related,
     indexable: handoff ? true : route.seo.robots === "index, follow" && route.seo.sitemap === true,
     releaseState: "public",

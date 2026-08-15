@@ -18,7 +18,7 @@ export const polynomialsArticles = [
   }),
   algebraArticle({
     slug: "multiply-polynomials", topicSlug: "polynomials-factoring", archetype: "method",
-    title: "Multiplying polynomials without losing a term", shortTitle: "Multiply polynomials",
+    title: "Polynomial multiplication checklist: include every term", shortTitle: "Polynomial multiplication checklist",
     deck: "Every term in one factor multiplies every term in the other. Organize the products, then combine like terms once.",
     course: "Algebra I", difficulty: "Foundational", minutes: 9,
     formula: String.raw`(a+b)(c+d)=ac+ad+bc+bd`, immediate: { label: "Method", text: "The distributive property—not a special binomial trick—creates every product term." },
@@ -32,7 +32,7 @@ export const polynomialsArticles = [
   }),
   algebraArticle({
     slug: "greatest-common-factor", topicSlug: "polynomials-factoring", archetype: "method",
-    title: "Factor the greatest common factor before anything fancy", shortTitle: "Greatest common factor",
+    title: "Why the GCF should be your first factoring move", shortTitle: "GCF-first factoring",
     deck: "The GCF is the largest expression dividing every term. Removing it first exposes the smaller polynomial that actually needs attention.",
     course: "Algebra I", difficulty: "Foundational", minutes: 8,
     formula: String.raw`ab+ac=a(b+c)`, immediate: { label: "First move", text: "Before looking for trinomial or special patterns, ask what every term shares." },
@@ -46,7 +46,7 @@ export const polynomialsArticles = [
   }),
   algebraArticle({
     slug: "factoring-trinomials", topicSlug: "polynomials-factoring", archetype: "method",
-    title: "Factoring trinomials: use product and sum, not random guessing", shortTitle: "Factor trinomials",
+    title: "Factoring trinomials: which method should you use?", shortTitle: "Choose a trinomial method",
     deck: "For x² + bx + c, find two numbers with product c and sum b. For ax² + bx + c, split the middle term using product ac.",
     course: "Algebra I", difficulty: "Intermediate", minutes: 11,
     formula: String.raw`x^2+bx+c=(x+m)(x+n),\quad mn=c,\ m+n=b`, immediate: { label: "Recognition", text: "Factoring reverses polynomial multiplication. The middle coefficient comes from a sum; the constant comes from a product." },

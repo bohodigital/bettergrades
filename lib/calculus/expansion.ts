@@ -86,11 +86,11 @@ export const calculusExpansionArticles = [
   }),
   calculusArticle({
     slug: "integration-by-parts-strategy", topicSlug: "integration-techniques", archetype: "method",
-    title: "Integration by parts: choosing u and knowing when to repeat", shortTitle: "Integration by parts",
-    deck: "Reverse the product rule, choose the factor that simplifies under differentiation, and recognize when the method should be repeated or abandoned.",
+    title: "Repeated, tabular, and cyclic integration by parts", shortTitle: "Repeated integration by parts",
+    deck: "Recognize when integration by parts should repeat, when tabular bookkeeping helps, and when a cyclic integral should be solved algebraically.",
     course: "Calculus II", difficulty: "Intermediate", minutes: 11,
     formula: String.raw`\int u\,dv=uv-\int v\,du`,
-    searchTerms: ["integration by parts", "choose u dv", "LIATE", "tabular integration"],
+    searchTerms: ["repeated integration by parts", "cyclic integration by parts", "tabular integration"],
     immediate: { label: "Structural clue", tex: String.raw`\text{polynomial}\times\text{exponential or trig}`, text: "Choose u so differentiation simplifies it, and choose dv so its antiderivative is available. The mnemonic is a guide, not a substitute for checking both jobs." },
     sections: [
       ["The product rule runs backward", "Differentiating uv produces u dv + v du in differential notation. Rearranging and integrating gives the by-parts identity.", "The method trades one integral for another. It succeeds only when the new integral is simpler or creates an equation involving the original integral.", String.raw`d(uv)=u\,dv+v\,du`],

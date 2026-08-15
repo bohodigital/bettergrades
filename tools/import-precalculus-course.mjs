@@ -38,7 +38,7 @@ const unitProfiles = [
   { sourceCode: "P0", sequence: 1, title: "Algebra and Function Readiness", slug: "algebra-and-function-readiness" },
   { sourceCode: "P1", sequence: 2, title: "Functions and Multiple Representations", slug: "functions-and-multiple-representations" },
   { sourceCode: "P2", sequence: 3, title: "Transformations and Function Operations", slug: "transformations-and-function-operations" },
-  { sourceCode: "P3", sequence: 4, title: "Composition, Inverses, and Modeling", slug: "composition-inverses-and-modeling" },
+  { sourceCode: "P3", sequence: 4, title: "Function Composition, Inverse Functions, and Modeling", slug: "composition-inverses-and-modeling" },
   { sourceCode: "P4", sequence: 5, title: "Polynomial Functions", slug: "polynomial-functions" },
   { sourceCode: "P5", sequence: 6, title: "Rational Functions", slug: "rational-functions" },
   { sourceCode: "P6", sequence: 7, title: "Exponential and Logarithmic Functions", slug: "exponential-and-logarithmic-functions" },
@@ -52,6 +52,54 @@ const unitProfiles = [
   { sourceCode: "P14", sequence: 15, title: "Sequences, Series, and Discrete Models", slug: "sequences-series-and-discrete-models" },
   { sourceCode: "P15", sequence: 16, title: "Calculus Readiness and Function Synthesis", slug: "calculus-readiness-and-function-synthesis" },
 ];
+
+// Titles may become more explicit without moving established lesson URLs. The source
+// package title remains the slug input; these labels control rendered H1 and metadata.
+const lessonTitleOverrides = new Map(Object.entries({
+  "P1.1": "Quantities, Variables, and Dependency in Functions",
+  "P1.2": "Relations and Functions Across Multiple Representations",
+  "P1.4": "Representing Functions with Words, Tables, Graphs, and Formulas",
+  "P1.8": "Piecewise Functions Across Multiple Representations",
+  "P2.2": "Coordinate Mappings for Function Transformations",
+  "P3.1": "Function Composition as Sequential Processing",
+  "P5.2": "Equivalent Rational Formulas, Different Domains, and Holes",
+  "P5.11": "Partial-Fraction Structure in Rational Functions",
+  "P6.1": "Additive vs. Multiplicative Change in Function Models",
+  "P6.4": "Advanced Growth and Decay Models in Precalculus",
+  "P6.11": "Applying Logarithm Laws in Precalculus Models",
+  "P6.12": "Solving Exponential Equations in Precalculus Models",
+  "P8.2": "Degree Measure and Angular Coordinates",
+  "P8.3": "Radians as Normalized Arc Length",
+  "P8.6": "Wrapping the Real Line Around the Unit Circle",
+  "P8.7": "Sine and Cosine as Unit-Circle Coordinates",
+  "P9.3": "Amplitude, Reflection, and Midline in Sinusoidal Graphs",
+  "P9.6": "The General Sinusoidal Function and Its Parameters",
+  "P9.9": "Symmetry and Periodicity Across the Six Trigonometric Functions",
+  "P10.1": "Trigonometric Identities, Equations, and Proof Strategy",
+  "P10.4": "Trigonometric Sum and Difference Formulas",
+  "P10.8": "Solving Trigonometric Equations with Fundamental Identities",
+  "P12.1": "Conic Sections as Loci: The Circle Foundation",
+  "P12.6": "Translated Conic Sections and General Equations",
+  "P14.2": "Explicit vs. Recursive Sequence Definitions",
+  "P15.1": "Classifying Function Families for Calculus Readiness",
+  "P15.4": "Difference Quotients for Calculus Readiness",
+  "P15.6": "Local Linearity and Magnification Before Calculus",
+  "P15.7": "Introduction to Limits Before Calculus",
+  "P15.8": "Continuity Preview for Precalculus",
+  "P15.9": "Asymptotes and Infinite Behavior: A Precalculus Review",
+  "P15.11": "Riemann Sums Preview: Accumulation, Finite Sums, and Area",
+}));
+
+const assessmentTopicByUnit = new Map([
+  [1, "Algebra and Function Readiness"], [2, "Functions and Multiple Representations"],
+  [3, "Function Transformations and Operations"], [4, "Function Composition and Inverse Functions"],
+  [5, "Polynomial Functions"], [6, "Rational Functions"],
+  [7, "Exponential and Logarithmic Functions"], [8, "Systems and Matrices"],
+  [9, "Radians and the Unit Circle"], [10, "Trigonometric Functions and Periodic Models"],
+  [11, "Trigonometric Identities and Equations"], [12, "Triangle Trigonometry and Vectors"],
+  [13, "Conic Sections"], [14, "Parametric, Polar, and Complex Numbers"],
+  [15, "Sequences and Series"], [16, "Calculus Readiness and Function Synthesis"],
+]);
 
 function slugify(value) {
   return value
@@ -433,6 +481,7 @@ const unitsBySourceCode = new Map(unitProfiles.map((unit) => [unit.sourceCode, u
 const publicLessons = [];
 const solutions = [];
 const provenanceLessons = [];
+const routeTitleByLessonId = new Map();
 
 for (const sourceLesson of sourceLessons) {
   const profile = unitsBySourceCode.get(sourceLesson.unit);
@@ -442,6 +491,8 @@ for (const sourceLesson of sourceLessons) {
   if (lessonSequence < 1) throw new Error(`Could not sequence ${sourceLesson.id}.`);
   const publicLessonId = `precalculus-u${profile.sequence}-l${lessonSequence}`;
   const path = `${courseRoot}${profile.slug}/${slugify(sourceLesson.title)}/`;
+  const publicTitle = lessonTitleOverrides.get(sourceLesson.id) ?? sourceLesson.title;
+  routeTitleByLessonId.set(publicLessonId, publicTitle);
   const checkpointId = `${publicLessonId}-checkpoint`;
   const guide = editorialGuide(sourceLesson, profile.sequence);
   const practice = expandedPractice(sourceLesson, guide).map((item, index) => {
@@ -576,11 +627,13 @@ for (const unit of publicUnits) {
   const masteryPool = lessons.flatMap((lesson) => [lesson.checkpoint, ...lesson.practice.slice(0, 3)].map((prompt) => ({ lesson, prompt })));
   const investigationPool = takeEvenly(practicePool.filter(({ prompt }) => prompt.responseType === "manual_rubric"), 5);
   const fallbackInvestigationPool = investigationPool.length >= 4 ? investigationPool : takeEvenly(practicePool, 5);
+  const assessmentTopic = assessmentTopicByUnit.get(unit.sequence);
+  if (!assessmentTopic) throw new Error(`Missing assessment topic for Precalculus unit ${unit.sequence}.`);
   const definitions = [
-    { type: "unit-review", slug: "review", title: `Unit ${unit.sequence} Review`, description: "A 40–50 item cumulative unit review.", selected: takeEvenly(reviewPool, Math.min(50, Math.max(40, reviewPool.length))) },
-    { type: "flexible-practice", slug: "practice", title: `Unit ${unit.sequence} Flexible Practice`, description: "A 32-item mixed practice set with repair links.", selected: takeEvenly(practicePool, 32) },
-    { type: "mastery-check", slug: "mastery-check", title: `Unit ${unit.sequence} Mastery Check`, description: "A 28–36 item check spanning every unit lesson.", selected: masteryPool.slice(0, 36) },
-    { type: "investigation", slug: "investigation", title: `Unit ${unit.sequence} Investigation`, description: "A multistage representation and verification task.", selected: fallbackInvestigationPool },
+    { type: "unit-review", slug: "review", title: `${assessmentTopic} Review`, description: `A 40–50 item cumulative review of ${assessmentTopic.toLowerCase()}.`, selected: takeEvenly(reviewPool, Math.min(50, Math.max(40, reviewPool.length))) },
+    { type: "flexible-practice", slug: "practice", title: `${assessmentTopic} Practice Problems`, description: `A 32-item mixed ${assessmentTopic.toLowerCase()} practice set with repair links.`, selected: takeEvenly(practicePool, 32) },
+    { type: "mastery-check", slug: "mastery-check", title: `${assessmentTopic} Practice Test`, description: `A 28–36 item ${assessmentTopic.toLowerCase()} practice test spanning every unit lesson.`, selected: masteryPool.slice(0, 36) },
+    { type: "investigation", slug: "investigation", title: `${assessmentTopic} Modeling Investigation`, description: `A multistage ${assessmentTopic.toLowerCase()} representation and verification task.`, selected: fallbackInvestigationPool },
   ];
   const unitAssessments = definitions.map((definition) => {
     const id = `${unit.id}-${definition.type}`;
@@ -661,7 +714,7 @@ const unitRoutes = publicUnits.map((unit) => ({
 const lessonRoutes = publicLessons.map((lesson) => ({
   id: lesson.id,
   path: lesson.path,
-  title: lesson.title,
+  title: routeTitleByLessonId.get(lesson.id) ?? lesson.title,
   description: lesson.outcome,
   pageType: "lesson",
   indexable: true,

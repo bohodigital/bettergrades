@@ -3,7 +3,7 @@ import { algebraArticle } from "./shared";
 export const rationalArticles = [
   algebraArticle({
     slug: "rational-domain-restrictions", topicSlug: "rational-expressions", archetype: "concept",
-    title: "Domain restrictions in rational expressions", shortTitle: "Rational restrictions",
+    title: "Why canceled factors still restrict a rational expression's domain", shortTitle: "Canceled factors and domain",
     deck: "A rational expression has no value wherever its original denominator is zero. Simplifying the formula does not restore an excluded input.",
     course: "Algebra II", difficulty: "Intermediate", minutes: 8,
     formula: String.raw`\frac{x^2-9}{x-3}=x+3,\quad x\ne3`, immediate: { label: "Rule", text: "Find restrictions from the original denominator before canceling factors." },
@@ -31,7 +31,7 @@ export const rationalArticles = [
   }),
   algebraArticle({
     slug: "add-subtract-rational-expressions", topicSlug: "rational-expressions", archetype: "method",
-    title: "Adding and subtracting rational expressions", shortTitle: "Combine rational expressions",
+    title: "How to find the LCD for rational expressions", shortTitle: "Find the rational-expression LCD",
     deck: "Factor denominators, build the least common denominator, rewrite every numerator, then combine while preserving restrictions.",
     course: "Algebra II", difficulty: "Intermediate", minutes: 11,
     formula: String.raw`\frac ab+\frac cd=\frac{ad+bc}{bd}`, immediate: { label: "Method", text: "Denominators must name the same-sized algebraic pieces before numerators can combine." },
@@ -45,7 +45,7 @@ export const rationalArticles = [
   }),
   algebraArticle({
     slug: "solving-rational-equations", topicSlug: "rational-expressions", archetype: "method",
-    title: "Solving rational equations without accepting forbidden answers", shortTitle: "Solve rational equations",
+    title: "Forbidden and extraneous solutions in rational equations", shortTitle: "Check rational-equation solutions",
     deck: "List restrictions, multiply every term by the least common denominator, solve the resulting equation, and reject candidates outside the original domain.",
     course: "Algebra II", difficulty: "Intermediate", minutes: 11,
     formula: String.raw`\frac{p(x)}{q(x)}=\frac{r(x)}{s(x)}`, immediate: { label: "Workflow", text: "Restrictions first, denominator clearing second, solution check last. Clearing fractions does not erase the original domain." },

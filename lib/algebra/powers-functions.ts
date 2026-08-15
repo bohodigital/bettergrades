@@ -3,7 +3,7 @@ import { algebraArticle } from "./shared";
 export const powersFunctionsArticles = [
   algebraArticle({
     slug: "simplifying-radicals", topicSlug: "radicals-exponents-functions", archetype: "method",
-    title: "Simplifying radicals by pulling out perfect powers", shortTitle: "Simplify radicals",
+    title: "How to find perfect-power factors when simplifying radicals", shortTitle: "Find perfect-power factors",
     deck: "Factor the radicand into a perfect power times what remains. Pull only complete groups through the radical bar.",
     course: "Algebra I", difficulty: "Intermediate", minutes: 9,
     formula: String.raw`\sqrt{ab}=\sqrt a\sqrt b\quad(a,b\ge0)`, immediate: { label: "Method", text: "For square roots, every pair of equal factors contributes one factor outside." },
@@ -17,7 +17,7 @@ export const powersFunctionsArticles = [
   }),
   algebraArticle({
     slug: "solving-radical-equations", topicSlug: "radicals-exponents-functions", archetype: "method",
-    title: "Solving radical equations and checking for extraneous roots", shortTitle: "Solve radical equations",
+    title: "Why radical equations create extraneous solutions—and how to check them", shortTitle: "Check radical equations",
     deck: "Isolate one radical, raise both sides to the matching power, solve, and check every candidate in the original equation.",
     course: "Algebra II", difficulty: "Intermediate", minutes: 11,
     formula: String.raw`\sqrt{f(x)}=g(x)\Rightarrow f(x)=g(x)^2`, immediate: { label: "Warning", text: "Squaring is not a reversible step over all real expressions, so it can introduce answers the original equation never had." },
@@ -31,7 +31,7 @@ export const powersFunctionsArticles = [
   }),
   algebraArticle({
     slug: "rational-exponents", topicSlug: "radicals-exponents-functions", archetype: "concept",
-    title: "Rational exponents: the bridge between powers and roots", shortTitle: "Rational exponents",
+    title: "Why fractional exponents mean roots", shortTitle: "Fractional exponents and roots",
     deck: "The denominator names the root and the numerator names the power. This notation lets radical expressions use the ordinary exponent rules.",
     course: "Algebra II", difficulty: "Intermediate", minutes: 9,
     formula: String.raw`a^{m/n}=\sqrt[n]{a^m}=\left(\sqrt[n]{a}\right)^m`, immediate: { label: "Translation", tex: String.raw`a^{1/n}=\sqrt[n]{a}`, text: "For real-number work, even roots require a nonnegative base unless the expression's domain is restricted differently." },

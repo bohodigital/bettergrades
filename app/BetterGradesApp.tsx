@@ -21,6 +21,8 @@ import { PageGlossaryTerms } from "./PageGlossaryTerms";
 import { LearningPathLinks } from "./LearningPathLinks";
 
 const PathContext = createContext("/");
+type OwnershipLink = { href: string; relationship: string; label: string };
+const OwnershipLinksContext = createContext<OwnershipLink[]>([]);
 
 function Link({ href, children, className = "" }: { href: string; children: ReactNode; className?: string }) {
   return <a href={href} className={className}>{children}</a>;
@@ -171,9 +173,15 @@ function Footer() {
   );
 }
 
+function OwnershipLinks() {
+  const links = useContext(OwnershipLinksContext);
+  if (!links.length) return null;
+  return <aside className="callout seo-ownership-links" aria-label="Related learning paths"><span>RELATED LEARNING PATHS</span><h2>Choose the depth that matches your goal.</h2>{links.map((link) => <a href={link.href} data-relationship={link.relationship} key={`${link.relationship}:${link.href}`}>{link.label} →</a>)}</aside>;
+}
+
 function Shell({ children, narrow = false }: { children: ReactNode; narrow?: boolean }) {
   const path = useContext(PathContext);
-  return <><Header /><main className={narrow ? "narrow-main" : ""}>{children}</main><PageGlossaryTerms path={path} /><Footer /></>;
+  return <><Header /><main className={narrow ? "narrow-main" : ""}>{children}</main><PageGlossaryTerms path={path} /><OwnershipLinks /><Footer /></>;
 }
 
 function Eyebrow({ children, warm = false }: { children: ReactNode; warm?: boolean }) {
@@ -375,7 +383,7 @@ function SecCubedLatexPage() {
           </ol>
 
           <h2>What to do next</h2>
-          <div className="related-grid"><Link href="/learn/calculus/integration-by-parts/"><span>LEARN THE METHOD</span><b>Integration by parts</b><small>Recognition, setup, and when not to use it →</small></Link><Link href="/practice/math/calculus/quizzes/integration-method-selection/"><span>PRACTICE</span><b>Choose the first move</b><small>Targeted feedback on method choice →</small></Link><Link href="/practice/math/calculus/challenges/integration-bee/"><span>COMPETE</span><b>Integration Bee</b><small>Try the integral under a little pressure →</small></Link></div>
+          <div className="related-grid"><Link href="/learn/calculus/integration-by-parts/"><span>LEARN THE METHOD</span><b>When to use integration by parts</b><small>Recognition, setup, and when not to use it →</small></Link><Link href="/practice/math/calculus/quizzes/integration-method-selection/"><span>PRACTICE</span><b>Choose the first move</b><small>Targeted feedback on method choice →</small></Link><Link href="/practice/math/calculus/challenges/integration-bee/"><span>COMPETE</span><b>Integration Bee</b><small>Try the integral under a little pressure →</small></Link></div>
         </section>
       </article>
     </Shell>
@@ -387,7 +395,7 @@ function LearnLatexPage() {
     <Shell narrow>
       <article className="article lesson">
         <nav className="breadcrumbs"><Link href="/">Learn</Link><span>/</span><Link href="/subjects/math/calculus/">Calculus</Link><span>/</span><span>Integration by parts</span></nav>
-        <header className="article-header"><Eyebrow>Method guide · Calculus II</Eyebrow><h1>Integration by parts, without the guessing game.</h1><p className="article-kicker">Reverse the product rule. Choose the factor that gets simpler.</p></header>
+        <header className="article-header"><Eyebrow>Method guide · Calculus II</Eyebrow><h1>When should you use integration by parts?</h1><p className="article-kicker">Recognize the product-rule signal, then choose the factor that gets simpler.</p></header>
         <section className="lesson-intro"><div className="formula-card"><span>THE FORMULA</span><Math tex={String.raw`\int u\,dv=uv-\int v\,du`} display className="formula-card-equation" /></div><p>Integration by parts trades one integral for another. It is useful when a product contains a factor that becomes simpler after differentiation—like <Math tex="x" />, <Math tex={String.raw`\ln x`} />, or an inverse trig function.</p></section>
         <LearningPathLinks sourcePath="/learn/calculus/integration-by-parts/" placement="article-intro" variant="primary" />
         <section className="article-body">
@@ -511,6 +519,6 @@ function BetterGradesRoute({ path, routeContent }: { path: string; routeContent?
   return <NotFound />;
 }
 
-export function BetterGradesApp({ path, routeContent }: { path: string; routeContent?: ReactNode }) {
-  return <PathContext.Provider value={path}><BetterGradesRoute path={path} routeContent={routeContent} /></PathContext.Provider>;
+export function BetterGradesApp({ path, routeContent, ownershipLinks = [] }: { path: string; routeContent?: ReactNode; ownershipLinks?: OwnershipLink[] }) {
+  return <PathContext.Provider value={path}><OwnershipLinksContext.Provider value={ownershipLinks}><BetterGradesRoute path={path} routeContent={routeContent} /></OwnershipLinksContext.Provider></PathContext.Provider>;
 }

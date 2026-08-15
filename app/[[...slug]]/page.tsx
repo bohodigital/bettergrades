@@ -16,10 +16,14 @@ import { LimitsUnitPageContent } from "../LimitsUnitPages";
 import { CalculusUnitPageContent } from "../CalculusUnitPages";
 import { AlgebraCoursePageContent } from "../AlgebraCoursePages";
 import { ResourceHubPage, ResourceLibraryPage, ResourcePage } from "../ResourcePages";
+import { OwnedLibraryArticleContent } from "../LibraryPages";
+import articleOwners from "../../data/seo/branch1-article-to-textbook.json";
+import textbookCompanions from "../../data/seo/branch1-textbook-to-article.json";
+import sitewideOwnershipLinks from "../../data/seo/sitewide-ownership-links.json";
 
 const PrecalculusCoursePageContent = lazy(async () => {
-  const module = await import("../PrecalculusCoursePages");
-  return { default: module.PrecalculusCoursePageContent };
+  const precalculusModule = await import("../PrecalculusCoursePages");
+  return { default: precalculusModule.PrecalculusCoursePageContent };
 });
 function getPath(slug: string[] = []) {
   return `/${slug.join("/")}${slug.length ? "/" : ""}`;
@@ -145,6 +149,9 @@ export default async function CatchAllPage({
   const calculusUnitPage = isCalculusUnitPath(path) ? getPublicCalculusUnitPage(path) : undefined;
   const algebraCoursePage = isAlgebraCoursePath(path) ? getPublicAlgebraCoursePage(path) : undefined;
   const precalculusCoursePage = isPrecalculusCoursePath(path) ? getPublicPrecalculusCoursePage(path) : undefined;
+  const articleMatch = path.match(/^\/subjects\/math\/([^/]+)\/([^/]+)\/([^/]+)\/$/);
+  const articleOwner = articleOwners[path as keyof typeof articleOwners];
+  const companion = textbookCompanions[path as keyof typeof textbookCompanions];
   const resourcePage = getPublishedResourcePage(path);
   const resourceHub = getResourceHub(path);
   const libraryResources = path === "/resources/"
@@ -163,7 +170,7 @@ export default async function CatchAllPage({
   const enrichedGlossaryTermIds = resourcePage
     ? resourcePage.relatedGlossaryTerms.filter((id) => enrichedGlossaryResources.some((resource) => resource.glossaryTermId === id))
     : undefined;
-  let routeContent: ReactNode;
+  let routeContent: ReactNode | undefined;
   if (precalculusCoursePage) routeContent = <PrecalculusCoursePageContent page={precalculusCoursePage} />;
   else if (algebraCoursePage) routeContent = <AlgebraCoursePageContent page={algebraCoursePage} />;
   else if (libraryResources) routeContent = <ResourceLibraryPage resources={libraryResources} />;
@@ -171,11 +178,14 @@ export default async function CatchAllPage({
   else if (resourcePage) routeContent = <ResourcePage resource={resourcePage} glossaryTerms={glossaryData?.terms} relatedResources={relatedResources ?? []} enrichedGlossaryTermIds={enrichedGlossaryTermIds ?? []} />;
   else if (calculusUnitPage) routeContent = <CalculusUnitPageContent page={calculusUnitPage} />;
   else if (limitsUnitPage) routeContent = <LimitsUnitPageContent page={limitsUnitPage} />;
+  else if (articleOwner && articleMatch) routeContent = <OwnedLibraryArticleContent domainSlug={articleMatch[1]} topicSlug={articleMatch[2]} articleSlug={articleMatch[3]} ownerHref={articleOwner} />;
   else if (path === "/glossary/" && glossaryData) routeContent = <GlossaryHubPage terms={glossaryData.terms} />;
   else if (path === "/glossary/math/" && glossaryData) routeContent = <MathGlossaryPage terms={glossaryData.terms} categories={glossaryData.categories} />;
   else if (path === "/glossary/math/conventions/" && glossaryData) routeContent = <MathConventionsPage uppercaseConventions={glossaryData.uppercaseConventions} />;
+  if (routeContent && companion) routeContent = <>{routeContent}<aside className="callout seo-ownership-links" aria-label="Related focused lesson"><span>RELATED LEARNING PATH</span><h2>Choose the depth that matches your goal.</h2><a href={companion.href}>Use the focused guide: {companion.intent} →</a></aside></>;
   return <BetterGradesApp
     path={path}
     routeContent={routeContent}
+    ownershipLinks={sitewideOwnershipLinks[path as keyof typeof sitewideOwnershipLinks] ?? []}
   />;
 }
